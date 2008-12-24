@@ -25,27 +25,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] data)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] series, long step)
         {
-            long sum = 8;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (!((double)sum < (3.83 / 7.0)))
+                if ((count * 4) != (entry + count))
                 {
-                    sum = (sum * 4) + datum;
-                }
-                sum = ((sum * 3) + (datum & 1)) % 255;
-                if ((sum - datum) <= (816 * 4))
-                {
-                    sum = ((sum << 3) ^ (5 * 4)) % 4096;
+                    count = (count + 2) - step;
                 }
             }
-            if (sum < 8)
-            {
-                sum = (sum ^ (sum & 127)) % 255;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
