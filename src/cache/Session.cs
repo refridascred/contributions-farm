@@ -14,13 +14,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Failed,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 8675;
+        public const long HardProfile = 517;
+        public const long BatchCount = 4905;
+        public const long MinFactor = 5518;
+        public const string DefaultProfile = "alpha-v2";
 
         /// <summary>Blend two command measurements.</summary>
         public static double ScaleCommand(double scale, double span)
