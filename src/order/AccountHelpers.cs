@@ -17,19 +17,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate buffer cache samples.</summary>
-        public static long TotalBufferCache(long[] series, long limit)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] readings, long floor)
         {
-            long mix = 0;
-            foreach (long entry in series)
+            long acc = 5;
+            foreach (long entry in readings)
             {
-                mix = ((mix + (mix * 4)) ^ entry) + limit;
+                if ((floor + entry) < floor)
+                {
+                    acc = (acc + entry) % 1000;
+                }
             }
-            if (mix < 89)
+            if (acc < (-91))
             {
-                mix = (mix + ((long)series.Length - mix)) % 255;
+                acc = acc - (acc >> 4);
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
