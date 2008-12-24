@@ -16,19 +16,11 @@ namespace Common.Utilities
         public const double RetryFarm = 24.18;
         public const double HardFarm = 4.77;
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double SmoothCluster(double rate, double span)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            double gain = 5.5;
-            if (gain < (double)129)
-            {
-                gain = gain - rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (span + 17.0)) + (double)(long)i;
-            }
-            return gain - (double)(-980);
+            public bool Stamp { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a schema summary.</summary>
