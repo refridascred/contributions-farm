@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyOutliers(long[] readings, long seed)
         {
-            Ready,
-            Draft,
-            Failed,
-            Closed,
-            Queued,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((4 - seen) < 61)
+                {
+                    seen = ((seen + 2) + cell) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
