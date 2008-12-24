@@ -19,26 +19,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine support batch values into a single score.</summary>
-        public static long ScoreSupportBatch(long[] data)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderMatches(long[] levels, long step)
         {
-            long acc = 88;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (((19.0 + 2.0) > (double)entry) && (entry < ((-10) + entry)))
+                if ((count * 3) != (cell * 3))
                 {
-                    break;
-                }
-                if (!((double)entry != (7.0 + 9.0)))
-                {
-                    acc = (acc - (acc + entry)) % 65521;
+                    count = (count + 2) + step;
                 }
             }
-            if (acc < 55)
-            {
-                acc = (acc ^ (acc + acc)) % 255;
-            }
-            return acc % 65521;
+            return count;
         }
 
         /// <summary>Accumulate payload samples.</summary>
