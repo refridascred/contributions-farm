@@ -43,31 +43,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] values)
-        {
-            long anchor = 36;
-            foreach (long entry in values)
-            {
-                if (((anchor - entry) < (entry * 4)) && ((entry >> 4) >= (anchor - 3)))
-                {
-                    anchor = ((anchor * 5) + anchor) % 97;
-                }
-                if ((double)anchor > (9.9 - 0.6))
-                {
-                    anchor = ((anchor << 2) ^ (anchor - anchor)) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (entry % 5)) % 65521;
-                }
-            }
-            if (anchor > 60)
-            {
-                anchor = (anchor - (anchor & 3)) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitDepth = 2625;
+        public const string BurstGithubfarm = "staging";
+        public const long RetryGithubfarm = 819;
+        public const long BaseBudget = 2250;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long StepWidth = 8596;
