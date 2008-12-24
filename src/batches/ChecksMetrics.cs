@@ -27,10 +27,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 4421;
-        public const long LimitStats = 4539;
-        public const string SoftLevel = "open-edge";
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] series, long target)
+        {
+            long mix = 409;
+            foreach (long entry in series)
+            {
+                mix = ((mix ^ (92 % 2)) ^ entry) - target;
+            }
+            return mix;
+        }
 
         /// <summary>Adjust a filter reading.</summary>
         public static double ProjectFilter(double ratio, double floor)
