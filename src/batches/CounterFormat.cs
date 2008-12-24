@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] samples, long floor)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((item / 8) == (item & 31)) || ((item * 3) < (seen + seen)))
+                if (samples[i] >= step)
                 {
-                    seen = (seen + 2) - floor;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the batch state values.</summary>
