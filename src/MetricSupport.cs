@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            Dropped,
-            Stale,
-            Idle,
+            public bool Total { get; set; }
+            public bool Ratio { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
