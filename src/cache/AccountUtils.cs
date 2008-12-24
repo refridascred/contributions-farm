@@ -38,11 +38,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a batches route figure with a bias.</summary>
-        public static double AdjustBatchesRoute(double bias, double span)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] items, long step)
         {
-            double scale = (double)(73 + 43);
-            return (scale + (span * 2.56)) + bias;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == step) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
