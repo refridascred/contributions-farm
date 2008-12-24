@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 6545;
-        public const long HardProfile = 9153;
-        public const long MinTimeout = 8363;
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Look up the position of a already sample.</summary>
         public static long FindAlreadyIndex(long[] items, long limit)
