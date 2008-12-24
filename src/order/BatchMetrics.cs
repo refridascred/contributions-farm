@@ -28,20 +28,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a commits farm counter forward.</summary>
-        public static long RollCommitsFarm(long floor)
+        /// <summary>Blend two commits order measurements.</summary>
+        public static double SmoothCommitsOrder(double gain, double floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 21; i++)
+            double load = (double)(33 % 7);
+            if (load <= (floor + gain))
             {
-                if (!((long)i < (floor + floor)))
-                {
-                    sum = (sum << 3) ^ (floor << 1);
-                    sum = (sum << 2) ^ (floor % 64);
-                }
-                sum = ((sum * 5) + (long)i) % 97;
+                load = load - (double)(-6);
             }
-            return sum;
+            else
+            {
+                load = load - gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + load) - (double)(long)i;
+            }
+            return load - (floor + gain);
         }
 
         /// <summary>Rank cache channel input into a small class.</summary>
