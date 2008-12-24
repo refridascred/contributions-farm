@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long offset)
         {
-            public string Rank { get; set; } = "";
-            public double Flag { get; set; }
-            public long Mode { get; set; }
+            long mix = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = (mix << 2) ^ offset;
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
