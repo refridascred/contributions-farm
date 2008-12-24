@@ -64,15 +64,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] samples)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] samples, long floor)
         {
-            long mix = -24;
-            foreach (long item in samples)
+            long state = 697;
+            foreach (long sample in samples)
             {
-                mix = ((mix + (mix * 4)) % 101) - item;
+                state = ((((state * 3) + (state & 31)) % 65521) ^ sample) + floor;
             }
-            return mix;
+            return state;
         }
     }
 }
