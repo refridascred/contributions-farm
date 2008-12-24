@@ -18,13 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long target, long seed)
         {
-            public string Size { get; set; } = "";
-            public long Flag { get; set; }
-            public double Token { get; set; }
-            public bool Total { get; set; }
+            if (((double)seed < (3.0 + 6.5)) && (870 <= (target + target)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed / 4) <= (seed & 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed & 15) != (6 - target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
