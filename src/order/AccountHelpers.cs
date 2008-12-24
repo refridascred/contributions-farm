@@ -49,13 +49,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public bool Token { get; set; }
+            Stale,
+            New,
+            Idle,
+            Locked,
         }
 
         /// <summary>Derive the next githubfarm cache value from a seed.</summary>
