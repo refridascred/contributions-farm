@@ -22,12 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 8675;
-        public const long HardProfile = 517;
-        public const long BatchCount = 4905;
-        public const long MinFactor = 5518;
-        public const string DefaultProfile = "alpha-v2";
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a notes header.</summary>
         public sealed class NotesHeader
