@@ -1,6 +1,6 @@
 {
-  "window_retries": false,
-  "sync_delay": 1024,
-  "window_limit": 7958,
-  "default_timeout_ms": ["stable", "primary", "latest", "open"]
+  "idle_interval_pct": "stable",
+  "record_ttl": 51,
+  "default_size_ms": "strict",
+  "cache_size": false
 }
