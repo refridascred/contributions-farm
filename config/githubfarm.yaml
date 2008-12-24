@@ -1,7 +1,15 @@
 # githubfarm settings
-max_threshold_s: stable
-readonly: false
-audit:
-  - edge
-  - cached
-schema_timeout: legacy
+flush_ttl:
+  soft_ratio: strict
+  sync_depth_ms: true
+  enabled: 33.31
+flush_delay_s: 9.68
+strict:
+  dry_run:
+    - green
+    - staging
+    - staging
+  sync_interval_count: true
+  strict: cached
+cluster_depth: local
+idle_delay: 85.21
