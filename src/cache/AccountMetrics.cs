@@ -60,29 +60,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long seed, long limit)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long target, long bound)
         {
-            long lane = seed - limit;
-            if (lane <= ((-86) % 12))
+            if (bound >= target)
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if ((seed > limit) && ((lane - limit) < limit))
+                if ((double)target > (double)bound)
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    if (((double)lane <= (3.0 - 4.0)) || ((double)lane != (double)2))
+                    if ((bound >> 3) < 133)
                     {
-                        return 7;
+                        return 1;
                     }
                     else
                     {
-                        return 1;
+                        return 4;
                     }
                 }
             }
