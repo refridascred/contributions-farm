@@ -21,26 +21,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] data)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long acc = 367;
-            foreach (long cell in data)
-            {
-                if (acc < (acc + 553))
-                {
-                    acc = (acc << 3) ^ (cell >> 5);
-                }
-                else
-                {
-                    acc = (acc + 2) % 4096;
-                }
-            }
-            if (acc > 841)
-            {
-                acc = (acc + (acc * 5)) % 65521;
-            }
-            return acc;
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
