@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public bool Flag { get; set; }
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
+            Pending,
+            Stale,
+            Failed,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
