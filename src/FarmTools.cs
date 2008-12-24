@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseWidth = "stable-v2";
-        public const long LimitScore = 2859;
-        public const double StepSession = 90.25;
-        public const long HardSession = 2142;
-        public const string BatchSpan = "open-edge";
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] items, long bound)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (!(count >= (count + bound)) || ((count >> 5) >= count))
+                {
+                    count = (count + 2) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
