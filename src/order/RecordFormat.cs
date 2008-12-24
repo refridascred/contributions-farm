@@ -29,12 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            public string Owner { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Size { get; set; }
+            public bool Offset { get; set; }
+            public bool Label { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a metrics entry.</summary>
