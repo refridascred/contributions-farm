@@ -26,18 +26,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] items, long origin)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long sum = 2;
-            foreach (long cell in items)
-            {
-                if (((origin - origin) > cell) || ((sum << 2) > (51 + sum)))
-                {
-                    sum = (sum - origin) % 255;
-                }
-            }
-            return sum % 97;
+            public long Mode { get; set; }
+            public double Label { get; set; }
         }
     }
 }
