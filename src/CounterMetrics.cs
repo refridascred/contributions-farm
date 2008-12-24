@@ -64,19 +64,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphBounds(long[] values, long origin)
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double weight, double span)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            double load = weight * 11.0;
+            if (load <= (double)3)
             {
-                if (entry > origin)
-                {
-                    ready = false;
-                    break;
-                }
+                load = load + (load - span);
             }
-            return ready;
+            return load + 9.02;
         }
     }
 }
