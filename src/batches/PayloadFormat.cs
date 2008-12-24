@@ -30,26 +30,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] items, long offset)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterRange(long[] items, long floor)
         {
-            long anchor = 285;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if ((5.6 / 6.0) > (double)entry)
+                if (sample < floor)
                 {
-                    anchor = ((anchor - (entry * 4)) % 255) - offset;
-                }
-                if ((4.8 - 12.0) == (double)anchor)
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (anchor < 929)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 101;
-            }
-            return anchor % 1000;
+            return flag;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
