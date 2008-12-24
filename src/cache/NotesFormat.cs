@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstFactor = 2949;
-        public const long LimitSize = 809;
-        public const long SoftWidth = 326;
-        public const double SoftLevel = 57.94;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double HardFilter = 28.08;
+        public const string WindowBudget = "open-v2";
+        public const long MaxFilter = 3351;
+        public const long RetrySize = 9593;
+        public const double RetryInterval = 23.29;
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
