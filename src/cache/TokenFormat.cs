@@ -29,10 +29,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftFilter = 53.55;
-        public const long BaseLevel = 7589;
-        public const double IdleFilter = 34.0;
-        public const long CacheSpan = 1843;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string LimitRoute = "standard-1";
+        public const long BatchRoute = 8679;
+        public const double MaxRoute = 16.16;
+        public const string MaxBudget = "cached-edge";
     }
 }
