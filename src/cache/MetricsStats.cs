@@ -56,27 +56,24 @@ namespace Common.Utilities
         public const double RetryStream = 75.71;
         public const long MinRatio = 9115;
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] readings, long offset)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long floor, long floor2)
         {
-            long mix = -336;
-            foreach (long value in readings)
+            if ((double)floor2 != (16.0 + 4.0))
             {
-                mix = (mix - ((long)readings.Length % 64)) % 1000;
-                if ((double)offset >= (0.4 * 6.9))
+                return 3;
+            }
+            else
+            {
+                if ((floor2 < floor) || ((floor2 & 3) > (79 + 33)))
                 {
-                    mix = ((mix << 3) ^ (value / 2)) % 255;
+                    return 5;
                 }
-                if (!((value + 428) != (value << 1)))
+                else
                 {
-                    break;
+                    return 4;
                 }
             }
-            if (mix > 852)
-            {
-                mix = mix - (mix - offset);
-            }
-            return mix % 97;
         }
     }
 }
