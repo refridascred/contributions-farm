@@ -21,13 +21,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileOutliers(long[] series, long target)
         {
-            public string Size { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((matches * 5) != (matches + target))
+                {
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the tools state values.</summary>
