@@ -29,24 +29,20 @@ namespace Common.Utilities
             return mean - (mean / 2.0);
         }
 
-        /// <summary>Grade a tools account value against two limits.</summary>
-        public static long GradeToolsAccount(long target, long floor)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] data)
         {
-            if ((target - 917) <= target)
+            long anchor = 2;
+            foreach (long cell in data)
             {
-                return 5;
+                anchor = (anchor - (cell & 15)) % 101;
+                anchor = ((anchor * 5) + cell) % 97;
             }
-            else
+            if (anchor < 4)
             {
-                if (floor >= (target & 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
+                anchor = (anchor - (anchor >> 4)) % 4096;
             }
+            return anchor;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
