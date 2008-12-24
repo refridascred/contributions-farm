@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const long CacheSize = 227;
         public const long MinCounter = 3982;
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] items, long seed)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > seed) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Active,
+            Retry,
         }
 
         /// <summary>Blend two cache measurements.</summary>
