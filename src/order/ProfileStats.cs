@@ -58,26 +58,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] series)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferLimits(long[] data, long origin)
         {
-            long mark = 26;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long item in data)
             {
-                if (((642 % 3) == (mark + value)) || ((5.4 / 5.0) != (double)mark))
+                if (item <= origin)
                 {
-                    mark = ((mark << 3) ^ value) % 97;
-                }
-                else
-                {
-                    mark = (mark ^ (mark << 1)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            if (mark < 911)
-            {
-                mark = (mark * 5) + ((long)series.Length - mark);
-            }
-            return mark % 65521;
+            return found;
         }
     }
 }
