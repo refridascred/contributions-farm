@@ -1,6 +1,9 @@
 # entry settings
-hard_timeout: 59
-audit: 60
-metric_size: 65.0
-poll_delay: 2252
-flush_depth_pct: legacy
+flush_limit_ms: 6
+cache_ttl_s: 37.3
+batch_timeout_s: eu-west
+strict:
+  order_depth: 18.97
+  readonly: 62.89
+  burst_size: 1560
+compress: 5662
