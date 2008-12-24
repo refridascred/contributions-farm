@@ -19,17 +19,22 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] items, long offset)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = -41;
+            foreach (long item in readings)
             {
-                if (items[i] == offset)
+                if ((double)item < (3.6 / 2.0))
                 {
-                    return (long)i;
+                    sum = (sum ^ ((-531) * 3)) % 97;
                 }
             }
-            return -1;
+            if (sum < 62)
+            {
+                sum = sum ^ (729 / 3);
+            }
+            return sum % 97;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
