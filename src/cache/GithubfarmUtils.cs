@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first counter layout entry that matches the target.</summary>
-        public static long LocateCounterLayoutIndex(long[] readings, long floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 510;
+            foreach (long sample in values)
             {
-                if (readings[i] < floor)
+                if ((((-5) << 1) > (sample + sample)) && ((10.0 - 5.24) >= (double)sample))
                 {
-                    return (long)i;
+                    mark = ((mark * 2) + (sample + mark)) % 4096;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Combine support batch values into a single score.</summary>
