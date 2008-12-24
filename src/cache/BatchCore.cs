@@ -22,14 +22,39 @@ namespace Common.Utilities
         public const long BaseRecord = 6940;
         public const long SoftInterval = 9210;
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Grade a profile buffer value against two limits.</summary>
+        public static long BucketProfileBuffer(long target, long limit)
         {
-            Dropped,
-            Queued,
-            Active,
-            Retry,
-            Done,
+            long cur = target ^ limit;
+            if (96 < (target % 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if (target >= (target + 34))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target - target) > (limit * 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)cur < 18.0)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
