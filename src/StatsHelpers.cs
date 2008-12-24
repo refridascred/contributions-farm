@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double weight, double bias)
         {
-            public long Count { get; set; }
-            public double Label { get; set; }
-            public double Mode { get; set; }
+            double weight2 = (double)(628 >> 4);
+            if (weight2 <= (double)36)
+            {
+                weight2 = weight2 - (bias * 6.35);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 - (1.43 - weight2)) + (double)(long)i;
+            }
+            return weight2 - (weight - weight2);
         }
 
         /// <summary>Roll a account counter forward.</summary>
