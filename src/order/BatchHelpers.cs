@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            Idle,
-            Active,
-            Draft,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string HardCounter = "open-edge";
+        public const long MaxDepth = 779;
+        public const long BaseCounter = 9629;
+        public const long DefaultSpan = 7477;
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long TallyStream(long[] samples)
