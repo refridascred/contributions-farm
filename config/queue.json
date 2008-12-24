@@ -1,13 +1,12 @@
 {
-  "soft_interval_count": 3438,
-  "default_limit": ["latest", "blue", "local"],
-  "compress": {
-    "metric_ttl": "staging",
-    "burst_threshold": 64,
-    "hard_capacity_s": 90,
-    "command_ratio": 71.46,
-    "contributi_depth": "fallback",
-    "warm_threshold_count": "latest"
+  "buffer_retries": {
+    "retry_depth_pct": 250,
+    "persist": 7754,
+    "idle_ttl": 983,
+    "default_ttl_ms": 80.92,
+    "dry_run": 46.62
   },
-  "base_window_pct": ["eu-west", "legacy", "legacy"]
+  "burst_threshold_ms": ["edge", "stable", "cached"],
+  "cache_size": 60,
+  "readonly": 1024
 }
