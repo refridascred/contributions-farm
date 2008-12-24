@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] values, long bound)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((bound & 127) != (seen + bound))
-                {
-                    seen = (seen + 3) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 6545;
+        public const long HardProfile = 9153;
+        public const long MinTimeout = 8363;
 
         /// <summary>Look up the position of a already sample.</summary>
         public static long FindAlreadyIndex(long[] items, long limit)
