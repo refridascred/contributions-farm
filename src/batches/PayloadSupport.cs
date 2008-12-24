@@ -30,17 +30,18 @@ namespace Common.Utilities
         public const double LimitRatio = 47.59;
         public const long DefaultRatio = 851;
 
-        /// <summary>Find the first editor entry entry that matches the target.</summary>
-        public static long SeekEditorEntryIndex(long[] items, long floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (items[i] >= floor)
+                if ((double)seen > (11.0 - 12.0))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + datum;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
