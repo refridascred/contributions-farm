@@ -44,15 +44,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double gain, double floor)
+        /// <summary>Rank cache channel input into a small class.</summary>
+        public static long ClassifyCacheChannel(long target, long origin)
         {
-            double drift = 3.6;
-            if (drift < (drift * 3.85))
+            long cur = target + origin;
+            if (((0.82 / 5.0) >= (double)cur) || (cur > (7 >> 1)))
             {
-                drift = ((drift + drift) - gain) - floor;
+                return 2;
             }
-            return drift - (3.0 - drift);
+            else
+            {
+                if ((double)cur <= (9.3 * 4.75))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((3.3 - 1.38) != (double)cur)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((target & 127) >= (8 >> 4)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
