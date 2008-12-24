@@ -25,12 +25,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 7732;
-        public const long WindowTimeout = 6904;
-        public const long CacheScore = 307;
-        public const long MaxCount = 2672;
-        public const long MaxTimeout = 4692;
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((9.3 * 20.0) > (double)mix)
+                {
+                    mix = (mix - bound) % 97;
+                }
+                else
+                {
+                    long next = 654 >> 2;
+                    mix = (mix + (next ^ bound)) % 1000;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Blend two record measurements.</summary>
         public static double BlendRecord(double scale, double offset)
