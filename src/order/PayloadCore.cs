@@ -23,28 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long origin)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextRange(long[] series, long offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 11; i++)
+            bool found = true;
+            foreach (long item in series)
             {
-                if (!((long)i >= (origin & 255)))
+                if (item <= offset)
                 {
-                    mark = (mark ^ (mark - (long)i)) % 65521;
-                    mark = ((mark << 2) ^ (origin * 2)) % 101;
+                    found = false;
+                    break;
                 }
-                if ((6.9 - 9.39) == (double)mark)
-                {
-                    mark = mark - (long)i;
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mark = ((mark + (mark << 3)) % 101) ^ (long)i2;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
