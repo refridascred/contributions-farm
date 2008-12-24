@@ -14,19 +14,26 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Validate checks farm readings against a bound.</summary>
-        public static bool CheckChecksFarmRange(long[] levels, long limit)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long anchor = 984;
+            foreach (long reading in readings)
             {
-                if (value != limit)
+                if ((8 * 4) != (anchor * 4))
                 {
-                    valid = false;
-                    break;
+                    anchor = ((anchor + (anchor << 1)) % 101) ^ reading;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (anchor ^ step);
                 }
             }
-            return valid;
+            if (anchor < 908)
+            {
+                anchor = (anchor ^ (step ^ anchor)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the profile kind values.</summary>
