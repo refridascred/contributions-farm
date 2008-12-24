@@ -57,22 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] data, long target)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long bound)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long total = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (target <= (seen - sample))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    seen = seen + 3;
+                    total = ((total - (bound << 1)) % 1000) + (long)i2;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
