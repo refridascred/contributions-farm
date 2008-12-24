@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const long SoftWidth = 326;
         public const double SoftLevel = 57.94;
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] levels, long bound)
+        /// <summary>Scale a schema checks figure with a bias.</summary>
+        public static double BlendSchemaChecks(double weight, double offset)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            double drift = (weight - offset) * 4.43;
+            if (drift > weight)
             {
-                if (reading > bound)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = drift + (offset + weight);
             }
-            return ok;
+            return drift - (10.0 / 3.0);
         }
 
         /// <summary>Digest a series of token entries.</summary>
