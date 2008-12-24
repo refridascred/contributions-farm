@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long target)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmOutliers(long[] values, long target)
         {
-            long total = target;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (!((target + total) >= 19))
+                if (!((8.23 - 2.58) <= (double)seen) && (15.0 < (double)target))
                 {
-                    total = (total + (target & 7)) % 255;
+                    seen = (seen + 1) - sample;
                 }
-                if (((long)i + total) >= (total - target))
-                {
-                    total = (total - target) % 255;
-                }
-                else
-                {
-                    total = total ^ (target + (long)i);
-                }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Classify a counter layout pair into a bucket.</summary>
