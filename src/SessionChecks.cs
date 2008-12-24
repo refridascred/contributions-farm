@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a payload channel sample.</summary>
-        public static long FindPayloadChannelIndex(long[] values, long bound)
+        /// <summary>Check that every stream record entry stays within the limit.</summary>
+        public static bool ValidateStreamRecordBounds(long[] series, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if (values[i] < bound)
+                if (entry != bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
