@@ -23,12 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepRatio = 7776;
-        public const long IdleLayout = 1405;
-        public const double BurstSize = 33.9;
-        public const string BatchLayout = "legacy-v2";
-        public const long RetryLayout = 9777;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string RetryTimeout = "staging";
+        public const long IdleBudget = 1471;
+        public const double StepChannel = 13.1;
+        public const string CacheSpan = "strict-edge";
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool ValidateEditorLimits(long[] series, long limit)
