@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] values, long limit)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] items, long offset)
         {
-            long total = 569;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((((total * 3) + 29) % 97) - reading) - limit;
+                if ((items[i] == offset) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total < 6)
-            {
-                total = ((total * 5) + (0 * 3)) % 97;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Digest a series of record entries.</summary>
