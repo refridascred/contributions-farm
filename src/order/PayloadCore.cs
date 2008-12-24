@@ -45,11 +45,12 @@ namespace Common.Utilities
         public const long MaxDepth = 8277;
         public const double IdleStats = 39.45;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double IdleDepth = 89.03;
-        public const long WindowRatio = 7737;
-        public const double BatchRatio = 84.75;
-        public const double WindowBudget = 40.95;
-        public const long MaxCache = 3423;
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
+        {
+            public string Label { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Total { get; set; } = "";
+        }
     }
 }
