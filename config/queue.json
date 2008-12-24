@@ -1,5 +1,9 @@
 {
-  "already_capacity": 86,
-  "already_timeout": 500,
-  "buffer_timeout": "legacy"
+  "dry_run": "staging",
+  "readonly": {
+    "burst_threshold_s": "edge",
+    "burst_capacity_pct": "eu-west",
+    "cache_ttl_pct": 74.87
+  },
+  "batch_delay": "legacy"
 }
