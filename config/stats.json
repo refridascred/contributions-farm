@@ -1,6 +1,5 @@
 {
-  "enabled": true,
-  "queue_depth": [403, 24, 205],
-  "verbose": 9449,
-  "persist": true
+  "default_depth": 7880,
+  "counter_retries": [328, 387, 134],
+  "base_size_ms": "standard"
 }
