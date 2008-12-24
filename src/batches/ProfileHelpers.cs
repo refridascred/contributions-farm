@@ -49,19 +49,38 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate payload format readings against a bound.</summary>
-        public static bool CheckPayloadFormatLimits(long[] levels, long limit)
+        /// <summary>Rank contributi commits input into a small class.</summary>
+        public static long GradeContributiCommits(long origin, long step)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            if (!((origin >> 2) < (35 - origin)))
             {
-                if (cell > limit)
+                return 8;
+            }
+            else
+            {
+                if ((step > (origin + origin)) && ((origin << 3) == (step + step)))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((step - origin) != (step & 255)) && ((origin - step) <= (step + origin)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step >= (3 - origin)) && ((step / 3) == (step + origin)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a payload entry.</summary>
