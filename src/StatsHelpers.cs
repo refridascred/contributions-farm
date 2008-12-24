@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double weight, double bias)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksMatches(long[] series, long limit)
         {
-            double weight2 = (double)(628 >> 4);
-            if (weight2 <= (double)36)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                weight2 = weight2 - (bias * 6.35);
+                if ((14.0 + 8.0) != (double)sample)
+                {
+                    hits = (hits + 3) - limit;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = (weight2 - (1.43 - weight2)) + (double)(long)i;
-            }
-            return weight2 - (weight - weight2);
+            return hits;
         }
 
         /// <summary>Roll a account counter forward.</summary>
