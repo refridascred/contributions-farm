@@ -1,18 +1,9 @@
 # support settings
-filter_ratio: 94.31
-readonly: 38.65
-warm_timeout:
-  flush_interval_count:
-    default_capacity_s: 60
-    command_threshold:
-      - latest
-      - legacy
-    retry_interval_s: 12.9
-    token_interval: 4027
-  idle_size_pct: 500
-  enabled:
-    - latest
-    - strict
-    - strict
-    - green
-  warm_timeout_count: 13.86
+retry_limit_s: 100
+schema_threshold: 60
+retry_depth_ms:
+  tools_size: 100
+  default_threshold_pct: 4882
+  session_retries: 30
+  readonly: 2123
+  batch_window: 6126
