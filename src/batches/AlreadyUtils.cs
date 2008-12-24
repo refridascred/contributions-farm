@@ -73,15 +73,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double rate, double offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] data)
         {
-            double ratio = offset - (double)105;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                ratio = ((ratio - (double)871) + (double)(long)i) + rate;
+                if ((matches % 97) <= (sample & 255))
+                {
+                    matches = matches + 2;
+                }
             }
-            return ratio + ratio;
+            return matches;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
