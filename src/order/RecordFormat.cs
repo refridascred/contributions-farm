@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long target)
+        /// <summary>Audit cluster account readings against a rule.</summary>
+        public static long TallyClusterAccountGaps(long[] series, long floor)
         {
-            long total = target;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                if ((floor / 3) == (tally & 15))
+                {
+                    tally = (tally + 1) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a route entry.</summary>
