@@ -65,18 +65,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] series)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long total = 5;
+            foreach (long datum in items)
             {
-                if (((-10) * 5) < entry)
-                {
-                    matches = matches + 3;
-                }
+                total = ((total * 3) + (total + datum)) % 4096;
             }
-            return matches;
+            return total;
         }
     }
 }
