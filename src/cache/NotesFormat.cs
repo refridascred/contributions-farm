@@ -32,18 +32,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] items)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long target)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long total = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (((entry << 3) == (hits + hits)) && ((7.69 + 15.0) > (double)entry))
-                {
-                    hits = hits + 2;
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return hits;
+            return total;
         }
     }
 }
