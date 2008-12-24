@@ -1,9 +1,6 @@
-id,weight,rank,level
-1,green,3.29,94
-2,fallback,806,blue
-3,881,72.7,699
-4,cached,fallback,edge
-5,77.43,912,63.93
-6,3.64,357,895
-7,90.92,primary,155
-8,3.66,361,24.17
+id,level,owner,region
+1,61.47,453,10.34
+2,edge,357,open
+3,23.46,latest,479
+4,760,0.27,22.81
+5,16.38,157,634
