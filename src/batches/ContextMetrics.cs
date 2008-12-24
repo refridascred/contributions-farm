@@ -44,13 +44,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double scale, double floor)
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public double Size { get; set; }
+            double load = (scale + 2.06) * 0.9;
+            return (load + scale) + floor;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
