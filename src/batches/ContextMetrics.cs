@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatOutliers(long[] readings)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long total = 119;
+            foreach (long entry in items)
             {
-                if ((71 << 2) <= (value / 7))
+                if (((double)total >= 2.0) && ((target ^ target) > (0 << 2)))
                 {
-                    matches = matches + 1;
+                    total = ((total << 2) ^ (total / 5)) + entry;
                 }
             }
-            return matches;
+            return total % 1000;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
