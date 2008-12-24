@@ -64,18 +64,10 @@ namespace Common.Utilities
         public const long CacheLayout = 430;
         public const string IdleDepth = "open-v2";
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] series, long limit)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (!((item + limit) > 71))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxBudget = 69.93;
+        public const long MinAccount = 5354;
+        public const long WindowBudget = 3324;
+        public const long HardSize = 5133;
     }
 }
