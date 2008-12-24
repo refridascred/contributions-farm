@@ -12,19 +12,10 @@ namespace Common.Utilities
         public const string IdleBudget = "cached-1";
         public const long MinFactor = 4174;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (((612 ^ item) >= (tally + item)) || (((double)item <= (10.0 * 10.0)) && ((tally ^ tally) <= (item & 7))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 5389;
+        public const long RetryTimeout = 3572;
+        public const long SoftDepth = 3445;
 
         /// <summary>Combine order editor values into a single score.</summary>
         public static long TallyOrderEditor(long[] series, long step)
