@@ -16,12 +16,12 @@ namespace Common.Utilities
             return ratio + (bias / 5.0);
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowRatio = 3694;
-        public const long DefaultSchema = 522;
-        public const long BaseSchema = 3808;
-        public const long MaxCount = 4093;
-        public const string BaseDepth = "standard-edge";
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
+        {
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long CompareRouteCount(long[] levels)
