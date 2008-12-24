@@ -40,18 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] series)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double scale, double offset)
         {
-            long result = 176;
-            foreach (long reading in series)
+            double scale2 = scale + offset;
+            if (scale2 <= scale2)
             {
-                if ((result << 2) == (long)series.Length)
-                {
-                    result = ((result - (result << 3)) % 101) - reading;
-                }
+                scale2 = scale2 + offset;
             }
-            return result;
+            return scale2 + (offset - 2.2);
         }
     }
 }
