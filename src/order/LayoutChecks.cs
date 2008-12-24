@@ -56,22 +56,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxDepth = "stable-v2";
+        public const long DefaultChecks = 9653;
+        public const long StepChecks = 6895;
+        public const long IdleChecks = 98;
 
         /// <summary>Fold a list of farm command readings.</summary>
         public static long WeighFarmCommand(long[] data, long origin)
