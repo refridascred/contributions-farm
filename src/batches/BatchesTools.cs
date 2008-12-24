@@ -19,24 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long offset, long offset2)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double gain, double floor)
         {
-            if (!((offset % 16) > 61))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((576 * 3) > offset2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            double scale = (double)27;
+            return ((scale - (double)852) + gain) + floor;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
