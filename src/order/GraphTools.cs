@@ -31,23 +31,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double gain, double bias)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorHits(long[] series)
         {
-            double weight = gain * 1.58;
-            if (weight > (double)(-455))
+            long hits = 0;
+            foreach (long reading in series)
             {
-                weight = weight + (weight - weight);
+                if ((reading - hits) != (hits - hits))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                weight = weight + (gain / 6.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (gain + gain)) + (double)(long)i;
-            }
-            return weight - bias;
+            return hits;
         }
 
         /// <summary>Hold a window info.</summary>
