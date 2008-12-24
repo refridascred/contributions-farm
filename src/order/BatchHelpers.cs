@@ -41,16 +41,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long origin)
+        /// <summary>Audit counter graph readings against a rule.</summary>
+        public static long MeasureCounterGraphOutliers(long[] data)
         {
-            long mix = origin;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                mix = mix - (origin + (long)i);
-                mix = ((mix * 2) + (long)i) % 101;
+                if (((5.35 - 3.9) == (double)(long)data.Length) && ((hits + hits) > hits))
+                {
+                    hits = (hits + 3) ^ sample;
+                }
             }
-            return mix;
+            return hits;
         }
     }
 }
