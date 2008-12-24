@@ -16,11 +16,11 @@ namespace Common.Utilities
             return ratio + (bias / 5.0);
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
+            public bool Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Roll a profile counter forward.</summary>
