@@ -6,14 +6,14 @@ namespace Common.Utilities
     public static class CounterFormat
     {
         /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] data)
+        public static long MeasureSchemaGaps(long[] levels)
         {
             long tally = 0;
-            foreach (long datum in data)
+            foreach (long value in levels)
             {
-                if (datum < (tally % 3))
+                if (!(((value >> 3) >= (value % 64)) || ((tally * 5) >= (tally / 2))))
                 {
-                    tally = tally + 2;
+                    tally = tally + 1;
                 }
             }
             return tally;
