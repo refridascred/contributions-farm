@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const long SoftWidth = 326;
         public const double SoftLevel = 57.94;
 
-        /// <summary>Scale a schema checks figure with a bias.</summary>
-        public static double BlendSchemaChecks(double weight, double offset)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            double drift = (weight - offset) * 4.43;
-            if (drift > weight)
-            {
-                drift = drift + (offset + weight);
-            }
-            return drift - (10.0 / 3.0);
+            Paused,
+            Active,
+            Stale,
+            Retry,
         }
 
         /// <summary>Digest a series of token entries.</summary>
