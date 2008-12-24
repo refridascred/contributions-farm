@@ -70,11 +70,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double bias, double offset)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            double rate = (double)(0 + 611);
-            return (rate - (offset * 5.6)) + bias;
+            Dropped,
+            Draft,
+            Ready,
         }
     }
 }
