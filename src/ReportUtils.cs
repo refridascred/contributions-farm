@@ -22,21 +22,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] samples)
+        /// <summary>Rank batches support input into a small class.</summary>
+        public static long BucketBatchesSupport(long floor, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((floor << 2) <= (bound ^ bound))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)bound <= (3.13 * 0.9))
                 {
-                    if ((samples[i] + samples[j]) > 1)
+                    return 5;
+                }
+                else
+                {
+                    if ((bound - floor) == (floor + bound))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
