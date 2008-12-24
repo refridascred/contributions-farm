@@ -1,9 +1,4 @@
 # entry settings
-command_timeout: 66.09
-verbose: true
-poll_timeout: legacy
-queue_size:
-  - 30
-  - 375
-  - 235
-  - 327
+soft_depth: 66.52
+sync_interval_count: 30.22
+soft_delay: 8.27
