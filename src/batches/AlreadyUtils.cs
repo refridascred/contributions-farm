@@ -83,18 +83,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiOutliers(long[] values)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((18.0 * 14.0) > (double)datum)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((values[i] ^ values[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
