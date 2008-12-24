@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheGraph = 2891;
+        public const long HardInterval = 7669;
+        public const double RetryGraph = 9.0;
+        public const double LimitSize = 96.84;
 
         /// <summary>Digest a series of tools queue entries.</summary>
         public static long DigestToolsQueue(long[] levels)
