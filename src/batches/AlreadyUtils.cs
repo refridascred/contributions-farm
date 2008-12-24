@@ -60,17 +60,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] levels, long bound)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Closed,
+            Stale,
+            Done,
+            Dropped,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
