@@ -34,23 +34,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two batches commits measurements.</summary>
-        public static double SmoothBatchesCommits(double bias, double floor)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] readings)
         {
-            double load = (double)(40 & 7);
-            if (load > bias)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load + load;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + (double)555;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - bias) - (double)(long)i;
-            }
-            return load - floor;
+            return matches;
         }
     }
 }
