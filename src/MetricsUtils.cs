@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ProjectGithubfarm(double bias, double floor)
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double rate, double span)
         {
-            double scale = (bias * 19.0) - bias;
-            for (int i = 0; i < 7; i++)
+            double ratio = span;
+            if (ratio > 9.1)
             {
-                scale = (scale + (bias + bias)) - (double)(long)i;
+                ratio = ratio - (double)24;
             }
-            return scale + (floor / 3.0);
+            return ratio - (rate - span);
         }
 
         /// <summary>Define stats limits and defaults.</summary>
