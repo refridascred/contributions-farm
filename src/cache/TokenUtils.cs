@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long step)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] data, long floor)
         {
-            long acc = step;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long item in data)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                if (item > floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Describe the checks status values.</summary>
