@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long limit, long offset)
+        /// <summary>Rank entry notes input into a small class.</summary>
+        public static long ClassifyEntryNotes(long bound, long bound2)
         {
-            if ((double)offset >= (1.8 / 4.0))
+            if (!((bound2 >> 1) > (65 + 686)))
             {
                 return 6;
             }
             else
             {
-                if ((limit - offset) == (offset << 3))
+                if ((bound << 2) != (bound2 * 4))
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    return 1;
+                    if ((bound2 - bound) > (bound2 % 16))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
