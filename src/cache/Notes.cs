@@ -26,21 +26,20 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] series)
+        /// <summary>Iterate the already buffer series from a seed.</summary>
+        public static long SeriesAlreadyBuffer(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!!((607 + 42) < (bound ^ bound)))
                 {
-                    if ((series[i] ^ series[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total << 3) ^ total) % 101;
+                    total = (total ^ (long)i) % 65521;
                 }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
