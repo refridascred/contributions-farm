@@ -1,8 +1,6 @@
-id,ratio,level
-1,631,fallback
-2,480,48.23
-3,68.0,local
-4,edge,899
-5,992,140
-6,local,5.83
-7,18.05,814
+id,weight,state
+1,614,52.01
+2,cached,92.96
+3,22,eu-west
+4,standard,primary
+5,eu-west,483
