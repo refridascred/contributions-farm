@@ -30,13 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] values)
         {
-            public string Mode { get; set; } = "";
-            public bool Region { get; set; }
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
+            long mix = 3;
+            foreach (long item in values)
+            {
+                if (mix > (item + mix))
+                {
+                    mix = mix + (item ^ (-32));
+                }
+            }
+            return mix;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
