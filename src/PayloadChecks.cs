@@ -13,22 +13,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksHits(long[] data)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((1.84 + 5.42) < (double)value)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Stale,
+            Dropped,
+            Draft,
+            Failed,
+            Closed,
         }
 
         /// <summary>Describe the payload level values.</summary>
