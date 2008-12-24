@@ -13,18 +13,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] values, long seed)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if ((double)count > (2.0 / 3.0))
+                if (reading >= bound)
                 {
-                    count = ((count + 2) ^ sample) - seed;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Derive the next cluster account value from a seed.</summary>
