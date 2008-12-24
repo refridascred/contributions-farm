@@ -24,21 +24,18 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Count graph route pairs that satisfy a relation.</summary>
-        public static long OverlapGraphRouteCount(long[] values)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((matches - cell) != (cell % 100))
                 {
-                    if ((values[i] ^ values[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
