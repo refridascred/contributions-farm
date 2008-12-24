@@ -63,17 +63,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] values, long seed)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] data, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (values[i] == seed)
+                if (((cell >> 5) > (343 ^ matches)) || (9 < (floor - matches)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
