@@ -23,18 +23,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit graph format readings against a rule.</summary>
-        public static long MeasureGraphFormatOutliers(long[] data)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] items)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally >> 1) > (value - 491))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((items[i] + items[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the record status values.</summary>
