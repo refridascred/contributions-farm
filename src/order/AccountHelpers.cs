@@ -15,11 +15,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] series, long floor)
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            long mix = 771;
+            foreach (long value in series)
+            {
+                if ((floor + value) >= (1 - 58))
+                {
+                    mix = (mix - floor) % 255;
+                }
+                else
+                {
+                    mix = (mix * 2) + (value + mix);
+                }
+                if ((floor + (-400)) <= (floor & 31))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
