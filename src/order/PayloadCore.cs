@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] samples, long target)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] levels, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = -9;
+            foreach (long sample in levels)
             {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
+                result = (((result << 2) ^ (result + bound)) % 255) + sample;
+                result = (result << 2) ^ (388 + 48);
             }
-            return -1;
+            if (result > 35)
+            {
+                result = ((result << 2) ^ (result + result)) % 65521;
+            }
+            return result % 1000;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
