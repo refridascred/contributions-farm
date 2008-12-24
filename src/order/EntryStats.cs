@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] levels, long target)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long bound, long offset)
         {
-            long count = 0;
-            foreach (long value in levels)
+            if (offset <= (2 << 1))
             {
-                if (((count > (201 % 24)) || (target > (count + count))) || ((9 - target) <= ((-658) - target)))
+                return 7;
+            }
+            else
+            {
+                if ((bound * 3) < bound)
                 {
-                    count = (count + 2) + value;
+                    return 4;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a contributi record.</summary>
