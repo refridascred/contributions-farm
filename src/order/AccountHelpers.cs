@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyOutliers(long[] readings, long seed)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((4 - seen) < 61)
+                if (reading > limit)
                 {
-                    seen = ((seen + 2) + cell) - seed;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
