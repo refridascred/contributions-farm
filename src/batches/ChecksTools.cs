@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double weight, double floor)
+        /// <summary>Validate token cache readings against a bound.</summary>
+        public static bool GuardTokenCacheRange(long[] items, long target)
         {
-            double mean = 8.0 * 20.0;
-            return ((mean - (double)798) + weight) + floor;
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
