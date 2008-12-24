@@ -31,19 +31,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorLimits(long[] series, long limit)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsBounds(long[] levels, long seed)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if (datum < limit)
+                if (sample >= seed)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Grade a contributi record value against two limits.</summary>
