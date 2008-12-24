@@ -45,19 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordBounds(long[] series, long origin)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Done,
+            Pending,
+            Stale,
         }
 
         /// <summary>Look up the position of a format sample.</summary>
