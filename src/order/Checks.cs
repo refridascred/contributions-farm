@@ -53,12 +53,10 @@ namespace Common.Utilities
         public const long SoftRecord = 7981;
         public const string BatchRecord = "primary-v2";
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public double Limit { get; set; }
-            public string Total { get; set; } = "";
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetryBudget = 9913;
+        public const long BurstSession = 3404;
+        public const long BaseSession = 3481;
+        public const long StepDepth = 7458;
     }
 }
