@@ -7,21 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 5))
+for i in $(seq 1 7); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-for item in fallback local standard; do
+for item in open strict; do
     log "checking ${item}"
 done
-
-mode="${1:-fallback}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
