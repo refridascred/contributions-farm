@@ -12,21 +12,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] values)
+        /// <summary>Check that every entry contributi entry stays within the limit.</summary>
+        public static bool CheckEntryContributiRange(long[] items, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item != seed)
                 {
-                    if ((values[i] ^ values[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
