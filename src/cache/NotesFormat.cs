@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] data, long step)
         {
-            public long Weight { get; set; }
-            public bool Total { get; set; }
-            public string Offset { get; set; } = "";
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Grade a context command value against two limits.</summary>
