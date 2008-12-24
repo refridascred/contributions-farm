@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double scale, double offset)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double scale, double span)
         {
-            double drift = scale;
-            if (drift < 4.7)
+            double scale2 = 0.4;
+            if (scale2 > (scale * 8.7))
             {
-                drift = drift + (drift / 2.0);
+                scale2 = (scale2 + (double)22) - span;
             }
-            else
-            {
-                drift = drift + (scale * 0.6);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + drift) - (double)(long)i;
-            }
-            return drift + (4.6 - offset);
+            return scale2 - (double)4;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
