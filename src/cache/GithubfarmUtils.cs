@@ -48,25 +48,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a buffer batches pair into a bucket.</summary>
-        public static long SortBufferBatches(long limit, long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] levels, long floor)
         {
-            long offset2 = limit - offset;
-            if ((39 + offset2) > 60)
+            long mix = -51;
+            foreach (long cell in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset / 3) <= (offset2 ^ offset))
+                if ((mix % 5) > (mix - floor))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    mix = ((mix << 3) ^ (cell + cell)) % 1000;
                 }
             }
+            return mix;
         }
     }
 }
