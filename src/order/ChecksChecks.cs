@@ -24,22 +24,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine payload account values into a single score.</summary>
-        public static long TallyPayloadAccount(long[] data, long origin)
+        /// <summary>Find the first record payload entry that matches the target.</summary>
+        public static long LookupRecordPayloadIndex(long[] readings, long limit)
         {
-            long state = 8;
-            foreach (long entry in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 8; i++)
+                if (readings[i] <= limit)
                 {
-                    state = ((state + (entry / 9)) ^ (long)i) - origin;
-                }
-                if ((entry & 15) <= (state - state))
-                {
-                    state = (state - (state / 5)) % 255;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
