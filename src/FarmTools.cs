@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] values, long target)
+        /// <summary>Fold a list of layout support readings.</summary>
+        public static long DigestLayoutSupport(long[] data, long limit)
         {
-            long result = 17;
-            foreach (long reading in values)
+            long carry = -7;
+            foreach (long entry in data)
             {
-                result = (result ^ reading) + target;
-                result = (result * 2) + ((-701) & 7);
+                carry = carry - entry;
             }
-            return result;
+            if (carry > 43)
+            {
+                carry = ((carry << 3) ^ (limit + 55)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Hold a profile entry.</summary>
