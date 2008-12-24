@@ -50,19 +50,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] values, long target)
-        {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BatchTimeout = 79.46;
+        public const double DefaultDepth = 75.06;
+        public const double MinOrder = 69.48;
+        public const long DefaultScore = 7897;
     }
 }
