@@ -29,20 +29,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long bound)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long seed)
         {
-            long score = bound;
-            for (int i = 0; i < 11; i++)
+            long carry = seed;
+            for (int i = 0; i < 23; i++)
             {
-                score = ((score * 5) + (bound >> 2)) % 97;
-                if ((score + bound) != ((long)i - bound))
-                {
-                    score = (score + (score - 5)) % 101;
-                }
-                score = ((score * 2) + (long)i) % 65521;
+                carry = carry - (seed - 534);
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Hold a schema summary.</summary>
