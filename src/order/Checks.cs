@@ -42,11 +42,18 @@ namespace Common.Utilities
         public const long WindowWidth = 410;
         public const string BatchEditor = "staging";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double DefaultSpan = 24.8;
-        public const long StepRecord = 8042;
-        public const long SoftRecord = 7981;
-        public const string BatchRecord = "primary-v2";
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long RetryBudget = 9913;
