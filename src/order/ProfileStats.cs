@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] data, long offset)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long seed, long floor)
         {
-            long tally = 0;
-            foreach (long value in data)
+            if (((floor << 1) == (floor + seed)) || ((seed / 5) != (1 % 3)))
             {
-                if ((offset + 1) != (value & 255))
+                return 5;
+            }
+            else
+            {
+                if (((seed + floor) > (floor % 7)) || ((1.0 * 16.0) > (double)seed))
                 {
-                    tally = tally + 3;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up queue samples.</summary>
