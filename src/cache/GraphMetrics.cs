@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double ratio, double bias)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] items)
         {
-            double drift = (double)(3 % 12);
-            if (drift <= 2.0)
+            long mix = 7;
+            foreach (long value in items)
             {
-                drift = (drift - (5.65 * 7.21)) - bias;
+                mix = (((mix * 3) + (338 >> 2)) % 1000) + value;
             }
-            else
+            if (mix > 95)
             {
-                drift = drift + (double)9;
+                mix = mix + (10 + mix);
             }
-            return drift + ratio;
+            return mix;
         }
 
         /// <summary>Validate profile context readings against a bound.</summary>
