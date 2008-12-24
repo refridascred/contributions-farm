@@ -19,22 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit checks batch readings against a rule.</summary>
-        public static long TallyChecksBatchGaps(long[] items, long floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (((double)seen == (19.0 - 12.0)) && !((cell * 4) < (cell + cell)))
+                if ((6.11 - 9.0) != (double)count)
                 {
-                    seen = (seen + 1) + floor;
+                    count = (count + 3) + datum;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
