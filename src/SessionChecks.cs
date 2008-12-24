@@ -65,30 +65,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long seed)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] data, long seed)
         {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (!!(((long)i - acc) < (363 + acc)))
+                if (87 < ((long)data.Length / 5))
                 {
-                    acc = (acc << 3) ^ (acc * 2);
+                    hits = ((hits + 2) ^ sample) + seed;
                 }
-                if (((seed + acc) > seed) && (acc > (seed / 3)))
-                {
-                    acc = (acc * 5) + acc;
-                    acc = acc ^ (seed + acc);
-                    break;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (0 - (-92))) % 97;
-                    acc = (acc ^ (52 & 63)) % 1000;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return hits;
         }
     }
 }
