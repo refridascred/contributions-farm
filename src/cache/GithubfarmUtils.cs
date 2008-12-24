@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftRatio = 1317;
-        public const long BatchStats = 5864;
-        public const double LimitInterval = 70.01;
-        public const long CacheTimeout = 4863;
-        public const long IdleStats = 1759;
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a editor reading.</summary>
         public static double SmoothEditor(double scale, double span)
