@@ -62,15 +62,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] values, long limit)
+        /// <summary>Look up the position of a queue contributi sample.</summary>
+        public static long LocateQueueContributiIndex(long[] levels, long seed)
         {
-            long carry = 97;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry ^ (426 ^ carry)) + datum) + limit;
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
