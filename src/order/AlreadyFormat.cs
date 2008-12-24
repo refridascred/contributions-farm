@@ -12,19 +12,13 @@ namespace Common.Utilities
             return (load + load) + offset;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] readings, long seed)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Queued,
+            Draft,
+            Retry,
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
