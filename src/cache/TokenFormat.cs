@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatHits(long[] data, long limit)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if (!(sample > (66 >> 3)))
+                if (reading > floor)
                 {
-                    tally = (tally + 3) - limit;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
