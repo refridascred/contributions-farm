@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Count the record filter entries that pass the check.</summary>
+        public static long AuditRecordFilterOutliers(long[] values, long limit)
         {
-            Closed,
-            Stale,
-            Pending,
-            Paused,
-            Queued,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((double)datum == (5.2 - 4.4))
+                {
+                    seen = (seen + 2) - limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
