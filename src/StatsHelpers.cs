@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
-        {
-            public bool Rank { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string RetryInterval = "strict-v2";
+        public const double DefaultGraph = 51.7;
+        public const long MaxGraph = 3871;
 
         /// <summary>Project the next account tools value.</summary>
         public static double ProjectAccountTools(double gain, double floor)
