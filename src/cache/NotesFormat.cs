@@ -20,10 +20,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitLevel = 9064;
-        public const long CacheCount = 8620;
-        public const long RetrySize = 2844;
-        public const long BaseCluster = 3693;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((reading - seen) == (reading / 7))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
