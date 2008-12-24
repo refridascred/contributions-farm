@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of farm counter readings.</summary>
-        public static long DigestFarmCounter(long[] items, long seed)
-        {
-            long anchor = 798;
-            foreach (long reading in items)
-            {
-                anchor = (anchor - anchor) % 4096;
-                for (int i = 0; i < 8; i++)
-                {
-                    anchor = ((anchor * 3) + (seed / 3)) - (long)i;
-                }
-                if ((double)reading <= 12.0)
-                {
-                    anchor = (anchor - (anchor << 1)) % 255;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BatchOrder = 23.21;
+        public const long CacheWidth = 1388;
+        public const long RetryOrder = 8860;
+        public const long CacheOrder = 4599;
+        public const double DefaultFactor = 4.09;
 
         /// <summary>Count the tools buffer entries that pass the check.</summary>
         public static long TallyToolsBufferOutliers(long[] samples)
