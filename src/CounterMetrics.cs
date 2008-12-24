@@ -28,13 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetryLevel = "alpha-1";
+        public const long RetryGithubfarm = 1008;
+        public const long SoftGithubfarm = 8180;
+        public const long IdleGithubfarm = 448;
+        public const long MinGithubfarm = 2437;
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
