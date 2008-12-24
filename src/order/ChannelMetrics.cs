@@ -27,19 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metric entry samples.</summary>
-        public static long CombineMetricEntry(long[] data, long bound)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] values, long limit)
         {
-            long score = 48;
-            foreach (long sample in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score ^ (score + 51)) ^ sample;
-                if ((bound ^ score) <= bound)
+                if ((values[i] == limit) && ((values[i] % 2) != 0))
                 {
-                    score = (score * 5) + score;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
