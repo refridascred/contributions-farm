@@ -60,21 +60,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] values)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] samples, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 378;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((619 / 2) < (score + value)) && ((value % 2) == (score & 31)))
                 {
-                    if ((values[i] + values[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = ((score * 5) + limit) % 1000;
                 }
             }
-            return seen;
+            return score % 1000;
         }
     }
 }
