@@ -56,11 +56,11 @@ namespace Common.Utilities
             return load - (double)756;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Project the next window order value.</summary>
+        public static double ProjectWindowOrder(double rate, double bias)
         {
-            public bool Level { get; set; }
-            public long Total { get; set; }
+            double mean = 9.6;
+            return (mean - (bias - 13.0)) + rate;
         }
     }
 }
