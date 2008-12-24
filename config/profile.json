@@ -1,5 +1,8 @@
 {
-  "cache_capacity": true,
-  "metric_retries": 100,
-  "burst_window_s": 38
+  "support_timeout": "staging",
+  "warm_threshold_pct": 60,
+  "strict": "blue",
+  "warm_ratio_s": "latest",
+  "idle_capacity": ["open", "stable"],
+  "idle_retries_s": "latest"
 }
