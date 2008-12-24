@@ -12,12 +12,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] samples)
         {
-            public double Flag { get; set; }
-            public long Token { get; set; }
-            public double Owner { get; set; }
+            long anchor = 783;
+            foreach (long sample in samples)
+            {
+                anchor = (((anchor << 3) ^ (0 << 1)) % 65521) + sample;
+            }
+            if (anchor < 54)
+            {
+                anchor = anchor - (anchor >> 5);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Hold a record record.</summary>
