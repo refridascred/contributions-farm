@@ -42,39 +42,17 @@ namespace Common.Utilities
             return ratio + 8.0;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long floor, long target)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] readings, long limit)
         {
-            long offset = floor ^ target;
-            if (((double)target >= (4.89 / 2.0)) || ((double)offset < (7.58 + 8.0)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor - target) > (target >> 1))
+                if (readings[i] >= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)floor == (7.0 - 2.8))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((double)offset > 3.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
