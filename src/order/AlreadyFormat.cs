@@ -23,22 +23,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] levels)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] levels)
         {
-            long score = 346;
-            foreach (long cell in levels)
+            long anchor = 1;
+            foreach (long entry in levels)
             {
-                if (((double)(long)levels.Length == (4.9 * 2.9)) && ((cell % 100) > (7 * 3)))
+                if ((double)entry <= (double)2)
                 {
-                    score = score + (0 ^ score);
-                }
-                else
-                {
-                    score = (score ^ (9 >> 5)) % 1000;
+                    anchor = anchor ^ (entry ^ anchor);
                 }
             }
-            return score;
+            if (anchor > 8)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Adjust a commits reading.</summary>
