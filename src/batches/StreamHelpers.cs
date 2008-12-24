@@ -75,19 +75,19 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Validate stream context readings against a bound.</summary>
-        public static bool GuardStreamContextLimits(long[] values, long origin)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double bias, double offset)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            double weight = offset * 20.0;
+            if (weight <= 16.0)
             {
-                if (sample <= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = weight - bias;
             }
-            return stale;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight + (5.49 + offset);
         }
     }
 }
