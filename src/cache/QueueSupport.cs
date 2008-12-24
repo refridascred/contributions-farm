@@ -27,18 +27,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] readings, long offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((double)offset < 3.72)
+                if ((double)sample != (3.08 * 2.4))
                 {
-                    matches = (matches + 1) - value;
+                    tally = (tally + 2) + seed;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
