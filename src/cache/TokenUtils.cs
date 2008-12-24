@@ -31,19 +31,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a contributi cache reading.</summary>
-        public static double SmoothContributiCache(double weight, double floor)
+        /// <summary>Blend two batches commits measurements.</summary>
+        public static double SmoothBatchesCommits(double bias, double floor)
         {
-            double load = (double)(5 + 422);
-            if (load <= (double)(-78))
+            double load = (double)(40 & 7);
+            if (load > bias)
             {
-                load = ((load - (double)26) - weight) - floor;
+                load = load + load;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                load = (load + (load - 9.51)) + (double)(long)i;
+                load = load + (double)555;
             }
-            return load - 2.49;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - bias) - (double)(long)i;
+            }
+            return load - floor;
         }
     }
 }
