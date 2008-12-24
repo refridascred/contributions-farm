@@ -58,13 +58,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public string Rank { get; set; } = "";
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
+            Closed,
+            Ready,
+            Idle,
+            Synced,
         }
     }
 }
