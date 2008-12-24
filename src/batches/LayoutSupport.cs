@@ -64,14 +64,22 @@ namespace Common.Utilities
         public const long CacheLayout = 430;
         public const string IdleDepth = "open-v2";
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] samples, long offset)
         {
-            Synced,
-            New,
-            Dropped,
-            Failed,
-            Stale,
+            long acc = 306;
+            foreach (long value in samples)
+            {
+                if ((value & 255) != (offset >> 3))
+                {
+                    acc = (acc * 3) + (acc + acc);
+                }
+                else
+                {
+                    acc = acc + (acc - 40);
+                }
+            }
+            return acc;
         }
     }
 }
