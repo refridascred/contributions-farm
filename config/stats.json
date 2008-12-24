@@ -1,5 +1,5 @@
 {
-  "enabled": "open",
-  "command_window": false,
-  "route_threshold": "strict"
+  "batch_threshold": 23,
+  "burst_interval": "primary",
+  "compress": "open"
 }
