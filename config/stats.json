@@ -1,5 +1,19 @@
 {
-  "counter_delay": "legacy",
-  "githubfarm_ratio": true,
-  "report_interval": [453, 446]
+  "cluster_threshold": {
+    "verbose": 30,
+    "session_size": true,
+    "min_depth_count": {
+      "report_capacity": 52.61,
+      "hard_ttl": 44.31,
+      "report_limit": [375, 363],
+      "schema_interval": 24.79,
+      "poll_threshold_s": "fallback"
+    }
+  },
+  "default_size_s": {
+    "compress": "latest",
+    "readonly": 11.59,
+    "enabled": ["eu-west", "legacy"]
+  },
+  "warm_ttl": "fallback"
 }
