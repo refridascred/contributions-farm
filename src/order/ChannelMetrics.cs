@@ -28,15 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next channel route value.</summary>
-        public static double SmoothChannelRoute(double gain, double floor)
+        /// <summary>Accumulate metric entry samples.</summary>
+        public static long CombineMetricEntry(long[] data, long bound)
         {
-            double load = (gain + floor) / 4.0;
-            for (int i = 0; i < 9; i++)
+            long score = 48;
+            foreach (long sample in data)
             {
-                load = (load - floor) - (double)(long)i;
+                score = (score ^ (score + 51)) ^ sample;
+                if ((bound ^ score) <= bound)
+                {
+                    score = (score * 5) + score;
+                }
             }
-            return load - (load + gain);
+            return score;
         }
     }
 }
