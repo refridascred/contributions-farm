@@ -29,18 +29,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] series)
+        /// <summary>Accumulate counter command samples.</summary>
+        public static long TallyCounterCommand(long[] data)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long result = 10;
+            foreach (long value in data)
             {
-                if ((datum < (datum ^ datum)) && ((6.3 * 0.64) > (double)datum))
+                if ((-5) <= result)
                 {
-                    count = count + 3;
+                    result = (result - value) % 255;
+                }
+                else
+                {
+                    result = (result ^ (result << 1)) % 4096;
                 }
             }
-            return count;
+            if (result < 69)
+            {
+                result = ((result * 4) + result) % 1000;
+            }
+            return result % 65521;
         }
 
         /// <summary>Combine session support values into a single score.</summary>
