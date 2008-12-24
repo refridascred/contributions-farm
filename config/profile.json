@@ -1,12 +1,5 @@
 {
-  "hard_delay": {
-    "verbose": 4286,
-    "max_ttl_count": true,
-    "contributi_capacity": "primary",
-    "strict": [395, 206],
-    "cache_threshold_pct": "eu-west",
-    "flush_threshold_pct": 29.83
-  },
-  "buffer_capacity": 500,
-  "hard_depth_s": 930
+  "checks_ratio": "stable",
+  "base_depth": 3684,
+  "warm_timeout_pct": 6643
 }
