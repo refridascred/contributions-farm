@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ((scale - (double)852) + gain) + floor;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] values, long bound)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            double mean = (double)((-7) % 100);
+            for (int i = 0; i < 5; i++)
             {
-                if (((matches >= sample) || ((double)sample != (6.6 + 7.7))) || (((matches / 2) >= (29 / 3)) && ((double)matches <= 6.65)))
-                {
-                    matches = (matches + 1) - bound;
-                }
+                mean = (((mean + (double)4) + (double)(long)i) - scale) + offset;
             }
-            return matches;
+            return mean + (mean * 7.84);
         }
     }
 }
