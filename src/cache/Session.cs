@@ -14,17 +14,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a filter githubfarm sample.</summary>
-        public static long LocateFilterGithubfarmIndex(long[] levels, long limit)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] items, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (levels[i] == limit)
+                if (!((value >> 3) >= 97))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + target;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Blend two command measurements.</summary>
