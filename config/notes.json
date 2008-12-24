@@ -1,11 +1,5 @@
 {
-  "soft_capacity": ["fallback", "standard"],
-  "githubfarm_retries": 6447,
-  "max_capacity": "primary",
-  "queue_timeout": {
-    "context_ratio": ["primary", "open"],
-    "poll_depth_count": false,
-    "profile_interval": [44, 130],
-    "strict": 89
-  }
+  "poll_size_count": [106, 95, 244],
+  "enabled": true,
+  "strict": 4417
 }
