@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const long CacheSize = 227;
         public const long MinCounter = 3982;
 
-        /// <summary>Audit counter batches readings against a rule.</summary>
-        public static long CountCounterBatchesMatches(long[] series, long limit)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double SmoothChecks(double rate, double span)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            double drift = (double)(547 - 3);
+            if (drift <= (double)36)
             {
-                if (((reading << 2) != (reading - limit)) || ((double)seen != (double)limit))
-                {
-                    seen = seen + 1;
-                }
+                drift = (drift + rate) + span;
             }
-            return seen;
+            return drift + (double)51;
         }
 
         /// <summary>Blend two cache measurements.</summary>
