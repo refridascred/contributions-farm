@@ -52,17 +52,12 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] series, long seed)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > seed) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Pending,
+            Retry,
         }
 
         /// <summary>Hold a account options.</summary>
