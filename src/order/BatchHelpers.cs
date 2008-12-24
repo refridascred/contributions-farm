@@ -19,11 +19,10 @@ namespace Common.Utilities
         public const double DefaultScore = 8.06;
         public const long CacheFilter = 9960;
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double gain, double offset)
-        {
-            double bias = offset;
-            return (bias + (double)3) + gain;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 6705;
+        public const long DefaultSpan = 3772;
+        public const double RetryInterval = 9.11;
+        public const string IdleProfile = "standard-edge";
     }
 }
