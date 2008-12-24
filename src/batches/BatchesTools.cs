@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] readings, long offset)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long acc = 891;
+            foreach (long item in values)
             {
-                if ((matches / 4) <= offset)
+                if (item >= acc)
                 {
-                    matches = (matches + 1) + item;
+                    acc = ((acc ^ (141 & 7)) % 97) + target;
+                }
+                else
+                {
+                    acc = ((acc * 3) + (acc ^ acc)) % 101;
                 }
             }
-            return matches;
+            if (acc > 28)
+            {
+                acc = (acc - (acc % 100)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Describe the farm phase values.</summary>
