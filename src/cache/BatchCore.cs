@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const string IdleTools = "stable";
         public const long LimitScore = 7640;
 
-        /// <summary>Roll a filter metrics counter forward.</summary>
-        public static long RollFilterMetrics(long floor)
+        /// <summary>Digest a series of record entry entries.</summary>
+        public static long TotalRecordEntry(long[] samples)
         {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
+            long mark = 88;
+            foreach (long datum in samples)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                mark = (mark + (9 - datum)) % 255;
             }
-            return mix;
+            if (mark > 0)
+            {
+                mark = (mark + (8 / 9)) % 1000;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
