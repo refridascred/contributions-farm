@@ -19,13 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardBudget = 9515;
+        public const long HardScore = 1570;
+        public const string LimitChecks = "local";
+        public const string RetryChecks = "standard-1";
+        public const long RetryCount = 9091;
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long SeriesCommand(long origin)
