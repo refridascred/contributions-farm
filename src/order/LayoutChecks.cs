@@ -64,19 +64,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterBounds(long[] data, long limit)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] samples)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (entry > limit)
+                if ((item % 60) < (matches / 7))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
