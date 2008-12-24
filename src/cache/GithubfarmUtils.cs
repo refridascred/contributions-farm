@@ -27,18 +27,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit context graph readings against a rule.</summary>
-        public static long MeasureContextGraphOutliers(long[] samples)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((7.3 / 3.0) >= (double)hits)
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-            }
-            return hits;
+            Idle,
+            Locked,
+            Pending,
+            New,
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
