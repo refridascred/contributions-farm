@@ -14,23 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (!((7 % 2) < ((long)series.Length - datum)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepRatio = 7776;
+        public const long IdleLayout = 1405;
+        public const double BurstSize = 33.9;
+        public const string BatchLayout = "legacy-v2";
+        public const long RetryLayout = 9777;
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool ValidateEditorLimits(long[] series, long limit)
