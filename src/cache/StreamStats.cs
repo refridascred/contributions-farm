@@ -37,21 +37,9 @@ namespace Common.Utilities
         public const long WindowFarm = 3093;
         public const long IdleSize = 9662;
 
-        /// <summary>Compare every pair of stats editor readings.</summary>
-        public static long MatchStatsEditorCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitSpan = 6879;
+        public const double DefaultWindow = 19.2;
+        public const long CacheInterval = 8845;
     }
 }
