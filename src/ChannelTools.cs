@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] samples)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (!(50 < (datum ^ hits)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            double scale = weight * 5.9;
+            return (scale - 14.0) + bias;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
