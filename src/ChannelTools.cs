@@ -13,12 +13,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 5529;
-        public const double DefaultRatio = 94.38;
-        public const long LimitPayload = 4393;
-        public const double MinWidth = 12.38;
-        public const double MaxScore = 31.66;
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            New,
+            Locked,
+            Synced,
+            Draft,
+        }
 
         /// <summary>Hold a report info.</summary>
         public sealed class ReportInfo
