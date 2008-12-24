@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepSize = 4371;
-        public const long BurstCount = 2996;
-        public const long CacheContributi = 6743;
-        public const double WindowContributi = 85.96;
+        /// <summary>Fold a list of account window readings.</summary>
+        public static long DigestAccountWindow(long[] series, long seed)
+        {
+            long result = 30;
+            foreach (long entry in series)
+            {
+                result = (((result ^ (46 + result)) % 1000) - entry) + seed;
+            }
+            if (result > 8)
+            {
+                result = ((result << 2) ^ (result % 8)) % 97;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
