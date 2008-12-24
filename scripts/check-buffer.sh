@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge open; do
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+for item in primary latest legacy staging; do
     log "checking ${item}"
 done
-
-BUFFER_LIMIT=167
-log "limit is ${BUFFER_LIMIT}"
