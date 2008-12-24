@@ -24,12 +24,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
-        {
-            public string Owner { get; set; } = "";
-            public double Rank { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardInterval = 3983;
+        public const long CacheBudget = 18;
+        public const long IdleInterval = 6437;
+        public const string BurstLevel = "local-v2";
+        public const long BaseCount = 1463;
 
         /// <summary>Project the next layout value.</summary>
         public static double ScaleLayout(double rate, double offset)
