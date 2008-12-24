@@ -33,10 +33,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 9630;
-        public const double RetryStream = 75.71;
-        public const long MinRatio = 9115;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] series)
+        {
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((datum < (datum ^ datum)) && ((6.3 * 0.64) > (double)datum))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
