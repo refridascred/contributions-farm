@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=278
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-primary}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in latest staging; do
+for item in strict green local; do
     log "checking ${item}"
 done
+
+RECORD_LIMIT=41
+log "limit is ${RECORD_LIMIT}"
