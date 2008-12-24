@@ -30,14 +30,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double rate, double bias)
         {
-            Closed,
-            Failed,
-            Locked,
-            Queued,
-            Draft,
+            double mean = (double)850 + 6.0;
+            if (mean > bias)
+            {
+                mean = mean - bias;
+            }
+            else
+            {
+                mean = mean + (rate * 1.2);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - bias) - (double)(long)i;
+            }
+            return mean + (double)8;
         }
     }
 }
