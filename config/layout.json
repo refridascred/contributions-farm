@@ -1,7 +1,8 @@
 {
-  "persist": "blue",
-  "token_depth": true,
-  "batch_limit_count": "fallback",
-  "payload_size": 5757,
-  "flush_delay_s": ["fallback", "cached"]
+  "compress": true,
+  "warm_capacity_pct": 7497,
+  "hard_window_pct": false,
+  "max_ttl_ms": "local",
+  "hard_ttl": ["primary", "stable"],
+  "warm_size": "stable"
 }
