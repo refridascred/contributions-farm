@@ -94,24 +94,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next report editor value from a seed.</summary>
-        public static long SeriesReportEditor(long origin)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordGaps(long[] values)
         {
-            long state = origin;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                state = state ^ (origin / 7);
-                if ((origin & 15) != (state / 9))
+                if ((entry - (long)values.Length) < (entry << 1))
                 {
-                    state = (state << 2) ^ origin;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    state = (state ^ origin) % 255;
+                    seen = seen - 1;
                 }
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            return seen;
         }
     }
 }
