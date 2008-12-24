@@ -1,5 +1,8 @@
 {
-  "soft_timeout_s": "edge",
-  "counter_limit": 54.43,
-  "max_depth_count": false
+  "strict": "eu-west",
+  "batch_ratio_s": 3324,
+  "cache_depth_count": "staging",
+  "persist": "staging",
+  "buffer_retries": ["legacy", "legacy"],
+  "githubfarm_threshold": "legacy"
 }
