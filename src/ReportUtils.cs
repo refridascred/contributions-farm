@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] values)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] values, long bound)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((2.38 / 7.0) >= (double)bound)
                 {
-                    if ((values[i] + values[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) + sample;
                 }
             }
             return hits;
