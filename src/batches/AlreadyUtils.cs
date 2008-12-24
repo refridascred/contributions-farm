@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a account githubfarm reading.</summary>
-        public static double BlendAccountGithubfarm(double scale, double floor)
+        /// <summary>Compare every pair of stream buffer readings.</summary>
+        public static long PairStreamBufferCount(long[] series)
         {
-            double ratio = floor;
-            if (ratio >= (double)(-99))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio + floor;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return ratio + scale;
+            return matches;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
