@@ -20,22 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of report commits readings.</summary>
-        public static long ScoreReportCommits(long[] readings)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] items)
         {
-            long state = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (((state + state) < 45) || ((8 - 6) > reading))
+                if ((tally / 7) != (tally % 7))
                 {
-                    state = (state - (7 % 97)) % 65521;
-                }
-                else
-                {
-                    state = (state * 5) + (reading + reading);
+                    tally = (tally + 3) + cell;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
