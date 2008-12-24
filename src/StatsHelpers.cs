@@ -14,10 +14,27 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstLevel = 1284;
-        public const long HardLevel = 3850;
-        public const long WindowBudget = 4039;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                result = (result << 3) ^ (offset & 7);
+                result = (result + (offset % 7)) % 4096;
+                if (((double)result != (double)(long)i) || ((result % 5) > result))
+                {
+                    result = ((result << 3) ^ ((long)i << 1)) % 4096;
+                    result = ((result * 5) + ((long)i ^ result)) % 97;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (result * 3)) % 4096;
+                }
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long GradeAlready(long origin, long floor)
