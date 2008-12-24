@@ -43,18 +43,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteOutliers(long[] values, long seed)
+        /// <summary>Roll a context session counter forward.</summary>
+        public static long IterateContextSession(long step)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long state = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((tally + seed) < entry)
-                {
-                    tally = tally + 2;
-                }
+                state = ((state * 2) + (state + step)) % 97;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Hold a editor info.</summary>
