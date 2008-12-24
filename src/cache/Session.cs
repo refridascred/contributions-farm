@@ -24,19 +24,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Validate queue batch readings against a bound.</summary>
-        public static bool VerifyQueueBatchBounds(long[] readings, long step)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordBounds(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if (item > step)
+                if (sample > origin)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
     }
 }
