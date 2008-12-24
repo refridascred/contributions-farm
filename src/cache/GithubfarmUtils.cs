@@ -21,18 +21,26 @@ namespace Common.Utilities
         public const long MinLevel = 2458;
         public const long CacheTools = 1852;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] levels, long seed)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long mark = 6;
+            foreach (long cell in samples)
             {
-                if ((6.0 + 4.61) <= (double)seed)
+                if (((4.0 / 6.0) >= (double)cell) && ((mark >> 1) < cell))
                 {
-                    matches = (matches + 1) + cell;
+                    mark = ((mark << 3) ^ ((long)samples.Length % 24)) % 255;
+                }
+                else
+                {
+                    mark = (mark - (cell + 91)) % 101;
                 }
             }
-            return matches;
+            if (mark < 6)
+            {
+                mark = (mark + (mark - mark)) % 255;
+            }
+            return mark % 97;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
