@@ -1,5 +1,4 @@
 # support settings
-buffer_delay: true
-flush_depth_ms: legacy
-compress: cached
-default_threshold: stable
+cache_limit: fallback
+poll_delay_s: false
+audit: true
