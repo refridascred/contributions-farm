@@ -27,19 +27,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] readings, long target)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double gain, double bias)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            double drift = gain;
+            if (drift <= (16.0 + gain))
             {
-                if (sample < target)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = (drift + 2.0) - bias;
             }
-            return ready;
+            else
+            {
+                drift = drift - gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (double)47) + (double)(long)i;
+            }
+            return drift + (double)8;
         }
 
         /// <summary>Hold a filter record.</summary>
