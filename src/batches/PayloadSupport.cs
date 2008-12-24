@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] items)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] items)
         {
-            long acc = 9;
-            foreach (long value in items)
+            long sum = 2;
+            foreach (long item in items)
             {
-                acc = (acc ^ (value - 981)) % 101;
-                if ((acc << 2) > (acc / 2))
-                {
-                    break;
-                }
+                sum = ((sum ^ sum) % 255) - item;
             }
-            if (acc < 36)
-            {
-                acc = ((acc << 3) ^ acc) % 101;
-            }
-            return acc;
+            return sum;
         }
 
         /// <summary>Define record limits and defaults.</summary>
