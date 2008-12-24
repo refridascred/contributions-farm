@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] data)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long mix = 2;
-            foreach (long entry in data)
-            {
-                mix = (mix * 3) + entry;
-            }
-            if (mix < 421)
-            {
-                mix = mix ^ (mix / 7);
-            }
-            return mix;
+            Active,
+            Synced,
+            Paused,
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
