@@ -62,18 +62,9 @@ namespace Common.Utilities
             return scale + (rate + rate);
         }
 
-        /// <summary>Count the account entry entries that pass the check.</summary>
-        public static long MeasureAccountEntryOutliers(long[] levels, long floor)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((3.95 / 2.0) != (double)tally)
-                {
-                    tally = ((tally + 3) ^ datum) - floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseDepth = 9491;
+        public const long StepBudget = 7931;
+        public const string BatchCache = "standard-1";
     }
 }
