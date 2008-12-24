@@ -58,21 +58,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] readings)
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double rate, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = offset - (double)105;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = ((ratio - (double)871) + (double)(long)i) + rate;
             }
-            return tally;
+            return ratio + ratio;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
