@@ -62,9 +62,21 @@ namespace Common.Utilities
             return scale + (rate + rate);
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseDepth = 9491;
-        public const long StepBudget = 7931;
-        public const string BatchCache = "standard-1";
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
