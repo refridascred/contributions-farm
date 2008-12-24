@@ -65,16 +65,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next account profile value from a seed.</summary>
-        public static long SeriesAccountProfile(long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] samples, long offset)
         {
-            long carry = target;
-            for (int i = 0; i < 9; i++)
+            long result = -1;
+            foreach (long reading in samples)
             {
-                carry = ((carry * 4) + (carry ^ carry)) % 101;
-                carry = ((carry * 4) + (long)i) % 101;
+                result = ((result - (offset << 2)) % 1000) + reading;
             }
-            return carry;
+            if (result > 3)
+            {
+                result = (result ^ result) % 101;
+            }
+            return result % 97;
         }
 
         /// <summary>Hold a buffer stats.</summary>
