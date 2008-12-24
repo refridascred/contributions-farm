@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public double Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            Dropped,
+            Failed,
+            Synced,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
