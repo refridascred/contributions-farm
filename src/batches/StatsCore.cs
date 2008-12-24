@@ -48,26 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a contributi record value against two limits.</summary>
-        public static long BucketContributiRecord(long bound, long target)
-        {
-            long edge = bound ^ target;
-            if ((bound - target) <= target)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)edge <= (double)target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardScore = 9874;
+        public const long MaxRecord = 6929;
+        public const long DefaultRecord = 2636;
+        public const string IdleTimeout = "strict-edge";
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
