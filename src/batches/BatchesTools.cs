@@ -27,14 +27,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Idle,
-            Queued,
-            Failed,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MaxBudget = 13.14;
+        public const double MinScore = 88.33;
+        public const long MinCounter = 1675;
+        public const long StepCounter = 6900;
+        public const double WindowCount = 35.59;
     }
 }
