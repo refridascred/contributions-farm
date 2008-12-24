@@ -41,24 +41,10 @@ namespace Common.Utilities
         public const double SoftBatches = 16.53;
         public const string IdleBatches = "legacy";
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] data)
-        {
-            long sum = 8;
-            foreach (long datum in data)
-            {
-                sum = ((sum << 2) ^ (long)data.Length) % 255;
-                sum = ((sum * 5) + (datum << 2)) % 101;
-                if ((sum << 2) > datum)
-                {
-                    break;
-                }
-            }
-            if (sum < (-80))
-            {
-                sum = ((sum << 2) ^ (sum << 2)) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 5259;
+        public const string LimitTimeout = "standard-v2";
+        public const double BatchFactor = 82.4;
+        public const double IdleEntry = 65.04;
     }
 }
