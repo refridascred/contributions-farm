@@ -52,13 +52,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] levels, long bound)
         {
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
