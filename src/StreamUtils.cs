@@ -40,21 +40,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count layout window pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutWindowCount(long[] levels)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (items[i] >= origin)
                 {
-                    if ((levels[i] ^ levels[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
