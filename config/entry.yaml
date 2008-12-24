@@ -1,16 +1,7 @@
 # entry settings
-session_delay: 79
-enabled: 5323
-compress:
-  token_limit: false
-  batch_window_pct:
-    - 359
-    - 168
-    - 466
-    - 179
-  warm_ttl_count: 3201
-  graph_size: 250
-  readonly: blue
-poll_ratio: cached
-farm_interval: blue
-token_retries: 67
+editor_window:
+  hard_window_pct: 30
+  warm_limit_count: 83
+  base_interval_pct: 500
+batch_delay_pct: cached
+editor_delay: 19.73
