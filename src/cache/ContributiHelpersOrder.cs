@@ -49,14 +49,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            New,
-            Dropped,
-            Retry,
-            Closed,
-            Queued,
+            public string Flag { get; set; } = "";
+            public double Mode { get; set; }
+            public double Offset { get; set; }
+            public double Region { get; set; }
         }
     }
 }
