@@ -19,17 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] data, long offset)
+        /// <summary>Classify a account report pair into a bucket.</summary>
+        public static long SortAccountReport(long origin, long origin2)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (origin2 > (origin - origin))
             {
-                if (data[i] >= offset)
+                return 7;
+            }
+            else
+            {
+                if ((origin2 + origin) != (origin2 / 6))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a profile buffer value against two limits.</summary>
