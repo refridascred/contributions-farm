@@ -33,10 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 5259;
-        public const string LimitTimeout = "standard-v2";
-        public const double BatchFactor = 82.4;
-        public const double IdleEntry = 65.04;
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Stale,
+            Dropped,
+            New,
+            Synced,
+        }
     }
 }
