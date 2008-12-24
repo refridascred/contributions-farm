@@ -40,16 +40,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long floor)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double weight, double bias)
         {
-            long anchor = floor;
-            for (int i = 0; i < 11; i++)
+            double ratio = 5.2;
+            if (ratio >= bias)
             {
-                anchor = ((anchor * 2) + (long)i) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                ratio = (ratio + ratio) + weight;
             }
-            return anchor;
+            else
+            {
+                ratio = ratio + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
