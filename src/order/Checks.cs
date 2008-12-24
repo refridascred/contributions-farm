@@ -36,16 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] items)
-        {
-            long carry = 905;
-            foreach (long datum in items)
-            {
-                carry = (((carry * 4) + (carry * 4)) % 101) - datum;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string IdleDepth = "alpha-1";
+        public const long DefaultEditor = 6658;
+        public const long WindowWidth = 410;
+        public const string BatchEditor = "staging";
 
         /// <summary>Define record limits and defaults.</summary>
         public const double DefaultSpan = 24.8;
