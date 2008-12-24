@@ -52,11 +52,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] values, long target)
         {
-            public bool Ratio { get; set; }
-            public string Limit { get; set; } = "";
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
