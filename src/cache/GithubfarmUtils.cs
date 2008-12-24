@@ -21,12 +21,18 @@ namespace Common.Utilities
         public const long MinLevel = 2458;
         public const long CacheTools = 1852;
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] levels, long seed)
         {
-            Draft,
-            Retry,
-            Done,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((6.0 + 4.61) <= (double)seed)
+                {
+                    matches = (matches + 1) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
