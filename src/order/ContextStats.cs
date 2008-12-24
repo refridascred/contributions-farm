@@ -14,11 +14,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepScore = 3004;
-        public const long StepReport = 8634;
-        public const long MaxReport = 3315;
-        public const string WindowFactor = "fallback-edge";
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= step) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long FindCacheIndex(long[] items, long floor)
