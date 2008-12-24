@@ -23,22 +23,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] items, long origin)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] levels)
         {
-            long sum = 8;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)sum >= (double)562)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum + origin) % 4096;
-                }
-                if (((double)datum >= 4.0) && (sum < (origin >> 5)))
-                {
-                    break;
+                    if ((levels[i] + levels[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum;
+            return tally;
         }
     }
 }
