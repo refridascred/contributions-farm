@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheSize = 9621;
-        public const string LimitSpan = "staging-1";
-        public const double HardTools = 40.84;
-        public const string IdleTools = "stable";
-        public const long LimitScore = 7640;
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public double Total { get; set; }
+            public string Owner { get; set; } = "";
+            public long Region { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Fold a list of report commits readings.</summary>
         public static long ScoreReportCommits(long[] readings)
