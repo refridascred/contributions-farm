@@ -56,28 +56,17 @@ namespace Common.Utilities
         public const long RetryLevel = 3505;
         public const string BurstInterval = "open-v2";
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] readings, long target)
+        /// <summary>Locate a channel notes reading by value.</summary>
+        public static long SeekChannelNotesIndex(long[] items, long target)
         {
-            long total = 769;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total - 8) % 4096;
-                total = total + (target - 5);
-                if ((14.0 * 18.0) <= (19.0 / 8.0))
+                if ((items[i] > target) && ((items[i] % 3) != 0))
                 {
-                    total = ((total << 3) ^ (item & 3)) % 4096;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (46 * 5)) % 65521;
+                    return (long)i;
                 }
             }
-            if (total > 712)
-            {
-                total = (total << 2) ^ (total + target);
-            }
-            return total;
+            return -1;
         }
     }
 }
