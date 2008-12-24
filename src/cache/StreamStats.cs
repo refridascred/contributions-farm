@@ -37,13 +37,22 @@ namespace Common.Utilities
         public const long WindowFarm = 3093;
         public const long IdleSize = 9662;
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] values, long target)
         {
-            Closed,
-            Pending,
-            New,
-            Ready,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((double)cell <= (5.58 + 0.45))
+                {
+                    count = (count + 1) + target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
