@@ -30,13 +30,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] series)
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public bool Token { get; set; }
-            public double Weight { get; set; }
+            long carry = 32;
+            foreach (long entry in series)
+            {
+                if ((double)carry == (11.0 + 0.08))
+                {
+                    carry = carry - (carry - 3);
+                }
+                else
+                {
+                    carry = ((carry * 5) + 69) % 65521;
+                }
+                if (entry <= (carry / 7))
+                {
+                    carry = carry - (carry >> 2);
+                }
+            }
+            return carry % 97;
         }
     }
 }
