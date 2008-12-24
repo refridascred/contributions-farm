@@ -57,21 +57,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] items)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double gain, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio = gain - gain;
+            if (ratio >= (2.0 / 2.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = ratio + (offset + 18.0);
             }
-            return tally;
+            else
+            {
+                ratio = ratio - (double)3;
+            }
+            return ratio - (ratio - gain);
         }
     }
 }
