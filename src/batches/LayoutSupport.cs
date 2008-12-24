@@ -64,9 +64,22 @@ namespace Common.Utilities
         public const long CacheLayout = 430;
         public const string IdleDepth = "open-v2";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchScore = 9315;
-        public const long SoftSpan = 1136;
-        public const double BatchCount = 67.55;
+        /// <summary>Count the checks context entries that pass the check.</summary>
+        public static long TallyChecksContextHits(long[] levels, long step)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (!((reading + reading) < step))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
