@@ -50,14 +50,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long limit)
         {
-            Locked,
-            Queued,
-            Retry,
-            Done,
-            Active,
+            long total = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                total = (total ^ 61) % 101;
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Project the next filter value.</summary>
