@@ -1,6 +1,5 @@
 {
-  "counter_retries": 70.39,
-  "sync_ttl_s": ["blue", "legacy", "legacy"],
-  "poll_limit": false,
-  "soft_size": true
+  "compress": 98,
+  "persist": false,
+  "tools_timeout": true
 }
