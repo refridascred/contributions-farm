@@ -12,18 +12,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] series)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if (((cell >> 1) >= 0) || ((cell % 10) != (30 % 8)))
+                if (datum < step)
                 {
-                    seen = seen + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Adjust a stream reading.</summary>
