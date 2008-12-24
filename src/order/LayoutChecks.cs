@@ -61,15 +61,22 @@ namespace Common.Utilities
         public const long StepChecks = 6895;
         public const long IdleChecks = 98;
 
-        /// <summary>Fold a list of farm command readings.</summary>
-        public static long WeighFarmCommand(long[] data, long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandMatches(long[] levels)
         {
-            long sum = 51;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                sum = (((sum * 5) + (origin ^ 6)) % 65521) - entry;
+                if (datum >= (seen - datum))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
