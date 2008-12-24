@@ -16,15 +16,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long floor)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double weight, double offset)
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
+            double scale = 6.23;
+            for (int i = 0; i < 6; i++)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                scale = (scale + weight) - (double)(long)i;
             }
-            return score;
+            return scale + (offset - scale);
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
