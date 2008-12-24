@@ -34,19 +34,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] data)
+        /// <summary>Count the cache stats entries that pass the check.</summary>
+        public static long TallyCacheStatsGaps(long[] values, long limit)
         {
-            long sum = -8;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long value in values)
             {
-                sum = (sum * 5) + cell;
-                if (!(793 < (cell + sum)))
+                if (!((value - hits) == (33 + hits)))
                 {
-                    break;
+                    hits = (hits + 2) - limit;
                 }
             }
-            return sum;
+            return hits;
         }
     }
 }
