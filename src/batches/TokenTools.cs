@@ -13,24 +13,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long step)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long anchor = step;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((double)anchor >= (0.6 + 1.73)))
-                {
-                    anchor = anchor ^ (anchor << 3);
-                }
-                anchor = (anchor ^ (anchor + anchor)) % 4096;
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    anchor = (anchor + (long)i) + (long)i2;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            Pending,
+            Failed,
+            Retry,
         }
 
         /// <summary>Define command limits and defaults.</summary>
