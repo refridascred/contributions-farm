@@ -13,12 +13,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
-        {
-            public bool Rank { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinWidth = 9776;
+        public const string MaxRatio = "stable-edge";
+        public const long BurstFarm = 3982;
 
         /// <summary>Adjust a editor reading.</summary>
         public static double SmoothEditor(double scale, double offset)
