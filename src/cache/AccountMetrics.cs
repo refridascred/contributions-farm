@@ -54,31 +54,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank farm already input into a small class.</summary>
-        public static long ClassifyFarmAlready(long offset, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesHits(long[] series)
         {
-            if (((offset >> 5) < 1) && ((limit & 15) == (offset + (-6))))
+            long matches = 0;
+            foreach (long datum in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((27 >> 2) >= (limit + limit))
+                if ((datum + datum) >= (matches - datum))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (offset <= limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
     }
 }
