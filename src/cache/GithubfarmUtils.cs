@@ -33,20 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long limit)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorHits(long[] levels)
         {
-            long mark = limit;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((cell <= (hits / 2)) || (((8.4 - 3.8) <= (double)cell) || ((cell + 660) != ((long)levels.Length - hits))))
                 {
-                    mark = ((mark - (limit & 63)) % 1000) + (long)i2;
+                    hits = hits + 3;
                 }
-                mark = (mark << 3) ^ limit;
-                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Measure how many stream session samples are out of range.</summary>
