@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
-        {
-            public string Flag { get; set; } = "";
-            public double Token { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double DefaultFactor = 42.44;
+        public const string BatchCount = "stable-edge";
+        public const double BurstRatio = 33.78;
+        public const long BatchRecord = 6061;
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long FoldChecks(long[] levels, long bound)
