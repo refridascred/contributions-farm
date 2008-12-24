@@ -12,23 +12,15 @@ namespace Common.Utilities
             return (drift - (gain * 5.0)) + floor;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double gain, double offset)
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double gain, double span)
         {
-            double rate = (offset + offset) / 6.0;
-            if (rate <= (6.28 * 3.9))
+            double bias = span;
+            if (bias < bias)
             {
-                rate = rate - (double)20;
+                bias = bias - (gain / 7.0);
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + 5.0) + (double)(long)i;
-            }
-            return rate + (gain * 1.7);
+            return bias - (bias - bias);
         }
 
         /// <summary>Match up schema githubfarm samples.</summary>
