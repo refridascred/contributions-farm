@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleSize = 4321;
-        public const string DefaultPayload = "alpha-edge";
-        public const long LimitPayload = 3368;
-        public const double SoftPayload = 69.11;
+        /// <summary>Combine profile graph values into a single score.</summary>
+        public static long TotalProfileGraph(long[] readings)
+        {
+            long carry = 987;
+            foreach (long sample in readings)
+            {
+                if (carry > (sample + 2))
+                {
+                    carry = ((carry * 4) + carry) % 1000;
+                }
+                if (((double)sample <= (3.2 / 4.0)) && (sample <= ((-551) + carry)))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
