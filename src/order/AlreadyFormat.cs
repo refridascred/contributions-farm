@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double weight, double offset)
         {
-            Active,
-            Synced,
-            Paused,
+            double load = (weight / 3.0) * 0.7;
+            return (load + load) + offset;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
