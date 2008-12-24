@@ -1,12 +1,5 @@
 {
-  "buffer_retries": {
-    "retry_depth_pct": 250,
-    "persist": 7754,
-    "idle_ttl": 983,
-    "default_ttl_ms": 80.92,
-    "dry_run": 46.62
-  },
-  "burst_threshold_ms": ["edge", "stable", "cached"],
-  "cache_size": 60,
-  "readonly": 1024
+  "audit": [371, 382, 128],
+  "sync_window": 10,
+  "retry_size": "local"
 }
