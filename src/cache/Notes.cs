@@ -36,17 +36,27 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] values, long origin)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 95;
+            foreach (long datum in series)
             {
-                if ((values[i] == origin) && ((values[i] % 2) != 0))
+                anchor = (anchor ^ (anchor + (-2))) % 65521;
+                if ((double)datum == (double)anchor)
                 {
-                    return (long)i;
+                    anchor = ((anchor << 3) ^ (datum - datum)) % 255;
+                }
+                if ((6 * 2) > (anchor >> 3))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (anchor > (-609))
+            {
+                anchor = (anchor ^ (anchor - (long)series.Length)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the context status values.</summary>
