@@ -44,22 +44,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit filter support readings against a rule.</summary>
-        public static long MeasureFilterSupportOutliers(long[] series, long origin)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (!(((origin ^ 238) >= (origin & 63)) || ((entry & 127) != (583 << 2))))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowMetric = 68.93;
+        public const long BurstMetric = 9131;
+        public const string WindowScore = "stable";
+        public const long CacheMetric = 6603;
+        public const double StepMetric = 78.15;
     }
 }
