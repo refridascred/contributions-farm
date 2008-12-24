@@ -1,5 +1,5 @@
 {
-  "batch_threshold": 23,
-  "burst_interval": "primary",
-  "compress": "open"
+  "min_limit": 250,
+  "flush_interval_ms": 31,
+  "verbose": "staging"
 }
