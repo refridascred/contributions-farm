@@ -40,12 +40,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 5338;
-        public const string RetryScore = "local-edge";
-        public const long BatchFactor = 3256;
-        public const long IdleTimeout = 9096;
-        public const long CacheBatches = 3201;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 1789;
+        public const double SoftRecord = 78.74;
+        public const long LimitRecord = 7964;
+        public const long StepWidth = 9249;
 
         /// <summary>Accumulate batches samples.</summary>
         public static long TallyBatches(long[] items, long limit)
