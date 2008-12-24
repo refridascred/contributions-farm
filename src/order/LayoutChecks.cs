@@ -60,18 +60,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] data)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((cell >> 1) >= tally)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Locked,
+            Pending,
+            Stale,
+            Idle,
         }
 
         /// <summary>Hold a commits record.</summary>
