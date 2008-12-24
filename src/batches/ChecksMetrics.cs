@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a token tools value against two limits.</summary>
-        public static long ClassifyTokenTools(long offset, long limit)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            if ((limit >> 1) >= (limit * 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset == (double)limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (12.0 < (double)offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((-7) % 12) < limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public double Mode { get; set; }
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a report entry.</summary>
