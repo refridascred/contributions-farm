@@ -10,11 +10,11 @@ namespace Common.Utilities
         public const string WindowDepth = "stable-1";
         public const long MaxSize = 3253;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFactor = 3965;
-        public const long WindowTimeout = 5982;
-        public const double RetryFarm = 24.18;
-        public const double HardFarm = 4.77;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string RetrySession = "cached-v2";
+        public const long IdleSession = 8618;
+        public const long MaxInterval = 2034;
+        public const string WindowScore = "stable-v2";
 
         /// <summary>Hold a cache snapshot.</summary>
         public sealed class CacheSnapshot
