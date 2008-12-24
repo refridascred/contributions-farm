@@ -30,21 +30,18 @@ namespace Common.Utilities
         public const double LimitRatio = 47.59;
         public const long DefaultRatio = 851;
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] series)
+        /// <summary>Measure how many farm queue samples are out of range.</summary>
+        public static long CountFarmQueueGaps(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)entry >= (double)672)
                 {
-                    if ((series[i] + series[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
