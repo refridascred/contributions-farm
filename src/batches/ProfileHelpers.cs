@@ -56,12 +56,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] series)
         {
-            New,
-            Synced,
-            Closed,
+            long carry = 1;
+            foreach (long cell in series)
+            {
+                if ((carry / 4) > (carry ^ carry))
+                {
+                    carry = ((carry + (carry % 60)) % 97) ^ cell;
+                }
+            }
+            return carry;
         }
     }
 }
