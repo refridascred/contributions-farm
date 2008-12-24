@@ -24,20 +24,10 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] items, long floor)
-        {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 1365;
+        public const string DefaultCounter = "latest";
+        public const long RetryBudget = 947;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long MeasureStatsOutliers(long[] items)
