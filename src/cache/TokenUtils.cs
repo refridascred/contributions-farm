@@ -20,19 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] values)
+        /// <summary>Validate counter buffer readings against a bound.</summary>
+        public static bool ValidateCounterBufferRange(long[] values, long origin)
         {
-            long carry = 48;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                carry = (carry + (676 % 60)) + cell;
+                if (entry < origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (carry > 33)
-            {
-                carry = carry + (carry & 1);
-            }
-            return carry % 4096;
+            return ok;
         }
 
         /// <summary>Blend two batches commits measurements.</summary>
