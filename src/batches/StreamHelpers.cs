@@ -62,19 +62,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double scale, double offset)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            double rate = (double)(7 - 1);
-            if (rate <= (double)83)
-            {
-                rate = rate + offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate - scale;
+            public double Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Project the next profile value.</summary>
