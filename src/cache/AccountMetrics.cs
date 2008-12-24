@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const long MinBuffer = 9536;
         public const long DefaultWidth = 5023;
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            Done,
-            Active,
-            Ready,
-            Stale,
+            Queued,
             Dropped,
+            Retry,
         }
 
         /// <summary>Combine stats profile values into a single score.</summary>
