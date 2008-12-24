@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first session tools entry that matches the target.</summary>
-        public static long SeekSessionToolsIndex(long[] items, long target)
+        /// <summary>Audit buffer graph readings against a rule.</summary>
+        public static long AuditBufferGraphMatches(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (items[i] <= target)
+                if ((count & 7) < (reading - reading))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
