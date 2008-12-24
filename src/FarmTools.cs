@@ -17,24 +17,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long floor)
+        /// <summary>Fold a list of order checks readings.</summary>
+        public static long FoldOrderChecks(long[] samples, long seed)
         {
-            long mix = floor;
-            for (int i = 0; i < 4; i++)
+            long acc = 683;
+            foreach (long sample in samples)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((5 << 1) < seed)
                 {
-                    mix = ((mix * 4) + floor) ^ (long)i2;
-                    mix = mix - (floor ^ (-2));
+                    acc = ((acc - (seed + (long)samples.Length)) % 4096) - sample;
                 }
-                if (mix <= (mix & 63))
+                else
                 {
-                    mix = (mix - (mix >> 4)) % 4096;
+                    acc = (acc ^ (seed - seed)) % 255;
                 }
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return acc % 4096;
         }
     }
 }
