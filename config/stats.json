@@ -1,7 +1,15 @@
 {
-  "farm_threshold": false,
-  "soft_timeout_s": 44,
-  "githubfarm_limit": 24,
-  "sync_capacity_count": 34,
-  "min_retries_pct": "fallback"
+  "enabled": 539,
+  "retry_ttl": {
+    "base_threshold": {
+      "poll_delay": true,
+      "warm_timeout_pct": 30,
+      "burst_interval_pct": "green",
+      "batch_window": ["staging", "cached", "standard"],
+      "persist": 94
+    },
+    "strict": true,
+    "default_delay_pct": 30
+  },
+  "editor_depth": "legacy"
 }
