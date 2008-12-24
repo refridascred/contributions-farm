@@ -37,11 +37,21 @@ namespace Common.Utilities
         public const long BatchMetrics = 679;
         public const string MinMetrics = "legacy-v2";
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double ratio, double floor)
+        /// <summary>Compare every pair of filter metrics readings.</summary>
+        public static long CompareFilterMetricsCount(long[] readings)
         {
-            double rate = (double)2 / 9.0;
-            return ((rate + (double)6) + ratio) + floor;
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
