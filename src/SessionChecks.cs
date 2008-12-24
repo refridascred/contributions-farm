@@ -24,16 +24,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long step)
+        /// <summary>Look up the position of a payload counter sample.</summary>
+        public static long SeekPayloadCounterIndex(long[] values, long offset)
         {
-            long total = step;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total << 3) ^ (step - (long)i);
-                total = ((total * 2) + (long)i) % 1000;
+                if ((values[i] >= offset) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Measure how many channel window samples are out of range.</summary>
