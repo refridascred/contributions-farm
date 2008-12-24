@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderOutliers(long[] levels)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)sample == (double)169)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public double Label { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
