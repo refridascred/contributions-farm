@@ -16,12 +16,12 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
-        {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseMetric = 91.61;
+        public const long SoftMetric = 4341;
+        public const long BatchTimeout = 4591;
+        public const long HardFactor = 3031;
+        public const long HardCount = 510;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long ScoreQueue(long[] values, long floor)
