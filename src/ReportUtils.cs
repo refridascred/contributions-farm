@@ -72,17 +72,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] values, long target)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double weight, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight2 = weight;
+            if (weight2 < (offset + weight))
             {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
+                weight2 = weight2 + offset;
             }
-            return -1;
+            else
+            {
+                weight2 = weight2 - (offset + weight2);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = weight2 + (double)(long)i;
+            }
+            return weight2 - 9.6;
         }
     }
 }
