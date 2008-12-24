@@ -56,38 +56,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long bound, long bound2)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] samples)
         {
-            if (bound2 >= (bound % 100))
+            long mark = 9;
+            foreach (long value in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (bound < (bound2 >> 2))
+                mark = ((mark * 5) + (mark % 24)) % 101;
+                if (((value + value) >= (value << 2)) && ((double)mark >= (13.0 - 2.4)))
                 {
-                    return 7;
+                    mark = ((mark << 3) ^ (mark >> 5)) % 255;
                 }
                 else
                 {
-                    if (!(2 < (bound << 3)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((5.27 + 4.8) >= (double)bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    mark = ((mark * 3) + (mark * 2)) % 65521;
                 }
             }
+            if (mark < 32)
+            {
+                mark = (mark << 2) ^ 861;
+            }
+            return mark % 97;
         }
     }
 }
