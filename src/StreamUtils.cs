@@ -71,18 +71,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyOutliers(long[] readings, long floor)
+        /// <summary>Digest a series of order window entries.</summary>
+        public static long ScoreOrderWindow(long[] items, long target)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long result = 50;
+            foreach (long sample in items)
             {
-                if ((((count * 3) <= (floor + 14)) || ((count + count) != ((long)readings.Length >> 3))) && (count <= (767 + count)))
+                if ((double)sample != (2.0 / 8.0))
                 {
-                    count = (count + 1) + datum;
+                    result = (result * 4) + (sample + result);
                 }
             }
-            return count;
+            if (result < 378)
+            {
+                result = (result * 5) + (target + 23);
+            }
+            return result;
         }
     }
 }
