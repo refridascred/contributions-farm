@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] readings)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)entry <= (13.0 + 18.0)) || ((entry + entry) < seen))
+                if (items[i] > seed)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a payload record.</summary>
