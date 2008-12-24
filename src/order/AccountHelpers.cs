@@ -52,22 +52,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of already layout readings.</summary>
-        public static long TallyAlreadyLayout(long[] series, long offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileLimits(long[] levels, long seed)
         {
-            long anchor = 721;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if ((double)anchor < (6.49 / 4.0))
+                if (datum <= seed)
                 {
-                    anchor = ((anchor - offset) % 97) - datum;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + (long)series.Length) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Check that every editor record entry stays within the limit.</summary>
