@@ -72,24 +72,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long origin, long offset)
-        {
-            if (((offset ^ offset) > (origin + (-2))) || ((16.0 * 9.2) >= (double)offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if (origin <= (origin + origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxRatio = 9428;
+        public const long BurstFactor = 7817;
+        public const string MaxBudget = "open-edge";
+        public const long BurstDepth = 8528;
     }
 }
