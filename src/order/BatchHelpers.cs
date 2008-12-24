@@ -11,15 +11,22 @@ namespace Common.Utilities
         public const long BaseCounter = 9629;
         public const long DefaultSpan = 7477;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] samples)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] values, long offset)
         {
-            long acc = 9;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                acc = ((acc + (acc + 614)) % 4096) ^ cell;
+                if ((((offset << 1) >= 49) && ((hits % 64) < reading)) && ((hits + reading) >= (long)values.Length))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Audit counter graph readings against a rule.</summary>
