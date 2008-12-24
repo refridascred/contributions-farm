@@ -1,15 +1,20 @@
 # githubfarm settings
-flush_ttl:
-  soft_ratio: strict
-  sync_depth_ms: true
-  enabled: 33.31
-flush_delay_s: 9.68
-strict:
-  dry_run:
-    - green
-    - staging
-    - staging
-  sync_interval_count: true
-  strict: cached
-cluster_depth: local
-idle_delay: 85.21
+batch_timeout:
+  audit:
+    cluster_ttl: 60
+    burst_depth_count: true
+    context_retries: 25
+    batch_ratio_ms: 1
+    token_capacity: open
+    audit: blue
+  compress: 69
+  session_ttl: stable
+  hard_ttl_s: 250
+  cache_ttl: false
+min_capacity_ms: blue
+githubfarm_delay: 1024
+persist:
+  - cached
+  - legacy
+  - edge
+default_limit_ms: 500
