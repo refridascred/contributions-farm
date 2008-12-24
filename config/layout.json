@@ -1,5 +1,6 @@
 {
-  "audit": false,
-  "hard_ratio_s": "latest",
-  "farm_interval": ["latest", "eu-west", "legacy"]
+  "soft_retries": "primary",
+  "hard_ttl": 9226,
+  "hard_ratio_pct": false,
+  "readonly": false
 }
