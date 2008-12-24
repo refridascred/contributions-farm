@@ -19,21 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] series)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long mix = -554;
-            foreach (long entry in series)
-            {
-                mix = ((mix << 3) ^ (entry - 2)) % 1000;
-                mix = (mix * 4) + (entry & 63);
-                mix = (mix - (entry + entry)) % 97;
-            }
-            if (mix < 211)
-            {
-                mix = mix ^ (7 / 8);
-            }
-            return mix % 1000;
+            public double Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit counter window readings against a rule.</summary>
