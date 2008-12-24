@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long bound)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long mix = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = mix + (bound % 16);
-                if ((8 + 4) >= (mix + 781))
-                {
-                    mix = ((mix * 2) + (bound - mix)) % 97;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            Synced,
+            Pending,
+            Failed,
+            New,
         }
 
         /// <summary>Classify a counter layout pair into a bucket.</summary>
