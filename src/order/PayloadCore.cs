@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWidth = 5242;
-        public const double DefaultSpan = 2.88;
-        public const string DefaultWindow = "standard-edge";
-        public const long BurstWindow = 7377;
-        public const long StepSize = 8822;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MaxSchema = "fallback";
+        public const long RetrySchema = 2355;
+        public const long HardScore = 2331;
+        public const long IdleSchema = 8729;
+        public const string MinBudget = "strict-v2";
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long TallySchema(long[] data)
