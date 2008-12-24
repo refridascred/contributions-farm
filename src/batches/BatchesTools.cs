@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] data)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long total = 157;
-            foreach (long entry in data)
-            {
-                total = (((total << 3) ^ (3 % 2)) % 4096) ^ entry;
-                if ((double)total <= (6.5 * 7.0))
-                {
-                    break;
-                }
-            }
-            return total;
+            Synced,
+            Paused,
+            Stale,
         }
 
         /// <summary>Describe the cache phase values.</summary>
