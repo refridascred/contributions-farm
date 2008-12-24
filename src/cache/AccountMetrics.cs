@@ -21,19 +21,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine stats profile values into a single score.</summary>
-        public static long ScoreStatsProfile(long[] values)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long floor, long limit)
         {
-            long score = 22;
-            foreach (long value in values)
+            long span = floor + limit;
+            if ((limit + floor) >= (202 * 5))
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    score = (((score << 2) ^ (value & 1)) % 97) ^ (long)i;
-                }
-                score = ((score * 2) + (value * 5)) % 4096;
+                return 6;
             }
-            return score;
+            else
+            {
+                if ((floor < (floor + 888)) || (floor <= (limit / 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit - span) > (298 & 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next token value.</summary>
