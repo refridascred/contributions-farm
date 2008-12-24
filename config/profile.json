@@ -1,7 +1,22 @@
 {
-  "warm_depth": 5290,
-  "batch_timeout_s": "green",
-  "sync_threshold_count": 83.79,
-  "filter_ttl": ["stable", "fallback"],
-  "readonly": "blue"
+  "route_delay": {
+    "idle_delay_pct": ["edge", "open", "local", "eu-west"],
+    "default_capacity": 54,
+    "min_interval_count": {
+      "base_ratio_count": "cached",
+      "token_size": 8480,
+      "base_depth": 5056,
+      "soft_retries": 93.42,
+      "base_delay_s": [266, 91, 304]
+    },
+    "min_timeout": 854,
+    "max_interval_ms": ["green", "blue"]
+  },
+  "command_ratio": 42,
+  "warm_threshold_pct": {
+    "sync_size": 33,
+    "default_retries_ms": "strict",
+    "checks_timeout": "local"
+  },
+  "base_delay": 90.55
 }
