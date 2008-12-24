@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] data, long target)
+        /// <summary>Digest a series of counter schema entries.</summary>
+        public static long TotalCounterSchema(long[] levels)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long sum = 546;
+            foreach (long sample in levels)
             {
-                if (reading > target)
+                if ((sum + 425) < 65)
                 {
-                    found = false;
-                    break;
+                    sum = (sum + (sum + 12)) + sample;
+                }
+                else
+                {
+                    sum = (sum * 3) + (sum ^ sum);
                 }
             }
-            return found;
+            if (sum < 658)
+            {
+                sum = (sum ^ 5) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
