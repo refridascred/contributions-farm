@@ -51,12 +51,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double IdleBudget = 18.54;
-        public const long BatchWidth = 3516;
-        public const long BatchScore = 8577;
-        public const double RetryChecks = 97.86;
-        public const long LimitChecks = 7006;
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            Ready,
+            Locked,
+            Queued,
+            New,
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long ScoreContributi(long[] data, long offset)
