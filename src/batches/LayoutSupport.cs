@@ -23,21 +23,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] items)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Stale,
+            Draft,
+            New,
+            Locked,
+            Ready,
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
