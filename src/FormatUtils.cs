@@ -27,19 +27,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionBounds(long[] readings, long floor)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
