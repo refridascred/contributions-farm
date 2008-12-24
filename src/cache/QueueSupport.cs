@@ -51,31 +51,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long offset, long target)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            if ((target < offset) || ((8.0 - 3.5) != (double)offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((762 - offset) == (793 * 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (offset >= target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Pending,
+            Dropped,
+            Closed,
+            Retry,
+            Paused,
         }
     }
 }
