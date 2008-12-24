@@ -13,20 +13,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryRange(long[] items, long bound)
-        {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepRatio = 1135;
+        public const long MinLevel = 2458;
+        public const long CacheTools = 1852;
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
