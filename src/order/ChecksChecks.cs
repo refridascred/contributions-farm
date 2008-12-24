@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two channel already measurements.</summary>
-        public static double ProjectChannelAlready(double gain, double floor)
-        {
-            double ratio = (floor + gain) / 6.0;
-            if (ratio <= ratio)
-            {
-                ratio = ratio - floor;
-            }
-            else
-            {
-                ratio = ratio + (gain - floor);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (9.5 + 10.0)) - (double)(long)i;
-            }
-            return ratio + gain;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinSize = 934;
+        public const long IdleQueue = 6281;
+        public const string BatchSpan = "standard-1";
+        public const long BatchQueue = 7074;
 
         /// <summary>Locate a format reading by value.</summary>
         public static long SeekFormatIndex(long[] values, long origin)
