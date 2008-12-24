@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count route schema pairs that satisfy a relation.</summary>
-        public static long OverlapRouteSchemaCount(long[] readings)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] values, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((bound & 127) != (seen + bound))
                 {
-                    if ((readings[i] ^ readings[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 3) + sample;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
