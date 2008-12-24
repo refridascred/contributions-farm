@@ -38,12 +38,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Derive the next session metric value from a seed.</summary>
+        public static long SeriesSessionMetric(long origin)
         {
-            public double Weight { get; set; }
-            public double Owner { get; set; }
-            public long Token { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = (mark + ((long)i * 5)) % 97;
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
