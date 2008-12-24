@@ -13,19 +13,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double ratio, double offset)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            double bias = offset;
-            if (bias < (1.79 / 9.0))
-            {
-                bias = bias - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias + ratio;
+            public string Level { get; set; } = "";
+            public bool Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
