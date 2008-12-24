@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmOutliers(long[] values, long target)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long bound)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long mix = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((8.23 - 2.58) <= (double)seen) && (15.0 < (double)target))
+                mix = mix + (bound % 16);
+                if ((8 + 4) >= (mix + 781))
                 {
-                    seen = (seen + 1) - sample;
+                    mix = ((mix * 2) + (bound - mix)) % 97;
                 }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Classify a counter layout pair into a bucket.</summary>
