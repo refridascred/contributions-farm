@@ -69,19 +69,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every profile stream entry stays within the limit.</summary>
-        public static bool VerifyProfileStreamLimits(long[] values, long origin)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long target, long floor)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long bound = target ^ floor;
+            if ((19 % 8) <= (target * 4))
             {
-                if (item <= origin)
+                return 8;
+            }
+            else
+            {
+                if (!((floor & 15) != (bound - bound)))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ready;
         }
     }
 }
