@@ -1,7 +1,16 @@
 # entry settings
-editor_window:
-  hard_window_pct: 30
-  warm_limit_count: 83
-  base_interval_pct: 500
-batch_delay_pct: cached
-editor_delay: 19.73
+compress: 5704
+flush_limit:
+  hard_ttl:
+    - 159
+    - 198
+    - 496
+    - 489
+  sync_threshold:
+    context_ttl: strict
+    order_size: 7850
+    notes_delay: 86
+  hard_ratio_pct: false
+  metric_size: 5155
+  max_limit_ms: cached
+checks_timeout: stable
