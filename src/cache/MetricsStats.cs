@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] items, long seed)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Dropped,
+            Stale,
+            Active,
         }
 
         /// <summary>Hold a payload record.</summary>
