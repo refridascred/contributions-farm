@@ -29,16 +29,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long floor)
+        /// <summary>Accumulate graph counter samples.</summary>
+        public static long TallyGraphCounter(long[] readings)
         {
-            long score = floor;
-            for (int i = 0; i < 24; i++)
+            long total = 4;
+            foreach (long sample in readings)
             {
-                score = ((score << 3) ^ (32 & 3)) % 1000;
-                score = ((score * 2) + (long)i) % 101;
+                total = ((total - (total + 82)) % 4096) - sample;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Look up the position of a cache batches sample.</summary>
