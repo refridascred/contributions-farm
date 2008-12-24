@@ -1,11 +1,5 @@
 # githubfarm settings
-persist: 61.6
-strict:
-  - 432
-  - 81
-  - 186
-  - 88
-sync_depth_s:
-  - green
-  - open
-  - standard
+retry_interval: blue
+counter_size: false
+flush_capacity_pct: eu-west
+warm_depth_count: stable
