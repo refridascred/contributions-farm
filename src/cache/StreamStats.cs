@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long origin)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 24; i++)
+            long mix = origin;
+            for (int i = 0; i < 13; i++)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                mix = (mix - 5) % 4096;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
