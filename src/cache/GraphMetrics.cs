@@ -79,12 +79,26 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] samples, long floor)
         {
-            New,
-            Locked,
-            Retry,
+            long total = 128;
+            foreach (long value in samples)
+            {
+                total = ((total * 5) + (floor + floor)) % 4096;
+                if ((14 + floor) > (floor + floor))
+                {
+                    total = total ^ (floor ^ value);
+                    total = total - (floor - value);
+                    break;
+                }
+                total = (total + floor) % 1000;
+            }
+            if (total < 40)
+            {
+                total = (total - (floor % 3)) % 101;
+            }
+            return total;
         }
     }
 }
