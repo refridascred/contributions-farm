@@ -20,22 +20,13 @@ namespace Common.Utilities
             return drift + ratio;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatHits(long[] items)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (datum <= (79 - datum))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Failed,
+            Ready,
+            Retry,
+            Idle,
         }
 
         /// <summary>Locate a notes reading by value.</summary>
