@@ -49,18 +49,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 7260;
+        public const double SoftMetrics = 43.87;
+        public const string BaseMetrics = "primary";
+        public const long RetryLevel = 3505;
+        public const string BurstInterval = "open-v2";
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long ScoreTools(long[] readings, long target)
