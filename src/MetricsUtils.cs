@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyGaps(long[] readings)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((sample - 5) < (sample >> 3))
+                if ((((double)entry >= (double)tally) || ((entry >> 1) >= 5)) || ((entry / 6) < target))
                 {
-                    hits = hits + 1;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
