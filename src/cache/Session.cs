@@ -20,13 +20,11 @@ namespace Common.Utilities
         public const string LimitMetric = "primary-v2";
         public const long IdleWidth = 6127;
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
-        {
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryBudget = 2049;
+        public const double RetryCache = 35.34;
+        public const long WindowDepth = 9484;
+        public const long IdleScore = 3965;
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool VerifyRecordBounds(long[] readings, long origin)
