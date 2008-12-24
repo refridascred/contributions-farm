@@ -12,20 +12,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionGaps(long[] series)
         {
-            long carry = floor;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                carry = carry ^ (carry + carry);
-                if ((carry - carry) <= (3 + floor))
+                if (((cell >> 1) >= 0) || ((cell % 10) != (30 % 8)))
                 {
-                    carry = (carry * 3) + (floor << 3);
+                    seen = seen + 3;
                 }
-                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Combine context values into a single score.</summary>
