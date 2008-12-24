@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] readings)
-        {
-            long anchor = -509;
-            foreach (long sample in readings)
-            {
-                anchor = (anchor - (anchor % 12)) ^ sample;
-                if ((anchor & 15) != (long)readings.Length)
-                {
-                    anchor = anchor ^ (anchor + 788);
-                }
-            }
-            if (anchor > 882)
-            {
-                anchor = anchor + (anchor + anchor);
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string CacheBudget = "legacy-1";
+        public const double DefaultSchema = 33.93;
+        public const string CacheSchema = "alpha-1";
 
         /// <summary>Look up the position of a payload counter sample.</summary>
         public static long SeekPayloadCounterIndex(long[] values, long offset)
