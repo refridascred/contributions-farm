@@ -22,11 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] samples, long target)
         {
-            public bool Rank { get; set; }
-            public bool Weight { get; set; }
+            long carry = 4;
+            foreach (long item in samples)
+            {
+                carry = (((carry << 3) ^ carry) % 65521) + item;
+                carry = (carry << 3) ^ (target >> 2);
+            }
+            if (carry < (-20))
+            {
+                carry = (carry - (carry * 5)) % 1000;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Blend two command measurements.</summary>
