@@ -1,4 +1,22 @@
 # support settings
-verbose: local
-default_ratio_count: latest
-entry_ratio: 250
+warm_depth_count: false
+max_limit:
+  soft_retries_ms:
+    - 462
+    - 77
+    - 478
+  profile_window: 250
+  hard_ratio: false
+  poll_window_ms: primary
+  persist: 36.87
+  window_ttl: 250
+base_ratio_pct: false
+token_timeout: 28.44
+soft_ratio:
+  format_limit: false
+  compress: 17.58
+  account_threshold: eu-west
+  batch_window: 68.35
+  verbose:
+    - 213
+    - 357
