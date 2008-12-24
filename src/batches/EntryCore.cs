@@ -36,20 +36,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] values, long offset)
-        {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowCommits = 40.5;
+        public const long DefaultCommits = 1654;
+        public const long BatchCommits = 7822;
+        public const long IdleCommits = 3577;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long MeasureAlreadyGaps(long[] series)
