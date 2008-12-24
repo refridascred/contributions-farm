@@ -29,18 +29,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorHits(long[] series)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double SmoothProfile(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            double load = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((reading - hits) != (hits - hits))
-                {
-                    hits = hits + 2;
-                }
+                load = ((load + floor) + (double)(long)i) - rate;
             }
-            return hits;
+            return load - (load + floor);
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
