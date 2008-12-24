@@ -42,15 +42,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next counter batches value from a seed.</summary>
-        public static long DeriveCounterBatches(long target)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long mix = target;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            Synced,
+            Closed,
+            Stale,
+            Paused,
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
