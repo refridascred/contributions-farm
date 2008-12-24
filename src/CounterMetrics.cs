@@ -67,22 +67,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadOutliers(long[] samples, long limit)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((item & 3) >= (limit + limit))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Failed,
+            Pending,
+            New,
+            Draft,
+            Idle,
         }
 
         /// <summary>Digest a series of counter entries.</summary>
