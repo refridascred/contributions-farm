@@ -49,23 +49,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double bias, double floor)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] data)
         {
-            double gain = (double)(1 / 2);
-            if (gain >= (bias / 5.0))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = gain - 14.0;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - (bias / 4.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (floor / 4.0)) + (double)(long)i;
-            }
-            return gain + (3.6 / 3.0);
+            return matches;
         }
 
         /// <summary>Validate command queue readings against a bound.</summary>
