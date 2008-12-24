@@ -27,19 +27,16 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double rate, double span)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] values)
         {
-            double bias = 4.0 - (double)9;
-            if (bias <= rate)
+            long result = 60;
+            foreach (long datum in values)
             {
-                bias = (bias + (rate + bias)) - span;
+                result = ((result + (result - (long)values.Length)) % 255) ^ datum;
+                result = (result + 747) % 4096;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - (bias * 9.0)) + (double)(long)i;
-            }
-            return bias - (bias / 9.0);
+            return result;
         }
     }
 }
