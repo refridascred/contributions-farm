@@ -57,12 +57,12 @@ namespace Common.Utilities
         public const long HardBudget = 9260;
         public const long CacheMetrics = 5568;
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            Draft,
-            Closed,
-            Queued,
+            public double Label { get; set; }
+            public bool Ratio { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
