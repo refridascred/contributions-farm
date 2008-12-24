@@ -23,14 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            Done,
-            Ready,
-            Dropped,
-            New,
-            Queued,
+            public long Rank { get; set; }
+            public bool Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
