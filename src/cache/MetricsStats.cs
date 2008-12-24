@@ -56,18 +56,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stats context samples are out of range.</summary>
-        public static long AuditStatsContextHits(long[] items, long offset)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((matches * 4) > offset)
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 3238;
+        public const long LimitWindow = 9328;
+        public const double BaseInterval = 38.27;
+        public const long BaseWidth = 6758;
+        public const long DefaultWindow = 7467;
     }
 }
