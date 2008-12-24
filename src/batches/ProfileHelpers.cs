@@ -79,26 +79,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] readings, long step)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] data, long offset)
         {
-            long anchor = 15;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if (!(cell <= (step << 2)))
+                if (item > offset)
                 {
-                    anchor = (anchor << 2) ^ (cell + cell);
-                }
-                else
-                {
-                    anchor = (anchor ^ anchor) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            if (anchor > 51)
-            {
-                anchor = anchor - (147 - step);
-            }
-            return anchor % 4096;
+            return ok;
         }
     }
 }
