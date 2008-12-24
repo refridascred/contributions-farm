@@ -13,19 +13,24 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] values, long bound)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long step)
         {
-            long mark = 708;
-            foreach (long datum in values)
+            long anchor = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)mark != (8.13 / 7.0))
+                if (!((double)anchor >= (0.6 + 1.73)))
                 {
-                    mark = (mark + (bound ^ datum)) % 97;
+                    anchor = anchor ^ (anchor << 3);
                 }
-                mark = mark ^ 2;
+                anchor = (anchor ^ (anchor + anchor)) % 4096;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    anchor = (anchor + (long)i) + (long)i2;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
