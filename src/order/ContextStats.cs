@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const double DefaultCache = 43.61;
         public const double BaseLevel = 25.12;
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] levels)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (!(((count << 2) <= 6) && ((value - count) < (399 + value))))
+                if ((((seen + (-8)) == (bound >> 2)) && ((item - seen) <= (item * 2))) || (((seen + seen) <= (item - 950)) || ((bound - item) == (bound + item))))
                 {
-                    count = count + 3;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
