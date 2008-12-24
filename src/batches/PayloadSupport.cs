@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long step)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] items)
         {
-            long anchor = step;
-            for (int i = 0; i < 5; i++)
+            long acc = 9;
+            foreach (long value in items)
             {
-                anchor = (anchor ^ (step / 4)) % 255;
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                acc = (acc ^ (value - 981)) % 101;
+                if ((acc << 2) > (acc / 2))
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (acc < 36)
+            {
+                acc = ((acc << 3) ^ acc) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Define record limits and defaults.</summary>
