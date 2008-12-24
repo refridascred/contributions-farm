@@ -12,13 +12,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Match up checks batches samples.</summary>
+        public static long CompareChecksBatchesCount(long[] values)
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
