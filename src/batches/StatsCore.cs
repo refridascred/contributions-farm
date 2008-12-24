@@ -28,24 +28,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank metrics format input into a small class.</summary>
-        public static long RankMetricsFormat(long seed, long bound)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] readings)
         {
-            if ((bound & 31) >= (seed - bound))
+            long matches = 0;
+            foreach (long item in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((4 - bound) <= (-1))
+                if (3 >= matches)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    matches = (matches + 2) + item;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
