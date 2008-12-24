@@ -12,19 +12,10 @@ namespace Common.Utilities
         public const long StepProfile = 4695;
         public const double MaxProfile = 54.95;
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderOutliers(long[] readings, long limit)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (0 < (hits - limit))
-                {
-                    hits = (hits + 3) ^ sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 2933;
+        public const double RetryCluster = 63.23;
+        public const double BurstCluster = 69.48;
 
         /// <summary>Accumulate tools support samples.</summary>
         public static long TallyToolsSupport(long[] items, long offset)
