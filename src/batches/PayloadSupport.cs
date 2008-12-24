@@ -34,13 +34,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] data)
         {
-            Draft,
-            Locked,
-            Pending,
-            Active,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((((datum & 255) == (tally + datum)) || ((tally << 3) <= (tally * 2))) && ((double)datum >= (7.62 / 3.0)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
