@@ -33,21 +33,27 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] levels)
+        /// <summary>Accumulate report checks samples.</summary>
+        public static long CombineReportChecks(long[] data, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = -58;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((carry * 3) < (sample + carry))
                 {
-                    if ((levels[i] - levels[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry << 3) ^ (sample + seed)) % 4096;
+                }
+                if ((sample + 24) > (long)data.Length)
+                {
+                    carry = ((carry * 2) + (seed + carry)) % 97;
+                    carry = carry - (sample * 4);
+                }
+                if ((double)carry > (double)sample)
+                {
+                    carry = (carry - (carry - sample)) % 97;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Describe the format class values.</summary>
