@@ -12,13 +12,11 @@ namespace Common.Utilities
             return (load + load) + offset;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            Pending,
-            Queued,
-            Draft,
-            Retry,
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
