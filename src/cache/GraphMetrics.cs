@@ -27,12 +27,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsMatches(long[] items)
         {
-            public double Label { get; set; }
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((matches >> 1) <= (item - (long)items.Length))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the tools phase values.</summary>
