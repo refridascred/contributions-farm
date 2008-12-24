@@ -17,18 +17,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountOutliers(long[] series)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((matches & 255) <= (item % 3))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the support mode values.</summary>
