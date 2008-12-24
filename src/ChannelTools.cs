@@ -20,24 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long seed, long target)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            if ((seed > (seed + seed)) || (seed <= (seed + seed)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (target <= (target * 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Adjust a editor reading.</summary>
