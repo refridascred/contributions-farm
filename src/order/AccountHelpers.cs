@@ -84,19 +84,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] series)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] samples)
         {
             long hits = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample + sample) < (sample + hits))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] - samples[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
