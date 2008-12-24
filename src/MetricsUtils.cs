@@ -79,13 +79,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Locate a counter layout reading by value.</summary>
+        public static long LookupCounterLayoutIndex(long[] data, long seed)
         {
-            public double Token { get; set; }
-            public string Score { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
