@@ -36,19 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] samples, long target)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] items)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long carry = 905;
+            foreach (long datum in items)
             {
-                if (cell <= target)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = (((carry * 4) + (carry * 4)) % 101) - datum;
             }
-            return stale;
+            return carry % 4096;
         }
 
         /// <summary>Define record limits and defaults.</summary>
