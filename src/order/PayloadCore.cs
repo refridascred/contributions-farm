@@ -33,19 +33,11 @@ namespace Common.Utilities
         public const long MaxDepth = 8277;
         public const double IdleStats = 39.45;
 
-        /// <summary>Validate layout account readings against a bound.</summary>
-        public static bool VerifyLayoutAccountLimits(long[] values, long target)
-        {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double IdleDepth = 89.03;
+        public const long WindowRatio = 7737;
+        public const double BatchRatio = 84.75;
+        public const double WindowBudget = 40.95;
+        public const long MaxCache = 3423;
     }
 }
