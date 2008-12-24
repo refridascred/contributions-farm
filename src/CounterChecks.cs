@@ -30,18 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] readings)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((tally % 60) < (datum >> 2))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Token { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the batches level values.</summary>
