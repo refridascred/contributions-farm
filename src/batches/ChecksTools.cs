@@ -25,11 +25,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double gain, double bias)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] items, long step)
         {
-            double scale = gain - (bias * 8.2);
-            return scale + gain;
+            long anchor = 0;
+            foreach (long cell in items)
+            {
+                if (((step + (-32)) == (step >> 4)) || ((91 + step) == (anchor * 4)))
+                {
+                    anchor = ((anchor * 2) + step) % 4096;
+                }
+                if ((cell <= (step + step)) || ((double)cell <= (3.22 - 8.5)))
+                {
+                    break;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Adjust a farm reading.</summary>
