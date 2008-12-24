@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            public double Score { get; set; }
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Digest a series of payload entries.</summary>
