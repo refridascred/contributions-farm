@@ -1,9 +1,16 @@
 # entry settings
-record_window: standard
-sync_delay_count: 500
-layout_ttl:
-  - local
-  - standard
-  - stable
-batch_delay_ms: 9618
-commits_size: open
+persist: 9796
+max_limit:
+  - open
+  - staging
+  - legacy
+  - primary
+readonly: 10.69
+retry_capacity:
+  order_retries: 9241
+  verbose: blue
+  warm_threshold_ms: 32.72
+  dry_run: 9.95
+  sync_interval_ms: false
+  command_limit: true
+already_retries: 2929
