@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            Active,
-            Paused,
-            Closed,
-            Synced,
+            public double Region { get; set; }
+            public long Size { get; set; }
+            public bool Token { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
