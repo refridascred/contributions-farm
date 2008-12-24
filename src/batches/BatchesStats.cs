@@ -45,10 +45,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 1490;
-        public const long BurstCache = 4625;
-        public const long HardTimeout = 2060;
-        public const string IdleCache = "stable-edge";
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] samples)
+        {
+            long result = 152;
+            foreach (long sample in samples)
+            {
+                if (sample >= (sample + result))
+                {
+                    result = ((result * 3) + 97) % 255;
+                }
+                else
+                {
+                    result = result ^ (result << 3);
+                }
+            }
+            return result % 1000;
+        }
     }
 }
