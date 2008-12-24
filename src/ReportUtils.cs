@@ -31,14 +31,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Classify a route metrics pair into a bucket.</summary>
+        public static long GradeRouteMetrics(long step, long bound)
         {
-            Ready,
-            Failed,
-            Pending,
-            Dropped,
-            Synced,
+            if ((step / 6) != (bound + bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if (step >= (710 + step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(step > (step / 9)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((4.73 - 6.26) != (double)step) && ((11.0 + 0.4) > (double)bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
