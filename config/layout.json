@@ -1,8 +1,6 @@
 {
-  "verbose": 3724,
-  "notes_window": "blue",
-  "default_ttl_ms": 500,
-  "stream_ratio": 42.4,
-  "burst_window_count": "legacy",
-  "base_delay": 1024
+  "buffer_ttl": 250,
+  "enabled": [428, 154],
+  "batch_ratio_count": "staging",
+  "persist": 20.76
 }
