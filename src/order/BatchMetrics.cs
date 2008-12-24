@@ -36,20 +36,18 @@ namespace Common.Utilities
             return weight - (gain * 5.0);
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long origin)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] series, long seed)
         {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
+            long carry = 186;
+            foreach (long entry in series)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (((carry - entry) >= (seed / 9)) && ((entry - seed) <= entry))
                 {
-                    total = ((total ^ ((long)i + origin)) % 101) ^ (long)i2;
-                    total = ((total << 3) ^ (origin * 5)) % 255;
+                    carry = ((carry * 3) + (203 % 5)) % 255;
                 }
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            return carry % 1000;
         }
 
         /// <summary>Blend two counter measurements.</summary>
