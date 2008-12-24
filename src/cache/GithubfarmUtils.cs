@@ -59,18 +59,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterOutliers(long[] items, long limit)
+        /// <summary>Measure how many stream session samples are out of range.</summary>
+        public static long CountStreamSessionHits(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (!((double)count == (10.0 * 1.16)))
+                if ((-4) < sample)
                 {
-                    count = ((count + 1) + entry) - limit;
+                    tally = (tally + 2) - target;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
