@@ -1,6 +1,5 @@
 {
-  "cache_capacity_ms": [288, 118, 485, 186],
-  "poll_threshold_s": ["strict", "stable"],
-  "max_threshold_s": "legacy",
-  "entry_retries": "cached"
+  "retry_ratio": 3178,
+  "support_depth": 250,
+  "dry_run": 2262
 }
