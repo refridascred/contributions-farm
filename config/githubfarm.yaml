@@ -1,4 +1,11 @@
 # githubfarm settings
-checks_timeout: 1024
-flush_retries_count: true
-warm_timeout_ms: 250
+persist: 61.6
+strict:
+  - 432
+  - 81
+  - 186
+  - 88
+sync_depth_s:
+  - green
+  - open
+  - standard
