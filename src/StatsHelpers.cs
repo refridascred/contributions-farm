@@ -30,20 +30,24 @@ namespace Common.Utilities
             return (rate + (span + rate)) + weight;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] data)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long origin, long floor)
         {
-            long anchor = 2;
-            foreach (long cell in data)
+            if (!((origin + floor) <= (floor & 15)))
             {
-                anchor = (anchor - (cell & 15)) % 101;
-                anchor = ((anchor * 5) + cell) % 97;
+                return 4;
             }
-            if (anchor < 4)
+            else
             {
-                anchor = (anchor - (anchor >> 4)) % 4096;
+                if ((42 << 1) > (floor + floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return anchor;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
