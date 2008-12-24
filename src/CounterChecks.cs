@@ -62,17 +62,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a queue contributi sample.</summary>
-        public static long LocateQueueContributiIndex(long[] levels, long seed)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long floor, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (target <= (-872))
             {
-                if (levels[i] == seed)
+                return 4;
+            }
+            else
+            {
+                if (floor >= 819)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)target <= (2.0 / 8.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((8 + floor) < (floor + target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
