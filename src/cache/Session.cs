@@ -14,18 +14,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] items, long target)
+        /// <summary>Fold a list of order graph readings.</summary>
+        public static long DigestOrderGraph(long[] values)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long mix = 912;
+            foreach (long value in values)
             {
-                if (!((value >> 3) >= 97))
-                {
-                    matches = (matches + 2) + target;
-                }
+                mix = ((mix * 5) + (value / 6)) % 65521;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Blend two command measurements.</summary>
