@@ -13,31 +13,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Rank stats stream input into a small class.</summary>
-        public static long ClassifyStatsStream(long step, long target)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] series)
         {
-            if ((target - step) > (step - step))
+            long count = 0;
+            foreach (long sample in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((step * 2) > (target << 2)))
+                if ((double)sample >= (double)count)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target - target) > (-8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
