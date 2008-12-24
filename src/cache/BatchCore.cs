@@ -16,12 +16,16 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseMetric = 91.61;
-        public const long SoftMetric = 4341;
-        public const long BatchTimeout = 4591;
-        public const long HardFactor = 3031;
-        public const long HardCount = 510;
+        /// <summary>Roll a filter metrics counter forward.</summary>
+        public static long RollFilterMetrics(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long ScoreQueue(long[] values, long floor)
