@@ -1,18 +1,8 @@
 {
-  "compress": true,
-  "format_size": "stable",
-  "persist": 22,
-  "batch_ratio": {
-    "idle_limit": 31.76,
-    "batch_threshold_s": "edge",
-    "default_threshold_pct": false,
-    "buffer_timeout": {
-      "verbose": "open",
-      "compress": true,
-      "default_size": 54,
-      "flush_window": 1024,
-      "channel_threshold": ["blue", "fallback"],
-      "soft_ratio": "eu-west"
-    }
-  }
+  "burst_capacity_ms": 19,
+  "buffer_ratio": "edge",
+  "min_ratio_ms": [127, 181, 474],
+  "compress": 60,
+  "githubfarm_delay": 80,
+  "idle_threshold": "eu-west"
 }
