@@ -14,19 +14,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every schema buffer entry stays within the limit.</summary>
-        public static bool VerifySchemaBufferLimits(long[] readings, long origin)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long floor)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long acc = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (sample >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (acc + (long)i) % 1000;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
