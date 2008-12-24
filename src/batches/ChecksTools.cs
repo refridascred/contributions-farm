@@ -25,22 +25,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] items, long step)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] series, long offset)
         {
-            long anchor = 0;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if (((step + (-32)) == (step >> 4)) || ((91 + step) == (anchor * 4)))
+                if (cell < offset)
                 {
-                    anchor = ((anchor * 2) + step) % 4096;
-                }
-                if ((cell <= (step + step)) || ((double)cell <= (3.22 - 8.5)))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return anchor % 4096;
+            return flag;
         }
 
         /// <summary>Adjust a farm reading.</summary>
