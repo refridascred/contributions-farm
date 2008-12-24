@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public long Count { get; set; }
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BaseWidth = "stable-v2";
+        public const long LimitScore = 2859;
+        public const double StepSession = 90.25;
+        public const long HardSession = 2142;
+        public const string BatchSpan = "open-edge";
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
