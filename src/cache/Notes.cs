@@ -18,12 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long bound, long target)
         {
-            public bool Weight { get; set; }
-            public long Count { get; set; }
-            public long Region { get; set; }
+            long next = bound - target;
+            if ((bound - target) > next)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target - next) <= bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound + bound) > (bound & 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the already buffer series from a seed.</summary>
