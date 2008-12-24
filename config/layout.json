@@ -1,6 +1,8 @@
 {
-  "compress": "fallback",
-  "retry_delay": 94.0,
-  "soft_interval_count": 8180,
-  "default_limit": 54
+  "verbose": 3724,
+  "notes_window": "blue",
+  "default_ttl_ms": 500,
+  "stream_ratio": 42.4,
+  "burst_window_count": "legacy",
+  "base_delay": 1024
 }
