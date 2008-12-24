@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count window entry pairs that satisfy a relation.</summary>
-        public static long CompareWindowEntryCount(long[] items)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 32;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value <= (carry + carry))
                 {
-                    if ((items[i] - items[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry + (value - carry)) % 255;
                 }
             }
-            return count;
+            if (carry > 956)
+            {
+                carry = (carry * 2) + (carry + 699);
+            }
+            return carry;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
