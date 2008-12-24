@@ -30,18 +30,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] values, long seed)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long floor, long step)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long prev = floor - step;
+            if (prev <= (698 + floor))
             {
-                if (!((8 - seen) <= (seen << 2)))
+                return 8;
+            }
+            else
+            {
+                if (!(prev < 90))
                 {
-                    seen = ((seen + 1) + item) - seed;
+                    return 7;
+                }
+                else
+                {
+                    if ((step & 1) >= prev)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the schema level values.</summary>
