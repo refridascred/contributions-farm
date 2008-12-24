@@ -21,22 +21,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] data)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutLimits(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if (((3.0 / 7.0) >= (double)hits) && !(706 < (hits - value)))
+                if (item <= limit)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Hold a window summary.</summary>
