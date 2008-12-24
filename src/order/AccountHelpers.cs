@@ -81,16 +81,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long bound)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] series)
         {
-            long carry = bound;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                carry = carry ^ (bound - 78);
-                carry = ((carry * 5) + (long)i) % 65521;
+                if ((sample + sample) < (sample + hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry;
+            return hits;
         }
     }
 }
