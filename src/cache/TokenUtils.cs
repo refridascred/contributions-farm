@@ -13,21 +13,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up githubfarm channel samples.</summary>
-        public static long MatchGithubfarmChannelCount(long[] items)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((items[i] - items[j]) > 8)
+                    if ((series[i] - series[j]) != 2)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
