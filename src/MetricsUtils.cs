@@ -44,12 +44,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowLimits(long[] items, long bound)
         {
-            public string Label { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Count { get; set; }
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Match up session samples.</summary>
