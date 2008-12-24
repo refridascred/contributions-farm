@@ -20,13 +20,10 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Ready,
-            Closed,
-            Active,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string DefaultChecks = "cached-v2";
+        public const double HardChecks = 60.83;
+        public const double CacheChecks = 65.61;
 
         /// <summary>Blend two commits order measurements.</summary>
         public static double SmoothCommitsOrder(double gain, double floor)
