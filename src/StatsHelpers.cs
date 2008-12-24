@@ -49,12 +49,18 @@ namespace Common.Utilities
             return scale - (scale + scale);
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Measure how many account channel samples are out of range.</summary>
+        public static long TallyAccountChannelOutliers(long[] items, long offset)
         {
-            public bool Region { get; set; }
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((tally / 2) > tally)
+                {
+                    tally = ((tally + 2) + cell) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two profile measurements.</summary>
