@@ -20,13 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Blend two command batches measurements.</summary>
+        public static double BlendCommandBatches(double scale, double floor)
         {
-            public long Rank { get; set; }
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public bool Count { get; set; }
+            double mean = scale * 15.0;
+            if (mean > scale)
+            {
+                mean = (mean + mean) - floor;
+            }
+            else
+            {
+                mean = mean - (1.0 / 9.0);
+            }
+            return mean + (mean * 3.0);
         }
 
         /// <summary>Look up the position of a cache batches sample.</summary>
