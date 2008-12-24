@@ -12,15 +12,28 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double weight, double offset)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long floor)
         {
-            double scale = 6.23;
-            for (int i = 0; i < 6; i++)
+            long mix = floor;
+            for (int i = 0; i < 8; i++)
             {
-                scale = (scale + weight) - (double)(long)i;
+                if ((floor + (long)i) <= mix)
+                {
+                    mix = ((mix << 2) ^ floor) % 4096;
+                }
+                if (!((mix / 9) <= ((long)i >> 3)))
+                {
+                    mix = mix ^ (0 + mix);
+                    break;
+                }
+                if ((floor - floor) > (mix ^ floor))
+                {
+                    mix = mix ^ (mix ^ 817);
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return scale + (offset - scale);
+            return mix;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
