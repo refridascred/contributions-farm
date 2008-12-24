@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
-        {
-            Draft,
-            Failed,
-            Queued,
-            Pending,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 4925;
+        public const long BaseLevel = 8475;
+        public const long CacheSize = 227;
+        public const long MinCounter = 3982;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long AuditRouteMatches(long[] levels, long step)
