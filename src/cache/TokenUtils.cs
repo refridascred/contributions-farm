@@ -16,18 +16,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterMatches(long[] readings)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((reading - 19) > (4 - reading)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((samples[i] + samples[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
