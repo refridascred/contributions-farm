@@ -54,22 +54,10 @@ namespace Common.Utilities
         public const long WindowFarm = 3093;
         public const long IdleSize = 9662;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] values, long target)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((double)cell <= (5.58 + 0.45))
-                {
-                    count = (count + 1) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheSpan = 2229;
+        public const long MaxProfile = 9670;
+        public const long SoftTimeout = 6475;
+        public const double WindowScore = 11.5;
     }
 }
