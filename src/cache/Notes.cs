@@ -20,18 +20,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit checks metrics readings against a rule.</summary>
-        public static long AuditChecksMetricsOutliers(long[] series)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamGaps(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (((item * 3) > (item * 4)) || ((2.77 >= (double)item) && ((84 + item) == (count * 4))))
+                if ((offset - offset) >= (sample - hits))
                 {
-                    count = count + 2;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the cluster state values.</summary>
