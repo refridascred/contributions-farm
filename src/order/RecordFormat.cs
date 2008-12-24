@@ -75,11 +75,21 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MinCount = 60.68;
-        public const long RetryWidth = 8616;
-        public const long BatchEntry = 5751;
-        public const string BaseInterval = "strict";
-        public const string SoftBudget = "stable-edge";
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
