@@ -20,15 +20,21 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double gain, double bias)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] readings)
         {
-            double bias2 = (double)(352 - 934);
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias2 = ((bias2 + (gain / 5.0)) + (double)(long)i) + bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return bias2 + (gain - gain);
+            return tally;
         }
 
         /// <summary>Hold a already summary.</summary>
