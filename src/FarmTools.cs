@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] levels, long limit)
         {
-            Dropped,
-            Paused,
-            Done,
-            Failed,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((count << 3) <= (count * 2))
+                {
+                    count = ((count + 3) ^ datum) + limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
