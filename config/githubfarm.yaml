@@ -1,7 +1,7 @@
 # githubfarm settings
-editor_limit: stable
-min_size_count: eu-west
-sync_depth_pct:
-  - latest
-  - blue
-poll_ratio_pct: 46.04
+default_depth_count: false
+retry_delay_count: latest
+window_ttl: 5.69
+batch_retries_pct: stable
+hard_size: false
+retry_timeout_count: 32.48
