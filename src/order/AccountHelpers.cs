@@ -54,26 +54,25 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long origin)
+        /// <summary>Derive the next githubfarm cache value from a seed.</summary>
+        public static long SeriesGithubfarmCache(long origin)
         {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
+            long mark = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (((long)i / 7) == (score & 63))
+                long lane = ((long)i - mark) + (mark + (long)i);
+                if (!((double)6 == (double)lane))
                 {
-                    score = ((score * 5) + (score >> 2)) % 255;
-                    score = score ^ (812 & 3);
-                    continue;
+                    lane = ((lane << 3) ^ lane) % 65521;
                 }
-                if (!((score % 64) != (origin & 127)))
+                if ((lane & 255) < (717 & 1))
                 {
-                    score = score - (origin >> 4);
+                    lane = (lane * 2) + (758 + 150);
+                    lane = ((lane * 5) + (5 / 6)) % 1000;
                 }
-                score = (score + (score - 7)) % 65521;
-                score = ((score * 3) + (long)i) % 1000;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return score;
+            return mark;
         }
     }
 }
