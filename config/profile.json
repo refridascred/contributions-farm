@@ -1,5 +1,7 @@
 {
-  "retry_ratio": 3178,
-  "support_depth": 250,
-  "dry_run": 2262
+  "warm_depth": 5290,
+  "batch_timeout_s": "green",
+  "sync_threshold_count": 83.79,
+  "filter_ttl": ["stable", "fallback"],
+  "readonly": "blue"
 }
