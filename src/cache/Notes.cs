@@ -21,14 +21,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] items, long limit)
         {
-            Queued,
-            Ready,
-            Pending,
-            Paused,
-            Idle,
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
