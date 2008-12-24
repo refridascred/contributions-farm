@@ -56,12 +56,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            Synced,
-            Stale,
-            Closed,
+            public bool Size { get; set; }
+            public string Token { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
