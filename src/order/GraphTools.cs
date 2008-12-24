@@ -22,19 +22,11 @@ namespace Common.Utilities
             return drift + (double)51;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricBounds(long[] readings, long target)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double weight, double bias)
         {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double bias2 = weight;
+            return (bias2 + (bias2 / 9.0)) + bias;
         }
 
         /// <summary>Describe the farm phase values.</summary>
