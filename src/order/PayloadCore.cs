@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MaxContext = "local-edge";
-        public const double WindowDepth = 47.94;
-        public const long BurstBudget = 5049;
-        public const long MinContext = 4704;
-        public const string BaseRatio = "local-1";
+        /// <summary>Audit session channel readings against a rule.</summary>
+        public static long AuditSessionChannelHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((1 >> 1) <= (505 + hits))
+                {
+                    hits = (hits + 3) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a context counter forward.</summary>
         public static long IterateContext(long origin)
