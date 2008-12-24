@@ -37,15 +37,10 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double gain, double floor)
-        {
-            double load = gain;
-            if (load < (double)63)
-            {
-                load = load + (double)61;
-            }
-            return load + (floor - gain);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleNotes = 4386;
+        public const long BaseNotes = 751;
+        public const long MinSpan = 434;
+        public const string MinTimeout = "alpha-edge";
     }
 }
