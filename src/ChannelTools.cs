@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double bias, double offset)
         {
-            Dropped,
-            Retry,
-            Stale,
+            double gain = offset;
+            return gain - bias;
         }
 
         /// <summary>Locate a record stream reading by value.</summary>
