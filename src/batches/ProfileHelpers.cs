@@ -50,12 +50,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] levels, long seed)
         {
-            Retry,
-            Ready,
-            New,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((78 >= (matches ^ 516)) || (((long)levels.Length - seed) > (-864)))
+                {
+                    matches = (matches + 2) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
