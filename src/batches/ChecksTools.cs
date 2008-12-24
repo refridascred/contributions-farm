@@ -47,23 +47,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double bias, double bias2)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] series)
         {
-            double mean = (double)((-69) + 875);
-            if (mean > 7.6)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                mean = (mean - bias) + bias2;
+                if (!(((3.8 * 9.4) < (double)cell) && ((cell ^ tally) == (cell & 127))))
+                {
+                    tally = tally + 3;
+                }
             }
-            else
-            {
-                mean = mean + (6.45 * 5.4);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (mean / 8.0)) + (double)(long)i;
-            }
-            return mean - mean;
+            return tally;
         }
     }
 }
