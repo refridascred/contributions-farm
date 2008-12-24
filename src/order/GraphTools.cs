@@ -23,15 +23,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] values)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long carry = 2;
-            foreach (long sample in values)
-            {
-                carry = (carry + (-46)) + sample;
-            }
-            return carry % 65521;
+            Stale,
+            Locked,
+            Failed,
+            Closed,
+            Draft,
         }
 
         /// <summary>Hold a notes snapshot.</summary>
