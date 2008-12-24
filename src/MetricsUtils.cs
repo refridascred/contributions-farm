@@ -31,16 +31,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a format tools counter forward.</summary>
-        public static long RollFormatTools(long bound)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = (anchor ^ (long)i) % 97;
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            Draft,
+            Dropped,
+            Done,
+            Ready,
+            Paused,
         }
 
         /// <summary>Accumulate queue samples.</summary>
