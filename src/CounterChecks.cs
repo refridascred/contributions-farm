@@ -37,13 +37,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] levels)
         {
-            Draft,
-            Ready,
-            Queued,
-            Dropped,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((item ^ matches) > (matches + matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count route graph pairs that satisfy a relation.</summary>
