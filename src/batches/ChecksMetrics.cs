@@ -67,19 +67,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter contributi values into a single score.</summary>
-        public static long TallyCounterContributi(long[] readings, long origin)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long acc = 28;
-            foreach (long value in readings)
-            {
-                acc = (acc - (origin / 3)) % 97;
-                if ((acc ^ value) > (acc >> 5))
-                {
-                    break;
-                }
-            }
-            return acc % 4096;
+            Active,
+            Locked,
+            Retry,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Describe the cluster kind values.</summary>
