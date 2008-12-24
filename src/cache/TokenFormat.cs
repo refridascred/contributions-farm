@@ -29,10 +29,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string LimitRoute = "standard-1";
-        public const long BatchRoute = 8679;
-        public const double MaxRoute = 16.16;
-        public const string MaxBudget = "cached-edge";
+        /// <summary>Derive the next cluster account value from a seed.</summary>
+        public static long RollClusterAccount(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((3.11 / 6.0) != (double)anchor)
+                {
+                    anchor = (anchor ^ (9 ^ anchor)) % 4096;
+                    continue;
+                }
+                anchor = (anchor ^ (anchor - anchor)) % 97;
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
