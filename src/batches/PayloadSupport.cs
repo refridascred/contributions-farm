@@ -22,18 +22,13 @@ namespace Common.Utilities
         public const double LimitRatio = 47.59;
         public const long DefaultRatio = 851;
 
-        /// <summary>Measure how many farm queue samples are out of range.</summary>
-        public static long CountFarmQueueGaps(long[] samples)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry >= (double)672)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Retry,
+            Paused,
+            Pending,
+            Idle,
         }
     }
 }
