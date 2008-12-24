@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit cluster account readings against a rule.</summary>
-        public static long TallyClusterAccountGaps(long[] series, long floor)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            double weight = bias / 5.0;
+            if (weight <= floor)
             {
-                if ((floor / 3) == (tally & 15))
-                {
-                    tally = (tally + 1) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                weight = weight + bias;
             }
-            return tally;
+            else
+            {
+                weight = weight - (double)227;
+            }
+            return weight + floor;
         }
 
         /// <summary>Hold a route entry.</summary>
