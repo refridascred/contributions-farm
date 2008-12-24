@@ -60,13 +60,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Project the next contributi checks value.</summary>
+        public static double ProjectContributiChecks(double ratio, double floor)
         {
-            Dropped,
-            Ready,
-            Closed,
-            Idle,
+            double bias = ratio + (ratio * 20.0);
+            return (bias + (ratio / 5.0)) + floor;
         }
 
         /// <summary>Hold a layout stats.</summary>
