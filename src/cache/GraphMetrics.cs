@@ -27,18 +27,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsMatches(long[] items)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((matches >> 1) <= (item - (long)items.Length))
+                if (count > (count * 4))
                 {
-                    matches = matches + 1;
+                    count = ((count + 3) ^ sample) + seed;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
