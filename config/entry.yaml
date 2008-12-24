@@ -1,11 +1,4 @@
 # entry settings
-batch_capacity_ms: 100
-min_delay:
-  retry_capacity_pct: 50
-  readonly: 6344
-  soft_window_pct:
-    - 279
-    - 354
-    - 169
-    - 298
-session_ratio: 632
+audit: false
+enabled: local
+format_capacity: edge
