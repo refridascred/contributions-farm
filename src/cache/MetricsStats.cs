@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            Queued,
-            Dropped,
-            Stale,
             Active,
+            Stale,
+            Retry,
+            Idle,
+            Pending,
         }
 
         /// <summary>Hold a payload record.</summary>
