@@ -73,12 +73,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] samples)
         {
-            Dropped,
-            Draft,
-            Ready,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
