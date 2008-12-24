@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long origin)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long anchor = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            Active,
+            Draft,
+            Dropped,
+            Retry,
+            Failed,
         }
 
         /// <summary>Define record limits and defaults.</summary>
