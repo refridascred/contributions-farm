@@ -1,11 +1,6 @@
 # entry settings
-sync_depth:
-  batch_capacity_s: false
-  batch_threshold_s: 542
-  layout_ratio: stable
-  base_depth_count: primary
-  stats_depth: 30
-  compress: 92.32
-hard_capacity: true
-warm_ratio_pct: 70.74
-base_retries_s: 60
+command_window: edge
+token_limit: 250
+sync_capacity_s: 60
+min_delay_pct: 2.75
+readonly: strict
