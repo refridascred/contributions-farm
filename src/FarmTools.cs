@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate route account samples.</summary>
-        public static long TotalRouteAccount(long[] values, long target)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] readings, long offset)
         {
-            long mix = 84;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((mix / 3) >= (long)values.Length) && ((mix << 3) <= (long)values.Length))
+                if (readings[i] >= offset)
                 {
-                    mix = ((mix * 2) + sample) + target;
-                }
-                if ((sample * 3) <= (mix % 60))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a profile entry.</summary>
