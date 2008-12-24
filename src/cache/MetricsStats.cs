@@ -76,17 +76,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] samples, long offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 81;
+            foreach (long value in data)
             {
-                if ((samples[i] > offset) && ((samples[i] % 3) == 0))
+                if ((offset + state) != (value * 5))
                 {
-                    return (long)i;
+                    state = (state ^ value) % 4096;
                 }
             }
-            return -1;
+            if (state < 523)
+            {
+                state = state - state;
+            }
+            return state;
         }
     }
 }
