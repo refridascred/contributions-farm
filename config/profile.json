@@ -1,15 +1,13 @@
 {
-  "flush_window_ms": 48,
-  "profile_ratio": {
-    "profile_delay": 62.82,
-    "retry_delay_ms": "green",
-    "batch_retries_s": ["blue", "latest", "staging", "staging"],
-    "commits_interval": 500,
-    "flush_depth_count": 1892,
-    "compress": 30
+  "soft_window_pct": 1200,
+  "soft_size": {
+    "soft_threshold": 41.61,
+    "enabled": 22.49,
+    "batch_depth_count": "staging",
+    "max_limit_count": "open"
   },
-  "githubfarm_depth": true,
-  "stream_capacity": true,
-  "min_capacity": "open",
-  "max_window_ms": 5876
+  "audit": 250,
+  "enabled": [475, 158],
+  "idle_depth": "eu-west",
+  "poll_capacity_ms": "cached"
 }
