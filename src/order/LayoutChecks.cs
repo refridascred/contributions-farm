@@ -87,19 +87,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] samples)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] series)
         {
-            long anchor = 39;
-            foreach (long value in samples)
+            long state = 921;
+            foreach (long value in series)
             {
-                anchor = anchor + (value * 2);
-                if (((value * 3) <= (anchor + anchor)) && (anchor <= value))
-                {
-                    anchor = ((anchor << 2) ^ (value >> 2)) % 97;
-                }
+                state = state ^ (value % 24);
             }
-            return anchor % 97;
+            return state % 4096;
         }
     }
 }
