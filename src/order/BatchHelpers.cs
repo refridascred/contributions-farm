@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            Dropped,
             Draft,
-            Done,
+            Dropped,
+            Idle,
+            Pending,
         }
 
         /// <summary>Hold a route record.</summary>
