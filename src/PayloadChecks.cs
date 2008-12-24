@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long step, long origin)
         {
-            Dropped,
-            Pending,
-            Failed,
+            long slot = step + origin;
+            if ((double)slot <= (11.0 - 4.81))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((49 > (step << 1)) || ((644 << 3) > (slot % 100)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((12.0 / 2.0) < (double)origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin + slot) <= (origin - 7))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
