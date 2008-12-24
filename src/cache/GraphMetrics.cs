@@ -45,22 +45,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueGaps(long[] samples)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((16 & 31) < (cell / 5))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            New,
+            Failed,
+            Paused,
+            Active,
         }
 
         /// <summary>Match up context samples.</summary>
