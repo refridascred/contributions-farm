@@ -1,19 +1,5 @@
 {
-  "batch_window": {
-    "soft_threshold_s": 58.45,
-    "max_ratio_count": {
-      "command_interval": [114, 72, 213],
-      "warm_depth_s": "cached",
-      "editor_ttl": "stable",
-      "batch_size_s": "local",
-      "cache_limit_s": "eu-west",
-      "idle_limit_ms": 8711
-    },
-    "flush_delay": 56.74,
-    "max_ratio": 98.04
-  },
-  "cache_interval_pct": false,
-  "strict": 9450,
-  "profile_limit": 18,
-  "min_threshold_pct": "fallback"
+  "base_ratio_ms": 250,
+  "batch_delay_pct": true,
+  "payload_threshold": 100
 }
