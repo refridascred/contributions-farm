@@ -49,11 +49,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double weight, double offset)
+        /// <summary>Derive the next token farm value from a seed.</summary>
+        public static long StepTokenFarm(long bound)
         {
-            double bias = (double)1 / 5.0;
-            return ((bias + (bias * 20.0)) + weight) + offset;
+            long state = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Match up commits samples.</summary>
