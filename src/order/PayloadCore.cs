@@ -47,12 +47,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] series)
         {
-            public string Label { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Total { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
