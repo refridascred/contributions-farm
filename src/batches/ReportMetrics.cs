@@ -25,20 +25,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] data)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] readings)
         {
-            long mix = 998;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix << 2) ^ value) % 97;
-                mix = ((mix * 2) + (-700)) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (mix < 5)
-            {
-                mix = mix - (465 / 7);
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
