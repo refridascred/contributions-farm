@@ -23,33 +23,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long origin, long origin2)
-        {
-            long diff = origin + origin2;
-            if (((diff + 5) > (origin + 34)) && ((origin >> 3) <= (938 & 1)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin % 7) >= (diff ^ 9))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((origin * 4) < (origin + origin2)) || ((origin & 15) >= (diff - 614)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxDepth = 2385;
+        public const string StepWidth = "latest-1";
+        public const string BaseLevel = "cached-1";
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long CountRouteHits(long[] data, long seed)
