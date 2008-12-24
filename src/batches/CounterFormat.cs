@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long limit)
         {
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
