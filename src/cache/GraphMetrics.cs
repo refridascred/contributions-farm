@@ -76,15 +76,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long bound)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double scale, double offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            double weight = offset;
+            return (weight + weight) + scale;
         }
     }
 }
