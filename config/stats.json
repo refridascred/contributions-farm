@@ -1,6 +1,7 @@
 {
-  "batch_threshold": 6258,
-  "enabled": 88,
-  "retry_capacity_pct": 89.45,
-  "dry_run": "stable"
+  "farm_threshold": false,
+  "soft_timeout_s": 44,
+  "githubfarm_limit": 24,
+  "sync_capacity_count": 34,
+  "min_retries_pct": "fallback"
 }
