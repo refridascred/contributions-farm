@@ -16,11 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double weight, double span)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            double drift = span / 5.0;
-            return (drift + drift) + weight;
+            Idle,
+            Done,
+            Closed,
+            Failed,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
