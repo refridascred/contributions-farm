@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm support helpers.</summary>
     public static class FarmSupport
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] items, long seed)
+        /// <summary>Count the report githubfarm entries that pass the check.</summary>
+        public static long TallyReportGithubfarmGaps(long[] levels, long target)
         {
-            long total = 5;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                total = ((total - (sample - 0)) % 97) - seed;
+                if (((-44) % 12) > cell)
+                {
+                    hits = (hits + 1) + target;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
