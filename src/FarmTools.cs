@@ -28,21 +28,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up farm metric samples.</summary>
-        public static long PairFarmMetricCount(long[] readings)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Queued,
+            Retry,
+            Paused,
+            Failed,
         }
     }
 }
