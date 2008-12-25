@@ -25,11 +25,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 793;
-        public const string CacheProfile = "open-1";
-        public const string BatchProfile = "local-1";
-        public const double SoftProfile = 54.05;
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == offset) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
