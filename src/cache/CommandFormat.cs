@@ -52,22 +52,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] items)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long carry = 3;
-            foreach (long value in items)
-            {
-                if (carry > (carry % 60))
-                {
-                    carry = ((carry * 4) + (carry ^ carry)) + value;
-                }
-            }
-            if (carry < 764)
-            {
-                carry = (carry + carry) % 255;
-            }
-            return carry;
+            public double Offset { get; set; }
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
