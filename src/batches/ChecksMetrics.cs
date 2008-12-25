@@ -20,13 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
-        {
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string HardContext = "legacy-1";
+        public const long IdleContext = 4334;
+        public const string WindowRatio = "strict-1";
+        public const long LimitSize = 971;
+        public const long BurstInterval = 4213;
 
         /// <summary>Accumulate farm samples.</summary>
         public static long ScoreFarm(long[] levels)
