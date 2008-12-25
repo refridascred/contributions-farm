@@ -16,15 +16,17 @@ namespace Common.Utilities
             return mean + (mean / 6.0);
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long origin)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] items, long step)
         {
-            long state = origin;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state * 2) + (long)i) % 65521;
+                if ((items[i] > step) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the format level values.</summary>
