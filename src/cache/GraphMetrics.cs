@@ -29,21 +29,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] series)
+        /// <summary>Validate commits graph readings against a bound.</summary>
+        public static bool VerifyCommitsGraphBounds(long[] values, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample > offset)
                 {
-                    if ((series[i] + series[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Project the next graph value.</summary>
