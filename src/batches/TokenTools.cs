@@ -30,14 +30,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Count the graph checks entries that pass the check.</summary>
+        public static long TallyGraphChecksHits(long[] readings, long bound)
         {
-            Locked,
-            Dropped,
-            Active,
-            Retry,
-            Stale,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((double)bound <= (double)hits)
+                {
+                    hits = (hits + 2) - value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
