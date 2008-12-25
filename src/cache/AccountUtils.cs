@@ -24,17 +24,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a cache batches sample.</summary>
-        public static long LookupCacheBatchesIndex(long[] levels, long floor)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Stamp { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
