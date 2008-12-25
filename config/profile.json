@@ -1,6 +1,18 @@
 {
-  "sync_threshold": 91.4,
-  "base_threshold": 100,
-  "burst_size_s": false,
-  "enabled": 250
+  "cache_ratio_pct": {
+    "base_size_ms": "cached",
+    "stream_size": "fallback",
+    "batch_depth": 8028,
+    "max_size_pct": [208, 136, 196, 460],
+    "max_delay": {
+      "poll_capacity": 500,
+      "buffer_ttl": ["fallback", "standard", "latest", "green"],
+      "persist": "open",
+      "metrics_threshold": 42
+    },
+    "retry_ttl_ms": 924
+  },
+  "dry_run": "latest",
+  "format_limit": ["edge", "strict", "open"],
+  "flush_limit": 24
 }
