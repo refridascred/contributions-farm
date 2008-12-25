@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a counter notes reading by value.</summary>
-        public static long SeekCounterNotesIndex(long[] items, long bound)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] levels, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] == bound)
+                if ((levels[i] <= bound) && ((levels[i] % 2) != 0))
                 {
                     return (long)i;
                 }
