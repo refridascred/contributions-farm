@@ -42,26 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema report samples.</summary>
-        public static long TallySchemaReport(long[] readings)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long score = 8;
-            foreach (long value in readings)
-            {
-                if ((value - value) <= score)
-                {
-                    score = (score + (score ^ score)) % 4096;
-                }
-                else
-                {
-                    score = (score - (score & 1)) % 1000;
-                }
-            }
-            if (score > (-759))
-            {
-                score = score ^ (score + 7);
-            }
-            return score;
+            public long Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a already summary.</summary>
