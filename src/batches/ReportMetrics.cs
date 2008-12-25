@@ -21,14 +21,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            Done,
-            Failed,
-            Draft,
-            Stale,
-            Retry,
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
