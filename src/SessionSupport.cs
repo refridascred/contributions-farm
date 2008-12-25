@@ -21,17 +21,23 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] levels, long floor)
+        /// <summary>Fold a list of session batch readings.</summary>
+        public static long FoldSessionBatch(long[] items, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 7;
+            foreach (long datum in items)
             {
-                if (levels[i] >= floor)
+                if (!(datum > bound))
                 {
-                    return (long)i;
+                    state = state - (3 % 5);
                 }
+                state = ((state * 4) + (datum / 3)) % 255;
             }
-            return -1;
+            if (state > 6)
+            {
+                state = (state << 3) ^ (bound >> 5);
+            }
+            return state % 4096;
         }
     }
 }
