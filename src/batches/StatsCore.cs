@@ -14,13 +14,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] samples, long bound)
         {
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
