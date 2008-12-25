@@ -1,4 +1,13 @@
 # githubfarm settings
-batch_retries: 60
-poll_window: true
-audit: 7461
+compress:
+  - 156
+  - 57
+tools_capacity:
+  batch_interval_s: 1024
+  strict: 60
+  poll_size_pct: 84
+  dry_run: open
+route_timeout: false
+report_limit: 0.49
+min_capacity_s: standard
+strict: 4990
