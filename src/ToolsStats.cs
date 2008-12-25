@@ -94,11 +94,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardSize = "staging-edge";
-        public const string LimitSupport = "fallback-v2";
-        public const double BatchSupport = 88.32;
-        public const double DefaultSupport = 13.9;
-        public const double MaxSupport = 4.44;
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
+        {
+            Stale,
+            Dropped,
+            Locked,
+            Pending,
+        }
     }
 }
