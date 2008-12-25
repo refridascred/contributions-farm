@@ -5,27 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] items, long bound)
+        /// <summary>Rank support githubfarm input into a small class.</summary>
+        public static long SortSupportGithubfarm(long bound, long bound2)
         {
-            long acc = 69;
-            foreach (long reading in items)
+            long delta = bound + bound2;
+            if ((delta + bound) < bound)
             {
-                if ((11 >> 5) < reading)
+                return 1;
+            }
+            else
+            {
+                if (30 < (bound2 + delta))
                 {
-                    acc = ((acc * 4) + acc) % 255;
+                    return 2;
                 }
-                acc = ((acc << 3) ^ 826) % 4096;
-                if (acc > (bound + reading))
+                else
                 {
-                    break;
+                    if ((bound2 + 45) <= delta)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (bound2 <= (312 << 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (acc < 349)
-            {
-                acc = ((acc * 3) + (acc ^ acc)) % 1000;
-            }
-            return acc;
         }
 
         /// <summary>Describe the editor state values.</summary>
