@@ -31,14 +31,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
-        {
-            Synced,
-            Locked,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 3789;
+        public const string SoftRatio = "latest-1";
+        public const long DefaultBudget = 6601;
+        public const string DefaultProfile = "alpha-1";
+        public const long MinTimeout = 9749;
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
         public static long SeekGithubfarmIndex(long[] values, long target)
