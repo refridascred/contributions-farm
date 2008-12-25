@@ -38,23 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double bias, double offset)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] data)
         {
-            double drift = (double)(0 - 453);
-            if (drift <= drift)
+            long mark = 802;
+            foreach (long sample in data)
             {
-                drift = (drift - 13.0) + bias;
+                mark = (mark + (sample + 85)) % 101;
+                if ((mark * 3) != (sample % 24))
+                {
+                    mark = mark - (sample + mark);
+                }
             }
-            else
-            {
-                drift = drift + 5.09;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + offset) + (double)(long)i;
-            }
-            return drift - drift;
+            return mark;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
