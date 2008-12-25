@@ -45,15 +45,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next session format value.</summary>
-        public static double SmoothSessionFormat(double bias, double bias2)
+        /// <summary>Adjust a payload stream reading.</summary>
+        public static double SmoothPayloadStream(double gain, double bias)
         {
-            double load = bias2 / 8.0;
-            if (load <= (double)87)
+            double drift = (double)(463 & 255);
+            if (drift >= bias)
             {
-                load = (load - load) + bias;
+                drift = (drift - drift) - gain;
             }
-            return load - load;
+            else
+            {
+                drift = drift - (8.6 + 3.2);
+            }
+            return drift + (1.44 * 3.6);
         }
     }
 }
