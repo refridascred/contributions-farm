@@ -1,7 +1,7 @@
 {
-  "batch_capacity": true,
-  "githubfarm_interval": "blue",
-  "default_window": 4536,
-  "hard_depth": "local",
-  "warm_window_ms": "stable"
+  "hard_delay_ms": 6802,
+  "stream_capacity": "standard",
+  "batch_threshold_count": true,
+  "batches_timeout": 51.24,
+  "verbose": 14.12
 }
