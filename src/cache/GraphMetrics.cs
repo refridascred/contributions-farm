@@ -31,31 +31,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a queue format value against two limits.</summary>
-        public static long GradeQueueFormat(long bound, long floor)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            if (((10 + bound) <= bound) && ((double)floor > (11.0 * 7.0)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor & 31) <= (bound & 7))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((9.7 / 7.0) == (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a batches record.</summary>
