@@ -38,16 +38,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the checks stream series from a seed.</summary>
-        public static long SeriesChecksStream(long floor)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double ratio, double span)
         {
-            long acc = floor;
-            for (int i = 0; i < 24; i++)
+            double ratio2 = ratio;
+            for (int i = 0; i < 8; i++)
             {
-                acc = ((acc * 4) + (floor & 127)) % 65521;
-                acc = ((acc * 5) + (long)i) % 1000;
+                ratio2 = (ratio2 + (span + ratio2)) + (double)(long)i;
             }
-            return acc;
+            return ratio2 + (span * 2.62);
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
