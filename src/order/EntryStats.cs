@@ -58,21 +58,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] values)
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double gain, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double scale = (gain + gain) / 5.0;
+            if (scale > (double)20)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = (scale - (1.8 * 14.0)) - floor;
             }
-            return tally;
+            return scale - gain;
         }
 
         /// <summary>Validate record cache readings against a bound.</summary>
