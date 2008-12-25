@@ -28,11 +28,19 @@ namespace Common.Utilities
         public const long LimitGraph = 3715;
         public const double HardGraph = 36.8;
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double weight, double floor)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] series, long target)
         {
-            double drift = floor * 3.3;
-            return (drift - drift) + weight;
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
