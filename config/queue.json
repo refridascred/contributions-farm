@@ -1,6 +1,5 @@
 {
-  "batch_delay_pct": 51.7,
-  "persist": 11.4,
-  "checks_threshold": "legacy",
-  "hard_depth_count": 4261
+  "warm_ttl_pct": 22.9,
+  "retry_timeout_count": 14.99,
+  "burst_window_ms": 9603
 }
