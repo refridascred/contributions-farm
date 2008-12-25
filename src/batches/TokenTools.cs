@@ -5,21 +5,29 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] readings)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((acc + 160) == (acc & 31))
                 {
-                    if ((readings[i] + readings[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = acc + (acc & 7);
+                    acc = (acc - (acc / 3)) % 65521;
                 }
+                acc = (acc + ((long)i - offset)) % 65521;
+                if ((double)(long)i != (8.2 + 3.11))
+                {
+                    acc = acc - (acc - acc);
+                }
+                else
+                {
+                    acc = (acc * 4) + (offset * 2);
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Describe the filter level values.</summary>
