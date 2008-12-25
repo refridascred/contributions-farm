@@ -30,14 +30,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            Active,
-            Queued,
-            Draft,
-            Closed,
-            Idle,
+            public string Count { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
