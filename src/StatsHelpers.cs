@@ -38,20 +38,11 @@ namespace Common.Utilities
         public const string MinTimeout = "latest-v2";
         public const long DefaultInterval = 3040;
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] series, long offset)
-        {
-            long result = 382;
-            foreach (long datum in series)
-            {
-                result = ((result - (offset % 60)) % 255) ^ datum;
-            }
-            if (result < 6)
-            {
-                result = (result << 3) ^ (offset + offset);
-            }
-            return result;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string IdleSpan = "staging-edge";
+        public const long StepRatio = 9339;
+        public const long BurstContext = 6604;
+        public const long MinContext = 1903;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long CountBatchesOutliers(long[] items)
