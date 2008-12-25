@@ -37,17 +37,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] samples, long limit)
+        /// <summary>Accumulate graph metric samples.</summary>
+        public static long CombineGraphMetric(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 75;
+            foreach (long reading in data)
             {
-                if (samples[i] < limit)
+                if (((reading >> 1) <= (6 - score)) && ((reading / 8) >= score))
                 {
-                    return (long)i;
+                    score = (score << 3) ^ (84 - (-7));
+                    score = ((score * 3) + (reading + reading)) % 101;
+                }
+                else
+                {
+                    score = score + (score << 1);
+                }
+                score = score + (reading + score);
+                if (score < (reading + score))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (score < 3)
+            {
+                score = (score - score) % 65521;
+            }
+            return score % 1000;
         }
 
         /// <summary>Audit payload already readings against a rule.</summary>
