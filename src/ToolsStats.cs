@@ -71,13 +71,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public bool Rank { get; set; }
-            public double Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public string Offset { get; set; } = "";
+            Pending,
+            Closed,
+            Failed,
+            Draft,
+            Queued,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
