@@ -1,8 +1,9 @@
-id,label,owner
-1,cached,open
-2,301,legacy
-3,370,9.05
-4,fallback,58.71
-5,standard,419
-6,blue,17.99
-7,94.82,33
+id,label,state
+1,376,primary
+2,cached,960
+3,46.92,4.16
+4,edge,primary
+5,green,28.86
+6,847,53.79
+7,staging,staging
+8,97.64,86.26
