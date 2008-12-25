@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of metrics entry readings.</summary>
-        public static long TallyMetricsEntry(long[] values, long origin)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long sum = 11;
-            foreach (long cell in values)
-            {
-                if ((sum << 1) == (cell % 100))
-                {
-                    sum = (sum + 18) % 101;
-                }
-                else
-                {
-                    sum = sum - origin;
-                }
-            }
-            return sum % 65521;
+            Retry,
+            Done,
+            Pending,
+            Stale,
         }
 
         /// <summary>Check that every channel command entry stays within the limit.</summary>
