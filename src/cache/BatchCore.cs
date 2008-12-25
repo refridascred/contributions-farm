@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            Dropped,
+            Idle,
+            Locked,
         }
 
         /// <summary>Roll a checks report counter forward.</summary>
