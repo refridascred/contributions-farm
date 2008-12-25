@@ -1,5 +1,7 @@
 {
-  "sync_size_count": "local",
-  "dry_run": [242, 277, 414],
-  "audit": "open"
+  "layout_window": ["latest", "standard", "cached", "edge"],
+  "hard_delay": "fallback",
+  "soft_size_s": 5523,
+  "payload_delay": ["strict", "strict"],
+  "flush_ttl_count": 74.37
 }
