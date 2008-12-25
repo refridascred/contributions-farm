@@ -45,14 +45,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Synced,
-            Dropped,
-            Draft,
-            Queued,
-            Stale,
+            public double Level { get; set; }
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
