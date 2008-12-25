@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double gain, double span)
+        /// <summary>Project the next checks farm value.</summary>
+        public static double ProjectChecksFarm(double weight, double span)
         {
-            double load = gain;
-            for (int i = 0; i < 8; i++)
+            double load = weight;
+            if (load > (load - weight))
             {
-                load = (load + 8.0) + (double)(long)i;
+                load = (load - (double)74) - span;
             }
-            return load - (span * 12.0);
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - 7.7) - (double)(long)i;
+            }
+            return load - weight;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
