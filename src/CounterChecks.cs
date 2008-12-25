@@ -61,19 +61,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double rate, double floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] readings)
         {
-            double ratio = (double)91 + (double)961;
-            if (ratio > (ratio * 1.6))
+            long seen = 0;
+            foreach (long value in readings)
             {
-                ratio = ((ratio - (double)279) - rate) + floor;
+                if (!((double)seen > (6.76 / 8.0)) && ((value << 3) < 8))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                ratio = ratio - (ratio / 8.0);
-            }
-            return ratio - (double)3;
+            return seen;
         }
     }
 }
