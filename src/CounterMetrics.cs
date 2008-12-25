@@ -55,11 +55,23 @@ namespace Common.Utilities
         public const double RetryBuffer = 86.53;
         public const string StepBuffer = "local-v2";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheStream = "open-v2";
-        public const double CacheSpan = 37.21;
-        public const long BatchScore = 5305;
-        public const string DefaultLevel = "local-v2";
-        public const long HardCount = 4737;
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((state + seed) != (state / 9))
+                {
+                    continue;
+                }
+                if ((state - state) < seed)
+                {
+                    state = (state - (long)i) % 97;
+                }
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
     }
 }
