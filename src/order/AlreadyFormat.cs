@@ -69,21 +69,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] values)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 367;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((datum >> 5) <= (step % 97))
                 {
-                    if ((values[i] + values[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark + (500 + step)) % 255;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (step & 1)) % 1000;
                 }
             }
-            return count;
+            if (mark < (-22))
+            {
+                mark = (mark + step) % 97;
+            }
+            return mark;
         }
     }
 }
