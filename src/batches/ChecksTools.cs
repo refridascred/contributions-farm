@@ -33,22 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine cache command values into a single score.</summary>
-        public static long TallyCacheCommand(long[] items, long limit)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] series, long origin)
         {
-            long score = -5;
-            foreach (long item in items)
+            long total = 387;
+            foreach (long reading in series)
             {
-                if ((double)limit != (2.0 - 6.0))
+                if (!((double)origin != (double)total))
                 {
-                    score = (score << 2) ^ score;
-                }
-                else
-                {
-                    score = score + item;
+                    total = ((total * 3) + (total + reading)) % 1000;
                 }
             }
-            return score;
+            if (total > 48)
+            {
+                total = (total ^ (total & 63)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Hold a metric options.</summary>
