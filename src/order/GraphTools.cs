@@ -52,12 +52,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseLevel = 27.09;
-        public const double StepCount = 35.69;
-        public const long IdleContributi = 5496;
-        public const long SoftContributi = 6501;
-        public const long MaxBudget = 3348;
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
+        {
+            Queued,
+            Pending,
+            New,
+            Done,
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double BaseCache = 57.41;
