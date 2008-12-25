@@ -1,5 +1,4 @@
 # githubfarm settings
-audit: 86
-persist: open
-min_retries: 49.52
-batch_capacity_pct: false
+channel_retries: 95
+sync_timeout: 4851
+retry_ttl_count: false
