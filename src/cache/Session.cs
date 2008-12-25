@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 7075;
-        public const long StepBatches = 494;
-        public const long BaseBatches = 1845;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading + (-88)) != (tally - tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long TotalSchema(long[] samples)
