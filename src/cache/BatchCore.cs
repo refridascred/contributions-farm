@@ -26,17 +26,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] readings, long seed)
+        /// <summary>Accumulate farm cache samples.</summary>
+        public static long TallyFarmCache(long[] levels, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 742;
+            foreach (long entry in levels)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 2) == 0))
+                if ((entry + bound) < ((-4) << 3))
                 {
-                    return (long)i;
+                    acc = ((acc << 2) ^ 64) % 1000;
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
