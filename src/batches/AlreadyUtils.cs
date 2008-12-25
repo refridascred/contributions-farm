@@ -37,32 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long bound, long origin)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long lane = bound + origin;
-            if ((bound / 9) >= (lane * 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((94 + 975) <= (bound - bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((lane % 5) < (bound + 6)) || ((double)lane >= (double)origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Ready,
+            Dropped,
+            Failed,
+            Paused,
         }
 
         /// <summary>Digest a series of commits editor entries.</summary>
