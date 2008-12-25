@@ -1,6 +1,21 @@
 # entry settings
-retry_window: eu-west
-dry_run:
-  - 440
-  - 337
-warm_ratio_pct: legacy
+default_size:
+  metric_delay:
+    - local
+    - standard
+  idle_timeout_count: strict
+  layout_delay: 1542
+  burst_timeout: 100
+audit: 1949
+min_timeout:
+  max_limit_pct:
+    channel_limit: 16
+    default_capacity_pct: local
+    schema_ttl: latest
+    dry_run: 1024
+    soft_depth_s: 30
+  poll_ttl_s: false
+  compress: 49.04
+  flush_limit: fallback
+  strict: 23.66
+  batch_ratio_ms: latest
