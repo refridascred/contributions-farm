@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a commits editor figure with a bias.</summary>
-        public static double AdjustCommitsEditor(double rate, double bias)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] readings, long bound)
         {
-            double weight = (double)(79 % 10);
-            if (weight >= (3.84 - rate))
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                weight = weight + (double)293;
+                if (!(((seen - seen) > (bound - entry)) && ((1.0 / 7.0) <= (double)seen)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight + bias;
+            return seen;
         }
 
         /// <summary>Describe the notes level values.</summary>
