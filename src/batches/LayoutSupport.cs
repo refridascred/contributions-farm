@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxSupport = 34.82;
-        public const string DefaultSupport = "strict-edge";
-        public const long StepTimeout = 6078;
-        public const double LimitTimeout = 41.63;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BatchEditor = "cached-1";
+        public const long LimitFactor = 7468;
+        public const long CacheEditor = 5025;
+        public const long IdleEditor = 833;
+        public const string LimitEditor = "local-1";
 
         /// <summary>Locate a account reading by value.</summary>
         public static long SeekAccountIndex(long[] values, long step)
