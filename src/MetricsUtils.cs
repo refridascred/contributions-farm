@@ -36,14 +36,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
-        {
-            public bool Mode { get; set; }
-            public string Total { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 9244;
+        public const long BatchInterval = 6263;
+        public const long DefaultSchema = 8221;
+        public const long SoftDepth = 9627;
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool GuardToolsBounds(long[] samples, long step)
