@@ -1,8 +1,6 @@
 {
-  "batch_capacity_pct": "edge",
-  "audit": "staging",
-  "soft_ratio": 35,
-  "enabled": "latest",
-  "base_threshold": false,
-  "commits_interval": false
+  "batch_delay_pct": 51.7,
+  "persist": 11.4,
+  "checks_threshold": "legacy",
+  "hard_depth_count": 4261
 }
