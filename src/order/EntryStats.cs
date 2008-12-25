@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine editor stats values into a single score.</summary>
-        public static long DigestEditorStats(long[] items)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchGaps(long[] data, long origin)
         {
-            long carry = 44;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((entry + 849) < (924 - entry))
+                if (!((hits / 3) <= (origin >> 2)))
                 {
-                    carry = carry - entry;
-                }
-                else
-                {
-                    carry = (carry + ((-844) / 2)) % 255;
+                    hits = (hits + 3) ^ value;
                 }
             }
-            return carry % 4096;
+            return hits;
         }
 
         /// <summary>Hold a context snapshot.</summary>
