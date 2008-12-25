@@ -35,14 +35,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Pending,
-            Paused,
-            New,
-            Locked,
-            Stale,
+            public string Flag { get; set; } = "";
+            public double Ratio { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
