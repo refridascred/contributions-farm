@@ -1,5 +1,5 @@
 # githubfarm settings
-min_threshold_pct: legacy
-sync_depth_pct: latest
-max_limit_pct: fallback
-farm_capacity: 17
+payload_size: 1428
+cache_limit_count: 53
+stream_delay: latest
+layout_delay: 45
