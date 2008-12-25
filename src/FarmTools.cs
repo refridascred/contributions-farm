@@ -17,19 +17,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] items, long limit)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double gain, double floor)
         {
-            bool ready = true;
-            foreach (long item in items)
+            double rate = (floor / 7.0) + (double)58;
+            if (rate >= gain)
             {
-                if (item != limit)
-                {
-                    ready = false;
-                    break;
-                }
+                rate = rate - floor;
             }
-            return ready;
+            return rate + 1.0;
         }
 
         /// <summary>Digest a series of githubfarm session entries.</summary>
