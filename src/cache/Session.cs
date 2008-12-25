@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public string Count { get; set; } = "";
-            public double Offset { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardRatio = 9028;
+        public const long BaseDepth = 1261;
+        public const long BatchCommits = 6652;
+        public const long BaseCommits = 2371;
+        public const long WindowSize = 3988;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long TotalSchema(long[] samples)
