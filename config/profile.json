@@ -1,5 +1,5 @@
 {
-  "hard_size_pct": ["latest", "green", "standard", "stable"],
-  "min_delay_pct": ["edge", "legacy", "latest", "legacy"],
-  "cache_size_count": 30.15
+  "sync_ttl_ms": 30,
+  "buffer_window": 1024,
+  "verbose": "latest"
 }
