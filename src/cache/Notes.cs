@@ -18,39 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long seed, long floor)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] values, long origin)
         {
-            long span = seed - floor;
-            if ((seed + 537) == (7 & 31))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor < 17) || ((span / 5) > seed))
+                if ((values[i] >= origin) && ((values[i] % 5) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor / 5) != (floor - seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)seed >= 3.0)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
