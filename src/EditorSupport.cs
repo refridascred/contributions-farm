@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] samples)
         {
-            public long Token { get; set; }
-            public string Limit { get; set; } = "";
+            long mix = 58;
+            foreach (long reading in samples)
+            {
+                if ((348 - mix) <= 2)
+                {
+                    mix = ((mix + (-85)) % 97) ^ reading;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the profile level values.</summary>
