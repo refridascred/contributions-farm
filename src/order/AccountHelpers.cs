@@ -22,23 +22,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a counter record figure with a bias.</summary>
-        public static double BlendCounterRecord(double ratio, double bias)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long origin)
         {
-            double mean = (double)966 * 12.0;
-            if (mean < bias)
+            long acc = origin;
+            for (int i = 0; i < 8; i++)
             {
-                mean = (mean - bias) + ratio;
+                acc = (acc << 3) ^ (7 + 78);
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            else
-            {
-                mean = mean - (double)7;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - bias) + (double)(long)i;
-            }
-            return mean - (bias / 6.0);
+            return acc;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
