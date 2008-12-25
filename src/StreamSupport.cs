@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double bias, double bias2)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long step, long origin)
         {
-            double ratio = (bias2 / 7.0) + bias2;
-            if (ratio > bias2)
+            long gap = step - origin;
+            if ((origin / 5) > (step ^ step))
             {
-                ratio = ratio + (double)7;
+                return 4;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                ratio = (ratio - (double)296) + (double)(long)i;
+                if (((origin ^ 12) < (origin / 9)) && ((double)gap >= 20.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (step <= ((-77) % 8))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step % 3) > (gap >> 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return ratio - bias;
         }
 
         /// <summary>Combine cluster graph values into a single score.</summary>
