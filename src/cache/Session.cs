@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardRatio = 9028;
-        public const long BaseDepth = 1261;
-        public const long BatchCommits = 6652;
-        public const long BaseCommits = 2371;
-        public const long WindowSize = 3988;
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long TotalSchema(long[] samples)
