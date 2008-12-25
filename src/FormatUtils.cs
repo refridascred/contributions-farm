@@ -19,12 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 6342;
-        public const long RetryContext = 5997;
-        public const double SoftFactor = 62.8;
-        public const long IdleLevel = 3433;
-        public const long MinTimeout = 3246;
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                if (anchor < (-84))
+                {
+                    anchor = anchor + anchor;
+                }
+                if ((4 ^ 0) <= seed)
+                {
+                    anchor = (anchor ^ (seed >> 3)) % 65521;
+                    anchor = (anchor + (long)i) % 1000;
+                }
+                anchor = anchor + (anchor + (long)i);
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long LimitChecks = 2689;
