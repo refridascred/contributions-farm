@@ -6,11 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=443
+COMMAND_LIMIT=125
 log "limit is ${COMMAND_LIMIT}"
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
+mode="${1:-legacy}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in edge legacy open eu-west; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
