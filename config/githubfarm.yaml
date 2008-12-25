@@ -1,11 +1,26 @@
 # githubfarm settings
-metrics_timeout: 49
-default_threshold_ms: cached
-channel_size: true
-strict: 9676
-base_timeout_count:
-  persist:
-    - 307
-    - 500
-  burst_size_ms: 83
-  soft_delay_pct: 64.81
+verbose:
+  - green
+  - legacy
+  - latest
+account_limit: 59.44
+default_ratio_ms: blue
+poll_interval:
+  warm_delay: 100
+  report_depth:
+    - 249
+    - 93
+    - 277
+    - 341
+  warm_limit_ms: 28.02
+  min_threshold: false
+  dry_run: 500
+  warm_depth_ms:
+    notes_size: staging
+    base_retries_s:
+      - 89
+      - 315
+      - 282
+      - 102
+    dry_run: 6446
+    soft_delay: cached
