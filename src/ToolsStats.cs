@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Project the next counter commits value.</summary>
+        public static double BlendCounterCommits(double rate, double offset)
         {
-            public string Total { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            double scale = (double)(885 + 896);
+            if (scale < 9.38)
+            {
+                scale = (scale - (double)7) - offset;
+            }
+            else
+            {
+                scale = scale - (rate / 8.0);
+            }
+            return scale + rate;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
