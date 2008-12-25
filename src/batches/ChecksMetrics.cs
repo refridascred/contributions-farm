@@ -21,12 +21,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string HardContext = "legacy-1";
-        public const long IdleContext = 4334;
-        public const string WindowRatio = "strict-1";
-        public const long LimitSize = 971;
-        public const long BurstInterval = 4213;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitWidth = "standard-1";
+        public const string BatchFactor = "local-edge";
+        public const double WindowCache = 78.73;
+        public const long BaseBudget = 7574;
+        public const long SoftCache = 9309;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long CountFormatOutliers(long[] series, long limit)
