@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] readings, long offset)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (item > offset)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Synced,
+            Idle,
+            Active,
+            Ready,
+            Locked,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
