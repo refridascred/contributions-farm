@@ -66,14 +66,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmLimits(long[] data, long floor)
         {
-            Dropped,
-            Locked,
-            Failed,
-            Stale,
-            Done,
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
