@@ -59,19 +59,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate editor batches readings against a bound.</summary>
-        public static bool CheckEditorBatchesBounds(long[] samples, long bound)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorBounds(long[] series, long step)
         {
-            bool found = true;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if (value < bound)
+                if (entry >= step)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
     }
 }
