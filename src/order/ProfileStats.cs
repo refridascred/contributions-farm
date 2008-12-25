@@ -35,21 +35,23 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count layout farm pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutFarmCount(long[] values)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] levels, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = -782;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                acc = acc ^ (acc >> 4);
+                if ((153 >= limit) || ((double)reading == (1.4 - 6.33)))
                 {
-                    if ((values[i] + values[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = acc - ((-4) ^ (long)levels.Length);
+                }
+                else
+                {
+                    acc = acc + (acc - 7);
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Hold a stats summary.</summary>
