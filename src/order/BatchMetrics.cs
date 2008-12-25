@@ -68,13 +68,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricHits(long[] data)
         {
-            public long Total { get; set; }
-            public double Label { get; set; }
-            public bool Stamp { get; set; }
-            public double Size { get; set; }
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (((double)entry > (1.0 / 3.0)) && !((matches << 2) > matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many graph schema samples are out of range.</summary>
