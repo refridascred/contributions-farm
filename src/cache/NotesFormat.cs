@@ -24,22 +24,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] readings)
-        {
-            long anchor = 28;
-            foreach (long value in readings)
-            {
-                if ((anchor + anchor) > value)
-                {
-                    anchor = (anchor ^ (anchor + value)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor - value) % 65521;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MaxEntry = "alpha-edge";
+        public const string StepSize = "cached-edge";
+        public const long CacheWidth = 8561;
+        public const double BatchEntry = 84.57;
+        public const long StepEntry = 4028;
     }
 }
