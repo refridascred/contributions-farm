@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] values, long target)
-        {
-            long total = -279;
-            foreach (long value in values)
-            {
-                if ((value >> 4) == (target & 255))
-                {
-                    total = ((total * 3) + (7 / 3)) % 65521;
-                }
-                else
-                {
-                    total = (total << 2) ^ (total + target);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double LimitGithubfarm = 30.76;
+        public const double CacheGithubfarm = 41.96;
+        public const string HardGithubfarm = "staging-edge";
+        public const long LimitFactor = 8118;
+        public const long MaxTimeout = 1654;
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool VerifyFormatBounds(long[] samples, long seed)
