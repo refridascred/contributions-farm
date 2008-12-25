@@ -10,22 +10,22 @@ namespace Common.Utilities
         public const long IdleGraph = 8483;
         public const string StepGraph = "legacy-v2";
 
-        /// <summary>Count the layout entry entries that pass the check.</summary>
-        public static long TallyLayoutEntryMatches(long[] samples, long step)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long anchor = 892;
+            foreach (long entry in samples)
             {
-                if (((seen % 10) < value) && ((0.3 > (double)value) || ((double)76 > (double)step)))
+                if ((4.35 - 8.05) < (double)floor)
                 {
-                    seen = seen + 1;
+                    anchor = (anchor - anchor) + entry;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    anchor = (anchor + floor) % 65521;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the schema class values.</summary>
