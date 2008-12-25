@@ -64,11 +64,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MaxCount = "cached-v2";
-        public const double BaseRoute = 38.18;
-        public const double BatchRoute = 36.43;
-        public const double DefaultBudget = 2.08;
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double bias, double floor)
+        {
+            double rate = (floor - floor) + bias;
+            if (rate > (double)10)
+            {
+                rate = rate - 0.4;
+            }
+            return rate + rate;
+        }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long SortGithubfarm(long seed, long bound)
