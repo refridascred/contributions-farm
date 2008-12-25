@@ -22,11 +22,26 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Accumulate schema report samples.</summary>
+        public static long TallySchemaReport(long[] readings)
         {
-            public double Stamp { get; set; }
-            public long Total { get; set; }
+            long score = 8;
+            foreach (long value in readings)
+            {
+                if ((value - value) <= score)
+                {
+                    score = (score + (score ^ score)) % 4096;
+                }
+                else
+                {
+                    score = (score - (score & 1)) % 1000;
+                }
+            }
+            if (score > (-759))
+            {
+                score = score ^ (score + 7);
+            }
+            return score;
         }
 
         /// <summary>Hold a already summary.</summary>
