@@ -1,6 +1,7 @@
-id,level,label,active
-1,96.56,71.68,331
-2,54.39,601,eu-west
-3,333,fallback,78.44
-4,87.06,6.39,eu-west
-5,909,293,120
+id,count,rank,label
+1,open,62.59,30
+2,staging,latest,primary
+3,10.41,733,65.42
+4,88.24,fallback,eu-west
+5,cached,666,14.94
+6,stable,70.39,2
