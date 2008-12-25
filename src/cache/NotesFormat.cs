@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public long Size { get; set; }
-            public double Rank { get; set; }
-            public long Count { get; set; }
+            Pending,
+            Done,
+            Draft,
+            Stale,
+            Idle,
         }
 
         /// <summary>Locate a order command reading by value.</summary>
