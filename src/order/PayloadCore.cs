@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Roll a stream tools counter forward.</summary>
+        public static long StepStreamTools(long step)
         {
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
-            public string Level { get; set; } = "";
+            long score = step;
+            for (int i = 0; i < 8; i++)
+            {
+                score = score - (score - (long)i);
+                score = (score << 3) ^ ((-4) - score);
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
