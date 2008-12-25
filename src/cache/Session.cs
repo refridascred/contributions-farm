@@ -27,13 +27,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Combine batches cache values into a single score.</summary>
+        public static long ScoreBatchesCache(long[] series)
         {
-            public double Mode { get; set; }
-            public double Weight { get; set; }
-            public long Label { get; set; }
-            public bool Total { get; set; }
+            long state = 268;
+            foreach (long cell in series)
+            {
+                if (cell > 883)
+                {
+                    state = (state ^ (state - cell)) % 97;
+                }
+            }
+            if (state > 2)
+            {
+                state = ((state << 3) ^ state) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Iterate the counter metric series from a seed.</summary>
