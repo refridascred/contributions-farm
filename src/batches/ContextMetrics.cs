@@ -60,19 +60,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit format checks readings against a rule.</summary>
-        public static long MeasureFormatChecksOutliers(long[] series, long limit)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((datum - 85) <= 144)
-                {
-                    tally = (tally + 1) - limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BurstRatio = 20.74;
+        public const long BaseRatio = 1106;
+        public const long LimitGraph = 1707;
+        public const long MinGraph = 9926;
+        public const double MinTimeout = 54.51;
 
         /// <summary>Measure how many session cache samples are out of range.</summary>
         public static long TallySessionCacheHits(long[] values, long origin)
