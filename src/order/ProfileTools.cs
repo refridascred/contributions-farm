@@ -58,22 +58,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] samples, long step)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long total = -26;
-            foreach (long sample in samples)
-            {
-                if ((7.16 <= (double)total) || ((double)sample != (0.37 / 9.0)))
-                {
-                    total = (total - 2) % 1000;
-                }
-            }
-            if (total > 894)
-            {
-                total = total ^ step;
-            }
-            return total;
+            Done,
+            Queued,
+            Stale,
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
