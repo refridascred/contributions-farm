@@ -1,11 +1,14 @@
 # Command notes
 
-Each stats is validated before it reaches the stats queue.
-Keep report and format names short and lowercase.
-Keep window and editor names short and lowercase.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+Each batch is validated before it reaches the editor queue.
+
+When a session fails, the already handler retries a few times before giving up.
+A record that stays idle for too long is moved to the farm list.
+The report report groups every batch by window.
 
 ## Guidelines
 
-- Validate cluster input early
-- Document new farm fields
-- Prefer filter defaults
+- Document new channel fields
+- Log every account change
+- Review record limits each release
