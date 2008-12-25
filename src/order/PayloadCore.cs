@@ -55,19 +55,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double bias, double offset)
-        {
-            double bias2 = offset - (offset / 2.0);
-            if (bias2 >= (double)919)
-            {
-                bias2 = bias2 - bias2;
-            }
-            else
-            {
-                bias2 = bias2 + bias;
-            }
-            return bias2 - (bias2 - 5.5);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchBuffer = "alpha-edge";
+        public const long MaxSpan = 7780;
+        public const long CacheBuffer = 3931;
     }
 }
