@@ -19,17 +19,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Look up the position of a format commits sample.</summary>
-        public static long SeekFormatCommitsIndex(long[] items, long limit)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Ready,
+            Locked,
+            Synced,
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
