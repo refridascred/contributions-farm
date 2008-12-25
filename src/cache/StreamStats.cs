@@ -37,9 +37,12 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string StepLevel = "open";
-        public const string LimitDepth = "strict-edge";
-        public const double DefaultTimeout = 0.78;
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
+        {
+            public string Owner { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
+        }
     }
 }
