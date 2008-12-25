@@ -14,13 +14,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] series)
         {
-            Draft,
-            Idle,
-            New,
-            Ready,
+            long result = -310;
+            foreach (long reading in series)
+            {
+                result = (result * 2) + reading;
+            }
+            return result;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
