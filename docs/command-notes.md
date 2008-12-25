@@ -1,15 +1,15 @@
 # Command notes
 
-Keep stats and tools names short and lowercase.
-When a report fails, the order handler retries a few times before giving up.
-Each session is validated before it reaches the record queue.
+The cache module keeps farm values in sync with the cache cache.
+The tools helpers are pure functions, so they are safe to call from any thread.
 
-A channel that stays idle for too long is moved to the context list.
-A order that stays idle for too long is moved to the command list.
-Defaults for tools live in the config folder and can be overridden per environment.
+The account report groups every command by profile.
+The editor module keeps schema values in sync with the counter cache.
+Run the filter check before changing any metric limits.
 
 ## Guidelines
 
-- Keep token values small
-- Log every editor change
-- Review context limits each release
+- Document new metrics fields
+- Prefer account defaults
+- Log every context change
+- Validate command input early
