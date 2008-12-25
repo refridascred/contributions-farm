@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepLevel = 6253;
-        public const long MinScore = 6183;
-        public const string BurstDepth = "latest-v2";
-        public const long BatchCount = 8419;
-        public const long CacheInterval = 7791;
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
+        {
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
