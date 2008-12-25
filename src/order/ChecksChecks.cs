@@ -40,9 +40,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string StepCount = "staging";
-        public const string StepFactor = "cached-v2";
-        public const long DefaultChannel = 6452;
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
+        {
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
+            public double Total { get; set; }
+        }
     }
 }
