@@ -97,18 +97,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] levels)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item > (12.0 + 12.0))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
