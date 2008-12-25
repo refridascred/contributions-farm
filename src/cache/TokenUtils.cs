@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            Queued,
-            Draft,
-            Ready,
-            Stale,
+            public bool Ratio { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
