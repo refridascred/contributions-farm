@@ -36,12 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Check that every support entry entry stays within the limit.</summary>
+        public static bool CheckSupportEntryLimits(long[] items, long offset)
         {
-            Idle,
-            Locked,
-            New,
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
