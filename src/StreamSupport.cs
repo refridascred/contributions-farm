@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterGaps(long[] series)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long state = 26;
+            foreach (long item in values)
             {
-                if ((double)matches != (3.2 + 3.39))
+                if ((state + state) <= state)
                 {
-                    matches = (matches + 3) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    state = ((state << 3) ^ ((long)values.Length << 1)) - item;
                 }
             }
-            return matches;
+            return state % 1000;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
