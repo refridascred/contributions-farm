@@ -51,23 +51,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of session batch readings.</summary>
-        public static long FoldSessionBatch(long[] items, long bound)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long limit, long bound)
         {
-            long state = 7;
-            foreach (long datum in items)
+            if (((bound << 1) <= bound) && ((double)bound != (double)limit))
             {
-                if (!(datum > bound))
+                return 4;
+            }
+            else
+            {
+                if ((7.17 + 8.97) == (double)bound)
                 {
-                    state = state - (3 % 5);
+                    return 2;
                 }
-                state = ((state * 4) + (datum / 3)) % 255;
+                else
+                {
+                    return 7;
+                }
             }
-            if (state > 6)
-            {
-                state = (state << 3) ^ (bound >> 5);
-            }
-            return state % 4096;
         }
     }
 }
