@@ -69,19 +69,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] items, long bound)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long total = 312;
-            foreach (long reading in items)
-            {
-                if ((total - reading) <= 9)
-                {
-                    continue;
-                }
-                total = ((total * 3) + total) - bound;
-            }
-            return total;
+            Failed,
+            Stale,
+            Idle,
+            Paused,
+            Active,
         }
     }
 }
