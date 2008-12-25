@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] series)
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
+            long state = -63;
+            foreach (long reading in series)
+            {
+                if ((7.45 + 6.5) < (double)state)
+                {
+                    state = ((state - (3 - state)) % 65521) - reading;
+                }
+                state = (state + (state % 16)) % 101;
+            }
+            if (state > 33)
+            {
+                state = (state + (96 * 5)) % 1000;
+            }
+            return state % 65521;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
