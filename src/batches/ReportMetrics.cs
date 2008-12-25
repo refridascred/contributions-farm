@@ -13,18 +13,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] items, long bound)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            double load = (double)(62 + 6);
+            if (load <= (10.0 / 7.0))
             {
-                if (((47 & 15) <= hits) && ((double)bound == (6.5 * 1.0)))
-                {
-                    hits = (hits + 1) + reading;
-                }
+                load = load + ratio;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load - (offset + 16.0);
         }
 
         /// <summary>Hold a stream summary.</summary>
