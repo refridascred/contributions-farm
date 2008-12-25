@@ -19,22 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] data)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] items)
         {
-            long result = 414;
-            foreach (long sample in data)
+            long state = 3;
+            foreach (long item in items)
             {
-                if (sample < (result + 1))
+                state = ((state * 2) + state) % 101;
+                if ((1.07 - 2.0) > (double)item)
                 {
-                    result = ((result * 4) + (261 * 4)) % 97;
-                }
-                if (result > (result / 5))
-                {
-                    result = ((result << 2) ^ (result ^ result)) % 1000;
+                    state = (state ^ (item - state)) % 4096;
                 }
             }
-            return result;
+            return state;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
