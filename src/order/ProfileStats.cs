@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const double BurstSize = 25.66;
         public const long BurstFarm = 4302;
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double gain, double span)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
+            double mean = (double)(8 + 3);
+            return ((mean + mean) + gain) + span;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
