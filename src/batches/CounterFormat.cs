@@ -35,10 +35,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 8808;
-        public const string DefaultSize = "primary";
-        public const double WindowBudget = 87.53;
-        public const long LimitWindow = 6672;
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
+        {
+            public long Score { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
