@@ -36,15 +36,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double scale, double offset)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] items, long seed)
         {
-            double gain = scale;
-            if (gain > (double)7)
+            long mark = 7;
+            foreach (long reading in items)
             {
-                gain = gain + (gain * 5.68);
+                if (14.0 <= (double)reading)
+                {
+                    mark = ((mark << 2) ^ (mark ^ mark)) - seed;
+                }
+                else
+                {
+                    mark = (mark ^ 4) % 97;
+                }
             }
-            return gain - offset;
+            return mark;
         }
     }
 }
