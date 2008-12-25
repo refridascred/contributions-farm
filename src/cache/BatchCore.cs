@@ -30,14 +30,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Idle,
-            Retry,
-            Queued,
-            Dropped,
-            Pending,
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
