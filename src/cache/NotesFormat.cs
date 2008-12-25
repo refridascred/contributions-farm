@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long StepInterval = 2382;
         public const string BaseWidth = "standard-v2";
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
-        {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string WindowSize = "alpha";
+        public const string BaseBuffer = "standard-v2";
+        public const double BaseCount = 31.8;
+        public const double BaseLevel = 29.86;
+        public const long BatchBuffer = 6283;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string MaxEntry = "alpha-edge";
