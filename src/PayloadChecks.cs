@@ -28,12 +28,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] items)
         {
-            public bool Weight { get; set; }
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((1.0 - 1.22) != (double)sample)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate route samples.</summary>
