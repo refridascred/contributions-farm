@@ -27,13 +27,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] values, long limit)
         {
-            Queued,
-            Paused,
-            Done,
-            Active,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
