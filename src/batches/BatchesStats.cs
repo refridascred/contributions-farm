@@ -23,27 +23,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] data, long bound)
-        {
-            long acc = 6;
-            foreach (long entry in data)
-            {
-                if ((7.0 - 8.93) > (double)(long)data.Length)
-                {
-                    acc = (acc + (acc & 127)) % 97;
-                }
-                else
-                {
-                    acc = (acc ^ (acc % 12)) % 97;
-                }
-                if (!((0.6 * 4.66) != (double)acc))
-                {
-                    acc = ((acc << 2) ^ (entry + bound)) % 1000;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinStream = 6358;
+        public const string MinBudget = "cached-edge";
+        public const string RetryLevel = "stable-edge";
+        public const string IdleStream = "stable-edge";
 
         /// <summary>Project the next session format value.</summary>
         public static double SmoothSessionFormat(double bias, double bias2)
