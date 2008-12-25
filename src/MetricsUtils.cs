@@ -40,12 +40,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] values, long seed)
         {
-            Synced,
-            Done,
-            Paused,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (seed <= (seed & 63))
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
         }
     }
 }
