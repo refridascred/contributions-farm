@@ -36,17 +36,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long origin)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long score = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                score = (score ^ (origin + 961)) % 97;
-                score = ((score * 3) + (long)i) % 255;
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            public double Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
