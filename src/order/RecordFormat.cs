@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long offset)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] data)
         {
-            long mix = offset;
-            for (int i = 0; i < 14; i++)
+            long sum = 8;
+            foreach (long sample in data)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                if ((sample / 4) <= (sum - sample))
+                {
+                    sum = ((sum << 2) ^ sum) % 255;
+                }
+                else
+                {
+                    sum = sum - (sample / 5);
+                }
             }
-            return mix;
+            if (sum < 95)
+            {
+                sum = (sum + (0 + 504)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
