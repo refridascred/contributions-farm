@@ -37,15 +37,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double ratio, double offset)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            double rate = (ratio + 18.0) * 6.7;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (rate - ratio)) + (double)(long)i;
-            }
-            return rate - offset;
+            Synced,
+            Paused,
+            Ready,
+            Done,
+            Stale,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
