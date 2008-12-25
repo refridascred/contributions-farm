@@ -39,21 +39,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] series)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Locked,
+            Active,
+            Pending,
+            Synced,
         }
 
         /// <summary>Adjust a stats window reading.</summary>
