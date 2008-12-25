@@ -30,22 +30,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the graph checks entries that pass the check.</summary>
-        public static long TallyGraphChecksHits(long[] readings, long bound)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] series)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long acc = -4;
+            foreach (long cell in series)
             {
-                if ((double)bound <= (double)hits)
-                {
-                    hits = (hits + 2) - value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = ((acc ^ (717 - acc)) % 255) + cell;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
