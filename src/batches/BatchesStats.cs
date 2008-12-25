@@ -25,21 +25,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the contributi commits series from a seed.</summary>
-        public static long IterateContributiCommits(long seed)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] samples)
         {
-            long carry = seed;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seed - (long)i) < (seed - 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = (carry - (3 >> 2)) % 4096;
-                    break;
+                    if ((samples[i] + samples[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                carry = (carry * 5) + seed;
-                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Adjust a payload stream reading.</summary>
