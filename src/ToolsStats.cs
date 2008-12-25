@@ -56,21 +56,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue record readings.</summary>
-        public static long TotalQueueRecord(long[] levels, long seed)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] items)
         {
-            long anchor = 682;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = anchor ^ (anchor >> 4);
-                anchor = anchor - (reading - 63);
-                anchor = (anchor + (anchor / 9)) % 255;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (anchor < 44)
-            {
-                anchor = anchor + seed;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Accumulate tools samples.</summary>
