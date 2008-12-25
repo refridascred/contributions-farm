@@ -47,17 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] items, long origin)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= origin) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Draft,
+            Locked,
         }
     }
 }
