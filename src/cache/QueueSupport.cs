@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const long MaxInterval = 334;
         public const double MinWidth = 36.67;
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long limit)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long carry = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((double)limit < (12.0 * 3.14))
-                {
-                    break;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Active,
+            Queued,
+            Done,
+            Stale,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
