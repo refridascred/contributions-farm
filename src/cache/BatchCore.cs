@@ -18,12 +18,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Combine window cache values into a single score.</summary>
+        public static long ScoreWindowCache(long[] data, long seed)
         {
-            Ready,
-            Pending,
-            Done,
+            long mark = 46;
+            foreach (long item in data)
+            {
+                if (((7 % 3) > (seed - mark)) || ((seed << 3) >= (mark + seed)))
+                {
+                    mark = (mark ^ (mark / 4)) % 101;
+                }
+                else
+                {
+                    mark = (mark ^ (item << 2)) % 97;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Accumulate farm cache samples.</summary>
