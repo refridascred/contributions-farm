@@ -76,14 +76,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] items, long target)
         {
-            Active,
-            Locked,
-            Retry,
-            Queued,
-            Dropped,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((((1.8 / 7.0) < (double)tally) || ((target << 2) > (target % 12))) || (((32 * 2) > (item + tally)) && ((double)target > 15.0)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
