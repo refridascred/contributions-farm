@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 2867;
-        public const long StepTimeout = 3313;
-        public const string BatchContributi = "local-v2";
+        /// <summary>Look up the position of a checks cluster sample.</summary>
+        public static long FindChecksClusterIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long SeekSupportIndex(long[] series, long target)
