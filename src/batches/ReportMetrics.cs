@@ -20,15 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a filter cluster counter forward.</summary>
-        public static long IterateFilterCluster(long floor)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long mix = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            Locked,
+            Synced,
+            Paused,
         }
 
         /// <summary>Describe the layout phase values.</summary>
