@@ -53,12 +53,14 @@ namespace Common.Utilities
             return load + (0.3 - gain);
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public long Label { get; set; }
-            public bool Token { get; set; }
-            public double Flag { get; set; }
+            Queued,
+            Synced,
+            Retry,
+            Stale,
+            Failed,
         }
     }
 }
