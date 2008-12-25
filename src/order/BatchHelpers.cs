@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long step, long step2)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            if (7.2 >= (double)step)
-            {
-                return 4;
-            }
-            else
-            {
-                if (step2 >= (step2 - step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((step & 255) < 75))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step & 3) <= (step2 + step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public bool Size { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Roll a payload counter forward.</summary>
