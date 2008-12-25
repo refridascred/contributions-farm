@@ -1,7 +1,10 @@
 # support settings
-max_size_ms: false
-dry_run: true
-farm_threshold:
-  - green
-  - stable
-  - eu-west
+poll_limit_pct: legacy
+base_depth:
+  - 343
+  - 199
+  - 495
+  - 351
+batch_window_pct: blue
+enabled: cached
+dry_run: strict
