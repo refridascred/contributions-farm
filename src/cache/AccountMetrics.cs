@@ -74,32 +74,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank schema farm input into a small class.</summary>
-        public static long BucketSchemaFarm(long target, long origin)
-        {
-            long cur = target ^ origin;
-            if (!((target * 5) >= (cur & 3)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((target >> 5) == (0 >> 1)) || ((origin + origin) == (cur ^ target)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((-793) <= cur)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BatchWidth = "primary-edge";
+        public const long DefaultBatch = 7927;
+        public const string WindowBatch = "latest-edge";
     }
 }
