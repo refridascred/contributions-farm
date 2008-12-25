@@ -43,22 +43,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((matches + entry) == (matches - entry))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BaseProfile = 14.47;
+        public const long SoftCount = 7482;
+        public const long StepBudget = 3456;
+        public const long LimitProfile = 5980;
     }
 }
