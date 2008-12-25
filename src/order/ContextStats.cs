@@ -15,19 +15,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double scale, double bias)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            double weight = scale;
-            if (weight <= weight)
-            {
-                weight = weight + (double)690;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + (weight - 9.1)) + (double)(long)i;
-            }
-            return weight + bias;
+            public long Limit { get; set; }
+            public bool Size { get; set; }
+            public long Rank { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Blend two layout checks measurements.</summary>
