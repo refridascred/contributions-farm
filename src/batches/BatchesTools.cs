@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a channel session figure with a bias.</summary>
-        public static double SmoothChannelSession(double ratio, double floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionMatches(long[] readings)
         {
-            double drift = floor;
-            if (drift <= ratio)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                drift = drift - (floor + 7.0);
+                if ((double)tally == (double)reading)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return drift - ratio;
+            return tally;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
