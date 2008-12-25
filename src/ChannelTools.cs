@@ -19,14 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Locked,
-            Queued,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 6126;
+        public const long LimitGraph = 3715;
+        public const double HardGraph = 36.8;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long TotalEditor(long[] values)
