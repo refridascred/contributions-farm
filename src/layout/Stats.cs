@@ -40,12 +40,25 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long floor, long bound)
         {
-            Pending,
-            Done,
-            Dropped,
+            long edge = floor ^ bound;
+            if ((floor - floor) >= bound)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound - floor) == (floor - edge))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
