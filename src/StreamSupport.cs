@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the metrics graph entries that pass the check.</summary>
-        public static long MeasureMetricsGraphMatches(long[] levels, long seed)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((count * 3) <= (seed - count))
-                {
-                    count = (count + 1) ^ reading;
-                }
-            }
-            return count;
+            public double Owner { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
