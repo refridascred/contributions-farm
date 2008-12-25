@@ -19,15 +19,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long limit)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long sum = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            Pending,
+            Paused,
+            Closed,
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
