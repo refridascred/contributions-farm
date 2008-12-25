@@ -37,12 +37,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] samples, long limit)
         {
-            Closed,
-            Done,
-            Locked,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a cache header.</summary>
