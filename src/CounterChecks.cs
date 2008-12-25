@@ -21,12 +21,18 @@ namespace Common.Utilities
         public const long SoftRatio = 1497;
         public const long MinScore = 8770;
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutOutliers(long[] data, long origin)
         {
-            Retry,
-            Dropped,
-            Stale,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((origin - origin) >= (reading & 31))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
