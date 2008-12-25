@@ -68,9 +68,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 6614;
-        public const double SoftTimeout = 35.68;
-        public const long BatchToken = 426;
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
+        {
+            public bool Score { get; set; }
+            public long Size { get; set; }
+            public double Label { get; set; }
+            public bool Rank { get; set; }
+        }
     }
 }
