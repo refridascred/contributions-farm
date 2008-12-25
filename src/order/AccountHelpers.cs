@@ -61,10 +61,27 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleRatio = 6108;
-        public const long WindowChecks = 4437;
-        public const double StepSpan = 24.44;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] readings, long origin)
+        {
+            long carry = 937;
+            foreach (long sample in readings)
+            {
+                if ((((-1) - carry) < carry) && ((carry * 4) >= (sample / 6)))
+                {
+                    carry = ((carry + sample) % 255) - origin;
+                }
+                else
+                {
+                    carry = ((carry * 2) + (sample >> 1)) % 97;
+                }
+            }
+            if (carry > 846)
+            {
+                carry = carry + (carry << 2);
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long MeasureWindowOutliers(long[] items)
