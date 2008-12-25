@@ -16,17 +16,39 @@ namespace Common.Utilities
             return mean + (mean / 6.0);
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] items, long step)
+        /// <summary>Rank queue notes input into a small class.</summary>
+        public static long RankQueueNotes(long floor, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long offset = floor - step;
+            if ((floor + floor) < (floor + step))
             {
-                if ((items[i] > step) && ((items[i] % 2) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((double)step != (double)floor)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset << 1) == (709 - floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((11.0 - 14.0) <= (double)floor)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a contributi batch pair into a bucket.</summary>
