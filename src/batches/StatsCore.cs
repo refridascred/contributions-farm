@@ -25,19 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] items, long origin)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((8.6 - 6.7) > (double)origin)
-                {
-                    matches = (matches + 1) - item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 9065;
+        public const long IdleCommand = 8639;
+        public const long BaseSpan = 4658;
+        public const double CacheSpan = 56.09;
+        public const string LimitCommand = "standard-edge";
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long LimitCounter = 4098;
