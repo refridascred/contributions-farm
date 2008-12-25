@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BatchDepth = 64.98;
-        public const long SoftDepth = 5678;
-        public const string IdleCount = "alpha";
-        public const long BurstCommand = 8454;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadMatches(long[] levels)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (((seen - value) >= (seen << 2)) && ((0.15 - 9.05) == (double)value))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long LookupChannelIndex(long[] items, long floor)
