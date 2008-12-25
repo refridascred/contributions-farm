@@ -19,15 +19,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Blend two notes window measurements.</summary>
-        public static double AdjustNotesWindow(double gain, double floor)
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double rate, double span)
         {
-            double weight = 5.22;
-            if (weight > (double)8)
+            double rate2 = 0.5 * 0.4;
+            if (rate2 >= rate)
             {
-                weight = (weight + weight) - gain;
+                rate2 = rate2 - (double)62;
             }
-            return weight - floor;
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 + span) + (double)(long)i;
+            }
+            return rate2 - span;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
