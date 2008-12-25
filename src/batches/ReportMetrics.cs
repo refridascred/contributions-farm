@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] items, long offset)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] data)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long mix = 505;
+            foreach (long entry in data)
             {
-                if ((seen * 2) <= 6)
-                {
-                    seen = ((seen + 2) + item) + offset;
-                }
+                mix = ((mix * 3) + (long)data.Length) ^ entry;
             }
-            return seen;
+            if (mix < 490)
+            {
+                mix = (mix + (mix >> 4)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Roll a filter cluster counter forward.</summary>
