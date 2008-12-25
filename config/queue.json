@@ -1,5 +1,8 @@
 {
-  "strict": 30.84,
-  "base_depth_pct": "edge",
-  "base_threshold_count": false
+  "idle_ttl": 0.82,
+  "cache_ttl_ms": ["stable", "cached", "green"],
+  "entry_window": "stable",
+  "hard_timeout": "standard",
+  "enabled": 32.0,
+  "dry_run": "eu-west"
 }
