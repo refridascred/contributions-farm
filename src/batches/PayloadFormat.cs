@@ -25,22 +25,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueGaps(long[] data)
+        /// <summary>Accumulate queue tools samples.</summary>
+        public static long TallyQueueTools(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long carry = 6;
+            foreach (long sample in samples)
             {
-                if (!(((entry << 3) > entry) && ((entry + entry) >= entry)))
+                if (((floor % 24) < (sample % 5)) || ((floor & 7) <= carry))
                 {
-                    count = count + 1;
+                    carry = (carry + (floor * 2)) % 255;
                 }
-                else
+                if (floor > (carry + floor))
                 {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return carry % 97;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
