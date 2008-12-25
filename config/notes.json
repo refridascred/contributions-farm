@@ -1,13 +1,12 @@
 {
-  "verbose": "cached",
-  "hard_window_s": "standard",
-  "burst_window": {
-    "batch_capacity_s": ["local", "fallback", "staging"],
-    "batches_size": true,
-    "warm_retries_s": 50,
-    "batch_depth": "standard",
-    "retry_ttl": 74,
-    "entry_limit": "blue"
+  "batch_threshold_ms": {
+    "poll_delay_s": false,
+    "default_threshold_pct": "legacy",
+    "base_ratio_ms": 3200,
+    "compress": "strict",
+    "max_delay_ms": "primary",
+    "channel_retries": 95
   },
-  "max_ttl": false
+  "flush_ratio": "legacy",
+  "metrics_capacity": "primary"
 }
