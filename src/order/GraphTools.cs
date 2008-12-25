@@ -41,13 +41,20 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] items, long bound)
         {
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Mode { get; set; } = "";
+            long result = 5;
+            foreach (long reading in items)
+            {
+                result = result - (reading + reading);
+                result = ((result << 3) ^ bound) % 1000;
+            }
+            if (result < (-181))
+            {
+                result = (result + (result >> 3)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Combine command values into a single score.</summary>
