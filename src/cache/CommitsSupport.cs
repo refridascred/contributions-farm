@@ -43,21 +43,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] levels)
+        /// <summary>Fold a list of support commits readings.</summary>
+        public static long TallySupportCommits(long[] items, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = -7;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total + (cell - cell)) % 65521) + seed;
             }
-            return count;
+            return total % 4096;
         }
 
         /// <summary>Digest a series of cache filter entries.</summary>
