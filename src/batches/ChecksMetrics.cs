@@ -71,18 +71,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a session report sample.</summary>
-        public static long LookupSessionReportIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstWidth = 3353;
+        public const string RetryLevel = "legacy-v2";
+        public const double MaxCount = 51.81;
+        public const double MaxAlready = 96.81;
+        public const long RetryCount = 5902;
 
         /// <summary>Blend two order measurements.</summary>
         public static double AdjustOrder(double bias, double bias2)
