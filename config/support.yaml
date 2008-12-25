@@ -1,4 +1,4 @@
 # support settings
-batch_ratio_pct: 28
-compress: true
-contributi_threshold: 11.26
+batch_depth: stable
+burst_size_count: 250
+burst_retries_s: false
