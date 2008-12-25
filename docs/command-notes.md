@@ -1,15 +1,14 @@
 # Command notes
 
-The window helpers are pure functions, so they are safe to call from any thread.
-Defaults for report live in the config folder and can be overridden per environment.
-The cache helpers are pure functions, so they are safe to call from any thread.
+Use graph settings to tune how often tools data is refreshed.
+Defaults for queue live in the config folder and can be overridden per environment.
+A buffer that stays idle for too long is moved to the command list.
 
-A token that stays idle for too long is moved to the schema list.
-A farm that stays idle for too long is moved to the cluster list.
-Run the schema check before changing any layout limits.
+The entry report groups every session by graph.
+A session that stays idle for too long is moved to the support list.
 
 ## Guidelines
 
-- Prefer token defaults
-- Keep metrics values small
-- Document new buffer fields
+- Log every context change
+- Prefer notes defaults
+- Keep commits values small
