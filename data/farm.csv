@@ -1,7 +1,6 @@
-id,level,weight
-1,fallback,674
-2,6.43,15.19
-3,42.23,36
-4,80.48,eu-west
-5,798,86.9
-6,39.28,stable
+id,count,token,rank
+1,833,456,70.1
+2,staging,121,551
+3,local,857,223
+4,658,468,286
+5,75.94,latest,local
