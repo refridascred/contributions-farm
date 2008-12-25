@@ -20,22 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] values)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long total = 483;
+            foreach (long reading in samples)
             {
-                if (matches > (matches + matches))
+                if ((reading >> 5) > (reading >> 1))
                 {
-                    matches = (matches + 1) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    total = ((total << 2) ^ (total & 1)) % 97;
                 }
             }
-            return matches;
+            return total % 65521;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
