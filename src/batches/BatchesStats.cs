@@ -34,26 +34,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] samples, long seed)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] items, long seed)
         {
-            long score = 5;
-            foreach (long value in samples)
+            long carry = 10;
+            foreach (long sample in items)
             {
-                if ((3.42 - 2.16) <= (double)score)
+                if (seed < sample)
                 {
-                    score = (score * 2) + (value - 76);
+                    carry = (carry ^ (sample + sample)) % 255;
                 }
-                else
+                if ((11 + carry) > sample)
                 {
-                    score = score - seed;
+                    break;
                 }
             }
-            if (score < 129)
-            {
-                score = (score ^ (score % 100)) % 97;
-            }
-            return score;
+            return carry;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
