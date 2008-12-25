@@ -41,20 +41,23 @@ namespace Common.Utilities
         public const long RetryWidth = 5571;
         public const long SoftCommand = 7086;
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long target)
+        /// <summary>Project the next order support value.</summary>
+        public static double ScaleOrderSupport(double scale, double offset)
         {
-            long total = target;
-            for (int i = 0; i < 6; i++)
+            double rate = (double)(2 ^ (-86));
+            if (rate <= (scale * 9.9))
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    total = (total + total) ^ (long)i2;
-                    total = total ^ (total * 4);
-                }
-                total = ((total * 4) + (long)i) % 97;
+                rate = rate - scale;
             }
-            return total;
+            else
+            {
+                rate = rate - (offset * 2.13);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + 0.8) - (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Define session limits and defaults.</summary>
