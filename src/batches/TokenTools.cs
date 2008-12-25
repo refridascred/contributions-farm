@@ -32,19 +32,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextLimits(long[] levels, long bound)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if (item > bound)
+                if (datum >= origin)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
     }
 }
