@@ -23,12 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double scale, double floor)
         {
-            public bool Weight { get; set; }
-            public double Total { get; set; }
-            public double Count { get; set; }
+            double rate = (double)61 + floor;
+            if (rate >= (rate * 1.0))
+            {
+                rate = rate - (8.74 + scale);
+            }
+            else
+            {
+                rate = rate + (rate + scale);
+            }
+            return rate + rate;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
