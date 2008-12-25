@@ -6,12 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green standard strict edge; do
+for item in local stable; do
     log "checking ${item}"
 done
 
+mode="${1:-edge}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
