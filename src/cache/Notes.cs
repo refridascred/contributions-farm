@@ -33,10 +33,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheBudget = 20.33;
-        public const string BaseCount = "latest-1";
-        public const long BurstFactor = 2937;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] levels, long step)
+        {
+            long acc = 747;
+            foreach (long datum in levels)
+            {
+                acc = (acc ^ (step - step)) ^ datum;
+            }
+            if (acc > 710)
+            {
+                acc = ((acc * 3) + (5 / 7)) % 65521;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string IdleTimeout = "staging-1";
