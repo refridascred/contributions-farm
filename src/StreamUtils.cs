@@ -71,16 +71,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the checks context series from a seed.</summary>
-        public static long SeriesChecksContext(long offset)
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double bias, double offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 17; i++)
+            double ratio = bias;
+            for (int i = 0; i < 3; i++)
             {
-                anchor = (anchor << 2) ^ (long)i;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                ratio = (ratio - offset) + (double)(long)i;
             }
-            return anchor;
+            return ratio + (ratio / 4.0);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
