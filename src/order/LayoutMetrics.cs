@@ -28,14 +28,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long floor)
         {
-            Failed,
-            Synced,
-            Stale,
-            Retry,
-            Done,
+            long carry = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((0.1 - 5.0) != (double)floor)
+                {
+                    carry = (carry ^ (carry + (long)i)) % 97;
+                    break;
+                }
+                else
+                {
+                    carry = (carry + (96 + carry)) % 97;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the profile kind values.</summary>
