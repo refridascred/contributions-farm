@@ -80,11 +80,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
-        {
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitChannel = "primary-v2";
+        public const double LimitLevel = 36.98;
+        public const long BatchDepth = 8012;
+        public const long RetryChannel = 1766;
     }
 }
