@@ -1,5 +1,6 @@
 {
-  "filter_ttl": 73.39,
-  "stats_retries": 47,
-  "format_window": [360, 78, 63]
+  "soft_ratio": "eu-west",
+  "hard_limit_s": 24.89,
+  "dry_run": 100,
+  "burst_depth_count": "stable"
 }
