@@ -14,10 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 4993;
-        public const long MaxCache = 16;
-        public const long MaxSpan = 2508;
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
+        {
+            Dropped,
+            Synced,
+            Draft,
+        }
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
