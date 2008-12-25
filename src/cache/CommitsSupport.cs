@@ -48,22 +48,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] items)
+        /// <summary>Check that every report profile entry stays within the limit.</summary>
+        public static bool VerifyReportProfileBounds(long[] values, long target)
         {
-            long mix = 5;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if ((double)mix > (1.7 - 3.0))
+                if (item <= target)
                 {
-                    mix = mix + (datum << 1);
-                }
-                else
-                {
-                    mix = mix - (datum + datum);
+                    ready = false;
+                    break;
                 }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
