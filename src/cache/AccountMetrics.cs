@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Look up the position of a stream cache sample.</summary>
+        public static long SeekStreamCacheIndex(long[] values, long target)
         {
-            Locked,
-            Pending,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= target) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the stream support series from a seed.</summary>
