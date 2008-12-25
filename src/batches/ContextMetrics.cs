@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] values)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Done,
+            Pending,
+            Stale,
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
