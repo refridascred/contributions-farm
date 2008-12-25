@@ -53,10 +53,20 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepInterval = 8862;
-        public const double CacheEditor = 85.23;
-        public const string BatchSpan = "primary-1";
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsBounds(long[] samples, long step)
+        {
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Project the next window value.</summary>
         public static double ScaleWindow(double scale, double offset)
