@@ -1,6 +1,5 @@
 {
-  "soft_delay_s": "staging",
-  "sync_window_ms": "fallback",
-  "window_ttl": false,
-  "warm_ttl": "legacy"
+  "readonly": false,
+  "cache_threshold": "cached",
+  "sync_timeout": "legacy"
 }
