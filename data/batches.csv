@@ -1,10 +1,6 @@
-id,level,score
-1,403,455
-2,331,eu-west
-3,local,183
-4,48.93,primary
-5,legacy,52.25
-6,540,legacy
-7,468,51.63
-8,955,137
-9,586,10.32
+id,level,rank,state
+1,781,597,706
+2,89.09,239,105
+3,strict,408,364
+4,409,strict,green
+5,29.27,strict,9.01
