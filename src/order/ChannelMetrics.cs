@@ -24,22 +24,12 @@ namespace Common.Utilities
         public const long MinFactor = 8020;
         public const double HardBudget = 79.13;
 
-        /// <summary>Measure how many command notes samples are out of range.</summary>
-        public static long CountCommandNotesHits(long[] items, long target)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (((hits >> 2) <= (cell * 2)) && (((cell >> 5) >= target) && ((hits - target) > cell)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
