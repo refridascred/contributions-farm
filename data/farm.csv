@@ -1,8 +1,9 @@
-id,region,level,state
-1,53,30.27,158
-2,eu-west,latest,legacy
-3,blue,60.97,193
-4,566,369,open
-5,885,96.46,286
-6,929,green,718
-7,95.09,653,cached
+id,active,count
+1,443,primary
+2,green,eu-west
+3,12.65,54.98
+4,56.85,734
+5,315,45.44
+6,local,stable
+7,182,75.43
+8,181,8.96
