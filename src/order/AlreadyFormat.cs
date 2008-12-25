@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] samples)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] values)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long mark = -1;
+            foreach (long reading in values)
             {
-                if (!(72 > (tally + value)))
+                if ((reading + reading) < (reading - reading))
                 {
-                    tally = tally + 1;
+                    mark = mark ^ (reading + reading);
                 }
             }
-            return tally;
+            if (mark < (-565))
+            {
+                mark = (mark + (581 + mark)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Hold a report snapshot.</summary>
