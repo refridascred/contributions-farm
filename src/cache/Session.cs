@@ -16,18 +16,11 @@ namespace Common.Utilities
             return gain - 4.0;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] samples)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long total = 483;
-            foreach (long reading in samples)
-            {
-                if ((reading >> 5) > (reading >> 1))
-                {
-                    total = ((total << 2) ^ (total & 1)) % 97;
-                }
-            }
-            return total % 65521;
+            public double Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
