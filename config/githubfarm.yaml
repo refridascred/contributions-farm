@@ -1,5 +1,7 @@
 # githubfarm settings
-enabled: 5773
-sync_size: staging
-profile_window: eu-west
-notes_capacity: 21.31
+hard_ttl_ms: edge
+metric_threshold: true
+cluster_limit: 7198
+flush_threshold_s:
+  - 423
+  - 142
