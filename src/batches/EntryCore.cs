@@ -26,17 +26,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] readings, long origin)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double scale, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == origin) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = scale / 8.0;
+            return (mean + (double)706) + offset;
         }
 
         /// <summary>Accumulate checks samples.</summary>
