@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] levels, long bound)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long result = -9;
-            foreach (long sample in levels)
-            {
-                result = (((result << 2) ^ (result + bound)) % 255) + sample;
-                result = (result << 2) ^ (388 + 48);
-            }
-            if (result > 35)
-            {
-                result = ((result << 2) ^ (result + result)) % 65521;
-            }
-            return result % 1000;
+            public bool Level { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
