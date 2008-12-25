@@ -23,18 +23,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the token githubfarm entries that pass the check.</summary>
-        public static long AuditTokenGithubfarmOutliers(long[] samples)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountGaps(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((655 ^ tally) != (tally ^ entry))
+                if (matches > (offset + matches))
                 {
-                    tally = tally + 3;
+                    matches = (matches + 3) + reading;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Match up order samples.</summary>
