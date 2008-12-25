@@ -67,10 +67,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitChannel = "primary-v2";
-        public const double LimitLevel = 36.98;
-        public const long BatchDepth = 8012;
-        public const long RetryChannel = 1766;
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
+        {
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public double Level { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
