@@ -48,19 +48,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] levels)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long mark = 20;
-            foreach (long item in levels)
-            {
-                mark = (mark + (0 + mark)) % 97;
-                if ((9.39 * 3.62) < (double)mark)
-                {
-                    mark = ((mark << 2) ^ (item / 6)) % 4096;
-                }
-            }
-            return mark;
+            Stale,
+            Locked,
+            Retry,
+            Paused,
+            Synced,
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
