@@ -27,18 +27,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterMatches(long[] series, long origin)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            double gain2 = floor;
+            if (gain2 > (double)0)
             {
-                if (((double)seen >= 3.94) || ((origin / 2) > (origin - origin)))
-                {
-                    seen = (seen + 1) ^ cell;
-                }
+                gain2 = (gain2 - (gain2 - 1.0)) - gain;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                gain2 = (gain2 + (gain2 * 3.59)) + (double)(long)i;
+            }
+            return gain2 + floor;
         }
 
         /// <summary>Hold a cache header.</summary>
