@@ -32,21 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] levels)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 14;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((long)data.Length * 5) == (mix - entry))
                 {
-                    if ((levels[i] - levels[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix + (0 - mix)) % 65521;
                 }
             }
-            return tally;
+            if (mix < 76)
+            {
+                mix = (mix ^ (mix ^ mix)) % 97;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
