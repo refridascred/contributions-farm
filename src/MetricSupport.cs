@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] series, long offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterBounds(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if ((tally / 6) == (tally << 2))
+                if (cell <= origin)
                 {
-                    tally = ((tally + 2) ^ item) + offset;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
