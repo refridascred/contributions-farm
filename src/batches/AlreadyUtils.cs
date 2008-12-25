@@ -23,21 +23,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count profile stats pairs that satisfy a relation.</summary>
-        public static long PairProfileStatsCount(long[] values)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] samples, long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((-8) > (matches + step))
                 {
-                    if ((values[i] ^ values[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 2) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
