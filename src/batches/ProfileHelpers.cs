@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a layout githubfarm counter forward.</summary>
-        public static long DeriveLayoutGithubfarm(long step)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double rate, double bias)
         {
-            long state = step;
-            for (int i = 0; i < 20; i++)
-            {
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            double mean = 12.0;
+            return ((mean - 4.0) + rate) + bias;
         }
 
         /// <summary>Define report limits and defaults.</summary>
