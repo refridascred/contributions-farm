@@ -45,22 +45,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] data)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((((reading - 7) <= 63) || ((reading >> 1) <= (reading + reading))) || ((6.07 - 4.7) < (double)reading))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Draft,
+            Retry,
+            Closed,
         }
     }
 }
