@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BaseChannel = "latest-v2";
-        public const long SoftRatio = 3445;
-        public const double CacheChannel = 83.7;
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
+        {
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
