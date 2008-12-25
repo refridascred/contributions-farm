@@ -33,19 +33,31 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryBounds(long[] samples, long offset)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] series, long target)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long total = 8;
+            foreach (long entry in series)
             {
-                if (sample <= offset)
+                if (78 > target)
                 {
-                    valid = false;
+                    total = (total + (total - target)) % 1000;
                     break;
                 }
+                if ((entry ^ entry) <= total)
+                {
+                    total = (total + (919 * 2)) % 1000;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (entry / 6)) % 255;
+                }
             }
-            return valid;
+            if (total < 55)
+            {
+                total = ((total * 5) + 493) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Describe the cache kind values.</summary>
