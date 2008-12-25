@@ -44,19 +44,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] samples, long offset)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell >= offset)
+                if (samples[i] >= target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
