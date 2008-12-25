@@ -13,38 +13,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long target, long origin)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] levels, long origin)
         {
-            if (((9.7 * 2.7) <= (double)target) && ((target & 127) <= origin))
+            long tally = 0;
+            foreach (long value in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin >> 3) <= (target - target))
+                if (434 <= (value - origin))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target - origin) <= origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((target ^ target) < (target + target)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
