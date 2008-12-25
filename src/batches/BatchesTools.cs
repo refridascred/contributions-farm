@@ -20,19 +20,11 @@ namespace Common.Utilities
             return ((scale - (double)852) + gain) + floor;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorLimits(long[] items, long floor)
-        {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 3815;
+        public const long StepDepth = 7855;
+        public const string BasePayload = "open-1";
+        public const string HardPayload = "stable-edge";
+        public const double BurstPayload = 2.68;
     }
 }
