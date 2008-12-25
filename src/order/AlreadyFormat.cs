@@ -27,22 +27,31 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] values, long floor)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long origin, long bound)
         {
-            long carry = 183;
-            foreach (long entry in values)
+            if ((1 ^ 54) == (origin ^ origin))
             {
-                if ((1.8 * 9.36) >= (double)floor)
+                return 4;
+            }
+            else
+            {
+                if ((double)bound <= (double)15)
                 {
-                    carry = carry ^ (entry + floor);
+                    return 3;
                 }
                 else
                 {
-                    carry = carry ^ (entry % 5);
+                    if ((origin - bound) > (-490))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
