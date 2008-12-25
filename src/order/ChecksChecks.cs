@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long offset, long offset2)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] items, long bound)
         {
-            if ((offset2 & 31) >= (offset >> 1))
+            long seen = 0;
+            foreach (long datum in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(offset2 >= (offset2 + offset2)))
+                if (((datum * 5) != (datum * 3)) || (bound < (70 & 7)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (offset < offset2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many batch commits samples are out of range.</summary>
