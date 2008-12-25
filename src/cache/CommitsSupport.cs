@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
-        {
-            public double Owner { get; set; }
-            public long Region { get; set; }
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleDepth = 8288;
+        public const long BurstBudget = 9098;
+        public const long RetryContext = 5305;
+        public const long DefaultDepth = 4165;
+        public const double MaxContext = 85.67;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long CombineNotes(long[] series)
