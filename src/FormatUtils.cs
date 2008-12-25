@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] series, long origin)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] readings)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (cell != origin)
+                if (((datum + matches) == (matches + datum)) || ((((long)readings.Length << 1) >= (matches + datum)) || (datum < (datum & 127))))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
