@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
-        {
-            Retry,
-            Stale,
-            Locked,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryCount = 91.24;
+        public const long IdleLevel = 13;
+        public const long IdleSize = 2979;
+        public const long MinCount = 7800;
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
