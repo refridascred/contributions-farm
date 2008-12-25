@@ -1,12 +1,8 @@
 {
-  "batch_threshold": "local",
-  "commits_threshold": true,
-  "flush_window_pct": 7125,
-  "counter_size": true,
-  "max_capacity_ms": {
-    "poll_depth_s": 30,
-    "cache_ttl_count": "standard",
-    "max_retries": "primary"
-  },
-  "audit": 100
+  "audit": 4070,
+  "strict": 100,
+  "dry_run": "latest",
+  "burst_size_ms": 32.6,
+  "burst_threshold_s": 35,
+  "flush_window": false
 }
