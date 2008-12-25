@@ -20,16 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a format account counter forward.</summary>
-        public static long RollFormatAccount(long target)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryGaps(long[] readings)
         {
-            long score = target;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                score = score + target;
-                score = ((score * 3) + (long)i) % 97;
+                if ((count ^ 9) < count)
+                {
+                    count = (count + 3) + reading;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the queue mode values.</summary>
