@@ -32,23 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double ratio, double floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderGaps(long[] levels, long origin)
         {
-            double scale = (floor - ratio) * 7.7;
-            if (scale >= ratio)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                scale = scale + (scale * 8.8);
+                if ((hits % 64) <= (reading << 1))
+                {
+                    hits = (hits + 2) + origin;
+                }
             }
-            else
-            {
-                scale = scale + (double)773;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (scale - ratio)) - (double)(long)i;
-            }
-            return scale - (scale / 7.0);
+            return hits;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
