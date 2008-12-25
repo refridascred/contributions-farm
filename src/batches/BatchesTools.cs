@@ -13,11 +13,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double gain, double floor)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] samples)
         {
-            double scale = (double)27;
-            return ((scale - (double)852) + gain) + floor;
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
