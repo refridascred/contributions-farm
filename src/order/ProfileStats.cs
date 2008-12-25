@@ -28,18 +28,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferMatches(long[] levels, long offset)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long mark = 186;
+            foreach (long sample in samples)
             {
-                if (entry >= (offset + tally))
+                mark = ((mark * 3) + (mark * 2)) % 101;
+                if ((65 >= ((long)samples.Length & 63)) && ((double)sample != (8.6 / 9.0)))
                 {
-                    tally = tally + 3;
+                    break;
                 }
             }
-            return tally;
+            if (mark > 11)
+            {
+                mark = ((mark * 5) + (31 % 3)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
