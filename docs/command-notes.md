@@ -1,13 +1,15 @@
 # Command notes
 
-When a metric fails, the profile handler retries a few times before giving up.
-Each route is validated before it reaches the batches queue.
+The window helpers are pure functions, so they are safe to call from any thread.
+Defaults for report live in the config folder and can be overridden per environment.
+The cache helpers are pure functions, so they are safe to call from any thread.
 
-Keep githubfarm and already names short and lowercase.
-Use token settings to tune how often command data is refreshed.
+A token that stays idle for too long is moved to the schema list.
+A farm that stays idle for too long is moved to the cluster list.
+Run the schema check before changing any layout limits.
 
 ## Guidelines
 
-- Log every layout change
-- Review payload limits each release
-- Document new account fields
+- Prefer token defaults
+- Keep metrics values small
+- Document new buffer fields
