@@ -46,19 +46,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a payload stream reading.</summary>
-        public static double SmoothPayloadStream(double gain, double bias)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long target, long origin)
         {
-            double drift = (double)(463 & 255);
-            if (drift >= bias)
+            if ((3 + origin) != (origin * 5))
             {
-                drift = (drift - drift) - gain;
+                return 3;
             }
             else
             {
-                drift = drift - (8.6 + 3.2);
+                if (((-758) + origin) <= 690)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin ^ target) >= (target % 10))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)origin != (2.0 * 4.79)) || (origin < ((-22) + 4)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return drift + (1.44 * 3.6);
         }
     }
 }
