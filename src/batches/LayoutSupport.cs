@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] readings)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] data, long limit)
         {
-            long carry = 32;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if (value <= (carry + carry))
+                if (cell >= limit)
                 {
-                    carry = (carry + (value - carry)) % 255;
+                    ready = false;
+                    break;
                 }
             }
-            if (carry > 956)
-            {
-                carry = (carry * 2) + (carry + 699);
-            }
-            return carry;
+            return ready;
         }
 
         /// <summary>Describe the order state values.</summary>
