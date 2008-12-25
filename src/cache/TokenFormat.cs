@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] series, long floor)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] series, long limit)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] == floor) && ((series[i] % 2) == 0))
+                if ((series[i] <= limit) && ((series[i] % 2) == 0))
                 {
                     return (long)i;
                 }
