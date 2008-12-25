@@ -1,6 +1,7 @@
-id,weight,count,rank
-1,364,primary,eu-west
-2,655,393,13.19
-3,859,stable,118
-4,green,517,66.39
-5,417,eu-west,867
+id,ratio,label,score
+1,cached,local,98.59
+2,eu-west,502,39.23
+3,93.17,42,legacy
+4,latest,334,280
+5,legacy,stable,7.97
+6,local,cached,449
