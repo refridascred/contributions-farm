@@ -54,12 +54,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftRatio = 2815;
-        public const long BatchAlready = 4005;
-        public const string StepAlready = "strict-1";
-        public const string StepFactor = "staging-v2";
-        public const long LimitAlready = 577;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseLevel = 27.09;
+        public const double StepCount = 35.69;
+        public const long IdleContributi = 5496;
+        public const long SoftContributi = 6501;
+        public const long MaxBudget = 3348;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double BaseCache = 57.41;
