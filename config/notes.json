@@ -1,6 +1,5 @@
 {
-  "cache_retries_s": ["strict", "standard"],
-  "batch_capacity_count": "fallback",
-  "channel_delay": [194, 241, 6],
-  "sync_timeout": "standard"
+  "sync_size_count": "local",
+  "dry_run": [242, 277, 414],
+  "audit": "open"
 }
