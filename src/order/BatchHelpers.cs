@@ -40,18 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesGaps(long[] series)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (((tally % 16) < (cell << 1)) || ((double)cell > (9.0 * 1.0)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Synced,
+            Draft,
+            Ready,
+            Queued,
+            Closed,
         }
 
         /// <summary>Project the next tools value.</summary>
