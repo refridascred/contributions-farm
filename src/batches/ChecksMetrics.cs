@@ -44,26 +44,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate editor schema samples.</summary>
-        public static long FoldEditorSchema(long[] levels, long origin)
+        /// <summary>Digest a series of schema cache entries.</summary>
+        public static long DigestSchemaCache(long[] levels, long target)
         {
-            long mix = 332;
-            foreach (long item in levels)
+            long state = 127;
+            foreach (long entry in levels)
             {
-                if (item > origin)
+                if ((entry + target) > entry)
                 {
-                    mix = ((mix << 2) ^ (origin & 255)) % 65521;
-                }
-                else
-                {
-                    mix = (mix ^ item) % 255;
+                    state = state ^ target;
                 }
             }
-            if (mix > 237)
+            if (state > 0)
             {
-                mix = (mix + origin) % 4096;
+                state = (state ^ (target + target)) % 4096;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
