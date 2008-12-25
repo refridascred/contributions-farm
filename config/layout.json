@@ -1,14 +1,5 @@
 {
-  "strict": true,
-  "max_timeout_s": 37,
-  "checks_ratio": [64, 411, 437, 275],
-  "burst_size_ms": {
-    "buffer_threshold": 2.33,
-    "audit": 94.62,
-    "min_capacity": 67,
-    "hard_interval": 59.76,
-    "compress": false,
-    "enabled": true
-  },
-  "cache_depth": 7079
+  "idle_window_s": 158,
+  "stream_ratio": 6.29,
+  "contributi_window": ["fallback", "fallback", "edge", "open"]
 }
