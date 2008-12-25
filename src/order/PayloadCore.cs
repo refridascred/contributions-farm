@@ -20,11 +20,22 @@ namespace Common.Utilities
             return ratio + (9.48 / 8.0);
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] data, long limit)
         {
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((reading <= tally) && ((double)reading >= (double)7))
+                {
+                    tally = (tally + 2) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
