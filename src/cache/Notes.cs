@@ -55,13 +55,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandLimits(long[] samples, long limit)
         {
-            public bool Score { get; set; }
-            public long Size { get; set; }
-            public double Label { get; set; }
-            public bool Rank { get; set; }
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
