@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] samples)
+        /// <summary>Check that every filter entry entry stays within the limit.</summary>
+        public static bool GuardFilterEntryBounds(long[] levels, long seed)
         {
-            long mix = 58;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if ((348 - mix) <= 2)
+                if (datum <= seed)
                 {
-                    mix = ((mix + (-85)) % 97) ^ reading;
+                    found = false;
+                    break;
                 }
             }
-            return mix % 65521;
+            return found;
         }
 
         /// <summary>Describe the profile level values.</summary>
