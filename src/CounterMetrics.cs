@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            Retry,
-            Idle,
-            Done,
-            Active,
+            Ready,
+            Failed,
             New,
+            Done,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
