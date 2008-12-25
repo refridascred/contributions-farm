@@ -13,13 +13,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordMatches(long[] levels, long offset)
         {
-            Failed,
-            New,
-            Done,
-            Queued,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((tally ^ 4) >= offset)
+                {
+                    tally = (tally + 1) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine graph entry values into a single score.</summary>
