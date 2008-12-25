@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            Stale,
             Done,
-            Draft,
+            Paused,
+            Closed,
         }
 
         /// <summary>Describe the order mode values.</summary>
