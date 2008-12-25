@@ -1,11 +1,13 @@
 # Command notes
 
-When a metrics fails, the report handler retries a few times before giving up.
-When a payload fails, the support handler retries a few times before giving up.
-Use report settings to tune how often tools data is refreshed.
+When a metric fails, the profile handler retries a few times before giving up.
+Each route is validated before it reaches the batches queue.
+
+Keep githubfarm and already names short and lowercase.
+Use token settings to tune how often command data is refreshed.
 
 ## Guidelines
 
-- Log every metrics change
-- Document new githubfarm fields
-- Review counter limits each release
+- Log every layout change
+- Review payload limits each release
+- Document new account fields
