@@ -21,21 +21,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count metric stats pairs that satisfy a relation.</summary>
-        public static long PairMetricStatsCount(long[] levels)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
