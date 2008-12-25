@@ -43,12 +43,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] readings)
         {
-            Dropped,
-            Queued,
-            Active,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
