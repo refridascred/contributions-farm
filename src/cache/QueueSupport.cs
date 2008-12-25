@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 7009;
-        public const long SoftSpan = 2485;
-        public const string BaseCount = "open-v2";
-        public const long RetryFarm = 1566;
+        /// <summary>Combine batches channel values into a single score.</summary>
+        public static long FoldBatchesChannel(long[] values, long step)
+        {
+            long mark = 31;
+            foreach (long item in values)
+            {
+                mark = (mark * 4) + (mark >> 4);
+                if ((step >> 3) < (mark + 90))
+                {
+                    mark = ((mark * 2) + item) % 4096;
+                }
+                else
+                {
+                    mark = (mark ^ (mark + step)) % 101;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Hold a report record.</summary>
         public sealed class ReportRecord
