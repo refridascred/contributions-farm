@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] data)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 4;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((carry >> 1) < (130 << 3)) && ((carry + datum) >= (datum >> 3)))
                 {
-                    if ((data[i] ^ data[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = carry - (datum - datum);
+                    continue;
                 }
+                carry = (carry * 2) + (carry ^ 8);
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
