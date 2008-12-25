@@ -5,30 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] series)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long acc = 280;
-            foreach (long reading in series)
-            {
-                if (!(reading > ((long)series.Length ^ acc)))
-                {
-                    break;
-                }
-                if (((reading % 16) >= reading) || ((acc % 8) != (9 & 31)))
-                {
-                    break;
-                }
-                if ((reading + 4) >= reading)
-                {
-                    acc = acc + 961;
-                }
-            }
-            if (acc < 808)
-            {
-                acc = (acc + acc) % 97;
-            }
-            return acc;
+            Draft,
+            Synced,
+            Ready,
+            Done,
+            Locked,
         }
 
         /// <summary>Check that every buffer queue entry stays within the limit.</summary>
