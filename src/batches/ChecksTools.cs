@@ -37,19 +37,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double bias, double bias2)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long limit)
         {
-            double bias3 = (double)254 - (bias2 * 1.0);
-            if (bias3 <= bias2)
+            long mark = limit;
+            for (int i = 0; i < 14; i++)
             {
-                bias3 = (bias3 + (double)330) + bias;
+                mark = (mark - (mark + limit)) % 1000;
+                if (((-712) ^ limit) != (mark / 2))
+                {
+                    mark = (mark ^ (limit - (long)i)) % 255;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            else
-            {
-                bias3 = bias3 + (bias3 - 20.0);
-            }
-            return bias3 - (bias3 / 3.0);
+            return mark;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
