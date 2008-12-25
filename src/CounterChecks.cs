@@ -21,18 +21,16 @@ namespace Common.Utilities
         public const long SoftRatio = 1497;
         public const long MinScore = 8770;
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutOutliers(long[] data, long origin)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long bound)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long mark = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((origin - origin) >= (reading & 31))
-                {
-                    tally = tally + 3;
-                }
+                mark = mark - bound;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
