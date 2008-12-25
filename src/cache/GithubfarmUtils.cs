@@ -40,18 +40,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] values)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long mix = 3;
-            foreach (long item in values)
-            {
-                if (mix > (item + mix))
-                {
-                    mix = mix + (item ^ (-32));
-                }
-            }
-            return mix;
+            public string Owner { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the payload status values.</summary>
