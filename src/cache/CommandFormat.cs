@@ -52,12 +52,27 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Combine command metric values into a single score.</summary>
+        public static long FoldCommandMetric(long[] items)
         {
-            public double Offset { get; set; }
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
+            long total = 503;
+            foreach (long datum in items)
+            {
+                if ((25 + datum) > total)
+                {
+                    total = ((total * 5) + (4 - total)) % 101;
+                    break;
+                }
+                if ((((long)items.Length >> 4) >= (datum & 3)) || (total < 73))
+                {
+                    total = (total << 3) ^ (datum - 634);
+                }
+            }
+            if (total > 82)
+            {
+                total = (total + (total << 1)) % 1000;
+            }
+            return total % 1000;
         }
     }
 }
