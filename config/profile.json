@@ -1,5 +1,8 @@
 {
-  "channel_depth": true,
-  "batch_capacity": "cached",
-  "default_capacity_ms": 70.56
+  "poll_limit": [206, 443, 457],
+  "max_retries": [350, 452, 41],
+  "editor_interval": ["blue", "fallback", "open", "fallback"],
+  "report_window": true,
+  "format_ratio": ["fallback", "latest", "primary"],
+  "poll_capacity_pct": 46
 }
