@@ -1,12 +1,14 @@
 {
-  "strict": {
-    "record_timeout": [358, 58],
-    "poll_depth_ms": "stable",
-    "token_size": 500,
-    "default_size_count": 4897,
-    "token_depth": [144, 80],
-    "hard_window": 30
+  "flush_delay_ms": 14.01,
+  "base_retries": {
+    "soft_ttl": ["blue", "latest", "fallback"],
+    "hard_delay_ms": 30,
+    "warm_timeout_pct": "staging",
+    "hard_interval": 500,
+    "entry_interval": 4038
   },
-  "cache_threshold": "eu-west",
-  "idle_delay_s": "standard"
+  "default_delay_pct": "staging",
+  "sync_depth": "blue",
+  "batch_ttl": 87,
+  "context_interval": 5224
 }
