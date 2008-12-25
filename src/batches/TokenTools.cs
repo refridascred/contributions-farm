@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 3914;
-        public const string MaxTimeout = "legacy-edge";
-        public const long BurstToken = 4492;
-        public const long HardLevel = 8951;
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public bool Level { get; set; }
+            public bool Score { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double IdleLayout = 90.78;
