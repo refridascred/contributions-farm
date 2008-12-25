@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
             Paused,
-            Failed,
-            Draft,
             Active,
-            Synced,
+            Dropped,
         }
 
         /// <summary>Locate a session reading by value.</summary>
