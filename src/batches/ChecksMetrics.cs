@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] readings, long seed)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long bound)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (value < seed)
+                if (((135 >> 1) >= bound) && ((anchor * 2) <= anchor))
                 {
-                    valid = false;
+                    anchor = (anchor + (long)i) % 97;
                     break;
                 }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
