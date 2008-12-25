@@ -30,15 +30,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] series, long offset)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] data, long bound)
         {
-            long acc = 645;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (((acc * 3) + (offset + acc)) % 101) ^ reading;
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
