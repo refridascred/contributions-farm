@@ -20,11 +20,18 @@ namespace Common.Utilities
         public const double StepSchema = 12.23;
         public const string BurstSchema = "staging-v2";
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] values, long origin)
         {
-            public bool Region { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((origin & 3) >= sample)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
