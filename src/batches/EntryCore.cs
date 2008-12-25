@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] series, long origin)
+        /// <summary>Combine report context values into a single score.</summary>
+        public static long CombineReportContext(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 4;
+            foreach (long datum in readings)
             {
-                if ((series[i] > origin) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark ^ ((long)readings.Length - mark)) % 65521) + datum;
+                mark = ((mark * 3) + (mark + 49)) % 1000;
             }
-            return -1;
+            return mark % 65521;
         }
 
         /// <summary>Hold a filter entry.</summary>
