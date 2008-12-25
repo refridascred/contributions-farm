@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double weight, double offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] samples, long floor)
         {
-            double drift = offset;
-            if (drift >= 5.6)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                drift = drift - (weight / 4.0);
+                if (((matches + floor) > (sample + 723)) || ((floor ^ (long)samples.Length) == (sample << 2)))
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (weight + weight)) + (double)(long)i;
-            }
-            return drift - (drift * 9.7);
+            return matches;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
