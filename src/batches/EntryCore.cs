@@ -40,9 +40,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 7388;
-        public const long BaseFilter = 5143;
-        public const long LimitFilter = 4010;
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
