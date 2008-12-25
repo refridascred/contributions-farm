@@ -1,5 +1,6 @@
 {
-  "filter_depth": 100,
-  "poll_size": 3960,
-  "persist": true
+  "compress": "standard",
+  "verbose": false,
+  "metric_interval": [472, 250, 60],
+  "enabled": [193, 228]
 }
