@@ -42,17 +42,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] readings, long limit)
+        /// <summary>Validate cache channel readings against a bound.</summary>
+        public static bool VerifyCacheChannelLimits(long[] samples, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if (readings[i] >= limit)
+                if (entry < target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
