@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            public bool Count { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Size { get; set; }
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
