@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamLimits(long[] series, long limit)
         {
-            Draft,
-            Synced,
-            Ready,
-            Done,
-            Locked,
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the payload level values.</summary>
