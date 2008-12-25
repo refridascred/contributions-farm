@@ -48,13 +48,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
+            Idle,
             Locked,
-            Active,
-            Failed,
-            Draft,
+            New,
+            Dropped,
+            Retry,
         }
     }
 }
