@@ -64,39 +64,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a metric contributi value against two limits.</summary>
-        public static long BucketMetricContributi(long offset, long step)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] series)
         {
-            long edge = offset - step;
-            if (((step % 97) <= (69 >> 3)) || ((1.24 - 8.6) > (double)offset))
+            long tally = 0;
+            foreach (long reading in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step <= (9.5 / 2.0))
+                if (8.2 >= (double)tally)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset - 6) < (edge & 255))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)offset == (17.0 * 20.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = (tally + 1) - reading;
                 }
             }
+            return tally;
         }
     }
 }
