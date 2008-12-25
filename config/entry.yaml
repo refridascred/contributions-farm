@@ -1,9 +1,10 @@
 # entry settings
-readonly: local
-enabled: 8285
-default_ratio_ms:
-  - 408
-  - 309
-max_capacity_pct: cached
-sync_limit: stable
-base_timeout_ms: 92.93
+min_limit_ms: green
+warm_timeout:
+  - open
+  - open
+  - fallback
+sync_timeout_count: false
+warm_size_pct: 250
+batch_window: 90.11
+metric_capacity: 60
