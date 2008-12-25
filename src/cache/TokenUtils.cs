@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] readings, long floor)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
