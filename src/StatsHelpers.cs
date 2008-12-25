@@ -76,24 +76,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long bound, long target)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] items)
         {
-            if ((target >> 2) <= bound)
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((target / 7) >= (target + target)) || ((bound << 2) >= ((-166) << 1)))
+                if ((8 < tally) || (((6 % 16) > (tally ^ tally)) || ((tally + value) <= (68 + value))))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
