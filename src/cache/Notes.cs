@@ -50,23 +50,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double ratio, double span)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            double mean = (double)784 + (double)66;
-            if (mean <= (7.24 * 4.93))
-            {
-                mean = (mean + ratio) + span;
-            }
-            else
-            {
-                mean = mean + (ratio + 4.3);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (mean / 4.0)) + (double)(long)i;
-            }
-            return mean + (0.46 - 18.0);
+            Pending,
+            Idle,
+            Stale,
+            Active,
+            Queued,
         }
     }
 }
