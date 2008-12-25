@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const string BatchBudget = "fallback-1";
         public const string MaxInterval = "strict-edge";
 
-        /// <summary>Accumulate already support samples.</summary>
-        public static long DigestAlreadySupport(long[] data)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowRange(long[] readings, long target)
         {
-            long result = 351;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if ((result & 255) < (entry % 97))
+                if (sample >= target)
                 {
-                    result = result ^ ((-54) ^ 508);
+                    stale = false;
+                    break;
                 }
             }
-            if (result > (-77))
-            {
-                result = ((result * 5) + (result >> 5)) % 1000;
-            }
-            return result;
+            return stale;
         }
 
         /// <summary>Hold a window snapshot.</summary>
