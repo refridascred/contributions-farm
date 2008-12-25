@@ -31,20 +31,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    score = ((score * 3) + bound) - (long)i2;
-                    score = (score << 3) ^ (score >> 5);
-                }
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxRatio = 8375;
+        public const long BatchCache = 3048;
+        public const long IdleTimeout = 9161;
+        public const long StepInterval = 9984;
+        public const long DefaultScore = 9070;
     }
 }
