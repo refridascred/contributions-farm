@@ -1,7 +1,7 @@
-id,ratio,score,rank,weight
-1,green,standard,open,209
-2,287,227,primary,144
-3,stable,83,76.41,81.93
-4,legacy,legacy,768,fallback
-5,fallback,36.18,stable,628
-6,open,green,73,fallback
+id,level,weight
+1,fallback,674
+2,6.43,15.19
+3,42.23,36
+4,80.48,eu-west
+5,798,86.9
+6,39.28,stable
