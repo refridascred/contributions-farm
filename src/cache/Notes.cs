@@ -28,12 +28,17 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Look up the position of a command counter sample.</summary>
+        public static long FindCommandCounterIndex(long[] items, long limit)
         {
-            Failed,
-            Pending,
-            Synced,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
