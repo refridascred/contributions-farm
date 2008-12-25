@@ -47,13 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            public double Level { get; set; }
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
+            Failed,
+            Active,
+            Done,
+            Retry,
+            Synced,
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
