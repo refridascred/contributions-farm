@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] values)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long score = 447;
+            foreach (long item in levels)
             {
-                if (((6.41 * 1.6) == (double)(long)values.Length) && (((cell >> 1) >= (cell - matches)) || ((matches + (long)values.Length) > cell)))
+                score = ((score << 3) ^ score) % 4096;
+                for (int i = 0; i < 4; i++)
                 {
-                    matches = matches + 1;
+                    score = ((score + (876 + score)) % 4096) ^ (long)i;
+                }
+                if (((floor & 63) == (score << 2)) && ((item ^ item) == (floor - score)))
+                {
+                    score = (score - (score + 671)) % 255;
+                }
+                else
+                {
+                    score = (score << 3) ^ item;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Describe the channel level values.</summary>
