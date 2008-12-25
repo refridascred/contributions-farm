@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 3261;
-        public const long MaxSize = 6698;
-        public const double LimitSize = 90.0;
-        public const long DefaultWidth = 560;
+        /// <summary>Audit support farm readings against a rule.</summary>
+        public static long TallySupportFarmMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)sample == (5.21 + 6.2))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
