@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Fold a list of batches editor readings.</summary>
+        public static long DigestBatchesEditor(long[] items, long step)
         {
-            public bool Offset { get; set; }
-            public bool Total { get; set; }
-            public long Mode { get; set; }
+            long anchor = 485;
+            foreach (long value in items)
+            {
+                if (!((value + anchor) >= ((-640) - step)))
+                {
+                    anchor = anchor - (anchor - 13);
+                    anchor = (anchor + (anchor - value)) % 255;
+                }
+                anchor = (anchor * 3) + (step - step);
+            }
+            return anchor;
         }
 
         /// <summary>Combine window metric values into a single score.</summary>
