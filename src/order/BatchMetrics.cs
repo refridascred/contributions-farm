@@ -14,10 +14,14 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string DefaultChecks = "cached-v2";
-        public const double HardChecks = 60.83;
-        public const double CacheChecks = 65.61;
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
+        {
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public double Region { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long TallyGithubfarmOutliers(long[] readings)
