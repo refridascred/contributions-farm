@@ -69,18 +69,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] levels)
+        /// <summary>Iterate the checks context series from a seed.</summary>
+        public static long SeriesChecksContext(long offset)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long anchor = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (((3.3 > (double)seen) || ((16.0 - 5.87) >= (double)reading)) && !((seen << 3) != ((long)levels.Length + seen)))
-                {
-                    seen = seen + 3;
-                }
+                anchor = (anchor << 2) ^ (long)i;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
