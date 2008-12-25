@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public double Level { get; set; }
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
+            Locked,
+            Retry,
+            Active,
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
