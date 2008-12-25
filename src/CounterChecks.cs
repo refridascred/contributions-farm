@@ -65,15 +65,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] items)
+        /// <summary>Iterate the stats account series from a seed.</summary>
+        public static long RollStatsAccount(long target)
         {
-            long score = 710;
-            foreach (long item in items)
+            long result = target;
+            for (int i = 0; i < 13; i++)
             {
-                score = (score - (score - score)) - item;
+                if (target <= (target * 5))
+                {
+                    result = ((result * 5) + (result ^ 77)) % 4096;
+                }
+                else
+                {
+                    result = (result << 3) ^ (66 ^ result);
+                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return score;
+            return result;
         }
     }
 }
