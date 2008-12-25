@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesGaps(long[] values)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long state = 40;
+            foreach (long value in values)
             {
-                if (72 >= (seen * 4))
+                if ((state / 6) < value)
                 {
-                    seen = (seen + 2) + reading;
+                    state = state ^ state;
+                }
+                else
+                {
+                    state = (state + (value + 7)) % 4096;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Fold a list of account readings.</summary>
