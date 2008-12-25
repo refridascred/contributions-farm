@@ -35,11 +35,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryLevel = 1156;
-        public const long CacheCommand = 1640;
-        public const long RetryWidth = 5571;
-        public const long SoftCommand = 7086;
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
+        {
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Project the next order support value.</summary>
         public static double ScaleOrderSupport(double scale, double offset)
