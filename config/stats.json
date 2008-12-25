@@ -1,7 +1,12 @@
 {
-  "poll_ratio": false,
-  "default_threshold_s": "stable",
-  "hard_capacity_s": 1024,
-  "order_size": "local",
-  "batch_size": 38
+  "batch_threshold": "local",
+  "commits_threshold": true,
+  "flush_window_pct": 7125,
+  "counter_size": true,
+  "max_capacity_ms": {
+    "poll_depth_s": 30,
+    "cache_ttl_count": "standard",
+    "max_retries": "primary"
+  },
+  "audit": 100
 }
