@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every channel command entry stays within the limit.</summary>
-        public static bool CheckChannelCommandBounds(long[] items, long origin)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] series, long bound)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long acc = 448;
+            foreach (long item in series)
             {
-                if (item >= origin)
+                if ((34 >> 4) >= (acc + acc))
                 {
-                    ok = false;
-                    break;
+                    acc = ((((acc * 5) + (acc - 62)) % 4096) ^ item) + bound;
                 }
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Combine already values into a single score.</summary>
