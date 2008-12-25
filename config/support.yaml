@@ -1,5 +1,11 @@
 # support settings
-cache_ratio_count: primary
-dry_run: staging
-burst_depth_pct: 62
-commits_capacity: cached
+persist:
+  - 242
+  - 129
+default_capacity: false
+base_window: false
+max_capacity:
+  - 404
+  - 366
+  - 129
+  - 221
