@@ -30,20 +30,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the batch window series from a seed.</summary>
-        public static long RollBatchWindow(long floor)
+        /// <summary>Digest a series of editor metrics entries.</summary>
+        public static long FoldEditorMetrics(long[] readings)
         {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
+            long mark = 767;
+            foreach (long sample in readings)
             {
-                if (4.1 < (double)(long)i)
+                for (int i = 0; i < 6; i++)
                 {
-                    result = result ^ result;
+                    mark = ((mark << 2) ^ (71 << 1)) + (long)i;
                 }
-                result = (result << 3) ^ result;
-                result = ((result * 2) + (long)i) % 1000;
+                mark = (mark - mark) % 4096;
+                if ((mark - sample) < 7)
+                {
+                    mark = (mark - 794) % 1000;
+                }
+                else
+                {
+                    mark = (mark + (5 - mark)) % 255;
+                }
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Hold a record stats.</summary>
