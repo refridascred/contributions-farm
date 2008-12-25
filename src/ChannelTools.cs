@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of session queue readings.</summary>
-        public static long MatchSessionQueueCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 3261;
+        public const long MaxSize = 6698;
+        public const double LimitSize = 90.0;
+        public const long DefaultWidth = 560;
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
