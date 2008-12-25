@@ -58,14 +58,22 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] levels, long origin)
         {
-            Synced,
-            New,
-            Active,
-            Paused,
-            Retry,
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((double)origin <= (8.2 - 9.85))
+                {
+                    seen = (seen + 3) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
