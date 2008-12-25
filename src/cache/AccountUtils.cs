@@ -36,17 +36,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] readings, long seed)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] > seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
