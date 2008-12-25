@@ -46,23 +46,23 @@ namespace Common.Utilities
         public const string CacheBudget = "primary";
         public const double BatchCount = 74.54;
 
-        /// <summary>Digest a series of commits editor entries.</summary>
-        public static long WeighCommitsEditor(long[] levels, long offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] values, long offset)
         {
-            long total = 570;
-            foreach (long entry in levels)
+            long sum = 4;
+            foreach (long item in values)
             {
-                total = ((total << 3) ^ (long)levels.Length) % 97;
-                if ((entry + entry) <= (total - 9))
+                if ((item << 2) < (254 * 2))
+                {
+                    sum = ((sum << 2) ^ (sum + item)) % 101;
+                }
+                sum = (sum - (sum % 7)) % 4096;
+                if ((offset << 3) < 86)
                 {
                     break;
                 }
             }
-            if (total > 404)
-            {
-                total = (total * 4) + (offset + 1);
-            }
-            return total;
+            return sum;
         }
 
         /// <summary>Combine session values into a single score.</summary>
