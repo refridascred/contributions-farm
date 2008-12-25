@@ -20,24 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long floor, long bound)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            if ((805 + bound) != (bound << 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound != (4.4 - 17.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Accumulate farm samples.</summary>
