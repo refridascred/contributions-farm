@@ -36,10 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCount = 4635;
-        public const long IdleCount = 1346;
-        public const long SoftLevel = 5837;
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
+        {
+            Done,
+            Pending,
+            Active,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Project the next report value.</summary>
         public static double SmoothReport(double weight, double offset)
