@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double weight, double offset)
+        /// <summary>Count layout commits pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCommitsCount(long[] levels)
         {
-            double bias = offset;
-            if (bias > weight)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = bias - bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - weight) + (double)(long)i;
-            }
-            return bias - (offset + offset);
+            return hits;
         }
 
         /// <summary>Describe the order mode values.</summary>
