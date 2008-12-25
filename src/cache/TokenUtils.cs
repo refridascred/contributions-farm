@@ -13,13 +13,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
+            public bool Level { get; set; }
+            public string Flag { get; set; } = "";
+            public double Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the already state values.</summary>
