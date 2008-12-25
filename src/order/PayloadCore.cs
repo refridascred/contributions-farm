@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] series)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 62;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((5.0 - 14.0) == (double)total))
                 {
-                    if ((series[i] - series[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total << 2) ^ (cell << 3)) % 97;
+                }
+                else
+                {
+                    total = (total << 2) ^ (total << 3);
+                }
+                if ((9.83 > (double)total) && ((total >> 4) != (total + total)))
+                {
+                    continue;
+                }
+                if ((cell + total) >= (total + cell))
+                {
+                    total = ((total << 2) ^ (cell + total)) % 255;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
