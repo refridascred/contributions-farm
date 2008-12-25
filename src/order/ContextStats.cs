@@ -35,24 +35,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two layout checks measurements.</summary>
-        public static double SmoothLayoutChecks(double gain, double bias)
-        {
-            double gain2 = gain;
-            if (gain2 >= (gain2 / 3.0))
-            {
-                gain2 = gain2 + (gain2 / 3.0);
-            }
-            else
-            {
-                gain2 = gain2 - 1.1;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 + (bias / 2.0)) - (double)(long)i;
-            }
-            return gain2 - (gain2 - gain2);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 3465;
+        public const long MaxScore = 8465;
+        public const string IdleBudget = "legacy-1";
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
