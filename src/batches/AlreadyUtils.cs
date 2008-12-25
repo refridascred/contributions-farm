@@ -40,13 +40,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Fold a list of cache commits readings.</summary>
+        public static long TallyCacheCommits(long[] series)
         {
-            Ready,
-            Dropped,
-            Failed,
-            Paused,
+            long mix = 697;
+            foreach (long datum in series)
+            {
+                if ((datum + mix) > mix)
+                {
+                    mix = (mix - datum) % 1000;
+                    break;
+                }
+                mix = ((mix * 4) + datum) % 4096;
+                if ((12 - mix) < mix)
+                {
+                    mix = (mix + 9) % 255;
+                }
+                if ((mix - mix) != (mix * 2))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of commits editor entries.</summary>
