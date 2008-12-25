@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a checks cluster sample.</summary>
-        public static long FindChecksClusterIndex(long[] values, long offset)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Paused,
+            Done,
+            New,
+            Active,
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
