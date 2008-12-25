@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long IdleGraph = 8483;
         public const string StepGraph = "legacy-v2";
 
-        /// <summary>Validate support queue readings against a bound.</summary>
-        public static bool CheckSupportQueueRange(long[] series, long step)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
