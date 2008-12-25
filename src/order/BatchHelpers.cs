@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Scale a buffer support figure with a bias.</summary>
+        public static double ProjectBufferSupport(double weight, double span)
         {
-            public bool Mode { get; set; }
-            public bool Size { get; set; }
-            public bool Weight { get; set; }
+            double mean = span;
+            if (mean >= (weight * 7.19))
+            {
+                mean = mean + (span / 8.0);
+            }
+            return mean + (mean / 6.0);
         }
 
         /// <summary>Roll a payload counter forward.</summary>
