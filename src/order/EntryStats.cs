@@ -60,19 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate githubfarm payload readings against a bound.</summary>
-        public static bool ValidateGithubfarmPayloadRange(long[] series, long step)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadOutliers(long[] values, long seed)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (entry != step)
+                if (((seed & 7) > (datum - datum)) && ((count << 3) <= (-17)))
                 {
-                    ready = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Count the window schema entries that pass the check.</summary>
