@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double scale, double bias)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            double drift = (double)(77 - (-616));
-            if (drift < (double)1)
-            {
-                drift = drift - (scale - scale);
-            }
-            else
-            {
-                drift = drift + bias;
-            }
-            return drift + (double)19;
+            public string Mode { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
