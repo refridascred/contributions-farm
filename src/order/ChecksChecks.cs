@@ -35,23 +35,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] series, long floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] series, long floor)
         {
-            long result = 89;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long datum in series)
             {
-                result = (result + (item << 1)) % 65521;
-                if ((result + item) > item)
+                if (count > (datum / 9))
                 {
-                    break;
+                    count = (count + 1) + floor;
                 }
             }
-            if (result > 6)
-            {
-                result = (result + (795 + floor)) % 101;
-            }
-            return result;
+            return count;
         }
     }
 }
