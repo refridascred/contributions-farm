@@ -48,32 +48,10 @@ namespace Common.Utilities
         public const string WindowWidth = "local";
         public const long HardMetric = 8396;
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long bound, long target)
-        {
-            long slot = bound ^ target;
-            if ((961 - 39) == (target * 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target % 24) == (12 << 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((-94) ^ target) != (slot + 11))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string HardSession = "primary-1";
+        public const string DefaultSession = "staging";
+        public const long LimitSession = 3014;
+        public const long MinBudget = 8893;
     }
 }
