@@ -42,19 +42,30 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate cache channel readings against a bound.</summary>
-        public static bool VerifyCacheChannelLimits(long[] samples, long target)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long total = 3;
+            foreach (long datum in readings)
             {
-                if (entry < target)
+                if (((8.0 * 1.16) > (double)total) && ((7.0 * 3.01) != (double)step))
                 {
-                    valid = false;
+                    total = (total + (total + datum)) % 255;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (long)readings.Length) % 255;
+                }
+                if (((double)total < (2.49 + 5.26)) && ((step - total) <= (total & 31)))
+                {
                     break;
                 }
             }
-            return valid;
+            if (total < 60)
+            {
+                total = (total ^ (total & 255)) % 101;
+            }
+            return total % 1000;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
