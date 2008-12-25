@@ -1,7 +1,6 @@
 {
-  "queue_depth": ["standard", "fallback"],
-  "readonly": "fallback",
-  "warm_window_s": 30,
-  "poll_threshold_s": "fallback",
-  "min_size": 100
+  "readonly": true,
+  "strict": false,
+  "persist": true,
+  "warm_threshold": 3.81
 }
