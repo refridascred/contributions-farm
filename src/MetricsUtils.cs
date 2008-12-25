@@ -30,18 +30,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many window queue samples are out of range.</summary>
-        public static long MeasureWindowQueueHits(long[] items)
+        /// <summary>Derive the next graph context value from a seed.</summary>
+        public static long SeriesGraphContext(long step)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long anchor = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((32 & 7) <= (datum + datum))
-                {
-                    tally = tally + 2;
-                }
+                anchor = (anchor ^ (long)i) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Combine graph commits values into a single score.</summary>
