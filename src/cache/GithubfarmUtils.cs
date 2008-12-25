@@ -23,11 +23,19 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double bias, double offset)
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
+            double gain = 2.2;
+            if (gain <= bias)
+            {
+                gain = (gain - (13.0 - bias)) + offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (gain + bias)) + (double)(long)i;
+            }
+            return gain + (double)539;
         }
 
         /// <summary>Hold a already summary.</summary>
