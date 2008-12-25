@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowDepth = 9168;
-        public const long BaseToken = 4420;
-        public const long StepToken = 153;
+        /// <summary>Iterate the stats channel series from a seed.</summary>
+        public static long StepStatsChannel(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 18; i++)
+            {
+                score = (score + score) % 4096;
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long TotalLayout(long[] series)
