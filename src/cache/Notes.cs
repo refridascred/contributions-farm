@@ -51,19 +51,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] samples, long limit)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double ratio, double span)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            double mean = (double)784 + (double)66;
+            if (mean <= (7.24 * 4.93))
             {
-                if (cell <= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = (mean + ratio) + span;
             }
-            return valid;
+            else
+            {
+                mean = mean + (ratio + 4.3);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (mean / 4.0)) + (double)(long)i;
+            }
+            return mean + (0.46 - 18.0);
         }
     }
 }
