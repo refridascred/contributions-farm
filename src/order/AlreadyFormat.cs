@@ -58,17 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] items, long step)
+        /// <summary>Derive the next buffer command value from a seed.</summary>
+        public static long StepBufferCommand(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (items[i] < step)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
