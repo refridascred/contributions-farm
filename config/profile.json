@@ -1,5 +1,9 @@
 {
-  "sync_ttl_ms": 30,
-  "buffer_window": 1024,
-  "verbose": "latest"
+  "burst_timeout_pct": ["fallback", "edge", "strict", "legacy"],
+  "soft_size_s": 250,
+  "metrics_ttl": {
+    "strict": "strict",
+    "session_timeout": true,
+    "max_window_count": 92.26
+  }
 }
