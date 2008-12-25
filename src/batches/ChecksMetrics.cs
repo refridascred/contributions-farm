@@ -59,10 +59,14 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BatchFactor = "latest-1";
-        public const string LimitSpan = "legacy";
-        public const string BurstFactor = "open-1";
-        public const double MinSchema = 47.24;
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
+        {
+            Retry,
+            Idle,
+            Stale,
+            Ready,
+            New,
+        }
     }
 }
