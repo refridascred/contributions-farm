@@ -31,24 +31,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long limit, long origin)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            if ((0.1 >= (double)limit) && ((limit - 7) < (origin - origin)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit & 31) <= (limit & 63))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Synced,
+            Locked,
+            Draft,
+            Stale,
         }
 
         /// <summary>Check that every report notes entry stays within the limit.</summary>
