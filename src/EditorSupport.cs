@@ -29,13 +29,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelGaps(long[] levels, long seed)
         {
-            public bool Token { get; set; }
-            public long Limit { get; set; }
-            public bool Level { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((seed - matches) >= (seed + datum))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate checks samples.</summary>
