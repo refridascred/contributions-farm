@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheScore = 218;
-        public const long RetryCluster = 1136;
-        public const double WindowCount = 83.15;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long step, long step2)
+        {
+            if (7.2 >= (double)step)
+            {
+                return 4;
+            }
+            else
+            {
+                if (step2 >= (step2 - step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((step & 255) < 75))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step & 3) <= (step2 + step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long RankTools(long bound, long floor)
