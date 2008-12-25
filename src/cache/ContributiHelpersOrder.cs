@@ -30,15 +30,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next profile token value.</summary>
-        public static double AdjustProfileToken(double ratio, double offset)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] levels)
         {
-            double rate = (double)(536 >> 1);
-            if (rate < (double)93)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate - offset) - ratio;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate - rate;
+            return tally;
         }
     }
 }
