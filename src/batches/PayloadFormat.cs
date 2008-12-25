@@ -22,17 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first metric record entry that matches the target.</summary>
-        public static long LookupMetricRecordIndex(long[] items, long floor)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double weight, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = weight;
+            if (mean < (weight + weight))
             {
-                if ((items[i] < floor) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - (19.0 - mean);
             }
-            return -1;
+            else
+            {
+                mean = mean - floor;
+            }
+            return mean + mean;
         }
 
         /// <summary>Rank stats support input into a small class.</summary>
