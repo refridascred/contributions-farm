@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            public bool Level { get; set; }
-            public bool Score { get; set; }
-            public long Flag { get; set; }
+            Stale,
+            Active,
+            Done,
+            Ready,
+            Failed,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
