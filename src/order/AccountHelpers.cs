@@ -93,22 +93,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the profile channel entries that pass the check.</summary>
-        public static long AuditProfileChannelOutliers(long[] values)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long state = 402;
+            foreach (long datum in samples)
             {
-                if ((8.96 / 4.0) < (double)item)
+                if (datum < (state - datum))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    state = (state ^ (860 * 2)) - floor;
                 }
             }
-            return matches;
+            if (state > 79)
+            {
+                state = (state * 3) + (state * 3);
+            }
+            return state % 4096;
         }
     }
 }
