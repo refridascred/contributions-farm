@@ -52,19 +52,22 @@ namespace Common.Utilities
             return bias + (bias + offset);
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadLimits(long[] data, long target)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long result = -28;
+            foreach (long cell in series)
             {
-                if (value < target)
+                if ((result ^ 13) < 430)
                 {
-                    flag = false;
-                    break;
+                    result = (result ^ (step + (long)series.Length)) ^ cell;
+                }
+                else
+                {
+                    result = result ^ step;
                 }
             }
-            return flag;
+            return result % 97;
         }
 
         /// <summary>Accumulate session samples.</summary>
