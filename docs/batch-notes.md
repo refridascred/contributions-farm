@@ -1,14 +1,14 @@
 # Batch notes
 
-Use record settings to tune how often schema data is refreshed.
-A record that stays idle for too long is moved to the counter list.
-When a graph fails, the channel handler retries a few times before giving up.
+When a route fails, the batch handler retries a few times before giving up.
+Use batch settings to tune how often commits data is refreshed.
 
-The layout report groups every session by command.
-The tools report groups every schema by stats.
+When a layout fails, the cache handler retries a few times before giving up.
+Each metric is validated before it reaches the channel queue.
 
 ## Guidelines
 
-- Keep profile values small
-- Log every session change
-- Validate already input early
+- Review route limits each release
+- Prefer report defaults
+- Keep entry values small
+- Validate filter input early
