@@ -32,22 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] data)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ScaleSession(double ratio, double floor)
         {
-            long mix = 14;
-            foreach (long entry in data)
+            double scale = (floor - ratio) * 7.7;
+            if (scale >= ratio)
             {
-                if (((long)data.Length * 5) == (mix - entry))
-                {
-                    mix = (mix + (0 - mix)) % 65521;
-                }
+                scale = scale + (scale * 8.8);
             }
-            if (mix < 76)
+            else
             {
-                mix = (mix ^ (mix ^ mix)) % 97;
+                scale = scale + (double)773;
             }
-            return mix % 1000;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (scale - ratio)) - (double)(long)i;
+            }
+            return scale - (scale / 7.0);
         }
 
         /// <summary>Locate a batch reading by value.</summary>
