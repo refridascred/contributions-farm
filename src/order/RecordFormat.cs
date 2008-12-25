@@ -22,19 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsBounds(long[] data, long target)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Ready,
+            Locked,
+            Failed,
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
