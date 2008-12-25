@@ -20,11 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 1678;
-        public const long LimitMetric = 461;
-        public const long IdleMetric = 2619;
-        public const long BurstWidth = 2724;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((58 < (step << 2)) && ((double)value >= (double)matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a tools support value against two limits.</summary>
         public static long SortToolsSupport(long step, long floor)
