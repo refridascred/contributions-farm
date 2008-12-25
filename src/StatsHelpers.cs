@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] levels, long step)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] samples)
         {
-            long result = 287;
-            foreach (long reading in levels)
+            long result = 1;
+            foreach (long item in samples)
             {
-                if ((3.4 - 3.0) == (double)result)
-                {
-                    result = ((result - step) % 65521) ^ reading;
-                }
-                else
-                {
-                    result = (result ^ (result >> 2)) % 1000;
-                }
-            }
-            if (result < 747)
-            {
-                result = ((result * 4) + step) % 97;
+                result = ((result + result) % 65521) ^ item;
             }
             return result;
         }
