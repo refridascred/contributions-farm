@@ -71,20 +71,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long origin)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long state = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                state = (state - ((long)i - 285)) % 97;
-                if (!((state % 7) >= (41 * 5)))
-                {
-                    state = state ^ (40 & 3);
-                }
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            Synced,
+            Queued,
+            Failed,
+            Active,
         }
     }
 }
