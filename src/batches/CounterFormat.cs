@@ -20,13 +20,14 @@ namespace Common.Utilities
             return bias - (offset + offset);
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            Locked,
+            Pending,
+            Closed,
+            Failed,
+            Active,
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
