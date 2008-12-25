@@ -35,12 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] readings)
         {
-            public long Region { get; set; }
-            public double Score { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next order value.</summary>
