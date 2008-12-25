@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long origin)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] items, long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
+            bool flag = true;
+            foreach (long item in items)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (item >= origin)
                 {
-                    sum = (sum + (origin / 8)) ^ (long)i2;
-                    sum = (sum * 2) + (841 * 3);
+                    flag = false;
+                    break;
                 }
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
