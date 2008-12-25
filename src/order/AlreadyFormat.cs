@@ -52,19 +52,19 @@ namespace Common.Utilities
         public const long IdleGraph = 2486;
         public const long CacheLevel = 6391;
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] readings, long seed)
+        /// <summary>Validate command graph readings against a bound.</summary>
+        public static bool CheckCommandGraphRange(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if (entry != seed)
+                if (reading < limit)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
     }
 }
