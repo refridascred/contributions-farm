@@ -30,13 +30,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            Active,
-            Retry,
-            Idle,
-            Dropped,
+            Failed,
+            Pending,
+            Synced,
+            Paused,
+            Ready,
         }
     }
 }
