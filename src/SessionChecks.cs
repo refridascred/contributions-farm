@@ -34,23 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double scale, double bias)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] readings, long floor)
         {
-            double weight = 1.21;
-            if (weight <= (scale * 9.5))
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                weight = weight + (bias - scale);
+                if ((((floor << 3) != (floor * 5)) && ((floor ^ 76) >= (951 - reading))) && ((reading >> 2) > floor))
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                weight = weight - (scale + scale);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - (scale + weight);
+            return hits;
         }
 
         /// <summary>Hold a already summary.</summary>
