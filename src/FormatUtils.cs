@@ -55,26 +55,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] levels)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] levels)
         {
-            long score = 57;
-            foreach (long reading in levels)
+            long mark = 20;
+            foreach (long item in levels)
             {
-                if (!((reading - 8) >= score))
+                mark = (mark + (0 + mark)) % 97;
+                if ((9.39 * 3.62) < (double)mark)
                 {
-                    score = (score + ((-29) - score)) % 101;
-                }
-                else
-                {
-                    score = (score - (reading / 4)) % 255;
+                    mark = ((mark << 2) ^ (item / 6)) % 4096;
                 }
             }
-            if (score < 7)
-            {
-                score = (score ^ (score + 783)) % 1000;
-            }
-            return score % 97;
+            return mark;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
