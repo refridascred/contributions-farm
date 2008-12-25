@@ -12,15 +12,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Blend two queue order measurements.</summary>
-        public static double BlendQueueOrder(double bias, double bias2)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] samples)
         {
-            double rate = bias2;
-            if (rate > rate)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = rate + (1.5 / 5.0);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return rate + bias;
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
