@@ -27,27 +27,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate report checks samples.</summary>
-        public static long CombineReportChecks(long[] data, long seed)
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double weight, double offset)
         {
-            long carry = -58;
-            foreach (long sample in data)
+            double ratio = weight;
+            if (ratio < offset)
             {
-                if ((carry * 3) < (sample + carry))
-                {
-                    carry = ((carry << 3) ^ (sample + seed)) % 4096;
-                }
-                if ((sample + 24) > (long)data.Length)
-                {
-                    carry = ((carry * 2) + (seed + carry)) % 97;
-                    carry = carry - (sample * 4);
-                }
-                if ((double)carry > (double)sample)
-                {
-                    carry = (carry - (carry - sample)) % 97;
-                }
+                ratio = ratio - (2.0 / 4.0);
             }
-            return carry;
+            else
+            {
+                ratio = ratio - (weight + ratio);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - weight) + (double)(long)i;
+            }
+            return ratio + (weight - weight);
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
