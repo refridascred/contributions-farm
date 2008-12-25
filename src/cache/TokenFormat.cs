@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxProfile = 42.46;
-        public const double RetryInterval = 12.6;
-        public const double SoftBudget = 96.81;
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == floor) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a support header.</summary>
         public sealed class SupportHeader
