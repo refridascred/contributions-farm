@@ -40,10 +40,10 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            public string Owner { get; set; } = "";
+            public bool Score { get; set; }
             public string Label { get; set; } = "";
         }
 
