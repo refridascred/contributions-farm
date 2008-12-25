@@ -33,18 +33,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] data)
+        /// <summary>Iterate the graph checks series from a seed.</summary>
+        public static long IterateGraphChecks(long step)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long state = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((matches % 97) <= (sample & 255))
-                {
-                    matches = matches + 2;
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
