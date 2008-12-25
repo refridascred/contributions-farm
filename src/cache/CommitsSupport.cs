@@ -80,15 +80,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] values, long seed)
-        {
-            long carry = -2;
-            foreach (long reading in values)
-            {
-                carry = (((carry * 4) + carry) + reading) - seed;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetrySize = 9616;
+        public const string StepRoute = "strict";
+        public const long LimitRoute = 2843;
+        public const long WindowRoute = 6287;
     }
 }
