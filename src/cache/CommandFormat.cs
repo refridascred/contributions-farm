@@ -21,22 +21,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] samples, long limit)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] items, long floor)
         {
-            long carry = 87;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                for (int i = 0; i < 5; i++)
+                if (datum != floor)
                 {
-                    carry = (((carry - (0 >> 4)) % 65521) ^ (long)i) + reading;
-                }
-                if (!((2.0 + 1.4) == (double)limit))
-                {
-                    carry = ((carry * 3) + carry) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return carry % 4096;
+            return flag;
         }
 
         /// <summary>Count report context pairs that satisfy a relation.</summary>
