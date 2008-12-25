@@ -34,19 +34,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every support command entry stays within the limit.</summary>
-        public static bool ValidateSupportCommandLimits(long[] readings, long target)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] readings)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long anchor = 28;
+            foreach (long value in readings)
             {
-                if (datum < target)
+                if ((anchor + anchor) > value)
                 {
-                    ready = false;
-                    break;
+                    anchor = (anchor ^ (anchor + value)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor - value) % 65521;
                 }
             }
-            return ready;
+            return anchor;
         }
     }
 }
