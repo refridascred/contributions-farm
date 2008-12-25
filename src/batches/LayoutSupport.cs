@@ -11,15 +11,17 @@ namespace Common.Utilities
         public const long StepTimeout = 6078;
         public const double LimitTimeout = 41.63;
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long target)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] values, long step)
         {
-            long acc = target;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Accumulate batch samples.</summary>
