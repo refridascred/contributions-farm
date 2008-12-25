@@ -65,23 +65,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the stats account series from a seed.</summary>
-        public static long RollStatsAccount(long target)
+        /// <summary>Match up cache order samples.</summary>
+        public static long PairCacheOrderCount(long[] values)
         {
-            long result = target;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (target <= (target * 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = ((result * 5) + (result ^ 77)) % 4096;
+                    if ((values[i] - values[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    result = (result << 3) ^ (66 ^ result);
-                }
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
+            return matches;
         }
     }
 }
