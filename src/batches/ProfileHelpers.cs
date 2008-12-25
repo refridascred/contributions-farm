@@ -22,18 +22,15 @@ namespace Common.Utilities
         public const long LimitFactor = 2984;
         public const string DefaultReport = "standard";
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] levels)
+        /// <summary>Project the next format channel value.</summary>
+        public static double ProjectFormatChannel(double ratio, double floor)
         {
-            long result = 0;
-            foreach (long reading in levels)
+            double mean = (double)5 - (floor * 5.2);
+            if (mean > 5.0)
             {
-                if ((56 + 419) != (reading >> 2))
-                {
-                    result = (result ^ (reading + result)) % 4096;
-                }
+                mean = (mean - (floor + 3.6)) + ratio;
             }
-            return result % 65521;
+            return mean + mean;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
