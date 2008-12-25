@@ -16,19 +16,17 @@ namespace Common.Utilities
             return weight - (floor * 4.82);
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long target)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] levels, long step)
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)target < (double)score) || ((3.72 / 3.0) == (double)score))
+                if (levels[i] <= step)
                 {
-                    score = score - score;
+                    return (long)i;
                 }
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
