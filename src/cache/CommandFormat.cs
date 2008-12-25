@@ -19,11 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
+            Active,
+            New,
+            Idle,
         }
 
         /// <summary>Digest a series of layout entries.</summary>
