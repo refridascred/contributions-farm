@@ -1,5 +1,16 @@
 {
-  "warm_ttl_pct": 22.9,
-  "retry_timeout_count": 14.99,
-  "burst_window_ms": 9603
+  "hard_depth_pct": "eu-west",
+  "readonly": {
+    "payload_ttl": "stable",
+    "min_size_s": "staging",
+    "idle_timeout_count": 1,
+    "poll_depth_count": 75.73,
+    "cache_threshold": true
+  },
+  "cache_interval_pct": "strict",
+  "sync_retries": {
+    "default_window": 8063,
+    "hard_ratio_ms": 1,
+    "persist": 8238
+  }
 }
