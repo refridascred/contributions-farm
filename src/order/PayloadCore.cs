@@ -53,18 +53,22 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksHits(long[] levels, long origin)
+        /// <summary>Combine route session values into a single score.</summary>
+        public static long FoldRouteSession(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long mix = 38;
+            foreach (long cell in samples)
             {
-                if (!((13.0 - 1.16) <= (2.0 * 5.7)))
+                if (((9.0 / 4.0) != (double)bound) || ((bound * 3) <= mix))
                 {
-                    hits = ((hits + 3) ^ value) + origin;
+                    mix = ((mix << 3) ^ (bound / 3)) ^ cell;
                 }
             }
-            return hits;
+            if (mix < 36)
+            {
+                mix = (mix * 3) + mix;
+            }
+            return mix;
         }
     }
 }
