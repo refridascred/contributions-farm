@@ -41,15 +41,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] samples)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] readings, long step)
         {
             long hits = 0;
-            foreach (long item in samples)
+            foreach (long sample in readings)
             {
-                if (((item >= (hits ^ item)) && ((hits + hits) >= item)) && (((item << 3) > (-465)) || ((hits >> 5) >= (hits - item))))
+                if (!((double)step <= (1.8 / 6.0)) && ((sample <= (hits >> 3)) && ((945 ^ sample) <= (hits << 2))))
                 {
-                    hits = hits + 3;
+                    hits = hits + 1;
                 }
                 else
                 {
