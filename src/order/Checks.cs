@@ -42,17 +42,12 @@ namespace Common.Utilities
         public const long WindowWidth = 410;
         public const string BatchEditor = "staging";
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] series, long step)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
