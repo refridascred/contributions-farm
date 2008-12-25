@@ -1,26 +1,5 @@
 # entry settings
-base_delay:
-  filter_delay: 39
-  batch_interval_ms: 62
-  soft_ttl_count: 100
-  counter_timeout: 98
-stream_limit: 33
-queue_delay: staging
-readonly:
-  cache_delay_count: true
-  retry_ttl_pct:
-    - 267
-    - 453
-    - 129
-  readonly: 1507
-  format_timeout: fallback
-  batch_window: 31.73
-  flush_ratio_pct: staging
-sync_limit_ms:
-  - open
-  - primary
-  - latest
-sync_limit_pct:
-  - latest
-  - standard
-  - legacy
+idle_ttl: legacy
+base_threshold_pct: stable
+flush_capacity: 500
+enabled: staging
