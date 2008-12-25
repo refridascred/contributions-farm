@@ -1,5 +1,26 @@
 {
-  "base_delay": "open",
-  "max_retries": "staging",
-  "soft_threshold": "stable"
+  "flush_limit_ms": {
+    "audit": false,
+    "strict": true,
+    "order_timeout": {
+      "burst_limit_s": 70,
+      "min_timeout": 82.83,
+      "warm_delay_ms": 143,
+      "githubfarm_ttl": ["standard", "cached", "blue"]
+    }
+  },
+  "schema_timeout": 75.03,
+  "burst_delay_ms": 27,
+  "compress": "cached",
+  "base_delay_ms": [292, 477],
+  "readonly": {
+    "audit": {
+      "retry_depth_count": 21,
+      "max_retries_count": 30,
+      "record_depth": "eu-west"
+    },
+    "max_timeout_ms": 48.42,
+    "default_depth_s": 61.6,
+    "strict": 34
+  }
 }
