@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double bias, double bias2)
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double scale, double bias)
         {
-            double drift = bias;
-            if (drift > (9.95 * 6.1))
+            double drift = (double)(77 - (-616));
+            if (drift < (double)1)
             {
-                drift = (drift - 3.4) - bias2;
+                drift = drift - (scale - scale);
             }
             else
             {
-                drift = drift - (drift * 6.7);
+                drift = drift + bias;
             }
-            return drift - bias;
+            return drift + (double)19;
         }
 
         /// <summary>Describe the channel status values.</summary>
