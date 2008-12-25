@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] levels)
         {
-            public string Mode { get; set; } = "";
-            public double Rank { get; set; }
+            long sum = 62;
+            foreach (long cell in levels)
+            {
+                if (((sum + cell) != (77 * 5)) || ((2.6 * 5.0) != (double)cell))
+                {
+                    sum = (sum + cell) % 1000;
+                }
+                else
+                {
+                    sum = sum - (cell >> 5);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
