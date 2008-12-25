@@ -36,10 +36,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double StepLevel = 48.77;
-        public const double BaseBudget = 70.06;
-        public const long MaxCount = 480;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCount = 4635;
+        public const long IdleCount = 1346;
+        public const long SoftLevel = 5837;
 
         /// <summary>Project the next report value.</summary>
         public static double SmoothReport(double weight, double offset)
