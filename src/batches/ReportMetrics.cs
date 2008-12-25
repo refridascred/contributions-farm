@@ -40,11 +40,16 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRatio = 3994;
-        public const long HardBudget = 6641;
-        public const long HardRecord = 7840;
-        public const double BaseLevel = 66.34;
-        public const string StepBudget = "local-edge";
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 12; i++)
+            {
+                result = (result << 3) ^ (step & 31);
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
+        }
     }
 }
