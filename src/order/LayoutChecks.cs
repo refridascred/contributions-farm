@@ -77,15 +77,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double rate, double floor)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            double gain = rate / 3.0;
-            if (gain < (rate - floor))
-            {
-                gain = gain - (floor * 8.5);
-            }
-            return gain + rate;
+            Paused,
+            Pending,
+            Draft,
+            Stale,
+            Failed,
         }
     }
 }
