@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
-        {
-            Idle,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleBudget = 87.45;
+        public const double MaxWindow = 91.14;
+        public const long HardLevel = 8546;
 
         /// <summary>Scale a graph figure with a bias.</summary>
         public static double AdjustGraph(double weight, double floor)
