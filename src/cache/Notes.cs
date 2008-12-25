@@ -18,18 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] series, long bound)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long seed, long floor)
         {
-            long acc = 448;
-            foreach (long item in series)
+            long span = seed - floor;
+            if ((seed + 537) == (7 & 31))
             {
-                if ((34 >> 4) >= (acc + acc))
+                return 3;
+            }
+            else
+            {
+                if ((floor < 17) || ((span / 5) > seed))
                 {
-                    acc = ((((acc * 5) + (acc - 62)) % 4096) ^ item) + bound;
+                    return 2;
+                }
+                else
+                {
+                    if ((floor / 5) != (floor - seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)seed >= 3.0)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
