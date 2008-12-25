@@ -74,11 +74,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BaseFactor = "staging-1";
-        public const long SoftBatches = 7642;
-        public const long BaseBatches = 7102;
-        public const long HardLevel = 8631;
-        public const long LimitInterval = 975;
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            Locked,
+            Active,
+            Failed,
+            Draft,
+        }
     }
 }
