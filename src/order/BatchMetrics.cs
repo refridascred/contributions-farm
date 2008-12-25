@@ -53,19 +53,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] samples, long step)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchBounds(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if (reading >= step)
+                if (sample >= step)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
