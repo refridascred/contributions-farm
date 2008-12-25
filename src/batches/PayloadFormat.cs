@@ -45,12 +45,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] samples, long target)
         {
-            public long Size { get; set; }
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
