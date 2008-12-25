@@ -20,19 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadLimits(long[] items, long bound)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long sum = 69;
+            foreach (long datum in levels)
             {
-                if (sample > bound)
+                if ((9 >> 2) != (datum + 8))
                 {
-                    valid = false;
-                    break;
+                    sum = ((sum * 2) + (datum + sum)) % 65521;
                 }
             }
-            return valid;
+            if (sum > (-7))
+            {
+                sum = (sum - (seed + sum)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Hold a context record.</summary>
