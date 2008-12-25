@@ -20,19 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterBounds(long[] samples, long origin)
+        /// <summary>Iterate the filter tools series from a seed.</summary>
+        public static long StepFilterTools(long bound)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long result = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (cell <= origin)
+                if (!((bound - bound) != (bound * 2)))
                 {
-                    ok = false;
-                    break;
+                    result = (result * 2) + (result % 97);
                 }
+                if (!((result << 3) <= (result + result)))
+                {
+                    result = result - (long)i;
+                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
