@@ -10,18 +10,14 @@ namespace Common.Utilities
         public const long WindowContext = 2015;
         public const string DefaultCount = "primary-1";
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long offset)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long limit)
         {
-            long mix = offset;
+            long mix = limit;
             for (int i = 0; i < 11; i++)
             {
-                mix = (mix - (1 - offset)) % 4096;
-                if (((offset >> 4) <= (mix / 9)) && ((mix + mix) >= mix))
-                {
-                    mix = (mix ^ (579 / 8)) % 101;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
+                mix = (mix ^ (mix + limit)) % 1000;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
             return mix;
         }
