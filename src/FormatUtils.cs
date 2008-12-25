@@ -62,18 +62,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Find the first command buffer entry that matches the target.</summary>
-        public static long LocateCommandBufferIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 9117;
+        public const long MinInterval = 372;
+        public const string LimitBudget = "strict-1";
+        public const long RetryGraph = 6363;
+        public const string SoftBudget = "cached-v2";
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long AuditGraphOutliers(long[] levels, long floor)
