@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging cached; do
+for item in stable eu-west green; do
     log "checking ${item}"
 done
 
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-CHANNEL_LIMIT=396
-log "limit is ${CHANNEL_LIMIT}"
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
