@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long limit, long floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] readings)
         {
-            if ((293 << 2) <= (floor ^ floor))
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor <= (6.7 / 3.0))
+                if ((((tally << 3) < entry) || ((entry + entry) <= (entry >> 3))) || (entry >= tally))
                 {
-                    return 7;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    return 8;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
