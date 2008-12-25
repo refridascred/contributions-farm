@@ -41,19 +41,21 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] readings, long target)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] data)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry <= target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] - data[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
