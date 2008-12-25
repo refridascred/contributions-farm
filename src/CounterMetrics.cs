@@ -47,18 +47,12 @@ namespace Common.Utilities
         public const double RetryBuffer = 86.53;
         public const string StepBuffer = "local-v2";
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsMatches(long[] values, long limit)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((count >> 4) > sample)
-                {
-                    count = (count + 3) - limit;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public double Score { get; set; }
         }
     }
 }
