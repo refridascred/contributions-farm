@@ -55,11 +55,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryCounter = 5223;
-        public const long LimitScore = 8418;
-        public const long BaseLevel = 1482;
-        public const long BurstCounter = 8194;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] items, long limit)
+        {
+            long anchor = 29;
+            foreach (long reading in items)
+            {
+                if ((anchor & 255) >= (699 ^ 9))
+                {
+                    anchor = ((anchor << 3) ^ (reading + 133)) - limit;
+                }
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long StepFormat = 9245;
