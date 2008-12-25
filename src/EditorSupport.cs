@@ -44,21 +44,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] data)
+        /// <summary>Validate support record readings against a bound.</summary>
+        public static bool CheckSupportRecordRange(long[] levels, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item < offset)
                 {
-                    if ((data[i] ^ data[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
