@@ -1,10 +1,7 @@
-id,weight,active,ratio,label
-1,52.89,edge,53.11,38.13
-2,local,298,604,974
-3,legacy,strict,latest,local
-4,890,green,strict,blue
-5,blue,18.82,stable,open
-6,88.33,147,78.5,552
-7,803,691,629,91.71
-8,stable,open,42.07,open
-9,83.63,primary,latest,368
+id,state,label,token,owner
+1,62.08,13.17,201,55.86
+2,29.42,61.42,91.11,778
+3,923,69.38,81.57,657
+4,883,45.09,70,1
+5,fallback,legacy,stable,570
+6,294,stable,staging,198
