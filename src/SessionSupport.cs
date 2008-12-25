@@ -33,13 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            public double Limit { get; set; }
-            public bool Mode { get; set; }
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
+            Failed,
+            Queued,
+            Ready,
+            Closed,
         }
     }
 }
