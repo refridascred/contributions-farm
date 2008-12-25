@@ -22,22 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] values, long floor)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] data, long step)
         {
-            long acc = 8;
-            foreach (long sample in values)
+            long anchor = 1;
+            foreach (long value in data)
             {
-                if (((92 + acc) <= floor) || ((double)floor <= (5.0 + 14.0)))
+                if ((step * 5) != (step + value))
                 {
-                    acc = (acc - (sample & 7)) % 4096;
-                }
-                else
-                {
-                    acc = (acc + (acc ^ sample)) % 65521;
+                    anchor = anchor ^ value;
                 }
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Digest a series of githubfarm session entries.</summary>
