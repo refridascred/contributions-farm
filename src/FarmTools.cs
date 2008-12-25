@@ -12,18 +12,14 @@ namespace Common.Utilities
         public const string CacheCounter = "latest";
         public const long StepCounter = 8496;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] data, long step)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long anchor = 1;
-            foreach (long value in data)
-            {
-                if ((step * 5) != (step + value))
-                {
-                    anchor = anchor ^ value;
-                }
-            }
-            return anchor;
+            Dropped,
+            Pending,
+            Done,
+            Ready,
+            Locked,
         }
 
         /// <summary>Define session limits and defaults.</summary>
