@@ -19,10 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleRatio = 3393;
-        public const double RetryRatio = 42.27;
-        public const double IdleCommits = 49.43;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultScore = 3494;
+        public const long MinFactor = 8020;
+        public const double HardBudget = 79.13;
 
         /// <summary>Measure how many command notes samples are out of range.</summary>
         public static long CountCommandNotesHits(long[] items, long target)
