@@ -16,18 +16,11 @@ namespace Common.Utilities
             return weight - (floor * 4.82);
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double CacheGraph = 95.45;
+        public const long BurstGraph = 8048;
+        public const long BaseGraph = 4108;
+        public const long HardBudget = 9285;
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
