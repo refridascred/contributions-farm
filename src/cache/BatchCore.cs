@@ -29,38 +29,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a schema window pair into a bucket.</summary>
-        public static long GradeSchemaWindow(long bound, long step)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            if ((step < ((-41) + step)) || ((double)700 == (double)bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound - bound) < step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((7 - bound) > (bound - (-9)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((3.0 - 9.27) <= (double)bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Accumulate farm cache samples.</summary>
