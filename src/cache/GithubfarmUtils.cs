@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double weight, double floor)
         {
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
-            public bool Label { get; set; }
-            public bool Offset { get; set; }
+            double mean = (double)(-66) - floor;
+            if (mean < weight)
+            {
+                mean = mean + (double)(-300);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (mean / 5.0)) + (double)(long)i;
+            }
+            return mean + floor;
         }
 
         /// <summary>Blend two queue order measurements.</summary>
