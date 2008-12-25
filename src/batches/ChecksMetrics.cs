@@ -80,15 +80,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double bias, double bias2)
-        {
-            double scale = (double)(75 + 31);
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (bias - bias2)) + (double)(long)i;
-            }
-            return scale + scale;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 652;
+        public const double LimitRoute = 68.2;
+        public const long CacheTimeout = 2928;
+        public const long IdleDepth = 176;
     }
 }
