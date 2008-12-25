@@ -23,22 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] samples, long step)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if ((-8) > (matches + step))
+                if (value > origin)
                 {
-                    matches = (matches + 2) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
