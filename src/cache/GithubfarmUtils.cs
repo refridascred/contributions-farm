@@ -27,19 +27,12 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double bias, double offset)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            double gain = 2.2;
-            if (gain <= bias)
-            {
-                gain = (gain - (13.0 - bias)) + offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (gain + bias)) + (double)(long)i;
-            }
-            return gain + (double)539;
+            Synced,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Hold a already summary.</summary>
