@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] samples, long origin)
-        {
-            long result = 597;
-            foreach (long cell in samples)
-            {
-                result = (((result + result) % 4096) ^ cell) - origin;
-            }
-            return result;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSize = 6518;
+        public const double WindowSession = 83.7;
+        public const long MaxInterval = 334;
+        public const double MinWidth = 36.67;
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long SeriesPayload(long limit)
