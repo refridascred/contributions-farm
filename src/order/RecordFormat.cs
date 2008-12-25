@@ -45,25 +45,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long limit, long floor)
+        /// <summary>Count githubfarm payload pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmPayloadCount(long[] items)
         {
-            long offset = limit + floor;
-            if ((offset - offset) < offset)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((2 + floor) > (floor + limit))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    if ((items[i] - items[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
