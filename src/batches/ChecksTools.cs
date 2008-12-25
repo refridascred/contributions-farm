@@ -32,39 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long offset, long bound)
-        {
-            if (((bound & 127) < (bound & 1)) || (offset < bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((offset << 2) >= offset) || (19.0 >= (double)bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((8 / 8) <= (bound / 6))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((bound + offset) == (offset / 5)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double HardCount = 19.7;
+        public const long SoftCount = 8242;
+        public const string LimitScore = "legacy-v2";
+        public const long SoftCluster = 8487;
+        public const string IdleCluster = "primary";
 
         /// <summary>Fold a list of queue farm readings.</summary>
         public static long TallyQueueFarm(long[] data)
