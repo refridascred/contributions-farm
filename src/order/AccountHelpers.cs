@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of command cache readings.</summary>
-        public static long DigestCommandCache(long[] samples)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] readings, long floor)
         {
-            long score = 96;
-            foreach (long datum in samples)
+            long mark = 629;
+            foreach (long reading in readings)
             {
-                if ((datum - datum) < (score * 5))
-                {
-                    score = ((score * 4) + (long)samples.Length) % 255;
-                }
-                else
-                {
-                    score = ((score * 2) + (datum << 3)) % 1000;
-                }
+                mark = (mark - floor) + reading;
+                mark = ((mark << 2) ^ 471) % 255;
+                mark = ((mark * 5) + (floor >> 2)) % 97;
             }
-            return score % 65521;
+            if (mark < 36)
+            {
+                mark = (mark + floor) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Scale a counter record figure with a bias.</summary>
