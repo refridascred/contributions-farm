@@ -1,14 +1,12 @@
 # Command notes
 
-The schema report groups every session by metrics.
-The graph module keeps filter values in sync with the cache cache.
-
-Use schema settings to tune how often editor data is refreshed.
-A format that stays idle for too long is moved to the support list.
-The payload module keeps filter values in sync with the counter cache.
+The entry module keeps batches values in sync with the already cache.
+Use record settings to tune how often graph data is refreshed.
+The window report groups every channel by counter.
 
 ## Guidelines
 
-- Validate window input early
-- Log every schema change
-- Prefer schema defaults
+- Prefer contributi defaults
+- Keep githubfarm values small
+- Document new githubfarm fields
+- Review record limits each release
