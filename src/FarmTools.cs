@@ -10,11 +10,20 @@ namespace Common.Utilities
         public const long BaseToken = 4420;
         public const long StepToken = 153;
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] series)
         {
-            public bool Level { get; set; }
-            public string Score { get; set; } = "";
+            long score = 10;
+            foreach (long value in series)
+            {
+                score = (score + (value + 21)) % 4096;
+                score = (score ^ (score * 3)) % 97;
+                if (((score + score) == (value + score)) && ((0.5 / 7.0) > (double)value))
+                {
+                    score = (score ^ (value & 127)) % 1000;
+                }
+            }
+            return score;
         }
 
         /// <summary>Digest a series of githubfarm session entries.</summary>
