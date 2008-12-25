@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] levels)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long mark = 0;
-            foreach (long item in levels)
-            {
-                if (((long)levels.Length >> 2) <= (mark * 3))
-                {
-                    continue;
-                }
-                mark = (mark - ((long)levels.Length - mark)) % 1000;
-                if (((item + 56) == (mark + mark)) || ((item + mark) < (20 + 771)))
-                {
-                    break;
-                }
-            }
-            return mark % 1000;
+            public double Owner { get; set; }
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a filter entry.</summary>
