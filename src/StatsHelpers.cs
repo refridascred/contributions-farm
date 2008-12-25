@@ -38,21 +38,19 @@ namespace Common.Utilities
         public const string MinTimeout = "latest-v2";
         public const long DefaultInterval = 3040;
 
-        /// <summary>Compare every pair of context graph readings.</summary>
-        public static long MatchContextGraphCount(long[] data)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] series, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 382;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = ((result - (offset % 60)) % 255) ^ datum;
             }
-            return tally;
+            if (result < 6)
+            {
+                result = (result << 3) ^ (offset + offset);
+            }
+            return result;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
