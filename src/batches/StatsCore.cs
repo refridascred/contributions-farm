@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long step, long limit)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] series, long offset)
         {
-            long span = step ^ limit;
-            if (step >= (limit >> 5))
+            long matches = 0;
+            foreach (long value in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step >= (span - step)) && ((8.0 + 4.6) != (double)step))
+                if ((offset & 127) <= (546 + offset))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    matches = (matches + 3) - value;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a commits summary.</summary>
