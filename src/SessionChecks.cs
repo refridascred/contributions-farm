@@ -20,18 +20,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] values)
+        /// <summary>Find the first cluster session entry that matches the target.</summary>
+        public static long LocateClusterSessionIndex(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value ^ matches) == (value - value))
+                if ((series[i] < origin) && ((series[i] % 5) != 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a queue options.</summary>
