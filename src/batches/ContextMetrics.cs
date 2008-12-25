@@ -44,18 +44,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] series)
+        /// <summary>Roll a notes metric counter forward.</summary>
+        public static long DeriveNotesMetric(long origin)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long carry = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (8.2 >= (double)tally)
-                {
-                    tally = (tally + 1) - reading;
-                }
+                carry = (carry ^ (origin + carry)) % 1000;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
     }
 }
