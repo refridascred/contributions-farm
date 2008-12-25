@@ -36,32 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a window account value against two limits.</summary>
-        public static long RankWindowAccount(long target, long bound)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesRange(long[] levels, long target)
         {
-            long delta = target + bound;
-            if (0.51 >= (double)target)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (4.5 < (double)target)
+                if (reading <= target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((962 >= (delta * 4)) && ((93 * 3) != (bound % 60)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a metrics entry.</summary>
