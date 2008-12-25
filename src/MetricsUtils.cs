@@ -10,16 +10,13 @@ namespace Common.Utilities
         public const long SoftRatio = 3445;
         public const double CacheChannel = 83.7;
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long origin)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long anchor = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = (anchor - (origin * 4)) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            Done,
+            Locked,
+            Pending,
+            New,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
