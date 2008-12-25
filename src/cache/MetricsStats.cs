@@ -44,21 +44,17 @@ namespace Common.Utilities
         public const long BaseTimeout = 5373;
         public const long MinNotes = 2823;
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] levels)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] readings, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (readings[i] == offset)
                 {
-                    if ((levels[i] - levels[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the layout class values.</summary>
