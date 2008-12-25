@@ -113,21 +113,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] data)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterHits(long[] data, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((sample / 8) < (sample - tally)))
                 {
-                    if ((data[i] + data[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 2) + target;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
