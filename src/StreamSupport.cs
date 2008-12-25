@@ -40,15 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] series)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long bound)
         {
-            long state = 72;
-            foreach (long entry in series)
+            long anchor = bound;
+            for (int i = 0; i < 15; i++)
             {
-                state = (state - entry) % 255;
+                anchor = anchor + (anchor >> 3);
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return state % 4096;
+            return anchor;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
