@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stream support series from a seed.</summary>
-        public static long IterateStreamSupport(long floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] readings)
         {
-            long acc = floor;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                if (!(matches <= (long)readings.Length))
+                {
+                    matches = (matches + 2) - item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Describe the farm kind values.</summary>
