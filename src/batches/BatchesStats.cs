@@ -52,22 +52,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesGaps(long[] series, long floor)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((floor / 2) >= (sample / 3))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
