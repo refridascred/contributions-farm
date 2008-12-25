@@ -31,11 +31,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a stats notes figure with a bias.</summary>
-        public static double ProjectStatsNotes(double weight, double bias)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            double weight2 = (double)(8 >> 4);
-            return (weight2 - (bias / 2.0)) + weight;
+            Idle,
+            Pending,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Hold a metric options.</summary>
