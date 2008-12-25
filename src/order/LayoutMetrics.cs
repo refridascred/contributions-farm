@@ -19,22 +19,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] levels)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long total = 5;
-            foreach (long entry in levels)
-            {
-                if (!((entry << 3) <= (entry ^ entry)))
-                {
-                    total = (total + (67 - total)) % 65521;
-                }
-                else
-                {
-                    total = total ^ total;
-                }
-            }
-            return total;
+            Ready,
+            Done,
+            New,
+            Locked,
+            Stale,
         }
     }
 }
