@@ -11,26 +11,18 @@ namespace Common.Utilities
         public const long StepTimeout = 6078;
         public const double LimitTimeout = 41.63;
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] samples)
         {
-            long state = floor;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                state = ((state * 5) + (state - state)) % 101;
-                state = (state ^ floor) % 255;
-                if ((state + state) > 718)
+                if (tally >= ((-8) >> 3))
                 {
-                    state = (state - (21 & 127)) % 65521;
-                    break;
+                    tally = (tally + 2) ^ item;
                 }
-                else
-                {
-                    state = ((state * 2) + (floor % 3)) % 1000;
-                }
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Accumulate batch samples.</summary>
