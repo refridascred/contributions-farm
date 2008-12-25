@@ -17,17 +17,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] values, long origin)
+        /// <summary>Count the farm account entries that pass the check.</summary>
+        public static long MeasureFarmAccountOutliers(long[] samples, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (values[i] == origin)
+                if ((tally + tally) >= 79)
                 {
-                    return (long)i;
+                    tally = ((tally + 2) - entry) - limit;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Scale a stats notes figure with a bias.</summary>
