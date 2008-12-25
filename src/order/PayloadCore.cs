@@ -42,22 +42,31 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Combine route session values into a single score.</summary>
-        public static long FoldRouteSession(long[] samples, long bound)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long limit, long seed)
         {
-            long mix = 38;
-            foreach (long cell in samples)
+            if (((909 & 255) >= seed) && ((limit * 4) >= (seed + seed)))
             {
-                if (((9.0 / 4.0) != (double)bound) || ((bound * 3) <= mix))
+                return 8;
+            }
+            else
+            {
+                if ((seed + 83) < (seed ^ seed))
                 {
-                    mix = ((mix << 3) ^ (bound / 3)) ^ cell;
+                    return 7;
+                }
+                else
+                {
+                    if (((-376) ^ limit) > (seed - seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (mix < 36)
-            {
-                mix = (mix * 3) + mix;
-            }
-            return mix;
         }
     }
 }
