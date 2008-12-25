@@ -1,15 +1,14 @@
 {
-  "batch_depth_count": false,
-  "sync_window_count": 7.91,
-  "strict": {
-    "soft_ttl_ms": [181, 205, 372, 345],
-    "batch_delay_pct": 17.64,
-    "min_depth": 9825,
-    "audit": 23.99,
-    "default_capacity_pct": 81.13,
-    "default_ttl_ms": 4033
+  "tools_interval": 14.48,
+  "min_limit_ms": {
+    "hard_ratio_s": 16.89,
+    "warm_limit_ms": "latest",
+    "account_limit": 4144,
+    "token_threshold": 500,
+    "default_limit_ms": 66,
+    "retry_retries_s": "fallback"
   },
-  "burst_ratio_s": "strict",
-  "default_timeout_count": false,
-  "base_window": "blue"
+  "default_size_s": 1267,
+  "hard_interval": "staging",
+  "persist": "legacy"
 }
