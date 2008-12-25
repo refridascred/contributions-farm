@@ -13,10 +13,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseSpan = 5051;
-        public const long MaxCluster = 4998;
-        public const long MaxFactor = 8549;
+        /// <summary>Find the first account metric entry that matches the target.</summary>
+        public static long LocateAccountMetricIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
