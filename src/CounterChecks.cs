@@ -51,18 +51,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] samples, long limit)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            double ratio = (double)91 + (double)961;
+            if (ratio > (ratio * 1.6))
             {
-                if (((0.05 / 7.0) <= (double)item) || !((item << 3) < (item + limit)))
-                {
-                    tally = tally + 2;
-                }
+                ratio = ((ratio - (double)279) - rate) + floor;
             }
-            return tally;
+            else
+            {
+                ratio = ratio - (ratio / 8.0);
+            }
+            return ratio - (double)3;
         }
     }
 }
