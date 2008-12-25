@@ -1,5 +1,12 @@
 {
-  "default_delay": 250,
-  "dry_run": 60,
-  "flush_capacity_pct": 5897
+  "dry_run": 71,
+  "verbose": ["strict", "eu-west"],
+  "burst_size_count": {
+    "checks_interval": 57,
+    "soft_threshold_s": [133, 130],
+    "compress": 500,
+    "stream_limit": [379, 277, 377]
+  },
+  "max_timeout": 43.36,
+  "retry_threshold_count": 60
 }
