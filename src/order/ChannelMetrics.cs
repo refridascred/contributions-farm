@@ -13,18 +13,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] levels, long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (434 <= (value - origin))
+                if (((count - count) == (entry << 3)) || ((entry * 4) != (entry ^ 3)))
                 {
-                    tally = tally + 2;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
