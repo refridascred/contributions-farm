@@ -32,22 +32,21 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Combine batches cache values into a single score.</summary>
-        public static long ScoreBatchesCache(long[] series)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] series)
         {
-            long state = 268;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell > 883)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = (state ^ (state - cell)) % 97;
+                    if ((series[i] - series[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state > 2)
-            {
-                state = ((state << 3) ^ state) % 65521;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
