@@ -22,17 +22,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] readings, long step)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((readings[i] == step) && ((readings[i] % 3) != 0))
+                if (((double)tally < (9.4 + 6.8)) || (datum < (tally + tally)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
