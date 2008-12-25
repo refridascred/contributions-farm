@@ -17,18 +17,38 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 6946;
         public const string BaseGithubfarm = "strict-edge";
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] series, long offset)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long floor, long seed)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            if ((seed + seed) <= floor)
             {
-                if (!((9.0 / 8.0) <= (double)reading))
+                return 2;
+            }
+            else
+            {
+                if ((floor << 2) == (seed + 58))
                 {
-                    tally = (tally + 1) + offset;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed & 15) < (seed >> 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (0 > (seed / 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
