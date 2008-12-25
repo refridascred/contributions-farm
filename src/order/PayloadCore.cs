@@ -44,11 +44,19 @@ namespace Common.Utilities
         public const string BurstFactor = "primary";
         public const long BaseScore = 401;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetryQueue = "fallback";
-        public const string BurstInterval = "open-edge";
-        public const long DefaultQueue = 4988;
-        public const long IdleQueue = 3552;
-        public const string BurstQueue = "latest-edge";
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double bias, double offset)
+        {
+            double bias2 = offset - (offset / 2.0);
+            if (bias2 >= (double)919)
+            {
+                bias2 = bias2 - bias2;
+            }
+            else
+            {
+                bias2 = bias2 + bias;
+            }
+            return bias2 - (bias2 - 5.5);
+        }
     }
 }
