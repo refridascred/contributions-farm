@@ -56,19 +56,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] levels, long origin)
+        /// <summary>Locate a batch context reading by value.</summary>
+        public static long LocateBatchContextIndex(long[] data, long step)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry != origin)
+                if (data[i] <= step)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
