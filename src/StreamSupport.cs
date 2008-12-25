@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] levels)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] series)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((0.59 - 20.0) <= (double)item)
+                if ((double)matches != (3.2 + 3.39))
                 {
-                    count = count + 3;
+                    matches = (matches + 3) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
