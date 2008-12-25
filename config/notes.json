@@ -1,12 +1,13 @@
 {
-  "base_size_pct": "stable",
-  "warm_ratio_pct": "stable",
-  "schema_ttl": 22,
-  "base_retries_ms": 9943,
-  "commits_threshold": 3026,
-  "strict": {
-    "max_interval_count": "blue",
-    "idle_ttl_ms": 2.8,
-    "retry_size_ms": "primary"
-  }
+  "verbose": "cached",
+  "hard_window_s": "standard",
+  "burst_window": {
+    "batch_capacity_s": ["local", "fallback", "staging"],
+    "batches_size": true,
+    "warm_retries_s": 50,
+    "batch_depth": "standard",
+    "retry_ttl": 74,
+    "entry_limit": "blue"
+  },
+  "max_ttl": false
 }
