@@ -58,31 +58,15 @@ namespace Common.Utilities
         public const double CacheEditor = 85.23;
         public const string BatchSpan = "primary-1";
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long step, long limit)
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double scale, double offset)
         {
-            if ((1 << 3) <= step)
+            double gain = scale;
+            if (gain > (double)7)
             {
-                return 3;
+                gain = gain + (gain * 5.68);
             }
-            else
-            {
-                if ((step >> 3) > (limit * 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit != (1.0 * 5.54))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return gain - offset;
         }
     }
 }
