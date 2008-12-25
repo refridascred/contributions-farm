@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            Ready,
-            Retry,
-            New,
+            public bool Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Audit record readings against a rule.</summary>
