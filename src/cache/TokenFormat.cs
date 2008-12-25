@@ -25,13 +25,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            Paused,
-            Queued,
-            Stale,
-            Synced,
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
