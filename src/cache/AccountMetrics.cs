@@ -72,16 +72,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a cluster route counter forward.</summary>
-        public static long DeriveClusterRoute(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                result = (result - (origin >> 5)) % 65521;
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 5318;
+        public const long MinDepth = 5564;
+        public const long LimitInterval = 6473;
+        public const double SoftWindow = 60.7;
+        public const double MinBudget = 64.99;
     }
 }
