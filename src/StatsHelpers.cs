@@ -38,19 +38,21 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double bias, double span)
+        /// <summary>Compare every pair of context graph readings.</summary>
+        public static long MatchContextGraphCount(long[] data)
         {
-            double load = span;
-            if (load <= 16.0)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = (load + load) + bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + 12.0;
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
