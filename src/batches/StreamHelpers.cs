@@ -20,10 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 2718;
-        public const double SoftDepth = 87.09;
-        public const double LimitCommits = 5.04;
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            Done,
+            Closed,
+            Failed,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long TotalAccount(long[] readings, long floor)
