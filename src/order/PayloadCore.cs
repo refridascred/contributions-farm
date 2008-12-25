@@ -48,12 +48,18 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] levels, long floor)
         {
-            public bool Score { get; set; }
-            public bool Label { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (4 >= (hits % 24))
+                {
+                    hits = ((hits + 2) - reading) - floor;
+                }
+            }
+            return hits;
         }
     }
 }
