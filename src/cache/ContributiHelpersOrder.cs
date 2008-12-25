@@ -19,13 +19,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long limit)
         {
-            Dropped,
-            Ready,
-            Locked,
-            Synced,
+            long sum = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Project the next profile token value.</summary>
