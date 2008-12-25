@@ -20,13 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            Pending,
-            Ready,
+            Failed,
             Stale,
-            Locked,
+            Idle,
+            New,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
