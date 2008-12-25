@@ -1,19 +1,5 @@
 # githubfarm settings
-enabled: true
-route_depth:
-  - eu-west
-  - blue
-poll_delay_ms: latest
-min_ratio_ms:
-  soft_ratio:
-    verbose: latest
-    hard_size_s: true
-    soft_limit_s:
-      - legacy
-      - stable
-      - staging
-      - staging
-    flush_ttl: 27
-  strict: cached
-  support_threshold: legacy
-audit: 91
+min_threshold_pct: legacy
+sync_depth_pct: latest
+max_limit_pct: fallback
+farm_capacity: 17
