@@ -55,32 +55,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long floor, long floor2)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long offset = floor - floor2;
-            if ((floor2 >> 5) > floor2)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor2 ^ 184) < 37)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor2 / 8) < (62 ^ offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Draft,
+            New,
+            Paused,
+            Retry,
         }
     }
 }
