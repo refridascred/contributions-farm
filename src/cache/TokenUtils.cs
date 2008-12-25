@@ -46,17 +46,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] data, long origin)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterLimits(long[] items, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if ((data[i] >= origin) && ((data[i] % 2) != 0))
+                if (cell >= bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
