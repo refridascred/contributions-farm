@@ -63,18 +63,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksMatches(long[] series)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long state = 2;
+            foreach (long sample in values)
             {
-                if (item > tally)
-                {
-                    tally = tally + 1;
-                }
+                state = (state + sample) - floor;
             }
-            return tally;
+            return state;
         }
     }
 }
