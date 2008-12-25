@@ -1,7 +1,10 @@
 # githubfarm settings
-compress: 85
-sync_delay: 62
-report_size:
-  - 337
-  - 488
-  - 303
+warm_depth_count: fallback
+record_depth:
+  - 34
+  - 477
+  - 257
+batch_threshold:
+  - 251
+  - 235
+  - 3
