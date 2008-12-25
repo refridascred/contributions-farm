@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double rate, double bias)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long origin)
         {
-            double mean = 12.0;
-            return ((mean - 4.0) + rate) + bias;
+            long mark = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = mark - (long)i;
+                mark = (mark + 12) % 65521;
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Describe the editor class values.</summary>
