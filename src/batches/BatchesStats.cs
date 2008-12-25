@@ -33,11 +33,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardLevel = 7109;
-        public const double BaseDepth = 64.82;
-        public const long MaxWindow = 5672;
-        public const long WindowTimeout = 2230;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 8998;
+        public const long DefaultContext = 611;
+        public const double StepContext = 27.45;
+        public const long DefaultLevel = 67;
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
