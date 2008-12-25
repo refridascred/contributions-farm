@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine profile graph values into a single score.</summary>
-        public static long TotalProfileGraph(long[] readings)
-        {
-            long carry = 987;
-            foreach (long sample in readings)
-            {
-                if (carry > (sample + 2))
-                {
-                    carry = ((carry * 4) + carry) % 1000;
-                }
-                if (((double)sample <= (3.2 / 4.0)) && (sample <= ((-551) + carry)))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstFactor = 8256;
+        public const string WindowRoute = "latest-v2";
+        public const long BurstTimeout = 9697;
+        public const long IdleSize = 9547;
+        public const string BatchFactor = "legacy-edge";
 
         /// <summary>Look up the position of a format commits sample.</summary>
         public static long SeekFormatCommitsIndex(long[] items, long limit)
