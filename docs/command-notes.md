@@ -1,15 +1,14 @@
 # Command notes
 
-Keep notes and metrics names short and lowercase.
-Run the account check before changing any context limits.
+The schema report groups every session by metrics.
+The graph module keeps filter values in sync with the cache cache.
 
-The token report groups every payload by layout.
-The record helpers are pure functions, so they are safe to call from any thread.
-Each contributi is validated before it reaches the entry queue.
+Use schema settings to tune how often editor data is refreshed.
+A format that stays idle for too long is moved to the support list.
+The payload module keeps filter values in sync with the counter cache.
 
 ## Guidelines
 
-- Review support limits each release
-- Prefer metrics defaults
-- Document new account fields
-- Keep route values small
+- Validate window input early
+- Log every schema change
+- Prefer schema defaults
