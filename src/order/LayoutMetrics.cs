@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] readings, long bound)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((seen - seen) > (bound - entry)) && ((1.0 / 7.0) <= (double)seen)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] - values[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the notes level values.</summary>
