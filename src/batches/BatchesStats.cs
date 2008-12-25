@@ -48,11 +48,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftContext = 8998;
-        public const long DefaultContext = 611;
-        public const double StepContext = 27.45;
-        public const long DefaultLevel = 67;
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
+        }
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
