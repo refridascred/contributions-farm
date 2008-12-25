@@ -54,19 +54,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long target)
+        /// <summary>Look up the position of a account cluster sample.</summary>
+        public static long LocateAccountClusterIndex(long[] items, long origin)
         {
-            long mix = target;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((items[i] > origin) && ((items[i] % 5) == 0))
                 {
-                    mix = (mix - target) - (long)i2;
+                    return (long)i;
                 }
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Blend two support measurements.</summary>
