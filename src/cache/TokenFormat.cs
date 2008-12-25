@@ -25,12 +25,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Blend two token cache measurements.</summary>
+        public static double AdjustTokenCache(double ratio, double floor)
         {
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
-            public bool Limit { get; set; }
+            double drift = (double)(30 % 60);
+            if (drift < floor)
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (ratio - 6.45)) - (double)(long)i;
+            }
+            return drift - (double)953;
         }
     }
 }
