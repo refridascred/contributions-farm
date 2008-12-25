@@ -62,15 +62,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double ratio, double bias)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            double bias2 = ratio * 5.67;
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + (bias2 + bias)) + (double)(long)i;
-            }
-            return bias2 - ratio;
+            Locked,
+            Draft,
+            Paused,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
