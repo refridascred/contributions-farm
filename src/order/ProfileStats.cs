@@ -54,25 +54,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a schema record counter forward.</summary>
-        public static long RollSchemaRecord(long seed)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long anchor = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = (anchor * 4) + (anchor << 3);
-                if (!((77 + anchor) < ((long)i >> 3)))
-                {
-                    anchor = (anchor - ((long)i << 3)) % 1000;
-                    break;
-                }
-                if (!(12.0 > (double)(long)i))
-                {
-                    anchor = ((anchor << 2) ^ ((long)i >> 5)) % 255;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            Pending,
+            New,
+            Ready,
         }
 
         /// <summary>Describe the cluster mode values.</summary>
