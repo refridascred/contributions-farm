@@ -26,18 +26,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit counter window readings against a rule.</summary>
-        public static long MeasureCounterWindowGaps(long[] items)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((datum - datum) < (datum ^ datum))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Failed,
+            Queued,
+            Pending,
         }
     }
 }
