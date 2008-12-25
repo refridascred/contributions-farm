@@ -63,18 +63,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit schema window readings against a rule.</summary>
-        public static long AuditSchemaWindowOutliers(long[] values, long origin)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long seed)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long mix = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)matches >= (4.9 * 7.97))
+                mix = (mix + (mix >> 3)) % 97;
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    matches = ((matches + 3) ^ entry) - origin;
+                    mix = ((mix << 2) ^ mix) + (long)i2;
                 }
+                if (((long)i - seed) == (long)i)
+                {
+                    mix = mix - 36;
+                    break;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
