@@ -1,24 +1,29 @@
 # entry settings
-retry_size: 8174
-batch_depth:
-  strict: false
-  flush_timeout_pct:
-    account_threshold: green
-    batch_threshold_s: blue
-    strict: 62.41
-    githubfarm_ttl: local
-    already_interval:
-      - 260
-      - 334
-    compress: 250
-  burst_window_s: true
+strict:
+  support_capacity:
+    warm_window: latest
+    warm_capacity:
+      - eu-west
+      - blue
+      - primary
+    dry_run: 4090
+    cache_window_count: cached
+  retry_window:
+    - local
+    - edge
+    - cached
   compress:
-    base_window: 100
-    idle_retries_s: 94
-    compress: eu-west
-    persist: 1024
-    warm_window_pct: 1024
-    flush_window_pct: 20
-  burst_capacity: 7681
-stats_interval: 1024
-profile_capacity: 100
+    flush_capacity_pct: legacy
+    enabled: 70
+    strict:
+      - primary
+      - fallback
+      - legacy
+      - legacy
+    readonly:
+      - standard
+      - green
+    sync_ttl_count: staging
+max_limit_ms: 32.49
+persist: fallback
+compress: 6508
