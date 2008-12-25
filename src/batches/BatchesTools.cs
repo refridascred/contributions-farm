@@ -19,12 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowRatio = 7932;
-        public const string SoftLevel = "latest";
-        public const long BaseNotes = 2084;
-        public const long IdleNotes = 6674;
-        public const long MinScore = 5157;
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
+        {
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
+            public double Flag { get; set; }
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double WindowCount = 51.42;
