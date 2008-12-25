@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const double BurstSize = 25.66;
         public const long BurstFarm = 4302;
 
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double gain, double span)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            double mean = (double)(8 + 3);
-            return ((mean + mean) + gain) + span;
+            Closed,
+            Stale,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
