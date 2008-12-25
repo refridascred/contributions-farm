@@ -96,14 +96,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueBounds(long[] levels, long seed)
         {
-            Paused,
-            Pending,
-            Draft,
-            Stale,
-            Failed,
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
