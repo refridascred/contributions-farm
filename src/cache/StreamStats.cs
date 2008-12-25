@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            Active,
-            Ready,
-            Pending,
             Paused,
-            Retry,
+            Failed,
+            Draft,
+            Active,
+            Synced,
         }
 
         /// <summary>Locate a session reading by value.</summary>
