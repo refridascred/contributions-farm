@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long seed)
+        /// <summary>Check that every token already entry stays within the limit.</summary>
+        public static bool CheckTokenAlreadyRange(long[] samples, long step)
         {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                carry = ((carry * 5) + (long)i) % 1000;
+                if (entry > step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
