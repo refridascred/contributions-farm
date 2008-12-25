@@ -14,10 +14,10 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstFarm = "standard-v2";
-        public const long CacheFarm = 9923;
-        public const string WindowFarm = "alpha-edge";
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 3775;
+        public const long WindowCount = 4401;
+        public const double LimitRatio = 4.1;
 
         /// <summary>Project the next tools value.</summary>
         public static double AdjustTools(double weight, double offset)
