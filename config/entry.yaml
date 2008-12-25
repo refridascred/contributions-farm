@@ -1,10 +1,14 @@
 # entry settings
-min_limit_ms: green
-warm_timeout:
-  - open
-  - open
-  - fallback
-sync_timeout_count: false
-warm_size_pct: 250
-batch_window: 90.11
-metric_capacity: 60
+verbose:
+  verbose: false
+  metric_size:
+    - 45
+    - 396
+    - 424
+    - 52
+  warm_timeout_count: 13
+  filter_delay: eu-west
+  account_interval: 91
+burst_size: latest
+burst_delay_s: stable
+persist: standard
