@@ -25,11 +25,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string IdleDepth = "alpha-1";
-        public const long DefaultEditor = 6658;
-        public const long WindowWidth = 410;
-        public const string BatchEditor = "staging";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 793;
+        public const string CacheProfile = "open-1";
+        public const string BatchProfile = "local-1";
+        public const double SoftProfile = 54.05;
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
