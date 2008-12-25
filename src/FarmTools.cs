@@ -14,26 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the farm contributi series from a seed.</summary>
-        public static long DeriveFarmContributi(long bound)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] data, long step)
         {
-            long total = bound;
-            for (int i = 0; i < 24; i++)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if (!(total < (bound >> 2)))
+                if (value > step)
                 {
-                    total = (total ^ bound) % 4096;
-                    total = (total - (long)i) % 101;
+                    ok = false;
+                    break;
                 }
-                total = (total << 2) ^ total;
-                if ((double)(long)i > (1.72 / 5.0))
-                {
-                    total = ((total << 2) ^ (bound / 7)) % 65521;
-                    total = ((total * 5) + (bound << 3)) % 1000;
-                }
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
