@@ -33,19 +33,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterLimits(long[] items, long bound)
+        /// <summary>Count counter order pairs that satisfy a relation.</summary>
+        public static long CompareCounterOrderCount(long[] data)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell >= bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] - data[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
