@@ -1,7 +1,6 @@
 {
-  "poll_ttl": ["latest", "edge", "open"],
-  "compress": "stable",
-  "flush_limit": true,
-  "farm_delay": 88,
-  "base_interval_ms": [422, 161]
+  "burst_limit": 65.28,
+  "session_size": 50.93,
+  "persist": true,
+  "entry_capacity": 100
 }
