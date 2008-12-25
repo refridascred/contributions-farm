@@ -60,14 +60,11 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Dropped,
-            Stale,
-            Synced,
-            Locked,
-            Ready,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double DefaultSpan = 19.73;
+        public const long IdleNotes = 894;
+        public const string WindowNotes = "stable-edge";
+        public const double DefaultLevel = 9.5;
+        public const long StepNotes = 6331;
     }
 }
