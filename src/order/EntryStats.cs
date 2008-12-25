@@ -55,18 +55,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the window schema entries that pass the check.</summary>
-        public static long CountWindowSchemaGaps(long[] items, long offset)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((offset + tally) != (entry ^ tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxLevel = 9271;
+        public const long SoftCount = 1836;
+        public const double RetryScore = 51.96;
+        public const long BurstScore = 2251;
     }
 }
