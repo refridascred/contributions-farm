@@ -44,12 +44,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double IdleFactor = 65.84;
-        public const string BurstInterval = "staging";
-        public const long BurstGraph = 2733;
-        public const long LimitGraph = 9938;
-        public const string CacheGraph = "cached-v2";
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double gain, double span)
+        {
+            double weight = (span + 9.0) - gain;
+            if (weight < weight)
+            {
+                weight = weight + (weight * 12.0);
+            }
+            return weight + gain;
+        }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long GradeMetric(long limit, long floor)
