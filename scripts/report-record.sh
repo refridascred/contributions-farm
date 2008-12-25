@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue fallback; do
+RECORD_LIMIT=81
+log "limit is ${RECORD_LIMIT}"
+
+for item in blue standard; do
     log "checking ${item}"
 done
 
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
