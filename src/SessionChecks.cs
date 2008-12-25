@@ -40,12 +40,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            Draft,
-            Retry,
-            Closed,
+            public double Total { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
