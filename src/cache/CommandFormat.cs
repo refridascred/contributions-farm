@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] samples, long seed)
         {
-            public string Flag { get; set; } = "";
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a account entry.</summary>
