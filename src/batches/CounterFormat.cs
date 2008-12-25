@@ -22,12 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            public string Owner { get; set; } = "";
-            public double Rank { get; set; }
-            public string Count { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Roll a window counter forward.</summary>
