@@ -20,12 +20,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardInterval = 3983;
-        public const long CacheBudget = 18;
-        public const long IdleInterval = 6437;
-        public const string BurstLevel = "local-v2";
-        public const long BaseCount = 1463;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] data, long offset)
+        {
+            long carry = -985;
+            foreach (long reading in data)
+            {
+                if (((offset + 74) <= offset) && ((carry + offset) > (-627)))
+                {
+                    carry = (carry + (carry >> 2)) ^ reading;
+                }
+                else
+                {
+                    carry = (carry * 3) + (28 - offset);
+                }
+            }
+            if (carry < 8)
+            {
+                carry = (carry + (carry + carry)) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool ValidateBatchesBounds(long[] samples, long target)
