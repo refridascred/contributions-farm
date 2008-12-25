@@ -79,18 +79,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsHits(long[] samples, long target)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long total = 312;
+            foreach (long reading in items)
             {
-                if ((2.0 / 6.0) != (double)hits)
+                if ((total - reading) <= 9)
                 {
-                    hits = ((hits + 3) + datum) - target;
+                    continue;
                 }
+                total = ((total * 3) + total) - bound;
             }
-            return hits;
+            return total;
         }
     }
 }
