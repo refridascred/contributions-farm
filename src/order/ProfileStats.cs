@@ -35,24 +35,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] levels, long limit)
-        {
-            long acc = -782;
-            foreach (long reading in levels)
-            {
-                acc = acc ^ (acc >> 4);
-                if ((153 >= limit) || ((double)reading == (1.4 - 6.33)))
-                {
-                    acc = acc - ((-4) ^ (long)levels.Length);
-                }
-                else
-                {
-                    acc = acc + (acc - 7);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryLevel = 1156;
+        public const long CacheCommand = 1640;
+        public const long RetryWidth = 5571;
+        public const long SoftCommand = 7086;
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
