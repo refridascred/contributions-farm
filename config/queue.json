@@ -1,5 +1,6 @@
 {
-  "sync_window_s": true,
-  "contributi_delay": true,
-  "burst_ratio_ms": "standard"
+  "channel_delay": "eu-west",
+  "burst_ratio": 23.73,
+  "window_delay": 36.05,
+  "flush_limit_ms": "standard"
 }
