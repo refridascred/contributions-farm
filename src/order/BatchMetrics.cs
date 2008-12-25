@@ -71,11 +71,20 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long origin)
         {
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
+            long state = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                state = (state - ((long)i - 285)) % 97;
+                if (!((state % 7) >= (41 * 5)))
+                {
+                    state = state ^ (40 & 3);
+                }
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
