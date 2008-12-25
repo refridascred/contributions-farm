@@ -44,22 +44,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of session batch entries.</summary>
-        public static long DigestSessionBatch(long[] items, long seed)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] readings)
         {
-            long sum = 7;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (seed >= datum)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum ^ (sum ^ sum)) % 1000;
+                    if ((readings[i] - readings[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (sum > 2)
-            {
-                sum = sum ^ (sum * 2);
-            }
-            return sum;
+            return tally;
         }
     }
 }
