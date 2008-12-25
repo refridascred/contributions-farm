@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up queue window samples.</summary>
-        public static long CompareQueueWindowCount(long[] samples)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long step, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long gap = step - floor;
+            if (((step - step) != (gap % 5)) || ((step << 3) > (gap % 100)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((floor + gap) >= 78)
                 {
-                    if ((samples[i] ^ samples[j]) > 10)
+                    return 6;
+                }
+                else
+                {
+                    if ((double)gap > (8.3 * 7.07))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (step <= (floor >> 4))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
