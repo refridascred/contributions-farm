@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-eu-west}"
 case "${mode}" in
-    blue)
+    open)
         log "fast path"
         ;;
     *)
@@ -16,5 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-BUFFER_LIMIT=133
+BUFFER_LIMIT=461
 log "limit is ${BUFFER_LIMIT}"
