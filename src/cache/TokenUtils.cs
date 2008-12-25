@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] data)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long seed, long origin)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long offset = seed - origin;
+            if (((double)offset != (3.3 - 12.0)) && ((origin - seed) <= (54 - 371)))
             {
-                if ((hits ^ datum) > (datum & 15))
+                return 7;
+            }
+            else
+            {
+                if ((offset ^ origin) >= (seed / 2))
                 {
-                    hits = hits + 2;
+                    return 5;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
