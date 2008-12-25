@@ -54,19 +54,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Digest a series of cache filter entries.</summary>
-        public static long FoldCacheFilter(long[] data, long offset)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long carry = 9;
-            foreach (long entry in data)
-            {
-                if ((entry + 69) >= (offset / 3))
-                {
-                    carry = carry + entry;
-                }
-                carry = ((carry << 3) ^ (carry + 178)) % 4096;
-            }
-            return carry;
+            public bool Owner { get; set; }
+            public double Mode { get; set; }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
