@@ -39,21 +39,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of schema batches readings.</summary>
-        public static long PairSchemaBatchesCount(long[] readings)
+        /// <summary>Combine context stream values into a single score.</summary>
+        public static long TallyContextStream(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 968;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                state = state ^ (item * 3);
+                if (item <= (item >> 5))
                 {
-                    if ((readings[i] ^ readings[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state - (item - 4)) % 4096;
                 }
             }
-            return count;
+            if (state < 522)
+            {
+                state = (state - (state & 7)) % 255;
+            }
+            return state % 65521;
         }
     }
 }
