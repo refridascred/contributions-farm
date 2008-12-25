@@ -18,13 +18,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            Locked,
-            Paused,
-            Queued,
-            Ready,
+            public bool Weight { get; set; }
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
