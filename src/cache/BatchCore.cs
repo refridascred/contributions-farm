@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate batches batch readings against a bound.</summary>
-        public static bool CheckBatchesBatchRange(long[] samples, long step)
-        {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheGraph = 9878;
+        public const long IdleGraph = 8483;
+        public const string StepGraph = "legacy-v2";
 
         /// <summary>Roll a already counter forward.</summary>
         public static long IterateAlready(long limit)
