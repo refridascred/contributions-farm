@@ -29,11 +29,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 6271;
-        public const double RetryScore = 7.94;
-        public const string HardWidth = "strict-edge";
-        public const long HardLevel = 9777;
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double scale, double span)
+        {
+            double ratio = span + (span * 1.9);
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (ratio - scale)) + (double)(long)i;
+            }
+            return ratio - (span / 4.0);
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long TallyBatch(long[] items, long limit)
