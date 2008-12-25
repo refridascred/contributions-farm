@@ -84,19 +84,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double gain, double span)
+        /// <summary>Accumulate stream notes samples.</summary>
+        public static long WeighStreamNotes(long[] levels, long target)
         {
-            double mean = gain;
-            if (mean >= span)
+            long state = 3;
+            foreach (long item in levels)
             {
-                mean = mean - (gain - gain);
+                state = ((state * 2) + (target + 80)) % 1000;
+                if (((long)levels.Length / 4) != ((long)levels.Length % 7))
+                {
+                    state = (state - (item + state)) % 65521;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + gain) + (double)(long)i;
-            }
-            return mean + span;
+            return state % 65521;
         }
     }
 }
