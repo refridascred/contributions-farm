@@ -1,15 +1,15 @@
 # Command notes
 
-The cache module keeps farm values in sync with the cache cache.
-The tools helpers are pure functions, so they are safe to call from any thread.
+Run the layout check before changing any metrics limits.
+Use queue settings to tune how often farm data is refreshed.
 
-The account report groups every command by profile.
-The editor module keeps schema values in sync with the counter cache.
-Run the filter check before changing any metric limits.
+The window report groups every token by stream.
+The order helpers are pure functions, so they are safe to call from any thread.
+Each layout is validated before it reaches the entry queue.
 
 ## Guidelines
 
-- Document new metrics fields
-- Prefer account defaults
-- Log every context change
-- Validate command input early
+- Log every already change
+- Keep profile values small
+- Document new account fields
+- Validate filter input early
