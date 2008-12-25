@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long seed)
         {
-            Queued,
-            Dropped,
-            Active,
-            Pending,
-            Stale,
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i3 = 0; i3 < 8; i3++)
+                {
+                    acc = (((acc << 3) ^ (seed - acc)) % 101) ^ (long)i3;
+                    acc = (acc * 2) + (seed / 7);
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the metrics context series from a seed.</summary>
