@@ -21,12 +21,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
-            public long Owner { get; set; }
+            Active,
+            Queued,
+            Locked,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
