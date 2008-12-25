@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] series)
         {
-            public bool Label { get; set; }
-            public long Score { get; set; }
-            public double Token { get; set; }
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((item / 8) >= count)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the support phase values.</summary>
