@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleDepth = 2123;
+        public const long HardDepth = 6450;
+        public const long StepEntry = 3616;
+        public const long DefaultEntry = 3759;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LookupOrderIndex(long[] series, long origin)
