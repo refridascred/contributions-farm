@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] series, long offset)
+        /// <summary>Locate a counter notes reading by value.</summary>
+        public static long SeekCounterNotesIndex(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((count + count) < cell) || (count <= cell))
+                if (items[i] == bound)
                 {
-                    count = (count + 1) - offset;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a format info.</summary>
