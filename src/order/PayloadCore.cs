@@ -49,18 +49,18 @@ namespace Common.Utilities
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double bias, double floor)
+        public static double ProjectMetric(double ratio, double span)
         {
-            double drift = (0.99 + floor) - (floor / 4.0);
-            if (drift <= floor)
+            double rate = span;
+            if (rate < span)
             {
-                drift = drift + (double)887;
+                rate = (rate - (double)(-591)) - ratio;
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 3; i++)
             {
-                drift = (drift - bias) + (double)(long)i;
+                rate = (rate - (rate / 4.0)) + (double)(long)i;
             }
-            return drift - drift;
+            return rate + span;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
