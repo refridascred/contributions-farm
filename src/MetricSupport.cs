@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long origin)
         {
-            Active,
-            Closed,
-            Dropped,
-            Failed,
+            long mark = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = (mark * 4) + (mark * 3);
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many editor cluster samples are out of range.</summary>
