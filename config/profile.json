@@ -1,8 +1,20 @@
 {
-  "dry_run": [231, 416],
-  "buffer_depth": 5873,
-  "batch_limit_s": 100,
-  "sync_delay_ms": 39,
-  "account_timeout": "open",
-  "command_timeout": 100
+  "audit": 1.66,
+  "account_window": {
+    "dry_run": 14.72,
+    "flush_timeout_pct": 60,
+    "sync_size_s": "cached",
+    "enabled": 100,
+    "audit": 43.56,
+    "flush_depth_s": {
+      "idle_size": 7879,
+      "contributi_retries": [243, 373, 210, 388],
+      "soft_ttl_count": "edge",
+      "poll_ttl_pct": 1544,
+      "hard_delay_s": 356
+    }
+  },
+  "soft_timeout_pct": 8350,
+  "min_delay_count": "primary",
+  "max_window": [3, 138, 196]
 }
