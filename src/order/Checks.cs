@@ -64,23 +64,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double bias, double bias2)
-        {
-            double bias3 = bias2 + (bias2 + bias2);
-            if (bias3 >= (double)83)
-            {
-                bias3 = (bias3 + (double)412) + bias;
-            }
-            else
-            {
-                bias3 = bias3 + (double)4;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias3 = (bias3 - bias3) + (double)(long)i;
-            }
-            return bias3 + (bias2 * 3.54);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowRecord = 34.46;
+        public const long RetryRatio = 9807;
+        public const long IdleRecord = 4152;
     }
 }
