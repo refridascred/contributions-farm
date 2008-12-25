@@ -24,10 +24,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 2753;
-        public const string LimitStats = "alpha";
-        public const long RetryBudget = 422;
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
+        {
+            public double Offset { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
