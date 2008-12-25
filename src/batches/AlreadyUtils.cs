@@ -49,12 +49,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] series, long floor)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] items, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] <= floor)
+                if ((items[i] > origin) && ((items[i] % 5) == 0))
                 {
                     return (long)i;
                 }
