@@ -12,19 +12,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksRange(long[] samples, long seed)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Label { get; set; }
+            public string Total { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
