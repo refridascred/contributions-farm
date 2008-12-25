@@ -36,19 +36,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaBounds(long[] values, long seed)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (datum > seed)
+                if (((16.0 - 6.5) != (double)floor) || (tally >= (long)readings.Length))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 2) ^ cell;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
