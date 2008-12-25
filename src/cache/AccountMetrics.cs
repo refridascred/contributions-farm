@@ -54,18 +54,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesHits(long[] series)
+        /// <summary>Roll a cluster route counter forward.</summary>
+        public static long DeriveClusterRoute(long origin)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long result = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((datum + datum) >= (matches - datum))
-                {
-                    matches = matches + 1;
-                }
+                result = (result - (origin >> 5)) % 65521;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return matches;
+            return result;
         }
     }
 }
