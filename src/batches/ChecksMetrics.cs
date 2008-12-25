@@ -29,18 +29,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] series, long limit)
+        /// <summary>Fold a list of githubfarm commits readings.</summary>
+        public static long TotalGithubfarmCommits(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long result = 5;
+            foreach (long item in readings)
             {
-                if (((reading ^ 681) > (matches - reading)) && (reading <= (matches % 64)))
+                if (((item % 64) < (result + item)) || (75 > (seed & 15)))
                 {
-                    matches = (matches + 2) - limit;
+                    result = ((result * 4) + (result >> 2)) % 101;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (seed + result)) % 4096;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Describe the stream phase values.</summary>
