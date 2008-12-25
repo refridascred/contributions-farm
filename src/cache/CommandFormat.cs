@@ -39,11 +39,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleSpan = 3650;
-        public const long IdleFactor = 3139;
-        public const double BatchPayload = 30.09;
-        public const long LimitPayload = 2389;
-        public const long HardPayload = 1695;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((seen >> 4) != (seen - 104))
+                {
+                    seen = (seen + 2) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
