@@ -1,18 +1,5 @@
 {
-  "filter_timeout": {
-    "persist": true,
-    "cache_delay_count": {
-      "base_interval_s": "local",
-      "hard_ttl": 100,
-      "batch_ratio": "legacy",
-      "batch_size": ["local", "blue", "local", "fallback"]
-    },
-    "batches_delay": ["local", "cached"],
-    "enabled": 65.72,
-    "poll_delay_pct": "local",
-    "flush_size": [25, 236, 205, 39]
-  },
-  "farm_ttl": 38.58,
-  "retry_timeout_s": false,
-  "base_retries": 500
+  "base_delay": "open",
+  "max_retries": "staging",
+  "soft_threshold": "stable"
 }
