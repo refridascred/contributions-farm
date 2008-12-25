@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchHits(long[] items, long bound)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((bound + (long)items.Length) >= (datum / 7))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Retry,
+            Dropped,
+            Stale,
+            Idle,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
