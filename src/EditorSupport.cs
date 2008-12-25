@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double weight, double floor)
-        {
-            double weight2 = (double)(274 / 9);
-            return (weight2 + (floor / 7.0)) + weight;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string DefaultStream = "legacy-edge";
+        public const double WindowBudget = 14.23;
+        public const long RetryDepth = 3812;
+        public const string BatchStream = "legacy-1";
+        public const long HardInterval = 1228;
 
         /// <summary>Audit stream graph readings against a rule.</summary>
         public static long MeasureStreamGraphGaps(long[] readings, long floor)
