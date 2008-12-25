@@ -42,22 +42,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine graph commits values into a single score.</summary>
-        public static long DigestGraphCommits(long[] items, long floor)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long total = 24;
-            foreach (long datum in items)
-            {
-                if (13.0 <= (double)datum)
-                {
-                    total = (((total * 4) + datum) % 1000) - floor;
-                }
-            }
-            if (total > 4)
-            {
-                total = (total ^ (total * 5)) % 65521;
-            }
-            return total % 97;
+            public bool Mode { get; set; }
+            public string Total { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
