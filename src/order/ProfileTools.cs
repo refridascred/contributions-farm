@@ -51,12 +51,40 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 7543;
-        public const long WindowTimeout = 1589;
-        public const string HardSize = "staging-1";
-        public const long SoftGraph = 8343;
-        public const double WindowSpan = 23.0;
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long bound, long step)
+        {
+            long prev = bound ^ step;
+            if ((bound - step) == (1 << 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step ^ step) > 629)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((16 / 7) < step) || ((bound ^ step) < (prev << 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)767 != (double)prev) && (0 >= bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long DigestEntry(long[] levels)
