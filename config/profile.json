@@ -1,5 +1,5 @@
 {
-  "poll_ratio_pct": "latest",
-  "entry_capacity": 7594,
-  "sync_timeout": 250
+  "channel_depth": true,
+  "batch_capacity": "cached",
+  "default_capacity_ms": 70.56
 }
