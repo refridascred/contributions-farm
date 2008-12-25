@@ -27,31 +27,17 @@ namespace Common.Utilities
         public const double HardProfile = 32.88;
         public const double BurstLevel = 80.15;
 
-        /// <summary>Grade a layout channel value against two limits.</summary>
-        public static long GradeLayoutChannel(long offset, long seed)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] items, long offset)
         {
-            if ((seed + 40) >= offset)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((offset ^ offset) <= seed))
+                if (items[i] <= offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)offset < (4.87 * 20.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
