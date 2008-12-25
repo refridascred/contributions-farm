@@ -40,18 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cluster graph values into a single score.</summary>
-        public static long CombineClusterGraph(long[] items)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] series)
         {
-            long total = -591;
-            foreach (long entry in items)
+            long carry = 24;
+            foreach (long item in series)
             {
-                if ((entry % 16) >= (total + total))
+                if (!(carry >= (item + carry)))
                 {
-                    total = ((total << 3) ^ (total + 971)) % 97;
+                    carry = (carry - (carry / 5)) % 65521;
+                }
+                else
+                {
+                    carry = (carry - (63 + carry)) % 97;
                 }
             }
-            return total % 97;
+            return carry;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
