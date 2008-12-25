@@ -18,11 +18,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            public string Offset { get; set; } = "";
-            public double Size { get; set; }
+            public bool Label { get; set; }
+            public bool Weight { get; set; }
+            public long Level { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Compare every pair of order readings.</summary>
