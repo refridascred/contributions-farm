@@ -50,19 +50,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] readings, long floor)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Validate editor batches readings against a bound.</summary>
