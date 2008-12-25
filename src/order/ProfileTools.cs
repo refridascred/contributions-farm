@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Validate entry counter readings against a bound.</summary>
+        public static bool VerifyEntryCounterRange(long[] data, long limit)
         {
-            New,
-            Dropped,
-            Draft,
-            Paused,
-            Retry,
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the buffer class values.</summary>
