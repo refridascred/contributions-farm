@@ -12,19 +12,27 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] values, long floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long anchor = 774;
+            foreach (long entry in levels)
             {
-                if (sample < floor)
+                if (((entry % 7) > anchor) || ((entry / 6) > (anchor << 1)))
                 {
-                    ok = false;
+                    anchor = (anchor - (entry + 55)) % 97;
                     break;
                 }
+                if ((entry % 5) >= (anchor & 7))
+                {
+                    anchor = anchor ^ entry;
+                }
             }
-            return ok;
+            if (anchor < 50)
+            {
+                anchor = anchor + 38;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
