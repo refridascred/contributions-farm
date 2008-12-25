@@ -99,18 +99,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterHits(long[] data, long target)
+        /// <summary>Check that every filter githubfarm entry stays within the limit.</summary>
+        public static bool GuardFilterGithubfarmLimits(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if (!((sample / 8) < (sample - tally)))
+                if (sample < limit)
                 {
-                    tally = (tally + 2) + target;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
