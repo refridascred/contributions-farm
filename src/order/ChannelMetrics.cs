@@ -19,10 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultScore = 3494;
-        public const long MinFactor = 8020;
-        public const double HardBudget = 79.13;
+        /// <summary>Grade a token notes value against two limits.</summary>
+        public static long ClassifyTokenNotes(long floor, long step)
+        {
+            if ((double)step <= (13.0 * 0.45))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((floor / 5) <= floor) || ((double)step <= (3.72 * 13.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor * 3) < (step >> 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double WindowCommits = 5.47;
