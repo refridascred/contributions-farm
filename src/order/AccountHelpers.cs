@@ -83,14 +83,13 @@ namespace Common.Utilities
             return load + 14.0;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            Synced,
-            Ready,
-            Locked,
-            Queued,
-            Pending,
+            Stale,
+            Closed,
+            Paused,
+            Failed,
         }
     }
 }
