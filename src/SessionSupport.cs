@@ -33,13 +33,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Match up window commits samples.</summary>
+        public static long CompareWindowCommitsCount(long[] items)
         {
-            Failed,
-            Queued,
-            Ready,
-            Closed,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
