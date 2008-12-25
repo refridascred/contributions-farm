@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of record queue entries.</summary>
-        public static long TallyRecordQueue(long[] samples, long bound)
-        {
-            long total = -132;
-            foreach (long value in samples)
-            {
-                if ((double)total < (4.4 - 18.0))
-                {
-                    total = total + (value + total);
-                }
-                if ((total + total) <= value)
-                {
-                    break;
-                }
-            }
-            if (total > 89)
-            {
-                total = (total << 3) ^ (bound - bound);
-            }
-            return total;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseSize = 2395;
+        public const string HardCounter = "latest";
+        public const long BaseCount = 8669;
+        public const string CacheCounter = "latest";
+        public const long StepCounter = 8496;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long CombineWindow(long[] data, long step)
