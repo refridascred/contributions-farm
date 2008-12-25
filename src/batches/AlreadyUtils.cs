@@ -67,17 +67,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > origin) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxRatio = 4482;
+        public const long HardSize = 3502;
+        public const long BaseFactor = 2654;
     }
 }
