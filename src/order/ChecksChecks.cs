@@ -19,20 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long floor)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] data)
         {
-            long total = floor;
-            for (int i = 0; i < 16; i++)
+            long result = 414;
+            foreach (long sample in data)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (sample < (result + 1))
                 {
-                    total = ((total << 3) ^ ((long)i2 + (long)i)) % 1000;
-                    total = (total + (total / 2)) % 97;
+                    result = ((result * 4) + (261 * 4)) % 97;
                 }
-                total = ((total * 5) + (long)i) % 65521;
+                if (result > (result / 5))
+                {
+                    result = ((result << 2) ^ (result ^ result)) % 1000;
+                }
             }
-            return total;
+            return result;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
