@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            Queued,
-            Locked,
-            Idle,
-            Closed,
-            Paused,
+            public long Size { get; set; }
+            public double Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Locate a order command reading by value.</summary>
