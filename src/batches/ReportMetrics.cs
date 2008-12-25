@@ -42,16 +42,14 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long step)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long result = step;
-            for (int i = 0; i < 12; i++)
-            {
-                result = (result << 3) ^ (step & 31);
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            Closed,
+            Stale,
+            Active,
+            Idle,
+            Paused,
         }
     }
 }
