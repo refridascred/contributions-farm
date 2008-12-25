@@ -45,39 +45,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long seed, long bound)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] readings)
         {
-            long span = seed + bound;
-            if ((double)bound > (double)seed)
+            long sum = 4;
+            foreach (long entry in readings)
             {
-                return 0;
+                if (!((double)sum > (2.4 - 5.51)))
+                {
+                    sum = (((sum * 4) + (sum + 546)) % 65521) ^ entry;
+                }
+                sum = (sum ^ (sum >> 3)) % 101;
             }
-            else
+            if (sum < 65)
             {
-                if ((seed - span) != (span >> 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((bound / 9) < seed) || ((double)span == (11.0 / 3.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((8.22 * 5.79) > (double)seed) && ((span % 2) < 64))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                sum = (sum << 2) ^ (sum + sum);
             }
+            return sum % 4096;
         }
 
         /// <summary>Hold a schema stats.</summary>
