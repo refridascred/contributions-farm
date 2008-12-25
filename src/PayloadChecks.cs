@@ -75,19 +75,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] data, long step)
+        /// <summary>Fold a list of checks farm readings.</summary>
+        public static long TotalChecksFarm(long[] data)
         {
-            bool found = true;
+            long mix = 249;
             foreach (long value in data)
             {
-                if (value >= step)
+                mix = mix ^ mix;
+                if (!(mix > (mix ^ 764)))
                 {
-                    found = false;
-                    break;
+                    mix = ((mix << 3) ^ (value % 16)) % 255;
+                }
+                else
+                {
+                    mix = (mix - (value / 9)) % 101;
                 }
             }
-            return found;
+            return mix % 1000;
         }
 
         /// <summary>Hold a metric stats.</summary>
