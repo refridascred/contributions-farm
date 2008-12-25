@@ -27,19 +27,21 @@ namespace Common.Utilities
         public const long LimitSize = 971;
         public const long BurstInterval = 4213;
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] levels)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] data)
         {
-            long mix = 2;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix ^ (mix / 3)) % 65521) + sample;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (mix < 337)
-            {
-                mix = (mix + (6 - mix)) % 4096;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Accumulate editor schema samples.</summary>
