@@ -28,14 +28,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Closed,
-            Done,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstSize = 1336;
+        public const double IdleBuffer = 11.52;
+        public const double BurstBuffer = 43.55;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long LimitCount = 6578;
