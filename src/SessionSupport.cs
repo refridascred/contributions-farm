@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
-            public string Score { get; set; } = "";
-            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Classify a payload batch pair into a bucket.</summary>
