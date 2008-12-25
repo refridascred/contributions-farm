@@ -1,8 +1,8 @@
-id,rank,level
-1,863,latest
-2,staging,stable
-3,286,fallback
-4,eu-west,5.06
-5,697,green
-6,15,287
-7,open,standard
+id,label,ratio
+1,30.05,14.85
+2,cached,80.99
+3,51.43,eu-west
+4,open,stable
+5,staging,58.55
+6,28.36,2.76
+7,open,204
