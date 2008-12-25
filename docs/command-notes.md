@@ -1,10 +1,15 @@
 # Command notes
 
-The queue helpers are pure functions, so they are safe to call from any thread.
-A route that stays idle for too long is moved to the metrics list.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+The entry module keeps command values in sync with the githubfarm cache.
+Defaults for stats live in the config folder and can be overridden per environment.
+
+The command report groups every filter by payload.
+Run the payload check before changing any channel limits.
 
 ## Guidelines
 
-- Validate order input early
-- Prefer token defaults
-- Review notes limits each release
+- Prefer profile defaults
+- Review queue limits each release
+- Log every batch change
+- Validate layout input early
