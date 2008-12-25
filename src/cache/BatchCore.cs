@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long IdleGraph = 8483;
         public const string StepGraph = "legacy-v2";
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueBounds(long[] data, long offset)
+        /// <summary>Validate support queue readings against a bound.</summary>
+        public static bool CheckSupportQueueRange(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if (datum > offset)
+                if (entry != step)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
