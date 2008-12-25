@@ -29,18 +29,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] values)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (!((double)count != (5.47 / 4.0)))
-                {
-                    count = (count + 2) + reading;
-                }
-            }
-            return count;
+            Pending,
+            Locked,
+            Failed,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
