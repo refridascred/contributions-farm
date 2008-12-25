@@ -59,18 +59,39 @@ namespace Common.Utilities
         public const long MinGraph = 9926;
         public const double MinTimeout = 54.51;
 
-        /// <summary>Measure how many session cache samples are out of range.</summary>
-        public static long TallySessionCacheHits(long[] values, long origin)
+        /// <summary>Grade a metric contributi value against two limits.</summary>
+        public static long BucketMetricContributi(long offset, long step)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long edge = offset - step;
+            if (((step % 97) <= (69 >> 3)) || ((1.24 - 8.6) > (double)offset))
             {
-                if ((origin / 6) >= seen)
+                return 8;
+            }
+            else
+            {
+                if ((double)step <= (9.5 / 2.0))
                 {
-                    seen = (seen + 3) + item;
+                    return 5;
+                }
+                else
+                {
+                    if ((offset - 6) < (edge & 255))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)offset == (17.0 * 20.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
