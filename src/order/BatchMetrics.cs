@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] series)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (((double)entry > (6.8 * 3.07)) && ((entry % 5) == (275 ^ (long)series.Length)))
+                if (((5.91 / 3.0) != (double)value) && (((value >> 4) != (tally % 97)) || ((tally / 7) < (value >> 2))))
                 {
-                    seen = seen + 1;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Adjust a stats reading.</summary>
