@@ -23,12 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double scale, double floor)
         {
-            public bool Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
+            double scale2 = (scale / 2.0) * 9.4;
+            for (int i = 0; i < 6; i++)
+            {
+                scale2 = (scale2 + floor) + (double)(long)i;
+            }
+            return scale2 + scale2;
         }
 
         /// <summary>Describe the queue mode values.</summary>
