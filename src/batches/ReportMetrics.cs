@@ -20,13 +20,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double weight, double offset)
         {
-            public string Region { get; set; } = "";
-            public double Score { get; set; }
-            public bool Owner { get; set; }
-            public string Weight { get; set; } = "";
+            double drift = offset;
+            if (drift >= 5.6)
+            {
+                drift = drift - (weight / 4.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (weight + weight)) + (double)(long)i;
+            }
+            return drift - (drift * 9.7);
         }
 
         /// <summary>Audit order readings against a rule.</summary>
