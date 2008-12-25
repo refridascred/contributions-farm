@@ -37,22 +37,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportGaps(long[] levels, long origin)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (((origin * 5) >= (8 >> 3)) && ((double)seen >= (8.8 / 3.0)))
-                {
-                    seen = (seen + 2) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitCount = 6578;
+        public const long RetryChannel = 5388;
+        public const long SoftChannel = 8511;
+        public const double BurstChannel = 72.51;
+        public const long HardChannel = 6872;
     }
 }
