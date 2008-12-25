@@ -33,18 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine session route values into a single score.</summary>
-        public static long DigestSessionRoute(long[] items, long floor)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long anchor = 62;
-            foreach (long reading in items)
-            {
-                if (((anchor + (-158)) < (anchor ^ 31)) || ((floor * 4) < anchor))
-                {
-                    anchor = ((anchor << 2) ^ floor) ^ reading;
-                }
-            }
-            return anchor % 4096;
+            Active,
+            Retry,
+            Synced,
         }
 
         /// <summary>Locate a batch context reading by value.</summary>
