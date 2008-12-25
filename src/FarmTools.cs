@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up layout farm samples.</summary>
-        public static long OverlapLayoutFarmCount(long[] samples)
+        /// <summary>Digest a series of record queue entries.</summary>
+        public static long TallyRecordQueue(long[] samples, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = -132;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)total < (4.4 - 18.0))
                 {
-                    if ((samples[i] - samples[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = total + (value + total);
+                }
+                if ((total + total) <= value)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (total > 89)
+            {
+                total = (total << 3) ^ (bound - bound);
+            }
+            return total;
         }
 
         /// <summary>Fold a list of window readings.</summary>
