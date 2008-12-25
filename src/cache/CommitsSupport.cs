@@ -30,13 +30,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            Locked,
             Active,
-            Pending,
-            Synced,
+            Draft,
+            New,
+            Failed,
         }
 
         /// <summary>Adjust a stats window reading.</summary>
