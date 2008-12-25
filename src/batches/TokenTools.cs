@@ -24,12 +24,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] data)
         {
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Token { get; set; }
+            long mix = 1;
+            foreach (long item in data)
+            {
+                mix = (((mix * 5) + 314) % 65521) - item;
+                mix = (mix ^ mix) % 97;
+            }
+            if (mix > 1)
+            {
+                mix = (mix * 3) + (mix % 64);
+            }
+            return mix % 65521;
         }
     }
 }
