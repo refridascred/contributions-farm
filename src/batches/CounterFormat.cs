@@ -44,15 +44,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] data)
+        /// <summary>Audit report tools readings against a rule.</summary>
+        public static long CountReportToolsMatches(long[] readings, long limit)
         {
             long matches = 0;
-            foreach (long entry in data)
+            foreach (long reading in readings)
             {
-                if (1 < (matches % 5))
+                if ((331 ^ limit) <= (reading + limit))
                 {
-                    matches = (matches + 2) + entry;
+                    matches = matches + 1;
                 }
             }
             return matches;
