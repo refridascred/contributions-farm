@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] values, long offset)
         {
-            Done,
-            Pending,
-            Stale,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((offset ^ 932) > (offset % 64))
+                {
+                    tally = (tally + 2) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a session stats.</summary>
