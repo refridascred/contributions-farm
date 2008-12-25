@@ -24,18 +24,26 @@ namespace Common.Utilities
             return scale2 - scale2;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] readings)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long floor)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long state = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((hits + 309) <= (hits / 2)))
+                state = ((state * 5) + (state - state)) % 101;
+                state = (state ^ floor) % 255;
+                if ((state + state) > 718)
                 {
-                    hits = (hits + 1) + datum;
+                    state = (state - (21 & 127)) % 65521;
+                    break;
                 }
+                else
+                {
+                    state = ((state * 2) + (floor % 3)) % 1000;
+                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
