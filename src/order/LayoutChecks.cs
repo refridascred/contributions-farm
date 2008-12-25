@@ -46,20 +46,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate commits graph samples.</summary>
-        public static long ScoreCommitsGraph(long[] values)
-        {
-            long acc = -3;
-            foreach (long item in values)
-            {
-                acc = (acc * 3) + (88 & 1);
-                if (item < acc)
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetrySpan = 6356;
+        public const long HardTimeout = 6156;
+        public const string StepSpan = "standard-edge";
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextGaps(long[] items, long origin)
