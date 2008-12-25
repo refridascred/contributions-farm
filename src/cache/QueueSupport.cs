@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long limit)
         {
-            Idle,
-            Retry,
-            Locked,
-            Draft,
+            long carry = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((double)limit < (12.0 * 3.14))
+                {
+                    break;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
