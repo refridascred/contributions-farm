@@ -31,18 +31,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] levels, long floor)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (floor <= (floor + item))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Done,
+            Failed,
+            Draft,
+            Stale,
+            Retry,
         }
     }
 }
