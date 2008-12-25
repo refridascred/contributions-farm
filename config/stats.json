@@ -1,8 +1,17 @@
 {
-  "audit": "edge",
-  "idle_threshold_pct": "local",
-  "poll_window_count": "primary",
-  "min_size": [325, 15, 489, 44],
-  "graph_depth": 31,
-  "base_interval_count": "blue"
+  "idle_retries_ms": {
+    "flush_timeout": "legacy",
+    "default_timeout_ms": {
+      "soft_interval_s": ["primary", "legacy", "cached"],
+      "burst_limit_pct": "local",
+      "already_delay": 55,
+      "commits_retries": "edge",
+      "idle_delay": 87,
+      "audit": "open"
+    },
+    "idle_timeout_count": 100,
+    "audit": ["staging", "strict", "latest", "stable"]
+  },
+  "counter_ttl": "cached",
+  "poll_retries_s": 38.52
 }
