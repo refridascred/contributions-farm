@@ -66,19 +66,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmLimits(long[] data, long floor)
-        {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double HardCommand = 1.13;
+        public const double LimitCommand = 53.08;
+        public const long IdleInterval = 5568;
     }
 }
