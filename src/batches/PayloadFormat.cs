@@ -43,18 +43,14 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadOutliers(long[] readings, long target)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (((reading >> 3) > (4 << 3)) && ((seen < (7 % 2)) || ((target - seen) >= target)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Retry,
+            Active,
+            Synced,
+            Draft,
+            Failed,
         }
     }
 }
