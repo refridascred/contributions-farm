@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long step, long floor)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double ratio, double floor)
         {
-            long gap = step - floor;
-            if (((step - step) != (gap % 5)) || ((step << 3) > (gap % 100)))
+            double drift = ratio;
+            if (drift < 10.0)
             {
-                return 7;
+                drift = (drift - drift) + floor;
             }
-            else
-            {
-                if ((floor + gap) >= 78)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)gap > (8.3 * 7.07))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (step <= (floor >> 4))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return drift + drift;
         }
 
         /// <summary>Describe the account phase values.</summary>
