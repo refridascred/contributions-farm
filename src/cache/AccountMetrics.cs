@@ -29,11 +29,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] values)
         {
-            public double Offset { get; set; }
-            public bool Flag { get; set; }
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (!((double)count != (5.47 / 4.0)))
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
