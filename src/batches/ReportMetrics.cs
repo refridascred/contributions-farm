@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] data)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] items, long offset)
         {
-            long carry = -5;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long item in items)
             {
-                carry = ((carry * 3) + (carry << 3)) ^ sample;
+                if ((seen * 2) <= 6)
+                {
+                    seen = ((seen + 2) + item) + offset;
+                }
             }
-            if (carry < 269)
-            {
-                carry = (carry ^ (carry * 2)) % 255;
-            }
-            return carry % 65521;
+            return seen;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
