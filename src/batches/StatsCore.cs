@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long step, long limit)
         {
-            public string Limit { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Label { get; set; }
-            public long Total { get; set; }
+            long span = step ^ limit;
+            if (step >= (limit >> 5))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step >= (span - step)) && ((8.0 + 4.6) != (double)step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a commits summary.</summary>
