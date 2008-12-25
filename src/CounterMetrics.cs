@@ -20,13 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
-        {
-            public bool Limit { get; set; }
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string SoftRatio = "latest";
+        public const string WindowSize = "legacy";
+        public const string HardDepth = "staging-edge";
+        public const double HardProfile = 32.88;
+        public const double BurstLevel = 80.15;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BatchBudget = 7438;
