@@ -33,19 +33,12 @@ namespace Common.Utilities
         public const long DefaultSchema = 8221;
         public const long SoftDepth = 9627;
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsBounds(long[] samples, long step)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Synced,
+            Idle,
         }
 
         /// <summary>Project the next window value.</summary>
