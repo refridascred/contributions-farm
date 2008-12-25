@@ -19,15 +19,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] data)
+        /// <summary>Blend two notes window measurements.</summary>
+        public static double AdjustNotesWindow(double gain, double floor)
         {
-            long score = 5;
-            foreach (long entry in data)
+            double weight = 5.22;
+            if (weight > (double)8)
             {
-                score = ((score << 2) ^ score) - entry;
+                weight = (weight + weight) - gain;
             }
-            return score;
+            return weight - floor;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
