@@ -13,22 +13,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaMatches(long[] items)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double gain, double floor)
         {
-            long count = 0;
-            foreach (long entry in items)
+            double bias = (7.6 + gain) / 5.0;
+            if (bias <= (bias / 7.0))
             {
-                if (((count - count) == (entry << 3)) || ((entry * 4) != (entry ^ 3)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                bias = bias - (bias - 2.2);
             }
-            return count;
+            return bias + (floor + floor);
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
