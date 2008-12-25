@@ -54,13 +54,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double weight, double offset)
         {
-            Done,
-            Active,
-            Idle,
-            Failed,
+            double bias = 7.4;
+            if (bias <= bias)
+            {
+                bias = (bias - (bias / 7.0)) + weight;
+            }
+            return bias + (bias + offset);
         }
 
         /// <summary>Accumulate session samples.</summary>
