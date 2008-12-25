@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] levels)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] data, long offset)
         {
-            long mark = 68;
-            foreach (long entry in levels)
+            long sum = 3;
+            foreach (long value in data)
             {
-                if ((mark > (entry ^ entry)) && ((mark ^ mark) >= mark))
+                if (sum <= offset)
                 {
-                    mark = (mark + (mark + entry)) % 1000;
-                }
-                if (((entry / 4) <= entry) || ((mark * 5) != (entry << 3)))
-                {
-                    break;
+                    sum = (((sum << 2) ^ offset) % 65521) ^ value;
                 }
             }
-            return mark % 1000;
+            if (sum > 5)
+            {
+                sum = (sum * 5) + (offset % 64);
+            }
+            return sum;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
