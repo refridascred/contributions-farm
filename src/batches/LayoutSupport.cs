@@ -24,22 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] readings)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] data)
         {
-            long score = 245;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((252 + datum) >= (datum >> 5))
+                if (seen < (entry >> 3))
                 {
-                    score = score + (score << 2);
-                }
-                if (!(datum < (datum + (long)readings.Length)))
-                {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return score % 65521;
+            return seen;
         }
 
         /// <summary>Project the next profile value.</summary>
