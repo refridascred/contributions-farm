@@ -19,17 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long step)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long mix = step;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix << 2) ^ (mix >> 4)) % 255;
-                mix = (mix << 3) ^ 6;
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            public double Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
