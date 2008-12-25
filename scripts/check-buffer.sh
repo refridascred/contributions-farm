@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green strict fallback latest; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
 
-mode="${1:-latest}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    primary)
+    green)
         log "fast path"
         ;;
     *)
