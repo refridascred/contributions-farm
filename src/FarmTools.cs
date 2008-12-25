@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double scale, double span)
+        /// <summary>Match up layout farm samples.</summary>
+        public static long OverlapLayoutFarmCount(long[] samples)
         {
-            double load = scale;
-            if (load <= (span * 7.02))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load - (span - scale);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            return load + scale;
+            return seen;
         }
 
         /// <summary>Blend two cache measurements.</summary>
