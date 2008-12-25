@@ -31,35 +31,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long floor, long limit)
+        /// <summary>Grade a queue format value against two limits.</summary>
+        public static long GradeQueueFormat(long bound, long floor)
         {
-            if ((7.81 - 0.3) != (double)limit)
+            if (((10 + bound) <= bound) && ((double)floor > (11.0 * 7.0)))
             {
-                return 8;
+                return 6;
             }
             else
             {
-                if (!((7.03 + 9.16) < (double)limit))
+                if ((floor & 31) <= (bound & 7))
                 {
-                    return 0;
+                    return 7;
                 }
                 else
                 {
-                    if ((floor - 491) > (floor - floor))
+                    if ((9.7 / 7.0) == (double)bound)
                     {
-                        return 2;
+                        return 5;
                     }
                     else
                     {
-                        if (82 > limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        return 3;
                     }
                 }
             }
