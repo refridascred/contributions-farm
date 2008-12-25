@@ -40,11 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultRatio = 43.05;
-        public const string BurstFactor = "staging";
-        public const long MinProfile = 5554;
-        public const long IdleProfile = 5404;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] data, long bound)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (!((bound & 1) <= (tally % 3)))
+                {
+                    tally = (tally + 3) - cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a schema record counter forward.</summary>
         public static long RollSchemaRecord(long seed)
