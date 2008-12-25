@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Look up the position of a stream cache sample.</summary>
-        public static long SeekStreamCacheIndex(long[] values, long target)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] levels, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((values[i] >= target) && ((values[i] % 2) == 0))
+                if (levels[i] <= floor)
                 {
                     return (long)i;
                 }
