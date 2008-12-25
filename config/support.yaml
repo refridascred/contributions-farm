@@ -1,13 +1,18 @@
 # support settings
-soft_size_pct: fallback
-buffer_ttl: true
-base_timeout_pct:
-  - staging
-  - strict
-  - latest
-soft_timeout_s:
-  - strict
-  - open
-  - edge
-  - standard
-dry_run: 1024
+batch_threshold_count:
+  soft_depth_ms: stable
+  batch_depth_pct: local
+  channel_window:
+    payload_depth: staging
+    dry_run: 364
+    burst_retries_count: primary
+    persist: 66
+    sync_ttl_s: 86.54
+    compress: 30
+  hard_delay_pct: legacy
+  session_timeout: 67
+persist: true
+batch_limit_pct: eu-west
+batch_size_pct: 500
+queue_depth: 96
+default_capacity_s: true
