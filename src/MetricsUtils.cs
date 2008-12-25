@@ -15,25 +15,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long step, long limit)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long origin)
         {
-            long lane = step ^ limit;
-            if ((double)limit <= (5.7 + 8.8))
+            long anchor = origin;
+            for (int i = 0; i < 24; i++)
             {
-                return 2;
+                anchor = (anchor - (origin * 4)) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((lane - lane) <= (limit << 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
