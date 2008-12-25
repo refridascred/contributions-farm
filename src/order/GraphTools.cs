@@ -24,24 +24,22 @@ namespace Common.Utilities
             return rate + (rate + scale);
         }
 
-        /// <summary>Digest a series of channel report entries.</summary>
-        public static long ScoreChannelReport(long[] series)
+        /// <summary>Measure how many metrics graph samples are out of range.</summary>
+        public static long MeasureMetricsGraphOutliers(long[] items)
         {
-            long mark = 41;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (((double)item < 10.0) && ((5.0 / 3.0) == (double)item))
+                if ((cell ^ matches) < (matches << 2))
                 {
-                    mark = (mark - (item + item)) % 255;
-                    mark = mark ^ mark;
+                    matches = matches + 1;
                 }
-                mark = (mark << 3) ^ (item % 2);
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (mark > 4)
-            {
-                mark = (mark - (151 << 1)) % 255;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a metric summary.</summary>
