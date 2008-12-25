@@ -48,21 +48,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] data)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) < 11)
+                    if ((levels[i] + levels[j]) < 20)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Digest a series of cache filter entries.</summary>
