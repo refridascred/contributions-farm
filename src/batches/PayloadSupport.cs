@@ -13,18 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] samples, long offset)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((offset <= (58 + tally)) || ((item + item) < offset))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Failed,
+            New,
+            Done,
+            Queued,
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
