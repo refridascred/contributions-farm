@@ -35,19 +35,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long seed)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((seed % 97) < ((long)i + (long)i))
-                {
-                    result = (result * 5) + result;
-                }
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            Failed,
+            Synced,
+            New,
         }
     }
 }
