@@ -13,13 +13,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long floor, long seed)
         {
-            Dropped,
-            Stale,
-            Active,
-            Synced,
+            if (floor >= (floor / 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor / 9) <= seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor / 5) >= 860)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next tools value.</summary>
