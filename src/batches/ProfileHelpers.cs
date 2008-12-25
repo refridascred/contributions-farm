@@ -27,17 +27,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] readings, long floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] readings, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (readings[i] < floor)
+                if ((554 % 60) > (origin + origin))
                 {
-                    return (long)i;
+                    hits = (hits + 1) ^ datum;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
