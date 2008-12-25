@@ -20,21 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] levels)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(bound <= (44 & 15)))
                 {
-                    if ((levels[i] - levels[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = ((result << 3) ^ (bound + bound)) % 1000;
                 }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    result = ((result - (bound << 2)) % 4096) ^ (long)i2;
+                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
