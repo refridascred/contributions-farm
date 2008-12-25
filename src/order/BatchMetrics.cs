@@ -63,12 +63,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-            public double Token { get; set; }
+            public long Total { get; set; }
+            public double Label { get; set; }
+            public bool Stamp { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Measure how many graph schema samples are out of range.</summary>
