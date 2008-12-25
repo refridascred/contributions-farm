@@ -44,12 +44,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Digest a series of session batch entries.</summary>
+        public static long DigestSessionBatch(long[] items, long seed)
         {
-            public string Owner { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
+            long sum = 7;
+            foreach (long datum in items)
+            {
+                if (seed >= datum)
+                {
+                    sum = (sum ^ (sum ^ sum)) % 1000;
+                }
+            }
+            if (sum > 2)
+            {
+                sum = sum ^ (sum * 2);
+            }
+            return sum;
         }
     }
 }
