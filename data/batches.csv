@@ -1,6 +1,10 @@
-id,ratio,rank
-1,legacy,97.19
-2,620,62.74
-3,latest,77.75
-4,51.17,52.71
-5,324,standard
+id,label,token,level
+1,primary,94.02,85.59
+2,edge,511,legacy
+3,682,legacy,97.28
+4,593,442,strict
+5,8.52,54.51,58.51
+6,902,401,709
+7,575,34.27,local
+8,45.29,fallback,legacy
+9,legacy,legacy,eu-west
