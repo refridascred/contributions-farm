@@ -34,13 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            Dropped,
-            Pending,
-            Done,
+            Ready,
+            Locked,
             Paused,
+            Synced,
             Closed,
         }
 
