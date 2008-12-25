@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine report context values into a single score.</summary>
-        public static long CombineReportContext(long[] readings)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long mark = 4;
-            foreach (long datum in readings)
-            {
-                mark = ((mark ^ ((long)readings.Length - mark)) % 65521) + datum;
-                mark = ((mark * 3) + (mark + 49)) % 1000;
-            }
-            return mark % 65521;
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a filter entry.</summary>
