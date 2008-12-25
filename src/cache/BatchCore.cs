@@ -19,11 +19,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            Ready,
+            Pending,
+            Done,
         }
 
         /// <summary>Define account limits and defaults.</summary>
