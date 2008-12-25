@@ -30,11 +30,24 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseLevel = 3458;
-        public const double DefaultRatio = 22.47;
-        public const long MinTimeout = 8540;
-        public const string CacheWidth = "local-edge";
+        /// <summary>Blend two layout checks measurements.</summary>
+        public static double SmoothLayoutChecks(double gain, double bias)
+        {
+            double gain2 = gain;
+            if (gain2 >= (gain2 / 3.0))
+            {
+                gain2 = gain2 + (gain2 / 3.0);
+            }
+            else
+            {
+                gain2 = gain2 - 1.1;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 + (bias / 2.0)) - (double)(long)i;
+            }
+            return gain2 - (gain2 - gain2);
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long TallyRecordOutliers(long[] readings)
