@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] data)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] samples)
         {
             long count = 0;
-            foreach (long entry in data)
+            foreach (long item in samples)
             {
-                if (23 > (count + count))
+                if ((double)count < (7.72 - 11.0))
                 {
-                    count = (count + 3) + entry;
+                    count = (count + 1) + item;
                 }
             }
             return count;
