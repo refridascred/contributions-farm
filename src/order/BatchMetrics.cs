@@ -71,13 +71,39 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Grade a tools stats value against two limits.</summary>
+        public static long RankToolsStats(long origin, long seed)
         {
-            Synced,
-            Queued,
-            Failed,
-            Active,
+            long cur = origin - seed;
+            if (((30 ^ origin) > 92) || ((1.95 / 2.0) <= (double)origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((24 + seed) == (seed * 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (seed < (-954))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((origin % 7) > cur))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
