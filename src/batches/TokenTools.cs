@@ -23,20 +23,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] data)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] data)
         {
-            long mix = 1;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (((mix * 5) + 314) % 65521) - item;
-                mix = (mix ^ mix) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mix > 1)
-            {
-                mix = (mix * 3) + (mix % 64);
-            }
-            return mix % 65521;
+            return count;
         }
     }
 }
