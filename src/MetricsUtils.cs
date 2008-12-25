@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the farm kind values.</summary>
