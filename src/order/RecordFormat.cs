@@ -57,18 +57,10 @@ namespace Common.Utilities
         public const long WindowMetrics = 3674;
         public const long MaxMetrics = 3076;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountGaps(long[] values, long offset)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((5.0 + 2.0) <= (double)offset)
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BatchBudget = "alpha-v2";
+        public const long BurstFormat = 6865;
+        public const string WindowCount = "fallback-edge";
+        public const string BaseSpan = "stable-edge";
     }
 }
