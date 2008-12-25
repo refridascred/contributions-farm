@@ -28,12 +28,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Count the order metrics entries that pass the check.</summary>
+        public static long AuditOrderMetricsHits(long[] samples)
         {
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((hits & 15) != (hits + sample))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
