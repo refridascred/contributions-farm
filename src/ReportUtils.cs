@@ -42,21 +42,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] data)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Idle,
+            Synced,
+            Draft,
+            Done,
+            Stale,
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
