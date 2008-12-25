@@ -1,11 +1,31 @@
 # support settings
 persist:
-  - 242
-  - 129
-default_capacity: false
-base_window: false
-max_capacity:
-  - 404
-  - 366
-  - 129
-  - 221
+  - 218
+  - 232
+  - 392
+  - 113
+support_threshold: legacy
+payload_depth:
+  filter_timeout: standard
+  batch_limit: 76.52
+  poll_timeout:
+    - primary
+    - standard
+    - standard
+    - green
+  account_ratio:
+    persist: 75
+    readonly: strict
+    strict: green
+    min_size_ms: true
+    burst_threshold_ms:
+      - 408
+      - 125
+      - 26
+    sync_timeout: true
+min_size: true
+burst_size_s: 63
+token_limit:
+  - staging
+  - primary
+  - strict
