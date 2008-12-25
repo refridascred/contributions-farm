@@ -1,7 +1,8 @@
 {
-  "channel_capacity": 80.14,
-  "persist": [367, 61],
-  "context_interval": "latest",
-  "retry_capacity_ms": [344, 258, 91],
-  "default_ratio_count": "legacy"
+  "idle_threshold": 42.96,
+  "sync_ttl": false,
+  "verbose": "legacy",
+  "soft_capacity_count": "cached",
+  "session_capacity": ["fallback", "standard"],
+  "session_timeout": 1
 }
