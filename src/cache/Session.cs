@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] samples)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 642;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)score != (double)sample)
                 {
-                    if ((samples[i] - samples[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    continue;
                 }
+                score = (score - (score - score)) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
