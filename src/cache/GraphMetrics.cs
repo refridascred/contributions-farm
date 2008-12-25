@@ -30,20 +30,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] levels)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] series)
         {
-            long mark = 613;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((2 >= (mark << 3)) && ((mark ^ cell) == (108 ^ mark)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = (mark << 2) ^ ((-9) ^ cell);
-                    break;
+                    if ((series[i] + series[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mark = mark + (mark << 1);
             }
-            return mark % 97;
+            return hits;
         }
 
         /// <summary>Project the next graph value.</summary>
