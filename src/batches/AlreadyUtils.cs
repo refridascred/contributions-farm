@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate metric layout readings against a bound.</summary>
-        public static bool CheckMetricLayoutBounds(long[] levels, long seed)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long offset, long origin)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            if ((origin + origin) <= (origin << 1))
             {
-                if (sample < seed)
+                return 8;
+            }
+            else
+            {
+                if (((165 * 3) < (origin + offset)) || (offset >= ((-210) - origin)))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return found;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
