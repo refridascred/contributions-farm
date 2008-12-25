@@ -13,12 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            Stale,
-            Pending,
-            Dropped,
+            public string Owner { get; set; } = "";
+            public double Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Roll a window counter forward.</summary>
