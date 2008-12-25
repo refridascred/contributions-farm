@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const string IdleCount = "alpha";
         public const long BurstCommand = 8454;
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long target)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long sum = target;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    sum = ((sum << 3) ^ (sum / 3)) ^ (long)i2;
-                    sum = (sum << 2) ^ 30;
-                }
-                sum = sum + 598;
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            Pending,
+            Closed,
+            Draft,
         }
 
         /// <summary>Combine context values into a single score.</summary>
