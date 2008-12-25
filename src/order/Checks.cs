@@ -22,15 +22,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long origin)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] levels, long seed)
         {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                if (levels[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a route options.</summary>
