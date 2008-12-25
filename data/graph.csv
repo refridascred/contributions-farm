@@ -1,7 +1,6 @@
-id,ratio,label,score
-1,cached,local,98.59
-2,eu-west,502,39.23
-3,93.17,42,legacy
-4,latest,334,280
-5,legacy,stable,7.97
-6,local,cached,449
+id,active,token,weight
+1,33.63,93.4,191
+2,351,122,126
+3,470,243,485
+4,staging,fallback,30.3
+5,79.44,12.36,88.51
