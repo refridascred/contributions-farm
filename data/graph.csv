@@ -1,11 +1,6 @@
-id,rank,token,ratio
-1,51,72.8,local
-2,447,blue,588
-3,green,77.4,206
-4,519,255,574
-5,442,77.5,13.12
-6,204,staging,open
-7,green,green,685
-8,legacy,269,6.89
-9,144,729,blue
-10,577,89.85,latest
+id,token,region
+1,77.77,green
+2,39,edge
+3,562,388
+4,77.13,18.71
+5,68.53,460
