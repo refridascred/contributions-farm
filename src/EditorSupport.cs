@@ -20,22 +20,21 @@ namespace Common.Utilities
             return bias + (3.0 / 8.0);
         }
 
-        /// <summary>Audit stream graph readings against a rule.</summary>
-        public static long MeasureStreamGraphGaps(long[] readings, long floor)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((floor >> 2) == (sample ^ floor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] - items[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
