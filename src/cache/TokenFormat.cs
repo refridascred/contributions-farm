@@ -13,21 +13,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] data)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
