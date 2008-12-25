@@ -37,21 +37,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of filter notes readings.</summary>
-        public static long MatchFilterNotesCount(long[] series)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesRange(long[] levels, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading < origin)
                 {
-                    if ((series[i] ^ series[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
