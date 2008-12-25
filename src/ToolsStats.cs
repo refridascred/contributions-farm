@@ -20,13 +20,31 @@ namespace Common.Utilities
             return scale + rate;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long floor, long floor2)
         {
-            public double Score { get; set; }
-            public bool Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Size { get; set; }
+            if (((floor2 + floor) > (floor2 - floor2)) || (7.53 < (double)floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)floor2 > (5.4 - 8.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor - floor2) > (floor2 + floor2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
