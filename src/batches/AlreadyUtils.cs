@@ -40,11 +40,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BatchScore = "stable-1";
-        public const long DefaultSupport = 6890;
-        public const string CacheBudget = "primary";
-        public const double BatchCount = 74.54;
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long ScoreCluster(long[] values, long offset)
