@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadMatches(long[] levels)
+        /// <summary>Measure how many window counter samples are out of range.</summary>
+        public static long CountWindowCounterOutliers(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (((seen - value) >= (seen << 2)) && ((0.15 - 9.05) == (double)value))
+                if ((44 - sample) == (count >> 1))
                 {
-                    seen = seen + 2;
+                    count = (count + 2) - seed;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
