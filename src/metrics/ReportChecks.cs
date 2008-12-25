@@ -25,11 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCount = 520;
-        public const long DefaultSize = 5486;
-        public const long LimitWidth = 1463;
-        public const long WindowCounter = 8410;
+        /// <summary>Iterate the window stream series from a seed.</summary>
+        public static long SeriesWindowStream(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((carry ^ 39) > carry)
+                {
+                    carry = carry - offset;
+                    carry = (carry * 4) + (carry ^ offset);
+                    continue;
+                }
+                carry = (carry + carry) % 101;
+                carry = (carry ^ carry) % 97;
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long TotalGithubfarm(long[] data, long bound)
