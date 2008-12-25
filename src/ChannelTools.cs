@@ -22,18 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] series, long offset)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((tally - tally) != (item + tally))
-                {
-                    tally = (tally + 2) - offset;
-                }
-            }
-            return tally;
+            Locked,
+            Queued,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Digest a series of editor entries.</summary>
