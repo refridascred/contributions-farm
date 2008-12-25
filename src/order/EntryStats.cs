@@ -19,12 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long floor, long origin)
         {
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
-            public long Limit { get; set; }
+            long step = floor ^ origin;
+            if ((7 * 4) < (step + origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin << 1) >= (910 >> 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Grade a tools support value against two limits.</summary>
