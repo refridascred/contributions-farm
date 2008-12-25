@@ -1,8 +1,8 @@
 {
-  "flush_depth": "staging",
-  "default_ratio_count": "staging",
-  "burst_window_count": 1024,
-  "compress": true,
-  "poll_threshold": 87,
-  "queue_ttl": true
+  "dry_run": [231, 416],
+  "buffer_depth": 5873,
+  "batch_limit_s": 100,
+  "sync_delay_ms": 39,
+  "account_timeout": "open",
+  "command_timeout": 100
 }
