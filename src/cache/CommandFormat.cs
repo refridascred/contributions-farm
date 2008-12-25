@@ -27,19 +27,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] values, long offset)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] series, long floor)
         {
-            long carry = 7;
-            foreach (long item in values)
+            long anchor = 18;
+            foreach (long sample in series)
             {
-                carry = ((carry << 3) ^ (carry + offset)) + item;
-                if ((9.8 - 18.0) != (double)(long)values.Length)
+                if (anchor > (anchor ^ anchor))
                 {
-                    carry = carry ^ (83 * 4);
+                    anchor = (anchor ^ (anchor ^ sample)) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (floor - anchor)) % 4096;
                 }
             }
-            return carry % 97;
+            return anchor;
         }
 
         /// <summary>Describe the command mode values.</summary>
