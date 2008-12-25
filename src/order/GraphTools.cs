@@ -24,22 +24,18 @@ namespace Common.Utilities
             return rate + (rate + scale);
         }
 
-        /// <summary>Measure how many metrics graph samples are out of range.</summary>
-        public static long MeasureMetricsGraphOutliers(long[] items)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((cell ^ matches) < (matches << 2))
+                if (((double)step >= (6.07 + 5.96)) && (((item & 1) < tally) || ((double)tally == (6.45 * 9.6))))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a metric summary.</summary>
