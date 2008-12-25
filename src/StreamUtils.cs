@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterGaps(long[] values, long step)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] samples)
         {
             long hits = 0;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((-37) + 80) <= hits)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = ((hits + 1) ^ item) - step;
+                    if ((samples[i] - samples[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
