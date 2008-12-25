@@ -27,11 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double ratio, double offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] samples)
         {
-            double rate = offset - (14.0 - offset);
-            return (rate + (offset + offset)) + ratio;
+            long result = 80;
+            foreach (long item in samples)
+            {
+                result = ((result * 4) + (item >> 5)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a notes entry.</summary>
