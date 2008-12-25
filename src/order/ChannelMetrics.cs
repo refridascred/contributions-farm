@@ -24,12 +24,10 @@ namespace Common.Utilities
         public const long MinFactor = 8020;
         public const double HardBudget = 79.13;
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public string Flag { get; set; } = "";
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowCommits = 5.47;
+        public const double IdleCommits = 7.7;
+        public const long RetryCommits = 768;
+        public const string CacheCount = "latest-1";
     }
 }
