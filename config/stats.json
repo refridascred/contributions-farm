@@ -1,8 +1,11 @@
 {
-  "audit": 4070,
-  "strict": 100,
-  "dry_run": "latest",
-  "burst_size_ms": 32.6,
-  "burst_threshold_s": 35,
-  "flush_window": false
+  "enabled": "standard",
+  "verbose": 27,
+  "burst_window_ms": 7.4,
+  "cluster_size": 94,
+  "idle_capacity_ms": {
+    "default_threshold_count": false,
+    "burst_timeout_s": 100,
+    "min_window_s": 62.11
+  }
 }
