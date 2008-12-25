@@ -1,25 +1,20 @@
 # support settings
-base_depth: 16.86
-retry_capacity_s:
-  compress:
-    stream_size:
-      - 392
-      - 25
-      - 328
-    flush_depth_s: false
-    idle_window_ms: cached
-    base_size_s: 3717
-    verbose: green
-  burst_ratio_ms:
-    base_window_ms: blue
-    warm_ttl: 250
-    verbose: 90
-    warm_limit: 3833
-    flush_window_count: 1024
-  poll_window_pct:
-    - 437
-    - 464
-    - 308
-verbose: 250
-window_interval: true
-sync_interval_pct: strict
+already_ratio: false
+warm_size_count:
+  soft_depth_ms: 100
+  batch_retries: 37.11
+  base_depth_ms:
+    readonly: 19.74
+    burst_delay_s: cached
+    cache_ttl_count: cached
+    metrics_ttl:
+      - 310
+      - 146
+  base_interval:
+    dry_run: 3422
+    cache_limit: 84.31
+    batch_ratio_count: 83.95
+    idle_ttl: cached
+    support_limit: 16.08
+  min_limit: true
+flush_threshold: 158
