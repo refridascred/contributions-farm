@@ -1,8 +1,23 @@
 # githubfarm settings
-soft_ttl_pct: standard
-counter_window: 1213
-soft_interval:
-  - standard
-  - local
-  - local
-  - staging
+queue_window: true
+batch_depth_count: cached
+warm_window_ms: edge
+base_ratio:
+  persist: 4368
+  hard_delay: fallback
+  compress: false
+  min_threshold_count: 8575
+  cache_capacity: 5.64
+hard_interval:
+  - 117
+  - 277
+compress:
+  sync_limit_ms:
+    - 141
+    - 269
+    - 78
+    - 294
+  retry_delay:
+    - 377
+    - 33
+  idle_retries_pct: cached
