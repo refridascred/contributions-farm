@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] samples)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = (sum ^ (bound << 3)) % 65521;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
