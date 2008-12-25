@@ -22,19 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double bias, double span)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            double load = 8.66 - span;
-            if (load <= load)
-            {
-                load = load + (double)508;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (load - bias)) + (double)(long)i;
-            }
-            return load + (load + 9.3);
+            Locked,
+            Synced,
+            Ready,
+            Idle,
+            Paused,
         }
 
         /// <summary>Count checks metric pairs that satisfy a relation.</summary>
