@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheGaps(long[] series, long step)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((step >> 1) <= (tally / 3))
-                {
-                    tally = (tally + 2) ^ reading;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public bool Level { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
