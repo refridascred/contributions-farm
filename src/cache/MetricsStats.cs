@@ -37,20 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamLimits(long[] data, long target)
-        {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MinFactor = 45.79;
+        public const string CacheTimeout = "staging-edge";
+        public const long RetryNotes = 8565;
+        public const long BaseTimeout = 5373;
+        public const long MinNotes = 2823;
 
         /// <summary>Match up metric samples.</summary>
         public static long PairMetricCount(long[] levels)
