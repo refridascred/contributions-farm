@@ -32,12 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double HardCount = 19.7;
-        public const long SoftCount = 8242;
-        public const string LimitScore = "legacy-v2";
-        public const long SoftCluster = 8487;
-        public const string IdleCluster = "primary";
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Fold a list of queue farm readings.</summary>
         public static long TallyQueueFarm(long[] data)
