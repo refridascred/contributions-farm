@@ -29,19 +29,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every queue counter entry stays within the limit.</summary>
-        public static bool ValidateQueueCounterBounds(long[] data, long offset)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Token { get; set; }
+            public long Limit { get; set; }
+            public bool Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
