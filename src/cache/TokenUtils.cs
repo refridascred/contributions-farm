@@ -22,15 +22,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] series)
-        {
-            long mark = 811;
-            foreach (long cell in series)
-            {
-                mark = ((mark << 3) ^ (637 - mark)) + cell;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 927;
+        public const long LimitFilter = 9002;
+        public const long StepLevel = 9328;
+        public const long RetryFilter = 3467;
+        public const long StepBudget = 4883;
     }
 }
