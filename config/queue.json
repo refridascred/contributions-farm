@@ -1,6 +1,24 @@
 {
-  "readonly": true,
-  "graph_ttl": 30,
-  "flush_limit_ms": false,
-  "poll_delay_pct": 60
+  "warm_capacity_count": [425, 488, 285],
+  "cache_threshold": 64.47,
+  "cluster_interval": "primary",
+  "readonly": {
+    "sync_limit_s": false,
+    "buffer_capacity": 64,
+    "min_ratio": [105, 58],
+    "metric_timeout": [305, 235, 399, 118],
+    "max_interval_s": {
+      "batch_ratio_pct": "edge",
+      "batch_timeout_pct": true,
+      "default_depth_s": "cached"
+    }
+  },
+  "warm_interval_pct": 2631,
+  "enabled": {
+    "readonly": true,
+    "poll_delay_s": "staging",
+    "queue_ratio": ["edge", "standard"],
+    "audit": "local",
+    "support_window": [107, 225]
+  }
 }
