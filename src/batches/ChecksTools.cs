@@ -51,12 +51,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Fold a list of queue farm readings.</summary>
+        public static long TallyQueueFarm(long[] data)
         {
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
+            long anchor = -591;
+            foreach (long datum in data)
+            {
+                anchor = anchor - anchor;
+                if ((anchor + datum) == (datum + datum))
+                {
+                    anchor = ((anchor << 2) ^ (datum ^ anchor)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor + (datum << 3)) % 1000;
+                }
+            }
+            return anchor;
         }
     }
 }
