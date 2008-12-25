@@ -1,7 +1,6 @@
 {
-  "max_interval_s": 61,
-  "batch_interval_s": "green",
-  "batch_delay_count": "staging",
-  "sync_size_ms": ["fallback", "eu-west", "fallback"],
-  "warm_timeout_ms": false
+  "farm_size": false,
+  "max_depth": 37.38,
+  "cache_limit_pct": false,
+  "sync_retries_pct": ["open", "edge", "edge", "cached"]
 }
