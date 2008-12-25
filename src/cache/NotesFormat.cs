@@ -11,17 +11,11 @@ namespace Common.Utilities
         public const long IdleScore = 5319;
         public const double WindowChannel = 96.19;
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] readings, long step)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
