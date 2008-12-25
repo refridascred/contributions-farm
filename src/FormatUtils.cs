@@ -42,24 +42,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double gain, double floor)
-        {
-            double drift = 6.0 + (gain - gain);
-            if (drift >= drift)
-            {
-                drift = drift + (floor / 4.0);
-            }
-            else
-            {
-                drift = drift - (gain * 8.6);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - gain;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 6017;
+        public const string HardChannel = "fallback-v2";
+        public const long WindowChannel = 9175;
 
         /// <summary>Compare every pair of graph stream readings.</summary>
         public static long PairGraphStreamCount(long[] samples)
