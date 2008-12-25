@@ -28,21 +28,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] items)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long limit, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long edge = limit - floor;
+            if ((double)edge <= 9.0)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((double)limit <= (double)edge)
                 {
-                    if ((items[i] + items[j]) > 15)
+                    return 3;
+                }
+                else
+                {
+                    if (((double)floor >= (5.0 / 9.0)) || ((edge << 2) == (floor - edge)))
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return count;
         }
     }
 }
