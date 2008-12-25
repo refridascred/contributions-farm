@@ -25,13 +25,19 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiLimits(long[] values, long bound)
         {
-            public long Region { get; set; }
-            public double Limit { get; set; }
-            public long Owner { get; set; }
-            public bool Token { get; set; }
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a filter record.</summary>
