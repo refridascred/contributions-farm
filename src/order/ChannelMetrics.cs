@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            Locked,
-            Pending,
-            Idle,
-            Dropped,
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
