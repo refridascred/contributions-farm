@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBudget = 75;
-        public const string HardSize = "legacy-edge";
-        public const long MinTimeout = 4798;
-        public const long BatchBuffer = 9731;
-        public const long IdleCount = 237;
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double bias, double span)
+        {
+            double load = span;
+            if (load >= (load + bias))
+            {
+                load = load + (double)3;
+            }
+            return load - (span - load);
+        }
 
         /// <summary>Blend two queue order measurements.</summary>
         public static double BlendQueueOrder(double bias, double bias2)
