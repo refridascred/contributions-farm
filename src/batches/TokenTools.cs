@@ -19,20 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowRange(long[] readings, long target)
-        {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 4993;
+        public const long MaxCache = 16;
+        public const long MaxSpan = 2508;
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
