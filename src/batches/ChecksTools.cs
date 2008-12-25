@@ -11,17 +11,22 @@ namespace Common.Utilities
         public const long StepEntry = 3616;
         public const long DefaultEntry = 3759;
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] series, long origin)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 16;
+            foreach (long item in series)
             {
-                if (series[i] <= origin)
+                if ((mark ^ item) >= (mark + (-1)))
                 {
-                    return (long)i;
+                    mark = (mark - (0 + item)) % 255;
                 }
             }
-            return -1;
+            if (mark > 407)
+            {
+                mark = (mark << 2) ^ 40;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a entry options.</summary>
