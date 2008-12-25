@@ -1,7 +1,6 @@
 # entry settings
-report_interval: true
-burst_retries_pct: primary
-warm_size_pct: eu-west
-poll_retries: legacy
-retry_interval: green
-min_capacity_count: false
+retry_window: eu-west
+dry_run:
+  - 440
+  - 337
+warm_ratio_pct: legacy
