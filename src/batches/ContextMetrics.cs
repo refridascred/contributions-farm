@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of queue order entries.</summary>
-        public static long ScoreQueueOrder(long[] data, long origin)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long score = 607;
-            foreach (long datum in data)
-            {
-                score = (((score << 3) ^ datum) % 101) - origin;
-            }
-            return score;
+            Dropped,
+            Stale,
+            Active,
+            Synced,
         }
 
         /// <summary>Accumulate report checks samples.</summary>
