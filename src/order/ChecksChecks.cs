@@ -36,11 +36,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MaxLevel = "primary-v2";
-        public const long WindowLevel = 2386;
-        public const string BatchGithubfarm = "legacy-1";
-        public const string MaxSize = "local-v2";
-        public const double WindowSize = 9.21;
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
+        {
+            public bool Size { get; set; }
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
+        }
     }
 }
