@@ -37,22 +37,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 4098;
+        public const string BurstCounter = "cached-v2";
+        public const long WindowCounter = 7812;
 
         /// <summary>Classify a order buffer pair into a bucket.</summary>
         public static long GradeOrderBuffer(long step, long origin)
