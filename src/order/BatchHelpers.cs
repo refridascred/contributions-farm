@@ -14,14 +14,24 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long bound, long floor)
         {
-            Closed,
-            Done,
-            Idle,
-            Active,
-            New,
+            if (((floor >> 3) < (882 >> 3)) && (floor <= bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((double)floor < (double)814))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Project the next tools value.</summary>
