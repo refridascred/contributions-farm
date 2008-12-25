@@ -74,19 +74,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksRange(long[] samples, long seed)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long floor, long bound)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long bound2 = floor + bound;
+            if (((floor >> 4) < (bound & 1)) || ((bound * 3) <= (626 / 2)))
             {
-                if (value < seed)
+                return 5;
+            }
+            else
+            {
+                if (((13.0 / 3.0) < (double)bound) && ((double)bound2 >= (double)bound))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (!(floor < (bound << 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Accumulate tools samples.</summary>
