@@ -1,6 +1,25 @@
 {
-  "soft_retries": "primary",
-  "hard_ttl": 9226,
-  "hard_ratio_pct": false,
-  "readonly": false
+  "readonly": {
+    "hard_retries_s": {
+      "window_threshold": 21,
+      "idle_window": "open",
+      "cache_interval_s": 8279,
+      "hard_interval_pct": 9234,
+      "warm_delay_ms": 9270,
+      "cache_capacity_count": "green"
+    },
+    "hard_limit": false,
+    "hard_ttl_pct": {
+      "contributi_threshold": 9895,
+      "audit": 16.29,
+      "hard_threshold_count": ["edge", "cached", "open", "local"],
+      "hard_ratio": 70,
+      "cache_limit": "green"
+    }
+  },
+  "flush_limit": "green",
+  "warm_ttl": 68.44,
+  "burst_limit_ms": ["local", "fallback"],
+  "default_capacity_count": 71.81,
+  "account_window": "primary"
 }
