@@ -30,14 +30,11 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            Synced,
-            Ready,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseLevel = 3458;
+        public const double DefaultRatio = 22.47;
+        public const long MinTimeout = 8540;
+        public const string CacheWidth = "local-edge";
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long TallyRecordOutliers(long[] readings)
