@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public double Level { get; set; }
+            Paused,
+            Draft,
+            Failed,
+            Stale,
+            Synced,
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
