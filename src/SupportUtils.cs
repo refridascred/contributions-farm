@@ -38,15 +38,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] samples, long bound)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsHits(long[] levels)
         {
-            long sum = -99;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                sum = (((sum * 5) + (datum % 12)) % 4096) + bound;
+                if (((tally / 8) == (271 - reading)) && (((reading << 2) > (tally & 63)) && ((7 + reading) != (tally & 7))))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum % 97;
+            return tally;
         }
     }
 }
