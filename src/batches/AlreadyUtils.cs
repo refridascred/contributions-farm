@@ -60,15 +60,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the graph checks series from a seed.</summary>
-        public static long IterateGraphChecks(long step)
+        /// <summary>Digest a series of commits editor entries.</summary>
+        public static long WeighCommitsEditor(long[] levels, long offset)
         {
-            long state = step;
-            for (int i = 0; i < 8; i++)
+            long total = 570;
+            foreach (long entry in levels)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                total = ((total << 3) ^ (long)levels.Length) % 97;
+                if ((entry + entry) <= (total - 9))
+                {
+                    break;
+                }
             }
-            return state;
+            if (total > 404)
+            {
+                total = (total * 4) + (offset + 1);
+            }
+            return total;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
