@@ -52,25 +52,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long floor, long floor2)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] values, long origin)
         {
-            long offset = floor + floor2;
-            if (floor2 > (floor2 * 3))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (offset >= (floor % 12))
+                if (values[i] > origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
