@@ -19,18 +19,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] series, long limit)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long score = 5;
+            foreach (long entry in data)
             {
-                if (((0.67 * 20.0) == (double)tally) && !(2 <= limit))
-                {
-                    tally = (tally + 3) ^ sample;
-                }
+                score = ((score << 2) ^ score) - entry;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
