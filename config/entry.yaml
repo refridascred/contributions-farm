@@ -1,27 +1,7 @@
 # entry settings
-warm_retries: false
-verbose: edge
-sync_size: false
-support_size: latest
-idle_depth_count:
-  filter_ratio: cached
-  queue_depth: 2305
-  default_threshold_s:
-    strict: latest
-    base_ratio: 1024
-    schema_ratio: 2984
-  persist:
-    metric_threshold: local
-    soft_timeout: 60
-    poll_ratio: 250
-  hard_limit_count: latest
-  flush_timeout_s:
-    enabled: 100
-    flush_window: 3
-    metric_threshold: 93.59
-    default_retries_count: 250
-    max_delay:
-      - strict
-      - legacy
-      - standard
-    cache_size_pct: 16.88
+queue_ttl:
+  contributi_delay: 500
+  hard_timeout: open
+  base_timeout_ms: 663
+batch_size_pct: cached
+hard_ratio_s: true
