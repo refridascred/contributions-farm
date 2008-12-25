@@ -35,10 +35,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 3465;
-        public const long MaxScore = 8465;
-        public const string IdleBudget = "legacy-1";
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Locked,
+            Idle,
+            Stale,
+            Draft,
+            Retry,
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double HardWidth = 9.32;
