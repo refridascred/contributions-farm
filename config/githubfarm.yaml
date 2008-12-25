@@ -1,12 +1,5 @@
 # githubfarm settings
-cache_retries_pct:
-  warm_ratio: latest
-  default_ratio: green
-  warm_interval: 98
-hard_limit_s:
-  - strict
-  - local
-soft_size: 89.2
-enabled: open
-verbose: 30
-burst_threshold_count: stable
+sync_capacity: 9128
+command_window: 97
+warm_delay_s: 40
+soft_capacity: 6370
