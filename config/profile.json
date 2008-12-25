@@ -1,6 +1,12 @@
 {
-  "warm_retries": 1636,
-  "min_window": 90.59,
-  "warm_interval_s": 85,
-  "support_timeout": 7
+  "format_capacity": "eu-west",
+  "batch_capacity_s": {
+    "already_retries": 60,
+    "command_window": 151,
+    "warm_retries": false,
+    "batch_capacity_s": [173, 415, 314],
+    "audit": 56,
+    "retry_ratio_pct": "fallback"
+  },
+  "retry_threshold": 17
 }
