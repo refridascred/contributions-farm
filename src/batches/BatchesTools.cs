@@ -23,12 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Roll a account order counter forward.</summary>
+        public static long StepAccountOrder(long seed)
         {
-            Active,
-            Queued,
-            Locked,
+            long carry = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((8.2 + 2.86) <= (double)(long)i)
+                {
+                    continue;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Locate a account reading by value.</summary>
