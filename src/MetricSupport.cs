@@ -20,23 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the filter tools series from a seed.</summary>
-        public static long StepFilterTools(long bound)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] samples, long step)
         {
-            long result = bound;
-            for (int i = 0; i < 10; i++)
+            long mark = 606;
+            foreach (long entry in samples)
             {
-                if (!((bound - bound) != (bound * 2)))
+                if ((entry > step) && ((36 * 3) <= (step >> 3)))
                 {
-                    result = (result * 2) + (result % 97);
+                    mark = (mark << 2) ^ (mark - step);
                 }
-                if (!((result << 3) <= (result + result)))
-                {
-                    result = result - (long)i;
-                }
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return mark % 97;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
