@@ -46,19 +46,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] data, long step)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double weight, double floor)
         {
-            long sum = 9;
-            foreach (long cell in data)
+            double rate = 6.9;
+            if (rate >= (floor / 8.0))
             {
-                sum = (sum + (step - (-543))) ^ cell;
-                if ((9 + step) == (step & 15))
-                {
-                    break;
-                }
+                rate = rate + 7.0;
             }
-            return sum % 4096;
+            else
+            {
+                rate = rate + (8.7 / 9.0);
+            }
+            return rate - weight;
         }
     }
 }
