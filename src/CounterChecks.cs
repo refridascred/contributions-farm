@@ -40,13 +40,12 @@ namespace Common.Utilities
         public const long SoftRatio = 1497;
         public const long MinScore = 8770;
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public long Level { get; set; }
-            public double Label { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 1296;
+        public const string MaxCommand = "latest-1";
+        public const long IdleCommand = 7857;
+        public const long DefaultCommand = 9744;
+        public const long BatchCommand = 3829;
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool ValidateContributiRange(long[] data, long offset)
