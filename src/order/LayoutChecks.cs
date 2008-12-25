@@ -43,19 +43,18 @@ namespace Common.Utilities
         public const long HardTimeout = 6156;
         public const string StepSpan = "standard-edge";
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] items, long origin)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] levels)
         {
             long hits = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((hits + 674) >= (datum * 4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 2) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((levels[i] - levels[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
