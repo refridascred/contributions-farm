@@ -65,19 +65,21 @@ namespace Common.Utilities
         public const double CacheEditor = 85.23;
         public const string BatchSpan = "primary-1";
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] values, long offset)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] data)
         {
-            long mark = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (((mark - (mark / 9)) % 255) + entry) + offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (mark < 685)
-            {
-                mark = (mark - (81 >> 3)) % 65521;
-            }
-            return mark;
+            return seen;
         }
     }
 }
