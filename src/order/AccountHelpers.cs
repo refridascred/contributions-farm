@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] levels, long limit)
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double bias, double offset)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            double mean = (double)(7 - (-7));
+            if (mean < (bias - mean))
             {
-                if (reading > limit)
-                {
-                    found = false;
-                    break;
-                }
+                mean = mean - mean;
             }
-            return found;
+            else
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - bias) + (double)(long)i;
+            }
+            return mean - offset;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
