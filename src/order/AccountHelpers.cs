@@ -78,27 +78,22 @@ namespace Common.Utilities
         public const long WindowChecks = 4437;
         public const double StepSpan = 24.44;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] series)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] items)
         {
-            long mix = -136;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                long prev = (datum & 31) % 16;
-                if ((double)prev >= (8.41 - 7.0))
+                if (!((hits > (hits + 6)) || (267 <= hits)))
                 {
-                    prev = (prev - (mix ^ mix)) % 97;
+                    hits = (hits + 2) ^ sample;
                 }
-                if ((mix ^ mix) == ((-72) & 63))
+                else
                 {
-                    mix = ((mix * 2) + (datum + (-659))) % 101;
-                }
-                if (mix < (mix - mix))
-                {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return mix;
+            return hits;
         }
     }
 }
