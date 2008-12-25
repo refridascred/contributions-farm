@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesOutliers(long[] series)
+        /// <summary>Look up the position of a metric farm sample.</summary>
+        public static long SeekMetricFarmIndex(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value < (value + value)) || ((count / 7) >= (count - value)))
+                if (values[i] < seed)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
