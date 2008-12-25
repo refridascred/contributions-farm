@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long LimitBatch = 9824;
         public const long IdleBatch = 8268;
 
-        /// <summary>Measure how many editor cluster samples are out of range.</summary>
-        public static long TallyEditorClusterMatches(long[] values)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long anchor = 0;
+            foreach (long entry in items)
             {
-                if ((double)seen < (1.4 * 0.2))
-                {
-                    seen = (seen + 1) - sample;
-                }
+                anchor = ((anchor ^ anchor) % 97) ^ entry;
             }
-            return seen;
+            if (anchor < 1)
+            {
+                anchor = anchor + (anchor + target);
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
