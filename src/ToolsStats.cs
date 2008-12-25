@@ -79,19 +79,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutRange(long[] values, long bound)
+        /// <summary>Measure how many cluster editor samples are out of range.</summary>
+        public static long AuditClusterEditorGaps(long[] items)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (sample < bound)
+                if (value > 9)
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
