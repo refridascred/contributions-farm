@@ -77,10 +77,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 652;
-        public const double LimitRoute = 68.2;
-        public const long CacheTimeout = 2928;
-        public const long IdleDepth = 176;
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
+        {
+            Idle,
+            Active,
+            Closed,
+            Stale,
+        }
     }
 }
