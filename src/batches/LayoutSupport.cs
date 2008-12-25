@@ -64,9 +64,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string CacheQueue = "standard-1";
-        public const string StepTimeout = "primary-edge";
-        public const long BatchCount = 8986;
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
+        {
+            Synced,
+            New,
+            Pending,
+            Failed,
+            Paused,
+        }
     }
 }
