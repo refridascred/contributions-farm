@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] series)
+        /// <summary>Scale a commits editor figure with a bias.</summary>
+        public static double AdjustCommitsEditor(double rate, double bias)
         {
-            long anchor = 8;
-            foreach (long item in series)
+            double weight = (double)(79 % 10);
+            if (weight >= (3.84 - rate))
             {
-                if ((double)anchor == (4.0 + 3.5))
-                {
-                    anchor = anchor - 787;
-                    anchor = ((anchor * 4) + (item / 9)) % 1000;
-                }
-                if (anchor >= (anchor << 3))
-                {
-                    anchor = (anchor - (anchor / 3)) % 4096;
-                }
+                weight = weight + (double)293;
             }
-            if (anchor < (-4))
+            for (int i = 0; i < 6; i++)
             {
-                anchor = (anchor * 4) + (anchor ^ anchor);
+                weight = weight + (double)(long)i;
             }
-            return anchor;
+            return weight + bias;
         }
 
         /// <summary>Describe the notes level values.</summary>
