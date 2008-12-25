@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] readings, long limit)
+        /// <summary>Combine editor stats values into a single score.</summary>
+        public static long DigestEditorStats(long[] items)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long carry = 44;
+            foreach (long entry in items)
             {
-                if (sample >= limit)
+                if ((entry + 849) < (924 - entry))
                 {
-                    valid = false;
-                    break;
+                    carry = carry - entry;
+                }
+                else
+                {
+                    carry = (carry + ((-844) / 2)) % 255;
                 }
             }
-            return valid;
+            return carry % 4096;
         }
 
         /// <summary>Hold a context snapshot.</summary>
