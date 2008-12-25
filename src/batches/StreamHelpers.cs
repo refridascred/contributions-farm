@@ -39,16 +39,24 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long seed)
+        /// <summary>Classify a batches batch pair into a bucket.</summary>
+        public static long BucketBatchesBatch(long target, long step)
         {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
+            if ((double)target != (double)59)
             {
-                result = ((result << 2) ^ (seed + seed)) % 101;
-                result = ((result * 5) + (long)i) % 97;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((double)target != (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Locate a graph reading by value.</summary>
