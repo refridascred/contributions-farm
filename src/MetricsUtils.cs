@@ -45,31 +45,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank schema editor input into a small class.</summary>
-        public static long BucketSchemaEditor(long target, long limit)
-        {
-            if (44 < (limit + limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit + (-85)) > target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit + target) < (limit >> 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowDepth = 6682;
+        public const long MinSpan = 1899;
+        public const string SoftCount = "alpha-1";
     }
 }
