@@ -70,12 +70,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long offset, long floor)
         {
-            New,
-            Failed,
-            Active,
+            long diff = offset ^ floor;
+            if (!(offset < (diff - offset)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((19.0 * 8.0) >= (double)offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
