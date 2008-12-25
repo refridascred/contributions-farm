@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] levels)
         {
-            Dropped,
-            Stale,
-            Retry,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)463 >= (double)matches)
+                {
+                    matches = (matches + 1) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a queue record.</summary>
