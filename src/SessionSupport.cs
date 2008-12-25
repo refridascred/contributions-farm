@@ -18,24 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a payload batch pair into a bucket.</summary>
-        public static long SortPayloadBatch(long floor, long limit)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaOutliers(long[] levels, long seed)
         {
-            if (limit <= (limit + floor))
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor + limit) == (limit >> 4))
+                if ((double)seed <= 15.0)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    matches = (matches + 2) ^ entry;
                 }
             }
+            return matches;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
