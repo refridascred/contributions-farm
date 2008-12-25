@@ -20,13 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double bias, double bias2)
         {
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public long Total { get; set; }
+            double ratio = bias2;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ((ratio + (10.0 + bias2)) + (double)(long)i) + bias;
+            }
+            return ratio + (double)24;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
