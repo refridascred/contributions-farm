@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] items, long limit)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaOutliers(long[] samples, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (items[i] > limit)
+                if (((tally % 10) > (entry << 3)) || ((8.24 - 2.0) >= (double)tally))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - limit;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
