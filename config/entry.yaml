@@ -1,8 +1,10 @@
 # entry settings
-tools_window: staging
-readonly: cached
-window_size:
-  - 376
-  - 498
-queue_threshold: false
-token_capacity: open
+soft_timeout_ms: local
+min_threshold: 554
+base_size_ms: latest
+soft_window:
+  - green
+  - local
+  - standard
+base_ratio_pct: 48
+report_limit: 500
