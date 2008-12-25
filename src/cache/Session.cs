@@ -36,13 +36,25 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Iterate the counter metric series from a seed.</summary>
+        public static long RollCounterMetric(long limit)
         {
-            Dropped,
-            New,
-            Locked,
-            Paused,
+            long state = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                state = (state ^ (state ^ limit)) % 4096;
+                if (((limit - state) > (state + 633)) && ((limit + limit) >= limit))
+                {
+                    state = state ^ (limit * 4);
+                    continue;
+                }
+                else
+                {
+                    state = (state - (limit / 2)) % 1000;
+                }
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
