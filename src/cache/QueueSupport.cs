@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] items, long bound)
         {
-            public long Limit { get; set; }
-            public double Rank { get; set; }
+            long acc = 69;
+            foreach (long reading in items)
+            {
+                if ((11 >> 5) < reading)
+                {
+                    acc = ((acc * 4) + acc) % 255;
+                }
+                acc = ((acc << 3) ^ 826) % 4096;
+                if (acc > (bound + reading))
+                {
+                    break;
+                }
+            }
+            if (acc < 349)
+            {
+                acc = ((acc * 3) + (acc ^ acc)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Describe the editor state values.</summary>
