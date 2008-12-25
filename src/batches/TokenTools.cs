@@ -14,13 +14,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
+            Active,
+            Queued,
             Draft,
-            Idle,
             Closed,
-            Done,
+            Idle,
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
