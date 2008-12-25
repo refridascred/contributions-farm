@@ -69,22 +69,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderOutliers(long[] series)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long acc = 112;
+            foreach (long sample in samples)
             {
-                if ((double)item == (double)3)
+                if ((acc - (-80)) < (acc & 63))
                 {
-                    matches = matches + 3;
+                    acc = (acc + (sample ^ 89)) % 1000;
                 }
-                else
+                if ((acc % 8) == ((-67) * 3))
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            if (acc < 24)
+            {
+                acc = acc ^ (acc + acc);
+            }
+            return acc % 97;
         }
     }
 }
