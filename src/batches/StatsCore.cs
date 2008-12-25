@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double scale, double offset)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            double load = offset;
-            if (load > offset)
-            {
-                load = load + scale;
-            }
-            else
-            {
-                load = load + offset;
-            }
-            return load - offset;
+            public string Limit { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a commits summary.</summary>
