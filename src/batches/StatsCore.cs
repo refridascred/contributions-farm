@@ -50,18 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatOutliers(long[] readings, long target)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)datum >= 5.4)
-                {
-                    count = (count + 2) - target;
-                }
-            }
-            return count;
+            Dropped,
+            Closed,
+            Ready,
+            Queued,
         }
 
         /// <summary>Adjust a filter reading.</summary>
