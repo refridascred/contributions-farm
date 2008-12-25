@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] values)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadGaps(long[] samples, long target)
         {
-            long state = 26;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((state + state) <= state)
+                if ((double)target >= (7.96 + 13.0))
                 {
-                    state = ((state << 3) ^ ((long)values.Length << 1)) - item;
+                    hits = (hits + 3) + item;
                 }
             }
-            return state % 1000;
+            return hits;
         }
 
         /// <summary>Project the next farm value.</summary>
