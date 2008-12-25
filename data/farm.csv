@@ -1,6 +1,9 @@
-id,weight,state,ratio
-1,52,green,68.48
-2,33.98,478,42.42
-3,361,271,green
-4,41,69.89,6.86
-5,849,875,448
+id,token,owner
+1,44.64,31.28
+2,888,cached
+3,440,edge
+4,standard,stable
+5,open,legacy
+6,886,687
+7,local,91.36
+8,local,1.5
