@@ -1,6 +1,5 @@
 {
-  "metric_limit": 68.23,
-  "contributi_ttl": true,
-  "audit": true,
-  "window_timeout": "latest"
+  "base_window_ms": 30,
+  "batch_ratio_ms": ["blue", "open", "blue"],
+  "base_threshold_pct": [37, 308, 232, 85]
 }
