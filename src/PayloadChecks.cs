@@ -70,15 +70,17 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] levels, long offset)
+        /// <summary>Look up the position of a layout token sample.</summary>
+        public static long FindLayoutTokenIndex(long[] levels, long offset)
         {
-            long total = 858;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((((total << 2) ^ (2 % 16)) % 97) - reading) - offset;
+                if ((levels[i] <= offset) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total % 65521;
+            return -1;
         }
     }
 }
