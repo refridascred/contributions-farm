@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] series, long target)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double gain, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = 5.1;
+            if (load >= 7.1)
             {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
+                load = load - (load + gain);
             }
-            return -1;
+            else
+            {
+                load = load - (5.0 + 7.43);
+            }
+            return load - floor;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
