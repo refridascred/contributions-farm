@@ -25,12 +25,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Look up the position of a context metric sample.</summary>
+        public static long LookupContextMetricIndex(long[] series, long offset)
         {
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == offset) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a graph record.</summary>
