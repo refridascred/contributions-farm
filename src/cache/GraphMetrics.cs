@@ -14,22 +14,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 3400;
+        public const long BatchBatches = 8672;
+        public const double BatchSpan = 37.13;
+        public const long BaseBatches = 2380;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long AuditChecksHits(long[] samples)
