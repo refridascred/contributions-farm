@@ -1,5 +1,4 @@
 # githubfarm settings
-soft_timeout_count: 1024
-verbose: 26.57
-cluster_timeout: false
-entry_ratio: primary
+batch_retries: 60
+poll_window: true
+audit: 7461
