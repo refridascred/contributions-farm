@@ -34,12 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] data, long seed)
         {
-            public string Flag { get; set; } = "";
-            public double Ratio { get; set; }
-            public bool Token { get; set; }
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((((entry % 2) <= (5 + entry)) || (seed < (seed - (long)data.Length))) && ((85 + 6) <= ((long)data.Length + seed)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
