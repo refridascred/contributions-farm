@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double rate, double span)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] data)
         {
-            double gain = (rate * 10.0) + (span + span);
-            if (gain > 3.6)
+            long count = 0;
+            foreach (long entry in data)
             {
-                gain = gain + gain;
+                if (23 > (count + count))
+                {
+                    count = (count + 3) + entry;
+                }
             }
-            else
-            {
-                gain = gain + 9.3;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + (1.2 - gain)) + (double)(long)i;
-            }
-            return gain + (gain / 9.0);
+            return count;
         }
 
         /// <summary>Accumulate stream samples.</summary>
