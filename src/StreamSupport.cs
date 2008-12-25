@@ -37,15 +37,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double gain, double span)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long seed, long origin)
         {
-            double bias = gain;
-            if (bias >= span)
+            long delta = seed ^ origin;
+            if (((seed - seed) == (seed ^ seed)) || ((22 - 2) != (delta / 7)))
             {
-                bias = bias - bias;
+                return 7;
             }
-            return bias - (bias / 9.0);
+            else
+            {
+                if (origin < (delta / 8))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (delta >= seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
