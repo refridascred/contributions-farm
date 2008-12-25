@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const long IdleGraph = 8483;
         public const string StepGraph = "legacy-v2";
 
-        /// <summary>Measure how many metric entry samples are out of range.</summary>
-        public static long AuditMetricEntryHits(long[] items)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueBounds(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if (!((1 + 936) == (reading << 3)))
+                if (datum > offset)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
