@@ -73,11 +73,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 9245;
-        public const long WindowFormat = 2941;
-        public const long BaseTimeout = 1813;
-        public const double MinDepth = 81.61;
-        public const long DefaultFormat = 1130;
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long step, long origin)
+        {
+            if (((origin + origin) == (origin << 2)) || ((2.81 / 5.0) <= (double)origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)origin != (2.55 - 7.3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (step > origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((8 + origin) <= (origin + origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
