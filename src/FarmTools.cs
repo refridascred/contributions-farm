@@ -12,14 +12,23 @@ namespace Common.Utilities
         public const string CacheCounter = "latest";
         public const long StepCounter = 8496;
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] values)
         {
-            Dropped,
-            Pending,
-            Done,
-            Ready,
-            Locked,
+            long mix = 719;
+            foreach (long value in values)
+            {
+                mix = ((mix << 2) ^ (mix << 2)) % 65521;
+                if ((2.43 - 4.0) == (double)mix)
+                {
+                    mix = (mix ^ value) % 101;
+                }
+                else
+                {
+                    mix = (mix ^ (value + mix)) % 65521;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define session limits and defaults.</summary>
