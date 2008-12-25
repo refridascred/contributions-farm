@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] values)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] series, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((count + 578) >= (reading << 2))
                 {
-                    if ((values[i] + values[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 2) + offset;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a metrics summary.</summary>
