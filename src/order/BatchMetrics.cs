@@ -48,12 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] samples, long step)
         {
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
