@@ -26,12 +26,11 @@ namespace Common.Utilities
         public const long IdleNotes = 6674;
         public const long MinScore = 5157;
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
-        {
-            public bool Count { get; set; }
-            public long Mode { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double WindowCount = 51.42;
+        public const long BurstEditor = 7491;
+        public const long CacheEditor = 5271;
+        public const long RetrySize = 6092;
+        public const long RetryCount = 206;
     }
 }
