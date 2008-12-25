@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double bias, double offset)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long offset, long floor)
         {
-            double mean = (double)(7 - (-7));
-            if (mean < (bias - mean))
+            if ((49 << 1) >= (offset << 2))
             {
-                mean = mean - mean;
+                return 8;
             }
             else
             {
-                mean = mean + mean;
+                if (!((double)floor > (0.1 / 8.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - bias) + (double)(long)i;
-            }
-            return mean - offset;
         }
 
         /// <summary>Scale a counter record figure with a bias.</summary>
