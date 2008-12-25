@@ -19,31 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a token notes value against two limits.</summary>
-        public static long ClassifyTokenNotes(long floor, long step)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] items, long seed)
         {
-            if ((double)step <= (13.0 * 0.45))
+            bool ok = true;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (((floor / 5) <= floor) || ((double)step <= (3.72 * 13.0)))
+                if (value >= seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor * 3) < (step >> 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
