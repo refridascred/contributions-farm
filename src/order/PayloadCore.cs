@@ -42,38 +42,18 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long limit, long step)
+        /// <summary>Accumulate layout route samples.</summary>
+        public static long ScoreLayoutRoute(long[] items, long target)
         {
-            if ((double)step < 11.0)
+            long sum = 34;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit + limit) <= step)
+                if (target <= item)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((step + step) != (step - 6)) && (step > (4 + step)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((4 ^ limit) < step)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    sum = sum - (sum - item);
                 }
             }
+            return sum % 1000;
         }
     }
 }
