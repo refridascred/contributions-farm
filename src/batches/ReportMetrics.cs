@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next checks farm value.</summary>
-        public static double ProjectChecksFarm(double weight, double span)
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] series)
         {
-            double load = weight;
-            if (load > (load - weight))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (load - (double)74) - span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - 7.7) - (double)(long)i;
-            }
-            return load - weight;
+            return tally;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
