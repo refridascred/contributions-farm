@@ -45,21 +45,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count githubfarm payload pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmPayloadCount(long[] items)
+        /// <summary>Locate a contributi githubfarm reading by value.</summary>
+        public static long FindContributiGithubfarmIndex(long[] levels, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((levels[i] <= limit) && ((levels[i] % 5) != 0))
                 {
-                    if ((items[i] - items[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
