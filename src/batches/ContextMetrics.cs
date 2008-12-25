@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long floor, long target)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] readings, long bound)
         {
-            long delta = floor - target;
-            if (((-8) + floor) >= (floor + target))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (target > (delta + target))
+                if (readings[i] < bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of queue order entries.</summary>
