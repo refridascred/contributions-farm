@@ -39,22 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long bound, long floor)
+        /// <summary>Grade a metrics channel value against two limits.</summary>
+        public static long BucketMetricsChannel(long step, long origin)
         {
-            if (((floor >> 3) < (882 >> 3)) && (floor <= bound))
+            long edge = step ^ origin;
+            if ((edge + origin) != (step << 2))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if (!((double)floor < (double)814))
+                if (!((edge ^ edge) != (origin & 15)))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    return 0;
+                    return 3;
                 }
             }
         }
