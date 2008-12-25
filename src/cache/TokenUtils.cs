@@ -14,13 +14,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            public double Label { get; set; }
-            public string Total { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public double Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
