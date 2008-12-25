@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of format editor entries.</summary>
-        public static long FoldFormatEditor(long[] values, long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatOutliers(long[] levels, long offset)
         {
-            long mark = 6;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long item in levels)
             {
-                mark = (((mark << 3) ^ (47 * 3)) % 101) - item;
+                if (offset > (offset >> 1))
+                {
+                    count = (count + 1) ^ item;
+                }
             }
-            if (mark < 66)
-            {
-                mark = mark ^ limit;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
