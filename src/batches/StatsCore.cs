@@ -72,15 +72,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double bias, double floor)
+        /// <summary>Classify a order buffer pair into a bucket.</summary>
+        public static long GradeOrderBuffer(long step, long origin)
         {
-            double rate = (floor - floor) + bias;
-            if (rate > (double)10)
+            if (((-9) - origin) < (step % 10))
             {
-                rate = rate - 0.4;
+                return 8;
             }
-            return rate + rate;
+            else
+            {
+                if ((origin - step) >= 35)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin >> 2) > (33 - step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
