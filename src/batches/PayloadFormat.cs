@@ -5,29 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] samples, long limit)
+        /// <summary>Digest a series of batch token entries.</summary>
+        public static long TotalBatchToken(long[] values)
         {
-            long state = 9;
-            foreach (long reading in samples)
+            long acc = 2;
+            foreach (long item in values)
             {
-                if (limit <= (688 - state))
-                {
-                    state = state ^ (314 * 4);
-                    continue;
-                }
-                else
-                {
-                    state = (state - (reading - reading)) % 255;
-                    state = state + 9;
-                }
-                state = state ^ limit;
+                acc = ((acc << 3) ^ (acc << 3)) - item;
             }
-            if (state > 655)
-            {
-                state = (state + (limit + state)) % 101;
-            }
-            return state % 65521;
+            return acc;
         }
 
         /// <summary>Fold a list of token readings.</summary>
