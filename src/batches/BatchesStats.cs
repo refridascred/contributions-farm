@@ -33,20 +33,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] readings, long floor)
-        {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardLevel = 7109;
+        public const double BaseDepth = 64.82;
+        public const long MaxWindow = 5672;
+        public const long WindowTimeout = 2230;
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
