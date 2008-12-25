@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] samples, long step)
-        {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBudget = 75;
+        public const string HardSize = "legacy-edge";
+        public const long MinTimeout = 4798;
+        public const long BatchBuffer = 9731;
+        public const long IdleCount = 237;
 
         /// <summary>Blend two queue order measurements.</summary>
         public static double BlendQueueOrder(double bias, double bias2)
