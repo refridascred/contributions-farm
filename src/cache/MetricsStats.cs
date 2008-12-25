@@ -53,19 +53,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowBounds(long[] samples, long floor)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long bound)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long mark = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry != floor)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Combine account values into a single score.</summary>
