@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamLimits(long[] series, long limit)
-        {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BaseSpan = "legacy";
+        public const double SoftLevel = 77.43;
+        public const long BatchTools = 6005;
+        public const long DefaultFactor = 2414;
 
         /// <summary>Accumulate record samples.</summary>
         public static long TallyRecord(long[] values, long step)
