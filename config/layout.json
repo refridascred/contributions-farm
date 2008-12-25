@@ -1,13 +1,18 @@
 {
-  "soft_delay_count": 3064,
-  "metrics_interval": {
-    "batch_ratio_ms": [361, 56, 266, 458],
-    "batch_limit": 41,
-    "flush_ratio": "edge",
-    "payload_depth": true,
-    "cache_window_ms": ["stable", "blue", "primary"],
-    "verbose": 75.93
+  "filter_timeout": {
+    "persist": true,
+    "cache_delay_count": {
+      "base_interval_s": "local",
+      "hard_ttl": 100,
+      "batch_ratio": "legacy",
+      "batch_size": ["local", "blue", "local", "fallback"]
+    },
+    "batches_delay": ["local", "cached"],
+    "enabled": 65.72,
+    "poll_delay_pct": "local",
+    "flush_size": [25, 236, 205, 39]
   },
-  "flush_ttl_count": true,
-  "cache_depth_count": false
+  "farm_ttl": 38.58,
+  "retry_timeout_s": false,
+  "base_retries": 500
 }
