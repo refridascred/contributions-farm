@@ -33,19 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double ratio, double span)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterHits(long[] readings, long step)
         {
-            double rate = span;
-            if (rate < span)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                rate = (rate - (double)(-591)) - ratio;
+                if (sample > (hits >> 1))
+                {
+                    hits = (hits + 2) + step;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (rate / 4.0)) + (double)(long)i;
-            }
-            return rate + span;
+            return hits;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
