@@ -1,5 +1,5 @@
 {
-  "dry_run": 30,
-  "burst_ttl_pct": 33,
-  "strict": ["staging", "green"]
+  "batch_capacity_ms": [275, 359],
+  "batch_window": 3933,
+  "max_threshold_ms": "open"
 }
