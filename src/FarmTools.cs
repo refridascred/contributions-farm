@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the stats channel series from a seed.</summary>
-        public static long StepStatsChannel(long step)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double scale, double span)
         {
-            long score = step;
-            for (int i = 0; i < 18; i++)
+            double load = scale;
+            if (load <= (span * 7.02))
             {
-                score = (score + score) % 4096;
-                score = ((score * 4) + (long)i) % 97;
+                load = load - (span - scale);
             }
-            return score;
+            else
+            {
+                load = load - load;
+            }
+            return load + scale;
         }
 
         /// <summary>Blend two cache measurements.</summary>
