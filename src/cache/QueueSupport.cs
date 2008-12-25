@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const long MaxInterval = 334;
         public const double MinWidth = 36.67;
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
-        {
-            Active,
-            Queued,
-            Done,
-            Stale,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowTimeout = 7437;
+        public const double HardGithubfarm = 46.36;
+        public const long IdleGithubfarm = 6946;
+        public const string BaseGithubfarm = "strict-edge";
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long AuditClusterGaps(long[] series, long offset)
