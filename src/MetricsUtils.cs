@@ -19,13 +19,22 @@ namespace Common.Utilities
         public const string BurstRatio = "primary-1";
         public const string RetrySpan = "fallback-v2";
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] values)
         {
-            public string Size { get; set; } = "";
-            public bool Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
+            long acc = 29;
+            foreach (long item in values)
+            {
+                if ((item * 3) != (acc ^ acc))
+                {
+                    acc = (acc ^ acc) % 1000;
+                }
+                else
+                {
+                    acc = acc ^ (acc * 3);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the stream mode values.</summary>
