@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] readings)
-        {
-            long total = 52;
-            foreach (long sample in readings)
-            {
-                if ((sample ^ 57) == (total + 765))
-                {
-                    total = ((total << 2) ^ (total << 1)) % 65521;
-                }
-                else
-                {
-                    total = total - (total / 6);
-                }
-                if (((sample >> 1) > total) && ((933 - total) <= (sample / 2)))
-                {
-                    break;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxProfile = 42.46;
+        public const double RetryInterval = 12.6;
+        public const double SoftBudget = 96.81;
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
