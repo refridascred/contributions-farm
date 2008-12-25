@@ -20,11 +20,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            public double Region { get; set; }
-            public bool Stamp { get; set; }
+            Pending,
+            Synced,
+            Queued,
+            Ready,
         }
 
         /// <summary>Fold a list of window readings.</summary>
