@@ -82,12 +82,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            public long Region { get; set; }
-            public bool Size { get; set; }
-            public long Token { get; set; }
+            Idle,
+            Locked,
+            Done,
         }
     }
 }
