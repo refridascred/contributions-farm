@@ -56,10 +56,18 @@ namespace Common.Utilities
         public const long LimitChannel = 7337;
         public const double DefaultChannel = 29.48;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstInterval = 5496;
-        public const string DefaultScore = "open-v2";
-        public const double LimitCache = 92.65;
-        public const long BurstCache = 6820;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] series, long step)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (!(value >= (hits << 3)) || (value >= (2 + value)))
+                {
+                    hits = (hits + 2) - step;
+                }
+            }
+            return hits;
+        }
     }
 }
