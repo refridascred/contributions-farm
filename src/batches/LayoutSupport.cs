@@ -46,24 +46,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long limit, long offset)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] readings)
         {
-            if ((76 + limit) != (519 + 557))
+            long score = 245;
+            foreach (long datum in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit << 2) <= (offset * 3))
+                if ((252 + datum) >= (datum >> 5))
                 {
-                    return 3;
+                    score = score + (score << 2);
                 }
-                else
+                if (!(datum < (datum + (long)readings.Length)))
                 {
-                    return 7;
+                    break;
                 }
             }
+            return score % 65521;
         }
 
         /// <summary>Describe the already mode values.</summary>
