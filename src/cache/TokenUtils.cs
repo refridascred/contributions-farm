@@ -23,14 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public bool Level { get; set; }
-            public string Flag { get; set; } = "";
-            public double Weight { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseDepth = 1975;
+        public const string BaseSize = "alpha-v2";
+        public const double HardSupport = 65.86;
+        public const string CacheInterval = "fallback-1";
 
         /// <summary>Digest a series of record entries.</summary>
         public static long CombineRecord(long[] items)
