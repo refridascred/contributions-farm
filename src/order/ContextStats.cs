@@ -15,13 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public long Rank { get; set; }
-            public bool Label { get; set; }
+            Done,
+            New,
+            Active,
         }
 
         /// <summary>Blend two layout checks measurements.</summary>
