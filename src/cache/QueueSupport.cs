@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSize = 6518;
-        public const double WindowSession = 83.7;
-        public const long MaxInterval = 334;
-        public const double MinWidth = 36.67;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 7009;
+        public const long SoftSpan = 2485;
+        public const string BaseCount = "open-v2";
+        public const long RetryFarm = 1566;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long WindowTimeout = 7437;
