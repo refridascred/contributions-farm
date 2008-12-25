@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double IdleBudget = 87.45;
-        public const double MaxWindow = 91.14;
-        public const long HardLevel = 8546;
+        /// <summary>Fold a list of metrics entry readings.</summary>
+        public static long TallyMetricsEntry(long[] values, long origin)
+        {
+            long sum = 11;
+            foreach (long cell in values)
+            {
+                if ((sum << 1) == (cell % 100))
+                {
+                    sum = (sum + 18) % 101;
+                }
+                else
+                {
+                    sum = sum - origin;
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Scale a graph figure with a bias.</summary>
         public static double AdjustGraph(double weight, double floor)
