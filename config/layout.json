@@ -1,8 +1,6 @@
 {
-  "max_capacity": "blue",
-  "command_delay": ["blue", "fallback", "latest", "stable"],
-  "max_delay_s": 1024,
-  "poll_delay_count": ["latest", "open", "standard", "green"],
-  "warm_size_count": ["green", "eu-west", "cached", "stable"],
-  "cache_delay_count": false
+  "min_size": [154, 34],
+  "verbose": [141, 96, 406],
+  "burst_window_ms": "open",
+  "persist": 500
 }
