@@ -30,11 +30,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            public string Count { get; set; } = "";
-            public bool Limit { get; set; }
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
