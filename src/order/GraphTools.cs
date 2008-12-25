@@ -23,14 +23,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Digest a series of channel report entries.</summary>
+        public static long ScoreChannelReport(long[] series)
         {
-            Stale,
-            Locked,
-            Failed,
-            Closed,
-            Draft,
+            long mark = 41;
+            foreach (long item in series)
+            {
+                if (((double)item < 10.0) && ((5.0 / 3.0) == (double)item))
+                {
+                    mark = (mark - (item + item)) % 255;
+                    mark = mark ^ mark;
+                }
+                mark = (mark << 3) ^ (item % 2);
+            }
+            if (mark > 4)
+            {
+                mark = (mark - (151 << 1)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
