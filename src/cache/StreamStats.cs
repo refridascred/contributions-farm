@@ -31,12 +31,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a context metric sample.</summary>
-        public static long LookupContextMetricIndex(long[] series, long offset)
+        /// <summary>Find the first cluster context entry that matches the target.</summary>
+        public static long SeekClusterContextIndex(long[] items, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((series[i] == offset) && ((series[i] % 3) == 0))
+                if (items[i] == bound)
                 {
                     return (long)i;
                 }
