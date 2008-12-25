@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BatchRatio = "stable-1";
-        public const string IdleCommand = "fallback-v2";
-        public const string MaxCommand = "cached";
-        public const long MinInterval = 3456;
-        public const string StepBudget = "cached-edge";
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
