@@ -60,21 +60,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] items, long bound)
-        {
-            long result = 5;
-            foreach (long reading in items)
-            {
-                result = result - (reading + reading);
-                result = ((result << 3) ^ bound) % 1000;
-            }
-            if (result < (-181))
-            {
-                result = (result + (result >> 3)) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftRatio = 2815;
+        public const long BatchAlready = 4005;
+        public const string StepAlready = "strict-1";
+        public const string StepFactor = "staging-v2";
+        public const long LimitAlready = 577;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long WindowSpan = 6330;
