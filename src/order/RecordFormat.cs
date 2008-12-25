@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] readings)
+        /// <summary>Count the stats counter entries that pass the check.</summary>
+        public static long TallyStatsCounterMatches(long[] values)
         {
             long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)value <= 2.4)
                 {
-                    if ((readings[i] ^ readings[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
             return tally;
