@@ -1,18 +1,13 @@
 {
-  "warm_ratio_s": ["stable", "strict", "primary"],
-  "audit": 8037,
-  "githubfarm_depth": 34.84,
-  "context_ratio": {
-    "contributi_ttl": {
-      "cache_threshold": 33.1,
-      "default_ratio_ms": 410,
-      "persist": 60,
-      "base_ratio_s": 60
-    },
-    "sync_capacity_count": "edge",
-    "support_depth": 1024,
-    "strict": false,
-    "base_capacity": 688
+  "hard_ttl_pct": "cached",
+  "batch_interval_ms": {
+    "idle_capacity_ms": "primary",
+    "warm_depth": 100,
+    "burst_size": 74.22,
+    "account_ttl": "eu-west",
+    "cache_depth": [85, 350, 198, 416],
+    "verbose": true
   },
-  "soft_capacity_s": false
+  "sync_timeout_count": true,
+  "strict": 1024
 }
