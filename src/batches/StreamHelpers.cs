@@ -28,10 +28,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseSpan = 8513;
-        public const long MinSpan = 5837;
-        public const string SoftWidth = "legacy-edge";
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Retry,
+            Active,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
