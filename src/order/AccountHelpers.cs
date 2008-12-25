@@ -54,13 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
-        {
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Level { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double LimitWidth = 41.95;
+        public const long RetryBatch = 7073;
+        public const long CacheBatch = 2701;
+        public const long BatchSpan = 3160;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long IdleRatio = 6108;
