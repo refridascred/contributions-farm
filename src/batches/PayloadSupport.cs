@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] series, long limit)
         {
-            Idle,
-            Synced,
-            Done,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine report values into a single score.</summary>
