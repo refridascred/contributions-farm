@@ -1,6 +1,8 @@
-id,score,token
-1,437,43.56
-2,336,fallback
-3,587,81.02
-4,fallback,26.19
-5,671,eu-west
+id,region,level,state
+1,53,30.27,158
+2,eu-west,latest,legacy
+3,blue,60.97,193
+4,566,369,open
+5,885,96.46,286
+6,929,green,718
+7,95.09,653,cached
