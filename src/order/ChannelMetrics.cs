@@ -19,19 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] items, long seed)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long target, long origin)
         {
-            bool ok = true;
-            foreach (long value in items)
+            if (((9.7 * 2.7) <= (double)target) && ((target & 127) <= origin))
             {
-                if (value >= seed)
+                return 0;
+            }
+            else
+            {
+                if ((origin >> 3) <= (target - target))
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((target - origin) <= origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((target ^ target) < (target + target)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
