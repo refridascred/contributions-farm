@@ -65,12 +65,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstWidth = 3353;
-        public const string RetryLevel = "legacy-v2";
-        public const double MaxCount = 51.81;
-        public const double MaxAlready = 96.81;
-        public const long RetryCount = 5902;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionRange(long[] readings, long origin)
+        {
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Blend two order measurements.</summary>
         public static double AdjustOrder(double bias, double bias2)
