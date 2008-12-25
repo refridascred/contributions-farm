@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long step)
+        /// <summary>Compare every pair of already window readings.</summary>
+        public static long CompareAlreadyWindowCount(long[] levels)
         {
-            long mark = step;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (((mark << 2) ^ (mark / 2)) % 65521) - (long)i2;
+                    if ((levels[i] + levels[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if (!((mark & 7) >= (step % 64)))
-                {
-                    mark = mark ^ (step << 3);
-                }
-                if (5 <= (mark - 3))
-                {
-                    mark = (mark - (99 % 24)) % 4096;
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
