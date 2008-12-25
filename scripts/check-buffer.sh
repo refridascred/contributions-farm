@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging strict; do
+for item in strict eu-west edge staging; do
     log "checking ${item}"
 done
 
-mode="${1:-local}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=143
+log "limit is ${BUFFER_LIMIT}"
+
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
