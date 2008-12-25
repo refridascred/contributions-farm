@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] levels, long offset)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (offset > (offset >> 1))
-                {
-                    count = (count + 1) ^ item;
-                }
-            }
-            return count;
+            Stale,
+            Done,
+            Draft,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
