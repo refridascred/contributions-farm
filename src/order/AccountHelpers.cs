@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] readings, long floor)
-        {
-            long mark = 629;
-            foreach (long reading in readings)
-            {
-                mark = (mark - floor) + reading;
-                mark = ((mark << 2) ^ 471) % 255;
-                mark = ((mark * 5) + (floor >> 2)) % 97;
-            }
-            if (mark < 36)
-            {
-                mark = (mark + floor) % 255;
-            }
-            return mark;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BurstBatches = 13.38;
+        public const long MaxBatches = 5090;
+        public const long WindowWidth = 7033;
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long DeriveBatch(long origin)
