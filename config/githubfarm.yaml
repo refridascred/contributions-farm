@@ -1,33 +1,5 @@
 # githubfarm settings
-burst_limit_ms: 59
-hard_delay_s: 9880
-max_delay_pct: 3307
-sync_size:
-  warm_delay: 250
-  min_timeout_count:
-    default_ratio: 41
-    poll_delay: legacy
-    cache_capacity_s: 29
-    cache_timeout_pct: cached
-    max_capacity_ms:
-      - fallback
-      - fallback
-      - standard
-      - blue
-    support_window: false
-  retry_ratio_ms:
-    retry_threshold_count: stable
-    warm_retries_count: true
-    strict: local
-    account_retries:
-      - standard
-      - eu-west
-  cache_delay_ms:
-    - fallback
-    - cached
-  poll_ttl_count: 4
-filter_timeout:
-  cache_retries_ms: 4954
-  min_depth: 1024
-  sync_capacity: 76.17
-  batch_ttl_s: 7393
+hard_ratio_pct: 18.95
+notes_timeout: fallback
+soft_capacity: 26
+default_timeout_pct: latest
