@@ -55,23 +55,18 @@ namespace Common.Utilities
         public const double RetryBuffer = 86.53;
         public const string StepBuffer = "local-v2";
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long seed)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] data)
         {
-            long state = seed;
-            for (int i = 0; i < 13; i++)
+            long mark = 1;
+            foreach (long datum in data)
             {
-                if ((state + seed) != (state / 9))
+                if ((datum % 2) == (mark % 7))
                 {
-                    continue;
+                    mark = mark + (datum + datum);
                 }
-                if ((state - state) < seed)
-                {
-                    state = (state - (long)i) % 97;
-                }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return mark;
         }
     }
 }
