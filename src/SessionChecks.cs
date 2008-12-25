@@ -36,11 +36,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] data)
         {
-            public long Size { get; set; }
-            public double Token { get; set; }
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((((reading - 7) <= 63) || ((reading >> 1) <= (reading + reading))) || ((6.07 - 4.7) < (double)reading))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
