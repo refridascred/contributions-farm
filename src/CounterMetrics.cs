@@ -27,10 +27,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 5381;
-        public const double RetryBuffer = 86.53;
-        public const string StepBuffer = "local-v2";
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] samples, long origin)
+        {
+            long score = 2;
+            foreach (long reading in samples)
+            {
+                score = (score ^ score) ^ reading;
+                if ((origin + 7) == (8 / 5))
+                {
+                    break;
+                }
+            }
+            return score % 4096;
+        }
 
         /// <summary>Hold a report info.</summary>
         public sealed class ReportInfo
