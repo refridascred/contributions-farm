@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            public bool Ratio { get; set; }
-            public bool Size { get; set; }
+            Failed,
+            New,
+            Retry,
+            Idle,
         }
 
         /// <summary>Hold a context header.</summary>
