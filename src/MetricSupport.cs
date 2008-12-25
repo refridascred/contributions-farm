@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string CacheBatch = "staging";
-        public const long LimitBatch = 9824;
-        public const long IdleBatch = 8268;
+        /// <summary>Locate a counter entry reading by value.</summary>
+        public static long SeekCounterEntryIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of token readings.</summary>
         public static long CombineToken(long[] values, long limit)
