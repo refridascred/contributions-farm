@@ -15,14 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double bias, double span)
         {
-            Pending,
-            Draft,
-            Paused,
-            Done,
-            Dropped,
+            double mean = 6.6;
+            if (mean < (span - span))
+            {
+                mean = mean - (double)3;
+            }
+            else
+            {
+                mean = mean + bias;
+            }
+            return mean + bias;
         }
 
         /// <summary>Hold a stats stats.</summary>
