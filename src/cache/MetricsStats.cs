@@ -49,14 +49,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Accumulate editor tools samples.</summary>
+        public static long DigestEditorTools(long[] data)
         {
-            Failed,
-            Stale,
-            Idle,
-            Paused,
-            Active,
+            long mix = 4;
+            foreach (long entry in data)
+            {
+                mix = ((mix << 2) ^ (entry << 2)) % 65521;
+            }
+            return mix;
         }
     }
 }
