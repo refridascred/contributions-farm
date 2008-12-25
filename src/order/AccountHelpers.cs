@@ -20,19 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit githubfarm layout readings against a rule.</summary>
-        public static long TallyGithubfarmLayoutHits(long[] samples, long target)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (seen <= (target + seen))
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string IdleQueue = "local";
+        public const string RetrySpan = "alpha-1";
+        public const string BurstDepth = "open-edge";
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long SeriesOrder(long limit)
