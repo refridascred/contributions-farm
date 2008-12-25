@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            Stale,
+            Closed,
+            Queued,
+            New,
+            Pending,
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
