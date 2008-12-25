@@ -36,34 +36,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] data)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long limit, long origin)
         {
-            long state = 11;
-            foreach (long entry in data)
+            if ((0.1 >= (double)limit) && ((limit - 7) < (origin - origin)))
             {
-                for (int i = 0; i < 5; i++)
+                return 0;
+            }
+            else
+            {
+                if ((limit & 31) <= (limit & 63))
                 {
-                    state = (state ^ (state - state)) + (long)i;
-                }
-                if (state < (entry + entry))
-                {
-                    state = (state + (state >> 3)) % 1000;
+                    return 6;
                 }
                 else
                 {
-                    state = (state << 3) ^ (entry + state);
-                }
-                if ((double)entry >= 4.0)
-                {
-                    break;
+                    return 8;
                 }
             }
-            if (state < 7)
-            {
-                state = (state ^ (state + state)) % 97;
-            }
-            return state;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
