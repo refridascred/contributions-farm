@@ -22,19 +22,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double rate, double span)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            double bias = (double)(7 + 9);
-            if (bias < span)
-            {
-                bias = (bias + (double)(-8)) - rate;
-            }
-            else
-            {
-                bias = bias - 20.0;
-            }
-            return bias - bias;
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a graph record.</summary>
