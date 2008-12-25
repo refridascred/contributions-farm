@@ -73,14 +73,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] levels, long origin)
         {
-            Pending,
-            Closed,
-            Failed,
-            Draft,
-            Queued,
+            long mark = -497;
+            foreach (long reading in levels)
+            {
+                mark = (mark ^ (origin + origin)) - reading;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Audit buffer report readings against a rule.</summary>
