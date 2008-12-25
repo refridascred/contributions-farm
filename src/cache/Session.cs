@@ -37,19 +37,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiLimits(long[] levels, long target)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double gain, double floor)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            double weight = gain;
+            if (weight <= 7.19)
             {
-                if (sample < target)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = weight - 6.1;
             }
-            return ready;
+            else
+            {
+                weight = weight - (double)85;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (floor - weight)) + (double)(long)i;
+            }
+            return weight + (gain - 16.0);
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
