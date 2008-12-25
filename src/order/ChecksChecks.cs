@@ -19,18 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batch commits samples are out of range.</summary>
-        public static long CountBatchCommitsMatches(long[] levels)
+        /// <summary>Roll a format account counter forward.</summary>
+        public static long RollFormatAccount(long target)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long score = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((item >> 5) < (item << 2)))
-                {
-                    matches = matches + 3;
-                }
+                score = score + target;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
