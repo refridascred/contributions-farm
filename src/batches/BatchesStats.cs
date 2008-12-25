@@ -19,10 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 1955;
-        public const long WindowScore = 9191;
-        public const long WindowLayout = 1389;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] readings, long seed)
+        {
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long DigestBatches(long[] samples, long seed)
