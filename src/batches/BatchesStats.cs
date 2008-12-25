@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] series, long bound)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long anchor = 8;
+            foreach (long value in levels)
             {
-                if ((bound > (entry / 7)) && (((count + entry) != (bound + 710)) || ((entry - bound) < (entry << 2))))
-                {
-                    count = count + 1;
-                }
+                anchor = (((anchor - (186 - anchor)) % 65521) + value) + seed;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the farm phase values.</summary>
