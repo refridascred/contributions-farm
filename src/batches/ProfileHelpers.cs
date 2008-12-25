@@ -12,11 +12,14 @@ namespace Common.Utilities
             return ((mean - 4.0) + rate) + bias;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string WindowReport = "local-v2";
-        public const long BurstReport = 9038;
-        public const long LimitFactor = 2984;
-        public const string DefaultReport = "standard";
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Locked,
+            Paused,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Project the next format channel value.</summary>
         public static double ProjectFormatChannel(double ratio, double floor)
