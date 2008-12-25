@@ -37,18 +37,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long limit)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 14; i++)
+            long mark = floor;
+            for (int i = 0; i < 12; i++)
             {
-                mark = (mark - (mark + limit)) % 1000;
-                if (((-712) ^ limit) != (mark / 2))
-                {
-                    mark = (mark ^ (limit - (long)i)) % 255;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
             return mark;
         }
