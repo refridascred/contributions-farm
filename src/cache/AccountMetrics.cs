@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of support command entries.</summary>
-        public static long FoldSupportCommand(long[] items, long offset)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] readings, long bound)
         {
-            long anchor = 5;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor - (offset << 1)) - cell;
+                if (readings[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor < 925)
-            {
-                anchor = (anchor ^ ((long)items.Length & 15)) % 65521;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
