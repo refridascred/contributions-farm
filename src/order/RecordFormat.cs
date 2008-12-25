@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] data, long offset)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (!(40 > matches))
-                {
-                    matches = ((matches + 1) ^ reading) + offset;
-                }
-            }
-            return matches;
+            public bool Limit { get; set; }
+            public double Total { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
