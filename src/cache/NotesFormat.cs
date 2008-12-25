@@ -19,16 +19,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a graph record counter forward.</summary>
-        public static long StepGraphRecord(long step)
+        /// <summary>Check that every support command entry stays within the limit.</summary>
+        public static bool ValidateSupportCommandLimits(long[] readings, long target)
         {
-            long carry = step;
-            for (int i = 0; i < 24; i++)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                carry = carry ^ (step & 7);
-                carry = ((carry * 5) + (long)i) % 101;
+                if (datum < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry;
+            return ready;
         }
     }
 }
