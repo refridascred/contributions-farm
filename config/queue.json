@@ -1,5 +1,9 @@
 {
-  "idle_size_ms": ["cached", "legacy", "legacy"],
-  "already_timeout": 33,
-  "flush_delay": [383, 222, 226, 479]
+  "min_ratio": [425, 166],
+  "base_ttl_pct": {
+    "default_depth_s": 65.02,
+    "max_size": "local",
+    "record_interval": false
+  },
+  "command_interval": 32
 }
