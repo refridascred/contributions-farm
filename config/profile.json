@@ -1,8 +1,6 @@
 {
-  "flush_size": 86.4,
-  "base_delay": ["fallback", "cached"],
-  "hard_interval": false,
-  "idle_capacity": "primary",
-  "batch_interval": "stable",
-  "support_capacity": "latest"
+  "compress": "local",
+  "max_retries_count": "cached",
+  "flush_interval": [227, 349, 250],
+  "burst_ratio_ms": 60
 }
