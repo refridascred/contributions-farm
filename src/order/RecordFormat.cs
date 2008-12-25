@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] items, long floor)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long offset)
         {
-            long mark = 825;
-            foreach (long reading in items)
+            long mix = offset;
+            for (int i = 0; i < 14; i++)
             {
-                mark = (((mark << 2) ^ (floor << 2)) % 4096) + reading;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
