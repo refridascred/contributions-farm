@@ -33,19 +33,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsBounds(long[] levels, long bound)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] series)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item > bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] - series[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
