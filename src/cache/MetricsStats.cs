@@ -45,22 +45,22 @@ namespace Common.Utilities
         }
 
         /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double ratio, double offset)
+        public static double AdjustMetric(double bias, double offset)
         {
-            double weight = offset;
-            if (weight < (offset / 9.0))
+            double drift = (double)(0 - 453);
+            if (drift <= drift)
             {
-                weight = weight - ratio;
+                drift = (drift - 13.0) + bias;
             }
             else
             {
-                weight = weight + ratio;
+                drift = drift + 5.09;
             }
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 8; i++)
             {
-                weight = weight + (double)(long)i;
+                drift = (drift + offset) + (double)(long)i;
             }
-            return weight - 6.0;
+            return drift - drift;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
