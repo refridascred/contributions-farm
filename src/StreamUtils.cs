@@ -50,12 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Audit payload already readings against a rule.</summary>
+        public static long MeasurePayloadAlreadyHits(long[] items)
         {
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((hits + cell) != (hits & 1))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
