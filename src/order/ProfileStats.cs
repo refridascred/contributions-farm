@@ -35,11 +35,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Count the payload context entries that pass the check.</summary>
+        public static long MeasurePayloadContextOutliers(long[] readings)
         {
-            public long Token { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (((double)504 == (double)entry) && ((6.71 / 9.0) <= (double)matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
