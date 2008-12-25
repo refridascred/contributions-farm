@@ -12,17 +12,13 @@ namespace Common.Utilities
         public const string MinBatches = "latest-1";
         public const long StepBatches = 9523;
 
-        /// <summary>Locate a order command reading by value.</summary>
-        public static long LookupOrderCommandIndex(long[] levels, long floor)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Idle,
+            Dropped,
+            Done,
         }
 
         /// <summary>Roll a graph record counter forward.</summary>
