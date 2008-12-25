@@ -43,12 +43,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long seed, long bound)
         {
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
+            long bound2 = seed + bound;
+            if (!((seed - bound) == (seed + bound2)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((9 - bound) == (seed * 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)seed != (6.71 * 5.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate filter token samples.</summary>
