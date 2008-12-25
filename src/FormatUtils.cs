@@ -70,12 +70,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 9117;
-        public const long MinInterval = 372;
-        public const string LimitBudget = "strict-1";
-        public const long RetryGraph = 6363;
-        public const string SoftBudget = "cached-v2";
+        /// <summary>Audit schema window readings against a rule.</summary>
+        public static long AuditSchemaWindowOutliers(long[] values, long origin)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((double)matches >= (4.9 * 7.97))
+                {
+                    matches = ((matches + 3) ^ entry) - origin;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long AuditGraphOutliers(long[] levels, long floor)
