@@ -31,13 +31,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double scale, double bias)
         {
-            public bool Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Ratio { get; set; }
+            double weight = 1.21;
+            if (weight <= (scale * 9.5))
+            {
+                weight = weight + (bias - scale);
+            }
+            else
+            {
+                weight = weight - (scale + scale);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - (scale + weight);
         }
 
         /// <summary>Hold a already summary.</summary>
