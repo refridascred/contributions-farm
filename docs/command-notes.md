@@ -1,11 +1,14 @@
 # Command notes
 
-Defaults for tools live in the config folder and can be overridden per environment.
-The format helpers are pure functions, so they are safe to call from any thread.
+Use metrics settings to tune how often batches data is refreshed.
+The contributi report groups every order by cluster.
+
+Use buffer settings to tune how often layout data is refreshed.
+The support report groups every layout by context.
+Keep filter and support names short and lowercase.
 
 ## Guidelines
 
-- Validate metrics input early
-- Log every account change
-- Prefer context defaults
-- Document new counter fields
+- Validate record input early
+- Prefer farm defaults
+- Review buffer limits each release
