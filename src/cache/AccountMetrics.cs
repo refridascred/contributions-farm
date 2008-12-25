@@ -14,18 +14,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] samples)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (((reading & 15) < 7) || ((reading & 31) >= reading))
+                if ((datum & 15) >= 613)
                 {
-                    seen = seen + 3;
+                    matches = (matches + 3) + origin;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
