@@ -21,19 +21,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] items, long limit)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] readings, long floor)
         {
-            bool stale = true;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value != limit)
+                if (readings[i] <= floor)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Describe the session mode values.</summary>
