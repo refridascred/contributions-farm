@@ -1,15 +1,27 @@
 # entry settings
-account_timeout:
-  readonly: 9707
-  soft_size_pct: 30
-  persist: 57.35
-  enabled: 4.92
-  stream_retries: strict
-min_limit_s: stable
-hard_capacity: true
-persist: open
-layout_ratio:
-  filter_interval: 20.27
-  base_capacity_pct: latest
-  enabled: legacy
-hard_interval_s: strict
+warm_retries: false
+verbose: edge
+sync_size: false
+support_size: latest
+idle_depth_count:
+  filter_ratio: cached
+  queue_depth: 2305
+  default_threshold_s:
+    strict: latest
+    base_ratio: 1024
+    schema_ratio: 2984
+  persist:
+    metric_threshold: local
+    soft_timeout: 60
+    poll_ratio: 250
+  hard_limit_count: latest
+  flush_timeout_s:
+    enabled: 100
+    flush_window: 3
+    metric_threshold: 93.59
+    default_retries_count: 250
+    max_delay:
+      - strict
+      - legacy
+      - standard
+    cache_size_pct: 16.88
