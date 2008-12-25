@@ -16,11 +16,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string WindowBudget = "fallback";
-        public const double CacheCount = 87.34;
-        public const string IdleToken = "primary-1";
-        public const string BatchToken = "cached-v2";
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            Draft,
+            Pending,
+            New,
+            Failed,
+        }
 
         /// <summary>Digest a series of editor metrics entries.</summary>
         public static long FoldEditorMetrics(long[] readings)
