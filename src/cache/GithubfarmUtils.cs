@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double bias, double span)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            double load = span;
-            if (load >= (load + bias))
-            {
-                load = load + (double)3;
-            }
-            return load - (span - load);
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Blend two queue order measurements.</summary>
