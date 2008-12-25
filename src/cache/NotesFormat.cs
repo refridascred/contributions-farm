@@ -15,19 +15,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] items)
+        /// <summary>Locate a order command reading by value.</summary>
+        public static long LookupOrderCommandIndex(long[] levels, long floor)
         {
-            long mark = 76;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark - 0) % 97) ^ datum;
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 370)
-            {
-                mark = (mark << 3) ^ (mark * 4);
-            }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Roll a graph record counter forward.</summary>
