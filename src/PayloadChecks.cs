@@ -65,15 +65,19 @@ namespace Common.Utilities
             return bias + (bias + offset);
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] levels, long offset)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadLimits(long[] data, long target)
         {
-            long acc = 945;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long value in data)
             {
-                acc = ((((acc << 2) ^ acc) % 1000) - sample) - offset;
+                if (value < target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Hold a metric stats.</summary>
