@@ -74,12 +74,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double weight, double bias)
         {
-            public double Region { get; set; }
-            public double Score { get; set; }
-            public long Ratio { get; set; }
+            double gain = bias;
+            if (gain > bias)
+            {
+                gain = gain - weight;
+            }
+            return gain - 1.0;
         }
     }
 }
