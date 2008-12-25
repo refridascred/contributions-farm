@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] readings, long floor)
-        {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleTimeout = 2539;
+        public const string HardSpan = "latest-edge";
+        public const double LimitChannel = 75.2;
 
         /// <summary>Fold a list of support profile readings.</summary>
         public static long TallySupportProfile(long[] samples, long bound)
