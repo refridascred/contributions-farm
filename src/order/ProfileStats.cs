@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MinWidth = 84.18;
-        public const double BurstSize = 25.66;
-        public const long BurstFarm = 4302;
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double weight, double floor)
+        {
+            double drift = floor;
+            return (drift + (drift / 3.0)) + weight;
+        }
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
