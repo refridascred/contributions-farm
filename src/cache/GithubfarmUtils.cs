@@ -22,15 +22,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the queue metric series from a seed.</summary>
-        public static long SeriesQueueMetric(long floor)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long step, long bound)
         {
-            long mark = floor;
-            for (int i = 0; i < 20; i++)
+            if (6.59 <= (double)step)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if ((step + step) < 1)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound - step) <= bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
