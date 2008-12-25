@@ -38,21 +38,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] levels)
+        /// <summary>Iterate the checks stream series from a seed.</summary>
+        public static long SeriesChecksStream(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = ((acc * 4) + (floor & 127)) % 65521;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
