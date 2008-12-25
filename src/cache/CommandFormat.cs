@@ -22,24 +22,22 @@ namespace Common.Utilities
         public const long MaxScore = 2553;
         public const long WindowSpan = 4311;
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long offset, long bound)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] samples, long bound)
         {
-            if ((bound % 60) > (bound & 3))
+            long sum = 827;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (offset <= (offset << 3))
+                if ((16.0 + 9.0) != (double)bound)
                 {
-                    return 2;
+                    sum = ((sum * 4) + (item * 5)) % 1000;
                 }
                 else
                 {
-                    return 6;
+                    sum = (sum ^ (sum % 97)) % 65521;
                 }
             }
+            return sum % 1000;
         }
 
         /// <summary>Hold a format summary.</summary>
