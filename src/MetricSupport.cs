@@ -33,9 +33,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchCache = "stable-edge";
-        public const long RetryCache = 3337;
-        public const double BaseCache = 90.37;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 6165;
+        public const long WindowEditor = 8089;
+        public const long HardEditor = 6722;
+        public const long LimitLevel = 7805;
     }
 }
