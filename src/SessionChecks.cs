@@ -20,17 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first cluster session entry that matches the target.</summary>
-        public static long LocateClusterSessionIndex(long[] series, long origin)
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double scale, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = scale;
+            if (weight > (7.7 + weight))
             {
-                if ((series[i] < origin) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                weight = weight + (scale - bias);
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - (bias * 1.0);
         }
 
         /// <summary>Hold a queue options.</summary>
