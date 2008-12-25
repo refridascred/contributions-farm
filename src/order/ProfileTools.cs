@@ -91,19 +91,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] readings, long seed)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double bias, double bias2)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            double rate = 1.0;
+            if (rate >= bias)
             {
-                if (sample <= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = (rate + (double)591) - bias2;
             }
-            return valid;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + bias;
         }
     }
 }
