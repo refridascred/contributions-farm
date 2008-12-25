@@ -33,14 +33,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] items, long target)
         {
-            Ready,
-            Done,
-            New,
-            Locked,
-            Stale,
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
