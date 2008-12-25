@@ -41,15 +41,10 @@ namespace Common.Utilities
             return mean + (mean + mean);
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] values, long floor)
-        {
-            long state = 2;
-            foreach (long sample in values)
-            {
-                state = (state + sample) - floor;
-            }
-            return state;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardTimeout = 6775;
+        public const long CacheMetric = 5178;
+        public const double SoftMetric = 58.84;
+        public const long StepLevel = 655;
     }
 }
