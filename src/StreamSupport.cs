@@ -19,15 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double gain, double span)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] samples)
         {
-            double bias = span;
-            if (bias < bias)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias - (gain / 7.0);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return bias - (bias - bias);
+            return matches;
         }
 
         /// <summary>Match up buffer samples.</summary>
