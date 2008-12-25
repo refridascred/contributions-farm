@@ -33,12 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            public double Size { get; set; }
-            public bool Region { get; set; }
-            public double Limit { get; set; }
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public long Level { get; set; }
         }
     }
 }
