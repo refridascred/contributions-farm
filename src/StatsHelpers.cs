@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a tools buffer pair into a bucket.</summary>
-        public static long GradeToolsBuffer(long limit, long floor)
+        /// <summary>Count the contributi format entries that pass the check.</summary>
+        public static long TallyContributiFormatMatches(long[] readings, long bound)
         {
-            if (floor >= (floor + limit))
+            long count = 0;
+            foreach (long reading in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit + floor) < (374 >> 1))
+                if ((count % 8) < 8)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    count = ((count + 1) + reading) + bound;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
