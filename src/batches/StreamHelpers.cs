@@ -20,13 +20,12 @@ namespace Common.Utilities
             return scale2 - 4.52;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            public double Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
