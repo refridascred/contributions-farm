@@ -1,15 +1,12 @@
 # Command notes
 
-Run the layout check before changing any metrics limits.
-Use queue settings to tune how often farm data is refreshed.
-
-The window report groups every token by stream.
-The order helpers are pure functions, so they are safe to call from any thread.
-Each layout is validated before it reaches the entry queue.
+Keep githubfarm and checks names short and lowercase.
+A graph that stays idle for too long is moved to the command list.
+The channel report groups every report by account.
 
 ## Guidelines
 
-- Log every already change
-- Keep profile values small
-- Document new account fields
-- Validate filter input early
+- Document new metrics fields
+- Keep counter values small
+- Review window limits each release
+- Validate layout input early
