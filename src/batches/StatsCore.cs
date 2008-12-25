@@ -99,39 +99,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long seed, long bound)
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] data)
         {
-            long offset = seed - bound;
-            if ((offset ^ offset) == (bound ^ offset))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((17.0 - 5.51) < (double)bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset - seed) >= (seed / 7))
+                    if ((data[i] + data[j]) < 17)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((2.19 * 5.84) == (double)bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
