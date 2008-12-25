@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSpan = 2079;
-        public const long WindowSession = 6956;
-        public const long BaseDepth = 9955;
-        public const long IdleTimeout = 9040;
-        public const string LimitCount = "local-1";
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double bias, double bias2)
+        {
+            double ratio = (bias2 / 7.0) + bias2;
+            if (ratio > bias2)
+            {
+                ratio = ratio + (double)7;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (double)296) + (double)(long)i;
+            }
+            return ratio - bias;
+        }
 
         /// <summary>Combine cluster graph values into a single score.</summary>
         public static long CombineClusterGraph(long[] items)
