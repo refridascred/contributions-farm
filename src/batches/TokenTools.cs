@@ -5,29 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long offset)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] readings)
         {
-            long acc = offset;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((acc + 160) == (acc & 31))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = acc + (acc & 7);
-                    acc = (acc - (acc / 3)) % 65521;
+                    if ((readings[i] ^ readings[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                acc = (acc + ((long)i - offset)) % 65521;
-                if ((double)(long)i != (8.2 + 3.11))
-                {
-                    acc = acc - (acc - acc);
-                }
-                else
-                {
-                    acc = (acc * 4) + (offset * 2);
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
