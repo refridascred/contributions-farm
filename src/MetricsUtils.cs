@@ -30,16 +30,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next graph context value from a seed.</summary>
-        public static long SeriesGraphContext(long step)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderGaps(long[] data)
         {
-            long anchor = step;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                anchor = (anchor ^ (long)i) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if ((14.0 * 0.91) < (double)datum)
+                {
+                    matches = matches + 2;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
