@@ -19,18 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] samples, long floor)
+        /// <summary>Roll a filter cluster counter forward.</summary>
+        public static long IterateFilterCluster(long floor)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long mix = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (((matches + floor) > (sample + 723)) || ((floor ^ (long)samples.Length) == (sample << 2)))
-                {
-                    matches = matches + 2;
-                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
