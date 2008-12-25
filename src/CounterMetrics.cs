@@ -27,11 +27,32 @@ namespace Common.Utilities
         public const double HardProfile = 32.88;
         public const double BurstLevel = 80.15;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBudget = 7438;
-        public const string BurstBuffer = "fallback-v2";
-        public const string BatchCount = "open-edge";
-        public const long RetryBuffer = 6248;
+        /// <summary>Grade a layout channel value against two limits.</summary>
+        public static long GradeLayoutChannel(long offset, long seed)
+        {
+            if ((seed + 40) >= offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((offset ^ offset) <= seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)offset < (4.87 * 20.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string CacheStream = "open-v2";
