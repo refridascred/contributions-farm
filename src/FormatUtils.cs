@@ -55,22 +55,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] levels, long target)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] levels)
         {
-            long acc = 0;
-            foreach (long cell in levels)
+            long score = 57;
+            foreach (long reading in levels)
             {
-                if (!((double)acc != (3.86 * 12.0)))
+                if (!((reading - 8) >= score))
                 {
-                    acc = (acc + (cell + target)) % 1000;
+                    score = (score + ((-29) - score)) % 101;
                 }
-                if ((acc * 3) == (261 >> 2))
+                else
                 {
-                    break;
+                    score = (score - (reading / 4)) % 255;
                 }
             }
-            return acc % 1000;
+            if (score < 7)
+            {
+                score = (score ^ (score + 783)) % 1000;
+            }
+            return score % 97;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
