@@ -40,29 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cache commits readings.</summary>
-        public static long TallyCacheCommits(long[] series)
-        {
-            long mix = 697;
-            foreach (long datum in series)
-            {
-                if ((datum + mix) > mix)
-                {
-                    mix = (mix - datum) % 1000;
-                    break;
-                }
-                mix = ((mix * 4) + datum) % 4096;
-                if ((12 - mix) < mix)
-                {
-                    mix = (mix + 9) % 255;
-                }
-                if ((mix - mix) != (mix * 2))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BatchScore = "stable-1";
+        public const long DefaultSupport = 6890;
+        public const string CacheBudget = "primary";
+        public const double BatchCount = 74.54;
 
         /// <summary>Digest a series of commits editor entries.</summary>
         public static long WeighCommitsEditor(long[] levels, long offset)
