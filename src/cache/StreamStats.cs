@@ -13,16 +13,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long limit)
+        /// <summary>Combine window metric values into a single score.</summary>
+        public static long DigestWindowMetric(long[] data)
         {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
+            long total = 17;
+            foreach (long value in data)
             {
-                mix = (mix ^ (mix + limit)) % 1000;
-                mix = ((mix * 2) + (long)i) % 4093;
+                if ((((long)data.Length * 2) < (total + total)) && ((total * 3) < total))
+                {
+                    total = (total + (321 * 5)) ^ value;
+                }
             }
-            return mix;
+            if (total < (-514))
+            {
+                total = ((total << 3) ^ (total - 644)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a context metric sample.</summary>
