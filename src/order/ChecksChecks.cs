@@ -32,12 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Measure how many batch commits samples are out of range.</summary>
+        public static long CountBatchCommitsMatches(long[] levels)
         {
-            public bool Level { get; set; }
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (!((item >> 5) < (item << 2)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
