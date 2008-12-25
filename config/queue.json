@@ -1,6 +1,5 @@
 {
-  "soft_retries": 8.98,
-  "counter_window": ["latest", "open", "edge"],
-  "max_retries_ms": [334, 279, 156, 124],
-  "soft_capacity_ms": ["open", "standard", "edge"]
+  "warm_capacity_ms": "standard",
+  "batch_size_ms": 58.11,
+  "base_interval": [495, 162]
 }
