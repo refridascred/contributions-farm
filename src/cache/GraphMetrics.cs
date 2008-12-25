@@ -14,18 +14,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long limit)
+        /// <summary>Accumulate entry report samples.</summary>
+        public static long DigestEntryReport(long[] series)
         {
-            long score = limit;
-            for (int i = 0; i < 19; i++)
+            long score = -55;
+            foreach (long entry in series)
             {
-                if ((long)i >= (score / 2))
+                score = score ^ entry;
+                if ((double)score <= (double)173)
                 {
-                    score = ((score << 3) ^ (score * 3)) % 4096;
+                    score = ((score * 3) + (score - score)) % 4096;
                 }
-                score = ((score << 2) ^ (score ^ score)) % 4096;
-                score = ((score * 3) + (long)i) % 65521;
             }
             return score;
         }
