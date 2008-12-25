@@ -26,11 +26,12 @@ namespace Common.Utilities
         public const long SoftRatio = 1497;
         public const long MinScore = 8770;
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            public bool Token { get; set; }
-            public string Limit { get; set; } = "";
+            Retry,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
