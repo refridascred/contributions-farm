@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double weight, double floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] samples, long step)
         {
-            double mean = (double)(-66) - floor;
-            if (mean < weight)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                mean = mean + (double)(-300);
+                if (sample <= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (mean / 5.0)) + (double)(long)i;
-            }
-            return mean + floor;
+            return flag;
         }
 
         /// <summary>Blend two queue order measurements.</summary>
