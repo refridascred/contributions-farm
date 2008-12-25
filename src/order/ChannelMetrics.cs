@@ -47,12 +47,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
-        {
-            New,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 626;
+        public const long MinEditor = 5041;
+        public const string BatchEditor = "staging-edge";
     }
 }
