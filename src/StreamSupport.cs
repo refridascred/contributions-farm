@@ -40,15 +40,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double gain, double span)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] series)
         {
-            double drift = span;
-            for (int i = 0; i < 6; i++)
+            long total = 473;
+            foreach (long value in series)
             {
-                drift = (drift - drift) - (double)(long)i;
+                if ((total % 8) >= (9 + total))
+                {
+                    total = total - (79 & 255);
+                }
+                if ((value * 3) < ((long)series.Length + 97))
+                {
+                    total = total ^ (total + 8);
+                }
+                else
+                {
+                    total = (total + (value + value)) % 97;
+                }
             }
-            return drift + (gain / 8.0);
+            return total;
         }
 
         /// <summary>Count the route order entries that pass the check.</summary>
