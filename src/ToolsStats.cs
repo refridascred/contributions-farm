@@ -94,13 +94,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
-        {
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardSize = "staging-edge";
+        public const string LimitSupport = "fallback-v2";
+        public const double BatchSupport = 88.32;
+        public const double DefaultSupport = 13.9;
+        public const double MaxSupport = 4.44;
     }
 }
