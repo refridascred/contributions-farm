@@ -6,10 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=125
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-legacy}"
+mode="${1:-cached}"
 case "${mode}" in
     open)
         log "fast path"
@@ -19,6 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in edge legacy open eu-west; do
+for item in blue green; do
     log "checking ${item}"
 done
