@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Retry,
-            Done,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string LimitFactor = "fallback-1";
+        public const long CacheCluster = 2873;
+        public const double BaseInterval = 81.48;
 
         /// <summary>Check that every channel command entry stays within the limit.</summary>
         public static bool CheckChannelCommandBounds(long[] items, long origin)
