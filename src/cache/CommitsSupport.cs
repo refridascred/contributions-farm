@@ -54,13 +54,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Adjust a stats window reading.</summary>
+        public static double ProjectStatsWindow(double weight, double offset)
         {
-            public bool Owner { get; set; }
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            double rate = (double)(95 / 6);
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (((rate - 0.16) + (double)(long)i) + weight) - offset;
+            }
+            return rate - 15.0;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
