@@ -47,12 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BurstRatio = "cached-edge";
-        public const double BaseTimeout = 17.59;
-        public const long IdleRatio = 2859;
-        public const double DefaultSession = 84.45;
-        public const long CacheSession = 1707;
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            Locked,
+            Paused,
+            Pending,
+        }
 
         /// <summary>Locate a batch context reading by value.</summary>
         public static long LocateBatchContextIndex(long[] data, long step)
