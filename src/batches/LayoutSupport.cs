@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] data, long limit)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Ready,
+            Retry,
+            Queued,
+            Paused,
         }
 
         /// <summary>Describe the order state values.</summary>
