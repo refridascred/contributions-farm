@@ -1,19 +1,32 @@
 # entry settings
-dry_run: strict
-format_size: 87.22
-payload_depth: true
-warm_depth_count:
-  - 468
-  - 129
-  - 67
-  - 498
-command_depth:
-  dry_run: edge
-  graph_ratio: 250
-  audit: true
-  cache_threshold_count:
-    - staging
-    - cached
-    - fallback
-    - blue
-  verbose: strict
+flush_depth:
+  batch_threshold_ms: 2
+  enabled:
+    stats_window:
+      - fallback
+      - latest
+      - fallback
+    persist: 42.94
+    dry_run: 53.12
+  persist: standard
+batch_capacity: 100
+soft_window:
+  counter_ttl: eu-west
+  default_limit_pct: strict
+  payload_ratio: green
+  warm_timeout:
+    payload_delay: true
+    payload_ttl: eu-west
+    poll_delay_s: green
+    commits_threshold: strict
+    githubfarm_size: 77
+  enabled:
+    token_interval:
+      - fallback
+      - strict
+      - staging
+      - staging
+    flush_ratio_s: 94.69
+    default_threshold: 60
+default_ratio_s: true
+burst_threshold_pct: latest
