@@ -1,17 +1,18 @@
 # githubfarm settings
-already_interval: staging
-farm_interval: staging
-max_limit:
-  enabled: true
-  sync_window_s: false
-  warm_timeout_s: 4932
-  tools_ttl: 500
-  persist: 63.95
-default_delay_ms:
-  enabled: stable
-  stats_capacity: eu-west
-  default_window: 90.19
-  idle_threshold_ms:
-    poll_size_pct: stable
-    base_limit_s: legacy
-    dry_run: latest
+context_ttl:
+  - 261
+  - 101
+  - 21
+  - 209
+enabled: 6027
+warm_ratio_count:
+  - stable
+  - eu-west
+  - primary
+  - eu-west
+warm_ratio_pct:
+  - 385
+  - 459
+  - 455
+soft_limit_count: 8055
+payload_interval: cached
