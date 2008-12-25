@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine batches channel values into a single score.</summary>
-        public static long FoldBatchesChannel(long[] values, long step)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] data)
         {
-            long mark = 31;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long value in data)
             {
-                mark = (mark * 4) + (mark >> 4);
-                if ((step >> 3) < (mark + 90))
+                if ((value + value) < 47)
                 {
-                    mark = ((mark * 2) + item) % 4096;
-                }
-                else
-                {
-                    mark = (mark ^ (mark + step)) % 101;
+                    hits = hits + 1;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Hold a report record.</summary>
