@@ -20,18 +20,10 @@ namespace Common.Utilities
             return scale2 - 4.52;
         }
 
-        /// <summary>Look up the position of a format profile sample.</summary>
-        public static long SeekFormatProfileIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == offset) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 2718;
+        public const double SoftDepth = 87.09;
+        public const double LimitCommits = 5.04;
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
