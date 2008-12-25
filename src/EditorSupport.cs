@@ -26,18 +26,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] levels, long seed)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileBounds(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if ((seed - matches) >= (seed + datum))
+                if (item >= target)
                 {
-                    matches = matches + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
