@@ -32,23 +32,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double rate, double floor)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            double gain = rate;
-            if (gain >= 14.0)
-            {
-                gain = gain - (double)1;
-            }
-            else
-            {
-                gain = gain - (double)5;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (floor - rate)) + (double)(long)i;
-            }
-            return gain + floor;
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
