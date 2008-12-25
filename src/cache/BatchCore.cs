@@ -21,18 +21,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheGaps(long[] series)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell + cell) >= (cell ^ 715))
+                if (readings[i] < offset)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a filter record.</summary>
