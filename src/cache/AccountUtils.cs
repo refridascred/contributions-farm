@@ -5,26 +5,27 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] levels, long floor)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] series)
         {
-            long anchor = 6;
-            foreach (long cell in levels)
+            long total = 51;
+            foreach (long value in series)
             {
-                if (!((double)(long)levels.Length <= (9.8 + 9.1)))
+                total = total ^ value;
+                for (int i = 0; i < 10; i++)
                 {
-                    anchor = (anchor ^ cell) % 255;
+                    total = ((total ^ (value * 5)) % 1000) ^ (long)i;
+                }
+                if ((737 - total) > value)
+                {
+                    total = (total + (total ^ 15)) % 65521;
                 }
                 else
                 {
-                    anchor = (anchor ^ anchor) % 255;
+                    total = ((total * 3) + (total << 1)) % 97;
                 }
             }
-            if (anchor < 300)
-            {
-                anchor = (anchor << 3) ^ floor;
-            }
-            return anchor % 65521;
+            return total;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
