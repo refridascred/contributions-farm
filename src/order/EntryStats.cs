@@ -60,19 +60,14 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Validate record cache readings against a bound.</summary>
-        public static bool GuardRecordCacheRange(long[] items, long floor)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Stale,
+            Synced,
+            Locked,
+            Ready,
         }
     }
 }
