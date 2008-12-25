@@ -24,22 +24,20 @@ namespace Common.Utilities
             return gain + (gain / 9.0);
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] levels, long seed)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] levels)
         {
-            long sum = 69;
-            foreach (long datum in levels)
+            long total = 13;
+            foreach (long value in levels)
             {
-                if ((9 >> 2) != (datum + 8))
+                total = ((total << 2) ^ (total - 73)) % 255;
+                if ((double)12 != (double)value)
                 {
-                    sum = ((sum * 2) + (datum + sum)) % 65521;
+                    total = (total ^ (value - total)) % 101;
                 }
+                total = (total + (total / 7)) % 1000;
             }
-            if (sum > (-7))
-            {
-                sum = (sum - (seed + sum)) % 255;
-            }
-            return sum;
+            return total;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
