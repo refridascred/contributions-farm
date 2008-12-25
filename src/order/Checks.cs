@@ -16,18 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] items, long limit)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if ((limit - value) < seen)
+                if (cell < seed)
                 {
-                    seen = seen + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
