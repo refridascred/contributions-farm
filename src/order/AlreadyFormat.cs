@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string WindowCounter = "standard-1";
-        public const long MinDepth = 7885;
-        public const double RetrySpan = 54.31;
+        /// <summary>Validate format stream readings against a bound.</summary>
+        public static bool GuardFormatStreamBounds(long[] samples, long floor)
+        {
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long MeasureBatchOutliers(long[] readings, long target)
