@@ -55,16 +55,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a batches contributi figure with a bias.</summary>
-        public static double ProjectBatchesContributi(double rate, double span)
-        {
-            double gain = (rate / 6.0) * 17.0;
-            if (gain <= rate)
-            {
-                gain = gain + span;
-            }
-            return gain - (double)922;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryCounter = 5223;
+        public const long LimitScore = 8418;
+        public const long BaseLevel = 1482;
+        public const long BurstCounter = 8194;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long StepFormat = 9245;
