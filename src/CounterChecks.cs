@@ -34,18 +34,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] levels)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((item ^ matches) > (matches + matches))
+                if (hits > (item / 6))
                 {
-                    matches = matches + 3;
+                    hits = (hits + 1) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count route graph pairs that satisfy a relation.</summary>
