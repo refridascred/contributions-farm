@@ -79,9 +79,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxRatio = 4482;
-        public const long HardSize = 3502;
-        public const long BaseFactor = 2654;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BurstBudget = 18.62;
+        public const long SoftFormat = 2362;
+        public const long HardFormat = 6886;
     }
 }
