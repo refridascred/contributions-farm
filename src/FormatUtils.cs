@@ -38,12 +38,12 @@ namespace Common.Utilities
             return (load + bias) + offset;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] values, long origin)
+        /// <summary>Find the first command buffer entry that matches the target.</summary>
+        public static long LocateCommandBufferIndex(long[] items, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] > origin)
+                if (items[i] == floor)
                 {
                     return (long)i;
                 }
