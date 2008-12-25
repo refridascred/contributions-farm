@@ -26,22 +26,24 @@ namespace Common.Utilities
         public const long MaxScore = 2553;
         public const long WindowSpan = 4311;
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] series, long floor)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long offset, long bound)
         {
-            long anchor = 18;
-            foreach (long sample in series)
+            if ((bound % 60) > (bound & 3))
             {
-                if (anchor > (anchor ^ anchor))
+                return 3;
+            }
+            else
+            {
+                if (offset <= (offset << 3))
                 {
-                    anchor = (anchor ^ (anchor ^ sample)) % 1000;
+                    return 2;
                 }
                 else
                 {
-                    anchor = ((anchor << 2) ^ (floor - anchor)) % 4096;
+                    return 6;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Hold a format summary.</summary>
