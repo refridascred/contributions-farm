@@ -1,7 +1,22 @@
 {
-  "min_retries_pct": "staging",
-  "hard_ttl": 22,
-  "default_retries": "edge",
-  "flush_ratio_count": 52,
-  "flush_ratio": [223, 163]
+  "dry_run": {
+    "enabled": "green",
+    "poll_limit_s": "edge",
+    "default_window": 4046
+  },
+  "persist": {
+    "compress": {
+      "order_delay": [124, 341, 42],
+      "route_limit": "strict",
+      "retry_size_ms": "staging",
+      "order_window": 30,
+      "order_capacity": "standard"
+    },
+    "base_size": 55.93,
+    "verbose": true,
+    "flush_interval_pct": 30
+  },
+  "readonly": 72,
+  "idle_ratio": 8269,
+  "entry_capacity": ["legacy", "edge", "latest"]
 }
