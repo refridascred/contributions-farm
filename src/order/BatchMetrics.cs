@@ -73,18 +73,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] series, long limit)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long target, long bound)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            if (((target ^ bound) < (3 >> 2)) && ((12.0 / 4.0) >= (double)target))
             {
-                if ((7 << 2) < limit)
+                return 3;
+            }
+            else
+            {
+                if ((bound + target) < bound)
                 {
-                    hits = (hits + 3) + datum;
+                    return 5;
+                }
+                else
+                {
+                    if (((target + (-18)) >= (target / 5)) || ((bound << 3) < (bound - target)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
