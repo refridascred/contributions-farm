@@ -1,4 +1,5 @@
 # support settings
-idle_limit: true
-compress: legacy
-base_threshold: 6558
+soft_timeout_s: 1260
+enabled: 8
+default_retries_pct: legacy
+readonly: strict
