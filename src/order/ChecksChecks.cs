@@ -34,13 +34,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Queued,
-            Idle,
-            Closed,
-            Dropped,
+            public double Mode { get; set; }
+            public long Total { get; set; }
         }
     }
 }
