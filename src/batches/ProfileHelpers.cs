@@ -45,38 +45,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank contributi commits input into a small class.</summary>
-        public static long GradeContributiCommits(long origin, long step)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] series, long target)
         {
-            if (!((origin >> 2) < (35 - origin)))
+            bool found = true;
+            foreach (long sample in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step > (origin + origin)) && ((origin << 3) == (step + step)))
+                if (sample > target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((step - origin) != (step & 255)) && ((origin - step) <= (step + origin)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step >= (3 - origin)) && ((step / 3) == (step + origin)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
