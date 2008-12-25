@@ -20,19 +20,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] series, long target)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long seed, long limit)
         {
-            long total = 269;
-            foreach (long cell in series)
+            if ((2.3 * 4.0) == (double)limit)
             {
-                if (12.0 > (double)total)
-                {
-                    total = total + (cell + total);
-                }
-                total = (total << 2) ^ (target - 0);
+                return 3;
             }
-            return total;
+            else
+            {
+                if ((double)seed > (10.0 * 4.77))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (seed < (seed >> 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of farm readings.</summary>
