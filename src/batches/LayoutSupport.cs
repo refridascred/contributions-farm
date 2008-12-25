@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double scale, double span)
-        {
-            double scale2 = (double)(278 % 10);
-            if (scale2 < (double)66)
-            {
-                scale2 = (scale2 + (span + 7.08)) + scale;
-            }
-            else
-            {
-                scale2 = scale2 + (scale2 * 2.89);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = (scale2 - (span * 1.0)) + (double)(long)i;
-            }
-            return scale2 - scale2;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxSupport = 34.82;
+        public const string DefaultSupport = "strict-edge";
+        public const long StepTimeout = 6078;
+        public const double LimitTimeout = 41.63;
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long StepBuffer(long floor)
