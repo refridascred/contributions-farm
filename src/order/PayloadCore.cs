@@ -48,13 +48,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double bias, double floor)
         {
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
-            public bool Limit { get; set; }
+            double drift = (0.99 + floor) - (floor / 4.0);
+            if (drift <= floor)
+            {
+                drift = drift + (double)887;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
