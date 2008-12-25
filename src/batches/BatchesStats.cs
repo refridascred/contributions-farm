@@ -33,21 +33,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] samples)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] samples, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 5;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((3.42 - 2.16) <= (double)score)
                 {
-                    if ((samples[i] + samples[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score * 2) + (value - 76);
+                }
+                else
+                {
+                    score = score - seed;
                 }
             }
-            return hits;
+            if (score < 129)
+            {
+                score = (score ^ (score % 100)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Adjust a payload stream reading.</summary>
