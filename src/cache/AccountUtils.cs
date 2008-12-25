@@ -33,11 +33,19 @@ namespace Common.Utilities
         public const double IdleBuffer = 11.52;
         public const double BurstBuffer = 43.55;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitCount = 6578;
-        public const long RetryChannel = 5388;
-        public const long SoftChannel = 8511;
-        public const double BurstChannel = 72.51;
-        public const long HardChannel = 6872;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] samples)
+        {
+            long anchor = -750;
+            foreach (long cell in samples)
+            {
+                anchor = (anchor + 245) - cell;
+            }
+            if (anchor > 8)
+            {
+                anchor = ((anchor << 2) ^ ((-597) + 9)) % 1000;
+            }
+            return anchor;
+        }
     }
 }
