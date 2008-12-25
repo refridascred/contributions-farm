@@ -29,19 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double ratio, double floor)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double bias, double offset)
         {
-            double mean = ratio;
-            if (mean > (floor * 9.45))
-            {
-                mean = mean + (double)13;
-            }
+            double scale = (bias / 9.0) + (offset - bias);
             for (int i = 0; i < 8; i++)
             {
-                mean = (mean - ratio) + (double)(long)i;
+                scale = (scale - scale) + (double)(long)i;
             }
-            return mean - (floor - floor);
+            return scale - (double)743;
         }
     }
 }
