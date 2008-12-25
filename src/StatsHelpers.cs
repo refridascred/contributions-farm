@@ -60,19 +60,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double bias, double offset)
+        /// <summary>Measure how many cluster metrics samples are out of range.</summary>
+        public static long MeasureClusterMetricsMatches(long[] series)
         {
-            double load = (bias - 8.0) / 9.0;
-            if (load < (load / 3.0))
+            long tally = 0;
+            foreach (long item in series)
             {
-                load = (load - 8.42) - offset;
+                if ((tally + tally) == (long)series.Length)
+                {
+                    tally = (tally + 2) + item;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (load - load)) + (double)(long)i;
-            }
-            return load + (double)5;
+            return tally;
         }
     }
 }
