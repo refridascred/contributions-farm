@@ -43,10 +43,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 9068;
-        public const long HardCounter = 2347;
-        public const double BurstCounter = 55.32;
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a token summary.</summary>
         public sealed class TokenSummary
