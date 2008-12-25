@@ -59,14 +59,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Iterate the queue notes series from a seed.</summary>
+        public static long DeriveQueueNotes(long origin)
         {
-            Synced,
-            New,
-            Pending,
-            Failed,
-            Paused,
+            long score = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
