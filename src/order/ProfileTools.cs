@@ -20,14 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
-        {
-            Pending,
-            Synced,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string RetrySession = "stable";
+        public const long BaseScore = 2408;
+        public const double DefaultSession = 10.37;
+        public const long LimitSize = 6773;
+        public const long BurstDepth = 3420;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long TotalWindow(long[] levels, long target)
