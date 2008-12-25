@@ -59,21 +59,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] values)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountGaps(long[] values, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((5.0 + 2.0) <= (double)offset)
                 {
-                    if ((values[i] + values[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) + datum;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
