@@ -22,13 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long step)
         {
-            Stale,
-            Failed,
-            Closed,
-            Dropped,
+            long anchor = step;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    anchor = (anchor + step) ^ (long)i2;
+                }
+                if (!((double)anchor <= (18.0 / 7.0)))
+                {
+                    anchor = (anchor << 2) ^ (anchor & 63);
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a stats record.</summary>
