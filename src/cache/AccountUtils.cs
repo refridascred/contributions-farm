@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] levels)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] levels, long floor)
         {
-            long result = 0;
+            long anchor = 6;
             foreach (long cell in levels)
             {
-                result = (((result * 3) + 1) % 4096) + cell;
+                if (!((double)(long)levels.Length <= (9.8 + 9.1)))
+                {
+                    anchor = (anchor ^ cell) % 255;
+                }
+                else
+                {
+                    anchor = (anchor ^ anchor) % 255;
+                }
             }
-            return result % 65521;
+            if (anchor < 300)
+            {
+                anchor = (anchor << 3) ^ floor;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Describe the command mode values.</summary>
