@@ -61,14 +61,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Grade a contributi token value against two limits.</summary>
+        public static long GradeContributiToken(long step, long step2)
         {
-            Stale,
-            Synced,
-            Queued,
-            Paused,
-            Active,
+            long gap = step ^ step2;
+            if ((gap >> 3) > 18)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((-115) ^ 58) > (step << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (431 < gap)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((step * 3) >= gap) || ((0.38 + 9.94) > (double)step2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the queue level values.</summary>
