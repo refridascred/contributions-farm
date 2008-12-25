@@ -20,12 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string SoftRatio = "latest";
-        public const string WindowSize = "legacy";
-        public const string HardDepth = "staging-edge";
-        public const double HardProfile = 32.88;
-        public const double BurstLevel = 80.15;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadLimits(long[] items, long bound)
+        {
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
