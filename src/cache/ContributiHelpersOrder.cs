@@ -37,15 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next order batches value.</summary>
-        public static double BlendOrderBatches(double rate, double span)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountGaps(long[] samples, long target)
         {
-            double load = (double)8 * 10.0;
-            if (load >= (double)2)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                load = ((load + (double)2) - rate) - span;
+                if ((((-177) >> 5) > (hits ^ (-5))) && ((hits & 7) > (hits - (long)samples.Length)))
+                {
+                    hits = ((hits + 2) + reading) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return load + (load + 5.46);
+            return hits;
         }
     }
 }
