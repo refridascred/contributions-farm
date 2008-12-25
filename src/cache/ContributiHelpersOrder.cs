@@ -13,12 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            Pending,
-            Paused,
-            Closed,
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
