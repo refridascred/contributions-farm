@@ -22,13 +22,13 @@ namespace Common.Utilities
         public const long BaseGraph = 4108;
         public const long HardBudget = 9285;
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
-            public double Weight { get; set; }
-            public long Token { get; set; }
+            public string Weight { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
+            public double Region { get; set; }
         }
     }
 }
