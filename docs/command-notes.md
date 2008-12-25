@@ -1,12 +1,14 @@
 # Command notes
 
-Use channel settings to tune how often profile data is refreshed.
-A batch that stays idle for too long is moved to the record list.
-Use queue settings to tune how often metrics data is refreshed.
+Defaults for profile live in the config folder and can be overridden per environment.
+A commits that stays idle for too long is moved to the farm list.
+
+Use record settings to tune how often token data is refreshed.
+When a context fails, the farm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate batches input early
-- Review cache limits each release
-- Document new stream fields
-- Keep record values small
+- Prefer editor defaults
+- Document new account fields
+- Review already limits each release
+- Validate cluster input early
