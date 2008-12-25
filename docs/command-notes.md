@@ -1,14 +1,14 @@
 # Command notes
 
-The metrics helpers are pure functions, so they are safe to call from any thread.
-Each batch is validated before it reaches the editor queue.
+Each report is validated before it reaches the order queue.
+A metric that stays idle for too long is moved to the schema list.
 
-When a session fails, the already handler retries a few times before giving up.
-A record that stays idle for too long is moved to the farm list.
-The report report groups every batch by window.
+Use channel settings to tune how often farm data is refreshed.
+Each record is validated before it reaches the record queue.
+When a format fails, the session handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new channel fields
-- Log every account change
-- Review record limits each release
+- Log every stats change
+- Document new githubfarm fields
+- Review cluster limits each release
