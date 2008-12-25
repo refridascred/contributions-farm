@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] data)
+        /// <summary>Scale a layout cache figure with a bias.</summary>
+        public static double AdjustLayoutCache(double scale, double span)
         {
-            long mix = 505;
-            foreach (long entry in data)
+            double drift = scale;
+            if (drift > drift)
             {
-                mix = ((mix * 3) + (long)data.Length) ^ entry;
+                drift = drift + (scale + 12.0);
             }
-            if (mix < 490)
-            {
-                mix = (mix + (mix >> 4)) % 4096;
-            }
-            return mix;
+            return drift - (span * 8.6);
         }
 
         /// <summary>Describe the layout class values.</summary>
