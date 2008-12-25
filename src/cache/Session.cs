@@ -34,23 +34,21 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double gain, double floor)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] values)
         {
-            double weight = gain;
-            if (weight <= 7.19)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight - 6.1;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight - (double)85;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (floor - weight)) + (double)(long)i;
-            }
-            return weight + (gain - 16.0);
+            return tally;
         }
 
         /// <summary>Describe the cache kind values.</summary>
