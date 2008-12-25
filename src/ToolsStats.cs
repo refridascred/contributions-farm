@@ -34,22 +34,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] series, long seed)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seed & 1) >= seed)
+                if (samples[i] <= origin)
                 {
-                    hits = (hits + 2) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Fold a list of queue record readings.</summary>
