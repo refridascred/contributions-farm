@@ -32,17 +32,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] items, long bound)
+        /// <summary>Scale a stats notes figure with a bias.</summary>
+        public static double ProjectStatsNotes(double weight, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > bound) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight2 = (double)(8 >> 4);
+            return (weight2 - (bias / 2.0)) + weight;
         }
 
         /// <summary>Hold a metric options.</summary>
