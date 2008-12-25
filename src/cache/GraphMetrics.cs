@@ -44,12 +44,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileLimits(long[] data, long limit)
         {
-            public double Flag { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
