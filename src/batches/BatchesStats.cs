@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a metric farm sample.</summary>
-        public static long SeekMetricFarmIndex(long[] values, long seed)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] values)
         {
+            long matches = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] < seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
