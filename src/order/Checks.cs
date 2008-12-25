@@ -59,12 +59,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long step)
         {
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
-            public double Token { get; set; }
+            long result = step;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((result + step) <= result)
+                {
+                    break;
+                }
+                else
+                {
+                    result = result + ((-28) + step);
+                }
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Blend two editor measurements.</summary>
