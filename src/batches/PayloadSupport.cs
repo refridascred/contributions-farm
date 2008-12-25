@@ -13,22 +13,34 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordMatches(long[] levels, long offset)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long anchor = 365;
+            foreach (long reading in levels)
             {
-                if ((tally ^ 4) >= offset)
+                for (int i = 0; i < 2; i++)
                 {
-                    tally = (tally + 1) - item;
+                    anchor = (((anchor << 2) ^ 841) % 1000) ^ (long)i;
                 }
-                else
+                if (!!((anchor * 2) <= (anchor - (long)levels.Length)))
                 {
-                    tally = tally - 1;
+                    anchor = ((anchor * 2) + (reading % 12)) % 97;
+                }
+                if (reading > (reading / 3))
+                {
+                    anchor = anchor + (anchor / 3);
+                }
+                if (!((10 + anchor) > reading))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (anchor > 700)
+            {
+                anchor = anchor ^ (anchor / 9);
+            }
+            return anchor;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
