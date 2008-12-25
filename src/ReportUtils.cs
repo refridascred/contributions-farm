@@ -19,32 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long target, long step)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] items, long offset)
         {
-            long offset = target - step;
-            if ((7.4 - 11.0) < (double)offset)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)target != (18.0 + 20.0)))
+                if (items[i] >= offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((step + step) < offset) && ((29 + target) > (439 << 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the batch kind values.</summary>
