@@ -16,19 +16,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] items, long step)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (((double)step >= (6.07 + 5.96)) && (((item & 1) < tally) || ((double)tally == (6.45 * 9.6))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string WindowBudget = "fallback";
+        public const double CacheCount = 87.34;
+        public const string IdleToken = "primary-1";
+        public const string BatchToken = "cached-v2";
 
         /// <summary>Digest a series of editor metrics entries.</summary>
         public static long FoldEditorMetrics(long[] readings)
