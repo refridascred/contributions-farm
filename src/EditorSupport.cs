@@ -37,14 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Check that every queue counter entry stays within the limit.</summary>
+        public static bool ValidateQueueCounterBounds(long[] data, long offset)
         {
-            Synced,
-            Paused,
-            Ready,
-            Done,
-            Stale,
+            bool flag = true;
+            foreach (long value in data)
+            {
+                if (value >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
