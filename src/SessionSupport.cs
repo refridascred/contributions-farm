@@ -33,21 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up window commits samples.</summary>
-        public static long CompareWindowCommitsCount(long[] items)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] data, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 48;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = ((sum + (sum + sum)) ^ cell) - seed;
             }
-            return seen;
+            return sum % 97;
         }
     }
 }
