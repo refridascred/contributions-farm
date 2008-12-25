@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] levels, long target)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double weight, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double gain = (double)(918 << 2);
+            if (gain > (double)(-7))
             {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
+                gain = (gain - weight) - floor;
             }
-            return -1;
+            return gain - 4.0;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
