@@ -48,21 +48,11 @@ namespace Common.Utilities
         public const long HardTimeout = 6156;
         public const string StepSpan = "standard-edge";
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] levels)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double rate, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double gain = (bias + 1.0) - (2.29 - rate);
+            return gain + (double)55;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
