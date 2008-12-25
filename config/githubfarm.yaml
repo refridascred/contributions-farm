@@ -1,7 +1,18 @@
 # githubfarm settings
-hard_ttl_ms: edge
-metric_threshold: true
-cluster_limit: 7198
-flush_threshold_s:
-  - 423
-  - 142
+max_depth_pct: legacy
+farm_timeout:
+  - staging
+  - eu-west
+  - latest
+  - stable
+route_retries:
+  - 390
+  - 57
+  - 150
+  - 424
+hard_capacity: edge
+route_size:
+  - 392
+  - 119
+  - 489
+hard_retries: true
