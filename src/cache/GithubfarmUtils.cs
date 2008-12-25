@@ -35,12 +35,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long offset)
         {
-            public bool Mode { get; set; }
-            public long Label { get; set; }
-            public double Flag { get; set; }
+            long total = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
