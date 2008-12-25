@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double weight, double floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] readings)
         {
-            double drift = floor;
-            return (drift + (drift / 3.0)) + weight;
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((12.0 - 8.1) <= (double)hits)
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the format mode values.</summary>
