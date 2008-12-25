@@ -20,10 +20,16 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double WindowBudget = 67.79;
-        public const long LimitRecord = 9889;
-        public const long StepRecord = 6630;
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long IterateGithubfarm(long step)
