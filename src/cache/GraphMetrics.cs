@@ -36,12 +36,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
+            Queued,
+            Active,
+            New,
+            Paused,
         }
 
         /// <summary>Validate editor batches readings against a bound.</summary>
