@@ -1,6 +1,30 @@
 # entry settings
-base_limit_count: 21.21
-hard_retries: 6716
-dry_run: 25
-batches_limit: standard
-idle_ttl_pct: 84.05
+min_retries_count: standard
+sync_size_pct:
+  commits_timeout:
+    poll_retries_ms: latest
+    hard_window_s: open
+    flush_depth_pct: edge
+  hard_depth_s:
+    compress:
+      - strict
+      - stable
+    batch_threshold_s: false
+    notes_threshold: staging
+    dry_run: green
+    soft_size_pct: staging
+  dry_run:
+    - staging
+    - stable
+    - open
+    - latest
+  sync_limit:
+    entry_ratio: 68.08
+    layout_window: 89.2
+    flush_timeout: false
+batch_timeout:
+  - 423
+  - 44
+  - 125
+  - 392
+base_size_pct: 21.0
