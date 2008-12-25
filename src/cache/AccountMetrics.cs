@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] values, long origin)
+        /// <summary>Check that every checks githubfarm entry stays within the limit.</summary>
+        public static bool GuardChecksGithubfarmBounds(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if ((datum & 15) >= 613)
+                if (sample <= target)
                 {
-                    matches = (matches + 3) + origin;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Adjust a graph cluster reading.</summary>
