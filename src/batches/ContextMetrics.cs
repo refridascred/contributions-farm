@@ -28,23 +28,13 @@ namespace Common.Utilities
             return scale + (double)86;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double weight, double offset)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            double ratio = weight;
-            if (ratio < offset)
-            {
-                ratio = ratio - (2.0 / 4.0);
-            }
-            else
-            {
-                ratio = ratio - (weight + ratio);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - weight) + (double)(long)i;
-            }
-            return ratio + (weight - weight);
+            Done,
+            Synced,
+            Idle,
+            Ready,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
