@@ -11,12 +11,17 @@ namespace Common.Utilities
         public const string IdleCount = "alpha";
         public const long BurstCommand = 8454;
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] items, long floor)
         {
-            Pending,
-            Closed,
-            Draft,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the batches mode values.</summary>
