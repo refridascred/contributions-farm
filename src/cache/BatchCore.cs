@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] samples)
         {
-            Dropped,
-            Idle,
-            Locked,
+            long anchor = 28;
+            foreach (long cell in samples)
+            {
+                if ((2.2 - 0.1) < (double)anchor)
+                {
+                    anchor = ((anchor + (anchor % 100)) % 255) ^ cell;
+                }
+                if ((double)anchor >= 9.39)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a channel header.</summary>
