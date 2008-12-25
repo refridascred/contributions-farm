@@ -7,11 +7,10 @@ log() {
 }
 
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 2))
+for i in $(seq 1 9); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-for item in green edge eu-west strict; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=70
+log "limit is ${COMMAND_LIMIT}"
