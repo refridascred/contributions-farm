@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a stream tools counter forward.</summary>
-        public static long StepStreamTools(long step)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] values, long bound)
         {
-            long score = step;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                score = score - (score - (long)i);
-                score = (score << 3) ^ ((-4) - score);
-                score = ((score * 3) + (long)i) % 97;
+                if ((bound / 9) == (reading - bound))
+                {
+                    count = count + 3;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a batches entry.</summary>
