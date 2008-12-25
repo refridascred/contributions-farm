@@ -1,6 +1,6 @@
-id,level,score
-1,721,7.46
-2,staging,stable
-3,local,507
-4,455,80.17
-5,958,193
+id,level,state,active
+1,620,cached,open
+2,463,33.62,cached
+3,327,913,338
+4,17.83,blue,284
+5,64,95.04,51.19
