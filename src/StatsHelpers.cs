@@ -42,31 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long seed, long bound)
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double scale, double bias)
         {
-            if (bound < 9)
+            double bias2 = (double)(3 >> 2);
+            for (int i = 0; i < 2; i++)
             {
-                return 2;
+                bias2 = ((bias2 - bias2) + (double)(long)i) + bias;
             }
-            else
-            {
-                if ((bound * 3) < (bound + bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)seed > (2.2 + 2.3)) || ((847 + bound) >= (bound + bound)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return bias2 + scale;
         }
 
         /// <summary>Blend two profile measurements.</summary>
