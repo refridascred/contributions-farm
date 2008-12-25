@@ -43,18 +43,12 @@ namespace Common.Utilities
             return gain2 - (gain2 - gain2);
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordOutliers(long[] readings)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((seen ^ seen) > item)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Locked,
+            New,
+            Synced,
         }
     }
 }
