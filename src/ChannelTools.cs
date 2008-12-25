@@ -20,14 +20,22 @@ namespace Common.Utilities
             return drift + (double)19;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderMatches(long[] data, long step)
         {
-            Draft,
-            Pending,
-            Stale,
-            Done,
-            Paused,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (step < count)
+                {
+                    count = (count + 3) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
