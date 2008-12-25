@@ -15,12 +15,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double IdleLayout = 90.78;
-        public const long DefaultWidth = 2355;
-        public const string CacheLayout = "strict";
-        public const long RetryInterval = 1404;
-        public const string MinScore = "fallback-1";
+        /// <summary>Accumulate already support samples.</summary>
+        public static long DigestAlreadySupport(long[] data)
+        {
+            long result = 351;
+            foreach (long entry in data)
+            {
+                if ((result & 255) < (entry % 97))
+                {
+                    result = result ^ ((-54) ^ 508);
+                }
+            }
+            if (result > (-77))
+            {
+                result = ((result * 5) + (result >> 5)) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long SortRoute(long target, long target2)
