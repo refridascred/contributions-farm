@@ -29,22 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] series)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long carry = -25;
-            foreach (long datum in series)
-            {
-                if ((carry * 2) < datum)
-                {
-                    carry = (carry ^ (57 & 31)) % 101;
-                }
-            }
-            if (carry < (-9))
-            {
-                carry = ((carry * 5) + (carry / 8)) % 65521;
-            }
-            return carry % 1000;
+            public double Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
