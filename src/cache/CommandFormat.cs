@@ -15,13 +15,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Iterate the metrics context series from a seed.</summary>
+        public static long IterateMetricsContext(long bound)
         {
-            Idle,
-            Pending,
-            Retry,
-            Failed,
+            long anchor = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of order readings.</summary>
