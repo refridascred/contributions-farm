@@ -24,13 +24,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public bool Label { get; set; }
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a session stats.</summary>
