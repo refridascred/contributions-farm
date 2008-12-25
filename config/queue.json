@@ -1,9 +1,6 @@
 {
-  "min_ratio": [425, 166],
-  "base_ttl_pct": {
-    "default_depth_s": 65.02,
-    "max_size": "local",
-    "record_interval": false
-  },
-  "command_interval": 32
+  "soft_retries": 8.98,
+  "counter_window": ["latest", "open", "edge"],
+  "max_retries_ms": [334, 279, 156, 124],
+  "soft_capacity_ms": ["open", "standard", "edge"]
 }
