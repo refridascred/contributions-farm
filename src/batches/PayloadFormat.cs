@@ -34,31 +34,22 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Rank stats support input into a small class.</summary>
-        public static long GradeStatsSupport(long step, long bound)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueGaps(long[] data)
         {
-            if (((bound & 31) > (18 << 1)) || ((3.84 - 1.0) != (double)bound))
+            long count = 0;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step - bound) == (532 << 2))
+                if (!(((entry << 3) > entry) && ((entry + entry) >= entry)))
                 {
-                    return 7;
+                    count = count + 1;
                 }
                 else
                 {
-                    if ((bound + 106) > step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
