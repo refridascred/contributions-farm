@@ -37,22 +37,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandOutliers(long[] data)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((4.8 / 2.0) >= (double)cell)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Paused,
+            Failed,
+            Synced,
+            Active,
+            Retry,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
