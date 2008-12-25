@@ -53,12 +53,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 7260;
-        public const double SoftMetrics = 43.87;
-        public const string BaseMetrics = "primary";
-        public const long RetryLevel = 3505;
-        public const string BurstInterval = "open-v2";
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutOutliers(long[] values, long floor)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((double)seen > (5.44 / 9.0))
+                {
+                    seen = ((seen + 2) - entry) - floor;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double SoftLayout = 53.62;
