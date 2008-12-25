@@ -34,27 +34,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] series)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] values, long floor)
         {
-            long sum = 25;
-            foreach (long item in series)
+            long carry = 183;
+            foreach (long entry in values)
             {
-                if (!(((long)series.Length ^ item) <= sum))
+                if ((1.8 * 9.36) >= (double)floor)
                 {
-                    sum = ((sum << 2) ^ (4 / 6)) % 1000;
+                    carry = carry ^ (entry + floor);
                 }
-                sum = sum ^ (255 << 2);
-                if ((sum >> 2) < sum)
+                else
                 {
-                    break;
+                    carry = carry ^ (entry % 5);
                 }
             }
-            if (sum < 19)
-            {
-                sum = ((sum * 5) + (sum + sum)) % 101;
-            }
-            return sum % 65521;
+            return carry;
         }
 
         /// <summary>Locate a route already reading by value.</summary>
