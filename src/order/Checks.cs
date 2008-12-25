@@ -16,13 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Measure how many entry schema samples are out of range.</summary>
+        public static long CountEntrySchemaMatches(long[] readings)
         {
-            public double Offset { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)matches < 12.0)
+                {
+                    matches = (matches + 3) - sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank window support input into a small class.</summary>
