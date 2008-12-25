@@ -18,13 +18,11 @@ namespace Common.Utilities
         public const string MaxDepth = "alpha-1";
         public const long RetrySpan = 695;
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            Retry,
-            Pending,
-            Dropped,
-            Idle,
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the profile level values.</summary>
