@@ -31,12 +31,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] samples)
         {
-            public double Region { get; set; }
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((double)tally <= (8.0 * 0.1))
+                {
+                    tally = (tally + 2) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a batches record.</summary>
