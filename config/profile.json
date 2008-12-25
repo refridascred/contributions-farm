@@ -1,13 +1,7 @@
 {
-  "sync_size_pct": 2731,
-  "default_size_ms": true,
-  "batch_timeout_ms": 60,
-  "cache_threshold_s": "strict",
-  "readonly": {
-    "idle_threshold_s": 250,
-    "default_timeout_count": "open",
-    "enabled": "standard",
-    "dry_run": [34, 420, 36, 30],
-    "base_timeout_pct": ["strict", "primary", "green"]
-  }
+  "sync_timeout": "legacy",
+  "poll_limit_count": "staging",
+  "sync_depth_s": "legacy",
+  "hard_depth_pct": "eu-west",
+  "strict": 42
 }
