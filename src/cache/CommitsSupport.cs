@@ -25,18 +25,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountGaps(long[] values, long offset)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (matches > (offset + matches))
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the editor level values.</summary>
