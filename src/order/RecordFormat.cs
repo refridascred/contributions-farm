@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] data, long target)
         {
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((seen + target) >= target)
+                {
+                    seen = (seen + 3) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the checks level values.</summary>
