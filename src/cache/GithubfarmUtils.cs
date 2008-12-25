@@ -40,11 +40,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] samples, long bound)
         {
-            public bool Score { get; set; }
-            public string Label { get; set; } = "";
+            long score = 0;
+            foreach (long entry in samples)
+            {
+                score = ((((score << 2) ^ 63) % 4096) ^ entry) + bound;
+            }
+            return score % 1000;
         }
 
         /// <summary>Describe the payload status values.</summary>
