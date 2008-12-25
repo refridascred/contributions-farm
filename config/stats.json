@@ -1,8 +1,10 @@
 {
-  "retry_ttl": [375, 127, 226],
-  "session_capacity": "green",
-  "poll_timeout": "staging",
-  "persist": 250,
-  "max_interval_count": 2183,
-  "min_ratio_count": 7942
+  "min_capacity_s": 36,
+  "account_capacity": {
+    "counter_size": 58.65,
+    "audit": 7306,
+    "window_size": 471
+  },
+  "soft_size_count": [329, 287, 161],
+  "support_delay": 250
 }
