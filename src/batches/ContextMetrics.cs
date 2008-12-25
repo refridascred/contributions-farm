@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long offset, long target)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] values)
         {
-            long next = offset ^ target;
-            if ((target / 4) == (next % 100))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset - target) > (next % 10))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (target >= (target % 2))
+                    if ((values[i] ^ values[j]) == 17)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
