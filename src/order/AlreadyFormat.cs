@@ -57,13 +57,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Locate a route already reading by value.</summary>
+        public static long LookupRouteAlreadyIndex(long[] series, long bound)
         {
-            Stale,
-            Done,
-            Pending,
-            Dropped,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
