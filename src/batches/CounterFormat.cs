@@ -26,11 +26,10 @@ namespace Common.Utilities
         public const long MinSpan = 5636;
         public const long SoftWidth = 7963;
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
-        {
-            public long Score { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleSpan = 2934;
+        public const double IdleBudget = 36.75;
+        public const long LimitSpan = 8565;
+        public const string RetrySpan = "strict-edge";
     }
 }
