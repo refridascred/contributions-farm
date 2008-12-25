@@ -30,12 +30,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long origin)
         {
-            Stale,
-            New,
-            Done,
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
