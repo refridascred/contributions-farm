@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] items, long target)
         {
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= target) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
