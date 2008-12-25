@@ -49,19 +49,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] series, long limit)
-        {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string RetryRecord = "staging-1";
+        public const long MinRecord = 8441;
+        public const string HardInterval = "primary-1";
     }
 }
