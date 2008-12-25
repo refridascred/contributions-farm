@@ -40,18 +40,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] values, long seed)
+        /// <summary>Audit notes support readings against a rule.</summary>
+        public static long CountNotesSupportHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (seed <= (seed & 63))
+                if (!((seen / 4) > (832 * 2)))
                 {
-                    tally = (tally + 2) + cell;
+                    seen = (seen + 3) ^ item;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
