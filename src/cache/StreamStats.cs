@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
-        {
-            Paused,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryTimeout = 7132;
+        public const long WindowContext = 2015;
+        public const string DefaultCount = "primary-1";
 
         /// <summary>Locate a session reading by value.</summary>
         public static long SeekSessionIndex(long[] series, long limit)
