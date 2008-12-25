@@ -18,24 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long seed)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] values)
         {
-            long mark = seed;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (seed < mark)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = ((mark * 5) + (875 * 2)) % 65521;
+                    if ((values[i] + values[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    mark = (mark ^ (mark * 3)) % 65521;
-                }
-                mark = (mark - (mark - mark)) % 1000;
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the profile mode values.</summary>
