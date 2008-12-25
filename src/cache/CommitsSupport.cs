@@ -56,15 +56,21 @@ namespace Common.Utilities
             return rate - 15.0;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long seed)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] samples)
         {
-            long anchor = seed;
-            for (int i = 0; i < 11; i++)
+            long anchor = 25;
+            foreach (long reading in samples)
             {
-                anchor = anchor ^ (seed ^ anchor);
-                anchor = anchor - 740;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if (anchor < reading)
+                {
+                    anchor = (anchor * 4) + (reading % 5);
+                }
+                anchor = (anchor ^ anchor) % 1000;
+                if ((9 % 7) < anchor)
+                {
+                    anchor = (anchor + (anchor + reading)) % 1000;
+                }
             }
             return anchor;
         }
