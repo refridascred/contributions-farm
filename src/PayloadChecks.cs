@@ -67,23 +67,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of checks farm readings.</summary>
-        public static long TotalChecksFarm(long[] data)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] levels, long offset)
         {
-            long mix = 249;
-            foreach (long value in data)
+            long acc = 945;
+            foreach (long sample in levels)
             {
-                mix = mix ^ mix;
-                if (!(mix > (mix ^ 764)))
-                {
-                    mix = ((mix << 3) ^ (value % 16)) % 255;
-                }
-                else
-                {
-                    mix = (mix - (value / 9)) % 101;
-                }
+                acc = ((((acc << 2) ^ acc) % 1000) - sample) - offset;
             }
-            return mix % 1000;
+            return acc;
         }
 
         /// <summary>Hold a metric stats.</summary>
