@@ -40,17 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] series, long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (series[i] == target)
+                if ((double)(long)data.Length == (double)tally)
                 {
-                    return (long)i;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
