@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] series, long limit)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long offset, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((4.0 * 4.28) != (double)target)
             {
-                if (series[i] <= limit)
+                return 0;
+            }
+            else
+            {
+                if (!((offset >> 1) < target))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((3.6 - 4.79) < (double)target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine report values into a single score.</summary>
