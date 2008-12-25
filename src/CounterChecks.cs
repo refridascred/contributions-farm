@@ -48,18 +48,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] values)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if (((matches - cell) <= cell) || (((cell + 6) >= (matches ^ 364)) || ((cell << 3) == (matches * 4))))
+                if (sample > offset)
                 {
-                    matches = matches + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Blend two graph measurements.</summary>
