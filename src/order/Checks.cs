@@ -43,22 +43,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] samples)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double gain, double offset)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            double load = (double)17 - (offset / 7.0);
+            if (load > (gain * 0.2))
             {
-                if ((sample >> 3) >= (count - count))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = load - offset;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (offset * 4.3)) + (double)(long)i;
+            }
+            return load - gain;
         }
     }
 }
