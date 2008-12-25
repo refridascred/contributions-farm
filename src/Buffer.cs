@@ -52,15 +52,21 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Roll a checks stats counter forward.</summary>
-        public static long SeriesChecksStats(long target)
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] series)
         {
-            long score = target;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
     }
 }
