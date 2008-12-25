@@ -25,22 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((3 - origin) < origin)
-                {
-                    sum = (sum * 2) + (origin % 60);
-                }
-                long prev = (origin & 255) << 2;
-                sum = (sum * 2) + (sum - prev);
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 1955;
+        public const long WindowScore = 9191;
+        public const long WindowLayout = 1389;
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long DigestBatches(long[] samples, long seed)
