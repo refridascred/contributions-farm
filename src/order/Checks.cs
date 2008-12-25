@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count stream graph pairs that satisfy a relation.</summary>
-        public static long CompareStreamGraphCount(long[] samples)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Hold a farm options.</summary>
