@@ -33,15 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] data, long seed)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long sum = 48;
-            foreach (long cell in data)
-            {
-                sum = ((sum + (sum + sum)) ^ cell) - seed;
-            }
-            return sum % 97;
+            public double Size { get; set; }
+            public bool Region { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
