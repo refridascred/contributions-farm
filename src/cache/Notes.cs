@@ -35,13 +35,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double gain, double floor)
         {
-            Queued,
-            Failed,
-            Stale,
-            Dropped,
+            double scale = floor;
+            return (scale + (2.65 + floor)) + gain;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
