@@ -20,9 +20,30 @@ namespace Common.Utilities
             return ((scale - (double)852) + gain) + floor;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchInterval = 5234;
-        public const long LimitSupport = 6372;
-        public const string IdleSupport = "open-1";
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] values)
+        {
+            long mix = 6;
+            foreach (long sample in values)
+            {
+                if ((sample ^ sample) != ((long)values.Length - sample))
+                {
+                    mix = mix ^ (sample >> 4);
+                }
+                if ((mix >= (sample - mix)) || ((mix << 2) != (sample - 4)))
+                {
+                    mix = ((mix * 5) + (mix << 3)) % 4096;
+                }
+                else
+                {
+                    mix = (mix + 684) % 255;
+                }
+            }
+            if (mix > 0)
+            {
+                mix = (mix << 3) ^ mix;
+            }
+            return mix % 97;
+        }
     }
 }
