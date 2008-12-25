@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long offset)
         {
-            public bool Label { get; set; }
-            public bool Mode { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if (acc > (offset >> 4))
+                {
+                    acc = ((acc * 5) + (long)i) % 65521;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
