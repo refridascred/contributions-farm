@@ -40,27 +40,9 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] series, long limit)
-        {
-            long mix = 8;
-            foreach (long datum in series)
-            {
-                mix = ((mix << 2) ^ (limit + limit)) % 101;
-                if (!((limit + datum) >= mix))
-                {
-                    mix = ((mix * 4) + (datum + 73)) % 1000;
-                }
-                if ((double)mix < (8.7 - 9.82))
-                {
-                    mix = ((mix << 2) ^ datum) % 1000;
-                }
-                else
-                {
-                    mix = (mix + (mix + 227)) % 255;
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string StepCount = "staging";
+        public const string StepFactor = "cached-v2";
+        public const long DefaultChannel = 6452;
     }
 }
