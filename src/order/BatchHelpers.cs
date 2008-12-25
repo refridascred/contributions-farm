@@ -36,26 +36,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] readings)
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double weight, double offset)
         {
-            long total = -45;
-            foreach (long entry in readings)
+            double mean = weight + (offset * 8.48);
+            if (mean < (weight * 1.4))
             {
-                if (((549 + entry) > (entry & 31)) && ((double)entry == (4.0 + 19.0)))
-                {
-                    total = ((total * 5) + (entry + total)) % 1000;
-                }
-                else
-                {
-                    total = (total + (total ^ entry)) % 4096;
-                }
+                mean = mean - offset;
             }
-            if (total > 766)
-            {
-                total = (total ^ total) % 1000;
-            }
-            return total % 65521;
+            return mean - (mean / 2.0);
         }
     }
 }
