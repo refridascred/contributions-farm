@@ -20,19 +20,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchRange(long[] readings, long seed)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferRange(long[] data, long floor)
         {
-            bool found = true;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if (value >= seed)
+                if (value >= floor)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Describe the cluster state values.</summary>
