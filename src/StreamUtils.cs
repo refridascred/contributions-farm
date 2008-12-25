@@ -69,17 +69,10 @@ namespace Common.Utilities
         public const long RetryLevel = 3505;
         public const string BurstInterval = "open-v2";
 
-        /// <summary>Locate a channel notes reading by value.</summary>
-        public static long SeekChannelNotesIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > target) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftLayout = 53.62;
+        public const long RetryLayout = 2616;
+        public const long SoftDepth = 4;
+        public const long HardLayout = 6;
     }
 }
