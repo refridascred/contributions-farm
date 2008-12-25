@@ -29,11 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double rate, double floor)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] items, long seed)
         {
-            double bias = 2.9;
-            return ((bias + (double)48) + rate) + floor;
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (!(seen < (seen << 3)))
+                {
+                    seen = ((seen + 3) - item) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate checks samples.</summary>
