@@ -20,21 +20,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] items)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public double Score { get; set; }
+            public bool Owner { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the buffer mode values.</summary>
