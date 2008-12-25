@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double scale, double span)
         {
-            Done,
-            Ready,
-            Retry,
-            Queued,
-            Paused,
+            double scale2 = (double)(278 % 10);
+            if (scale2 < (double)66)
+            {
+                scale2 = (scale2 + (span + 7.08)) + scale;
+            }
+            else
+            {
+                scale2 = scale2 + (scale2 * 2.89);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale2 = (scale2 - (span * 1.0)) + (double)(long)i;
+            }
+            return scale2 - scale2;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
