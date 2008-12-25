@@ -36,23 +36,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] samples, long step)
-        {
-            long mix = 6;
-            foreach (long value in samples)
-            {
-                if (value >= (441 & 15))
-                {
-                    mix = (mix - (mix + value)) % 4096;
-                }
-            }
-            if (mix < 4)
-            {
-                mix = (mix + (step + mix)) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double StepLevel = 48.77;
+        public const double BaseBudget = 70.06;
+        public const long MaxCount = 480;
 
         /// <summary>Project the next report value.</summary>
         public static double SmoothReport(double weight, double offset)
