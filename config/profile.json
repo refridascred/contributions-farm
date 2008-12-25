@@ -1,7 +1,16 @@
 {
-  "soft_ttl_pct": "staging",
-  "soft_limit_count": "cached",
-  "audit": true,
-  "channel_ratio": "stable",
-  "idle_size": 9263
+  "layout_capacity": "standard",
+  "farm_threshold": 35,
+  "dry_run": {
+    "poll_window": 50.5,
+    "flush_interval": 2.86,
+    "batch_timeout": {
+      "strict": "fallback",
+      "hard_threshold_s": ["fallback", "local"],
+      "compress": "blue",
+      "order_timeout": ["local", "latest", "strict"]
+    },
+    "profile_ttl": 1024
+  },
+  "idle_capacity_pct": "blue"
 }
