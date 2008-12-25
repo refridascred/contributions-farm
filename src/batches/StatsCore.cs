@@ -33,12 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            public long Rank { get; set; }
-            public bool Label { get; set; }
-            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
