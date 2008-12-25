@@ -6,7 +6,10 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging blue green latest; do
+CHANNEL_LIMIT=75
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in stable fallback; do
     log "checking ${item}"
 done
 
