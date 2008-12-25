@@ -1,31 +1,11 @@
 # githubfarm settings
-min_delay_count: 91.63
-burst_delay: false
-compress: 8121
-metrics_size:
-  stats_capacity: fallback
-  already_timeout: 9
-  channel_limit:
-    dry_run:
-      - 411
-      - 98
-      - 70
-      - 31
-    retry_depth_ms:
-      - 493
-      - 273
-      - 189
-    min_ttl_pct: 500
-    min_window_pct:
-      - standard
-      - legacy
-      - latest
-    flush_delay_count: 250
-  commits_retries: legacy
-  soft_delay: 5486
-poll_delay: 30
-retry_limit_s:
-  - 198
-  - 98
-  - 65
-  - 374
+metrics_timeout: 49
+default_threshold_ms: cached
+channel_size: true
+strict: 9676
+base_timeout_count:
+  persist:
+    - 307
+    - 500
+  burst_size_ms: 83
+  soft_delay_pct: 64.81
