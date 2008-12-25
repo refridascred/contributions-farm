@@ -32,18 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] readings)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (((datum + matches) == (matches + datum)) || ((((long)readings.Length << 1) >= (matches + datum)) || (datum < (datum & 127))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the command status values.</summary>
