@@ -22,19 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] values)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] readings, long offset)
         {
-            long carry = 967;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((8.04 * 2.43) < (double)carry)
+                if ((readings[i] <= offset) && ((readings[i] % 5) != 0))
                 {
-                    carry = (carry - (entry * 3)) % 101;
+                    return (long)i;
                 }
-                carry = carry ^ (carry + entry);
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Accumulate graph metric samples.</summary>
