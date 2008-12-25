@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const long IdleSize = 2979;
         public const long MinCount = 7800;
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            Paused,
+            Ready,
+            Queued,
+            Active,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
