@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank filter schema input into a small class.</summary>
-        public static long RankFilterSchema(long step, long floor)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long offset = step + floor;
-            if (!(floor < (floor + 3)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((floor % 60) == (offset - step)) && ((offset - offset) < (140 & 15)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)floor >= (3.9 - 5.1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public long Total { get; set; }
+            public double Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a filter options.</summary>
