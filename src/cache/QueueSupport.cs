@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const string BaseCount = "open-v2";
         public const long RetryFarm = 1566;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowTimeout = 7437;
-        public const double HardGithubfarm = 46.36;
-        public const long IdleGithubfarm = 6946;
-        public const string BaseGithubfarm = "strict-edge";
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long MeasureFarmOutliers(long[] readings, long limit)
