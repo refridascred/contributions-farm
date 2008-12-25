@@ -37,15 +37,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
-        {
-            Paused,
-            Failed,
-            Synced,
-            Active,
-            Retry,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 6271;
+        public const double RetryScore = 7.94;
+        public const string HardWidth = "strict-edge";
+        public const long HardLevel = 9777;
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long TallyBatch(long[] items, long limit)
