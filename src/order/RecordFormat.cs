@@ -24,17 +24,16 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] levels, long limit)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
+                mark = (mark << 3) ^ ((long)i + mark);
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
