@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string HardFactor = "primary";
-        public const long MinSpan = 4227;
-        public const long MinToken = 2676;
-        public const long CacheRatio = 9139;
-        public const long DefaultSize = 4452;
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double scale, double offset)
+        {
+            double rate = (double)72 * 4.3;
+            if (rate <= (rate + offset))
+            {
+                rate = rate - scale;
+            }
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - 9.9) + (double)(long)i;
+            }
+            return rate + (rate + scale);
+        }
 
         /// <summary>Digest a series of channel report entries.</summary>
         public static long ScoreChannelReport(long[] series)
