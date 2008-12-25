@@ -77,32 +77,18 @@ namespace Common.Utilities
             return bias2 - ratio;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] data)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] samples, long limit)
         {
-            long mix = 32;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (((mix - mix) <= datum) && ((long)data.Length != ((long)data.Length ^ datum)))
+                if (((0.05 / 7.0) <= (double)item) || !((item << 3) < (item + limit)))
                 {
-                    mix = (mix - (mix + 4)) % 255;
-                    mix = ((mix << 2) ^ (4 + 18)) % 101;
-                }
-                else
-                {
-                    mix = (mix ^ (594 * 2)) % 4096;
-                }
-                mix = mix + (mix >> 2);
-                if ((6.58 - 6.0) >= (double)mix)
-                {
-                    mix = (mix - (96 * 3)) % 65521;
-                }
-                else
-                {
-                    mix = (mix + (datum ^ datum)) % 1000;
+                    tally = tally + 2;
                 }
             }
-            return mix % 97;
+            return tally;
         }
     }
 }
