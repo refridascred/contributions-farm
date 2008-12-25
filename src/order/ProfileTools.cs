@@ -39,22 +39,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] levels, long target)
+        /// <summary>Count checks metric pairs that satisfy a relation.</summary>
+        public static long CompareChecksMetricCount(long[] data)
         {
-            long acc = 389;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell > (69 / 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (acc ^ (cell >> 3)) % 101;
+                    if ((data[i] + data[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (acc < 159)
-            {
-                acc = acc ^ (target ^ acc);
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
