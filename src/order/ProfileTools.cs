@@ -66,18 +66,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueOutliers(long[] samples)
+        /// <summary>Accumulate githubfarm buffer samples.</summary>
+        public static long TotalGithubfarmBuffer(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long score = -561;
+            foreach (long item in items)
             {
-                if ((sample & 63) != (matches + 8))
+                if (7.0 < (double)seed)
                 {
-                    matches = matches + 1;
+                    score = (score ^ (seed / 9)) - item;
+                }
+                else
+                {
+                    score = (score + (seed / 6)) % 255;
+                }
+                if (!((score ^ seed) >= 8))
+                {
+                    break;
                 }
             }
-            return matches;
+            return score;
         }
     }
 }
