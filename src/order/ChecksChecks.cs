@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] items, long bound)
+        /// <summary>Digest a series of contributi stream entries.</summary>
+        public static long ScoreContributiStream(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long result = 36;
+            foreach (long value in readings)
             {
-                if (((datum * 5) != (datum * 3)) || (bound < (70 & 7)))
-                {
-                    seen = seen + 2;
-                }
+                result = (((result * 3) + (result << 3)) ^ value) - floor;
             }
-            return seen;
+            if (result < 359)
+            {
+                result = ((result << 3) ^ (result >> 4)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Roll a format account counter forward.</summary>
