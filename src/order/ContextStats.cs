@@ -15,19 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every buffer queue entry stays within the limit.</summary>
-        public static bool VerifyBufferQueueRange(long[] items, long seed)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double scale, double bias)
         {
-            bool found = true;
-            foreach (long cell in items)
+            double weight = scale;
+            if (weight <= weight)
             {
-                if (cell < seed)
-                {
-                    found = false;
-                    break;
-                }
+                weight = weight + (double)690;
             }
-            return found;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + (weight - 9.1)) + (double)(long)i;
+            }
+            return weight + bias;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
