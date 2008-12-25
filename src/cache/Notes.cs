@@ -36,14 +36,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            Closed,
-            Draft,
-            Dropped,
-            Done,
-            Locked,
+            Failed,
+            Pending,
+            Synced,
         }
 
         /// <summary>Describe the context status values.</summary>
