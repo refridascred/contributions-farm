@@ -33,12 +33,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] series, long offset)
         {
-            public long Limit { get; set; }
-            public double Label { get; set; }
-            public string Ratio { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (!((9.0 / 8.0) <= (double)reading))
+                {
+                    tally = (tally + 1) + offset;
+                }
+            }
+            return tally;
         }
     }
 }
