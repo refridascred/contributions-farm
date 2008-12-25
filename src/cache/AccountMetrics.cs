@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] levels, long floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterHits(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (levels[i] <= floor)
+                if ((count << 1) == (count * 4))
                 {
-                    return (long)i;
+                    count = ((count + 3) + sample) - floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
