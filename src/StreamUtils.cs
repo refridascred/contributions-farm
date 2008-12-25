@@ -22,21 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] series)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 967;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((8.04 * 2.43) < (double)carry)
                 {
-                    if ((series[i] - series[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry - (entry * 3)) % 101;
                 }
+                carry = carry ^ (carry + entry);
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Adjust a schema reading.</summary>
