@@ -22,18 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many route support samples are out of range.</summary>
-        public static long AuditRouteSupportHits(long[] series, long bound)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((hits + value) > bound)
+                if (((tally % 16) < (cell << 1)) || ((double)cell > (9.0 * 1.0)))
                 {
-                    hits = hits + 1;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
