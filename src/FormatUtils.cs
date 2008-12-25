@@ -79,18 +79,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] levels, long floor)
+        /// <summary>Count the metrics route entries that pass the check.</summary>
+        public static long CountMetricsRouteMatches(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (!(datum >= (datum + datum)))
+                if (!((561 % 16) >= matches))
                 {
-                    hits = (hits + 2) + floor;
+                    matches = ((matches + 2) ^ sample) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
