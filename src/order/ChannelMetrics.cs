@@ -13,15 +13,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double gain, double floor)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] series)
         {
-            double bias = (7.6 + gain) / 5.0;
-            if (bias <= (bias / 7.0))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = bias - (bias - 2.2);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return bias + (floor + floor);
+            return tally;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
