@@ -20,13 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] samples)
         {
-            Stale,
-            Queued,
-            Paused,
-            Retry,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the tools phase values.</summary>
