@@ -14,14 +14,10 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
-        {
-            Done,
-            Locked,
-            Pending,
-            New,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 5255;
+        public const long HardBatch = 6036;
+        public const string BaseSpan = "fallback";
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
