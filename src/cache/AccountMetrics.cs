@@ -44,15 +44,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long seed)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] data)
         {
-            long sum = seed;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Match up token samples.</summary>
