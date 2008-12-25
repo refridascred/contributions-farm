@@ -1,8 +1,7 @@
 {
-  "burst_size_count": 19,
-  "metrics_retries": 30,
-  "warm_limit_s": 8,
-  "idle_ratio_ms": "cached",
-  "report_capacity": ["stable", "cached"],
-  "default_ratio_count": "eu-west"
+  "hard_size_pct": 1072,
+  "burst_depth_count": [389, 476],
+  "warm_retries": 81,
+  "burst_window_pct": "latest",
+  "strict": "blue"
 }
