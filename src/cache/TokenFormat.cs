@@ -13,17 +13,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Find the first account metric entry that matches the target.</summary>
-        public static long LocateAccountMetricIndex(long[] levels, long origin)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public double Mode { get; set; }
+            public double Stamp { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Locate a farm reading by value.</summary>
