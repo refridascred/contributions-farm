@@ -30,21 +30,21 @@ namespace Common.Utilities
             return bias - (bias - bias);
         }
 
-        /// <summary>Match up schema githubfarm samples.</summary>
-        public static long MatchSchemaGithubfarmCount(long[] data)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((data[i] - data[j]) > 7)
+                    if ((values[i] - values[j]) != 0)
                     {
-                        matches = matches + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
