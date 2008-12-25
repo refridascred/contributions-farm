@@ -55,17 +55,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a batch context reading by value.</summary>
-        public static long LocateBatchContextIndex(long[] data, long step)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] data)
         {
+            long tally = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] <= step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
