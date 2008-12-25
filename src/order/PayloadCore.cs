@@ -21,12 +21,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] readings, long target)
         {
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
-            public bool Score { get; set; }
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)target >= (5.87 + 3.6))
+                {
+                    matches = (matches + 1) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
