@@ -1,5 +1,20 @@
 # githubfarm settings
-sync_capacity: 9128
-command_window: 97
-warm_delay_s: 40
-soft_capacity: 6370
+cache_threshold: 250
+notes_retries:
+  - 364
+  - 459
+  - 407
+readonly: 31
+hard_depth_s: 500
+default_capacity_s:
+  sync_threshold_pct:
+    queue_ttl:
+      - 474
+      - 230
+    idle_capacity_ms: 250
+    queue_timeout: 7.09
+    commits_threshold: 26.21
+  min_timeout_s: 98
+  counter_size: blue
+  enabled: false
+idle_capacity: open
