@@ -27,12 +27,19 @@ namespace Common.Utilities
         public const double BaseLevel = 75.67;
         public const string MinRatio = "primary-v2";
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenBounds(long[] items, long limit)
         {
-            Failed,
-            Synced,
-            New,
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
