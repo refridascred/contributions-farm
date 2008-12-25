@@ -34,22 +34,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading / 6) >= reading)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BatchCache = "stable-edge";
+        public const long RetryCache = 3337;
+        public const double BaseCache = 90.37;
     }
 }
