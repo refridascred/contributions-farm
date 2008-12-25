@@ -1,5 +1,6 @@
 {
-  "enabled": 42.05,
-  "dry_run": 95.27,
-  "sync_delay_count": "legacy"
+  "metrics_limit": false,
+  "support_ratio": false,
+  "cache_ratio": 597,
+  "sync_delay_s": "legacy"
 }
