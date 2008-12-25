@@ -30,21 +30,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] series)
+        /// <summary>Count the already metric entries that pass the check.</summary>
+        public static long CountAlreadyMetricOutliers(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)matches != (double)reading)
                 {
-                    if ((series[i] - series[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
