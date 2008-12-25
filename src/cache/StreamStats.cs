@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryTimeout = 7132;
-        public const long WindowContext = 2015;
-        public const string DefaultCount = "primary-1";
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
+        {
+            public bool Offset { get; set; }
+            public bool Total { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long SeriesStats(long limit)
