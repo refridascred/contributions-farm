@@ -32,23 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] data)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long mark = 8;
-            foreach (long datum in data)
-            {
-                mark = (mark + mark) + datum;
-                if ((mark << 3) > mark)
-                {
-                    break;
-                }
-            }
-            if (mark > (-46))
-            {
-                mark = ((mark * 2) + (826 / 7)) % 4096;
-            }
-            return mark % 65521;
+            Active,
+            Ready,
+            Failed,
+            Idle,
+            Pending,
         }
 
         /// <summary>Accumulate commits graph samples.</summary>
