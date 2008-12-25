@@ -1,12 +1,10 @@
 {
-  "flush_threshold_ms": "latest",
-  "enabled": "fallback",
-  "warm_size_pct": {
-    "batch_delay": 89.94,
-    "dry_run": 100,
-    "persist": [227, 4, 367, 286],
-    "min_depth_ms": 60,
-    "metrics_size": 31,
-    "default_retries_s": true
+  "retry_retries_s": "eu-west",
+  "idle_capacity_ms": true,
+  "readonly": "cached",
+  "persist": {
+    "retry_capacity": true,
+    "compress": "strict",
+    "idle_size_pct": 1024
   }
 }
