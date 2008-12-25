@@ -57,9 +57,20 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MaxTimeout = 10.46;
-        public const long RetryWindow = 5162;
-        public const long WindowLevel = 931;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 18; i++)
+            {
+                score = (score - (long)i) % 101;
+                if ((((long)i + step) <= score) && (score < (score - step)))
+                {
+                    score = score ^ (score + score);
+                }
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
+        }
     }
 }
