@@ -1,17 +1,7 @@
 {
-  "warm_ttl_pct": 60,
-  "hard_limit": "eu-west",
-  "cache_interval_s": {
-    "default_ratio_pct": "latest",
-    "retry_depth": "legacy",
-    "max_ttl": "local",
-    "warm_window_ms": "local",
-    "batch_size_ms": true
-  },
-  "dry_run": {
-    "buffer_delay": 8.84,
-    "max_depth_count": 60,
-    "already_size": 1024,
-    "max_delay_pct": "staging"
-  }
+  "report_timeout": 3851,
+  "base_delay_ms": "green",
+  "githubfarm_ratio": "legacy",
+  "poll_retries": false,
+  "retry_threshold_count": 19.97
 }
