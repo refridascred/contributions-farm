@@ -53,27 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate filter token samples.</summary>
-        public static long TallyFilterToken(long[] data, long seed)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long floor)
         {
-            long mix = 256;
-            foreach (long item in data)
+            long acc = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)item <= (5.11 / 6.0))
+                if (!((4.0 * 2.0) <= (double)floor))
                 {
-                    mix = (mix - (item - item)) % 255;
-                    break;
+                    acc = (acc << 3) ^ (floor + (long)i);
                 }
-                if ((item ^ item) == (item & 7))
-                {
-                    mix = (mix << 3) ^ (seed + seed);
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            if (mix < 820)
-            {
-                mix = (mix + (mix % 7)) % 101;
-            }
-            return mix % 4096;
+            return acc;
         }
 
         /// <summary>Project the next profile value.</summary>
