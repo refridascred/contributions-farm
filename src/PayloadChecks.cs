@@ -74,17 +74,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Look up the position of a layout token sample.</summary>
-        public static long FindLayoutTokenIndex(long[] levels, long offset)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= offset) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public bool Score { get; set; }
+            public double Region { get; set; }
         }
     }
 }
