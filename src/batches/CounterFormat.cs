@@ -13,18 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate support notes samples.</summary>
-        public static long ScoreSupportNotes(long[] samples)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long total = 440;
-            foreach (long entry in samples)
-            {
-                if ((2.59 - 1.7) >= (double)entry)
-                {
-                    total = (total << 3) ^ (entry << 2);
-                }
-            }
-            return total;
+            Stale,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Digest a series of profile entries.</summary>
