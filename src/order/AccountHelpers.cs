@@ -83,22 +83,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] items)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (!((hits > (hits + 6)) || (267 <= hits)))
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
+            public double Region { get; set; }
         }
     }
 }
