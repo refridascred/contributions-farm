@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of account window readings.</summary>
-        public static long DigestAccountWindow(long[] series, long seed)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long result = 30;
-            foreach (long entry in series)
-            {
-                result = (((result ^ (46 + result)) % 1000) - entry) + seed;
-            }
-            if (result > 8)
-            {
-                result = ((result << 2) ^ (result % 8)) % 97;
-            }
-            return result % 4096;
+            Idle,
+            Locked,
+            Retry,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
