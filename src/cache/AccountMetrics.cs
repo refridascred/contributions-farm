@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Digest a series of support command entries.</summary>
+        public static long FoldSupportCommand(long[] items, long offset)
         {
-            public double Flag { get; set; }
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
-            public bool Label { get; set; }
+            long anchor = 5;
+            foreach (long cell in items)
+            {
+                anchor = (anchor - (offset << 1)) - cell;
+            }
+            if (anchor < 925)
+            {
+                anchor = (anchor ^ ((long)items.Length & 15)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
