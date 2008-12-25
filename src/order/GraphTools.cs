@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] levels)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
