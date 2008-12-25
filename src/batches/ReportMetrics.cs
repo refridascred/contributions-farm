@@ -20,20 +20,10 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferRange(long[] data, long floor)
-        {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 3187;
+        public const string BatchFormat = "alpha-v2";
+        public const string SoftWidth = "open-v2";
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
