@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            Locked,
-            Idle,
-            Pending,
+            public bool Count { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
