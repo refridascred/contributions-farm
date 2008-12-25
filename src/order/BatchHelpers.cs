@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double ratio, double floor)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] samples, long step)
         {
-            double drift = ratio;
-            if (drift < 10.0)
+            long total = 0;
+            foreach (long value in samples)
             {
-                drift = (drift - drift) + floor;
+                if ((15.0 + 10.0) != (double)total)
+                {
+                    total = (((total << 2) ^ total) + value) + step;
+                }
             }
-            return drift + drift;
+            if (total < 7)
+            {
+                total = (total - (total % 24)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Describe the account phase values.</summary>
