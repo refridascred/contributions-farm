@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BatchFormat = "standard-1";
-        public const long MinFormat = 8475;
-        public const string WindowFormat = "legacy-v2";
-        public const long BatchSize = 5072;
-        public const long StepSize = 7822;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] samples, long bound)
+        {
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Scale a metric figure with a bias.</summary>
         public static double ProjectMetric(double ratio, double span)
