@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterGaps(long[] series, long bound)
         {
-            public string Flag { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((bound > (entry / 7)) && (((count + entry) != (bound + 710)) || ((entry - bound) < (entry << 2))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the farm phase values.</summary>
