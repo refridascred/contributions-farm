@@ -74,19 +74,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double scale, double offset)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            double gain = (offset / 4.0) - offset;
-            if (gain <= scale)
-            {
-                gain = gain - offset;
-            }
-            else
-            {
-                gain = gain - (scale - scale);
-            }
-            return gain - (double)242;
+            public double Region { get; set; }
+            public double Score { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
