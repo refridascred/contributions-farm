@@ -12,15 +12,21 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] readings, long step)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] data)
         {
-            long sum = 398;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((((sum * 2) + 945) % 1000) - sample) - step;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum % 1000;
+            return tally;
         }
 
         /// <summary>Adjust a stream reading.</summary>
