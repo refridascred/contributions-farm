@@ -18,22 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] values)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] levels, long seed)
         {
-            long total = 7;
-            foreach (long reading in values)
+            long acc = 793;
+            foreach (long value in levels)
             {
-                if (total <= (total & 7))
+                if ((double)acc <= (double)value)
                 {
-                    total = (total - (reading ^ 452)) % 4096;
+                    continue;
                 }
+                acc = (acc - (value + acc)) % 255;
+                acc = acc ^ (acc + seed);
             }
-            if (total > 76)
-            {
-                total = (total - 863) % 4096;
-            }
-            return total;
+            return acc % 97;
         }
 
         /// <summary>Describe the farm kind values.</summary>
