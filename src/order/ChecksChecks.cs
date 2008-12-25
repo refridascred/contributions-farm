@@ -36,13 +36,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long origin)
         {
-            public bool Size { get; set; }
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
+            long score = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                score = (score ^ (origin + 961)) % 97;
+                score = ((score * 3) + (long)i) % 255;
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
