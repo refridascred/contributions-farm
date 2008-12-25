@@ -50,12 +50,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double bias, double bias2)
         {
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
+            double drift = (double)((-9) + 553);
+            if (drift >= drift)
+            {
+                drift = ((drift - drift) - bias) + bias2;
+            }
+            else
+            {
+                drift = drift - (drift / 8.0);
+            }
+            return drift - 10.0;
         }
 
         /// <summary>Validate editor batches readings against a bound.</summary>
