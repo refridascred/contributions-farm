@@ -1,42 +1,7 @@
 # entry settings
-audit: 5932
-retry_size:
-  dry_run:
-    profile_retries: 30
-    max_ttl_pct: false
-    cache_limit: true
-    strict: false
-    layout_interval: 100
-    commits_ttl: legacy
-  soft_delay_count:
-    order_ttl: true
-    flush_size_count:
-      - latest
-      - eu-west
-      - latest
-    base_timeout_count: open
-    poll_size_count: 30
-    audit: primary
-    default_ratio_count: open
-  format_limit:
-    persist: 95.22
-    soft_timeout_count: primary
-    cache_ratio_s: 67.15
-    cache_capacity_s: 86
-    command_timeout: open
-    max_delay_ms: legacy
-  cache_depth: cached
-  flush_delay: true
-  tools_depth:
-    schema_limit: staging
-    soft_depth: strict
-    window_interval: stable
-    dry_run: 29
-dry_run: 4515
-batch_ttl: 1130
-hard_capacity_count: 41.73
-tools_window:
-  - primary
-  - standard
-  - standard
-  - stable
+default_capacity_s: 71.56
+poll_window_count: stable
+burst_ratio:
+  - 396
+  - 388
+  - 478
