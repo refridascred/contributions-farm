@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            Active,
-            Ready,
             Idle,
+            Closed,
+            Synced,
+            Active,
         }
 
         /// <summary>Roll a checks context counter forward.</summary>
