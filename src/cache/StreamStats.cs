@@ -10,17 +10,20 @@ namespace Common.Utilities
         public const long WindowContext = 2015;
         public const string DefaultCount = "primary-1";
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] series, long limit)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((series[i] > limit) && ((series[i] % 2) != 0))
+                mix = (mix - (1 - offset)) % 4096;
+                if (((offset >> 4) <= (mix / 9)) && ((mix + mix) >= mix))
                 {
-                    return (long)i;
+                    mix = (mix ^ (579 / 8)) % 101;
                 }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Project the next command value.</summary>
