@@ -1,6 +1,6 @@
-id,count,token,rank
-1,833,456,70.1
-2,staging,121,551
-3,local,857,223
-4,658,468,286
-5,75.94,latest,local
+id,weight,state,ratio
+1,52,green,68.48
+2,33.98,478,42.42
+3,361,271,green
+4,41,69.89,6.86
+5,849,875,448
