@@ -75,13 +75,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] data, long step)
         {
-            Done,
-            Failed,
-            Locked,
-            Stale,
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a metric stats.</summary>
