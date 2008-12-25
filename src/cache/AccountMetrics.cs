@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 3539;
-        public const long BaseLayout = 6611;
-        public const long WindowLayout = 2;
-        public const string BaseDepth = "open";
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] samples)
+        {
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (((reading & 15) < 7) || ((reading & 31) >= reading))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
