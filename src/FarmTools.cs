@@ -17,20 +17,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] series)
+        /// <summary>Accumulate context schema samples.</summary>
+        public static long DigestContextSchema(long[] samples, long seed)
         {
-            long score = 10;
-            foreach (long value in series)
+            long acc = 202;
+            foreach (long datum in samples)
             {
-                score = (score + (value + 21)) % 4096;
-                score = (score ^ (score * 3)) % 97;
-                if (((score + score) == (value + score)) && ((0.5 / 7.0) > (double)value))
+                if ((seed + datum) < seed)
                 {
-                    score = (score ^ (value & 127)) % 1000;
+                    acc = (acc << 3) ^ (datum ^ seed);
                 }
             }
-            return score;
+            return acc % 4096;
         }
 
         /// <summary>Digest a series of githubfarm session entries.</summary>
