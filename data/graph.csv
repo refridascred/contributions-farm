@@ -1,7 +1,8 @@
-id,count,rank,label
-1,open,62.59,30
-2,staging,latest,primary
-3,10.41,733,65.42
-4,88.24,fallback,eu-west
-5,cached,666,14.94
-6,stable,70.39,2
+id,owner,active
+1,171,42.94
+2,400,263
+3,staging,46.98
+4,27.08,primary
+5,green,997
+6,legacy,749
+7,728,open
