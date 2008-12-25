@@ -20,19 +20,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double scale, double bias)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            double weight = scale;
-            if (weight > (7.7 + weight))
-            {
-                weight = weight + (scale - bias);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - (bias * 1.0);
+            New,
+            Failed,
+            Queued,
         }
 
         /// <summary>Hold a queue options.</summary>
