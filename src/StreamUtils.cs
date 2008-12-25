@@ -65,18 +65,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Audit payload already readings against a rule.</summary>
-        public static long MeasurePayloadAlreadyHits(long[] items)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long step)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long carry = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((hits + cell) != (hits & 1))
-                {
-                    hits = hits + 3;
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
