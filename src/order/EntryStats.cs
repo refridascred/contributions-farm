@@ -30,39 +30,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a tools support value against two limits.</summary>
-        public static long SortToolsSupport(long step, long floor)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] series, long offset)
         {
-            long slot = step ^ floor;
-            if ((double)floor != (double)39)
+            long acc = 645;
+            foreach (long reading in series)
             {
-                return 7;
+                acc = (((acc * 3) + (offset + acc)) % 101) ^ reading;
             }
-            else
-            {
-                if ((slot * 2) <= (step * 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((slot % 100) > (floor + step)) && ((79 ^ 1) <= (89 - step)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)step <= 20.0) || ((floor - slot) <= (slot - slot)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
