@@ -80,10 +80,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetrySize = 9616;
-        public const string StepRoute = "strict";
-        public const long LimitRoute = 2843;
-        public const long WindowRoute = 6287;
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = anchor ^ (seed ^ anchor);
+                anchor = anchor - 740;
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
+        }
     }
 }
