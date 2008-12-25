@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BurstBatches = 13.38;
-        public const long MaxBatches = 5090;
-        public const long WindowWidth = 7033;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] items, long offset)
+        {
+            long total = 1;
+            foreach (long reading in items)
+            {
+                total = (total - reading) - offset;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long DeriveBatch(long origin)
