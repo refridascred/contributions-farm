@@ -1,6 +1,15 @@
 {
-  "batch_interval_pct": 2696,
-  "batch_delay_pct": "open",
-  "payload_delay": "green",
-  "batches_depth": "blue"
+  "base_ttl_s": true,
+  "audit": 51.5,
+  "min_timeout_count": 51.38,
+  "dry_run": [202, 161, 462, 444],
+  "batch_size_s": {
+    "order_ratio": {
+      "cache_delay_s": 11,
+      "hard_timeout": 93.6,
+      "dry_run": "strict"
+    },
+    "poll_ttl_ms": "stable",
+    "retry_limit": false
+  }
 }
