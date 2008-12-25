@@ -22,20 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long step)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long result = step;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((6 ^ 32) < (step + (long)i))
-                {
-                    result = ((result * 3) + (step >> 1)) % 1000;
-                    continue;
-                }
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            public string Offset { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
