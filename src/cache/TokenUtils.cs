@@ -32,11 +32,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 927;
-        public const long LimitFilter = 9002;
-        public const long StepLevel = 9328;
-        public const long RetryFilter = 3467;
-        public const long StepBudget = 4883;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] items)
+        {
+            long state = 0;
+            foreach (long reading in items)
+            {
+                state = state - (reading % 97);
+            }
+            return state;
+        }
     }
 }
