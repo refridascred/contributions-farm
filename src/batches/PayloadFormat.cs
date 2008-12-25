@@ -42,12 +42,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] items, long bound)
         {
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
