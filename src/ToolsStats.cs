@@ -40,15 +40,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] values)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] series, long seed)
         {
-            long anchor = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                anchor = ((anchor ^ ((-359) + anchor)) % 97) ^ datum;
+                if ((seed & 1) >= seed)
+                {
+                    hits = (hits + 2) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Fold a list of queue record readings.</summary>
