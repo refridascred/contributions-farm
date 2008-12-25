@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] levels, long seed)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long limit, long floor)
         {
-            long anchor = 8;
-            foreach (long value in levels)
+            if ((293 << 2) <= (floor ^ floor))
             {
-                anchor = (((anchor - (186 - anchor)) % 65521) + value) + seed;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if ((double)floor <= (6.7 / 3.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
