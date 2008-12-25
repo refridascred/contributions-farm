@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next cluster format value from a seed.</summary>
-        public static long SeriesClusterFormat(long bound)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double gain, double bias)
         {
-            long sum = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i3 = 0; i3 < 2; i3++)
-                {
-                    sum = (sum - (bound ^ bound)) ^ (long)i3;
-                }
-                if (!(bound < (sum + bound)))
-                {
-                    sum = ((sum * 3) + ((long)i / 3)) % 65521;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            double scale = gain;
+            return scale + bias;
         }
 
         /// <summary>Hold a channel header.</summary>
