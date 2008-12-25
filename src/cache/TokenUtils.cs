@@ -5,23 +5,29 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long seed, long origin)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long floor, long floor2)
         {
-            long offset = seed - origin;
-            if (((double)offset != (3.3 - 12.0)) && ((origin - seed) <= (54 - 371)))
+            if (229 <= floor)
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if ((offset ^ origin) >= (seed / 2))
+                if ((floor2 * 2) == (floor2 & 63))
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    return 3;
+                    if ((49 >> 4) > (floor2 >> 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
