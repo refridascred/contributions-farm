@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long origin)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long origin)
         {
-            long result = origin;
-            for (int i = 0; i < 17; i++)
+            long sum = origin;
+            for (int i = 0; i < 7; i++)
             {
-                result = ((result * 4) + (long)i) % 97;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    sum = (sum + (origin / 8)) ^ (long)i2;
+                    sum = (sum * 2) + (841 * 3);
+                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
