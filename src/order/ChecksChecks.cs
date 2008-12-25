@@ -36,13 +36,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
-        {
-            public double Stamp { get; set; }
-            public string Token { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Limit { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftInterval = 35.41;
+        public const long WindowSize = 4059;
+        public const string IdleWidth = "standard-v2";
+        public const long StepFactor = 3104;
+        public const long SoftFilter = 4336;
     }
 }
