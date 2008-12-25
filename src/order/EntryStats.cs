@@ -32,11 +32,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 5019;
-        public const double LimitSession = 76.43;
-        public const string IdleDepth = "cached-v2";
-        public const double BaseSession = 57.06;
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mix = (mix - target) - (long)i2;
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long OverlapRecordCount(long[] items)
