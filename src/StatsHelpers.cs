@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] samples)
+        /// <summary>Classify a tools buffer pair into a bucket.</summary>
+        public static long GradeToolsBuffer(long limit, long floor)
         {
-            long result = 1;
-            foreach (long item in samples)
+            if (floor >= (floor + limit))
             {
-                result = ((result + result) % 65521) ^ item;
+                return 0;
             }
-            return result;
+            else
+            {
+                if ((limit + floor) < (374 >> 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
