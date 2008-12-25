@@ -41,36 +41,22 @@ namespace Common.Utilities
             return mean - (bias / 6.0);
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long seed, long bound)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long seed, long seed2)
         {
-            if (489 >= (seed * 5))
+            if ((seed2 > 13) || (18.0 > (double)seed))
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if ((3.7 / 5.0) > (double)bound)
+                if (!(seed < seed2))
                 {
                     return 0;
                 }
                 else
                 {
-                    if ((19.0 - 2.0) != (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(2 < (seed ^ 0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 7;
                 }
             }
         }
