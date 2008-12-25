@@ -27,14 +27,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            Idle,
-            Synced,
-            Retry,
-            New,
-            Active,
+            public long Label { get; set; }
+            public double Total { get; set; }
+            public double Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
