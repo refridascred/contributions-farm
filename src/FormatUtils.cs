@@ -34,12 +34,12 @@ namespace Common.Utilities
             return (rate + (offset + offset)) + ratio;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            public double Size { get; set; }
-            public bool Limit { get; set; }
-            public string Offset { get; set; } = "";
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Blend two session measurements.</summary>
