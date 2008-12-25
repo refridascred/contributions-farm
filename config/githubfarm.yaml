@@ -1,18 +1,19 @@
 # githubfarm settings
-context_ttl:
-  - 261
-  - 101
-  - 21
-  - 209
-enabled: 6027
-warm_ratio_count:
-  - stable
+enabled: true
+route_depth:
   - eu-west
-  - primary
-  - eu-west
-warm_ratio_pct:
-  - 385
-  - 459
-  - 455
-soft_limit_count: 8055
-payload_interval: cached
+  - blue
+poll_delay_ms: latest
+min_ratio_ms:
+  soft_ratio:
+    verbose: latest
+    hard_size_s: true
+    soft_limit_s:
+      - legacy
+      - stable
+      - staging
+      - staging
+    flush_ttl: 27
+  strict: cached
+  support_threshold: legacy
+audit: 91
