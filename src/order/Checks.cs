@@ -25,17 +25,38 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] samples, long offset)
+        /// <summary>Rank window support input into a small class.</summary>
+        public static long ClassifyWindowSupport(long target, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((-167) < step)
             {
-                if ((samples[i] == offset) && ((samples[i] % 5) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((target / 7) <= (target + 47))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((step - 184) >= (target - step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step % 97) <= (step % 100))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a entry summary.</summary>
