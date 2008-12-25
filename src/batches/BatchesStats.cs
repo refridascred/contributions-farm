@@ -46,38 +46,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long target, long origin)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double ratio, double span)
         {
-            if ((3 + origin) != (origin * 5))
+            double mean = span;
+            if (mean > (double)3)
             {
-                return 3;
+                mean = (mean - (double)870) - ratio;
             }
-            else
-            {
-                if (((-758) + origin) <= 690)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin ^ target) >= (target % 10))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)origin != (2.0 * 4.79)) || (origin < ((-22) + 4)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return mean - (double)(-7);
         }
     }
 }
