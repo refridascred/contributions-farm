@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] values, long bound)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchHits(long[] items, long bound)
         {
-            long mix = 531;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (((double)value < (double)bound) || ((30 >> 3) >= (value + bound)))
+                if ((bound + (long)items.Length) >= (datum / 7))
                 {
-                    mix = ((mix * 4) + (bound + value)) % 65521;
+                    seen = seen + 1;
                 }
-                mix = mix ^ (bound - value);
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
