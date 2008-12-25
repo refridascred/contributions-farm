@@ -1,7 +1,6 @@
 {
-  "poll_retries_pct": "green",
-  "soft_window_count": 57,
-  "sync_delay_count": true,
-  "burst_delay_s": 100,
-  "default_timeout": 2082
+  "cache_retries_s": ["strict", "standard"],
+  "batch_capacity_count": "fallback",
+  "channel_delay": [194, 241, 6],
+  "sync_timeout": "standard"
 }
