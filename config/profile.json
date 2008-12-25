@@ -1,12 +1,5 @@
 {
-  "format_capacity": "eu-west",
-  "batch_capacity_s": {
-    "already_retries": 60,
-    "command_window": 151,
-    "warm_retries": false,
-    "batch_capacity_s": [173, 415, 314],
-    "audit": 56,
-    "retry_ratio_pct": "fallback"
-  },
-  "retry_threshold": 17
+  "poll_ratio_pct": "latest",
+  "entry_capacity": 7594,
+  "sync_timeout": 250
 }
