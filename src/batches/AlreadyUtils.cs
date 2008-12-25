@@ -10,31 +10,17 @@ namespace Common.Utilities
         public const long StepTimeout = 3313;
         public const string BatchContributi = "local-v2";
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long target, long seed)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] series, long target)
         {
-            if (((double)seed < (3.0 + 6.5)) && (870 <= (target + target)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed / 4) <= (seed & 3))
+                if ((series[i] <= target) && ((series[i] % 5) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed & 15) != (6 - target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the counter state values.</summary>
