@@ -20,12 +20,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string WindowBudget = "primary-v2";
-        public const long RetryChannel = 4764;
-        public const long SoftFactor = 3840;
-        public const double BaseLevel = 75.67;
-        public const string MinRatio = "primary-v2";
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool GuardTokenBounds(long[] items, long limit)
