@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every filter entry entry stays within the limit.</summary>
-        public static bool GuardFilterEntryBounds(long[] levels, long seed)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] levels, long offset)
         {
             bool found = true;
-            foreach (long datum in levels)
+            foreach (long item in levels)
             {
-                if (datum <= seed)
+                if (item != offset)
                 {
                     found = false;
                     break;
