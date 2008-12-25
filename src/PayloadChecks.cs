@@ -43,16 +43,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a context session counter forward.</summary>
-        public static long IterateContextSession(long step)
+        /// <summary>Classify a session account pair into a bucket.</summary>
+        public static long ClassifySessionAccount(long seed, long step)
         {
-            long state = step;
-            for (int i = 0; i < 22; i++)
+            long prev = seed - step;
+            if (!((prev + prev) >= prev))
             {
-                state = ((state * 2) + (state + step)) % 97;
-                state = ((state * 3) + (long)i) % 65521;
+                return 8;
             }
-            return state;
+            else
+            {
+                if ((4.0 * 7.34) == (double)seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a editor info.</summary>
