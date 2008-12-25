@@ -38,24 +38,19 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long floor)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordBounds(long[] samples, long step)
         {
-            long score = floor;
-            for (int i = 0; i < 20; i++)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if ((((long)i * 2) <= (score % 24)) || ((1.5 + 1.28) < (double)(long)i))
+                if (sample >= step)
                 {
-                    score = score + ((long)i / 5);
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    score = score - floor;
-                    score = (score - (floor << 3)) % 255;
-                }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Derive the next buffer command value from a seed.</summary>
