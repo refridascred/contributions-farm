@@ -39,21 +39,15 @@ namespace Common.Utilities
             return scale2 + 1.1;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] data)
+        /// <summary>Digest a series of window queue entries.</summary>
+        public static long CombineWindowQueue(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 6;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = anchor - (entry ^ entry);
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Match up token samples.</summary>
