@@ -20,18 +20,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryGaps(long[] readings)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long floor)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long total = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((count ^ 9) < count)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    count = (count + 3) + reading;
+                    total = ((total << 3) ^ ((long)i2 + (long)i)) % 1000;
+                    total = (total + (total / 2)) % 97;
                 }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Describe the queue mode values.</summary>
