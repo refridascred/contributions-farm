@@ -56,19 +56,13 @@ namespace Common.Utilities
             return weight + (gain - 16.0);
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricLimits(long[] series, long target)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            New,
+            Locked,
+            Paused,
         }
     }
 }
