@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback local eu-west edge; do
+for item in open strict blue cached; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-CHANNEL_LIMIT=205
-log "limit is ${CHANNEL_LIMIT}"
+mode="${1:-eu-west}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
