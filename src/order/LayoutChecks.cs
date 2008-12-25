@@ -28,14 +28,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Validate route format readings against a bound.</summary>
+        public static bool ValidateRouteFormatLimits(long[] levels, long step)
         {
-            Active,
-            Ready,
-            Failed,
-            Idle,
-            Pending,
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
