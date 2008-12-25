@@ -56,21 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] items)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksRange(long[] samples, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value < seed)
                 {
-                    if ((items[i] + items[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Accumulate tools samples.</summary>
