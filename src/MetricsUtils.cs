@@ -14,10 +14,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchDepth = 5698;
-        public const string BurstRatio = "primary-1";
-        public const string RetrySpan = "fallback-v2";
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Pending,
+            Retry,
+            Dropped,
+        }
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
