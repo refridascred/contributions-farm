@@ -24,21 +24,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] levels)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] values, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (values[i] >= limit)
                 {
-                    if ((levels[i] + levels[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
