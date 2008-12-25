@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the stats cluster series from a seed.</summary>
-        public static long StepStatsCluster(long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] items, long bound)
         {
-            long acc = seed;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                acc = (acc << 2) ^ acc;
-                acc = ((acc * 3) + (long)i) % 4093;
+                if ((bound + (long)items.Length) < (hits + item))
+                {
+                    hits = hits + 3;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
