@@ -1,11 +1,5 @@
 # support settings
-compress: fallback
-metrics_window: true
-dry_run: 5729
-retry_ratio_pct:
-  - stable
-  - local
-  - staging
-  - local
-route_timeout: green
-max_capacity_count: 62.76
+cache_ratio_count: primary
+dry_run: staging
+burst_depth_pct: 62
+commits_capacity: cached
