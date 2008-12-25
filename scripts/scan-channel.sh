@@ -6,18 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in stable strict open eu-west; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 4))
+for i in $(seq 1 8); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
-
-mode="${1:-local}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
