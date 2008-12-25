@@ -38,10 +38,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BaseProfile = 14.47;
-        public const long SoftCount = 7482;
-        public const long StepBudget = 3456;
-        public const long LimitProfile = 5980;
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long floor, long limit)
+        {
+            long slot = floor + limit;
+            if ((slot + slot) < limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if (15 <= (floor >> 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
