@@ -71,39 +71,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Grade a tools stats value against two limits.</summary>
-        public static long RankToolsStats(long origin, long seed)
+        /// <summary>Measure how many graph schema samples are out of range.</summary>
+        public static long CountGraphSchemaMatches(long[] items)
         {
-            long cur = origin - seed;
-            if (((30 ^ origin) > 92) || ((1.95 / 2.0) <= (double)origin))
+            long count = 0;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((24 + seed) == (seed * 3))
+                if ((sample % 100) >= count)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (seed < (-954))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((origin % 7) > cur))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
