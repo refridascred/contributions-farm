@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] series)
+        /// <summary>Audit record context readings against a rule.</summary>
+        public static long MeasureRecordContextMatches(long[] levels, long origin)
         {
-            long total = 51;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                total = total ^ value;
-                for (int i = 0; i < 10; i++)
+                if ((double)origin == (8.4 * 9.37))
                 {
-                    total = ((total ^ (value * 5)) % 1000) ^ (long)i;
-                }
-                if ((737 - total) > value)
-                {
-                    total = (total + (total ^ 15)) % 65521;
-                }
-                else
-                {
-                    total = ((total * 3) + (total << 1)) % 97;
+                    count = (count + 1) - cell;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Fold a list of stats notes readings.</summary>
