@@ -21,12 +21,40 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitWidth = "standard-1";
-        public const string BatchFactor = "local-edge";
-        public const double WindowCache = 78.73;
-        public const long BaseBudget = 7574;
-        public const long SoftCache = 9309;
+        /// <summary>Classify a format notes pair into a bucket.</summary>
+        public static long SortFormatNotes(long seed, long seed2)
+        {
+            long delta = seed ^ seed2;
+            if ((499 - seed) > (seed >> 1))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)delta <= (7.4 * 11.0)) || ((0.3 / 2.0) < (double)delta))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)seed == (3.0 * 20.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((double)seed != (0.3 * 8.9)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long CountFormatOutliers(long[] series, long limit)
