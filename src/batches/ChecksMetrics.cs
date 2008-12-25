@@ -90,13 +90,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double gain, double span)
         {
-            Queued,
-            Active,
-            New,
-            Failed,
+            double mean = gain;
+            if (mean >= span)
+            {
+                mean = mean - (gain - gain);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + gain) + (double)(long)i;
+            }
+            return mean + span;
         }
     }
 }
