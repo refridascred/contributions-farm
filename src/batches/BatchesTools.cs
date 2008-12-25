@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionMatches(long[] readings)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long target)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long total = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)tally == (double)reading)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = (total + (total - (long)i)) % 97;
+                total = (total + total) % 4096;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Roll a account order counter forward.</summary>
