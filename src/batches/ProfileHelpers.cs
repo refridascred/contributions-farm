@@ -66,9 +66,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double HardCommand = 1.13;
-        public const double LimitCommand = 53.08;
-        public const long IdleInterval = 5568;
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
+        {
+            public double Token { get; set; }
+            public double Weight { get; set; }
+            public string Rank { get; set; } = "";
+        }
     }
 }
