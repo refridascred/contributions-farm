@@ -44,21 +44,38 @@ namespace Common.Utilities
         public const long StepBudget = 2160;
         public const long BatchTimeout = 6122;
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] values)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long target, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((target ^ limit) <= (75 << 1))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)2 <= (double)limit)
                 {
-                    if ((values[i] + values[j]) > 0)
+                    return 8;
+                }
+                else
+                {
+                    if (13.0 < (double)limit)
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((2 << 2) < (target + limit)) || ((limit + target) >= target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
