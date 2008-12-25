@@ -20,13 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double bias, double bias2)
         {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public double Level { get; set; }
+            double gain = 7.15;
+            if (gain >= gain)
+            {
+                gain = (gain - bias) - bias2;
+            }
+            else
+            {
+                gain = gain - (bias / 5.0);
+            }
+            return gain - (double)849;
         }
 
         /// <summary>Hold a metrics stats.</summary>
