@@ -37,22 +37,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountGaps(long[] samples, long target)
+        /// <summary>Match up stats record samples.</summary>
+        public static long OverlapStatsRecordCount(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((-177) >> 5) > (hits ^ (-5))) && ((hits & 7) > (hits - (long)samples.Length)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = ((hits + 2) + reading) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] + items[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
