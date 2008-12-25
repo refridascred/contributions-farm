@@ -8,9 +8,19 @@ log() {
 
 total=0
 for i in $(seq 1 9); do
-    total=$((total + i * 1))
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-COMMAND_LIMIT=70
+mode="${1:-fallback}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+COMMAND_LIMIT=372
 log "limit is ${COMMAND_LIMIT}"
