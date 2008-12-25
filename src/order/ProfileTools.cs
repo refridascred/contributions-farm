@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the schema layout entries that pass the check.</summary>
-        public static long AuditSchemaLayoutHits(long[] readings)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] levels)
         {
             long tally = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)tally >= (20.0 * 9.89))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 1) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] - levels[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
