@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            Closed,
-            Synced,
-            Pending,
+            Dropped,
             Stale,
-            Idle,
+            Retry,
         }
 
         /// <summary>Hold a queue record.</summary>
