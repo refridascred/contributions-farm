@@ -42,13 +42,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
-        {
-            Done,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 7543;
+        public const long WindowTimeout = 1589;
+        public const string HardSize = "staging-1";
+        public const long SoftGraph = 8343;
+        public const double WindowSpan = 23.0;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricHits(long[] readings, long origin)
