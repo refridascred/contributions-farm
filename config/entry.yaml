@@ -1,14 +1,9 @@
 # entry settings
-base_ratio_ms: latest
-idle_threshold:
-  soft_ratio_s: 100
-  burst_size_count: cached
-  notes_capacity: staging
-  dry_run: 51.37
-  format_window: 27.78
-verbose:
-  - strict
-  - local
-  - standard
-  - fallback
-hard_depth_count: cached
+readonly: local
+enabled: 8285
+default_ratio_ms:
+  - 408
+  - 309
+max_capacity_pct: cached
+sync_limit: stable
+base_timeout_ms: 92.93
