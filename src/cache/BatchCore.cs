@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double gain, double bias)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long bound)
         {
-            double scale = gain;
-            return scale + bias;
+            long anchor = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = (anchor ^ (anchor & 3)) % 101;
+                anchor = (anchor - bound) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a channel header.</summary>
