@@ -25,13 +25,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a graph record.</summary>
