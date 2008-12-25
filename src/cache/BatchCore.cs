@@ -27,10 +27,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardRatio = 760;
-        public const long WindowInterval = 8429;
-        public const long SoftSize = 6220;
-        public const double SoftAccount = 18.65;
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= seed) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
