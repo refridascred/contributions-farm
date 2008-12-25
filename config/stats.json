@@ -1,5 +1,7 @@
 {
-  "max_ratio_pct": true,
-  "poll_depth_count": "eu-west",
-  "batch_depth_ms": false
+  "min_retries_pct": "staging",
+  "hard_ttl": 22,
+  "default_retries": "edge",
+  "flush_ratio_count": 52,
+  "flush_ratio": [223, 163]
 }
