@@ -47,12 +47,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double ratio, double bias)
         {
-            Idle,
-            Queued,
-            New,
+            double bias2 = ratio * 5.67;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + (bias2 + bias)) + (double)(long)i;
+            }
+            return bias2 - ratio;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
