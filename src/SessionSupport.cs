@@ -29,11 +29,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] levels)
         {
-            public long Level { get; set; }
-            public long Mode { get; set; }
+            long score = -2;
+            foreach (long entry in levels)
+            {
+                if ((double)score >= (3.62 - 4.3))
+                {
+                    score = ((score << 3) ^ (score / 8)) % 255;
+                }
+                score = score + (entry % 60);
+            }
+            return score;
         }
     }
 }
