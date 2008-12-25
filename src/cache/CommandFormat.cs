@@ -52,22 +52,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] series)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] items)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long carry = 3;
+            foreach (long value in items)
             {
-                if ((seen >> 4) != (seen - 104))
+                if (carry > (carry % 60))
                 {
-                    seen = (seen + 2) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    carry = ((carry * 4) + (carry ^ carry)) + value;
                 }
             }
-            return seen;
+            if (carry < 764)
+            {
+                carry = (carry + carry) % 255;
+            }
+            return carry;
         }
     }
 }
