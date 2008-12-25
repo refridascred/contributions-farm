@@ -42,11 +42,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 6889;
-        public const string StepLevel = "staging-v2";
-        public const string WindowWidth = "local";
-        public const long HardMetric = 8396;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BatchCounter = 75.54;
+        public const long IdleWidth = 8400;
+        public const long WindowDepth = 9794;
+        public const long StepRatio = 5030;
 
         /// <summary>Define session limits and defaults.</summary>
         public const string HardSession = "primary-1";
