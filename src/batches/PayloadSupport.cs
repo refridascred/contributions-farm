@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] values)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long anchor = 8;
-            foreach (long entry in values)
-            {
-                anchor = ((anchor << 2) ^ (entry ^ 44)) % 4096;
-                if ((entry * 3) <= (entry - entry))
-                {
-                    anchor = anchor + anchor;
-                }
-                else
-                {
-                    anchor = anchor - (anchor - anchor);
-                }
-                anchor = (anchor + (anchor - anchor)) % 101;
-            }
-            return anchor;
+            public long Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
