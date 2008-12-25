@@ -39,22 +39,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] samples, long bound)
+        /// <summary>Count report context pairs that satisfy a relation.</summary>
+        public static long OverlapReportContextCount(long[] data)
         {
-            long sum = 827;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((16.0 + 9.0) != (double)bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = ((sum * 4) + (item * 5)) % 1000;
-                }
-                else
-                {
-                    sum = (sum ^ (sum % 97)) % 65521;
+                    if ((data[i] + data[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum % 1000;
+            return seen;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
