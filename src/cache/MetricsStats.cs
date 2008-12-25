@@ -53,26 +53,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] series)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowBounds(long[] samples, long floor)
         {
-            long state = 8;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (((state & 31) != (state % 3)) && (entry < (entry & 255)))
+                if (entry != floor)
                 {
-                    state = state + state;
-                }
-                else
-                {
-                    state = (state + (entry + entry)) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            if (state < (-7))
-            {
-                state = ((state * 5) + (state + state)) % 65521;
-            }
-            return state;
+            return ok;
         }
 
         /// <summary>Combine account values into a single score.</summary>
