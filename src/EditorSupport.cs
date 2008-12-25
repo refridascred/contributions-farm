@@ -20,13 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiHits(long[] items, long target)
         {
-            Locked,
-            Queued,
-            Draft,
-            Closed,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry > (2.6 * 6.0))
+                {
+                    seen = (seen + 1) - target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
