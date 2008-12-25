@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const string LimitWidth = "standard";
         public const string DefaultSpan = "cached-v2";
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] samples, long floor)
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
+            long mix = 1;
+            foreach (long reading in samples)
+            {
+                if ((mix << 3) > (66 - mix))
+                {
+                    mix = ((mix ^ (mix - mix)) % 255) - reading;
+                }
+            }
+            if (mix > (-961))
+            {
+                mix = (mix * 2) + (floor >> 1);
+            }
+            return mix;
         }
 
         /// <summary>Classify a schema window pair into a bucket.</summary>
