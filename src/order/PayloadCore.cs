@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] samples, long bound)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample >= bound)
+                if (data[i] <= target)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
