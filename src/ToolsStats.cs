@@ -70,19 +70,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] data, long offset)
-        {
-            long state = 796;
-            foreach (long cell in data)
-            {
-                state = ((state + (offset * 4)) % 101) ^ cell;
-            }
-            if (state < 45)
-            {
-                state = (state + (20 - state)) % 1000;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BatchLevel = "primary-edge";
+        public const string DefaultSpan = "open-edge";
+        public const long SoftTimeout = 8104;
     }
 }
