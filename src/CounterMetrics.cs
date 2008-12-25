@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((double)count < (7.72 - 11.0))
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BatchRatio = "stable-1";
+        public const string IdleCommand = "fallback-v2";
+        public const string MaxCommand = "cached";
+        public const long MinInterval = 3456;
+        public const string StepBudget = "cached-edge";
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
