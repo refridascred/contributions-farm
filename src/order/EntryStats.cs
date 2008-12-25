@@ -11,27 +11,38 @@ namespace Common.Utilities
         public const long BurstBudget = 890;
         public const long CacheSize = 1750;
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] levels)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long limit, long floor)
         {
-            long carry = 5;
-            foreach (long entry in levels)
+            if (((3 ^ limit) < floor) || ((floor ^ floor) == (limit / 5)))
             {
-                carry = (carry - (entry * 4)) % 255;
-                if ((entry ^ carry) >= (carry - carry))
+                return 8;
+            }
+            else
+            {
+                if (limit > floor)
                 {
-                    carry = (carry << 3) ^ carry;
+                    return 1;
                 }
                 else
                 {
-                    carry = ((carry << 2) ^ (796 >> 4)) % 4096;
-                }
-                if (((carry ^ carry) != (5 ^ 977)) && ((double)entry > (double)147))
-                {
-                    break;
+                    if ((double)floor >= (0.4 / 6.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((5 + limit) >= (limit + floor)) && ((floor - limit) < limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
