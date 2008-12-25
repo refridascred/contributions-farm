@@ -61,15 +61,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of graph editor readings.</summary>
-        public static long CombineGraphEditor(long[] readings, long floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] series, long limit)
         {
-            long sum = 208;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long value in series)
             {
-                sum = (((sum << 3) ^ value) % 97) - floor;
+                if (value < limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Describe the queue level values.</summary>
