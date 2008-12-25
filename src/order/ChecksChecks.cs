@@ -16,15 +16,19 @@ namespace Common.Utilities
             return weight - (floor * 4.82);
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long limit)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] readings, long floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 13; i++)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                if (datum <= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
