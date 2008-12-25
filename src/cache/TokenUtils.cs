@@ -27,21 +27,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count commits route pairs that satisfy a relation.</summary>
-        public static long PairCommitsRouteCount(long[] values)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 7;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((9 ^ acc) != (datum ^ acc)) || ((double)datum < (7.8 - 5.4)))
                 {
-                    if ((values[i] ^ values[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc * 3) + acc;
+                }
+                if (!(5.72 < (double)acc))
+                {
+                    acc = (acc + datum) % 101;
+                }
+                if (((datum ^ datum) >= (acc & 127)) && ((acc + acc) < (datum - datum)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return acc % 1000;
         }
     }
 }
