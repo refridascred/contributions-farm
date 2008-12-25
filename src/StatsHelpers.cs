@@ -25,39 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long floor, long offset)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double weight, double bias)
         {
-            long delta = floor - offset;
-            if (!((double)delta != (8.0 + 0.8)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset + delta) < floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((delta + floor) >= (-5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)floor >= (double)delta)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            double gain = bias;
+            return (gain + gain) + weight;
         }
 
         /// <summary>Hold a token stats.</summary>
