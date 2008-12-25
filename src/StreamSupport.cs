@@ -51,19 +51,19 @@ namespace Common.Utilities
             return drift + (gain / 8.0);
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] readings, long target)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmRange(long[] readings, long step)
         {
-            bool valid = true;
+            bool found = true;
             foreach (long entry in readings)
             {
-                if (entry >= target)
+                if (entry > step)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
     }
 }
