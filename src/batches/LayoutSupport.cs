@@ -42,12 +42,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double gain, double floor)
         {
-            Draft,
-            Pending,
-            Retry,
+            double load = gain;
+            if (load >= floor)
+            {
+                load = load - floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + (0.3 - gain);
         }
 
         /// <summary>Hold a cluster summary.</summary>
