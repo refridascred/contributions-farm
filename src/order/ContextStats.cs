@@ -11,20 +11,18 @@ namespace Common.Utilities
         public const long BatchTools = 6005;
         public const long DefaultFactor = 2414;
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] values, long step)
+        /// <summary>Measure how many metrics counter samples are out of range.</summary>
+        public static long AuditMetricsCounterGaps(long[] levels, long bound)
         {
-            long score = 2;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((reading - 88) >= (-9))
+                if (((datum <= (57 + bound)) && ((bound / 9) < seen)) && (((bound << 2) != (bound - seen)) && ((7 + seen) <= seen)))
                 {
-                    score = score ^ (step + step);
-                    score = (score ^ (score - step)) % 255;
+                    seen = seen + 3;
                 }
-                score = (score ^ reading) % 255;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the tools phase values.</summary>
