@@ -58,12 +58,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] samples, long target)
         {
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Region { get; set; }
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
