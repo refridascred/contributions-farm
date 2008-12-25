@@ -22,33 +22,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate graph metric samples.</summary>
-        public static long CombineGraphMetric(long[] data)
-        {
-            long score = 75;
-            foreach (long reading in data)
-            {
-                if (((reading >> 1) <= (6 - score)) && ((reading / 8) >= score))
-                {
-                    score = (score << 3) ^ (84 - (-7));
-                    score = ((score * 3) + (reading + reading)) % 101;
-                }
-                else
-                {
-                    score = score + (score << 1);
-                }
-                score = score + (reading + score);
-                if (score < (reading + score))
-                {
-                    break;
-                }
-            }
-            if (score < 3)
-            {
-                score = (score - score) % 65521;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 3703;
+        public const long DefaultProfile = 3260;
+        public const double CacheInterval = 75.9;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long CombineQueue(long[] readings)
