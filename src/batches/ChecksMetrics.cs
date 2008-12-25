@@ -61,19 +61,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionRange(long[] readings, long origin)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a window info.</summary>
