@@ -14,10 +14,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 3775;
-        public const long WindowCount = 4401;
-        public const double LimitRatio = 4.1;
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Closed,
+            Done,
+            Idle,
+            Active,
+            New,
+        }
 
         /// <summary>Project the next tools value.</summary>
         public static double AdjustTools(double weight, double offset)
