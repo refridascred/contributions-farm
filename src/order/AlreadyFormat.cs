@@ -38,19 +38,11 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] samples, long step)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double weight, double offset)
         {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double ratio = (double)(267 + 96);
+            return ((ratio - (double)3) + weight) + offset;
         }
 
         /// <summary>Derive the next buffer command value from a seed.</summary>
