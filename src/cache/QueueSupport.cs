@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a entry window reading by value.</summary>
-        public static long SeekEntryWindowIndex(long[] items, long offset)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] samples, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 597;
+            foreach (long cell in samples)
             {
-                if ((items[i] < offset) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                result = (((result + result) % 4096) ^ cell) - origin;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
