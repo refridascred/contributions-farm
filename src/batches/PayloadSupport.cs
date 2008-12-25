@@ -27,26 +27,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] items)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterOutliers(long[] samples)
         {
-            long state = 4;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((double)entry > (double)state)
+                if ((matches >> 5) < (reading % 16))
                 {
-                    state = (state << 2) ^ (state % 5);
+                    matches = matches + 2;
                 }
                 else
                 {
-                    state = ((state << 2) ^ (268 / 8)) % 101;
-                }
-                if (!((state + state) < (entry % 3)))
-                {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return state % 65521;
+            return matches;
         }
     }
 }
