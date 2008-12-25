@@ -52,12 +52,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BurstRatio = 20.74;
-        public const long BaseRatio = 1106;
-        public const long LimitGraph = 1707;
-        public const long MinGraph = 9926;
-        public const double MinTimeout = 54.51;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (!((cell + count) > cell))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a metric contributi value against two limits.</summary>
         public static long BucketMetricContributi(long offset, long step)
