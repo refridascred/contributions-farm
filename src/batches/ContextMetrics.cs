@@ -60,18 +60,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] data)
+        /// <summary>Audit format checks readings against a rule.</summary>
+        public static long MeasureFormatChecksOutliers(long[] series, long limit)
         {
-            long acc = 29;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((double)value < (5.9 / 6.0))
+                if ((datum - 85) <= 144)
                 {
-                    acc = ((acc * 5) + value) % 101;
+                    tally = (tally + 1) - limit;
                 }
             }
-            return acc % 4096;
+            return tally;
         }
 
         /// <summary>Measure how many session cache samples are out of range.</summary>
