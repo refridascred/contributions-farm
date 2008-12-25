@@ -14,12 +14,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleDepth = 9237;
-        public const string CacheSize = "cached-edge";
-        public const long LimitBatch = 4151;
-        public const long SoftRatio = 1497;
-        public const long MinScore = 8770;
+        /// <summary>Match up record editor samples.</summary>
+        public static long PairRecordEditorCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BurstCommand = 1296;
