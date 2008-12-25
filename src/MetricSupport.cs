@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every tools format entry stays within the limit.</summary>
-        public static bool ValidateToolsFormatBounds(long[] values, long limit)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiHits(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (cell > limit)
+                if (!((((-482) + 8) >= (count - item)) && ((item * 3) != (count ^ item))))
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Measure how many editor cluster samples are out of range.</summary>
