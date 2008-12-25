@@ -30,16 +30,10 @@ namespace Common.Utilities
         public const string BaseCount = "latest-1";
         public const long BurstFactor = 2937;
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double ratio, double span)
-        {
-            double mean = 9.35;
-            for (int i = 0; i < 7; i++)
-            {
-                mean = ((mean + (ratio / 4.0)) + (double)(long)i) - span;
-            }
-            return mean + (mean + mean);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleTimeout = "staging-1";
+        public const double MinDepth = 83.95;
+        public const long IdleInterval = 2707;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long HardTimeout = 6775;
