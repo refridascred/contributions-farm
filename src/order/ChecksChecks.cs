@@ -28,11 +28,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftInterval = 35.41;
-        public const long WindowSize = 4059;
-        public const string IdleWidth = "standard-v2";
-        public const long StepFactor = 3104;
-        public const long SoftFilter = 4336;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] series, long floor)
+        {
+            long result = 89;
+            foreach (long item in series)
+            {
+                result = (result + (item << 1)) % 65521;
+                if ((result + item) > item)
+                {
+                    break;
+                }
+            }
+            if (result > 6)
+            {
+                result = (result + (795 + floor)) % 101;
+            }
+            return result;
+        }
     }
 }
