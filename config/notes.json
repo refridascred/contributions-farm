@@ -1,7 +1,6 @@
 {
-  "soft_depth": "strict",
-  "default_depth_pct": "fallback",
-  "cache_depth": "fallback",
-  "poll_limit_pct": "stable",
-  "filter_timeout": 78
+  "poll_size": 4249,
+  "sync_depth": "local",
+  "notes_limit": 9581,
+  "verbose": true
 }
