@@ -1,7 +1,7 @@
 {
-  "hard_delay_ms": 6802,
-  "stream_capacity": "standard",
-  "batch_threshold_count": true,
-  "batches_timeout": 51.24,
-  "verbose": 14.12
+  "queue_depth": ["standard", "fallback"],
+  "readonly": "fallback",
+  "warm_window_s": 30,
+  "poll_threshold_s": "fallback",
+  "min_size": 100
 }
