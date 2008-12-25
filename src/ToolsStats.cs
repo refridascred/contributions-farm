@@ -96,13 +96,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            Stale,
-            Dropped,
-            Locked,
-            Pending,
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
         }
     }
 }
