@@ -67,13 +67,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] levels, long offset)
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public double Level { get; set; }
-            public long Mode { get; set; }
+            long total = 858;
+            foreach (long reading in levels)
+            {
+                total = ((((total << 2) ^ (2 % 16)) % 97) - reading) - offset;
+            }
+            return total % 65521;
         }
     }
 }
