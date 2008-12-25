@@ -20,19 +20,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] samples, long origin)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] series, long target)
         {
-            long score = 2;
-            foreach (long reading in samples)
+            long total = 269;
+            foreach (long cell in series)
             {
-                score = (score ^ score) ^ reading;
-                if ((origin + 7) == (8 / 5))
+                if (12.0 > (double)total)
                 {
-                    break;
+                    total = total + (cell + total);
                 }
+                total = (total << 2) ^ (target - 0);
             }
-            return score % 4096;
+            return total;
         }
 
         /// <summary>Hold a report info.</summary>
