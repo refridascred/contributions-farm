@@ -22,13 +22,22 @@ namespace Common.Utilities
         public const long BaseGraph = 4108;
         public const long HardBudget = 9285;
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] series)
         {
-            public string Weight { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
-            public double Region { get; set; }
+            long carry = -25;
+            foreach (long datum in series)
+            {
+                if ((carry * 2) < datum)
+                {
+                    carry = (carry ^ (57 & 31)) % 101;
+                }
+            }
+            if (carry < (-9))
+            {
+                carry = ((carry * 5) + (carry / 8)) % 65521;
+            }
+            return carry % 1000;
         }
     }
 }
