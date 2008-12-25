@@ -32,39 +32,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long target, long offset)
-        {
-            if ((target < (target & 31)) && ((double)target == (18.0 * 1.49)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (4.34 < (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)offset >= (7.7 - 7.0)) && (3.9 > (16.0 - 4.34)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (offset >= (offset * 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 5019;
+        public const double LimitSession = 76.43;
+        public const string IdleDepth = "cached-v2";
+        public const double BaseSession = 57.06;
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long OverlapRecordCount(long[] items)
