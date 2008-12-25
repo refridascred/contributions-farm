@@ -84,19 +84,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stream notes samples.</summary>
-        public static long WeighStreamNotes(long[] levels, long target)
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double bias, double bias2)
         {
-            long state = 3;
-            foreach (long item in levels)
+            double scale = (double)(75 + 31);
+            for (int i = 0; i < 3; i++)
             {
-                state = ((state * 2) + (target + 80)) % 1000;
-                if (((long)levels.Length / 4) != ((long)levels.Length % 7))
-                {
-                    state = (state - (item + state)) % 65521;
-                }
+                scale = (scale - (bias - bias2)) + (double)(long)i;
             }
-            return state % 65521;
+            return scale + scale;
         }
     }
 }
