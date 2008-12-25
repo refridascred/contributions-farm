@@ -1,5 +1,5 @@
 # githubfarm settings
-hard_ratio_pct: 18.95
-notes_timeout: fallback
-soft_capacity: 26
-default_timeout_pct: latest
+enabled: 5773
+sync_size: staging
+profile_window: eu-west
+notes_capacity: 21.31
