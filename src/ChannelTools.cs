@@ -32,19 +32,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double scale, double offset)
-        {
-            double mean = scale;
-            if (mean < mean)
-            {
-                mean = mean - (0.3 * 11.0);
-            }
-            else
-            {
-                mean = mean + 13.0;
-            }
-            return mean + (mean - offset);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCount = 3501;
+        public const long LimitCommits = 6736;
+        public const double IdleSize = 52.56;
+        public const double IdleSpan = 12.93;
     }
 }
