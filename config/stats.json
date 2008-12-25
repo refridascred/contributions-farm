@@ -1,6 +1,8 @@
 {
-  "burst_limit": 65.28,
-  "session_size": 50.93,
-  "persist": true,
-  "entry_capacity": 100
+  "enabled": 1683,
+  "strict": 77.61,
+  "idle_threshold_pct": 17,
+  "soft_ttl_s": true,
+  "schema_size": ["staging", "open", "stable", "standard"],
+  "session_interval": ["strict", "eu-west"]
 }
