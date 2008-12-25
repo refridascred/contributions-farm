@@ -23,19 +23,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double weight, double floor)
+        /// <summary>Check that every channel command entry stays within the limit.</summary>
+        public static bool CheckChannelCommandBounds(long[] items, long origin)
         {
-            double rate = weight;
-            if (rate <= weight)
+            bool ok = true;
+            foreach (long item in items)
             {
-                rate = (rate + (7.82 * 5.7)) + floor;
+                if (item >= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate - rate;
+            return ok;
         }
 
         /// <summary>Look up the position of a command counter sample.</summary>
