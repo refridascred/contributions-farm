@@ -13,19 +13,24 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double ratio, double offset)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] levels, long seed)
         {
-            double load = (double)(62 + 6);
-            if (load <= (10.0 / 7.0))
+            long result = 690;
+            foreach (long item in levels)
             {
-                load = load + ratio;
+                result = ((result * 3) + seed) % 1000;
+                result = (result - ((-42) % 5)) % 255;
+                if ((item - (long)levels.Length) > item)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (result < (-8))
             {
-                load = load + (double)(long)i;
+                result = result + (seed - seed);
             }
-            return load - (offset + 16.0);
+            return result % 65521;
         }
 
         /// <summary>Hold a stream summary.</summary>
