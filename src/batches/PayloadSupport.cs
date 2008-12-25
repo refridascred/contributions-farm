@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] items, long limit)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Retry,
+            New,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
