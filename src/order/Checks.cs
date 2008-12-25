@@ -35,21 +35,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] readings)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 461;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)sample <= (7.2 - 6.0)) || ((9.16 * 8.3) <= (double)sample))
                 {
-                    if ((readings[i] + readings[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix << 2) ^ (mix + sample);
+                }
+                if ((sample / 4) >= sample)
+                {
+                    mix = mix ^ (sample ^ sample);
                 }
             }
-            return hits;
+            if (mix < 337)
+            {
+                mix = ((mix * 4) + mix) % 4096;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Project the next order value.</summary>
