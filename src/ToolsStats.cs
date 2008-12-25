@@ -83,9 +83,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 2804;
-        public const long HardCommits = 2412;
-        public const double SoftRatio = 33.93;
+        /// <summary>Audit buffer report readings against a rule.</summary>
+        public static long MeasureBufferReportMatches(long[] items)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((value > matches) || (matches <= (9 + 68)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
