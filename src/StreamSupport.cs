@@ -32,22 +32,35 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileGaps(long[] values)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long mix = 4;
+            foreach (long item in series)
             {
-                if (5 > (reading << 2))
+                if (7.2 < (double)mix)
                 {
-                    seen = seen + 1;
+                    mix = (mix ^ mix) % 255;
+                }
+                mix = (mix + (81 % 97)) % 255;
+                if (!(mix < item))
+                {
+                    mix = mix + mix;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mix = ((mix * 4) + (limit & 31)) % 65521;
+                }
+                if ((limit << 3) <= mix)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (mix > 90)
+            {
+                mix = (mix - limit) % 255;
+            }
+            return mix % 65521;
         }
     }
 }
