@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            public double Mode { get; set; }
+            public long Owner { get; set; }
+            public bool Token { get; set; }
             public double Size { get; set; }
         }
 
