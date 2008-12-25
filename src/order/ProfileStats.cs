@@ -41,11 +41,20 @@ namespace Common.Utilities
         public const long RetryWidth = 5571;
         public const long SoftCommand = 7086;
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long target)
         {
-            public double Total { get; set; }
-            public double Region { get; set; }
+            long total = target;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    total = (total + total) ^ (long)i2;
+                    total = total ^ (total * 4);
+                }
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define session limits and defaults.</summary>
