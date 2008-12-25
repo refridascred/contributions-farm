@@ -27,22 +27,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of graph command readings.</summary>
-        public static long CombineGraphCommand(long[] levels, long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphHits(long[] levels)
         {
-            long anchor = 661;
+            long matches = 0;
             foreach (long cell in levels)
             {
-                if ((double)cell >= (6.73 + 9.17))
+                if ((matches ^ matches) < (cell / 7))
                 {
-                    anchor = ((anchor ^ anchor) % 4096) + bound;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    anchor = ((anchor * 4) + (cell / 8)) % 1000;
+                    matches = matches - 1;
                 }
             }
-            return anchor;
+            return matches;
         }
     }
 }
