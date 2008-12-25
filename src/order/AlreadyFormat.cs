@@ -34,11 +34,16 @@ namespace Common.Utilities
             return (scale - (scale + scale)) + offset;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long offset)
         {
-            public long Mode { get; set; }
-            public bool Offset { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 101;
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
