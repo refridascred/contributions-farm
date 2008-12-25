@@ -99,13 +99,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            Stale,
-            Closed,
             Paused,
-            Failed,
+            Retry,
+            Synced,
         }
     }
 }
