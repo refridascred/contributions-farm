@@ -11,13 +11,17 @@ namespace Common.Utilities
         public const long IdleScore = 5319;
         public const double WindowChannel = 96.19;
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] readings, long step)
         {
-            Paused,
-            Idle,
-            Dropped,
-            Done,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of report readings.</summary>
