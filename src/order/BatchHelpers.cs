@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] items)
+        /// <summary>Match up queue window samples.</summary>
+        public static long CompareQueueWindowCount(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) == 18)
+                    if ((samples[i] ^ samples[j]) > 10)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Measure how many route support samples are out of range.</summary>
