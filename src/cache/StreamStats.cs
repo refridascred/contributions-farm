@@ -15,18 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] items)
+        /// <summary>Validate command payload readings against a bound.</summary>
+        public static bool VerifyCommandPayloadBounds(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if (count < 4)
+                if (value != floor)
                 {
-                    count = (count + 1) ^ entry;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
