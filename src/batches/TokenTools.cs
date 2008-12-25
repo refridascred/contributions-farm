@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] readings)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
