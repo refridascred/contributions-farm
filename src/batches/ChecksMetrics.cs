@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next entry layout value from a seed.</summary>
-        public static long IterateEntryLayout(long bound)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long mark = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = (mark << 2) ^ 0;
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            Pending,
+            Failed,
+            Closed,
+            Paused,
         }
 
         /// <summary>Classify a format notes pair into a bucket.</summary>
