@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BatchInterval = 69.57;
-        public const double MinSize = 1.46;
-        public const string HardBatches = "legacy";
-        public const string MinBatches = "latest-1";
-        public const long StepBatches = 9523;
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
