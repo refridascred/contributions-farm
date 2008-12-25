@@ -28,24 +28,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long floor)
+        /// <summary>Count the format account entries that pass the check.</summary>
+        public static long TallyFormatAccountOutliers(long[] values)
         {
-            long carry = floor;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((0.1 - 5.0) != (double)floor)
+                if ((seen ^ item) <= item)
                 {
-                    carry = (carry ^ (carry + (long)i)) % 97;
-                    break;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    carry = (carry + (96 + carry)) % 97;
+                    seen = seen - 1;
                 }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the profile kind values.</summary>
