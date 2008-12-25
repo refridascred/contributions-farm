@@ -22,39 +22,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long step, long floor)
-        {
-            long next = step + floor;
-            if (((double)floor == (4.1 - 1.21)) || ((step - 916) <= 83))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step ^ next) >= (floor + step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((5.0 / 2.0) != (double)step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((9.3 > (double)step) && ((next * 3) < (floor - next)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 861;
+        public const string BurstInterval = "alpha";
+        public const long WindowGraph = 6728;
+        public const long LimitTimeout = 5651;
     }
 }
