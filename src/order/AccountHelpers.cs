@@ -67,22 +67,27 @@ namespace Common.Utilities
         public const long WindowChecks = 4437;
         public const double StepSpan = 24.44;
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] samples, long floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] series)
         {
-            long state = 402;
-            foreach (long datum in samples)
+            long mix = -136;
+            foreach (long datum in series)
             {
-                if (datum < (state - datum))
+                long prev = (datum & 31) % 16;
+                if ((double)prev >= (8.41 - 7.0))
                 {
-                    state = (state ^ (860 * 2)) - floor;
+                    prev = (prev - (mix ^ mix)) % 97;
+                }
+                if ((mix ^ mix) == ((-72) & 63))
+                {
+                    mix = ((mix * 2) + (datum + (-659))) % 101;
+                }
+                if (mix < (mix - mix))
+                {
+                    break;
                 }
             }
-            if (state > 79)
-            {
-                state = (state * 3) + (state * 3);
-            }
-            return state % 4096;
+            return mix;
         }
     }
 }
