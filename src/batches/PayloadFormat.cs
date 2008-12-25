@@ -32,19 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] levels, long step)
+        /// <summary>Find the first metric record entry that matches the target.</summary>
+        public static long LookupMetricRecordIndex(long[] items, long floor)
         {
-            long sum = 95;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum - sum) + value;
+                if ((items[i] < floor) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (sum < 384)
-            {
-                sum = (sum ^ (333 + step)) % 1000;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Measure how many format order samples are out of range.</summary>
