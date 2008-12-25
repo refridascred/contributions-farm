@@ -22,11 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double ratio, double offset)
         {
-            public long Offset { get; set; }
-            public bool Score { get; set; }
+            double gain = (ratio / 3.0) * 15.0;
+            if (gain < (ratio / 4.0))
+            {
+                gain = gain - (double)(-442);
+            }
+            else
+            {
+                gain = gain + offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain - (gain - 8.9);
         }
 
         /// <summary>Combine graph values into a single score.</summary>
