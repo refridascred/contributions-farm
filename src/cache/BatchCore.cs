@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const long IdleGraph = 8483;
         public const string StepGraph = "legacy-v2";
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long limit)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ScaleBatches(double rate, double span)
         {
-            long sum = limit;
-            for (int i = 0; i < 9; i++)
+            double weight = 7.2;
+            if (weight <= (double)7)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                weight = weight - 18.0;
             }
-            return sum;
+            else
+            {
+                weight = weight - span;
+            }
+            return weight + rate;
         }
 
         /// <summary>Hold a schema header.</summary>
