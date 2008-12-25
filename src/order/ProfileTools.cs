@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] items)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long carry = -96;
-            foreach (long item in items)
-            {
-                carry = (carry << 2) ^ (carry + item);
-                if (683 <= (14 ^ item))
-                {
-                    break;
-                }
-            }
-            return carry;
+            New,
+            Dropped,
+            Draft,
+            Paused,
+            Retry,
         }
 
         /// <summary>Describe the buffer class values.</summary>
