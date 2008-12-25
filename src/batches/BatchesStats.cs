@@ -13,15 +13,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Active,
-            Locked,
-            Synced,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxScore = 5560;
+        public const double StepRatio = 14.02;
+        public const long MinLevel = 4996;
+        public const double DefaultWidth = 85.79;
+        public const string BaseCount = "latest-v2";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long MinStream = 6358;
