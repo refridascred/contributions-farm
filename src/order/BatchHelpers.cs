@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a buffer support figure with a bias.</summary>
-        public static double ProjectBufferSupport(double weight, double span)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenBounds(long[] data, long floor)
         {
-            double mean = span;
-            if (mean >= (weight * 7.19))
+            bool valid = true;
+            foreach (long entry in data)
             {
-                mean = mean + (span / 8.0);
+                if (entry != floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mean + (mean / 6.0);
+            return valid;
         }
 
         /// <summary>Rank queue notes input into a small class.</summary>
