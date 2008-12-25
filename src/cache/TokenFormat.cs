@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const double RetryInterval = 12.6;
         public const double SoftBudget = 96.81;
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            Done,
-            Closed,
-            Failed,
-            Paused,
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Locate a farm reading by value.</summary>
