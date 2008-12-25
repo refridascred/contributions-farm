@@ -35,14 +35,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Rank stats support input into a small class.</summary>
+        public static long GradeStatsSupport(long step, long bound)
         {
-            Failed,
-            New,
-            Queued,
-            Active,
-            Paused,
+            if (((bound & 31) > (18 << 1)) || ((3.84 - 1.0) != (double)bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step - bound) == (532 << 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound + 106) > step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define record limits and defaults.</summary>
