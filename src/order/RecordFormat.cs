@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stats counter entries that pass the check.</summary>
-        public static long TallyStatsCounterMatches(long[] values)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsBounds(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if ((double)value <= 2.4)
+                if (cell != target)
                 {
-                    tally = tally + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
