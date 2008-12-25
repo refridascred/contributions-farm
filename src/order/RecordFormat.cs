@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] data, long target)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long mark = 825;
+            foreach (long reading in items)
             {
-                if ((seen + target) >= target)
-                {
-                    seen = (seen + 3) + datum;
-                }
+                mark = (((mark << 2) ^ (floor << 2)) % 4096) + reading;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
