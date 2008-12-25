@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseSize = 2395;
-        public const string HardCounter = "latest";
-        public const long BaseCount = 8669;
-        public const string CacheCounter = "latest";
-        public const long StepCounter = 8496;
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
+            public double Count { get; set; }
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long AuditBatchesOutliers(long[] samples, long offset)
