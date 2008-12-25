@@ -45,22 +45,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] data, long seed)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long mix = -5;
-            foreach (long reading in data)
-            {
-                if (!((double)reading >= (14.0 - 6.56)))
-                {
-                    mix = ((mix << 2) ^ mix) % 97;
-                }
-            }
-            if (mix < 132)
-            {
-                mix = mix - (seed & 127);
-            }
-            return mix;
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the profile mode values.</summary>
