@@ -54,11 +54,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double LimitWidth = 41.95;
-        public const long RetryBatch = 7073;
-        public const long CacheBatch = 2701;
-        public const long BatchSpan = 3160;
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double rate, double floor)
+        {
+            double ratio = rate + (double)8;
+            if (ratio < floor)
+            {
+                ratio = ratio + floor;
+            }
+            else
+            {
+                ratio = ratio - rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (double)69) + (double)(long)i;
+            }
+            return ratio + floor;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long IdleRatio = 6108;
