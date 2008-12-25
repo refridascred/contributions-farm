@@ -30,19 +30,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count the already metric entries that pass the check.</summary>
-        public static long CountAlreadyMetricOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)matches != (double)reading)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double RetryPayload = 6.85;
+        public const long WindowPayload = 3990;
+        public const string MaxWidth = "legacy-1";
+        public const long SoftSize = 2634;
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long TallySchemaOutliers(long[] samples)
