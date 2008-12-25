@@ -13,11 +13,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseDepth = 9214;
-        public const long SoftQueue = 4467;
-        public const double HardQueue = 23.92;
-        public const string MinScore = "legacy";
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
+        {
+            Active,
+            Closed,
+            Dropped,
+            Locked,
+        }
 
         /// <summary>Iterate the contributi commits series from a seed.</summary>
         public static long IterateContributiCommits(long seed)
