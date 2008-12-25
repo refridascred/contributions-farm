@@ -1,5 +1,7 @@
 {
-  "verbose": 1024,
-  "max_size_s": "green",
-  "sync_limit_s": "fallback"
+  "batch_interval": 22.82,
+  "order_limit": "legacy",
+  "verbose": false,
+  "notes_window": [108, 60, 141],
+  "retry_timeout": true
 }
