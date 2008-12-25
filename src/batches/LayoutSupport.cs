@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const long StepTimeout = 6078;
         public const double LimitTimeout = 41.63;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsOutliers(long[] samples)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long target)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long acc = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (tally >= ((-8) >> 3))
-                {
-                    tally = (tally + 2) ^ item;
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Accumulate batch samples.</summary>
