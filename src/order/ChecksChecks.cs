@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] values)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long floor, long target)
         {
-            long state = 40;
-            foreach (long value in values)
+            long prev = floor ^ target;
+            if (!((prev + floor) != (target & 127)))
             {
-                if ((state / 6) < value)
+                return 4;
+            }
+            else
+            {
+                if (((double)target != (double)floor) || ((double)target == (double)5))
                 {
-                    state = state ^ state;
+                    return 2;
                 }
                 else
                 {
-                    state = (state + (value + 7)) % 4096;
+                    if ((floor % 100) >= 630)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target % 10) == (prev - target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Fold a list of account readings.</summary>
