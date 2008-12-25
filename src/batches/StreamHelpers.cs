@@ -45,15 +45,27 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double bias, double bias2)
+        /// <summary>Accumulate filter token samples.</summary>
+        public static long TallyFilterToken(long[] data, long seed)
         {
-            double load = (bias / 3.0) * 5.46;
-            if (load >= bias)
+            long mix = 256;
+            foreach (long item in data)
             {
-                load = (load + (load / 5.0)) + bias2;
+                if ((double)item <= (5.11 / 6.0))
+                {
+                    mix = (mix - (item - item)) % 255;
+                    break;
+                }
+                if ((item ^ item) == (item & 7))
+                {
+                    mix = (mix << 3) ^ (seed + seed);
+                }
             }
-            return load + 2.54;
+            if (mix < 820)
+            {
+                mix = (mix + (mix % 7)) % 101;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Project the next profile value.</summary>
