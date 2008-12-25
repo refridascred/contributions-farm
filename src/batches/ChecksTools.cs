@@ -19,27 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] readings, long offset)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] series, long origin)
         {
-            long mark = 638;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark + (mark / 7)) - offset;
-                if (((-1) >> 4) < (mark << 3))
+                if (series[i] <= origin)
                 {
-                    mark = mark + (entry ^ mark);
-                }
-                else
-                {
-                    mark = mark + (509 + mark);
+                    return (long)i;
                 }
             }
-            if (mark < 673)
-            {
-                mark = (mark << 2) ^ (94 / 7);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Rank route input into a small class.</summary>
