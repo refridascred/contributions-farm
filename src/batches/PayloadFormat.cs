@@ -19,14 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            Active,
-            Synced,
-            Retry,
-            Dropped,
-            Paused,
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
