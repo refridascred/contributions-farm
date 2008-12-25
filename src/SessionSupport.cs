@@ -33,12 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] readings, long target)
         {
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (((double)matches <= 11.0) || ((-53) <= (target + matches)))
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+            }
+            return matches;
         }
     }
 }
