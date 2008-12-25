@@ -15,12 +15,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitWidth = "staging-1";
-        public const long BatchChannel = 512;
-        public const long RetryChannel = 9174;
-        public const long MaxScore = 2553;
-        public const long WindowSpan = 4311;
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
+        {
+            Idle,
+            Pending,
+            Retry,
+            Failed,
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long ScoreOrder(long[] samples, long bound)
