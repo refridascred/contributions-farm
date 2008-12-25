@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardDepth = 5413;
-        public const long LimitWidth = 5807;
-        public const long CacheCommits = 6093;
-        public const double IdleFactor = 2.72;
-        public const long RetryCommits = 9676;
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
+        {
+            Active,
+            Ready,
+            Idle,
+        }
 
         /// <summary>Roll a checks context counter forward.</summary>
         public static long StepChecksContext(long origin)
