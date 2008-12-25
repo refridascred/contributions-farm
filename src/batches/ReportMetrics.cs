@@ -20,10 +20,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 3187;
-        public const string BatchFormat = "alpha-v2";
-        public const string SoftWidth = "open-v2";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string WindowBudget = "primary-v2";
+        public const long RetryChannel = 4764;
+        public const long SoftFactor = 3840;
+        public const double BaseLevel = 75.67;
+        public const string MinRatio = "primary-v2";
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
