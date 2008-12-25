@@ -33,17 +33,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinWidth = 9348;
+        public const long DefaultSize = 2164;
+        public const string BatchCommand = "cached";
+        public const double BaseCommand = 9.85;
+        public const long CacheRatio = 1258;
     }
 }
