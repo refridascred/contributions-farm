@@ -25,22 +25,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate command cache samples.</summary>
-        public static long TotalCommandCache(long[] values, long target)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long anchor = 9;
-            foreach (long item in values)
-            {
-                if ((15.0 - 1.41) == (double)target)
-                {
-                    anchor = ((anchor + anchor) % 4096) - item;
-                }
-            }
-            if (anchor < 1)
-            {
-                anchor = (anchor - (anchor >> 2)) % 97;
-            }
-            return anchor;
+            Stale,
+            Pending,
+            Failed,
+            Queued,
+            Ready,
         }
 
         /// <summary>Hold a record summary.</summary>
