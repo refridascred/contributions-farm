@@ -1,15 +1,4 @@
 # support settings
-verbose: green
-base_ttl: true
-burst_depth_ms:
-  hard_retries_s: 15.05
-  verbose:
-    - 432
-    - 76
-    - 213
-  dry_run: 981
-  compress: standard
-  readonly: eu-west
-enabled: 85.23
-hard_ttl_ms: edge
-burst_threshold_s: false
+idle_limit: true
+compress: legacy
+base_threshold: 6558
