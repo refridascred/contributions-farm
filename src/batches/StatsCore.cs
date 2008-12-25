@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] series, long offset)
+        /// <summary>Rank filter schema input into a small class.</summary>
+        public static long RankFilterSchema(long step, long floor)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long offset = step + floor;
+            if (!(floor < (floor + 3)))
             {
-                if ((offset & 127) <= (546 + offset))
+                return 2;
+            }
+            else
+            {
+                if (((floor % 60) == (offset - step)) && ((offset - offset) < (140 & 15)))
                 {
-                    matches = (matches + 3) - value;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor >= (3.9 - 5.1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a commits summary.</summary>
