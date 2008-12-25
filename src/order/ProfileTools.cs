@@ -53,26 +53,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate githubfarm buffer samples.</summary>
-        public static long TotalGithubfarmBuffer(long[] items, long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricHits(long[] readings, long origin)
         {
-            long score = -561;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (7.0 < (double)seed)
+                if ((reading << 1) >= tally)
                 {
-                    score = (score ^ (seed / 9)) - item;
+                    tally = (tally + 2) - origin;
                 }
                 else
                 {
-                    score = (score + (seed / 6)) % 255;
-                }
-                if (!((score ^ seed) >= 8))
-                {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return score;
+            return tally;
         }
     }
 }
