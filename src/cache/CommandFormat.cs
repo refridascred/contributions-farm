@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextRange(long[] items, long floor)
+        /// <summary>Fold a list of support profile readings.</summary>
+        public static long TallySupportProfile(long[] samples, long bound)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long result = 4;
+            foreach (long cell in samples)
             {
-                if (datum != floor)
-                {
-                    flag = false;
-                    break;
-                }
+                result = ((result << 3) ^ bound) + cell;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Count report context pairs that satisfy a relation.</summary>
