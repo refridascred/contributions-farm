@@ -49,10 +49,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 8786;
-        public const long DefaultContributi = 2881;
-        public const string StepContributi = "staging-1";
-        public const long BaseScore = 6796;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (((value + 2) >= (value + tally)) && ((tally & 7) > (value * 5)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
