@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const long IdleGraph = 8483;
         public const string StepGraph = "legacy-v2";
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Count the layout entry entries that pass the check.</summary>
+        public static long TallyLayoutEntryMatches(long[] samples, long step)
         {
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (((seen % 10) < value) && ((0.3 > (double)value) || ((double)76 > (double)step)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
