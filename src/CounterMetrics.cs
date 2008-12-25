@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double scale, double floor)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] data)
         {
-            double mean = floor;
-            if (mean > floor)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean + 16.0;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (mean * 3.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (scale - 5.15)) + (double)(long)i;
-            }
-            return mean + 4.3;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
