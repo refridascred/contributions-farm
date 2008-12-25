@@ -33,19 +33,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] items, long target)
-        {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseBudget = 2059;
+        public const long BatchMetric = 3675;
+        public const long MinMetric = 1163;
+        public const long StepRatio = 6207;
     }
 }
