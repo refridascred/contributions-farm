@@ -50,10 +50,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double CacheDepth = 8.62;
-        public const long WindowMetrics = 3674;
-        public const long MaxMetrics = 3076;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryWidth = "staging-v2";
+        public const long LimitCommand = 5567;
+        public const long IdleCommand = 8715;
+        public const long StepInterval = 5413;
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long GradeMetric(long limit, long floor)
