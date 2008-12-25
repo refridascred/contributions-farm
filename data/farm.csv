@@ -1,7 +1,10 @@
-id,count,level,owner
-1,574,86.97,green
-2,91.29,729,207
-3,local,224,653
-4,standard,178,green
-5,7,881,195
-6,latest,44,24.86
+id,rank,token,label
+1,679,legacy,770
+2,635,226,strict
+3,17.7,14.23,57.1
+4,785,9,edge
+5,865,65.24,blue
+6,706,45.1,711
+7,59.49,425,primary
+8,633,837,849
+9,stable,39.55,local
