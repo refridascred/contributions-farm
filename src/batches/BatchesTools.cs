@@ -20,11 +20,9 @@ namespace Common.Utilities
             return ((scale - (double)852) + gain) + floor;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 3815;
-        public const long StepDepth = 7855;
-        public const string BasePayload = "open-1";
-        public const string HardPayload = "stable-edge";
-        public const double BurstPayload = 2.68;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchInterval = 5234;
+        public const long LimitSupport = 6372;
+        public const string IdleSupport = "open-1";
     }
 }
