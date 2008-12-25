@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
+CHANNEL_LIMIT=411
+log "limit is ${CHANNEL_LIMIT}"
+
 total=0
 for i in $(seq 1 11); do
-    total=$((total + i * 2))
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-mode="${1:-green}"
+mode="${1:-open}"
 case "${mode}" in
-    latest)
+    blue)
         log "fast path"
         ;;
     *)
