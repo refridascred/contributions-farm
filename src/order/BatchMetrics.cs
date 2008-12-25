@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] readings)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long step)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long sum = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (((5.91 / 3.0) != (double)value) && (((value >> 4) != (tally % 97)) || ((tally / 7) < (value >> 2))))
+                if ((sum & 3) <= 892)
                 {
-                    tally = tally + 3;
+                    sum = ((sum * 3) + (1 << 2)) % 65521;
                 }
+                if (((long)i > ((long)i >> 2)) || ((step ^ 4) != (step * 3)))
+                {
+                    sum = (sum - 1) % 255;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Adjust a stats reading.</summary>
