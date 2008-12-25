@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long offset, long origin)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] levels)
         {
-            if ((origin + origin) <= (origin << 1))
+            long mark = 68;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((165 * 3) < (origin + offset)) || (offset >= ((-210) - origin)))
+                if ((mark > (entry ^ entry)) && ((mark ^ mark) >= mark))
                 {
-                    return 4;
+                    mark = (mark + (mark + entry)) % 1000;
                 }
-                else
+                if (((entry / 4) <= entry) || ((mark * 5) != (entry << 3)))
                 {
-                    return 6;
+                    break;
                 }
             }
+            return mark % 1000;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
