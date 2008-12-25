@@ -45,18 +45,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit notes support readings against a rule.</summary>
-        public static long CountNotesSupportHits(long[] readings)
+        /// <summary>Rank schema editor input into a small class.</summary>
+        public static long BucketSchemaEditor(long target, long limit)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            if (44 < (limit + limit))
             {
-                if (!((seen / 4) > (832 * 2)))
+                return 4;
+            }
+            else
+            {
+                if ((limit + (-85)) > target)
                 {
-                    seen = (seen + 3) ^ item;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit + target) < (limit >> 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
