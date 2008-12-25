@@ -66,12 +66,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
-        {
-            public bool Rank { get; set; }
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BaseFactor = "staging-1";
+        public const long SoftBatches = 7642;
+        public const long BaseBatches = 7102;
+        public const long HardLevel = 8631;
+        public const long LimitInterval = 975;
     }
 }
