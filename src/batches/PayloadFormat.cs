@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of batch token entries.</summary>
-        public static long TotalBatchToken(long[] values)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long seed, long seed2)
         {
-            long acc = 2;
-            foreach (long item in values)
+            if ((double)seed > 6.0)
             {
-                acc = ((acc << 3) ^ (acc << 3)) - item;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if ((seed + 319) >= (7 % 10))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed2 << 3) > (seed + seed2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of token readings.</summary>
