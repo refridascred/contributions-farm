@@ -32,12 +32,38 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long target, long offset)
         {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public long Size { get; set; }
+            if ((target < (target & 31)) && ((double)target == (18.0 * 1.49)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (4.34 < (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)offset >= (7.7 - 7.0)) && (3.9 > (16.0 - 4.34)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (offset >= (offset * 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
