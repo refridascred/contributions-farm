@@ -27,13 +27,12 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Synced,
-            Dropped,
-            Paused,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 30;
+        public const double CacheQueue = 53.02;
+        public const long DefaultSize = 9585;
+        public const long SoftQueue = 1191;
+        public const long IdleInterval = 1961;
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long DeriveCounter(long offset)
