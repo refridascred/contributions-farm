@@ -31,13 +31,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] values, long origin)
         {
-            Idle,
-            Pending,
-            Stale,
-            Dropped,
+            long state = 78;
+            foreach (long sample in values)
+            {
+                if ((4.8 - 2.92) >= (double)sample)
+                {
+                    state = (state - (sample / 6)) % 4096;
+                }
+                else
+                {
+                    state = (state ^ (sample + origin)) % 4096;
+                }
+            }
+            if (state > 6)
+            {
+                state = (state - state) % 255;
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a metric options.</summary>
