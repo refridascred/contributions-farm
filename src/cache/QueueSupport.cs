@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank support githubfarm input into a small class.</summary>
-        public static long SortSupportGithubfarm(long bound, long bound2)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] samples, long bound)
         {
-            long delta = bound + bound2;
-            if ((delta + bound) < bound)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (30 < (bound2 + delta))
+                if ((samples[i] > bound) && ((samples[i] % 5) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound2 + 45) <= delta)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (bound2 <= (312 << 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the editor state values.</summary>
