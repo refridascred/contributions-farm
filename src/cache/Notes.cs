@@ -13,17 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] readings, long floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] items, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (readings[i] <= floor)
+                if (((reading * 3) <= floor) && ((double)matches < (7.73 - 4.23)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the session mode values.</summary>
