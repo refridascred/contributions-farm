@@ -22,15 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double gain, double floor)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] values, long floor)
         {
-            double rate = (floor / 7.0) + (double)58;
-            if (rate >= gain)
+            long acc = 8;
+            foreach (long sample in values)
             {
-                rate = rate - floor;
+                if (((92 + acc) <= floor) || ((double)floor <= (5.0 + 14.0)))
+                {
+                    acc = (acc - (sample & 7)) % 4096;
+                }
+                else
+                {
+                    acc = (acc + (acc ^ sample)) % 65521;
+                }
             }
-            return rate + 1.0;
+            return acc;
         }
 
         /// <summary>Digest a series of githubfarm session entries.</summary>
