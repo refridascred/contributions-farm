@@ -1,6 +1,15 @@
 {
-  "channel_delay": "eu-west",
-  "burst_ratio": 23.73,
-  "window_delay": 36.05,
-  "flush_limit_ms": "standard"
+  "batch_depth_count": false,
+  "sync_window_count": 7.91,
+  "strict": {
+    "soft_ttl_ms": [181, 205, 372, 345],
+    "batch_delay_pct": 17.64,
+    "min_depth": 9825,
+    "audit": 23.99,
+    "default_capacity_pct": 81.13,
+    "default_ttl_ms": 4033
+  },
+  "burst_ratio_s": "strict",
+  "default_timeout_count": false,
+  "base_window": "blue"
 }
