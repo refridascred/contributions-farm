@@ -31,18 +31,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] readings, long floor)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((floor ^ floor) >= (hits ^ 68))
-                {
-                    hits = (hits + 3) ^ value;
-                }
-            }
-            return hits;
+            public bool Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
