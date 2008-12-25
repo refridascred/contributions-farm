@@ -1,21 +1,19 @@
 # entry settings
-default_size:
-  metric_delay:
-    - local
-    - standard
-  idle_timeout_count: strict
-  layout_delay: 1542
-  burst_timeout: 100
-audit: 1949
-min_timeout:
-  max_limit_pct:
-    channel_limit: 16
-    default_capacity_pct: local
-    schema_ttl: latest
-    dry_run: 1024
-    soft_depth_s: 30
-  poll_ttl_s: false
-  compress: 49.04
-  flush_limit: fallback
-  strict: 23.66
-  batch_ratio_ms: latest
+dry_run: strict
+format_size: 87.22
+payload_depth: true
+warm_depth_count:
+  - 468
+  - 129
+  - 67
+  - 498
+command_depth:
+  dry_run: edge
+  graph_ratio: 250
+  audit: true
+  cache_threshold_count:
+    - staging
+    - cached
+    - fallback
+    - blue
+  verbose: strict
