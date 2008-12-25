@@ -1,6 +1,8 @@
 {
-  "schema_threshold": 37,
-  "record_limit": false,
-  "idle_limit_count": true,
-  "compress": 49.98
+  "min_capacity_ms": 27,
+  "base_timeout_pct": ["strict", "blue"],
+  "metrics_interval": "blue",
+  "cache_limit_ms": 98.11,
+  "default_threshold_s": 5145,
+  "schema_retries": 39.62
 }
