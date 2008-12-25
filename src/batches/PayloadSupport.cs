@@ -25,34 +25,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] levels)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] items)
         {
-            long anchor = 365;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (((anchor << 2) ^ 841) % 1000) ^ (long)i;
-                }
-                if (!!((anchor * 2) <= (anchor - (long)levels.Length)))
-                {
-                    anchor = ((anchor * 2) + (reading % 12)) % 97;
-                }
-                if (reading > (reading / 3))
-                {
-                    anchor = anchor + (anchor / 3);
-                }
-                if (!((10 + anchor) > reading))
-                {
-                    break;
+                    if ((items[i] ^ items[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (anchor > 700)
-            {
-                anchor = anchor ^ (anchor / 9);
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
