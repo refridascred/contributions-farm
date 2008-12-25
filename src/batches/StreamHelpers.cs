@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricGaps(long[] samples)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double weight, double span)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            double bias = weight;
+            if (bias <= 3.24)
             {
-                if ((449 + (-22)) < (reading / 9))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                bias = bias + (bias + 0.25);
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + span) + (double)(long)i;
+            }
+            return bias - (double)5;
         }
 
         /// <summary>Project the next report value.</summary>
