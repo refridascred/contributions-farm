@@ -44,12 +44,22 @@ namespace Common.Utilities
         public const long HardDepth = 6158;
         public const double DefaultScore = 89.39;
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] levels, long target)
         {
-            public double Mode { get; set; }
-            public bool Score { get; set; }
-            public long Rank { get; set; }
+            long acc = 0;
+            foreach (long cell in levels)
+            {
+                if (!((double)acc != (3.86 * 12.0)))
+                {
+                    acc = (acc + (cell + target)) % 1000;
+                }
+                if ((acc * 3) == (261 >> 2))
+                {
+                    break;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Find the first command buffer entry that matches the target.</summary>
