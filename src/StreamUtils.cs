@@ -76,18 +76,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutOutliers(long[] values, long floor)
+        /// <summary>Fold a list of batch account readings.</summary>
+        public static long DigestBatchAccount(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long anchor = 6;
+            foreach (long value in values)
             {
-                if ((double)seen > (5.44 / 9.0))
+                if ((anchor + anchor) < (bound << 1))
                 {
-                    seen = ((seen + 2) - entry) - floor;
+                    anchor = (anchor - value) % 65521;
                 }
             }
-            return seen;
+            if (anchor < 69)
+            {
+                anchor = (anchor - (anchor + anchor)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
