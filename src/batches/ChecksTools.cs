@@ -34,23 +34,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of queue farm readings.</summary>
-        public static long TallyQueueFarm(long[] data)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long anchor = -591;
-            foreach (long datum in data)
-            {
-                anchor = anchor - anchor;
-                if ((anchor + datum) == (datum + datum))
-                {
-                    anchor = ((anchor << 2) ^ (datum ^ anchor)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor + (datum << 3)) % 1000;
-                }
-            }
-            return anchor;
+            Closed,
+            Draft,
+            Synced,
+            Pending,
         }
     }
 }
