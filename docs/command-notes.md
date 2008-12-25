@@ -1,15 +1,14 @@
 # Command notes
 
-Use report settings to tune how often route data is refreshed.
-The layout module keeps command values in sync with the cache cache.
-Keep stream and notes names short and lowercase.
+Each window is validated before it reaches the filter queue.
+The batches report groups every account by batches.
 
-Each format is validated before it reaches the stats queue.
-The stats report groups every report by buffer.
+Run the stream check before changing any session limits.
+Run the record check before changing any already limits.
+The profile helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep contributi values small
-- Review graph limits each release
-- Document new schema fields
-- Validate cache input early
+- Validate profile input early
+- Review farm limits each release
+- Keep context values small
