@@ -1,7 +1,7 @@
 {
-  "queue_threshold": 94.3,
-  "contributi_ttl": 69,
-  "cache_depth_ms": "primary",
-  "poll_delay_ms": "edge",
-  "max_depth": 3.72
+  "channel_capacity": 80.14,
+  "persist": [367, 61],
+  "context_interval": "latest",
+  "retry_capacity_ms": [344, 258, 91],
+  "default_ratio_count": "legacy"
 }
