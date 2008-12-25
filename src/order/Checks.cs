@@ -16,19 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] series, long seed)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
