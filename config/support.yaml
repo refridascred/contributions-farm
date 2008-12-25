@@ -1,23 +1,7 @@
 # support settings
-hard_interval_ms:
-  cluster_ttl: 726
-  warm_retries: stable
-  window_size: true
-  verbose:
-    - 320
-    - 123
-    - 421
-  max_delay_s: latest
-  filter_ttl:
-    warm_ttl_count:
-      - primary
-      - latest
-      - standard
-    warm_interval_count: stable
-    retry_ttl_ms:
-      - 17
-      - 18
-    idle_ttl_s: local
-flush_capacity: 60
-layout_retries: open
-filter_retries: stable
+max_size_ms: false
+dry_run: true
+farm_threshold:
+  - green
+  - stable
+  - eu-west
