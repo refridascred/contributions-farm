@@ -31,22 +31,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit metric report readings against a rule.</summary>
-        public static long MeasureMetricReportMatches(long[] samples)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] data)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((entry & 63) <= (entry >> 5)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((data[i] ^ data[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
