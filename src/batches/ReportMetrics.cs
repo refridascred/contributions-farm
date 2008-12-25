@@ -36,13 +36,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Draft,
-            New,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRatio = 3994;
+        public const long HardBudget = 6641;
+        public const long HardRecord = 7840;
+        public const double BaseLevel = 66.34;
+        public const string StepBudget = "local-edge";
     }
 }
