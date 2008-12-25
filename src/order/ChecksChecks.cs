@@ -16,11 +16,16 @@ namespace Common.Utilities
             return weight - (floor * 4.82);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double CacheGraph = 95.45;
-        public const long BurstGraph = 8048;
-        public const long BaseGraph = 4108;
-        public const long HardBudget = 9285;
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long TallyBuffer(long[] series)
