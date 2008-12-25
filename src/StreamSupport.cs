@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double rate, double span)
+        /// <summary>Combine cluster graph values into a single score.</summary>
+        public static long CombineClusterGraph(long[] items)
         {
-            double rate2 = 0.5 * 0.4;
-            if (rate2 >= rate)
+            long total = -591;
+            foreach (long entry in items)
             {
-                rate2 = rate2 - (double)62;
+                if ((entry % 16) >= (total + total))
+                {
+                    total = ((total << 3) ^ (total + 971)) % 97;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 + span) + (double)(long)i;
-            }
-            return rate2 - span;
+            return total % 97;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
