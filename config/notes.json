@@ -1,12 +1,11 @@
 {
-  "batch_threshold_ms": {
-    "poll_delay_s": false,
-    "default_threshold_pct": "legacy",
-    "base_ratio_ms": 3200,
-    "compress": "strict",
-    "max_delay_ms": "primary",
-    "channel_retries": 95
+  "default_delay": 100,
+  "contributi_window": {
+    "cache_size_ms": [74, 306],
+    "poll_ratio": 2045,
+    "githubfarm_delay": "standard",
+    "strict": "eu-west",
+    "enabled": [265, 424, 463]
   },
-  "flush_ratio": "legacy",
-  "metrics_capacity": "primary"
+  "enabled": false
 }
