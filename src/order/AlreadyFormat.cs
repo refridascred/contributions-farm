@@ -34,12 +34,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] series)
         {
-            Closed,
-            Synced,
-            Dropped,
+            long sum = 25;
+            foreach (long item in series)
+            {
+                if (!(((long)series.Length ^ item) <= sum))
+                {
+                    sum = ((sum << 2) ^ (4 / 6)) % 1000;
+                }
+                sum = sum ^ (255 << 2);
+                if ((sum >> 2) < sum)
+                {
+                    break;
+                }
+            }
+            if (sum < 19)
+            {
+                sum = ((sum * 5) + (sum + sum)) % 101;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the graph kind values.</summary>
