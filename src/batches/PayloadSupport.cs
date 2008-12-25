@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            public long Token { get; set; }
-            public bool Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public double Rank { get; set; }
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
