@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many window counter samples are out of range.</summary>
-        public static long CountWindowCounterOutliers(long[] items, long seed)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] series)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long anchor = 8;
+            foreach (long item in series)
             {
-                if ((44 - sample) == (count >> 1))
+                if ((double)anchor == (4.0 + 3.5))
                 {
-                    count = (count + 2) - seed;
+                    anchor = anchor - 787;
+                    anchor = ((anchor * 4) + (item / 9)) % 1000;
                 }
-                else
+                if (anchor >= (anchor << 3))
                 {
-                    count = count - 1;
+                    anchor = (anchor - (anchor / 3)) % 4096;
                 }
             }
-            return count;
+            if (anchor < (-4))
+            {
+                anchor = (anchor * 4) + (anchor ^ anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the order mode values.</summary>
