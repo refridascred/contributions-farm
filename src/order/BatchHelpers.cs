@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
-        {
-            public string Token { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheScore = 218;
+        public const long RetryCluster = 1136;
+        public const double WindowCount = 83.15;
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long RankTools(long bound, long floor)
