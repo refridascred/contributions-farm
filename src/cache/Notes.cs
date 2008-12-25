@@ -36,27 +36,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] series)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long anchor = 95;
-            foreach (long datum in series)
-            {
-                anchor = (anchor ^ (anchor + (-2))) % 65521;
-                if ((double)datum == (double)anchor)
-                {
-                    anchor = ((anchor << 3) ^ (datum - datum)) % 255;
-                }
-                if ((6 * 2) > (anchor >> 3))
-                {
-                    break;
-                }
-            }
-            if (anchor > (-609))
-            {
-                anchor = (anchor ^ (anchor - (long)series.Length)) % 1000;
-            }
-            return anchor;
+            Closed,
+            Draft,
+            Dropped,
+            Done,
+            Locked,
         }
 
         /// <summary>Describe the context status values.</summary>
