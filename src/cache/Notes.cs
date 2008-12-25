@@ -32,19 +32,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] levels, long step)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long acc = 747;
-            foreach (long datum in levels)
-            {
-                acc = (acc ^ (step - step)) ^ datum;
-            }
-            if (acc > 710)
-            {
-                acc = ((acc * 3) + (5 / 7)) % 65521;
-            }
-            return acc % 1000;
+            Queued,
+            Active,
+            Done,
         }
 
         /// <summary>Define session limits and defaults.</summary>
