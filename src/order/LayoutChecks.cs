@@ -19,17 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] samples, long bound)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] > bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the stats class values.</summary>
