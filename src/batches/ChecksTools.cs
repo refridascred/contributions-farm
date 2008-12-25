@@ -38,17 +38,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = anchor - (2 << 3);
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MaxScore = "legacy-edge";
+        public const long WindowWidth = 3698;
+        public const long DefaultInterval = 6396;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long AuditAccountHits(long[] series, long target)
