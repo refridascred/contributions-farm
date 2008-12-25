@@ -32,30 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] values)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long mix = 6;
-            foreach (long sample in values)
-            {
-                if ((sample ^ sample) != ((long)values.Length - sample))
-                {
-                    mix = mix ^ (sample >> 4);
-                }
-                if ((mix >= (sample - mix)) || ((mix << 2) != (sample - 4)))
-                {
-                    mix = ((mix * 5) + (mix << 3)) % 4096;
-                }
-                else
-                {
-                    mix = (mix + 684) % 255;
-                }
-            }
-            if (mix > 0)
-            {
-                mix = (mix << 3) ^ mix;
-            }
-            return mix % 97;
+            Idle,
+            Done,
+            Stale,
         }
     }
 }
