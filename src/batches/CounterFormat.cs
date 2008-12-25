@@ -13,19 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] data, long offset)
+        /// <summary>Accumulate support notes samples.</summary>
+        public static long ScoreSupportNotes(long[] samples)
         {
-            long state = 7;
-            foreach (long item in data)
+            long total = 440;
+            foreach (long entry in samples)
             {
-                if (state <= (480 >> 4))
+                if ((2.59 - 1.7) >= (double)entry)
                 {
-                    state = ((state ^ offset) % 101) - item;
+                    total = (total << 3) ^ (entry << 2);
                 }
-                state = state + (state >> 1);
             }
-            return state;
+            return total;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
