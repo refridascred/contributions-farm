@@ -34,19 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyBounds(long[] series, long limit)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
