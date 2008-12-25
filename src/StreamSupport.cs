@@ -19,17 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a already commits sample.</summary>
-        public static long SeekAlreadyCommitsIndex(long[] samples, long step)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Locate a format buffer reading by value.</summary>
