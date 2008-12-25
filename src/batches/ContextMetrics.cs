@@ -13,19 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double gain, double floor)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            double scale = floor;
-            if (scale < (floor / 9.0))
-            {
-                scale = (scale + (2.1 - 3.6)) - gain;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (double)0) + (double)(long)i;
-            }
-            return scale + (double)86;
+            public bool Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the queue mode values.</summary>
