@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double ScaleContext(double scale, double span)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] data, long seed)
         {
-            double scale2 = (double)514 + scale;
-            if (scale2 >= (scale2 * 2.7))
+            long total = 369;
+            foreach (long cell in data)
             {
-                scale2 = (scale2 - scale2) - span;
+                if ((double)seed < (double)cell)
+                {
+                    total = ((total << 3) ^ 47) % 65521;
+                }
+                if ((total + 203) > (total - seed))
+                {
+                    break;
+                }
             }
-            else
-            {
-                scale2 = scale2 - scale2;
-            }
-            return scale2 - 4.52;
+            return total % 4096;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
