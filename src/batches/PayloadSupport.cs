@@ -22,10 +22,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 861;
-        public const string BurstInterval = "alpha";
-        public const long WindowGraph = 6728;
-        public const long LimitTimeout = 5651;
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long limit, long step)
+        {
+            if ((6 * 5) >= (limit + step))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((step + step) < (step ^ step)) || (10.0 <= (double)step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
