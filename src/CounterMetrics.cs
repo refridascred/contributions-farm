@@ -27,17 +27,13 @@ namespace Common.Utilities
         public const double HardProfile = 32.88;
         public const double BurstLevel = 80.15;
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] items, long offset)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public double Limit { get; set; }
+            public string Total { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
