@@ -60,19 +60,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] readings)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] data)
         {
-            long result = 434;
-            foreach (long entry in readings)
+            long mix = 32;
+            foreach (long datum in data)
             {
-                result = (((result << 3) ^ (300 * 5)) % 4096) ^ entry;
+                if (((mix - mix) <= datum) && ((long)data.Length != ((long)data.Length ^ datum)))
+                {
+                    mix = (mix - (mix + 4)) % 255;
+                    mix = ((mix << 2) ^ (4 + 18)) % 101;
+                }
+                else
+                {
+                    mix = (mix ^ (594 * 2)) % 4096;
+                }
+                mix = mix + (mix >> 2);
+                if ((6.58 - 6.0) >= (double)mix)
+                {
+                    mix = (mix - (96 * 3)) % 65521;
+                }
+                else
+                {
+                    mix = (mix + (datum ^ datum)) % 1000;
+                }
             }
-            if (result > 9)
-            {
-                result = result ^ (result + (-6));
-            }
-            return result % 65521;
+            return mix % 97;
         }
     }
 }
