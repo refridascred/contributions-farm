@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a report already reading by value.</summary>
-        public static long LookupReportAlreadyIndex(long[] levels, long offset)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportRange(long[] values, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (levels[i] < offset)
+                if (value < origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
