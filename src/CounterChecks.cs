@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] samples, long limit)
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public bool Level { get; set; }
-            public bool Ratio { get; set; }
+            long anchor = 266;
+            foreach (long cell in samples)
+            {
+                anchor = (anchor + (limit & 1)) % 65521;
+                if (!((limit << 1) >= (anchor - limit)))
+                {
+                    anchor = ((anchor << 2) ^ limit) % 101;
+                    anchor = (anchor + limit) % 65521;
+                }
+                if ((long)samples.Length >= limit)
+                {
+                    anchor = (anchor - anchor) % 97;
+                }
+                if ((limit + cell) >= (limit % 16))
+                {
+                    break;
+                }
+            }
+            if (anchor > (-774))
+            {
+                anchor = anchor - (-43);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
