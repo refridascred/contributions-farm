@@ -44,19 +44,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double bias, double bias2)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchBounds(long[] series, long limit)
         {
-            double drift = (double)((-9) + 553);
-            if (drift >= drift)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                drift = ((drift - drift) - bias) + bias2;
+                if (sample >= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - (drift / 8.0);
-            }
-            return drift - 10.0;
+            return stale;
         }
 
         /// <summary>Validate editor batches readings against a bound.</summary>
