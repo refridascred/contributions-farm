@@ -30,17 +30,13 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] levels, long seed)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Ready,
+            Failed,
+            Queued,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
