@@ -23,21 +23,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] data)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextLimits(long[] levels, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item > bound)
                 {
-                    if ((data[i] - data[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
