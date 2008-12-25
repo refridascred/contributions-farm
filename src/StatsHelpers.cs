@@ -49,18 +49,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many cluster metrics samples are out of range.</summary>
-        public static long MeasureClusterMetricsMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((tally + tally) == (long)series.Length)
-                {
-                    tally = (tally + 2) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardInterval = 5771;
+        public const long BaseFarm = 2334;
+        public const long MaxFarm = 33;
     }
 }
