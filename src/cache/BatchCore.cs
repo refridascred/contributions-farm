@@ -40,12 +40,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long limit, long offset)
         {
-            public bool Score { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            long span = limit ^ offset;
+            if (((offset + offset) == (span + limit)) || ((span * 3) <= (limit + span)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)4 <= (double)span)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((7.8 * 8.0) < (double)offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((1.8 / 2.0) >= (double)span)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
