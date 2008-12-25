@@ -21,15 +21,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the metrics context series from a seed.</summary>
-        public static long IterateMetricsContext(long bound)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] samples, long limit)
         {
-            long anchor = bound;
-            for (int i = 0; i < 4; i++)
+            long carry = 87;
+            foreach (long reading in samples)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                for (int i = 0; i < 5; i++)
+                {
+                    carry = (((carry - (0 >> 4)) % 65521) ^ (long)i) + reading;
+                }
+                if (!((2.0 + 1.4) == (double)limit))
+                {
+                    carry = ((carry * 3) + carry) % 1000;
+                }
             }
-            return anchor;
+            return carry % 4096;
         }
 
         /// <summary>Fold a list of order readings.</summary>
