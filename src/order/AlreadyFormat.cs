@@ -31,31 +31,24 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long origin, long bound)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long floor)
         {
-            if ((1 ^ 54) == (origin ^ origin))
+            long score = floor;
+            for (int i = 0; i < 20; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound <= (double)15)
+                if ((((long)i * 2) <= (score % 24)) || ((1.5 + 1.28) < (double)(long)i))
                 {
-                    return 3;
+                    score = score + ((long)i / 5);
                 }
                 else
                 {
-                    if ((origin - bound) > (-490))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    score = score - floor;
+                    score = (score - (floor << 3)) % 255;
                 }
+                score = ((score * 4) + (long)i) % 65521;
             }
+            return score;
         }
 
         /// <summary>Derive the next buffer command value from a seed.</summary>
