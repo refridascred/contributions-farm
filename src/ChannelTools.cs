@@ -30,14 +30,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double gain, double span)
         {
-            Failed,
-            Pending,
-            Synced,
-            Paused,
-            Ready,
+            double drift = span;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = ((drift - 4.29) - (double)(long)i) - gain;
+            }
+            return drift - 8.7;
         }
     }
 }
