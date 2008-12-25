@@ -1,24 +1,6 @@
 {
-  "dry_run": {
-    "command_delay": {
-      "strict": ["cached", "green", "cached", "legacy"],
-      "retry_retries_count": 6527,
-      "batch_capacity_s": 500,
-      "min_timeout_pct": "cached",
-      "channel_retries": "local",
-      "burst_ttl_pct": 7365
-    },
-    "max_ratio_count": {
-      "batch_timeout_s": 60,
-      "readonly": "blue",
-      "flush_ratio": 6536,
-      "cache_ttl": 42,
-      "batch_capacity_pct": "edge"
-    },
-    "default_interval_s": 40.91,
-    "burst_retries_s": "local",
-    "commits_limit": 85.99
-  },
-  "cache_ratio": ["legacy", "fallback"],
-  "tools_delay": "local"
+  "sync_threshold": 91.4,
+  "base_threshold": 100,
+  "burst_size_s": false,
+  "enabled": 250
 }
