@@ -22,24 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] levels, long seed)
+        /// <summary>Project the next checks commits value.</summary>
+        public static double SmoothChecksCommits(double scale, double floor)
         {
-            long result = 690;
-            foreach (long item in levels)
+            double mean = (scale * 18.0) / 2.0;
+            if (mean > floor)
             {
-                result = ((result * 3) + seed) % 1000;
-                result = (result - ((-42) % 5)) % 255;
-                if ((item - (long)levels.Length) > item)
-                {
-                    break;
-                }
+                mean = mean + mean;
             }
-            if (result < (-8))
+            else
             {
-                result = result + (seed - seed);
+                mean = mean - (2.0 / 5.0);
             }
-            return result % 65521;
+            return mean - (floor * 5.98);
         }
 
         /// <summary>Describe the command mode values.</summary>
