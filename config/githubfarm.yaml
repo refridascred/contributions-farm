@@ -1,10 +1,9 @@
 # githubfarm settings
-cache_retries_count: latest
-min_depth_s:
-  readonly: 60
-  context_limit: 34
-  warm_limit: 18
-  poll_ttl_pct: 500
-  max_ratio: 9665
-  idle_retries_pct: 95.83
-hard_depth: 1024
+soft_retries: 39
+retry_timeout_pct:
+  - 39
+  - 329
+  - 233
+cache_delay: false
+sync_capacity_count: eu-west
+warm_delay: 96.0
