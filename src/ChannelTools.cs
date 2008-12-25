@@ -13,15 +13,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] values, long step)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long carry = 93;
-            foreach (long value in values)
-            {
-                carry = (carry + step) - value;
-            }
-            return carry;
+            Draft,
+            Pending,
+            Stale,
+            Done,
+            Paused,
         }
 
         /// <summary>Describe the filter class values.</summary>
