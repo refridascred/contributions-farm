@@ -94,9 +94,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BatchLevel = "primary-edge";
-        public const string DefaultSpan = "open-edge";
-        public const long SoftTimeout = 8104;
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
+        {
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public bool Label { get; set; }
+        }
     }
 }
