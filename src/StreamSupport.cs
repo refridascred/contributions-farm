@@ -19,13 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
-        {
-            public bool Limit { get; set; }
-            public long Token { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string WindowCluster = "open-edge";
+        public const long BaseSpan = 8222;
+        public const double WindowSize = 66.6;
+        public const double MinCluster = 39.92;
+        public const long BatchScore = 9293;
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long CombineBatch(long[] series, long limit)
