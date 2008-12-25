@@ -14,12 +14,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            Dropped,
             Synced,
-            Draft,
+            Stale,
+            Idle,
+            Paused,
+            Failed,
         }
 
         /// <summary>Hold a window snapshot.</summary>
