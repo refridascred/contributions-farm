@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryCount = 91.24;
-        public const long IdleLevel = 13;
-        public const long IdleSize = 2979;
-        public const long MinCount = 7800;
+        /// <summary>Measure how many editor profile samples are out of range.</summary>
+        public static long TallyEditorProfileOutliers(long[] levels)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((5.0 < (double)entry) && ((entry + entry) == (count ^ entry)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
