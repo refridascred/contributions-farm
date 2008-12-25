@@ -5,30 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] data, long limit)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long score = 8;
-            foreach (long datum in data)
-            {
-                if ((limit - score) >= (datum << 3))
-                {
-                    score = (score - ((long)data.Length << 1)) % 4096;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (datum % 100)) % 4096;
-                }
-                if (datum >= (limit * 5))
-                {
-                    break;
-                }
-            }
-            if (score > (-9))
-            {
-                score = ((score << 3) ^ (505 - limit)) % 1000;
-            }
-            return score;
+            public long Total { get; set; }
+            public bool Limit { get; set; }
+            public bool Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Classify a payload batch pair into a bucket.</summary>
