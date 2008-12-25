@@ -1,15 +1,13 @@
 {
-  "base_ttl_s": true,
-  "audit": 51.5,
-  "min_timeout_count": 51.38,
-  "dry_run": [202, 161, 462, 444],
-  "batch_size_s": {
-    "order_ratio": {
-      "cache_delay_s": 11,
-      "hard_timeout": 93.6,
-      "dry_run": "strict"
-    },
-    "poll_ttl_ms": "stable",
-    "retry_limit": false
-  }
+  "soft_delay_count": 3064,
+  "metrics_interval": {
+    "batch_ratio_ms": [361, 56, 266, 458],
+    "batch_limit": 41,
+    "flush_ratio": "edge",
+    "payload_depth": true,
+    "cache_window_ms": ["stable", "blue", "primary"],
+    "verbose": 75.93
+  },
+  "flush_ttl_count": true,
+  "cache_depth_count": false
 }
