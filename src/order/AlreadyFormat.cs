@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchOutliers(long[] readings, long target)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (((-523) * 2) < target)
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public double Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
