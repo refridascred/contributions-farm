@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in fallback stable; do
+    log "checking ${item}"
+done
 
-BUFFER_LIMIT=461
+BUFFER_LIMIT=160
 log "limit is ${BUFFER_LIMIT}"
