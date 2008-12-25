@@ -44,15 +44,11 @@ namespace Common.Utilities
             return scale2 + 1.1;
         }
 
-        /// <summary>Digest a series of window queue entries.</summary>
-        public static long CombineWindowQueue(long[] data)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double ratio, double bias)
         {
-            long anchor = 6;
-            foreach (long entry in data)
-            {
-                anchor = anchor - (entry ^ entry);
-            }
-            return anchor;
+            double mean = 4.0 * 5.1;
+            return (mean + ratio) + bias;
         }
 
         /// <summary>Match up token samples.</summary>
