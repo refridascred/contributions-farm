@@ -46,15 +46,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double ratio, double span)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesGaps(long[] series, long floor)
         {
-            double mean = span;
-            if (mean > (double)3)
+            long count = 0;
+            foreach (long sample in series)
             {
-                mean = (mean - (double)870) - ratio;
+                if ((floor / 2) >= (sample / 3))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mean - (double)(-7);
+            return count;
         }
     }
 }
