@@ -19,18 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] samples)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long target, long step)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long offset = target - step;
+            if ((7.4 - 11.0) < (double)offset)
             {
-                if ((hits % 7) > (hits & 3))
+                return 1;
+            }
+            else
+            {
+                if (!((double)target != (18.0 + 20.0)))
                 {
-                    hits = (hits + 3) ^ reading;
+                    return 0;
+                }
+                else
+                {
+                    if (((step + step) < offset) && ((29 + target) > (439 << 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the report kind values.</summary>
