@@ -30,23 +30,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of session already entries.</summary>
-        public static long CombineSessionAlready(long[] samples)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long total = 121;
-            foreach (long cell in samples)
-            {
-                total = total - total;
-                if (((-595) / 9) < (cell - 42))
-                {
-                    total = (total * 4) + total;
-                }
-            }
-            if (total > 30)
-            {
-                total = (total + (total ^ total)) % 255;
-            }
-            return total % 65521;
+            Locked,
+            Dropped,
+            Active,
+            Retry,
+            Stale,
         }
 
         /// <summary>Hold a queue snapshot.</summary>
