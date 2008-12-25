@@ -15,18 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountOutliers(long[] samples)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (!((double)value > (double)seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the format mode values.</summary>
