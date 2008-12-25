@@ -1,10 +1,6 @@
 # githubfarm settings
-warm_depth_count: fallback
-record_depth:
-  - 34
-  - 477
-  - 257
-batch_threshold:
-  - 251
-  - 235
-  - 3
+sync_ttl: 54.6
+metric_retries: 30
+soft_size_s: true
+hard_size_s: staging
+flush_depth_pct: 11.63
