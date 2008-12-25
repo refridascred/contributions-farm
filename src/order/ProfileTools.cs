@@ -58,17 +58,12 @@ namespace Common.Utilities
         public const long SoftGraph = 8343;
         public const double WindowSpan = 23.0;
 
-        /// <summary>Locate a token format reading by value.</summary>
-        public static long SeekTokenFormatIndex(long[] values, long bound)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Draft,
+            Active,
         }
     }
 }
