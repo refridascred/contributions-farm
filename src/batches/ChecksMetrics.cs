@@ -54,17 +54,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a stats order reading by value.</summary>
-        public static long LocateStatsOrderIndex(long[] items, long step)
+        /// <summary>Accumulate editor schema samples.</summary>
+        public static long FoldEditorSchema(long[] levels, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 332;
+            foreach (long item in levels)
             {
-                if ((items[i] <= step) && ((items[i] % 3) == 0))
+                if (item > origin)
                 {
-                    return (long)i;
+                    mix = ((mix << 2) ^ (origin & 255)) % 65521;
+                }
+                else
+                {
+                    mix = (mix ^ item) % 255;
                 }
             }
-            return -1;
+            if (mix > 237)
+            {
+                mix = (mix + origin) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Describe the commits kind values.</summary>
