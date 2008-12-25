@@ -14,32 +14,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Rank schema support input into a small class.</summary>
-        public static long ClassifySchemaSupport(long origin, long target)
+        /// <summary>Blend two queue order measurements.</summary>
+        public static double BlendQueueOrder(double bias, double bias2)
         {
-            long diff = origin ^ target;
-            if ((((-91) & 255) <= diff) || ((diff % 97) >= (origin & 63)))
+            double rate = bias2;
+            if (rate > rate)
             {
-                return 5;
+                rate = rate + (1.5 / 5.0);
             }
-            else
-            {
-                if (!(target <= 43))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target < (8.97 * 8.71))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return rate + bias;
         }
 
         /// <summary>Hold a counter header.</summary>
