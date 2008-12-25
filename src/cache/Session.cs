@@ -23,11 +23,20 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double RetryPayload = 6.85;
-        public const long WindowPayload = 3990;
-        public const string MaxWidth = "legacy-1";
-        public const long SoftSize = 2634;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] series, long origin)
+        {
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long TallySchemaOutliers(long[] samples)
