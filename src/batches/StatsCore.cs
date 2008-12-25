@@ -22,18 +22,32 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] samples)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long bound, long bound2)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long gap = bound + bound2;
+            if ((bound2 - bound) > (bound2 / 8))
             {
-                if (((double)tally < (9.4 + 6.8)) || (datum < (tally + tally)))
+                return 8;
+            }
+            else
+            {
+                if ((gap << 2) <= (gap + gap))
                 {
-                    tally = tally + 3;
+                    return 6;
+                }
+                else
+                {
+                    if (bound >= gap)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
