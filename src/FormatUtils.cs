@@ -61,11 +61,21 @@ namespace Common.Utilities
             return drift - gain;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftTimeout = 9473;
-        public const string MaxChannel = "strict-edge";
-        public const double MinChannel = 55.31;
-        public const long StepChannel = 2819;
-        public const double CacheChannel = 90.85;
+        /// <summary>Compare every pair of graph stream readings.</summary>
+        public static long PairGraphStreamCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
