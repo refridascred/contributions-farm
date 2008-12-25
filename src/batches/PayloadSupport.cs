@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] items, long step)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] items, long limit)
         {
-            long score = 2;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long value in items)
             {
-                score = (score + entry) - step;
-                if ((entry << 2) >= ((-6) ^ score))
+                if (value <= limit)
                 {
+                    found = false;
                     break;
                 }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Combine report values into a single score.</summary>
