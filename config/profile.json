@@ -1,14 +1,8 @@
 {
-  "flush_delay_ms": 14.01,
-  "base_retries": {
-    "soft_ttl": ["blue", "latest", "fallback"],
-    "hard_delay_ms": 30,
-    "warm_timeout_pct": "staging",
-    "hard_interval": 500,
-    "entry_interval": 4038
-  },
-  "default_delay_pct": "staging",
-  "sync_depth": "blue",
-  "batch_ttl": 87,
-  "context_interval": 5224
+  "flush_depth": "staging",
+  "default_ratio_count": "staging",
+  "burst_window_count": 1024,
+  "compress": true,
+  "poll_threshold": 87,
+  "queue_ttl": true
 }
