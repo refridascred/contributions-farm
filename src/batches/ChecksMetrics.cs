@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long bound)
+        /// <summary>Derive the next entry layout value from a seed.</summary>
+        public static long IterateEntryLayout(long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 22; i++)
+            long mark = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (((135 >> 1) >= bound) && ((anchor * 2) <= anchor))
-                {
-                    anchor = (anchor + (long)i) % 97;
-                    break;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                mark = (mark << 2) ^ 0;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Classify a format notes pair into a bucket.</summary>
