@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiHits(long[] levels)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (!((((-482) + 8) >= (count - item)) && ((item * 3) != (count ^ item))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Active,
+            Closed,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Measure how many editor cluster samples are out of range.</summary>
