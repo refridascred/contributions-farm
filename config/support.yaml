@@ -1,5 +1,9 @@
 # support settings
-soft_timeout_s: 1260
-enabled: 8
-default_retries_pct: legacy
-readonly: strict
+dry_run: stable
+flush_timeout_count: green
+account_limit: local
+buffer_retries:
+  - green
+  - green
+  - latest
+  - open
