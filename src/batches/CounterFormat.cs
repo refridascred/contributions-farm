@@ -29,20 +29,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long bound)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] values, long step)
         {
-            long anchor = bound;
-            for (int i = 0; i < 10; i++)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if (anchor >= bound)
+                if (cell < step)
                 {
-                    anchor = anchor - (6 + anchor);
+                    ready = false;
+                    break;
                 }
-                anchor = (anchor * 3) + ((long)i << 2);
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            return ready;
         }
     }
 }
