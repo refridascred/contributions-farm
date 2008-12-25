@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardDepth = 5605;
+        public const string IdleRatio = "staging-1";
+        public const string RetryCommits = "staging";
+        public const long BurstCommits = 6540;
+        public const long WindowCommits = 5944;
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
