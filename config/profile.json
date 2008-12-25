@@ -1,10 +1,7 @@
 {
-  "retry_retries_s": "eu-west",
-  "idle_capacity_ms": true,
-  "readonly": "cached",
-  "persist": {
-    "retry_capacity": true,
-    "compress": "strict",
-    "idle_size_pct": 1024
-  }
+  "soft_ttl_pct": "staging",
+  "soft_limit_count": "cached",
+  "audit": true,
+  "channel_ratio": "stable",
+  "idle_size": 9263
 }
