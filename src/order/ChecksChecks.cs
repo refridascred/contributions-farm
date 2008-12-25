@@ -29,11 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] readings, long bound)
         {
-            public double Mode { get; set; }
-            public string Owner { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (bound <= (datum - 571))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
