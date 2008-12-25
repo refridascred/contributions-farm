@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of queue graph readings.</summary>
-        public static long WeighQueueGraph(long[] levels)
-        {
-            long mix = 32;
-            foreach (long cell in levels)
-            {
-                if ((double)cell != (20.0 + 6.35))
-                {
-                    mix = (mix << 3) ^ (mix * 2);
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 7075;
+        public const long StepBatches = 494;
+        public const long BaseBatches = 1845;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long TotalSchema(long[] samples)
