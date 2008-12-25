@@ -48,21 +48,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] series)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
