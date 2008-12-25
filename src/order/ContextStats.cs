@@ -25,16 +25,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long limit)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] items)
         {
-            long carry = limit;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = carry ^ (limit % 64);
-                carry = ((carry * 5) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
