@@ -30,12 +30,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Digest a series of session already entries.</summary>
+        public static long CombineSessionAlready(long[] samples)
         {
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Ratio { get; set; }
+            long total = 121;
+            foreach (long cell in samples)
+            {
+                total = total - total;
+                if (((-595) / 9) < (cell - 42))
+                {
+                    total = (total * 4) + total;
+                }
+            }
+            if (total > 30)
+            {
+                total = (total + (total ^ total)) % 255;
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
