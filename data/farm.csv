@@ -1,6 +1,9 @@
-id,score,label,ratio
-1,130,921,68.22
-2,local,latest,55.08
-3,3,fallback,legacy
-4,legacy,fallback,green
-5,latest,stable,827
+id,owner,state,label
+1,707,208,29.54
+2,595,48.63,67.55
+3,stable,427,845
+4,351,675,3.46
+5,78.16,765,latest
+6,544,legacy,0.52
+7,strict,92.12,402
+8,81.46,staging,cached
