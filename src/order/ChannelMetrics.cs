@@ -53,10 +53,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowCommits = 5.47;
-        public const double IdleCommits = 7.7;
-        public const long RetryCommits = 768;
-        public const string CacheCount = "latest-1";
+        /// <summary>Classify a githubfarm cache pair into a bucket.</summary>
+        public static long ClassifyGithubfarmCache(long floor, long bound)
+        {
+            long gap = floor + bound;
+            if ((gap >> 4) > (782 * 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if (floor <= (floor - floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
