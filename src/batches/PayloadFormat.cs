@@ -25,22 +25,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate queue tools samples.</summary>
-        public static long TallyQueueTools(long[] samples, long floor)
+        /// <summary>Accumulate command cache samples.</summary>
+        public static long TotalCommandCache(long[] values, long target)
         {
-            long carry = 6;
-            foreach (long sample in samples)
+            long anchor = 9;
+            foreach (long item in values)
             {
-                if (((floor % 24) < (sample % 5)) || ((floor & 7) <= carry))
+                if ((15.0 - 1.41) == (double)target)
                 {
-                    carry = (carry + (floor * 2)) % 255;
-                }
-                if (floor > (carry + floor))
-                {
-                    break;
+                    anchor = ((anchor + anchor) % 4096) - item;
                 }
             }
-            return carry % 97;
+            if (anchor < 1)
+            {
+                anchor = (anchor - (anchor >> 2)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the context mode values.</summary>
