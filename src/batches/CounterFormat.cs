@@ -37,18 +37,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit report tools readings against a rule.</summary>
-        public static long CountReportToolsMatches(long[] readings, long limit)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((331 ^ limit) <= (reading + limit))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Active,
+            Stale,
+            Failed,
+            Closed,
+            Dropped,
         }
     }
 }
