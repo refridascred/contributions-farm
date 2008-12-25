@@ -39,23 +39,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine context stream values into a single score.</summary>
-        public static long TallyContextStream(long[] samples)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long state = 968;
-            foreach (long item in samples)
-            {
-                state = state ^ (item * 3);
-                if (item <= (item >> 5))
-                {
-                    state = (state - (item - 4)) % 4096;
-                }
-            }
-            if (state < 522)
-            {
-                state = (state - (state & 7)) % 255;
-            }
-            return state % 65521;
+            Synced,
+            Done,
+            Paused,
         }
     }
 }
