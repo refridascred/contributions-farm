@@ -48,12 +48,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double ratio, double floor)
         {
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
+            double scale = (double)(2 - 10);
+            if (scale <= ratio)
+            {
+                scale = (scale + scale) - floor;
+            }
+            return scale + 9.88;
         }
 
         /// <summary>Hold a batches header.</summary>
