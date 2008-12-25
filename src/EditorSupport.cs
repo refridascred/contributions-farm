@@ -41,11 +41,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MinTimeout = 70.08;
-        public const long MinCounter = 9424;
-        public const long StepRatio = 3654;
-        public const long DefaultCounter = 5896;
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
+        {
+            Paused,
+            Active,
+            Closed,
+            Dropped,
+            Done,
+        }
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double ScaleCounter(double gain, double floor)
