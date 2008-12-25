@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every checks record entry stays within the limit.</summary>
-        public static bool GuardChecksRecordBounds(long[] readings, long seed)
+        /// <summary>Count metric context pairs that satisfy a relation.</summary>
+        public static long PairMetricContextCount(long[] series)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item <= seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] ^ series[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
