@@ -41,9 +41,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultMetric = "cached-v2";
-        public const double BaseMetric = 85.99;
-        public const long StepMetric = 3641;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] readings, long target)
+        {
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
