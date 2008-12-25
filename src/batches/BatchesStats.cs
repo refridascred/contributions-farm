@@ -16,17 +16,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] readings, long origin)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((readings[i] > origin) && ((readings[i] % 2) == 0))
+                if ((3 - origin) < origin)
                 {
-                    return (long)i;
+                    sum = (sum * 2) + (origin % 60);
                 }
+                long prev = (origin & 255) << 2;
+                sum = (sum * 2) + (sum - prev);
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
