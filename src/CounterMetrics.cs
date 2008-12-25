@@ -35,12 +35,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] levels, long origin)
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public double Score { get; set; }
+            long score = 423;
+            foreach (long reading in levels)
+            {
+                if ((double)origin < (8.0 - 9.7))
+                {
+                    score = score ^ (reading / 4);
+                }
+            }
+            if (score > 5)
+            {
+                score = ((score * 2) + (score + score)) % 4096;
+            }
+            return score;
         }
     }
 }
