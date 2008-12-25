@@ -15,19 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double bias, double span)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesMatches(long[] items)
         {
-            double mean = 6.6;
-            if (mean < (span - span))
+            long matches = 0;
+            foreach (long value in items)
             {
-                mean = mean - (double)3;
+                if ((double)value < (19.0 * 1.0))
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                mean = mean + bias;
-            }
-            return mean + bias;
+            return matches;
         }
 
         /// <summary>Hold a stats stats.</summary>
