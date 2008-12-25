@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long step, long floor)
-        {
-            if (((double)step < (8.79 * 1.87)) && ((double)floor < (3.5 - 9.02)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step - floor) >= (floor - step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetryDepth = 41.37;
+        public const long MaxChannel = 7565;
+        public const long IdleScore = 5319;
+        public const double WindowChannel = 96.19;
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
