@@ -34,12 +34,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 595;
-        public const long IdleFarm = 2237;
-        public const string MinSize = "primary";
-        public const long BurstTimeout = 2669;
-        public const double BatchFarm = 14.23;
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
+        {
+            public double Ratio { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Hold a already summary.</summary>
         public sealed class AlreadySummary
