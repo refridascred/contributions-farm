@@ -45,17 +45,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a contributi githubfarm reading by value.</summary>
-        public static long FindContributiGithubfarmIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= limit) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryLevel = "legacy-edge";
+        public const long IdleWidth = 784;
+        public const double RetrySpan = 86.19;
     }
 }
