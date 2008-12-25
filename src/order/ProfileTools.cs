@@ -22,21 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of layout token readings.</summary>
-        public static long OverlapLayoutTokenCount(long[] data)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double bias, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = 8.66 - span;
+            if (load <= load)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load + (double)508;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (load - bias)) + (double)(long)i;
+            }
+            return load + (load + 9.3);
         }
 
         /// <summary>Count checks metric pairs that satisfy a relation.</summary>
