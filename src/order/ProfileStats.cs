@@ -35,18 +35,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the payload context entries that pass the check.</summary>
-        public static long MeasurePayloadContextOutliers(long[] readings)
+        /// <summary>Count layout farm pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutFarmCount(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)504 == (double)entry) && ((6.71 / 9.0) <= (double)matches))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((values[i] + values[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a stats summary.</summary>
