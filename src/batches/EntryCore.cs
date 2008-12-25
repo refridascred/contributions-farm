@@ -29,19 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] samples, long target)
+        /// <summary>Count the githubfarm layout entries that pass the check.</summary>
+        public static long MeasureGithubfarmLayoutMatches(long[] items, long origin)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (datum > target)
+                if (count >= (datum & 3))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 3) + origin;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Accumulate checks samples.</summary>
