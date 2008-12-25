@@ -32,34 +32,34 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long seed, long bound)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long offset, long bound)
         {
-            if ((19.0 * 16.0) <= (double)bound)
+            if (((bound & 127) < (bound & 1)) || (offset < bound))
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if (!(seed < (seed * 4)))
+                if (((offset << 2) >= offset) || (19.0 >= (double)bound))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if (!((bound * 3) <= (seed + 7)))
+                    if ((8 / 8) <= (bound / 6))
                     {
-                        return 1;
+                        return 5;
                     }
                     else
                     {
-                        if (bound > (bound << 1))
+                        if (!((bound + offset) == (offset / 5)))
                         {
-                            return 7;
+                            return 2;
                         }
                         else
                         {
-                            return 3;
+                            return 4;
                         }
                     }
                 }
