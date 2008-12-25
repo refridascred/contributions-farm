@@ -1,5 +1,18 @@
 {
-  "base_window_ms": 30,
-  "batch_ratio_ms": ["blue", "open", "blue"],
-  "base_threshold_pct": [37, 308, 232, 85]
+  "batch_depth": "fallback",
+  "filter_capacity": {
+    "soft_window_ms": ["primary", "staging", "fallback"],
+    "flush_ttl_count": [399, 377],
+    "cache_size_ms": [384, 431, 371],
+    "soft_limit": "green"
+  },
+  "readonly": 2530,
+  "enabled": {
+    "min_delay_s": ["strict", "legacy", "edge", "legacy"],
+    "default_retries": 85.5,
+    "strict": 7503,
+    "persist": 61,
+    "entry_threshold": false,
+    "hard_threshold": "fallback"
+  }
 }
