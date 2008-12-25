@@ -43,16 +43,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of support commits readings.</summary>
-        public static long TallySupportCommits(long[] items, long seed)
-        {
-            long total = -7;
-            foreach (long cell in items)
-            {
-                total = ((total + (cell - cell)) % 65521) + seed;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 9068;
+        public const long HardCounter = 2347;
+        public const double BurstCounter = 55.32;
 
         /// <summary>Hold a token summary.</summary>
         public sealed class TokenSummary
