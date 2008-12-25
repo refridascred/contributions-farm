@@ -63,21 +63,26 @@ namespace Common.Utilities
             return weight - 6.0;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] series)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 8;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((state & 31) != (state % 3)) && (entry < (entry & 255)))
                 {
-                    if ((series[i] + series[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    state = state + state;
+                }
+                else
+                {
+                    state = (state + (entry + entry)) % 1000;
                 }
             }
-            return count;
+            if (state < (-7))
+            {
+                state = ((state * 5) + (state + state)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Blend two order measurements.</summary>
