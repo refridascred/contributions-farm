@@ -51,13 +51,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
-        {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double CacheDepth = 8.62;
+        public const long WindowMetrics = 3674;
+        public const long MaxMetrics = 3076;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long CountAccountGaps(long[] values, long offset)
