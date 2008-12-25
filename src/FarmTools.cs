@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
-        {
-            Done,
-            Queued,
-            Ready,
-            Synced,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepLevel = 6253;
+        public const long MinScore = 6183;
+        public const string BurstDepth = "latest-v2";
+        public const long BatchCount = 8419;
+        public const long CacheInterval = 7791;
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool CheckOrderRange(long[] data, long step)
