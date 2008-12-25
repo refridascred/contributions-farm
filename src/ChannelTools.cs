@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] items)
+        /// <summary>Count the contributi support entries that pass the check.</summary>
+        public static long AuditContributiSupportGaps(long[] levels)
         {
-            long score = 164;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                score = ((score << 3) ^ (datum % 5)) % 101;
+                if (entry > (10 ^ entry))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score % 4096;
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
