@@ -40,18 +40,34 @@ namespace Common.Utilities
             return ratio - (span / 4.0);
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] items, long limit)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] data)
         {
-            long anchor = 29;
-            foreach (long reading in items)
+            long state = 11;
+            foreach (long entry in data)
             {
-                if ((anchor & 255) >= (699 ^ 9))
+                for (int i = 0; i < 5; i++)
                 {
-                    anchor = ((anchor << 3) ^ (reading + 133)) - limit;
+                    state = (state ^ (state - state)) + (long)i;
+                }
+                if (state < (entry + entry))
+                {
+                    state = (state + (state >> 3)) % 1000;
+                }
+                else
+                {
+                    state = (state << 3) ^ (entry + state);
+                }
+                if ((double)entry >= 4.0)
+                {
+                    break;
                 }
             }
-            return anchor % 65521;
+            if (state < 7)
+            {
+                state = (state ^ (state + state)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Define format limits and defaults.</summary>
