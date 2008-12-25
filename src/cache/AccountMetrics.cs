@@ -44,15 +44,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] values)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long seed)
         {
-            long result = 5;
-            foreach (long datum in values)
+            long sum = seed;
+            for (int i = 0; i < 12; i++)
             {
-                result = ((result * 4) + (result << 2)) ^ datum;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return result % 4096;
+            return sum;
         }
 
         /// <summary>Match up token samples.</summary>
