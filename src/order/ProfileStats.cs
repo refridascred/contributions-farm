@@ -32,10 +32,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string HardSession = "primary-1";
-        public const string DefaultSession = "staging";
-        public const long LimitSession = 3014;
-        public const long MinBudget = 8893;
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            New,
+            Paused,
+            Draft,
+            Locked,
+            Failed,
+        }
     }
 }
