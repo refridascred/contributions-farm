@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            public long Score { get; set; }
-            public bool Owner { get; set; }
+            public double Flag { get; set; }
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
