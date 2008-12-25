@@ -42,19 +42,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesBounds(long[] samples, long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] values)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long anchor = 0;
+            foreach (long datum in values)
             {
-                if (value != target)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = ((anchor ^ ((-359) + anchor)) % 97) ^ datum;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
