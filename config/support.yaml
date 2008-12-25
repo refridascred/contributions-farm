@@ -1,31 +1,17 @@
 # support settings
-persist:
-  - 218
-  - 232
-  - 392
-  - 113
-support_threshold: legacy
-payload_depth:
-  filter_timeout: standard
-  batch_limit: 76.52
-  poll_timeout:
-    - primary
-    - standard
-    - standard
-    - green
-  account_ratio:
-    persist: 75
-    readonly: strict
-    strict: green
-    min_size_ms: true
-    burst_threshold_ms:
-      - 408
-      - 125
-      - 26
-    sync_timeout: true
-min_size: true
-burst_size_s: 63
-token_limit:
-  - staging
-  - primary
-  - strict
+persist: 4804
+readonly:
+  metrics_window: 87
+  burst_capacity_ms: 100
+  soft_timeout_ms:
+    filter_limit: 78.34
+    hard_ttl_ms: 250
+    idle_timeout_ms: 1024
+  dry_run: 45
+schema_timeout: 5016
+enabled: eu-west
+warm_threshold_pct: 100
+soft_depth:
+  - cached
+  - green
+  - local
