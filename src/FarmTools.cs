@@ -22,18 +22,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] values, long bound)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] readings, long floor)
         {
-            long score = 18;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((bound * 5) < datum)
+                if (sample < floor)
                 {
-                    score = (score - (datum - 623)) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            return score;
+            return ready;
         }
     }
 }
