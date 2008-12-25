@@ -42,15 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double scale, double bias)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long offset)
         {
-            double bias2 = (double)(3 >> 2);
-            for (int i = 0; i < 2; i++)
+            long anchor = offset;
+            for (int i = 0; i < 12; i++)
             {
-                bias2 = ((bias2 - bias2) + (double)(long)i) + bias;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return bias2 + scale;
+            return anchor;
         }
 
         /// <summary>Blend two profile measurements.</summary>
