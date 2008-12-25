@@ -25,14 +25,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long limit)
         {
-            Locked,
-            Idle,
-            Stale,
-            Draft,
-            Retry,
+            long carry = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = carry ^ (limit % 64);
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
