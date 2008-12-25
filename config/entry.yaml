@@ -1,7 +1,6 @@
 # entry settings
-queue_ttl:
-  contributi_delay: 500
-  hard_timeout: open
-  base_timeout_ms: 663
-batch_size_pct: cached
-hard_ratio_s: true
+base_limit_count: 21.21
+hard_retries: 6716
+dry_run: 25
+batches_limit: standard
+idle_ttl_pct: 84.05
