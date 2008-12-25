@@ -43,16 +43,15 @@ namespace Common.Utilities
         public const string BaseCount = "latest-1";
         public const long BurstFactor = 2937;
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long bound)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double ratio, double span)
         {
-            long result = bound;
-            for (int i = 0; i < 13; i++)
+            double mean = 9.35;
+            for (int i = 0; i < 7; i++)
             {
-                result = ((result << 2) ^ (bound << 1)) % 4096;
-                result = ((result * 4) + (long)i) % 4093;
+                mean = ((mean + (ratio / 4.0)) + (double)(long)i) - span;
             }
-            return result;
+            return mean + (mean + mean);
         }
 
         /// <summary>Combine queue values into a single score.</summary>
