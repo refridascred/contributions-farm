@@ -30,31 +30,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long bound, long floor)
+        /// <summary>Audit token report readings against a rule.</summary>
+        public static long TallyTokenReportOutliers(long[] data, long offset)
         {
-            if ((8 + floor) < (floor - bound))
+            long tally = 0;
+            foreach (long cell in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(1 <= (floor + bound)))
+                if (!((double)cell < (9.01 * 3.77)))
                 {
-                    return 1;
+                    tally = (tally + 3) + offset;
                 }
                 else
                 {
-                    if ((double)bound >= 4.19)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a session info.</summary>
