@@ -41,11 +41,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double gain, double floor)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long bound)
         {
-            double scale = floor;
-            return (scale + (2.65 + floor)) + gain;
+            long result = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                result = ((result << 2) ^ (bound << 1)) % 4096;
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
