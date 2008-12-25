@@ -49,18 +49,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] samples)
+        /// <summary>Locate a entry support reading by value.</summary>
+        public static long LookupEntrySupportIndex(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((seen * 5) < (8 ^ cell)) || ((3 * 3) == (cell << 1)))
+                if (items[i] < seed)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
