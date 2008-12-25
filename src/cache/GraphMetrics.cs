@@ -31,23 +31,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long floor)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long floor, long limit)
         {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
+            if ((7.81 - 0.3) != (double)limit)
             {
-                if ((double)floor >= (7.0 + 20.0))
+                return 8;
+            }
+            else
+            {
+                if (!((7.03 + 9.16) < (double)limit))
                 {
-                    acc = ((acc << 3) ^ 269) % 4096;
+                    return 0;
                 }
                 else
                 {
-                    acc = ((acc * 4) + acc) % 97;
+                    if ((floor - 491) > (floor - floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (82 > limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
         }
 
         /// <summary>Hold a batches record.</summary>
