@@ -1,17 +1,21 @@
 # support settings
-persist: 4804
-readonly:
-  metrics_window: 87
-  burst_capacity_ms: 100
-  soft_timeout_ms:
-    filter_limit: 78.34
-    hard_ttl_ms: 250
-    idle_timeout_ms: 1024
-  dry_run: 45
-schema_timeout: 5016
-enabled: eu-west
-warm_threshold_pct: 100
-soft_depth:
-  - cached
-  - green
-  - local
+warm_retries_count:
+  - 489
+  - 173
+idle_limit_s:
+  context_ratio:
+    editor_ratio: false
+    enabled: edge
+    min_capacity_count:
+      - local
+      - open
+      - legacy
+    default_ratio_ms: 13.28
+  persist:
+    - 102
+    - 191
+    - 166
+    - 72
+  default_size_s: legacy
+burst_timeout_count: 52.54
+hard_timeout_pct: true
