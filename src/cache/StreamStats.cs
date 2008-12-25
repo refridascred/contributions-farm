@@ -41,11 +41,9 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 2845;
-        public const long MaxContext = 7025;
-        public const long BaseContext = 6147;
-        public const double MinContext = 18.0;
-        public const long BaseRatio = 9694;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string StepLevel = "open";
+        public const string LimitDepth = "strict-edge";
+        public const double DefaultTimeout = 0.78;
     }
 }
