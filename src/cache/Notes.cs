@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string LimitFactor = "fallback-1";
-        public const long CacheCluster = 2873;
-        public const double BaseInterval = 81.48;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public double Limit { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Check that every channel command entry stays within the limit.</summary>
         public static bool CheckChannelCommandBounds(long[] items, long origin)
