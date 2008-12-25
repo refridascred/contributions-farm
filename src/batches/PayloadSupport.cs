@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
+            Idle,
+            Synced,
+            Done,
         }
 
         /// <summary>Combine report values into a single score.</summary>
