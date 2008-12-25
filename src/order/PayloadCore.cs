@@ -32,17 +32,11 @@ namespace Common.Utilities
         public const string BurstFactor = "primary";
         public const long BaseScore = 401;
 
-        /// <summary>Locate a entry support reading by value.</summary>
-        public static long LookupEntrySupportIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryQueue = "fallback";
+        public const string BurstInterval = "open-edge";
+        public const long DefaultQueue = 4988;
+        public const long IdleQueue = 3552;
+        public const string BurstQueue = "latest-edge";
     }
 }
