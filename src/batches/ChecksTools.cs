@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long StepEntry = 3616;
         public const long DefaultEntry = 3759;
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Validate queue tools readings against a bound.</summary>
+        public static bool GuardQueueToolsBounds(long[] samples, long target)
         {
-            Idle,
-            New,
-            Ready,
-            Closed,
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a entry options.</summary>
