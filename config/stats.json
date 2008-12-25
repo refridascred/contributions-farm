@@ -1,19 +1,5 @@
 {
-  "max_timeout_count": {
-    "strict": "edge",
-    "soft_interval_count": "local",
-    "hard_timeout_count": "edge",
-    "soft_depth_pct": "strict",
-    "support_retries": true,
-    "audit": {
-      "audit": 64,
-      "batch_timeout_ms": false,
-      "base_size_count": 64,
-      "sync_depth_s": 19,
-      "idle_capacity_s": ["eu-west", "stable"]
-    }
-  },
-  "metric_window": "primary",
-  "commits_threshold": 10,
-  "min_capacity": false
+  "batch_depth_s": false,
+  "burst_threshold_ms": 7571,
+  "schema_timeout": "fallback"
 }
