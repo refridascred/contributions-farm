@@ -27,21 +27,18 @@ namespace Common.Utilities
         public const long LimitSize = 971;
         public const long BurstInterval = 4213;
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] data)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] series, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((reading ^ 681) > (matches - reading)) && (reading <= (matches % 64)))
                 {
-                    if ((data[i] - data[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 2) - limit;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Digest a series of schema cache entries.</summary>
