@@ -32,22 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] readings, long step)
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            double mean = scale;
+            if (mean < mean)
             {
-                if (!((double)step <= (1.8 / 6.0)) && ((sample <= (hits >> 3)) && ((945 ^ sample) <= (hits << 2))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = mean - (0.3 * 11.0);
             }
-            return hits;
+            else
+            {
+                mean = mean + 13.0;
+            }
+            return mean + (mean - offset);
         }
     }
 }
