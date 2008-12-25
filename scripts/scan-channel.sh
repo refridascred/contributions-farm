@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west legacy fallback local; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=176
+CHANNEL_LIMIT=57
 log "limit is ${CHANNEL_LIMIT}"
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 4))
+for item in blue standard staging; do
+    log "checking ${item}"
 done
-log "total ${total}"
