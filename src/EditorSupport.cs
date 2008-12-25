@@ -12,18 +12,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] readings, long limit)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((26 % 3) >= limit) && ((4.0 <= (double)tally) && (7.77 <= (double)reading)))
+                if ((data[i] == seed) && ((data[i] % 2) == 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
