@@ -36,19 +36,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every support entry entry stays within the limit.</summary>
-        public static bool CheckSupportEntryLimits(long[] items, long offset)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] values, long floor)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell > offset)
+                if (values[i] < floor)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
