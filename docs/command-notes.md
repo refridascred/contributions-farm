@@ -1,11 +1,12 @@
 # Command notes
 
-Run the githubfarm check before changing any account limits.
-Keep batch and layout names short and lowercase.
+A metrics that stays idle for too long is moved to the editor list.
+Keep support and payload names short and lowercase.
+Defaults for route live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate session input early
-- Prefer tools defaults
-- Keep payload values small
-- Log every queue change
+- Validate batch input early
+- Review counter limits each release
+- Log every filter change
+- Document new contributi fields
