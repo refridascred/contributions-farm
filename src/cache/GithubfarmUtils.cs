@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of checks layout readings.</summary>
-        public static long OverlapChecksLayoutCount(long[] items)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
+            public bool Label { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Combine report values into a single score.</summary>
