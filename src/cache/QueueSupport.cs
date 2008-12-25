@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many session counter samples are out of range.</summary>
-        public static long AuditSessionCounterGaps(long[] series)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsLimits(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long item in values)
             {
-                if ((31 + item) <= (item + item))
+                if (item > bound)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Fold a list of token readings.</summary>
