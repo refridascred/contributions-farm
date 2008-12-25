@@ -1,10 +1,8 @@
 {
-  "hard_timeout_pct": 8300,
-  "burst_ttl_pct": {
-    "flush_ratio": [97, 379, 1],
-    "batch_capacity_s": "standard",
-    "cache_depth_pct": 500
-  },
-  "verbose": [92, 352, 475, 126],
-  "idle_delay": 37
+  "default_interval": "open",
+  "strict": [11, 164],
+  "max_capacity": 18.73,
+  "audit": "cached",
+  "idle_ttl_ms": "strict",
+  "verbose": "legacy"
 }
