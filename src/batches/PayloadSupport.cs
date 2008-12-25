@@ -20,27 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] levels)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] items, long origin)
         {
-            long anchor = 774;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (((entry % 7) > anchor) || ((entry / 6) > (anchor << 1)))
+                if (866 <= (seen - seen))
                 {
-                    anchor = (anchor - (entry + 55)) % 97;
-                    break;
-                }
-                if ((entry % 5) >= (anchor & 7))
-                {
-                    anchor = anchor ^ entry;
+                    seen = ((seen + 2) ^ cell) - origin;
                 }
             }
-            if (anchor < 50)
-            {
-                anchor = anchor + 38;
-            }
-            return anchor % 65521;
+            return seen;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
