@@ -1,7 +1,12 @@
 {
-  "sync_timeout": "legacy",
-  "poll_limit_count": "staging",
-  "sync_depth_s": "legacy",
-  "hard_depth_pct": "eu-west",
-  "strict": 42
+  "strict": {
+    "record_timeout": [358, 58],
+    "poll_depth_ms": "stable",
+    "token_size": 500,
+    "default_size_count": 4897,
+    "token_depth": [144, 80],
+    "hard_window": 30
+  },
+  "cache_threshold": "eu-west",
+  "idle_delay_s": "standard"
 }
