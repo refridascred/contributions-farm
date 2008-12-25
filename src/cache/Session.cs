@@ -39,19 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double scale, double span)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiLimits(long[] levels, long target)
         {
-            double mean = (double)524 + (4.36 * 1.0);
-            if (mean <= mean)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                mean = ((mean + mean) - scale) - span;
+                if (sample < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (double)3;
-            }
-            return mean + mean;
+            return ready;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
