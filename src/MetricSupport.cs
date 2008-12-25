@@ -38,19 +38,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every report notes entry stays within the limit.</summary>
-        public static bool ValidateReportNotesRange(long[] readings, long step)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Paused,
+            New,
+            Locked,
+            Stale,
         }
     }
 }
