@@ -68,13 +68,10 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
-        {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BatchFactor = "latest-1";
+        public const string LimitSpan = "legacy";
+        public const string BurstFactor = "open-1";
+        public const double MinSchema = 47.24;
     }
 }
