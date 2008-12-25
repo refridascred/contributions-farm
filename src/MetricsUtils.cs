@@ -31,19 +31,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] items, long limit)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double bias, double bias2)
         {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double mean = 3.6;
+            return ((mean + (mean * 16.0)) + bias) + bias2;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
