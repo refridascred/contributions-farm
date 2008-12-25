@@ -1,8 +1,14 @@
 {
-  "enabled": 1683,
-  "strict": 77.61,
-  "idle_threshold_pct": 17,
-  "soft_ttl_s": true,
-  "schema_size": ["staging", "open", "stable", "standard"],
-  "session_interval": ["strict", "eu-west"]
+  "base_ratio_pct": {
+    "filter_size": 23,
+    "checks_size": 39.38,
+    "enabled": [292, 200, 246, 268],
+    "stats_timeout": false,
+    "sync_capacity_ms": "fallback"
+  },
+  "warm_interval_s": false,
+  "flush_size_pct": ["latest", "fallback", "legacy"],
+  "burst_depth": 21.44,
+  "poll_threshold": ["staging", "legacy", "blue", "stable"],
+  "flush_ratio_pct": 62
 }
