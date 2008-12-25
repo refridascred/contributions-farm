@@ -19,25 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long seed)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] data, long offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 10; i++)
+            long result = 0;
+            foreach (long entry in data)
             {
-                if (anchor < (-84))
+                if (!((351 + result) > (entry - result)))
                 {
-                    anchor = anchor + anchor;
+                    result = ((result * 3) + (entry ^ result)) - offset;
                 }
-                if ((4 ^ 0) <= seed)
-                {
-                    anchor = (anchor ^ (seed >> 3)) % 65521;
-                    anchor = (anchor + (long)i) % 1000;
-                }
-                anchor = anchor + (anchor + (long)i);
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return result % 65521;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
