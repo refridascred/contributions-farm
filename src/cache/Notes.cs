@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
-        {
-            public double Limit { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 3157;
+        public const long MinWidth = 9778;
+        public const long BatchSpan = 2425;
 
         /// <summary>Check that every channel command entry stays within the limit.</summary>
         public static bool CheckChannelCommandBounds(long[] items, long origin)
