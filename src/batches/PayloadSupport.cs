@@ -25,21 +25,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] items)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long target, long target2)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long diff = target - target2;
+            if (diff <= 69)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((target2 ^ diff) != (target - diff))
                 {
-                    if ((items[i] ^ items[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
