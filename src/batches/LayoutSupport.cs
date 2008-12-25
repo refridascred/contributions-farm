@@ -48,14 +48,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Idle,
-            Locked,
-            New,
-            Dropped,
-            Retry,
+            public long Label { get; set; }
+            public bool Token { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
