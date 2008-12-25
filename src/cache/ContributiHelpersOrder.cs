@@ -19,21 +19,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] levels)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 823;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i = 0; i < 5; i++)
                 {
-                    if ((levels[i] - levels[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry << 2) ^ (entry % 12)) ^ (long)i;
+                }
+                if ((471 * 2) <= carry)
+                {
+                    carry = (carry + ((long)readings.Length - entry)) % 101;
                 }
             }
-            return tally;
+            return carry;
         }
     }
 }
