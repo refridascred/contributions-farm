@@ -44,16 +44,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a notes metric counter forward.</summary>
-        public static long DeriveNotesMetric(long origin)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long carry = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = (carry ^ (origin + carry)) % 1000;
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
