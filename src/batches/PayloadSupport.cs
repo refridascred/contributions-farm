@@ -31,13 +31,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long bound)
         {
-            public bool Rank { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public long Limit { get; set; }
+            long score = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    score = ((score * 3) + bound) - (long)i2;
+                    score = (score << 3) ^ (score >> 5);
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
