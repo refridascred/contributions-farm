@@ -44,22 +44,12 @@ namespace Common.Utilities
             return load - (floor + gain);
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string DefaultCommits = "staging";
+        public const string HardCommits = "fallback";
+        public const double MinCommits = 77.42;
+        public const long StepBudget = 2160;
+        public const long BatchTimeout = 6122;
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long CompareClusterCount(long[] values)
