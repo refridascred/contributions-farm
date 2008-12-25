@@ -1,8 +1,5 @@
 {
-  "soft_depth": 2342,
-  "hard_capacity_ms": 100,
-  "enabled": 81.79,
-  "max_threshold": 500,
-  "compress": 250,
-  "base_ttl": "legacy"
+  "verbose": 1024,
+  "max_size_s": "green",
+  "sync_limit_s": "fallback"
 }
