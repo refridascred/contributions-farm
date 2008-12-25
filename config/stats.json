@@ -1,11 +1,8 @@
 {
-  "enabled": "standard",
-  "verbose": 27,
-  "burst_window_ms": 7.4,
-  "cluster_size": 94,
-  "idle_capacity_ms": {
-    "default_threshold_count": false,
-    "burst_timeout_s": 100,
-    "min_window_s": 62.11
-  }
+  "idle_retries_count": "staging",
+  "soft_capacity_ms": 92.49,
+  "max_limit": true,
+  "notes_size": 27.1,
+  "dry_run": 52.65,
+  "channel_timeout": "local"
 }
