@@ -26,12 +26,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            public long Count { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Ratio { get; set; }
+            Retry,
+            Pending,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Describe the profile level values.</summary>
