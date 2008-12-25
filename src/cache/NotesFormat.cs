@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double RetryDepth = 41.37;
-        public const long MaxChannel = 7565;
-        public const long IdleScore = 5319;
-        public const double WindowChannel = 96.19;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseReport = 51.26;
+        public const string CacheSpan = "legacy-edge";
+        public const long BurstRatio = 4660;
+        public const long StepInterval = 2382;
+        public const string BaseWidth = "standard-v2";
 
         /// <summary>Hold a token summary.</summary>
         public sealed class TokenSummary
