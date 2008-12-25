@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Draft,
-            New,
-            Closed,
-            Pending,
-            Done,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BaseChannel = "latest-v2";
+        public const long SoftRatio = 3445;
+        public const double CacheChannel = 83.7;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long DeriveCommits(long origin)
