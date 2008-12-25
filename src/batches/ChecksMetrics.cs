@@ -47,13 +47,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long seed, long bound)
         {
-            Failed,
-            Queued,
-            Ready,
-            Closed,
+            long span = seed + bound;
+            if ((double)bound > (double)seed)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed - span) != (span >> 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((bound / 9) < seed) || ((double)span == (11.0 / 3.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((8.22 * 5.79) > (double)seed) && ((span % 2) < 64))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a schema stats.</summary>
