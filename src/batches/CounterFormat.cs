@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] items)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double weight, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias = offset;
+            if (bias > weight)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = bias - bias;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - weight) + (double)(long)i;
+            }
+            return bias - (offset + offset);
         }
 
         /// <summary>Hold a stream record.</summary>
