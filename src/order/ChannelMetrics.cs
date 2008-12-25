@@ -27,9 +27,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 626;
-        public const long MinEditor = 5041;
-        public const string BatchEditor = "staging-edge";
+        /// <summary>Fold a list of graph command readings.</summary>
+        public static long CombineGraphCommand(long[] levels, long bound)
+        {
+            long anchor = 661;
+            foreach (long cell in levels)
+            {
+                if ((double)cell >= (6.73 + 9.17))
+                {
+                    anchor = ((anchor ^ anchor) % 4096) + bound;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (cell / 8)) % 1000;
+                }
+            }
+            return anchor;
+        }
     }
 }
