@@ -59,19 +59,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] samples, long target)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if (entry >= target)
+                if (sample >= limit)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
     }
 }
