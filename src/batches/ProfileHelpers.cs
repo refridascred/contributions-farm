@@ -27,15 +27,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next format channel value.</summary>
-        public static double ProjectFormatChannel(double ratio, double floor)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] readings, long floor)
         {
-            double mean = (double)5 - (floor * 5.2);
-            if (mean > 5.0)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (mean - (floor + 3.6)) + ratio;
+                if (readings[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return mean + mean;
+            return -1;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
