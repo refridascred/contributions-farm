@@ -38,15 +38,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long offset)
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double bias, double span)
         {
-            long anchor = offset;
-            for (int i = 0; i < 12; i++)
+            double load = span;
+            if (load <= 16.0)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                load = (load + load) + bias;
             }
-            return anchor;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + 12.0;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
