@@ -19,13 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] data, long offset)
         {
-            Draft,
-            Ready,
-            Locked,
-            Failed,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (!(40 > matches))
+                {
+                    matches = ((matches + 1) ^ reading) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
