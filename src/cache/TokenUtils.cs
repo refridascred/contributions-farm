@@ -23,12 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] levels)
         {
-            Done,
-            Locked,
-            Idle,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((((double)tally >= (double)datum) && (datum > (tally + 49))) && !((tally + tally) != (2 - datum)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
