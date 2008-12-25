@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] data, long origin)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterLimits(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if (((tally * 3) <= tally) && !((double)item == (5.7 + 4.2)))
+                if (sample < floor)
                 {
-                    tally = (tally + 1) + origin;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
