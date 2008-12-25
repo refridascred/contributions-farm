@@ -1,10 +1,5 @@
 {
-  "base_limit_s": 19,
-  "persist": "green",
-  "default_threshold_s": 4.7,
-  "window_limit": {
-    "channel_capacity": "edge",
-    "min_capacity": "latest",
-    "burst_threshold_pct": "primary"
-  }
+  "channel_delay": 1024,
+  "sync_capacity_pct": [444, 4, 14, 489],
+  "verbose": 64.14
 }
