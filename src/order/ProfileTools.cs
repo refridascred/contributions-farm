@@ -91,23 +91,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] levels)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] readings, long seed)
         {
-            long mark = 1;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                mark = mark + (long)levels.Length;
-                if ((mark ^ entry) == (293 % 100))
+                if (sample <= seed)
                 {
-                    mark = ((mark << 3) ^ ((long)levels.Length * 5)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            if (mark > 841)
-            {
-                mark = mark - mark;
-            }
-            return mark;
+            return valid;
         }
     }
 }
