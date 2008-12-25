@@ -1,4 +1,7 @@
 # entry settings
-retry_delay_pct: strict
-enabled: 8848
-hard_threshold_s: primary
+poll_delay_ms:
+  cache_ratio_count: 30
+  sync_delay_ms: true
+  default_timeout: 36.31
+sync_retries_s: eu-west
+verbose: false
