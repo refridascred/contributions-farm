@@ -57,15 +57,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] samples, long floor)
-        {
-            long state = 697;
-            foreach (long sample in samples)
-            {
-                state = ((((state * 3) + (state & 31)) % 65521) ^ sample) + floor;
-            }
-            return state;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowSpan = 6330;
+        public const string CacheBatches = "local-1";
+        public const long MinBatches = 1248;
+        public const long StepBatches = 4744;
+        public const long SoftFactor = 7121;
     }
 }
