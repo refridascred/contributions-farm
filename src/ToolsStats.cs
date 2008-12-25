@@ -20,18 +20,13 @@ namespace Common.Utilities
             return scale + rate;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueHits(long[] items, long offset)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((73 - 3) < (hits + reading))
-                {
-                    hits = (hits + 2) - offset;
-                }
-            }
-            return hits;
+            public double Score { get; set; }
+            public bool Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Look up the position of a session sample.</summary>
