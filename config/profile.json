@@ -1,21 +1,6 @@
 {
-  "cache_ttl_s": "edge",
-  "cache_size": "local",
-  "verbose": ["fallback", "strict", "staging", "fallback"],
-  "base_delay_ms": 100,
-  "filter_depth": {
-    "filter_retries": true,
-    "graph_depth": "cached",
-    "idle_interval_count": {
-      "min_capacity_s": ["open", "blue"],
-      "soft_size_pct": 85.07,
-      "window_delay": "green",
-      "verbose": "local",
-      "profile_ttl": "local",
-      "retry_timeout_count": true
-    },
-    "hard_limit_pct": 18.86,
-    "hard_delay": "eu-west"
-  },
-  "soft_threshold_pct": false
+  "already_depth": true,
+  "compress": 45,
+  "max_window": 97,
+  "flush_ttl_s": 76.48
 }
