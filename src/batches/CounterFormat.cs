@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count layout commits pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCommitsCount(long[] levels)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Region { get; set; }
+            public double Token { get; set; }
+            public string Score { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
