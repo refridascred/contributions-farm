@@ -41,14 +41,12 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
-        {
-            public double Rank { get; set; }
-            public long Region { get; set; }
-            public bool Total { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxTimeout = 4926;
+        public const long WindowSize = 4208;
+        public const string BaseContributi = "primary";
+        public const string SoftContributi = "alpha-v2";
+        public const long CacheContributi = 1712;
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double ScaleCounter(double gain, double floor)
