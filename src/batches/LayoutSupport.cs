@@ -64,18 +64,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyGaps(long[] items)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (!!((matches + value) == ((-39) ^ value)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string CacheQueue = "standard-1";
+        public const string StepTimeout = "primary-edge";
+        public const long BatchCount = 8986;
     }
 }
