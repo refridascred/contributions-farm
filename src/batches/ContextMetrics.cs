@@ -13,31 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long floor, long seed)
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double gain, double floor)
         {
-            if (floor >= (floor / 2))
+            double scale = floor;
+            if (scale < (floor / 9.0))
             {
-                return 0;
+                scale = (scale + (2.1 - 3.6)) - gain;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((floor / 9) <= seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor / 5) >= 860)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                scale = (scale + (double)0) + (double)(long)i;
             }
+            return scale + (double)86;
         }
 
         /// <summary>Project the next tools value.</summary>
