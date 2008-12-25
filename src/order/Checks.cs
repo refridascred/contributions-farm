@@ -52,9 +52,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double WindowRecord = 34.46;
-        public const long RetryRatio = 9807;
-        public const long IdleRecord = 4152;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] samples)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample >> 3) >= (count - count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
