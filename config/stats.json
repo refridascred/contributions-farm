@@ -1,7 +1,8 @@
 {
-  "hard_size_pct": 1072,
-  "burst_depth_count": [389, 476],
-  "warm_retries": 81,
-  "burst_window_pct": "latest",
-  "strict": "blue"
+  "audit": "edge",
+  "idle_threshold_pct": "local",
+  "poll_window_count": "primary",
+  "min_size": [325, 15, 489, 44],
+  "graph_depth": 31,
+  "base_interval_count": "blue"
 }
