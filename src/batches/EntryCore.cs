@@ -21,13 +21,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            public double Region { get; set; }
-            public double Weight { get; set; }
-            public double Offset { get; set; }
-            public double Mode { get; set; }
+            public double Flag { get; set; }
+            public double Limit { get; set; }
+            public long Offset { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Accumulate checks samples.</summary>
