@@ -28,18 +28,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the order metrics entries that pass the check.</summary>
-        public static long AuditOrderMetricsHits(long[] samples)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferMatches(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if ((hits & 15) != (hits + sample))
+                if (entry >= (offset + tally))
                 {
-                    hits = hits + 1;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
