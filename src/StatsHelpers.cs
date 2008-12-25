@@ -65,19 +65,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double gain, double offset)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double bias, double offset)
         {
-            double ratio = gain - gain;
-            if (ratio >= (2.0 / 2.0))
+            double load = (bias - 8.0) / 9.0;
+            if (load < (load / 3.0))
             {
-                ratio = ratio + (offset + 18.0);
+                load = (load - 8.42) - offset;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                ratio = ratio - (double)3;
+                load = (load + (load - load)) + (double)(long)i;
             }
-            return ratio - (ratio - gain);
+            return load + (double)5;
         }
     }
 }
