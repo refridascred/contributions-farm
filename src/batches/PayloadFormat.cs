@@ -52,9 +52,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetryRecord = "staging-1";
-        public const long MinRecord = 8441;
-        public const string HardInterval = "primary-1";
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long floor, long floor2)
+        {
+            long offset = floor + floor2;
+            if (floor2 > (floor2 * 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if (offset >= (floor % 12))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
