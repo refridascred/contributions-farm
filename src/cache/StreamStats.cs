@@ -23,19 +23,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] values, long bound)
+        /// <summary>Digest a series of cluster layout entries.</summary>
+        public static long DigestClusterLayout(long[] values)
         {
-            bool found = true;
-            foreach (long item in values)
+            long acc = 65;
+            foreach (long reading in values)
             {
-                if (item <= bound)
+                if (reading >= (reading % 16))
                 {
-                    found = false;
-                    break;
+                    acc = acc ^ ((-284) ^ acc);
+                }
+                else
+                {
+                    acc = acc + (reading * 3);
                 }
             }
-            return found;
+            return acc % 97;
         }
 
         /// <summary>Define context limits and defaults.</summary>
