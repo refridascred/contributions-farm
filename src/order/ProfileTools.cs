@@ -66,19 +66,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] samples, long target)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueOutliers(long[] samples)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (item > target)
+                if ((sample & 63) != (matches + 8))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
