@@ -63,22 +63,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] items, long target)
+        /// <summary>Digest a series of cache filter entries.</summary>
+        public static long FoldCacheFilter(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long item in items)
+            long carry = 9;
+            foreach (long entry in data)
             {
-                if (33 >= (count >> 4))
+                if ((entry + 69) >= (offset / 3))
                 {
-                    count = ((count + 2) + item) - target;
+                    carry = carry + entry;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = ((carry << 3) ^ (carry + 178)) % 4096;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Digest a series of window entries.</summary>
