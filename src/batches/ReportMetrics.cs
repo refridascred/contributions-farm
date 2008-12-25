@@ -29,12 +29,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] levels, long floor)
         {
-            Idle,
-            New,
-            Done,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (floor <= (floor + item))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
