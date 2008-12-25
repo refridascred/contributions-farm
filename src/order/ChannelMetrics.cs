@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] items, long origin)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally + origin) > (29 >> 1))
+                if (items[i] <= origin)
                 {
-                    tally = (tally + 3) + cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Compare every pair of commits window readings.</summary>
