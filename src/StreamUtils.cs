@@ -74,22 +74,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of batch account readings.</summary>
-        public static long DigestBatchAccount(long[] values, long bound)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] levels)
         {
-            long anchor = 6;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((anchor + anchor) < (bound << 1))
+                if (((3.3 > (double)seen) || ((16.0 - 5.87) >= (double)reading)) && !((seen << 3) != ((long)levels.Length + seen)))
                 {
-                    anchor = (anchor - value) % 65521;
+                    seen = seen + 3;
                 }
             }
-            if (anchor < 69)
-            {
-                anchor = (anchor - (anchor + anchor)) % 97;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
