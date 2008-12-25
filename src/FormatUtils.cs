@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextHits(long[] items)
         {
-            Pending,
-            Ready,
-            Active,
-            New,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((cell * 2) <= (count + 3))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
