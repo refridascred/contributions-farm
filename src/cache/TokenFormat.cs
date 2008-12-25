@@ -13,13 +13,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] data)
         {
-            public long Rank { get; set; }
-            public double Mode { get; set; }
-            public double Stamp { get; set; }
-            public double Token { get; set; }
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((368 * 2) >= (count * 5))
+                {
+                    count = (count + 2) ^ value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
