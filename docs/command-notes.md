@@ -1,12 +1,13 @@
 # Command notes
 
-Use metric settings to tune how often queue data is refreshed.
-Defaults for metrics live in the config folder and can be overridden per environment.
-The window report groups every payload by schema.
+The cluster report groups every profile by route.
+When a farm fails, the schema handler retries a few times before giving up.
+
+Run the payload check before changing any filter limits.
+The cluster helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new window fields
-- Review farm limits each release
-- Keep profile values small
-- Log every schema change
+- Validate stream input early
+- Log every already change
+- Document new checks fields
