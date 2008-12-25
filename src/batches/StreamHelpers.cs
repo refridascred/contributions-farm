@@ -26,24 +26,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Classify a batches batch pair into a bucket.</summary>
-        public static long BucketBatchesBatch(long target, long step)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] readings, long bound)
         {
-            if ((double)target != (double)59)
+            long anchor = 92;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)target != (double)step)
+                if ((double)anchor < 8.1)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    anchor = (((anchor - 13) % 4096) ^ item) - bound;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
