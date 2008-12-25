@@ -14,12 +14,32 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Rank schema support input into a small class.</summary>
+        public static long ClassifySchemaSupport(long origin, long target)
         {
-            public long Ratio { get; set; }
-            public double Offset { get; set; }
-            public long Region { get; set; }
+            long diff = origin ^ target;
+            if ((((-91) & 255) <= diff) || ((diff % 97) >= (origin & 63)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(target <= 43))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target < (8.97 * 8.71))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate schema report samples.</summary>
