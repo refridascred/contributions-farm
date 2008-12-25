@@ -1,10 +1,11 @@
 # Command notes
 
-Each checks is validated before it reaches the entry queue.
-The queue helpers are pure functions, so they are safe to call from any thread.
+When a counter fails, the channel handler retries a few times before giving up.
+Run the filter check before changing any filter limits.
 
 ## Guidelines
 
-- Validate counter input early
-- Document new stream fields
-- Prefer batches defaults
+- Prefer profile defaults
+- Keep filter values small
+- Validate metrics input early
+- Log every cache change
