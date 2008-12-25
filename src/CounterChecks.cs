@@ -60,21 +60,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up cache order samples.</summary>
-        public static long PairCacheOrderCount(long[] values)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 434;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = (((result << 3) ^ (300 * 5)) % 4096) ^ entry;
             }
-            return matches;
+            if (result > 9)
+            {
+                result = result ^ (result + (-6));
+            }
+            return result % 65521;
         }
     }
 }
