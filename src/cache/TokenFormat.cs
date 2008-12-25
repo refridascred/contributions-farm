@@ -13,13 +13,10 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public long Count { get; set; }
-            public bool Rank { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseSpan = 5051;
+        public const long MaxCluster = 4998;
+        public const long MaxFactor = 8549;
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long PairReportCount(long[] samples)
