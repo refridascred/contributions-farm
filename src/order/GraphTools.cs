@@ -57,17 +57,13 @@ namespace Common.Utilities
         public const string StepFactor = "staging-v2";
         public const long LimitAlready = 577;
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] levels, long step)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Locked,
+            Draft,
+            Retry,
         }
     }
 }
