@@ -6,11 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 4))
+for item in primary staging strict edge; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-COMMAND_LIMIT=242
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-fallback}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
