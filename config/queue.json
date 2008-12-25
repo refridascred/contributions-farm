@@ -1,5 +1,6 @@
 {
-  "stats_timeout": 6808,
-  "retry_depth": "staging",
-  "retry_timeout_ms": 94
+  "readonly": true,
+  "graph_ttl": 30,
+  "flush_limit_ms": false,
+  "poll_delay_pct": 60
 }
