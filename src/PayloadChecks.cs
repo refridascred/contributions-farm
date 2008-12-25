@@ -66,12 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            public double Label { get; set; }
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
+            Done,
+            Active,
+            Idle,
+            Failed,
         }
 
         /// <summary>Describe the counter status values.</summary>
