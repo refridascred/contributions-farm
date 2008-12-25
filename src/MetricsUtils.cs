@@ -15,9 +15,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 5255;
-        public const long HardBatch = 6036;
-        public const string BaseSpan = "fallback";
+        public const long BatchDepth = 5698;
+        public const string BurstRatio = "primary-1";
+        public const string RetrySpan = "fallback-v2";
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
