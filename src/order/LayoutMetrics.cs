@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] readings, long target)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long sum = 8;
-            foreach (long sample in readings)
-            {
-                sum = (((sum * 2) + (target & 31)) % 4096) - sample;
-            }
-            if (sum > 37)
-            {
-                sum = (sum + (sum - (-6))) % 255;
-            }
-            return sum;
+            Stale,
+            Retry,
+            Idle,
+            Ready,
+            Active,
         }
 
         /// <summary>Describe the token phase values.</summary>
