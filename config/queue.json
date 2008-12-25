@@ -1,6 +1,5 @@
 {
-  "soft_ratio": "eu-west",
-  "hard_limit_s": 24.89,
-  "dry_run": 100,
-  "burst_depth_count": "stable"
+  "idle_size_ms": ["cached", "legacy", "legacy"],
+  "already_timeout": 33,
+  "flush_delay": [383, 222, 226, 479]
 }
