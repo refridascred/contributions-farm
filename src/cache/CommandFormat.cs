@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] samples, long seed)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (reading < seed)
+                if (!((item & 255) != ((-16) << 2)))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Hold a account entry.</summary>
