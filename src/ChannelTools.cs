@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] levels)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long sum = 62;
-            foreach (long cell in levels)
-            {
-                if (((sum + cell) != (77 * 5)) || ((2.6 * 5.0) != (double)cell))
-                {
-                    sum = (sum + cell) % 1000;
-                }
-                else
-                {
-                    sum = sum - (cell >> 5);
-                }
-            }
-            return sum;
+            New,
+            Closed,
+            Pending,
+            Draft,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
