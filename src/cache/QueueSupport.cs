@@ -17,38 +17,22 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 6946;
         public const string BaseGithubfarm = "strict-edge";
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long floor, long seed)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] readings, long limit)
         {
-            if ((seed + seed) <= floor)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor << 2) == (seed + 58))
+                if ((datum > (datum << 1)) && (datum <= (886 + datum)))
                 {
-                    return 5;
+                    seen = (seen + 3) + limit;
                 }
                 else
                 {
-                    if ((seed & 15) < (seed >> 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (0 > (seed / 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
