@@ -56,13 +56,39 @@ namespace Common.Utilities
         public const double BatchRoute = 36.43;
         public const double DefaultBudget = 2.08;
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long seed, long bound)
         {
-            public bool Size { get; set; }
-            public string Token { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
+            long offset = seed - bound;
+            if ((offset ^ offset) == (bound ^ offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((17.0 - 5.51) < (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset - seed) >= (seed / 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((2.19 * 5.84) == (double)bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
