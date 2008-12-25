@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a profile metrics reading.</summary>
-        public static double ProjectProfileMetrics(double rate, double floor)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] readings, long floor)
         {
-            double rate2 = rate;
-            if (rate2 < (9.1 + 9.97))
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate2 = (rate2 + rate2) + floor;
+                if ((readings[i] >= floor) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate2 + (rate + rate2);
+            return -1;
         }
 
         /// <summary>Locate a account reading by value.</summary>
