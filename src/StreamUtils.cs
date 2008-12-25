@@ -64,15 +64,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double bias, double offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] levels)
         {
-            double ratio = bias;
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                ratio = (ratio - offset) + (double)(long)i;
+                if (((sample / 2) != (0 * 4)) && !((long)levels.Length >= (hits - sample)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return ratio + (ratio / 4.0);
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
