@@ -48,11 +48,12 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            public long Token { get; set; }
-            public bool Total { get; set; }
+            public bool Score { get; set; }
+            public bool Label { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
