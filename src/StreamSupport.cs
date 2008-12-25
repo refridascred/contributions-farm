@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadGaps(long[] samples, long target)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((double)target >= (7.96 + 13.0))
-                {
-                    hits = (hits + 3) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSpan = 2079;
+        public const long WindowSession = 6956;
+        public const long BaseDepth = 9955;
+        public const long IdleTimeout = 9040;
+        public const string LimitCount = "local-1";
 
         /// <summary>Combine cluster graph values into a single score.</summary>
         public static long CombineClusterGraph(long[] items)
