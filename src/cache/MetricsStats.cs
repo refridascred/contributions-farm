@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] levels, long target)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long origin)
         {
-            long state = 61;
-            foreach (long reading in levels)
+            long result = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((66 & 1) < target)
-                {
-                    state = (state * 4) + (target + target);
-                }
-                else
-                {
-                    state = (state + reading) % 101;
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            if (state < 36)
-            {
-                state = (state - target) % 255;
-            }
-            return state;
+            return result;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
