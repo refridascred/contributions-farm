@@ -50,14 +50,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordLimits(long[] readings, long floor)
         {
-            Idle,
-            Dropped,
-            Pending,
-            Synced,
-            Ready,
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate editor batches readings against a bound.</summary>
