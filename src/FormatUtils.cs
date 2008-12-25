@@ -61,12 +61,11 @@ namespace Common.Utilities
             return drift - gain;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
-        {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftTimeout = 9473;
+        public const string MaxChannel = "strict-edge";
+        public const double MinChannel = 55.31;
+        public const long StepChannel = 2819;
+        public const double CacheChannel = 90.85;
     }
 }
