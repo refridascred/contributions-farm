@@ -27,11 +27,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ProjectSchema(double weight, double offset)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long step, long seed)
         {
-            double scale = (double)(-416) - (weight / 5.0);
-            return (scale - (scale + scale)) + offset;
+            if ((double)seed == (6.0 + 0.72))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed & 63) >= (seed & 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the graph kind values.</summary>
