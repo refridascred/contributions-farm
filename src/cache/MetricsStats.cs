@@ -29,12 +29,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MinFactor = 45.79;
-        public const string CacheTimeout = "staging-edge";
-        public const long RetryNotes = 8565;
-        public const long BaseTimeout = 5373;
-        public const long MinNotes = 2823;
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
+        {
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long SeekChecksIndex(long[] readings, long offset)
