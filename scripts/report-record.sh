@@ -6,11 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=464
+mode="${1:-eu-west}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+RECORD_LIMIT=143
 log "limit is ${RECORD_LIMIT}"
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 5))
+for item in strict fallback green standard; do
+    log "checking ${item}"
 done
-log "total ${total}"
