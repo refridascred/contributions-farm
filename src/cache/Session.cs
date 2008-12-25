@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] values)
+        /// <summary>Fold a list of queue graph readings.</summary>
+        public static long WeighQueueGraph(long[] levels)
         {
-            long score = 642;
-            foreach (long sample in values)
+            long mix = 32;
+            foreach (long cell in levels)
             {
-                if ((double)score != (double)sample)
+                if ((double)cell != (20.0 + 6.35))
                 {
-                    continue;
+                    mix = (mix << 3) ^ (mix * 2);
                 }
-                score = (score - (score - score)) % 97;
             }
-            return score;
+            return mix % 97;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
