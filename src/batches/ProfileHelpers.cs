@@ -66,22 +66,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] items)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((seen & 7) == (seen % 24))
-                {
-                    seen = (seen + 2) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Locked,
+            Failed,
+            Stale,
+            Done,
         }
     }
 }
