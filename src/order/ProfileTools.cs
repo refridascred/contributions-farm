@@ -22,14 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Compare every pair of layout token readings.</summary>
+        public static long OverlapLayoutTokenCount(long[] data)
         {
-            Failed,
-            Idle,
-            Locked,
-            Synced,
-            Dropped,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of window readings.</summary>
