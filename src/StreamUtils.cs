@@ -22,10 +22,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 3703;
-        public const long DefaultProfile = 3260;
-        public const double CacheInterval = 75.9;
+        /// <summary>Iterate the schema layout series from a seed.</summary>
+        public static long SeriesSchemaLayout(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!((double)floor == (12.0 * 4.5)))
+                {
+                    total = total + (floor + floor);
+                    total = ((total << 2) ^ (total + total)) % 101;
+                }
+                if (total <= 484)
+                {
+                    total = (total ^ (floor + total)) % 4096;
+                }
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long CombineQueue(long[] readings)
