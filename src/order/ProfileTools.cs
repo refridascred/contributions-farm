@@ -58,12 +58,23 @@ namespace Common.Utilities
         public const long SoftGraph = 8343;
         public const double WindowSpan = 23.0;
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] levels)
         {
-            Pending,
-            Draft,
-            Active,
+            long mark = 1;
+            foreach (long entry in levels)
+            {
+                mark = mark + (long)levels.Length;
+                if ((mark ^ entry) == (293 % 100))
+                {
+                    mark = ((mark << 3) ^ ((long)levels.Length * 5)) % 97;
+                }
+            }
+            if (mark > 841)
+            {
+                mark = mark - mark;
+            }
+            return mark;
         }
     }
 }
