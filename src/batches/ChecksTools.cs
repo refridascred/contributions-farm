@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] samples, long seed)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksRange(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if (entry >= seed)
+                if (datum != step)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Define report limits and defaults.</summary>
