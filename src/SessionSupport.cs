@@ -31,19 +31,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] levels)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] levels, long floor)
         {
-            long score = -2;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)score >= (3.62 - 4.3))
+                if (levels[i] >= floor)
                 {
-                    score = ((score << 3) ^ (score / 8)) % 255;
+                    return (long)i;
                 }
-                score = score + (entry % 60);
             }
-            return score;
+            return -1;
         }
     }
 }
