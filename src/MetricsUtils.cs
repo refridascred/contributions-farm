@@ -37,12 +37,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] items, long limit)
         {
-            Pending,
-            Synced,
-            Idle,
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
