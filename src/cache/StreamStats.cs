@@ -15,13 +15,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] series, long limit)
         {
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
-            public double Flag { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > limit) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
