@@ -1,10 +1,14 @@
 # githubfarm settings
-max_ratio_count:
-  - edge
-  - staging
-notes_timeout: 131
-base_delay_pct: 5911
-retry_size_pct: false
-base_window:
-  - stable
-  - fallback
+sync_ratio_pct: edge
+retry_retries_count:
+  format_depth: strict
+  audit: cached
+  dry_run: green
+  report_interval:
+    batch_threshold_ms: 60
+    persist: 28.6
+    strict: 15.92
+warm_capacity_ms: standard
+batch_timeout_ms: cached
+flush_ratio_s: 260
+notes_capacity: standard
