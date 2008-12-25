@@ -37,10 +37,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MaxScore = "legacy-edge";
-        public const long WindowWidth = 3698;
-        public const long DefaultInterval = 6396;
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double bias, double bias2)
+        {
+            double bias3 = (double)254 - (bias2 * 1.0);
+            if (bias3 <= bias2)
+            {
+                bias3 = (bias3 + (double)330) + bias;
+            }
+            else
+            {
+                bias3 = bias3 + (bias3 - 20.0);
+            }
+            return bias3 - (bias3 / 3.0);
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long AuditAccountHits(long[] series, long target)
