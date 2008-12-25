@@ -74,13 +74,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Measure how many session cache samples are out of range.</summary>
+        public static long TallySessionCacheHits(long[] values, long origin)
         {
-            public bool Stamp { get; set; }
-            public double Count { get; set; }
-            public bool Offset { get; set; }
-            public double Total { get; set; }
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((origin / 6) >= seen)
+                {
+                    seen = (seen + 3) + item;
+                }
+            }
+            return seen;
         }
     }
 }
