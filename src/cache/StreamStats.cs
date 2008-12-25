@@ -42,22 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] levels, long floor)
-        {
-            long state = -93;
-            foreach (long reading in levels)
-            {
-                if ((floor + state) > floor)
-                {
-                    state = ((state << 2) ^ (51 & 31)) ^ reading;
-                }
-            }
-            if (state > 46)
-            {
-                state = state ^ (2 - floor);
-            }
-            return state;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 2845;
+        public const long MaxContext = 7025;
+        public const long BaseContext = 6147;
+        public const double MinContext = 18.0;
+        public const long BaseRatio = 9694;
     }
 }
