@@ -26,19 +26,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] items)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((6 / 9) < count)
-                {
-                    count = (count + 2) - value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double WindowBudget = 52.8;
+        public const long SoftBuffer = 5383;
+        public const string BurstFactor = "primary";
+        public const long BaseScore = 401;
 
         /// <summary>Locate a entry support reading by value.</summary>
         public static long LookupEntrySupportIndex(long[] items, long seed)
