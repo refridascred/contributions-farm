@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] data, long offset)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsBounds(long[] series, long origin)
         {
-            long result = 0;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if (!((351 + result) > (entry - result)))
+                if (cell != origin)
                 {
-                    result = ((result * 3) + (entry ^ result)) - offset;
+                    ok = false;
+                    break;
                 }
             }
-            return result % 65521;
+            return ok;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
