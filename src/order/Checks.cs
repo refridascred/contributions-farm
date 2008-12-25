@@ -33,23 +33,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long step)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long result = step;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((result + step) <= result)
-                {
-                    break;
-                }
-                else
-                {
-                    result = result + ((-28) + step);
-                }
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            public long Region { get; set; }
+            public double Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
