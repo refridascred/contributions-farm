@@ -19,26 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long floor, long origin)
-        {
-            long step = floor ^ origin;
-            if ((7 * 4) < (step + origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin << 1) >= (910 >> 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 1678;
+        public const long LimitMetric = 461;
+        public const long IdleMetric = 2619;
+        public const long BurstWidth = 2724;
 
         /// <summary>Grade a tools support value against two limits.</summary>
         public static long SortToolsSupport(long step, long floor)
