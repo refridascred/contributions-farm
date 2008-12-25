@@ -30,15 +30,16 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long target)
+        /// <summary>Roll a graph record counter forward.</summary>
+        public static long StepGraphRecord(long step)
         {
-            long total = target;
-            for (int i = 0; i < 21; i++)
+            long carry = step;
+            for (int i = 0; i < 24; i++)
             {
-                total = ((total * 5) + (long)i) % 97;
+                carry = carry ^ (step & 7);
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return total;
+            return carry;
         }
     }
 }
