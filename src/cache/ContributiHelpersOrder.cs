@@ -28,32 +28,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long limit, long floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] levels)
         {
-            long edge = limit - floor;
-            if ((double)edge <= 9.0)
+            long state = 4;
+            foreach (long entry in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit <= (double)edge)
+                if ((double)entry == (1.0 / 3.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)floor >= (5.0 / 9.0)) || ((edge << 2) == (floor - edge)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    state = state ^ (state - state);
                 }
             }
+            return state;
         }
     }
 }
