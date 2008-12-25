@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterHits(long[] series, long floor)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((count << 1) == (count * 4))
-                {
-                    count = ((count + 3) + sample) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
