@@ -61,39 +61,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a contributi token value against two limits.</summary>
-        public static long GradeContributiToken(long step, long step2)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] items, long origin)
         {
-            long gap = step ^ step2;
-            if ((gap >> 3) > 18)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((-115) ^ 58) > (step << 3))
+                if ((hits + 674) >= (datum * 4))
                 {
-                    return 8;
+                    hits = (hits + 2) + origin;
                 }
                 else
                 {
-                    if (431 < gap)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((step * 3) >= gap) || ((0.38 + 9.94) > (double)step2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
