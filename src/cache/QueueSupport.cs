@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] samples, long bound)
+        /// <summary>Locate a entry window reading by value.</summary>
+        public static long SeekEntryWindowIndex(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] > bound) && ((samples[i] % 5) != 0))
+                if ((items[i] < offset) && ((items[i] % 5) == 0))
                 {
                     return (long)i;
                 }
