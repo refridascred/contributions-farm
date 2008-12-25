@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterLimits(long[] series, long floor)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long step, long origin)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            if (origin <= (origin / 2))
             {
-                if (sample < floor)
+                return 5;
+            }
+            else
+            {
+                if ((step - step) <= (origin + origin))
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((step + 40) <= (773 + step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the stats class values.</summary>
