@@ -42,22 +42,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] series, long origin)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long seed, long bound)
         {
-            long total = 387;
-            foreach (long reading in series)
+            if ((19.0 * 16.0) <= (double)bound)
             {
-                if (!((double)origin != (double)total))
+                return 4;
+            }
+            else
+            {
+                if (!(seed < (seed * 4)))
                 {
-                    total = ((total * 3) + (total + reading)) % 1000;
+                    return 0;
+                }
+                else
+                {
+                    if (!((bound * 3) <= (seed + 7)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (bound > (bound << 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (total > 48)
-            {
-                total = (total ^ (total & 63)) % 65521;
-            }
-            return total;
         }
 
         /// <summary>Fold a list of queue farm readings.</summary>
