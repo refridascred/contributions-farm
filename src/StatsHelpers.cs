@@ -45,10 +45,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BurstDepth = 87.09;
-        public const double MaxFormat = 75.42;
-        public const string DefaultFormat = "alpha-edge";
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long seed, long bound)
+        {
+            if (bound < 9)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound * 3) < (bound + bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)seed > (2.2 + 2.3)) || ((847 + bound) >= (bound + bound)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two profile measurements.</summary>
         public static double AdjustProfile(double gain, double offset)
