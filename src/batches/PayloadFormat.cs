@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long seed, long seed2)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] data)
         {
-            if ((double)seed > 6.0)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed + 319) >= (7 % 10))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed2 << 3) > (seed + seed2))
+                    if ((data[i] - data[j]) != 7)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first metric record entry that matches the target.</summary>
