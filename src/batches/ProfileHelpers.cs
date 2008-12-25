@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long origin)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double scale, double offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = mark - (long)i;
-                mark = (mark + 12) % 65521;
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            double bias = scale;
+            return (bias + (5.0 / 2.0)) + offset;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
