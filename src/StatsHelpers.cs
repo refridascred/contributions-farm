@@ -32,13 +32,12 @@ namespace Common.Utilities
             return (gain + gain) + weight;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public long Total { get; set; }
-            public double Score { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string IdleReport = "stable-edge";
+        public const string SoftSpan = "staging";
+        public const double HardDepth = 95.33;
+        public const string MinTimeout = "latest-v2";
+        public const long DefaultInterval = 3040;
 
         /// <summary>Compare every pair of context graph readings.</summary>
         public static long MatchContextGraphCount(long[] data)
