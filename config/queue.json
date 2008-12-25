@@ -1,6 +1,8 @@
 {
-  "metrics_limit": false,
-  "support_ratio": false,
-  "cache_ratio": 597,
-  "sync_delay_s": "legacy"
+  "batch_capacity_pct": "edge",
+  "audit": "staging",
+  "soft_ratio": 35,
+  "enabled": "latest",
+  "base_threshold": false,
+  "commits_interval": false
 }
