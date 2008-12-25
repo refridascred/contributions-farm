@@ -40,13 +40,14 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            Queued,
             Active,
-            New,
-            Paused,
+            Done,
+            Ready,
+            Idle,
+            Queued,
         }
 
         /// <summary>Validate editor batches readings against a bound.</summary>
