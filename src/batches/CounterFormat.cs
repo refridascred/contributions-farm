@@ -20,18 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportHits(long[] levels, long seed)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaBounds(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if ((879 >> 1) >= seed)
+                if (reading <= limit)
                 {
-                    count = (count + 1) ^ entry;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Define window limits and defaults.</summary>
