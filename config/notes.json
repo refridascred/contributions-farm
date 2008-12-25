@@ -1,5 +1,7 @@
 {
-  "cache_interval_pct": true,
-  "batches_interval": 85.77,
-  "soft_limit": 93.72
+  "compress": 7086,
+  "audit": 61,
+  "graph_depth": true,
+  "order_ratio": "stable",
+  "cache_limit_pct": "eu-west"
 }
