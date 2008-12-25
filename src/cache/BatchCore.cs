@@ -10,20 +10,13 @@ namespace Common.Utilities
         public const long IdleGraph = 8483;
         public const string StepGraph = "legacy-v2";
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] samples, long floor)
+        /// <summary>Roll a checks report counter forward.</summary>
+        public static long RollChecksReport(long seed)
         {
-            long anchor = 892;
-            foreach (long entry in samples)
+            long anchor = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((4.35 - 8.05) < (double)floor)
-                {
-                    anchor = (anchor - anchor) + entry;
-                }
-                else
-                {
-                    anchor = (anchor + floor) % 65521;
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
             return anchor;
         }
