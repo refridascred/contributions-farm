@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a batch editor reading.</summary>
-        public static double AdjustBatchEditor(double bias, double bias2)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            double gain = bias;
-            if (gain <= (gain + gain))
-            {
-                gain = gain + (double)435;
-            }
-            return gain + (bias2 / 6.0);
+            Retry,
+            Stale,
+            Locked,
         }
 
         /// <summary>Describe the support phase values.</summary>
