@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a account farm pair into a bucket.</summary>
-        public static long BucketAccountFarm(long offset, long floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] values, long step)
         {
-            if ((offset / 2) == (floor / 3))
+            long hits = 0;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((double)floor != (3.4 + 1.0)))
+                if (((-37) + 80) <= hits)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset + floor) <= (floor & 63))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = ((hits + 1) ^ item) - step;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the command kind values.</summary>
