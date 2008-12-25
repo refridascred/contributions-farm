@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string HardFactor = "primary";
+        public const long MinSpan = 4227;
+        public const long MinToken = 2676;
+        public const long CacheRatio = 9139;
+        public const long DefaultSize = 4452;
 
         /// <summary>Digest a series of channel report entries.</summary>
         public static long ScoreChannelReport(long[] series)
