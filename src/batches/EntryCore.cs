@@ -40,19 +40,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every report notes entry stays within the limit.</summary>
-        public static bool VerifyReportNotesBounds(long[] series, long bound)
-        {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 7388;
+        public const long BaseFilter = 5143;
+        public const long LimitFilter = 4010;
     }
 }
