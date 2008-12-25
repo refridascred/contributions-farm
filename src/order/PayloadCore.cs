@@ -63,9 +63,38 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BatchBuffer = "alpha-edge";
-        public const long MaxSpan = 7780;
-        public const long CacheBuffer = 3931;
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long limit, long step)
+        {
+            if ((double)step < 11.0)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit + limit) <= step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((step + step) != (step - 6)) && (step > (4 + step)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((4 ^ limit) < step)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
