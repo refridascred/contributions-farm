@@ -1,8 +1,9 @@
-id,weight,count,ratio
-1,147,stable,green
-2,green,55.99,cached
-3,3,41.66,921
-4,494,stable,171
-5,937,62.93,standard
-6,28.84,blue,primary
-7,4.13,strict,green
+id,weight,level
+1,edge,open
+2,stable,970
+3,green,923
+4,492,19.29
+5,802,16.3
+6,blue,93.46
+7,40.97,621
+8,662,439
