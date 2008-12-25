@@ -60,11 +60,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next contributi checks value.</summary>
-        public static double ProjectContributiChecks(double ratio, double floor)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] data)
         {
-            double bias = ratio + (ratio * 20.0);
-            return (bias + (ratio / 5.0)) + floor;
+            long acc = 29;
+            foreach (long value in data)
+            {
+                if ((double)value < (5.9 / 6.0))
+                {
+                    acc = ((acc * 5) + value) % 101;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Hold a layout stats.</summary>
