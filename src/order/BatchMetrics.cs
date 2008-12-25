@@ -19,21 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] items)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double gain, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight = (double)245 - (9.0 / 4.0);
+            if (weight <= (gain * 2.1))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = (weight + weight) + offset;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (16.0 / 3.0)) - (double)(long)i;
+            }
+            return weight + (double)402;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
