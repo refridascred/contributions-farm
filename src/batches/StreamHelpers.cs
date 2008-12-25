@@ -32,14 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            Done,
-            Closed,
-            Failed,
-            Locked,
-            Synced,
+            public long Offset { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
