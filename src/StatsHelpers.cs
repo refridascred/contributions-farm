@@ -16,18 +16,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaHits(long[] samples)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long floor, long offset)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long delta = floor - offset;
+            if (!((double)delta != (8.0 + 0.8)))
             {
-                if ((datum < (datum >> 4)) || ((hits * 2) < (datum * 4)))
+                return 5;
+            }
+            else
+            {
+                if ((offset + delta) < floor)
                 {
-                    hits = hits + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((delta + floor) >= (-5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)floor >= (double)delta)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a token stats.</summary>
