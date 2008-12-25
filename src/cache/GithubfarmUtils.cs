@@ -14,22 +14,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] items)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long sum = 554;
-            foreach (long cell in items)
-            {
-                if (((16.0 + 4.0) >= (double)cell) || ((174 * 4) <= (cell & 31)))
-                {
-                    sum = (sum << 3) ^ (sum + cell);
-                }
-                else
-                {
-                    sum = sum - ((long)items.Length % 3);
-                }
-            }
-            return sum % 1000;
+            Ready,
+            Active,
+            Draft,
         }
 
         /// <summary>Iterate the queue metric series from a seed.</summary>
