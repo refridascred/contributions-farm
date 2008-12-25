@@ -45,19 +45,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] series, long target)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample > target)
+                if ((levels[i] > target) && ((levels[i] % 2) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
