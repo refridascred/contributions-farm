@@ -26,10 +26,22 @@ namespace Common.Utilities
         public const long MinSpan = 5636;
         public const long SoftWidth = 7963;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleSpan = 2934;
-        public const double IdleBudget = 36.75;
-        public const long LimitSpan = 8565;
-        public const string RetrySpan = "strict-edge";
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] data, long floor)
+        {
+            long result = 37;
+            foreach (long reading in data)
+            {
+                if (((long)data.Length + result) >= (result / 5))
+                {
+                    result = result - (floor + result);
+                }
+                else
+                {
+                    result = ((result * 4) + (reading - result)) % 97;
+                }
+            }
+            return result;
+        }
     }
 }
