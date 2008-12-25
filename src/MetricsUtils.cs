@@ -30,18 +30,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderGaps(long[] data)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long step, long limit)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long lane = step ^ limit;
+            if ((double)limit <= (5.7 + 8.8))
             {
-                if ((14.0 * 0.91) < (double)datum)
+                return 2;
+            }
+            else
+            {
+                if ((lane - lane) <= (limit << 3))
                 {
-                    matches = matches + 2;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
