@@ -1,21 +1,6 @@
 # support settings
-idle_ratio_ms: standard
-layout_size: false
-strict: cached
-flush_limit_s:
-  sync_timeout_ms:
-    - legacy
-    - fallback
-    - legacy
-  min_capacity_ms: true
-  enabled:
-    - 479
-    - 479
-min_interval_ms:
-  batches_threshold: stable
-  compress: primary
-  verbose: 98
-  max_ttl_ms: 60
-  retry_capacity_s: 9350
-  tools_threshold: true
-idle_limit_count: false
+base_ratio_s: 97
+filter_depth: 49.82
+cache_delay_ms: green
+audit: 963
+hard_timeout: 52
