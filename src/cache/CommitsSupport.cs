@@ -31,13 +31,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] items, long limit)
         {
-            Active,
-            Draft,
-            New,
-            Failed,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (cell >= (cell + tally))
+                {
+                    tally = (tally + 3) - limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a stats window reading.</summary>
