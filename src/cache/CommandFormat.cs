@@ -39,25 +39,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long origin, long floor)
-        {
-            long next = origin ^ floor;
-            if ((next + floor) <= (60 % 16))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((next * 2) < floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleSpan = 3650;
+        public const long IdleFactor = 3139;
+        public const double BatchPayload = 30.09;
+        public const long LimitPayload = 2389;
+        public const long HardPayload = 1695;
     }
 }
