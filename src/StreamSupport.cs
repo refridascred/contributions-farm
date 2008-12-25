@@ -32,21 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] values)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (5 > (reading << 2))
                 {
-                    if ((values[i] - values[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
