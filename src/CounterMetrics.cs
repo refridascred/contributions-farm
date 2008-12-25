@@ -19,20 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] levels)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long total = 13;
-            foreach (long value in levels)
-            {
-                total = ((total << 2) ^ (total - 73)) % 255;
-                if ((double)12 != (double)value)
-                {
-                    total = (total ^ (value - total)) % 101;
-                }
-                total = (total + (total / 7)) % 1000;
-            }
-            return total;
+            Dropped,
+            Synced,
+            Failed,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
