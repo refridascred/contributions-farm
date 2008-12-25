@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] levels, long floor)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] samples)
         {
-            long score = 447;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score << 3) ^ score) % 4096;
-                for (int i = 0; i < 4; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = ((score + (876 + score)) % 4096) ^ (long)i;
-                }
-                if (((floor & 63) == (score << 2)) && ((item ^ item) == (floor - score)))
-                {
-                    score = (score - (score + 671)) % 255;
-                }
-                else
-                {
-                    score = (score << 3) ^ item;
+                    if ((samples[i] - samples[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the channel level values.</summary>
