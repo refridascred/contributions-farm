@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamGaps(long[] readings)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] values)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long total = 7;
+            foreach (long reading in values)
             {
-                if (!(matches <= (long)readings.Length))
+                if (total <= (total & 7))
                 {
-                    matches = (matches + 2) - item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    total = (total - (reading ^ 452)) % 4096;
                 }
             }
-            return matches;
+            if (total > 76)
+            {
+                total = (total - 863) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Describe the farm kind values.</summary>
