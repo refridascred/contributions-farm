@@ -19,11 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaHits(long[] samples)
         {
-            public double Mode { get; set; }
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum < (datum >> 4)) || ((hits * 2) < (datum * 4)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
