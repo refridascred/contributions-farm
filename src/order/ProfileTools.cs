@@ -20,24 +20,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long limit, long target)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            if ((target + limit) > target)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((limit & 255) >= 753) || ((target / 8) < (target + 53)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Region { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Fold a list of window readings.</summary>
