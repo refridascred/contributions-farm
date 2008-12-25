@@ -36,11 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardScore = 9874;
-        public const long MaxRecord = 6929;
-        public const long DefaultRecord = 2636;
-        public const string IdleTimeout = "strict-edge";
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatOutliers(long[] readings, long target)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum >= 5.4)
+                {
+                    count = (count + 2) - target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const string MaxCount = "cached-v2";
