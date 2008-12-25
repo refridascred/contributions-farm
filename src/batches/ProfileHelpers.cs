@@ -68,12 +68,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double scale, double floor)
         {
-            public double Token { get; set; }
-            public double Weight { get; set; }
-            public string Rank { get; set; } = "";
+            double scale2 = (double)(72 + 766);
+            if (scale2 > scale2)
+            {
+                scale2 = (scale2 + 1.2) - scale;
+            }
+            else
+            {
+                scale2 = scale2 + (scale2 * 10.0);
+            }
+            return scale2 + floor;
         }
     }
 }
