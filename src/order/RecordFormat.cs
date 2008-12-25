@@ -50,10 +50,25 @@ namespace Common.Utilities
         public const long WindowMetrics = 3674;
         public const long MaxMetrics = 3076;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BatchBudget = "alpha-v2";
-        public const long BurstFormat = 6865;
-        public const string WindowCount = "fallback-edge";
-        public const string BaseSpan = "stable-edge";
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long limit, long floor)
+        {
+            long offset = limit + floor;
+            if ((offset - offset) < offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((2 + floor) > (floor + limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
