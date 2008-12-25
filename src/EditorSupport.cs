@@ -62,11 +62,17 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Blend two contributi layout measurements.</summary>
-        public static double BlendContributiLayout(double weight, double span)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] samples, long step)
         {
-            double scale = span;
-            return (scale - span) + weight;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
