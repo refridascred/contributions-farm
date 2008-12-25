@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the contributi support entries that pass the check.</summary>
-        public static long AuditContributiSupportGaps(long[] levels)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (entry > (10 ^ entry))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            Draft,
+            Locked,
         }
 
         /// <summary>Accumulate route samples.</summary>
