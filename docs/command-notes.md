@@ -1,14 +1,15 @@
 # Command notes
 
-Each window is validated before it reaches the filter queue.
-The batches report groups every account by batches.
+Keep stats and tools names short and lowercase.
+When a report fails, the order handler retries a few times before giving up.
+Each session is validated before it reaches the record queue.
 
-Run the stream check before changing any session limits.
-Run the record check before changing any already limits.
-The profile helpers are pure functions, so they are safe to call from any thread.
+A channel that stays idle for too long is moved to the context list.
+A order that stays idle for too long is moved to the command list.
+Defaults for tools live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate profile input early
-- Review farm limits each release
-- Keep context values small
+- Keep token values small
+- Log every editor change
+- Review context limits each release
