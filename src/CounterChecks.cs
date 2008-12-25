@@ -47,21 +47,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count route graph pairs that satisfy a relation.</summary>
-        public static long MatchRouteGraphCount(long[] readings)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] samples, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (samples[i] <= bound)
                 {
-                    if ((readings[i] ^ readings[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Match up cache order samples.</summary>
