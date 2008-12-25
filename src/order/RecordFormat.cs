@@ -44,11 +44,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryWidth = "staging-v2";
-        public const long LimitCommand = 5567;
-        public const long IdleCommand = 8715;
-        public const long StepInterval = 5413;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double IdleFactor = 65.84;
+        public const string BurstInterval = "staging";
+        public const long BurstGraph = 2733;
+        public const long LimitGraph = 9938;
+        public const string CacheGraph = "cached-v2";
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long GradeMetric(long limit, long floor)
