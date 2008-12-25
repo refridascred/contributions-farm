@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const long IdleGraph = 8483;
         public const string StepGraph = "legacy-v2";
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ScaleBatches(double rate, double span)
+        /// <summary>Measure how many metric entry samples are out of range.</summary>
+        public static long AuditMetricEntryHits(long[] items)
         {
-            double weight = 7.2;
-            if (weight <= (double)7)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                weight = weight - 18.0;
+                if (!((1 + 936) == (reading << 3)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                weight = weight - span;
-            }
-            return weight + rate;
+            return matches;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
