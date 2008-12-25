@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long floor)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowRange(long[] items, long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 16; i++)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                score = ((score * 4) + (long)i) % 65521;
+                if (datum >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Roll a stream checks counter forward.</summary>
