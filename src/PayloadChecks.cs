@@ -28,13 +28,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-            public double Limit { get; set; }
+            public bool Weight { get; set; }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Classify a session account pair into a bucket.</summary>
