@@ -76,18 +76,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] items, long target)
+        /// <summary>Look up the position of a session report sample.</summary>
+        public static long LookupSessionReportIndex(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((1.8 / 7.0) < (double)tally) || ((target << 2) > (target % 12))) || (((32 * 2) > (item + tally)) && ((double)target > 15.0)))
+                if (series[i] >= seed)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Blend two filter measurements.</summary>
