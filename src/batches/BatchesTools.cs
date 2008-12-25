@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit layout channel readings against a rule.</summary>
-        public static long CountLayoutChannelGaps(long[] data)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (9 > hits)
-                {
-                    hits = (hits + 1) - item;
-                }
-            }
-            return hits;
+            Closed,
+            Synced,
+            Pending,
+            Stale,
+            Idle,
         }
 
         /// <summary>Locate a token reading by value.</summary>
