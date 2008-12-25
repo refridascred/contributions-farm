@@ -36,22 +36,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of githubfarm session entries.</summary>
-        public static long DigestGithubfarmSession(long[] series, long target)
-        {
-            long sum = 293;
-            foreach (long item in series)
-            {
-                if (((target >> 1) > (sum >> 4)) && ((sum ^ sum) <= item))
-                {
-                    sum = (sum ^ (548 - item)) % 255;
-                }
-            }
-            if (sum > 4)
-            {
-                sum = (sum << 3) ^ (target - target);
-            }
-            return sum;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string LimitSession = "latest-v2";
+        public const long DefaultSession = 9589;
+        public const string IdleWidth = "strict-edge";
+        public const string CacheSession = "staging-1";
+        public const long BaseSession = 6754;
     }
 }
