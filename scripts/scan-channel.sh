@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=145
+CHANNEL_LIMIT=156
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in stable blue strict; do
+for item in blue stable strict; do
     log "checking ${item}"
 done
+
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
