@@ -20,18 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] samples, long step)
+        /// <summary>Roll a stream checks counter forward.</summary>
+        public static long StepStreamChecks(long step)
         {
-            long mark = 606;
-            foreach (long entry in samples)
+            long score = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((entry > step) && ((36 * 3) <= (step >> 3)))
-                {
-                    mark = (mark << 2) ^ (mark - step);
-                }
+                score = (score - 552) % 255;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return mark % 97;
+            return score;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
