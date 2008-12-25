@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] items, long origin)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] items, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (items[i] <= origin)
+                if (((seed + seed) >= (3 + seed)) || (seed <= (983 >> 3)))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + value;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
