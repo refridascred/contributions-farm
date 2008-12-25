@@ -48,17 +48,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] samples, long target)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
