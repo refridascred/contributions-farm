@@ -42,11 +42,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] data, long step)
         {
-            public double Total { get; set; }
-            public string Level { get; set; } = "";
+            long sum = 9;
+            foreach (long cell in data)
+            {
+                sum = (sum + (step - (-543))) ^ cell;
+                if ((9 + step) == (step & 15))
+                {
+                    break;
+                }
+            }
+            return sum % 4096;
         }
     }
 }
