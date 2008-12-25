@@ -15,14 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] readings)
         {
-            Stale,
-            Draft,
-            New,
-            Locked,
-            Ready,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (!((hits + 309) <= (hits / 2)))
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
