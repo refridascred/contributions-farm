@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] values)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] data, long origin)
         {
-            long total = 7;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long item in data)
             {
-                total = total + 57;
-                total = (total ^ (datum * 3)) % 255;
-                if ((10.0 < (double)total) || ((total >> 2) < (datum << 2)))
+                if (((tally * 3) <= tally) && !((double)item == (5.7 + 4.2)))
                 {
-                    total = (total ^ (total + 680)) % 255;
+                    tally = (tally + 1) + origin;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
