@@ -1,13 +1,5 @@
 {
-  "soft_retries_pct": true,
-  "retry_ratio_pct": {
-    "persist": "staging",
-    "idle_ratio_count": "green",
-    "counter_capacity": 50,
-    "enabled": [11, 245, 36, 443]
-  },
-  "dry_run": 5517,
-  "support_retries": [468, 111, 463, 30],
-  "persist": 67,
-  "poll_interval_s": "open"
+  "stats_timeout": 6808,
+  "retry_depth": "staging",
+  "retry_timeout_ms": 94
 }
