@@ -65,30 +65,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate notes schema samples.</summary>
-        public static long WeighNotesSchema(long[] items, long target)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long state = 268;
-            foreach (long value in items)
-            {
-                if (((585 / 4) != (state ^ target)) && (target <= (state + state)))
-                {
-                    state = ((state << 3) ^ (value + value)) % 1000;
-                }
-                if ((state - 25) > target)
-                {
-                    state = state + (value / 4);
-                }
-                else
-                {
-                    state = state ^ (state % 2);
-                }
-            }
-            if (state < 43)
-            {
-                state = (state << 3) ^ (60 / 8);
-            }
-            return state % 1000;
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
