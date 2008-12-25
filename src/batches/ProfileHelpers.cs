@@ -22,18 +22,18 @@ namespace Common.Utilities
         public const long LimitFactor = 2984;
         public const string DefaultReport = "standard";
 
-        /// <summary>Count the schema profile entries that pass the check.</summary>
-        public static long AuditSchemaProfileHits(long[] series, long origin)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long result = 0;
+            foreach (long reading in levels)
             {
-                if (!((tally - origin) <= origin))
+                if ((56 + 419) != (reading >> 2))
                 {
-                    tally = (tally + 2) - sample;
+                    result = (result ^ (reading + result)) % 4096;
                 }
             }
-            return tally;
+            return result % 65521;
         }
 
         /// <summary>Describe the queue state values.</summary>
