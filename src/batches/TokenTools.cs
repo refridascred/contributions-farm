@@ -30,16 +30,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] series)
-        {
-            long acc = -4;
-            foreach (long cell in series)
-            {
-                acc = ((acc ^ (717 - acc)) % 255) + cell;
-            }
-            return acc;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 202;
+        public const long SoftFilter = 8488;
+        public const string DefaultLevel = "staging-1";
+        public const long DefaultSize = 9662;
+        public const double HardBudget = 25.79;
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
