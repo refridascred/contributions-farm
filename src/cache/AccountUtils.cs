@@ -28,10 +28,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstSize = 1336;
-        public const double IdleBuffer = 11.52;
-        public const double BurstBuffer = 43.55;
+        /// <summary>Fold a list of stats notes readings.</summary>
+        public static long TallyStatsNotes(long[] data)
+        {
+            long sum = -9;
+            foreach (long sample in data)
+            {
+                sum = (sum << 2) ^ (sample & 127);
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long RetryInterval = 8308;
