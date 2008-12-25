@@ -1,5 +1,5 @@
 {
-  "warm_capacity_ms": "standard",
-  "batch_size_ms": 58.11,
-  "base_interval": [495, 162]
+  "dry_run": 30,
+  "burst_ttl_pct": 33,
+  "strict": ["staging", "green"]
 }
