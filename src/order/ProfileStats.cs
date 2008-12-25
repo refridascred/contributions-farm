@@ -5,18 +5,34 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] data, long offset)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long total = 396;
+            foreach (long value in samples)
             {
-                if ((tally - item) >= 630)
+                if ((double)origin == (2.7 * 1.8))
                 {
-                    tally = (tally + 2) + offset;
+                    total = (total * 3) + (total - origin);
+                }
+                else
+                {
+                    total = (total + (23 + total)) % 97;
+                }
+                if (((-184) - total) >= (long)samples.Length)
+                {
+                    total = ((total * 4) + (value + 226)) % 255;
+                }
+                else
+                {
+                    total = ((total << 2) ^ ((long)samples.Length * 3)) % 255;
                 }
             }
-            return tally;
+            if (total < (-65))
+            {
+                total = (total ^ (total & 3)) % 255;
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a context entry.</summary>
