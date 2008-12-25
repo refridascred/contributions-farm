@@ -20,23 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] data, long limit)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((reading <= tally) && ((double)reading >= (double)7))
-                {
-                    tally = (tally + 2) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BatchFormat = "standard-1";
+        public const long MinFormat = 8475;
+        public const string WindowFormat = "legacy-v2";
+        public const long BatchSize = 5072;
+        public const long StepSize = 7822;
 
         /// <summary>Scale a metric figure with a bias.</summary>
         public static double ProjectMetric(double ratio, double span)
