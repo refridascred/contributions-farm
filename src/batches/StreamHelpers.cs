@@ -66,19 +66,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long floor)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long acc = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!((4.0 * 2.0) <= (double)floor))
-                {
-                    acc = (acc << 3) ^ (floor + (long)i);
-                }
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            public bool Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Project the next profile value.</summary>
