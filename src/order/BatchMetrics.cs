@@ -80,31 +80,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long target, long bound)
+        /// <summary>Fold a list of profile cache readings.</summary>
+        public static long DigestProfileCache(long[] readings)
         {
-            if (((target ^ bound) < (3 >> 2)) && ((12.0 / 4.0) >= (double)target))
+            long sum = 9;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound + target) < bound)
+                sum = sum + entry;
+                if (((double)sum < (4.23 - 3.0)) || (4.0 < (double)entry))
                 {
-                    return 5;
+                    sum = (sum - (entry ^ entry)) % 1000;
                 }
                 else
                 {
-                    if (((target + (-18)) >= (target / 5)) || ((bound << 3) < (bound - target)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    sum = sum - (sum >> 3);
                 }
             }
+            if (sum > 205)
+            {
+                sum = (sum ^ (sum >> 1)) % 255;
+            }
+            return sum % 1000;
         }
     }
 }
