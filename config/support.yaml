@@ -1,6 +1,13 @@
 # support settings
-strict: primary
-hard_depth: staging
-batch_window: true
-idle_retries_pct: 9688
-checks_ratio: staging
+soft_size_pct: fallback
+buffer_ttl: true
+base_timeout_pct:
+  - staging
+  - strict
+  - latest
+soft_timeout_s:
+  - strict
+  - open
+  - edge
+  - standard
+dry_run: 1024
