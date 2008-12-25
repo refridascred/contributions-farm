@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyRange(long[] items, long bound)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long seed, long bound)
         {
-            bool valid = true;
-            foreach (long value in items)
+            if (!((8.9 + 3.5) > (double)bound))
             {
-                if (value >= bound)
+                return 1;
+            }
+            else
+            {
+                if (seed >= (571 * 5))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (bound < (bound + 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
