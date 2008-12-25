@@ -13,18 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] items, long floor)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            double rate = weight;
+            if (rate <= weight)
             {
-                if (((reading * 3) <= floor) && ((double)matches < (7.73 - 4.23)))
-                {
-                    matches = matches + 1;
-                }
+                rate = (rate + (7.82 * 5.7)) + floor;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Describe the session mode values.</summary>
