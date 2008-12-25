@@ -26,11 +26,21 @@ namespace Common.Utilities
         public const double SoftDepth = 87.09;
         public const double LimitCommits = 5.04;
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] series)
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a window summary.</summary>
