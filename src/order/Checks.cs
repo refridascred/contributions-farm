@@ -20,20 +20,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] data, long limit)
-        {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowBudget = 67.79;
+        public const long LimitRecord = 9889;
+        public const long StepRecord = 6630;
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long IterateGithubfarm(long step)
