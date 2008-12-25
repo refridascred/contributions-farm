@@ -1,5 +1,5 @@
 {
-  "poll_interval": [111, 130],
-  "command_capacity": 95,
-  "batches_ratio": 6872
+  "sync_window_s": true,
+  "contributi_delay": true,
+  "burst_ratio_ms": "standard"
 }
