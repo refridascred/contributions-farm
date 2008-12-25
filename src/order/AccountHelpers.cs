@@ -41,25 +41,38 @@ namespace Common.Utilities
             return mean - (bias / 6.0);
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long limit)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long seed, long bound)
         {
-            long acc = limit;
-            for (int i = 0; i < 17; i++)
+            if (489 >= (seed * 5))
             {
-                long seen = (long)i * 4;
-                if (limit > (limit - seen))
+                return 6;
+            }
+            else
+            {
+                if ((3.7 / 5.0) > (double)bound)
                 {
-                    continue;
+                    return 0;
                 }
                 else
                 {
-                    seen = (seen ^ (seen / 7)) % 4096;
+                    if ((19.0 - 2.0) != (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(2 < (seed ^ 0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
-                seen = seen - acc;
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
         }
 
         /// <summary>Hold a payload stats.</summary>
