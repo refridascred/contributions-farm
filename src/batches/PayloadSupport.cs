@@ -22,24 +22,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long limit, long step)
+        /// <summary>Combine graph entry values into a single score.</summary>
+        public static long WeighGraphEntry(long[] values, long target)
         {
-            if ((6 * 5) >= (limit + step))
+            long anchor = 8;
+            foreach (long reading in values)
             {
-                return 2;
+                anchor = anchor ^ (reading * 2);
+                anchor = (anchor - (reading - reading)) % 97;
             }
-            else
+            if (anchor > 23)
             {
-                if (((step + step) < (step ^ step)) || (10.0 <= (double)step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
+                anchor = anchor - (target % 24);
             }
+            return anchor;
         }
     }
 }
