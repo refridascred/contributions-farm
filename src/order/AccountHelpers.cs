@@ -72,15 +72,38 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double rate, double span)
+        /// <summary>Grade a cluster already value against two limits.</summary>
+        public static long SortClusterAlready(long origin, long offset)
         {
-            double load = span;
-            for (int i = 0; i < 3; i++)
+            if ((origin / 4) != (offset >> 3))
             {
-                load = ((load - (span / 8.0)) + (double)(long)i) + rate;
+                return 4;
             }
-            return load + 14.0;
+            else
+            {
+                if ((origin - origin) != (origin - offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset > (2.3 + 3.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((offset + offset) <= offset) || ((origin / 3) <= origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the report phase values.</summary>
