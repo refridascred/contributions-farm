@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            public double Level { get; set; }
-            public long Token { get; set; }
-            public bool Offset { get; set; }
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
