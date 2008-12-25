@@ -44,12 +44,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            Paused,
-            Closed,
-            Done,
+            public long Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
