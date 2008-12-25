@@ -48,10 +48,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleTimeout = "staging-1";
-        public const double MinDepth = 83.95;
-        public const long IdleInterval = 2707;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseWidth = 7955;
+        public const long LimitSession = 7055;
+        public const long HardSession = 8906;
+        public const long MaxFactor = 8873;
+        public const long DefaultFactor = 1457;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long HardTimeout = 6775;
