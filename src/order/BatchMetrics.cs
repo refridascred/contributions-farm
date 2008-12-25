@@ -95,27 +95,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of profile cache readings.</summary>
-        public static long DigestProfileCache(long[] readings)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] levels)
         {
-            long sum = 9;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                sum = sum + entry;
-                if (((double)sum < (4.23 - 3.0)) || (4.0 < (double)entry))
+                if ((double)item > (12.0 + 12.0))
                 {
-                    sum = (sum - (entry ^ entry)) % 1000;
-                }
-                else
-                {
-                    sum = sum - (sum >> 3);
+                    matches = matches + 2;
                 }
             }
-            if (sum > 205)
-            {
-                sum = (sum ^ (sum >> 1)) % 255;
-            }
-            return sum % 1000;
+            return matches;
         }
     }
 }
