@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double gain, double offset)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            double bias = offset;
-            if (bias > offset)
-            {
-                bias = bias - gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + offset) + (double)(long)i;
-            }
-            return bias + (3.0 / 8.0);
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
