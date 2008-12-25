@@ -23,12 +23,22 @@ namespace Common.Utilities
         public const double RetryRatio = 42.27;
         public const double IdleCommits = 49.43;
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Measure how many command notes samples are out of range.</summary>
+        public static long CountCommandNotesHits(long[] items, long target)
         {
-            Failed,
-            Queued,
-            Pending,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (((hits >> 2) <= (cell * 2)) && (((cell >> 5) >= target) && ((hits - target) > cell)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
