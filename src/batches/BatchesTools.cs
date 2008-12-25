@@ -39,11 +39,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinWidth = 9348;
-        public const long DefaultSize = 2164;
-        public const string BatchCommand = "cached";
-        public const double BaseCommand = 9.85;
-        public const long CacheRatio = 1258;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MinDepth = 61.66;
+        public const double RetryFilter = 43.38;
+        public const string BurstScore = "legacy-v2";
     }
 }
