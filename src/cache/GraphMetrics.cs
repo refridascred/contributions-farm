@@ -50,25 +50,14 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Grade a queue checks value against two limits.</summary>
-        public static long SortQueueChecks(long step, long offset)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long slot = step + offset;
-            if ((5 + (-73)) < (slot / 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((137 <= (4 - offset)) || ((step / 2) < offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Idle,
+            Dropped,
+            Pending,
+            Synced,
+            Ready,
         }
 
         /// <summary>Validate editor batches readings against a bound.</summary>
