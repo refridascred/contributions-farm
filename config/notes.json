@@ -1,8 +1,18 @@
 {
-  "default_interval": "open",
-  "strict": [11, 164],
-  "max_capacity": 18.73,
-  "audit": "cached",
-  "idle_ttl_ms": "strict",
-  "verbose": "legacy"
+  "warm_ratio_s": ["stable", "strict", "primary"],
+  "audit": 8037,
+  "githubfarm_depth": 34.84,
+  "context_ratio": {
+    "contributi_ttl": {
+      "cache_threshold": 33.1,
+      "default_ratio_ms": 410,
+      "persist": 60,
+      "base_ratio_s": 60
+    },
+    "sync_capacity_count": "edge",
+    "support_depth": 1024,
+    "strict": false,
+    "base_capacity": 688
+  },
+  "soft_capacity_s": false
 }
