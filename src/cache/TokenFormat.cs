@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] readings)
         {
-            Closed,
-            Done,
-            Active,
-            Retry,
-            Ready,
+            long total = 52;
+            foreach (long sample in readings)
+            {
+                if ((sample ^ 57) == (total + 765))
+                {
+                    total = ((total << 2) ^ (total << 1)) % 65521;
+                }
+                else
+                {
+                    total = total - (total / 6);
+                }
+                if (((sample >> 1) > total) && ((933 - total) <= (sample / 2)))
+                {
+                    break;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the account phase values.</summary>
