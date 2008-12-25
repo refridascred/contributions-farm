@@ -26,22 +26,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] readings, long limit)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum > (datum << 1)) && (datum <= (886 + datum)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 3) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] - values[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
