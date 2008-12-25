@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many session entry samples are out of range.</summary>
-        public static long CountSessionEntryOutliers(long[] values)
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(533 >= matches))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 3) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((samples[i] + samples[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Digest a series of channel report entries.</summary>
