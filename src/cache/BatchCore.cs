@@ -34,24 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long offset, long floor)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheGaps(long[] series)
         {
-            if (offset <= (7 - offset))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (((floor - floor) > (floor ^ floor)) || ((double)floor != (3.0 / 6.0)))
+                if ((cell + cell) >= (cell ^ 715))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Blend two batches measurements.</summary>
