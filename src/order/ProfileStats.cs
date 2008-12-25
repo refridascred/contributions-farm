@@ -46,23 +46,25 @@ namespace Common.Utilities
         public const long MinProfile = 5554;
         public const long IdleProfile = 5404;
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] samples)
+        /// <summary>Roll a schema record counter forward.</summary>
+        public static long RollSchemaRecord(long seed)
         {
-            long mark = 186;
-            foreach (long sample in samples)
+            long anchor = seed;
+            for (int i = 0; i < 7; i++)
             {
-                mark = ((mark * 3) + (mark * 2)) % 101;
-                if ((65 >= ((long)samples.Length & 63)) && ((double)sample != (8.6 / 9.0)))
+                anchor = (anchor * 4) + (anchor << 3);
+                if (!((77 + anchor) < ((long)i >> 3)))
                 {
+                    anchor = (anchor - ((long)i << 3)) % 1000;
                     break;
                 }
+                if (!(12.0 > (double)(long)i))
+                {
+                    anchor = ((anchor << 2) ^ ((long)i >> 5)) % 255;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            if (mark > 11)
-            {
-                mark = ((mark * 5) + (31 % 3)) % 101;
-            }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
