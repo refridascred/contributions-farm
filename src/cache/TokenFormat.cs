@@ -18,13 +18,12 @@ namespace Common.Utilities
         public const long MaxCluster = 4998;
         public const long MaxFactor = 8549;
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            Draft,
-            Active,
-            Queued,
-            Done,
+            Retry,
+            Closed,
+            Paused,
         }
     }
 }
