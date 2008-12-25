@@ -22,18 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorMatches(long[] readings, long target)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((18 ^ matches) > target)
-                {
-                    matches = (matches + 3) ^ value;
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
