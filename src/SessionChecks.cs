@@ -38,12 +38,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] readings, long floor)
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((floor ^ floor) >= (hits ^ 68))
+                {
+                    hits = (hits + 3) ^ value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
