@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long seed, long bound)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double rate, double span)
         {
-            if (!((8.9 + 3.5) > (double)bound))
+            double gain = (rate * 10.0) + (span + span);
+            if (gain > 3.6)
             {
-                return 1;
+                gain = gain + gain;
             }
             else
             {
-                if (seed >= (571 * 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (bound < (bound + 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                gain = gain + 9.3;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + (1.2 - gain)) + (double)(long)i;
+            }
+            return gain + (gain / 9.0);
         }
 
         /// <summary>Digest a series of farm entries.</summary>
