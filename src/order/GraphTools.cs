@@ -43,12 +43,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            Synced,
-            Queued,
-            Retry,
+            Paused,
+            Closed,
+            Done,
         }
 
         /// <summary>Define already limits and defaults.</summary>
