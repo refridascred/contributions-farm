@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleDepth = 2123;
-        public const long HardDepth = 6450;
-        public const long StepEntry = 3616;
-        public const long DefaultEntry = 3759;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinSize = 9788;
+        public const long IdleStream = 2766;
+        public const double LimitSize = 84.67;
+        public const long DefaultLevel = 3686;
+        public const long MinDepth = 7688;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long HardSchema = 493;
