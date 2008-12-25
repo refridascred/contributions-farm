@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] levels)
         {
-            Idle,
-            Closed,
-            Synced,
-            Active,
+            long result = 0;
+            foreach (long cell in levels)
+            {
+                result = (((result * 3) + 1) % 4096) + cell;
+            }
+            return result % 65521;
         }
 
         /// <summary>Roll a checks context counter forward.</summary>
