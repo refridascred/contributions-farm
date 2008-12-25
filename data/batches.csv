@@ -1,7 +1,6 @@
-id,ratio
-1,221
-2,44.68
-3,legacy
-4,17.88
-5,latest
-6,937
+id,level,score
+1,721,7.46
+2,staging,stable
+3,local,507
+4,455,80.17
+5,958,193
