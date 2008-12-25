@@ -1,6 +1,16 @@
 {
-  "readonly": true,
-  "strict": false,
-  "persist": true,
-  "warm_threshold": 3.81
+  "poll_limit_count": 78.55,
+  "farm_size": {
+    "strict": 36.96,
+    "queue_ratio": {
+      "compress": "strict",
+      "route_size": ["staging", "open", "eu-west", "edge"],
+      "audit": 65,
+      "flush_ttl": 73.39,
+      "default_threshold_count": false
+    },
+    "token_ratio": 30
+  },
+  "schema_delay": 55.25,
+  "compress": 7276
 }
