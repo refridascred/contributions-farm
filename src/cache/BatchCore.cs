@@ -28,18 +28,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] data)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] readings, long step)
         {
-            long result = -37;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((reading - reading) >= (reading + reading))
+                if ((reading * 2) > step)
                 {
-                    result = (result + (result + reading)) % 255;
+                    hits = hits + 1;
                 }
             }
-            return result % 97;
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
