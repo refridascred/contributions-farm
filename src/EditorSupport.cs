@@ -34,14 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyBounds(long[] series, long limit)
         {
-            Ready,
-            Locked,
-            Paused,
-            Synced,
-            Closed,
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
