@@ -13,12 +13,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxScore = 5560;
-        public const double StepRatio = 14.02;
-        public const long MinLevel = 4996;
-        public const double DefaultWidth = 85.79;
-        public const string BaseCount = "latest-v2";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseDepth = 9214;
+        public const long SoftQueue = 4467;
+        public const double HardQueue = 23.92;
+        public const string MinScore = "legacy";
 
         /// <summary>Iterate the contributi commits series from a seed.</summary>
         public static long IterateContributiCommits(long seed)
