@@ -47,25 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a githubfarm cache pair into a bucket.</summary>
-        public static long ClassifyGithubfarmCache(long floor, long bound)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] items, long origin)
         {
-            long gap = floor + bound;
-            if ((gap >> 4) > (782 * 5))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (floor <= (floor - floor))
+                if ((items[i] >= origin) && ((items[i] % 3) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
