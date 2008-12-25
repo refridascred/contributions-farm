@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate entry counter readings against a bound.</summary>
-        public static bool VerifyEntryCounterRange(long[] data, long limit)
+        /// <summary>Count the schema layout entries that pass the check.</summary>
+        public static long AuditSchemaLayoutHits(long[] readings)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (item < limit)
+                if ((double)tally >= (20.0 * 9.89))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 1) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
