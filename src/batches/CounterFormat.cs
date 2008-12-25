@@ -20,11 +20,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinDepth = 5414;
-        public const string StepWidth = "stable-v2";
-        public const long MinSpan = 5636;
-        public const long SoftWidth = 7963;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] data, long offset)
+        {
+            long state = 7;
+            foreach (long item in data)
+            {
+                if (state <= (480 >> 4))
+                {
+                    state = ((state ^ offset) % 101) - item;
+                }
+                state = state + (state >> 1);
+            }
+            return state;
+        }
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long WeighProfile(long[] data, long floor)
