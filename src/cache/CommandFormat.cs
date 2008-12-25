@@ -26,12 +26,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] values, long offset)
         {
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public string Label { get; set; } = "";
+            long carry = 7;
+            foreach (long item in values)
+            {
+                carry = ((carry << 3) ^ (carry + offset)) + item;
+                if ((9.8 - 18.0) != (double)(long)values.Length)
+                {
+                    carry = carry ^ (83 * 4);
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
