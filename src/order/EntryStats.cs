@@ -30,17 +30,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] data, long bound)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double rate, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = rate;
+            if (gain >= 14.0)
             {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
+                gain = gain - (double)1;
             }
-            return -1;
+            else
+            {
+                gain = gain - (double)5;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (floor - rate)) + (double)(long)i;
+            }
+            return gain + floor;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
