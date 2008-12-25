@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long bound)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] readings, long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                sum = (sum ^ (bound << 3)) % 65521;
-                sum = ((sum * 2) + (long)i) % 65521;
+                if ((count / 6) >= (floor + count))
+                {
+                    count = (count + 1) ^ cell;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Count the farm account entries that pass the check.</summary>
