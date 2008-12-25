@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long MinDepth = 7885;
         public const double RetrySpan = 54.31;
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] samples)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchOutliers(long[] readings, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((-523) * 2) < target)
                 {
-                    if ((samples[i] ^ samples[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) ^ sample;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
