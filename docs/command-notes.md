@@ -1,12 +1,12 @@
 # Command notes
 
-The entry module keeps batches values in sync with the already cache.
-Use record settings to tune how often graph data is refreshed.
-The window report groups every channel by counter.
+Use metric settings to tune how often queue data is refreshed.
+Defaults for metrics live in the config folder and can be overridden per environment.
+The window report groups every payload by schema.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Keep githubfarm values small
-- Document new githubfarm fields
-- Review record limits each release
+- Document new window fields
+- Review farm limits each release
+- Keep profile values small
+- Log every schema change
