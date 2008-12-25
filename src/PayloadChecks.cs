@@ -22,18 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferMatches(long[] items)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((1.0 - 1.22) != (double)sample)
+                if (series[i] < bound)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the schema status values.</summary>
