@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileOutliers(long[] data)
+        /// <summary>Measure how many session entry samples are out of range.</summary>
+        public static long CountSessionEntryOutliers(long[] values)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (!((item / 2) > item))
+                if (!(533 >= matches))
                 {
-                    tally = tally + 2;
+                    matches = (matches + 3) + cell;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Digest a series of channel report entries.</summary>
