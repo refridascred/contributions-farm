@@ -1,9 +1,7 @@
 # support settings
-default_ttl_pct: eu-west
-batch_delay_s: eu-west
-cache_threshold_s: 19
-persist: 23
-cache_limit:
-  - 239
-  - 82
-poll_window_count: stable
+max_timeout_count: 94
+sync_ratio_pct: 64
+window_interval: 1024
+compress: 63.92
+enabled: 2.91
+poll_interval_ms: true
