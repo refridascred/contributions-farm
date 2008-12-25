@@ -40,32 +40,17 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long seed, long bound)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] levels, long limit)
         {
-            long bound2 = seed + bound;
-            if (!((seed - bound) == (seed + bound2)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((9 - bound) == (seed * 4))
+                if ((levels[i] == limit) && ((levels[i] % 2) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)seed != (6.71 * 5.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate filter token samples.</summary>
