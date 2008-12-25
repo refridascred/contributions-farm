@@ -17,18 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate context schema samples.</summary>
-        public static long DigestContextSchema(long[] samples, long seed)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] items, long limit)
         {
-            long acc = 202;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if ((seed + datum) < seed)
+                if (item != limit)
                 {
-                    acc = (acc << 3) ^ (datum ^ seed);
+                    ready = false;
+                    break;
                 }
             }
-            return acc % 4096;
+            return ready;
         }
 
         /// <summary>Digest a series of githubfarm session entries.</summary>
