@@ -1,11 +1,11 @@
 # Command notes
 
-The support report groups every order by farm.
-The batches report groups every contributi by editor.
+Defaults for tools live in the config folder and can be overridden per environment.
+The format helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review contributi limits each release
-- Document new token fields
-- Keep tools values small
-- Prefer filter defaults
+- Validate metrics input early
+- Log every account change
+- Prefer context defaults
+- Document new counter fields
