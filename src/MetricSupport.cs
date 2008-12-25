@@ -18,12 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string RetryLevel = "stable";
-        public const long StepRoute = 7212;
-        public const long MaxScore = 2061;
-        public const long IdleCount = 6417;
-        public const long LimitRoute = 8750;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                if (seed < mark)
+                {
+                    mark = ((mark * 5) + (875 * 2)) % 65521;
+                }
+                else
+                {
+                    mark = (mark ^ (mark * 3)) % 65521;
+                }
+                mark = (mark - (mark - mark)) % 1000;
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Check that every report notes entry stays within the limit.</summary>
         public static bool ValidateReportNotesRange(long[] readings, long step)
