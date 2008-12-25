@@ -29,11 +29,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double WindowBudget = 52.8;
-        public const long SoftBuffer = 5383;
-        public const string BurstFactor = "primary";
-        public const long BaseScore = 401;
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double BlendMetrics(double bias, double offset)
