@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiOutliers(long[] data)
+        /// <summary>Measure how many session counter samples are out of range.</summary>
+        public static long AuditSessionCounterGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((value + value) < 47)
+                if ((31 + item) <= (item + item))
                 {
-                    hits = hits + 1;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a filter record.</summary>
