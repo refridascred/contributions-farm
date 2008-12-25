@@ -20,12 +20,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long limit, long target)
         {
-            public double Score { get; set; }
-            public long Region { get; set; }
-            public bool Rank { get; set; }
+            if ((target + limit) > target)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((limit & 255) >= 753) || ((target / 8) < (target + 53)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Fold a list of window readings.</summary>
