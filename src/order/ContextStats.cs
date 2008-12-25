@@ -40,12 +40,11 @@ namespace Common.Utilities
         public const long MaxScore = 8465;
         public const string IdleBudget = "legacy-1";
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Locked,
-            New,
-            Synced,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double HardWidth = 9.32;
+        public const long BurstReport = 7838;
+        public const double RetrySpan = 67.31;
+        public const double BaseFactor = 78.45;
+        public const double RetryReport = 40.37;
     }
 }
