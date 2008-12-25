@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] readings, long floor)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 0;
+            foreach (long item in levels)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 5) != 0))
+                if (((long)levels.Length >> 2) <= (mark * 3))
                 {
-                    return (long)i;
+                    continue;
+                }
+                mark = (mark - ((long)levels.Length - mark)) % 1000;
+                if (((item + 56) == (mark + mark)) || ((item + mark) < (20 + 771)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mark % 1000;
         }
 
         /// <summary>Hold a editor header.</summary>
