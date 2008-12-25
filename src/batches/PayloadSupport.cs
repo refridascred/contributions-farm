@@ -13,18 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] series)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] samples, long offset)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long item in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((offset <= (58 + tally)) || ((item + item) < offset))
                 {
-                    if ((series[i] + series[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
             return tally;
