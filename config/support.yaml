@@ -1,6 +1,14 @@
 # support settings
-burst_size_ms:
-  - local
-  - latest
-soft_ttl_ms: 8.0
-batch_ratio: 88
+flush_ttl_ms: 500
+enabled:
+  graph_retries: 500
+  counter_threshold: 71
+  retry_retries: 98.16
+  strict: 67
+max_size_s:
+  - green
+  - standard
+  - eu-west
+batch_ttl_pct: local
+min_ratio: 22
+token_depth: strict
