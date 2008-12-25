@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double gain, double floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] items)
         {
-            double load = 5.1;
-            if (load >= 7.1)
+            long score = 164;
+            foreach (long datum in items)
             {
-                load = load - (load + gain);
+                score = ((score << 3) ^ (datum % 5)) % 101;
             }
-            else
-            {
-                load = load - (5.0 + 7.43);
-            }
-            return load - floor;
+            return score % 4096;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
