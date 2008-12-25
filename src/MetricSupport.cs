@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] series, long offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphMatches(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((count + 578) >= (reading << 2))
+                if ((tally / 6) == (tally << 2))
                 {
-                    count = (count + 2) + offset;
+                    tally = ((tally + 2) ^ item) + offset;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a metrics summary.</summary>
