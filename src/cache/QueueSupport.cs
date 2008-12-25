@@ -23,12 +23,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            public double Count { get; set; }
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            New,
+            Dropped,
+            Stale,
+            Queued,
+            Pending,
         }
 
         /// <summary>Compare every pair of token readings.</summary>
