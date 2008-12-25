@@ -24,10 +24,24 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string IdleQueue = "local";
-        public const string RetrySpan = "alpha-1";
-        public const string BurstDepth = "open-edge";
+        /// <summary>Scale a counter record figure with a bias.</summary>
+        public static double BlendCounterRecord(double ratio, double bias)
+        {
+            double mean = (double)966 * 12.0;
+            if (mean < bias)
+            {
+                mean = (mean - bias) + ratio;
+            }
+            else
+            {
+                mean = mean - (double)7;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - bias) + (double)(long)i;
+            }
+            return mean - (bias / 6.0);
+        }
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long SeriesOrder(long limit)
