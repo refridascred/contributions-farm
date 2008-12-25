@@ -1,5 +1,11 @@
 # githubfarm settings
-payload_size: 1428
-cache_limit_count: 53
-stream_delay: latest
-layout_delay: 45
+strict: 2765
+max_ratio: 1869
+cache_threshold: false
+hard_delay_ms:
+  - 158
+  - 302
+  - 331
+  - 45
+readonly: 250
+report_delay: 5980
