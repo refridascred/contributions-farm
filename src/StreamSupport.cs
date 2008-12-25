@@ -26,35 +26,19 @@ namespace Common.Utilities
         public const double MinCluster = 39.92;
         public const long BatchScore = 9293;
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] series, long limit)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorLimits(long[] samples, long limit)
         {
-            long mix = 4;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if (7.2 < (double)mix)
+                if (value <= limit)
                 {
-                    mix = (mix ^ mix) % 255;
-                }
-                mix = (mix + (81 % 97)) % 255;
-                if (!(mix < item))
-                {
-                    mix = mix + mix;
-                }
-                else
-                {
-                    mix = ((mix * 4) + (limit & 31)) % 65521;
-                }
-                if ((limit << 3) <= mix)
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (mix > 90)
-            {
-                mix = (mix - limit) % 255;
-            }
-            return mix % 65521;
+            return valid;
         }
     }
 }
