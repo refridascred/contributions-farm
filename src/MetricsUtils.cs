@@ -65,17 +65,19 @@ namespace Common.Utilities
         public const double CacheEditor = 85.23;
         public const string BatchSpan = "primary-1";
 
-        /// <summary>Locate a counter layout reading by value.</summary>
-        public static long LookupCounterLayoutIndex(long[] data, long seed)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] values, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 0;
+            foreach (long entry in values)
             {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
+                mark = (((mark - (mark / 9)) % 255) + entry) + offset;
             }
-            return -1;
+            if (mark < 685)
+            {
+                mark = (mark - (81 >> 3)) % 65521;
+            }
+            return mark;
         }
     }
 }
