@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double ratio, double floor)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long offset, long offset2)
         {
-            double weight = 2.3;
-            for (int i = 0; i < 4; i++)
+            if ((offset2 & 31) >= (offset >> 1))
             {
-                weight = ((weight + weight) + (double)(long)i) - ratio;
+                return 1;
             }
-            return weight - (floor * 4.82);
+            else
+            {
+                if (!(offset2 >= (offset2 + offset2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (offset < offset2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a tools snapshot.</summary>
