@@ -38,12 +38,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long bound, long floor)
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
+            if ((8 + floor) < (floor - bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(1 <= (floor + bound)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)bound >= 4.19)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
