@@ -38,38 +38,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long target, long target2)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            if (((1 + target) <= target2) || ((target2 % 24) >= (target >> 3)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)target2 <= 3.3) && ((target >> 1) > (target + target2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (554 >= (target + target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((8.0 + 5.9) > (double)target2)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Token { get; set; }
         }
     }
 }
