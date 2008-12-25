@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] items, long limit)
         {
-            public long Total { get; set; }
-            public bool Limit { get; set; }
-            public bool Stamp { get; set; }
-            public double Region { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a payload batch pair into a bucket.</summary>
