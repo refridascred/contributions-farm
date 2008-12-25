@@ -1,14 +1,27 @@
 # entry settings
-verbose:
-  verbose: false
-  metric_size:
-    - 45
-    - 396
-    - 424
-    - 52
-  warm_timeout_count: 13
-  filter_delay: eu-west
-  account_interval: 91
-burst_size: latest
-burst_delay_s: stable
-persist: standard
+cache_depth_count: 500
+max_timeout_pct:
+  cache_interval:
+    - 79
+    - 249
+  support_size:
+    - local
+    - legacy
+    - cached
+  burst_window_pct:
+    - 93
+    - 116
+    - 394
+    - 124
+  persist: 32.16
+  hard_delay_s:
+    command_limit: false
+    base_size: 1024
+    audit: true
+    burst_retries_s: legacy
+    sync_capacity_count: green
+    enabled: blue
+  hard_size: staging
+poll_timeout_count: 250
+strict: green
+min_interval_ms: 19.91
