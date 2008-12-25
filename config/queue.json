@@ -1,6 +1,5 @@
 {
-  "cache_capacity_ms": 25.96,
-  "idle_capacity_ms": "stable",
-  "sync_size_s": "standard",
-  "schema_size": "eu-west"
+  "enabled": 42.05,
+  "dry_run": 95.27,
+  "sync_delay_count": "legacy"
 }
