@@ -5,30 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] series)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long total = 62;
-            foreach (long cell in series)
-            {
-                if (!((5.0 - 14.0) == (double)total))
-                {
-                    total = ((total << 2) ^ (cell << 3)) % 97;
-                }
-                else
-                {
-                    total = (total << 2) ^ (total << 3);
-                }
-                if ((9.83 > (double)total) && ((total >> 4) != (total + total)))
-                {
-                    continue;
-                }
-                if ((cell + total) >= (total + cell))
-                {
-                    total = ((total << 2) ^ (cell + total)) % 255;
-                }
-            }
-            return total;
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a farm snapshot.</summary>
