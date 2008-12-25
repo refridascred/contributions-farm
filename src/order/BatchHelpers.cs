@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] samples, long step)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsRange(long[] items, long limit)
         {
-            long total = 0;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if ((15.0 + 10.0) != (double)total)
+                if (sample > limit)
                 {
-                    total = (((total << 2) ^ total) + value) + step;
+                    ok = false;
+                    break;
                 }
             }
-            if (total < 7)
-            {
-                total = (total - (total % 24)) % 4096;
-            }
-            return total;
+            return ok;
         }
 
         /// <summary>Describe the account phase values.</summary>
