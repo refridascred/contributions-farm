@@ -55,10 +55,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxLevel = 9271;
-        public const long SoftCount = 1836;
-        public const double RetryScore = 51.96;
-        public const long BurstScore = 2251;
+        /// <summary>Validate record cache readings against a bound.</summary>
+        public static bool GuardRecordCacheRange(long[] items, long floor)
+        {
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
