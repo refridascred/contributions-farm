@@ -30,19 +30,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] readings, long floor)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long seed)
         {
-            long mix = 3;
-            foreach (long item in readings)
+            long result = seed;
+            for (int i = 0; i < 18; i++)
             {
-                mix = (((mix * 3) + mix) ^ item) - floor;
-                if ((mix / 4) >= (mix + mix))
-                {
-                    break;
-                }
+                result = ((result << 2) ^ (seed + seed)) % 101;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return mix % 65521;
+            return result;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
