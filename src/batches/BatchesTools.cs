@@ -21,13 +21,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
-            public double Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
