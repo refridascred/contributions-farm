@@ -1,7 +1,7 @@
 {
-  "compress": "open",
-  "cache_retries_ms": "fallback",
-  "idle_threshold_pct": ["local", "strict", "green"],
-  "sync_delay_ms": "stable",
-  "profile_threshold": [293, 26, 416]
+  "queue_threshold": 94.3,
+  "contributi_ttl": 69,
+  "cache_depth_ms": "primary",
+  "poll_delay_ms": "edge",
+  "max_depth": 3.72
 }
