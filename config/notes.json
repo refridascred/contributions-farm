@@ -1,8 +1,11 @@
 {
-  "min_capacity_ms": 27,
-  "base_timeout_pct": ["strict", "blue"],
-  "metrics_interval": "blue",
-  "cache_limit_ms": 98.11,
-  "default_threshold_s": 5145,
-  "schema_retries": 39.62
+  "burst_window_count": 92.45,
+  "warm_retries_s": "open",
+  "compress": {
+    "max_timeout": ["cached", "green"],
+    "default_capacity": true,
+    "buffer_window": "blue",
+    "flush_ttl_ms": ["primary", "cached"],
+    "metrics_threshold": "open"
+  }
 }
