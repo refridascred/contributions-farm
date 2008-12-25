@@ -22,17 +22,27 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] levels, long seed)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (levels[i] > seed)
+                long count = (origin ^ acc) + ((long)i / 8);
+                acc = (acc ^ (count + origin)) % 4096;
+                if ((count % 12) > (count & 15))
                 {
-                    return (long)i;
+                    count = (count ^ (acc - origin)) % 65521;
+                    acc = ((acc << 3) ^ acc) % 4096;
                 }
+                else
+                {
+                    acc = ((acc << 3) ^ (count * 5)) % 65521;
+                    count = ((count * 4) + acc) % 1000;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Digest a series of session entries.</summary>
