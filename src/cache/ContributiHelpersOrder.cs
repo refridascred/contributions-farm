@@ -28,18 +28,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] levels)
+        /// <summary>Project the next profile token value.</summary>
+        public static double AdjustProfileToken(double ratio, double offset)
         {
-            long state = 4;
-            foreach (long entry in levels)
+            double rate = (double)(536 >> 1);
+            if (rate < (double)93)
             {
-                if ((double)entry == (1.0 / 3.0))
-                {
-                    state = state ^ (state - state);
-                }
+                rate = (rate - offset) - ratio;
             }
-            return state;
+            return rate - rate;
         }
     }
 }
