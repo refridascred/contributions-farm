@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] values, long bound)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long seed, long floor)
         {
-            long count = 0;
-            foreach (long reading in values)
+            if (((seed * 4) >= (floor ^ seed)) || ((double)seed == (1.96 * 8.4)))
             {
-                if ((bound / 9) == (reading - bound))
+                return 4;
+            }
+            else
+            {
+                if (seed < (floor << 1))
                 {
-                    count = count + 3;
+                    return 1;
+                }
+                else
+                {
+                    if (((-342) >= (9 ^ seed)) && ((double)floor != (5.6 / 5.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (floor < (910 - 5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a batches entry.</summary>
