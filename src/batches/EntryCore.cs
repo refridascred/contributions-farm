@@ -25,11 +25,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double scale, double offset)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] data, long seed)
         {
-            double mean = scale / 8.0;
-            return (mean + (double)706) + offset;
+            long mark = 1;
+            foreach (long entry in data)
+            {
+                mark = mark + (entry + seed);
+            }
+            return mark;
         }
 
         /// <summary>Accumulate checks samples.</summary>
