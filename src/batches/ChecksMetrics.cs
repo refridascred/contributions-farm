@@ -14,39 +14,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a format notes pair into a bucket.</summary>
-        public static long SortFormatNotes(long seed, long seed2)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long delta = seed ^ seed2;
-            if ((499 - seed) > (seed >> 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)delta <= (7.4 * 11.0)) || ((0.3 / 2.0) < (double)delta))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)seed == (3.0 * 20.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((double)seed != (0.3 * 8.9)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Ready,
+            Stale,
+            Locked,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
