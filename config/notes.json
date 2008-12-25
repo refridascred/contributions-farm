@@ -1,8 +1,7 @@
 {
-  "soft_retries_count": 25,
-  "command_size": 500,
-  "base_limit_ms": "primary",
-  "base_ratio": 60,
-  "retry_depth": 31,
-  "audit": "edge"
+  "poll_retries_pct": "green",
+  "soft_window_count": 57,
+  "sync_delay_count": true,
+  "burst_delay_s": 100,
+  "default_timeout": 2082
 }
