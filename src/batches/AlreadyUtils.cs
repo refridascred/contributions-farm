@@ -70,19 +70,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of graph githubfarm readings.</summary>
-        public static long DigestGraphGithubfarm(long[] values, long bound)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] data)
         {
-            long carry = 9;
-            foreach (long datum in values)
+            long result = 910;
+            foreach (long cell in data)
             {
-                carry = (carry << 2) ^ (carry + carry);
-                if (((bound / 8) >= (bound >> 2)) && ((datum / 8) != (5 * 4)))
+                if ((15.0 - 1.04) <= (double)cell)
                 {
-                    break;
+                    result = result + cell;
                 }
             }
-            return carry;
+            if (result > 5)
+            {
+                result = result - (6 - result);
+            }
+            return result;
         }
     }
 }
