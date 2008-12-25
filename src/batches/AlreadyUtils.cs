@@ -38,15 +38,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double ratio, double span)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            double ratio2 = ratio;
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 + (span + ratio2)) + (double)(long)i;
-            }
-            return ratio2 + (span * 2.62);
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
