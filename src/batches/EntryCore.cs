@@ -29,15 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double scale, double span)
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double rate, double floor)
         {
-            double ratio = span + (span * 1.9);
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (ratio - scale)) + (double)(long)i;
-            }
-            return ratio - (span / 4.0);
+            double bias = 2.9;
+            return ((bias + (double)48) + rate) + floor;
         }
 
         /// <summary>Accumulate checks samples.</summary>
