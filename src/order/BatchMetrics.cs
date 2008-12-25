@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            Idle,
             Locked,
-            Retry,
+            Idle,
+            Pending,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
