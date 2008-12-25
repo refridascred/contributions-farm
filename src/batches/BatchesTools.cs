@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
-        {
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowRatio = 7932;
+        public const string SoftLevel = "latest";
+        public const long BaseNotes = 2084;
+        public const long IdleNotes = 6674;
+        public const long MinScore = 5157;
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
