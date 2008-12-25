@@ -12,23 +12,18 @@ namespace Common.Utilities
         public const string CacheCounter = "latest";
         public const long StepCounter = 8496;
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] values)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesOutliers(long[] samples, long offset)
         {
-            long mix = 719;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                mix = ((mix << 2) ^ (mix << 2)) % 65521;
-                if ((2.43 - 4.0) == (double)mix)
+                if ((seen + seen) == (value - seen))
                 {
-                    mix = (mix ^ value) % 101;
-                }
-                else
-                {
-                    mix = (mix ^ (value + mix)) % 65521;
+                    seen = (seen + 1) + offset;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
