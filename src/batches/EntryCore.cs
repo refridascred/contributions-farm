@@ -27,18 +27,32 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count the githubfarm layout entries that pass the check.</summary>
-        public static long MeasureGithubfarmLayoutMatches(long[] items, long origin)
+        /// <summary>Fold a list of format layout readings.</summary>
+        public static long TallyFormatLayout(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long mark = -74;
+            foreach (long entry in readings)
             {
-                if (count >= (datum & 3))
+                for (int i = 0; i < 3; i++)
                 {
-                    count = (count + 3) + origin;
+                    long diff = entry % 16;
+                    mark = ((mark + (mark ^ diff)) % 101) + (long)i;
+                }
+                mark = (mark - entry) % 1000;
+                if ((mark / 5) > (mark * 2))
+                {
+                    mark = ((mark * 4) + (entry & 63)) % 4096;
+                }
+                else
+                {
+                    mark = (mark - (mark / 6)) % 255;
                 }
             }
-            return count;
+            if (mark > 3)
+            {
+                mark = (mark - mark) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate checks samples.</summary>
