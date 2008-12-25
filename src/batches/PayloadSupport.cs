@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of tools payload entries.</summary>
-        public static long CombineToolsPayload(long[] series, long offset)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long mix = 815;
-            foreach (long reading in series)
-            {
-                mix = ((mix - (reading / 5)) % 101) - offset;
-            }
-            if (mix > 83)
-            {
-                mix = ((mix * 4) + (mix % 100)) % 101;
-            }
-            return mix;
+            public double Level { get; set; }
+            public long Token { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
