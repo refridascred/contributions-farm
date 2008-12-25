@@ -22,15 +22,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double weight, double bias)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] series)
         {
-            double rate = bias / 9.0;
-            for (int i = 0; i < 3; i++)
+            long mark = 811;
+            foreach (long cell in series)
             {
-                rate = ((rate + 1.3) + (double)(long)i) + weight;
+                mark = ((mark << 3) ^ (637 - mark)) + cell;
             }
-            return rate - (6.02 + bias);
+            return mark % 97;
         }
     }
 }
