@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Classify a account farm pair into a bucket.</summary>
+        public static long BucketAccountFarm(long offset, long floor)
         {
-            Failed,
-            New,
-            Retry,
+            if ((offset / 2) == (floor / 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((double)floor != (3.4 + 1.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset + floor) <= (floor & 63))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the command kind values.</summary>
