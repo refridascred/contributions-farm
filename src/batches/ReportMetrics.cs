@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double gain, double span)
         {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
+            double load = gain;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + 8.0) + (double)(long)i;
+            }
+            return load - (span * 12.0);
         }
 
         /// <summary>Combine entry values into a single score.</summary>
