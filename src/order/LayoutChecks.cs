@@ -19,26 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of commits stream entries.</summary>
-        public static long TallyCommitsStream(long[] values, long bound)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] samples, long bound)
         {
-            long mix = 658;
-            foreach (long cell in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((bound * 2) <= (bound + bound))
+                if (samples[i] > bound)
                 {
-                    mix = (((mix * 2) + (bound + mix)) % 1000) + cell;
-                }
-                else
-                {
-                    mix = (mix + (bound >> 5)) % 1000;
+                    return (long)i;
                 }
             }
-            if (mix > 7)
-            {
-                mix = (mix << 2) ^ bound;
-            }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
