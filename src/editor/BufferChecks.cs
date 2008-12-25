@@ -62,22 +62,18 @@ namespace Common.Utilities
             return scale - (19.0 - bias);
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteGaps(long[] readings, long seed)
+        /// <summary>Audit route filter readings against a rule.</summary>
+        public static long MeasureRouteFilterHits(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((datum - seed) >= (datum + 6))
+                if ((bound % 10) == (entry - tally))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
