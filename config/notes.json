@@ -1,14 +1,6 @@
 {
-  "soft_capacity": "cached",
-  "base_delay_s": "latest",
-  "readonly": 3513,
-  "buffer_timeout": "staging",
-  "sync_delay_s": ["edge", "staging", "blue"],
-  "batch_ttl_s": {
-    "max_timeout_ms": true,
-    "flush_size_count": 36.03,
-    "flush_window_count": 30,
-    "githubfarm_timeout": "cached",
-    "flush_size_pct": 30.26
-  }
+  "schema_threshold": 37,
+  "record_limit": false,
+  "idle_limit_count": true,
+  "compress": 49.98
 }
