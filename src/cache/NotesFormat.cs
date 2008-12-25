@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Pending,
-            Done,
-            Draft,
-            Stale,
-            Idle,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BatchInterval = 69.57;
+        public const double MinSize = 1.46;
+        public const string HardBatches = "legacy";
+        public const string MinBatches = "latest-1";
+        public const long StepBatches = 9523;
 
         /// <summary>Locate a order command reading by value.</summary>
         public static long LookupOrderCommandIndex(long[] levels, long floor)
