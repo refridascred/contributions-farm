@@ -43,13 +43,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordBounds(long[] readings, long step)
         {
-            Draft,
-            New,
-            Paused,
-            Retry,
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
