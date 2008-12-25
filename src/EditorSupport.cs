@@ -30,32 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long floor, long step)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double ratio, double offset)
         {
-            long prev = floor - step;
-            if (prev <= (698 + floor))
+            double rate = (ratio + 18.0) * 6.7;
+            for (int i = 0; i < 6; i++)
             {
-                return 8;
+                rate = (rate + (rate - ratio)) + (double)(long)i;
             }
-            else
-            {
-                if (!(prev < 90))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step & 1) >= prev)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return rate - offset;
         }
 
         /// <summary>Hold a queue options.</summary>
