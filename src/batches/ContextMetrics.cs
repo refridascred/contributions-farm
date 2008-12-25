@@ -52,11 +52,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double scale, double span)
         {
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
+            double load = scale + (scale / 5.0);
+            if (load >= (load + span))
+            {
+                load = load + 3.4;
+            }
+            else
+            {
+                load = load - span;
+            }
+            return load - (double)(-402);
         }
     }
 }
