@@ -43,23 +43,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Project the next order support value.</summary>
-        public static double ScaleOrderSupport(double scale, double offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteGaps(long[] samples, long seed)
         {
-            double rate = (double)(2 ^ (-86));
-            if (rate <= (scale * 9.9))
+            long count = 0;
+            foreach (long value in samples)
             {
-                rate = rate - scale;
+                if ((double)seed == (0.01 - 9.56))
+                {
+                    count = (count + 1) + value;
+                }
             }
-            else
-            {
-                rate = rate - (offset * 2.13);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + 0.8) - (double)(long)i;
-            }
-            return rate - rate;
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
