@@ -54,11 +54,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            public bool Rank { get; set; }
+            public string Rank { get; set; } = "";
             public long Token { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
