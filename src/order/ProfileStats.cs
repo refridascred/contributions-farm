@@ -49,11 +49,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BatchCounter = 75.54;
-        public const long IdleWidth = 8400;
-        public const long WindowDepth = 9794;
-        public const long StepRatio = 5030;
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
+        {
+            public double Total { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const string HardSession = "primary-1";
