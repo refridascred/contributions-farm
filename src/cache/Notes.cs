@@ -38,17 +38,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a command counter sample.</summary>
-        public static long FindCommandCounterIndex(long[] items, long limit)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = -62;
+            foreach (long datum in data)
             {
-                if (items[i] < limit)
+                if (!((datum + datum) > (score ^ score)))
                 {
-                    return (long)i;
+                    score = (score - (datum * 5)) % 255;
+                }
+                if (score > (score + 396))
+                {
+                    continue;
+                }
+                else
+                {
+                    score = (score - (datum >> 2)) % 101;
+                    score = (score + (score - score)) % 101;
+                }
+                if ((6.7 - 8.6) < (double)score)
+                {
+                    score = score - 0;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
