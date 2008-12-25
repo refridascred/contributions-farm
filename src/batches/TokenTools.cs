@@ -14,14 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            Synced,
-            Stale,
+            Draft,
             Idle,
-            Paused,
-            Failed,
+            Closed,
+            Done,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
