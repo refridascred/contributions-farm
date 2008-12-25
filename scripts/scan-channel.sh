@@ -6,12 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue fallback strict cached; do
+mode="${1:-edge}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in cached legacy standard edge; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
