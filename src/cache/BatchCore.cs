@@ -13,15 +13,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a checks report counter forward.</summary>
-        public static long RollChecksReport(long seed)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long anchor = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the window status values.</summary>
