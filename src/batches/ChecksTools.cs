@@ -33,26 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] values, long origin)
+        /// <summary>Combine cache command values into a single score.</summary>
+        public static long TallyCacheCommand(long[] items, long limit)
         {
-            long state = 78;
-            foreach (long sample in values)
+            long score = -5;
+            foreach (long item in items)
             {
-                if ((4.8 - 2.92) >= (double)sample)
+                if ((double)limit != (2.0 - 6.0))
                 {
-                    state = (state - (sample / 6)) % 4096;
+                    score = (score << 2) ^ score;
                 }
                 else
                 {
-                    state = (state ^ (sample + origin)) % 4096;
+                    score = score + item;
                 }
             }
-            if (state > 6)
-            {
-                state = (state - state) % 255;
-            }
-            return state % 97;
+            return score;
         }
 
         /// <summary>Hold a metric options.</summary>
