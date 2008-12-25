@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account support helpers.</summary>
     public static class AccountSupport
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorMatches(long[] values)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long total = -24;
+            foreach (long cell in samples)
             {
-                if (((count % 16) <= (entry * 3)) || ((double)entry >= (1.5 / 4.0)))
+                total = total ^ 27;
+                if (cell > (total << 3))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    total = total + (total << 1);
                 }
             }
-            return count;
+            return total % 1000;
         }
 
         /// <summary>Measure how many githubfarm metric samples are out of range.</summary>
