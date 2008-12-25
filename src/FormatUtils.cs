@@ -51,21 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of graph stream readings.</summary>
-        public static long PairGraphStreamCount(long[] samples)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(datum >= (datum + datum)))
                 {
-                    if ((samples[i] + samples[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) + floor;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
