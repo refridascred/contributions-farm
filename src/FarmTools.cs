@@ -14,14 +14,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Compare every pair of stream context readings.</summary>
+        public static long MatchStreamContextCount(long[] values)
         {
-            Dropped,
-            Idle,
-            Paused,
-            Done,
-            New,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
