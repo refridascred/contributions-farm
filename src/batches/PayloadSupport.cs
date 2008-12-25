@@ -31,20 +31,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine graph entry values into a single score.</summary>
-        public static long WeighGraphEntry(long[] values, long target)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long anchor = 8;
-            foreach (long reading in values)
-            {
-                anchor = anchor ^ (reading * 2);
-                anchor = (anchor - (reading - reading)) % 97;
-            }
-            if (anchor > 23)
-            {
-                anchor = anchor - (target % 24);
-            }
-            return anchor;
+            public bool Rank { get; set; }
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
