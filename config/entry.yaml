@@ -1,10 +1,5 @@
 # entry settings
-soft_timeout_ms: local
-min_threshold: 554
-base_size_ms: latest
-soft_window:
-  - green
-  - local
-  - standard
-base_ratio_pct: 48
-report_limit: 500
+window_retries: standard
+retry_retries: false
+sync_threshold: 69
+stream_ttl: 100
