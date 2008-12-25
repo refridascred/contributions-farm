@@ -82,18 +82,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many graph schema samples are out of range.</summary>
-        public static long CountGraphSchemaMatches(long[] items)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((sample % 100) >= count)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public bool Size { get; set; }
+            public long Token { get; set; }
         }
     }
 }
