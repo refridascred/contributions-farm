@@ -37,17 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a format buffer reading by value.</summary>
-        public static long SeekFormatBufferIndex(long[] data, long target)
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double gain, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias = gain;
+            if (bias >= span)
             {
-                if ((data[i] < target) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                bias = bias - bias;
             }
-            return -1;
+            return bias - (bias / 9.0);
         }
     }
 }
