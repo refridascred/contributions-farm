@@ -34,23 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] readings, long floor)
-        {
-            long total = 3;
-            foreach (long value in readings)
-            {
-                if ((double)floor <= (3.9 / 8.0))
-                {
-                    total = (total * 2) + (total + floor);
-                }
-                else
-                {
-                    total = ((total << 3) ^ (value - value)) % 255;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 595;
+        public const long IdleFarm = 2237;
+        public const string MinSize = "primary";
+        public const long BurstTimeout = 2669;
+        public const double BatchFarm = 14.23;
 
         /// <summary>Hold a already summary.</summary>
         public sealed class AlreadySummary
