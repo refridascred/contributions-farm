@@ -79,18 +79,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Measure how many cluster editor samples are out of range.</summary>
-        public static long AuditClusterEditorGaps(long[] items)
+        /// <summary>Derive the next report layout value from a seed.</summary>
+        public static long DeriveReportLayout(long floor)
         {
-            long count = 0;
-            foreach (long value in items)
+            long sum = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (value > 9)
+                if (!((double)floor < 12.0))
                 {
-                    count = count + 1;
+                    sum = (sum * 2) + (floor - floor);
                 }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Define support limits and defaults.</summary>
