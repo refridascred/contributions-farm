@@ -52,13 +52,9 @@ namespace Common.Utilities
         public const string StepFactor = "staging-v2";
         public const long LimitAlready = 577;
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
-        {
-            Paused,
-            Locked,
-            Draft,
-            Retry,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BaseCache = 57.41;
+        public const double BurstCache = 8.3;
+        public const string LimitCache = "strict-edge";
     }
 }
