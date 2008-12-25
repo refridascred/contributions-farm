@@ -27,11 +27,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string LimitSession = "latest-v2";
-        public const long DefaultSession = 9589;
-        public const string IdleWidth = "strict-edge";
-        public const string CacheSession = "staging-1";
-        public const long BaseSession = 6754;
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long floor, long floor2)
+        {
+            long cur = floor + floor2;
+            if ((1.2 - 1.39) < (double)cur)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((cur ^ (-46)) >= cur) && ((floor >> 1) == (684 << 3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor - floor2) < (cur + floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
