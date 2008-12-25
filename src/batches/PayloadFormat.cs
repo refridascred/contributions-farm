@@ -19,19 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double weight, double floor)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            double mean = weight;
-            if (mean < (weight + weight))
-            {
-                mean = mean - (19.0 - mean);
-            }
-            else
-            {
-                mean = mean - floor;
-            }
-            return mean + mean;
+            Active,
+            Synced,
+            Retry,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
