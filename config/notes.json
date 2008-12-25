@@ -1,11 +1,6 @@
 {
-  "burst_window_count": 92.45,
-  "warm_retries_s": "open",
-  "compress": {
-    "max_timeout": ["cached", "green"],
-    "default_capacity": true,
-    "buffer_window": "blue",
-    "flush_ttl_ms": ["primary", "cached"],
-    "metrics_threshold": "open"
-  }
+  "checks_threshold": "green",
+  "compress": 3721,
+  "retry_ttl_ms": 34.58,
+  "retry_window": 6908
 }
