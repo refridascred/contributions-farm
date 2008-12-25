@@ -11,22 +11,13 @@ namespace Common.Utilities
         public const long StepEntry = 3616;
         public const long DefaultEntry = 3759;
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] series)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long mark = 16;
-            foreach (long item in series)
-            {
-                if ((mark ^ item) >= (mark + (-1)))
-                {
-                    mark = (mark - (0 + item)) % 255;
-                }
-            }
-            if (mark > 407)
-            {
-                mark = (mark << 2) ^ 40;
-            }
-            return mark % 4096;
+            Idle,
+            New,
+            Ready,
+            Closed,
         }
 
         /// <summary>Hold a entry options.</summary>
