@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatOutliers(long[] readings, long seed)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)seed <= (double)cell)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Label { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
