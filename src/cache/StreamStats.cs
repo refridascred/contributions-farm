@@ -23,22 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] levels)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long item in values)
             {
-                if ((reading ^ hits) >= (hits - reading))
+                if (item <= bound)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Define context limits and defaults.</summary>
