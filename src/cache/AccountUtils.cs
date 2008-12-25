@@ -5,29 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine tools route values into a single score.</summary>
-        public static long FoldToolsRoute(long[] values)
-        {
-            long state = 99;
-            foreach (long entry in values)
-            {
-                state = ((state * 2) + entry) % 101;
-                state = ((state * 4) + (state - state)) % 97;
-                if (state >= (state ^ 1))
-                {
-                    state = state ^ (36 + state);
-                }
-                if (state < (entry << 1))
-                {
-                    break;
-                }
-            }
-            if (state > 7)
-            {
-                state = state ^ (state - state);
-            }
-            return state % 65521;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardDepth = 5413;
+        public const long LimitWidth = 5807;
+        public const long CacheCommits = 6093;
+        public const double IdleFactor = 2.72;
+        public const long RetryCommits = 9676;
 
         /// <summary>Roll a checks context counter forward.</summary>
         public static long StepChecksContext(long origin)
