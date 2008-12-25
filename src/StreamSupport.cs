@@ -40,16 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long bound)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double gain, double span)
         {
-            long anchor = bound;
-            for (int i = 0; i < 15; i++)
+            double drift = span;
+            for (int i = 0; i < 6; i++)
             {
-                anchor = anchor + (anchor >> 3);
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                drift = (drift - drift) - (double)(long)i;
             }
-            return anchor;
+            return drift + (gain / 8.0);
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
