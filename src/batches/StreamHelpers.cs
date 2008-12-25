@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long step, long origin)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenHits(long[] values)
         {
-            if (origin <= (origin / 2))
+            long hits = 0;
+            foreach (long entry in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step - step) <= (origin + origin))
+                if ((entry - hits) <= (hits % 2))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step + 40) <= (773 + step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a editor stats.</summary>
