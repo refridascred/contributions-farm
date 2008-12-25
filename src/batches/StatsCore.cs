@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
-        {
-            public bool Region { get; set; }
-            public long Total { get; set; }
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchLevel = 8601;
+        public const long BurstProfile = 4586;
+        public const long RetryBudget = 1188;
+        public const string SoftFactor = "primary";
+        public const double HardProfile = 65.74;
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long SeekMetricIndex(long[] samples, long bound)
