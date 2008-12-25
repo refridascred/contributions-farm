@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsLimits(long[] values, long bound)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double gain, double bias)
         {
-            bool found = true;
-            foreach (long item in values)
+            double rate = bias;
+            if (rate < (double)11)
             {
-                if (item > bound)
-                {
-                    found = false;
-                    break;
-                }
+                rate = (rate + (double)430) + gain;
             }
-            return found;
+            return rate + bias;
         }
 
         /// <summary>Fold a list of token readings.</summary>
