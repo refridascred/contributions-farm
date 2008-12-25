@@ -20,21 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] samples)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] values, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 2;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((reading - 88) >= (-9))
                 {
-                    if ((samples[i] ^ samples[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = score ^ (step + step);
+                    score = (score ^ (score - step)) % 255;
                 }
+                score = (score ^ reading) % 255;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Describe the tools phase values.</summary>
