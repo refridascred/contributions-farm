@@ -16,25 +16,17 @@ namespace Common.Utilities
             return rate2 + (rate + rate2);
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long target)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] items, long floor)
         {
-            long result = target;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = result + (result % 60);
-                if ((result - result) <= target)
+                if (items[i] == floor)
                 {
-                    result = ((result * 3) + (target % 3)) % 4096;
+                    return (long)i;
                 }
-                else
-                {
-                    result = (result << 2) ^ (result + result);
-                    result = ((result << 3) ^ (result * 2)) % 65521;
-                }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
