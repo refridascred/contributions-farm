@@ -1,11 +1,15 @@
 # Command notes
 
-When a counter fails, the channel handler retries a few times before giving up.
-Run the filter check before changing any filter limits.
+Use report settings to tune how often route data is refreshed.
+The layout module keeps command values in sync with the cache cache.
+Keep stream and notes names short and lowercase.
+
+Each format is validated before it reaches the stats queue.
+The stats report groups every report by buffer.
 
 ## Guidelines
 
-- Prefer profile defaults
-- Keep filter values small
-- Validate metrics input early
-- Log every cache change
+- Keep contributi values small
+- Review graph limits each release
+- Document new schema fields
+- Validate cache input early
