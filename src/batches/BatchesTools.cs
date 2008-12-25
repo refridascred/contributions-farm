@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] levels)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long total = 6;
+            foreach (long entry in series)
             {
-                if ((double)463 >= (double)matches)
+                total = total + (total * 2);
+                total = total - (entry - entry);
+                if (bound < (total + entry))
                 {
-                    matches = (matches + 1) ^ entry;
+                    total = (total << 2) ^ (entry & 7);
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a route record.</summary>
