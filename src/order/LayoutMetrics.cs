@@ -28,22 +28,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the format account entries that pass the check.</summary>
-        public static long TallyFormatAccountOutliers(long[] values)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((seen ^ item) <= item)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Pending,
+            Draft,
+            Failed,
+            Active,
         }
 
         /// <summary>Describe the profile kind values.</summary>
