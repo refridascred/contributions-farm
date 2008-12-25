@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many session tools samples are out of range.</summary>
-        public static long MeasureSessionToolsOutliers(long[] samples, long step)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] items)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)hits == (double)value)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 1) + step;
+                    if ((items[i] - items[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
