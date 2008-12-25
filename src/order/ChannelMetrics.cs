@@ -18,22 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of commits window readings.</summary>
-        public static long CompareCommitsWindowCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleRatio = 3393;
+        public const double RetryRatio = 42.27;
+        public const double IdleCommits = 49.43;
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
