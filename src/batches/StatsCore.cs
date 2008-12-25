@@ -41,13 +41,11 @@ namespace Common.Utilities
         public const long DefaultRecord = 2636;
         public const string IdleTimeout = "strict-edge";
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
-        {
-            public bool Level { get; set; }
-            public string Limit { get; set; } = "";
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MaxCount = "cached-v2";
+        public const double BaseRoute = 38.18;
+        public const double BatchRoute = 36.43;
+        public const double DefaultBudget = 2.08;
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
