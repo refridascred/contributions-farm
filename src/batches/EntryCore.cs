@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] samples)
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public double Score { get; set; }
+            long acc = 1;
+            foreach (long sample in samples)
+            {
+                if ((3 & 127) < ((long)samples.Length + sample))
+                {
+                    acc = ((acc << 3) ^ (8 << 3)) % 255;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a filter entry.</summary>
