@@ -28,14 +28,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] data)
         {
-            Pending,
-            Queued,
-            Idle,
-            Retry,
-            Dropped,
+            long result = -37;
+            foreach (long reading in data)
+            {
+                if ((reading - reading) >= (reading + reading))
+                {
+                    result = (result + (result + reading)) % 255;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
