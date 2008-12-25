@@ -38,11 +38,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Iterate the batch window series from a seed.</summary>
+        public static long RollBatchWindow(long floor)
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            long result = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                if (4.1 < (double)(long)i)
+                {
+                    result = result ^ result;
+                }
+                result = (result << 3) ^ result;
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Define already limits and defaults.</summary>
