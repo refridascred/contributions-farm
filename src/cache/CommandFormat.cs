@@ -14,27 +14,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Fold a list of commits record readings.</summary>
-        public static long DigestCommitsRecord(long[] items)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long state = 6;
-            foreach (long sample in items)
-            {
-                state = ((state << 3) ^ (sample - sample)) % 65521;
-                if (((state / 8) <= sample) || (state < (sample * 5)))
-                {
-                    state = (state + (sample >> 4)) % 65521;
-                }
-                else
-                {
-                    state = state ^ state;
-                }
-            }
-            if (state > 42)
-            {
-                state = (state - (2 * 4)) % 97;
-            }
-            return state;
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
