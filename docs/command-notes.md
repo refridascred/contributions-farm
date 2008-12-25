@@ -1,10 +1,11 @@
 # Command notes
 
-Each support is validated before it reaches the entry queue.
-Use payload settings to tune how often stream data is refreshed.
+The support report groups every order by farm.
+The batches report groups every contributi by editor.
 
 ## Guidelines
 
-- Document new cluster fields
-- Prefer stats defaults
-- Review route limits each release
+- Review contributi limits each release
+- Document new token fields
+- Keep tools values small
+- Prefer filter defaults
