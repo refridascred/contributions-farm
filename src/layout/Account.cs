@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers.</summary>
     public static class Account
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] series, long target)
+        /// <summary>Adjust a payload batches reading.</summary>
+        public static double ScalePayloadBatches(double scale, double span)
         {
-            long acc = 98;
-            foreach (long entry in series)
+            double drift = span;
+            if (drift < (drift + 2.0))
             {
-                if (((target + target) <= acc) || (entry > 446))
-                {
-                    acc = ((acc << 3) ^ (184 >> 3)) % 255;
-                }
-                else
-                {
-                    acc = (acc * 4) + (target + entry);
-                }
+                drift = drift + (drift - 1.27);
             }
-            return acc;
+            else
+            {
+                drift = drift + (double)80;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (scale * 10.0)) - (double)(long)i;
+            }
+            return drift - 4.68;
         }
 
         /// <summary>Audit record queue readings against a rule.</summary>
