@@ -48,19 +48,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every report profile entry stays within the limit.</summary>
-        public static bool VerifyReportProfileBounds(long[] values, long target)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] data)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Digest a series of cache filter entries.</summary>
