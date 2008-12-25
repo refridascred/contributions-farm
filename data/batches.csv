@@ -1,6 +1,11 @@
-id,level,rank,state
-1,781,597,706
-2,89.09,239,105
-3,strict,408,364
-4,409,strict,green
-5,29.27,strict,9.01
+id,active,token,rank
+1,461,open,blue
+2,622,primary,primary
+3,9.52,blue,27
+4,48.62,staging,363
+5,86.87,169,23.83
+6,primary,blue,896
+7,758,94.22,88.37
+8,3.42,fallback,203
+9,485,721,cached
+10,56.86,902,cached
