@@ -49,19 +49,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double gain, double floor)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] levels, long origin)
         {
-            double load = gain;
-            if (load >= floor)
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load - floor;
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + (0.3 - gain);
+            return -1;
         }
 
         /// <summary>Describe the metric phase values.</summary>
