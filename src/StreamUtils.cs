@@ -37,19 +37,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double gain, double floor)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            double gain2 = floor;
-            if (gain2 > (double)0)
-            {
-                gain2 = (gain2 - (gain2 - 1.0)) - gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 + (gain2 * 3.59)) + (double)(long)i;
-            }
-            return gain2 + floor;
+            Closed,
+            Done,
+            Locked,
         }
 
         /// <summary>Hold a cache header.</summary>
