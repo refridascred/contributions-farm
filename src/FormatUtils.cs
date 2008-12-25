@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] items)
+        /// <summary>Rank window batches input into a small class.</summary>
+        public static long SortWindowBatches(long target, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (!((bound / 3) != (target / 2)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((bound / 3) != (target ^ (-8)))
                 {
-                    if ((items[i] - items[j]) != 11)
+                    return 1;
+                }
+                else
+                {
+                    if ((target % 7) < target)
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
