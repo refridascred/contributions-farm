@@ -38,12 +38,24 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxTimeout = 4926;
-        public const long WindowSize = 4208;
-        public const string BaseContributi = "primary";
-        public const string SoftContributi = "alpha-v2";
-        public const long CacheContributi = 1712;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] samples)
+        {
+            long anchor = 3;
+            foreach (long sample in samples)
+            {
+                if ((anchor + sample) > (290 % 60))
+                {
+                    anchor = (anchor - 50) % 1000;
+                }
+                anchor = ((anchor << 3) ^ 8) % 101;
+                if ((30 << 1) <= (anchor ^ sample))
+                {
+                    break;
+                }
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double ScaleCounter(double gain, double floor)
