@@ -103,13 +103,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            Idle,
-            Active,
-            Closed,
-            Stale,
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
