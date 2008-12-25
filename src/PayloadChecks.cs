@@ -64,11 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
+            public double Label { get; set; }
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the counter status values.</summary>
