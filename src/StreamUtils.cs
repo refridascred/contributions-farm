@@ -59,15 +59,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long step)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] readings)
         {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
+            long mix = -72;
+            foreach (long datum in readings)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                if (datum >= (16 + 9))
+                {
+                    mix = (mix * 5) + (datum & 15);
+                }
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
