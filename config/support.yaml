@@ -1,10 +1,6 @@
 # support settings
-poll_limit_pct: legacy
-base_depth:
-  - 343
-  - 199
-  - 495
-  - 351
-batch_window_pct: blue
-enabled: cached
-dry_run: strict
+strict: primary
+hard_depth: staging
+batch_window: true
+idle_retries_pct: 9688
+checks_ratio: staging
