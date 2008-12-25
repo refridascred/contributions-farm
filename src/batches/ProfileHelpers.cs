@@ -79,19 +79,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] data, long offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] items)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (item > offset)
+                if ((seen & 7) == (seen % 24))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 2) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
