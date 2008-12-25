@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate format stream readings against a bound.</summary>
-        public static bool GuardFormatStreamBounds(long[] samples, long floor)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long origin, long floor)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            if (floor > (floor << 1))
             {
-                if (item < floor)
+                return 3;
+            }
+            else
+            {
+                if ((double)floor < (double)origin)
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin / 4) == (5 % 10))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (origin >= (floor / 8))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
