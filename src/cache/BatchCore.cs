@@ -48,16 +48,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long floor)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long score = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                score = score - score;
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            public bool Score { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
