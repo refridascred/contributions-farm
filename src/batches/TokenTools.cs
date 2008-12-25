@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] data)
-        {
-            long anchor = 635;
-            foreach (long reading in data)
-            {
-                anchor = (anchor ^ 70) % 255;
-                if ((889 > (80 + anchor)) || ((15.0 / 7.0) != (double)reading))
-                {
-                    break;
-                }
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 2541;
+        public const string BatchBudget = "fallback-1";
+        public const string MaxInterval = "strict-edge";
 
         /// <summary>Accumulate already support samples.</summary>
         public static long DigestAlreadySupport(long[] data)
