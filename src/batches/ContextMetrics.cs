@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] readings, long bound)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] levels, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (readings[i] < bound)
+                if (17.0 > (double)item)
                 {
-                    return (long)i;
+                    count = (count + 2) - floor;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
