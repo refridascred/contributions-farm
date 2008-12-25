@@ -40,16 +40,12 @@ namespace Common.Utilities
         public const long SoftRatio = 1497;
         public const long MinScore = 8770;
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long bound)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long mark = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = mark - bound;
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            public long Level { get; set; }
+            public double Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
