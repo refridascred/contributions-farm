@@ -39,11 +39,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double HardWidth = 9.32;
-        public const long BurstReport = 7838;
-        public const double RetrySpan = 67.31;
-        public const double BaseFactor = 78.45;
-        public const double RetryReport = 40.37;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (!((value + value) > 92))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
