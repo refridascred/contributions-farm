@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] readings, long floor)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] items)
         {
             long count = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count / 6) >= (floor + count))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 1) ^ cell;
+                    if ((items[i] + items[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
