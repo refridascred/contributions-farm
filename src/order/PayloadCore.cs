@@ -48,31 +48,11 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long limit, long seed)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            if (((909 & 255) >= seed) && ((limit * 4) >= (seed + seed)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed + 83) < (seed ^ seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((-376) ^ limit) > (seed - seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
