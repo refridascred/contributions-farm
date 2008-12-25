@@ -59,14 +59,11 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Blend two contributi layout measurements.</summary>
+        public static double BlendContributiLayout(double weight, double span)
         {
-            Synced,
-            Active,
-            New,
-            Done,
-            Paused,
+            double scale = span;
+            return (scale - span) + weight;
         }
     }
 }
