@@ -31,15 +31,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] items)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] data, long origin)
         {
-            long state = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = state - (reading % 97);
+                if ((data[i] >= origin) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
