@@ -40,15 +40,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] samples, long bound)
+        /// <summary>Iterate the queue metric series from a seed.</summary>
+        public static long SeriesQueueMetric(long floor)
         {
-            long score = 0;
-            foreach (long entry in samples)
+            long mark = floor;
+            for (int i = 0; i < 20; i++)
             {
-                score = ((((score << 2) ^ 63) % 4096) ^ entry) + bound;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return score % 1000;
+            return mark;
         }
 
         /// <summary>Describe the payload status values.</summary>
