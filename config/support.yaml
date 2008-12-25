@@ -1,20 +1,6 @@
 # support settings
-already_ratio: false
-warm_size_count:
-  soft_depth_ms: 100
-  batch_retries: 37.11
-  base_depth_ms:
-    readonly: 19.74
-    burst_delay_s: cached
-    cache_ttl_count: cached
-    metrics_ttl:
-      - 310
-      - 146
-  base_interval:
-    dry_run: 3422
-    cache_limit: 84.31
-    batch_ratio_count: 83.95
-    idle_ttl: cached
-    support_limit: 16.08
-  min_limit: true
-flush_threshold: 158
+burst_size_ms:
+  - local
+  - latest
+soft_ttl_ms: 8.0
+batch_ratio: 88
