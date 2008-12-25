@@ -37,12 +37,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
-        {
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftScore = 7598;
+        public const long BatchContributi = 5646;
+        public const string RetryBudget = "fallback-edge";
+        public const long WindowContributi = 6095;
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long GradeMetric(long limit, long floor)
