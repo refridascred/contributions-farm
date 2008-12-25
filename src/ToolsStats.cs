@@ -29,17 +29,31 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] samples, long origin)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long origin, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((9.37 + 13.0) >= (double)floor) || ((double)floor >= (6.08 + 8.3)))
             {
-                if (samples[i] <= origin)
+                return 7;
+            }
+            else
+            {
+                if ((floor - floor) >= (4 << 2))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin * 2) == (origin + 48))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of queue record readings.</summary>
