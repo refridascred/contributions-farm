@@ -20,12 +20,17 @@ namespace Common.Utilities
             return scale2 - 4.52;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Look up the position of a format profile sample.</summary>
+        public static long SeekFormatProfileIndex(long[] series, long offset)
         {
-            public string Mode { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == offset) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a layout stats.</summary>
