@@ -19,11 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 8900;
-        public const long MinSpan = 2458;
-        public const string BatchSize = "fallback-v2";
-        public const long HardWidth = 3892;
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public double Count { get; set; }
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Match up stats samples.</summary>
         public static long PairStatsCount(long[] values)
