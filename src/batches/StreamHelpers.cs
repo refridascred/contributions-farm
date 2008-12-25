@@ -28,13 +28,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            Retry,
-            Active,
-            Queued,
-            Ready,
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a window summary.</summary>
