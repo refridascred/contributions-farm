@@ -19,11 +19,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 9244;
-        public const long BatchInterval = 6263;
-        public const long DefaultSchema = 8221;
-        public const long SoftDepth = 9627;
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
+        {
+            public string Size { get; set; } = "";
+            public bool Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
