@@ -79,19 +79,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] samples, long seed)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Queued,
+            Stale,
+            Idle,
+            Ready,
         }
     }
 }
