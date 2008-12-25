@@ -1,19 +1,4 @@
 # entry settings
-max_interval_count: fallback
-counter_delay: strict
-dry_run:
-  persist: edge
-  hard_timeout_pct:
-    default_delay: 95
-    tools_delay: 2767
-    graph_threshold: false
-    cache_capacity_pct: 4.84
-    dry_run:
-      - 435
-      - 132
-      - 141
-    warm_interval: 7193
-  soft_ratio: 17
-  compress: 2072
-account_ttl: 7372
-window_ttl: 100
+retry_delay_pct: strict
+enabled: 8848
+hard_threshold_s: primary
