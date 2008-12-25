@@ -19,27 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] readings, long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] samples)
         {
-            long result = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                result = (((result << 2) ^ (floor >> 4)) % 97) + cell;
-                if (((floor ^ result) > (result >> 5)) && (68 >= (result + result)))
+                if ((hits % 7) > (hits & 3))
                 {
-                    result = ((result * 4) + (259 + floor)) % 101;
-                }
-                else
-                {
-                    result = result ^ (floor - (long)readings.Length);
+                    hits = (hits + 3) ^ reading;
                 }
             }
-            if (result > 107)
-            {
-                result = ((result << 3) ^ (result + (long)readings.Length)) % 4096;
-            }
-            return result % 65521;
+            return hits;
         }
 
         /// <summary>Combine session route values into a single score.</summary>
