@@ -1,5 +1,8 @@
 {
-  "idle_window_s": 158,
-  "stream_ratio": 6.29,
-  "contributi_window": ["fallback", "fallback", "edge", "open"]
+  "soft_depth": 2342,
+  "hard_capacity_ms": 100,
+  "enabled": 81.79,
+  "max_threshold": 500,
+  "compress": 250,
+  "base_ttl": "legacy"
 }
