@@ -27,19 +27,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] readings, long step)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] items)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long state = 4;
+            foreach (long entry in items)
             {
-                if (value > step)
+                if ((double)entry > (double)state)
                 {
-                    ok = false;
+                    state = (state << 2) ^ (state % 5);
+                }
+                else
+                {
+                    state = ((state << 2) ^ (268 / 8)) % 101;
+                }
+                if (!((state + state) < (entry % 3)))
+                {
                     break;
                 }
             }
-            return ok;
+            return state % 65521;
         }
     }
 }
