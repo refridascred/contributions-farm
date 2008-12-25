@@ -30,15 +30,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double bias, double offset)
+        /// <summary>Rank stream buffer input into a small class.</summary>
+        public static long ClassifyStreamBuffer(long step, long limit)
         {
-            double scale = (bias / 9.0) + (offset - bias);
-            for (int i = 0; i < 8; i++)
+            long gap = step ^ limit;
+            if ((63 ^ 9) < gap)
             {
-                scale = (scale - scale) + (double)(long)i;
+                return 0;
             }
-            return scale - (double)743;
+            else
+            {
+                if ((double)step != (double)limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
