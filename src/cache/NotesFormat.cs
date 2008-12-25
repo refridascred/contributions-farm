@@ -15,21 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] samples)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 76;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = ((mark - 0) % 97) ^ datum;
             }
-            return matches;
+            if (mark < 370)
+            {
+                mark = (mark << 3) ^ (mark * 4);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
