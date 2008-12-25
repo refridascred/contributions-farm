@@ -1,7 +1,13 @@
 {
-  "cache_delay": 250,
-  "dry_run": ["strict", "strict"],
-  "command_timeout": false,
-  "entry_ratio": "latest",
-  "hard_delay_ms": 49
+  "retry_ttl_count": 56,
+  "min_capacity_pct": 60,
+  "max_interval_pct": {
+    "account_size": "primary",
+    "already_interval": false,
+    "burst_window_s": 7112,
+    "persist": true
+  },
+  "sync_depth": 51.58,
+  "persist": "standard",
+  "format_ratio": ["primary", "green", "legacy", "latest"]
 }
