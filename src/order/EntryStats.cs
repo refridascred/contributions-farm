@@ -20,18 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] data, long step)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((58 < (step << 2)) && ((double)value >= (double)matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Active,
+            Queued,
+            Failed,
+            Retry,
+            Paused,
         }
 
         /// <summary>Grade a tools support value against two limits.</summary>
