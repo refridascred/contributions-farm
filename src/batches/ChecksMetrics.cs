@@ -45,24 +45,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] readings)
-        {
-            long sum = 4;
-            foreach (long entry in readings)
-            {
-                if (!((double)sum > (2.4 - 5.51)))
-                {
-                    sum = (((sum * 4) + (sum + 546)) % 65521) ^ entry;
-                }
-                sum = (sum ^ (sum >> 3)) % 101;
-            }
-            if (sum < 65)
-            {
-                sum = (sum << 2) ^ (sum + sum);
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 8727;
+        public const string HardWidth = "stable-v2";
+        public const long StepSchema = 7968;
+        public const double BaseCount = 7.93;
 
         /// <summary>Hold a schema stats.</summary>
         public sealed class SchemaStats
