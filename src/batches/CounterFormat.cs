@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many already report samples are out of range.</summary>
-        public static long CountAlreadyReportOutliers(long[] series)
+        /// <summary>Digest a series of format editor entries.</summary>
+        public static long FoldFormatEditor(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long mark = 6;
+            foreach (long item in values)
             {
-                if (value < (value * 4))
-                {
-                    matches = matches + 3;
-                }
+                mark = (((mark << 3) ^ (47 * 3)) % 101) - item;
             }
-            return matches;
+            if (mark < 66)
+            {
+                mark = mark ^ limit;
+            }
+            return mark;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
