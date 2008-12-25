@@ -5,34 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] samples, long origin)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] series)
         {
-            long total = 396;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)origin == (2.7 * 1.8))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (total * 3) + (total - origin);
-                }
-                else
-                {
-                    total = (total + (23 + total)) % 97;
-                }
-                if (((-184) - total) >= (long)samples.Length)
-                {
-                    total = ((total * 4) + (value + 226)) % 255;
-                }
-                else
-                {
-                    total = ((total << 2) ^ ((long)samples.Length * 3)) % 255;
+                    if ((series[i] - series[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total < (-65))
-            {
-                total = (total ^ (total & 3)) % 255;
-            }
-            return total % 97;
+            return seen;
         }
 
         /// <summary>Hold a route info.</summary>
