@@ -39,21 +39,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of token farm readings.</summary>
-        public static long MatchTokenFarmCount(long[] series)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long origin, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long next = origin ^ floor;
+            if ((next + floor) <= (60 % 16))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (!((next * 2) < floor))
                 {
-                    if ((series[i] - series[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
     }
 }
