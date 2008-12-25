@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] levels, long floor)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long offset, long target)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long next = offset ^ target;
+            if ((target / 4) == (next % 100))
             {
-                if (17.0 > (double)item)
+                return 7;
+            }
+            else
+            {
+                if ((offset - target) > (next % 10))
                 {
-                    count = (count + 2) - floor;
+                    return 3;
+                }
+                else
+                {
+                    if (target >= (target % 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
