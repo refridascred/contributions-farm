@@ -12,23 +12,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long step)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] values)
         {
-            long anchor = step;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((value ^ matches) == (value - value))
                 {
-                    anchor = (anchor + step) ^ (long)i2;
+                    matches = matches + 2;
                 }
-                if (!((double)anchor <= (18.0 / 7.0)))
-                {
-                    anchor = (anchor << 2) ^ (anchor & 63);
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
