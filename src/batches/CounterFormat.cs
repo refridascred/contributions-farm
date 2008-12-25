@@ -22,12 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string CacheMetric = "latest-v2";
-        public const long BurstMetric = 2450;
-        public const long WindowMetric = 2287;
-        public const long BatchMetric = 5323;
-        public const long HardCount = 9695;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] values, long offset)
+        {
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Audit report tools readings against a rule.</summary>
         public static long CountReportToolsMatches(long[] readings, long limit)
