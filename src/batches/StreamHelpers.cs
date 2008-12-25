@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] data, long seed)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] values)
         {
-            long total = 369;
-            foreach (long cell in data)
+            long total = 7;
+            foreach (long datum in values)
             {
-                if ((double)seed < (double)cell)
+                total = total + 57;
+                total = (total ^ (datum * 3)) % 255;
+                if ((10.0 < (double)total) || ((total >> 2) < (datum << 2)))
                 {
-                    total = ((total << 3) ^ 47) % 65521;
-                }
-                if ((total + 203) > (total - seed))
-                {
-                    break;
+                    total = (total ^ (total + 680)) % 255;
                 }
             }
-            return total % 4096;
+            return total;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
