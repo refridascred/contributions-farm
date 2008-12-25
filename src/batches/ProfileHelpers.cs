@@ -45,17 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] levels, long target)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmBounds(long[] levels, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((levels[i] > target) && ((levels[i] % 2) != 0))
+                if (reading < step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define command limits and defaults.</summary>
