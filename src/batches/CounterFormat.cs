@@ -20,20 +20,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaBounds(long[] levels, long limit)
-        {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinDepth = 5414;
+        public const string StepWidth = "stable-v2";
+        public const long MinSpan = 5636;
+        public const long SoftWidth = 7963;
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
