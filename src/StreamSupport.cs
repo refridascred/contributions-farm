@@ -33,32 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long seed, long origin)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] levels, long bound)
         {
-            long delta = seed ^ origin;
-            if (((seed - seed) == (seed ^ seed)) || ((22 - 2) != (delta / 7)))
+            bool flag = true;
+            foreach (long item in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (origin < (delta / 8))
+                if (item > bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (delta >= seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
