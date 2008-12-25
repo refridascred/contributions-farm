@@ -23,18 +23,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] items, long seed)
+        /// <summary>Look up the position of a format commits sample.</summary>
+        public static long SeekFormatCommitsIndex(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seed & 3) >= (38 >> 1))
+                if (items[i] == limit)
                 {
-                    tally = (tally + 1) + cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Match up stats record samples.</summary>
