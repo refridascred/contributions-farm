@@ -1,9 +1,6 @@
-id,weight,level
-1,edge,open
-2,stable,970
-3,green,923
-4,492,19.29
-5,802,16.3
-6,blue,93.46
-7,40.97,621
-8,662,439
+id,level,label,active
+1,96.56,71.68,331
+2,54.39,601,eu-west
+3,333,fallback,78.44
+4,87.06,6.39,eu-west
+5,909,293,120
