@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheGraph = 9878;
-        public const long IdleGraph = 8483;
-        public const string StepGraph = "legacy-v2";
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
+        {
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Roll a checks report counter forward.</summary>
         public static long RollChecksReport(long seed)
