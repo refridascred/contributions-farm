@@ -36,12 +36,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 2689;
-        public const long IdleRatio = 8049;
-        public const double StepFactor = 65.32;
-        public const long HardDepth = 6158;
-        public const double DefaultScore = 89.39;
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            Active,
+            Idle,
+            Draft,
+            Synced,
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long TallyOrder(long[] levels, long target)
