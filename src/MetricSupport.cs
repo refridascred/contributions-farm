@@ -20,16 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a stream checks counter forward.</summary>
-        public static long StepStreamChecks(long step)
+        /// <summary>Measure how many editor cluster samples are out of range.</summary>
+        public static long TallyEditorClusterMatches(long[] values)
         {
-            long score = step;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                score = (score - 552) % 255;
-                score = ((score * 5) + (long)i) % 97;
+                if ((double)seen < (1.4 * 0.2))
+                {
+                    seen = (seen + 1) - sample;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
