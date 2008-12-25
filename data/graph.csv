@@ -1,6 +1,11 @@
-id,active,token,weight
-1,33.63,93.4,191
-2,351,122,126
-3,470,243,485
-4,staging,fallback,30.3
-5,79.44,12.36,88.51
+id,rank,token,ratio
+1,51,72.8,local
+2,447,blue,588
+3,green,77.4,206
+4,519,255,574
+5,442,77.5,13.12
+6,204,staging,open
+7,green,green,685
+8,legacy,269,6.89
+9,144,729,blue
+10,577,89.85,latest
