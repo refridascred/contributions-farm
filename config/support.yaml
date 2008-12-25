@@ -1,9 +1,4 @@
 # support settings
-dry_run: stable
-flush_timeout_count: green
-account_limit: local
-buffer_retries:
-  - green
-  - green
-  - latest
-  - open
+batch_ratio_pct: 28
+compress: true
+contributi_threshold: 11.26
