@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] data)
         {
-            Stale,
-            Active,
-            Done,
-            Ready,
-            Failed,
+            long anchor = 635;
+            foreach (long reading in data)
+            {
+                anchor = (anchor ^ 70) % 255;
+                if ((889 > (80 + anchor)) || ((15.0 / 7.0) != (double)reading))
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Accumulate already support samples.</summary>
