@@ -32,14 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] levels, long bound)
         {
-            Failed,
-            Active,
-            Done,
-            Retry,
-            Synced,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((48 - datum) != (3 + 9))
+                {
+                    tally = (tally + 1) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the notes phase values.</summary>
