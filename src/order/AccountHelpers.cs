@@ -69,22 +69,22 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] series, long offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] series)
         {
-            long result = 149;
-            foreach (long item in series)
+            long carry = 4;
+            foreach (long entry in series)
             {
-                if (5 > result)
+                if ((entry * 4) == (entry >> 4))
                 {
-                    result = (result ^ (634 % 8)) ^ item;
+                    carry = (carry * 2) + (carry - (-88));
+                }
+                if ((carry % 24) >= (27 - carry))
+                {
+                    break;
                 }
             }
-            if (result < 0)
-            {
-                result = ((result * 4) + (result - offset)) % 65521;
-            }
-            return result;
+            return carry;
         }
 
         /// <summary>Accumulate queue samples.</summary>
