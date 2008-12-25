@@ -57,10 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 6017;
-        public const string HardChannel = "fallback-v2";
-        public const long WindowChannel = 9175;
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
+        {
+            public double Size { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Compare every pair of graph stream readings.</summary>
         public static long PairGraphStreamCount(long[] samples)
