@@ -53,12 +53,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            Locked,
-            Draft,
-            Paused,
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public double Limit { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
