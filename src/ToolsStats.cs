@@ -80,13 +80,9 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
-        {
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 2804;
+        public const long HardCommits = 2412;
+        public const double SoftRatio = 33.93;
     }
 }
