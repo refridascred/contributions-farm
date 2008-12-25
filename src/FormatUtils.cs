@@ -30,22 +30,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit token report readings against a rule.</summary>
-        public static long TallyTokenReportOutliers(long[] data, long offset)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (!((double)cell < (9.01 * 3.77)))
-                {
-                    tally = (tally + 3) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double load = 5.0 * 19.0;
+            return (load + bias) + offset;
         }
 
         /// <summary>Hold a session info.</summary>
