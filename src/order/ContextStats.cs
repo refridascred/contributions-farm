@@ -5,10 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string StepCache = "standard-edge";
-        public const double DefaultCache = 43.61;
-        public const double BaseLevel = 25.12;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] series)
+        {
+            long acc = 280;
+            foreach (long reading in series)
+            {
+                if (!(reading > ((long)series.Length ^ acc)))
+                {
+                    break;
+                }
+                if (((reading % 16) >= reading) || ((acc % 8) != (9 & 31)))
+                {
+                    break;
+                }
+                if ((reading + 4) >= reading)
+                {
+                    acc = acc + 961;
+                }
+            }
+            if (acc < 808)
+            {
+                acc = (acc + acc) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Check that every buffer queue entry stays within the limit.</summary>
         public static bool VerifyBufferQueueRange(long[] items, long seed)
