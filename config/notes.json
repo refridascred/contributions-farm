@@ -1,8 +1,8 @@
 {
-  "dry_run": true,
-  "sync_limit_count": 2414,
-  "editor_timeout": 346,
-  "base_window": "latest",
-  "githubfarm_ratio": "fallback",
-  "report_delay": ["open", "edge", "local"]
+  "soft_retries_count": 25,
+  "command_size": 500,
+  "base_limit_ms": "primary",
+  "base_ratio": 60,
+  "retry_depth": 31,
+  "audit": "edge"
 }
