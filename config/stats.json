@@ -1,12 +1,8 @@
 {
-  "stats_limit": "blue",
-  "hard_depth_s": {
-    "batch_threshold_ms": "standard",
-    "burst_delay": 46.85,
-    "sync_ttl_ms": 92.88,
-    "default_ratio_s": 6531
-  },
-  "farm_capacity": "eu-west",
-  "retry_ratio": "staging",
-  "max_delay_ms": 76.58
+  "retry_ttl": [375, 127, 226],
+  "session_capacity": "green",
+  "poll_timeout": "staging",
+  "persist": 250,
+  "max_interval_count": 2183,
+  "min_ratio_count": 7942
 }
