@@ -24,16 +24,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long offset)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long mark = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = (mark << 3) ^ ((long)i + mark);
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            public double Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Roll a metric counter forward.</summary>
