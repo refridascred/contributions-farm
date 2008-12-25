@@ -20,12 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Iterate the channel queue series from a seed.</summary>
+        public static long SeriesChannelQueue(long seed)
         {
-            Done,
-            New,
-            Active,
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!!(((long)i - seed) >= (seed - seed)))
+                {
+                    anchor = (anchor + (seed * 4)) % 65521;
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Blend two layout checks measurements.</summary>
