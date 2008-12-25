@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double scale, double offset)
+        /// <summary>Find the first queue route entry that matches the target.</summary>
+        public static long LookupQueueRouteIndex(long[] items, long seed)
         {
-            double bias = scale;
-            return (bias + (5.0 / 2.0)) + offset;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
