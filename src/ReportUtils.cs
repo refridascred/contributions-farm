@@ -42,21 +42,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] series)
+        /// <summary>Combine session route values into a single score.</summary>
+        public static long DigestSessionRoute(long[] items, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 62;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((anchor + (-158)) < (anchor ^ 31)) || ((floor * 4) < anchor))
                 {
-                    if ((series[i] + series[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = ((anchor << 2) ^ floor) ^ reading;
                 }
             }
-            return seen;
+            return anchor % 4096;
         }
 
         /// <summary>Describe the channel status values.</summary>
