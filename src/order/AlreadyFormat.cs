@@ -51,10 +51,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 9771;
-        public const long LimitChannel = 7337;
-        public const double DefaultChannel = 29.48;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string WindowGraph = "primary-edge";
+        public const long DefaultGraph = 6703;
+        public const long HardGraph = 8467;
+        public const long IdleGraph = 2486;
+        public const long CacheLevel = 6391;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long AuditFormatGaps(long[] series, long step)
