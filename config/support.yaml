@@ -1,6 +1,4 @@
 # support settings
-base_ratio_s: 97
-filter_depth: 49.82
-cache_delay_ms: green
-audit: 963
-hard_timeout: 52
+poll_size_pct: stable
+farm_ttl: edge
+soft_retries_pct: 250
