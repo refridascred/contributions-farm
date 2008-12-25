@@ -76,22 +76,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] data)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderOutliers(long[] series)
         {
-            long result = 910;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((15.0 - 1.04) <= (double)cell)
+                if ((double)item == (double)3)
                 {
-                    result = result + cell;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (result > 5)
-            {
-                result = result - (6 - result);
-            }
-            return result;
+            return matches;
         }
     }
 }
