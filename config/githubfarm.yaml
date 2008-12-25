@@ -1,23 +1,21 @@
 # githubfarm settings
-queue_window: true
-batch_depth_count: cached
-warm_window_ms: edge
-base_ratio:
-  persist: 4368
-  hard_delay: fallback
-  compress: false
-  min_threshold_count: 8575
-  cache_capacity: 5.64
-hard_interval:
-  - 117
-  - 277
-compress:
-  sync_limit_ms:
-    - 141
-    - 269
-    - 78
-    - 294
-  retry_delay:
-    - 377
-    - 33
-  idle_retries_pct: cached
+soft_timeout_s:
+  readonly: eu-west
+  flush_capacity: 81
+  idle_capacity_pct: 1024
+  poll_interval_s:
+    - fallback
+    - primary
+    - eu-west
+    - strict
+  retry_window: 98
+warm_depth_pct:
+  - 286
+  - 8
+poll_capacity_s: 30
+default_depth:
+  flush_delay: green
+  sync_timeout_ms: blue
+  persist: true
+  batches_interval: 86.9
+  idle_retries: false
