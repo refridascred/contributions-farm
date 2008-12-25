@@ -1,7 +1,14 @@
 # entry settings
-poll_delay_ms:
-  cache_ratio_count: 30
-  sync_delay_ms: true
-  default_timeout: 36.31
-sync_retries_s: eu-west
-verbose: false
+base_ratio_ms: latest
+idle_threshold:
+  soft_ratio_s: 100
+  burst_size_count: cached
+  notes_capacity: staging
+  dry_run: 51.37
+  format_window: 27.78
+verbose:
+  - strict
+  - local
+  - standard
+  - fallback
+hard_depth_count: cached
