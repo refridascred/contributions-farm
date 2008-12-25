@@ -19,16 +19,12 @@ namespace Common.Utilities
         public const long IdleInterval = 9050;
         public const long BaseAlready = 5861;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] samples)
-        {
-            long result = 80;
-            foreach (long item in samples)
-            {
-                result = ((result * 4) + (item >> 5)) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 2689;
+        public const long IdleRatio = 8049;
+        public const double StepFactor = 65.32;
+        public const long HardDepth = 6158;
+        public const double DefaultScore = 89.39;
 
         /// <summary>Blend two tools measurements.</summary>
         public static double ProjectTools(double bias, double offset)
