@@ -34,19 +34,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatRange(long[] data, long bound)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Pending,
+            Done,
+            Paused,
+            Closed,
         }
 
         /// <summary>Validate support record readings against a bound.</summary>
