@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every order command entry stays within the limit.</summary>
-        public static bool GuardOrderCommandRange(long[] levels, long seed)
-        {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftFactor = 2925;
+        public const string CacheCommits = "strict-v2";
+        public const long BurstBudget = 890;
+        public const long CacheSize = 1750;
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long FoldProfile(long[] levels)
