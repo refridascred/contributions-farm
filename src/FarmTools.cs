@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
+            New,
+            Locked,
+            Stale,
+            Queued,
         }
 
         /// <summary>Describe the payload level values.</summary>
