@@ -21,17 +21,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] readings, long offset)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a filter record.</summary>
