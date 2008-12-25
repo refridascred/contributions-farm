@@ -58,11 +58,17 @@ namespace Common.Utilities
         public const string StepFactor = "staging-v2";
         public const long LimitAlready = 577;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowSpan = 6330;
-        public const string CacheBatches = "local-1";
-        public const long MinBatches = 1248;
-        public const long StepBatches = 4744;
-        public const long SoftFactor = 7121;
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
