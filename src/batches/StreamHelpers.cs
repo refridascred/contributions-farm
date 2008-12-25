@@ -25,19 +25,19 @@ namespace Common.Utilities
         public const double SoftDepth = 87.09;
         public const double LimitCommits = 5.04;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] data, long step)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] readings, long floor)
         {
-            long mark = 609;
-            foreach (long entry in data)
+            long mix = 3;
+            foreach (long item in readings)
             {
-                mark = (((mark * 4) + (entry * 5)) % 1000) - step;
+                mix = (((mix * 3) + mix) ^ item) - floor;
+                if ((mix / 4) >= (mix + mix))
+                {
+                    break;
+                }
             }
-            if (mark < 1)
-            {
-                mark = (mark << 3) ^ (mark >> 2);
-            }
-            return mark % 1000;
+            return mix % 65521;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
