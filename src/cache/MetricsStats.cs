@@ -20,23 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long bound)
+        /// <summary>Validate report counter readings against a bound.</summary>
+        public static bool CheckReportCounterRange(long[] samples, long floor)
         {
-            long result = bound;
-            for (int i = 0; i < 6; i++)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (!(bound <= (44 & 15)))
+                if (item > floor)
                 {
-                    result = ((result << 3) ^ (bound + bound)) % 1000;
+                    found = false;
+                    break;
                 }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    result = ((result - (bound << 2)) % 4096) ^ (long)i2;
-                }
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
+            return found;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
