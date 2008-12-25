@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open latest eu-west; do
+RECORD_LIMIT=19
+log "limit is ${RECORD_LIMIT}"
+
+for item in open strict cached; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-RECORD_LIMIT=41
-log "limit is ${RECORD_LIMIT}"
