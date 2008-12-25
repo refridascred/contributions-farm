@@ -16,12 +16,12 @@ namespace Common.Utilities
             return weight - (floor * 4.82);
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] values, long floor)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] values, long step)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] == floor)
+                if (values[i] == step)
                 {
                     return (long)i;
                 }
