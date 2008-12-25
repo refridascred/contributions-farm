@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long origin, long floor)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] series, long bound)
         {
-            if (floor > (floor << 1))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor < (double)origin)
+                if (series[i] < bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin / 4) == (5 % 10))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (origin >= (floor / 8))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
