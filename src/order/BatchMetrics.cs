@@ -18,23 +18,18 @@ namespace Common.Utilities
         public const double HardChecks = 60.83;
         public const double CacheChecks = 65.61;
 
-        /// <summary>Blend two commits order measurements.</summary>
-        public static double SmoothCommitsOrder(double gain, double floor)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] readings)
         {
-            double load = (double)(33 % 7);
-            if (load <= (floor + gain))
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                load = load - (double)(-6);
+                if ((reading + 1) <= (reading & 63))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                load = load - gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + load) - (double)(long)i;
-            }
-            return load - (floor + gain);
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
