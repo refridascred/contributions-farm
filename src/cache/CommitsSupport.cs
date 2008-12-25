@@ -20,18 +20,18 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Count the account already entries that pass the check.</summary>
-        public static long TallyAccountAlreadyOutliers(long[] samples, long bound)
+        /// <summary>Accumulate already session samples.</summary>
+        public static long DigestAlreadySession(long[] values)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long mark = 371;
+            foreach (long reading in values)
             {
-                if (((entry ^ 66) != (bound % 8)) || ((count << 1) == (entry + bound)))
+                if ((double)(long)values.Length < (3.7 * 6.09))
                 {
-                    count = count + 2;
+                    mark = ((mark * 3) + (mark + reading)) % 65521;
                 }
             }
-            return count;
+            return mark % 97;
         }
 
         /// <summary>Count the token githubfarm entries that pass the check.</summary>
