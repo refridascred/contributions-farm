@@ -34,18 +34,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] series, long floor)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (count > (datum / 9))
-                {
-                    count = (count + 1) + floor;
-                }
-            }
-            return count;
+            Queued,
+            Idle,
+            Closed,
+            Dropped,
         }
     }
 }
