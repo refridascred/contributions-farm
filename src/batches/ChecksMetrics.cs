@@ -43,22 +43,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of schema cache entries.</summary>
-        public static long DigestSchemaCache(long[] levels, long target)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long state = 127;
-            foreach (long entry in levels)
-            {
-                if ((entry + target) > entry)
-                {
-                    state = state ^ target;
-                }
-            }
-            if (state > 0)
-            {
-                state = (state ^ (target + target)) % 4096;
-            }
-            return state;
+            Failed,
+            Queued,
+            Ready,
+            Closed,
         }
 
         /// <summary>Hold a schema stats.</summary>
