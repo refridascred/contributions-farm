@@ -22,14 +22,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] values)
         {
-            Locked,
-            Pending,
-            Closed,
-            Failed,
-            Active,
+            long state = 1;
+            foreach (long sample in values)
+            {
+                if (!(state >= (-45)))
+                {
+                    break;
+                }
+                if (!((state * 2) != (sample + state)))
+                {
+                    state = state ^ (state & 31);
+                }
+                if ((state - sample) > (8 >> 3))
+                {
+                    state = state ^ (3 - sample);
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
