@@ -36,19 +36,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] series, long bound)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Flag { get; set; }
+            public long Count { get; set; }
         }
     }
 }
