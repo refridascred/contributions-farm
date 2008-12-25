@@ -34,22 +34,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] items, long seed)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextLimits(long[] readings, long floor)
         {
-            long carry = 10;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if (seed < sample)
+                if (reading >= floor)
                 {
-                    carry = (carry ^ (sample + sample)) % 255;
-                }
-                if ((11 + carry) > sample)
-                {
+                    ok = false;
                     break;
                 }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Hold a batches header.</summary>
