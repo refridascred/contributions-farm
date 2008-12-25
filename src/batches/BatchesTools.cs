@@ -20,12 +20,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            Idle,
-            Done,
-            Stale,
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
         }
     }
 }
