@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BatchEditor = "cached-1";
-        public const long LimitFactor = 7468;
-        public const long CacheEditor = 5025;
-        public const long IdleEditor = 833;
-        public const string LimitEditor = "local-1";
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] data)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((11.0 * 3.9) <= (double)cell)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long SeekAccountIndex(long[] values, long step)
