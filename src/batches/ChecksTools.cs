@@ -19,18 +19,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the farm account entries that pass the check.</summary>
-        public static long MeasureFarmAccountOutliers(long[] samples, long limit)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long mark = 638;
+            foreach (long entry in readings)
             {
-                if ((tally + tally) >= 79)
+                mark = (mark + (mark / 7)) - offset;
+                if (((-1) >> 4) < (mark << 3))
                 {
-                    tally = ((tally + 2) - entry) - limit;
+                    mark = mark + (entry ^ mark);
+                }
+                else
+                {
+                    mark = mark + (509 + mark);
                 }
             }
-            return tally;
+            if (mark < 673)
+            {
+                mark = (mark << 2) ^ (94 / 7);
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
