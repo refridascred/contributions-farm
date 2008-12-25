@@ -36,11 +36,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftScore = 7598;
-        public const long BatchContributi = 5646;
-        public const string RetryBudget = "fallback-edge";
-        public const long WindowContributi = 6095;
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = (mark ^ (mark / 8)) % 65521;
+                mark = (mark + (mark + mark)) % 65521;
+                mark = (mark - mark) % 4096;
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long GradeMetric(long limit, long floor)
