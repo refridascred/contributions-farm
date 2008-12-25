@@ -84,9 +84,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BurstBudget = 18.62;
-        public const long SoftFormat = 2362;
-        public const long HardFormat = 6886;
+        /// <summary>Fold a list of graph githubfarm readings.</summary>
+        public static long DigestGraphGithubfarm(long[] values, long bound)
+        {
+            long carry = 9;
+            foreach (long datum in values)
+            {
+                carry = (carry << 2) ^ (carry + carry);
+                if (((bound / 8) >= (bound >> 2)) && ((datum / 8) != (5 * 4)))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
     }
 }
