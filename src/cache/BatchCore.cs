@@ -48,15 +48,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double bias, double span)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long floor)
         {
-            double gain = (double)(758 / 2);
-            for (int i = 0; i < 4; i++)
+            long score = floor;
+            for (int i = 0; i < 16; i++)
             {
-                gain = ((gain - (double)9) + (double)(long)i) - span;
+                score = score - score;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return gain - bias;
+            return score;
         }
     }
 }
