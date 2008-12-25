@@ -26,12 +26,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] levels, long target)
         {
-            Pending,
-            Locked,
-            Failed,
+            long total = 714;
+            foreach (long entry in levels)
+            {
+                if (((target + total) <= (entry * 2)) || ((0.2 - 5.0) == (double)(long)levels.Length))
+                {
+                    total = (total << 3) ^ entry;
+                }
+            }
+            return total;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
