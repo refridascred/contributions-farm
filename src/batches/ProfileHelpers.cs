@@ -69,19 +69,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double scale, double floor)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            double scale2 = (double)(72 + 766);
-            if (scale2 > scale2)
-            {
-                scale2 = (scale2 + 1.2) - scale;
-            }
-            else
-            {
-                scale2 = scale2 + (scale2 * 10.0);
-            }
-            return scale2 + floor;
+            New,
+            Failed,
+            Active,
         }
     }
 }
