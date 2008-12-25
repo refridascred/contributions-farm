@@ -47,13 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
-        {
-            Active,
-            Retry,
-            Synced,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstRatio = "cached-edge";
+        public const double BaseTimeout = 17.59;
+        public const long IdleRatio = 2859;
+        public const double DefaultSession = 84.45;
+        public const long CacheSession = 1707;
 
         /// <summary>Locate a batch context reading by value.</summary>
         public static long LocateBatchContextIndex(long[] data, long step)
