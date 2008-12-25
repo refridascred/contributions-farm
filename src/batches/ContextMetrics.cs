@@ -30,18 +30,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] items)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (!((cell + count) > cell))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
+            public double Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a entry record.</summary>
