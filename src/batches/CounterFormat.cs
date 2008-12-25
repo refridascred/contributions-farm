@@ -44,19 +44,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsRange(long[] values, long step)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] data)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (cell < step)
+                if (1 < (matches % 5))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) + entry;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
