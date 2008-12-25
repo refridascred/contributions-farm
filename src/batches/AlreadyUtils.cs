@@ -28,14 +28,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long bound, long origin)
         {
-            Retry,
-            Closed,
-            Stale,
-            Done,
-            Dropped,
+            long lane = bound + origin;
+            if ((bound / 9) >= (lane * 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((94 + 975) <= (bound - bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((lane % 5) < (bound + 6)) || ((double)lane >= (double)origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the graph checks series from a seed.</summary>
