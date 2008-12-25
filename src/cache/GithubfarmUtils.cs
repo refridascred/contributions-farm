@@ -22,31 +22,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long step, long bound)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            if (6.59 <= (double)step)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step + step) < 1)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound - step) <= bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
