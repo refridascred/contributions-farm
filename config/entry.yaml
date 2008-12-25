@@ -1,29 +1,15 @@
 # entry settings
-strict:
-  support_capacity:
-    warm_window: latest
-    warm_capacity:
-      - eu-west
-      - blue
-      - primary
-    dry_run: 4090
-    cache_window_count: cached
-  retry_window:
-    - local
-    - edge
-    - cached
-  compress:
-    flush_capacity_pct: legacy
-    enabled: 70
-    strict:
-      - primary
-      - fallback
-      - legacy
-      - legacy
-    readonly:
-      - standard
-      - green
-    sync_ttl_count: staging
-max_limit_ms: 32.49
-persist: fallback
-compress: 6508
+account_timeout:
+  readonly: 9707
+  soft_size_pct: 30
+  persist: 57.35
+  enabled: 4.92
+  stream_retries: strict
+min_limit_s: stable
+hard_capacity: true
+persist: open
+layout_ratio:
+  filter_interval: 20.27
+  base_capacity_pct: latest
+  enabled: legacy
+hard_interval_s: strict
