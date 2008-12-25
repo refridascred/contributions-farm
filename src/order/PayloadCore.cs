@@ -12,18 +12,20 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] readings, long target)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long step)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long result = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)target >= (5.87 + 3.6))
+                if ((6 ^ 32) < (step + (long)i))
                 {
-                    matches = (matches + 1) + reading;
+                    result = ((result * 3) + (step >> 1)) % 1000;
+                    continue;
                 }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
