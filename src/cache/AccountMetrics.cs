@@ -28,18 +28,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] levels, long target)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] series, long target)
         {
-            long total = 714;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((target + total) <= (entry * 2)) || ((0.2 - 5.0) == (double)(long)levels.Length))
+                if ((series[i] <= target) && ((series[i] % 5) != 0))
                 {
-                    total = (total << 3) ^ entry;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
