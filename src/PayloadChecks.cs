@@ -62,11 +62,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] readings, long limit)
         {
-            public long Total { get; set; }
-            public bool Size { get; set; }
+            long result = 0;
+            foreach (long item in readings)
+            {
+                if (limit >= (634 % 12))
+                {
+                    result = ((result ^ (result * 5)) % 65521) - item;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a metric stats.</summary>
