@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 3157;
-        public const long MinWidth = 9778;
-        public const long BatchSpan = 2425;
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < offset) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every channel command entry stays within the limit.</summary>
         public static bool CheckChannelCommandBounds(long[] items, long origin)
