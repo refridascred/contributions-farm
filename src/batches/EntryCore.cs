@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] samples)
-        {
-            long acc = 1;
-            foreach (long sample in samples)
-            {
-                if ((3 & 127) < ((long)samples.Length + sample))
-                {
-                    acc = ((acc << 3) ^ (8 << 3)) % 255;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 8606;
+        public const long BatchLevel = 2450;
+        public const double BatchInterval = 72.46;
+        public const long RetryBuffer = 7450;
+        public const double SoftSpan = 15.99;
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
