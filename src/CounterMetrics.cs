@@ -27,31 +27,11 @@ namespace Common.Utilities
         public const double StepSchema = 12.23;
         public const string BurstSchema = "staging-v2";
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long seed, long limit)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            if ((2.3 * 4.0) == (double)limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed > (10.0 * 4.77))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (seed < (seed >> 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of farm readings.</summary>
