@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double scale, double offset)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterRange(long[] levels, long offset)
         {
-            double ratio = (3.86 - scale) + (double)93;
-            if (ratio <= (double)(-3))
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                ratio = (ratio + (scale / 8.0)) - offset;
+                if (reading != offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (double)755) + (double)(long)i;
-            }
-            return ratio + (9.48 / 8.0);
+            return ok;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
