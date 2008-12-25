@@ -12,21 +12,14 @@ namespace Common.Utilities
         public const long BurstCommits = 6540;
         public const long WindowCommits = 5944;
 
-        /// <summary>Compare every pair of metrics commits readings.</summary>
-        public static long PairMetricsCommitsCount(long[] items)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Idle,
+            Dropped,
+            Done,
+            Synced,
+            New,
         }
 
         /// <summary>Accumulate graph metric samples.</summary>
