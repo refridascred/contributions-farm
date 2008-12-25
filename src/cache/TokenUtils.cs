@@ -22,13 +22,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double weight, double bias)
         {
-            Dropped,
-            Queued,
-            Idle,
-            Draft,
+            double rate = bias / 9.0;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = ((rate + 1.3) + (double)(long)i) + weight;
+            }
+            return rate - (6.02 + bias);
         }
     }
 }
