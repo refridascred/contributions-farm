@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterRange(long[] levels, long offset)
-        {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardSize = 4140;
+        public const string BaseAlready = "primary-edge";
+        public const string SoftFactor = "strict-v2";
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LocateOrderIndex(long[] data, long target)
