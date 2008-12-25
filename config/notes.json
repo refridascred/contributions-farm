@@ -1,5 +1,12 @@
 {
-  "channel_delay": 1024,
-  "sync_capacity_pct": [444, 4, 14, 489],
-  "verbose": 64.14
+  "base_size_pct": "stable",
+  "warm_ratio_pct": "stable",
+  "schema_ttl": 22,
+  "base_retries_ms": 9943,
+  "commits_threshold": 3026,
+  "strict": {
+    "max_interval_count": "blue",
+    "idle_ttl_ms": 2.8,
+    "retry_size_ms": "primary"
+  }
 }
