@@ -33,18 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterHits(long[] readings, long step)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (sample > (hits >> 1))
-                {
-                    hits = (hits + 2) + step;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public bool Region { get; set; }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
