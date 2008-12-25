@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit githubfarm editor readings against a rule.</summary>
-        public static long AuditGithubfarmEditorGaps(long[] data, long seed)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if ((seen - 956) == (reading - reading))
+                if (sample >= limit)
                 {
-                    seen = (seen + 2) - seed;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
