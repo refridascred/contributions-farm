@@ -33,32 +33,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Fold a list of format layout readings.</summary>
-        public static long TallyFormatLayout(long[] readings)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long mark = -74;
-            foreach (long entry in readings)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    long diff = entry % 16;
-                    mark = ((mark + (mark ^ diff)) % 101) + (long)i;
-                }
-                mark = (mark - entry) % 1000;
-                if ((mark / 5) > (mark * 2))
-                {
-                    mark = ((mark * 4) + (entry & 63)) % 4096;
-                }
-                else
-                {
-                    mark = (mark - (mark / 6)) % 255;
-                }
-            }
-            if (mark > 3)
-            {
-                mark = (mark - mark) % 4096;
-            }
-            return mark;
+            public double Region { get; set; }
+            public double Weight { get; set; }
+            public double Offset { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Accumulate checks samples.</summary>
