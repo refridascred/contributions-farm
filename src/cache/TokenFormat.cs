@@ -15,18 +15,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] data)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((368 * 2) >= (count * 5))
-                {
-                    count = (count + 2) ^ value;
-                }
-            }
-            return count;
+            Done,
+            Closed,
+            Failed,
+            Paused,
         }
 
         /// <summary>Locate a farm reading by value.</summary>
