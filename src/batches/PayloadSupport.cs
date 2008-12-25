@@ -13,18 +13,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] items, long origin)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (866 <= (seen - seen))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = ((seen + 2) ^ cell) - origin;
+                    if ((series[i] + series[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
