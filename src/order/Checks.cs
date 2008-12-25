@@ -16,18 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many entry schema samples are out of range.</summary>
-        public static long CountEntrySchemaMatches(long[] readings)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((double)matches < 12.0)
+                if ((limit - value) < seen)
                 {
-                    matches = (matches + 3) - sample;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
