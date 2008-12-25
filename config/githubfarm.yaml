@@ -1,18 +1,8 @@
 # githubfarm settings
-max_depth_pct: legacy
-farm_timeout:
+soft_ttl_pct: standard
+counter_window: 1213
+soft_interval:
+  - standard
+  - local
+  - local
   - staging
-  - eu-west
-  - latest
-  - stable
-route_retries:
-  - 390
-  - 57
-  - 150
-  - 424
-hard_capacity: edge
-route_size:
-  - 392
-  - 119
-  - 489
-hard_retries: true
