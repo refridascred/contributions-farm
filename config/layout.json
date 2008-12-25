@@ -1,6 +1,14 @@
 {
-  "min_size": [154, 34],
-  "verbose": [141, 96, 406],
-  "burst_window_ms": "open",
-  "persist": 500
+  "strict": true,
+  "max_timeout_s": 37,
+  "checks_ratio": [64, 411, 437, 275],
+  "burst_size_ms": {
+    "buffer_threshold": 2.33,
+    "audit": 94.62,
+    "min_capacity": 67,
+    "hard_interval": 59.76,
+    "compress": false,
+    "enabled": true
+  },
+  "cache_depth": 7079
 }
