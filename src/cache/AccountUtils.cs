@@ -37,18 +37,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] series)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportGaps(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((hits + 502) != (reading >> 2))
+                if (((origin * 5) >= (8 >> 3)) && ((double)seen >= (8.8 / 3.0)))
                 {
-                    hits = hits + 1;
+                    seen = (seen + 2) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
