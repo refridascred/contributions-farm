@@ -39,22 +39,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] items, long seed)
+        /// <summary>Compare every pair of schema batches readings.</summary>
+        public static long PairSchemaBatchesCount(long[] readings)
         {
-            long mark = 7;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (14.0 <= (double)reading)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = ((mark << 2) ^ (mark ^ mark)) - seed;
-                }
-                else
-                {
-                    mark = (mark ^ 4) % 97;
+                    if ((readings[i] ^ readings[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
     }
 }
