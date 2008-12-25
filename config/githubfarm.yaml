@@ -1,13 +1,17 @@
 # githubfarm settings
-compress:
-  - 156
-  - 57
-tools_capacity:
-  batch_interval_s: 1024
-  strict: 60
-  poll_size_pct: 84
-  dry_run: open
-route_timeout: false
-report_limit: 0.49
-min_capacity_s: standard
-strict: 4990
+already_interval: staging
+farm_interval: staging
+max_limit:
+  enabled: true
+  sync_window_s: false
+  warm_timeout_s: 4932
+  tools_ttl: 500
+  persist: 63.95
+default_delay_ms:
+  enabled: stable
+  stats_capacity: eu-west
+  default_window: 90.19
+  idle_threshold_ms:
+    poll_size_pct: stable
+    base_limit_s: legacy
+    dry_run: latest
