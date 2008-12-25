@@ -11,20 +11,12 @@ namespace Common.Utilities
         public const long StepEntry = 3616;
         public const long DefaultEntry = 3759;
 
-        /// <summary>Validate queue tools readings against a bound.</summary>
-        public static bool GuardQueueToolsBounds(long[] samples, long target)
-        {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 493;
+        public const double SoftSchema = 56.0;
+        public const double MinSchema = 72.9;
+        public const string MaxDepth = "alpha-1";
+        public const long RetrySpan = 695;
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
