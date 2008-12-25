@@ -37,13 +37,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            public double Mode { get; set; }
-            public bool Label { get; set; }
-            public string Total { get; set; } = "";
-            public string Owner { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
