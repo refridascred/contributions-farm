@@ -56,38 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long step, long origin)
+        /// <summary>Check that every report notes entry stays within the limit.</summary>
+        public static bool VerifyReportNotesBounds(long[] series, long bound)
         {
-            if (((origin + origin) == (origin << 2)) || ((2.81 / 5.0) <= (double)origin))
+            bool ok = true;
+            foreach (long entry in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin != (2.55 - 7.3))
+                if (entry < bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (step > origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((8 + origin) <= (origin + origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
