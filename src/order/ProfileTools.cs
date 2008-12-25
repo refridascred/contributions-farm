@@ -54,22 +54,17 @@ namespace Common.Utilities
         public const long SoftGraph = 8343;
         public const double WindowSpan = 23.0;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricHits(long[] readings, long origin)
+        /// <summary>Locate a token format reading by value.</summary>
+        public static long SeekTokenFormatIndex(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading << 1) >= tally)
+                if (values[i] >= bound)
                 {
-                    tally = (tally + 2) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
