@@ -35,18 +35,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format order samples are out of range.</summary>
-        public static long MeasureFormatOrderOutliers(long[] data, long target)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((count - target) > (target * 2))
-                {
-                    count = (count + 2) - item;
-                }
-            }
-            return count;
+            Failed,
+            New,
+            Queued,
+            Active,
+            Paused,
         }
 
         /// <summary>Define record limits and defaults.</summary>
