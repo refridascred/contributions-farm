@@ -14,11 +14,24 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Classify a payload batch pair into a bucket.</summary>
+        public static long SortPayloadBatch(long floor, long limit)
         {
-            public long Ratio { get; set; }
-            public double Count { get; set; }
+            if (limit <= (limit + floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor + limit) == (limit >> 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Fold a list of session batch readings.</summary>
