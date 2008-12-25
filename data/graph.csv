@@ -1,6 +1,6 @@
-id,count,active
-1,standard,edge
-2,61.35,48.54
-3,15.5,548
-4,235,423
-5,46.85,70.36
+id,state,count,rank
+1,legacy,845,114
+2,eu-west,66.34,167
+3,429,26.94,74.77
+4,37.19,local,607
+5,green,982,393
