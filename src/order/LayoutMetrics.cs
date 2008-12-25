@@ -38,10 +38,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseBudget = 2059;
-        public const long BatchMetric = 3675;
-        public const long MinMetric = 1163;
-        public const long StepRatio = 6207;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Idle,
+            Locked,
+            New,
+        }
     }
 }
