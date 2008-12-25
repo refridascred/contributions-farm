@@ -1,5 +1,7 @@
 {
-  "min_ratio_pct": "fallback",
-  "min_ttl_count": "eu-west",
-  "idle_limit_count": 1024
+  "max_interval_s": 61,
+  "batch_interval_s": "green",
+  "batch_delay_count": "staging",
+  "sync_size_ms": ["fallback", "eu-west", "fallback"],
+  "warm_timeout_ms": false
 }
