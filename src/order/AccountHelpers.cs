@@ -72,14 +72,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double rate, double span)
         {
-            Pending,
-            Synced,
-            Dropped,
-            Active,
-            Queued,
+            double load = span;
+            for (int i = 0; i < 3; i++)
+            {
+                load = ((load - (span / 8.0)) + (double)(long)i) + rate;
+            }
+            return load + 14.0;
         }
 
         /// <summary>Describe the profile state values.</summary>
