@@ -56,12 +56,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamBounds(long[] levels, long origin)
         {
-            Draft,
-            Dropped,
-            Stale,
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
