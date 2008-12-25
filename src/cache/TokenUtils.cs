@@ -23,11 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseDepth = 1975;
-        public const string BaseSize = "alpha-v2";
-        public const double HardSupport = 65.86;
-        public const string CacheInterval = "fallback-1";
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
+        {
+            Done,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long CombineRecord(long[] items)
