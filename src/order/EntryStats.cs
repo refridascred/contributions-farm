@@ -75,21 +75,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] levels)
+        /// <summary>Count the window schema entries that pass the check.</summary>
+        public static long CountWindowSchemaGaps(long[] items, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((offset + tally) != (entry ^ tally))
                 {
-                    if ((levels[i] ^ levels[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
