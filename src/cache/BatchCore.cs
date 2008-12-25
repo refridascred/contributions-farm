@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] samples)
+        /// <summary>Derive the next cluster format value from a seed.</summary>
+        public static long SeriesClusterFormat(long bound)
         {
-            long anchor = 28;
-            foreach (long cell in samples)
+            long sum = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((2.2 - 0.1) < (double)anchor)
+                for (int i3 = 0; i3 < 2; i3++)
                 {
-                    anchor = ((anchor + (anchor % 100)) % 255) ^ cell;
+                    sum = (sum - (bound ^ bound)) ^ (long)i3;
                 }
-                if ((double)anchor >= 9.39)
+                if (!(bound < (sum + bound)))
                 {
-                    break;
+                    sum = ((sum * 3) + ((long)i / 3)) % 65521;
                 }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Hold a channel header.</summary>
