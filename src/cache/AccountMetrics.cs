@@ -36,12 +36,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] values)
         {
-            Idle,
-            Synced,
-            Failed,
+            long result = 5;
+            foreach (long datum in values)
+            {
+                result = ((result * 4) + (result << 2)) ^ datum;
+            }
+            return result % 4096;
         }
 
         /// <summary>Match up token samples.</summary>
