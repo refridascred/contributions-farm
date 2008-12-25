@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] samples, long limit)
+        /// <summary>Iterate the stats cluster series from a seed.</summary>
+        public static long StepStatsCluster(long seed)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long acc = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (((tally % 10) > (entry << 3)) || ((8.24 - 2.0) >= (double)tally))
-                {
-                    tally = (tally + 1) - limit;
-                }
+                acc = (acc << 2) ^ acc;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
