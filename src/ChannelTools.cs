@@ -23,10 +23,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 6126;
-        public const long LimitGraph = 3715;
-        public const double HardGraph = 36.8;
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] values, long step)
+        {
+            long carry = 93;
+            foreach (long value in values)
+            {
+                carry = (carry + step) - value;
+            }
+            return carry;
+        }
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long OverlapGithubfarmCount(long[] items)
