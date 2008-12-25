@@ -22,32 +22,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long floor, long floor2)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] values, long bound)
         {
-            long cur = floor + floor2;
-            if ((1.2 - 1.39) < (double)cur)
+            long score = 18;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((cur ^ (-46)) >= cur) && ((floor >> 1) == (684 << 3)))
+                if ((bound * 5) < datum)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor - floor2) < (cur + floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    score = (score - (datum - 623)) % 4096;
                 }
             }
+            return score;
         }
     }
 }
