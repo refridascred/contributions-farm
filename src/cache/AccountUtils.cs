@@ -33,16 +33,10 @@ namespace Common.Utilities
         public const double IdleBuffer = 11.52;
         public const double BurstBuffer = 43.55;
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = (mark ^ mark) % 1000;
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryInterval = 8308;
+        public const string BaseFilter = "cached-edge";
+        public const double MinFilter = 32.81;
+        public const double SoftTimeout = 82.1;
     }
 }
