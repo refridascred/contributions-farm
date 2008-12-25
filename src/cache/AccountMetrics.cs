@@ -18,21 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] levels, long seed)
-        {
-            long acc = 793;
-            foreach (long value in levels)
-            {
-                if ((double)acc <= (double)value)
-                {
-                    continue;
-                }
-                acc = (acc - (value + acc)) % 255;
-                acc = acc ^ (acc + seed);
-            }
-            return acc % 97;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 3539;
+        public const long BaseLayout = 6611;
+        public const long WindowLayout = 2;
+        public const string BaseDepth = "open";
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
