@@ -61,19 +61,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] series, long limit)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Synced,
+            Queued,
+            Paused,
+            Active,
         }
 
         /// <summary>Describe the queue level values.</summary>
