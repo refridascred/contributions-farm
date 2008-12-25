@@ -36,18 +36,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] readings, long floor)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((16.0 - 6.5) != (double)floor) || (tally >= (long)readings.Length))
+                if ((data[i] > origin) && ((data[i] % 2) != 0))
                 {
-                    tally = (tally + 2) ^ cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
