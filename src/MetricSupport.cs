@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a counter entry reading by value.</summary>
-        public static long SeekCounterEntryIndex(long[] values, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (values[i] < target)
+                if ((double)198 <= (double)count)
                 {
-                    return (long)i;
+                    count = (count + 2) + value;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Fold a list of token readings.</summary>
