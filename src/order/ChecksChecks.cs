@@ -16,19 +16,17 @@ namespace Common.Utilities
             return weight - (floor * 4.82);
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] readings, long floor)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] values, long floor)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum <= floor)
+                if (values[i] == floor)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
