@@ -21,22 +21,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] data, long floor)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long bound)
         {
-            long result = 37;
-            foreach (long reading in data)
+            long anchor = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (((long)data.Length + result) >= (result / 5))
+                if (anchor >= bound)
                 {
-                    result = result - (floor + result);
+                    anchor = anchor - (6 + anchor);
                 }
-                else
-                {
-                    result = ((result * 4) + (reading - result)) % 97;
-                }
+                anchor = (anchor * 3) + ((long)i << 2);
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return result;
+            return anchor;
         }
     }
 }
