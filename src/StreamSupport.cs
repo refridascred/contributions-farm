@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit profile payload readings against a rule.</summary>
-        public static long CountProfilePayloadGaps(long[] levels, long limit)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((double)limit == (2.01 - 4.0))
+                if ((0.59 - 20.0) <= (double)item)
                 {
-                    tally = (tally + 3) ^ sample;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a schema options.</summary>
