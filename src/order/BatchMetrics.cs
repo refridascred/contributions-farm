@@ -63,38 +63,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long target, long limit)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            if ((target ^ limit) <= (75 << 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)2 <= (double)limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (13.0 < (double)limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((2 << 2) < (target + limit)) || ((limit + target) >= target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a format summary.</summary>
