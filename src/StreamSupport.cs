@@ -51,19 +51,22 @@ namespace Common.Utilities
             return drift + (gain / 8.0);
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmRange(long[] readings, long step)
+        /// <summary>Count the route order entries that pass the check.</summary>
+        public static long TallyRouteOrderHits(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (entry > step)
+                if (!((9 + origin) > hits) && ((origin - origin) != (origin - datum)))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
