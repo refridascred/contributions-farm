@@ -40,23 +40,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] samples)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long MatchContextCount(long[] data)
         {
-            long anchor = 3;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((anchor + sample) > (290 % 60))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = (anchor - 50) % 1000;
-                }
-                anchor = ((anchor << 3) ^ 8) % 101;
-                if ((30 << 1) <= (anchor ^ sample))
-                {
-                    break;
+                    if ((data[i] ^ data[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor % 1000;
+            return count;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
