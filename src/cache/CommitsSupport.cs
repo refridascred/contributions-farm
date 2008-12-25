@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double ratio, double offset)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            double drift = (double)(804 - 0);
-            if (drift <= (double)(-422))
-            {
-                drift = ((drift - (double)72) + ratio) + offset;
-            }
-            else
-            {
-                drift = drift - 4.05;
-            }
-            return drift + drift;
+            public double Owner { get; set; }
+            public long Region { get; set; }
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the profile status values.</summary>
