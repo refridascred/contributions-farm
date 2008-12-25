@@ -37,14 +37,21 @@ namespace Common.Utilities
             return mean - (floor * 5.98);
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Count profile layout pairs that satisfy a relation.</summary>
+        public static long PairProfileLayoutCount(long[] readings)
         {
-            Closed,
-            Stale,
-            Active,
-            Idle,
-            Paused,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
