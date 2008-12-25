@@ -28,19 +28,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsBounds(long[] samples, long offset)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] series)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item > offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] + series[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Classify a session account pair into a bucket.</summary>
