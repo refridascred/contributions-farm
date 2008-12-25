@@ -73,19 +73,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter githubfarm entry stays within the limit.</summary>
-        public static bool GuardFilterGithubfarmLimits(long[] samples, long limit)
-        {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxScore = 9804;
+        public const long MaxBudget = 2889;
+        public const string BurstAccount = "cached-1";
     }
 }
