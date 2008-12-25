@@ -64,26 +64,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] items, long step)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] items, long seed)
         {
-            long mark = 367;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if ((datum >> 5) <= (step % 97))
+                if (reading != seed)
                 {
-                    mark = (mark + (500 + step)) % 255;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (step & 1)) % 1000;
+                    stale = false;
+                    break;
                 }
             }
-            if (mark < (-22))
-            {
-                mark = (mark + step) % 97;
-            }
-            return mark;
+            return stale;
         }
     }
 }
