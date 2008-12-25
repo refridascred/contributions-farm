@@ -18,11 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 3400;
-        public const long BatchBatches = 8672;
-        public const double BatchSpan = 37.13;
-        public const long BaseBatches = 2380;
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((long)i >= (score / 2))
+                {
+                    score = ((score << 3) ^ (score * 3)) % 4096;
+                }
+                score = ((score << 2) ^ (score ^ score)) % 4096;
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long CombineReport(long[] levels)
