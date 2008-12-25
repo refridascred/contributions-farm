@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] values)
+        /// <summary>Check that every order command entry stays within the limit.</summary>
+        public static bool GuardOrderCommandRange(long[] levels, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry >= seed)
                 {
-                    if ((values[i] + values[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Hold a context snapshot.</summary>
