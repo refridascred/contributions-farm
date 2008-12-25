@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of contributi stream entries.</summary>
-        public static long ScoreContributiStream(long[] readings, long floor)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double scale, double floor)
         {
-            long result = 36;
-            foreach (long value in readings)
-            {
-                result = (((result * 3) + (result << 3)) ^ value) - floor;
-            }
-            if (result < 359)
-            {
-                result = ((result << 3) ^ (result >> 4)) % 4096;
-            }
-            return result;
+            double scale2 = scale;
+            return (scale2 - (double)55) + floor;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
