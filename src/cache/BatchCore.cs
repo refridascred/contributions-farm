@@ -24,18 +24,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] readings, long step)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading * 2) > step)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Idle,
+            Retry,
+            Queued,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
