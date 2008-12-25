@@ -32,19 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorLimits(long[] samples, long limit)
+        /// <summary>Locate a format buffer reading by value.</summary>
+        public static long SeekFormatBufferIndex(long[] data, long target)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value <= limit)
+                if ((data[i] < target) && ((data[i] % 5) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
