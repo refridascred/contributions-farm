@@ -20,18 +20,20 @@ namespace Common.Utilities
         public const double BatchSpan = 37.13;
         public const long BaseBatches = 2380;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] samples)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long mark = 613;
+            foreach (long cell in levels)
             {
-                if ((double)tally <= (8.0 * 0.1))
+                if ((2 >= (mark << 3)) && ((mark ^ cell) == (108 ^ mark)))
                 {
-                    tally = (tally + 2) ^ item;
+                    mark = (mark << 2) ^ ((-9) ^ cell);
+                    break;
                 }
+                mark = mark + (mark << 1);
             }
-            return tally;
+            return mark % 97;
         }
 
         /// <summary>Hold a context entry.</summary>
