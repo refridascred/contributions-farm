@@ -69,23 +69,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] series)
-        {
-            long carry = 4;
-            foreach (long entry in series)
-            {
-                if ((entry * 4) == (entry >> 4))
-                {
-                    carry = (carry * 2) + (carry - (-88));
-                }
-                if ((carry % 24) >= (27 - carry))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleRatio = 6108;
+        public const long WindowChecks = 4437;
+        public const double StepSpan = 24.44;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long TallyQueue(long[] samples, long floor)
