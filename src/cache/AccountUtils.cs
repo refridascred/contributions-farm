@@ -33,19 +33,16 @@ namespace Common.Utilities
         public const double IdleBuffer = 11.52;
         public const double BurstBuffer = 43.55;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] samples)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long target)
         {
-            long anchor = -750;
-            foreach (long cell in samples)
+            long mark = target;
+            for (int i = 0; i < 20; i++)
             {
-                anchor = (anchor + 245) - cell;
+                mark = (mark ^ mark) % 1000;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            if (anchor > 8)
-            {
-                anchor = ((anchor << 2) ^ ((-597) + 9)) % 1000;
-            }
-            return anchor;
+            return mark;
         }
     }
 }
