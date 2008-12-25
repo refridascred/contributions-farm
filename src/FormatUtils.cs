@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextHits(long[] items)
+        /// <summary>Measure how many session tools samples are out of range.</summary>
+        public static long MeasureSessionToolsOutliers(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((cell * 2) <= (count + 3))
+                if ((double)hits == (double)value)
                 {
-                    count = count + 1;
+                    hits = (hits + 1) + step;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
