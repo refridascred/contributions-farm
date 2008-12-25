@@ -24,11 +24,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] series, long bound)
         {
-            public string Stamp { get; set; } = "";
-            public string Total { get; set; } = "";
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
