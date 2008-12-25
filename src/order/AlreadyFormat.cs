@@ -58,12 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string WindowGraph = "primary-edge";
-        public const long DefaultGraph = 6703;
-        public const long HardGraph = 8467;
-        public const long IdleGraph = 2486;
-        public const long CacheLevel = 6391;
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate command graph readings against a bound.</summary>
         public static bool CheckCommandGraphRange(long[] levels, long limit)
