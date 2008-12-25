@@ -15,19 +15,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate command payload readings against a bound.</summary>
-        public static bool VerifyCommandPayloadBounds(long[] samples, long floor)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
+            public double Flag { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
