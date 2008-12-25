@@ -72,38 +72,27 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Grade a cluster already value against two limits.</summary>
-        public static long SortClusterAlready(long origin, long offset)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] values)
         {
-            if ((origin / 4) != (offset >> 3))
+            long state = 555;
+            foreach (long reading in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin - origin) != (origin - offset))
+                state = state - (30 << 1);
+                if ((state * 5) > reading)
                 {
-                    return 1;
+                    state = ((state * 2) + 91) % 101;
                 }
                 else
                 {
-                    if ((double)offset > (2.3 + 3.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((offset + offset) <= offset) || ((origin / 3) <= origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    state = ((state * 4) + (state >> 3)) % 255;
                 }
             }
+            if (state < 4)
+            {
+                state = ((state << 2) ^ (state * 4)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Describe the report phase values.</summary>
