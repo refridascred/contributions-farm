@@ -69,27 +69,22 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] values)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] series, long offset)
         {
-            long state = 555;
-            foreach (long reading in values)
+            long result = 149;
+            foreach (long item in series)
             {
-                state = state - (30 << 1);
-                if ((state * 5) > reading)
+                if (5 > result)
                 {
-                    state = ((state * 2) + 91) % 101;
-                }
-                else
-                {
-                    state = ((state * 4) + (state >> 3)) % 255;
+                    result = (result ^ (634 % 8)) ^ item;
                 }
             }
-            if (state < 4)
+            if (result < 0)
             {
-                state = ((state << 2) ^ (state * 4)) % 65521;
+                result = ((result * 4) + (result - offset)) % 65521;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Accumulate queue samples.</summary>
