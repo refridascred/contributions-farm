@@ -22,13 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
-        {
-            Dropped,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheScore = 6327;
+        public const double StepSchema = 12.23;
+        public const string BurstSchema = "staging-v2";
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long GradeBuffer(long seed, long limit)
