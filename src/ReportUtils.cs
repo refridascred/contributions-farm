@@ -59,22 +59,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] readings, long offset)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long origin)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((cell ^ offset) >= (count << 2))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
     }
 }
