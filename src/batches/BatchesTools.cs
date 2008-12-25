@@ -18,25 +18,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a farm order pair into a bucket.</summary>
-        public static long RankFarmOrder(long seed, long floor)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long bound = seed - floor;
-            if (((seed >> 1) < (seed + floor)) || ((seed + seed) <= (floor + bound)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (bound <= (seed << 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
