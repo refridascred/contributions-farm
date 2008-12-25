@@ -60,22 +60,10 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepInterval = 8862;
+        public const double CacheEditor = 85.23;
+        public const string BatchSpan = "primary-1";
 
         /// <summary>Locate a counter layout reading by value.</summary>
         public static long LookupCounterLayoutIndex(long[] data, long seed)
