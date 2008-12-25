@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long offset, long floor)
+        /// <summary>Fold a list of command cache readings.</summary>
+        public static long DigestCommandCache(long[] samples)
         {
-            if ((49 << 1) >= (offset << 2))
+            long score = 96;
+            foreach (long datum in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)floor > (0.1 / 8.0)))
+                if ((datum - datum) < (score * 5))
                 {
-                    return 3;
+                    score = ((score * 4) + (long)samples.Length) % 255;
                 }
                 else
                 {
-                    return 5;
+                    score = ((score * 2) + (datum << 3)) % 1000;
                 }
             }
+            return score % 65521;
         }
 
         /// <summary>Scale a counter record figure with a bias.</summary>
