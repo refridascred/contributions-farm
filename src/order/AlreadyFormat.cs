@@ -71,19 +71,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate command graph readings against a bound.</summary>
-        public static bool CheckCommandGraphRange(long[] levels, long limit)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] values)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading < limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] + values[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
