@@ -41,15 +41,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double gain, double span)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] samples)
         {
-            double drift = span;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                drift = ((drift - 4.29) - (double)(long)i) - gain;
+                if (((item >= (hits ^ item)) && ((hits + hits) >= item)) && (((item << 3) > (-465)) || ((hits >> 5) >= (hits - item))))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return drift - 8.7;
+            return hits;
         }
     }
 }
