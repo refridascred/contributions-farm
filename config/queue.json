@@ -1,5 +1,5 @@
 {
-  "min_threshold": "edge",
-  "profile_size": "staging",
-  "cache_capacity": 32
+  "min_ratio_pct": "fallback",
+  "min_ttl_count": "eu-west",
+  "idle_limit_count": 1024
 }
