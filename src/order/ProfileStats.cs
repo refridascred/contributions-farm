@@ -21,18 +21,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] samples, long seed)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((double)seed == (0.01 - 9.56))
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the cluster mode values.</summary>
