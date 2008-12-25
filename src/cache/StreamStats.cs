@@ -23,22 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cluster layout entries.</summary>
-        public static long DigestClusterLayout(long[] values)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double rate, double span)
         {
-            long acc = 65;
-            foreach (long reading in values)
+            double bias = (double)(7 + 9);
+            if (bias < span)
             {
-                if (reading >= (reading % 16))
-                {
-                    acc = acc ^ ((-284) ^ acc);
-                }
-                else
-                {
-                    acc = acc + (reading * 3);
-                }
+                bias = (bias + (double)(-8)) - rate;
             }
-            return acc % 97;
+            else
+            {
+                bias = bias - 20.0;
+            }
+            return bias - bias;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
