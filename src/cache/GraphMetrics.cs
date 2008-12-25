@@ -45,12 +45,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
             public long Limit { get; set; }
-            public double Region { get; set; }
         }
 
         /// <summary>Locate a format reading by value.</summary>
