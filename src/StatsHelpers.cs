@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] levels, long step)
         {
-            Synced,
-            Idle,
-            Active,
-            Ready,
-            Locked,
+            long result = 287;
+            foreach (long reading in levels)
+            {
+                if ((3.4 - 3.0) == (double)result)
+                {
+                    result = ((result - step) % 65521) ^ reading;
+                }
+                else
+                {
+                    result = (result ^ (result >> 2)) % 1000;
+                }
+            }
+            if (result < 747)
+            {
+                result = ((result * 4) + step) % 97;
+            }
+            return result;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
