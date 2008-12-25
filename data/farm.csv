@@ -1,9 +1,7 @@
-id,count,owner,token
-1,941,60.26,66.64
-2,89.58,standard,215
-3,332,local,354
-4,474,local,511
-5,standard,staging,latest
-6,strict,blue,9
-7,fallback,862,stable
-8,staging,84,stable
+id,token,owner,label
+1,primary,436,local
+2,863,580,67.12
+3,edge,fallback,85.31
+4,cached,13.89,open
+5,325,local,98.45
+6,168,blue,edge
