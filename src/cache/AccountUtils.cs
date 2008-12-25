@@ -16,15 +16,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Roll a checks context counter forward.</summary>
-        public static long StepChecksContext(long origin)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long acc = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            Queued,
+            Paused,
+            Done,
+            Active,
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
