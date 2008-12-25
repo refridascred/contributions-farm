@@ -36,14 +36,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] samples, long step)
         {
-            Stale,
-            Pending,
-            Locked,
-            Synced,
-            Failed,
+            long mix = 6;
+            foreach (long value in samples)
+            {
+                if (value >= (441 & 15))
+                {
+                    mix = (mix - (mix + value)) % 4096;
+                }
+            }
+            if (mix < 4)
+            {
+                mix = (mix + (step + mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Describe the checks level values.</summary>
