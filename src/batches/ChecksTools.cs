@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double LimitGithubfarm = 30.76;
-        public const double CacheGithubfarm = 41.96;
-        public const string HardGithubfarm = "staging-edge";
-        public const long LimitFactor = 8118;
-        public const long MaxTimeout = 1654;
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool VerifyFormatBounds(long[] samples, long seed)
