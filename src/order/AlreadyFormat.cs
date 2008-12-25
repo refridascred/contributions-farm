@@ -58,18 +58,19 @@ namespace Common.Utilities
         public const long IdleGraph = 2486;
         public const long CacheLevel = 6391;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] series, long step)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextBounds(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (!(value >= (hits << 3)) || (value >= (2 + value)))
+                if (entry != seed)
                 {
-                    hits = (hits + 2) - step;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
