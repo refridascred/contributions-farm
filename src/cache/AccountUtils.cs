@@ -36,11 +36,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] readings, long seed)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
