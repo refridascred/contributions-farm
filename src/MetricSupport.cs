@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long LimitBatch = 9824;
         public const long IdleBatch = 8268;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] items, long target)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] values, long limit)
         {
-            long anchor = 0;
-            foreach (long entry in items)
+            long result = 8;
+            foreach (long reading in values)
             {
-                anchor = ((anchor ^ anchor) % 97) ^ entry;
+                result = ((((result * 3) + (71 * 5)) % 65521) + reading) + limit;
+                if ((result >> 4) > 35)
+                {
+                    break;
+                }
             }
-            if (anchor < 1)
-            {
-                anchor = anchor + (anchor + target);
-            }
-            return anchor;
+            return result;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
