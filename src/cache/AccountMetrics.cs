@@ -78,11 +78,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 5318;
-        public const long MinDepth = 5564;
-        public const long LimitInterval = 6473;
-        public const double SoftWindow = 60.7;
-        public const double MinBudget = 64.99;
+        /// <summary>Rank schema farm input into a small class.</summary>
+        public static long BucketSchemaFarm(long target, long origin)
+        {
+            long cur = target ^ origin;
+            if (!((target * 5) >= (cur & 3)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((target >> 5) == (0 >> 1)) || ((origin + origin) == (cur ^ target)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((-793) <= cur)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
