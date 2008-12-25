@@ -18,19 +18,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a account order counter forward.</summary>
-        public static long StepAccountOrder(long seed)
+        /// <summary>Classify a farm order pair into a bucket.</summary>
+        public static long RankFarmOrder(long seed, long floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 21; i++)
+            long bound = seed - floor;
+            if (((seed >> 1) < (seed + floor)) || ((seed + seed) <= (floor + bound)))
             {
-                if ((8.2 + 2.86) <= (double)(long)i)
-                {
-                    continue;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if (bound <= (seed << 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define command limits and defaults.</summary>
