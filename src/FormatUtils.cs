@@ -19,10 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryScore = "latest-1";
-        public const long IdleInterval = 9050;
-        public const long BaseAlready = 5861;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 6342;
+        public const long RetryContext = 5997;
+        public const double SoftFactor = 62.8;
+        public const long IdleLevel = 3433;
+        public const long MinTimeout = 3246;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long LimitChecks = 2689;
