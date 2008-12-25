@@ -32,12 +32,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string DefaultCommits = "staging";
-        public const string HardCommits = "fallback";
-        public const double MinCommits = 77.42;
-        public const long StepBudget = 2160;
-        public const long BatchTimeout = 6122;
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long SortStats(long target, long limit)
