@@ -25,21 +25,19 @@ namespace Common.Utilities
         public const double SoftDepth = 87.09;
         public const double LimitCommits = 5.04;
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] series)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] data, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 609;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (((mark * 4) + (entry * 5)) % 1000) - step;
             }
-            return hits;
+            if (mark < 1)
+            {
+                mark = (mark << 3) ^ (mark >> 2);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
