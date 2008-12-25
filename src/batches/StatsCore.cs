@@ -41,32 +41,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long bound, long bound2)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] items, long origin)
         {
-            long gap = bound + bound2;
-            if ((bound2 - bound) > (bound2 / 8))
+            long matches = 0;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((gap << 2) <= (gap + gap))
+                if ((8.6 - 6.7) > (double)origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (bound >= gap)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    matches = (matches + 1) - item;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
