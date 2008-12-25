@@ -6,11 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+for item in blue stable; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-TOKEN_LIMIT=128
+TOKEN_LIMIT=137
 log "limit is ${TOKEN_LIMIT}"
+
+mode="${1:-stable}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
