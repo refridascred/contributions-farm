@@ -20,14 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            Dropped,
-            Draft,
-            Closed,
-            Pending,
-            Queued,
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
