@@ -33,11 +33,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
+            Draft,
+            New,
+            Failed,
+            Idle,
         }
     }
 }
