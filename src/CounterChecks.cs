@@ -19,13 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
-        {
-            Ready,
-            Pending,
-            New,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleDepth = 9237;
+        public const string CacheSize = "cached-edge";
+        public const long LimitBatch = 4151;
+        public const long SoftRatio = 1497;
+        public const long MinScore = 8770;
 
         /// <summary>Hold a stream stats.</summary>
         public sealed class StreamStats
