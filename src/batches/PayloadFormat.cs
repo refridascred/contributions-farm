@@ -43,14 +43,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Retry,
-            Active,
-            Synced,
-            Draft,
-            Failed,
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
         }
     }
 }
