@@ -1,6 +1,11 @@
 {
-  "poll_size": 4249,
-  "sync_depth": "local",
-  "notes_limit": 9581,
-  "verbose": true
+  "base_depth_ms": true,
+  "notes_ttl": 92,
+  "retry_threshold_s": 78.67,
+  "sync_capacity_ms": {
+    "window_ratio": 1865,
+    "audit": [261, 375, 443],
+    "base_ratio_ms": 9012
+  },
+  "base_ratio": "stable"
 }
