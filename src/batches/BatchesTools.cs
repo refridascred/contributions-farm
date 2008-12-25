@@ -15,12 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] samples)
         {
-            Synced,
-            Pending,
-            Retry,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (!((double)value > (double)seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the format mode values.</summary>
