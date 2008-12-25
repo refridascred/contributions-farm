@@ -40,22 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] series)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] series)
         {
-            long carry = 24;
-            foreach (long item in series)
+            long state = 72;
+            foreach (long entry in series)
             {
-                if (!(carry >= (item + carry)))
-                {
-                    carry = (carry - (carry / 5)) % 65521;
-                }
-                else
-                {
-                    carry = (carry - (63 + carry)) % 97;
-                }
+                state = (state - entry) % 255;
             }
-            return carry;
+            return state % 4096;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
