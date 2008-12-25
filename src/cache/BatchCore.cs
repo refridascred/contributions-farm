@@ -43,39 +43,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long limit, long offset)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutMatches(long[] series)
         {
-            long span = limit ^ offset;
-            if (((offset + offset) == (span + limit)) || ((span * 3) <= (limit + span)))
+            long matches = 0;
+            foreach (long entry in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)4 <= (double)span)
+                if ((matches + entry) == (matches - entry))
                 {
-                    return 8;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if ((7.8 * 8.0) < (double)offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((1.8 / 2.0) >= (double)span)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
