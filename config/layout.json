@@ -1,8 +1,8 @@
 {
-  "idle_size_ms": "stable",
-  "hard_depth_ms": true,
-  "profile_retries": [208, 8, 327, 255],
-  "batch_interval_pct": "green",
-  "warm_capacity_s": [95, 1],
-  "dry_run": 90.73
+  "max_capacity": "blue",
+  "command_delay": ["blue", "fallback", "latest", "stable"],
+  "max_delay_s": 1024,
+  "poll_delay_count": ["latest", "open", "standard", "green"],
+  "warm_size_count": ["green", "eu-west", "cached", "stable"],
+  "cache_delay_count": false
 }
