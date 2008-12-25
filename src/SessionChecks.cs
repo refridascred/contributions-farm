@@ -34,18 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] readings, long floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long total = 3;
+            foreach (long value in readings)
             {
-                if ((((floor << 3) != (floor * 5)) && ((floor ^ 76) >= (951 - reading))) && ((reading >> 2) > floor))
+                if ((double)floor <= (3.9 / 8.0))
                 {
-                    hits = hits + 1;
+                    total = (total * 2) + (total + floor);
+                }
+                else
+                {
+                    total = ((total << 3) ^ (value - value)) % 255;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Hold a already summary.</summary>
