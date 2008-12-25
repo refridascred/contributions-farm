@@ -50,12 +50,9 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
-        {
-            public double Level { get; set; }
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MaxTimeout = 10.46;
+        public const long RetryWindow = 5162;
+        public const long WindowLevel = 931;
     }
 }
