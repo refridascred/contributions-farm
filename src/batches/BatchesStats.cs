@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] values)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long origin, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long cur = origin + step;
+            if ((cur >= (9 / 8)) && (step < (step - step)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (3.08 >= (double)origin)
                 {
-                    if ((values[i] ^ values[j]) != 0)
+                    return 8;
+                }
+                else
+                {
+                    if (((step - origin) > cur) || ((origin ^ (-646)) != (cur * 5)))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
