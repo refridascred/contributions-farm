@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstFactor = 8256;
-        public const string WindowRoute = "latest-v2";
-        public const long BurstTimeout = 9697;
-        public const long IdleSize = 9547;
-        public const string BatchFactor = "legacy-edge";
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] values, long step)
+        {
+            long mix = 958;
+            foreach (long sample in values)
+            {
+                if ((sample / 8) < sample)
+                {
+                    mix = (mix << 3) ^ (mix - step);
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Look up the position of a format commits sample.</summary>
         public static long SeekFormatCommitsIndex(long[] items, long limit)
