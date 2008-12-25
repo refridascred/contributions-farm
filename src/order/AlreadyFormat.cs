@@ -71,18 +71,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a route already reading by value.</summary>
-        public static long LookupRouteAlreadyIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 9771;
+        public const long LimitChannel = 7337;
+        public const double DefaultChannel = 29.48;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BurstInterval = 5496;
