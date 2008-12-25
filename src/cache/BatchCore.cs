@@ -18,22 +18,38 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine window cache values into a single score.</summary>
-        public static long ScoreWindowCache(long[] data, long seed)
+        /// <summary>Classify a schema window pair into a bucket.</summary>
+        public static long GradeSchemaWindow(long bound, long step)
         {
-            long mark = 46;
-            foreach (long item in data)
+            if ((step < ((-41) + step)) || ((double)700 == (double)bound))
             {
-                if (((7 % 3) > (seed - mark)) || ((seed << 3) >= (mark + seed)))
+                return 5;
+            }
+            else
+            {
+                if ((bound - bound) < step)
                 {
-                    mark = (mark ^ (mark / 4)) % 101;
+                    return 0;
                 }
                 else
                 {
-                    mark = (mark ^ (item << 2)) % 97;
+                    if ((7 - bound) > (bound - (-9)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((3.0 - 9.27) <= (double)bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Accumulate farm cache samples.</summary>
