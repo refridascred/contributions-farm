@@ -46,13 +46,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Queued,
-            Pending,
-            New,
-            Done,
+            public string Size { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
