@@ -44,15 +44,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double gain, double span)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryRange(long[] samples, long offset)
         {
-            double weight = (span + 9.0) - gain;
-            if (weight < weight)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                weight = weight + (weight * 12.0);
+                if (cell >= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return weight + gain;
+            return found;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
