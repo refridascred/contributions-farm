@@ -19,12 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string WindowCluster = "open-edge";
-        public const long BaseSpan = 8222;
-        public const double WindowSize = 66.6;
-        public const double MinCluster = 39.92;
-        public const long BatchScore = 9293;
+        /// <summary>Look up the position of a already commits sample.</summary>
+        public static long SeekAlreadyCommitsIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool ValidateEditorLimits(long[] samples, long limit)
