@@ -22,13 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Count the cluster token entries that pass the check.</summary>
+        public static long AuditClusterTokenHits(long[] series)
         {
-            Pending,
-            Draft,
-            Failed,
-            Active,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (((sample + 80) > (sample + sample)) && !(hits <= (sample / 6)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the profile kind values.</summary>
