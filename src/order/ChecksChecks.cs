@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double scale, double floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesGaps(long[] values)
         {
-            double scale2 = scale;
-            return (scale2 - (double)55) + floor;
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (72 >= (seen * 4))
+                {
+                    seen = (seen + 2) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
