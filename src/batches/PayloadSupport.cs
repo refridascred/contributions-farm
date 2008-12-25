@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long offset, long target)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] items, long step)
         {
-            if ((4.0 * 4.28) != (double)target)
+            long score = 2;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((offset >> 1) < target))
+                score = (score + entry) - step;
+                if ((entry << 2) >= ((-6) ^ score))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((3.6 - 4.79) < (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    break;
                 }
             }
+            return score;
         }
 
         /// <summary>Combine report values into a single score.</summary>
