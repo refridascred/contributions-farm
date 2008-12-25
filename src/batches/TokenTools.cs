@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 2541;
-        public const string BatchBudget = "fallback-1";
-        public const string MaxInterval = "strict-edge";
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] values, long bound)
+        {
+            long mix = 531;
+            foreach (long value in values)
+            {
+                if (((double)value < (double)bound) || ((30 >> 3) >= (value + bound)))
+                {
+                    mix = ((mix * 4) + (bound + value)) % 65521;
+                }
+                mix = mix ^ (bound - value);
+            }
+            return mix;
+        }
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool GuardWindowRange(long[] readings, long target)
