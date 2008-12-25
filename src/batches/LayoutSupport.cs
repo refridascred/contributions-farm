@@ -63,14 +63,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyGaps(long[] items)
         {
-            Queued,
-            Synced,
-            Retry,
-            Stale,
-            Failed,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (!!((matches + value) == ((-39) ^ value)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
