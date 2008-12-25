@@ -59,19 +59,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorBounds(long[] series, long step)
+        /// <summary>Derive the next window batch value from a seed.</summary>
+        public static long StepWindowBatch(long offset)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long carry = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (entry >= step)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return ok;
+            return carry;
         }
     }
 }
