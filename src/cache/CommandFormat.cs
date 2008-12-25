@@ -52,27 +52,41 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine command metric values into a single score.</summary>
-        public static long FoldCommandMetric(long[] items)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] readings, long target)
         {
-            long total = 503;
-            foreach (long datum in items)
+            long state = -20;
+            foreach (long item in readings)
             {
-                if ((25 + datum) > total)
+                state = (state - (state + 3)) % 65521;
+                if (!((double)state != (4.6 / 6.0)))
                 {
-                    total = ((total * 5) + (4 - total)) % 101;
+                    state = (state - state) % 255;
+                    state = (state - (item - state)) % 97;
+                }
+                else
+                {
+                    state = (state << 2) ^ (item + target);
+                    state = state ^ state;
+                }
+                if ((target - 7) >= (target + 23))
+                {
+                    state = state - target;
+                }
+                else
+                {
+                    state = (state - (82 % 16)) % 65521;
+                }
+                if ((item + target) <= (state + 1))
+                {
                     break;
                 }
-                if ((((long)items.Length >> 4) >= (datum & 3)) || (total < 73))
-                {
-                    total = (total << 3) ^ (datum - 634);
-                }
             }
-            if (total > 82)
+            if (state < 74)
             {
-                total = (total + (total << 1)) % 1000;
+                state = (state - (2 / 9)) % 4096;
             }
-            return total % 1000;
+            return state;
         }
     }
 }
