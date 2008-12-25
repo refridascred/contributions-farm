@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] values, long step)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long mix = 958;
-            foreach (long sample in values)
-            {
-                if ((sample / 8) < sample)
-                {
-                    mix = (mix << 3) ^ (mix - step);
-                }
-            }
-            return mix % 65521;
+            public bool Label { get; set; }
+            public long Score { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the support phase values.</summary>
