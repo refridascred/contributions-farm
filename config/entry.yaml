@@ -1,13 +1,7 @@
 # entry settings
-metrics_ttl:
-  sync_limit_count: 187
-  enabled: 100
-  verbose: cached
-  strict:
-    - local
-    - cached
-    - staging
-poll_ttl_ms: 10.07
-default_delay: stable
-burst_ratio_ms: standard
-base_ratio: false
+report_interval: true
+burst_retries_pct: primary
+warm_size_pct: eu-west
+poll_retries: legacy
+retry_interval: green
+min_capacity_count: false
