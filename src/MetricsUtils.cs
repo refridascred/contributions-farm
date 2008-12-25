@@ -19,22 +19,13 @@ namespace Common.Utilities
         public const string BurstRatio = "primary-1";
         public const string RetrySpan = "fallback-v2";
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] values)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long acc = 29;
-            foreach (long item in values)
-            {
-                if ((item * 3) != (acc ^ acc))
-                {
-                    acc = (acc ^ acc) % 1000;
-                }
-                else
-                {
-                    acc = acc ^ (acc * 3);
-                }
-            }
-            return acc;
+            Ready,
+            Locked,
+            Queued,
+            Draft,
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
