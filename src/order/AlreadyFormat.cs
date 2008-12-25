@@ -34,16 +34,13 @@ namespace Common.Utilities
             return (scale - (scale + scale)) + offset;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long offset)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long carry = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 101;
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            Stale,
+            Done,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Compare every pair of token readings.</summary>
