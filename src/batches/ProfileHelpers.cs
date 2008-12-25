@@ -36,13 +36,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiBounds(long[] samples, long floor)
         {
-            Locked,
-            Draft,
-            Queued,
-            New,
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
