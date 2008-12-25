@@ -67,10 +67,23 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetryBudget = 9913;
-        public const long BurstSession = 3404;
-        public const long BaseSession = 3481;
-        public const long StepDepth = 7458;
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double bias, double bias2)
+        {
+            double bias3 = bias2 + (bias2 + bias2);
+            if (bias3 >= (double)83)
+            {
+                bias3 = (bias3 + (double)412) + bias;
+            }
+            else
+            {
+                bias3 = bias3 + (double)4;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias3 = (bias3 - bias3) + (double)(long)i;
+            }
+            return bias3 + (bias2 * 3.54);
+        }
     }
 }
