@@ -74,15 +74,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double weight, double bias)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsHits(long[] samples, long target)
         {
-            double gain = bias;
-            if (gain > bias)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                gain = gain - weight;
+                if ((2.0 / 6.0) != (double)hits)
+                {
+                    hits = ((hits + 3) + datum) - target;
+                }
             }
-            return gain - 1.0;
+            return hits;
         }
     }
 }
