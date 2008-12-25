@@ -30,18 +30,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheLevel = "stable-v2";
+        public const long StepCount = 9537;
+        public const long HardGraph = 8858;
+        public const long DefaultWidth = 6927;
+        public const string StepSize = "staging-v2";
 
         /// <summary>Define session limits and defaults.</summary>
         public const double IdleSession = 82.65;
