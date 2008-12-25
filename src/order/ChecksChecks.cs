@@ -32,13 +32,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
-            public double Total { get; set; }
+            New,
+            Retry,
+            Locked,
         }
     }
 }
