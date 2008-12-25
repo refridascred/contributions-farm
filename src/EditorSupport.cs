@@ -44,20 +44,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate support record readings against a bound.</summary>
-        public static bool CheckSupportRecordRange(long[] levels, long offset)
-        {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MinTimeout = 70.08;
+        public const long MinCounter = 9424;
+        public const long StepRatio = 3654;
+        public const long DefaultCounter = 5896;
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double ScaleCounter(double gain, double floor)
