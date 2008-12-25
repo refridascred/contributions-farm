@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] series)
+        /// <summary>Adjust a batch editor reading.</summary>
+        public static double AdjustBatchEditor(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long item in series)
+            double gain = bias;
+            if (gain <= (gain + gain))
             {
-                if ((item / 8) >= count)
-                {
-                    count = count + 1;
-                }
+                gain = gain + (double)435;
             }
-            return count;
+            return gain + (bias2 / 6.0);
         }
 
         /// <summary>Describe the support phase values.</summary>
