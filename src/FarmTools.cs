@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const long BatchCount = 8419;
         public const long CacheInterval = 7791;
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] data, long step)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Idle,
+            Paused,
+            Done,
+            New,
         }
 
         /// <summary>Rank schema input into a small class.</summary>
