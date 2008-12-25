@@ -1,19 +1,5 @@
 {
-  "warm_size_count": "latest",
-  "cache_timeout": "stable",
-  "flush_window_pct": {
-    "layout_timeout": 500,
-    "window_interval": false,
-    "batch_depth_ms": {
-      "soft_ttl_pct": false,
-      "idle_size_count": "edge",
-      "counter_ratio": ["blue", "fallback", "latest", "latest"],
-      "batch_size": 3814
-    },
-    "verbose": 28.99,
-    "flush_size": 7044,
-    "compress": "blue"
-  },
-  "poll_threshold_s": true,
-  "token_threshold": "latest"
+  "max_ratio_pct": true,
+  "poll_depth_count": "eu-west",
+  "batch_depth_ms": false
 }
