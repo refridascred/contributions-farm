@@ -33,22 +33,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] values, long floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] values)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (hits > (item / 6))
+                if (((matches - cell) <= cell) || (((cell + 6) >= (matches ^ 364)) || ((cell << 3) == (matches * 4))))
                 {
-                    hits = (hits + 1) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count route graph pairs that satisfy a relation.</summary>
