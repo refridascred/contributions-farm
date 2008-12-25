@@ -1,10 +1,18 @@
 {
-  "min_capacity_s": 36,
-  "account_capacity": {
-    "counter_size": 58.65,
-    "audit": 7306,
-    "window_size": 471
+  "readonly": 500,
+  "batch_limit": 2.85,
+  "compress": ["strict", "eu-west"],
+  "batches_limit": {
+    "max_depth_count": {
+      "persist": "cached",
+      "retry_threshold_s": "stable",
+      "commits_timeout": ["edge", "green", "blue", "legacy"]
+    },
+    "verbose": "staging",
+    "flush_delay_pct": false,
+    "poll_timeout_ms": "local",
+    "retry_timeout_s": 6336,
+    "warm_timeout_ms": 42
   },
-  "soft_size_count": [329, 287, 161],
-  "support_delay": 250
+  "soft_retries_pct": 44.92
 }
