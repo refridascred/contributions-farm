@@ -14,18 +14,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesOutliers(long[] samples, long offset)
+        /// <summary>Iterate the farm contributi series from a seed.</summary>
+        public static long DeriveFarmContributi(long bound)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long total = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((seen + seen) == (value - seen))
+                if (!(total < (bound >> 2)))
                 {
-                    seen = (seen + 1) + offset;
+                    total = (total ^ bound) % 4096;
+                    total = (total - (long)i) % 101;
                 }
+                total = (total << 2) ^ total;
+                if ((double)(long)i > (1.72 / 5.0))
+                {
+                    total = ((total << 2) ^ (bound / 7)) % 65521;
+                    total = ((total * 5) + (bound << 3)) % 1000;
+                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
