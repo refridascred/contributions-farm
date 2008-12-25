@@ -34,15 +34,12 @@ namespace Common.Utilities
         public const long SoftQueue = 1191;
         public const long IdleInterval = 1961;
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long offset)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            Draft,
+            Locked,
+            Synced,
         }
     }
 }
