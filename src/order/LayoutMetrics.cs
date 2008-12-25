@@ -13,18 +13,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the cluster token entries that pass the check.</summary>
-        public static long AuditClusterTokenHits(long[] series)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (((sample + 80) > (sample + sample)) && !(hits <= (sample / 6)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Pending,
+            Draft,
+            Paused,
+            Done,
+            Dropped,
         }
 
         /// <summary>Hold a stats stats.</summary>
