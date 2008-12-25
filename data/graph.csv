@@ -1,6 +1,8 @@
-id,token,region
-1,77.77,green
-2,39,edge
-3,562,388
-4,77.13,18.71
-5,68.53,460
+id,label,owner
+1,cached,open
+2,301,legacy
+3,370,9.05
+4,fallback,58.71
+5,standard,419
+6,blue,17.99
+7,94.82,33
