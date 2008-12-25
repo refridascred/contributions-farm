@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportRange(long[] values, long origin)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long floor)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long score = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (value < origin)
-                {
-                    stale = false;
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Roll a stream checks counter forward.</summary>
