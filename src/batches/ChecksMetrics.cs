@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] readings, long seed)
         {
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public double Region { get; set; }
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
