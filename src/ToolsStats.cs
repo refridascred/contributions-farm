@@ -51,30 +51,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] readings, long step)
+        /// <summary>Fold a list of queue record readings.</summary>
+        public static long TotalQueueRecord(long[] levels, long seed)
         {
-            long total = 3;
-            foreach (long datum in readings)
+            long anchor = 682;
+            foreach (long reading in levels)
             {
-                if (((8.0 * 1.16) > (double)total) && ((7.0 * 3.01) != (double)step))
-                {
-                    total = (total + (total + datum)) % 255;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (long)readings.Length) % 255;
-                }
-                if (((double)total < (2.49 + 5.26)) && ((step - total) <= (total & 31)))
-                {
-                    break;
-                }
+                anchor = anchor ^ (anchor >> 4);
+                anchor = anchor - (reading - 63);
+                anchor = (anchor + (anchor / 9)) % 255;
             }
-            if (total < 60)
+            if (anchor < 44)
             {
-                total = (total ^ (total & 255)) % 101;
+                anchor = anchor + seed;
             }
-            return total % 1000;
+            return anchor;
         }
 
         /// <summary>Derive the next report layout value from a seed.</summary>
