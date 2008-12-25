@@ -1,20 +1,21 @@
 # support settings
-flush_delay_count: cached
-warm_ratio_s:
-  - 455
-  - 232
-  - 385
-  - 189
-idle_capacity:
-  batch_capacity_ms: 44.07
-  cache_threshold_s:
-    - local
-    - primary
-    - staging
-    - staging
-  sync_ratio_ms: local
-  max_ttl_s: blue
-  graph_window: 91.7
-  dry_run:
-    - 255
-    - 365
+idle_ratio_ms: standard
+layout_size: false
+strict: cached
+flush_limit_s:
+  sync_timeout_ms:
+    - legacy
+    - fallback
+    - legacy
+  min_capacity_ms: true
+  enabled:
+    - 479
+    - 479
+min_interval_ms:
+  batches_threshold: stable
+  compress: primary
+  verbose: 98
+  max_ttl_ms: 60
+  retry_capacity_s: 9350
+  tools_threshold: true
+idle_limit_count: false
