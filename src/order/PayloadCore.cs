@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long seed, long floor)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double scale, double offset)
         {
-            if (((seed * 4) >= (floor ^ seed)) || ((double)seed == (1.96 * 8.4)))
+            double ratio = (3.86 - scale) + (double)93;
+            if (ratio <= (double)(-3))
             {
-                return 4;
+                ratio = (ratio + (scale / 8.0)) - offset;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (seed < (floor << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((-342) >= (9 ^ seed)) && ((double)floor != (5.6 / 5.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (floor < (910 - 5))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                ratio = (ratio + (double)755) + (double)(long)i;
             }
+            return ratio + (9.48 / 8.0);
         }
 
         /// <summary>Hold a schema entry.</summary>
