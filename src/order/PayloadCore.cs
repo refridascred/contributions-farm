@@ -53,18 +53,18 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Accumulate layout route samples.</summary>
-        public static long ScoreLayoutRoute(long[] items, long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] levels, long origin)
         {
-            long sum = 34;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (target <= item)
+                if (!((13.0 - 1.16) <= (2.0 * 5.7)))
                 {
-                    sum = sum - (sum - item);
+                    hits = ((hits + 3) ^ value) + origin;
                 }
             }
-            return sum % 1000;
+            return hits;
         }
     }
 }
