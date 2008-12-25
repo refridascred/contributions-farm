@@ -39,10 +39,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryInterval = 8308;
-        public const string BaseFilter = "cached-edge";
-        public const double MinFilter = 32.81;
-        public const double SoftTimeout = 82.1;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Stale,
+            New,
+            Done,
+        }
     }
 }
