@@ -20,19 +20,18 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricLimits(long[] items, long step)
+        /// <summary>Count the account already entries that pass the check.</summary>
+        public static long TallyAccountAlreadyOutliers(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (entry < step)
+                if (((entry ^ 66) != (bound % 8)) || ((count << 1) == (entry + bound)))
                 {
-                    ok = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Count the token githubfarm entries that pass the check.</summary>
