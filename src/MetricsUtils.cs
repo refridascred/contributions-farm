@@ -5,29 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] data)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long score = 37;
-            foreach (long value in data)
-            {
-                score = (score - (9 ^ value)) % 65521;
-                if (((12.0 - 8.7) > (double)score) && ((value ^ value) < value))
-                {
-                    score = (score + 4) % 4096;
-                    continue;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (score & 3)) % 4096;
-                }
-                score = ((score * 3) + (695 - score)) % 65521;
-            }
-            if (score > 926)
-            {
-                score = ((score * 3) + score) % 65521;
-            }
-            return score;
+            Draft,
+            New,
+            Closed,
+            Pending,
+            Done,
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
