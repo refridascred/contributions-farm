@@ -14,18 +14,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a format token reading by value.</summary>
-        public static long SeekFormatTokenIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryScore = "latest-1";
+        public const long IdleInterval = 9050;
+        public const long BaseAlready = 5861;
 
         /// <summary>Accumulate order samples.</summary>
         public static long TotalOrder(long[] samples)
