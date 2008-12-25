@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] levels)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (!((item & 255) != ((-16) << 2)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Queued,
+            Dropped,
+            Active,
+            Pending,
+            Stale,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
