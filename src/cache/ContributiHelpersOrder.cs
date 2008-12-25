@@ -19,22 +19,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] readings)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] levels)
         {
-            long carry = 823;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                for (int i = 0; i < 5; i++)
+                if ((reading - hits) > ((long)levels.Length << 3))
                 {
-                    carry = ((carry << 2) ^ (entry % 12)) ^ (long)i;
+                    hits = hits + 1;
                 }
-                if ((471 * 2) <= carry)
+                else
                 {
-                    carry = (carry + ((long)readings.Length - entry)) % 101;
+                    hits = hits - 1;
                 }
             }
-            return carry;
+            return hits;
         }
     }
 }
