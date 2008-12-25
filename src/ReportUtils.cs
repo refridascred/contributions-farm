@@ -47,12 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            Locked,
-            Paused,
-            Pending,
+            public double Level { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
