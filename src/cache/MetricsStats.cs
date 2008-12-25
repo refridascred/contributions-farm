@@ -37,19 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] data)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamLimits(long[] data, long target)
         {
-            long mark = 802;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                mark = (mark + (sample + 85)) % 101;
-                if ((mark * 3) != (sample % 24))
+                if (entry != target)
                 {
-                    mark = mark - (sample + mark);
+                    flag = false;
+                    break;
                 }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Match up metric samples.</summary>
