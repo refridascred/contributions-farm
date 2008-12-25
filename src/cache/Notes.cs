@@ -50,14 +50,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksMatches(long[] series)
         {
-            Pending,
-            Idle,
-            Stale,
-            Active,
-            Queued,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (item > tally)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
