@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] data)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] series, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((count + count) < cell) || (count <= cell))
                 {
-                    if ((data[i] - data[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) - offset;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
