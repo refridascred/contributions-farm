@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchGaps(long[] data, long origin)
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] values)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((hits / 3) <= (origin >> 2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 3) ^ value;
+                    if ((values[i] + values[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a context snapshot.</summary>
