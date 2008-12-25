@@ -1,26 +1,12 @@
 # githubfarm settings
-verbose:
-  - green
-  - legacy
-  - latest
-account_limit: 59.44
-default_ratio_ms: blue
-poll_interval:
-  warm_delay: 100
-  report_depth:
-    - 249
-    - 93
-    - 277
-    - 341
-  warm_limit_ms: 28.02
-  min_threshold: false
-  dry_run: 500
-  warm_depth_ms:
-    notes_size: staging
-    base_retries_s:
-      - 89
-      - 315
-      - 282
-      - 102
-    dry_run: 6446
-    soft_delay: cached
+cache_retries_pct:
+  warm_ratio: latest
+  default_ratio: green
+  warm_interval: 98
+hard_limit_s:
+  - strict
+  - local
+soft_size: 89.2
+enabled: open
+verbose: 30
+burst_threshold_count: stable
