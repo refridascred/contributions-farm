@@ -33,11 +33,23 @@ namespace Common.Utilities
         public const long HardDepth = 6158;
         public const double DefaultScore = 89.39;
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double bias, double offset)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] readings)
         {
-            double load = 5.0 * 19.0;
-            return (load + bias) + offset;
+            long result = 0;
+            foreach (long reading in readings)
+            {
+                if (!(result <= reading))
+                {
+                    result = ((result << 3) ^ (result + result)) % 4096;
+                }
+                result = result + (reading % 5);
+            }
+            if (result < 6)
+            {
+                result = (result << 2) ^ (88 * 5);
+            }
+            return result % 1000;
         }
 
         /// <summary>Find the first command buffer entry that matches the target.</summary>
