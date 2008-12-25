@@ -33,24 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long limit, long bound)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            if (((bound << 1) <= bound) && ((double)bound != (double)limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((7.17 + 8.97) == (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Limit { get; set; }
+            public bool Mode { get; set; }
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
