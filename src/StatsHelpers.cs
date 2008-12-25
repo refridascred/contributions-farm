@@ -19,26 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] items, long floor)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] samples, long origin)
         {
-            long result = -636;
-            foreach (long datum in items)
+            long sum = 725;
+            foreach (long sample in samples)
             {
-                if ((floor & 7) >= (floor * 3))
-                {
-                    continue;
-                }
-                if (!((4.0 + 3.6) < (double)result))
-                {
-                    result = (result - floor) + datum;
-                }
+                sum = ((sum ^ (origin - sum)) % 1000) ^ sample;
+                sum = ((sum * 4) + origin) % 65521;
             }
-            if (result > 58)
-            {
-                result = (result - 9) % 4096;
-            }
-            return result % 65521;
+            return sum;
         }
 
         /// <summary>Define report limits and defaults.</summary>
