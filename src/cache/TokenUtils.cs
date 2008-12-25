@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every token already entry stays within the limit.</summary>
-        public static bool CheckTokenAlreadyRange(long[] samples, long step)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] items, long step)
         {
             bool flag = true;
-            foreach (long entry in samples)
+            foreach (long item in items)
             {
-                if (entry > step)
+                if (item >= step)
                 {
                     flag = false;
                     break;
