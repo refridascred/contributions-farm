@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
+BUFFER_LIMIT=381
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-open}"
 case "${mode}" in
-    stable)
+    primary)
         log "fast path"
         ;;
     *)
@@ -16,11 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-BUFFER_LIMIT=193
-log "limit is ${BUFFER_LIMIT}"
-
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+for item in green eu-west cached edge; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
