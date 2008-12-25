@@ -96,12 +96,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Count the profile channel entries that pass the check.</summary>
+        public static long AuditProfileChannelOutliers(long[] values)
         {
-            Paused,
-            Retry,
-            Synced,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((8.96 / 4.0) < (double)item)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
