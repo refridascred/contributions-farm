@@ -20,18 +20,13 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Accumulate already session samples.</summary>
-        public static long DigestAlreadySession(long[] values)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long mark = 371;
-            foreach (long reading in values)
-            {
-                if ((double)(long)values.Length < (3.7 * 6.09))
-                {
-                    mark = ((mark * 3) + (mark + reading)) % 65521;
-                }
-            }
-            return mark % 97;
+            Draft,
+            Idle,
+            New,
+            Ready,
         }
 
         /// <summary>Count the token githubfarm entries that pass the check.</summary>
