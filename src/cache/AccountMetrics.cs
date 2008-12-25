@@ -28,17 +28,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] series, long target)
+        /// <summary>Adjust a graph cluster reading.</summary>
+        public static double ScaleGraphCluster(double scale, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale2 = span;
+            if (scale2 > 6.49)
             {
-                if ((series[i] <= target) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                scale2 = scale2 - scale;
             }
-            return -1;
+            return scale2 + 1.1;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
