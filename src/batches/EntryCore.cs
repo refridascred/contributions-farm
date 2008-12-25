@@ -29,18 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] items, long seed)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if (!(seen < (seen << 3)))
+                if (datum > target)
                 {
-                    seen = ((seen + 3) - item) - seed;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Accumulate checks samples.</summary>
