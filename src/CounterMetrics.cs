@@ -38,14 +38,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
-        {
-            public bool Count { get; set; }
-            public double Limit { get; set; }
-            public string Total { get; set; } = "";
-            public bool Region { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 5381;
+        public const double RetryBuffer = 86.53;
+        public const string StepBuffer = "local-v2";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string CacheStream = "open-v2";
