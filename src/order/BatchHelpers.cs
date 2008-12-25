@@ -39,25 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metrics channel value against two limits.</summary>
-        public static long BucketMetricsChannel(long step, long origin)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long origin)
         {
-            long edge = step ^ origin;
-            if ((edge + origin) != (step << 2))
+            long state = origin;
+            for (int i = 0; i < 20; i++)
             {
-                return 0;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if (!((edge ^ edge) != (origin & 15)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return state;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
