@@ -1,7 +1,5 @@
 {
-  "report_timeout": 3851,
-  "base_delay_ms": "green",
-  "githubfarm_ratio": "legacy",
-  "poll_retries": false,
-  "retry_threshold_count": 19.97
+  "default_delay": 250,
+  "dry_run": 60,
+  "flush_capacity_pct": 5897
 }
