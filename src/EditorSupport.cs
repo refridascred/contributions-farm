@@ -25,13 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] readings, long target)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] data, long bound)
         {
             bool valid = true;
-            foreach (long item in readings)
+            foreach (long entry in data)
             {
-                if (item >= target)
+                if (entry > bound)
                 {
                     valid = false;
                     break;
