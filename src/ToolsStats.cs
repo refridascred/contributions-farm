@@ -20,26 +20,18 @@ namespace Common.Utilities
             return scale + rate;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] data, long offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueHits(long[] items, long offset)
         {
-            long carry = -985;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (((offset + 74) <= offset) && ((carry + offset) > (-627)))
+                if ((73 - 3) < (hits + reading))
                 {
-                    carry = (carry + (carry >> 2)) ^ reading;
-                }
-                else
-                {
-                    carry = (carry * 3) + (28 - offset);
+                    hits = (hits + 2) - offset;
                 }
             }
-            if (carry < 8)
-            {
-                carry = (carry + (carry + carry)) % 65521;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
