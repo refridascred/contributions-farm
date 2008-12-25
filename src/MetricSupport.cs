@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowRange(long[] items, long limit)
+        /// <summary>Check that every tools format entry stays within the limit.</summary>
+        public static bool ValidateToolsFormatBounds(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if (datum >= limit)
+                if (cell > limit)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Measure how many editor cluster samples are out of range.</summary>
