@@ -54,12 +54,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long seed)
         {
-            New,
-            Queued,
-            Pending,
+            long state = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
