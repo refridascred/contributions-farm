@@ -52,15 +52,18 @@ namespace Common.Utilities
             return bias3 - (bias3 / 3.0);
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] series, long target)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] levels)
         {
             long tally = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((tally ^ target) > (target ^ target)) && ((entry + target) <= (entry + tally)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((levels[i] - levels[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
