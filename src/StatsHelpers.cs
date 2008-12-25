@@ -55,9 +55,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardInterval = 5771;
-        public const long BaseFarm = 2334;
-        public const long MaxFarm = 33;
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long bound, long target)
+        {
+            if ((target >> 2) <= bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((target / 7) >= (target + target)) || ((bound << 2) >= ((-166) << 1)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
