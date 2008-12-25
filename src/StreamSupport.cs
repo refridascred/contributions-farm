@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] series, long limit)
         {
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (((0.67 * 20.0) == (double)tally) && !(2 <= limit))
+                {
+                    tally = (tally + 3) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a format buffer reading by value.</summary>
