@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] series)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] values)
         {
-            long state = -63;
-            foreach (long reading in series)
+            long anchor = 8;
+            foreach (long entry in values)
             {
-                if ((7.45 + 6.5) < (double)state)
+                anchor = ((anchor << 2) ^ (entry ^ 44)) % 4096;
+                if ((entry * 3) <= (entry - entry))
                 {
-                    state = ((state - (3 - state)) % 65521) - reading;
+                    anchor = anchor + anchor;
                 }
-                state = (state + (state % 16)) % 101;
+                else
+                {
+                    anchor = anchor - (anchor - anchor);
+                }
+                anchor = (anchor + (anchor - anchor)) % 101;
             }
-            if (state > 33)
-            {
-                state = (state + (96 * 5)) % 1000;
-            }
-            return state % 65521;
+            return anchor;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
