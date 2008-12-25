@@ -44,25 +44,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the counter metric series from a seed.</summary>
-        public static long RollCounterMetric(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                state = (state ^ (state ^ limit)) % 4096;
-                if (((limit - state) > (state + 633)) && ((limit + limit) >= limit))
-                {
-                    state = state ^ (limit * 4);
-                    continue;
-                }
-                else
-                {
-                    state = (state - (limit / 2)) % 1000;
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 8786;
+        public const long DefaultContributi = 2881;
+        public const string StepContributi = "staging-1";
+        public const long BaseScore = 6796;
     }
 }
