@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double scale, double offset)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] levels)
         {
-            double rate = (double)72 * 4.3;
-            if (rate <= (rate + offset))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate - scale;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - 9.9) + (double)(long)i;
-            }
-            return rate + (rate + scale);
+            return matches;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
