@@ -26,17 +26,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] items, long offset)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > offset) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Roll a schema counter forward.</summary>
