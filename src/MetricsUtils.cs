@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const long MaxBudget = 7759;
         public const long StepCount = 3529;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] items, long bound)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double rate, double span)
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((double)bound <= (9.0 * 8.3))
-                {
-                    hits = (hits + 3) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double weight = (double)(1 >> 5);
+            return (weight + (span - 5.29)) + rate;
         }
 
         /// <summary>Grade a payload format value against two limits.</summary>
