@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            public long Total { get; set; }
-            public double Weight { get; set; }
-            public bool Flag { get; set; }
+            public string Size { get; set; } = "";
+            public double Label { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Project the next report value.</summary>
