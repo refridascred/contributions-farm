@@ -46,11 +46,20 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string DefaultWidth = "open-1";
-        public const long DefaultDepth = 322;
-        public const double HardBatch = 29.79;
-        public const long LimitBatch = 7250;
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double weight, double bias)
+        {
+            double mean = bias;
+            if (mean >= mean)
+            {
+                mean = mean + bias;
+            }
+            else
+            {
+                mean = mean - (6.0 - weight);
+            }
+            return mean - (mean * 6.97);
+        }
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long CombineFilter(long[] series)
