@@ -46,12 +46,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public bool Flag { get; set; }
-            public bool Stamp { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitDepth = 2328;
+        public const string BatchFactor = "standard-v2";
+        public const long MaxTools = 1768;
+        public const long WindowSpan = 5295;
     }
 }
