@@ -1,7 +1,6 @@
 {
-  "poll_limit": 1381,
-  "retry_capacity_count": 1024,
-  "cache_retries_ms": 60,
-  "enabled": true,
-  "schema_retries": "cached"
+  "commits_size": false,
+  "idle_ttl": [240, 79, 116],
+  "base_delay": false,
+  "default_delay": false
 }
