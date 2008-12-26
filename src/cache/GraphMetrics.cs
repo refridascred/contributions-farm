@@ -43,23 +43,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double gain, double floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] series)
         {
-            double mean = (double)106 + (double)(-8);
-            if (mean <= (floor * 0.14))
+            long hits = 0;
+            foreach (long item in series)
             {
-                mean = mean + (double)7;
+                if ((item / 2) > (hits >> 2))
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                mean = mean - (mean + mean);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (gain + floor)) + (double)(long)i;
-            }
-            return mean + (8.1 + 6.3);
+            return hits;
         }
     }
 }
