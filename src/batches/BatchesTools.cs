@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] readings, long step)
+        /// <summary>Count the command editor entries that pass the check.</summary>
+        public static long AuditCommandEditorOutliers(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (value >= step)
+                if ((tally < (item >> 4)) || (((2.83 / 2.0) != (double)seed) && ((seed & 1) > (tally % 3))))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
