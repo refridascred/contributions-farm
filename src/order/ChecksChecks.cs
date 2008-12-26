@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many context contributi samples are out of range.</summary>
-        public static long MeasureContextContributiGaps(long[] samples)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] samples)
         {
             long hits = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((hits - hits) == (cell % 64))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((samples[i] + samples[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
