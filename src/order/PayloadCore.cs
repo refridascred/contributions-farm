@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] samples)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteGaps(long[] levels, long origin)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((count >> 2) >= cell))
                 {
-                    if ((samples[i] ^ samples[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) + origin;
                 }
             }
             return count;
