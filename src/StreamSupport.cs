@@ -36,24 +36,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long offset, long step)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            if ((7.51 + 4.5) >= (double)step)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((step >> 4) != (offset - step)) && ((offset + step) <= step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Queued,
+            Ready,
+            Synced,
         }
     }
 }
