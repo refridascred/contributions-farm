@@ -1,5 +1,12 @@
 {
-  "default_interval_s": ["green", "green"],
-  "default_ratio": "green",
-  "base_interval": false
+  "strict": "blue",
+  "burst_depth_ms": 1920,
+  "poll_timeout_ms": {
+    "hard_timeout": 12.14,
+    "queue_capacity": 72.07,
+    "queue_threshold": 81,
+    "farm_capacity": "primary",
+    "batch_limit_s": false,
+    "idle_window": false
+  }
 }
