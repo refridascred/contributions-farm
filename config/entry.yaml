@@ -1,12 +1,9 @@
 # entry settings
-counter_interval:
-  - 31
-  - 118
-  - 115
-commits_ttl: 60
-idle_threshold:
-  retry_timeout_s: 24.6
-  readonly: strict
-  sync_ttl_pct: 1969
-  record_timeout: 8154
-  metric_timeout: stable
+base_interval:
+  - 193
+  - 302
+  - 135
+audit: false
+burst_interval_pct: 60
+githubfarm_timeout: fallback
+sync_interval_count: 8.31
