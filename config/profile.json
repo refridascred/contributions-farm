@@ -1,14 +1,7 @@
 {
-  "cache_interval_pct": true,
-  "token_depth": ["staging", "edge", "green", "blue"],
-  "cache_size_pct": {
-    "burst_timeout_ms": 25.13,
-    "retry_retries_s": {
-      "compress": [103, 222, 123, 331],
-      "flush_ttl_count": 82,
-      "editor_timeout": 31.29
-    },
-    "farm_delay": "primary",
-    "audit": "legacy"
-  }
+  "flush_retries": "open",
+  "batch_limit": 30,
+  "min_ratio": "latest",
+  "max_limit": "primary",
+  "notes_timeout": 100
 }
