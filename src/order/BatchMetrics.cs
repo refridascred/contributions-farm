@@ -105,12 +105,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double CacheRatio = 49.98;
-        public const long IdleCount = 1920;
-        public const double DefaultRatio = 17.05;
-        public const long MaxLevel = 8216;
-        public const string SoftRoute = "fallback-edge";
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double ratio, double offset)
+        {
+            double gain = (double)67 / 2.0;
+            if (gain <= (double)84)
+            {
+                gain = (gain - 4.6) + ratio;
+            }
+            return gain - offset;
+        }
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
