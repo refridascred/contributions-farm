@@ -57,15 +57,17 @@ namespace Common.Utilities
         public const long LimitRatio = 7119;
         public const long StepSize = 8494;
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double scale, double bias)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] levels, long step)
         {
-            double drift = 3.8;
-            if (drift > drift)
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift + (scale + 20.0);
+                if (levels[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return drift + bias;
+            return -1;
         }
     }
 }
