@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long offset, long offset2)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamGaps(long[] samples)
         {
-            long delta = offset ^ offset2;
-            if (!((offset2 * 4) > (delta << 2)))
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (((offset & 127) > (offset + offset2)) && ((delta * 2) > delta))
+                if ((entry - entry) < entry)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a counter header.</summary>
