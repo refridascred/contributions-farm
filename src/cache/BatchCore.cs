@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinDepth = 5908;
-        public const long WindowEditor = 1555;
-        public const string LimitWidth = "standard";
-        public const string DefaultSpan = "cached-v2";
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
+        {
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long WeighContributi(long[] samples, long floor)
