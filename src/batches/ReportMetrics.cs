@@ -51,12 +51,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Roll a counter order counter forward.</summary>
+        public static long IterateCounterOrder(long seed)
         {
-            public long Score { get; set; }
-            public bool Mode { get; set; }
-            public bool Size { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
