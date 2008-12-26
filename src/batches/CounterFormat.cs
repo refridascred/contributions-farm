@@ -15,10 +15,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 4217;
-        public const double BurstBudget = 39.82;
-        public const long RetryInterval = 6109;
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long step, long offset)
+        {
+            if (offset <= step)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((offset - offset) != (1 - step)) || ((double)step == (6.0 / 7.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long CountFormatHits(long[] data)
