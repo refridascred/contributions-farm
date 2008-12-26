@@ -23,26 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] levels, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] items, long step)
         {
-            long anchor = 1;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((5.0 + 7.9) < (13.0 / 7.0))
+                if ((((tally * 3) >= (datum - 1)) || ((datum + tally) <= (datum % 100))) || !((double)tally >= (7.1 * 2.8)))
                 {
-                    anchor = (anchor - target) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (value % 5)) % 101;
-                }
-                if (((value + target) >= 9) && (7.4 > (double)anchor))
-                {
-                    break;
+                    tally = (tally + 1) + step;
                 }
             }
-            return anchor % 4096;
+            return tally;
         }
 
         /// <summary>Combine channel cache values into a single score.</summary>
