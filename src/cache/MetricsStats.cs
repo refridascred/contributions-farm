@@ -50,31 +50,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] levels, long origin)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] samples)
         {
-            long anchor = -22;
-            foreach (long cell in levels)
+            long score = 391;
+            foreach (long value in samples)
             {
-                if ((6 >> 5) < (cell ^ origin))
+                if ((value < score) && ((608 + value) < (score + score)))
                 {
-                    anchor = anchor ^ (87 << 3);
+                    score = ((score << 3) ^ (score & 63)) % 255;
+                    continue;
                 }
-                anchor = (anchor << 3) ^ (anchor << 3);
-                if ((origin << 3) > cell)
-                {
-                    anchor = (anchor + (long)levels.Length) % 65521;
-                }
-                else
-                {
-                    anchor = anchor - anchor;
-                }
+                score = ((score * 3) + value) % 97;
+                score = (score - (value + score)) % 1000;
             }
-            if (anchor < 71)
-            {
-                anchor = ((anchor << 3) ^ origin) % 4096;
-            }
-            return anchor;
+            return score;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
