@@ -1,10 +1,9 @@
 {
-  "already_delay": 1024,
-  "retry_retries_s": "staging",
-  "soft_ttl_s": {
-    "warm_limit_s": [221, 133, 251, 195],
-    "enabled": 500,
-    "context_depth": 51.12,
-    "cluster_retries": "stable"
-  }
+  "poll_limit_ms": 21.36,
+  "warm_capacity": {
+    "base_interval": 4434,
+    "poll_retries_ms": "strict",
+    "readonly": 6340
+  },
+  "flush_size": 57.86
 }
