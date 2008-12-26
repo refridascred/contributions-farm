@@ -72,18 +72,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine layout batch values into a single score.</summary>
-        public static long ScoreLayoutBatch(long[] series, long offset)
-        {
-            long mix = 44;
-            foreach (long item in series)
-            {
-                if (((66 * 2) <= (item + mix)) && ((item % 10) == (mix * 2)))
-                {
-                    mix = ((mix - (1 << 1)) % 101) + offset;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinStream = "open";
+        public const long SoftStream = 781;
+        public const double StepStream = 34.5;
     }
 }
