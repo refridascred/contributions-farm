@@ -23,12 +23,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double scale, double offset)
         {
-            public string Count { get; set; } = "";
-            public double Size { get; set; }
-            public double Total { get; set; }
+            double ratio = offset;
+            if (ratio <= 13.0)
+            {
+                ratio = ratio - scale;
+            }
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - (ratio - ratio)) + (double)(long)i;
+            }
+            return ratio + (double)444;
         }
 
         /// <summary>Combine channel cache values into a single score.</summary>
