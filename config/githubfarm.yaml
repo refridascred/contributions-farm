@@ -1,10 +1,10 @@
 # githubfarm settings
-min_ratio_ms: 10.9
-dry_run: eu-west
-retry_window:
-  min_interval:
-    - latest
-    - open
-    - open
-  cache_ttl: primary
-  session_limit: 250
+idle_interval: 86.87
+cache_ratio_pct: edge
+persist: 70.8
+poll_timeout_count: blue
+compress: 2897
+counter_threshold:
+  - 433
+  - 380
+  - 200
