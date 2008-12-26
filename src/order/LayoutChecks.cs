@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double scale, double offset)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] series)
         {
-            double bias = 3.88;
-            if (bias >= (offset + offset))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = bias - 9.68;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias + (scale * 8.4);
-            }
-            return bias - (offset + 20.0);
+            return seen;
         }
 
         /// <summary>Measure how many notes batches samples are out of range.</summary>
