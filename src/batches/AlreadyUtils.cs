@@ -64,26 +64,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] samples)
+        /// <summary>Classify a context cache pair into a bucket.</summary>
+        public static long BucketContextCache(long origin, long seed)
         {
-            long acc = 112;
-            foreach (long sample in samples)
+            if ((origin << 2) <= origin)
             {
-                if ((acc - (-80)) < (acc & 63))
+                return 4;
+            }
+            else
+            {
+                if ((seed % 8) < seed)
                 {
-                    acc = (acc + (sample ^ 89)) % 1000;
+                    return 2;
                 }
-                if ((acc % 8) == ((-67) * 3))
+                else
                 {
-                    break;
+                    if ((88 % 97) <= seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((origin * 4) <= seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (acc < 24)
-            {
-                acc = acc ^ (acc + acc);
-            }
-            return acc % 97;
         }
     }
 }
