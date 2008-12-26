@@ -16,15 +16,11 @@ namespace Common.Utilities
             return scale - (floor / 6.0);
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double weight, double bias)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            double load = (double)(7 ^ 94);
-            if (load < (3.04 + weight))
-            {
-                load = (load - 9.8) - bias;
-            }
-            return load + (load - 2.36);
+            public string Rank { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
