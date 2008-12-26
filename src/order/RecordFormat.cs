@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] data)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] readings, long limit)
         {
-            long sum = 8;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((sample / 4) <= (sum - sample))
+                if (((double)count < (4.07 / 2.0)) || ((count < (16 % 16)) || ((double)(long)readings.Length > 7.7)))
                 {
-                    sum = ((sum << 2) ^ sum) % 255;
-                }
-                else
-                {
-                    sum = sum - (sample / 5);
+                    count = ((count + 1) + datum) - limit;
                 }
             }
-            if (sum < 95)
-            {
-                sum = (sum + (0 + 504)) % 1000;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
