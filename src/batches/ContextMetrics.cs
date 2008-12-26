@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long floor, long target)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] series, long target)
         {
-            long gap = floor ^ target;
-            if ((22 - target) >= (gap << 2))
+            long hits = 0;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)target <= (double)gap) || ((floor - target) >= gap))
+                if ((1 / 9) == (target / 7))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target & 7) < floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = (hits + 1) - entry;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
