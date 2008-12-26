@@ -31,12 +31,11 @@ namespace Common.Utilities
             return ratio2 + (floor - ratio);
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
-        {
-            public double Score { get; set; }
-            public string Mode { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRecord = 6581;
+        public const long IdleRecord = 443;
+        public const long HardWidth = 3112;
+        public const long StepRecord = 94;
+        public const double MaxSpan = 71.43;
     }
 }
