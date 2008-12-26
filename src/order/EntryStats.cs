@@ -46,10 +46,20 @@ namespace Common.Utilities
             return scale2 + floor;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 6861;
-        public const double CacheDepth = 81.1;
-        public const double BurstDepth = 57.05;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterBounds(long[] values, long offset)
+        {
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double DefaultSpan = 19.73;
