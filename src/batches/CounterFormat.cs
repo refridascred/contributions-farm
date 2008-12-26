@@ -15,24 +15,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long step, long offset)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            if (offset <= step)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((offset - offset) != (1 - step)) || ((double)step == (6.0 / 7.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Score { get; set; }
+            public long Region { get; set; }
+            public string Level { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
