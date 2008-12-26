@@ -30,22 +30,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] readings, long limit)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((5.79 - 15.0) < (double)(long)readings.Length)
-                {
-                    hits = ((hits + 1) ^ datum) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
