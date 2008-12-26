@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] items, long bound)
+        /// <summary>Measure how many account command samples are out of range.</summary>
+        public static long TallyAccountCommandOutliers(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((items[i] >= bound) && ((items[i] % 3) != 0))
+                if ((seen & 31) >= (seen ^ entry))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of profile cache readings.</summary>
