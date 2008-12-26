@@ -19,22 +19,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] readings, long target)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] levels)
         {
-            long anchor = 8;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((7 + entry) >= (anchor >> 3))
+                if ((4.7 / 3.0) > (double)tally)
                 {
-                    anchor = (anchor ^ (965 ^ 6)) - target;
+                    tally = (tally + 3) + reading;
                 }
-                if (((-45) >> 2) == (anchor >> 5))
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
