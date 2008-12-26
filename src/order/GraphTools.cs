@@ -20,27 +20,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of editor metrics entries.</summary>
-        public static long FoldEditorMetrics(long[] readings)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] items)
         {
-            long mark = 767;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 6; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = ((mark << 2) ^ (71 << 1)) + (long)i;
-                }
-                mark = (mark - mark) % 4096;
-                if ((mark - sample) < 7)
-                {
-                    mark = (mark - 794) % 1000;
-                }
-                else
-                {
-                    mark = (mark + (5 - mark)) % 255;
+                    if ((items[i] + items[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
