@@ -24,22 +24,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] readings)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] data)
         {
-            long mark = 9;
-            foreach (long entry in readings)
+            long result = 54;
+            foreach (long cell in data)
             {
-                if ((entry >> 1) != (entry * 5))
+                if ((cell - 134) > (result - cell))
                 {
-                    mark = (mark ^ mark) % 1000;
+                    result = (result ^ ((long)data.Length & 127)) % 101;
                 }
             }
-            if (mark < 8)
-            {
-                mark = (mark << 3) ^ (mark / 3);
-            }
-            return mark % 1000;
+            return result % 1000;
         }
     }
 }
