@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] items, long seed)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long offset, long limit)
         {
-            long state = 791;
-            foreach (long cell in items)
+            if ((7 + offset) > (limit - limit))
             {
-                state = ((state << 2) ^ (seed + cell)) % 1000;
+                return 3;
             }
-            return state;
+            else
+            {
+                if (limit > (offset / 9))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
