@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long LimitGraph = 277;
         public const string MinFactor = "open-1";
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] levels, long limit)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Synced,
+            Closed,
+            Draft,
         }
 
         /// <summary>Define route limits and defaults.</summary>
