@@ -25,12 +25,22 @@ namespace Common.Utilities
         public const long StepInterval = 8809;
         public const string LimitScore = "fallback-1";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 5835;
-        public const long MaxCount = 3193;
-        public const long MaxSize = 9017;
-        public const double MaxSupport = 54.01;
-        public const long SoftWidth = 5377;
+        /// <summary>Count buffer farm pairs that satisfy a relation.</summary>
+        public static long CompareBufferFarmCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate farm cache samples.</summary>
         public static long TallyFarmCache(long[] levels, long bound)
