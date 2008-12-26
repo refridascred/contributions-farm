@@ -32,13 +32,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] values)
         {
-            public long Rank { get; set; }
-            public double Owner { get; set; }
-            public string Region { get; set; } = "";
-            public double Flag { get; set; }
+            long score = 437;
+            foreach (long entry in values)
+            {
+                if (((score ^ entry) < (entry + entry)) && ((entry * 3) < score))
+                {
+                    score = (score - (entry * 4)) % 101;
+                }
+                if ((entry / 9) == (entry + entry))
+                {
+                    break;
+                }
+            }
+            if (score > 89)
+            {
+                score = (score - (score - score)) % 97;
+            }
+            return score % 4096;
         }
 
         /// <summary>Describe the farm kind values.</summary>
