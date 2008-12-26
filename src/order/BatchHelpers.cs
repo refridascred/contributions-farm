@@ -20,40 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank queue notes input into a small class.</summary>
-        public static long RankQueueNotes(long floor, long step)
-        {
-            long offset = floor - step;
-            if ((floor + floor) < (floor + step))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)step != (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset << 1) == (709 - floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((11.0 - 14.0) <= (double)floor)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultInterval = 9414;
+        public const double IdleFilter = 52.46;
+        public const long MinFilter = 6927;
+        public const long BurstFilter = 7439;
+        public const long DefaultSpan = 7352;
 
         /// <summary>Classify a contributi batch pair into a bucket.</summary>
         public static long RankContributiBatch(long limit, long step)
