@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] values, long offset)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long floor, long target)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long gap = floor ^ target;
+            if ((22 - target) >= (gap << 2))
             {
-                if ((offset ^ 932) > (offset % 64))
+                return 1;
+            }
+            else
+            {
+                if (((double)target <= (double)gap) || ((floor - target) >= gap))
                 {
-                    tally = (tally + 2) ^ datum;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((target & 7) < floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Blend two metric measurements.</summary>
