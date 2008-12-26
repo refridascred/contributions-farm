@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinSize = 9788;
-        public const long IdleStream = 2766;
-        public const double LimitSize = 84.67;
-        public const long DefaultLevel = 3686;
-        public const long MinDepth = 7688;
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= bound) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long HardSchema = 493;
