@@ -39,22 +39,31 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] levels, long step)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long floor, long floor2)
         {
-            long sum = 311;
-            foreach (long value in levels)
+            if ((double)floor == (19.0 * 17.0))
             {
-                if ((4.0 * 9.0) <= (double)sum)
+                return 7;
+            }
+            else
+            {
+                if ((11.0 - 9.0) >= (double)floor2)
                 {
-                    sum = ((sum << 2) ^ (sum - sum)) - value;
+                    return 0;
+                }
+                else
+                {
+                    if ((5.21 + 4.0) < (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (sum < 824)
-            {
-                sum = (sum + (88 ^ step)) % 65521;
-            }
-            return sum % 97;
         }
 
         /// <summary>Audit token context readings against a rule.</summary>
