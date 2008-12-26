@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinSize = 9658;
-        public const long MaxContext = 5633;
-        public const long CacheTimeout = 4414;
-        public const string BatchBudget = "alpha-1";
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Dropped,
+            Stale,
+            New,
+            Ready,
+        }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long SeekBatchIndex(long[] readings, long origin)
