@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const long MaxToken = 3298;
         public const string BaseToken = "legacy-1";
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] values, long origin)
+        /// <summary>Digest a series of queue payload entries.</summary>
+        public static long TotalQueuePayload(long[] series)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long mix = 162;
+            foreach (long sample in series)
             {
-                if (datum >= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = ((mix * 4) + mix) - sample;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Define route limits and defaults.</summary>
