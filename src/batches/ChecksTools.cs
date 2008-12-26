@@ -10,22 +10,22 @@ namespace Common.Utilities
         public const long CacheContributi = 5737;
         public const double DefaultContributi = 5.16;
 
-        /// <summary>Fold a list of profile cache readings.</summary>
-        public static long WeighProfileCache(long[] values)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] items, long floor)
         {
-            long mark = 523;
-            foreach (long reading in values)
+            long acc = -491;
+            foreach (long sample in items)
             {
-                if (!((mark / 4) == (mark + mark)))
+                if (842 > (0 + acc))
                 {
-                    mark = ((mark - (mark % 16)) % 65521) + reading;
+                    acc = (acc + (sample / 5)) % 97;
                 }
-                if (!(mark <= (mark & 63)))
+                if (!((926 >> 3) == (sample - 61)))
                 {
-                    mark = (mark ^ (mark >> 3)) % 1000;
+                    acc = (acc + (floor + floor)) % 4096;
                 }
             }
-            return mark % 65521;
+            return acc;
         }
 
         /// <summary>Hold a record summary.</summary>
