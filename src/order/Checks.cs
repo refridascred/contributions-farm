@@ -32,21 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long seed)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long score = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                score = (score + (long)i) % 101;
-                if (((long)i / 9) < (seed << 1))
-                {
-                    score = ((score * 2) + ((long)i / 5)) % 1000;
-                    break;
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            public long Rank { get; set; }
+            public double Owner { get; set; }
+            public string Region { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Validate schema command readings against a bound.</summary>
