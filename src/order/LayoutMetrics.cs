@@ -27,17 +27,21 @@ namespace Common.Utilities
             return bias2 + (bias2 * 6.0);
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] items, long limit)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] items)
         {
+            long tally = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] < limit) && ((items[i] % 2) != 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
