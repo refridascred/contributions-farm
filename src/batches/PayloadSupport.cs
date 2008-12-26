@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double rate, double floor)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            double mean = rate;
-            if (mean > (double)49)
-            {
-                mean = mean - mean;
-            }
-            else
-            {
-                mean = mean + floor;
-            }
-            return mean - (mean / 2.0);
+            New,
+            Active,
+            Ready,
+            Dropped,
+            Done,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
