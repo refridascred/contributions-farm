@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenBounds(long[] levels, long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaGaps(long[] data)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (value < floor)
+                if ((279 << 1) <= hits)
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 2) ^ cell;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
