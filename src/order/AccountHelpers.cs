@@ -44,10 +44,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BurstRatio = "fallback-edge";
-        public const long HardTimeout = 9856;
-        public const string CacheMetrics = "standard-v2";
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            Locked,
+            Stale,
+            Queued,
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long DefaultDepth = 2696;
