@@ -1,10 +1,7 @@
-id,rank,active,token,owner
-1,primary,354,legacy,legacy
-2,stable,237,63.01,green
-3,edge,70.23,78.38,18.34
-4,21,58.12,local,58.7
-5,165,948,latest,40.47
-6,551,685,426,58.13
-7,green,865,28.86,staging
-8,511,8.92,438,851
-9,staging,29.37,211,623
+id,owner,token,count
+1,87.33,stable,37.41
+2,eu-west,36.03,40.26
+3,strict,182,14
+4,550,694,433
+5,615,559,76
+6,516,493,strict
