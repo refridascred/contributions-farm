@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double rate, double span)
-        {
-            double ratio = rate;
-            if (ratio > (rate + span))
-            {
-                ratio = ratio + ratio;
-            }
-            else
-            {
-                ratio = ratio - (double)762;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (double)1) + (double)(long)i;
-            }
-            return ratio + 7.18;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstProfile = "latest-edge";
+        public const long WindowProfile = 5799;
+        public const long HardProfile = 2850;
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long BucketContributi(long step, long offset)
