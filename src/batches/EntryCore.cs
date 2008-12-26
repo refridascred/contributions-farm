@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 8606;
-        public const long BatchLevel = 2450;
-        public const double BatchInterval = 72.46;
-        public const long RetryBuffer = 7450;
-        public const double SoftSpan = 15.99;
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double gain, double floor)
+        {
+            double scale = gain / 5.0;
+            if (scale < (gain * 8.0))
+            {
+                scale = scale - 1.27;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (scale - floor)) + (double)(long)i;
+            }
+            return scale + scale;
+        }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool GuardCommandRange(long[] values, long step)
