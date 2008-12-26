@@ -39,20 +39,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferLimits(long[] samples, long step)
-        {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchLevel = 422;
+        public const long BurstTimeout = 1600;
+        public const long MaxCounter = 4767;
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long AuditContributiHits(long[] values, long floor)
