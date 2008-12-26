@@ -20,19 +20,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorBounds(long[] samples, long floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesBounds(long[] samples, long bound)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if (item >= floor)
+                if (value > bound)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
     }
 }
