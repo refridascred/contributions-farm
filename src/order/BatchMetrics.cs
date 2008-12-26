@@ -35,18 +35,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] levels, long origin)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportLimits(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if ((12.0 - 4.9) == (double)(long)levels.Length)
+                if (reading != limit)
                 {
-                    seen = ((seen + 2) + entry) + origin;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
