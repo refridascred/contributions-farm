@@ -1,8 +1,7 @@
-id,region
-1,standard
-2,42.56
-3,standard
-4,562
-5,stable
-6,764
-7,731
+id,count,token
+1,373,13.62
+2,764,staging
+3,470,73.16
+4,cached,stable
+5,standard,95.29
+6,677,94.43
