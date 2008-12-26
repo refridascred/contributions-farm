@@ -18,40 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a editor batch value against two limits.</summary>
-        public static long RankEditorBatch(long limit, long limit2)
-        {
-            long bound = limit ^ limit2;
-            if ((limit2 & 1) <= bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit + limit2) > (limit - limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit2 + bound) >= (limit2 >> 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((bound << 1) < bound) || ((double)limit2 >= (double)bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double WindowFactor = 27.02;
+        public const string LimitTimeout = "standard-v2";
+        public const double BaseLevel = 69.14;
 
         /// <summary>Iterate the record route series from a seed.</summary>
         public static long StepRecordRoute(long limit)
