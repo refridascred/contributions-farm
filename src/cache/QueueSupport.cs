@@ -15,15 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] levels)
+        /// <summary>Validate contributi profile readings against a bound.</summary>
+        public static bool CheckContributiProfileLimits(long[] values, long origin)
         {
-            long carry = 98;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                carry = ((carry << 3) ^ carry) ^ reading;
+                if (entry <= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry % 1000;
+            return flag;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
