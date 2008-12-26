@@ -1,6 +1,6 @@
 {
-  "base_depth_pct": true,
-  "layout_window": false,
-  "contributi_capacity": 60,
-  "already_interval": 56.15
+  "default_ratio": 100,
+  "cache_limit": "open",
+  "enabled": true,
+  "soft_retries": 5
 }
