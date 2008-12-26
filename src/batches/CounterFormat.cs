@@ -46,15 +46,21 @@ namespace Common.Utilities
             return ((scale + (1.0 / 2.0)) + rate) + floor;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] data, long offset)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] data)
         {
-            long anchor = 8;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor ^ (offset % 5)) % 1000) + datum;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
