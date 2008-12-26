@@ -20,13 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Audit commits command readings against a rule.</summary>
+        public static long MeasureCommitsCommandGaps(long[] values)
         {
-            Queued,
-            Failed,
-            Paused,
-            Ready,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((tally / 6) >= (datum + datum))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
