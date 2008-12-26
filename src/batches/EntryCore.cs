@@ -39,12 +39,16 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 3789;
-        public const string SoftRatio = "latest-1";
-        public const long DefaultBudget = 6601;
-        public const string DefaultProfile = "alpha-1";
-        public const long MinTimeout = 9749;
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double ratio, double bias)
+        {
+            double weight = (4.6 - 3.4) + bias;
+            if (weight < (double)29)
+            {
+                weight = weight + (double)56;
+            }
+            return weight - ratio;
+        }
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long FindMetricIndex(long[] samples, long origin)
