@@ -20,19 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] items, long origin)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long acc = 503;
-            foreach (long item in items)
-            {
-                acc = (((acc << 3) ^ origin) % 65521) ^ item;
-            }
-            if (acc > 51)
-            {
-                acc = (acc ^ (origin + 6)) % 1000;
-            }
-            return acc % 1000;
+            public bool Score { get; set; }
+            public bool Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a queue snapshot.</summary>
