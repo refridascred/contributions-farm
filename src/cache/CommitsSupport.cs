@@ -68,19 +68,10 @@ namespace Common.Utilities
         public const long IdleLayout = 938;
         public const long CacheSpan = 4526;
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterRange(long[] readings, long bound)
-        {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardRatio = 5480;
+        public const long StepSize = 2176;
+        public const string SoftCluster = "cached-1";
+        public const string MaxCluster = "staging";
     }
 }
