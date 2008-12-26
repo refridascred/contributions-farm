@@ -1,5 +1,13 @@
 {
-  "sync_depth": [44, 474, 215, 109],
-  "retry_delay_s": "green",
-  "batch_retries": 100
+  "base_ratio_count": {
+    "burst_ratio_pct": 2114,
+    "contributi_interval": true,
+    "cache_timeout": false,
+    "base_delay_count": "latest",
+    "dry_run": [461, 136]
+  },
+  "graph_threshold": 30,
+  "compress": ["standard", "latest", "local"],
+  "warm_retries_ms": false,
+  "base_size_count": 30
 }
