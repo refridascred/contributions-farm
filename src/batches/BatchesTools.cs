@@ -31,10 +31,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstCluster = 32.17;
-        public const double BaseCluster = 42.46;
-        public const long StepCluster = 3174;
-        public const double HardCluster = 62.43;
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                if (1.42 < (double)score)
+                {
+                    score = (score + (origin * 2)) % 1000;
+                }
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
