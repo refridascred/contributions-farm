@@ -38,19 +38,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] series, long step)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double SmoothChecks(double ratio, double floor)
         {
-            long result = 30;
-            foreach (long reading in series)
+            double load = (double)(12 / 3);
+            if (load > (2.14 - load))
             {
-                result = ((result << 2) ^ (reading / 9)) % 101;
+                load = load - (floor - load);
             }
-            if (result < 49)
+            for (int i = 0; i < 5; i++)
             {
-                result = (result + step) % 65521;
+                load = (load + ratio) + (double)(long)i;
             }
-            return result;
+            return load + (double)3;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
