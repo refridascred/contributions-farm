@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] items)
         {
-            Draft,
-            Retry,
-            Idle,
-            Stale,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (seen < (long)items.Length)
+                {
+                    seen = (seen + 1) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the command kind values.</summary>
