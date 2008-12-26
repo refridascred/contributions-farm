@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long floor, long offset)
+        /// <summary>Count the order report entries that pass the check.</summary>
+        public static long AuditOrderReportHits(long[] data)
         {
-            long delta = floor + offset;
-            if (delta <= (offset + 586))
+            long seen = 0;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor << 1) == (offset * 5))
+                if ((entry ^ (-92)) >= (entry + (long)data.Length))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((floor * 5) <= delta) || ((floor >> 4) < (0 >> 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a queue stats.</summary>
