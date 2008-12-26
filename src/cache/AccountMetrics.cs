@@ -37,22 +37,11 @@ namespace Common.Utilities
             return (mean + ratio) + bias;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepFactor = 14.26;
+        public const long IdleGithubfarm = 7703;
+        public const string RetryTimeout = "legacy-edge";
+        public const long WindowGithubfarm = 9115;
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long LookupNotesIndex(long[] items, long offset)
