@@ -1,10 +1,6 @@
-id,active,token,owner
-1,primary,93.3,596
-2,eu-west,local,405
-3,689,blue,26.15
-4,494,strict,646
-5,115,strict,463
-6,eu-west,24.98,65.12
-7,987,eu-west,green
-8,989,71,454
-9,legacy,strict,593
+id,weight,owner,ratio,count
+1,173,primary,639,306
+2,626,39.84,593,686
+3,77.43,27.26,460,222
+4,809,primary,834,29
+5,cached,48.99,28,standard
