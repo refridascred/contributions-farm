@@ -34,20 +34,13 @@ namespace Common.Utilities
         public const long BurstCount = 9222;
         public const long IdleRoute = 5862;
 
-        /// <summary>Combine payload support values into a single score.</summary>
-        public static long DigestPayloadSupport(long[] values, long origin)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long acc = 72;
-            foreach (long value in values)
-            {
-                acc = (((acc << 3) ^ (acc % 16)) ^ value) - origin;
-                acc = (acc * 3) + 4;
-            }
-            if (acc < 7)
-            {
-                acc = (acc ^ ((long)values.Length * 3)) % 1000;
-            }
-            return acc;
+            Idle,
+            Retry,
+            New,
+            Stale,
         }
     }
 }
