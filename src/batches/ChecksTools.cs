@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long IdleBatches = 2873;
         public const long BurstBatches = 1505;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowGaps(long[] series, long seed)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((seed < (reading + reading)) || ((0.92 / 4.0) > (double)seed))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Queued,
+            Active,
+            Pending,
         }
 
         /// <summary>Blend two profile measurements.</summary>
