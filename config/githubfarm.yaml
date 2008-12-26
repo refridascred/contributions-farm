@@ -1,4 +1,11 @@
 # githubfarm settings
-dry_run: cached
-batch_ttl_s: fallback
-contributi_depth: blue
+poll_delay_s: true
+idle_capacity_count: 10.92
+soft_timeout_s: 42.67
+readonly: open
+compress: staging
+tools_ttl:
+  - cached
+  - cached
+  - fallback
+  - legacy
