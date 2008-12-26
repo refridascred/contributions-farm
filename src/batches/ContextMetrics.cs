@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const long WindowWidth = 4193;
         public const string DefaultChannel = "standard-edge";
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitTimeout = 5166;
-        public const long RetryEntry = 5483;
-        public const double LimitEntry = 57.02;
-        public const long SoftEntry = 5139;
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Active,
+            Retry,
+            Stale,
+            Pending,
+        }
 
         /// <summary>Count the notes editor entries that pass the check.</summary>
         public static long MeasureNotesEditorOutliers(long[] series)
