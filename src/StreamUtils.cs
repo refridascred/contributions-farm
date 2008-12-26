@@ -102,19 +102,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsLimits(long[] series, long bound)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] data, long seed)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (datum >= bound)
+                if (sample <= seed)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Match up commits samples.</summary>
