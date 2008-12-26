@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many account command samples are out of range.</summary>
-        public static long TallyAccountCommandOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((seen & 31) >= (seen ^ entry))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 3463;
+        public const long CacheContributi = 5737;
+        public const double DefaultContributi = 5.16;
 
         /// <summary>Fold a list of profile cache readings.</summary>
         public static long WeighProfileCache(long[] values)
