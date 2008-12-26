@@ -75,14 +75,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextOutliers(long[] items, long origin)
         {
-            Locked,
-            Closed,
-            Pending,
-            Ready,
-            Queued,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (19.0 <= (double)origin)
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
         }
     }
 }
