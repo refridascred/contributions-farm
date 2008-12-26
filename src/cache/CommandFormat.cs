@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate stats token readings against a bound.</summary>
-        public static bool ValidateStatsTokenRange(long[] readings, long offset)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] series)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry > offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] + series[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Hold a order record.</summary>
