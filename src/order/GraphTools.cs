@@ -27,11 +27,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Rank command filter input into a small class.</summary>
