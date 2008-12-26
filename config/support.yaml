@@ -1,6 +1,15 @@
 # support settings
-readonly: eu-west
-batch_limit_pct: 63
-editor_limit: 95
-commits_interval: 100
-strict: 30
+base_interval_count:
+  - primary
+  - eu-west
+  - stable
+  - eu-west
+githubfarm_capacity: 5783
+payload_ttl: fallback
+session_size:
+  - stable
+  - cached
+  - latest
+  - open
+report_threshold: edge
+min_ttl_pct: 34
