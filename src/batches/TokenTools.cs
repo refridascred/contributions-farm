@@ -34,13 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] data)
         {
-            public string Flag { get; set; } = "";
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (((94 > (tally >> 2)) && ((tally ^ tally) <= (tally ^ 6))) || !((datum + datum) < ((-35) & 1)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
