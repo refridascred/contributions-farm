@@ -1,8 +1,14 @@
 {
-  "stream_capacity": 100,
-  "max_limit_count": 6794,
-  "hard_interval_pct": 4108,
-  "max_threshold_s": "staging",
-  "warm_timeout_count": 20.22,
-  "burst_retries_count": 77.36
+  "cache_interval_pct": true,
+  "token_depth": ["staging", "edge", "green", "blue"],
+  "cache_size_pct": {
+    "burst_timeout_ms": 25.13,
+    "retry_retries_s": {
+      "compress": [103, 222, 123, 331],
+      "flush_ttl_count": 82,
+      "editor_timeout": 31.29
+    },
+    "farm_delay": "primary",
+    "audit": "legacy"
+  }
 }
