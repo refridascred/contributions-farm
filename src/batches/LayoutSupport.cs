@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double gain, double span)
+        /// <summary>Compare every pair of filter commits readings.</summary>
+        public static long PairFilterCommitsCount(long[] series)
         {
-            double scale = 2.5;
-            if (scale >= (gain - gain))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale + (double)385;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale - (span / 9.0);
-            }
-            return scale + (double)745;
+            return count;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
