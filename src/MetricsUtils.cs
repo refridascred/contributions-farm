@@ -53,9 +53,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFactor = 8128;
-        public const double WindowFormat = 5.83;
-        public const long MinFormat = 7488;
+        /// <summary>Find the first channel cluster entry that matches the target.</summary>
+        public static long SeekChannelClusterIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
