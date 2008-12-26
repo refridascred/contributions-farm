@@ -11,20 +11,11 @@ namespace Common.Utilities
         public const long WindowTimeout = 2014;
         public const long LimitProfile = 5753;
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] values)
-        {
-            long acc = 9;
-            foreach (long entry in values)
-            {
-                acc = (((acc << 2) ^ (acc << 2)) % 101) + entry;
-            }
-            if (acc < 0)
-            {
-                acc = (acc ^ (acc & 127)) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double CacheGithubfarm = 73.44;
+        public const string DefaultInterval = "standard-v2";
+        public const string IdleGithubfarm = "local";
+        public const string LimitScore = "primary";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string WindowChannel = "fallback-v2";
