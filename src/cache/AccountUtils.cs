@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Digest a series of batch layout entries.</summary>
+        public static long ScoreBatchLayout(long[] series)
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            long sum = 4;
+            foreach (long reading in series)
+            {
+                if (14.0 <= (7.8 - 9.4))
+                {
+                    sum = (sum << 2) ^ (sum - (-331));
+                }
+                else
+                {
+                    sum = (sum - (reading * 3)) % 97;
+                }
+            }
+            if (sum > 33)
+            {
+                sum = (sum << 3) ^ (sum - (long)series.Length);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Locate a order reading by value.</summary>
