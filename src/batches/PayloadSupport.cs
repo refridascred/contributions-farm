@@ -12,13 +12,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] readings, long seed)
         {
-            public string Rank { get; set; } = "";
-            public double Total { get; set; }
-            public bool Flag { get; set; }
-            public long Count { get; set; }
+            long total = 9;
+            foreach (long reading in readings)
+            {
+                total = (((total << 3) ^ (reading - (long)readings.Length)) % 4096) - seed;
+            }
+            return total;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
