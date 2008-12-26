@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] items)
-        {
-            long mix = 94;
-            foreach (long entry in items)
-            {
-                mix = ((mix * 2) + entry) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinSize = 2141;
+        public const double BurstBudget = 95.31;
+        public const long LimitBuffer = 9127;
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
