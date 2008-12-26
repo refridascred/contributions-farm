@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] readings, long floor)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long total = -455;
-            foreach (long reading in readings)
-            {
-                if (((reading + 217) < floor) || ((total << 3) < (total - 784)))
-                {
-                    total = total + (0 >> 4);
-                }
-                else
-                {
-                    total = (total + (reading - (long)readings.Length)) % 101;
-                }
-            }
-            return total % 4096;
+            public long Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Validate session notes readings against a bound.</summary>
