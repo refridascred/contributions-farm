@@ -12,10 +12,14 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double IdleScore = 54.93;
-        public const double RetryTimeout = 50.17;
-        public const long CacheFactor = 7961;
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
+        {
+            public bool Count { get; set; }
+            public long Level { get; set; }
+            public double Token { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double SmoothStats(double weight, double span)
