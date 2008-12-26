@@ -23,22 +23,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportMatches(long[] readings, long origin)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long origin, long origin2)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            if (origin2 < (origin2 & 7))
             {
-                if (((entry >> 3) != (origin % 3)) || ((912 << 3) < origin))
+                return 4;
+            }
+            else
+            {
+                if ((double)origin2 < (5.97 / 8.0))
                 {
-                    tally = tally + 3;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up tools farm samples.</summary>
