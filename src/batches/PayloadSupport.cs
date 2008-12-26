@@ -31,9 +31,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string LimitWidth = "alpha";
-        public const long CacheNotes = 2187;
-        public const long BatchNotes = 9034;
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long limit, long bound)
+        {
+            if (limit < (limit & 31))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(bound <= (limit / 8)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((218 ^ (-21)) < limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
