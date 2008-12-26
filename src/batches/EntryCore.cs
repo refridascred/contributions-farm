@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] levels)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Done,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
