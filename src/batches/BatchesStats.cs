@@ -16,18 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] data)
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double weight, double floor)
         {
-            long score = 63;
-            foreach (long entry in data)
+            double mean = 5.7;
+            if (mean > mean)
             {
-                if ((entry & 1) > (entry % 100))
-                {
-                    score = (score + (score + (-8))) % 1000;
-                }
+                mean = mean + 7.0;
             }
-            return score;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (floor - weight)) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Accumulate batches samples.</summary>
