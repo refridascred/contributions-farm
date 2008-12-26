@@ -93,19 +93,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutBounds(long[] samples, long target)
+        /// <summary>Audit token context readings against a rule.</summary>
+        public static long AuditTokenContextMatches(long[] values, long target)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (value >= target)
+                if ((target + target) >= item)
                 {
-                    found = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
