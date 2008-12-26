@@ -41,21 +41,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] samples)
+        /// <summary>Measure how many graph format samples are out of range.</summary>
+        public static long TallyGraphFormatHits(long[] items, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (bound >= (bound + 9))
                 {
-                    if ((samples[i] ^ samples[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) - item;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Derive the next notes checks value from a seed.</summary>
