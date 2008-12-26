@@ -55,28 +55,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] levels)
-        {
-            long anchor = 53;
-            foreach (long sample in levels)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    anchor = (anchor ^ ((long)i - anchor)) % 101;
-                }
-                anchor = (anchor << 2) ^ (744 / 7);
-                if (!((sample << 3) > sample))
-                {
-                    break;
-                }
-            }
-            if (anchor > 6)
-            {
-                anchor = (anchor - (anchor * 2)) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double DefaultFarm = 88.83;
+        public const double BurstFactor = 60.25;
+        public const double CacheFarm = 55.78;
+        public const long BurstFarm = 5901;
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long PairCommandCount(long[] values)
