@@ -18,29 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a format report counter forward.</summary>
-        public static long DeriveFormatReport(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!(carry < (carry + floor)))
-                {
-                    carry = (carry ^ (long)i) % 97;
-                    carry = (carry + ((-2) + floor)) % 65521;
-                }
-                if ((carry - 583) == (floor + (long)i))
-                {
-                    carry = ((carry * 2) + ((-3) + (long)i)) % 255;
-                }
-                if (((long)i / 9) != (long)i)
-                {
-                    carry = (carry * 5) + (floor % 64);
-                }
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 1006;
+        public const long StepInterval = 3009;
+        public const long WindowDepth = 1311;
+        public const string CacheOrder = "staging-1";
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long TallyLayoutGaps(long[] readings, long origin)
