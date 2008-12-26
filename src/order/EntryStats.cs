@@ -20,12 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            public bool Level { get; set; }
-            public bool Size { get; set; }
-            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Project the next buffer value.</summary>
