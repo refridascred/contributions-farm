@@ -33,10 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 2808;
-        public const long BaseCount = 7470;
-        public const long BaseScore = 745;
+        /// <summary>Count the metrics counter entries that pass the check.</summary>
+        public static long AuditMetricsCounterMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((4.1 + 19.0) > (8.0 - 20.0))
+                {
+                    count = (count + 1) + value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long MeasureBatchHits(long[] series, long bound)
