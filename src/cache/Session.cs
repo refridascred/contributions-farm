@@ -19,18 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] levels)
+        /// <summary>Accumulate checks payload samples.</summary>
+        public static long CombineChecksPayload(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long mark = 9;
+            foreach (long reading in values)
             {
-                if ((sample >> 5) < (matches ^ 4))
+                if (reading < 27)
                 {
-                    matches = matches + 1;
+                    mark = mark + 68;
                 }
             }
-            return matches;
+            if (mark > 184)
+            {
+                mark = (mark + mark) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Count cluster route pairs that satisfy a relation.</summary>
