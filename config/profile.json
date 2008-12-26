@@ -1,8 +1,6 @@
 {
-  "channel_capacity": 4602,
-  "session_depth": 4.32,
-  "metric_retries": 49.34,
-  "already_ratio": [143, 397, 428, 470],
-  "max_size_ms": 41.57,
-  "flush_ttl_s": 65.14
+  "flush_ratio": 218,
+  "route_ttl": "stable",
+  "compress": "eu-west",
+  "flush_ratio_count": 50
 }
