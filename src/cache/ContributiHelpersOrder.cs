@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] series, long origin)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long bound, long target)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long diff = bound + target;
+            if ((170 - bound) < (bound / 4))
             {
-                if (entry > origin)
+                return 0;
+            }
+            else
+            {
+                if ((target / 5) == (diff - diff))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a batches info.</summary>
