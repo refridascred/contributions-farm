@@ -1,16 +1,12 @@
 {
-  "tools_interval": {
-    "flush_interval_pct": "legacy",
-    "enabled": 100,
-    "persist": "standard",
-    "base_delay": "local",
-    "compress": {
-      "token_delay": 1024,
-      "idle_capacity_ms": 96,
-      "base_interval_ms": false
-    }
+  "max_size": {
+    "graph_depth": "local",
+    "batches_capacity": 21,
+    "hard_retries_pct": true,
+    "hard_depth_s": 5196,
+    "buffer_depth": 60
   },
-  "stats_size": "local",
-  "payload_depth": 23.53,
-  "batch_interval_ms": "eu-west"
+  "dry_run": 60,
+  "persist": 25.1,
+  "compress": "primary"
 }
