@@ -23,31 +23,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long bound, long target)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] data)
         {
-            if ((88 <= (bound + target)) || ((bound % 5) > (bound - target)))
+            long score = 63;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((target + bound) <= bound) || (55 > target))
+                if ((entry & 1) > (entry % 100))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target > bound) || (target <= (bound * 5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    score = (score + (score + (-8))) % 1000;
                 }
             }
+            return score;
         }
 
         /// <summary>Describe the editor state values.</summary>
