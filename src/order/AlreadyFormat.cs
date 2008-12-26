@@ -28,11 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double weight, double floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadRange(long[] levels, long target)
         {
-            double load = (7.2 - weight) + (double)(-14);
-            return load - floor;
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the context graph entries that pass the check.</summary>
