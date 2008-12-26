@@ -57,11 +57,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 396;
-        public const long IdleRatio = 994;
-        public const long StepSpan = 3608;
-        public const long BatchBatches = 8604;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardBudget = 7586;
+        public const long DefaultStats = 160;
+        public const long HardScore = 3583;
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long FindSessionIndex(long[] samples, long target)
