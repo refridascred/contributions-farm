@@ -18,11 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 1006;
-        public const long StepInterval = 3009;
-        public const long WindowDepth = 1311;
-        public const string CacheOrder = "staging-1";
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double ratio, double offset)
+        {
+            double drift = (double)(633 >> 2);
+            for (int i = 0; i < 4; i++)
+            {
+                drift = ((drift - offset) + (double)(long)i) - ratio;
+            }
+            return drift - drift;
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long TallyLayoutGaps(long[] readings, long origin)
