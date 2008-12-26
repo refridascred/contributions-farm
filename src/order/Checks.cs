@@ -35,26 +35,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] samples)
+        /// <summary>Measure how many batch entry samples are out of range.</summary>
+        public static long CountBatchEntryMatches(long[] samples)
         {
-            long mix = 461;
+            long seen = 0;
             foreach (long sample in samples)
             {
-                if (((double)sample <= (7.2 - 6.0)) || ((9.16 * 8.3) <= (double)sample))
+                if ((seen + 8) <= (sample ^ 6))
                 {
-                    mix = (mix << 2) ^ (mix + sample);
+                    seen = seen + 2;
                 }
-                if ((sample / 4) >= sample)
+                else
                 {
-                    mix = mix ^ (sample ^ sample);
+                    seen = seen - 1;
                 }
             }
-            if (mix < 337)
-            {
-                mix = ((mix * 4) + mix) % 4096;
-            }
-            return mix % 4096;
+            return seen;
         }
 
         /// <summary>Match up channel samples.</summary>
