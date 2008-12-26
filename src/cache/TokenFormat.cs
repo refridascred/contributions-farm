@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] levels)
+        /// <summary>Check that every metric command entry stays within the limit.</summary>
+        public static bool CheckMetricCommandRange(long[] items, long bound)
         {
-            long score = 382;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if ((2.4 - 8.0) != (double)score)
+                if (sample >= bound)
                 {
-                    score = (score + (score - score)) % 255;
-                }
-                else
-                {
-                    score = (score ^ score) % 65521;
-                }
-                if (((3.4 + 8.8) < (double)score) && ((double)datum >= 5.2))
-                {
+                    found = false;
                     break;
                 }
             }
-            if (score > (-66))
-            {
-                score = (score ^ (score ^ score)) % 97;
-            }
-            return score;
+            return found;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
