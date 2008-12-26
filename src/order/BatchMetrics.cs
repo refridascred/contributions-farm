@@ -25,18 +25,38 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] readings)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long bound, long bound2)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            if (((7.18 * 6.0) < (double)bound) && (bound <= (47 >> 4)))
             {
-                if ((reading + 1) <= (reading & 63))
+                return 3;
+            }
+            else
+            {
+                if ((bound << 2) >= bound2)
                 {
-                    hits = hits + 3;
+                    return 1;
+                }
+                else
+                {
+                    if ((4.3 * 6.9) < (double)bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound2 ^ 5) != (bound2 - bound2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
