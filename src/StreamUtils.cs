@@ -28,14 +28,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long floor)
         {
-            Draft,
-            Synced,
-            Pending,
-            Done,
-            Retry,
+            long state = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((double)state != (5.0 * 8.0)))
+                {
+                    state = ((state * 4) + (floor ^ (long)i)) % 255;
+                }
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
