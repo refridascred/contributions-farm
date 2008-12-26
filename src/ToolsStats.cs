@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Look up the position of a contributi commits sample.</summary>
-        public static long SeekContributiCommitsIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitBudget = 9607;
+        public const string SoftTimeout = "latest-v2";
+        public const long WindowTimeout = 2014;
+        public const long LimitProfile = 5753;
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long CombineMetric(long[] values)
