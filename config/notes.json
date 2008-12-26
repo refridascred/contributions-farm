@@ -1,6 +1,8 @@
 {
-  "hard_ratio_ms": "open",
-  "notes_retries": 97.86,
-  "report_capacity": ["standard", "open"],
-  "default_depth_pct": 95.28
+  "batch_window_s": 36.44,
+  "githubfarm_window": true,
+  "burst_ttl_ms": "blue",
+  "soft_threshold": 6332,
+  "soft_interval": ["latest", "open", "edge"],
+  "hard_size_s": "edge"
 }
