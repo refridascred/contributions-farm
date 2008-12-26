@@ -37,13 +37,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            Done,
-            Failed,
-            Closed,
-            Pending,
+            public double Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a format info.</summary>
