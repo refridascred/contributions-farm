@@ -45,31 +45,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank command filter input into a small class.</summary>
-        public static long GradeCommandFilter(long origin, long seed)
+        /// <summary>Count the route session entries that pass the check.</summary>
+        public static long AuditRouteSessionGaps(long[] values, long seed)
         {
-            if ((double)origin < (0.3 / 4.0))
+            long seen = 0;
+            foreach (long datum in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed << 2) != (seed - seed))
+                if ((30 & 255) > datum)
                 {
-                    return 4;
+                    seen = (seen + 2) - seed;
                 }
                 else
                 {
-                    if ((5.0 + 8.0) <= (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Classify a contributi filter pair into a bucket.</summary>
