@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long limit)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] series)
         {
-            long carry = limit;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                if ((sample - matches) > 31)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
