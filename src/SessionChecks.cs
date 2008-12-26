@@ -59,17 +59,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long seed)
+        /// <summary>Combine commits order values into a single score.</summary>
+        public static long CombineCommitsOrder(long[] samples, long bound)
         {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
+            long result = 3;
+            foreach (long item in samples)
             {
-                acc = ((acc * 4) + (seed + seed)) % 65521;
-                acc = (acc + seed) % 97;
-                acc = ((acc * 5) + (long)i) % 4093;
+                if ((result >> 4) != (bound * 5))
+                {
+                    result = (result * 3) + (item & 255);
+                }
+                else
+                {
+                    result = (result ^ (266 & 63)) % 255;
+                }
             }
-            return acc;
+            if (result < 2)
+            {
+                result = (result ^ result) % 255;
+            }
+            return result;
         }
     }
 }
