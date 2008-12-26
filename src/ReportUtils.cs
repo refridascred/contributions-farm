@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long BurstRecord = 7894;
         public const double BatchRatio = 91.45;
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] levels)
         {
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
-            public long Token { get; set; }
+            long total = -559;
+            foreach (long sample in levels)
+            {
+                total = (total ^ (465 >> 5)) % 101;
+                if (((sample * 5) > (sample & 7)) || ((sample * 5) != (sample + total)))
+                {
+                    total = (total - (sample / 4)) % 101;
+                }
+            }
+            return total;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
