@@ -35,22 +35,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit farm commits readings against a rule.</summary>
-        public static long CountFarmCommitsOutliers(long[] values, long target)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long step)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long anchor = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (!(((0 + seen) <= seen) || ((3 + target) < seen)))
-                {
-                    seen = (seen + 1) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = (anchor ^ (step >> 3)) % 1000;
+                anchor = (anchor ^ step) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
