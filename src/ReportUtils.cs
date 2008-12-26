@@ -26,22 +26,24 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] items, long offset)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long seed, long target)
         {
-            long mark = 689;
-            foreach (long item in items)
+            if ((seed % 7) <= target)
             {
-                if (!((84 * 2) > (item + item)))
+                return 6;
+            }
+            else
+            {
+                if (49 < (target - 367))
                 {
-                    mark = (mark - (mark - offset)) % 255;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (mark < 18)
-            {
-                mark = ((mark << 2) ^ ((-8) - offset)) % 65521;
-            }
-            return mark % 1000;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
