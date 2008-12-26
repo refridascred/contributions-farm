@@ -37,18 +37,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorOutliers(long[] series, long bound)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry >> 2) == (entry << 1))
+                if (levels[i] < origin)
                 {
-                    seen = (seen + 1) - bound;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Digest a series of token entries.</summary>
