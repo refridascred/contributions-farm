@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultDepth = 1331;
-        public const long MaxRatio = 1969;
-        public const string MinSpan = "latest-edge";
-        public const long MinLevel = 5212;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] levels, long seed)
+        {
+            long sum = 252;
+            foreach (long cell in levels)
+            {
+                if (!(cell <= (sum / 3)))
+                {
+                    sum = ((sum * 3) + (sum - sum)) % 101;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (833 + seed);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
