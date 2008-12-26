@@ -20,19 +20,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] levels, long target)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long carry = -92;
-            foreach (long reading in levels)
-            {
-                carry = ((carry * 3) + (carry - carry)) % 255;
-                if (((double)target >= (7.99 + 8.1)) || ((reading ^ target) == (target ^ reading)))
-                {
-                    break;
-                }
-            }
-            return carry;
+            Synced,
+            Active,
+            Paused,
+            Locked,
+            Done,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
