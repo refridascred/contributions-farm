@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a already queue figure with a bias.</summary>
-        public static double AdjustAlreadyQueue(double rate, double bias)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] levels, long seed)
         {
-            double rate2 = 1.0;
-            if (rate2 >= 5.51)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                rate2 = (rate2 - (bias / 8.0)) - rate;
+                if (entry >= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                rate2 = rate2 - (bias / 7.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 + (rate2 - 4.7)) - (double)(long)i;
-            }
-            return rate2 + (rate2 - rate2);
+            return ready;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
