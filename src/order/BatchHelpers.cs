@@ -30,32 +30,21 @@ namespace Common.Utilities
             return scale - (scale / 7.0);
         }
 
-        /// <summary>Classify a contributi batch pair into a bucket.</summary>
-        public static long RankContributiBatch(long limit, long step)
+        /// <summary>Match up batch session samples.</summary>
+        public static long PairBatchSessionCount(long[] series)
         {
-            long step2 = limit + step;
-            if (((step & 7) <= (step % 2)) || ((limit + 692) >= (limit >> 5)))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((step ^ 55) <= (step2 - step2)) && ((step2 * 3) <= limit))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((93 + step2) <= (step ^ step2)) && ((10.0 / 9.0) < (double)limit))
+                    if ((series[i] + series[j]) > 15)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
