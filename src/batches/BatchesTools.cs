@@ -39,21 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] data)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
     }
 }
