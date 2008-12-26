@@ -40,10 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string IdleSpan = "local";
-        public const long BatchDepth = 9764;
-        public const long MaxProfile = 1900;
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
+        {
+            Retry,
+            Idle,
+            Ready,
+            Closed,
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long MinCommand = 487;
