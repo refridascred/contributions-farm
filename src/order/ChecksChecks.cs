@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long floor, long target)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] samples, long offset)
         {
-            long prev = floor ^ target;
-            if (!((prev + floor) != (target & 127)))
+            long matches = 0;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)target != (double)floor) || ((double)target == (double)5))
+                if (!(offset <= (matches * 5)))
                 {
-                    return 2;
+                    matches = (matches + 3) + value;
                 }
                 else
                 {
-                    if ((floor % 100) >= 630)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target % 10) == (prev - target))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of account readings.</summary>
