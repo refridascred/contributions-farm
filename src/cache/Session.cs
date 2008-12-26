@@ -23,15 +23,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] readings, long origin)
         {
-            long state = floor;
-            for (int i = 0; i < 22; i++)
+            long sum = 65;
+            foreach (long value in readings)
             {
-                state = ((state * 5) + (long)i) % 4093;
+                sum = (sum * 3) + sum;
+                sum = (sum - (9 + origin)) % 97;
+                if ((value - (long)readings.Length) >= (sum + origin))
+                {
+                    break;
+                }
             }
-            return state;
+            if (sum < 97)
+            {
+                sum = ((sum * 4) + sum) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the route mode values.</summary>
