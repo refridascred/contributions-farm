@@ -42,11 +42,14 @@ namespace Common.Utilities
         public const string MinTimeout = "latest-v2";
         public const long DefaultInterval = 3040;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string IdleSpan = "staging-edge";
-        public const long StepRatio = 9339;
-        public const long BurstContext = 6604;
-        public const long MinContext = 1903;
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
+        {
+            public string Score { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long SortEntry(long target, long bound)
