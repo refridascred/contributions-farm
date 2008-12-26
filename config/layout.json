@@ -1,12 +1,6 @@
 {
-  "enabled": "primary",
-  "contributi_retries": 6809,
-  "persist": true,
-  "stream_ratio": 91,
-  "retry_retries_s": {
-    "hard_interval_s": 74,
-    "dry_run": false,
-    "profile_retries": "edge"
-  },
-  "idle_limit_ms": [380, 390]
+  "enabled": "green",
+  "warm_limit": 250,
+  "metric_delay": 89.36,
+  "poll_window_pct": ["blue", "strict"]
 }
