@@ -1,11 +1,6 @@
-id,state,active
-1,22,100
-2,cached,strict
-3,edge,legacy
-4,268,12.5
-5,7.24,822
-6,edge,legacy
-7,34.06,738
-8,8.78,900
-9,59,68
-10,702,846
+id,token,weight
+1,fallback,5.62
+2,27.63,blue
+3,875,fallback
+4,94.13,934
+5,643,fallback
