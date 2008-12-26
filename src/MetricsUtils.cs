@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const double MinBudget = 35.71;
         public const double BurstWidth = 17.07;
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            Pending,
-            Retry,
-            Dropped,
+            public double Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a farm summary.</summary>
