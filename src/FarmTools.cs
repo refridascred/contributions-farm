@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next record token value.</summary>
-        public static double AdjustRecordToken(double ratio, double bias)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsHits(long[] data, long seed)
         {
-            double rate = (bias / 6.0) - bias;
-            if (rate < rate)
+            long tally = 0;
+            foreach (long item in data)
             {
-                rate = (rate + (double)129) + ratio;
+                if (((double)seed != (double)item) && (item >= (tally / 8)))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (double)425) + (double)(long)i;
-            }
-            return rate - (double)60;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
