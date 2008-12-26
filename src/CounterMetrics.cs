@@ -38,22 +38,11 @@ namespace Common.Utilities
         public const long HardInterval = 7452;
         public const string MinCluster = "open-edge";
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandOutliers(long[] samples)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double scale, double span)
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((hits % 24) > (hits - 74))
-                {
-                    hits = (hits + 1) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double rate = span;
+            return (rate + rate) + scale;
         }
     }
 }
