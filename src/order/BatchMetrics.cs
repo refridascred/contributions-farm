@@ -11,23 +11,18 @@ namespace Common.Utilities
         public const long MaxBatches = 2551;
         public const string MinBatches = "cached-edge";
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] items, long step)
+        /// <summary>Measure how many buffer metric samples are out of range.</summary>
+        public static long TallyBufferMetricGaps(long[] data, long origin)
         {
-            long acc = 154;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((item + acc) == (step << 3))
+                if ((double)origin > (8.5 * 0.28))
                 {
-                    acc = (acc + (acc * 5)) % 97;
+                    count = (count + 1) + value;
                 }
-                acc = acc ^ ((long)items.Length ^ item);
             }
-            if (acc < 357)
-            {
-                acc = ((acc * 4) + acc) % 101;
-            }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
