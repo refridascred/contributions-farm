@@ -36,15 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long offset)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long mark = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
