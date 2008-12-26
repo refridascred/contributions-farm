@@ -25,11 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] series, long seed)
         {
-            public double Owner { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (((111 - datum) <= datum) && (datum <= (tally / 2)))
+                {
+                    tally = (tally + 2) + seed;
+                }
+            }
+            return tally;
         }
     }
 }
