@@ -1,5 +1,5 @@
 # githubfarm settings
-min_limit: 12.17
-enabled: 88.09
-verbose: true
-soft_ttl_count: 8447
+base_interval_count: 49
+max_limit: 18
+retry_capacity_s: 99
+strict: latest
