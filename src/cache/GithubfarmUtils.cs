@@ -29,12 +29,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 30;
-        public const double CacheQueue = 53.02;
-        public const long DefaultSize = 9585;
-        public const long SoftQueue = 1191;
-        public const long IdleInterval = 1961;
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
