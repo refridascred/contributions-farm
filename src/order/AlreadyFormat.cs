@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
-        {
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Score { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 5163;
+        public const string IdleReport = "stable-v2";
+        public const long CacheSize = 7375;
+        public const long SoftTimeout = 3465;
+        public const double DefaultReport = 28.93;
 
         /// <summary>Match up tools farm samples.</summary>
         public static long OverlapToolsFarmCount(long[] levels)
