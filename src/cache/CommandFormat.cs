@@ -23,18 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] items, long step)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((((tally * 3) >= (datum - 1)) || ((datum + tally) <= (datum % 100))) || !((double)tally >= (7.1 * 2.8)))
-                {
-                    tally = (tally + 1) + step;
-                }
-            }
-            return tally;
+            public string Count { get; set; } = "";
+            public double Size { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Combine channel cache values into a single score.</summary>
