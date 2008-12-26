@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] series)
+        /// <summary>Compare every pair of counter batches readings.</summary>
+        public static long MatchCounterBatchesCount(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((series[i] + series[j]) == 14)
+                    if ((values[i] ^ values[j]) > 9)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
