@@ -21,10 +21,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string DefaultRoute = "staging-1";
-        public const long BurstCount = 9222;
-        public const long IdleRoute = 5862;
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
+        {
+            Draft,
+            Retry,
+            Locked,
+            Queued,
+        }
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
