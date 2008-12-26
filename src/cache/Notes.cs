@@ -48,14 +48,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] values, long limit)
         {
-            Closed,
-            Ready,
-            Synced,
-            Dropped,
-            Draft,
+            long sum = 702;
+            foreach (long datum in values)
+            {
+                sum = (((sum * 2) + (sum + limit)) % 255) - datum;
+            }
+            return sum;
         }
 
         /// <summary>Audit cluster counter readings against a rule.</summary>
