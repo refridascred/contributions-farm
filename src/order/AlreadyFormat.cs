@@ -15,14 +15,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Dropped,
-            Retry,
-            Synced,
-            Active,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 4481;
+        public const long BaseWindow = 981;
+        public const string DefaultWindow = "legacy";
+        public const double BatchSpan = 8.59;
 
         /// <summary>Project the next record value.</summary>
         public static double SmoothRecord(double weight, double floor)
