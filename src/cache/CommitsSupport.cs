@@ -31,17 +31,20 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] items, long seed)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((items[i] <= seed) && ((items[i] % 3) == 0))
+                long span = floor;
+                if (((long)i >= (8 << 2)) || ((double)73 != (double)span))
                 {
-                    return (long)i;
+                    total = (total + (528 / 5)) % 255;
                 }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
