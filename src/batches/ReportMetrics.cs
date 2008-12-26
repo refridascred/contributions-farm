@@ -16,32 +16,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long offset, long origin)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] items, long seed)
         {
-            long bound = offset + origin;
-            if ((double)offset >= 4.3)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset / 7) != (bound - offset))
+                if (items[i] > seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound - origin) > offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
