@@ -58,17 +58,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a route farm reading by value.</summary>
-        public static long SeekRouteFarmIndex(long[] values, long bound)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (values[i] == bound)
+                if ((tally / 3) != (88 + tally))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + reading;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Check that every farm command entry stays within the limit.</summary>
