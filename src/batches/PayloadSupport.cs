@@ -11,17 +11,24 @@ namespace Common.Utilities
         public const long BaseSize = 4729;
         public const long WindowCount = 8470;
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] series, long bound)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] readings, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 6;
+            foreach (long value in readings)
             {
-                if ((series[i] == bound) && ((series[i] % 5) != 0))
+                state = ((state * 2) + value) % 4096;
+                state = state + (state >> 5);
+                if ((bound * 2) >= value)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (state > 811)
+            {
+                state = (state ^ (bound & 63)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
