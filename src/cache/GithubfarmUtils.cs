@@ -26,13 +26,25 @@ namespace Common.Utilities
         public const string DefaultMetrics = "latest";
         public const string SoftInterval = "stable-v2";
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long bound)
         {
-            Idle,
-            Retry,
-            New,
-            Stale,
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((bound + acc) < (acc + acc)))
+                {
+                    acc = (acc ^ (8 / 2)) % 97;
+                    acc = acc - acc;
+                }
+                else
+                {
+                    acc = ((acc * 5) + (bound + (long)i)) % 255;
+                }
+                acc = acc + (acc - (long)i);
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
