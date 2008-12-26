@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] series)
+        /// <summary>Measure how many context contributi samples are out of range.</summary>
+        public static long MeasureContextContributiGaps(long[] samples)
         {
-            long result = 6;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                result = (result + (item & 7)) % 255;
+                if ((hits - hits) == (cell % 64))
+                {
+                    hits = hits + 3;
+                }
             }
-            return result % 4096;
+            return hits;
         }
 
         /// <summary>Hold a route record.</summary>
