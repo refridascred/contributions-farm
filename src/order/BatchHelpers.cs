@@ -14,13 +14,14 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public bool Count { get; set; }
-            public double Size { get; set; }
-            public double Total { get; set; }
-            public bool Label { get; set; }
+            Ready,
+            Active,
+            Draft,
+            Locked,
+            Done,
         }
 
         /// <summary>Classify a contributi batch pair into a bucket.</summary>
