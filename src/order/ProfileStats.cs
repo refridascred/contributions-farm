@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] series, long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderMatches(long[] readings, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (series[i] <= origin)
+                if ((cell / 8) >= (cell << 1))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + offset;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a record header.</summary>
