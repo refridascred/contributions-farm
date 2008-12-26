@@ -31,22 +31,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 4660;
+        public const long BaseWidth = 2194;
+        public const long WindowLevel = 5790;
+        public const long MaxSpan = 682;
+        public const long DefaultWindow = 1431;
 
         /// <summary>Combine commits order values into a single score.</summary>
         public static long CombineCommitsOrder(long[] samples, long bound)
