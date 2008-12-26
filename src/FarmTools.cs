@@ -13,11 +13,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] samples)
         {
-            public string Rank { get; set; } = "";
-            public string Size { get; set; } = "";
+            long result = 77;
+            foreach (long item in samples)
+            {
+                if ((result % 12) < item)
+                {
+                    result = (result << 3) ^ (result + result);
+                }
+            }
+            return result;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
