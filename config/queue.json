@@ -1,8 +1,5 @@
 {
-  "warm_timeout_pct": "edge",
-  "max_threshold_count": [498, 337, 89],
-  "warm_interval": true,
-  "githubfarm_capacity": "staging",
-  "max_retries": 100,
-  "audit": "stable"
+  "dry_run": "edge",
+  "enabled": 100,
+  "burst_capacity": 11.48
 }
