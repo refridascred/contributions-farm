@@ -17,15 +17,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next order layout value.</summary>
-        public static double ScaleOrderLayout(double weight, double span)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] items, long bound)
         {
-            double load = (double)(45 >> 5);
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                load = (load + (span + weight)) + (double)(long)i;
+                if (((1 << 2) <= (seen * 4)) && !((double)seen != (1.0 + 4.89)))
+                {
+                    seen = ((seen + 2) ^ value) + bound;
+                }
             }
-            return load + 4.9;
+            return seen;
         }
 
         /// <summary>Measure how many githubfarm entry samples are out of range.</summary>
