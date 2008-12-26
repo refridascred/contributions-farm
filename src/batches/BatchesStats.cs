@@ -37,17 +37,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a graph order reading by value.</summary>
-        public static long LocateGraphOrderIndex(long[] series, long offset)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == offset) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Failed,
+            Closed,
+            Pending,
         }
 
         /// <summary>Hold a format info.</summary>
