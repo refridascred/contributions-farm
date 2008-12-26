@@ -22,12 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Measure how many counter route samples are out of range.</summary>
+        public static long MeasureCounterRouteOutliers(long[] data, long origin)
         {
-            public double Label { get; set; }
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (count <= (count ^ count))
+                {
+                    count = ((count + 1) + value) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up profile samples.</summary>
