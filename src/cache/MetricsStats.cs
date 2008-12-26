@@ -48,22 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] samples)
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double ratio, double bias)
         {
-            long sum = 55;
-            foreach (long cell in samples)
+            double mean = (double)217 * 3.0;
+            if (mean >= mean)
             {
-                if ((cell + sum) <= (sum / 9))
-                {
-                    sum = (sum ^ sum) % 255;
-                }
+                mean = mean - 4.7;
             }
-            if (sum > 995)
+            for (int i = 0; i < 3; i++)
             {
-                sum = ((sum * 2) + (101 & 255)) % 255;
+                mean = (mean - (bias / 8.0)) + (double)(long)i;
             }
-            return sum;
+            return mean - (ratio + 7.8);
         }
 
         /// <summary>Derive the next entry support value from a seed.</summary>
