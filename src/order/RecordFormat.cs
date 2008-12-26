@@ -27,25 +27,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long origin)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] items, long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 24; i++)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (entry > floor)
                 {
-                    result = (result ^ (long)i) % 255;
-                    result = ((result << 3) ^ ((long)i2 + 195)) % 65521;
+                    stale = false;
+                    break;
                 }
-                result = ((result << 3) ^ (origin ^ (long)i)) % 97;
-                if ((9.39 * 20.0) >= (double)result)
-                {
-                    result = result + (result + result);
-                }
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Fold a list of session readings.</summary>
