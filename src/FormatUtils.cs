@@ -39,11 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long floor)
         {
-            public bool Level { get; set; }
-            public long Token { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((7.29 / 7.0) == (double)(long)i) && ((floor - sum) <= floor))
+                {
+                    sum = sum + sum;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
