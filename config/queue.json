@@ -1,6 +1,10 @@
 {
-  "flush_limit_s": "primary",
-  "sync_size_s": 19,
-  "batch_limit": "stable",
-  "enabled": true
+  "entry_retries": {
+    "poll_interval": false,
+    "layout_threshold": 84,
+    "githubfarm_threshold": "blue",
+    "warm_depth_s": ["primary", "staging", "staging"]
+  },
+  "retry_threshold_ms": "open",
+  "base_ttl_count": 14.39
 }
