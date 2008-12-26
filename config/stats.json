@@ -1,10 +1,13 @@
 {
-  "audit": false,
-  "sync_ttl": {
-    "min_retries": false,
-    "hard_size_s": 30,
-    "persist": "cached"
+  "min_ttl_pct": ["strict", "stable", "primary"],
+  "compress": 190,
+  "burst_window": ["blue", "stable", "eu-west", "cached"],
+  "min_ratio_ms": {
+    "batch_size_s": "stable",
+    "base_retries_pct": "cached",
+    "retry_retries_ms": 500,
+    "warm_depth_ms": false
   },
-  "persist": 92,
-  "retry_size_s": "staging"
+  "farm_depth": 8102,
+  "min_interval": "staging"
 }
