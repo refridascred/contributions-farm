@@ -59,20 +59,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((carry <= (origin / 2)) || ((carry >> 1) > ((long)i + (long)i)))
-                {
-                    carry = (carry - (44 * 3)) % 255;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 1833;
+        public const long HardWidth = 7239;
+        public const double BatchInterval = 32.39;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long LimitCounter = 9294;
