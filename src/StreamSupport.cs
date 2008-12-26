@@ -30,13 +30,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsGaps(long[] levels)
         {
-            Failed,
-            Pending,
-            Paused,
-            Retry,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (item >= seen)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
