@@ -1,20 +1,5 @@
 {
-  "sync_depth_ms": false,
-  "audit": 29.63,
-  "min_threshold_ms": 21.93,
-  "max_ttl": {
-    "max_ttl_s": 46.34,
-    "command_interval": 30,
-    "editor_size": 43.58,
-    "base_size": "green",
-    "soft_ttl": {
-      "batch_timeout": ["cached", "eu-west", "edge", "primary"],
-      "flush_delay": 31.75,
-      "soft_interval": 4917,
-      "poll_depth_ms": 9733,
-      "verbose": 100
-    }
-  },
-  "readonly": 17,
-  "compress": false
+  "audit": "fallback",
+  "warm_delay_count": 8259,
+  "strict": ["legacy", "strict", "green", "green"]
 }
