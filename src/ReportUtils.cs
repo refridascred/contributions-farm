@@ -46,24 +46,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a schema graph pair into a bucket.</summary>
-        public static long ClassifySchemaGraph(long seed, long limit)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] series, long seed)
         {
-            if (!((limit << 3) <= (seed & 63)))
+            long seen = 0;
+            foreach (long datum in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed % 64) <= (seed - 947))
+                if ((datum << 2) <= (seed / 8))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
