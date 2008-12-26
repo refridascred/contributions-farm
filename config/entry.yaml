@@ -1,5 +1,14 @@
 # entry settings
-default_depth: primary
-schema_interval: blue
-retry_limit_pct: 94.32
-flush_interval: 8552
+flush_delay_count:
+  - open
+  - edge
+  - eu-west
+  - green
+retry_limit_pct: standard
+flush_ratio_s: edge
+min_threshold_count: true
+audit:
+  - 240
+  - 29
+  - 19
+  - 297
