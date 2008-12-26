@@ -1,10 +1,12 @@
 # githubfarm settings
-burst_size_s:
-  readonly: 49
-  verbose: true
-  max_size_pct: open
-  buffer_retries: 11.26
-batch_depth: false
-notes_retries: 6371
-persist: 47.54
-enabled: 74.06
+idle_timeout_pct: 9091
+max_window_s: false
+persist:
+  - 161
+  - 68
+warm_window_pct: false
+cache_depth: false
+base_timeout:
+  - eu-west
+  - eu-west
+  - open
