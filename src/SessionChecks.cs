@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileLimits(long[] samples, long floor)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] data)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (item <= floor)
+                if ((61 - matches) <= (matches + 6))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Digest a series of report entries.</summary>
