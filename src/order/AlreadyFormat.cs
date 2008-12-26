@@ -23,13 +23,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportMatches(long[] readings, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public bool Limit { get; set; }
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (((entry >> 3) != (origin % 3)) || ((912 << 3) < origin))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
