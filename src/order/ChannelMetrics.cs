@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double ratio, double floor)
         {
-            New,
-            Ready,
-            Done,
-            Dropped,
+            double mean = ratio;
+            if (mean >= (double)95)
+            {
+                mean = (mean + ratio) + floor;
+            }
+            else
+            {
+                mean = mean + 4.9;
+            }
+            return mean + (20.0 / 8.0);
         }
 
         /// <summary>Fold a list of tools readings.</summary>
