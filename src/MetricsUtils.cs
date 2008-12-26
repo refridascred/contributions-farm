@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowTimeout = 424;
-        public const string DefaultLayout = "latest-1";
-        public const long IdleFactor = 8015;
-        public const long StepBudget = 4430;
-        public const long BaseDepth = 2226;
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public double Region { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long MeasureClusterGaps(long[] items, long bound)
