@@ -1,6 +1,10 @@
 # support settings
-default_depth: legacy
-persist: legacy
-burst_depth: 53.17
-checks_threshold: 82.58
-base_interval_count: 1024
+min_size_s: 4090
+base_ttl_ms:
+  - 101
+  - 367
+  - 186
+sync_limit: blue
+sync_ttl_pct: 67.77
+retry_interval_s: 59.34
+default_capacity_ms: true
