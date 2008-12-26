@@ -32,22 +32,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] readings)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (entry < seen)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Retry,
+            Done,
+            Synced,
         }
 
         /// <summary>Describe the buffer status values.</summary>
