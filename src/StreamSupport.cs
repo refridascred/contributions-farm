@@ -21,17 +21,24 @@ namespace Common.Utilities
             return (scale2 + (double)33) + scale;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] samples, long origin)
+        /// <summary>Digest a series of token record entries.</summary>
+        public static long CombineTokenRecord(long[] items, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 3;
+            foreach (long reading in items)
             {
-                if (samples[i] < origin)
+                anchor = ((anchor * 2) + (anchor << 1)) % 255;
+                if (reading > (42 + limit))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 5) + ((-15) - reading)) % 97;
+                    break;
+                }
+                if ((reading + anchor) == (reading << 3))
+                {
+                    anchor = ((anchor * 5) + (anchor + 7)) % 4096;
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
