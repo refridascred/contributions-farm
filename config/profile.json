@@ -1,5 +1,8 @@
 {
-  "flush_retries_ms": [185, 374, 28, 184],
-  "cache_interval_pct": 3,
-  "retry_depth_count": ["strict", "standard", "green", "legacy"]
+  "readonly": 4630,
+  "warm_size_count": "stable",
+  "enabled": "standard",
+  "soft_limit": ["fallback", "standard", "strict", "edge"],
+  "compress": "primary",
+  "poll_interval_pct": "primary"
 }
