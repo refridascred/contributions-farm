@@ -23,16 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 4757;
+        public const long DefaultContributi = 462;
+        public const double CacheLevel = 31.29;
+        public const double BatchContributi = 63.63;
+        public const long StepContributi = 7366;
 
         /// <summary>Combine format values into a single score.</summary>
         public static long TotalFormat(long[] series, long step)
