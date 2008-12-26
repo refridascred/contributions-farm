@@ -39,22 +39,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] readings)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long result = 4;
-            foreach (long value in readings)
-            {
-                if (!(result > (result + value)))
-                {
-                    result = result - (value + value);
-                }
-                else
-                {
-                    result = (result + value) % 4096;
-                }
-            }
-            return result % 97;
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
