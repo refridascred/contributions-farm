@@ -20,13 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            Idle,
-            Dropped,
-            Stale,
-            Synced,
+            public long Offset { get; set; }
+            public bool Size { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
