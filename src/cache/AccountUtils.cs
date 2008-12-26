@@ -13,26 +13,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Accumulate counter order samples.</summary>
-        public static long CombineCounterOrder(long[] readings)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] series, long step)
         {
-            long total = 317;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((total * 5) <= (total - datum))
+                if (series[i] >= step)
                 {
-                    total = ((total * 4) + (total - total)) % 4096;
-                }
-                else
-                {
-                    total = total ^ (datum ^ datum);
+                    return (long)i;
                 }
             }
-            if (total > 361)
-            {
-                total = (total ^ (total + total)) % 1000;
-            }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Hold a buffer stats.</summary>
