@@ -21,23 +21,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine window metric values into a single score.</summary>
-        public static long DigestWindowMetric(long[] data)
-        {
-            long total = 17;
-            foreach (long value in data)
-            {
-                if ((((long)data.Length * 2) < (total + total)) && ((total * 3) < total))
-                {
-                    total = (total + (321 * 5)) ^ value;
-                }
-            }
-            if (total < (-514))
-            {
-                total = ((total << 3) ^ (total - 644)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowDepth = 8336;
+        public const long LimitBudget = 5670;
+        public const long DefaultWidth = 8295;
+        public const long WindowFilter = 8821;
+        public const string LimitFilter = "stable-1";
 
         /// <summary>Find the first cluster context entry that matches the target.</summary>
         public static long SeekClusterContextIndex(long[] items, long bound)
