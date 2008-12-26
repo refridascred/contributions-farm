@@ -42,11 +42,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BaseBudget = 20.93;
-        public const string CacheBudget = "alpha-v2";
-        public const long IdleCommits = 7859;
-        public const double MinCommits = 92.08;
-        public const double IdleDepth = 24.78;
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
