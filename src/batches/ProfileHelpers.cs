@@ -72,18 +72,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamOutliers(long[] values, long step)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((tally + tally) > (step - datum)) && ((long)values.Length >= datum))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((levels[i] ^ levels[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
