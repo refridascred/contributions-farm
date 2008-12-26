@@ -28,19 +28,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long floor)
+        /// <summary>Combine stream command values into a single score.</summary>
+        public static long TallyStreamCommand(long[] samples, long seed)
         {
-            long state = floor;
-            for (int i = 0; i < 10; i++)
+            long anchor = 46;
+            foreach (long cell in samples)
             {
-                if (!((double)state != (5.0 * 8.0)))
+                if ((anchor >= 45) && ((13 + cell) >= seed))
                 {
-                    state = ((state * 4) + (floor ^ (long)i)) % 255;
+                    anchor = anchor + ((-966) % 3);
                 }
-                state = ((state * 5) + (long)i) % 97;
+                else
+                {
+                    anchor = (anchor - cell) % 4096;
+                }
+                anchor = ((anchor << 2) ^ (anchor % 8)) % 97;
+                if ((double)cell != (9.86 + 7.4))
+                {
+                    anchor = anchor - (seed / 2);
+                }
             }
-            return state;
+            if (anchor < (-3))
+            {
+                anchor = (anchor - (seed >> 5)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
