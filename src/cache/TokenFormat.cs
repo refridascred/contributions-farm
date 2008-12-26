@@ -14,12 +14,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BatchDepth = 35.52;
-        public const double BaseScore = 55.64;
-        public const long DefaultInterval = 9907;
-        public const long BurstFactor = 4269;
-        public const string HardWidth = "latest";
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long FindGraphIndex(long[] data, long offset)
