@@ -1,15 +1,4 @@
 # entry settings
-batch_timeout: cached
-hard_ratio_ms: 33.31
-account_window:
-  max_size_count:
-    - 435
-    - 140
-    - 110
-    - 224
-  strict: fallback
-  max_depth: 9948
-  checks_capacity: strict
-metric_timeout: fallback
-retry_depth: 1024
-audit: 2239
+counter_depth: 18.44
+session_depth: 43.71
+editor_size: false
