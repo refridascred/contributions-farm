@@ -1,10 +1,7 @@
 {
-  "cache_capacity": 100,
-  "soft_interval_s": {
-    "min_limit_s": [101, 39, 123, 467],
-    "stream_depth": "open",
-    "verbose": [271, 500, 174, 158]
-  },
-  "cache_timeout_pct": 45.62,
-  "min_interval_ms": "standard"
+  "sync_size_pct": 66.83,
+  "payload_limit": "eu-west",
+  "cache_depth": "eu-west",
+  "max_ttl_ms": "green",
+  "report_limit": "local"
 }
