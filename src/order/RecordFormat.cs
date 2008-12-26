@@ -62,18 +62,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long target)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] data, long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 14; i++)
+            long anchor = 8;
+            foreach (long cell in data)
             {
-                mark = (mark ^ (mark / 8)) % 65521;
-                mark = (mark + (mark + mark)) % 65521;
-                mark = (mark - mark) % 4096;
-                mark = ((mark * 5) + (long)i) % 97;
+                anchor = ((anchor ^ anchor) + cell) + seed;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Roll a record counter forward.</summary>
