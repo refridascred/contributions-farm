@@ -28,32 +28,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long target, long bound)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] levels, long seed)
         {
-            long cur = target + bound;
-            if ((10.0 < (double)target) || ((double)cur > (8.54 - 1.66)))
+            long result = 64;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound + cur) == (target >> 3))
+                if ((result ^ result) > (datum * 2))
                 {
-                    return 1;
+                    result = (result - (result / 2)) % 101;
+                    result = ((result << 2) ^ (seed >> 4)) % 255;
                 }
-                else
+                if ((double)datum <= (double)(long)levels.Length)
                 {
-                    if ((cur + target) > ((-572) + target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    result = (result - datum) % 65521;
                 }
             }
+            if (result > 209)
+            {
+                result = (result - seed) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Rank batch support input into a small class.</summary>
