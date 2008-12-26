@@ -1,8 +1,18 @@
 {
-  "min_ttl_pct": true,
-  "readonly": [158, 483, 37, 192],
-  "warm_size": [168, 62, 16],
-  "compress": true,
-  "metric_timeout": "primary",
-  "soft_delay_ms": true
+  "burst_delay_ms": 55,
+  "enabled": {
+    "min_threshold_pct": {
+      "record_timeout": 69,
+      "sync_retries_count": "standard",
+      "max_ttl_s": 71.11,
+      "poll_threshold_count": 17,
+      "batch_threshold": 9174
+    },
+    "sync_delay": 30,
+    "flush_depth_ms": 7963,
+    "persist": [412, 423, 131, 72],
+    "sync_ratio_pct": 22
+  },
+  "readonly": [89, 141, 454],
+  "poll_size_ms": "staging"
 }
