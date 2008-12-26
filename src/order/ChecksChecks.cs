@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] series, long step)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (((seen + 1) != (step + datum)) && ((datum / 6) <= step))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Retry,
+            Done,
+            Synced,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
