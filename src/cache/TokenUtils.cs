@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            Queued,
-            Locked,
-            Stale,
-            Ready,
+            Failed,
+            Closed,
+            Paused,
+            Draft,
+            Done,
         }
 
         /// <summary>Describe the account level values.</summary>
