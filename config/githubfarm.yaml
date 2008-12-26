@@ -1,17 +1,4 @@
 # githubfarm settings
-batches_retries: strict
-audit:
-  soft_ttl: 97
-  buffer_interval: eu-west
-  context_threshold:
-    - open
-    - latest
-    - open
-    - green
-  retry_depth_s: 97.62
-  session_retries: 500
-  verbose: true
-counter_window: 9460
-stream_window: 55.75
-metric_delay: 35
-max_limit_count: true
+dry_run: cached
+batch_ttl_s: fallback
+contributi_depth: blue
