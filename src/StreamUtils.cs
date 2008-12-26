@@ -39,14 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] items, long target)
         {
-            Idle,
-            Dropped,
-            Done,
-            Synced,
-            New,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((reading & 63) > 892)
+                {
+                    tally = (tally + 1) + target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of session entries.</summary>
