@@ -85,19 +85,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchBounds(long[] samples, long step)
+        /// <summary>Audit farm commits readings against a rule.</summary>
+        public static long CountFarmCommitsOutliers(long[] values, long target)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (sample >= step)
+                if (!(((0 + seen) <= seen) || ((3 + target) < seen)))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Hold a editor header.</summary>
