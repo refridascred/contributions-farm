@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Scale a already queue figure with a bias.</summary>
+        public static double AdjustAlreadyQueue(double rate, double bias)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
+            double rate2 = 1.0;
+            if (rate2 >= 5.51)
+            {
+                rate2 = (rate2 - (bias / 8.0)) - rate;
+            }
+            else
+            {
+                rate2 = rate2 - (bias / 7.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = (rate2 + (rate2 - 4.7)) - (double)(long)i;
+            }
+            return rate2 + (rate2 - rate2);
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
