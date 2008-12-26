@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] series)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((((double)matches != (double)6) && ((matches << 1) >= (entry - matches))) || (matches < (matches / 2)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Idle,
+            Done,
+            New,
         }
 
         /// <summary>Fold a list of tools readings.</summary>
