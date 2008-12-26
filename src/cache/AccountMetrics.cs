@@ -30,21 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] items)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double weight, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = bias;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias2 = ((bias2 + (bias2 * 2.0)) + (double)(long)i) - weight;
             }
-            return tally;
+            return bias2 - (9.0 - 0.87);
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
