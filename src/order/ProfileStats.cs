@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            Retry,
-            Stale,
-            Done,
+            public double Weight { get; set; }
+            public double Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
