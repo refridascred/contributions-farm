@@ -63,22 +63,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] readings)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (!((double)seen > (6.76 / 8.0)) && ((value << 3) < 8))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Stale,
+            Retry,
+            Dropped,
+            Synced,
         }
     }
 }
