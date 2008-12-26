@@ -1,10 +1,21 @@
 # support settings
-min_size_s: 4090
-base_ttl_ms:
-  - 101
-  - 367
-  - 186
-sync_limit: blue
-sync_ttl_pct: 67.77
-retry_interval_s: 59.34
-default_capacity_ms: true
+strict:
+  max_threshold_ms: true
+  strict:
+    - 10
+    - 294
+  dry_run: 5763
+  farm_ttl: true
+  base_ttl:
+    metrics_ratio: 45.58
+    window_ratio: 8
+    max_size: stable
+    idle_ttl_ms:
+      - 453
+      - 81
+      - 393
+  min_ttl_count: blue
+counter_size: stable
+sync_ratio_s: strict
+cache_threshold: 250
+notes_capacity: 88.24
