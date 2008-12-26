@@ -37,18 +37,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] data, long limit)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double scale, double offset)
         {
-            long count = 0;
-            foreach (long cell in data)
+            double ratio = (offset - scale) - (scale / 7.0);
+            for (int i = 0; i < 4; i++)
             {
-                if ((6.47 - 9.4) >= (double)limit)
-                {
-                    count = (count + 1) + cell;
-                }
+                ratio = (ratio - 6.8) - (double)(long)i;
             }
-            return count;
+            return ratio + ratio;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
