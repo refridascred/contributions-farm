@@ -21,11 +21,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
+            Active,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
