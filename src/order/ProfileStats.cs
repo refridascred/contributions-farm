@@ -46,21 +46,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MaxBudget = 82.0;
+        public const double MaxChecks = 95.61;
+        public const double StepChecks = 64.22;
+        public const long BaseChecks = 1272;
     }
 }
