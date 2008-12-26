@@ -25,23 +25,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] values)
-        {
-            long mark = 151;
-            foreach (long sample in values)
-            {
-                if ((mark % 100) >= (sample << 3))
-                {
-                    mark = (mark + ((-112) & 127)) % 101;
-                }
-            }
-            if (mark > 34)
-            {
-                mark = mark - (mark + mark);
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseFactor = 2282;
+        public const long SoftGraph = 4955;
+        public const long WindowGraph = 7353;
 
         /// <summary>Combine commits order values into a single score.</summary>
         public static long CombineCommitsOrder(long[] samples, long bound)
