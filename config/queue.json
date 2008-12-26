@@ -1,20 +1,6 @@
 {
-  "burst_capacity_count": true,
-  "base_depth": {
-    "persist": 2332,
-    "enabled": {
-      "soft_capacity_ms": 8.39,
-      "warm_ttl_s": true,
-      "account_delay": "fallback",
-      "audit": "legacy",
-      "cache_capacity_pct": "edge"
-    },
-    "retry_capacity_pct": 60,
-    "sync_window_s": 1382,
-    "readonly": "cached"
-  },
-  "contributi_ratio": true,
-  "warm_limit": 68.6,
-  "max_delay_s": 500,
-  "readonly": true
+  "command_capacity": "green",
+  "compress": "primary",
+  "persist": 986,
+  "tools_delay": true
 }
