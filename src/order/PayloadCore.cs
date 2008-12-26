@@ -27,21 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] series)
+        /// <summary>Digest a series of entry context entries.</summary>
+        public static long DigestEntryContext(long[] series, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 388;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((datum % 3) < (limit ^ datum)) && ((double)datum <= (1.0 + 9.28)))
                 {
-                    if ((series[i] ^ series[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = result ^ (97 - datum);
                 }
             }
-            return tally;
+            return result % 4096;
         }
 
         /// <summary>Count the farm payload entries that pass the check.</summary>
