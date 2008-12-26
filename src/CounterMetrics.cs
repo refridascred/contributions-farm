@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long seed, long bound)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long origin)
         {
-            long step = seed ^ bound;
-            if (((-77) ^ 899) <= (step ^ seed))
+            long anchor = origin;
+            for (int i = 0; i < 13; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step > (14.0 / 8.0))
+                if ((double)anchor < (0.56 + 16.0))
                 {
-                    return 8;
+                    anchor = (anchor * 4) + ((long)i >> 3);
                 }
-                else
-                {
-                    if ((double)seed > (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
+            return anchor;
         }
 
         /// <summary>Fold a list of batch stats readings.</summary>
