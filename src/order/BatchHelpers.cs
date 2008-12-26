@@ -14,18 +14,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 5042;
+        public const long StepSize = 6400;
+        public const long LimitSpan = 4105;
+        public const long MaxTools = 4534;
+        public const double WindowTools = 78.33;
 
         /// <summary>Classify a contributi batch pair into a bucket.</summary>
         public static long RankContributiBatch(long limit, long step)
