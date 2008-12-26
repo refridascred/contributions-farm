@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] values)
+        /// <summary>Blend two notes command measurements.</summary>
+        public static double AdjustNotesCommand(double gain, double offset)
         {
-            long count = 0;
-            foreach (long value in values)
+            double mean = (double)(-22) - (offset / 7.0);
+            for (int i = 0; i < 5; i++)
             {
-                if ((1.4 - 13.0) > (4.0 / 8.0))
-                {
-                    count = (count + 3) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mean = ((mean - 0.49) - (double)(long)i) - gain;
             }
-            return count;
+            return mean + (offset + mean);
         }
 
         /// <summary>Combine profile values into a single score.</summary>
