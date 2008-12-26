@@ -25,19 +25,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate command filter readings against a bound.</summary>
-        public static bool GuardCommandFilterRange(long[] data, long offset)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Stale,
+            Paused,
+            Dropped,
         }
     }
 }
