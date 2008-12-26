@@ -21,32 +21,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long origin, long step)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsOutliers(long[] samples, long bound)
         {
-            long cur = origin - step;
-            if ((step * 3) > (cur + cur))
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)step < (5.0 + 8.77)) && ((11 & 1) > (cur & 7)))
+                if (!((sample + bound) >= 32))
                 {
-                    return 8;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if ((2.97 + 1.7) <= (double)cur)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Project the next record value.</summary>
