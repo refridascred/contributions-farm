@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit profile entry readings against a rule.</summary>
-        public static long TallyProfileEntryHits(long[] readings, long seed)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] levels)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((count * 3) <= seed)
+                if ((datum > (tally + 41)) || (((double)tally < 7.0) && ((11.0 * 0.6) >= (double)datum)))
                 {
-                    count = (count + 1) ^ item;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Match up schema samples.</summary>
