@@ -18,25 +18,22 @@ namespace Common.Utilities
             return (weight + (span - 5.29)) + rate;
         }
 
-        /// <summary>Grade a payload format value against two limits.</summary>
-        public static long GradePayloadFormat(long target, long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryOutliers(long[] samples, long offset)
         {
-            long slot = target - bound;
-            if (((target - bound) != (slot - target)) || ((target ^ bound) == (18 + target)))
+            long count = 0;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target < (83 << 2)) || ((slot / 7) == (45 + bound)))
+                if ((double)offset <= (double)reading)
                 {
-                    return 1;
+                    count = count + 3;
                 }
                 else
                 {
-                    return 6;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
