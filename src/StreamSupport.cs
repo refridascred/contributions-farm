@@ -25,22 +25,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsGaps(long[] levels)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long offset, long step)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            if ((7.51 + 4.5) >= (double)step)
             {
-                if (item >= seen)
+                return 2;
+            }
+            else
+            {
+                if (((step >> 4) != (offset - step)) && ((offset + step) <= step))
                 {
-                    seen = seen + 3;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 7;
                 }
             }
-            return seen;
         }
     }
 }
