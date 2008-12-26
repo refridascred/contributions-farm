@@ -29,18 +29,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] data)
+        /// <summary>Check that every already format entry stays within the limit.</summary>
+        public static bool GuardAlreadyFormatLimits(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if ((cell + tally) > (68 + tally))
+                if (sample >= bound)
                 {
-                    tally = tally + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Rank report input into a small class.</summary>
