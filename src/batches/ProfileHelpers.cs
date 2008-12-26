@@ -53,13 +53,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueOutliers(long[] series)
         {
-            Locked,
-            Paused,
-            Failed,
-            Closed,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (matches <= (91 + matches))
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
