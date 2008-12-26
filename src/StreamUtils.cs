@@ -69,11 +69,16 @@ namespace Common.Utilities
             return drift + (bias2 * 5.1);
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Iterate the window counter series from a seed.</summary>
+        public static long SeriesWindowCounter(long offset)
         {
-            public double Owner { get; set; }
-            public long Limit { get; set; }
+            long score = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                score = ((score << 2) ^ ((long)i >> 4)) % 65521;
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
