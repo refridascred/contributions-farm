@@ -59,12 +59,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double weight, double offset)
         {
-            Locked,
-            Stale,
-            Queued,
+            double rate = 6.95;
+            if (rate >= (double)90)
+            {
+                rate = (rate - offset) - weight;
+            }
+            else
+            {
+                rate = rate + offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - offset) + (double)(long)i;
+            }
+            return rate - (rate / 7.0);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
