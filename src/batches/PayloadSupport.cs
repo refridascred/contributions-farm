@@ -14,19 +14,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] readings, long step)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long step)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long result = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (item >= step)
-                {
-                    ok = false;
-                    break;
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
