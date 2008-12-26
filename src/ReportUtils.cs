@@ -48,22 +48,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] values, long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricMatches(long[] data)
         {
-            long mark = 20;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((seed ^ mark) == (seed >> 4))
+                if (tally >= (reading - 9))
                 {
-                    mark = ((mark * 3) + (seed & 7)) % 101;
-                }
-                if ((sample - mark) <= sample)
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Describe the commits kind values.</summary>
