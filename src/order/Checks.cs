@@ -69,17 +69,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                acc = ((acc * 4) + (366 << 2)) % 255;
-                acc = (acc - (acc + 198)) % 1000;
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 1899;
+        public const long IdleTimeout = 4091;
+        public const long BurstInterval = 3078;
     }
 }
