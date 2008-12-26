@@ -27,16 +27,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long limit)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsHits(long[] readings, long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                mix = mix + (long)i;
-                mix = ((mix * 5) + (long)i) % 4093;
+                if ((87 + seen) >= (75 - floor))
+                {
+                    seen = (seen + 2) + cell;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Describe the payload status values.</summary>
