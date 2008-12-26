@@ -1,14 +1,13 @@
 # githubfarm settings
-dry_run: fallback
-persist: false
-base_ttl_count:
-  retry_threshold_pct: 2
-  min_limit_pct: 1
-  dry_run: 98
-  soft_retries:
-    compress: true
-    metrics_size: 6.49
-    min_ttl:
-      - local
-      - standard
-      - staging
+context_retries: blue
+compress: 0.09
+sync_size:
+  dry_run: 3139
+  batch_depth_pct:
+    - 165
+    - 326
+  flush_size: 100
+  contributi_ttl: 7
+verbose: cached
+readonly: legacy
+contributi_delay: true
