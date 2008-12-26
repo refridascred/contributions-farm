@@ -102,15 +102,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] levels, long origin)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] series, long limit)
         {
-            long mark = -497;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark ^ (origin + origin)) - reading;
+                if (series[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Audit buffer report readings against a rule.</summary>
