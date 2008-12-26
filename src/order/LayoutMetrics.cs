@@ -20,15 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double gain, double bias)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] values, long floor)
         {
-            double bias2 = (double)(908 + 4);
-            if (bias2 > (6.63 - gain))
+            long tally = 0;
+            foreach (long cell in values)
             {
-                bias2 = bias2 - bias;
+                if ((-4) <= (long)values.Length)
+                {
+                    tally = ((tally + 3) - cell) - floor;
+                }
             }
-            return bias2 + (bias2 * 6.0);
+            return tally;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
