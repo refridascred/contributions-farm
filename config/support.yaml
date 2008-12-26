@@ -1,27 +1,5 @@
 # support settings
-soft_ttl_pct:
-  default_ttl: 5643
-  retry_retries_s: 500
-  readonly:
-    - legacy
-    - legacy
-    - standard
-    - latest
-  soft_ttl_count:
-    - stable
-    - blue
-    - staging
-    - latest
-dry_run:
-  - primary
-  - local
-cache_threshold:
-  report_retries:
-    - blue
-    - legacy
-    - standard
-    - open
-  base_limit_s:
-    - cached
-    - eu-west
-  checks_retries: 25
+burst_limit_ms: staging
+max_threshold_s: standard
+farm_limit: true
+poll_ttl_s: local
