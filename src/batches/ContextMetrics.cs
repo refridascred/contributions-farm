@@ -62,20 +62,14 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long target)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long sum = target;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = (sum * 3) + sum;
-                if ((target * 3) > (long)i)
-                {
-                    sum = (sum ^ (436 + (long)i)) % 4096;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            New,
+            Ready,
+            Closed,
+            Locked,
+            Queued,
         }
     }
 }
