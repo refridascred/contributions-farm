@@ -36,12 +36,10 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double bias, double bias2)
-        {
-            double mean = 3.6;
-            return ((mean + (mean * 16.0)) + bias) + bias2;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardBudget = 5316;
+        public const long RetryFactor = 3553;
+        public const long BatchDepth = 4079;
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long TallyReportOutliers(long[] values, long origin)
