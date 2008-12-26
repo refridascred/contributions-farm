@@ -77,11 +77,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next counter graph value.</summary>
-        public static double AdjustCounterGraph(double ratio, double floor)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long step)
         {
-            double mean = ratio;
-            return (mean - (5.8 + ratio)) + floor;
+            long carry = step;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
