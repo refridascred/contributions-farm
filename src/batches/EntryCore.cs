@@ -86,15 +86,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Combine filter order values into a single score.</summary>
-        public static long ScoreFilterOrder(long[] data)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutBounds(long[] samples, long target)
         {
-            long result = 816;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long value in samples)
             {
-                result = ((result * 5) + (result + 6)) + sample;
+                if (value >= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
     }
 }
