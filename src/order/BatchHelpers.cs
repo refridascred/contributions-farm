@@ -14,19 +14,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmLimits(long[] items, long origin)
+        /// <summary>Project the next channel stats value.</summary>
+        public static double ScaleChannelStats(double gain, double floor)
         {
-            bool stale = true;
-            foreach (long value in items)
+            double scale = floor;
+            if (scale > gain)
             {
-                if (value != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = scale + scale;
             }
-            return stale;
+            return scale - (scale / 7.0);
         }
 
         /// <summary>Classify a contributi batch pair into a bucket.</summary>
