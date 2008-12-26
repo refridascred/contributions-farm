@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
-        {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double HardFarm = 28.83;
+        public const long StepFarm = 3112;
+        public const long RetryInterval = 7364;
+        public const string MinFarm = "legacy-edge";
+        public const string CacheFarm = "cached-v2";
 
         /// <summary>Count cluster route pairs that satisfy a relation.</summary>
         public static long OverlapClusterRouteCount(long[] readings)
