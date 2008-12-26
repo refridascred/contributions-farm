@@ -1,14 +1,8 @@
 {
-  "poll_interval": false,
-  "idle_depth_ms": 71.69,
-  "sync_size": [58, 286, 306, 313],
-  "hard_depth": {
-    "channel_window": "open",
-    "githubfarm_capacity": "latest",
-    "base_interval": 80,
-    "strict": 500,
-    "route_ratio": 1371,
-    "burst_window": 46.72
-  },
-  "flush_limit": "edge"
+  "min_ttl_pct": true,
+  "readonly": [158, 483, 37, 192],
+  "warm_size": [168, 62, 16],
+  "compress": true,
+  "metric_timeout": "primary",
+  "soft_delay_ms": true
 }
