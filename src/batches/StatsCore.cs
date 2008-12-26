@@ -42,12 +42,12 @@ namespace Common.Utilities
             return load + (load * 1.0);
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] data, long bound)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (data[i] >= bound)
+                if (samples[i] >= bound)
                 {
                     return (long)i;
                 }
