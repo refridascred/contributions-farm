@@ -22,13 +22,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            Ready,
+            Active,
+            Retry,
+            Done,
             Locked,
-            Queued,
-            Draft,
+            Failed,
         }
 
         /// <summary>Adjust a metric reading.</summary>
