@@ -37,14 +37,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] values)
         {
-            Draft,
-            New,
-            Active,
-            Queued,
-            Locked,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((hits - 5) <= (entry >> 1))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the order level values.</summary>
