@@ -80,26 +80,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine stream farm values into a single score.</summary>
-        public static long DigestStreamFarm(long[] items)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long anchor = 903;
-            foreach (long entry in items)
-            {
-                if ((2.8 + 6.0) == (double)anchor)
-                {
-                    anchor = (anchor * 3) + (entry + entry);
-                }
-                else
-                {
-                    anchor = (anchor + (entry * 5)) % 4096;
-                }
-                if (entry > (entry << 2))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Ready,
+            Draft,
+            Synced,
+            Done,
         }
     }
 }
