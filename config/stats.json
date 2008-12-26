@@ -1,7 +1,11 @@
 {
-  "min_depth_count": 47,
-  "max_ttl": "fallback",
-  "default_interval_count": 3674,
-  "cache_interval_pct": 49,
-  "warm_depth": "local"
+  "burst_interval": "latest",
+  "support_window": 6884,
+  "hard_limit_ms": false,
+  "burst_ttl_s": "legacy",
+  "idle_interval": {
+    "report_depth": [147, 392, 298, 439],
+    "audit": "latest",
+    "flush_depth": "stable"
+  }
 }
