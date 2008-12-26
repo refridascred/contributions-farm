@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of filter commits readings.</summary>
-        public static long PairFilterCommitsCount(long[] series)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the contributi status values.</summary>
