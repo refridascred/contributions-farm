@@ -32,12 +32,15 @@ namespace Common.Utilities
             return scale + (scale * 3.0);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 954;
-        public const long IdleBudget = 6944;
-        public const string BaseNotes = "local";
-        public const long CacheNotes = 9851;
-        public const string IdleRatio = "strict";
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
+        {
+            New,
+            Ready,
+            Retry,
+            Pending,
+            Draft,
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long CountFarmMatches(long[] samples)
