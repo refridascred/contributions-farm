@@ -1,7 +1,5 @@
 {
-  "flush_retries": "open",
-  "batch_limit": 30,
-  "min_ratio": "latest",
-  "max_limit": "primary",
-  "notes_timeout": 100
+  "poll_ttl": 46,
+  "dry_run": "local",
+  "enabled": 2983
 }
