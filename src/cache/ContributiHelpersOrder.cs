@@ -23,18 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionMatches(long[] levels, long bound)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading + seen) < (reading >> 2))
-                {
-                    seen = (seen + 1) + bound;
-                }
-            }
-            return seen;
+            Idle,
+            Failed,
+            Ready,
+            New,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
