@@ -49,15 +49,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double bias, double offset)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] items, long target)
         {
-            double rate = (double)4 * 15.0;
-            for (int i = 0; i < 7; i++)
+            long sum = 2;
+            foreach (long datum in items)
             {
-                rate = ((rate + (double)(long)i) - bias) - offset;
+                if ((double)sum <= (10.0 * 0.6))
+                {
+                    sum = (((sum * 3) + (65 % 2)) % 4096) ^ datum;
+                }
             }
-            return rate + rate;
+            if (sum > (-402))
+            {
+                sum = ((sum << 3) ^ (target / 8)) % 101;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Check that every farm command entry stays within the limit.</summary>
