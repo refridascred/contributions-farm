@@ -76,21 +76,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate metric tools samples.</summary>
-        public static long FoldMetricTools(long[] data, long floor)
-        {
-            long anchor = 39;
-            foreach (long value in data)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    anchor = (((anchor - anchor) % 65521) ^ (long)i) + floor;
-                    anchor = (anchor << 2) ^ (anchor + value);
-                }
-                anchor = anchor + (value * 3);
-            }
-            return anchor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BurstRatio = "fallback-edge";
+        public const long HardTimeout = 9856;
+        public const string CacheMetrics = "standard-v2";
 
         /// <summary>Hold a githubfarm header.</summary>
         public sealed class GithubfarmHeader
