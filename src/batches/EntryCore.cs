@@ -46,15 +46,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] data, long seed)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] readings, long limit)
         {
-            long mark = 1;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                mark = mark + (entry + seed);
+                if ((5.79 - 15.0) < (double)(long)readings.Length)
+                {
+                    hits = ((hits + 1) ^ datum) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
