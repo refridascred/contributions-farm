@@ -19,19 +19,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] levels, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] levels)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (item >= seed)
+                if ((cell - seen) >= cell)
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
