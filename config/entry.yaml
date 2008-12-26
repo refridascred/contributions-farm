@@ -1,4 +1,4 @@
 # entry settings
-counter_depth: 18.44
-session_depth: 43.71
-editor_size: false
+base_interval: 93
+compress: latest
+dry_run: 47.5
