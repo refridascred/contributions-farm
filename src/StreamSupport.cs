@@ -14,22 +14,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiHits(long[] readings)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsGaps(long[] items)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((double)count == (12.0 * 8.7))
+                if ((hits * 2) >= hits)
                 {
-                    count = (count + 3) - reading;
+                    hits = (hits + 1) + item;
                 }
                 else
                 {
-                    count = count - 1;
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the channel state values.</summary>
