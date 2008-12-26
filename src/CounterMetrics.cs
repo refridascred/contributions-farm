@@ -17,18 +17,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] items, long bound)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((1 << 2) <= (seen * 4)) && !((double)seen != (1.0 + 4.89)))
+                if (readings[i] > origin)
                 {
-                    seen = ((seen + 2) ^ value) + bound;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many githubfarm entry samples are out of range.</summary>
