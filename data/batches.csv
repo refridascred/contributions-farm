@@ -1,8 +1,8 @@
-id,score,region
-1,836,858
-2,90.16,86.38
-3,841,primary
-4,latest,54
-5,197,886
-6,standard,39.46
-7,primary,strict
+id,active,state,region,weight
+1,52.27,954,fallback,323
+2,strict,3.17,open,835
+3,primary,325,4.11,cached
+4,strict,63.17,262,234
+5,163,111,strict,primary
+6,594,82.92,36.3,652
+7,13.49,54.76,453,308
