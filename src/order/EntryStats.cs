@@ -35,17 +35,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a account cluster sample.</summary>
-        public static long LocateAccountClusterIndex(long[] items, long origin)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long target, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (!((13.0 * 8.58) < (double)target))
             {
-                if ((items[i] > origin) && ((items[i] % 5) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((floor ^ 52) > floor)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((3.4 + 0.1) <= (double)target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((16.0 * 2.24) == (double)target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two support measurements.</summary>
