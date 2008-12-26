@@ -38,27 +38,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] levels, long seed)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] data, long seed)
         {
-            long result = 64;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if ((result ^ result) > (datum * 2))
+                if (value != seed)
                 {
-                    result = (result - (result / 2)) % 101;
-                    result = ((result << 2) ^ (seed >> 4)) % 255;
-                }
-                if ((double)datum <= (double)(long)levels.Length)
-                {
-                    result = (result - datum) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            if (result > 209)
-            {
-                result = (result - seed) % 4096;
-            }
-            return result;
+            return ok;
         }
 
         /// <summary>Rank batch support input into a small class.</summary>
