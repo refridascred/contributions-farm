@@ -22,14 +22,19 @@ namespace Common.Utilities
             return load + (load - 2.36);
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorBounds(long[] samples, long floor)
         {
-            Synced,
-            Locked,
-            Queued,
-            Retry,
-            Paused,
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
