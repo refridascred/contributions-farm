@@ -36,10 +36,10 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardBudget = 5316;
-        public const long RetryFactor = 3553;
-        public const long BatchDepth = 4079;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double RetryFarm = 83.87;
+        public const long BaseFarm = 6601;
+        public const string IdleFarm = "local-1";
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long TallyReportOutliers(long[] values, long origin)
