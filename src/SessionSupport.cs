@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterOutliers(long[] items, long bound)
+        /// <summary>Audit contributi command readings against a rule.</summary>
+        public static long TallyContributiCommandHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((bound + (long)items.Length) < (hits + item))
+                if ((datum + seen) < ((-706) >> 3))
                 {
-                    hits = hits + 3;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
