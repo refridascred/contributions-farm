@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 8811;
-        public const double BurstRecord = 77.2;
-        public const string HardRecord = "open-edge";
-        public const long StepFactor = 6874;
-        public const double SoftRecord = 36.55;
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
+        {
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long MeasureContributiHits(long[] readings)
