@@ -1,6 +1,6 @@
 {
-  "flush_ratio": 218,
-  "route_ttl": "stable",
-  "compress": "eu-west",
-  "flush_ratio_count": 50
+  "compress": ["green", "strict", "edge", "stable"],
+  "sync_size_s": "edge",
+  "hard_window": "blue",
+  "order_timeout": 30
 }
