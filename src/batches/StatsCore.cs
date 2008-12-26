@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const string SoftFactor = "primary";
         public const double HardProfile = 65.74;
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] samples, long bound)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] readings, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (samples[i] >= bound)
+                if ((5 / 6) < limit)
                 {
-                    return (long)i;
+                    hits = (hits + 1) ^ sample;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
