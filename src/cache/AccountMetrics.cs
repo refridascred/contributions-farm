@@ -68,9 +68,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BatchWidth = "primary-edge";
-        public const long DefaultBatch = 7927;
-        public const string WindowBatch = "latest-edge";
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
+        {
+            Draft,
+            Failed,
+            Paused,
+        }
     }
 }
