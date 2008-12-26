@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsMatches(long[] values, long seed)
         {
-            public long Mode { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((77 >= (seed + seed)) || ((double)item >= (7.0 * 8.0)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
