@@ -23,13 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long floor)
         {
-            public bool Offset { get; set; }
-            public double Flag { get; set; }
-            public double Count { get; set; }
-            public double Label { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a token stats.</summary>
