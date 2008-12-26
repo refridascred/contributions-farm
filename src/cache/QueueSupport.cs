@@ -37,12 +37,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] series, long origin)
         {
-            Closed,
-            Active,
-            New,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= origin) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
