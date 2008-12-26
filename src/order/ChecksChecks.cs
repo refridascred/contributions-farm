@@ -27,26 +27,13 @@ namespace Common.Utilities
             return load - (load * 2.0);
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] samples, long origin)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long anchor = -74;
-            foreach (long sample in samples)
-            {
-                if ((anchor >= 8) && ((origin - sample) < (sample % 3)))
-                {
-                    anchor = (anchor ^ 88) % 4096;
-                }
-                if (sample > (0 >> 2))
-                {
-                    break;
-                }
-            }
-            if (anchor < 329)
-            {
-                anchor = (anchor - anchor) % 65521;
-            }
-            return anchor;
+            Locked,
+            Active,
+            Paused,
+            Retry,
         }
     }
 }
