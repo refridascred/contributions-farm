@@ -15,12 +15,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 5163;
-        public const string IdleReport = "stable-v2";
-        public const long CacheSize = 7375;
-        public const long SoftTimeout = 3465;
-        public const double DefaultReport = 28.93;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Dropped,
+            Retry,
+            Synced,
+            Active,
+        }
 
         /// <summary>Project the next record value.</summary>
         public static double SmoothRecord(double weight, double floor)
