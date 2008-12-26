@@ -59,20 +59,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of checks commits readings.</summary>
-        public static long WeighChecksCommits(long[] readings, long step)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] samples, long floor)
         {
-            long acc = 7;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                for (int i = 0; i < 2; i++)
+                if (entry > floor)
                 {
-                    acc = (acc * 4) + (item << 2);
-                    acc = (acc + ((long)i << 3)) % 65521;
+                    ok = false;
+                    break;
                 }
-                acc = acc - (step + item);
             }
-            return acc;
+            return ok;
         }
     }
 }
