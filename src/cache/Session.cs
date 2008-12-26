@@ -25,18 +25,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] levels, long seed)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long limit, long limit2)
         {
-            long score = 8;
-            foreach (long cell in levels)
+            long prev = limit - limit2;
+            if (6.16 >= (double)prev)
             {
-                if (((score + seed) >= (seed % 12)) && ((double)cell < (double)score))
+                return 6;
+            }
+            else
+            {
+                if (limit2 >= limit)
                 {
-                    score = ((score * 5) + (seed + (-65))) % 255;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)prev == (2.6 / 5.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Locate a report entry reading by value.</summary>
