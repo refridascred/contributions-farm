@@ -51,12 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            Active,
-            Done,
-            Idle,
+            public long Score { get; set; }
+            public bool Mode { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
