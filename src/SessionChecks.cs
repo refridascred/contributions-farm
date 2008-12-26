@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long offset)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] readings, long bound)
         {
-            long acc = offset;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (acc > (offset >> 4))
+                if (readings[i] >= bound)
                 {
-                    acc = ((acc * 5) + (long)i) % 65521;
+                    return (long)i;
                 }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the checks kind values.</summary>
