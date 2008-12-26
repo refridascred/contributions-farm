@@ -78,18 +78,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count the commits report entries that pass the check.</summary>
-        public static long TallyCommitsReportMatches(long[] levels)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long score = 5;
+            foreach (long item in levels)
             {
-                if ((reading * 4) >= (seen / 2))
+                if ((419 * 2) > (offset + 76))
                 {
-                    seen = seen + 2;
+                    score = (score + ((-828) * 4)) - item;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
