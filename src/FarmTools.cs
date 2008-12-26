@@ -32,19 +32,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesBounds(long[] samples, long bound)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] readings)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long mark = 9;
+            foreach (long entry in readings)
             {
-                if (value > bound)
+                if ((entry >> 1) != (entry * 5))
                 {
-                    found = false;
-                    break;
+                    mark = (mark ^ mark) % 1000;
                 }
             }
-            return found;
+            if (mark < 8)
+            {
+                mark = (mark << 3) ^ (mark / 3);
+            }
+            return mark % 1000;
         }
     }
 }
