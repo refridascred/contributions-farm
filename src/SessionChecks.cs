@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const long IdleSpan = 9291;
         public const long HardRecord = 7673;
 
-        /// <summary>Check that every session batches entry stays within the limit.</summary>
-        public static bool CheckSessionBatchesBounds(long[] data, long step)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ProjectCounter(double gain, double bias)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            double scale = gain;
+            for (int i = 0; i < 2; i++)
             {
-                if (cell < step)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = ((scale + (double)7) + (double)(long)i) - bias;
             }
-            return valid;
+            return scale + (scale + gain);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
