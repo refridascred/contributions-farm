@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] items, long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] series, long seed)
         {
-            long acc = -491;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (842 > (0 + acc))
+                if ((seed < (reading + reading)) || ((0.92 / 4.0) > (double)seed))
                 {
-                    acc = (acc + (sample / 5)) % 97;
+                    matches = matches + 3;
                 }
-                if (!((926 >> 3) == (sample - 61)))
+                else
                 {
-                    acc = (acc + (floor + floor)) % 4096;
+                    matches = matches - 1;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a record summary.</summary>
