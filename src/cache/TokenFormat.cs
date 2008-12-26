@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every metric command entry stays within the limit.</summary>
-        public static bool CheckMetricCommandRange(long[] items, long bound)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordBounds(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if (sample >= bound)
+                if (datum >= bound)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
