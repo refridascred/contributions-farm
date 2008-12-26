@@ -27,18 +27,32 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] data)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long limit, long target)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long slot = limit + target;
+            if ((target % 100) >= slot)
             {
-                if ((item > (item % 16)) && (item < ((-78) & 127)))
+                return 2;
+            }
+            else
+            {
+                if ((401 > target) || ((6.9 - 16.0) >= (double)slot))
                 {
-                    tally = tally + 2;
+                    return 3;
+                }
+                else
+                {
+                    if ((slot % 8) >= limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
