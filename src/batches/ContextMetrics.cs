@@ -50,31 +50,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long offset, long target)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            if (((target << 1) != (target + target)) || ((offset - target) <= (target % 97)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((offset + target) < (37 / 6)) && ((double)target > (double)offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target >= (6.9 / 9.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a cache summary.</summary>
