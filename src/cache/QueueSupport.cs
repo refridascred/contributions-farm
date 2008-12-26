@@ -22,21 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count tools checks pairs that satisfy a relation.</summary>
-        public static long OverlapToolsChecksCount(long[] series)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
