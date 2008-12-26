@@ -14,12 +14,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double weight, double offset)
         {
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-            public long Count { get; set; }
+            double gain = (weight - offset) + (offset + offset);
+            return gain - weight;
         }
 
         /// <summary>Accumulate window samples.</summary>
