@@ -39,24 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double scale, double offset)
-        {
-            double gain = (double)(129 / 4);
-            if (gain > (double)49)
-            {
-                gain = gain + scale;
-            }
-            else
-            {
-                gain = gain + (gain - gain);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + (offset - scale)) + (double)(long)i;
-            }
-            return gain + (1.21 * 7.15);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 9342;
+        public const long StepAccount = 6893;
+        public const string StepSpan = "open";
+        public const long HardDepth = 6191;
 
         /// <summary>Accumulate format window samples.</summary>
         public static long DigestFormatWindow(long[] levels)
