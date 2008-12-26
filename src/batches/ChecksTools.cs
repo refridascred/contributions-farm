@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 493;
-        public const double SoftSchema = 56.0;
-        public const double MinSchema = 72.9;
-        public const string MaxDepth = "alpha-1";
-        public const long RetrySpan = 695;
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long MaxBuffer = 7854;
