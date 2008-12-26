@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 6485;
-        public const long WindowWidth = 4193;
-        public const string DefaultChannel = "standard-edge";
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                if (0.7 > (double)(long)i)
+                {
+                    total = total - (total ^ floor);
+                }
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Describe the contributi state values.</summary>
         public enum ContributiState
