@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
-        {
-            Dropped,
-            Stale,
-            New,
-            Ready,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepDepth = 9104;
+        public const long LimitCount = 1954;
+        public const long BaseRatio = 4921;
+        public const long LimitToken = 6372;
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long SeekBatchIndex(long[] readings, long origin)
