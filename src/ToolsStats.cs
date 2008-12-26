@@ -17,12 +17,23 @@ namespace Common.Utilities
         public const string IdleGithubfarm = "local";
         public const string LimitScore = "primary";
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string WindowChannel = "fallback-v2";
-        public const double IdleChannel = 23.98;
-        public const long BatchInterval = 4517;
-        public const long RetryChannel = 7053;
-        public const string StepTimeout = "fallback-edge";
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] levels, long limit)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((5.46 * 15.0) < (double)hits)
+                {
+                    hits = ((hits + 2) ^ cell) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderGaps(long[] levels, long origin)
