@@ -46,12 +46,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
-        {
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string DefaultWidth = "open-1";
+        public const long DefaultDepth = 322;
+        public const double HardBatch = 29.79;
+        public const long LimitBatch = 7250;
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long CombineFilter(long[] series)
