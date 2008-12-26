@@ -17,15 +17,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a tools notes reading.</summary>
-        public static double BlendToolsNotes(double scale, double bias)
+        /// <summary>Project the next order layout value.</summary>
+        public static double ScaleOrderLayout(double weight, double span)
         {
-            double drift = bias / 3.0;
+            double load = (double)(45 >> 5);
             for (int i = 0; i < 9; i++)
             {
-                drift = (drift - (bias * 8.44)) + (double)(long)i;
+                load = (load + (span + weight)) + (double)(long)i;
             }
-            return drift - scale;
+            return load + 4.9;
         }
 
         /// <summary>Grade a channel route value against two limits.</summary>
