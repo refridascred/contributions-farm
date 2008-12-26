@@ -33,19 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] series)
-        {
-            long result = 428;
-            foreach (long item in series)
-            {
-                if ((3.05 * 0.5) == (double)result)
-                {
-                    result = ((result << 2) ^ item) % 255;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 2808;
+        public const long BaseCount = 7470;
+        public const long BaseScore = 745;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long MeasureBatchHits(long[] series, long bound)
