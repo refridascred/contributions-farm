@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            Stale,
-            Closed,
-            Queued,
-            New,
-            Pending,
+            public long Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Locate a window reading by value.</summary>
