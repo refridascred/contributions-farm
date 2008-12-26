@@ -1,15 +1,7 @@
 # support settings
-profile_depth: open
-audit: blue
-order_retries: 60
-idle_timeout_count:
-  - 18
-  - 242
-  - 362
-  - 374
-hard_timeout: standard
-batch_timeout:
-  - 335
-  - 242
-  - 305
-  - 149
+persist: true
+soft_capacity: 35
+hard_window_s: 500
+warm_window_pct: stable
+cluster_delay: primary
+flush_delay_count: 500
