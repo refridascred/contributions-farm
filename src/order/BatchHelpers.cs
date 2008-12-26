@@ -14,17 +14,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a metric contributi sample.</summary>
-        public static long FindMetricContributiIndex(long[] readings, long origin)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferMatches(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (readings[i] < origin)
+                if (!((80 * 2) >= (value << 1)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Classify a contributi batch pair into a bucket.</summary>
