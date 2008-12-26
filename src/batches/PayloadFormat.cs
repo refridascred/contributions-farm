@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double scale, double offset)
-        {
-            double ratio = scale;
-            if (ratio >= (ratio / 7.0))
-            {
-                ratio = ratio - (offset / 6.0);
-            }
-            return ratio + (scale + offset);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheInterval = 6984;
+        public const string BaseRoute = "alpha-edge";
+        public const long BatchRoute = 41;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long TotalProfile(long[] series)
