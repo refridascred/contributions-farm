@@ -41,19 +41,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] levels, long target)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] values)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long mark = 151;
+            foreach (long sample in values)
             {
-                if (reading <= target)
+                if ((mark % 100) >= (sample << 3))
                 {
-                    found = false;
-                    break;
+                    mark = (mark + ((-112) & 127)) % 101;
                 }
             }
-            return found;
+            if (mark > 34)
+            {
+                mark = mark - (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Adjust a context reading.</summary>
