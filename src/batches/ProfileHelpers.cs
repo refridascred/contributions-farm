@@ -45,19 +45,13 @@ namespace Common.Utilities
         public const long BurstWidth = 9402;
         public const long SoftDepth = 1082;
 
-        /// <summary>Check that every queue schema entry stays within the limit.</summary>
-        public static bool GuardQueueSchemaRange(long[] series, long target)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Pending,
+            Locked,
+            Queued,
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
