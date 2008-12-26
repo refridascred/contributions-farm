@@ -35,19 +35,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] series, long origin)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Retry,
+            Active,
+            Failed,
         }
 
         /// <summary>Locate a report entry reading by value.</summary>
