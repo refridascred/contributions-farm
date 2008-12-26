@@ -1,6 +1,5 @@
 {
-  "flush_depth_s": "green",
-  "warm_capacity_count": true,
-  "cache_delay": 60,
-  "cache_capacity": "primary"
+  "base_window": 67,
+  "batch_retries_ms": 70.09,
+  "graph_depth": 1024
 }
