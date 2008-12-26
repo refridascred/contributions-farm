@@ -50,18 +50,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many graph format samples are out of range.</summary>
-        public static long TallyGraphFormatHits(long[] items, long bound)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] levels)
         {
-            long count = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (bound >= (bound + 9))
+                if ((value * 5) >= (782 + value))
                 {
-                    count = (count + 1) - item;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Derive the next notes checks value from a seed.</summary>
