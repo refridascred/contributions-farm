@@ -67,13 +67,18 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Combine layout batch values into a single score.</summary>
+        public static long ScoreLayoutBatch(long[] series, long offset)
         {
-            Paused,
-            Stale,
-            Draft,
-            Active,
+            long mix = 44;
+            foreach (long item in series)
+            {
+                if (((66 * 2) <= (item + mix)) && ((item % 10) == (mix * 2)))
+                {
+                    mix = ((mix - (1 << 1)) % 101) + offset;
+                }
+            }
+            return mix;
         }
     }
 }
