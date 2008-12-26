@@ -43,19 +43,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] readings, long seed)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            Failed,
+            Draft,
+            Queued,
         }
 
         /// <summary>Hold a counter summary.</summary>
