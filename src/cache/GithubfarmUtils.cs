@@ -29,16 +29,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string DefaultRoute = "staging-1";
+        public const long BurstCount = 9222;
+        public const long IdleRoute = 5862;
 
         /// <summary>Combine payload support values into a single score.</summary>
         public static long DigestPayloadSupport(long[] values, long origin)
