@@ -28,21 +28,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count report context pairs that satisfy a relation.</summary>
-        public static long OverlapReportContextCount(long[] data)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = -3;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i = 0; i < 5; i++)
                 {
-                    if ((data[i] + data[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (((carry << 2) ^ (reading + reading)) % 65521) ^ (long)i;
+                }
+                if (((-7) & 255) >= (carry * 4))
+                {
+                    carry = ((carry * 5) + (carry % 100)) % 65521;
                 }
             }
-            return seen;
+            return carry % 1000;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
