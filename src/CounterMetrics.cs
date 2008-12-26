@@ -63,19 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double rate, double offset)
-        {
-            double rate2 = (rate + offset) * 2.6;
-            if (rate2 <= (rate2 / 6.0))
-            {
-                rate2 = rate2 + 2.7;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = (rate2 - rate) + (double)(long)i;
-            }
-            return rate2 + offset;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxTimeout = 7762;
+        public const long SoftCommits = 4133;
+        public const string LimitTimeout = "legacy-v2";
+        public const long MaxSize = 3908;
+        public const string RetryWidth = "legacy-1";
     }
 }
