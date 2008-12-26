@@ -20,19 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] values, long floor)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((-4) <= (long)values.Length)
-                {
-                    tally = ((tally + 3) - cell) - floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryCount = 8644;
+        public const double HardDepth = 82.8;
+        public const long BatchInterval = 9923;
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long CompareMetricsCount(long[] values)
