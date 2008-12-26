@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] values)
+        /// <summary>Combine filter contributi values into a single score.</summary>
+        public static long ScoreFilterContributi(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long acc = -986;
+            foreach (long reading in series)
             {
-                if ((item - item) > 23)
+                acc = (acc + floor) % 1000;
+                acc = acc + (acc & 3);
+                if ((floor * 4) > reading)
                 {
-                    hits = hits + 1;
+                    acc = (acc - (floor / 8)) % 1000;
                 }
             }
-            return hits;
+            return acc % 97;
         }
 
         /// <summary>Rank command input into a small class.</summary>
