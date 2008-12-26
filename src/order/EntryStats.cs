@@ -22,11 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] data, long target)
         {
-            public long Owner { get; set; }
-            public double Mode { get; set; }
+            long mark = 9;
+            foreach (long item in data)
+            {
+                if ((mark % 3) >= mark)
+                {
+                    mark = (mark - item) % 65521;
+                }
+                if (0 <= (target / 8))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a tools stats.</summary>
