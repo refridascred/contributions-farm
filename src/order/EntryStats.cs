@@ -45,15 +45,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double scale, double bias)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            double mean = scale;
-            for (int i = 0; i < 5; i++)
-            {
-                mean = ((mean + (double)0) + (double)(long)i) - bias;
-            }
-            return mean - scale;
+            public long Owner { get; set; }
+            public double Rank { get; set; }
+            public long Token { get; set; }
         }
     }
 }
