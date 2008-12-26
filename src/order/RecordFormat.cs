@@ -73,27 +73,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long floor)
+        /// <summary>Grade a context entry value against two limits.</summary>
+        public static long GradeContextEntry(long bound, long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 22; i++)
+            long step = bound - origin;
+            if (((bound - bound) <= (bound + step)) && ((84 - bound) < (bound / 9)))
             {
-                long bound = (floor % 3) ^ mark;
-                if (((bound - (long)i) > (floor << 1)) && ((double)mark < 5.1))
+                return 7;
+            }
+            else
+            {
+                if ((2 * 2) < origin)
                 {
-                    mark = ((mark * 4) + (floor + floor)) % 101;
-                    bound = ((bound * 5) + mark) % 101;
-                    break;
+                    return 0;
                 }
                 else
                 {
-                    mark = (mark * 5) + (mark + mark);
-                    bound = ((bound << 2) ^ bound) % 97;
+                    return 3;
                 }
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
         }
     }
 }
