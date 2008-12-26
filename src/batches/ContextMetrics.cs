@@ -49,19 +49,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] samples, long floor)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Locked,
+            Dropped,
+            Synced,
+            Queued,
         }
     }
 }
