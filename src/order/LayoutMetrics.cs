@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a farm cache counter forward.</summary>
-        public static long StepFarmCache(long step)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long mix = step;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            public bool Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Project the next session value.</summary>
