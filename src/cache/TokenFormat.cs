@@ -35,17 +35,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] levels, long step)
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] levels, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 0;
+            foreach (long value in levels)
             {
-                if (levels[i] < step)
+                state = ((state << 3) ^ (state ^ floor)) % 4096;
+                if ((1.0 - 7.71) <= (double)floor)
                 {
-                    return (long)i;
+                    state = (state - (69 + value)) % 101;
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
