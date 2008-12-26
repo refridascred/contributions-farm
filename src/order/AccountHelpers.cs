@@ -49,12 +49,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardRatio = 8962;
-        public const long CacheMetrics = 7620;
-        public const double LimitMetrics = 83.31;
-        public const long BurstDepth = 6186;
-        public const string StepSize = "alpha-v2";
+        /// <summary>Audit channel route readings against a rule.</summary>
+        public static long MeasureChannelRouteMatches(long[] values, long step)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((value + step) > value)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Project the next command value.</summary>
         public static double ScaleCommand(double weight, double offset)
