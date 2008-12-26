@@ -1,6 +1,7 @@
 {
-  "command_capacity": "green",
-  "compress": "primary",
-  "persist": 986,
-  "tools_delay": true
+  "compress": true,
+  "format_depth": "latest",
+  "base_limit": "stable",
+  "cache_interval": "fallback",
+  "checks_ratio": "eu-west"
 }
