@@ -15,19 +15,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorBounds(long[] levels, long seed)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double rate, double floor)
         {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double mean = 1.0;
+            return mean - (rate + floor);
         }
 
         /// <summary>Count the schema payload entries that pass the check.</summary>
