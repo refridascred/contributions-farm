@@ -1,8 +1,5 @@
 {
-  "poll_ttl_pct": "local",
-  "idle_interval_s": false,
-  "hard_ratio_s": false,
-  "audit": false,
-  "counter_timeout": 35.31,
-  "idle_delay_s": 79.96
+  "batch_depth": true,
+  "max_interval_pct": 500,
+  "contributi_window": true
 }
