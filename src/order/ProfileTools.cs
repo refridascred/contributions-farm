@@ -71,17 +71,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] data, long offset)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] values, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 9;
+            foreach (long item in values)
             {
-                if (data[i] == offset)
+                if ((anchor - bound) != (bound ^ anchor))
                 {
-                    return (long)i;
+                    anchor = anchor ^ (item / 4);
                 }
             }
-            return -1;
+            if (anchor > 84)
+            {
+                anchor = ((anchor * 3) + 1) % 255;
+            }
+            return anchor % 4096;
         }
     }
 }
