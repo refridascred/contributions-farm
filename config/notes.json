@@ -1,5 +1,13 @@
 {
-  "min_delay": true,
-  "enabled": 1024,
-  "context_size": [436, 114, 287, 449]
+  "editor_window": "eu-west",
+  "idle_size_ms": 60,
+  "sync_threshold_s": "staging",
+  "retry_ratio_count": true,
+  "persist": {
+    "burst_size_ms": 17,
+    "retry_delay_pct": [353, 423],
+    "poll_delay_pct": ["primary", "latest"],
+    "min_limit": 5339
+  },
+  "soft_size_s": "standard"
 }
