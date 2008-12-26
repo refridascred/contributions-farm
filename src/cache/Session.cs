@@ -25,32 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long limit, long limit2)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long prev = limit - limit2;
-            if (6.16 >= (double)prev)
-            {
-                return 6;
-            }
-            else
-            {
-                if (limit2 >= limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)prev == (2.6 / 5.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public double Token { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Locate a report entry reading by value.</summary>
