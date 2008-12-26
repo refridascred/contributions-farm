@@ -48,19 +48,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenBounds(long[] data, long step)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long sum = 311;
+            foreach (long value in levels)
             {
-                if (value > step)
+                if ((4.0 * 9.0) <= (double)sum)
                 {
-                    ready = false;
-                    break;
+                    sum = ((sum << 2) ^ (sum - sum)) - value;
                 }
             }
-            return ready;
+            if (sum < 824)
+            {
+                sum = (sum + (88 ^ step)) % 65521;
+            }
+            return sum % 97;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
