@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long step)
+        /// <summary>Find the first buffer stream entry that matches the target.</summary>
+        public static long SeekBufferStreamIndex(long[] items, long bound)
         {
-            long state = step;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((step > state) && (((long)i + step) > (step + step)))
+                if ((items[i] <= bound) && ((items[i] % 3) == 0))
                 {
-                    state = state - (35 + step);
+                    return (long)i;
                 }
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a session snapshot.</summary>
