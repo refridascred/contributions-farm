@@ -1,14 +1,15 @@
 {
-  "tools_interval": 14.48,
-  "min_limit_ms": {
-    "hard_ratio_s": 16.89,
-    "warm_limit_ms": "latest",
-    "account_limit": 4144,
-    "token_threshold": 500,
-    "default_limit_ms": 66,
-    "retry_retries_s": "fallback"
+  "audit": [206, 48],
+  "soft_ratio_count": {
+    "dry_run": {
+      "strict": [312, 375, 310, 240],
+      "graph_retries": true,
+      "sync_limit_count": false,
+      "batch_ratio": "blue",
+      "min_ttl": false
+    },
+    "verbose": false,
+    "persist": ["standard", "open"]
   },
-  "default_size_s": 1267,
-  "hard_interval": "staging",
-  "persist": "legacy"
+  "schema_limit": 98
 }
