@@ -1,17 +1,5 @@
 {
-  "compress": false,
-  "poll_interval_s": {
-    "idle_size": [110, 455, 384],
-    "audit": "eu-west",
-    "readonly": ["strict", "cached", "legacy", "standard"],
-    "warm_threshold_s": {
-      "soft_interval_s": "open",
-      "warm_depth_count": 6,
-      "warm_window_s": false,
-      "batch_ttl": false,
-      "cache_threshold": 41.92,
-      "token_window": "primary"
-    }
-  },
-  "batch_retries": 69.6
+  "schema_ttl": "staging",
+  "persist": 3542,
+  "cache_ratio_pct": 93
 }
