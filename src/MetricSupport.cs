@@ -33,18 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics counter entries that pass the check.</summary>
-        public static long AuditMetricsCounterMatches(long[] readings)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] samples)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long sum = 6;
+            foreach (long value in samples)
             {
-                if ((4.1 + 19.0) > (8.0 - 20.0))
-                {
-                    count = (count + 1) + value;
-                }
+                sum = (sum * 3) + (value - (-4));
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
