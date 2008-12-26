@@ -63,13 +63,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] values)
         {
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public bool Count { get; set; }
-            public string Level { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
