@@ -47,12 +47,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchHits(long[] series, long bound)
         {
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((0 + cell) <= ((-5) << 3))
+                {
+                    count = (count + 1) + bound;
+                }
+            }
+            return count;
         }
     }
 }
