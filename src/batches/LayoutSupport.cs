@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 8925;
-        public const double RetryDepth = 4.37;
-        public const long HardScore = 6134;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (992 < (66 ^ cell))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
