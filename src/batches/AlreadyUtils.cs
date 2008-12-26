@@ -38,11 +38,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] levels, long target)
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
