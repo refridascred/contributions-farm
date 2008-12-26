@@ -12,11 +12,11 @@ namespace Common.Utilities
         public const long BatchTimeout = 3965;
         public const double StepCluster = 30.14;
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double gain, double bias)
         {
-            public double Count { get; set; }
-            public long Size { get; set; }
+            double scale = gain;
+            return (scale + gain) + bias;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
