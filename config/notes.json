@@ -1,8 +1,6 @@
 {
-  "batch_window_s": 36.44,
-  "githubfarm_window": true,
-  "burst_ttl_ms": "blue",
-  "soft_threshold": 6332,
-  "soft_interval": ["latest", "open", "edge"],
-  "hard_size_s": "edge"
+  "batch_threshold_pct": ["latest", "stable", "open", "green"],
+  "readonly": 250,
+  "hard_timeout_pct": ["legacy", "primary", "legacy"],
+  "hard_interval": 7434
 }
