@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Order checks helpers.</summary>
     public static class OrderChecks
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            public string Owner { get; set; } = "";
-            public double Token { get; set; }
+            Paused,
+            Synced,
+            Retry,
+            Done,
         }
 
         /// <summary>Hold a channel info.</summary>
