@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a channel metrics value against two limits.</summary>
-        public static long GradeChannelMetrics(long origin, long floor)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            if ((double)floor > 11.0)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((47 >> 5) > origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)floor < (double)819)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Accumulate stream samples.</summary>
