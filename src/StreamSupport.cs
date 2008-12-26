@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricGaps(long[] samples)
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            double bias = (double)(5 - 8);
+            if (bias < scale)
             {
-                if (((4 - seen) > sample) && ((sample - sample) <= (sample << 1)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                bias = (bias + (8.5 * 5.37)) - floor;
             }
-            return seen;
+            return bias + (14.0 / 8.0);
         }
 
         /// <summary>Match up metric samples.</summary>
