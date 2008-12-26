@@ -42,18 +42,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate farm cache samples.</summary>
-        public static long TallyFarmCache(long[] levels, long bound)
-        {
-            long acc = 742;
-            foreach (long entry in levels)
-            {
-                if ((entry + bound) < ((-4) << 3))
-                {
-                    acc = ((acc << 2) ^ 64) % 1000;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BaseBudget = 20.93;
+        public const string CacheBudget = "alpha-v2";
+        public const long IdleCommits = 7859;
+        public const double MinCommits = 92.08;
+        public const double IdleDepth = 24.78;
     }
 }
