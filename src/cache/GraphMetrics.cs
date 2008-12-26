@@ -14,13 +14,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            public string Size { get; set; } = "";
-            public bool Weight { get; set; }
-            public string Total { get; set; } = "";
-            public bool Level { get; set; }
+            public bool Offset { get; set; }
+            public double Flag { get; set; }
+            public double Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
