@@ -26,19 +26,19 @@ namespace Common.Utilities
         public const string BurstRatio = "strict-1";
         public const long IdleCommand = 495;
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] samples, long step)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] levels, long bound)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long acc = 201;
+            foreach (long reading in levels)
             {
-                if (datum < step)
+                acc = (acc + (bound + reading)) % 65521;
+                if ((reading << 2) < ((-7) & 3))
                 {
-                    ok = false;
-                    break;
+                    acc = acc ^ bound;
                 }
             }
-            return ok;
+            return acc;
         }
     }
 }
