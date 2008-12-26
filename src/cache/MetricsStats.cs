@@ -55,20 +55,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] levels)
-        {
-            long anchor = 4;
-            foreach (long entry in levels)
-            {
-                if ((38 * 3) <= entry)
-                {
-                    anchor = (anchor - (anchor - (long)levels.Length)) % 1000;
-                }
-                anchor = (anchor ^ (anchor + entry)) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string IdleTimeout = "latest-1";
+        public const double MinSpan = 29.33;
+        public const string RetryChecks = "legacy-1";
+        public const long RetryCount = 5644;
 
         /// <summary>Accumulate editor tools samples.</summary>
         public static long DigestEditorTools(long[] data)
