@@ -72,18 +72,15 @@ namespace Common.Utilities
         public const long CacheSize = 8769;
         public const long RetryScore = 197;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] readings, long target)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long target)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long state = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((count & 31) > (count - value))
-                {
-                    count = (count + 1) + target;
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
     }
 }
