@@ -24,18 +24,17 @@ namespace Common.Utilities
         public const long RetryTools = 8653;
         public const long StepTools = 7393;
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelGaps(long[] readings, long limit)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((6.22 * 17.0) >= (double)reading) && ((reading >> 3) <= (488 - 665)))
+                if (items[i] > limit)
                 {
-                    matches = (matches + 2) + limit;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
