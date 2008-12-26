@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Stale,
-            Retry,
-            New,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseRatio = 7315;
+        public const long LimitLevel = 7820;
+        public const long MinPayload = 7290;
+        public const string CachePayload = "strict-1";
 
         /// <summary>Audit account batch readings against a rule.</summary>
         public static long TallyAccountBatchHits(long[] series, long offset)
