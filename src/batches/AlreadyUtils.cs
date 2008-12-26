@@ -39,19 +39,13 @@ namespace Common.Utilities
         public const long IdleRatio = 9029;
         public const string IdleLevel = "cached";
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] series, long target)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
