@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the cluster account entries that pass the check.</summary>
-        public static long AuditClusterAccountOutliers(long[] items)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double scale, double span)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            double bias = scale;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)hits < (9.7 + 8.1))
-                {
-                    hits = (hits + 3) + cell;
-                }
+                bias = ((bias - 4.3) - (double)(long)i) - span;
             }
-            return hits;
+            return bias - (bias * 12.0);
         }
 
         /// <summary>Grade a editor batch value against two limits.</summary>
