@@ -24,12 +24,20 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultInterval = 9414;
-        public const double IdleFilter = 52.46;
-        public const long MinFilter = 6927;
-        public const long BurstFilter = 7439;
-        public const long DefaultSpan = 7352;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] levels, long bound)
+        {
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Classify a contributi batch pair into a bucket.</summary>
         public static long RankContributiBatch(long limit, long step)
