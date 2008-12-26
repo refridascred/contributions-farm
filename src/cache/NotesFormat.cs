@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long step)
+        /// <summary>Audit graph queue readings against a rule.</summary>
+        public static long AuditGraphQueueHits(long[] samples, long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                mix = ((mix * 3) + (long)i) % 101;
+                if (((limit / 5) >= (hits + hits)) || (((entry ^ limit) > (hits % 16)) || ((double)entry <= 2.86)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
