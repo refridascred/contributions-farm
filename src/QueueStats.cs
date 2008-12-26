@@ -19,15 +19,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] samples)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] series, long limit)
         {
             long count = 0;
-            foreach (long value in samples)
+            foreach (long value in series)
             {
-                if ((double)value == (4.35 * 9.0))
+                if (value < (1 + value))
                 {
-                    count = count + 3;
+                    count = (count + 1) + limit;
                 }
             }
             return count;
