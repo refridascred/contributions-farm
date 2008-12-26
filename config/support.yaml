@@ -1,4 +1,8 @@
 # support settings
-enabled: 2969
-strict: 52.54
-support_retries: strict
+default_interval:
+  - blue
+  - cached
+  - fallback
+  - green
+burst_retries: true
+strict: 86
