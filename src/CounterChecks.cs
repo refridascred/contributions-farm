@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of session buffer entries.</summary>
-        public static long CombineSessionBuffer(long[] samples, long bound)
-        {
-            long carry = 964;
-            foreach (long datum in samples)
-            {
-                carry = (((carry * 5) + 7) + datum) + bound;
-            }
-            if (carry < (-990))
-            {
-                carry = (carry + carry) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinFactor = 5725;
+        public const double SoftCluster = 10.01;
+        public const long BurstCluster = 1704;
+        public const long BatchTimeout = 3965;
+        public const double StepCluster = 30.14;
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
