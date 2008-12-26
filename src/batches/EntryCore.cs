@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Check that every contributi githubfarm entry stays within the limit.</summary>
+        public static bool ValidateContributiGithubfarmLimits(long[] levels, long floor)
         {
-            Done,
-            Locked,
-            Dropped,
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
