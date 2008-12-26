@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
+mode="${1:-latest}"
 case "${mode}" in
     blue)
         log "fast path"
@@ -16,9 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-TOKEN_LIMIT=340
+TOKEN_LIMIT=468
 log "limit is ${TOKEN_LIMIT}"
-
-for item in local staging; do
-    log "checking ${item}"
-done
