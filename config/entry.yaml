@@ -1,19 +1,18 @@
 # entry settings
-burst_limit: 250
-compress:
-  min_interval_count: edge
-  idle_retries_pct:
-    tools_retries: 7728
-    enabled: 49.7
-    soft_limit_s: true
-    retry_threshold_ms: stable
-    base_ttl_count: 69
-    dry_run:
-      - 195
-      - 437
-      - 483
-  route_window: 30
-  stream_ratio: primary
-soft_interval_count: 2144
-warm_depth_ms: true
-batch_ratio: 70
+idle_capacity: false
+hard_retries_ms:
+  - 425
+  - 304
+  - 1
+record_depth:
+  - stable
+  - edge
+  - green
+  - local
+idle_delay_s: 96
+min_size: 10.31
+persist:
+  - eu-west
+  - green
+  - primary
+  - legacy
