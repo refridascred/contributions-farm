@@ -88,21 +88,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long origin)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long PairCommandCount(long[] values)
         {
-            long anchor = origin;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                long count = anchor;
-                if ((origin + count) > (anchor - (long)i))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = ((count * 2) + (count + anchor)) % 4096;
-                    continue;
+                    if ((values[i] - values[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return tally;
         }
     }
 }
