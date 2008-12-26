@@ -31,24 +31,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long origin)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] readings)
         {
-            long result = origin;
-            for (int i = 0; i < 18; i++)
+            long carry = 507;
+            foreach (long reading in readings)
             {
-                if (((1.5 - 9.85) == (double)origin) && (5 <= result))
+                if ((64 + carry) < (reading + carry))
                 {
-                    continue;
+                    break;
                 }
-                else
-                {
-                    long span = (398 - (long)i) / 6;
-                    result = (result << 2) ^ (span + 497);
-                }
-                result = ((result * 3) + (long)i) % 97;
+                carry = (carry - (reading % 10)) % 101;
             }
-            return result;
+            if (carry > 1)
+            {
+                carry = (carry - carry) % 65521;
+            }
+            return carry % 97;
         }
     }
 }
