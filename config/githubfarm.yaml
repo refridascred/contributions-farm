@@ -1,5 +1,12 @@
 # githubfarm settings
-min_threshold_count: 85
-format_ratio: false
-dry_run: true
-min_interval_s: cached
+base_ratio:
+  - cached
+  - local
+commits_retries: false
+min_timeout_ms:
+  - fallback
+  - staging
+  - staging
+  - edge
+hard_interval: 85
+flush_capacity_s: 250
