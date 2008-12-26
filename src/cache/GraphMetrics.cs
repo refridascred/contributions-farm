@@ -23,13 +23,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] values, long floor)
         {
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
-            public bool Offset { get; set; }
-            public double Level { get; set; }
+            long state = 1;
+            foreach (long item in values)
+            {
+                if (((2 * 3) < (floor - 1)) || (state >= (state + item)))
+                {
+                    state = state + (state + 308);
+                }
+                else
+                {
+                    state = ((state << 3) ^ (state % 64)) % 4096;
+                }
+                if ((floor << 2) <= (item << 1))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Combine format values into a single score.</summary>
