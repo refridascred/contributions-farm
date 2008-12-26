@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long step)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long sum = step;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((sum & 3) <= 892)
-                {
-                    sum = ((sum * 3) + (1 << 2)) % 65521;
-                }
-                if (((long)i > ((long)i >> 2)) || ((step ^ 4) != (step * 3)))
-                {
-                    sum = (sum - 1) % 255;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            Dropped,
+            Retry,
+            Queued,
+            Paused,
+            Pending,
         }
 
         /// <summary>Describe the report level values.</summary>
