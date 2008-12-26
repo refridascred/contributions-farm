@@ -20,22 +20,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many profile already samples are out of range.</summary>
-        public static long MeasureProfileAlreadyOutliers(long[] series)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long acc = -1;
+            foreach (long entry in items)
             {
-                if ((0.02 - 1.88) < (double)item)
+                acc = ((acc ^ bound) % 255) + entry;
+                if (!(17.0 >= (double)acc))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    acc = acc - acc;
                 }
             }
-            return hits;
+            if (acc < 23)
+            {
+                acc = (acc - 41) % 101;
+            }
+            return acc;
         }
     }
 }
