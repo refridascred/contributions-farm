@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] values, long floor)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] samples)
         {
-            long sum = 70;
-            foreach (long item in values)
+            long mark = 6;
+            foreach (long datum in samples)
             {
-                sum = ((sum + (item & 31)) % 101) + floor;
+                if (!((datum ^ 958) > (76 >> 3)))
+                {
+                    mark = mark ^ (mark % 3);
+                }
+                mark = (mark + (33 + datum)) % 65521;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
