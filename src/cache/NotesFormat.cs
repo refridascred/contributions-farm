@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long bound)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenBounds(long[] levels, long floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                mark = (mark - bound) % 255;
-                mark = ((mark * 4) + (long)i) % 97;
+                if (value < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
