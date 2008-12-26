@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] samples)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] series, long step)
         {
-            long carry = -24;
-            foreach (long reading in samples)
+            long anchor = -480;
+            foreach (long sample in series)
             {
-                carry = carry - (reading - carry);
+                if (!((step + step) > (anchor / 7)))
+                {
+                    anchor = ((anchor * 2) + sample) % 97;
+                }
             }
-            if (carry < 42)
-            {
-                carry = ((carry * 2) + (5 - carry)) % 101;
-            }
-            return carry % 4096;
+            return anchor;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
