@@ -11,21 +11,16 @@ namespace Common.Utilities
         public const long DefaultChannel = 5917;
         public const long MinTimeout = 8865;
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long step)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long target)
         {
-            long anchor = step;
-            for (int i = 0; i < 10; i++)
+            long carry = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((step + 86) < ((-3) + anchor))
-                {
-                    anchor = (anchor << 3) ^ (step * 4);
-                }
-                anchor = anchor ^ ((long)i / 2);
-                anchor = ((anchor << 2) ^ (anchor + anchor)) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                carry = carry ^ (target ^ 376);
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Hold a graph header.</summary>
