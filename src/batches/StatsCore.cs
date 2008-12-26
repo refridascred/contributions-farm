@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of context metrics entries.</summary>
-        public static long ScoreContextMetrics(long[] samples)
-        {
-            long mix = 13;
-            foreach (long entry in samples)
-            {
-                if (0.2 > (double)mix)
-                {
-                    mix = (mix + (entry / 4)) % 97;
-                }
-                if (!((6.11 + 4.0) == (double)entry))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 3387;
+        public const string BaseScore = "staging-v2";
+        public const long WindowGithubfarm = 5305;
+        public const long LimitGithubfarm = 1503;
+        public const string StepSpan = "staging";
 
         /// <summary>Scale a stream figure with a bias.</summary>
         public static double ProjectStream(double rate, double floor)
