@@ -23,19 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] levels, long bound)
+        /// <summary>Match up commits counter samples.</summary>
+        public static long CompareCommitsCounterCount(long[] items)
         {
             long matches = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((7.07 - 5.0) != (double)bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 1) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] - items[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
