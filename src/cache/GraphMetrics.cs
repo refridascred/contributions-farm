@@ -43,15 +43,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next window batch value from a seed.</summary>
-        public static long StepWindowBatch(long offset)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] samples, long seed)
         {
-            long carry = offset;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                if ((samples[i] >= seed) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
