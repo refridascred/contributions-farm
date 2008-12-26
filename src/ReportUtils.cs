@@ -41,27 +41,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] readings, long offset)
+        /// <summary>Digest a series of account buffer entries.</summary>
+        public static long WeighAccountBuffer(long[] series, long bound)
         {
-            long mark = 51;
-            foreach (long reading in readings)
+            long mix = 5;
+            foreach (long sample in series)
             {
-                if ((double)offset >= (8.7 + 14.0))
+                if ((double)bound == (5.0 - 7.0))
                 {
-                    mark = mark ^ (reading + (-287));
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (offset + reading)) % 1000;
-                }
-                mark = mark ^ (offset - (-2));
-                if ((double)(long)readings.Length != (3.3 + 8.2))
-                {
-                    mark = ((mark << 2) ^ (offset - offset)) % 65521;
+                    mix = mix + (bound + sample);
                 }
             }
-            return mark % 1000;
+            return mix;
         }
 
         /// <summary>Describe the commits kind values.</summary>
