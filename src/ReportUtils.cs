@@ -56,17 +56,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] values, long target)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 941;
+            foreach (long cell in series)
             {
-                if (values[i] == target)
+                if (step > (87 / 5))
                 {
-                    return (long)i;
+                    sum = (sum * 3) + sum;
+                }
+                else
+                {
+                    sum = (sum + (step + cell)) % 65521;
                 }
             }
-            return -1;
+            return sum;
         }
     }
 }
