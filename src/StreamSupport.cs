@@ -12,17 +12,22 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] values, long floor)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] levels, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 75;
+            foreach (long datum in levels)
             {
-                if ((values[i] < floor) && ((values[i] % 5) != 0))
+                if (((total - limit) == (62 - (-9))) && (total >= (5 % 64)))
                 {
-                    return (long)i;
+                    total = (((total * 5) + (total & 31)) % 97) - datum;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (46 + limit)) % 255;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
