@@ -1,10 +1,6 @@
-id,owner,label,region
-1,primary,cached,primary
-2,standard,710,blue
-3,eu-west,blue,833
-4,blue,edge,367
-5,73.05,433,621
-6,426,55.83,104
-7,32,233,89
-8,674,cached,cached
-9,136,fallback,eu-west
+id,active,level,token,region
+1,322,blue,320,64.3
+2,523,180,825,469
+3,20.69,legacy,280,latest
+4,440,704,819,legacy
+5,latest,603,fallback,legacy
