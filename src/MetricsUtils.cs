@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long MaxBudget = 7759;
         public const long StepCount = 3529;
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double rate, double span)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricRange(long[] series, long offset)
         {
-            double weight = (double)(1 >> 5);
-            return (weight + (span - 5.29)) + rate;
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
