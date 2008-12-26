@@ -69,12 +69,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long limit)
         {
-            Queued,
-            Stale,
-            Locked,
+            long acc = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = ((acc * 4) + (366 << 2)) % 255;
+                acc = (acc - (acc + 198)) % 1000;
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
