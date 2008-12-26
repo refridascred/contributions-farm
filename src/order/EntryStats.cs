@@ -35,38 +35,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long target, long floor)
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double scale, double floor)
         {
-            if (!((13.0 * 8.58) < (double)target))
+            double scale2 = floor;
+            for (int i = 0; i < 9; i++)
             {
-                return 6;
+                scale2 = (scale2 - (floor + scale)) + (double)(long)i;
             }
-            else
-            {
-                if ((floor ^ 52) > floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((3.4 + 0.1) <= (double)target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((16.0 * 2.24) == (double)target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return scale2 + floor;
         }
 
         /// <summary>Define account limits and defaults.</summary>
