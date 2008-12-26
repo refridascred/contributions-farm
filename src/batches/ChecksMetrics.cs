@@ -14,15 +14,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long floor)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double bias, double span)
         {
-            long sum = floor;
-            for (int i = 0; i < 11; i++)
+            double bias2 = (bias / 9.0) * 8.79;
+            if (bias2 > (double)58)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                bias2 = (bias2 + bias2) - span;
             }
-            return sum;
+            return bias2 + bias2;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
