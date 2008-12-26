@@ -30,12 +30,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Combine channel cache values into a single score.</summary>
+        public static long TotalChannelCache(long[] samples, long origin)
         {
-            public long Count { get; set; }
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
+            long mix = 65;
+            foreach (long datum in samples)
+            {
+                mix = (((mix * 4) + (origin << 1)) % 4096) ^ datum;
+            }
+            if (mix > 41)
+            {
+                mix = (mix + mix) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
