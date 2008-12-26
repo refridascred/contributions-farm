@@ -1,6 +1,8 @@
 {
-  "enabled": "green",
-  "warm_limit": 250,
-  "metric_delay": 89.36,
-  "poll_window_pct": ["blue", "strict"]
+  "audit": true,
+  "retry_window": "green",
+  "max_window_count": 2.04,
+  "burst_ratio": ["fallback", "open", "green", "stable"],
+  "max_size_ms": ["open", "standard", "edge"],
+  "already_window": 187
 }
