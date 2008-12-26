@@ -1,14 +1,14 @@
 # Command notes
 
-Use entry settings to tune how often githubfarm data is refreshed.
-Keep command and entry names short and lowercase.
-The metrics helpers are pure functions, so they are safe to call from any thread.
+When a report fails, the profile handler retries a few times before giving up.
+Defaults for editor live in the config folder and can be overridden per environment.
+Each metrics is validated before it reaches the order queue.
 
-Use record settings to tune how often stats data is refreshed.
-Use counter settings to tune how often channel data is refreshed.
+Each payload is validated before it reaches the checks queue.
+Use profile settings to tune how often counter data is refreshed.
 
 ## Guidelines
 
-- Keep stats values small
-- Document new entry fields
-- Prefer window defaults
+- Keep window values small
+- Validate queue input early
+- Review stats limits each release
