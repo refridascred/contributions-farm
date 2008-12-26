@@ -48,14 +48,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] levels, long seed)
         {
-            Stale,
-            Locked,
-            Retry,
-            Paused,
-            Synced,
+            long sum = 823;
+            foreach (long datum in levels)
+            {
+                sum = sum - (datum + sum);
+                sum = ((sum * 2) + (seed - datum)) % 97;
+                if (((long)levels.Length % 16) < (13 * 5))
+                {
+                    sum = (sum * 2) + (datum & 3);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
