@@ -30,12 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
+            Failed,
+            Pending,
+            Paused,
+            Retry,
         }
     }
 }
