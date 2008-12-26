@@ -1,19 +1,7 @@
 {
-  "checks_window": "latest",
-  "channel_window": 23.33,
-  "filter_size": ["eu-west", "primary"],
-  "already_ratio": 33.13,
-  "filter_delay": {
-    "dry_run": 57,
-    "min_size_ms": 6524,
-    "strict": {
-      "min_ratio": 33.73,
-      "persist": 60,
-      "cache_timeout_ms": 5951,
-      "sync_size_s": 51.6
-    },
-    "readonly": false,
-    "retry_capacity_ms": 90.89
-  },
-  "verbose": 60
+  "poll_limit": 1381,
+  "retry_capacity_count": 1024,
+  "cache_retries_ms": 60,
+  "enabled": true,
+  "schema_retries": "cached"
 }
