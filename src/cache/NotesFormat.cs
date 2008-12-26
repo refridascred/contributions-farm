@@ -19,39 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long floor, long step)
-        {
-            if ((double)floor == (8.1 - 7.99))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)38 != (double)step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor - floor) <= floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)step >= (1.8 - 15.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MaxTools = "latest-edge";
+        public const long RetryTools = 8653;
+        public const long StepTools = 7393;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long AuditChannelGaps(long[] readings, long limit)
