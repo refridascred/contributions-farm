@@ -92,18 +92,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit buffer report readings against a rule.</summary>
-        public static long MeasureBufferReportMatches(long[] items)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((value > matches) || (matches <= (9 + 68)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
