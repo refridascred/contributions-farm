@@ -1,20 +1,5 @@
 {
-  "max_timeout_count": "cached",
-  "min_size_count": "legacy",
-  "default_timeout_ms": [39, 183, 41],
-  "checks_threshold": true,
-  "notes_size": {
-    "session_ttl": "edge",
-    "soft_interval_s": "open",
-    "burst_delay_s": 36.36,
-    "cache_ratio": {
-      "retry_size_pct": 12.66,
-      "verbose": true,
-      "flush_interval": false,
-      "retry_ttl": "blue"
-    },
-    "poll_delay_pct": [351, 174, 108],
-    "context_threshold": 35.07
-  },
-  "min_limit_s": 0.82
+  "soft_ratio_count": [387, 451, 300, 98],
+  "flush_delay_ms": "edge",
+  "flush_ttl_s": "stable"
 }
