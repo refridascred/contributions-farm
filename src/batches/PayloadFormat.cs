@@ -42,17 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetrySize = 1906;
+        public const long DefaultTimeout = 749;
+        public const long HardTimeout = 9331;
+        public const double SoftBudget = 53.29;
+        public const long StepTools = 2927;
     }
 }
