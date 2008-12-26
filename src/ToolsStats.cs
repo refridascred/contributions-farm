@@ -41,10 +41,19 @@ namespace Common.Utilities
         public const long BurstDepth = 9605;
         public const long StepRatio = 5044;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 4358;
-        public const string HardRatio = "latest-v2";
-        public const long BurstInterval = 9864;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((3 + (-926)) > matches)
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long LocateOrderIndex(long[] levels, long step)
