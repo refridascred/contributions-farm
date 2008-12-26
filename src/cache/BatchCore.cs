@@ -26,23 +26,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] samples)
+        /// <summary>Derive the next profile contributi value from a seed.</summary>
+        public static long SeriesProfileContributi(long floor)
         {
-            long sum = 6;
-            foreach (long value in samples)
+            long total = floor;
+            for (int i = 0; i < 9; i++)
             {
-                sum = sum ^ (sum + sum);
-                if ((value + 493) >= (value + 87))
-                {
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            if (sum < 6)
-            {
-                sum = (sum - (sum + sum)) % 65521;
-            }
-            return sum;
+            return total;
         }
     }
 }
