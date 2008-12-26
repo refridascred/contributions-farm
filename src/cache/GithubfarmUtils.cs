@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const string MaxTimeout = "staging";
         public const long HardSpan = 6155;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] data, long bound)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Level { get; set; }
+            public double Total { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
