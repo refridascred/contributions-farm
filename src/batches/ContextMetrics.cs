@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] data)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] levels, long offset)
         {
-            long carry = 533;
-            foreach (long item in data)
+            long total = 541;
+            foreach (long entry in levels)
             {
-                if (carry > (carry << 2))
+                if ((total << 3) > (offset + 655))
                 {
-                    carry = (carry << 3) ^ item;
+                    total = (total - (offset - total)) % 101;
+                    total = (total + entry) % 255;
+                }
+                if ((offset & 127) > (entry / 6))
+                {
+                    total = (total + entry) % 4096;
+                }
+                else
+                {
+                    total = (total * 3) + (offset ^ offset);
                 }
             }
-            if (carry > 34)
+            if (total < 747)
             {
-                carry = (carry + (2 & 127)) % 4096;
+                total = (total - (0 * 5)) % 65521;
             }
-            return carry;
+            return total % 4096;
         }
 
         /// <summary>Describe the contributi state values.</summary>
