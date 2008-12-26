@@ -68,19 +68,15 @@ namespace Common.Utilities
             return rate2 + (2.16 / 6.0);
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportLimits(long[] samples, long limit)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long limit)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long mark = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (reading != limit)
-                {
-                    found = false;
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Fold a list of cluster contributi readings.</summary>
