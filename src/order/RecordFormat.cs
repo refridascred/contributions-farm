@@ -56,9 +56,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryLevel = "legacy-edge";
-        public const long IdleWidth = 784;
-        public const double RetrySpan = 86.19;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long target, long floor)
+        {
+            if (8 > floor)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor ^ floor) != (target % 60))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((floor / 9) <= (target ^ floor)) && ((8 >> 1) < (60 + target)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
