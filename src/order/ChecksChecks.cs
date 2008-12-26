@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] samples, long offset)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long anchor = -8;
+            foreach (long datum in readings)
             {
-                if (!(offset <= (matches * 5)))
+                if ((double)anchor <= 0.8)
                 {
-                    matches = (matches + 3) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    anchor = (((anchor * 2) + (anchor >> 1)) % 255) + datum;
                 }
             }
-            return matches;
+            if (anchor > 1)
+            {
+                anchor = ((anchor * 3) + ((long)readings.Length << 1)) % 101;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Hold a session info.</summary>
