@@ -73,25 +73,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a context entry value against two limits.</summary>
-        public static long GradeContextEntry(long bound, long origin)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] values, long offset)
         {
-            long step = bound - origin;
-            if (((bound - bound) <= (bound + step)) && ((84 - bound) < (bound / 9)))
+            bool flag = true;
+            foreach (long datum in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((2 * 2) < origin)
+                if (datum < offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
