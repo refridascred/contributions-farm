@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] levels)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterRange(long[] data, long floor)
         {
-            long mix = 613;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                mix = mix ^ datum;
+                if (entry < floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (mix < 9)
-            {
-                mix = mix - mix;
-            }
-            return mix;
+            return ok;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
