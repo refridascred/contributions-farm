@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double bias, double offset)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double scale, double span)
         {
-            double rate = offset;
-            if (rate > rate)
-            {
-                rate = (rate - rate) + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate + offset;
+            double rate = 10.0;
+            return ((rate - (double)0) + scale) + span;
         }
 
         /// <summary>Adjust a counter reading.</summary>
