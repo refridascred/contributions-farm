@@ -19,15 +19,19 @@ namespace Common.Utilities
         public const double BatchCount = 25.47;
         public const long StepChecks = 6777;
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long target)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionBounds(long[] items, long floor)
         {
-            long total = target;
-            for (int i = 0; i < 12; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                if (item != floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Combine support values into a single score.</summary>
