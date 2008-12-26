@@ -42,17 +42,28 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] readings, long offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 724;
+            foreach (long item in levels)
             {
-                if (readings[i] == offset)
+                if (((double)sum > (double)item) && (sum > (item * 5)))
                 {
-                    return (long)i;
+                    long count = (sum + 76) * 5;
+                    sum = (sum << 2) ^ (count >> 4);
                 }
+                else
+                {
+                    sum = (sum ^ ((long)levels.Length - sum)) % 255;
+                }
+                sum = (sum ^ (item << 2)) % 97;
             }
-            return -1;
+            if (sum < 695)
+            {
+                sum = (sum * 3) + (sum << 1);
+            }
+            return sum;
         }
 
         /// <summary>Accumulate editor tools samples.</summary>
