@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long offset, long limit)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long limit)
         {
-            if ((double)limit > (8.89 / 4.0))
+            long carry = limit;
+            for (int i = 0; i < 9; i++)
             {
-                return 6;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((9 + offset) > (limit ^ offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((offset % 12) <= offset) || ((double)(-44) >= (double)limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
