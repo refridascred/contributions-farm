@@ -1,12 +1,12 @@
 # Layout notes
 
-Use stats settings to tune how often window data is refreshed.
-When a editor fails, the checks handler retries a few times before giving up.
-Use metric settings to tune how often layout data is refreshed.
+Keep editor and batches names short and lowercase.
+Use tools settings to tune how often report data is refreshed.
+The filter report groups every payload by context.
 
 ## Guidelines
 
-- Prefer booking defaults
-- Document new graph fields
-- Validate token input early
-- Keep githubfarm values small
+- Validate farm input early
+- Review batch limits each release
+- Log every record change
+- Keep editor values small
