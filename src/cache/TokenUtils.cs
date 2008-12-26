@@ -40,27 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of checks report entries.</summary>
-        public static long DigestChecksReport(long[] items, long origin)
-        {
-            long carry = 637;
-            foreach (long reading in items)
-            {
-                if ((origin / 7) <= reading)
-                {
-                    carry = ((carry * 2) + origin) % 255;
-                }
-                else
-                {
-                    carry = carry ^ (1 - reading);
-                }
-                if ((double)carry <= 6.0)
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string IdleSpan = "local";
+        public const long BatchDepth = 9764;
+        public const long MaxProfile = 1900;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long MinCommand = 487;
