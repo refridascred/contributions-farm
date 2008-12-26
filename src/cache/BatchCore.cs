@@ -31,15 +31,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long floor)
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double ratio, double span)
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            double weight = ratio - (ratio - ratio);
+            return (weight + 8.8) + span;
         }
 
         /// <summary>Accumulate farm cache samples.</summary>
