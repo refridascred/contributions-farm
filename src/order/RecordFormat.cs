@@ -69,19 +69,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] values, long offset)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Closed,
+            Pending,
+            Ready,
+            Queued,
         }
     }
 }
