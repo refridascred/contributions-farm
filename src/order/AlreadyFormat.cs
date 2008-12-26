@@ -19,12 +19,33 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxFactor = 7810;
-        public const long DefaultCount = 6805;
-        public const long RetryScore = 9869;
-        public const long MinSupport = 2080;
-        public const long MaxSupport = 6452;
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long origin, long step)
+        {
+            long cur = origin - step;
+            if ((step * 3) > (cur + cur))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)step < (5.0 + 8.77)) && ((11 & 1) > (cur & 7)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((2.97 + 1.7) <= (double)cur)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next record value.</summary>
         public static double SmoothRecord(double weight, double floor)
