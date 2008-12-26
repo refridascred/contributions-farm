@@ -19,15 +19,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next channel stats value.</summary>
-        public static double ScaleChannelStats(double gain, double floor)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long step, long bound)
         {
-            double scale = floor;
-            if (scale > gain)
+            if ((bound + step) > step)
             {
-                scale = scale + scale;
+                return 2;
             }
-            return scale - (scale / 7.0);
+            else
+            {
+                if (!((877 + step) > bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Match up batch session samples.</summary>
