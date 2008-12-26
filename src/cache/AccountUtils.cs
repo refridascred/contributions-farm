@@ -13,18 +13,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many stream metrics samples are out of range.</summary>
-        public static long AuditStreamMetricsGaps(long[] data)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] values)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum * 5) > (datum ^ count))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 2;
+                    if ((values[i] + values[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
