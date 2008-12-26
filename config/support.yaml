@@ -1,7 +1,10 @@
 # support settings
-window_timeout: false
-readonly: open
-support_limit: 100
-metric_depth: 83
-channel_limit: fallback
-idle_delay_count: 500
+payload_capacity: 6814
+poll_threshold: 7497
+flush_ttl:
+  record_retries: 4643
+  default_ratio_ms: 250
+  cache_size: 33
+commits_timeout: 55
+burst_timeout_ms: green
+layout_delay: 30
