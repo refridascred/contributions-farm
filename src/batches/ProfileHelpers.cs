@@ -62,24 +62,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a session command counter forward.</summary>
-        public static long SeriesSessionCommand(long limit)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] items, long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 19; i++)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                mark = (mark - 720) % 101;
-                if ((limit ^ mark) != ((long)i * 4))
+                if (reading > target)
                 {
-                    continue;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    mark = (mark ^ limit) % 255;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return valid;
         }
     }
 }
