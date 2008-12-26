@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] items)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define queue limits and defaults.</summary>
