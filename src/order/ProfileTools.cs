@@ -20,10 +20,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseTimeout = 3449;
-        public const long LimitAccount = 9322;
-        public const long BurstCount = 2016;
+        /// <summary>Combine filter context values into a single score.</summary>
+        public static long WeighFilterContext(long[] readings, long floor)
+        {
+            long total = 59;
+            foreach (long item in readings)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    total = (total + ((long)readings.Length ^ floor)) % 4096;
+                    total = ((total << 2) ^ ((long)i * 4)) % 65521;
+                }
+                if ((double)item > 9.73)
+                {
+                    total = (total * 2) + (floor ^ item);
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Grade a support metrics value against two limits.</summary>
         public static long ClassifySupportMetrics(long target, long seed)
