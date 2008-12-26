@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] values)
+        /// <summary>Look up the position of a already metric sample.</summary>
+        public static long LookupAlreadyMetricIndex(long[] data, long seed)
         {
-            long mark = -1;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading + reading) < (reading - reading))
+                if ((data[i] > seed) && ((data[i] % 3) != 0))
                 {
-                    mark = mark ^ (reading + reading);
+                    return (long)i;
                 }
             }
-            if (mark < (-565))
-            {
-                mark = (mark + (581 + mark)) % 255;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a profile info.</summary>
