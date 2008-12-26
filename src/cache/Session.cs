@@ -38,18 +38,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] samples)
+        /// <summary>Locate a report entry reading by value.</summary>
+        public static long FindReportEntryIndex(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((value + 2) >= (value + tally)) && ((tally & 7) > (value * 5)))
+                if ((samples[i] == seed) && ((samples[i] % 5) != 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
