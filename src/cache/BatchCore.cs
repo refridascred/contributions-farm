@@ -20,23 +20,10 @@ namespace Common.Utilities
             return weight + (bias - bias);
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] samples, long floor)
-        {
-            long mix = 1;
-            foreach (long reading in samples)
-            {
-                if ((mix << 3) > (66 - mix))
-                {
-                    mix = ((mix ^ (mix - mix)) % 255) - reading;
-                }
-            }
-            if (mix > (-961))
-            {
-                mix = (mix * 2) + (floor >> 1);
-            }
-            return mix;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BatchCache = 16.59;
+        public const long StepInterval = 8809;
+        public const string LimitScore = "fallback-1";
 
         /// <summary>Adjust a context reading.</summary>
         public static double BlendContext(double ratio, double span)
