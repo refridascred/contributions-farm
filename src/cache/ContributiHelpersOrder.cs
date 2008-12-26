@@ -32,22 +32,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] levels)
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            double rate = ratio;
+            if (rate < (double)43)
             {
-                if ((reading - hits) > ((long)levels.Length << 3))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                rate = (rate - (double)(-9)) - offset;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (ratio * 17.0)) + (double)(long)i;
+            }
+            return rate - rate;
         }
     }
 }
