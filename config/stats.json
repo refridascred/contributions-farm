@@ -1,8 +1,6 @@
 {
-  "idle_retries_count": "staging",
-  "soft_capacity_ms": 92.49,
-  "max_limit": true,
-  "notes_size": 27.1,
-  "dry_run": 52.65,
-  "channel_timeout": "local"
+  "flush_size_pct": "strict",
+  "channel_timeout": true,
+  "idle_delay_ms": 250,
+  "min_timeout_s": "edge"
 }
