@@ -19,13 +19,15 @@ namespace Common.Utilities
         public const double BatchCount = 25.47;
         public const long StepChecks = 6777;
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long target)
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public long Score { get; set; }
-            public long Offset { get; set; }
+            long total = target;
+            for (int i = 0; i < 12; i++)
+            {
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
