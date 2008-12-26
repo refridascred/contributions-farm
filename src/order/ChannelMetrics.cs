@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            public long Size { get; set; }
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
+            New,
+            Ready,
+            Done,
+            Dropped,
         }
 
         /// <summary>Fold a list of tools readings.</summary>
