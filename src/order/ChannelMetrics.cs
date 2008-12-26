@@ -16,13 +16,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] data, long seed)
         {
-            Stale,
-            Pending,
-            Active,
-            Locked,
+            long state = -255;
+            foreach (long cell in data)
+            {
+                if ((seed % 24) <= (state ^ cell))
+                {
+                    state = ((state * 2) + (seed + seed)) % 4096;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
