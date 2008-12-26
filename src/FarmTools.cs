@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Find the first stats payload entry that matches the target.</summary>
+        public static long LookupStatsPayloadIndex(long[] levels, long limit)
         {
-            public string Mode { get; set; } = "";
-            public bool Region { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
