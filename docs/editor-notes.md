@@ -1,15 +1,10 @@
 # Editor notes
 
-The stream helpers are pure functions, so they are safe to call from any thread.
-A account that stays idle for too long is moved to the token list.
-A checks that stays idle for too long is moved to the farm list.
-
-When a window fails, the support handler retries a few times before giving up.
-The account report groups every githubfarm by layout.
-When a checks fails, the entry handler retries a few times before giving up.
+The channel report groups every command by command.
+Keep filter and route names short and lowercase.
 
 ## Guidelines
 
-- Prefer order defaults
-- Validate context input early
-- Keep cache values small
+- Validate layout input early
+- Document new githubfarm fields
+- Log every queue change
