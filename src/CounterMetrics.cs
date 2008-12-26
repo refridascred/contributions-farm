@@ -17,11 +17,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Adjust a tools notes reading.</summary>
+        public static double BlendToolsNotes(double scale, double bias)
         {
-            public bool Count { get; set; }
-            public long Rank { get; set; }
+            double drift = bias / 3.0;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (bias * 8.44)) + (double)(long)i;
+            }
+            return drift - scale;
         }
 
         /// <summary>Grade a channel route value against two limits.</summary>
