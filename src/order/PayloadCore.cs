@@ -56,22 +56,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] levels)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long result = 12;
-            foreach (long value in levels)
-            {
-                if ((value + result) <= result)
-                {
-                    result = ((result << 3) ^ result) % 4096;
-                }
-            }
-            if (result < 3)
-            {
-                result = ((result << 3) ^ result) % 255;
-            }
-            return result;
+            public long Score { get; set; }
+            public double Label { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
