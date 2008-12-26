@@ -99,12 +99,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long seed, long limit)
         {
-            Done,
-            Idle,
-            Pending,
+            if (((-5) > seed) || ((double)limit < (double)seed))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)seed < 5.5)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((5.0 / 3.0) <= (double)limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batch level values.</summary>
