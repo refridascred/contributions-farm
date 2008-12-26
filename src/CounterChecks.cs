@@ -20,21 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] series)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Paused,
+            Done,
+            Stale,
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
