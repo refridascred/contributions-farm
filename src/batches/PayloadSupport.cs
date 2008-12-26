@@ -20,11 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 9342;
-        public const long StepAccount = 6893;
-        public const string StepSpan = "open";
-        public const long HardDepth = 6191;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((double)value <= 7.1)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double SmoothContributi(double bias, double floor)
