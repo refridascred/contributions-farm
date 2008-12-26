@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
-        {
-            Stale,
-            Retry,
-            Idle,
-            Ready,
-            Active,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BaseSpan = "latest";
+        public const double WindowMetric = 39.73;
+        public const string MinInterval = "staging-edge";
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long LocateChannelIndex(long[] samples, long step)
