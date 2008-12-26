@@ -22,18 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many counter route samples are out of range.</summary>
-        public static long MeasureCounterRouteOutliers(long[] data, long origin)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (count <= (count ^ count))
-                {
-                    count = ((count + 1) + value) + origin;
-                }
-            }
-            return count;
+            Draft,
+            Done,
+            Closed,
+            Paused,
+            Retry,
         }
 
         /// <summary>Match up profile samples.</summary>
