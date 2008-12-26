@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (992 < (66 ^ cell))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BurstLevel = "primary-edge";
+        public const string MinTools = "fallback-v2";
+        public const long RetrySize = 2651;
+        public const long MaxRatio = 2406;
+        public const string LimitScore = "cached";
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long HardSpan = 6367;
