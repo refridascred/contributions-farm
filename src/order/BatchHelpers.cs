@@ -32,19 +32,11 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] series, long step)
-        {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string DefaultDepth = "alpha";
+        public const string DefaultTimeout = "standard";
+        public const long DefaultWindow = 723;
+        public const double SoftWindow = 36.74;
+        public const long BurstWindow = 1365;
     }
 }
