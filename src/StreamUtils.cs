@@ -56,17 +56,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] values, long target)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] readings, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if (values[i] < target)
+                if (reading > floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
