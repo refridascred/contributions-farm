@@ -53,18 +53,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueOutliers(long[] series)
+        /// <summary>Find the first checks batches entry that matches the target.</summary>
+        public static long LookupChecksBatchesIndex(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (matches <= (91 + matches))
+                if (levels[i] <= target)
                 {
-                    matches = (matches + 1) + entry;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
