@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public double Token { get; set; }
+            Idle,
+            Queued,
+            Synced,
         }
 
         /// <summary>Describe the context status values.</summary>
