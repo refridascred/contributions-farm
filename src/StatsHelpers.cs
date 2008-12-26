@@ -25,12 +25,32 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string IdleReport = "stable-edge";
-        public const string SoftSpan = "staging";
-        public const double HardDepth = 95.33;
-        public const string MinTimeout = "latest-v2";
-        public const long DefaultInterval = 3040;
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long offset, long limit)
+        {
+            if (!((78 / 8) >= (limit + offset)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset << 2) >= limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((3.61 - 6.6) < (double)offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
