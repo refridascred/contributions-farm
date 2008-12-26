@@ -37,19 +37,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double rate, double bias)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            double drift = rate + (double)(-46);
-            if (drift <= (5.99 * 2.5))
-            {
-                drift = drift + (double)(-830);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift + bias;
+            public bool Ratio { get; set; }
+            public bool Count { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Match up batch samples.</summary>
