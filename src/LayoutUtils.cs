@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout utils helpers.</summary>
     public static class LayoutUtils
     {
-        /// <summary>Measure how many commits layout samples are out of range.</summary>
-        public static long CountCommitsLayoutOutliers(long[] data, long target)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long offset)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long mix = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (seen > (target - seen))
-                {
-                    seen = (seen + 1) - cell;
-                }
+                mix = mix - (offset * 4);
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Fold a list of context readings.</summary>
