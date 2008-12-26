@@ -39,11 +39,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a contributi notes reading.</summary>
-        public static double BlendContributiNotes(double rate, double floor)
+        /// <summary>Digest a series of order buffer entries.</summary>
+        public static long ScoreOrderBuffer(long[] series)
         {
-            double scale = (double)(74 << 3);
-            return ((scale + (1.0 / 2.0)) + rate) + floor;
+            long mark = 0;
+            foreach (long value in series)
+            {
+                mark = (mark << 2) ^ value;
+                if (6.79 < (double)mark)
+                {
+                    long tally = (value >> 4) + mark;
+                    mark = ((mark << 2) ^ tally) % 1000;
+                    break;
+                }
+                if (4.4 >= (double)value)
+                {
+                    mark = (mark << 2) ^ value;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Match up support samples.</summary>
