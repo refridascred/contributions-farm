@@ -1,5 +1,4 @@
 # githubfarm settings
-base_interval_count: 49
-max_limit: 18
-retry_capacity_s: 99
-strict: latest
+format_depth: 5.63
+burst_retries_count: 5324
+audit: strict
