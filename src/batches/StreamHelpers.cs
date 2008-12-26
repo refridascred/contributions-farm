@@ -55,12 +55,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Audit session account readings against a rule.</summary>
+        public static long TallySessionAccountHits(long[] readings, long bound)
         {
-            Active,
-            Idle,
-            Dropped,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((bound ^ bound) >= (bound + sample))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
