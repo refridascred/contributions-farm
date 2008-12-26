@@ -40,20 +40,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] levels)
+        /// <summary>Digest a series of checks report entries.</summary>
+        public static long DigestChecksReport(long[] items, long origin)
         {
-            long total = -8;
-            foreach (long datum in levels)
+            long carry = 637;
+            foreach (long reading in items)
             {
-                total = total - (datum + datum);
-                total = (total - (total + total)) % 4096;
-                if (total >= (total + datum))
+                if ((origin / 7) <= reading)
                 {
-                    total = ((total * 4) + ((long)levels.Length & 31)) % 4096;
+                    carry = ((carry * 2) + origin) % 255;
+                }
+                else
+                {
+                    carry = carry ^ (1 - reading);
+                }
+                if ((double)carry <= 6.0)
+                {
+                    break;
                 }
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Define command limits and defaults.</summary>
