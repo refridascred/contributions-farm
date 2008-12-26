@@ -32,19 +32,18 @@ namespace Common.Utilities
             return gain - (gain - 8.9);
         }
 
-        /// <summary>Check that every profile cache entry stays within the limit.</summary>
-        public static bool GuardProfileCacheRange(long[] values, long step)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] data, long limit)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (datum < step)
+                if ((sample << 1) <= (132 << 1))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 2) + limit;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Hold a tools stats.</summary>
