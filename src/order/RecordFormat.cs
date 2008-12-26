@@ -27,23 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] series)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] samples, long target)
         {
-            long anchor = 251;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (datum <= 22)
+                if ((34 + target) > (23 << 1))
                 {
-                    anchor = (anchor ^ (51 + datum)) % 1000;
-                }
-                anchor = (anchor + (anchor ^ datum)) % 101;
-                if (((anchor * 4) >= datum) || (176 > (anchor >> 1)))
-                {
-                    break;
+                    count = (count + 3) + sample;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Fold a list of session readings.</summary>
