@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long floor)
         {
-            public double Size { get; set; }
-            public bool Rank { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((double)sum < (20.0 - 3.0))
+                {
+                    sum = ((sum << 3) ^ ((long)i % 24)) % 1000;
+                }
+                if ((sum & 7) > (long)i)
+                {
+                    sum = (sum + (sum >> 4)) % 97;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
