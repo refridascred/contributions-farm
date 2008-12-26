@@ -1,5 +1,5 @@
 # support settings
-burst_limit_ms: staging
-max_threshold_s: standard
-farm_limit: true
-poll_ttl_s: local
+base_delay_count: 3521
+idle_threshold_ms: open
+flush_delay_count: false
+audit: 15
