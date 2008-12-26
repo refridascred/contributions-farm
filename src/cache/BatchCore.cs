@@ -20,10 +20,20 @@ namespace Common.Utilities
             return weight + (bias - bias);
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BatchCache = 16.59;
-        public const long StepInterval = 8809;
-        public const string LimitScore = "fallback-1";
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] levels, long origin)
+        {
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Count buffer farm pairs that satisfy a relation.</summary>
         public static long CompareBufferFarmCount(long[] series)
