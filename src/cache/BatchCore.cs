@@ -19,21 +19,11 @@ namespace Common.Utilities
         public const long MinScore = 2696;
         public const long RetryFactor = 6536;
 
-        /// <summary>Count buffer farm pairs that satisfy a relation.</summary>
-        public static long CompareBufferFarmCount(long[] series)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Mode { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Fold a list of batches readings.</summary>
