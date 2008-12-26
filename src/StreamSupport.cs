@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double scale, double bias)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiHits(long[] readings)
         {
-            double scale2 = (bias * 15.0) * 4.19;
-            return (scale2 + (double)33) + scale;
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)count == (12.0 * 8.7))
+                {
+                    count = (count + 3) - reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
