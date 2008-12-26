@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already stats helpers.</summary>
     public static class AlreadyStats
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] readings, long bound)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Owner { get; set; }
+            public double Token { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
