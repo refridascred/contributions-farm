@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] values, long origin)
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double rate, double offset)
         {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double rate2 = (double)(869 / 5);
+            return (rate2 + rate) + offset;
         }
 
         /// <summary>Measure how many stream metrics samples are out of range.</summary>
