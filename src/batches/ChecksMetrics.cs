@@ -46,11 +46,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 8727;
-        public const string HardWidth = "stable-v2";
-        public const long StepSchema = 7968;
-        public const double BaseCount = 7.93;
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
+        {
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
