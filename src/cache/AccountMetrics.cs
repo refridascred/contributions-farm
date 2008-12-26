@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate cache window samples.</summary>
-        public static long WeighCacheWindow(long[] series, long bound)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] items)
         {
-            long mix = 62;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (((bound + cell) >= (12 << 2)) || ((42 + cell) < (mix + mix)))
+                if ((double)value > (2.0 * 5.84))
                 {
-                    mix = (mix - (bound ^ mix)) % 255;
+                    hits = hits + 1;
                 }
             }
-            if (mix > 163)
-            {
-                mix = mix ^ bound;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
