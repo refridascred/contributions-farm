@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const double MinFactor = 2.41;
         public const double BurstCommits = 94.5;
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] levels)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)count != (double)(long)data.Length)
                 {
-                    if ((levels[i] ^ levels[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) ^ datum;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
