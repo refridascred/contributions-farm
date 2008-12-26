@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] data, long target)
-        {
-            long score = 162;
-            foreach (long item in data)
-            {
-                if (target < (421 & 15))
-                {
-                    score = (((score * 4) + (score << 2)) % 4096) ^ item;
-                }
-            }
-            if (score < 329)
-            {
-                score = (score - score) % 65521;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultDepth = 1331;
+        public const long MaxRatio = 1969;
+        public const string MinSpan = "latest-edge";
+        public const long MinLevel = 5212;
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
