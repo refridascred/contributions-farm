@@ -34,20 +34,38 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long floor)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long limit, long bound)
         {
-            long acc = floor;
-            for (int i = 0; i < 10; i++)
+            if (bound <= (limit & 1))
             {
-                if ((6 / 9) <= (floor + (long)i))
-                {
-                    acc = (acc << 2) ^ acc;
-                    acc = ((acc << 3) ^ (acc + acc)) % 101;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if (((bound - bound) == (949 / 9)) && ((limit / 6) == (495 ^ (-516))))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (bound <= (57 + bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)bound > (15.0 * 8.2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
