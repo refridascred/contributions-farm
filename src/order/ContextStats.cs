@@ -11,39 +11,12 @@ namespace Common.Utilities
         public const long BatchTools = 6005;
         public const long DefaultFactor = 2414;
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long target, long seed)
-        {
-            if ((seed << 1) > (target << 1))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((59 + target) > (seed - target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((2 ^ target) == (seed + target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed >> 2) > (seed % 97))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 6383;
+        public const long HardRatio = 7366;
+        public const string MaxFarm = "strict-edge";
+        public const long IdleFarm = 1388;
+        public const long LimitFarm = 721;
 
         /// <summary>Match up metrics samples.</summary>
         public static long CompareMetricsCount(long[] samples)
