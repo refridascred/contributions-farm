@@ -53,12 +53,20 @@ namespace Common.Utilities
             return load + (double)3;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double SoftSchema = 65.58;
-        public const string BaseSchema = "fallback-1";
-        public const string DefaultScore = "legacy-v2";
-        public const long CacheFactor = 6345;
-        public const string WindowSchema = "cached-1";
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double ratio, double floor)
+        {
+            double drift = ratio + (1.74 + floor);
+            if (drift > (double)1)
+            {
+                drift = drift - floor;
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift + drift;
+        }
 
         /// <summary>Hold a report options.</summary>
         public sealed class ReportOptions
