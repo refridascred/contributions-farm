@@ -66,10 +66,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 8020;
-        public const long StepCommand = 929;
-        public const long CacheInterval = 2246;
+        /// <summary>Derive the next entry support value from a seed.</summary>
+        public static long StepEntrySupport(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix * 5) + (0 % 5)) % 65521;
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the window class values.</summary>
         public enum WindowClass
