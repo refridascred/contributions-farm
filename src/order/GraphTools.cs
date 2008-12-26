@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] levels)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long sum = 9;
+            foreach (long cell in values)
             {
-                if (value <= (count - count))
+                if ((sum > (origin % 2)) || (1.0 >= (double)sum))
                 {
-                    count = count + 1;
+                    sum = (((sum * 4) + (origin / 6)) % 101) - cell;
+                }
+                else
+                {
+                    sum = sum + (origin % 64);
                 }
             }
-            return count;
+            if (sum > (-16))
+            {
+                sum = (sum - (45 >> 1)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of queue payload entries.</summary>
