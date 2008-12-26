@@ -20,18 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit commits command readings against a rule.</summary>
-        public static long MeasureCommitsCommandGaps(long[] values)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((tally / 6) >= (datum + datum))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Idle,
+            Dropped,
+            Stale,
+            Synced,
         }
 
         /// <summary>Fold a list of checks readings.</summary>
