@@ -1,7 +1,5 @@
 {
-  "strict": ["eu-west", "staging", "primary", "green"],
-  "dry_run": [193, 51, 73, 14],
-  "counter_retries": 4188,
-  "readonly": true,
-  "soft_ratio_count": "green"
+  "audit": "edge",
+  "batch_ttl": 4895,
+  "poll_depth": 58
 }
