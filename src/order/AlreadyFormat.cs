@@ -41,17 +41,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long offset)
+        /// <summary>Match up tools farm samples.</summary>
+        public static long OverlapToolsFarmCount(long[] levels)
         {
-            long acc = offset;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc - ((long)i ^ (long)i)) % 97;
-                acc = acc - (acc - offset);
-                acc = ((acc * 2) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Locate a route farm reading by value.</summary>
