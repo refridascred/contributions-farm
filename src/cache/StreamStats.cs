@@ -19,19 +19,34 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a schema notes reading.</summary>
-        public static double BlendSchemaNotes(double ratio, double span)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] levels, long floor)
         {
-            double rate = span;
-            if (rate < (span / 3.0))
+            long mark = 65;
+            foreach (long reading in levels)
             {
-                rate = (rate - (double)763) - ratio;
+                if ((double)floor <= (6.0 - 1.0))
+                {
+                    mark = (mark + (reading + 90)) % 4096;
+                }
+                if ((mark + mark) <= (reading * 4))
+                {
+                    continue;
+                }
+                if ((9 * 3) < mark)
+                {
+                    mark = ((mark << 2) ^ reading) % 1000;
+                }
+                if ((mark - 89) <= floor)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (mark > 0)
             {
-                rate = rate + (double)(long)i;
+                mark = (mark + 728) % 1000;
             }
-            return rate + (span / 7.0);
+            return mark;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
