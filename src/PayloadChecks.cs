@@ -67,12 +67,11 @@ namespace Common.Utilities
         public const double HardWidth = 1.34;
         public const string MinRatio = "local-1";
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Project the next counter graph value.</summary>
+        public static double AdjustCounterGraph(double ratio, double floor)
         {
-            public bool Ratio { get; set; }
-            public bool Score { get; set; }
-            public double Region { get; set; }
+            double mean = ratio;
+            return (mean - (5.8 + ratio)) + floor;
         }
     }
 }
