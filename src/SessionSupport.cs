@@ -20,13 +20,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Measure how many profile already samples are out of range.</summary>
+        public static long MeasureProfileAlreadyOutliers(long[] series)
         {
-            public string Limit { get; set; } = "";
-            public double Size { get; set; }
-            public string Count { get; set; } = "";
-            public bool Owner { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((0.02 - 1.88) < (double)item)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
