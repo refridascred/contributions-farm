@@ -47,11 +47,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Scale a metrics token figure with a bias.</summary>
+        public static double ProjectMetricsToken(double scale, double span)
         {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
+            double drift = scale;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift - span;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
