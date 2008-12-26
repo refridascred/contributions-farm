@@ -39,12 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public double Region { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MaxDepth = "alpha-edge";
+        public const long WindowTimeout = 1856;
+        public const long RetryRecord = 3006;
+        public const long BatchRecord = 2874;
     }
 }
