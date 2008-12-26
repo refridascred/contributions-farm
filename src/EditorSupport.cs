@@ -32,19 +32,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] values, long origin)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] data, long step)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell >= origin)
+                if (data[i] == step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
