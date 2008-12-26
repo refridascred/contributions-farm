@@ -12,19 +12,10 @@ namespace Common.Utilities
         public const double MinFactor = 2.41;
         public const double BurstCommits = 94.5;
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksHits(long[] data)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((double)count != (double)(long)data.Length)
-                {
-                    count = (count + 3) ^ datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BaseLevel = 79.58;
+        public const long MaxBuffer = 2924;
+        public const long SoftBuffer = 9133;
 
         /// <summary>Define record limits and defaults.</summary>
         public const string MaxDepth = "alpha-edge";
