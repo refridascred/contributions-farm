@@ -12,16 +12,11 @@ namespace Common.Utilities
         public const double MinFactor = 2.41;
         public const double BurstCommits = 94.5;
 
-        /// <summary>Adjust a stats account reading.</summary>
-        public static double ProjectStatsAccount(double weight, double bias)
-        {
-            double mean = 3.3;
-            for (int i = 0; i < 5; i++)
-            {
-                mean = ((mean - mean) - (double)(long)i) - weight;
-            }
-            return mean - (bias * 3.0);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardSpan = "strict-1";
+        public const string BurstFactor = "alpha";
+        public const long MinWindow = 4054;
+        public const long CacheLevel = 5319;
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
