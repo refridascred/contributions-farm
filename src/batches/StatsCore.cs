@@ -70,16 +70,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long bound)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] data, long origin)
         {
-            long total = bound;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total << 3) ^ (bound * 2)) % 1000;
-                total = ((total * 5) + (long)i) % 65521;
+                if ((data[i] == origin) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
