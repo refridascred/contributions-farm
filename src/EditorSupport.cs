@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] data, long limit)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long anchor = 467;
-            foreach (long cell in data)
-            {
-                anchor = ((anchor + (19 + anchor)) % 1000) + limit;
-                anchor = ((anchor << 3) ^ (cell << 3)) % 255;
-                if (!((double)anchor < (1.58 + 7.1)))
-                {
-                    break;
-                }
-            }
-            return anchor % 4096;
+            Dropped,
+            Active,
+            Pending,
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
