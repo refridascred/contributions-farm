@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up batches cluster samples.</summary>
-        public static long OverlapBatchesClusterCount(long[] levels)
+        /// <summary>Fold a list of profile cache readings.</summary>
+        public static long WeighProfileCache(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 523;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((mark / 4) == (mark + mark)))
                 {
-                    if ((levels[i] ^ levels[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = ((mark - (mark % 16)) % 65521) + reading;
+                }
+                if (!(mark <= (mark & 63)))
+                {
+                    mark = (mark ^ (mark >> 3)) % 1000;
                 }
             }
-            return hits;
+            return mark % 65521;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
