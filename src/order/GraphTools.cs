@@ -38,11 +38,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string RetryLevel = "staging-1";
-        public const double IdleSchema = 86.52;
-        public const long BurstSchema = 8811;
-        public const long BatchSchema = 8307;
+        /// <summary>Count the window filter entries that pass the check.</summary>
+        public static long TallyWindowFilterHits(long[] levels, long origin)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (!((19.0 + 0.9) < (double)count))
+                {
+                    count = ((count + 1) ^ cell) - origin;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a record reading.</summary>
         public static double ScaleRecord(double rate, double offset)
