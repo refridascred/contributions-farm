@@ -30,14 +30,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            Draft,
+            Locked,
+            Synced,
+            Stale,
+            New,
             Paused,
-            Done,
-            Ready,
-            Retry,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
