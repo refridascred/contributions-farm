@@ -19,13 +19,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double bias, double span)
         {
-            Paused,
-            Retry,
-            Closed,
-            Draft,
+            double gain = (double)(2 / 5);
+            if (gain >= (double)6)
+            {
+                gain = gain + (1.4 + bias);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (5.0 - span)) + (double)(long)i;
+            }
+            return gain + bias;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
