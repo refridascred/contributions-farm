@@ -1,7 +1,9 @@
-id,owner,region,level,rank
-1,latest,814,191,legacy
-2,latest,479,907,811
-3,36.77,local,15.95,861
-4,18.01,latest,75.18,949
-5,staging,staging,edge,3.67
-6,47.71,564,37.31,389
+id,owner,label,token,score
+1,stable,152,456,112
+2,edge,fallback,836,87.09
+3,cached,stable,eu-west,14.18
+4,56.75,latest,49.28,27
+5,local,334,62.63,strict
+6,88.76,66.25,cached,34.18
+7,924,628,773,strict
+8,50.52,111,staging,653
