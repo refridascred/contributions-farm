@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Rank order graph input into a small class.</summary>
+        public static long SortOrderGraph(long offset, long seed)
         {
-            public bool Stamp { get; set; }
-            public bool Limit { get; set; }
-            public string Count { get; set; } = "";
+            if ((double)offset != (6.24 / 2.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)seed > (double)offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((3.75 * 20.0) > (double)offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed % 100) >= seed)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next metrics value.</summary>
