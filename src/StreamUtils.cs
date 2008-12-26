@@ -47,25 +47,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long offset, long step)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] values, long target)
         {
-            long prev = offset - step;
-            if ((double)step != (2.0 + 6.25))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((offset - prev) <= step) || ((prev & 127) > (35 + offset)))
+                if (values[i] < target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
