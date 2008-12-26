@@ -40,26 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] series)
+        /// <summary>Check that every context batch entry stays within the limit.</summary>
+        public static bool CheckContextBatchRange(long[] readings, long limit)
         {
-            long total = 473;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if ((total % 8) >= (9 + total))
+                if (datum > limit)
                 {
-                    total = total - (79 & 255);
-                }
-                if ((value * 3) < ((long)series.Length + 97))
-                {
-                    total = total ^ (total + 8);
-                }
-                else
-                {
-                    total = (total + (value + value)) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Count the route order entries that pass the check.</summary>
