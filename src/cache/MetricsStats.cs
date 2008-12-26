@@ -37,13 +37,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Look up the position of a batches contributi sample.</summary>
+        public static long FindBatchesContributiIndex(long[] levels, long target)
         {
-            public double Weight { get; set; }
-            public long Owner { get; set; }
-            public bool Size { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
