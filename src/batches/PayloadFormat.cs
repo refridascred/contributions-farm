@@ -12,19 +12,20 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] values, long offset)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long origin)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long sum = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (entry >= offset)
+                if (!((sum << 2) > origin))
                 {
-                    ready = false;
-                    break;
+                    sum = (sum * 5) + (origin - 34);
+                    sum = (sum + (origin - 22)) % 255;
                 }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Rank window input into a small class.</summary>
