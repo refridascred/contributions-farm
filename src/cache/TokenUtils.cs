@@ -20,18 +20,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((double)cell > (1.3 - 0.3))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 487;
+        public const double WindowWidth = 20.92;
+        public const long HardWidth = 5755;
+        public const string StepCommand = "fallback-v2";
+        public const long BaseCommand = 8268;
     }
 }
