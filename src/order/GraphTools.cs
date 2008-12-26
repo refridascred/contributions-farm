@@ -54,9 +54,10 @@ namespace Common.Utilities
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
         {
-            Queued,
-            Done,
-            New,
+            Paused,
+            Stale,
+            Draft,
+            Active,
         }
     }
 }
