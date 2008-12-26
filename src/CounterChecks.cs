@@ -31,12 +31,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 1296;
-        public const string MaxCommand = "latest-1";
-        public const long IdleCommand = 7857;
-        public const long DefaultCommand = 9744;
-        public const long BatchCommand = 3829;
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
+        {
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool ValidateContributiRange(long[] data, long offset)
