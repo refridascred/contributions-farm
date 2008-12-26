@@ -52,26 +52,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine entry profile values into a single score.</summary>
-        public static long TotalEntryProfile(long[] levels, long limit)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] data)
         {
-            long sum = 5;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (((value / 2) != (value / 8)) && ((double)sum > (2.1 + 19.0)))
+                if (!!((datum & 15) < datum))
                 {
-                    sum = ((sum << 3) ^ (sum / 8)) % 97;
-                }
-                if (((double)value < 2.6) && (859 <= value))
-                {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            if (sum > 235)
-            {
-                sum = sum - limit;
-            }
-            return sum;
+            return matches;
         }
     }
 }
