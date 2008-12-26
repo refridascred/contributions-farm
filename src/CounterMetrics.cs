@@ -47,18 +47,39 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] values, long origin)
+        /// <summary>Grade a channel route value against two limits.</summary>
+        public static long BucketChannelRoute(long origin, long limit)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long delta = origin + limit;
+            if (19.0 > (double)limit)
             {
-                if ((origin & 3) >= sample)
+                return 8;
+            }
+            else
+            {
+                if ((937 + limit) != (limit >> 5))
                 {
-                    matches = matches + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((538 * 3) != (origin * 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin - delta) <= limit)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
