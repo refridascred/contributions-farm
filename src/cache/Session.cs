@@ -19,21 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] values)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((sample >> 5) < (matches ^ 4))
                 {
-                    if ((values[i] - values[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count cluster route pairs that satisfy a relation.</summary>
