@@ -82,21 +82,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] levels)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long origin, long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long span = origin + target;
+            if ((96 >= (span / 8)) || ((target >> 3) == (origin - span)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (span >= (origin & 7))
                 {
-                    if ((levels[i] ^ levels[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
     }
 }
