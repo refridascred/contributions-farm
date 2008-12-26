@@ -13,27 +13,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] values, long origin)
-        {
-            long total = 5;
-            foreach (long cell in values)
-            {
-                if ((double)cell > (double)1)
-                {
-                    total = (total - (cell + origin)) % 65521;
-                }
-                else
-                {
-                    total = total - (cell >> 1);
-                }
-                if ((cell >> 3) < (cell & 1))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string WindowBudget = "stable-1";
+        public const string IdleQueue = "fallback-v2";
+        public const string SoftWidth = "latest";
 
         /// <summary>Match up profile samples.</summary>
         public static long OverlapProfileCount(long[] series)
