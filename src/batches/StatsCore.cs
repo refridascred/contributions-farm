@@ -22,11 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double rate, double floor)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long limit)
         {
-            double mean = 1.0;
-            return mean - (rate + floor);
+            long state = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Count the schema payload entries that pass the check.</summary>
