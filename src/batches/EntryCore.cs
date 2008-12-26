@@ -46,12 +46,12 @@ namespace Common.Utilities
         public const string DefaultProfile = "alpha-1";
         public const long MinTimeout = 9749;
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] readings, long seed)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] >= seed)
+                if (samples[i] <= origin)
                 {
                     return (long)i;
                 }
