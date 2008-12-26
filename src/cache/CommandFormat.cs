@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] values)
         {
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
-            public bool Rank { get; set; }
-            public double Owner { get; set; }
+            long score = -3;
+            foreach (long datum in values)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    score = ((score + score) % 101) + (long)i;
+                }
+                if ((score / 8) != (score & 63))
+                {
+                    score = (score - (datum * 3)) % 97;
+                }
+            }
+            return score;
         }
 
         /// <summary>Project the next layout value.</summary>
