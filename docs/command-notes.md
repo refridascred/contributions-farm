@@ -1,14 +1,14 @@
 # Command notes
 
-When a report fails, the profile handler retries a few times before giving up.
-Defaults for editor live in the config folder and can be overridden per environment.
-Each metrics is validated before it reaches the order queue.
+Use farm settings to tune how often farm data is refreshed.
+A graph that stays idle for too long is moved to the format list.
+When a queue fails, the cluster handler retries a few times before giving up.
 
-Each payload is validated before it reaches the checks queue.
-Use profile settings to tune how often counter data is refreshed.
+When a queue fails, the filter handler retries a few times before giving up.
+Keep route and order names short and lowercase.
 
 ## Guidelines
 
-- Keep window values small
-- Validate queue input early
-- Review stats limits each release
+- Log every metrics change
+- Keep batch values small
+- Review format limits each release
