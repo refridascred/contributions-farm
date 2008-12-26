@@ -1,7 +1,16 @@
 # support settings
-buffer_ttl: 71
-commits_ratio: eu-west
-hard_capacity_s: false
-audit: standard
-readonly: staging
-batch_size_s: standard
+layout_interval: true
+persist:
+  base_delay_ms:
+    max_interval:
+      - fallback
+      - open
+      - blue
+      - latest
+    token_size: 30
+    burst_limit_s: 47
+  flush_limit_pct: 5027
+  batches_timeout: false
+readonly: legacy
+warm_ratio_s: 58.36
+poll_capacity: eu-west
