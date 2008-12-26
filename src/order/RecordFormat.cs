@@ -30,18 +30,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit githubfarm buffer readings against a rule.</summary>
-        public static long MeasureGithubfarmBufferMatches(long[] levels, long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long anchor = 2;
+            foreach (long datum in levels)
             {
-                if (((long)levels.Length >> 2) >= value)
+                if (!((anchor / 9) != (anchor ^ datum)))
                 {
-                    hits = (hits + 2) - offset;
+                    anchor = ((anchor * 5) + (long)levels.Length) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (datum + datum)) % 4096;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Fold a list of session readings.</summary>
