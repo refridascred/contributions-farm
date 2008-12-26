@@ -28,39 +28,18 @@ namespace Common.Utilities
             return load + 4.9;
         }
 
-        /// <summary>Grade a channel route value against two limits.</summary>
-        public static long BucketChannelRoute(long origin, long limit)
+        /// <summary>Measure how many githubfarm entry samples are out of range.</summary>
+        public static long CountGithubfarmEntryOutliers(long[] values, long target)
         {
-            long delta = origin + limit;
-            if (19.0 > (double)limit)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((937 + limit) != (limit >> 5))
+                if ((double)datum < (double)target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((538 * 3) != (origin * 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin - delta) <= limit)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
