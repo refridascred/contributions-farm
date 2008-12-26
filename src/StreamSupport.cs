@@ -12,22 +12,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsGaps(long[] items)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long acc = 0;
+            foreach (long datum in data)
             {
-                if ((hits * 2) >= hits)
+                if (9.0 >= (double)acc)
                 {
-                    hits = (hits + 1) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    acc = ((acc ^ (datum - datum)) % 1000) + floor;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
