@@ -64,16 +64,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] samples, long step)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double bias, double span)
         {
-            long result = 44;
-            foreach (long value in samples)
+            double bias2 = 8.0;
+            if (bias2 >= span)
             {
-                result = (result ^ (result >> 4)) - value;
-                result = ((result * 4) + (step - step)) % 97;
+                bias2 = (bias2 - (2.33 - 9.2)) + bias;
             }
-            return result;
+            else
+            {
+                bias2 = bias2 - (bias2 * 1.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 - (bias2 * 4.54)) + (double)(long)i;
+            }
+            return bias2 - (bias2 * 0.49);
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
