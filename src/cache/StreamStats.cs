@@ -19,15 +19,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long target)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] levels, long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 17; i++)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                mark = ((mark * 5) + (long)i) % 65521;
+                if (item >= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Hold a format stats.</summary>
