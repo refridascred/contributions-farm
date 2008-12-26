@@ -23,22 +23,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long bound, long seed)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long offset, long origin)
         {
-            if (!(bound <= (seed & 63)))
+            long bound = offset + origin;
+            if ((double)offset >= 4.3)
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if ((double)bound < (double)seed)
+                if ((offset / 7) != (bound - offset))
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
-                    return 8;
+                    if ((bound - origin) > offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
