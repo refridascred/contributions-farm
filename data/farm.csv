@@ -1,9 +1,7 @@
-id,state,region
-1,staging,469
-2,cached,0.8
-3,845,30
-4,blue,68.52
-5,blue,49.28
-6,eu-west,936
-7,222,328
-8,33.74,873
+id,region
+1,blue
+2,75
+3,8.73
+4,2
+5,stable
+6,693
