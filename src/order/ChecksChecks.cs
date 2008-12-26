@@ -12,19 +12,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksMatches(long[] readings, long bound)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (!(((seen % 10) > sample) || (seen < (301 >> 5))))
-                {
-                    seen = (seen + 2) - bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardScore = 2361;
+        public const long BatchMetric = 2608;
+        public const string BurstMetric = "primary";
+        public const long StepSize = 5785;
+        public const double BaseMetric = 59.77;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double DefaultTimeout = 73.33;
