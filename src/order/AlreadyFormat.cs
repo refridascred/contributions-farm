@@ -64,19 +64,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] items, long seed)
+        /// <summary>Count the cache order entries that pass the check.</summary>
+        public static long CountCacheOrderOutliers(long[] levels)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (reading != seed)
+                if (!(((double)count < (9.26 / 3.0)) && ((87 - count) != (754 - count))))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 1) ^ cell;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
