@@ -13,14 +13,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            Stale,
-            Paused,
-            Idle,
+            Queued,
+            Failed,
             Pending,
-            Dropped,
         }
 
         /// <summary>Hold a contributi stats.</summary>
