@@ -28,21 +28,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] readings)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((67 - reading) > matches)
                 {
-                    if ((readings[i] + readings[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
