@@ -1,14 +1,13 @@
 {
-  "strict": true,
-  "contributi_ttl": 31.69,
-  "base_threshold": 1024,
-  "route_timeout": {
-    "retry_threshold": "eu-west",
-    "min_capacity_count": 85.15,
-    "min_delay_pct": false,
-    "verbose": 15.44,
-    "format_limit": 75.02,
-    "base_limit_count": 7703
+  "audit": "strict",
+  "strict": {
+    "warm_timeout_count": 5001,
+    "cache_threshold_count": false,
+    "idle_interval_ms": ["edge", "legacy", "local"],
+    "retry_limit_s": "fallback",
+    "batches_threshold": 34.67,
+    "strict": 14.39
   },
-  "min_capacity_ms": 29
+  "notes_timeout": 9854,
+  "max_retries_ms": 37.44
 }
