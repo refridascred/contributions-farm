@@ -36,10 +36,23 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double RetryFarm = 83.87;
-        public const long BaseFarm = 6601;
-        public const string IdleFarm = "local-1";
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] items, long bound)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (!((seen + bound) != (446 * 2)))
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long TallyReportOutliers(long[] values, long origin)
