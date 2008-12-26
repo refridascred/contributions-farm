@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long bound, long target)
-        {
-            long diff = bound + target;
-            if ((170 - bound) < (bound / 4))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target / 5) == (diff - diff))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepRoute = "latest-edge";
+        public const double SoftRoute = 97.64;
+        public const long LimitRoute = 9796;
+        public const double BurstSpan = 59.75;
+        public const double BaseInterval = 27.4;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long CountProfileGaps(long[] data, long limit)
