@@ -49,19 +49,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of metrics filter entries.</summary>
-        public static long TallyMetricsFilter(long[] readings)
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double weight, double span)
         {
-            long total = 0;
-            foreach (long sample in readings)
+            double load = 0.22;
+            if (load > (span + 1.0))
             {
-                total = (total << 3) ^ 8;
-                if ((sample + sample) < (sample - total))
-                {
-                    break;
-                }
+                load = (load + span) - weight;
             }
-            return total;
+            else
+            {
+                load = load - 14.0;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + (load / 7.0);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
