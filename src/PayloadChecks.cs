@@ -22,23 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long bound)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long sum = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((sum < (sum % 24)) || ((long)i < (sum - 19)))
-                {
-                    sum = (sum ^ (sum + sum)) % 101;
-                }
-                else
-                {
-                    sum = (sum - (bound * 3)) % 97;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            public long Ratio { get; set; }
+            public double Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Accumulate window samples.</summary>
