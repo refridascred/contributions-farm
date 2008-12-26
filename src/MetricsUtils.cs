@@ -39,14 +39,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesGaps(long[] readings)
         {
-            Locked,
-            Done,
-            Active,
-            Idle,
-            Paused,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (!((2 % 97) < cell))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
