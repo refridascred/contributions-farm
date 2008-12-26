@@ -26,11 +26,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Locate a tools record reading by value.</summary>
+        public static long LocateToolsRecordIndex(long[] series, long limit)
         {
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > limit) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
