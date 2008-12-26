@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the cluster metrics entries that pass the check.</summary>
-        public static long CountClusterMetricsOutliers(long[] items)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long result = 0;
+            foreach (long reading in levels)
             {
-                if (!(((tally - 90) >= tally) || (tally <= (sample % 3))))
+                result = (((result << 2) ^ (result >> 1)) % 255) - target;
+                if ((reading >> 3) <= (long)levels.Length)
                 {
-                    tally = tally + 1;
+                    result = (result - result) % 1000;
+                }
+                else
+                {
+                    result = ((result * 4) + 432) % 97;
+                }
+                if ((double)result < (7.18 + 16.0))
+                {
+                    break;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Describe the notes state values.</summary>
