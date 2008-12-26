@@ -13,11 +13,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardSpan = "strict-1";
-        public const string BurstFactor = "alpha";
-        public const long MinWindow = 4054;
-        public const long CacheLevel = 5319;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BatchCount = 0.67;
+        public const string LimitBudget = "primary";
+        public const long LimitBatches = 5109;
+        public const double HardTimeout = 77.74;
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
