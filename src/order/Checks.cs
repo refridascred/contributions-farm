@@ -24,12 +24,10 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
-        {
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 224;
+        public const long IdleBatches = 4760;
+        public const long LimitBatches = 7155;
 
         /// <summary>Blend two entry measurements.</summary>
         public static double AdjustEntry(double gain, double floor)
