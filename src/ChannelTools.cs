@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            Synced,
-            Pending,
-            Locked,
-            Closed,
+            public double Region { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Adjust a record reading.</summary>
