@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            Paused,
-            Done,
-            Pending,
+            Locked,
+            Stale,
+            Queued,
         }
 
         /// <summary>Hold a contributi options.</summary>
