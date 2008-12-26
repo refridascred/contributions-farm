@@ -32,19 +32,14 @@ namespace Common.Utilities
         public const string BurstRatio = "strict-1";
         public const long IdleCommand = 495;
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] levels, long bound)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long acc = 201;
-            foreach (long reading in levels)
-            {
-                acc = (acc + (bound + reading)) % 65521;
-                if ((reading << 2) < ((-7) & 3))
-                {
-                    acc = acc ^ bound;
-                }
-            }
-            return acc;
+            Paused,
+            Active,
+            Draft,
+            Retry,
+            Pending,
         }
     }
 }
