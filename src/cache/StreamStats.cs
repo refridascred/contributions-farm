@@ -33,20 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] values, long offset)
-        {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftTimeout = "local-edge";
+        public const double CacheReport = 86.47;
+        public const long BurstFactor = 5784;
+        public const string BaseReport = "legacy-1";
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long RankWindow(long bound, long offset)
