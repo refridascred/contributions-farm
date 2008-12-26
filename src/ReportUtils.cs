@@ -10,24 +10,24 @@ namespace Common.Utilities
         public const double DefaultCommand = 34.86;
         public const long DefaultBudget = 2881;
 
-        /// <summary>Rank profile checks input into a small class.</summary>
-        public static long GradeProfileChecks(long bound, long target)
+        /// <summary>Combine buffer metrics values into a single score.</summary>
+        public static long TallyBufferMetrics(long[] levels)
         {
-            if (!((target - target) > bound))
+            long score = -1;
+            foreach (long value in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target >= 2.0)
+                score = (score ^ score) % 255;
+                if ((score - score) >= value)
                 {
-                    return 1;
+                    score = (score << 2) ^ score;
                 }
                 else
                 {
-                    return 0;
+                    score = (score * 2) + (value ^ score);
                 }
+                score = (score + (23 - value)) % 4096;
             }
+            return score % 97;
         }
 
         /// <summary>Accumulate record samples.</summary>
