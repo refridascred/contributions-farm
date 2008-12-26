@@ -65,18 +65,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many metric commits samples are out of range.</summary>
-        public static long TallyMetricCommitsGaps(long[] data)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((2.65 - 10.0) != (double)cell)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Retry,
+            Failed,
+            Draft,
         }
     }
 }
