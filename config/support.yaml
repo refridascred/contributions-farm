@@ -1,4 +1,6 @@
 # support settings
-batch_depth: stable
-burst_size_count: 250
-burst_retries_s: false
+readonly: eu-west
+batch_limit_pct: 63
+editor_limit: 95
+commits_interval: 100
+strict: 30
