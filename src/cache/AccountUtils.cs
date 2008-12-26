@@ -26,12 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] readings, long floor)
         {
-            public bool Flag { get; set; }
-            public double Size { get; set; }
-            public string Weight { get; set; } = "";
+            long result = 0;
+            foreach (long value in readings)
+            {
+                result = result + (floor / 9);
+                if (((double)value >= (double)result) || (19.0 < (double)value))
+                {
+                    result = (result << 3) ^ (767 * 4);
+                }
+            }
+            return result % 65521;
         }
     }
 }
