@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit cluster contributi readings against a rule.</summary>
-        public static long MeasureClusterContributiGaps(long[] levels)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (item >= matches)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Match up schema samples.</summary>
