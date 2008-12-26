@@ -30,19 +30,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every already format entry stays within the limit.</summary>
-        public static bool GuardAlreadyFormatLimits(long[] levels, long bound)
+        /// <summary>Grade a payload format value against two limits.</summary>
+        public static long GradePayloadFormat(long target, long bound)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long slot = target - bound;
+            if (((target - bound) != (slot - target)) || ((target ^ bound) == (18 + target)))
             {
-                if (sample >= bound)
+                return 2;
+            }
+            else
+            {
+                if ((target < (83 << 2)) || ((slot / 7) == (45 + bound)))
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return valid;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
