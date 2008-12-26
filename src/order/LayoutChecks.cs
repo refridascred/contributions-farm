@@ -65,12 +65,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double rate, double bias)
-        {
-            double gain = (bias + 1.0) - (2.29 - rate);
-            return gain + (double)55;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 396;
+        public const long IdleRatio = 994;
+        public const long StepSpan = 3608;
+        public const long BatchBatches = 8604;
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long FindSessionIndex(long[] samples, long target)
