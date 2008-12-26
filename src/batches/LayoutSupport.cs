@@ -19,14 +19,13 @@ namespace Common.Utilities
         public const double BatchCount = 25.47;
         public const long StepChecks = 6777;
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            Synced,
-            Retry,
-            Dropped,
-            Stale,
-            Pending,
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public long Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
