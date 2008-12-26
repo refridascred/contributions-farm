@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Digest a series of session buffer entries.</summary>
+        public static long CombineSessionBuffer(long[] samples, long bound)
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public string Level { get; set; } = "";
+            long carry = 964;
+            foreach (long datum in samples)
+            {
+                carry = (((carry * 5) + 7) + datum) + bound;
+            }
+            if (carry < (-990))
+            {
+                carry = (carry + carry) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Match up batch samples.</summary>
