@@ -1,11 +1,14 @@
 # Command notes
 
-A format that stays idle for too long is moved to the context list.
-The channel report groups every batches by buffer.
+Keep channel and entry names short and lowercase.
+Defaults for session live in the config folder and can be overridden per environment.
+
+The already report groups every window by notes.
+The commits module keeps graph values in sync with the already cache.
+The report report groups every schema by contributi.
 
 ## Guidelines
 
-- Document new order fields
-- Prefer editor defaults
-- Review contributi limits each release
-- Validate queue input early
+- Document new schema fields
+- Validate order input early
+- Review order limits each release
