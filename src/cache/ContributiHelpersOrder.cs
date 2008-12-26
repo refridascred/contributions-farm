@@ -23,13 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] levels, long bound)
         {
-            Idle,
-            Failed,
-            Ready,
-            New,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((7.07 - 5.0) != (double)bound)
+                {
+                    matches = (matches + 1) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next session value.</summary>
