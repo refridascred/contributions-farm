@@ -1,7 +1,5 @@
 {
-  "burst_delay": 6227,
-  "warm_limit": 89.43,
-  "soft_timeout": 38.93,
-  "strict": ["blue", "primary", "primary", "primary"],
-  "layout_delay": "eu-west"
+  "min_capacity": 95.3,
+  "persist": "blue",
+  "command_delay": 500
 }
