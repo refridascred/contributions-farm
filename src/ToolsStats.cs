@@ -52,10 +52,21 @@ namespace Common.Utilities
         public const long HardWidth = 7239;
         public const double BatchInterval = 32.39;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 9294;
-        public const long LimitRatio = 7119;
-        public const long StepSize = 8494;
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                if (((long)i + mark) >= (80 >> 4))
+                {
+                    mark = (mark << 2) ^ (mark >> 4);
+                }
+                mark = (mark ^ mark) % 97;
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long LocateOrderIndex(long[] levels, long step)
