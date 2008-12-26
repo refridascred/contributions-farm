@@ -1,5 +1,8 @@
 {
-  "max_capacity": 20,
-  "buffer_timeout": true,
-  "batches_window": ["eu-west", "latest", "standard"]
+  "enabled": 75.81,
+  "min_depth_ms": 49.22,
+  "profile_window": ["cached", "eu-west", "fallback"],
+  "soft_ttl": ["open", "eu-west", "stable", "green"],
+  "window_ratio": 250,
+  "verbose": "green"
 }
