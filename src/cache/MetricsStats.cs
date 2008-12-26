@@ -37,17 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a batches contributi sample.</summary>
-        public static long FindBatchesContributiIndex(long[] levels, long target)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Digest a series of window entries.</summary>
