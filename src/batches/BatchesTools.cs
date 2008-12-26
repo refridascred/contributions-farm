@@ -31,11 +31,12 @@ namespace Common.Utilities
             return ratio2 + (floor - ratio);
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
+            public double Score { get; set; }
+            public string Mode { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
