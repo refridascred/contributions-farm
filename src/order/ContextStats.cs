@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelBounds(long[] levels, long bound)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long bound)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long sum = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (item <= bound)
+                if (!((sum ^ sum) != ((long)i / 6)))
                 {
-                    stale = false;
-                    break;
+                    sum = (sum - sum) % 97;
                 }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Hold a cache header.</summary>
