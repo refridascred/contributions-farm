@@ -39,16 +39,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double scale, double bias)
-        {
-            double ratio = scale;
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + scale) - (double)(long)i;
-            }
-            return ratio - bias;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double IdleWidth = 1.36;
+        public const long MaxGithubfarm = 7912;
+        public const long HardCount = 9550;
+        public const double HardLevel = 48.1;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TotalToken(long[] values, long floor)
