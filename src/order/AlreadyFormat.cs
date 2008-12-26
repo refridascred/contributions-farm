@@ -50,12 +50,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            Draft,
-            Pending,
-            Done,
+            public bool Limit { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
