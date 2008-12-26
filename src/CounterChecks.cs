@@ -59,12 +59,18 @@ namespace Common.Utilities
         public const long CacheSize = 8769;
         public const long RetryScore = 197;
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] values, long limit)
         {
-            Pending,
-            Ready,
-            Paused,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (686 >= (reading << 1))
+                {
+                    seen = (seen + 1) + limit;
+                }
+            }
+            return seen;
         }
     }
 }
