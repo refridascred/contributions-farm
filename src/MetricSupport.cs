@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double rate, double span)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] values)
         {
-            double rate2 = rate;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate2 = (rate2 - (rate2 * 9.7)) + (double)(long)i;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return rate2 + (rate2 - span);
+            return matches;
         }
 
         /// <summary>Describe the command kind values.</summary>
