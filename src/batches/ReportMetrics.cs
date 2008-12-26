@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] values, long target)
+        /// <summary>Compare every pair of payload contributi readings.</summary>
+        public static long MatchPayloadContributiCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample <= target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] + readings[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Digest a series of format stats entries.</summary>
