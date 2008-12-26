@@ -72,25 +72,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long offset, long floor)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamOutliers(long[] values, long step)
         {
-            long diff = offset ^ floor;
-            if (!(offset < (diff - offset)))
+            long tally = 0;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((19.0 * 8.0) >= (double)offset)
+                if (((tally + tally) > (step - datum)) && ((long)values.Length >= datum))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
