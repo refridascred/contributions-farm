@@ -16,10 +16,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxScore = 15.11;
-        public const double CacheBatches = 51.57;
-        public const double BatchBatches = 85.17;
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long floor, long step)
+        {
+            if ((double)floor == (8.1 - 7.99))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)38 != (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor - floor) <= floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)step >= (1.8 - 15.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long AuditChannelGaps(long[] readings, long limit)
