@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinSize = 2141;
-        public const double BurstBudget = 95.31;
-        public const long LimitBuffer = 9127;
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
+        {
+            Synced,
+            Pending,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Measure how many farm checks samples are out of range.</summary>
         public static long TallyFarmChecksGaps(long[] levels)
