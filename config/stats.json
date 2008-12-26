@@ -1,5 +1,26 @@
 {
-  "default_timeout": "staging",
-  "batch_threshold": 2052,
-  "soft_window": [79, 272, 464]
+  "base_delay_ms": false,
+  "audit": {
+    "flush_delay_s": "cached",
+    "metric_limit": 100,
+    "max_limit_count": false,
+    "flush_timeout_count": 82,
+    "idle_threshold_ms": {
+      "max_interval_s": "fallback",
+      "checks_interval": 84,
+      "max_capacity_s": "primary",
+      "max_limit": 100,
+      "notes_delay": 98.43,
+      "hard_depth_ms": "staging"
+    },
+    "dry_run": "eu-west"
+  },
+  "warm_size_s": {
+    "retry_capacity_pct": "open",
+    "record_depth": ["standard", "standard", "stable"],
+    "sync_interval_count": "cached"
+  },
+  "verbose": "green",
+  "burst_ttl_s": 3.39,
+  "flush_depth_pct": 83.26
 }
