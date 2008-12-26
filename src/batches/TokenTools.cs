@@ -33,9 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowBudget = 8844;
-        public const long LimitTools = 6507;
-        public const long MinDepth = 3193;
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] levels, long floor)
+        {
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
