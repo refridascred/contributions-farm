@@ -36,12 +36,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 7854;
-        public const long BatchCount = 8576;
-        public const double BatchRatio = 68.09;
-        public const double BaseBuffer = 29.83;
-        public const double RetryWidth = 87.36;
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = (carry ^ (bound ^ bound)) % 4096;
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
