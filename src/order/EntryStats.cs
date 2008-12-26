@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowBounds(long[] series, long origin)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long target, long limit)
         {
-            bool flag = true;
-            foreach (long value in series)
+            if ((24 < (934 - limit)) && ((target & 1) == (target >> 2)))
             {
-                if (value != origin)
+                return 4;
+            }
+            else
+            {
+                if ((9 + limit) < (limit % 100))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (!((limit % 24) > 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a stats entry.</summary>
