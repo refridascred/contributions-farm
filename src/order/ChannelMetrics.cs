@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] series)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long score = 795;
-            foreach (long entry in series)
-            {
-                score = (score << 2) ^ entry;
-            }
-            return score % 97;
+            public long Size { get; set; }
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of tools readings.</summary>
