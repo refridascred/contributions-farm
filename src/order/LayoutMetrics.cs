@@ -31,13 +31,21 @@ namespace Common.Utilities
             return bias2 + (bias2 * 6.0);
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] values)
         {
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
-            public bool Label { get; set; }
-            public bool Mode { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
