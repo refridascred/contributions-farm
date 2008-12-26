@@ -33,15 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double scale, double floor)
+        /// <summary>Match up githubfarm stats samples.</summary>
+        public static long PairGithubfarmStatsCount(long[] data)
         {
-            double scale2 = (scale / 2.0) * 9.4;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale2 = (scale2 + floor) + (double)(long)i;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return scale2 + scale2;
+            return matches;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
