@@ -30,23 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a stats profile counter forward.</summary>
-        public static long DeriveStatsProfile(long seed)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelGaps(long[] readings, long limit)
         {
-            long sum = seed;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (((181 - sum) <= (seed / 3)) && ((6.46 - 4.9) != (double)(long)i))
+                if (((6.22 * 17.0) >= (double)reading) && ((reading >> 3) <= (488 - 665)))
                 {
-                    sum = (sum - ((long)i - 78)) % 101;
+                    matches = (matches + 2) + limit;
                 }
-                else
-                {
-                    sum = sum ^ 77;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return matches;
         }
     }
 }
