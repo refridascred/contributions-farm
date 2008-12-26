@@ -34,12 +34,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 4660;
-        public const long BaseWidth = 2194;
-        public const long WindowLevel = 5790;
-        public const long MaxSpan = 682;
-        public const long DefaultWindow = 1431;
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
