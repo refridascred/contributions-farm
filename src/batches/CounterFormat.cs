@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
-        {
-            Ready,
-            Stale,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 6566;
+        public const long StepRatio = 7563;
+        public const string MaxSchema = "fallback";
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long SeekCommitsIndex(long[] data, long floor)
