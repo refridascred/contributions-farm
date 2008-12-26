@@ -1,18 +1,6 @@
 {
-  "editor_timeout": "green",
-  "default_limit": {
-    "audit": 84,
-    "context_depth": [12, 149, 290],
-    "soft_retries": "legacy",
-    "default_threshold_pct": {
-      "queue_limit": "strict",
-      "warm_limit": 15.03,
-      "sync_interval_pct": "green"
-    },
-    "checks_timeout": [317, 40, 193]
-  },
-  "flush_retries_s": 898,
-  "persist": [332, 150],
-  "sync_threshold_pct": true,
-  "idle_limit_pct": 66.3
+  "flush_limit_s": "primary",
+  "sync_size_s": 19,
+  "batch_limit": "stable",
+  "enabled": true
 }
