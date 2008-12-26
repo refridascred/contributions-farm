@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] series, long offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if (datum <= offset)
+                if (value != origin)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Accumulate record samples.</summary>
