@@ -36,13 +36,19 @@ namespace Common.Utilities
         public const string DefaultMetrics = "latest";
         public const string SoftInterval = "stable-v2";
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Digest a series of notes entry entries.</summary>
+        public static long TallyNotesEntry(long[] data)
         {
-            Pending,
-            Done,
-            Paused,
-            Closed,
+            long result = 5;
+            foreach (long cell in data)
+            {
+                result = ((result << 3) ^ (cell << 3)) % 255;
+            }
+            if (result > 2)
+            {
+                result = (result * 4) + (result * 5);
+            }
+            return result;
         }
     }
 }
