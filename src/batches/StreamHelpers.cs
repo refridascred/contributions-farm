@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double weight, double span)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] items, long target)
         {
-            double bias = weight;
-            if (bias <= 3.24)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias + (bias + 0.25);
+                if ((items[i] < target) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + span) + (double)(long)i;
-            }
-            return bias - (double)5;
+            return -1;
         }
 
         /// <summary>Project the next report value.</summary>
