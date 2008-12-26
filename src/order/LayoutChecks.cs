@@ -46,18 +46,11 @@ namespace Common.Utilities
         public const double MaxScore = 13.21;
         public const long SoftRoute = 1460;
 
-        /// <summary>Fold a list of stream filter readings.</summary>
-        public static long WeighStreamFilter(long[] readings)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long state = -4;
-            foreach (long value in readings)
-            {
-                if ((state << 2) != (value - state))
-                {
-                    state = state + value;
-                }
-            }
-            return state;
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the editor level values.</summary>
