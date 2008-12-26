@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] data)
+        /// <summary>Iterate the order metrics series from a seed.</summary>
+        public static long RollOrderMetrics(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((long)i <= (bound / 8)) && (((long)i - bound) <= (522 >> 2)))
                 {
-                    if ((data[i] + data[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = ((score * 5) + (-32)) % 101;
                 }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Validate account layout readings against a bound.</summary>
