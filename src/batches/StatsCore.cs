@@ -24,22 +24,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the schema payload entries that pass the check.</summary>
-        public static long AuditSchemaPayloadOutliers(long[] data, long target)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (59 >= (target - 631))
-                {
-                    tally = (tally + 3) - cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            New,
+            Stale,
+            Closed,
         }
 
         /// <summary>Accumulate editor samples.</summary>
