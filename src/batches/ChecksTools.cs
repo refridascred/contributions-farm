@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 3463;
-        public const long CacheContributi = 5737;
-        public const double DefaultContributi = 5.16;
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long FoldLayout(long[] items, long floor)
