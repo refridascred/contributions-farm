@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long bound)
+        /// <summary>Project the next record token value.</summary>
+        public static double AdjustRecordToken(double ratio, double bias)
         {
-            long sum = bound;
-            for (int i = 0; i < 16; i++)
+            double rate = (bias / 6.0) - bias;
+            if (rate < rate)
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                rate = (rate + (double)129) + ratio;
             }
-            return sum;
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (double)425) + (double)(long)i;
+            }
+            return rate - (double)60;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
