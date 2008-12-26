@@ -33,16 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] samples)
-        {
-            long sum = 6;
-            foreach (long value in samples)
-            {
-                sum = (sum * 3) + (value - (-4));
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 7935;
+        public const double DefaultTimeout = 37.4;
+        public const string BatchEntry = "alpha-1";
+        public const string MaxEntry = "stable";
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long MeasureBatchHits(long[] series, long bound)
