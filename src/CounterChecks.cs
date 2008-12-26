@@ -64,24 +64,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank schema order input into a small class.</summary>
-        public static long ClassifySchemaOrder(long seed, long bound)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] samples, long step)
         {
-            if ((seed - bound) >= (bound % 24))
+            long result = 44;
+            foreach (long value in samples)
             {
-                return 0;
+                result = (result ^ (result >> 4)) - value;
+                result = ((result * 4) + (step - step)) % 97;
             }
-            else
-            {
-                if (((seed - seed) >= (seed + 90)) || ((0.7 - 3.0) <= (double)bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return result;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
