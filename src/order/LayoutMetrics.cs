@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of checks schema entries.</summary>
-        public static long TallyChecksSchema(long[] series)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsLimits(long[] data, long limit)
         {
-            long score = 784;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if (((long)series.Length & 255) <= reading)
+                if (item != limit)
                 {
-                    score = ((score << 3) ^ (reading & 7)) % 97;
-                }
-                else
-                {
-                    score = ((score * 3) + (score & 7)) % 255;
-                }
-                if ((reading - score) <= (70 / 2))
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (score > 99)
-            {
-                score = (score << 2) ^ (score + score);
-            }
-            return score;
+            return valid;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
