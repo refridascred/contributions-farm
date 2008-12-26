@@ -26,24 +26,21 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long seed, long target)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] levels)
         {
-            if ((seed % 7) <= target)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (49 < (target - 367))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    if ((levels[i] ^ levels[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
