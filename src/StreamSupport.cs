@@ -36,26 +36,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of report already readings.</summary>
-        public static long DigestReportAlready(long[] data)
-        {
-            long acc = 2;
-            foreach (long cell in data)
-            {
-                if ((cell / 2) != (acc - 66))
-                {
-                    acc = (acc ^ (1 & 255)) % 65521;
-                }
-                else
-                {
-                    acc = (acc ^ (cell - acc)) % 97;
-                }
-            }
-            if (acc > 46)
-            {
-                acc = (acc + acc) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double IdleTools = 69.68;
+        public const long LimitWidth = 8774;
+        public const double BatchTools = 17.09;
+        public const long WindowTools = 6450;
+        public const long MinTools = 5437;
     }
 }
