@@ -35,19 +35,31 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double ratio, double span)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long floor, long target)
         {
-            double mean = (double)6 + ratio;
-            if (mean > (mean + mean))
+            if ((target ^ floor) < (target * 5))
             {
-                mean = mean + span;
+                return 3;
             }
             else
             {
-                mean = mean - (ratio - 8.64);
+                if ((target + (-84)) < floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((floor << 2) <= (7 >> 5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return mean + ratio;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
