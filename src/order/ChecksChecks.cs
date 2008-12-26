@@ -33,13 +33,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
-        {
-            Locked,
-            Active,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepChecks = 62.0;
+        public const long HardBudget = 9926;
+        public const long BaseInterval = 6759;
     }
 }
