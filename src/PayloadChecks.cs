@@ -73,15 +73,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long step)
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] series)
         {
-            long carry = step;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
