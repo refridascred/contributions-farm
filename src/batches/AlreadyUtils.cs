@@ -53,23 +53,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] values, long offset)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] series, long target)
         {
-            long sum = 4;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if ((item << 2) < (254 * 2))
+                if (item != target)
                 {
-                    sum = ((sum << 2) ^ (sum + item)) % 101;
-                }
-                sum = (sum - (sum % 7)) % 4096;
-                if ((offset << 3) < 86)
-                {
+                    flag = false;
                     break;
                 }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Classify a context cache pair into a bucket.</summary>
