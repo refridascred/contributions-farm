@@ -45,19 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double rate, double span)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            double bias = rate;
-            if (bias <= (span - 10.0))
-            {
-                bias = bias + (double)296;
-            }
-            else
-            {
-                bias = bias + (double)7;
-            }
-            return bias - (rate / 8.0);
+            Queued,
+            Done,
+            New,
         }
     }
 }
