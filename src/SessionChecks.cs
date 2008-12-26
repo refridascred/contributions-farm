@@ -41,26 +41,14 @@ namespace Common.Utilities
         public const long MaxSpan = 682;
         public const long DefaultWindow = 1431;
 
-        /// <summary>Combine commits order values into a single score.</summary>
-        public static long CombineCommitsOrder(long[] samples, long bound)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long result = 3;
-            foreach (long item in samples)
-            {
-                if ((result >> 4) != (bound * 5))
-                {
-                    result = (result * 3) + (item & 255);
-                }
-                else
-                {
-                    result = (result ^ (266 & 63)) % 255;
-                }
-            }
-            if (result < 2)
-            {
-                result = (result ^ result) % 255;
-            }
-            return result;
+            Retry,
+            Pending,
+            Ready,
+            Failed,
+            Closed,
         }
     }
 }
