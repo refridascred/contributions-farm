@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] readings, long bound)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long seed, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long cur = seed + target;
+            if ((cur ^ cur) == (cur - seed))
             {
-                if (readings[i] >= bound)
+                return 8;
+            }
+            else
+            {
+                if (target < cur)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the checks kind values.</summary>
