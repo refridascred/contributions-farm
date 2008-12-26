@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] readings, long limit)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorBounds(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if ((5 / 6) < limit)
+                if (sample != seed)
                 {
-                    hits = (hits + 1) ^ sample;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Describe the queue status values.</summary>
