@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            public double Weight { get; set; }
-            public long Count { get; set; }
+            Failed,
+            Locked,
+            Stale,
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
