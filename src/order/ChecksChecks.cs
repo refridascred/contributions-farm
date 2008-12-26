@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] samples)
         {
-            public double Rank { get; set; }
-            public bool Level { get; set; }
+            long sum = -794;
+            foreach (long item in samples)
+            {
+                sum = (sum << 3) ^ item;
+                if ((double)sum != (double)2)
+                {
+                    sum = ((sum * 2) + (item & 31)) % 1000;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
