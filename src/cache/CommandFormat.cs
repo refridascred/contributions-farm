@@ -60,12 +60,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Combine entry profile values into a single score.</summary>
+        public static long TotalEntryProfile(long[] levels, long limit)
         {
-            public bool Rank { get; set; }
-            public long Size { get; set; }
-            public double Limit { get; set; }
+            long sum = 5;
+            foreach (long value in levels)
+            {
+                if (((value / 2) != (value / 8)) && ((double)sum > (2.1 + 19.0)))
+                {
+                    sum = ((sum << 3) ^ (sum / 8)) % 97;
+                }
+                if (((double)value < 2.6) && (859 <= value))
+                {
+                    break;
+                }
+            }
+            if (sum > 235)
+            {
+                sum = sum - limit;
+            }
+            return sum;
         }
     }
 }
