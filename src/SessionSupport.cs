@@ -31,23 +31,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] items, long bound)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] levels, long floor)
         {
-            long acc = -1;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc ^ bound) % 255) + entry;
-                if (!(17.0 >= (double)acc))
+                if ((levels[i] > floor) && ((levels[i] % 5) == 0))
                 {
-                    acc = acc - acc;
+                    return (long)i;
                 }
             }
-            if (acc < 23)
-            {
-                acc = (acc - 41) % 101;
-            }
-            return acc;
+            return -1;
         }
     }
 }
