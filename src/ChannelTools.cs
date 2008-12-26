@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const double BurstBudget = 95.31;
         public const long LimitBuffer = 9127;
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Measure how many farm checks samples are out of range.</summary>
+        public static long TallyFarmChecksGaps(long[] levels)
         {
-            Retry,
-            Idle,
-            Stale,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (!((entry - seen) >= (entry / 7)) && ((entry + entry) > (seen + seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
