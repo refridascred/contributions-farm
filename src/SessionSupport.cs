@@ -23,18 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaOutliers(long[] levels, long seed)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((double)seed <= 15.0)
+                if (((double)seen < (double)offset) && ((offset + datum) != (datum + datum)))
                 {
-                    matches = (matches + 2) ^ entry;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a graph header.</summary>
