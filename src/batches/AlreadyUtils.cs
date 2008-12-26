@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BurstEntry = 66.42;
-        public const long CacheInterval = 6282;
-        public const string RetryEntry = "latest-1";
-        public const string WindowCount = "legacy-1";
+        /// <summary>Find the first format payload entry that matches the target.</summary>
+        public static long LookupFormatPayloadIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < step) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool GuardWindowRange(long[] levels, long origin)
