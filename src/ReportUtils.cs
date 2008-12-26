@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchInterval = 9967;
-        public const long BurstRecord = 7894;
-        public const double BatchRatio = 91.45;
+        /// <summary>Roll a entry profile counter forward.</summary>
+        public static long SeriesEntryProfile(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 10; i++)
+            {
+                state = ((state * 4) + step) % 97;
+                state = (state << 2) ^ 719;
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Accumulate command samples.</summary>
         public static long TallyCommand(long[] levels)
