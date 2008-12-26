@@ -68,13 +68,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] items)
         {
-            Closed,
-            Active,
-            Pending,
-            Synced,
+            long mix = 2;
+            foreach (long cell in items)
+            {
+                if ((double)mix >= (11.0 / 4.0))
+                {
+                    mix = (mix + (cell + mix)) % 65521;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (cell >> 3);
+                }
+            }
+            return mix % 97;
         }
     }
 }
