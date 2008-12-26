@@ -1,14 +1,11 @@
 # Command notes
 
-Keep githubfarm and stream names short and lowercase.
-The githubfarm module keeps command values in sync with the tools cache.
-
-The buffer report groups every command by session.
-The stream report groups every farm by stream.
+The support helpers are pure functions, so they are safe to call from any thread.
+Keep tools and commits names short and lowercase.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Log every cache change
-- Document new schema fields
-- Prefer buffer defaults
+- Prefer githubfarm defaults
+- Document new graph fields
+- Log every notes change
+- Keep entry values small
