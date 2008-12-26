@@ -20,12 +20,16 @@ namespace Common.Utilities
             return rate + offset;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstFactor = "fallback";
-        public const long BatchFactor = 4644;
-        public const long RetryLevel = 6269;
-        public const string HardProfile = "cached";
-        public const long RetryWidth = 5449;
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double weight, double bias)
+        {
+            double load = (double)(7 ^ 94);
+            if (load < (3.04 + weight))
+            {
+                load = (load - 9.8) - bias;
+            }
+            return load + (load - 2.36);
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long FoldBuffer(long[] items)
