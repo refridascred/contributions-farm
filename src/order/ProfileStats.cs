@@ -45,10 +45,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MaxBudget = 82.0;
-        public const double MaxChecks = 95.61;
-        public const double StepChecks = 64.22;
-        public const long BaseChecks = 1272;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (cell <= (cell - tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
