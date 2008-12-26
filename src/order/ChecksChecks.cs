@@ -24,9 +24,21 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepChecks = 62.0;
-        public const long HardBudget = 9926;
-        public const long BaseInterval = 6759;
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
