@@ -47,21 +47,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((long)i + mark) >= (80 >> 4))
-                {
-                    mark = (mark << 2) ^ (mark >> 4);
-                }
-                mark = (mark ^ mark) % 97;
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 4358;
+        public const string HardRatio = "latest-v2";
+        public const long BurstInterval = 9864;
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long LocateOrderIndex(long[] levels, long step)
