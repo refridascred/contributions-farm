@@ -23,19 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] items)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long state = 3;
-            foreach (long item in items)
-            {
-                state = ((state * 2) + state) % 101;
-                if ((1.07 - 2.0) > (double)item)
-                {
-                    state = (state ^ (item - state)) % 4096;
-                }
-            }
-            return state;
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
+            public long Score { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
