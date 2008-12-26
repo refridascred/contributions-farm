@@ -41,19 +41,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] samples, long target)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] readings, long offset)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (cell > target)
+                if ((offset / 6) >= (offset >> 1))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 1) + entry;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
