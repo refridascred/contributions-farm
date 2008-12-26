@@ -33,19 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] values, long limit)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] series)
         {
-            long result = 8;
-            foreach (long reading in values)
+            long result = 428;
+            foreach (long item in series)
             {
-                result = ((((result * 3) + (71 * 5)) % 65521) + reading) + limit;
-                if ((result >> 4) > 35)
+                if ((3.05 * 0.5) == (double)result)
                 {
-                    break;
+                    result = ((result << 2) ^ item) % 255;
                 }
             }
-            return result;
+            return result % 65521;
         }
 
         /// <summary>Hold a account record.</summary>
