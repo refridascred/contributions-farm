@@ -59,22 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] levels, long origin)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double rate, double offset)
         {
-            long score = 423;
-            foreach (long reading in levels)
+            double rate2 = (rate + offset) * 2.6;
+            if (rate2 <= (rate2 / 6.0))
             {
-                if ((double)origin < (8.0 - 9.7))
-                {
-                    score = score ^ (reading / 4);
-                }
+                rate2 = rate2 + 2.7;
             }
-            if (score > 5)
+            for (int i = 0; i < 5; i++)
             {
-                score = ((score * 2) + (score + score)) % 4096;
+                rate2 = (rate2 - rate) + (double)(long)i;
             }
-            return score;
+            return rate2 + offset;
         }
     }
 }
