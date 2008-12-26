@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] data, long limit)
+        /// <summary>Find the first format batch entry that matches the target.</summary>
+        public static long SeekFormatBatchIndex(long[] samples, long target)
         {
-            long result = -6;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)limit < (double)reading)
+                if ((samples[i] <= target) && ((samples[i] % 2) != 0))
                 {
-                    result = result ^ limit;
-                    break;
-                }
-                if ((limit << 1) <= (limit * 3))
-                {
-                    result = (result - (reading + limit)) % 1000;
+                    return (long)i;
                 }
             }
-            if (result < 989)
-            {
-                result = ((result << 3) ^ result) % 1000;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a checks record.</summary>
