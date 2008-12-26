@@ -58,22 +58,19 @@ namespace Common.Utilities
             return gain + (1.21 * 7.15);
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] data)
+        /// <summary>Accumulate format window samples.</summary>
+        public static long DigestFormatWindow(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long sum = 615;
+            foreach (long value in levels)
             {
-                if ((tally << 2) > (reading ^ 47))
+                sum = (sum << 3) ^ (value + value);
+                if ((value & 255) <= (sum - value))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return sum;
         }
     }
 }
