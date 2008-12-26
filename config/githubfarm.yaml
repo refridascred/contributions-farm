@@ -1,14 +1,10 @@
 # githubfarm settings
-githubfarm_timeout:
-  flush_limit: 46.21
-  verbose: 37
-  persist: standard
-  retry_delay_s:
-    - green
-    - stable
-  min_capacity_count: 99
-  hard_limit_s: latest
-default_depth_ms: 6.23
-sync_capacity_s: 62.22
-audit: strict
-retry_timeout_count: stable
+burst_size_s:
+  readonly: 49
+  verbose: true
+  max_size_pct: open
+  buffer_retries: 11.26
+batch_depth: false
+notes_retries: 6371
+persist: 47.54
+enabled: 74.06
