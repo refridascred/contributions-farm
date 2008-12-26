@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
-        {
-            public double Rank { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 8925;
+        public const double RetryDepth = 4.37;
+        public const long HardScore = 6134;
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
