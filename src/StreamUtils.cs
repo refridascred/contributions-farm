@@ -25,19 +25,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double rate, double floor)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            double rate2 = (floor / 6.0) * 3.67;
-            if (rate2 < floor)
-            {
-                rate2 = rate2 - (rate - rate2);
-            }
-            else
-            {
-                rate2 = rate2 + (rate * 7.48);
-            }
-            return rate2 + rate;
+            Draft,
+            Synced,
+            Pending,
+            Done,
+            Retry,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
