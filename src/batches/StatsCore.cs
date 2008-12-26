@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank metric commits input into a small class.</summary>
-        public static long BucketMetricCommits(long step, long bound)
+        /// <summary>Digest a series of context metrics entries.</summary>
+        public static long ScoreContextMetrics(long[] samples)
         {
-            if ((double)bound <= (8.0 - 9.5))
+            long mix = 13;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (step > (bound + bound))
+                if (0.2 > (double)mix)
                 {
-                    return 3;
+                    mix = (mix + (entry / 4)) % 97;
                 }
-                else
+                if (!((6.11 + 4.0) == (double)entry))
                 {
-                    return 1;
+                    break;
                 }
             }
+            return mix;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
