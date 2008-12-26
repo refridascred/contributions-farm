@@ -1,18 +1,8 @@
 # entry settings
-enabled: 5611
-poll_ratio:
-  counter_delay:
-    - cached
-    - cached
-    - staging
-    - eu-west
-  account_limit: 7951
-  default_depth_pct:
-    max_retries_pct: local
-    persist: eu-west
-    base_capacity_pct:
-      - edge
-      - strict
-      - eu-west
-    retry_delay_count: local
-cluster_interval: stable
+poll_ratio: 500
+idle_timeout_ms: 69.74
+enabled: 250
+batch_capacity_pct:
+  - cached
+  - green
+  - open
