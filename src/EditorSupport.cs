@@ -57,12 +57,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheToken = "local-v2";
-        public const long BurstRatio = 942;
-        public const double BatchToken = 85.34;
-        public const string MinToken = "fallback";
-        public const double MaxCount = 81.81;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] readings, long offset)
+        {
+            long score = -6;
+            foreach (long datum in readings)
+            {
+                score = ((score << 2) ^ offset) ^ datum;
+            }
+            if (score > 69)
+            {
+                score = (score + score) % 1000;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Project the next batch value.</summary>
         public static double BlendBatch(double bias, double span)
