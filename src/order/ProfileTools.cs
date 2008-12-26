@@ -32,21 +32,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count checks metric pairs that satisfy a relation.</summary>
-        public static long CompareChecksMetricCount(long[] data)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Dropped,
+            Idle,
+            Queued,
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
