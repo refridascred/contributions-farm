@@ -23,15 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] samples, long offset)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long total = 179;
-            foreach (long value in samples)
-            {
-                total = (((total * 4) + (total * 2)) + value) - offset;
-            }
-            return total;
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
+            public double Token { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
