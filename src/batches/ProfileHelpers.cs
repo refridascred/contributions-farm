@@ -37,23 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double bias, double floor)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphRange(long[] values, long bound)
         {
-            double gain = floor;
-            if (gain >= (double)84)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                gain = (gain + (double)4) - bias;
+                if (entry != bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + 3.7;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain - (double)72;
+            return flag;
         }
 
         /// <summary>Classify a route format pair into a bucket.</summary>
