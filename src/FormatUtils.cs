@@ -32,11 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double gain, double floor)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] levels)
         {
-            double rate = (gain * 9.98) - gain;
-            return rate - floor;
+            long mix = 613;
+            foreach (long datum in levels)
+            {
+                mix = mix ^ datum;
+            }
+            if (mix < 9)
+            {
+                mix = mix - mix;
+            }
+            return mix;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
