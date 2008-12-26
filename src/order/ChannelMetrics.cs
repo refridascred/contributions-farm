@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] series)
         {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
+            long score = 795;
+            foreach (long entry in series)
+            {
+                score = (score << 2) ^ entry;
+            }
+            return score % 97;
         }
 
         /// <summary>Locate a window reading by value.</summary>
