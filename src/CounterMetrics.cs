@@ -24,18 +24,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm entry samples are out of range.</summary>
-        public static long CountGithubfarmEntryOutliers(long[] values, long target)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)datum < (double)target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((items[i] - items[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
