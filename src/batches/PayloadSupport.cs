@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsMatches(long[] values, long seed)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long item in values)
+            double mean = rate;
+            if (mean > (double)49)
             {
-                if ((77 >= (seed + seed)) || ((double)item >= (7.0 * 8.0)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = mean - mean;
             }
-            return tally;
+            else
+            {
+                mean = mean + floor;
+            }
+            return mean - (mean / 2.0);
         }
 
         /// <summary>Define metric limits and defaults.</summary>
