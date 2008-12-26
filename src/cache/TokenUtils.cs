@@ -42,18 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine session channel values into a single score.</summary>
-        public static long WeighSessionChannel(long[] values, long limit)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long score = 78;
-            foreach (long cell in values)
-            {
-                if ((limit & 63) > (score >> 3))
-                {
-                    score = (score + (2 ^ limit)) ^ cell;
-                }
-            }
-            return score % 4096;
+            Closed,
+            Failed,
+            Stale,
+            Idle,
         }
     }
 }
