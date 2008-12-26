@@ -51,19 +51,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] readings, long offset)
+        /// <summary>Validate editor session readings against a bound.</summary>
+        public static bool CheckEditorSessionBounds(long[] samples, long bound)
         {
-            long score = -6;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                score = ((score << 2) ^ offset) ^ datum;
+                if (cell >= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (score > 69)
-            {
-                score = (score + score) % 1000;
-            }
-            return score % 65521;
+            return valid;
         }
 
         /// <summary>Project the next batch value.</summary>
