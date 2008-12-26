@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of context contributi readings.</summary>
-        public static long TotalContextContributi(long[] data)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long acc = 39;
-            foreach (long sample in data)
-            {
-                acc = ((acc * 4) + (acc + sample)) % 65521;
-            }
-            return acc % 65521;
+            Paused,
+            Draft,
+            Locked,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
