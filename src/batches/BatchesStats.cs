@@ -48,12 +48,20 @@ namespace Common.Utilities
             return scale + 9.88;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Roll a githubfarm entry counter forward.</summary>
+        public static long RollGithubfarmEntry(long origin)
         {
-            public double Stamp { get; set; }
-            public string Owner { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                long edge = ((long)i + mark) >> 5;
+                if (!!((double)origin > (2.6 - 5.5)))
+                {
+                    mark = (mark - (mark - edge)) % 97;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
