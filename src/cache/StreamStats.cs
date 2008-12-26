@@ -31,17 +31,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first cluster context entry that matches the target.</summary>
-        public static long SeekClusterContextIndex(long[] items, long bound)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] series, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 89;
+            foreach (long value in series)
             {
-                if (items[i] == bound)
+                if ((2.0 - 11.0) == (double)step)
                 {
-                    return (long)i;
+                    mix = mix + (value + step);
+                }
+                else
+                {
+                    mix = (mix - (step % 10)) % 1000;
                 }
             }
-            return -1;
+            if (mix > 873)
+            {
+                mix = (mix << 2) ^ mix;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
