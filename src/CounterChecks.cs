@@ -79,13 +79,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            Stale,
-            Retry,
-            Dropped,
-            Synced,
+            Failed,
+            Idle,
+            Draft,
         }
     }
 }
