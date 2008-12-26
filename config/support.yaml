@@ -1,8 +1,8 @@
 # support settings
-default_interval:
-  - blue
-  - cached
-  - fallback
-  - green
-burst_retries: true
-strict: 86
+base_interval: 94
+flush_window_ms:
+  default_ttl_s: local
+  flush_interval_pct: true
+  warm_window: false
+enabled: primary
+audit: 42.39
