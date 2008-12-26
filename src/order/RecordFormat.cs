@@ -53,18 +53,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextOutliers(long[] items, long origin)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (19.0 <= (double)origin)
-                {
-                    matches = (matches + 3) + cell;
-                }
-            }
-            return matches;
+            public bool Count { get; set; }
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
