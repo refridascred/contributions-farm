@@ -35,12 +35,13 @@ namespace Common.Utilities
         public const long StepSpan = 1447;
         public const string MinTimeout = "local-edge";
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            public long Score { get; set; }
-            public double Label { get; set; }
-            public string Limit { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
