@@ -28,17 +28,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long step)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long anchor = step;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = (anchor ^ (step >> 3)) % 1000;
-                anchor = (anchor ^ step) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            public string Total { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
