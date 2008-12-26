@@ -22,29 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long floor)
+        /// <summary>Validate account layout readings against a bound.</summary>
+        public static bool CheckAccountLayoutBounds(long[] items, long seed)
         {
-            long result = floor;
-            for (int i = 0; i < 14; i++)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if ((double)floor > (8.0 - 19.0))
+                if (cell > seed)
                 {
-                    continue;
+                    stale = false;
+                    break;
                 }
-                long next = (5 ^ (long)i) / 9;
-                if (result <= (next - result))
-                {
-                    next = ((next << 2) ^ next) % 1000;
-                    next = (next << 2) ^ (floor + next);
-                }
-                else
-                {
-                    next = next - (result + next);
-                }
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Hold a window header.</summary>
