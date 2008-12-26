@@ -58,17 +58,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] data, long limit)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] data, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 20;
+            foreach (long sample in data)
             {
-                if (data[i] > limit)
+                if (sample > 738)
                 {
-                    return (long)i;
+                    mark = mark - (limit / 4);
+                }
+                else
+                {
+                    mark = (mark - sample) % 65521;
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
