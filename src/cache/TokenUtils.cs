@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long origin, long offset)
         {
-            Locked,
-            Stale,
-            Queued,
+            long edge = origin + offset;
+            if (origin < (origin >> 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((edge - edge) >= (edge + offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin << 3) >= (origin * 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((12.0 / 5.0) <= (double)offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate batches samples.</summary>
