@@ -16,17 +16,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Find the first session batches entry that matches the target.</summary>
-        public static long SeekSessionBatchesIndex(long[] series, long origin)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] series, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 59;
+            foreach (long value in series)
             {
-                if (series[i] >= origin)
+                if (result > (limit / 4))
                 {
-                    return (long)i;
+                    result = (((result << 2) ^ 565) % 97) - value;
+                }
+                else
+                {
+                    result = (result * 4) + (result % 8);
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Accumulate tools samples.</summary>
