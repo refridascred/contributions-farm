@@ -88,17 +88,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] samples, long bound)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphLimits(long[] values, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if ((samples[i] == bound) && ((samples[i] % 5) != 0))
+                if (reading <= step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
