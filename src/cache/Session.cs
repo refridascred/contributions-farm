@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double HardFarm = 28.83;
-        public const long StepFarm = 3112;
-        public const long RetryInterval = 7364;
-        public const string MinFarm = "legacy-edge";
-        public const string CacheFarm = "cached-v2";
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count cluster route pairs that satisfy a relation.</summary>
         public static long OverlapClusterRouteCount(long[] readings)
