@@ -50,27 +50,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the payload counter series from a seed.</summary>
-        public static long IteratePayloadCounter(long offset)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long anchor = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                long matches = (long)i - 95;
-                if ((3.0 * 11.0) <= (double)offset)
-                {
-                    anchor = ((anchor << 2) ^ offset) % 255;
-                    anchor = anchor + (matches % 97);
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + (anchor ^ anchor);
-                }
-                matches = matches ^ matches;
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            Failed,
+            Paused,
+            New,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Look up the position of a session sample.</summary>
