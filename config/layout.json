@@ -1,7 +1,12 @@
 {
-  "filter_ratio": "local",
-  "min_capacity_s": 15.59,
-  "enabled": 100,
-  "batch_retries_count": false,
-  "idle_interval_pct": 230
+  "editor_timeout": "edge",
+  "stats_window": {
+    "base_window_ms": 49.3,
+    "cache_threshold": [161, 357],
+    "batch_size": [489, 95, 357, 391]
+  },
+  "verbose": "open",
+  "min_depth": "edge",
+  "poll_limit_pct": 63,
+  "strict": 8987
 }
