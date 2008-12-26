@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a tools token counter forward.</summary>
-        public static long SeriesToolsToken(long origin)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long offset, long offset2)
         {
-            long mix = origin;
-            for (int i = 0; i < 13; i++)
+            long delta = offset ^ offset2;
+            if (!((offset2 * 4) > (delta << 2)))
             {
-                if (origin >= (mix * 3))
-                {
-                    mix = ((mix << 3) ^ (mix + mix)) % 1000;
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if (((offset & 127) > (offset + offset2)) && ((delta * 2) > delta))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the report class values.</summary>
