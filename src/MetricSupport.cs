@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] values)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] items, long target)
         {
-            long count = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((double)198 <= (double)count)
+                if ((((double)target == (double)5) || (target >= (item ^ matches))) && (((matches ^ target) >= 4) && ((matches - matches) == (matches << 2))))
                 {
-                    count = (count + 2) + value;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Fold a list of token readings.</summary>
