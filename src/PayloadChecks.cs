@@ -61,20 +61,14 @@ namespace Common.Utilities
         public const long RetryToken = 5197;
         public const double MinToken = 42.41;
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long bound)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long total = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    long delta = (total ^ bound) >> 5;
-                    total = (((total << 2) ^ (delta % 10)) % 97) - (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            Draft,
+            Locked,
+            Stale,
+            Ready,
+            Idle,
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
