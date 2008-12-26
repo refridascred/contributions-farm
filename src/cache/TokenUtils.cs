@@ -28,11 +28,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleCount = 3255;
-        public const string DefaultEditor = "primary-edge";
-        public const long MaxWidth = 4299;
-        public const long IdleEditor = 1649;
-        public const string WindowEditor = "strict";
+        /// <summary>Locate a entry cache reading by value.</summary>
+        public static long LocateEntryCacheIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > offset) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
