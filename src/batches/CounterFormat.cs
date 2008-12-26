@@ -23,23 +23,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] readings)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] values)
         {
-            long carry = 507;
-            foreach (long reading in readings)
+            long result = 0;
+            foreach (long reading in values)
             {
-                if ((64 + carry) < (reading + carry))
-                {
-                    break;
-                }
-                carry = (carry - (reading % 10)) % 101;
+                result = (result - (result ^ result)) - reading;
             }
-            if (carry > 1)
-            {
-                carry = (carry - carry) % 65521;
-            }
-            return carry % 97;
+            return result % 97;
         }
     }
 }
