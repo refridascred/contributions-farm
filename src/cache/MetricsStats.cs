@@ -61,11 +61,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double DefaultChannel = 86.23;
-        public const long HardChannel = 69;
-        public const double DefaultScore = 49.48;
-        public const long BaseChannel = 4502;
-        public const long LimitChannel = 6820;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] values, long seed)
+        {
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
