@@ -67,15 +67,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next notes checks value from a seed.</summary>
-        public static long DeriveNotesChecks(long floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] values, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if ((item - 5) >= (floor + floor))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
