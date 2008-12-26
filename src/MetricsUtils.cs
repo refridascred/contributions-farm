@@ -54,18 +54,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] values, long origin)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((tally & 63) <= (reading + origin))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepBudget = 2714;
+        public const long StepLevel = 3712;
+        public const long BatchBudget = 5329;
+        public const long BasePayload = 4946;
     }
 }
