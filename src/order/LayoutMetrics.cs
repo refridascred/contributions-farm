@@ -17,19 +17,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] values, long limit)
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double gain, double span)
         {
-            bool ready = true;
-            foreach (long value in values)
+            double bias = span;
+            if (bias <= gain)
             {
-                if (value <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                bias = bias - (gain + bias);
             }
-            return ready;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias + (span + bias);
         }
     }
 }
