@@ -33,19 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double scale, double floor)
-        {
-            double ratio = floor;
-            if (ratio >= (double)(-598))
-            {
-                ratio = (ratio - (floor * 18.0)) + scale;
-            }
-            else
-            {
-                ratio = ratio + (double)41;
-            }
-            return ratio + floor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchInterval = 6254;
+        public const string BaseWidth = "fallback-v2";
+        public const long LimitMetrics = 7444;
+        public const double HardSize = 65.68;
+        public const long SoftMetrics = 5744;
     }
 }
