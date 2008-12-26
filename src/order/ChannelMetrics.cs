@@ -33,13 +33,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            Queued,
-            Done,
-            Ready,
-            Paused,
+            public double Flag { get; set; }
+            public bool Rank { get; set; }
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
