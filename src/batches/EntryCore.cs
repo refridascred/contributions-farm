@@ -30,13 +30,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long origin, long limit)
         {
-            public bool Owner { get; set; }
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
+            if (!((limit + limit) > (limit & 1)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((13.0 + 16.0) >= (double)limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin * 5) < limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
