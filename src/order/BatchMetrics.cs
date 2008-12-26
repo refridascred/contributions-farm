@@ -76,20 +76,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the token already series from a seed.</summary>
-        public static long SeriesTokenAlready(long bound)
+        /// <summary>Fold a list of cluster contributi readings.</summary>
+        public static long DigestClusterContributi(long[] levels, long offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 6; i++)
+            long carry = 10;
+            foreach (long value in levels)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    sum = ((sum * 4) + 120) ^ (long)i2;
-                    sum = ((sum * 4) + sum) % 255;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
+                carry = (carry + value) - offset;
             }
-            return sum;
+            return carry % 4096;
         }
     }
 }
