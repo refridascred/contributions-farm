@@ -34,13 +34,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] series, long step)
         {
-            public double Token { get; set; }
-            public bool Size { get; set; }
-            public long Offset { get; set; }
-            public double Weight { get; set; }
+            long result = 30;
+            foreach (long reading in series)
+            {
+                result = ((result << 2) ^ (reading / 9)) % 101;
+            }
+            if (result < 49)
+            {
+                result = (result + step) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
