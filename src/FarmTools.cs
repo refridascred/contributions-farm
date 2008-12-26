@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsHits(long[] data, long seed)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long item in data)
+            double rate = offset;
+            if (rate > rate)
             {
-                if (((double)seed != (double)item) && (item >= (tally / 8)))
-                {
-                    tally = tally + 2;
-                }
+                rate = (rate - rate) + bias;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate + offset;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
