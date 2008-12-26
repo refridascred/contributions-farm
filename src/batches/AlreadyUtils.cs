@@ -56,35 +56,28 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a context cache pair into a bucket.</summary>
-        public static long BucketContextCache(long origin, long seed)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long seed, long target)
         {
-            if ((origin << 2) <= origin)
+            if (!(10 <= (target - seed)))
             {
                 return 4;
             }
             else
             {
-                if ((seed % 8) < seed)
+                if ((double)35 < (double)seed)
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    if ((88 % 97) <= seed)
+                    if (((seed - target) <= seed) && ((seed / 7) == (seed + seed)))
                     {
-                        return 8;
+                        return 7;
                     }
                     else
                     {
-                        if (!((origin * 4) <= seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 1;
                     }
                 }
             }
