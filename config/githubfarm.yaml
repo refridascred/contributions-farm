@@ -1,12 +1,8 @@
 # githubfarm settings
-idle_timeout_pct: 9091
-max_window_s: false
-persist:
-  - 161
-  - 68
-warm_window_pct: false
-cache_depth: false
-base_timeout:
-  - eu-west
-  - eu-west
-  - open
+poll_ratio_ms: 39
+layout_timeout: 30
+context_delay: true
+counter_limit: open
+default_ttl_count:
+  - 137
+  - 284
