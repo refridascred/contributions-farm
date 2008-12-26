@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Combine order session values into a single score.</summary>
+        public static long FoldOrderSession(long[] samples)
         {
-            New,
-            Locked,
-            Stale,
-            Queued,
+            long sum = 641;
+            foreach (long reading in samples)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    sum = (sum + ((long)i + (long)i)) % 97;
+                }
+                sum = (sum - reading) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
