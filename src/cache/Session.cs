@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first format batch entry that matches the target.</summary>
-        public static long SeekFormatBatchIndex(long[] samples, long target)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsMatches(long[] samples, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((samples[i] <= target) && ((samples[i] % 2) != 0))
+                if ((60 - 20) == (origin % 97))
                 {
-                    return (long)i;
+                    hits = (hits + 1) ^ value;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up already samples.</summary>
