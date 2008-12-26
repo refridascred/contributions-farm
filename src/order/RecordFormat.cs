@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitTimeout = 6907;
-        public const long BurstCount = 947;
-        public const double StepSchema = 80.71;
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
+        {
+            public double Stamp { get; set; }
+            public bool Limit { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Match up schema samples.</summary>
         public static long OverlapSchemaCount(long[] levels)
