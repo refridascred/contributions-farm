@@ -15,18 +15,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatHits(long[] items, long origin)
+        /// <summary>Audit account batch readings against a rule.</summary>
+        public static long TallyAccountBatchHits(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (matches < 701)
+                if ((double)reading != (6.0 / 4.0))
                 {
-                    matches = ((matches + 1) ^ cell) + origin;
+                    hits = (hits + 1) - offset;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Adjust a cluster filter reading.</summary>
