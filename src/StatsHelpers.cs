@@ -37,17 +37,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] levels, long origin)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double scale, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = scale;
+            for (int i = 0; i < 9; i++)
             {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + scale) - (double)(long)i;
             }
-            return -1;
+            return ratio - bias;
         }
 
         /// <summary>Digest a series of token entries.</summary>
