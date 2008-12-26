@@ -14,15 +14,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double gain, double floor)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] data, long floor)
         {
-            double gain2 = gain + 2.0;
-            if (gain2 >= floor)
+            for (int i = 0; i < data.Length; i++)
             {
-                gain2 = gain2 - (double)0;
+                if ((data[i] <= floor) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain2 + (double)1;
+            return -1;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
