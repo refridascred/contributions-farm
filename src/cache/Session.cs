@@ -43,18 +43,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueOutliers(long[] readings, long origin)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (((seen + value) != (value >> 2)) || ((seen & 63) > (origin >> 5)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftReport = "stable-1";
+        public const long RetryWidth = 6269;
+        public const double BaseWidth = 60.26;
+        public const long StepRatio = 9325;
     }
 }
