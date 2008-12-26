@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsLimits(long[] levels, long offset)
-        {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 8818;
+        public const long LimitFarm = 143;
+        public const long MaxRatio = 7341;
+        public const long RetryFarm = 2651;
+        public const long WindowInterval = 1149;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long SoftCount = 2575;
