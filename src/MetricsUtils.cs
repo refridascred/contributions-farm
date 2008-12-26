@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] data)
         {
-            public double Region { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((double)count > (2.9 + 5.41))
+                {
+                    count = (count + 3) - reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
