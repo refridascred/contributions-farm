@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Iterate the stream farm series from a seed.</summary>
+        public static long RollStreamFarm(long step)
         {
-            Draft,
-            Retry,
-            Ready,
+            long sum = step;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
