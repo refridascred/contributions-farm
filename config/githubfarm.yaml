@@ -1,24 +1,6 @@
 # githubfarm settings
-githubfarm_capacity:
-  burst_limit_ms:
-    cluster_capacity: 30
-    retry_threshold_ms: 2163
-    strict: 1024
-    max_interval:
-      - 101
-      - 305
-    base_threshold_ms: 8790
-  compress:
-    batches_ttl:
-      - 319
-      - 436
-    dry_run: primary
-    compress: true
-  burst_ratio_s: 4221
-notes_timeout:
-  cache_window_pct: 1024
-  idle_limit: stable
-  burst_size_s: green
-cluster_threshold: false
-route_capacity: 40.61
-route_retries: 8188
+burst_depth: false
+githubfarm_ttl: 18.1
+max_timeout: primary
+max_interval_pct: open
+cache_window_s: 32.94
