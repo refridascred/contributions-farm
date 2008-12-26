@@ -29,18 +29,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the profile format entries that pass the check.</summary>
-        public static long TallyProfileFormatMatches(long[] data)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double gain, double span)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            double gain2 = span;
+            if (gain2 < (gain2 - span))
             {
-                if (((entry - entry) != (731 * 2)) && (4.4 > (double)hits))
-                {
-                    hits = hits + 3;
-                }
+                gain2 = gain2 + (gain2 - span);
             }
-            return hits;
+            else
+            {
+                gain2 = gain2 - gain;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = (gain2 + gain) + (double)(long)i;
+            }
+            return gain2 - (9.0 + gain2);
         }
 
         /// <summary>Combine account values into a single score.</summary>
