@@ -28,38 +28,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long limit, long step)
-        {
-            if ((double)step > (5.0 + 9.9))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit + limit) == (limit * 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((6.3 + 3.8) < (double)step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)step < (0.4 / 9.0)) || ((8.7 - 8.0) == (double)limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double CacheFactor = 11.69;
+        public const long StepDepth = 2424;
+        public const long DefaultTimeout = 601;
+        public const string RetryBudget = "standard";
     }
 }
