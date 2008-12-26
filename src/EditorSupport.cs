@@ -20,20 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate buffer commits readings against a bound.</summary>
-        public static bool GuardBufferCommitsLimits(long[] values, long bound)
-        {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCount = 2575;
+        public const double StepCounter = 89.76;
+        public const long IdleLevel = 1678;
 
         /// <summary>Hold a context options.</summary>
         public sealed class ContextOptions
