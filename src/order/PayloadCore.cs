@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double rate, double offset)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] samples)
         {
-            double drift = (double)2 - offset;
-            if (drift >= (double)52)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = drift - (3.1 + rate);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - (rate * 4.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (double)49) + (double)(long)i;
-            }
-            return drift + (double)24;
+            return count;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
