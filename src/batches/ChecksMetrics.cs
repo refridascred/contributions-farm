@@ -46,18 +46,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] readings)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((((reading ^ count) > reading) && ((count + reading) > (reading >> 1))) || ((reading << 3) >= (count + count)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
