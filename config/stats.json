@@ -1,6 +1,18 @@
 {
-  "compress": [302, 384, 188, 310],
-  "readonly": false,
-  "verbose": 2207,
-  "base_window_count": 33
+  "retry_threshold_pct": "cached",
+  "verbose": 13.23,
+  "metric_timeout": "green",
+  "sync_capacity_ms": "blue",
+  "sync_interval": 98.53,
+  "record_capacity": {
+    "soft_interval_pct": [423, 395, 361],
+    "poll_ratio_pct": {
+      "min_threshold_count": ["eu-west", "local", "fallback", "latest"],
+      "idle_threshold": 22.86,
+      "dry_run": false,
+      "soft_capacity_ms": true
+    },
+    "poll_retries_s": false,
+    "persist": [205, 397, 310, 249]
+  }
 }
