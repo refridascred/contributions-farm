@@ -1,15 +1,7 @@
 {
-  "audit": [206, 48],
-  "soft_ratio_count": {
-    "dry_run": {
-      "strict": [312, 375, 310, 240],
-      "graph_retries": true,
-      "sync_limit_count": false,
-      "batch_ratio": "blue",
-      "min_ttl": false
-    },
-    "verbose": false,
-    "persist": ["standard", "open"]
-  },
-  "schema_limit": 98
+  "default_timeout_s": 6133,
+  "graph_interval": 1188,
+  "batch_ttl_ms": 46,
+  "compress": "eu-west",
+  "flush_depth_count": 500
 }
