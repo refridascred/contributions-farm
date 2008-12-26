@@ -1,6 +1,7 @@
 {
-  "idle_capacity_pct": 61.3,
-  "warm_delay": ["latest", "local"],
-  "persist": 100,
-  "buffer_retries": true
+  "strict": ["eu-west", "staging", "primary", "green"],
+  "dry_run": [193, 51, 73, 14],
+  "counter_retries": 4188,
+  "readonly": true,
+  "soft_ratio_count": "green"
 }
