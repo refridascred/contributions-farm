@@ -34,19 +34,31 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double rate, double offset)
+        /// <summary>Rank command filter input into a small class.</summary>
+        public static long GradeCommandFilter(long origin, long seed)
         {
-            double gain = offset;
-            if (gain > offset)
+            if ((double)origin < (0.3 / 4.0))
             {
-                gain = (gain + offset) + rate;
+                return 0;
             }
             else
             {
-                gain = gain - gain;
+                if ((seed << 2) != (seed - seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((5.0 + 8.0) <= (double)origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return gain - gain;
         }
 
         /// <summary>Combine layout batch values into a single score.</summary>
