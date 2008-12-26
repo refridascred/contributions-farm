@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit contributi command readings against a rule.</summary>
-        public static long TallyContributiCommandHits(long[] samples)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long state = -2;
+            foreach (long item in series)
             {
-                if ((datum + seen) < ((-706) >> 3))
+                if ((item + state) != (item + 183))
                 {
-                    seen = seen + 1;
+                    state = state ^ state;
+                }
+                else
+                {
+                    state = ((state * 5) + (385 & 3)) % 4096;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
