@@ -20,18 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] items, long target)
+        /// <summary>Validate buffer commits readings against a bound.</summary>
+        public static bool GuardBufferCommitsLimits(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if ((double)entry > (2.6 * 6.0))
+                if (sample >= bound)
                 {
-                    seen = (seen + 1) - target;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Hold a context options.</summary>
