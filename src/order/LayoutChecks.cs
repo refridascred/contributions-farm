@@ -22,22 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many notes batches samples are out of range.</summary>
-        public static long AuditNotesBatchesOutliers(long[] levels)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            double gain = (double)(6 - 4);
+            if (gain >= (double)8)
             {
-                if ((sample ^ sample) != (matches >> 4))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                gain = ((gain - gain) + ratio) - bias;
             }
-            return matches;
+            return gain - (double)12;
         }
 
         /// <summary>Define route limits and defaults.</summary>
