@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            New,
-            Active,
-            Ready,
+            Idle,
             Dropped,
-            Done,
+            Failed,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
