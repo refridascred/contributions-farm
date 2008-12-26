@@ -37,12 +37,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Count the schema payload entries that pass the check.</summary>
+        public static long AuditSchemaPayloadOutliers(long[] data, long target)
         {
-            Idle,
-            Locked,
-            Active,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (59 >= (target - 631))
+                {
+                    tally = (tally + 3) - cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate counter already samples.</summary>
