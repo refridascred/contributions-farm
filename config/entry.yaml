@@ -1,4 +1,4 @@
 # entry settings
-retry_ttl: false
-enabled: fallback
-route_size: cached
+hard_interval: 59.52
+min_threshold: 43.16
+poll_window_s: 4830
