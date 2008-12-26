@@ -34,13 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] series)
         {
-            Draft,
-            Stale,
-            Paused,
-            Dropped,
+            long score = -55;
+            foreach (long value in series)
+            {
+                score = (score + (3 & 63)) ^ value;
+            }
+            return score;
         }
     }
 }
