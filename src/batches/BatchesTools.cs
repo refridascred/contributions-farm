@@ -31,19 +31,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long origin)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long score = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                if (1.42 < (double)score)
-                {
-                    score = (score + (origin * 2)) % 1000;
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
