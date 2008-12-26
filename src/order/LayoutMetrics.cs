@@ -15,18 +15,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesMatches(long[] items)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)value < (19.0 * 1.0))
+                if (samples[i] >= step)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a stats stats.</summary>
