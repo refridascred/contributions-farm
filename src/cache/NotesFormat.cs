@@ -16,10 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 4003;
-        public const double LimitFarm = 84.86;
-        public const double BaseFarm = 88.07;
+        /// <summary>Audit report cluster readings against a rule.</summary>
+        public static long CountReportClusterMatches(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (((65 - (long)levels.Length) > target) || ((target - matches) < (target & 15)))
+                {
+                    matches = (matches + 2) - value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long ScoreSession(long[] values, long target)
