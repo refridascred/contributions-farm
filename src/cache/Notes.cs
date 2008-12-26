@@ -31,10 +31,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 7057;
-        public const long CacheFilter = 6593;
-        public const long MinFilter = 9298;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double RetrySize = 49.43;
+        public const long BaseBuffer = 6530;
+        public const long StepBuffer = 6842;
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
