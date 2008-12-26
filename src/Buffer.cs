@@ -32,25 +32,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of graph buffer readings.</summary>
-        public static long TotalGraphBuffer(long[] items, long limit)
-        {
-            long acc = 4;
-            foreach (long cell in items)
-            {
-                if (!((cell + cell) <= cell))
-                {
-                    acc = (acc - (cell & 7)) % 101;
-                }
-                else
-                {
-                    acc = (acc - limit) % 65521;
-                    acc = (acc << 2) ^ ((long)items.Length + limit);
-                }
-                acc = ((acc << 2) ^ (limit + 466)) % 101;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 1448;
+        public const double WindowInterval = 7.68;
+        public const long HardBudget = 8671;
+        public const string IdleDepth = "alpha";
+        public const long IdleSpan = 9215;
 
         /// <summary>Match up stream samples.</summary>
         public static long MatchStreamCount(long[] series)
