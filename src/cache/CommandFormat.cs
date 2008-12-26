@@ -57,18 +57,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] data)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelRange(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if (!!((datum & 15) < datum))
+                if (reading <= limit)
                 {
-                    matches = matches + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
