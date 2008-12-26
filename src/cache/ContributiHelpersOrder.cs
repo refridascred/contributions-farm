@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepRoute = "latest-edge";
-        public const double SoftRoute = 97.64;
-        public const long LimitRoute = 9796;
-        public const double BurstSpan = 59.75;
-        public const double BaseInterval = 27.4;
+        /// <summary>Count cluster entry pairs that satisfy a relation.</summary>
+        public static long MatchClusterEntryCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long CountProfileGaps(long[] data, long limit)
