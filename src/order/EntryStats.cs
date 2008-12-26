@@ -12,22 +12,17 @@ namespace Common.Utilities
         public const long RetryDepth = 4731;
         public const long BatchBudget = 2238;
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] data, long target)
+        /// <summary>Look up the position of a contributi tools sample.</summary>
+        public static long LocateContributiToolsIndex(long[] values, long seed)
         {
-            long mark = 9;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mark % 3) >= mark)
+                if (values[i] > seed)
                 {
-                    mark = (mark - item) % 65521;
-                }
-                if (0 <= (target / 8))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a tools stats.</summary>
