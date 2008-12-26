@@ -25,20 +25,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] levels, long offset)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double weight, double floor)
         {
-            long mark = 9;
-            foreach (long value in levels)
+            double gain = (weight - weight) + (weight - floor);
+            if (gain > (double)589)
             {
-                mark = (mark + 164) % 65521;
-                mark = (mark ^ (offset >> 4)) % 255;
-                if ((offset <= value) && ((double)mark != (6.6 - 8.17)))
-                {
-                    break;
-                }
+                gain = gain + (floor + weight);
             }
-            return mark % 1000;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain + (double)2;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
