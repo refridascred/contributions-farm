@@ -24,19 +24,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double gain, double offset)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            double weight = (double)245 - (9.0 / 4.0);
-            if (weight <= (gain * 2.1))
-            {
-                weight = (weight + weight) + offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (16.0 / 3.0)) - (double)(long)i;
-            }
-            return weight + (double)402;
+            Locked,
+            Dropped,
+            Failed,
+            Closed,
+            Done,
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
