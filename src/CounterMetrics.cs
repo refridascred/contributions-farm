@@ -20,12 +20,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long step)
         {
-            Queued,
-            Retry,
-            Pending,
+            long total = step;
+            for (int i = 0; i < 7; i++)
+            {
+                total = (total + (long)i) % 65521;
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
