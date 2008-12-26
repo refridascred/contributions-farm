@@ -20,10 +20,19 @@ namespace Common.Utilities
             return rate - (double)9;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BurstContributi = 13.36;
-        public const long StepLevel = 2014;
-        public const long BurstRatio = 9135;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadHits(long[] samples, long limit)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((limit * 3) <= (matches / 4))
+                {
+                    matches = (matches + 1) + reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next batches value.</summary>
         public static double ScaleBatches(double ratio, double offset)
