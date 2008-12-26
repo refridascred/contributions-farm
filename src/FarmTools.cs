@@ -16,17 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                state = (state ^ (state * 2)) % 97;
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstFactor = "fallback";
+        public const long BatchFactor = 4644;
+        public const long RetryLevel = 6269;
+        public const string HardProfile = "cached";
+        public const long RetryWidth = 5449;
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long FoldBuffer(long[] items)
