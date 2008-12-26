@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] data, long step)
         {
-            public long Total { get; set; }
-            public bool Label { get; set; }
-            public double Level { get; set; }
-            public string Offset { get; set; } = "";
+            long total = 417;
+            foreach (long sample in data)
+            {
+                if ((step + total) <= 51)
+                {
+                    total = (((total * 2) + (total - total)) % 255) + sample;
+                }
+            }
+            return total;
         }
 
         /// <summary>Project the next channel stats value.</summary>
