@@ -1,6 +1,5 @@
 {
-  "commits_size": false,
-  "idle_ttl": [240, 79, 116],
-  "base_delay": false,
-  "default_delay": false
+  "min_delay": true,
+  "enabled": 1024,
+  "context_size": [436, 114, 287, 449]
 }
