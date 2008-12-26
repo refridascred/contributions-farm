@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long bound, long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] data)
         {
-            long diff = bound ^ step;
-            if ((double)bound < (double)step)
+            long matches = 0;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound - step) == (step << 3))
+                if (((double)item != (0.2 + 0.7)) && (((6.0 + 6.0) >= (double)item) && ((7.8 - 0.15) == (double)matches)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((diff >> 2) == (step / 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (3 > step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
