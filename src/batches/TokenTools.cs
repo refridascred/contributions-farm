@@ -20,11 +20,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstWidth = 2415;
-        public const double HardSpan = 56.33;
-        public const double HardEntry = 60.9;
-        public const string CacheEntry = "local";
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long CountLayoutGaps(long[] samples)
