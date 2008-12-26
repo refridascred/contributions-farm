@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public double Level { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
+            Ready,
+            Stale,
+            Queued,
         }
 
         /// <summary>Define window limits and defaults.</summary>
