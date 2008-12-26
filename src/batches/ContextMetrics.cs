@@ -32,14 +32,19 @@ namespace Common.Utilities
         public const long BaseInterval = 8872;
         public const string IdleEntry = "staging";
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] readings, long seed)
         {
-            Queued,
-            Draft,
-            Closed,
-            Retry,
-            Synced,
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a counter summary.</summary>
