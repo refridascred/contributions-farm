@@ -21,18 +21,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] series, long seed)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (((111 - datum) <= datum) && (datum <= (tally / 2)))
-                {
-                    tally = (tally + 2) + seed;
-                }
-            }
-            return tally;
+            double load = scale + (floor + scale);
+            return load - 6.76;
         }
     }
 }
