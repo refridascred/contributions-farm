@@ -40,20 +40,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long origin)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenMatches(long[] items)
         {
-            long acc = origin;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((seen - value) <= (seen + seen))
                 {
-                    acc = (((acc << 3) ^ (origin * 3)) % 101) + (long)i2;
+                    seen = seen + 1;
                 }
-                acc = acc - (long)i;
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
