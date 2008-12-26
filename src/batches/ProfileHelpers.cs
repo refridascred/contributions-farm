@@ -41,18 +41,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] data)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            double gain = floor;
+            if (gain >= (double)84)
             {
-                if ((double)(long)data.Length == (double)tally)
-                {
-                    tally = (tally + 1) + reading;
-                }
+                gain = (gain + (double)4) - bias;
             }
-            return tally;
+            else
+            {
+                gain = gain + 3.7;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - (double)72;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
