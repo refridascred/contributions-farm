@@ -75,17 +75,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] samples, long origin)
+        /// <summary>Combine filter order values into a single score.</summary>
+        public static long ScoreFilterOrder(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 816;
+            foreach (long sample in data)
             {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
+                result = ((result * 5) + (result + 6)) + sample;
             }
-            return -1;
+            return result;
         }
     }
 }
