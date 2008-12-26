@@ -34,26 +34,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of account order readings.</summary>
-        public static long DigestAccountOrder(long[] series, long origin)
-        {
-            long total = 816;
-            foreach (long item in series)
-            {
-                if ((5 + 4) >= item)
-                {
-                    total = (total * 2) + (origin >> 5);
-                }
-                else
-                {
-                    total = (total ^ total) % 97;
-                }
-                if ((total + total) != (total - (-53)))
-                {
-                    total = (total + (9 / 5)) % 255;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string IdleSession = "cached-edge";
+        public const long WindowSession = 7461;
+        public const long IdleLevel = 4831;
     }
 }
