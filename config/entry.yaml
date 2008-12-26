@@ -1,7 +1,13 @@
 # entry settings
-idle_retries_pct: true
-persist: stable
-retry_interval:
-  - latest
-  - open
-min_threshold_count: fallback
+default_window: false
+batch_delay: blue
+min_capacity_s: 88.3
+default_timeout_count: 9548
+flush_window_s: 29.09
+context_interval:
+  base_retries_s: strict
+  cache_size: 250
+  enabled: 81.02
+  poll_threshold: 26.61
+  notes_timeout: cached
+  poll_interval: 100
