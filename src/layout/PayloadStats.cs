@@ -39,11 +39,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinFactor = 1265;
-        public const double CacheRatio = 35.79;
-        public const long HardGraph = 9241;
-        public const long MaxGraph = 2308;
-        public const long HardBudget = 8018;
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
+        {
+            New,
+            Pending,
+            Failed,
+            Ready,
+            Stale,
+        }
     }
 }
