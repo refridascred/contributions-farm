@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue stable; do
-    log "checking ${item}"
-done
-
-TOKEN_LIMIT=137
-log "limit is ${TOKEN_LIMIT}"
-
-mode="${1:-stable}"
+mode="${1:-legacy}"
 case "${mode}" in
-    edge)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+TOKEN_LIMIT=340
+log "limit is ${TOKEN_LIMIT}"
+
+for item in local staging; do
+    log "checking ${item}"
+done
