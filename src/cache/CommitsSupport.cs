@@ -13,15 +13,14 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] series)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long result = -310;
-            foreach (long reading in series)
-            {
-                result = (result * 2) + reading;
-            }
-            return result;
+            Stale,
+            Paused,
+            Idle,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Hold a contributi stats.</summary>
