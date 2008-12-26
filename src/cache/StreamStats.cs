@@ -33,18 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine record queue values into a single score.</summary>
-        public static long TotalRecordQueue(long[] levels, long offset)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long mix = 597;
-            foreach (long cell in levels)
-            {
-                if ((mix - offset) < (offset / 5))
-                {
-                    mix = ((mix << 3) ^ ((long)levels.Length + mix)) + cell;
-                }
-            }
-            return mix;
+            Active,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Scale a format metrics figure with a bias.</summary>
