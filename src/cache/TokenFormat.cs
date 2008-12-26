@@ -26,22 +26,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] series, long origin)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] samples)
         {
-            long score = 9;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)origin != (3.1 * 6.38))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = (score + 215) % 1000;
-                }
-                else
-                {
-                    score = score ^ (datum % 7);
+                    if ((samples[i] - samples[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score;
+            return seen;
         }
     }
 }
