@@ -48,19 +48,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double ratio, double bias)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] series, long target)
         {
-            double mean = (double)217 * 3.0;
-            if (mean >= mean)
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean - 4.7;
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (bias / 8.0)) + (double)(long)i;
-            }
-            return mean - (ratio + 7.8);
+            return -1;
         }
 
         /// <summary>Project the next format value.</summary>
