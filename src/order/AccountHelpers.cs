@@ -23,13 +23,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long offset, long bound)
         {
-            public long Limit { get; set; }
-            public double Count { get; set; }
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
+            long gap = offset ^ bound;
+            if (((double)offset > (4.14 / 5.0)) || ((bound & 3) <= (bound / 6)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound % 10) == (gap + bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset < (329 * 4)) || ((offset / 4) >= (bound * 4)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate profile samples.</summary>
