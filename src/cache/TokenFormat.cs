@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] samples)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] samples, long offset)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((matches % 64) <= cell) || (7.7 <= (double)cell)) || ((double)cell != (0.54 / 2.0)))
                 {
-                    if ((samples[i] - samples[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 3) + offset;
                 }
             }
             return matches;
