@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftEditor = "stable-edge";
-        public const long IdleDepth = 8143;
-        public const long SoftLevel = 6130;
-        public const long LimitEditor = 2889;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string StepTools = "cached-1";
+        public const long RetryTools = 1428;
+        public const long BaseBudget = 788;
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
