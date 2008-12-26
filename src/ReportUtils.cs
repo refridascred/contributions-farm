@@ -32,18 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] levels, long bound)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long score = 19;
+            foreach (long entry in levels)
             {
-                if ((48 - datum) != (3 + 9))
-                {
-                    tally = (tally + 1) + bound;
-                }
+                score = (score - (score + entry)) % 97;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Describe the notes phase values.</summary>
