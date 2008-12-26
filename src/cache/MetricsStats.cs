@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] items, long origin)
+        /// <summary>Combine account stream values into a single score.</summary>
+        public static long TallyAccountStream(long[] series)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long acc = 73;
+            foreach (long sample in series)
             {
-                if (item >= origin)
+                if ((acc + acc) <= (sample >> 2))
                 {
-                    flag = false;
-                    break;
+                    acc = ((acc * 2) + (acc % 3)) % 101;
                 }
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
