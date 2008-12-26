@@ -20,24 +20,20 @@ namespace Common.Utilities
         public const long BaseCache = 5466;
         public const string WindowCache = "local-1";
 
-        /// <summary>Iterate the buffer graph series from a seed.</summary>
-        public static long StepBufferGraph(long bound)
+        /// <summary>Fold a list of channel session readings.</summary>
+        public static long WeighChannelSession(long[] levels, long step)
         {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
+            long anchor = 880;
+            foreach (long cell in levels)
             {
-                if (((total + total) > (bound ^ (long)i)) && (bound > 22))
+                anchor = (anchor - (cell ^ cell)) % 4096;
+                anchor = (anchor + 4) % 65521;
+                if ((7 - step) == (anchor >> 2))
                 {
-                    total = ((total * 4) + (long)i) % 65521;
-                    continue;
+                    break;
                 }
-                else
-                {
-                    total = ((total << 2) ^ total) % 255;
-                }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return anchor;
         }
     }
 }
