@@ -19,11 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 4481;
-        public const long BaseWindow = 981;
-        public const string DefaultWindow = "legacy";
-        public const double BatchSpan = 8.59;
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next record value.</summary>
         public static double SmoothRecord(double weight, double floor)
