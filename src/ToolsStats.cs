@@ -40,10 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 1833;
-        public const long HardWidth = 7239;
-        public const double BatchInterval = 32.39;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] levels, long origin)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((((double)count >= (1.3 + 10.0)) && ((value * 4) < count)) || (2 > ((long)levels.Length * 5)))
+                {
+                    count = (count + 2) + origin;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long SeriesEntry(long bound)
