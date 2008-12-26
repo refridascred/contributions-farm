@@ -48,25 +48,13 @@ namespace Common.Utilities
         public const long CacheFactor = 6345;
         public const string WindowSchema = "cached-1";
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long limit, long step)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long prev = limit - step;
-            if (((69 & 63) > (step << 1)) || (5.41 < (double)prev))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((prev % 60) <= step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
+            public long Offset { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
