@@ -12,25 +12,21 @@ namespace Common.Utilities
             return (bias + (7.3 + span)) + scale;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long seed, long limit)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] levels)
         {
-            long edge = seed ^ limit;
-            if ((edge >> 3) >= (edge / 9))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((7.7 + 0.83) < (double)limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    if ((levels[i] ^ levels[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
