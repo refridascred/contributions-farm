@@ -15,14 +15,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Grade a editor batch value against two limits.</summary>
+        public static long RankEditorBatch(long limit, long limit2)
         {
-            Locked,
-            Dropped,
-            Failed,
-            Closed,
-            Done,
+            long bound = limit ^ limit2;
+            if ((limit2 & 1) <= bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit + limit2) > (limit - limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit2 + bound) >= (limit2 >> 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((bound << 1) < bound) || ((double)limit2 >= (double)bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank queue input into a small class.</summary>
