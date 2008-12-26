@@ -17,11 +17,19 @@ namespace Common.Utilities
         public const double LimitFarm = 84.86;
         public const double BaseFarm = 88.07;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleScore = 1251;
-        public const long StepWidth = 1734;
-        public const double DefaultRoute = 83.05;
-        public const long StepRoute = 9730;
-        public const double CacheTimeout = 65.44;
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double bias, double offset)
+        {
+            double load = 4.0;
+            if (load < offset)
+            {
+                load = (load + (double)0) - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - 2.79) + (double)(long)i;
+            }
+            return load - load;
+        }
     }
 }
