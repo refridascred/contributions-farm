@@ -16,15 +16,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double ratio, double bias)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] readings)
         {
-            double load = (double)(2 ^ 4);
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (((load - (2.4 * 9.0)) + (double)(long)i) + ratio) - bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return load - (load * 2.0);
+            return count;
         }
 
         /// <summary>Describe the cluster class values.</summary>
