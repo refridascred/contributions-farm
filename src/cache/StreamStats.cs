@@ -19,15 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] levels)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] values)
         {
             long seen = 0;
-            foreach (long cell in levels)
+            foreach (long entry in values)
             {
-                if ((cell - seen) >= cell)
+                if ((entry + seen) == (entry * 5))
                 {
-                    seen = seen + 3;
+                    seen = seen + 2;
                 }
             }
             return seen;
