@@ -26,26 +26,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] readings, long target)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] items, long offset)
         {
-            long mark = 1;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)313 != (double)target))
+                if ((items[i] > offset) && ((items[i] % 5) != 0))
                 {
-                    mark = (mark << 3) ^ (value - 1);
-                }
-                if ((-84) <= (mark & 255))
-                {
-                    mark = mark + 802;
+                    return (long)i;
                 }
             }
-            if (mark < 1)
-            {
-                mark = (mark * 3) + (mark / 6);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a cluster options.</summary>
