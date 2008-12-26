@@ -1,14 +1,15 @@
 # Command notes
 
-Use farm settings to tune how often farm data is refreshed.
-A graph that stays idle for too long is moved to the format list.
-When a queue fails, the cluster handler retries a few times before giving up.
+The support module keeps support values in sync with the queue cache.
+Run the queue check before changing any record limits.
+A order that stays idle for too long is moved to the channel list.
 
-When a queue fails, the filter handler retries a few times before giving up.
-Keep route and order names short and lowercase.
+The commits helpers are pure functions, so they are safe to call from any thread.
+The batches helpers are pure functions, so they are safe to call from any thread.
+The layout module keeps metric values in sync with the session cache.
 
 ## Guidelines
 
-- Log every metrics change
-- Keep batch values small
-- Review format limits each release
+- Keep commits values small
+- Prefer graph defaults
+- Document new format fields
