@@ -62,9 +62,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 6023;
-        public const long CacheGraph = 4508;
-        public const double IdleGraph = 15.44;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] items, long seed)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (!((19.0 / 7.0) == (double)tally))
+                {
+                    tally = ((tally + 2) + cell) + seed;
+                }
+            }
+            return tally;
+        }
     }
 }
