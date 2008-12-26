@@ -32,22 +32,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] series, long origin)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long state = 170;
-            foreach (long entry in series)
-            {
-                if ((state + state) >= state)
-                {
-                    state = (state ^ (entry + state)) - origin;
-                }
-                else
-                {
-                    state = (state << 2) ^ state;
-                }
-            }
-            return state;
+            public double Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
