@@ -24,13 +24,13 @@ namespace Common.Utilities
         public const string DefaultMetrics = "latest";
         public const string SoftInterval = "stable-v2";
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public string Token { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Weight { get; set; }
-            public string Count { get; set; } = "";
+            Pending,
+            Done,
+            Paused,
+            Closed,
         }
     }
 }
