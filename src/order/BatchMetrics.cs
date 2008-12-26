@@ -18,17 +18,32 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Find the first cluster support entry that matches the target.</summary>
-        public static long SeekClusterSupportIndex(long[] series, long limit)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long floor, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long bound = floor - offset;
+            if ((offset + bound) != (floor * 4))
             {
-                if (series[i] >= limit)
+                return 8;
+            }
+            else
+            {
+                if (((bound + bound) <= (bound * 2)) && (bound < (floor % 100)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((88 >= offset) || ((offset + floor) < (bound & 127)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate order samples.</summary>
