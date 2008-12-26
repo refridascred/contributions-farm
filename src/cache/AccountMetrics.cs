@@ -56,12 +56,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] items, long offset)
         {
-            Draft,
-            Failed,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
