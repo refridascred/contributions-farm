@@ -71,25 +71,21 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long seed)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] data)
         {
-            long mix = seed;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix + (mix >> 3)) % 97;
-                for (int i2 = 0; i2 < 8; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = ((mix << 2) ^ mix) + (long)i2;
+                    if ((data[i] ^ data[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if (((long)i - seed) == (long)i)
-                {
-                    mix = mix - 36;
-                    break;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
