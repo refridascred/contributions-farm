@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
-        {
-            Pending,
-            Locked,
-            Stale,
-            Retry,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 2818;
+        public const double MinBudget = 35.71;
+        public const double BurstWidth = 17.07;
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
