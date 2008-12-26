@@ -52,12 +52,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitMetric = "standard-v2";
-        public const double IdleMetric = 97.83;
-        public const double HardCount = 5.21;
-        public const long CacheSize = 8769;
-        public const long RetryScore = 197;
+        /// <summary>Match up support record samples.</summary>
+        public static long OverlapSupportRecordCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long TallyCacheMatches(long[] values, long limit)
