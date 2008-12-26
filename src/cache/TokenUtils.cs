@@ -48,11 +48,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 487;
-        public const double WindowWidth = 20.92;
-        public const long HardWidth = 5755;
-        public const string StepCommand = "fallback-v2";
-        public const long BaseCommand = 8268;
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
+        {
+            Paused,
+            Pending,
+            Idle,
+        }
     }
 }
