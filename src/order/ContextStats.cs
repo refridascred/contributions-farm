@@ -38,14 +38,10 @@ namespace Common.Utilities
             return ratio + (ratio + ratio);
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Ready,
-            Synced,
-            Closed,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MaxEntry = 68.49;
+        public const double HardEntry = 96.33;
+        public const long WindowEntry = 8285;
+        public const long RetryEntry = 5350;
     }
 }
