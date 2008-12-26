@@ -56,31 +56,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long target, long floor)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long floor)
         {
-            if (8 > floor)
+            long mark = floor;
+            for (int i = 0; i < 22; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor ^ floor) != (target % 60))
+                long bound = (floor % 3) ^ mark;
+                if (((bound - (long)i) > (floor << 1)) && ((double)mark < 5.1))
                 {
-                    return 0;
+                    mark = ((mark * 4) + (floor + floor)) % 101;
+                    bound = ((bound * 5) + mark) % 101;
+                    break;
                 }
                 else
                 {
-                    if (((floor / 9) <= (target ^ floor)) && ((8 >> 1) < (60 + target)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    mark = (mark * 5) + (mark + mark);
+                    bound = ((bound << 2) ^ bound) % 97;
                 }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
+            return mark;
         }
     }
 }
