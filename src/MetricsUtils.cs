@@ -29,14 +29,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] data)
         {
-            Stale,
-            Done,
-            Idle,
-            Active,
-            Synced,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((cell + tally) > (68 + tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank report input into a small class.</summary>
