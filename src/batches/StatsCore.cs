@@ -55,18 +55,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] levels, long offset)
+        /// <summary>Find the first session token entry that matches the target.</summary>
+        public static long LookupSessionTokenIndex(long[] data, long seed)
         {
-            long score = 5;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((419 * 2) > (offset + 76))
+                if ((data[i] > seed) && ((data[i] % 3) != 0))
                 {
-                    score = (score + ((-828) * 4)) - item;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the stream level values.</summary>
