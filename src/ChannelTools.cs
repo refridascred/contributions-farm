@@ -16,16 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long origin)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsOutliers(long[] data, long limit)
         {
-            long sum = origin;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                sum = (sum + sum) % 1000;
-                sum = ((sum * 5) + (long)i) % 1000;
+                if ((limit + tally) > 51)
+                {
+                    tally = (tally + 2) + item;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Describe the commits phase values.</summary>
