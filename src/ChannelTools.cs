@@ -5,28 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine buffer order values into a single score.</summary>
-        public static long FoldBufferOrder(long[] series, long step)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] samples)
         {
-            long anchor = 865;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                long seen = 3;
-                if (!((step + sample) < (seen ^ sample)))
+                if ((7.0 * 4.01) != (double)item)
                 {
-                    seen = (seen ^ (sample / 6)) % 65521;
+                    matches = matches + 1;
                 }
-                anchor = (anchor << 2) ^ sample;
-                if ((1.6 * 0.04) >= (double)sample)
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            if (anchor > 739)
-            {
-                anchor = ((anchor << 3) ^ (step + step)) % 1000;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
