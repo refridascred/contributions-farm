@@ -36,12 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 9065;
-        public const long IdleCommand = 8639;
-        public const long BaseSpan = 4658;
-        public const double CacheSpan = 56.09;
-        public const string LimitCommand = "standard-edge";
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Idle,
+            Locked,
+            Active,
+        }
 
         /// <summary>Accumulate counter already samples.</summary>
         public static long DigestCounterAlready(long[] items, long seed)
