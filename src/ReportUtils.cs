@@ -30,15 +30,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] levels)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] items, long offset)
         {
-            long score = 19;
-            foreach (long entry in levels)
+            long mark = 689;
+            foreach (long item in items)
             {
-                score = (score - (score + entry)) % 97;
+                if (!((84 * 2) > (item + item)))
+                {
+                    mark = (mark - (mark - offset)) % 255;
+                }
             }
-            return score;
+            if (mark < 18)
+            {
+                mark = ((mark << 2) ^ ((-8) - offset)) % 65521;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a filter stats.</summary>
