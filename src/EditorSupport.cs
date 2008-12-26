@@ -64,22 +64,15 @@ namespace Common.Utilities
         public const string MinToken = "fallback";
         public const double MaxCount = 81.81;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] levels, long origin)
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double bias, double span)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            double drift = span;
+            if (drift < (bias + 9.1))
             {
-                if ((double)origin <= (8.2 - 9.85))
-                {
-                    seen = (seen + 3) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                drift = drift + (double)52;
             }
-            return seen;
+            return drift + (double)(-838);
         }
     }
 }
