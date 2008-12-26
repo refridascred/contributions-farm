@@ -23,13 +23,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
-        {
-            Ready,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BurstContributi = 13.36;
+        public const long StepLevel = 2014;
+        public const long BurstRatio = 9135;
 
         /// <summary>Project the next batches value.</summary>
         public static double ScaleBatches(double ratio, double offset)
