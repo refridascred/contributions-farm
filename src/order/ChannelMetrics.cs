@@ -32,22 +32,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphHits(long[] levels)
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double bias, double span)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            double scale = (span - 0.74) - (span - span);
+            if (scale <= bias)
             {
-                if ((matches ^ matches) < (cell / 7))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = scale + (bias - span);
             }
-            return matches;
+            return scale + (span + scale);
         }
     }
 }
