@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] data)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (((double)item != (0.2 + 0.7)) && (((6.0 + 6.0) >= (double)item) && ((7.8 - 0.15) == (double)matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Locked,
+            Failed,
+            Stale,
         }
 
         /// <summary>Describe the batches mode values.</summary>
