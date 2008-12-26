@@ -1,16 +1,13 @@
 {
-  "buffer_ttl": 93.87,
-  "compress": {
-    "sync_delay_s": 78,
-    "sync_depth_s": 9682,
-    "persist": {
-      "dry_run": 100,
-      "poll_window_pct": 62,
-      "min_ttl_count": "cached",
-      "retry_retries": "open"
-    },
-    "readonly": "fallback"
-  },
-  "default_capacity": 9771,
-  "cache_ratio_s": true
+  "flush_depth_pct": "green",
+  "enabled": 7298,
+  "notes_depth": [51, 477, 75, 39],
+  "hard_limit_ms": {
+    "sync_ttl": "stable",
+    "queue_interval": [441, 442, 216],
+    "flush_depth": 93.4,
+    "token_window": 21.46,
+    "cache_window": 77,
+    "burst_retries_s": true
+  }
 }
