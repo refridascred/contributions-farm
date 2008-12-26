@@ -1,8 +1,5 @@
 {
-  "dry_run": 7744,
-  "soft_depth": [471, 88],
-  "burst_retries_pct": 7.25,
-  "schema_delay": 100,
-  "soft_delay_ms": true,
-  "burst_window_count": false
+  "readonly": 6719,
+  "verbose": true,
+  "poll_timeout_s": "open"
 }
