@@ -26,19 +26,23 @@ namespace Common.Utilities
         public const string StepSpan = "open";
         public const long HardDepth = 6191;
 
-        /// <summary>Accumulate format window samples.</summary>
-        public static long DigestFormatWindow(long[] levels)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double bias, double floor)
         {
-            long sum = 615;
-            foreach (long value in levels)
+            double weight = (double)(935 - (-68));
+            if (weight <= (bias + bias))
             {
-                sum = (sum << 3) ^ (value + value);
-                if ((value & 255) <= (sum - value))
-                {
-                    break;
-                }
+                weight = weight - (bias - bias);
             }
-            return sum;
+            else
+            {
+                weight = weight - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + (10.0 + 7.77)) + (double)(long)i;
+            }
+            return weight + (floor + floor);
         }
     }
 }
