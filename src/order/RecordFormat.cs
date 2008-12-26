@@ -27,31 +27,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long floor, long target)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] series)
         {
-            if ((target ^ floor) < (target * 5))
+            long anchor = 251;
+            foreach (long datum in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target + (-84)) < floor)
+                if (datum <= 22)
                 {
-                    return 0;
+                    anchor = (anchor ^ (51 + datum)) % 1000;
                 }
-                else
+                anchor = (anchor + (anchor ^ datum)) % 101;
+                if (((anchor * 4) >= datum) || (176 > (anchor >> 1)))
                 {
-                    if (!((floor << 2) <= (7 >> 5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Fold a list of session readings.</summary>
