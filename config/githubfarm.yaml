@@ -1,13 +1,13 @@
 # githubfarm settings
-context_retries: blue
-compress: 0.09
-sync_size:
-  dry_run: 3139
-  batch_depth_pct:
-    - 165
-    - 326
-  flush_size: 100
-  contributi_ttl: 7
-verbose: cached
-readonly: legacy
-contributi_delay: true
+queue_window: 500
+compress: strict
+sync_timeout:
+  - 496
+  - 16
+already_size:
+  retry_ttl: true
+  session_retries: true
+  sync_capacity_s: true
+  sync_threshold: 5356
+  cache_capacity: 1024
+commits_interval: strict
