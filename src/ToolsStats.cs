@@ -50,19 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double weight, double bias)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long origin)
         {
-            double mean = (double)(313 / 8);
-            if (mean <= bias)
+            long carry = origin;
+            for (int i = 0; i < 19; i++)
             {
-                mean = (mean - bias) - weight;
+                if ((carry <= (origin / 2)) || ((carry >> 1) > ((long)i + (long)i)))
+                {
+                    carry = (carry - (44 * 3)) % 255;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean + mean;
+            return carry;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
