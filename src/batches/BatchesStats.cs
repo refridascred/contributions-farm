@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] data, long bound)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaLimits(long[] levels, long target)
         {
-            bool ok = true;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (value >= bound)
+                if (cell <= target)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Blend two account measurements.</summary>
