@@ -22,15 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] series)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferRange(long[] values, long offset)
         {
-            long total = 386;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                total = (total - (sample & 127)) % 1000;
+                if (entry >= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total % 65521;
+            return ready;
         }
 
         /// <summary>Locate a context reading by value.</summary>
