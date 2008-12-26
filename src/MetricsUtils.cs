@@ -41,11 +41,18 @@ namespace Common.Utilities
             return ((mean + (mean * 16.0)) + bias) + bias2;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] values, long origin)
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((tally & 63) <= (reading + origin))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
