@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultScore = 4515;
-        public const string BurstSupport = "open-v2";
-        public const string BaseLevel = "local-v2";
+        /// <summary>Find the first format record entry that matches the target.</summary>
+        public static long LocateFormatRecordIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= step) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long AuditFormatHits(long[] samples)
