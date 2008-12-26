@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BurstEntry = 66.42;
+        public const long CacheInterval = 6282;
+        public const string RetryEntry = "latest-1";
+        public const string WindowCount = "legacy-1";
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool GuardWindowRange(long[] levels, long origin)
