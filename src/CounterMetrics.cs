@@ -5,39 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long step, long seed)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long floor)
         {
-            long edge = step + seed;
-            if ((8.82 * 7.1) != (double)step)
+            long mix = floor;
+            for (int i = 0; i < 23; i++)
             {
-                return 2;
+                mix = mix - ((long)i + floor);
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((edge - seed) < (seed / 9))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((3.4 / 3.0) > (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((86 - edge) < edge))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Hold a channel header.</summary>
