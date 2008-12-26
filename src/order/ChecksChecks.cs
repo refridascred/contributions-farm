@@ -16,11 +16,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleInterval = 8624;
-        public const long BatchGraph = 9088;
-        public const long HardGraph = 7795;
-        public const long LimitGraph = 1058;
+        /// <summary>Find the first session batches entry that matches the target.</summary>
+        public static long SeekSessionBatchesIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const double DefaultTimeout = 73.33;
