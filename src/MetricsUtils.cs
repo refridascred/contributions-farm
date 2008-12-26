@@ -66,9 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitScore = 4392;
-        public const string BatchFarm = "alpha";
-        public const double RetryFarm = 84.37;
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double ratio, double offset)
+        {
+            double bias = (double)7 * 4.5;
+            if (bias <= (double)51)
+            {
+                bias = bias + (ratio + offset);
+            }
+            else
+            {
+                bias = bias - (14.0 / 7.0);
+            }
+            return bias + ratio;
+        }
     }
 }
