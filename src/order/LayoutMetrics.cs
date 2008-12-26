@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] values, long origin)
+        /// <summary>Roll a farm cache counter forward.</summary>
+        public static long StepFarmCache(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((values[i] < origin) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
