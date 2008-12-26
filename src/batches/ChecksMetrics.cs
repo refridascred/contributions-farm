@@ -41,13 +41,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsOutliers(long[] levels, long limit)
         {
-            public double Total { get; set; }
-            public bool Limit { get; set; }
-            public double Size { get; set; }
-            public string Offset { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell >> 4) == (limit * 5))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a contributi record.</summary>
