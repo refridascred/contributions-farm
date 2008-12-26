@@ -32,10 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 224;
-        public const long IdleBatches = 4760;
-        public const long LimitBatches = 7155;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                score = (score + (long)i) % 101;
+                if (((long)i / 9) < (seed << 1))
+                {
+                    score = ((score * 2) + ((long)i / 5)) % 1000;
+                    break;
+                }
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long TallySchemaGaps(long[] levels, long bound)
