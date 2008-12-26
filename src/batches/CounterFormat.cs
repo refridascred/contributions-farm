@@ -27,32 +27,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] items)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphLimits(long[] series, long limit)
         {
-            long anchor = 6;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                anchor = (anchor << 3) ^ (value + 383);
-                if (!!(value < anchor))
+                if (reading > limit)
                 {
-                    long lane = value;
-                    anchor = (anchor + (lane - anchor)) % 97;
-                }
-                if (((double)value < (double)anchor) || (697 < anchor))
-                {
-                    anchor = (anchor << 2) ^ (4 ^ anchor);
-                }
-                else
-                {
-                    anchor = anchor ^ (value << 2);
+                    flag = false;
+                    break;
                 }
             }
-            if (anchor < (-97))
-            {
-                anchor = anchor - (anchor + anchor);
-            }
-            return anchor;
+            return flag;
         }
     }
 }
