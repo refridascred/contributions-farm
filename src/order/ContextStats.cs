@@ -23,12 +23,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 6383;
-        public const long HardRatio = 7366;
-        public const string MaxFarm = "strict-edge";
-        public const long IdleFarm = 1388;
-        public const long LimitFarm = 721;
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] series, long origin)
+        {
+            long state = 170;
+            foreach (long entry in series)
+            {
+                if ((state + state) >= state)
+                {
+                    state = (state ^ (entry + state)) - origin;
+                }
+                else
+                {
+                    state = (state << 2) ^ state;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Match up metrics samples.</summary>
         public static long CompareMetricsCount(long[] samples)
