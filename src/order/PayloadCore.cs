@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long HardSession = 7989;
         public const string HardFactor = "cached";
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] values, long target)
         {
-            public bool Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Token { get; set; }
+            long score = 138;
+            foreach (long entry in values)
+            {
+                if ((score - target) > (score >> 5))
+                {
+                    score = ((score - score) % 101) ^ entry;
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the order kind values.</summary>
