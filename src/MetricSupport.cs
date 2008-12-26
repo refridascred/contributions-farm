@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleFactor = "stable";
+        public const double CacheBatch = 44.55;
+        public const long DefaultBatch = 1858;
+        public const double BatchLevel = 86.39;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MinEntry = 7935;
