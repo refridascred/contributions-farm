@@ -1,6 +1,14 @@
 {
-  "poll_threshold": 8169,
-  "retry_depth_ms": "standard",
-  "commits_limit": 0.44,
-  "flush_retries": 49.91
+  "report_retries": 58,
+  "soft_timeout_pct": {
+    "base_limit": false,
+    "idle_ratio_s": {
+      "min_window_pct": "blue",
+      "batch_delay_count": [400, 191],
+      "graph_size": 9.81,
+      "cache_threshold": ["legacy", "stable"]
+    },
+    "burst_limit_s": [299, 221]
+  },
+  "account_interval": "fallback"
 }
