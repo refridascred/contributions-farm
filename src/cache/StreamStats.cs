@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of batches editor readings.</summary>
-        public static long DigestBatchesEditor(long[] items, long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] values)
         {
-            long anchor = 485;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (!((value + anchor) >= ((-640) - step)))
+                if (((matches - matches) == (entry - entry)) && (matches < ((long)values.Length >> 5)))
                 {
-                    anchor = anchor - (anchor - 13);
-                    anchor = (anchor + (anchor - value)) % 255;
+                    matches = matches + 1;
                 }
-                anchor = (anchor * 3) + (step - step);
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
