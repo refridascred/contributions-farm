@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleFactor = "stable";
-        public const double CacheBatch = 44.55;
-        public const long DefaultBatch = 1858;
-        public const double BatchLevel = 86.39;
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
+        {
+            Dropped,
+            Failed,
+            Done,
+            Synced,
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MinEntry = 7935;
