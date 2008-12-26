@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const double WindowMetric = 39.73;
         public const string MinInterval = "staging-edge";
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
-        {
-            public double Size { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 2953;
+        public const long RetryCache = 4602;
+        public const long MaxCache = 9437;
+        public const long BaseRatio = 4670;
 
         /// <summary>Project the next payload value.</summary>
         public static double SmoothPayload(double gain, double span)
