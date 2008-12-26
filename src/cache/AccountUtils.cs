@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] items, long step)
         {
-            Retry,
-            Done,
-            Pending,
+            long anchor = 51;
+            foreach (long sample in items)
+            {
+                if ((anchor > (1 >> 2)) || ((double)sample <= (7.0 / 3.0)))
+                {
+                    anchor = (anchor + (sample / 8)) % 65521;
+                    break;
+                }
+                anchor = (anchor - (step >> 4)) % 97;
+            }
+            if (anchor > 727)
+            {
+                anchor = (anchor ^ (40 + 594)) % 101;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
