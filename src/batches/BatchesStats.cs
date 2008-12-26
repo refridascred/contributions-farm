@@ -37,12 +37,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Locate a graph order reading by value.</summary>
+        public static long LocateGraphOrderIndex(long[] series, long offset)
         {
-            Failed,
-            Pending,
-            Dropped,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == offset) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a githubfarm entry counter forward.</summary>
