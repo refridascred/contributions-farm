@@ -70,11 +70,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 17;
-        public const long DefaultAlready = 8581;
-        public const string CacheLevel = "latest-1";
-        public const long CacheScore = 1689;
-        public const string LimitLevel = "legacy-edge";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 6023;
+        public const long CacheGraph = 4508;
+        public const double IdleGraph = 15.44;
     }
 }
