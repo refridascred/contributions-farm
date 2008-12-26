@@ -7,20 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 1))
+for i in $(seq 1 3); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-mode="${1:-stable}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-BUFFER_LIMIT=474
-log "limit is ${BUFFER_LIMIT}"
+for item in stable legacy; do
+    log "checking ${item}"
+done
