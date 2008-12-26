@@ -51,15 +51,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batch entry samples are out of range.</summary>
-        public static long CountBatchEntryMatches(long[] samples)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] data)
         {
             long seen = 0;
-            foreach (long sample in samples)
+            foreach (long datum in data)
             {
-                if ((seen + 8) <= (sample ^ 6))
+                if ((datum - datum) < (68 - datum))
                 {
-                    seen = seen + 2;
+                    seen = seen + 1;
                 }
                 else
                 {
