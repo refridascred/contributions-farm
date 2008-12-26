@@ -1,4 +1,12 @@
 # entry settings
-hard_limit: local
-context_depth: 100
-graph_timeout: staging
+counter_interval:
+  - 31
+  - 118
+  - 115
+commits_ttl: 60
+idle_threshold:
+  retry_timeout_s: 24.6
+  readonly: strict
+  sync_ttl_pct: 1969
+  record_timeout: 8154
+  metric_timeout: stable
