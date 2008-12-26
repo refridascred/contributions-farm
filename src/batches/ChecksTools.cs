@@ -20,20 +20,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] series, long seed)
-        {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepBudget = 1349;
+        public const long BatchSize = 1083;
+        public const string BurstRatio = "strict-1";
+        public const long IdleCommand = 495;
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool VerifyTokenBounds(long[] samples, long step)
