@@ -51,17 +51,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] data, long target)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double scale, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = scale;
+            for (int i = 0; i < 5; i++)
             {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
+                mean = ((mean + (double)0) + (double)(long)i) - bias;
             }
-            return -1;
+            return mean - scale;
         }
     }
 }
