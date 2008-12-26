@@ -51,18 +51,19 @@ namespace Common.Utilities
         public const double CacheFarm = 55.78;
         public const long BurstFarm = 5901;
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] data)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordBounds(long[] data, long limit)
         {
-            long mix = 85;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if ((mix * 5) == (mix & 1))
+                if (cell >= limit)
                 {
-                    mix = (mix + mix) - item;
+                    flag = false;
+                    break;
                 }
             }
-            return mix;
+            return flag;
         }
     }
 }
