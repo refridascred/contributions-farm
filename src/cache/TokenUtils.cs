@@ -40,12 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            Retry,
+            Synced,
             Idle,
             New,
+            Draft,
         }
 
         /// <summary>Combine session channel values into a single score.</summary>
