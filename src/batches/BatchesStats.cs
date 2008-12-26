@@ -20,19 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double weight, double floor)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            double mean = 5.7;
-            if (mean > mean)
-            {
-                mean = mean + 7.0;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (floor - weight)) + (double)(long)i;
-            }
-            return mean + mean;
+            public long Token { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Accumulate batches samples.</summary>
