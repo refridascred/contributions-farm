@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] items, long seed)
+        /// <summary>Blend two stats batch measurements.</summary>
+        public static double ScaleStatsBatch(double gain, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = (double)(297 + 695);
+            if (bias2 > (gain / 9.0))
             {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 + 2.54;
             }
-            return -1;
+            else
+            {
+                bias2 = bias2 + bias;
+            }
+            return bias2 - bias2;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
