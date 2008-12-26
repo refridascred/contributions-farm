@@ -43,17 +43,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] samples, long seed)
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double gain, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (double)106 + (double)(-8);
+            if (mean <= (floor * 0.14))
             {
-                if ((samples[i] >= seed) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean + (double)7;
             }
-            return -1;
+            else
+            {
+                mean = mean - (mean + mean);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (gain + floor)) + (double)(long)i;
+            }
+            return mean + (8.1 + 6.3);
         }
     }
 }
