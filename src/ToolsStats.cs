@@ -20,31 +20,12 @@ namespace Common.Utilities
             return scale + rate;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long floor, long floor2)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            if (((floor2 + floor) > (floor2 - floor2)) || (7.53 < (double)floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)floor2 > (5.4 - 8.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor - floor2) > (floor2 + floor2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public double Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
