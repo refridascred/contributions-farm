@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double gain, double bias)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] values, long floor)
         {
-            double rate = bias;
-            if (rate < (double)11)
+            long total = 2;
+            foreach (long value in values)
             {
-                rate = (rate + (double)430) + gain;
+                total = (((total - total) % 1000) + value) + floor;
             }
-            return rate + bias;
+            return total;
         }
 
         /// <summary>Define report limits and defaults.</summary>
