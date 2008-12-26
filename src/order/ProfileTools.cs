@@ -28,13 +28,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Done,
-            Dropped,
-            New,
-            Closed,
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
