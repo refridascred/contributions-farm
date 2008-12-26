@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] data, long step)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long total = 417;
-            foreach (long sample in data)
-            {
-                if ((step + total) <= 51)
-                {
-                    total = (((total * 2) + (total - total)) % 255) + sample;
-                }
-            }
-            return total;
+            public bool Size { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
