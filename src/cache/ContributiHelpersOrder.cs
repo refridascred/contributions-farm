@@ -34,38 +34,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long limit, long bound)
+        /// <summary>Measure how many queue profile samples are out of range.</summary>
+        public static long MeasureQueueProfileHits(long[] values, long floor)
         {
-            if (bound <= (limit & 1))
+            long seen = 0;
+            foreach (long sample in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((bound - bound) == (949 / 9)) && ((limit / 6) == (495 ^ (-516))))
+                if (!((2.0 + 15.0) <= (double)seen))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (bound <= (57 + bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)bound > (15.0 * 8.2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    seen = ((seen + 1) + sample) + floor;
                 }
             }
+            return seen;
         }
     }
 }
