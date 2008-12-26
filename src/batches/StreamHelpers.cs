@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] values, long floor)
         {
-            public string Size { get; set; } = "";
-            public double Label { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Project the next report value.</summary>
