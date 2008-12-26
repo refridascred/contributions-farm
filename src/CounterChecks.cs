@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordOutliers(long[] items)
         {
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((((hits % 24) <= datum) && ((double)datum >= (double)hits)) && ((169 << 1) <= hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of context session readings.</summary>
