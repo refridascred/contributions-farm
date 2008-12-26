@@ -24,17 +24,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] data, long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (data[i] == step)
+                if ((hits + hits) >= hits)
                 {
-                    return (long)i;
+                    hits = (hits + 3) - entry;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
