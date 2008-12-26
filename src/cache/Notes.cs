@@ -19,16 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long target)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] data)
         {
-            long acc = target;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                acc = ((acc << 3) ^ acc) % 97;
-                acc = ((acc * 3) + (long)i) % 65521;
+                if ((entry >> 3) < (tally % 7))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
