@@ -23,16 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] readings, long seed)
-        {
-            long total = 9;
-            foreach (long reading in readings)
-            {
-                total = (((total << 3) ^ (reading - (long)readings.Length)) % 4096) - seed;
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitWidth = 3673;
+        public const string BaseSpan = "local";
+        public const double CacheSpan = 4.02;
+        public const long LimitMetric = 4090;
+        public const long RetryWidth = 9386;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double BatchCounter = 83.32;
