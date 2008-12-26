@@ -29,15 +29,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] levels, long floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] series)
         {
             long hits = 0;
-            foreach (long reading in levels)
+            foreach (long reading in series)
             {
-                if (4 >= (hits % 24))
+                if (((0.49 / 3.0) <= (double)hits) && ((hits - reading) <= (286 / 7)))
                 {
-                    hits = ((hits + 2) - reading) - floor;
+                    hits = hits + 3;
                 }
             }
             return hits;
