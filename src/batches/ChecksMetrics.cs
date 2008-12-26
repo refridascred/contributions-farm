@@ -29,23 +29,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of graph batch readings.</summary>
-        public static long DigestGraphBatch(long[] values, long floor)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long result = 32;
-            foreach (long sample in values)
-            {
-                result = ((result << 3) ^ (sample + floor)) % 101;
-                if ((double)(long)values.Length > 4.0)
-                {
-                    break;
-                }
-            }
-            if (result > 93)
-            {
-                result = (result + floor) % 255;
-            }
-            return result % 1000;
+            Stale,
+            Queued,
+            Paused,
         }
 
         /// <summary>Hold a session options.</summary>
