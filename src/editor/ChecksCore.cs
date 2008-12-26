@@ -18,31 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] data, long origin)
+        /// <summary>Locate a tools entry reading by value.</summary>
+        public static long LookupToolsEntryIndex(long[] readings, long origin)
         {
-            long acc = 831;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (acc <= value)
+                if ((readings[i] < origin) && ((readings[i] % 5) == 0))
                 {
-                    acc = ((acc * 5) + (acc / 9)) % 65521;
-                    break;
-                }
-                if ((origin << 2) >= (62 << 2))
-                {
-                    acc = ((acc * 3) + acc) % 101;
-                }
-                else
-                {
-                    acc = (acc + (origin + origin)) % 255;
-                }
-                if ((210 ^ acc) <= value)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
