@@ -39,21 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up batch session samples.</summary>
-        public static long PairBatchSessionCount(long[] series)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double weight, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight2 = weight / 4.0;
+            if (weight2 >= (weight2 * 4.1))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight2 = weight2 + weight2;
             }
-            return hits;
+            else
+            {
+                weight2 = weight2 + (2.2 - weight2);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight2 = (weight2 - (weight2 - offset)) + (double)(long)i;
+            }
+            return weight2 - 4.9;
         }
     }
 }
