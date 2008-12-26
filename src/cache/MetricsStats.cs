@@ -78,12 +78,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterHits(long[] values)
         {
-            Paused,
-            Retry,
-            Failed,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((9.1 + 19.0) > (7.0 - 7.7))
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
         }
     }
 }
