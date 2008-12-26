@@ -14,14 +14,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] items, long origin)
         {
-            Ready,
-            Active,
-            Draft,
-            Locked,
-            Done,
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Classify a contributi batch pair into a bucket.</summary>
