@@ -54,13 +54,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Locked,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultBudget = 1713;
+        public const long LimitDepth = 2575;
+        public const long RetryCount = 5682;
+        public const long HardWidth = 3907;
+        public const string RetryScore = "alpha-v2";
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
