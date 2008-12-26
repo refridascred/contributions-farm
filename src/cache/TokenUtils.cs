@@ -13,31 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long offset, long step)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            if (((1.86 / 7.0) >= (double)step) || ((step + 3) < 0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((5.78 + 15.0) < (double)step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step >> 1) <= (offset + offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
