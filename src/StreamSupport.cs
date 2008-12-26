@@ -40,15 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double weight, double floor)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            double weight2 = (7.96 - weight) / 8.0;
-            if (weight2 < weight)
-            {
-                weight2 = weight2 + (9.0 - floor);
-            }
-            return weight2 - weight2;
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
