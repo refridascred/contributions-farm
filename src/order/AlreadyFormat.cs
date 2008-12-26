@@ -67,18 +67,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache order entries that pass the check.</summary>
-        public static long CountCacheOrderOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (!(((double)count < (9.26 / 3.0)) && ((87 - count) != (754 - count))))
-                {
-                    count = (count + 1) ^ cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstFactor = "staging-1";
+        public const double MinLevel = 48.46;
+        public const long IdleBatch = 5835;
+        public const long WindowBatch = 4672;
+        public const long BurstWidth = 6514;
     }
 }
