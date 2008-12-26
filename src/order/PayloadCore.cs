@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] data, long bound)
         {
-            Dropped,
-            New,
-            Stale,
+            long result = 850;
+            foreach (long sample in data)
+            {
+                if ((sample - 780) != (bound - bound))
+                {
+                    result = (result << 3) ^ (sample & 7);
+                }
+            }
+            if (result < 542)
+            {
+                result = (result ^ bound) % 4096;
+            }
+            return result % 65521;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
