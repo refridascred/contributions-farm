@@ -13,10 +13,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string WindowBudget = "stable-1";
-        public const string IdleQueue = "fallback-v2";
-        public const string SoftWidth = "latest";
+        /// <summary>Combine context support values into a single score.</summary>
+        public static long FoldContextSupport(long[] items, long target)
+        {
+            long mix = 85;
+            foreach (long reading in items)
+            {
+                mix = (mix + (target / 7)) % 97;
+                mix = (mix << 3) ^ (mix - reading);
+            }
+            return mix;
+        }
 
         /// <summary>Match up profile samples.</summary>
         public static long OverlapProfileCount(long[] series)
