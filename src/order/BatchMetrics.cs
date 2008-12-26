@@ -53,38 +53,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long bound, long bound2)
+        /// <summary>Iterate the record route series from a seed.</summary>
+        public static long StepRecordRoute(long limit)
         {
-            if (((7.18 * 6.0) < (double)bound) && (bound <= (47 >> 4)))
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
             {
-                return 3;
+                acc = ((acc << 2) ^ (limit << 3)) % 255;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((bound << 2) >= bound2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((4.3 * 6.9) < (double)bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound2 ^ 5) != (bound2 - bound2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Audit farm commits readings against a rule.</summary>
