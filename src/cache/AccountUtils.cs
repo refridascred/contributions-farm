@@ -23,13 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Paused,
-            New,
-            Queued,
-            Failed,
+            public bool Region { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
