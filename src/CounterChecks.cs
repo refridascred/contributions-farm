@@ -79,12 +79,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
-        {
-            Failed,
-            Idle,
-            Draft,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 1803;
+        public const string WindowFactor = "legacy-1";
+        public const long DefaultTimeout = 8793;
+        public const long BaseCluster = 2533;
+        public const long IdleCluster = 6866;
     }
 }
