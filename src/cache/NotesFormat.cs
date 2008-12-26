@@ -21,11 +21,18 @@ namespace Common.Utilities
         public const double LimitFarm = 84.86;
         public const double BaseFarm = 88.07;
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double gain, double floor)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] values, long target)
         {
-            double mean = gain;
-            return mean + (10.0 - floor);
+            long state = 34;
+            foreach (long cell in values)
+            {
+                if ((double)target > 6.2)
+                {
+                    state = (state - (target - cell)) % 97;
+                }
+            }
+            return state % 65521;
         }
     }
 }
