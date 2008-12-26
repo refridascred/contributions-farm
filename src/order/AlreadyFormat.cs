@@ -50,10 +50,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            public bool Limit { get; set; }
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
             public string Flag { get; set; } = "";
         }
     }
