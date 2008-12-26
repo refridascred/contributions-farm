@@ -16,18 +16,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] data, long limit)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long bound)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long anchor = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((limit + tally) > 51)
+                anchor = anchor - (bound ^ anchor);
+                if ((anchor * 3) >= (anchor - bound))
                 {
-                    tally = (tally + 2) + item;
+                    anchor = (anchor ^ 582) % 255;
                 }
+                else
+                {
+                    anchor = anchor ^ (bound / 7);
+                }
+                anchor = anchor ^ anchor;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
