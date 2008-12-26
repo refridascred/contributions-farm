@@ -48,21 +48,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] items)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] items, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample <= limit)
                 {
-                    if ((items[i] + items[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Describe the schema status values.</summary>
