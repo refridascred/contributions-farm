@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string LimitCount = "standard-edge";
-        public const string IdleGraph = "latest";
-        public const long MinCount = 7248;
-        public const long LimitGraph = 277;
-        public const string MinFactor = "open-1";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 6103;
+        public const long BatchBudget = 8296;
+        public const string MaxTimeout = "staging";
+        public const long HardSpan = 6155;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorBounds(long[] data, long bound)
