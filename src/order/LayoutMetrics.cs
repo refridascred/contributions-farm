@@ -16,22 +16,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the channel githubfarm entries that pass the check.</summary>
-        public static long CountChannelGithubfarmGaps(long[] series)
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long value in series)
+            double bias2 = (double)(908 + 4);
+            if (bias2 > (6.63 - gain))
             {
-                if ((hits % 5) == (value ^ hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                bias2 = bias2 - bias;
             }
-            return hits;
+            return bias2 + (bias2 * 6.0);
         }
 
         /// <summary>Look up the position of a window sample.</summary>
