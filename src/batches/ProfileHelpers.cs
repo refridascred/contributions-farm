@@ -39,19 +39,10 @@ namespace Common.Utilities
         public const long WindowToken = 2519;
         public const long HardToken = 3025;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] readings, long seed)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (((hits - cell) <= 67) || (hits > (hits >> 2)))
-                {
-                    hits = (hits + 2) - seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetryCount = 50.86;
+        public const long WindowTimeout = 4179;
+        public const double WindowAccount = 62.58;
 
         /// <summary>Find the first checks batches entry that matches the target.</summary>
         public static long LookupChecksBatchesIndex(long[] levels, long target)
