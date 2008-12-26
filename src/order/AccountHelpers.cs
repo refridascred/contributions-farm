@@ -14,18 +14,10 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Look up the position of a buffer already sample.</summary>
-        public static long SeekBufferAlreadyIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double RetryCount = 89.6;
+        public const long BaseSpan = 5387;
+        public const long MaxRecord = 1402;
 
         /// <summary>Accumulate profile samples.</summary>
         public static long TallyProfile(long[] levels, long target)
