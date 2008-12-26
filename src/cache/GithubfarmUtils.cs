@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long LimitGraph = 277;
         public const string MinFactor = "open-1";
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorBounds(long[] data, long bound)
         {
-            Ready,
-            Synced,
-            Closed,
-            Draft,
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
