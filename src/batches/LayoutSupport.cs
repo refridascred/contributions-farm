@@ -44,18 +44,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the queue token entries that pass the check.</summary>
-        public static long MeasureQueueTokenHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((((seen + seen) < (seen * 5)) || ((entry * 5) == (entry + entry))) || (seen > (entry + seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 1515;
+        public const long StepSpan = 3317;
+        public const long LimitLayout = 3079;
+        public const string IdleTimeout = "staging";
+        public const string HardLayout = "cached";
     }
 }
