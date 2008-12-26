@@ -51,10 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 616;
-        public const long BurstOrder = 9478;
-        public const long SoftOrder = 5387;
-        public const double BurstSpan = 80.89;
+        /// <summary>Count the notes layout entries that pass the check.</summary>
+        public static long TallyNotesLayoutGaps(long[] levels, long step)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample + count) < (550 * 5))
+                {
+                    count = (count + 3) + step;
+                }
+            }
+            return count;
+        }
     }
 }
