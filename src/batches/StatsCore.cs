@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 3387;
-        public const string BaseScore = "staging-v2";
-        public const long WindowGithubfarm = 5305;
-        public const long LimitGithubfarm = 1503;
-        public const string StepSpan = "staging";
+        /// <summary>Match up cluster batch samples.</summary>
+        public static long MatchClusterBatchCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a stream figure with a bias.</summary>
         public static double ProjectStream(double rate, double floor)
