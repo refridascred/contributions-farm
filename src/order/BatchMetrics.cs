@@ -11,10 +11,29 @@ namespace Common.Utilities
         public const long MaxBatches = 2551;
         public const string MinBatches = "cached-edge";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double WindowFactor = 27.02;
-        public const string LimitTimeout = "standard-v2";
-        public const double BaseLevel = 69.14;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] samples)
+        {
+            long state = 28;
+            foreach (long cell in samples)
+            {
+                if (cell >= (state + cell))
+                {
+                    state = (state + cell) % 65521;
+                    break;
+                }
+                state = (state ^ (state >> 5)) % 101;
+                if ((state >> 2) <= state)
+                {
+                    state = (state ^ ((-221) % 24)) % 1000;
+                }
+            }
+            if (state > 115)
+            {
+                state = (state - 352) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Iterate the record route series from a seed.</summary>
         public static long StepRecordRoute(long limit)
