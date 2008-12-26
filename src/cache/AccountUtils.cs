@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double weight, double floor)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            double gain = (double)66 * 1.8;
-            if (gain > (double)438)
-            {
-                gain = (gain - (gain / 7.0)) + floor;
-            }
-            return gain + weight;
+            public bool Count { get; set; }
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of stats notes readings.</summary>
