@@ -20,13 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
-        {
-            Retry,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstWidth = 2415;
+        public const double HardSpan = 56.33;
+        public const double HardEntry = 60.9;
+        public const string CacheEntry = "local";
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long CountLayoutGaps(long[] samples)
