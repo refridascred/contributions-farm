@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double gain, double floor)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long offset, long limit)
         {
-            double scale = gain / 5.0;
-            if (scale < (gain * 8.0))
+            if ((double)limit > (8.89 / 4.0))
             {
-                scale = scale - 1.27;
+                return 6;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                scale = (scale - (scale - floor)) + (double)(long)i;
+                if ((9 + offset) > (limit ^ offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((offset % 12) <= offset) || ((double)(-44) >= (double)limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return scale + scale;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
