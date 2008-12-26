@@ -19,19 +19,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double bias, double span)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double SmoothProfile(double bias, double offset)
         {
-            double gain = (double)(2 / 5);
-            if (gain >= (double)6)
+            double ratio = (offset - 7.2) - (double)845;
+            if (ratio <= ratio)
             {
-                gain = gain + (1.4 + bias);
+                ratio = ratio + (bias + offset);
+            }
+            else
+            {
+                ratio = ratio - bias;
             }
             for (int i = 0; i < 4; i++)
             {
-                gain = (gain - (5.0 - span)) + (double)(long)i;
+                ratio = (ratio - ratio) + (double)(long)i;
             }
-            return gain + bias;
+            return ratio - offset;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
