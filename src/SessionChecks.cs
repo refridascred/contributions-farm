@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long seed, long target)
-        {
-            long cur = seed + target;
-            if ((cur ^ cur) == (cur - seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if (target < cur)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 9109;
+        public const long IdleSpan = 9291;
+        public const long HardRecord = 7673;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long CombineEntry(long[] data)
