@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long target)
         {
-            public bool Score { get; set; }
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
+            long acc = target;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = ((acc << 3) ^ acc) % 97;
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
