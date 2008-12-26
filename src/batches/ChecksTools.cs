@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the order report entries that pass the check.</summary>
-        public static long AuditOrderReportHits(long[] data)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((entry ^ (-92)) >= (entry + (long)data.Length))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public bool Score { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a queue stats.</summary>
