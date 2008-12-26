@@ -15,15 +15,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double weight, double offset)
+        /// <summary>Accumulate metric farm samples.</summary>
+        public static long WeighMetricFarm(long[] items, long bound)
         {
-            double scale = offset;
-            if (scale > offset)
+            long mix = 6;
+            foreach (long value in items)
             {
-                scale = (scale + 5.7) - weight;
+                if ((bound / 9) < bound)
+                {
+                    mix = ((mix * 5) + mix) - value;
+                    mix = (mix - (bound - mix)) % 101;
+                    break;
+                }
+                mix = (mix << 2) ^ (long)items.Length;
             }
-            return scale + (scale * 3.0);
+            if (mix > 74)
+            {
+                mix = mix ^ bound;
+            }
+            return mix;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
