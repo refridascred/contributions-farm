@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of account payload entries.</summary>
-        public static long WeighAccountPayload(long[] samples)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] items, long bound)
         {
-            long carry = -716;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                carry = (carry ^ (reading - carry)) % 4096;
+                if ((double)bound > (double)hits)
+                {
+                    hits = (hits + 3) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry % 97;
+            return hits;
         }
 
         /// <summary>Accumulate cache samples.</summary>
