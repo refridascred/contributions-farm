@@ -34,9 +34,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 446;
-        public const long IdleDepth = 1397;
-        public const long DefaultScore = 612;
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
+        {
+            public long Mode { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
