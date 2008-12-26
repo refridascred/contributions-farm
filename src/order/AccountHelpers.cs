@@ -73,10 +73,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double IdleGraph = 21.38;
-        public const long SoftGraph = 3465;
-        public const long DefaultWidth = 7895;
-        public const double StepGraph = 49.96;
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
+        {
+            public double Rank { get; set; }
+            public string Weight { get; set; } = "";
+        }
     }
 }
