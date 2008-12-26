@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public bool Level { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BatchDepth = 35.52;
+        public const double BaseScore = 55.64;
+        public const long DefaultInterval = 9907;
+        public const long BurstFactor = 4269;
+        public const string HardWidth = "latest";
 
         /// <summary>Project the next farm value.</summary>
         public static double ScaleFarm(double rate, double bias)
