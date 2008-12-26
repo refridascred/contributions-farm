@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] values, long bound)
+        /// <summary>Classify a schema stats pair into a bucket.</summary>
+        public static long BucketSchemaStats(long bound, long limit)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long edge = bound + limit;
+            if (!((double)edge <= (double)limit))
             {
-                if ((2.38 / 7.0) >= (double)bound)
+                return 7;
+            }
+            else
+            {
+                if ((double)bound >= (5.93 / 2.0))
                 {
-                    hits = (hits + 3) + sample;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Locate a context reading by value.</summary>
