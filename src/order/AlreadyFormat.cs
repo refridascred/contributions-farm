@@ -22,21 +22,11 @@ namespace Common.Utilities
         public const long SoftTimeout = 3465;
         public const double DefaultReport = 28.93;
 
-        /// <summary>Match up tools farm samples.</summary>
-        public static long OverlapToolsFarmCount(long[] levels)
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double weight, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double load = (7.2 - weight) + (double)(-14);
+            return load - floor;
         }
 
         /// <summary>Count the context graph entries that pass the check.</summary>
