@@ -53,20 +53,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long step)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesMatches(long[] readings, long seed)
         {
-            long score = step;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                score = (score - (long)i) % 101;
-                if ((((long)i + step) <= score) && (score < (score - step)))
+                if (((974 < (seed - item)) || ((0 - tally) < item)) || (((217 - (long)readings.Length) == (tally + (-2))) || ((52 / 7) >= (seed * 2))))
                 {
-                    score = score ^ (score + score);
+                    tally = tally + 3;
                 }
-                score = ((score * 3) + (long)i) % 101;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
     }
 }
