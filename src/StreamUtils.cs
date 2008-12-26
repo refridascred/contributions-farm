@@ -28,39 +28,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long floor, long bound)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] samples)
         {
-            long bound2 = floor + bound;
-            if ((double)bound2 != (18.0 + 4.2))
+            long score = 34;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (5.2 >= (double)floor)
+                if ((score % 60) >= (score + 832))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((5.0 - 17.0) <= (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)floor != (double)104)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    score = ((score - (score << 2)) % 1000) ^ datum;
                 }
             }
+            if (score > 3)
+            {
+                score = (score - (score + score)) % 255;
+            }
+            return score % 4096;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
