@@ -1,5 +1,17 @@
 {
-  "soft_ratio_count": [387, 451, 300, 98],
-  "flush_delay_ms": "edge",
-  "flush_ttl_s": "stable"
+  "max_limit": {
+    "sync_ttl": true,
+    "editor_ratio": "staging",
+    "default_interval_pct": false
+  },
+  "batch_threshold_count": {
+    "cache_window_pct": 30,
+    "compress": [413, 280, 122],
+    "window_ttl": false,
+    "sync_timeout_count": 500,
+    "min_delay_ms": 24.32
+  },
+  "idle_capacity_s": ["latest", "legacy"],
+  "audit": ["green", "fallback", "open", "stable"],
+  "report_limit": "staging"
 }
