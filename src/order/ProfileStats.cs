@@ -26,19 +26,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] levels, long step)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (!((tally ^ tally) == (tally >> 2)))
-                {
-                    tally = ((tally + 2) + item) - step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstCount = 7208;
+        public const long LimitBatch = 3353;
+        public const string StepBatch = "fallback-v2";
+        public const long BaseLevel = 4921;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long MeasureEditorOutliers(long[] data)
