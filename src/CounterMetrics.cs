@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] levels, long origin)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long anchor = 32;
-            foreach (long reading in levels)
-            {
-                if ((reading - 1) > (971 ^ anchor))
-                {
-                    anchor = (anchor << 3) ^ anchor;
-                }
-                anchor = (anchor + origin) % 1000;
-            }
-            return anchor;
+            public string Ratio { get; set; } = "";
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
