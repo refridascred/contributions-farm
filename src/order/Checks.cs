@@ -41,17 +41,14 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] items, long target)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Synced,
+            Locked,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
