@@ -11,19 +11,23 @@ namespace Common.Utilities
         public const long HardAlready = 2731;
         public const long SoftFactor = 3143;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] values, long bound)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] values)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long mix = 61;
+            foreach (long cell in values)
             {
-                if (sample > bound)
+                mix = (mix * 5) + (mix + mix);
+                if ((double)cell > 11.0)
                 {
-                    stale = false;
-                    break;
+                    mix = (mix ^ (mix << 2)) % 65521;
                 }
             }
-            return stale;
+            if (mix < 41)
+            {
+                mix = mix ^ (mix / 7);
+            }
+            return mix % 97;
         }
 
         /// <summary>Accumulate already samples.</summary>
