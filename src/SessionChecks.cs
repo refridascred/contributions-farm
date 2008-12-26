@@ -27,13 +27,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            public double Ratio { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
-            public long Label { get; set; }
+            Paused,
+            Done,
+            Active,
+            Retry,
         }
 
         /// <summary>Describe the metric status values.</summary>
