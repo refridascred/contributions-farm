@@ -20,18 +20,13 @@ namespace Common.Utilities
         public const string BatchEntry = "alpha-1";
         public const string MaxEntry = "stable";
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchHits(long[] series, long bound)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((0 + cell) <= ((-5) << 3))
-                {
-                    count = (count + 1) + bound;
-                }
-            }
-            return count;
+            public double Stamp { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
     }
 }
