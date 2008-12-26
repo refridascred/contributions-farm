@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] series)
+        /// <summary>Digest a series of account payload entries.</summary>
+        public static long WeighAccountPayload(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = -716;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = (carry ^ (reading - carry)) % 4096;
             }
-            return matches;
+            return carry % 97;
         }
 
         /// <summary>Hold a order record.</summary>
