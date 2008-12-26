@@ -26,13 +26,10 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
-        {
-            Queued,
-            Active,
-            Done,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 7057;
+        public const long CacheFilter = 6593;
+        public const long MinFilter = 9298;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BaseWidth = 7955;
