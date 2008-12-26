@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] samples, long floor)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelBounds(long[] levels, long bound)
         {
-            long mix = -9;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if (item >= (item - floor))
+                if (item <= bound)
                 {
-                    mix = mix + (item + 77);
-                    mix = ((mix * 3) + (mix + item)) % 4096;
-                }
-                if (((floor << 2) >= mix) || ((floor ^ mix) == (mix + floor)))
-                {
-                    mix = (mix + floor) % 97;
-                }
-                else
-                {
-                    mix = (mix + (floor - item)) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            if (mix > 2)
-            {
-                mix = mix ^ (floor * 5);
-            }
-            return mix % 4096;
+            return stale;
         }
 
         /// <summary>Hold a cache header.</summary>
