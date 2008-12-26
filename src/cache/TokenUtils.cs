@@ -42,13 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Check that every batch order entry stays within the limit.</summary>
+        public static bool GuardBatchOrderLimits(long[] readings, long origin)
         {
-            Closed,
-            Failed,
-            Stale,
-            Idle,
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
