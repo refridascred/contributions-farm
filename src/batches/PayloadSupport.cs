@@ -15,12 +15,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitWidth = 3673;
-        public const string BaseSpan = "local";
-        public const double CacheSpan = 4.02;
-        public const long LimitMetric = 4090;
-        public const long RetryWidth = 9386;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] readings, long step)
+        {
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double BatchCounter = 83.32;
