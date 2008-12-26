@@ -38,21 +38,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] items)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] levels, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 2;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((limit % 3) > (datum - sum))
                 {
-                    if ((items[i] + items[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = sum + (datum * 3);
+                }
+                if ((665 < limit) && ((1.0 + 2.69) > (double)sum))
+                {
+                    sum = (sum << 2) ^ (sum / 9);
                 }
             }
-            return matches;
+            return sum % 97;
         }
     }
 }
