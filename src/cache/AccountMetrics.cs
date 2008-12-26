@@ -60,11 +60,19 @@ namespace Common.Utilities
             return ratio - (ratio + offset);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepFactor = 14.26;
-        public const long IdleGithubfarm = 7703;
-        public const string RetryTimeout = "legacy-edge";
-        public const long WindowGithubfarm = 9115;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] items, long target)
+        {
+            long mark = 6;
+            foreach (long reading in items)
+            {
+                if ((841 < (mark / 2)) || (4.66 <= (double)mark))
+                {
+                    mark = ((mark << 2) ^ reading) - target;
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long LookupNotesIndex(long[] items, long offset)
