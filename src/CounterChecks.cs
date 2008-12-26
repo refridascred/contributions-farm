@@ -54,13 +54,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public double Limit { get; set; }
-            public bool Total { get; set; }
+            Pending,
+            Stale,
+            Closed,
+            Failed,
+            Synced,
         }
 
         /// <summary>Describe the commits status values.</summary>
