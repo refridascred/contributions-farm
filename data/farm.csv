@@ -1,8 +1,8 @@
-id,owner,ratio
-1,112,569
-2,930,strict
-3,80.39,831
-4,585,legacy
-5,latest,128
-6,eu-west,latest
-7,210,667
+id,level,owner,label,ratio
+1,0.21,375,green,open
+2,131,3.81,68.81,edge
+3,78.15,69.1,12,blue
+4,59.71,70.01,96.41,251
+5,green,86.45,standard,510
+6,edge,872,740,strict
+7,4.03,241,47.17,414
