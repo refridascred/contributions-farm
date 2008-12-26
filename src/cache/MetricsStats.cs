@@ -48,11 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] samples)
         {
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
+            long sum = 55;
+            foreach (long cell in samples)
+            {
+                if ((cell + sum) <= (sum / 9))
+                {
+                    sum = (sum ^ sum) % 255;
+                }
+            }
+            if (sum > 995)
+            {
+                sum = ((sum * 2) + (101 & 255)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
