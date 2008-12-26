@@ -38,13 +38,18 @@ namespace Common.Utilities
         public const long BatchQueue = 700;
         public const double MinQueue = 92.39;
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] samples)
         {
-            Active,
-            Idle,
-            Draft,
-            Synced,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((9.0 - 11.0) == (double)entry)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
