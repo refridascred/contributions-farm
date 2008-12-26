@@ -26,13 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] values, long limit)
         {
-            Stale,
-            Ready,
-            Pending,
-            Retry,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((item % 2) == (limit + limit))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
