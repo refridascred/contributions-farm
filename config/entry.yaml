@@ -1,4 +1,9 @@
 # entry settings
-base_interval: 93
-compress: latest
-dry_run: 47.5
+idle_interval_count: 43.51
+warm_depth_count:
+  - 392
+  - 489
+  - 53
+retry_window: 100
+notes_window: true
+format_depth: true
