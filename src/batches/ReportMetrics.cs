@@ -24,19 +24,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every buffer order entry stays within the limit.</summary>
-        public static bool ValidateBufferOrderRange(long[] levels, long seed)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value > seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] + readings[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
