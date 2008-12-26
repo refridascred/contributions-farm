@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchFactor = 8973;
-        public const long MinBudget = 8091;
-        public const long HardSession = 7989;
-        public const string HardFactor = "cached";
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double rate, double offset)
+        {
+            double drift = (double)2 - offset;
+            if (drift >= (double)52)
+            {
+                drift = drift - (3.1 + rate);
+            }
+            else
+            {
+                drift = drift - (rate * 4.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (double)49) + (double)(long)i;
+            }
+            return drift + (double)24;
+        }
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long CombineFilter(long[] values, long target)
