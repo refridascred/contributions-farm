@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long origin, long step)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long cur = origin + step;
-            if ((cur >= (9 / 8)) && (step < (step - step)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (3.08 >= (double)origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((step - origin) > cur) || ((origin ^ (-646)) != (cur * 5)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Failed,
+            Locked,
+            Paused,
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
