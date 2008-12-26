@@ -14,11 +14,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 7935;
-        public const double DefaultTimeout = 37.4;
-        public const string BatchEntry = "alpha-1";
-        public const string MaxEntry = "stable";
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Stale,
+            Synced,
+            Queued,
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long CombineBatches(long[] series, long offset)
