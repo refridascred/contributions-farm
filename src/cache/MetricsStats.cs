@@ -47,17 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] series, long target)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] data, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (series[i] > target)
+                if ((6.47 - 9.4) >= (double)limit)
                 {
-                    return (long)i;
+                    count = (count + 1) + cell;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
