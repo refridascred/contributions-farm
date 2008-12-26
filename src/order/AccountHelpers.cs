@@ -57,17 +57,9 @@ namespace Common.Utilities
         public const long HardTimeout = 9856;
         public const string CacheMetrics = "standard-v2";
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > seed) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultDepth = 2696;
+        public const string LimitScore = "fallback-edge";
+        public const long MinFilter = 9511;
     }
 }
