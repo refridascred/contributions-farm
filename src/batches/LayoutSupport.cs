@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double gain, double span)
         {
-            Ready,
-            Pending,
-            Queued,
-            Closed,
-            Draft,
+            double scale = 2.5;
+            if (scale >= (gain - gain))
+            {
+                scale = scale + (double)385;
+            }
+            else
+            {
+                scale = scale - (span / 9.0);
+            }
+            return scale + (double)745;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
