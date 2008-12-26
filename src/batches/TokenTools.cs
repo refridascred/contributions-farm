@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 202;
-        public const long SoftFilter = 8488;
-        public const string DefaultLevel = "staging-1";
-        public const long DefaultSize = 9662;
-        public const double HardBudget = 25.79;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)seen == (3.0 + 3.4))
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
