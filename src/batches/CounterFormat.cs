@@ -19,13 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Adjust a contributi notes reading.</summary>
+        public static double BlendContributiNotes(double rate, double floor)
         {
-            public bool Score { get; set; }
-            public long Region { get; set; }
-            public string Level { get; set; } = "";
-            public string Token { get; set; } = "";
+            double scale = (double)(74 << 3);
+            return ((scale + (1.0 / 2.0)) + rate) + floor;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
