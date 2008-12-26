@@ -22,11 +22,29 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long floor)
         {
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            long result = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((double)floor > (8.0 - 19.0))
+                {
+                    continue;
+                }
+                long next = (5 ^ (long)i) / 9;
+                if (result <= (next - result))
+                {
+                    next = ((next << 2) ^ next) % 1000;
+                    next = (next << 2) ^ (floor + next);
+                }
+                else
+                {
+                    next = next - (result + next);
+                }
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
