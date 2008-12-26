@@ -17,12 +17,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] values, long limit)
         {
-            public long Level { get; set; }
-            public bool Total { get; set; }
-            public string Count { get; set; } = "";
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
