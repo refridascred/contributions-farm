@@ -48,31 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long origin, long limit)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            if (!((limit + limit) > (limit & 1)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((13.0 + 16.0) >= (double)limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin * 5) < limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
