@@ -27,13 +27,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] data, long origin)
         {
-            public string Label { get; set; } = "";
-            public double Token { get; set; }
-            public double Ratio { get; set; }
-            public bool Limit { get; set; }
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
