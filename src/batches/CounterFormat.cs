@@ -14,13 +14,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double gain, double floor)
         {
-            Paused,
-            Stale,
-            Dropped,
-            Queued,
+            double gain2 = gain + 2.0;
+            if (gain2 >= floor)
+            {
+                gain2 = gain2 - (double)0;
+            }
+            return gain2 + (double)1;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
