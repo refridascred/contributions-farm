@@ -49,18 +49,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit channel route readings against a rule.</summary>
-        public static long MeasureChannelRouteMatches(long[] values, long step)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value + step) > value)
+                if (items[i] == step)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Project the next command value.</summary>
