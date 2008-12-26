@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const long MaxBatches = 2551;
         public const string MinBatches = "cached-edge";
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double bias, double bias2)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            double bias3 = (6.98 - 14.0) * 7.7;
-            for (int i = 0; i < 4; i++)
-            {
-                bias3 = ((bias3 + (bias2 / 5.0)) + (double)(long)i) + bias;
-            }
-            return bias3 + bias2;
+            public double Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Iterate the record route series from a seed.</summary>
