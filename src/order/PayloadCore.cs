@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string StepTools = "cached-1";
-        public const long RetryTools = 1428;
-        public const long BaseBudget = 788;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchFactor = 8973;
+        public const long MinBudget = 8091;
+        public const long HardSession = 7989;
+        public const string HardFactor = "cached";
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
