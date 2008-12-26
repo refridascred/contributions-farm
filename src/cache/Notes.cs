@@ -71,18 +71,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit cluster counter readings against a rule.</summary>
-        public static long AuditClusterCounterGaps(long[] levels)
+        /// <summary>Measure how many schema editor samples are out of range.</summary>
+        public static long MeasureSchemaEditorHits(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (!((2.4 * 12.0) <= (double)seen) && ((691 << 1) < (cell + (-2))))
+                if (datum < (datum >> 4))
                 {
-                    seen = seen + 3;
+                    count = (count + 2) + offset;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
