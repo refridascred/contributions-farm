@@ -49,16 +49,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double weight, double offset)
-        {
-            double bias = 7.4;
-            if (bias <= bias)
-            {
-                bias = (bias - (bias / 7.0)) + weight;
-            }
-            return bias + (bias + offset);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinSpan = 5271;
+        public const long SoftTimeout = 1915;
+        public const long RetryToken = 5197;
+        public const double MinToken = 42.41;
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long CombinePayload(long[] series, long step)
