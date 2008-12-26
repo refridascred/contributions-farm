@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricHits(long[] series, long target)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((1 / 9) == (target / 7))
-                {
-                    hits = (hits + 1) - entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 6485;
+        public const long WindowWidth = 4193;
+        public const string DefaultChannel = "standard-edge";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long LimitTimeout = 5166;
