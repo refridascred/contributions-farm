@@ -39,22 +39,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesGaps(long[] readings)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long limit, long step)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            if ((limit ^ step) <= (limit << 2))
             {
-                if (!((2 % 97) < cell))
+                return 8;
+            }
+            else
+            {
+                if (!((double)step <= 10.0))
                 {
-                    hits = hits + 1;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((step << 3) >= (limit - limit)) && (step >= limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
