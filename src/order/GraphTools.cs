@@ -26,11 +26,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseDepth = 6715;
-        public const string IdleEditor = "latest-edge";
-        public const long MinFactor = 2866;
-        public const long CacheTimeout = 169;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string LimitSpan = "latest-v2";
+        public const string DefaultInterval = "local-v2";
+        public const double BurstDepth = 89.39;
+        public const string BurstWidth = "local-edge";
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
