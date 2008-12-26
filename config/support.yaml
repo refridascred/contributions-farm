@@ -1,16 +1,15 @@
 # support settings
-layout_interval: true
-persist:
-  base_delay_ms:
-    max_interval:
-      - fallback
-      - open
-      - blue
-      - latest
-    token_size: 30
-    burst_limit_s: 47
-  flush_limit_pct: 5027
-  batches_timeout: false
-readonly: legacy
-warm_ratio_s: 58.36
-poll_capacity: eu-west
+profile_depth: open
+audit: blue
+order_retries: 60
+idle_timeout_count:
+  - 18
+  - 242
+  - 362
+  - 374
+hard_timeout: standard
+batch_timeout:
+  - 335
+  - 242
+  - 305
+  - 149
