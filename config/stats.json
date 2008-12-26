@@ -1,7 +1,10 @@
 {
-  "format_size": "open",
-  "graph_capacity": 8463,
-  "poll_delay_count": 53,
-  "max_window_pct": false,
-  "already_depth": 24.88
+  "audit": false,
+  "sync_ttl": {
+    "min_retries": false,
+    "hard_size_s": 30,
+    "persist": "cached"
+  },
+  "persist": 92,
+  "retry_size_s": "staging"
 }
