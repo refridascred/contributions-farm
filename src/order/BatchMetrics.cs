@@ -11,11 +11,23 @@ namespace Common.Utilities
         public const long MaxBatches = 2551;
         public const string MinBatches = "cached-edge";
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] items, long step)
         {
-            public double Mode { get; set; }
-            public double Total { get; set; }
+            long acc = 154;
+            foreach (long item in items)
+            {
+                if ((item + acc) == (step << 3))
+                {
+                    acc = (acc + (acc * 5)) % 97;
+                }
+                acc = acc ^ ((long)items.Length ^ item);
+            }
+            if (acc < 357)
+            {
+                acc = ((acc * 4) + acc) % 101;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
