@@ -20,13 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Check that every githubfarm stream entry stays within the limit.</summary>
+        public static bool CheckGithubfarmStreamBounds(long[] series, long offset)
         {
-            public long Weight { get; set; }
-            public bool Label { get; set; }
-            public string Mode { get; set; } = "";
-            public long Ratio { get; set; }
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate profile samples.</summary>
