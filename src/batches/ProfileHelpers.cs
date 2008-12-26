@@ -67,19 +67,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] items, long target)
-        {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double HardWidth = 85.71;
+        public const string LimitSize = "cached";
+        public const long WindowSchema = 9673;
     }
 }
