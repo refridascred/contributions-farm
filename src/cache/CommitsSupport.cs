@@ -44,19 +44,12 @@ namespace Common.Utilities
         public const long WindowGithubfarm = 5173;
         public const string StepBudget = "stable-edge";
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] items, long limit)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (cell >= (cell + tally))
-                {
-                    tally = (tally + 3) - limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitProfile = 6165;
+        public const double DefaultSize = 17.84;
+        public const long HardProfile = 4502;
+        public const long WindowProfile = 1473;
+        public const string CacheFactor = "staging-1";
 
         /// <summary>Project the next stream filter value.</summary>
         public static double AdjustStreamFilter(double scale, double span)
