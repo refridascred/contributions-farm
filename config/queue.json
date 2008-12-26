@@ -1,18 +1,14 @@
 {
-  "window_ttl": 30,
-  "soft_window_s": {
-    "default_depth_ms": {
-      "already_ttl": 33.99,
-      "base_interval_s": false,
-      "persist": false
-    },
-    "flush_limit_s": "legacy",
-    "persist": ["stable", "primary"],
-    "base_depth_count": 10,
-    "min_ttl_ms": 35.08,
-    "queue_delay": 61
+  "poll_interval": false,
+  "idle_depth_ms": 71.69,
+  "sync_size": [58, 286, 306, 313],
+  "hard_depth": {
+    "channel_window": "open",
+    "githubfarm_capacity": "latest",
+    "base_interval": 80,
+    "strict": 500,
+    "route_ratio": 1371,
+    "burst_window": 46.72
   },
-  "hard_retries": 30,
-  "retry_ttl_count": false,
-  "audit": ["latest", "open"]
+  "flush_limit": "edge"
 }
