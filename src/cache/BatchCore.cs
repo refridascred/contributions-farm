@@ -52,21 +52,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] items)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 6;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                sum = sum ^ (sum + sum);
+                if ((value + 493) >= (value + 87))
                 {
-                    if ((items[i] ^ items[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            if (sum < 6)
+            {
+                sum = (sum - (sum + sum)) % 65521;
+            }
+            return sum;
         }
     }
 }
