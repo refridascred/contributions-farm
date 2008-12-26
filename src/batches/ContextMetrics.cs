@@ -52,13 +52,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
-            public double Rank { get; set; }
-            public string Mode { get; set; } = "";
+            Queued,
+            Draft,
+            Closed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Describe the account phase values.</summary>
