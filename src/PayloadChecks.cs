@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
-        {
-            public long Total { get; set; }
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double LimitCount = 40.67;
+        public const double MaxCount = 30.13;
+        public const double RetryTools = 10.46;
+        public const long SoftTools = 4231;
+        public const long SoftSize = 4915;
 
         /// <summary>Scale a checks figure with a bias.</summary>
         public static double AdjustChecks(double weight, double offset)
