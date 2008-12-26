@@ -42,14 +42,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] values, long origin)
         {
-            Paused,
-            Active,
-            Closed,
-            Dropped,
-            Done,
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define token limits and defaults.</summary>
