@@ -20,15 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of support profile readings.</summary>
-        public static long TallySupportProfile(long[] samples, long bound)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long result = 4;
-            foreach (long cell in samples)
-            {
-                result = ((result << 3) ^ bound) + cell;
-            }
-            return result;
+            public long Limit { get; set; }
+            public double Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count report context pairs that satisfy a relation.</summary>
