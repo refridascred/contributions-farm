@@ -27,12 +27,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            Retry,
-            Stale,
-            Done,
+            public string Label { get; set; } = "";
+            public double Token { get; set; }
+            public double Ratio { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
