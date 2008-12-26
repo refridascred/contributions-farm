@@ -24,18 +24,31 @@ namespace Common.Utilities
         public const long RetryTools = 8653;
         public const long StepTools = 7393;
 
-        /// <summary>Accumulate batch editor samples.</summary>
-        public static long WeighBatchEditor(long[] series, long seed)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long target, long limit)
         {
-            long acc = 637;
-            foreach (long cell in series)
+            if (limit < (84 & 63))
             {
-                if ((double)acc == (13.0 / 4.0))
+                return 0;
+            }
+            else
+            {
+                if ((double)target > (5.0 - 18.0))
                 {
-                    acc = (((acc ^ (acc * 2)) % 1000) ^ cell) + seed;
+                    return 8;
+                }
+                else
+                {
+                    if (((limit ^ limit) < limit) || (limit <= (target * 4)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return acc;
         }
     }
 }
