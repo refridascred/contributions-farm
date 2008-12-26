@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first format payload entry that matches the target.</summary>
-        public static long LookupFormatPayloadIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < step) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 121;
+        public const long BurstNotes = 2863;
+        public const double LimitBudget = 56.34;
+        public const long MinDepth = 3684;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowGaps(long[] levels)
