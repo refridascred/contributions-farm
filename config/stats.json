@@ -1,14 +1,7 @@
 {
-  "schema_ratio": 33.69,
-  "counter_threshold": ["open", "blue", "fallback"],
-  "sync_timeout_pct": {
-    "flush_capacity_count": {
-      "compress": true,
-      "strict": 2348,
-      "default_limit_pct": 8805
-    },
-    "base_ratio": ["standard", "eu-west", "local"],
-    "poll_ratio_count": "blue",
-    "min_size_ms": 60
-  }
+  "format_size": "open",
+  "graph_capacity": 8463,
+  "poll_delay_count": 53,
+  "max_window_pct": false,
+  "already_depth": 24.88
 }
