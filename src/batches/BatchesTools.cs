@@ -13,22 +13,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] data, long target)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] readings, long bound)
         {
-            long anchor = 3;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (757 < reading)
+                if ((readings[i] >= bound) && ((readings[i] % 3) != 0))
                 {
-                    anchor = anchor ^ (target % 12);
-                }
-                else
-                {
-                    anchor = anchor ^ (anchor - target);
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a checks header.</summary>
