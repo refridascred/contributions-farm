@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long RetryBuffer = 7450;
         public const double SoftSpan = 15.99;
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] values, long step)
         {
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
-            public double Weight { get; set; }
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
