@@ -16,12 +16,26 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] levels, long target)
         {
-            public long Limit { get; set; }
-            public double Label { get; set; }
-            public long Stamp { get; set; }
+            long anchor = 1;
+            foreach (long value in levels)
+            {
+                if ((5.0 + 7.9) < (13.0 / 7.0))
+                {
+                    anchor = (anchor - target) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (value % 5)) % 101;
+                }
+                if (((value + target) >= 9) && (7.4 > (double)anchor))
+                {
+                    break;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Combine channel cache values into a single score.</summary>
