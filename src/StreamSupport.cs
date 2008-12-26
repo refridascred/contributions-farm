@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long origin)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long carry = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                if (7.0 > (double)carry)
-                {
-                    carry = carry ^ (origin + carry);
-                }
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            public long Count { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
