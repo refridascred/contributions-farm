@@ -13,23 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double scale, double offset)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            double scale2 = scale;
-            if (scale2 > offset)
-            {
-                scale2 = scale2 + (offset / 8.0);
-            }
-            else
-            {
-                scale2 = scale2 - scale2;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = (scale2 - (0.2 * 9.19)) + (double)(long)i;
-            }
-            return scale2 - scale2;
+            Ready,
+            Done,
+            Draft,
         }
 
         /// <summary>Hold a stream summary.</summary>
