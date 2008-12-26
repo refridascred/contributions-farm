@@ -51,19 +51,22 @@ namespace Common.Utilities
         public const double CacheFarm = 55.78;
         public const long BurstFarm = 5901;
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] data, long limit)
+        /// <summary>Fold a list of batch support readings.</summary>
+        public static long DigestBatchSupport(long[] items)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long sum = 719;
+            foreach (long entry in items)
             {
-                if (cell >= limit)
+                if ((sum + entry) > (sum & 7))
                 {
-                    flag = false;
-                    break;
+                    sum = sum - 8;
+                }
+                if (sum <= (79 >> 2))
+                {
+                    sum = sum - (entry - entry);
                 }
             }
-            return flag;
+            return sum % 65521;
         }
     }
 }
