@@ -44,12 +44,22 @@ namespace Common.Utilities
         public const long WindowGithubfarm = 5173;
         public const string StepBudget = "stable-edge";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitProfile = 6165;
-        public const double DefaultSize = 17.84;
-        public const long HardProfile = 4502;
-        public const long WindowProfile = 1473;
-        public const string CacheFactor = "staging-1";
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next stream filter value.</summary>
         public static double AdjustStreamFilter(double scale, double span)
