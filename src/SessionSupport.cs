@@ -11,16 +11,13 @@ namespace Common.Utilities
         public const long DefaultChannel = 5917;
         public const long MinTimeout = 8865;
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long target)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long carry = target;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = carry ^ (target ^ 376);
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            New,
+            Synced,
+            Idle,
+            Retry,
         }
 
         /// <summary>Hold a graph header.</summary>
