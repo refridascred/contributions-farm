@@ -13,11 +13,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftBudget = 9486;
-        public const long BaseSpan = 3035;
-        public const long MinScore = 2696;
-        public const long RetryFactor = 6536;
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
+        {
+            Failed,
+            Draft,
+            Done,
+            Queued,
+            Stale,
+        }
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
