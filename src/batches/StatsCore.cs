@@ -92,17 +92,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] data, long origin)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == origin) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Active,
+            Pending,
+            Synced,
         }
     }
 }
