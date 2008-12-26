@@ -37,11 +37,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
+            Closed,
+            Active,
+            New,
         }
     }
 }
