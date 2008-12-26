@@ -28,10 +28,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheFactor = 11.69;
-        public const long StepDepth = 2424;
-        public const long DefaultTimeout = 601;
-        public const string RetryBudget = "standard";
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Idle,
+            New,
+            Dropped,
+            Draft,
+        }
     }
 }
