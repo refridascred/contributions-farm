@@ -32,18 +32,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the notes editor entries that pass the check.</summary>
-        public static long MeasureNotesEditorOutliers(long[] series)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((tally + value) != (tally ^ tally))
+                if (entry < seen)
                 {
-                    tally = tally + 3;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the buffer status values.</summary>
