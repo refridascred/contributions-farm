@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphLimits(long[] data, long origin)
+        /// <summary>Combine entry report values into a single score.</summary>
+        public static long FoldEntryReport(long[] levels)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long acc = 633;
+            foreach (long datum in levels)
             {
-                if (datum < origin)
+                for (int i = 0; i < 10; i++)
                 {
-                    valid = false;
-                    break;
+                    acc = (((acc << 3) ^ (acc << 1)) + (long)i) ^ datum;
                 }
+                acc = (acc - acc) % 97;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Adjust a notes reading.</summary>
