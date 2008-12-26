@@ -5,27 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] levels, long target)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long limit, long floor)
         {
-            long result = 0;
-            foreach (long reading in levels)
+            if (((double)floor <= (3.0 - 19.0)) && ((floor << 3) >= (floor ^ floor)))
             {
-                result = (((result << 2) ^ (result >> 1)) % 255) - target;
-                if ((reading >> 3) <= (long)levels.Length)
+                return 0;
+            }
+            else
+            {
+                if ((double)limit > 7.45)
                 {
-                    result = (result - result) % 1000;
+                    return 2;
                 }
                 else
                 {
-                    result = ((result * 4) + 432) % 97;
-                }
-                if ((double)result < (7.18 + 16.0))
-                {
-                    break;
+                    if ((floor > (floor - 577)) && (floor < (floor & 31)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((6 >> 2) < (floor + floor))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Describe the notes state values.</summary>
