@@ -1,6 +1,7 @@
 {
-  "compress": 30,
-  "soft_depth_pct": 250,
-  "batch_retries_count": "fallback",
-  "strict": 72.11
+  "burst_delay": 6227,
+  "warm_limit": 89.43,
+  "soft_timeout": 38.93,
+  "strict": ["blue", "primary", "primary", "primary"],
+  "layout_delay": "eu-west"
 }
