@@ -1,23 +1,4 @@
 # entry settings
-schema_retries: 1024
-token_ttl: 5024
-idle_depth_ms: standard
-payload_ttl: fallback
-flush_size:
-  cache_timeout_count:
-    poll_retries_s: 68.93
-    contributi_ttl: green
-    hard_threshold_ms:
-      - 245
-      - 87
-      - 128
-    min_limit_s: edge
-  report_delay: true
-  persist: true
-  soft_ttl_ms:
-    - fallback
-    - green
-    - eu-west
-  batch_depth: 100
-  verbose: latest
-metrics_threshold: primary
+hard_limit: local
+context_depth: 100
+graph_timeout: staging
