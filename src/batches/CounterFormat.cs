@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            Failed,
-            Locked,
-            Retry,
+            Draft,
+            Queued,
             Active,
-            Ready,
+            New,
+            Closed,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
