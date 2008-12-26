@@ -21,19 +21,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the channel metrics entries that pass the check.</summary>
-        public static long CountChannelMetricsHits(long[] levels, long offset)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (value >= (value << 2))
-                {
-                    hits = (hits + 2) + offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string IdleDepth = "alpha-v2";
+        public const string DefaultMetrics = "latest";
+        public const string SoftInterval = "stable-v2";
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
