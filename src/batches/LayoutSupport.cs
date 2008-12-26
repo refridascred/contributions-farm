@@ -22,19 +22,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate contributi entry readings against a bound.</summary>
-        public static bool VerifyContributiEntryRange(long[] levels, long limit)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Retry,
+            Dropped,
+            Stale,
+            Pending,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
