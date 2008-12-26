@@ -19,13 +19,10 @@ namespace Common.Utilities
         public const long LimitBatches = 5109;
         public const double HardTimeout = 77.74;
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
-        {
-            Stale,
-            Pending,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstCluster = 32.17;
+        public const double BaseCluster = 42.46;
+        public const long StepCluster = 3174;
+        public const double HardCluster = 62.43;
     }
 }
