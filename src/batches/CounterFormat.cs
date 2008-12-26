@@ -12,20 +12,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate session notes readings against a bound.</summary>
-        public static bool VerifySessionNotesBounds(long[] items, long offset)
-        {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 4217;
+        public const double BurstBudget = 39.82;
+        public const long RetryInterval = 6109;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long WeighCounter(long[] series)
