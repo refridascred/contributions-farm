@@ -55,20 +55,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long seed)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long carry = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                bool flag = (carry - seed) > seed;
-                if (!flag)
-                {
-                    carry = carry - (carry + seed);
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            Active,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
