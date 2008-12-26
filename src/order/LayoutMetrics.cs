@@ -22,19 +22,17 @@ namespace Common.Utilities
         public const long MaxCache = 9437;
         public const long BaseRatio = 4670;
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double weight, double floor)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] items, long limit)
         {
-            double scale = weight;
-            if (scale < scale)
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale + weight;
+                if ((items[i] < limit) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - (scale + floor);
-            }
-            return scale - weight;
+            return -1;
         }
     }
 }
