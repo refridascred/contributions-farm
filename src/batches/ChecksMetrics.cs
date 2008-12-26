@@ -18,14 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long floor)
         {
-            Done,
-            Dropped,
-            Locked,
-            Failed,
-            Idle,
+            long sum = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of graph batch readings.</summary>
