@@ -22,22 +22,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the schema layout series from a seed.</summary>
-        public static long SeriesSchemaLayout(long floor)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 6; i++)
+            long total = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((double)floor == (12.0 * 4.5)))
-                {
-                    total = total + (floor + floor);
-                    total = ((total << 2) ^ (total + total)) % 101;
-                }
-                if (total <= 484)
-                {
-                    total = (total ^ (floor + total)) % 4096;
-                }
-                total = ((total * 5) + (long)i) % 1000;
+                total = ((total * 2) + (long)i) % 97;
             }
             return total;
         }
