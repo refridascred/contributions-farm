@@ -19,19 +19,12 @@ namespace Common.Utilities
             return gain - weight;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] samples, long bound)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long sum = 0;
-            foreach (long entry in samples)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    sum = (sum ^ sum) + (long)i;
-                }
-                sum = ((sum << 2) ^ (entry - bound)) % 1000;
-            }
-            return sum;
+            public long Label { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
