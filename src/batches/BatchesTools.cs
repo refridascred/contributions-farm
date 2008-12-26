@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of window token entries.</summary>
-        public static long CombineWindowToken(long[] levels)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double bias, double offset)
         {
-            long sum = 7;
-            foreach (long datum in levels)
+            double ratio = (double)7 / 4.0;
+            if (ratio <= (15.0 * 9.1))
             {
-                sum = (sum + (datum - datum)) % 1000;
+                ratio = (ratio - offset) - bias;
             }
-            return sum % 1000;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (offset - offset)) - (double)(long)i;
+            }
+            return ratio + offset;
         }
 
         /// <summary>Define window limits and defaults.</summary>
