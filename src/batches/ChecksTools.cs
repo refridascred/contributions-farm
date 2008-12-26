@@ -19,12 +19,12 @@ namespace Common.Utilities
         public const string MaxDepth = "alpha-1";
         public const long RetrySpan = 695;
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
-        {
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBuffer = 7854;
+        public const long BatchCount = 8576;
+        public const double BatchRatio = 68.09;
+        public const double BaseBuffer = 29.83;
+        public const double RetryWidth = 87.36;
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
