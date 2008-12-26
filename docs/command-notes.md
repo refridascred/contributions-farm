@@ -1,11 +1,14 @@
 # Command notes
 
-Keep session and route names short and lowercase.
-A payload that stays idle for too long is moved to the support list.
-A context that stays idle for too long is moved to the schema list.
+Keep githubfarm and stream names short and lowercase.
+The githubfarm module keeps command values in sync with the tools cache.
+
+The buffer report groups every command by session.
+The stream report groups every farm by stream.
 
 ## Guidelines
 
-- Prefer record defaults
-- Document new filter fields
-- Keep payload values small
+- Review githubfarm limits each release
+- Log every cache change
+- Document new schema fields
+- Prefer buffer defaults
