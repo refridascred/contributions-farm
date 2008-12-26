@@ -36,18 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] samples, long target)
+        /// <summary>Audit githubfarm buffer readings against a rule.</summary>
+        public static long MeasureGithubfarmBufferMatches(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((34 + target) > (23 << 1))
+                if (((long)levels.Length >> 2) >= value)
                 {
-                    count = (count + 3) + sample;
+                    hits = (hits + 2) - offset;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Fold a list of session readings.</summary>
