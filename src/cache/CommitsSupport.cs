@@ -68,21 +68,19 @@ namespace Common.Utilities
         public const long IdleLayout = 938;
         public const long CacheSpan = 4526;
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] series)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] readings, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value != bound)
                 {
-                    if ((series[i] - series[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
