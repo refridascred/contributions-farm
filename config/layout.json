@@ -1,7 +1,5 @@
 {
-  "sync_size_pct": 66.83,
-  "payload_limit": "eu-west",
-  "cache_depth": "eu-west",
-  "max_ttl_ms": "green",
-  "report_limit": "local"
+  "soft_depth_ms": true,
+  "default_size": 82,
+  "schema_ttl": [227, 241, 241, 394]
 }
