@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine filter contributi values into a single score.</summary>
-        public static long ScoreFilterContributi(long[] series, long floor)
+        /// <summary>Validate schema record readings against a bound.</summary>
+        public static bool GuardSchemaRecordRange(long[] values, long origin)
         {
-            long acc = -986;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long sample in values)
             {
-                acc = (acc + floor) % 1000;
-                acc = acc + (acc & 3);
-                if ((floor * 4) > reading)
+                if (sample > origin)
                 {
-                    acc = (acc - (floor / 8)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            return acc % 97;
+            return found;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
