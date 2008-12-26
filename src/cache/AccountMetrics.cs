@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] items)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long value in items)
+            double rate = (double)(362 >> 3);
+            if (rate < rate)
             {
-                if ((double)value > (2.0 * 5.84))
-                {
-                    hits = hits + 1;
-                }
+                rate = (rate - (double)62) + floor;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (scale + 9.6)) + (double)(long)i;
+            }
+            return rate - (double)9;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
