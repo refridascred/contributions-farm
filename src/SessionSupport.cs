@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] series, long floor)
+        /// <summary>Roll a tools token counter forward.</summary>
+        public static long SeriesToolsToken(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((series[i] == floor) && ((series[i] % 3) != 0))
+                if (origin >= (mix * 3))
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ (mix + mix)) % 1000;
                 }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the report class values.</summary>
