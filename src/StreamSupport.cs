@@ -40,19 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every context batch entry stays within the limit.</summary>
-        public static bool CheckContextBatchRange(long[] readings, long limit)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double weight, double floor)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            double weight2 = (7.96 - weight) / 8.0;
+            if (weight2 < weight)
             {
-                if (datum > limit)
-                {
-                    ready = false;
-                    break;
-                }
+                weight2 = weight2 + (9.0 - floor);
             }
-            return ready;
+            return weight2 - weight2;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
