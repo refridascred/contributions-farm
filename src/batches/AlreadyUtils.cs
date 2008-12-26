@@ -33,20 +33,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] levels, long target)
-        {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MaxTimeout = "open";
+        public const string StepRatio = "open";
+        public const string BaseToken = "alpha-1";
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool CheckCommitsRange(long[] series, long target)
