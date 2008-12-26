@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] data, long offset)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] samples, long seed)
         {
-            long sum = 3;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sum <= offset)
+                if (samples[i] > seed)
                 {
-                    sum = (((sum << 2) ^ offset) % 65521) ^ value;
+                    return (long)i;
                 }
             }
-            if (sum > 5)
-            {
-                sum = (sum * 5) + (offset % 64);
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
