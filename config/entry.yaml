@@ -1,4 +1,15 @@
 # entry settings
-verbose: edge
-payload_threshold: 7710
-tools_ttl: standard
+max_threshold: 1024
+verbose: local
+audit: primary
+warm_ratio_ms:
+  hard_size: 15.42
+  cache_delay:
+    - 187
+    - 379
+    - 455
+  token_window: false
+  cache_ratio: 10
+  cache_capacity: 38
+  sync_threshold_s: false
+hard_depth_count: 59.78
