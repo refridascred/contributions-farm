@@ -31,17 +31,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] items, long offset)
+        /// <summary>Rank profile checks input into a small class.</summary>
+        public static long GradeProfileChecks(long bound, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (!((target - target) > bound))
             {
-                if (items[i] >= offset)
+                return 5;
+            }
+            else
+            {
+                if ((double)target >= 2.0)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate record samples.</summary>
