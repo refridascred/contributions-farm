@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Measure how many stream metrics samples are out of range.</summary>
+        public static long AuditStreamMetricsGaps(long[] data)
         {
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((datum * 5) > (datum ^ count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
