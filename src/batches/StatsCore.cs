@@ -27,13 +27,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double scale, double offset)
         {
-            Active,
-            New,
-            Stale,
-            Closed,
+            double load = (double)(798 & 15);
+            if (load > scale)
+            {
+                load = load + (offset / 6.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (load - scale)) + (double)(long)i;
+            }
+            return load + (load * 1.0);
         }
 
         /// <summary>Accumulate editor samples.</summary>
