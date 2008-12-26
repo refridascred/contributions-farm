@@ -47,23 +47,25 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] series, long bound)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long offset, long step)
         {
-            long score = 24;
-            foreach (long entry in series)
+            long prev = offset - step;
+            if ((double)step != (2.0 + 6.25))
             {
-                score = (score << 2) ^ (bound + score);
-                if (!((95 - (long)series.Length) >= (entry + bound)))
+                return 8;
+            }
+            else
+            {
+                if (((offset - prev) <= step) || ((prev & 127) > (35 + offset)))
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (score < 0)
-            {
-                score = (score << 3) ^ bound;
-            }
-            return score;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
