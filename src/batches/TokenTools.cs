@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseRatio = 7315;
-        public const long LimitLevel = 7820;
-        public const long MinPayload = 7290;
-        public const string CachePayload = "strict-1";
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((double)(-212) >= (double)value)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit account batch readings against a rule.</summary>
         public static long TallyAccountBatchHits(long[] series, long offset)
