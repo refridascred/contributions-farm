@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 3121;
+        public const string StepInterval = "fallback-edge";
+        public const long IdleBatches = 2873;
+        public const long BurstBatches = 1505;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long CountWindowGaps(long[] series, long seed)
