@@ -11,15 +11,14 @@ namespace Common.Utilities
         public const long DefaultChannel = 5917;
         public const long MinTimeout = 8865;
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] data)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long sum = -422;
-            foreach (long reading in data)
-            {
-                sum = ((sum + (sum >> 5)) % 255) ^ reading;
-            }
-            return sum % 97;
+            Draft,
+            Ready,
+            New,
+            Queued,
+            Stale,
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
