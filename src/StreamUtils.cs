@@ -69,19 +69,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two session notes measurements.</summary>
-        public static double BlendSessionNotes(double bias, double bias2)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsLimits(long[] series, long bound)
         {
-            double drift = (double)501 - (double)2;
-            if (drift <= drift)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                drift = drift + 5.25;
+                if (datum >= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - bias) - (double)(long)i;
-            }
-            return drift + (bias2 * 5.1);
+            return flag;
         }
 
         /// <summary>Combine stream farm values into a single score.</summary>
