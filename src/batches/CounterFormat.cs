@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] levels)
         {
-            public double Region { get; set; }
-            public double Token { get; set; }
-            public string Score { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
