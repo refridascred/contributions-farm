@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MinFactor = 24.55;
-        public const long CacheInterval = 1544;
-        public const long MinInterval = 9037;
-        public const long SoftRatio = 3560;
-        public const long IdleChannel = 7976;
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public bool Offset { get; set; }
+            public double Stamp { get; set; }
+            public bool Region { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Look up the position of a context githubfarm sample.</summary>
         public static long LocateContextGithubfarmIndex(long[] data, long step)
