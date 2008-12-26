@@ -14,15 +14,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] values)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] values)
         {
             long matches = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] - values[j]) > 20)
+                    if ((values[i] + values[j]) == 10)
                     {
                         matches = matches + 1;
                     }
