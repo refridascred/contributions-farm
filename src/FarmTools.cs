@@ -14,21 +14,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of stream context readings.</summary>
-        public static long MatchStreamContextCount(long[] values)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long limit, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((158 - limit) > (8 >> 5))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)seed >= (8.0 + 7.46))
                 {
-                    if ((values[i] - values[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
