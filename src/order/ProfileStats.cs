@@ -54,12 +54,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultBudget = 1713;
-        public const long LimitDepth = 2575;
-        public const long RetryCount = 5682;
-        public const long HardWidth = 3907;
-        public const string RetryScore = "alpha-v2";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 2701;
+        public const long BatchNotes = 6866;
+        public const long RetryNotes = 2785;
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
