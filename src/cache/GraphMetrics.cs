@@ -34,19 +34,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileLimits(long[] data, long limit)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Idle,
+            Synced,
+            Paused,
         }
 
         /// <summary>Derive the next window batch value from a seed.</summary>
