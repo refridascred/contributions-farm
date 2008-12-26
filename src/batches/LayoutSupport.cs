@@ -53,11 +53,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 1661;
-        public const long RetryTimeout = 8172;
-        public const string CacheAccount = "alpha-edge";
-        public const long BaseAccount = 9622;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportHits(long[] data, long floor)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum <= (double)hits)
+                {
+                    hits = (hits + 2) - floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
