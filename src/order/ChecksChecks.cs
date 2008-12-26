@@ -38,11 +38,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long offset)
         {
-            public double Mode { get; set; }
-            public long Total { get; set; }
+            long score = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                score = score ^ score;
+                if ((58 << 3) > (score - offset))
+                {
+                    continue;
+                }
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
