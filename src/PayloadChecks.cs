@@ -41,14 +41,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Find the first batches contributi entry that matches the target.</summary>
+        public static long FindBatchesContributiIndex(long[] items, long floor)
         {
-            Draft,
-            Locked,
-            Stale,
-            Ready,
-            Idle,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up metrics samples.</summary>
