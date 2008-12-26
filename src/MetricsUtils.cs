@@ -70,19 +70,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double ratio, double offset)
+        /// <summary>Count stats payload pairs that satisfy a relation.</summary>
+        public static long PairStatsPayloadCount(long[] samples)
         {
-            double bias = (double)7 * 4.5;
-            if (bias <= (double)51)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias + (ratio + offset);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias - (14.0 / 7.0);
-            }
-            return bias + ratio;
+            return tally;
         }
     }
 }
