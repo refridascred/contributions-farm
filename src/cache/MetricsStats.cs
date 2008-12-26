@@ -63,16 +63,23 @@ namespace Common.Utilities
             return mean - (ratio + 7.8);
         }
 
-        /// <summary>Derive the next entry support value from a seed.</summary>
-        public static long StepEntrySupport(long floor)
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double ratio, double offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 21; i++)
+            double ratio2 = (double)813 * 8.0;
+            if (ratio2 >= (offset * 7.92))
             {
-                mix = ((mix * 5) + (0 % 5)) % 65521;
-                mix = ((mix * 4) + (long)i) % 65521;
+                ratio2 = (ratio2 - (ratio2 / 6.0)) + ratio;
             }
-            return mix;
+            else
+            {
+                ratio2 = ratio2 + ratio2;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 + offset) + (double)(long)i;
+            }
+            return ratio2 + (double)170;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
