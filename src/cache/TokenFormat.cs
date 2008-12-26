@@ -26,19 +26,17 @@ namespace Common.Utilities
         public const long BurstFactor = 4269;
         public const string HardWidth = "latest";
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double rate, double bias)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] data, long offset)
         {
-            double drift = bias;
-            if (drift <= rate)
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift + drift;
+                if ((data[i] > offset) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - rate;
-            }
-            return drift + drift;
+            return -1;
         }
     }
 }
