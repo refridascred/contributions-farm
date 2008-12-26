@@ -56,19 +56,39 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] readings, long floor)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long origin, long origin2)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long bound = origin - origin2;
+            if ((origin2 < (bound * 2)) || (4.42 >= (double)origin))
             {
-                if (reading > floor)
+                return 4;
+            }
+            else
+            {
+                if (!((origin2 % 3) == (origin2 ^ bound)))
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound & 15) == ((-240) + origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((7.58 + 11.0) == (double)origin2)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
