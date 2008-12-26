@@ -39,12 +39,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] values, long seed)
         {
-            Idle,
-            New,
-            Stale,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((item << 2) > (4 / 9))
+                {
+                    seen = (seen + 2) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit metrics batches readings against a rule.</summary>
