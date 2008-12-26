@@ -81,12 +81,17 @@ namespace Common.Utilities
         public const long HardTimeout = 9856;
         public const string CacheMetrics = "standard-v2";
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] series, long seed)
         {
-            public bool Size { get; set; }
-            public long Token { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > seed) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
