@@ -28,9 +28,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string LimitContributi = "local-edge";
-        public const string BatchTimeout = "staging";
-        public const string CacheContributi = "staging-v2";
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutGaps(long[] samples)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((value - value) >= (value / 9))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
