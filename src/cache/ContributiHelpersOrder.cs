@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many editor profile samples are out of range.</summary>
-        public static long TallyEditorProfileOutliers(long[] levels)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double weight, double span)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            double rate = span;
+            if (rate <= (span - rate))
             {
-                if ((5.0 < (double)entry) && ((entry + entry) == (count ^ entry)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate = (rate - rate) + weight;
             }
-            return count;
+            return rate - (rate - 5.3);
         }
 
         /// <summary>Match up commits counter samples.</summary>
