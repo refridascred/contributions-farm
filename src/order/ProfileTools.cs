@@ -43,39 +43,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long bound, long step)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] samples, long origin)
         {
-            long prev = bound ^ step;
-            if ((bound - step) == (1 << 3))
+            long count = 0;
+            foreach (long entry in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step ^ step) > 629)
+                if ((count - 56) > (count >> 4))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((16 / 7) < step) || ((bound ^ step) < (prev << 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)767 != (double)prev) && (0 >= bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = ((count + 3) + entry) + origin;
                 }
             }
+            return count;
         }
 
         /// <summary>Adjust a command reading.</summary>
