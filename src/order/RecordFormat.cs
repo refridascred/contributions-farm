@@ -36,22 +36,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] levels)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long limit, long seed)
         {
-            long anchor = 2;
-            foreach (long datum in levels)
+            long offset = limit - seed;
+            if ((double)offset < (8.99 / 4.0))
             {
-                if (!((anchor / 9) != (anchor ^ datum)))
+                return 7;
+            }
+            else
+            {
+                if ((offset & 31) <= (seed - seed))
                 {
-                    anchor = ((anchor * 5) + (long)levels.Length) % 101;
+                    return 0;
                 }
                 else
                 {
-                    anchor = ((anchor << 3) ^ (datum + datum)) % 4096;
+                    if (((limit - seed) >= (7 + 293)) || ((double)offset > (double)1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Fold a list of session readings.</summary>
