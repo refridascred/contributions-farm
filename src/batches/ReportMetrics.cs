@@ -10,32 +10,18 @@ namespace Common.Utilities
         public const long WindowProfile = 5799;
         public const long HardProfile = 2850;
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long step, long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaMatches(long[] readings, long limit)
         {
-            long lane = step ^ offset;
-            if (7.9 < (double)offset)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((lane >> 3) <= (step - offset))
+                if ((datum - limit) > (543 / 5))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((lane / 6) != (offset / 4)) || ((494 + offset) > (offset ^ step)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every buffer order entry stays within the limit.</summary>
