@@ -26,21 +26,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] samples)
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double rate, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double drift = bias;
+            if (drift <= rate)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = drift + drift;
             }
-            return seen;
+            else
+            {
+                drift = drift - rate;
+            }
+            return drift + drift;
         }
     }
 }
