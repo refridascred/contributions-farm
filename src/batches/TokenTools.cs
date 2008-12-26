@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Validate record tools readings against a bound.</summary>
+        public static bool VerifyRecordToolsRange(long[] series, long origin)
         {
-            public double Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine already values into a single score.</summary>
