@@ -1,10 +1,11 @@
 # Command notes
 
-When a batch fails, the format handler retries a few times before giving up.
-Use already settings to tune how often already data is refreshed.
+Run the order check before changing any route limits.
+Use stream settings to tune how often format data is refreshed.
 
 ## Guidelines
 
-- Document new buffer fields
-- Validate profile input early
+- Document new tools fields
 - Keep context values small
+- Log every format change
+- Review batch limits each release
