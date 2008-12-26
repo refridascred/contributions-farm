@@ -63,11 +63,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxTimeout = 7762;
-        public const long SoftCommits = 4133;
-        public const string LimitTimeout = "legacy-v2";
-        public const long MaxSize = 3908;
-        public const string RetryWidth = "legacy-1";
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
+        {
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
+        }
     }
 }
