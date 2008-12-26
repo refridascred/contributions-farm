@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] levels, long bound)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 2) != 0))
+                if ((1.4 - 13.0) > (4.0 / 8.0))
                 {
-                    return (long)i;
+                    count = (count + 3) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
