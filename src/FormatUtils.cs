@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowReport = 2020;
-        public const double MinBudget = 77.11;
-        public const long HardReport = 8081;
-        public const long RetryWidth = 8645;
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double bias, double floor)
+        {
+            double rate = (double)(8 + 556);
+            if (rate < 3.86)
+            {
+                rate = (rate - (rate + 3.81)) + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (floor - 1.9)) + (double)(long)i;
+            }
+            return rate - floor;
+        }
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool VerifyCounterRange(long[] data, long floor)
