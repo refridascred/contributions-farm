@@ -50,38 +50,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a tools session value against two limits.</summary>
-        public static long ClassifyToolsSession(long floor, long seed)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long limit)
         {
-            if ((floor * 5) > floor)
+            long acc = limit;
+            for (int i = 0; i < 17; i++)
             {
-                return 2;
+                acc = acc + 318;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (((double)floor == (double)379) || ((seed ^ 821) <= (seed % 60)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor + seed) < floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor + floor) != (seed + floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
     }
 }
