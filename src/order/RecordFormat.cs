@@ -41,19 +41,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextRange(long[] series, long step)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value <= step)
+                if ((items[i] < step) && ((items[i] % 3) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Fold a list of session readings.</summary>
