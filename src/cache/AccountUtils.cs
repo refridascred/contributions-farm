@@ -45,15 +45,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double DefaultSize = 72.31;
+        public const long DefaultChecks = 2987;
+        public const long WindowChecks = 376;
+        public const string SoftBudget = "open-1";
+        public const long StepChecks = 1040;
     }
 }
