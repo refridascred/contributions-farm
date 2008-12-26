@@ -49,10 +49,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepBudget = 2714;
-        public const long StepLevel = 3712;
-        public const long BatchBudget = 5329;
-        public const long BasePayload = 4946;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitScore = 4392;
+        public const string BatchFarm = "alpha";
+        public const double RetryFarm = 84.37;
     }
 }
