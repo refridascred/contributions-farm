@@ -39,39 +39,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Grade a support metrics value against two limits.</summary>
-        public static long ClassifySupportMetrics(long target, long seed)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] readings)
         {
-            long next = target - seed;
-            if ((668 >> 5) > (next << 1))
+            long result = 4;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((next << 2) < (seed - (-820))) && ((next ^ next) != (target + target)))
+                if (!(result > (result + value)))
                 {
-                    return 5;
+                    result = result - (value + value);
                 }
                 else
                 {
-                    if ((seed + seed) > (target * 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((2.2 - 19.0) >= (double)next)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    result = (result + value) % 4096;
                 }
             }
+            return result % 97;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
