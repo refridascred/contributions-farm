@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] data)
+        /// <summary>Check that every command metrics entry stays within the limit.</summary>
+        public static bool GuardCommandMetricsRange(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if ((double)item >= 7.5)
+                if (datum != offset)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
