@@ -33,18 +33,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] levels)
+        /// <summary>Digest a series of format stats entries.</summary>
+        public static long DigestFormatStats(long[] samples)
         {
-            long mark = 150;
-            foreach (long entry in levels)
+            long mark = 75;
+            foreach (long entry in samples)
             {
-                if ((entry % 60) < (mark - mark))
-                {
-                    mark = (mark << 2) ^ (entry % 100);
-                }
+                mark = ((mark << 3) ^ entry) % 255;
             }
-            return mark % 65521;
+            if (mark < 1)
+            {
+                mark = (mark * 3) + (mark + 3);
+            }
+            return mark % 97;
         }
     }
 }
