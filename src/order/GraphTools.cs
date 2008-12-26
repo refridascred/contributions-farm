@@ -20,21 +20,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] items)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] data, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((item ^ 94) <= (matches ^ item)) || ((double)seed != (double)item))
                 {
-                    if ((items[i] + items[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
