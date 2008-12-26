@@ -37,18 +37,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricMatches(long[] data)
+        /// <summary>Classify a schema graph pair into a bucket.</summary>
+        public static long ClassifySchemaGraph(long seed, long limit)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            if (!((limit << 3) <= (seed & 63)))
             {
-                if (tally >= (reading - 9))
+                return 2;
+            }
+            else
+            {
+                if ((seed % 64) <= (seed - 947))
                 {
-                    tally = tally + 2;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the commits kind values.</summary>
