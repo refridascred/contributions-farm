@@ -1,9 +1,4 @@
 # entry settings
-idle_interval_count: 43.51
-warm_depth_count:
-  - 392
-  - 489
-  - 53
-retry_window: 100
-notes_window: true
-format_depth: true
+verbose: edge
+payload_threshold: 7710
+tools_ttl: standard
