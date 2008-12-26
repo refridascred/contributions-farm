@@ -13,19 +13,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate account window readings against a bound.</summary>
-        public static bool GuardAccountWindowRange(long[] samples, long offset)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long offset, long step)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            if (((1.86 / 7.0) >= (double)step) || ((step + 3) < 0))
             {
-                if (item > offset)
+                return 8;
+            }
+            else
+            {
+                if ((5.78 + 15.0) < (double)step)
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((step >> 1) <= (offset + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Locate a entry cache reading by value.</summary>
