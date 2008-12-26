@@ -79,9 +79,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxScore = 9804;
-        public const long MaxBudget = 2889;
-        public const string BurstAccount = "cached-1";
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                total = ((total << 3) ^ (bound * 2)) % 1000;
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
