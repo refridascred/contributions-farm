@@ -27,15 +27,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of queue payload entries.</summary>
-        public static long TotalQueuePayload(long[] series)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long mix = 162;
-            foreach (long sample in series)
-            {
-                mix = ((mix * 4) + mix) - sample;
-            }
-            return mix;
+            Closed,
+            Retry,
+            Ready,
         }
 
         /// <summary>Count the window filter entries that pass the check.</summary>
