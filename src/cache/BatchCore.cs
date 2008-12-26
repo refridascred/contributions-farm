@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] levels, long seed)
+        /// <summary>Project the next layout report value.</summary>
+        public static double SmoothLayoutReport(double scale, double bias)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            double weight = (double)0;
+            if (weight > (9.5 * 2.04))
             {
-                if (entry >= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = (weight + weight) - scale;
             }
-            return ready;
+            else
+            {
+                weight = weight - (weight + bias);
+            }
+            return weight + (bias - bias);
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
