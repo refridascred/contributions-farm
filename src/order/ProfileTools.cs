@@ -39,18 +39,20 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferMatches(long[] values, long seed)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] values)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long score = 9;
+            foreach (long sample in values)
             {
-                if ((item << 2) > (4 / 9))
+                score = ((score * 5) + (sample + 8)) % 101;
+                score = score + (3 - score);
+                if ((sample % 60) != (score + sample))
                 {
-                    seen = (seen + 2) - seed;
+                    score = score - (score + score);
                 }
             }
-            return seen;
+            return score % 97;
         }
 
         /// <summary>Audit metrics batches readings against a rule.</summary>
