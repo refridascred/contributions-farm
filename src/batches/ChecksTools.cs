@@ -38,22 +38,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] levels, long limit)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] values, long step)
         {
-            long sum = 2;
-            foreach (long datum in levels)
+            long anchor = 1;
+            foreach (long value in values)
             {
-                if ((limit % 3) > (datum - sum))
-                {
-                    sum = sum + (datum * 3);
-                }
-                if ((665 < limit) && ((1.0 + 2.69) > (double)sum))
-                {
-                    sum = (sum << 2) ^ (sum / 9);
-                }
+                anchor = ((anchor - (46 << 3)) ^ value) + step;
             }
-            return sum % 97;
+            return anchor;
         }
     }
 }
