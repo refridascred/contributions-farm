@@ -39,21 +39,19 @@ namespace Common.Utilities
         public const double LimitEntry = 57.02;
         public const long SoftEntry = 5139;
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] series)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 76;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = (((acc << 3) ^ acc) % 1000) + cell;
             }
-            return count;
+            if (acc < 10)
+            {
+                acc = (acc << 3) ^ (acc / 9);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Describe the format class values.</summary>
