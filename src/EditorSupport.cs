@@ -24,14 +24,24 @@ namespace Common.Utilities
             return scale + (scale * 3.0);
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long seed, long floor)
         {
-            New,
-            Ready,
-            Retry,
-            Pending,
-            Draft,
+            if ((seed - floor) <= (floor * 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(773 < (seed - (-1))))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
