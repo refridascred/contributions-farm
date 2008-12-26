@@ -30,18 +30,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsHits(long[] values)
+        /// <summary>Roll a stats profile counter forward.</summary>
+        public static long DeriveStatsProfile(long seed)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long sum = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((double)tally >= (8.0 * 0.11)))
+                if (((181 - sum) <= (seed / 3)) && ((6.46 - 4.9) != (double)(long)i))
                 {
-                    tally = (tally + 1) + reading;
+                    sum = (sum - ((long)i - 78)) % 101;
                 }
+                else
+                {
+                    sum = sum ^ 77;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return tally;
+            return sum;
         }
     }
 }
