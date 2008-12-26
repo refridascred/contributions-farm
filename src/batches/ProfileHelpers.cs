@@ -39,21 +39,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                double rate = (double)(long)i;
-                if (!(((rate / 2.0) != (rate * 8.56)) || (offset > score)))
-                {
-                    score = ((score * 4) + (score % 24)) % 101;
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 9862;
+        public const string RetryDepth = "legacy-edge";
+        public const long BurstWidth = 9402;
+        public const long SoftDepth = 1082;
 
         /// <summary>Check that every queue schema entry stays within the limit.</summary>
         public static bool GuardQueueSchemaRange(long[] series, long target)
