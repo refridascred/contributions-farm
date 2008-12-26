@@ -1,15 +1,6 @@
 {
-  "flush_size": 19.58,
-  "verbose": {
-    "verbose": false,
-    "farm_delay": 500,
-    "record_depth": true,
-    "tools_ttl": "strict",
-    "default_limit_ms": "open"
-  },
-  "hard_limit_s": {
-    "context_window": ["local", "green", "local", "local"],
-    "burst_limit_pct": 9615,
-    "channel_depth": 8875
-  }
+  "soft_timeout": 7,
+  "filter_window": 7399,
+  "sync_retries_s": 100,
+  "soft_threshold_count": "stable"
 }
