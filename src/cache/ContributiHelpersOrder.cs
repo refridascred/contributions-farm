@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double weight, double span)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double rate, double floor)
         {
-            double rate = span;
-            if (rate <= (span - rate))
+            double ratio = (double)(17 * 3);
+            if (ratio > ratio)
             {
-                rate = (rate - rate) + weight;
+                ratio = ratio + rate;
             }
-            return rate - (rate - 5.3);
+            else
+            {
+                ratio = ratio + (floor / 4.0);
+            }
+            return ratio - (7.9 * 6.98);
         }
 
         /// <summary>Describe the cluster kind values.</summary>
