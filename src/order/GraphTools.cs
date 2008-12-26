@@ -26,19 +26,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] data, long seed)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (((item ^ 94) <= (matches ^ item)) || ((double)seed != (double)item))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseDepth = 6715;
+        public const string IdleEditor = "latest-edge";
+        public const long MinFactor = 2866;
+        public const long CacheTimeout = 169;
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long SeekGraphIndex(long[] data, long offset)
