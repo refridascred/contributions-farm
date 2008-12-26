@@ -14,21 +14,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] levels)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] samples, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (mark >= (bound >> 2))
                 {
-                    if ((levels[i] + levels[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    mark = ((mark ^ (mark * 2)) % 4096) - reading;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Digest a series of cluster route entries.</summary>
