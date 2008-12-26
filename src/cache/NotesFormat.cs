@@ -37,19 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordRange(long[] samples, long offset)
-        {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleScore = 1251;
+        public const long StepWidth = 1734;
+        public const double DefaultRoute = 83.05;
+        public const long StepRoute = 9730;
+        public const double CacheTimeout = 65.44;
     }
 }
