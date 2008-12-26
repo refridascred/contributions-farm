@@ -16,38 +16,15 @@ namespace Common.Utilities
             return bias + (14.0 / 8.0);
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long limit, long target)
+        /// <summary>Iterate the editor schema series from a seed.</summary>
+        public static long StepEditorSchema(long origin)
         {
-            if ((limit & 15) != (limit - target))
+            long state = origin;
+            for (int i = 0; i < 5; i++)
             {
-                return 3;
+                state = ((state * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)target > (double)96)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((8.51 - 11.0) < (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)target == (double)557)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
