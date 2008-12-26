@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long origin, long floor)
         {
-            public bool Count { get; set; }
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
+            if (((origin >> 3) < (2 ^ floor)) || ((double)origin == (double)7))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((floor ^ origin) > origin) && ((double)floor == (3.8 + 6.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((-252) + origin) == (origin % 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((floor % 97) == (floor % 60)) || (origin >= (floor - floor)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of stats notes readings.</summary>
