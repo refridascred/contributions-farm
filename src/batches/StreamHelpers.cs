@@ -33,20 +33,12 @@ namespace Common.Utilities
             return gain - (gain - 8.9);
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferBounds(long[] levels, long seed)
-        {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowRecord = 51.8;
+        public const double IdleLevel = 5.53;
+        public const long CacheRecord = 4484;
+        public const string BurstRecord = "stable-1";
+        public const long IdleRatio = 8570;
 
         /// <summary>Look up the position of a route checks sample.</summary>
         public static long LocateRouteChecksIndex(long[] samples, long step)
