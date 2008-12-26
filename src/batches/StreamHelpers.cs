@@ -39,18 +39,19 @@ namespace Common.Utilities
             return gain - (gain - 8.9);
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] readings, long bound)
+        /// <summary>Check that every profile cache entry stays within the limit.</summary>
+        public static bool GuardProfileCacheRange(long[] values, long step)
         {
-            long anchor = 92;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if ((double)anchor < 8.1)
+                if (datum < step)
                 {
-                    anchor = (((anchor - 13) % 4096) ^ item) - bound;
+                    stale = false;
+                    break;
                 }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
