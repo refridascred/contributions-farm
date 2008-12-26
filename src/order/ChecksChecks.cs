@@ -16,12 +16,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardScore = 2361;
-        public const long BatchMetric = 2608;
-        public const string BurstMetric = "primary";
-        public const long StepSize = 5785;
-        public const double BaseMetric = 59.77;
+        /// <summary>Count token order pairs that satisfy a relation.</summary>
+        public static long MatchTokenOrderCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const double DefaultTimeout = 73.33;
