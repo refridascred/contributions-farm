@@ -21,13 +21,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Count the channel metrics entries that pass the check.</summary>
+        public static long CountChannelMetricsHits(long[] levels, long offset)
         {
-            Draft,
-            Retry,
-            Locked,
-            Queued,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (value >= (value << 2))
+                {
+                    hits = (hits + 2) + offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
