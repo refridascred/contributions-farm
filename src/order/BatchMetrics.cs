@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Find the first buffer already entry that matches the target.</summary>
-        public static long LocateBufferAlreadyIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= step) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double IdleRatio = 97.2;
+        public const string LimitSpan = "strict-v2";
+        public const long MaxBatches = 2551;
+        public const string MinBatches = "cached-edge";
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double WindowFactor = 27.02;
