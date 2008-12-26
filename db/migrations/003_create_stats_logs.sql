@@ -2,14 +2,12 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     owner TEXT NOT NULL,
-    count INTEGER NOT NULL DEFAULT 0,
+    state TEXT NOT NULL DEFAULT 'new',
+    created_at TIMESTAMP,
     token TEXT,
-    label TEXT,
-    region TEXT
+    level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_region ON stats_logs (region);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_owner ON stats_logs (owner);
 
-INSERT INTO stats_logs (owner, count, token, label, region) VALUES ('cached', 79, 'eu-west', 'local', 'open');
-INSERT INTO stats_logs (owner, count, token, label, region) VALUES ('eu-west', 5, 'eu-west', 'open', 'eu-west');
-INSERT INTO stats_logs (owner, count, token, label, region) VALUES ('eu-west', 66, 'cached', 'strict', 'latest');
+INSERT INTO stats_logs (owner, state, token, level) VALUES ('cached', 'blue', 'staging', 47);
