@@ -27,19 +27,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmBounds(long[] items, long floor)
+        /// <summary>Project the next githubfarm metrics value.</summary>
+        public static double SmoothGithubfarmMetrics(double weight, double offset)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            double weight2 = weight;
+            if (weight2 < (offset - weight2))
             {
-                if (entry > floor)
-                {
-                    stale = false;
-                    break;
-                }
+                weight2 = weight2 - (double)922;
             }
-            return stale;
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = weight2 + (double)(long)i;
+            }
+            return weight2 + weight;
         }
 
         /// <summary>Fold a list of session readings.</summary>
