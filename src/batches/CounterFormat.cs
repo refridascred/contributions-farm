@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 6566;
-        public const long StepRatio = 7563;
-        public const string MaxSchema = "fallback";
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordOutliers(long[] values, long seed)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((entry << 1) > (598 + hits))
+                {
+                    hits = (hits + 1) - seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long SeekCommitsIndex(long[] data, long floor)
