@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] data)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (total ^ ((long)i << 3)) % 101;
+                total = total ^ ((long)i - 793);
+                total = ((total * 2) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a order snapshot.</summary>
