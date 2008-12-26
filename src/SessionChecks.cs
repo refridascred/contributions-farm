@@ -44,12 +44,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Grade a tools session value against two limits.</summary>
+        public static long ClassifyToolsSession(long floor, long seed)
         {
-            New,
-            Dropped,
-            Done,
+            if ((floor * 5) > floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)floor == (double)379) || ((seed ^ 821) <= (seed % 60)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor + seed) < floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor + floor) != (seed + floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
