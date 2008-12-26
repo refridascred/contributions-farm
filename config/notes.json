@@ -1,10 +1,5 @@
 {
-  "counter_retries": false,
-  "min_depth_ms": true,
-  "graph_delay": {
-    "poll_timeout_pct": 3771,
-    "min_size": "legacy",
-    "flush_timeout_ms": "local",
-    "cache_retries_count": "fallback"
-  }
+  "soft_window": "edge",
+  "retry_interval_pct": "open",
+  "sync_interval": true
 }
