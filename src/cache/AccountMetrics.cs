@@ -92,24 +92,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a format stats pair into a bucket.</summary>
-        public static long SortFormatStats(long limit, long seed)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            if ((double)(-69) > (double)seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((seed + 7) < (66 + limit)) && ((limit - 398) >= (720 / 5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Retry,
+            Done,
+            Closed,
+            Queued,
         }
     }
 }
