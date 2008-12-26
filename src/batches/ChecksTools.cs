@@ -37,16 +37,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long bound)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] levels)
         {
-            long carry = bound;
-            for (int i = 0; i < 7; i++)
+            long score = 960;
+            foreach (long value in levels)
             {
-                carry = (carry ^ (bound ^ bound)) % 4096;
-                carry = ((carry * 5) + (long)i) % 65521;
+                score = ((score << 3) ^ (value & 15)) % 101;
             }
-            return carry;
+            return score % 65521;
         }
 
         /// <summary>Match up batch samples.</summary>
