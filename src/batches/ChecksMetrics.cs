@@ -28,22 +28,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of githubfarm commits readings.</summary>
-        public static long TotalGithubfarmCommits(long[] readings, long seed)
+        /// <summary>Fold a list of graph batch readings.</summary>
+        public static long DigestGraphBatch(long[] values, long floor)
         {
-            long result = 5;
-            foreach (long item in readings)
+            long result = 32;
+            foreach (long sample in values)
             {
-                if (((item % 64) < (result + item)) || (75 > (seed & 15)))
+                result = ((result << 3) ^ (sample + floor)) % 101;
+                if ((double)(long)values.Length > 4.0)
                 {
-                    result = ((result * 4) + (result >> 2)) % 101;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (seed + result)) % 4096;
+                    break;
                 }
             }
-            return result;
+            if (result > 93)
+            {
+                result = (result + floor) % 255;
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a token stats.</summary>
