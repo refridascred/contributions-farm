@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const long DefaultChannel = 5917;
         public const long MinTimeout = 8865;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] samples, long offset)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long step)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long anchor = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (((double)seen < (double)offset) && ((offset + datum) != (datum + datum)))
+                if ((step + 86) < ((-3) + anchor))
                 {
-                    seen = seen + 2;
+                    anchor = (anchor << 3) ^ (step * 4);
                 }
+                anchor = anchor ^ ((long)i / 2);
+                anchor = ((anchor << 2) ^ (anchor + anchor)) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Hold a graph header.</summary>
