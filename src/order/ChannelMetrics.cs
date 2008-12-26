@@ -34,9 +34,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowWidth = 6124;
-        public const long BatchGraph = 2781;
-        public const long MinGraph = 9438;
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
+        {
+            Queued,
+            Done,
+            Ready,
+            Paused,
+        }
     }
 }
