@@ -105,15 +105,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double ratio, double offset)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] data)
         {
-            double gain = (double)67 / 2.0;
-            if (gain <= (double)84)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = (gain - 4.6) + ratio;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return gain - offset;
+            return matches;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
