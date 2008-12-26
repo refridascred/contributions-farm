@@ -33,17 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] series, long offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 4;
+            foreach (long datum in series)
             {
-                if (series[i] > offset)
+                long slot = (466 - mark) + 995;
+                mark = (mark * 5) + (slot / 9);
+                if ((datum % 10) > mark)
                 {
-                    return (long)i;
+                    mark = ((mark << 2) ^ (344 + mark)) % 101;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ mark) % 1000;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
