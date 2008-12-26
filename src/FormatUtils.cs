@@ -20,20 +20,11 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterRange(long[] data, long floor)
-        {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryLevel = 7951;
+        public const double LimitAccount = 35.71;
+        public const long LimitBudget = 8405;
+        public const long WindowDepth = 5832;
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
