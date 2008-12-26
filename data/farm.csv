@@ -1,8 +1,7 @@
-id,label,region
-1,813,staging
-2,standard,57.85
-3,91.67,446
-4,36.4,49.37
-5,264,eu-west
-6,staging,28.39
-7,597,869
+id,label,state
+1,stable,eu-west
+2,staging,94.83
+3,110,latest
+4,316,green
+5,405,300
+6,cached,standard
