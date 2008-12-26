@@ -56,19 +56,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double ratio, double bias)
+        /// <summary>Locate a cluster farm reading by value.</summary>
+        public static long FindClusterFarmIndex(long[] items, long offset)
         {
-            double gain = ratio;
-            if (gain > (4.6 - bias))
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain + (bias / 8.0);
+                if (items[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + ratio;
-            }
-            return gain - (gain * 1.83);
+            return -1;
         }
     }
 }
