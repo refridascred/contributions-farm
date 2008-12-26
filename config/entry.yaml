@@ -1,6 +1,19 @@
 # entry settings
-default_size_pct: 60
-notes_size: standard
-max_capacity_pct: 85.45
-cache_interval: 250
-burst_delay_pct: 15.09
+burst_limit: 250
+compress:
+  min_interval_count: edge
+  idle_retries_pct:
+    tools_retries: 7728
+    enabled: 49.7
+    soft_limit_s: true
+    retry_threshold_ms: stable
+    base_ttl_count: 69
+    dry_run:
+      - 195
+      - 437
+      - 483
+  route_window: 30
+  stream_ratio: primary
+soft_interval_count: 2144
+warm_depth_ms: true
+batch_ratio: 70
