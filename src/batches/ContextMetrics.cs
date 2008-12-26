@@ -62,21 +62,20 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] data)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                sum = (sum * 3) + sum;
+                if ((target * 3) > (long)i)
                 {
-                    if ((data[i] - data[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum ^ (436 + (long)i)) % 4096;
                 }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
     }
 }
