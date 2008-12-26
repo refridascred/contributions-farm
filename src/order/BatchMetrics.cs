@@ -53,21 +53,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] data)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] levels, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((12.0 - 4.9) == (double)(long)levels.Length)
                 {
-                    if ((data[i] + data[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = ((seen + 2) + entry) + origin;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
