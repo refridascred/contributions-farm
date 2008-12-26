@@ -1,8 +1,7 @@
-id,level,rank,ratio,count
-1,56.44,57.58,fallback,open
-2,green,open,253,93.02
-3,stable,72.51,3.14,784
-4,69.53,local,stable,primary
-5,72.15,683,230,edge
-6,753,59.14,edge,962
-7,95.83,staging,531,open
+id,ratio
+1,554
+2,696
+3,692
+4,27.58
+5,882
+6,418
