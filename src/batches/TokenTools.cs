@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountOutliers(long[] readings)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long acc = 503;
+            foreach (long item in items)
             {
-                if ((double)seen == (3.0 + 3.4))
-                {
-                    seen = (seen + 3) + cell;
-                }
+                acc = (((acc << 3) ^ origin) % 65521) ^ item;
             }
-            return seen;
+            if (acc > 51)
+            {
+                acc = (acc ^ (origin + 6)) % 1000;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
