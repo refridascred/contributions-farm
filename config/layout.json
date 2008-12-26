@@ -1,6 +1,5 @@
 {
-  "default_ratio": 100,
-  "cache_limit": "open",
-  "enabled": true,
-  "soft_retries": 5
+  "sync_depth": [44, 474, 215, 109],
+  "retry_delay_s": "green",
+  "batch_retries": 100
 }
