@@ -56,17 +56,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cluster farm reading by value.</summary>
-        public static long FindClusterFarmIndex(long[] items, long offset)
+        /// <summary>Rank batch support input into a small class.</summary>
+        public static long BucketBatchSupport(long seed, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((bound & 31) == (seed + bound)) && ((5.5 - 0.3) >= (double)bound))
             {
-                if (items[i] <= offset)
+                return 2;
+            }
+            else
+            {
+                if (((1.4 * 0.13) == (double)seed) || ((bound >> 1) > (seed ^ bound)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (!((4.2 / 2.0) <= (double)bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((2.87 * 7.06) <= (double)bound)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
