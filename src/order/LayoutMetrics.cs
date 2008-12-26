@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long offset)
         {
-            public bool Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mark = (mark - ((long)i >> 4)) ^ (long)i2;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Project the next session value.</summary>
