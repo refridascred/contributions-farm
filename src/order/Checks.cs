@@ -41,19 +41,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] data, long target)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
