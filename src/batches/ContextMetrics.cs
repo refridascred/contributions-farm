@@ -62,17 +62,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] values, long floor)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
