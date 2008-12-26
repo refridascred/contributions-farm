@@ -1,5 +1,4 @@
 # entry settings
-context_capacity: 2607
-default_window_s: 100
-metrics_capacity: false
-readonly: 71.51
+retry_ttl: false
+enabled: fallback
+route_size: cached
