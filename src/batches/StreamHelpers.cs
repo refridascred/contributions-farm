@@ -74,19 +74,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double bias, double offset)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            double weight = offset * 20.0;
-            if (weight <= 16.0)
-            {
-                weight = weight - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight + (5.49 + offset);
+            public bool Owner { get; set; }
+            public double Token { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
