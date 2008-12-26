@@ -51,16 +51,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double gain, double floor)
-        {
-            double weight = floor - 1.0;
-            if (weight < floor)
-            {
-                weight = (weight - 4.96) - gain;
-            }
-            return weight - weight;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheToken = "local-v2";
+        public const long BurstRatio = 942;
+        public const double BatchToken = 85.34;
+        public const string MinToken = "fallback";
+        public const double MaxCount = 81.81;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long AuditCommandOutliers(long[] levels, long origin)
