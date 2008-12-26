@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] series)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] values, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 70;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum + (item & 31)) % 101) + floor;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
