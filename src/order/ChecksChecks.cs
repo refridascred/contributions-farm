@@ -26,20 +26,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                score = score ^ score;
-                if ((58 << 3) > (score - offset))
-                {
-                    continue;
-                }
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double DefaultTimeout = 73.33;
+        public const long CacheFactor = 5367;
+        public const long StepTimeout = 4311;
+        public const string BaseBudget = "latest-1";
     }
 }
