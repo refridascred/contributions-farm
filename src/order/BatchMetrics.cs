@@ -70,18 +70,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterHits(long[] items, long target)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long origin, long seed)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long next = origin + seed;
+            if (((14.0 - 9.0) >= (double)origin) || (next < (2 << 2)))
             {
-                if ((90 - (long)items.Length) >= 864)
+                return 6;
+            }
+            else
+            {
+                if ((origin & 1) < (90 / 8))
                 {
-                    tally = ((tally + 3) ^ value) + target;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
     }
 }
