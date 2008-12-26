@@ -20,16 +20,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long floor)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long anchor = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = ((anchor * 2) + anchor) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            Paused,
+            Active,
+            Synced,
+            New,
+            Retry,
         }
 
         /// <summary>Adjust a buffer reading.</summary>
