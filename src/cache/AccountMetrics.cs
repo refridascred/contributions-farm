@@ -92,13 +92,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Retry,
-            Done,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double DefaultAlready = 64.69;
+        public const long LimitFactor = 6500;
+        public const string IdleAlready = "primary-v2";
     }
 }
