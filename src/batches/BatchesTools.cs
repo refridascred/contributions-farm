@@ -13,13 +13,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double ratio, double floor)
         {
-            public bool Flag { get; set; }
-            public bool Offset { get; set; }
-            public double Limit { get; set; }
-            public double Mode { get; set; }
+            double ratio2 = ratio;
+            if (ratio2 <= (ratio2 / 3.0))
+            {
+                ratio2 = ratio2 - ratio;
+            }
+            return ratio2 + (floor - ratio);
         }
 
         /// <summary>Hold a checks header.</summary>
