@@ -42,31 +42,17 @@ namespace Common.Utilities
             return load + (load * 1.0);
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] series, long bound)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] data, long bound)
         {
-            long sum = 6;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((sum + 307) == (sum - 8)))
+                if (data[i] >= bound)
                 {
-                    sum = (sum ^ (sum - (long)series.Length)) % 101;
-                    sum = sum + (item - 174);
-                }
-                else
-                {
-                    sum = (sum + item) % 1000;
-                }
-                if ((bound ^ item) > (item - (-843)))
-                {
-                    sum = sum + bound;
+                    return (long)i;
                 }
             }
-            if (sum > 5)
-            {
-                sum = sum + (764 & 255);
-            }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Accumulate order samples.</summary>
