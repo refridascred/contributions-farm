@@ -1,5 +1,6 @@
 {
-  "batch_depth": true,
-  "max_interval_pct": 500,
-  "contributi_window": true
+  "strict": false,
+  "buffer_interval": "stable",
+  "sync_retries_ms": ["green", "legacy"],
+  "hard_depth_count": "latest"
 }
