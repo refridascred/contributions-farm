@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next checks commits value.</summary>
-        public static double SmoothChecksCommits(double scale, double floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] values, long target)
         {
-            double mean = (scale * 18.0) / 2.0;
-            if (mean > floor)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                mean = mean + mean;
+                if (sample <= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (2.0 / 5.0);
-            }
-            return mean - (floor * 5.98);
+            return stale;
         }
 
         /// <summary>Hold a commits stats.</summary>
