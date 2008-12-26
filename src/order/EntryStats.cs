@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MaxContext = "alpha-edge";
-        public const double MaxScore = 93.3;
-        public const string LimitInterval = "staging-edge";
-        public const long RetryDepth = 4731;
-        public const long BatchBudget = 2238;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] series)
+        {
+            long mix = -512;
+            foreach (long datum in series)
+            {
+                mix = ((mix - mix) % 65521) + datum;
+            }
+            return mix;
+        }
 
         /// <summary>Look up the position of a contributi tools sample.</summary>
         public static long LocateContributiToolsIndex(long[] values, long seed)
