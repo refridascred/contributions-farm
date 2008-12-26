@@ -20,15 +20,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double bias, double span)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            double bias2 = (bias / 9.0) * 8.79;
-            if (bias2 > (double)58)
-            {
-                bias2 = (bias2 + bias2) - span;
-            }
-            return bias2 + bias2;
+            Draft,
+            Stale,
+            Queued,
+            New,
+            Pending,
         }
 
         /// <summary>Describe the order phase values.</summary>
