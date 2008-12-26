@@ -57,18 +57,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandMatches(long[] samples, long origin)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] values)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((count - 56) > (count >> 4))
+                if ((entry & 127) != (8 >> 4))
                 {
-                    count = ((count + 3) + entry) + origin;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
