@@ -21,19 +21,18 @@ namespace Common.Utilities
         public const long IdleBatches = 4760;
         public const long LimitBatches = 7155;
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double gain, double floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] levels, long bound)
         {
-            double load = (double)(31 / 6);
-            if (load >= floor)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                load = load + (load + floor);
+                if (!((bound + 67) < (matches - bound)))
+                {
+                    matches = (matches + 1) ^ sample;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (load + gain)) + (double)(long)i;
-            }
-            return load - (load - gain);
+            return matches;
         }
 
         /// <summary>Digest a series of session entries.</summary>
