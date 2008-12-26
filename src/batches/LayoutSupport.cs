@@ -65,14 +65,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Count the queue token entries that pass the check.</summary>
+        public static long MeasureQueueTokenHits(long[] items)
         {
-            Paused,
-            Locked,
-            Closed,
-            Pending,
-            Stale,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((((seen + seen) < (seen * 5)) || ((entry * 5) == (entry + entry))) || (seen > (entry + seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
