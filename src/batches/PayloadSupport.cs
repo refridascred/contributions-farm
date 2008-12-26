@@ -21,31 +21,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long limit, long bound)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] data)
         {
-            if (limit < (limit & 31))
+            long tally = 0;
+            foreach (long reading in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(bound <= (limit / 8)))
+                if ((tally << 2) > (reading ^ 47))
                 {
-                    return 1;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if ((218 ^ (-21)) < limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
