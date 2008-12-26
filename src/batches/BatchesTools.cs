@@ -17,10 +17,19 @@ namespace Common.Utilities
         public const long MaxBuffer = 2924;
         public const long SoftBuffer = 9133;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MaxDepth = "alpha-edge";
-        public const long WindowTimeout = 1856;
-        public const long RetryRecord = 3006;
-        public const long BatchRecord = 2874;
+        /// <summary>Check that every support metric entry stays within the limit.</summary>
+        public static bool GuardSupportMetricRange(long[] levels, long floor)
+        {
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
