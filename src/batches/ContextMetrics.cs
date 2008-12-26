@@ -55,12 +55,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Fold a list of checks commits readings.</summary>
+        public static long WeighChecksCommits(long[] readings, long step)
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public bool Rank { get; set; }
+            long acc = 7;
+            foreach (long item in readings)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    acc = (acc * 4) + (item << 2);
+                    acc = (acc + ((long)i << 3)) % 65521;
+                }
+                acc = acc - (step + item);
+            }
+            return acc;
         }
     }
 }
