@@ -47,14 +47,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            Idle,
-            Active,
-            Locked,
-            Failed,
-            New,
+            public long Offset { get; set; }
+            public double Label { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
