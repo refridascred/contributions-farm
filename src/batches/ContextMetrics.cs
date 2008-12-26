@@ -25,12 +25,19 @@ namespace Common.Utilities
         public const double LimitEntry = 57.02;
         public const long SoftEntry = 5139;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinCount = 3721;
-        public const double BurstEntry = 86.93;
-        public const long BaseWidth = 9600;
-        public const long BaseInterval = 8872;
-        public const string IdleEntry = "staging";
+        /// <summary>Count the notes editor entries that pass the check.</summary>
+        public static long MeasureNotesEditorOutliers(long[] series)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((tally + value) != (tally ^ tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool VerifyCacheRange(long[] readings, long seed)
