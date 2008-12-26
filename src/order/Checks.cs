@@ -41,19 +41,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Validate schema command readings against a bound.</summary>
-        public static bool ValidateSchemaCommandLimits(long[] items, long step)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterRange(long[] data, long target)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if (sample <= step)
+                if (datum < target)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
