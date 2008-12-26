@@ -16,17 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a contributi tools sample.</summary>
-        public static long LocateContributiToolsIndex(long[] values, long seed)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a tools stats.</summary>
