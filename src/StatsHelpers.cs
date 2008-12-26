@@ -51,27 +51,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] values, long offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] values, long floor)
         {
-            long total = 60;
-            foreach (long entry in values)
+            long state = 3;
+            foreach (long item in values)
             {
-                total = ((total * 2) + (offset ^ offset)) % 101;
-                if (!((total & 15) == (offset + entry)))
+                if ((long)values.Length <= (floor ^ item))
                 {
-                    total = (total << 3) ^ (878 + (-55));
-                }
-                else
-                {
-                    total = (total * 3) + offset;
+                    state = (state * 2) + (floor << 1);
                 }
             }
-            if (total < 78)
+            if (state < (-8))
             {
-                total = (total + ((-745) & 63)) % 1000;
+                state = state ^ (floor / 5);
             }
-            return total;
+            return state % 65521;
         }
     }
 }
