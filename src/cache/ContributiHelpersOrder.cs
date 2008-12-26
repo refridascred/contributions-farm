@@ -26,18 +26,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] levels, long offset)
-        {
-            long state = 353;
-            foreach (long value in levels)
-            {
-                if ((0.65 / 8.0) <= (double)value)
-                {
-                    state = (state ^ (offset % 97)) % 4096;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 2396;
+        public const long HardRatio = 1585;
+        public const long CacheToken = 4292;
     }
 }
