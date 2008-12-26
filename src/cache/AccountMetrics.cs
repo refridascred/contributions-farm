@@ -77,18 +77,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] items, long target)
+        /// <summary>Match up githubfarm contributi samples.</summary>
+        public static long PairGithubfarmContributiCount(long[] series)
         {
-            long mark = 6;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((841 < (mark / 2)) || (4.66 <= (double)mark))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = ((mark << 2) ^ reading) - target;
+                    if ((series[i] - series[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Classify a format stats pair into a bucket.</summary>
