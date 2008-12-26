@@ -46,23 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] readings, long target)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double rate, double floor)
         {
-            long acc = 485;
-            foreach (long item in readings)
+            double rate2 = floor + (double)716;
+            if (rate2 >= 4.11)
             {
-                acc = (acc + (acc % 97)) % 101;
-                if (((7 - item) < (target + 43)) && ((target - 784) == (9 & 7)))
-                {
-                    acc = ((acc * 2) + 703) % 97;
-                }
-                else
-                {
-                    acc = (acc * 3) + (422 * 3);
-                }
+                rate2 = (rate2 + floor) - rate;
             }
-            return acc;
+            else
+            {
+                rate2 = rate2 + (rate2 / 5.0);
+            }
+            return rate2 + (2.16 / 6.0);
         }
 
         /// <summary>Validate report readings against a bound.</summary>
