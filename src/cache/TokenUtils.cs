@@ -42,19 +42,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batch order entry stays within the limit.</summary>
-        public static bool GuardBatchOrderLimits(long[] readings, long origin)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long bound)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long result = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (value != origin)
+                long next = (bound - result) / 3;
+                if (((225 % 5) < (result + (long)i)) && ((next & 31) > bound))
                 {
-                    valid = false;
-                    break;
+                    next = (next + ((long)i - 15)) % 4096;
                 }
+                else
+                {
+                    result = (result ^ (result * 5)) % 101;
+                    next = (next + ((long)i ^ (long)i)) % 4096;
+                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return valid;
+            return result;
         }
     }
 }
