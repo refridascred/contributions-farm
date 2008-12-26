@@ -14,12 +14,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 5042;
-        public const long StepSize = 6400;
-        public const long LimitSpan = 4105;
-        public const long MaxTools = 4534;
-        public const double WindowTools = 78.33;
+        /// <summary>Look up the position of a metric contributi sample.</summary>
+        public static long FindMetricContributiIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a contributi batch pair into a bucket.</summary>
         public static long RankContributiBatch(long limit, long step)
