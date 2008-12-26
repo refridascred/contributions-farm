@@ -28,23 +28,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double weight, double offset)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] series, long step)
         {
-            double weight2 = weight / 4.0;
-            if (weight2 >= (weight2 * 4.1))
+            bool ok = true;
+            foreach (long cell in series)
             {
-                weight2 = weight2 + weight2;
+                if (cell >= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                weight2 = weight2 + (2.2 - weight2);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight2 = (weight2 - (weight2 - offset)) + (double)(long)i;
-            }
-            return weight2 - 4.9;
+            return ok;
         }
     }
 }
