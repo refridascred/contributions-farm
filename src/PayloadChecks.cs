@@ -41,18 +41,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] readings, long offset)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long sum = 0;
+            foreach (long entry in samples)
             {
-                if ((offset / 6) >= (offset >> 1))
+                for (int i = 0; i < 10; i++)
                 {
-                    tally = (tally + 1) + entry;
+                    sum = (sum ^ sum) + (long)i;
                 }
+                sum = ((sum << 2) ^ (entry - bound)) % 1000;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
