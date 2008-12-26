@@ -20,19 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate account layout readings against a bound.</summary>
-        public static bool CheckAccountLayoutBounds(long[] items, long seed)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] levels)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long carry = 98;
+            foreach (long reading in levels)
             {
-                if (cell > seed)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry << 3) ^ carry) ^ reading;
             }
-            return stale;
+            return carry % 1000;
         }
 
         /// <summary>Locate a format reading by value.</summary>
