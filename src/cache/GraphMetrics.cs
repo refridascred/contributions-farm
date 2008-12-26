@@ -14,19 +14,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate entry report samples.</summary>
-        public static long DigestEntryReport(long[] series)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long score = -55;
-            foreach (long entry in series)
-            {
-                score = score ^ entry;
-                if ((double)score <= (double)173)
-                {
-                    score = ((score * 3) + (score - score)) % 4096;
-                }
-            }
-            return score;
+            public string Size { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Total { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
