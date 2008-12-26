@@ -1,5 +1,5 @@
 {
-  "graph_depth": false,
-  "hard_interval_s": 60,
-  "warm_retries": 51.21
+  "default_interval_s": ["green", "green"],
+  "default_ratio": "green",
+  "base_interval": false
 }
