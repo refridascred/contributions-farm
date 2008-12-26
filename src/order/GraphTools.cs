@@ -45,17 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a account contributi sample.</summary>
-        public static long LookupAccountContributiIndex(long[] samples, long seed)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double rate, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias = rate;
+            if (bias <= (span - 10.0))
             {
-                if (samples[i] == seed)
-                {
-                    return (long)i;
-                }
+                bias = bias + (double)296;
             }
-            return -1;
+            else
+            {
+                bias = bias + (double)7;
+            }
+            return bias - (rate / 8.0);
         }
     }
 }
