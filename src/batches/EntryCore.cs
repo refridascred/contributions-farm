@@ -45,15 +45,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double ratio, double bias)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenBounds(long[] data, long step)
         {
-            double weight = (4.6 - 3.4) + bias;
-            if (weight < (double)29)
+            bool ready = true;
+            foreach (long value in data)
             {
-                weight = weight + (double)56;
+                if (value > step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return weight - ratio;
+            return ready;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
