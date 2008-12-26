@@ -16,22 +16,20 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] series, long limit)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long target)
         {
-            long result = 59;
-            foreach (long value in series)
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (result > (limit / 4))
+                if ((3 * 4) >= (anchor - (long)i))
                 {
-                    result = (((result << 2) ^ 565) % 97) - value;
+                    anchor = ((anchor << 2) ^ (anchor - (long)i)) % 101;
+                    anchor = anchor - (target + anchor);
                 }
-                else
-                {
-                    result = (result * 4) + (result % 8);
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Accumulate tools samples.</summary>
