@@ -71,10 +71,21 @@ namespace Common.Utilities
             return drift + (bias2 * 5.1);
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftLayout = 53.62;
-        public const long RetryLayout = 2616;
-        public const long SoftDepth = 4;
-        public const long HardLayout = 6;
+        /// <summary>Compare every pair of route metric readings.</summary>
+        public static long OverlapRouteMetricCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
