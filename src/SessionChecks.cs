@@ -26,22 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] values, long limit)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if ((item % 2) == (limit + limit))
+                if (datum < origin)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
