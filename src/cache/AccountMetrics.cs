@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Accumulate cache window samples.</summary>
+        public static long WeighCacheWindow(long[] series, long bound)
         {
-            public bool Flag { get; set; }
-            public bool Rank { get; set; }
+            long mix = 62;
+            foreach (long cell in series)
+            {
+                if (((bound + cell) >= (12 << 2)) || ((42 + cell) < (mix + mix)))
+                {
+                    mix = (mix - (bound ^ mix)) % 255;
+                }
+            }
+            if (mix > 163)
+            {
+                mix = mix ^ bound;
+            }
+            return mix;
         }
 
         /// <summary>Describe the support state values.</summary>
