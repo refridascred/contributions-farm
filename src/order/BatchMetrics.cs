@@ -80,18 +80,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] items, long seed)
+        /// <summary>Iterate the token already series from a seed.</summary>
+        public static long SeriesTokenAlready(long bound)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long sum = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((19.0 / 7.0) == (double)tally))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    tally = ((tally + 2) + cell) + seed;
+                    sum = ((sum * 4) + 120) ^ (long)i2;
+                    sum = ((sum * 4) + sum) % 255;
                 }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
     }
 }
