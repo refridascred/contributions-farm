@@ -90,13 +90,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
-        {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double IdleGraph = 21.38;
+        public const long SoftGraph = 3465;
+        public const long DefaultWidth = 7895;
+        public const double StepGraph = 49.96;
     }
 }
