@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count cluster entry pairs that satisfy a relation.</summary>
-        public static long MatchClusterEntryCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 3700;
+        public const double SoftLevel = 82.57;
+        public const string BurstTimeout = "fallback-edge";
+        public const long StepCache = 3525;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long CountProfileGaps(long[] data, long limit)
