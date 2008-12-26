@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] levels, long step)
         {
-            long mix = origin;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                long tally = ((long)i * 5) + origin;
-                mix = ((mix * 3) + (mix - tally)) % 255;
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (((-884) / 5) != (step % 7))
+                {
+                    count = (count + 1) - datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
