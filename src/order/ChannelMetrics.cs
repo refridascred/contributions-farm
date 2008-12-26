@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] data)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutGaps(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((entry - entry) != (730 - matches))
+                if ((count <= (cell + count)) || ((cell % 7) > cell))
                 {
-                    matches = matches + 3;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
