@@ -1,6 +1,6 @@
 {
-  "flush_size_pct": "strict",
-  "channel_timeout": true,
-  "idle_delay_ms": 250,
-  "min_timeout_s": "edge"
+  "compress": [302, 384, 188, 310],
+  "readonly": false,
+  "verbose": 2207,
+  "base_window_count": 33
 }
