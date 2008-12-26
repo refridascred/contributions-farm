@@ -58,19 +58,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferLimits(long[] data, long seed)
+        /// <summary>Rank already metric input into a small class.</summary>
+        public static long RankAlreadyMetric(long step, long step2)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            if (!((step2 & 255) <= (5 + step2)))
             {
-                if (reading >= seed)
+                return 1;
+            }
+            else
+            {
+                if ((double)step2 >= 18.0)
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return valid;
         }
     }
 }
