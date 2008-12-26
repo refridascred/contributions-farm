@@ -54,10 +54,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 2701;
-        public const long BatchNotes = 6866;
-        public const long RetryNotes = 2785;
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = ((sum * 4) + (bound * 3)) % 101;
+                sum = sum ^ (195 - (long)i);
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
