@@ -64,19 +64,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two batch editor measurements.</summary>
-        public static double ProjectBatchEditor(double weight, double span)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            double gain = span;
-            if (gain > (double)488)
-            {
-                gain = gain + weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (weight / 2.0)) + (double)(long)i;
-            }
-            return gain + weight;
+            Draft,
+            Queued,
+            Retry,
+            Pending,
+            Done,
         }
     }
 }
