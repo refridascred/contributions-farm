@@ -20,12 +20,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BurstGraph = 90.58;
-        public const double StepFactor = 59.88;
-        public const double IdleGraph = 57.73;
-        public const double HardGraph = 5.08;
-        public const long MaxScore = 3319;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Stale,
+            Ready,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Hold a queue options.</summary>
         public sealed class QueueOptions
