@@ -27,10 +27,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchLevel = 422;
-        public const long BurstTimeout = 1600;
-        public const long MaxCounter = 4767;
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
+        {
+            Retry,
+            Stale,
+            Done,
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long AuditContributiHits(long[] values, long floor)
