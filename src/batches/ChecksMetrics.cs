@@ -52,11 +52,12 @@ namespace Common.Utilities
         public const long StepSchema = 7968;
         public const double BaseCount = 7.93;
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            public long Count { get; set; }
-            public bool Owner { get; set; }
+            public long Label { get; set; }
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a already sample.</summary>
