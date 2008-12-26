@@ -41,39 +41,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long target, long bound)
-        {
-            long slot = target + bound;
-            if ((slot - slot) != (slot + target))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target >> 3) > 56)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((target + 75) <= (bound << 3)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)bound == (3.11 + 2.0)) || ((slot + bound) > (3 - target)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MaxFilter = 80.42;
+        public const double DefaultRatio = 68.51;
+        public const string CacheFilter = "standard-1";
+        public const double RetryFilter = 14.04;
+        public const long MinFilter = 8491;
     }
 }
