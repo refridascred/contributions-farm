@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinFactor = 24.55;
+        public const long CacheInterval = 1544;
+        public const long MinInterval = 9037;
+        public const long SoftRatio = 3560;
+        public const long IdleChannel = 7976;
 
         /// <summary>Scale a editor figure with a bias.</summary>
         public static double SmoothEditor(double ratio, double offset)
