@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatHits(long[] levels)
         {
-            long total = floor;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (0.7 > (double)(long)i)
+                if ((reading ^ reading) != (reading << 2))
                 {
-                    total = total - (total ^ floor);
+                    count = count + 1;
                 }
-                total = ((total * 4) + (long)i) % 97;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the contributi state values.</summary>
