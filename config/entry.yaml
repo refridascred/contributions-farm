@@ -1,4 +1,14 @@
 # entry settings
-hard_interval: 59.52
-min_threshold: 43.16
-poll_window_s: 4830
+soft_delay:
+  account_ttl: 35
+  verbose: false
+  commits_capacity:
+    - green
+    - eu-west
+    - strict
+    - green
+  poll_window: 48
+poll_interval_s: 66
+hard_depth_count: false
+counter_window: 9823
+poll_window: primary
