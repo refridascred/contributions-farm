@@ -13,24 +13,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long offset, long target)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] levels)
         {
-            if ((double)target >= (1.73 / 2.0))
+            long total = -8;
+            foreach (long datum in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset - (-4)) <= (target << 3))
+                total = total - (datum + datum);
+                total = (total - (total + total)) % 4096;
+                if (total >= (total + datum))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    total = ((total * 4) + ((long)levels.Length & 31)) % 4096;
                 }
             }
+            return total;
         }
 
         /// <summary>Define command limits and defaults.</summary>
