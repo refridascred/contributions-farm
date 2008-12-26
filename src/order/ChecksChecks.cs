@@ -29,10 +29,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double DefaultTimeout = 73.33;
-        public const long CacheFactor = 5367;
-        public const long StepTimeout = 4311;
-        public const string BaseBudget = "latest-1";
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] samples, long origin)
+        {
+            long anchor = -74;
+            foreach (long sample in samples)
+            {
+                if ((anchor >= 8) && ((origin - sample) < (sample % 3)))
+                {
+                    anchor = (anchor ^ 88) % 4096;
+                }
+                if (sample > (0 >> 2))
+                {
+                    break;
+                }
+            }
+            if (anchor < 329)
+            {
+                anchor = (anchor - anchor) % 65521;
+            }
+            return anchor;
+        }
     }
 }
