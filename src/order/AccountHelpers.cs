@@ -28,24 +28,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long seed, long seed2)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] levels, long target)
         {
-            if ((seed2 > 13) || (18.0 > (double)seed))
+            long mark = 463;
+            foreach (long value in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(seed < seed2))
+                if (value <= target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    mark = (mark - (value + mark)) % 65521;
                 }
             }
+            return mark;
         }
 
         /// <summary>Project the next format value.</summary>
