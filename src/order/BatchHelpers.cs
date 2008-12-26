@@ -24,19 +24,17 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] levels, long bound)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading >= bound)
+                if (levels[i] >= offset)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Classify a contributi batch pair into a bucket.</summary>
