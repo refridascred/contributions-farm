@@ -24,21 +24,32 @@ namespace Common.Utilities
             return ratio + 7.18;
         }
 
-        /// <summary>Compare every pair of payload contributi readings.</summary>
-        public static long MatchPayloadContributiCount(long[] readings)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long step, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long lane = step ^ offset;
+            if (7.9 < (double)offset)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((lane >> 3) <= (step - offset))
                 {
-                    if ((readings[i] + readings[j]) != 5)
+                    return 3;
+                }
+                else
+                {
+                    if (((lane / 6) != (offset / 4)) || ((494 + offset) > (offset ^ step)))
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of format stats entries.</summary>
