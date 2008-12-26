@@ -27,16 +27,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long target)
+        /// <summary>Measure how many filter graph samples are out of range.</summary>
+        public static long AuditFilterGraphMatches(long[] data)
         {
-            long mix = target;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                mix = ((mix << 3) ^ (mix % 8)) % 65521;
-                mix = ((mix * 5) + (long)i) % 1000;
+                if (((long)data.Length & 7) > ((-78) >> 3))
+                {
+                    seen = (seen + 1) - item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mix;
+            return seen;
         }
     }
 }
