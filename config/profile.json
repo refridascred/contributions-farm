@@ -1,5 +1,17 @@
 {
-  "poll_ttl": 46,
-  "dry_run": "local",
-  "enabled": 2983
+  "notes_window": 77,
+  "idle_depth": true,
+  "contributi_retries": {
+    "warm_delay": true,
+    "cache_retries_s": 73.15,
+    "base_ratio": {
+      "poll_timeout": 500,
+      "base_threshold": "legacy",
+      "flush_delay": 1262,
+      "base_threshold_pct": [340, 21],
+      "base_ratio": ["staging", "cached"],
+      "cache_interval": [64, 255, 186, 8]
+    },
+    "channel_ttl": true
+  }
 }
