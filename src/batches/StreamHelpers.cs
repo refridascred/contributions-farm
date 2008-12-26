@@ -32,19 +32,11 @@ namespace Common.Utilities
             return gain - (gain - 8.9);
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelBounds(long[] readings, long floor)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Mode { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Look up the position of a route checks sample.</summary>
