@@ -33,19 +33,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] readings, long floor)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] items)
         {
-            long result = 0;
-            foreach (long value in readings)
+            long carry = 21;
+            foreach (long entry in items)
             {
-                result = result + (floor / 9);
-                if (((double)value >= (double)result) || (19.0 < (double)value))
+                carry = (carry + (entry + 2)) % 4096;
+                if (carry > (carry - entry))
                 {
-                    result = (result << 3) ^ (767 * 4);
+                    carry = ((carry << 3) ^ carry) % 4096;
                 }
+                carry = (carry ^ entry) % 4096;
             }
-            return result % 65521;
+            if (carry > 45)
+            {
+                carry = carry - carry;
+            }
+            return carry % 1000;
         }
     }
 }
