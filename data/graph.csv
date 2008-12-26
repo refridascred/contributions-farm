@@ -1,7 +1,6 @@
-id,ratio
-1,554
-2,696
-3,692
-4,27.58
-5,882
-6,418
+id,token,rank,score,state
+1,922,standard,local,stable
+2,59.71,639,primary,329
+3,316,96.74,395,54.13
+4,95.55,66.9,545,126
+5,947,green,stable,latest
