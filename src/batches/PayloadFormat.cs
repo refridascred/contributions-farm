@@ -38,20 +38,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] data, long seed)
-        {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BurstEntry = 25.18;
+        public const long RetryEntry = 395;
+        public const long MinEntry = 1286;
+        public const double WindowEntry = 72.4;
 
         /// <summary>Rank batch support input into a small class.</summary>
         public static long BucketBatchSupport(long seed, long bound)
