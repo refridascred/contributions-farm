@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordOutliers(long[] values, long seed)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long total = -455;
+            foreach (long reading in readings)
             {
-                if ((entry << 1) > (598 + hits))
+                if (((reading + 217) < floor) || ((total << 3) < (total - 784)))
                 {
-                    hits = (hits + 1) - seed;
+                    total = total + (0 >> 4);
+                }
+                else
+                {
+                    total = (total + (reading - (long)readings.Length)) % 101;
                 }
             }
-            return hits;
+            return total % 4096;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
