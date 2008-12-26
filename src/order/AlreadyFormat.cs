@@ -23,19 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double scale, double floor)
+        /// <summary>Validate profile filter readings against a bound.</summary>
+        public static bool CheckProfileFilterRange(long[] samples, long origin)
         {
-            double rate = (double)61 + floor;
-            if (rate >= (rate * 1.0))
+            bool ok = true;
+            foreach (long item in samples)
             {
-                rate = rate - (8.74 + scale);
+                if (item > origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + (rate + scale);
-            }
-            return rate + rate;
+            return ok;
         }
 
         /// <summary>Blend two cache measurements.</summary>
