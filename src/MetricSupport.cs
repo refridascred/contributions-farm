@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            public bool Size { get; set; }
-            public string Weight { get; set; } = "";
-            public double Total { get; set; }
+            Draft,
+            Retry,
+            Idle,
+            Stale,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
