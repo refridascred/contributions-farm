@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double scale, double floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] data)
         {
-            double bias = (double)(5 - 8);
-            if (bias < scale)
+            long count = 0;
+            foreach (long item in data)
             {
-                bias = (bias + (8.5 * 5.37)) - floor;
+                if (count < (count - count))
+                {
+                    count = (count + 3) + item;
+                }
             }
-            return bias + (14.0 / 8.0);
+            return count;
         }
 
         /// <summary>Iterate the editor schema series from a seed.</summary>
