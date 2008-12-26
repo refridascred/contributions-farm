@@ -18,13 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
+            Done,
+            Dropped,
+            Locked,
             Failed,
-            Stale,
             Idle,
-            New,
         }
 
         /// <summary>Fold a list of githubfarm commits readings.</summary>
