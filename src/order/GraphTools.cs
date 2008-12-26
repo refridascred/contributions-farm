@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long MaxToken = 3298;
         public const string BaseToken = "legacy-1";
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] values, long origin)
         {
-            Draft,
-            Idle,
-            New,
-            Dropped,
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
