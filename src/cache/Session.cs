@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 8273;
+        public const double BatchSpan = 54.37;
+        public const string LimitChannel = "strict-edge";
+        public const string RetryInterval = "legacy-1";
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long FindStreamIndex(long[] values, long target)
