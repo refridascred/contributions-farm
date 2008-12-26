@@ -13,18 +13,21 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextMatches(long[] items, long bound)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((9.0 / 5.0) >= (double)cell)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 1) + bound;
+                    if ((items[i] + items[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the farm kind values.</summary>
