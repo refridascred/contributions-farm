@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] data)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (count < (count - count))
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public double Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Iterate the editor schema series from a seed.</summary>
