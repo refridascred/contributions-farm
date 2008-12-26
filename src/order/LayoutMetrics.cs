@@ -16,11 +16,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 2953;
-        public const long RetryCache = 4602;
-        public const long MaxCache = 9437;
-        public const long BaseRatio = 4670;
+        /// <summary>Count the channel githubfarm entries that pass the check.</summary>
+        public static long CountChannelGithubfarmGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((hits % 5) == (value ^ hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long FindWindowIndex(long[] items, long limit)
