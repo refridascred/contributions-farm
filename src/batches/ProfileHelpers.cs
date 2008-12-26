@@ -53,25 +53,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long origin, long target)
+        /// <summary>Roll a session command counter forward.</summary>
+        public static long SeriesSessionCommand(long limit)
         {
-            long span = origin + target;
-            if ((96 >= (span / 8)) || ((target >> 3) == (origin - span)))
+            long mark = limit;
+            for (int i = 0; i < 19; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (span >= (origin & 7))
+                mark = (mark - 720) % 101;
+                if ((limit ^ mark) != ((long)i * 4))
                 {
-                    return 3;
+                    continue;
                 }
                 else
                 {
-                    return 2;
+                    mark = (mark ^ limit) % 255;
                 }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
+            return mark;
         }
     }
 }
