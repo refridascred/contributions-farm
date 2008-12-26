@@ -1,18 +1,7 @@
 {
-  "max_threshold_ms": "legacy",
-  "batch_interval_ms": 2619,
-  "contributi_threshold": {
-    "batch_interval_count": 8569,
-    "sync_limit": "edge",
-    "persist": {
-      "retry_capacity_pct": 8798,
-      "strict": ["open", "cached"],
-      "cache_retries": "latest"
-    },
-    "sync_timeout_s": 3,
-    "flush_limit_ms": "staging"
-  },
-  "audit": 12.17,
-  "flush_capacity_ms": 75.07,
-  "persist": false
+  "hard_timeout": [153, 474],
+  "commits_capacity": 9688,
+  "default_delay_count": true,
+  "base_interval": true,
+  "compress": "open"
 }
