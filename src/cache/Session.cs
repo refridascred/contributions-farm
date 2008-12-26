@@ -38,17 +38,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Locate a report entry reading by value.</summary>
-        public static long FindReportEntryIndex(long[] samples, long seed)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueOutliers(long[] readings, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((samples[i] == seed) && ((samples[i] % 5) != 0))
+                if (((seen + value) != (value >> 2)) || ((seen & 63) > (origin >> 5)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
