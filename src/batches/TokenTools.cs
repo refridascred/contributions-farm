@@ -20,17 +20,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] series, long seed)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 6;
+            foreach (long sample in samples)
             {
-                if (series[i] <= seed)
+                if (mark <= sample)
                 {
-                    return (long)i;
+                    mark = (mark ^ (57 + mark)) % 4096;
+                }
+                if ((1 < (mark - mark)) || ((target + target) <= 3))
+                {
+                    mark = ((mark * 3) + 53) % 101;
                 }
             }
-            return -1;
+            return mark % 1000;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
