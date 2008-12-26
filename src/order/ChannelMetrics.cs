@@ -15,12 +15,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] items, long offset)
         {
-            public long Size { get; set; }
-            public bool Owner { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= offset) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next window value.</summary>
