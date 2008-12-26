@@ -22,24 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] data, long origin)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] samples, long bound)
         {
-            long mark = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (!(8 >= (origin >> 1)))
+                if ((seen > bound) || (bound >= (seen - bound)))
                 {
-                    mark = ((mark << 2) ^ (820 / 2)) % 255;
-                    mark = (mark ^ (93 >> 2)) % 4096;
-                }
-                mark = (mark ^ mark) % 4096;
-                if ((origin & 3) != (mark - origin))
-                {
-                    mark = (mark * 3) + (item / 9);
+                    seen = (seen + 3) ^ reading;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
