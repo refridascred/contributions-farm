@@ -36,19 +36,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double weight, double floor)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            double rate = 6.9;
-            if (rate >= (floor / 8.0))
-            {
-                rate = rate + 7.0;
-            }
-            else
-            {
-                rate = rate + (8.7 / 9.0);
-            }
-            return rate - weight;
+            New,
+            Dropped,
+            Done,
         }
     }
 }
