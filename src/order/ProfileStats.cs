@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] data, long bound)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (!((bound & 1) <= (tally % 3)))
-                {
-                    tally = (tally + 3) - cell;
-                }
-            }
-            return tally;
+            Retry,
+            Stale,
+            Done,
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
