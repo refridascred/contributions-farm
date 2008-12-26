@@ -51,11 +51,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetrySize = 1906;
-        public const long DefaultTimeout = 749;
-        public const long HardTimeout = 9331;
-        public const double SoftBudget = 53.29;
-        public const long StepTools = 2927;
+        /// <summary>Roll a support route counter forward.</summary>
+        public static long IterateSupportRoute(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((long)i + acc) < (acc * 2))
+                {
+                    acc = ((acc * 3) + ((long)i - acc)) % 255;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
+        }
     }
 }
