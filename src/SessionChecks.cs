@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 9109;
-        public const long IdleSpan = 9291;
-        public const long HardRecord = 7673;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileLimits(long[] samples, long floor)
+        {
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long FoldReport(long[] samples, long offset)
