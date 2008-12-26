@@ -10,17 +10,11 @@ namespace Common.Utilities
         public const double WindowMetric = 39.73;
         public const string MinInterval = "staging-edge";
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] samples, long step)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a stats stats.</summary>
