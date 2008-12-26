@@ -25,23 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long target)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] levels)
         {
-            long sum = target;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((target ^ 6) < 125)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = ((sum << 2) ^ (57 + 52)) % 255;
+                    if ((levels[i] + levels[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    sum = (sum ^ (sum & 15)) % 1000;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Locate a report entry reading by value.</summary>
