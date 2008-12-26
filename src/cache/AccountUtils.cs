@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] series)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long MatchChecksCount(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample >> 4) <= (sample - sample))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] ^ values[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Accumulate counter order samples.</summary>
