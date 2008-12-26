@@ -37,15 +37,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double scale, double offset)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long step)
         {
-            double ratio = (offset - scale) - (scale / 7.0);
-            for (int i = 0; i < 4; i++)
+            long acc = step;
+            for (int i = 0; i < 14; i++)
             {
-                ratio = (ratio - 6.8) - (double)(long)i;
+                acc = acc ^ (acc + step);
+                if ((step < (step >> 5)) || ((0.5 - 1.2) != (double)step))
+                {
+                    acc = (acc - 8) % 97;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return ratio + ratio;
+            return acc;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
