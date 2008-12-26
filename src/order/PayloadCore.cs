@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] data, long bound)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long origin, long seed)
         {
-            long result = 850;
-            foreach (long sample in data)
+            if ((14.0 + 3.69) < (double)origin)
             {
-                if ((sample - 780) != (bound - bound))
+                return 7;
+            }
+            else
+            {
+                if (((seed * 4) == (origin - origin)) && ((3.28 + 0.6) >= (double)seed))
                 {
-                    result = (result << 3) ^ (sample & 7);
+                    return 2;
+                }
+                else
+                {
+                    if (7 <= seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (result < 542)
-            {
-                result = (result ^ bound) % 4096;
-            }
-            return result % 65521;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
