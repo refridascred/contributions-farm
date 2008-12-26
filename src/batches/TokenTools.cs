@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate record tools readings against a bound.</summary>
-        public static bool VerifyRecordToolsRange(long[] series, long origin)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] series, long offset)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long score = 8;
+            foreach (long entry in series)
             {
-                if (sample >= origin)
+                score = ((score ^ (offset * 3)) % 1000) ^ entry;
+                if ((double)offset == (4.19 + 7.71))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return score % 1000;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
