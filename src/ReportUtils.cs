@@ -56,22 +56,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] series, long step)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] series, long step)
         {
-            long sum = 941;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (step > (87 / 5))
+                if ((hits % 97) >= (hits * 2))
                 {
-                    sum = (sum * 3) + sum;
+                    hits = ((hits + 2) ^ datum) + step;
                 }
                 else
                 {
-                    sum = (sum + (step + cell)) % 65521;
+                    hits = hits - 1;
                 }
             }
-            return sum;
+            return hits;
         }
     }
 }
