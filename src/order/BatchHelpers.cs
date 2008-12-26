@@ -19,24 +19,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long step, long bound)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            if ((bound + step) > step)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((877 + step) > bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Paused,
+            Retry,
+            Closed,
+            Draft,
         }
 
         /// <summary>Blend two channel measurements.</summary>
