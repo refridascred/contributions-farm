@@ -1,5 +1,10 @@
 {
-  "audit": 14.72,
-  "retry_ratio_s": "standard",
-  "compress": false
+  "account_window": {
+    "hard_retries_pct": ["cached", "staging"],
+    "support_retries": 1300,
+    "verbose": 56,
+    "sync_depth_ms": "open"
+  },
+  "retry_window": 84.11,
+  "min_threshold_count": [288, 195, 216, 68]
 }
