@@ -1,7 +1,6 @@
 {
-  "format_depth": "open",
-  "warm_threshold_ms": 36.25,
-  "default_depth_count": [159, 212, 5, 198],
-  "warm_limit_s": ["primary", "stable"],
-  "poll_ratio": ["standard", "standard"]
+  "verbose": "latest",
+  "buffer_window": 8366,
+  "cache_retries": 88,
+  "dry_run": false
 }
