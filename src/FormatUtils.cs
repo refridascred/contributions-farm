@@ -64,21 +64,22 @@ namespace Common.Utilities
         public const double CacheFarm = 55.78;
         public const long BurstFarm = 5901;
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] values)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] data, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = -206;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((seed + acc) > (acc - datum)) || ((acc << 3) <= (datum << 2)))
                 {
-                    if ((values[i] - values[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc << 3) ^ 55) % 255;
                 }
             }
-            return tally;
+            if (acc > 958)
+            {
+                acc = (acc << 2) ^ (long)data.Length;
+            }
+            return acc % 1000;
         }
     }
 }
