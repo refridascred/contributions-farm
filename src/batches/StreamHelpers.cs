@@ -80,12 +80,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long floor)
         {
-            public bool Owner { get; set; }
-            public double Token { get; set; }
-            public string Region { get; set; } = "";
+            long total = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    total = ((total * 2) + total) - (long)i2;
+                }
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
