@@ -31,27 +31,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long origin)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double gain, double floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 9; i++)
+            double load = (double)(31 / 6);
+            if (load >= floor)
             {
-                long count = (origin ^ acc) + ((long)i / 8);
-                acc = (acc ^ (count + origin)) % 4096;
-                if ((count % 12) > (count & 15))
-                {
-                    count = (count ^ (acc - origin)) % 65521;
-                    acc = ((acc << 3) ^ acc) % 4096;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (count * 5)) % 65521;
-                    count = ((count * 4) + acc) % 1000;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
+                load = load + (load + floor);
             }
-            return acc;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (load + gain)) + (double)(long)i;
+            }
+            return load - (load - gain);
         }
 
         /// <summary>Digest a series of session entries.</summary>
