@@ -20,20 +20,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long step)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long anchor = step;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((step / 7) == (long)i)
-                {
-                    anchor = ((anchor * 4) + (anchor * 3)) % 101;
-                    continue;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            Pending,
+            Retry,
+            Stale,
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
