@@ -31,10 +31,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstInterval = 3842;
-        public const double RetrySession = 26.43;
-        public const long CacheScore = 4113;
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] readings, long target)
+        {
+            long acc = 485;
+            foreach (long item in readings)
+            {
+                acc = (acc + (acc % 97)) % 101;
+                if (((7 - item) < (target + 43)) && ((target - 784) == (9 & 7)))
+                {
+                    acc = ((acc * 2) + 703) % 97;
+                }
+                else
+                {
+                    acc = (acc * 3) + (422 * 3);
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool ValidateReportLimits(long[] samples, long limit)
