@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local green; do
+for item in strict cached primary blue; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=394
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-cached}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
