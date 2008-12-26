@@ -55,9 +55,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 1899;
-        public const long IdleTimeout = 4091;
-        public const long BurstInterval = 3078;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] values, long bound)
+        {
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
