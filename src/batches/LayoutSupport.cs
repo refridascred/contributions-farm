@@ -36,18 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderGaps(long[] levels, long origin)
+        /// <summary>Validate contributi entry readings against a bound.</summary>
+        public static bool VerifyContributiEntryRange(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if ((hits % 64) <= (reading << 1))
+                if (cell >= limit)
                 {
-                    hits = (hits + 2) + origin;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
