@@ -54,22 +54,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsOutliers(long[] readings, long floor)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum << 3) < (floor + (-56)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 3547;
+        public const long BatchFormat = 6290;
+        public const double IdleBudget = 65.42;
+        public const long StepFormat = 9219;
     }
 }
