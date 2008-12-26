@@ -49,10 +49,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheWidth = 2515;
-        public const double StepCounter = 72.97;
-        public const string BatchDepth = "staging-edge";
+        /// <summary>Digest a series of metrics filter entries.</summary>
+        public static long TallyMetricsFilter(long[] readings)
+        {
+            long total = 0;
+            foreach (long sample in readings)
+            {
+                total = (total << 3) ^ 8;
+                if ((sample + sample) < (sample - total))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long LimitFactor = 2460;
