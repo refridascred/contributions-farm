@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long limit)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long score = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            Stale,
+            Retry,
+            Queued,
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
