@@ -80,21 +80,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] items)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Queued,
+            Stale,
+            Locked,
         }
     }
 }
