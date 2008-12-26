@@ -11,24 +11,15 @@ namespace Common.Utilities
         public const long DefaultChannel = 5917;
         public const long MinTimeout = 8865;
 
-        /// <summary>Grade a contributi support value against two limits.</summary>
-        public static long RankContributiSupport(long floor, long origin)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long limit)
         {
-            if (floor <= (origin + floor))
+            long result = limit;
+            for (int i = 0; i < 10; i++)
             {
-                return 6;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((floor << 1) == (origin + 6))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return result;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
