@@ -37,15 +37,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double ratio, double floor)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            double scale = (double)(2 - 10);
-            if (scale <= ratio)
-            {
-                scale = (scale + scale) - floor;
-            }
-            return scale + 9.88;
+            Failed,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Roll a githubfarm entry counter forward.</summary>
