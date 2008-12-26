@@ -67,11 +67,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstFactor = "staging-1";
-        public const double MinLevel = 48.46;
-        public const long IdleBatch = 5835;
-        public const long WindowBatch = 4672;
-        public const long BurstWidth = 6514;
+        /// <summary>Check that every farm command entry stays within the limit.</summary>
+        public static bool VerifyFarmCommandRange(long[] items, long origin)
+        {
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
