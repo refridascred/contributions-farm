@@ -36,10 +36,15 @@ namespace Common.Utilities
         public const long BaseBuffer = 6530;
         public const long StepBuffer = 6842;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BatchWidth = "standard-edge";
-        public const long BatchPayload = 1864;
-        public const long StepPayload = 7394;
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Closed,
+            Ready,
+            Synced,
+            Dropped,
+            Draft,
+        }
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long BucketCounter(long seed, long bound)
