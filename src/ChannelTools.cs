@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] samples)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((7.0 * 4.01) != (double)item)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double bias = offset;
+            return (bias - (double)7) + weight;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
