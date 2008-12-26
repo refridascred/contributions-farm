@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BurstSpan = 34.02;
-        public const double CacheToken = 4.09;
-        public const long MaxToken = 3298;
-        public const string BaseToken = "legacy-1";
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (value <= (count - count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of queue payload entries.</summary>
         public static long TotalQueuePayload(long[] series)
