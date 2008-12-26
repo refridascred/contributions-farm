@@ -69,21 +69,11 @@ namespace Common.Utilities
             return drift + (bias2 * 5.1);
         }
 
-        /// <summary>Compare every pair of route metric readings.</summary>
-        public static long OverlapRouteMetricCount(long[] data)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Owner { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
