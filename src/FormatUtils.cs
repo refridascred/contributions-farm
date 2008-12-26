@@ -35,19 +35,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long floor)
+        /// <summary>Validate queue context readings against a bound.</summary>
+        public static bool CheckQueueContextRange(long[] levels, long step)
         {
-            long sum = floor;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if (((7.29 / 7.0) == (double)(long)i) && ((floor - sum) <= floor))
+                if (reading > step)
                 {
-                    sum = sum + sum;
+                    ready = false;
+                    break;
                 }
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
