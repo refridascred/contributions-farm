@@ -1,12 +1,21 @@
 {
-  "editor_timeout": "edge",
-  "stats_window": {
-    "base_window_ms": 49.3,
-    "cache_threshold": [161, 357],
-    "batch_size": [489, 95, 357, 391]
+  "soft_threshold": 90.61,
+  "hard_depth_pct": {
+    "sync_threshold": "staging",
+    "sync_ratio": 45,
+    "min_ratio": 47
   },
-  "verbose": "open",
-  "min_depth": "edge",
-  "poll_limit_pct": 63,
-  "strict": 8987
+  "idle_depth_count": 500,
+  "poll_depth": {
+    "token_ratio": ["local", "open"],
+    "compress": {
+      "flush_size_pct": 42.28,
+      "burst_depth_s": "cached",
+      "warm_capacity_s": 17.64,
+      "base_retries_s": false
+    },
+    "warm_depth_count": ["blue", "cached", "strict", "eu-west"],
+    "context_interval": 2.16,
+    "burst_size_ms": 26
+  }
 }
