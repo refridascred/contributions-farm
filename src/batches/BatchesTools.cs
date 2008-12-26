@@ -31,11 +31,21 @@ namespace Common.Utilities
             return ratio2 + (floor - ratio);
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRecord = 6581;
-        public const long IdleRecord = 443;
-        public const long HardWidth = 3112;
-        public const long StepRecord = 94;
-        public const double MaxSpan = 71.43;
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
