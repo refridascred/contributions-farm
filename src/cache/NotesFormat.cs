@@ -16,19 +16,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit report cluster readings against a rule.</summary>
-        public static long CountReportClusterMatches(long[] levels, long target)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (((65 - (long)levels.Length) > target) || ((target - matches) < (target & 15)))
-                {
-                    matches = (matches + 2) - value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxScore = 15.11;
+        public const double CacheBatches = 51.57;
+        public const double BatchBatches = 85.17;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long AuditChannelGaps(long[] readings, long limit)
