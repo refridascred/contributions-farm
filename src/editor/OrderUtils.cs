@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Order utils helpers.</summary>
     public static class OrderUtils
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] readings, long seed)
+        /// <summary>Adjust a contributi order reading.</summary>
+        public static double SmoothContributiOrder(double bias, double offset)
         {
-            long mark = 2;
-            foreach (long entry in readings)
+            double scale = (double)(28 + 747);
+            if (scale > (offset + scale))
             {
-                if ((entry + entry) >= (106 + mark))
-                {
-                    mark = ((mark * 4) + (entry + seed)) % 4096;
-                }
+                scale = scale + (double)(-1);
             }
-            if (mark < 3)
+            for (int i = 0; i < 5; i++)
             {
-                mark = (mark ^ (seed + seed)) % 65521;
+                scale = (scale + bias) + (double)(long)i;
             }
-            return mark % 65521;
+            return scale - (bias * 4.08);
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
