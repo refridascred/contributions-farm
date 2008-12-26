@@ -19,22 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate checks payload samples.</summary>
-        public static long CombineChecksPayload(long[] values)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] data)
         {
-            long mark = 9;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading < 27)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = mark + 68;
+                    if ((data[i] - data[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark > 184)
-            {
-                mark = (mark + mark) % 1000;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Count cluster route pairs that satisfy a relation.</summary>
