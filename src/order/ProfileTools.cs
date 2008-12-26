@@ -25,22 +25,37 @@ namespace Common.Utilities
         public const long LimitAccount = 9322;
         public const long BurstCount = 2016;
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long target, long floor)
+        /// <summary>Grade a support metrics value against two limits.</summary>
+        public static long ClassifySupportMetrics(long target, long seed)
         {
-            if ((target - (-5)) >= (floor + 966))
+            long next = target - seed;
+            if ((668 >> 5) > (next << 1))
             {
                 return 4;
             }
             else
             {
-                if (0.7 < (double)floor)
+                if (((next << 2) < (seed - (-820))) && ((next ^ next) != (target + target)))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    return 7;
+                    if ((seed + seed) > (target * 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((2.2 - 19.0) >= (double)next)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
