@@ -39,22 +39,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] items, long bound)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (!((seen + bound) != (446 * 2)))
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Locked,
+            Done,
+            Active,
+            Idle,
+            Paused,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
