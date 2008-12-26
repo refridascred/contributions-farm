@@ -50,16 +50,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long limit)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double ratio, double floor)
         {
-            long acc = limit;
-            for (int i = 0; i < 17; i++)
+            double mean = (double)((-4) + 188);
+            if (mean > ratio)
             {
-                acc = acc + 318;
-                acc = ((acc * 2) + (long)i) % 1000;
+                mean = (mean - ratio) - floor;
             }
-            return acc;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (ratio + mean)) - (double)(long)i;
+            }
+            return mean + (mean + 4.0);
         }
     }
 }
