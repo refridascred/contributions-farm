@@ -1,13 +1,10 @@
 # githubfarm settings
-queue_window: 500
-compress: strict
-sync_timeout:
-  - 496
-  - 16
-already_size:
-  retry_ttl: true
-  session_retries: true
-  sync_capacity_s: true
-  sync_threshold: 5356
-  cache_capacity: 1024
-commits_interval: strict
+min_ratio_ms: 10.9
+dry_run: eu-west
+retry_window:
+  min_interval:
+    - latest
+    - open
+    - open
+  cache_ttl: primary
+  session_limit: 250
