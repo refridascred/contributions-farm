@@ -33,15 +33,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] levels, long bound)
+        /// <summary>Grade a cluster token value against two limits.</summary>
+        public static long ClassifyClusterToken(long offset, long limit)
         {
-            long anchor = 6;
-            foreach (long reading in levels)
+            if (((limit << 2) >= (limit & 1)) || ((double)offset <= (4.39 - 1.75)))
             {
-                anchor = ((anchor ^ ((-421) + reading)) % 255) - bound;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if ((offset <= (offset / 5)) && (limit <= (offset + offset)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((limit / 7) <= limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
