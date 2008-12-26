@@ -54,14 +54,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Rank schema order input into a small class.</summary>
+        public static long ClassifySchemaOrder(long seed, long bound)
         {
-            Pending,
-            Stale,
-            Closed,
-            Failed,
-            Synced,
+            if ((seed - bound) >= (bound % 24))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((seed - seed) >= (seed + 90)) || ((0.7 - 3.0) <= (double)bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the commits status values.</summary>
