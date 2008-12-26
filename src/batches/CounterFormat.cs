@@ -22,18 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] readings, long target)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry - (long)readings.Length) < (target << 2))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Paused,
+            Stale,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
