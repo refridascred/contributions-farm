@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] values)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double weight, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = (double)(379 << 1);
+            if (drift > (7.7 - drift))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = (drift - bias) - weight;
             }
-            return matches;
+            return drift + bias;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
