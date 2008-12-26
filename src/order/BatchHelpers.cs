@@ -14,18 +14,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferMatches(long[] samples)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (!((80 * 2) >= (value << 1)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Count { get; set; }
+            public double Size { get; set; }
+            public double Total { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Classify a contributi batch pair into a bucket.</summary>
