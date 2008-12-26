@@ -41,32 +41,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long limit, long seed)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] series, long step)
         {
-            long offset = limit - seed;
-            if ((double)offset < (8.99 / 4.0))
+            bool ready = true;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset & 31) <= (seed - seed))
+                if (value <= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((limit - seed) >= (7 + 293)) || ((double)offset > (double)1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Fold a list of session readings.</summary>
