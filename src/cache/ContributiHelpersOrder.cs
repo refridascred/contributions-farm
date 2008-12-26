@@ -26,12 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileGaps(long[] data, long limit)
         {
-            public long Offset { get; set; }
-            public bool Size { get; set; }
-            public double Label { get; set; }
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (((limit & 31) != (reading ^ matches)) || ((38 + reading) != (74 / 3)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many queue profile samples are out of range.</summary>
