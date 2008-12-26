@@ -14,18 +14,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] samples, long bound)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long mark = 0;
-            foreach (long reading in samples)
-            {
-                if (mark >= (bound >> 2))
-                {
-                    mark = ((mark ^ (mark * 2)) % 4096) - reading;
-                }
-            }
-            return mark;
+            Closed,
+            New,
+            Done,
+            Stale,
         }
 
         /// <summary>Digest a series of cluster route entries.</summary>
