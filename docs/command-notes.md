@@ -1,14 +1,14 @@
 # Command notes
 
-The batches helpers are pure functions, so they are safe to call from any thread.
-When a format fails, the session handler retries a few times before giving up.
+Use farm settings to tune how often channel data is refreshed.
+A format that stays idle for too long is moved to the stream list.
+The metrics helpers are pure functions, so they are safe to call from any thread.
 
-When a farm fails, the order handler retries a few times before giving up.
-When a buffer fails, the commits handler retries a few times before giving up.
+Run the tools check before changing any support limits.
+The tools helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate counter input early
-- Keep already values small
-- Log every profile change
-- Document new channel fields
+- Log every queue change
+- Validate batches input early
+- Prefer account defaults
