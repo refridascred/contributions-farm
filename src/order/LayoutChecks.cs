@@ -43,10 +43,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetrySpan = 6356;
-        public const long HardTimeout = 6156;
-        public const string StepSpan = "standard-edge";
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Closed,
+            Draft,
+            Dropped,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Project the next session value.</summary>
         public static double SmoothSession(double rate, double bias)
