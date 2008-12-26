@@ -1,18 +1,18 @@
 {
-  "route_ttl": 702,
-  "sync_interval": {
-    "burst_ttl_ms": {
-      "command_retries": 1024,
-      "soft_timeout": 8097,
-      "strict": "standard"
-    },
-    "sync_ratio": "green",
-    "batch_ratio_s": 70.88,
-    "verbose": true
+  "retry_ttl": 7013,
+  "already_timeout": {
+    "record_capacity": ["primary", "eu-west", "blue", "cached"],
+    "hard_ttl_pct": ["blue", "edge"],
+    "flush_timeout": 53.06,
+    "default_threshold": 27.35,
+    "min_ttl": "staging",
+    "layout_depth": 18.16
   },
-  "context_ttl": {
-    "warm_ratio_pct": "fallback",
-    "flush_limit": "staging",
-    "strict": "green"
-  }
+  "compress": {
+    "strict": "green",
+    "readonly": 683,
+    "audit": "fallback"
+  },
+  "profile_depth": "strict",
+  "retry_threshold": "fallback"
 }
