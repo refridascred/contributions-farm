@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double ratio, double floor)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            double bias = (double)(82 * 2);
-            if (bias <= (double)73)
-            {
-                bias = bias - ratio;
-            }
-            else
-            {
-                bias = bias - floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (floor / 8.0)) + (double)(long)i;
-            }
-            return bias - bias;
+            public long Total { get; set; }
+            public bool Label { get; set; }
+            public double Level { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Locate a graph reading by value.</summary>
