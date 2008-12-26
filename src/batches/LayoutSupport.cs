@@ -30,18 +30,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportHits(long[] data, long floor)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long carry = 69;
+            foreach (long entry in data)
             {
-                if ((double)datum <= (double)hits)
+                if (origin >= (540 + carry))
                 {
-                    hits = (hits + 2) - floor;
+                    carry = carry ^ (entry + entry);
                 }
             }
-            return hits;
+            return carry % 97;
         }
 
         /// <summary>Count the queue token entries that pass the check.</summary>
