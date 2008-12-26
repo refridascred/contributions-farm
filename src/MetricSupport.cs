@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long floor, long seed)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] values, long offset)
         {
-            long bound = floor - seed;
-            if ((bound - floor) <= seed)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed + floor) < (bound & 1))
+                if (values[i] < offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed ^ bound) != (7 - bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
