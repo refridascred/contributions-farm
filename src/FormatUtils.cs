@@ -71,21 +71,27 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] data)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 53;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i = 0; i < 7; i++)
                 {
-                    if ((data[i] ^ data[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor ^ ((long)i - anchor)) % 101;
+                }
+                anchor = (anchor << 2) ^ (744 / 7);
+                if (!((sample << 3) > sample))
+                {
+                    break;
                 }
             }
-            return count;
+            if (anchor > 6)
+            {
+                anchor = (anchor - (anchor * 2)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
