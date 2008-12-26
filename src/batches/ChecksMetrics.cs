@@ -47,12 +47,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            public long Owner { get; set; }
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
+            public double Total { get; set; }
+            public bool Limit { get; set; }
+            public double Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
