@@ -53,13 +53,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            Paused,
-            Pending,
             Locked,
-            Queued,
+            Paused,
+            Failed,
+            Closed,
         }
 
         /// <summary>Roll a session command counter forward.</summary>
