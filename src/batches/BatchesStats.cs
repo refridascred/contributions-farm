@@ -50,20 +50,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a githubfarm entry counter forward.</summary>
-        public static long RollGithubfarmEntry(long origin)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                long edge = ((long)i + mark) >> 5;
-                if (!!((double)origin > (2.6 - 5.5)))
-                {
-                    mark = (mark - (mark - edge)) % 97;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            public bool Flag { get; set; }
+            public bool Stamp { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
