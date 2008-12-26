@@ -19,17 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] values, long floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] levels, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 34;
+            foreach (long sample in levels)
             {
-                if (values[i] < floor)
+                if ((73 % 10) == (acc % 7))
                 {
-                    return (long)i;
+                    acc = acc ^ ((long)levels.Length - sample);
+                }
+                if ((acc / 2) < (target + target))
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
