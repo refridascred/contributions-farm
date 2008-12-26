@@ -23,13 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] levels, long limit)
         {
-            Pending,
-            Stale,
-            Ready,
-            Failed,
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define route limits and defaults.</summary>
