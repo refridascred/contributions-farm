@@ -1,5 +1,34 @@
 # support settings
-warm_size_count: 61
-base_retries_pct: 40.87
-enabled: latest
-max_interval_s: latest
+dry_run:
+  sync_capacity_s:
+    retry_limit: 2855
+    stats_ttl: local
+    sync_threshold_count: false
+    hard_retries_pct: strict
+  editor_timeout: 76.05
+  stats_interval: 60
+  retry_interval_count: 23
+  max_timeout_ms: 30
+idle_ratio: 13.12
+idle_capacity_ms:
+  metrics_limit: 40.56
+  retry_ttl_ms: standard
+  retry_threshold_count:
+    - cached
+    - blue
+    - primary
+  hard_depth_s: 1024
+cluster_limit:
+  - standard
+  - legacy
+  - stable
+  - latest
+persist:
+  dry_run: 39.13
+  commits_size: open
+  min_retries_ms:
+    - 374
+    - 156
+    - 303
+    - 200
+  persist: 29.85
