@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportLimits(long[] values, long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesOutliers(long[] readings, long target)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (cell != offset)
+                if ((entry - (long)readings.Length) < (target << 2))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
