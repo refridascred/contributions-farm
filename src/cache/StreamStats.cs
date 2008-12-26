@@ -21,12 +21,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowDepth = 8336;
-        public const long LimitBudget = 5670;
-        public const long DefaultWidth = 8295;
-        public const long WindowFilter = 8821;
-        public const string LimitFilter = "stable-1";
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 17; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Find the first cluster context entry that matches the target.</summary>
         public static long SeekClusterContextIndex(long[] items, long bound)
