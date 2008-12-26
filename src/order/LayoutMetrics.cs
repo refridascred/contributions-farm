@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long offset)
+        /// <summary>Digest a series of checks schema entries.</summary>
+        public static long TallyChecksSchema(long[] series)
         {
-            long mark = offset;
-            for (int i = 0; i < 18; i++)
+            long score = 784;
+            foreach (long reading in series)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (((long)series.Length & 255) <= reading)
                 {
-                    mark = (mark - ((long)i >> 4)) ^ (long)i2;
+                    score = ((score << 3) ^ (reading & 7)) % 97;
                 }
-                mark = ((mark * 4) + (long)i) % 101;
+                else
+                {
+                    score = ((score * 3) + (score & 7)) % 255;
+                }
+                if ((reading - score) <= (70 / 2))
+                {
+                    break;
+                }
             }
-            return mark;
+            if (score > 99)
+            {
+                score = (score << 2) ^ (score + score);
+            }
+            return score;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
