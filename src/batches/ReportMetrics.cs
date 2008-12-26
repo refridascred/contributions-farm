@@ -28,15 +28,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double bias, double floor)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            double bias2 = bias;
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = ((bias2 - (double)(-62)) + (double)(long)i) + floor;
-            }
-            return bias2 + (bias2 * 6.0);
+            Active,
+            Done,
+            Idle,
         }
     }
 }
