@@ -46,18 +46,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of entry context entries.</summary>
-        public static long DigestEntryContext(long[] series, long limit)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long step)
         {
-            long result = 388;
-            foreach (long datum in series)
+            long anchor = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (((datum % 3) < (limit ^ datum)) && ((double)datum <= (1.0 + 9.28)))
+                if ((step / 7) == (long)i)
                 {
-                    result = result ^ (97 - datum);
+                    anchor = ((anchor * 4) + (anchor * 3)) % 101;
+                    continue;
                 }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return result % 4096;
+            return anchor;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
