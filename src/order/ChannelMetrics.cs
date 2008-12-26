@@ -29,15 +29,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double weight, double floor)
-        {
-            double rate = 7.93;
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (((rate - (9.91 / 8.0)) + (double)(long)i) + weight) + floor;
-            }
-            return rate - (rate - rate);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowWidth = 6124;
+        public const long BatchGraph = 2781;
+        public const long MinGraph = 9438;
     }
 }
