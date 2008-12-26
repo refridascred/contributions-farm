@@ -34,12 +34,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] values, long offset)
         {
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Level { get; set; }
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
