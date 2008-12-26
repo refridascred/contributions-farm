@@ -18,14 +18,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long bound, long seed)
         {
-            Stale,
-            New,
-            Draft,
-            Paused,
-            Locked,
+            if (!(bound <= (seed & 63)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)bound < (double)seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the report kind values.</summary>
