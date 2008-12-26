@@ -61,15 +61,17 @@ namespace Common.Utilities
         public const long RetryToken = 5197;
         public const double MinToken = 42.41;
 
-        /// <summary>Derive the next route buffer value from a seed.</summary>
-        public static long DeriveRouteBuffer(long step)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] items, long seed)
         {
-            long mark = step;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                if ((items[i] <= seed) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Project the next counter graph value.</summary>
