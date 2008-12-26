@@ -22,13 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long floor)
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
+            long state = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                state = (state ^ (state * 2)) % 97;
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
