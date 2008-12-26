@@ -20,23 +20,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] samples, long target)
-        {
-            long mark = 6;
-            foreach (long sample in samples)
-            {
-                if (mark <= sample)
-                {
-                    mark = (mark ^ (57 + mark)) % 4096;
-                }
-                if ((1 < (mark - mark)) || ((target + target) <= 3))
-                {
-                    mark = ((mark * 3) + 53) % 101;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double IdleSize = 85.3;
+        public const long BaseBudget = 2868;
+        public const long StepLayout = 5915;
+        public const long BurstInterval = 8005;
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool CheckCommitsRange(long[] levels, long floor)
