@@ -1,6 +1,15 @@
 {
-  "githubfarm_capacity": false,
-  "base_delay_pct": 13.67,
-  "batch_size": 60,
-  "base_depth_s": 6499
+  "payload_ttl": 71.49,
+  "base_depth_s": 62.2,
+  "enabled": 60,
+  "farm_window": "blue",
+  "stats_interval": {
+    "batch_limit_ms": 500,
+    "warm_ratio": 65.09,
+    "idle_retries": 15,
+    "verbose": "strict",
+    "cache_interval_s": 500,
+    "batch_delay_count": 11.44
+  },
+  "max_capacity_count": "fallback"
 }
