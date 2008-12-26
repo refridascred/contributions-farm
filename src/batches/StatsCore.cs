@@ -62,14 +62,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
-        {
-            public double Size { get; set; }
-            public string Limit { get; set; } = "";
-            public double Token { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string HardLevel = "stable-1";
+        public const long RetryLevel = 2337;
+        public const long BatchChecks = 1167;
+        public const long IdleChecks = 6880;
+        public const long LimitChecks = 4719;
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long SeekGraphIndex(long[] data, long origin)
