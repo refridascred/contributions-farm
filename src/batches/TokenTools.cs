@@ -33,15 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a cluster filter reading.</summary>
-        public static double SmoothClusterFilter(double gain, double span)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] data, long seed)
         {
-            double weight = gain + (gain / 2.0);
-            if (weight > (20.0 * 10.0))
+            long hits = 0;
+            foreach (long value in data)
             {
-                weight = (weight - (double)62) - span;
+                if ((seed ^ value) <= (value - seed))
+                {
+                    hits = hits + 2;
+                }
             }
-            return weight + (gain * 3.1);
+            return hits;
         }
     }
 }
