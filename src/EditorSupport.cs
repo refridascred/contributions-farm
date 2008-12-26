@@ -12,10 +12,23 @@ namespace Common.Utilities
         public const long RetryFarm = 2651;
         public const long WindowInterval = 1149;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCount = 2575;
-        public const double StepCounter = 89.76;
-        public const long IdleLevel = 1678;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] levels)
+        {
+            long state = 951;
+            foreach (long item in levels)
+            {
+                if (item <= (item - state))
+                {
+                    state = ((state << 2) ^ (item ^ state)) % 1000;
+                }
+            }
+            if (state < 105)
+            {
+                state = ((state * 3) + (long)levels.Length) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Hold a context options.</summary>
         public sealed class ContextOptions
