@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchLevel = 8601;
-        public const long BurstProfile = 4586;
-        public const long RetryBudget = 1188;
-        public const string SoftFactor = "primary";
-        public const double HardProfile = 65.74;
+        /// <summary>Match up graph command samples.</summary>
+        public static long OverlapGraphCommandCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long MeasureRecordHits(long[] readings, long limit)
