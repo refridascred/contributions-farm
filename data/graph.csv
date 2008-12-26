@@ -1,6 +1,8 @@
-id,weight,owner,ratio,count
-1,173,primary,639,306
-2,626,39.84,593,686
-3,77.43,27.26,460,222
-4,809,primary,834,29
-5,cached,48.99,28,standard
+id,count,ratio
+1,719,396
+2,973,192
+3,982,open
+4,edge,legacy
+5,legacy,open
+6,377,42.26
+7,308,blue
