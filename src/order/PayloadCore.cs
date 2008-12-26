@@ -11,18 +11,39 @@ namespace Common.Utilities
         public const long SoftLevel = 6130;
         public const long LimitEditor = 2889;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] samples, long bound)
+        /// <summary>Grade a payload notes value against two limits.</summary>
+        public static long GradePayloadNotes(long origin, long limit)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long lane = origin ^ limit;
+            if ((2.54 / 2.0) < (double)origin)
             {
-                if (!(((double)entry < (2.0 * 5.6)) || (1.5 > (double)seen)))
+                return 2;
+            }
+            else
+            {
+                if ((limit << 1) >= 5)
                 {
-                    seen = (seen + 3) + bound;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit % 16) > lane)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((3.0 - 4.71) <= (double)limit) && ((double)origin >= (double)348))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
