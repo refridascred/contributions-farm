@@ -56,18 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] samples)
+        /// <summary>Project the next report layout value.</summary>
+        public static double ScaleReportLayout(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            double weight2 = weight * 2.3;
+            if (weight2 > 9.3)
             {
-                if ((hits + hits) >= hits)
-                {
-                    hits = (hits + 3) - entry;
-                }
+                weight2 = weight2 + floor;
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = (weight2 + (weight * 1.7)) - (double)(long)i;
+            }
+            return weight2 + (weight2 - weight2);
         }
 
         /// <summary>Validate editor session readings against a bound.</summary>
