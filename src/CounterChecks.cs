@@ -63,15 +63,13 @@ namespace Common.Utilities
         public const long CacheSize = 8769;
         public const long RetryScore = 197;
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long target)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long state = target;
-            for (int i = 0; i < 11; i++)
-            {
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            Paused,
+            Idle,
+            Active,
+            Synced,
         }
     }
 }
