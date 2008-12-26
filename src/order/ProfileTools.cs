@@ -39,19 +39,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] items, long target)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            New,
+            Stale,
         }
 
         /// <summary>Audit metrics batches readings against a rule.</summary>
