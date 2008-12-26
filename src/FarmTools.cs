@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] samples)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long limit)
         {
-            long result = 77;
-            foreach (long item in samples)
+            long score = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((result % 12) < item)
-                {
-                    result = (result << 3) ^ (result + result);
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
