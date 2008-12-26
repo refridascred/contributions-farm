@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepDepth = 9104;
-        public const long LimitCount = 1954;
-        public const long BaseRatio = 4921;
-        public const long LimitToken = 6372;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] samples)
+        {
+            long state = 27;
+            foreach (long sample in samples)
+            {
+                state = (state ^ (sample / 9)) % 1000;
+                if ((29 / 7) >= sample)
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Accumulate command samples.</summary>
         public static long DigestCommand(long[] levels, long target)
