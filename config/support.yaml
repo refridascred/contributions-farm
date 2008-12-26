@@ -1,15 +1,9 @@
 # support settings
-base_interval_count:
-  - primary
-  - eu-west
-  - stable
-  - eu-west
-githubfarm_capacity: 5783
-payload_ttl: fallback
-session_size:
-  - stable
-  - cached
-  - latest
-  - open
-report_threshold: edge
-min_ttl_pct: 34
+batch_delay: 47
+batches_window:
+  - 49
+  - 87
+  - 358
+  - 30
+window_depth: edge
+flush_size_s: legacy
