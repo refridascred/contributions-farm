@@ -1,5 +1,38 @@
 # support settings
-verbose: 43.99
-retry_retries_pct: true
-compress: green
-tools_timeout: open
+cache_timeout:
+  max_limit: 1.7
+  audit: false
+  cache_size: local
+batch_window: stable
+soft_capacity_pct: strict
+audit:
+  batch_capacity_count:
+    hard_threshold_count: 61.17
+    readonly: standard
+    min_capacity: standard
+    burst_delay_ms: false
+    notes_timeout:
+      - 431
+      - 489
+      - 132
+      - 165
+  compress:
+    base_interval_pct:
+      - 243
+      - 499
+      - 219
+      - 432
+    readonly: 100
+    soft_size_count: edge
+    order_retries: edge
+    batches_retries: false
+    poll_ratio_pct: 55
+  retry_interval_s: standard
+  buffer_delay:
+    max_limit: 8367
+    already_timeout: 66
+    session_ttl: 43
+    retry_timeout: latest
+    idle_interval: 67.4
+    sync_window_count: true
+base_size_count: 45.47
