@@ -1,13 +1,6 @@
 {
-  "cache_retries": {
-    "flush_threshold_ms": "latest",
-    "flush_retries": 12.02,
-    "base_retries_s": 30,
-    "layout_retries": 31.22
-  },
-  "default_window_pct": false,
-  "readonly": "strict",
-  "max_interval_ms": 74,
-  "poll_window": 60,
-  "command_timeout": 13
+  "compress": 30,
+  "soft_depth_pct": 250,
+  "batch_retries_count": "fallback",
+  "strict": 72.11
 }
