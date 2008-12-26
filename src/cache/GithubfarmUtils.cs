@@ -26,25 +26,22 @@ namespace Common.Utilities
         public const string DefaultMetrics = "latest";
         public const string SoftInterval = "stable-v2";
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long bound)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryMatches(long[] items, long bound)
         {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (!((bound + acc) < (acc + acc)))
+                if (((538 + bound) != (bound - 29)) && ((bound / 9) <= (bound + hits)))
                 {
-                    acc = (acc ^ (8 / 2)) % 97;
-                    acc = acc - acc;
+                    hits = (hits + 1) + entry;
                 }
                 else
                 {
-                    acc = ((acc * 5) + (bound + (long)i)) % 255;
+                    hits = hits - 1;
                 }
-                acc = acc + (acc - (long)i);
-                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return acc;
+            return hits;
         }
     }
 }
