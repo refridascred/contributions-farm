@@ -39,19 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a support route counter forward.</summary>
-        public static long IterateSupportRoute(long origin)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double ratio, double bias)
         {
-            long acc = origin;
-            for (int i = 0; i < 16; i++)
+            double gain = ratio;
+            if (gain > (4.6 - bias))
             {
-                if (((long)i + acc) < (acc * 2))
-                {
-                    acc = ((acc * 3) + ((long)i - acc)) % 255;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
+                gain = gain + (bias / 8.0);
             }
-            return acc;
+            else
+            {
+                gain = gain + ratio;
+            }
+            return gain - (gain * 1.83);
         }
     }
 }
