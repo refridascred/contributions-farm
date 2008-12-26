@@ -20,14 +20,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            Synced,
-            Active,
-            Paused,
-            Locked,
-            Done,
+            Queued,
+            Retry,
+            Pending,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
