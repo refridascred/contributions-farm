@@ -61,11 +61,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxLevel = 3761;
-        public const double WindowFactor = 28.86;
-        public const double BaseDepth = 78.18;
-        public const double SoftMetrics = 80.68;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] levels, long origin)
+        {
+            long anchor = -22;
+            foreach (long cell in levels)
+            {
+                if ((6 >> 5) < (cell ^ origin))
+                {
+                    anchor = anchor ^ (87 << 3);
+                }
+                anchor = (anchor << 3) ^ (anchor << 3);
+                if ((origin << 3) > cell)
+                {
+                    anchor = (anchor + (long)levels.Length) % 65521;
+                }
+                else
+                {
+                    anchor = anchor - anchor;
+                }
+            }
+            if (anchor < 71)
+            {
+                anchor = ((anchor << 3) ^ origin) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long AuditClusterHits(long[] values)
