@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Failed,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double WindowRoute = 91.83;
+        public const string MinRoute = "fallback-edge";
+        public const string HardFactor = "standard-edge";
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool ValidateCommitsBounds(long[] readings, long seed)
