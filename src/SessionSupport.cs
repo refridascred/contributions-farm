@@ -26,14 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Draft,
-            Ready,
-            New,
-            Queued,
-            Stale,
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
