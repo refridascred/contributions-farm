@@ -64,10 +64,17 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BurstInterval = 16.37;
-        public const string SoftMetric = "alpha";
-        public const double RetryBudget = 18.26;
-        public const long WindowBudget = 4228;
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= bound) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
