@@ -31,18 +31,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] items, long offset)
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            double drift = ratio;
+            if (drift >= drift)
             {
-                if ((offset - tally) <= tally)
-                {
-                    tally = (tally + 1) + datum;
-                }
+                drift = drift - (drift + offset);
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - 0.05) + (double)(long)i;
+            }
+            return drift - (offset - drift);
         }
 
         /// <summary>Scale a record editor figure with a bias.</summary>
