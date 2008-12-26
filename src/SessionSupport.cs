@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] series)
-        {
-            long state = -2;
-            foreach (long item in series)
-            {
-                if ((item + state) != (item + 183))
-                {
-                    state = state ^ state;
-                }
-                else
-                {
-                    state = ((state * 5) + (385 & 3)) % 4096;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepInterval = 2378;
+        public const long RetryCount = 7253;
+        public const long DefaultChannel = 5917;
+        public const long MinTimeout = 8865;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long TallyBufferOutliers(long[] samples, long offset)
