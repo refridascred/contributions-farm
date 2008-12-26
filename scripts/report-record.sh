@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy green stable eu-west; do
+for item in legacy green; do
     log "checking ${item}"
 done
 
-mode="${1:-primary}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-RECORD_LIMIT=262
-log "limit is ${RECORD_LIMIT}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
