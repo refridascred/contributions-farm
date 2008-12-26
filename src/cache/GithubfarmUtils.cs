@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit cluster notes readings against a rule.</summary>
-        public static long AuditClusterNotesOutliers(long[] values, long target)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((sample >> 2) < (sample / 3))
-                {
-                    count = (count + 1) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string LimitCount = "standard-edge";
+        public const string IdleGraph = "latest";
+        public const long MinCount = 7248;
+        public const long LimitGraph = 277;
+        public const string MinFactor = "open-1";
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool GuardRecordLimits(long[] levels, long limit)
