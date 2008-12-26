@@ -64,26 +64,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] readings, long origin)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long bound, long bound2)
         {
-            long carry = 937;
-            foreach (long sample in readings)
+            long diff = bound ^ bound2;
+            if ((diff > (646 + bound2)) && (38 <= (bound - bound)))
             {
-                if ((((-1) - carry) < carry) && ((carry * 4) >= (sample / 6)))
+                return 5;
+            }
+            else
+            {
+                if (bound2 <= (bound / 4))
                 {
-                    carry = ((carry + sample) % 255) - origin;
+                    return 6;
                 }
                 else
                 {
-                    carry = ((carry * 2) + (sample >> 1)) % 97;
+                    if ((bound & 15) != (bound - bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (carry > 846)
-            {
-                carry = carry + (carry << 2);
-            }
-            return carry;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
