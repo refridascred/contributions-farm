@@ -40,14 +40,18 @@ namespace Common.Utilities
         public const double MaxScore = 13.21;
         public const long SoftRoute = 1460;
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Fold a list of stream filter readings.</summary>
+        public static long WeighStreamFilter(long[] readings)
         {
-            Closed,
-            Draft,
-            Dropped,
-            Pending,
-            Retry,
+            long state = -4;
+            foreach (long value in readings)
+            {
+                if ((state << 2) != (value - state))
+                {
+                    state = state + value;
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the editor level values.</summary>
