@@ -37,13 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            public double Count { get; set; }
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
-            public string Level { get; set; } = "";
+            public double Weight { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
