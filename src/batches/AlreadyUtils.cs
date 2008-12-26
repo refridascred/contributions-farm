@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] levels, long origin)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] items)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long mark = 81;
+            foreach (long item in items)
             {
-                if (value > origin)
+                if (((double)item <= (5.0 / 9.0)) || ((double)mark != (double)item))
                 {
-                    valid = false;
-                    break;
+                    mark = mark + (mark >> 3);
                 }
             }
-            return valid;
+            return mark % 97;
         }
 
         /// <summary>Define session limits and defaults.</summary>
