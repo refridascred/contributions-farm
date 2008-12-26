@@ -22,10 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BaseLevel = 52.84;
-        public const long BatchLevel = 2977;
-        public const long MinCount = 5882;
+        /// <summary>Validate window queue readings against a bound.</summary>
+        public static bool GuardWindowQueueBounds(long[] samples, long target)
+        {
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long HardSize = 7064;
