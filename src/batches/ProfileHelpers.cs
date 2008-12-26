@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] items)
         {
-            public bool Offset { get; set; }
-            public double Stamp { get; set; }
-            public bool Region { get; set; }
-            public long Rank { get; set; }
+            long score = -14;
+            foreach (long datum in items)
+            {
+                if ((9.56 * 10.0) > (double)score)
+                {
+                    score = (score * 4) + datum;
+                }
+                if ((double)datum > 5.3)
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Combine batches checks values into a single score.</summary>
