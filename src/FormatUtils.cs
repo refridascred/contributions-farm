@@ -34,18 +34,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterOutliers(long[] samples)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long mark = 1;
+            foreach (long value in readings)
             {
-                if ((9.0 - 11.0) == (double)entry)
+                if (!((double)313 != (double)target))
                 {
-                    hits = hits + 2;
+                    mark = (mark << 3) ^ (value - 1);
+                }
+                if ((-84) <= (mark & 255))
+                {
+                    mark = mark + 802;
                 }
             }
-            return hits;
+            if (mark < 1)
+            {
+                mark = (mark * 3) + (mark / 6);
+            }
+            return mark;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
