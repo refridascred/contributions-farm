@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every contributi githubfarm entry stays within the limit.</summary>
-        public static bool ValidateContributiGithubfarmLimits(long[] levels, long floor)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long seed)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long result = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell >= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                result = (result + (669 % 3)) % 1000;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
