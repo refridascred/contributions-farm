@@ -78,25 +78,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long limit, long limit2)
+        /// <summary>Count the commits report entries that pass the check.</summary>
+        public static long TallyCommitsReportMatches(long[] levels)
         {
-            long lane = limit + limit2;
-            if ((double)limit == (double)747)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((lane + limit2) <= limit) || ((6.1 + 9.2) != (double)limit2))
+                if ((reading * 4) >= (seen / 2))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
