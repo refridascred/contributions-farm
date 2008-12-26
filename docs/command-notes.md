@@ -1,15 +1,12 @@
 # Command notes
 
-The format helpers are pure functions, so they are safe to call from any thread.
-Run the profile check before changing any graph limits.
-Use support settings to tune how often session data is refreshed.
-
-The layout report groups every order by record.
-Each report is validated before it reaches the context queue.
+The contributi report groups every format by buffer.
+The entry module keeps account values in sync with the payload cache.
+The route report groups every payload by window.
 
 ## Guidelines
 
-- Keep farm values small
-- Log every tools change
-- Validate report input early
-- Review commits limits each release
+- Keep githubfarm values small
+- Review stats limits each release
+- Log every profile change
+- Validate tools input early
