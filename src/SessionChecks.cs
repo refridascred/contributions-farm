@@ -31,17 +31,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] values, long limit)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] values)
         {
+            long hits = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                if ((values[i] == limit) && ((values[i] % 3) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Combine commits order values into a single score.</summary>
