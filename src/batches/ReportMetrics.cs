@@ -33,12 +33,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long target)
         {
-            public bool Weight { get; set; }
-            public bool Owner { get; set; }
-            public long Region { get; set; }
+            long mark = target;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = mark - (mark - (long)i);
+                mark = mark - (mark - target);
+                if (!(((mark / 7) >= mark) || (mark > ((long)i + mark))))
+                {
+                    mark = (mark * 2) + (175 ^ target);
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
