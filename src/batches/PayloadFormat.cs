@@ -27,21 +27,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count farm payload pairs that satisfy a relation.</summary>
-        public static long MatchFarmPayloadCount(long[] values)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long target, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long cur = target + bound;
+            if ((10.0 < (double)target) || ((double)cur > (8.54 - 1.66)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((bound + cur) == (target >> 3))
                 {
-                    if ((values[i] - values[j]) > 4)
+                    return 1;
+                }
+                else
+                {
+                    if ((cur + target) > ((-572) + target))
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Adjust a cache reading.</summary>
