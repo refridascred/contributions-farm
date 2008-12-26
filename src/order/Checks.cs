@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double scale, double offset)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double ratio, double floor)
         {
-            double ratio = scale;
-            if (ratio > offset)
+            double weight = ratio;
+            if (weight > (double)529)
             {
-                ratio = ratio - (scale + ratio);
+                weight = (weight - (ratio * 5.0)) + floor;
             }
-            else
-            {
-                ratio = ratio + (offset * 0.8);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + 7.08) + (double)(long)i;
-            }
-            return ratio - scale;
+            return weight + (ratio + ratio);
         }
 
         /// <summary>Define batches limits and defaults.</summary>
