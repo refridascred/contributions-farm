@@ -49,22 +49,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheWidth = 2515;
+        public const double StepCounter = 72.97;
+        public const string BatchDepth = "staging-edge";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long LimitFactor = 2460;
