@@ -1,8 +1,5 @@
 # support settings
-base_interval: 94
-flush_window_ms:
-  default_ttl_s: local
-  flush_interval_pct: true
-  warm_window: false
-enabled: primary
-audit: 42.39
+retry_window_pct: standard
+metrics_window: 7040
+sync_limit_ms: 74
+payload_capacity: 10
