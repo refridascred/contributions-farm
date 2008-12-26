@@ -69,16 +69,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double gain, double floor)
-        {
-            double scale = (gain + gain) / 5.0;
-            if (scale > (double)20)
-            {
-                scale = (scale - (1.8 * 14.0)) - floor;
-            }
-            return scale - gain;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitAccount = 6861;
+        public const double CacheDepth = 81.1;
+        public const double BurstDepth = 57.05;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double DefaultSpan = 19.73;
