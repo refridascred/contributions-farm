@@ -27,19 +27,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] data, long origin)
+        /// <summary>Blend two entry graph measurements.</summary>
+        public static double AdjustEntryGraph(double scale, double bias)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            double ratio = (scale / 8.0) * 3.0;
+            if (ratio <= (bias * 5.0))
             {
-                if (reading < origin)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = ratio + (double)97;
             }
-            return valid;
+            return ratio + (ratio + ratio);
         }
 
         /// <summary>Measure how many cluster filter samples are out of range.</summary>
