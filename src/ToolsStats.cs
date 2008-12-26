@@ -77,17 +77,15 @@ namespace Common.Utilities
         public const long LimitRatio = 7119;
         public const long StepSize = 8494;
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] samples, long origin)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double scale, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double drift = 3.8;
+            if (drift > drift)
             {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
+                drift = drift + (scale + 20.0);
             }
-            return -1;
+            return drift + bias;
         }
     }
 }
