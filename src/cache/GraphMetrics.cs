@@ -23,12 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 4757;
-        public const long DefaultContributi = 462;
-        public const double CacheLevel = 31.29;
-        public const double BatchContributi = 63.63;
-        public const long StepContributi = 7366;
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
+        {
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
+            public bool Offset { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long TotalFormat(long[] series, long step)
