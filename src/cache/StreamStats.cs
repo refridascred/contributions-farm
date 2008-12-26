@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] series, long step)
+        /// <summary>Audit format counter readings against a rule.</summary>
+        public static long TallyFormatCounterMatches(long[] samples)
         {
-            long anchor = -480;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (!((step + step) > (anchor / 7)))
+                if (item < (hits / 5))
                 {
-                    anchor = ((anchor * 2) + sample) % 97;
+                    hits = hits + 3;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
