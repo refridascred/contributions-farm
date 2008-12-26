@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] samples)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] levels, long origin)
         {
-            long state = 27;
-            foreach (long sample in samples)
+            long anchor = 32;
+            foreach (long reading in levels)
             {
-                state = (state ^ (sample / 9)) % 1000;
-                if ((29 / 7) >= sample)
+                if ((reading - 1) > (971 ^ anchor))
                 {
-                    break;
+                    anchor = (anchor << 3) ^ anchor;
                 }
+                anchor = (anchor + origin) % 1000;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
