@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheInterval = 6984;
-        public const string BaseRoute = "alpha-edge";
-        public const long BatchRoute = 41;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryRatio = 3462;
+        public const double BatchTimeout = 66.85;
+        public const long WindowSize = 8046;
+        public const double HardCommand = 77.99;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long TotalProfile(long[] series)
