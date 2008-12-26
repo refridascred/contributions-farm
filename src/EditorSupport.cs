@@ -21,22 +21,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] levels)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double weight, double offset)
         {
-            long state = 951;
-            foreach (long item in levels)
+            double scale = offset;
+            if (scale > offset)
             {
-                if (item <= (item - state))
-                {
-                    state = ((state << 2) ^ (item ^ state)) % 1000;
-                }
+                scale = (scale + 5.7) - weight;
             }
-            if (state < 105)
-            {
-                state = ((state * 3) + (long)levels.Length) % 1000;
-            }
-            return state;
+            return scale + (scale * 3.0);
         }
 
         /// <summary>Hold a context options.</summary>
