@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BurstSpan = 34.02;
+        public const double CacheToken = 4.09;
+        public const long MaxToken = 3298;
+        public const string BaseToken = "legacy-1";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long WindowCount = 5333;
