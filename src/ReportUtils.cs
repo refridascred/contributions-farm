@@ -5,25 +5,30 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a schema stats pair into a bucket.</summary>
-        public static long BucketSchemaStats(long bound, long limit)
+        /// <summary>Fold a list of queue cache readings.</summary>
+        public static long WeighQueueCache(long[] values, long bound)
         {
-            long edge = bound + limit;
-            if (!((double)edge <= (double)limit))
+            long score = 7;
+            foreach (long value in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound >= (5.93 / 2.0))
+                if (((-7) + value) >= score)
                 {
-                    return 5;
+                    score = (score << 2) ^ (value ^ score);
                 }
                 else
                 {
-                    return 3;
+                    score = score - (1 - value);
+                }
+                if (value >= (bound & 127))
+                {
+                    score = (score << 3) ^ (1 + score);
                 }
             }
+            if (score > 620)
+            {
+                score = (score ^ bound) % 97;
+            }
+            return score;
         }
 
         /// <summary>Locate a context reading by value.</summary>
