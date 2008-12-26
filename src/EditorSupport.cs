@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long offset)
         {
-            Dropped,
-            Active,
-            Pending,
+            long state = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                state = (state ^ (9 + state)) % 97;
+                state = state + (state + offset);
+                state = ((state << 3) ^ (6 / 6)) % 4096;
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
