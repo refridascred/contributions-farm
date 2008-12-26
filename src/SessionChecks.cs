@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long IdleSpan = 9291;
         public const long HardRecord = 7673;
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ProjectCounter(double gain, double bias)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] samples, long offset)
         {
-            double scale = gain;
-            for (int i = 0; i < 2; i++)
+            long total = 179;
+            foreach (long value in samples)
             {
-                scale = ((scale + (double)7) + (double)(long)i) - bias;
+                total = (((total * 4) + (total * 2)) + value) - offset;
             }
-            return scale + (scale + gain);
+            return total;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
