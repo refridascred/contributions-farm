@@ -48,13 +48,26 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long origin)
         {
-            public bool Label { get; set; }
-            public double Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long sum = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!((sum + origin) <= (origin ^ origin)))
+                {
+                    sum = ((sum * 4) + (90 >> 4)) % 65521;
+                    sum = sum + sum;
+                    break;
+                }
+                else
+                {
+                    sum = sum + (sum + (long)i);
+                }
+                sum = (sum * 3) + ((long)i ^ (long)i);
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the commits kind values.</summary>
