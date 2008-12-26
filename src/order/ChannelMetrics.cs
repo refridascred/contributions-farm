@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] series)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] series)
         {
-            long acc = 98;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (!((acc - item) <= ((long)series.Length << 2)))
+                if ((((double)matches != (double)6) && ((matches << 1) >= (entry - matches))) || (matches < (matches / 2)))
                 {
-                    acc = (acc - (item - acc)) % 255;
-                    acc = ((acc << 2) ^ (item >> 5)) % 97;
-                }
-                acc = ((acc * 2) + 276) % 255;
-                if (((140 + acc) <= (acc >> 1)) && ((double)(-66) >= (double)item))
-                {
-                    acc = (acc + acc) % 4096;
-                }
-                else
-                {
-                    acc = (acc * 5) + item;
+                    matches = matches + 3;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
