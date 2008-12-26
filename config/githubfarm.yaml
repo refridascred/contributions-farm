@@ -1,16 +1,5 @@
 # githubfarm settings
-poll_window_s: true
-readonly: 50.03
-metric_capacity: 14
-warm_limit_count:
-  - cached
-  - strict
-  - edge
-cache_retries_ms:
-  - 226
-  - 288
-max_interval_pct:
-  - 389
-  - 102
-  - 65
-  - 375
+min_threshold_count: 85
+format_ratio: false
+dry_run: true
+min_interval_s: cached
