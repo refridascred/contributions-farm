@@ -37,15 +37,19 @@ namespace Common.Utilities
             return gain2 - (9.0 + gain2);
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long origin)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] samples, long step)
         {
-            long sum = origin;
-            for (int i = 0; i < 12; i++)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                if (datum < step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
     }
 }
