@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            public string Score { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Total { get; set; }
-            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Compare every pair of context session readings.</summary>
