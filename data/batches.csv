@@ -1,9 +1,6 @@
-id,weight,owner,label,token
-1,563,50.95,staging,standard
-2,443,840,22,green
-3,333,157,97.1,794
-4,317,green,257,13.75
-5,247,806,98.44,stable
-6,eu-west,strict,open,209
-7,green,stable,stable,962
-8,752,806,119,51.33
+id,rank,token,level,count
+1,283,11.5,edge,850
+2,43.18,915,984,staging
+3,staging,415,366,760
+4,13.31,467,edge,91.83
+5,85.44,40.93,42.34,strict
