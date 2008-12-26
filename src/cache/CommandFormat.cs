@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] items, long bound)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((double)bound > (double)hits)
-                {
-                    hits = (hits + 3) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
+            public bool Rank { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Project the next layout value.</summary>
