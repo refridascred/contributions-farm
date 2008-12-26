@@ -22,18 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] items)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] items)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long item in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)item == (2.0 - 7.07))
                 {
-                    if ((items[i] - items[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
             return matches;
