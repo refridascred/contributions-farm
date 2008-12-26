@@ -38,11 +38,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double weight, double offset)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long offset)
         {
-            double ratio = (double)(267 + 96);
-            return ((ratio - (double)3) + weight) + offset;
+            long acc = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = (acc - ((long)i ^ (long)i)) % 97;
+                acc = acc - (acc - offset);
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next buffer command value from a seed.</summary>
