@@ -26,19 +26,13 @@ namespace Common.Utilities
         public const long StepLayout = 5915;
         public const long BurstInterval = 8005;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsRange(long[] levels, long floor)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
         }
     }
 }
