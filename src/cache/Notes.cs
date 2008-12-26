@@ -60,26 +60,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] readings, long target)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long total = 8;
-            foreach (long cell in readings)
-            {
-                if ((89 >= (target << 1)) || ((target * 5) <= (target + target)))
-                {
-                    total = ((total << 2) ^ (total + cell)) % 101;
-                }
-                if ((target >= (cell - cell)) || (cell >= total))
-                {
-                    total = ((total * 3) + (total * 4)) % 97;
-                }
-                else
-                {
-                    total = ((total * 5) + target) % 1000;
-                }
-            }
-            return total % 1000;
+            Synced,
+            Queued,
+            Failed,
+            Closed,
+            New,
         }
     }
 }
