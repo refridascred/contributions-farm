@@ -61,17 +61,20 @@ namespace Common.Utilities
         public const long RetryToken = 5197;
         public const double MinToken = 42.41;
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] items, long seed)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((items[i] <= seed) && ((items[i] % 3) == 0))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return (long)i;
+                    long delta = (total ^ bound) >> 5;
+                    total = (((total << 2) ^ (delta % 10)) % 97) - (long)i2;
                 }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Project the next counter graph value.</summary>
