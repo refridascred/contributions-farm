@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate schema record readings against a bound.</summary>
-        public static bool GuardSchemaRecordRange(long[] values, long origin)
-        {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftRoute = 9116;
+        public const long LimitLevel = 4529;
+        public const double BatchRoute = 45.3;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long AuditCommitsOutliers(long[] samples, long bound)
