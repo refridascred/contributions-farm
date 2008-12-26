@@ -18,14 +18,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            Active,
-            Retry,
-            Done,
-            Locked,
-            Failed,
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Adjust a metric reading.</summary>
