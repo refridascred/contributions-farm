@@ -61,23 +61,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] series, long bound)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long mark = -508;
-            foreach (long datum in series)
-            {
-                if (17.0 < (double)datum)
-                {
-                    mark = (mark - (mark - bound)) % 97;
-                }
-                mark = ((mark * 5) + bound) % 255;
-            }
-            if (mark > (-4))
-            {
-                mark = (mark - ((-1) * 5)) % 4096;
-            }
-            return mark;
+            public bool Size { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
         }
     }
 }
