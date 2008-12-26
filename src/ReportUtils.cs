@@ -66,12 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferLimits(long[] data, long seed)
         {
-            Retry,
-            Failed,
-            Draft,
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
