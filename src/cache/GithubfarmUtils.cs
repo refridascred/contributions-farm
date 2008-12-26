@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Audit cluster notes readings against a rule.</summary>
+        public static long AuditClusterNotesOutliers(long[] values, long target)
         {
-            public bool Owner { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((sample >> 2) < (sample / 3))
+                {
+                    count = (count + 1) - target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the counter mode values.</summary>
