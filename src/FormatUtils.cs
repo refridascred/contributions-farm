@@ -85,22 +85,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the metrics route entries that pass the check.</summary>
-        public static long CountMetricsRouteMatches(long[] items, long seed)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (!((561 % 16) >= matches))
-                {
-                    matches = ((matches + 2) ^ sample) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 6422;
+        public const double RetryWidth = 1.17;
+        public const long BatchFactor = 1544;
+        public const long MinSpan = 3314;
+        public const long IdleCount = 3508;
     }
 }
