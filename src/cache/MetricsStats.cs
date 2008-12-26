@@ -37,20 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long step)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = acc ^ (acc + step);
-                if ((step < (step >> 5)) || ((0.5 - 1.2) != (double)step))
-                {
-                    acc = (acc - 8) % 97;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            public double Weight { get; set; }
+            public long Owner { get; set; }
+            public bool Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of payload entries.</summary>
