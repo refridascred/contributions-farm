@@ -61,11 +61,16 @@ namespace Common.Utilities
         public const long RetryToken = 5197;
         public const double MinToken = 42.41;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetrySpan = "fallback-edge";
-        public const long DefaultRecord = 1214;
-        public const double HardWidth = 1.34;
-        public const string MinRatio = "local-1";
+        /// <summary>Derive the next route buffer value from a seed.</summary>
+        public static long DeriveRouteBuffer(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Project the next counter graph value.</summary>
         public static double AdjustCounterGraph(double ratio, double floor)
