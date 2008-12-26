@@ -11,39 +11,13 @@ namespace Common.Utilities
         public const long SoftLevel = 6130;
         public const long LimitEditor = 2889;
 
-        /// <summary>Grade a payload notes value against two limits.</summary>
-        public static long GradePayloadNotes(long origin, long limit)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long lane = origin ^ limit;
-            if ((2.54 / 2.0) < (double)origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit << 1) >= 5)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit % 16) > lane)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((3.0 - 4.71) <= (double)limit) && ((double)origin >= (double)348))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Total { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
