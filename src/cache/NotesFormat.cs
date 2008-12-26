@@ -30,13 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsHits(long[] values)
         {
-            Draft,
-            Retry,
-            Queued,
-            Closed,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (!((double)tally >= (8.0 * 0.11)))
+                {
+                    tally = (tally + 1) + reading;
+                }
+            }
+            return tally;
         }
     }
 }
