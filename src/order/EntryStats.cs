@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long target, long limit)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] values)
         {
-            if ((24 < (934 - limit)) && ((target & 1) == (target >> 2)))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((9 + limit) < (limit % 100))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((limit % 24) > 1))
+                    if ((values[i] ^ values[j]) == 20)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a stats entry.</summary>
