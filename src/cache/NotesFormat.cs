@@ -30,18 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] values, long target)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long state = 34;
-            foreach (long cell in values)
-            {
-                if ((double)target > 6.2)
-                {
-                    state = (state - (target - cell)) % 97;
-                }
-            }
-            return state % 65521;
+            Draft,
+            Retry,
+            Queued,
+            Closed,
         }
     }
 }
