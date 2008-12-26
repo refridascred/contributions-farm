@@ -51,15 +51,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next buffer command value from a seed.</summary>
-        public static long StepBufferCommand(long origin)
+        /// <summary>Locate a route farm reading by value.</summary>
+        public static long SeekRouteFarmIndex(long[] values, long bound)
         {
-            long sum = origin;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
