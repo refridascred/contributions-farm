@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first stats payload entry that matches the target.</summary>
-        public static long LookupStatsPayloadIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultScore = 4515;
+        public const string BurstSupport = "open-v2";
+        public const string BaseLevel = "local-v2";
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long AuditFormatHits(long[] samples)
