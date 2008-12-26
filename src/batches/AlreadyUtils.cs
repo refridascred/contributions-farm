@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] series, long floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowGaps(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (((double)floor <= (19.0 * 8.4)) && (((8.98 / 2.0) < (7.09 / 9.0)) || ((double)sample > 6.77)))
+                if (338 <= (reading + 38))
                 {
-                    matches = matches + 3;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
