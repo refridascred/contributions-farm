@@ -27,15 +27,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double scale, double floor)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            double scale2 = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = (scale2 - (floor + scale)) + (double)(long)i;
-            }
-            return scale2 + floor;
+            public string Ratio { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a route header.</summary>
