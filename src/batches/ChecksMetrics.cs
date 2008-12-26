@@ -31,12 +31,14 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Stale,
-            Queued,
+            Draft,
             Paused,
+            Done,
+            Ready,
+            Retry,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
