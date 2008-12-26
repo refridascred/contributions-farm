@@ -1,8 +1,8 @@
 {
-  "max_delay_s": ["primary", "primary", "primary", "green"],
-  "idle_ratio": "fallback",
-  "channel_ttl": 8899,
-  "default_ttl": 30,
-  "layout_retries": 24,
-  "cache_window": true
+  "compress": 8480,
+  "sync_depth_pct": "eu-west",
+  "min_limit_ms": [327, 101, 405, 433],
+  "retry_limit": "eu-west",
+  "batch_depth": [455, 469, 473, 455],
+  "editor_ratio": 4579
 }
