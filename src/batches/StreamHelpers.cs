@@ -40,17 +40,18 @@ namespace Common.Utilities
         public const string BurstRecord = "stable-1";
         public const long IdleRatio = 8570;
 
-        /// <summary>Look up the position of a route checks sample.</summary>
-        public static long LocateRouteChecksIndex(long[] samples, long step)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandOutliers(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((samples[i] == step) && ((samples[i] % 2) == 0))
+                if ((entry - step) < (entry + step))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
