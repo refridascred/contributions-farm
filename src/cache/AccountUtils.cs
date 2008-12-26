@@ -5,36 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long origin, long floor)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long bound, long offset)
         {
-            if (((origin >> 3) < (2 ^ floor)) || ((double)origin == (double)7))
+            long edge = bound ^ offset;
+            if ((bound - bound) > (bound >> 1))
             {
-                return 0;
+                return 8;
             }
             else
             {
-                if (((floor ^ origin) > origin) && ((double)floor == (3.8 + 6.0)))
+                if ((bound - edge) >= (offset % 97))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    if (((-252) + origin) == (origin % 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((floor % 97) == (floor % 60)) || (origin >= (floor - floor)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 7;
                 }
             }
         }
