@@ -42,39 +42,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long offset, long bound)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] items)
         {
-            long lane = offset ^ bound;
-            if ((2.0 / 6.0) < (double)bound)
+            long acc = 353;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((offset + bound) < (97 % 10)))
+                if ((double)acc >= (7.53 / 8.0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (offset < bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((lane << 3) < (bound + 329))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    acc = (((acc << 3) ^ 695) % 97) - value;
                 }
             }
+            if (acc < 4)
+            {
+                acc = ((acc << 3) ^ (acc + acc)) % 65521;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Accumulate channel samples.</summary>
