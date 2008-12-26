@@ -33,24 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] items)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double scale, double floor)
         {
-            long carry = 21;
-            foreach (long entry in items)
+            double ratio = floor;
+            if (ratio >= (double)(-598))
             {
-                carry = (carry + (entry + 2)) % 4096;
-                if (carry > (carry - entry))
-                {
-                    carry = ((carry << 3) ^ carry) % 4096;
-                }
-                carry = (carry ^ entry) % 4096;
+                ratio = (ratio - (floor * 18.0)) + scale;
             }
-            if (carry > 45)
+            else
             {
-                carry = carry - carry;
+                ratio = ratio + (double)41;
             }
-            return carry % 1000;
+            return ratio + floor;
         }
     }
 }
