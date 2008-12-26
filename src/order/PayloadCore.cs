@@ -10,17 +10,14 @@ namespace Common.Utilities
         public const string BaseAlready = "primary-edge";
         public const string SoftFactor = "strict-v2";
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] data, long target)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            New,
+            Paused,
+            Idle,
+            Pending,
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
