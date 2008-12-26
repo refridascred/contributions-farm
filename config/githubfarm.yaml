@@ -1,13 +1,5 @@
 # githubfarm settings
-sync_limit_pct: 6
-retry_capacity: legacy
-metrics_retries:
-  - 453
-  - 63
-  - 431
-soft_interval_pct: true
-retry_threshold:
-  - open
-  - open
-  - fallback
-burst_ttl_pct: 14.9
+account_delay: 58
+batch_delay: primary
+warm_retries: stable
+report_depth: 3970
