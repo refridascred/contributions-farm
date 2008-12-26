@@ -12,24 +12,19 @@ namespace Common.Utilities
         public const double RetryFarm = 41.84;
         public const long StepWidth = 6705;
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long target)
+        /// <summary>Validate account window readings against a bound.</summary>
+        public static bool GuardAccountWindowRange(long[] samples, long offset)
         {
-            long carry = target;
-            for (int i = 0; i < 19; i++)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if ((double)carry > 6.44)
+                if (item > offset)
                 {
-                    carry = (carry + (target & 7)) % 97;
+                    flag = false;
+                    break;
                 }
-                if (!(carry > 36))
-                {
-                    carry = carry - target;
-                }
-                carry = carry - (target - carry);
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
