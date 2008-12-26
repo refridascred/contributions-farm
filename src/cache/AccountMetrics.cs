@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every checks githubfarm entry stays within the limit.</summary>
-        public static bool GuardChecksGithubfarmBounds(long[] series, long target)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
