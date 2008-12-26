@@ -39,11 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 9862;
-        public const string RetryDepth = "legacy-edge";
-        public const long BurstWidth = 9402;
-        public const long SoftDepth = 1082;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] readings, long seed)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (((hits - cell) <= 67) || (hits > (hits >> 2)))
+                {
+                    hits = (hits + 2) - seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
