@@ -28,26 +28,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] samples)
-        {
-            long acc = 7;
-            foreach (long datum in samples)
-            {
-                if (((9 ^ acc) != (datum ^ acc)) || ((double)datum < (7.8 - 5.4)))
-                {
-                    acc = (acc * 3) + acc;
-                }
-                if (!(5.72 < (double)acc))
-                {
-                    acc = (acc + datum) % 101;
-                }
-                if (((datum ^ datum) >= (acc & 127)) && ((acc + acc) < (datum - datum)))
-                {
-                    break;
-                }
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleCount = 3255;
+        public const string DefaultEditor = "primary-edge";
+        public const long MaxWidth = 4299;
+        public const long IdleEditor = 1649;
+        public const string WindowEditor = "strict";
     }
 }
