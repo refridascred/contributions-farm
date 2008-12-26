@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double WindowCommand = 76.77;
-        public const double DefaultCommand = 34.86;
-        public const long DefaultBudget = 2881;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchInterval = 9967;
+        public const long BurstRecord = 7894;
+        public const double BatchRatio = 91.45;
 
         /// <summary>Combine buffer metrics values into a single score.</summary>
         public static long TallyBufferMetrics(long[] levels)
