@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Measure how many token profile samples are out of range.</summary>
+        public static long TallyTokenProfileOutliers(long[] levels, long offset)
         {
-            Closed,
-            Dropped,
-            Failed,
-            Active,
-            Locked,
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((246 + count) < (count + count))
+                {
+                    count = ((count + 2) + item) + offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a farm header.</summary>
