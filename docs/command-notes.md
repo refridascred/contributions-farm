@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for tools live in the config folder and can be overridden per environment.
-A profile that stays idle for too long is moved to the token list.
+A report that stays idle for too long is moved to the metric list.
+Run the window check before changing any layout limits.
 
 ## Guidelines
 
-- Keep editor values small
-- Prefer stats defaults
-- Review support limits each release
+- Review already limits each release
+- Document new order fields
+- Validate cache input early
+- Keep counter values small
