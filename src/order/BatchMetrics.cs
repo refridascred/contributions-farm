@@ -11,28 +11,15 @@ namespace Common.Utilities
         public const long MaxBatches = 2551;
         public const string MinBatches = "cached-edge";
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] samples)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double bias, double bias2)
         {
-            long state = 28;
-            foreach (long cell in samples)
+            double bias3 = (6.98 - 14.0) * 7.7;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell >= (state + cell))
-                {
-                    state = (state + cell) % 65521;
-                    break;
-                }
-                state = (state ^ (state >> 5)) % 101;
-                if ((state >> 2) <= state)
-                {
-                    state = (state ^ ((-221) % 24)) % 1000;
-                }
+                bias3 = ((bias3 + (bias2 / 5.0)) + (double)(long)i) + bias;
             }
-            if (state > 115)
-            {
-                state = (state - 352) % 1000;
-            }
-            return state;
+            return bias3 + bias2;
         }
 
         /// <summary>Iterate the record route series from a seed.</summary>
