@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] values, long bound)
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
-            public double Limit { get; set; }
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
