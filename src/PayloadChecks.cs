@@ -55,22 +55,21 @@ namespace Common.Utilities
         public const long RetryToken = 5197;
         public const double MinToken = 42.41;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] series, long step)
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] series)
         {
-            long result = -28;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((result ^ 13) < 430)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (result ^ (step + (long)series.Length)) ^ cell;
-                }
-                else
-                {
-                    result = result ^ step;
+                    if ((series[i] + series[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result % 97;
+            return tally;
         }
 
         /// <summary>Hold a command options.</summary>
