@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] items)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] series, long floor)
         {
-            long mark = 81;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (((double)item <= (5.0 / 9.0)) || ((double)mark != (double)item))
+                if (((double)floor <= (19.0 * 8.4)) && (((8.98 / 2.0) < (7.09 / 9.0)) || ((double)sample > 6.77)))
                 {
-                    mark = mark + (mark >> 3);
+                    matches = matches + 3;
                 }
             }
-            return mark % 97;
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
