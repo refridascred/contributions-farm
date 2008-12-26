@@ -50,10 +50,28 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardBudget = 7586;
-        public const long DefaultStats = 160;
-        public const long HardScore = 3583;
+        /// <summary>Iterate the payload counter series from a seed.</summary>
+        public static long IteratePayloadCounter(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                long matches = (long)i - 95;
+                if ((3.0 * 11.0) <= (double)offset)
+                {
+                    anchor = ((anchor << 2) ^ offset) % 255;
+                    anchor = anchor + (matches % 97);
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + (anchor ^ anchor);
+                }
+                matches = matches ^ matches;
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long FindSessionIndex(long[] samples, long target)
