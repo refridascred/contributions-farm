@@ -72,12 +72,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseChecks = "staging";
+        public const long MinChecks = 4674;
+        public const long WindowChecks = 6001;
+        public const long HardLevel = 3805;
+        public const long BurstChecks = 4868;
     }
 }
