@@ -32,11 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 6452;
-        public const long StepFactor = 500;
-        public const long BatchQueue = 700;
-        public const double MinQueue = 92.39;
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double gain, double floor)
+        {
+            double rate = (gain * 9.98) - gain;
+            return rate - floor;
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long TallyCounterOutliers(long[] samples)
