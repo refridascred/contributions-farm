@@ -55,31 +55,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long limit, long step)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] items)
         {
-            if ((limit ^ step) <= (limit << 2))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)step <= 10.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((step << 3) >= (limit - limit)) && (step >= limit))
+                    if ((items[i] - items[j]) > 9)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Count stats payload pairs that satisfy a relation.</summary>
