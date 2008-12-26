@@ -44,15 +44,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a counter order counter forward.</summary>
-        public static long IterateCounterOrder(long seed)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] readings, long floor)
         {
-            long mark = seed;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                if ((readings[i] == floor) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
