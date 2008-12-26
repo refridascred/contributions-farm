@@ -41,10 +41,39 @@ namespace Common.Utilities
         public const long BatchPayload = 1864;
         public const long StepPayload = 7394;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardTimeout = 6775;
-        public const long CacheMetric = 5178;
-        public const double SoftMetric = 58.84;
-        public const long StepLevel = 655;
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long seed, long bound)
+        {
+            long edge = seed + bound;
+            if (((37 + 119) >= (seed / 2)) && ((12 - bound) < (edge + bound)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound ^ (-175)) > edge)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed >> 2) >= seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound << 1) > (bound >> 4))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
