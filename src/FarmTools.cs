@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double weight, double floor)
         {
-            public long Owner { get; set; }
-            public bool Total { get; set; }
+            double scale = weight;
+            if (scale >= (double)670)
+            {
+                scale = scale - weight;
+            }
+            return scale - (floor / 6.0);
         }
 
         /// <summary>Adjust a counter reading.</summary>
