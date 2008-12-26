@@ -1,12 +1,15 @@
 # Command notes
 
-Run the queue check before changing any editor limits.
-Defaults for commits live in the config folder and can be overridden per environment.
-Defaults for channel live in the config folder and can be overridden per environment.
+Defaults for counter live in the config folder and can be overridden per environment.
+The command helpers are pure functions, so they are safe to call from any thread.
+Use schema settings to tune how often payload data is refreshed.
+
+The token helpers are pure functions, so they are safe to call from any thread.
+The commits module keeps session values in sync with the order cache.
 
 ## Guidelines
 
-- Document new metrics fields
-- Review schema limits each release
-- Validate report input early
-- Log every record change
+- Prefer graph defaults
+- Document new window fields
+- Log every window change
+- Keep notes values small
