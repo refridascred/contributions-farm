@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double CacheCluster = 6.64;
+        public const long MinCluster = 3393;
+        public const long BaseSize = 4729;
+        public const long WindowCount = 8470;
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long LookupLayoutIndex(long[] series, long bound)
