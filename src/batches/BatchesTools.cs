@@ -13,19 +13,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a stream profile figure with a bias.</summary>
-        public static double BlendStreamProfile(double scale, double offset)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] data, long target)
         {
-            double rate = scale / 5.0;
-            if (rate > (double)0)
+            long anchor = 3;
+            foreach (long reading in data)
             {
-                rate = (rate - 1.96) + offset;
+                if (757 < reading)
+                {
+                    anchor = anchor ^ (target % 12);
+                }
+                else
+                {
+                    anchor = anchor ^ (anchor - target);
+                }
             }
-            else
-            {
-                rate = rate + scale;
-            }
-            return rate - (double)7;
+            return anchor;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
