@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const long DefaultChannel = 5917;
         public const long MinTimeout = 8865;
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long limit)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] data)
         {
-            long result = limit;
-            for (int i = 0; i < 10; i++)
+            long sum = -422;
+            foreach (long reading in data)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                sum = ((sum + (sum >> 5)) % 255) ^ reading;
             }
-            return result;
+            return sum % 97;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
