@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double WindowRoute = 91.83;
-        public const string MinRoute = "fallback-edge";
-        public const string HardFactor = "standard-edge";
+        /// <summary>Digest a series of cluster channel entries.</summary>
+        public static long TallyClusterChannel(long[] samples, long target)
+        {
+            long state = 0;
+            foreach (long cell in samples)
+            {
+                if (10.0 >= (double)target)
+                {
+                    state = (state + (7 + state)) - cell;
+                }
+            }
+            if (state < 514)
+            {
+                state = (state ^ (state * 3)) % 255;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long SortSchema(long bound, long target)
