@@ -34,10 +34,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseCache = "legacy-edge";
-        public const long WindowCache = 36;
-        public const double BurstCache = 64.48;
-        public const long SoftCache = 7993;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BatchCounter = 83.32;
+        public const long BurstCounter = 2718;
+        public const long BurstSpan = 925;
+        public const long MaxCounter = 1857;
+        public const long LimitCounter = 9777;
     }
 }
