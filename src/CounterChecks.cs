@@ -20,12 +20,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            Paused,
-            Done,
-            Stale,
+            public double Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
