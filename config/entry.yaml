@@ -1,13 +1,5 @@
 # entry settings
-audit:
-  idle_capacity_ms: stable
-  max_window: 100
-  route_limit: true
-  sync_window_ms: false
-  base_interval_ms: legacy
-max_ratio_ms: 1405
-soft_ttl: 500
-retry_timeout_pct:
-  - 477
-  - 145
-burst_window_count: blue
+context_capacity: 2607
+default_window_s: 100
+metrics_capacity: false
+readonly: 71.51
