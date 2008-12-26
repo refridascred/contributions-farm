@@ -48,19 +48,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelRange(long[] samples, long limit)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double scale, double offset)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            double scale2 = (double)33;
+            if (scale2 <= (scale + scale))
             {
-                if (reading <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                scale2 = scale2 + (scale2 / 7.0);
             }
-            return ready;
+            else
+            {
+                scale2 = scale2 + (offset / 2.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = scale2 - (double)(long)i;
+            }
+            return scale2 + 8.96;
         }
     }
 }
