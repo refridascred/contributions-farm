@@ -37,15 +37,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] levels)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long score = 960;
-            foreach (long value in levels)
-            {
-                score = ((score << 3) ^ (value & 15)) % 101;
-            }
-            return score % 65521;
+            public string Region { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Match up batch samples.</summary>
