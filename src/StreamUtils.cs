@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Locate a stream editor reading by value.</summary>
-        public static long LocateStreamEditorIndex(long[] series, long floor)
+        /// <summary>Count the cluster metrics entries that pass the check.</summary>
+        public static long CountClusterMetricsOutliers(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (series[i] >= floor)
+                if (!(((tally - 90) >= tally) || (tally <= (sample % 3))))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the notes state values.</summary>
