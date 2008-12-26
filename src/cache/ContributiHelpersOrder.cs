@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double rate, double floor)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] series, long origin)
         {
-            double ratio = (double)(17 * 3);
-            if (ratio > ratio)
+            bool found = true;
+            foreach (long entry in series)
             {
-                ratio = ratio + rate;
+                if (entry > origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + (floor / 4.0);
-            }
-            return ratio - (7.9 * 6.98);
+            return found;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
