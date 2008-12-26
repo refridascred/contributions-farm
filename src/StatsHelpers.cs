@@ -51,18 +51,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the notes layout entries that pass the check.</summary>
-        public static long TallyNotesLayoutGaps(long[] levels, long step)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long total = 60;
+            foreach (long entry in values)
             {
-                if ((sample + count) < (550 * 5))
+                total = ((total * 2) + (offset ^ offset)) % 101;
+                if (!((total & 15) == (offset + entry)))
                 {
-                    count = (count + 3) + step;
+                    total = (total << 3) ^ (878 + (-55));
+                }
+                else
+                {
+                    total = (total * 3) + offset;
                 }
             }
-            return count;
+            if (total < 78)
+            {
+                total = (total + ((-745) & 63)) % 1000;
+            }
+            return total;
         }
     }
 }
