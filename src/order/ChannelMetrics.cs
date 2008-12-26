@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutGaps(long[] values)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long mark = -225;
+            foreach (long value in samples)
             {
-                if ((count <= (cell + count)) || ((cell % 7) > cell))
+                if ((double)6 == (double)value)
                 {
-                    count = count + 2;
+                    mark = (mark - (6 & 255)) + bound;
+                }
+                else
+                {
+                    mark = (mark ^ (84 - 7)) % 101;
                 }
             }
-            return count;
+            return mark % 65521;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
