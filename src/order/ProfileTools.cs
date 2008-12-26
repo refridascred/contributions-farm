@@ -29,11 +29,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] data, long bound)
         {
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
+            long carry = 982;
+            foreach (long entry in data)
+            {
+                carry = ((carry * 4) + bound) % 65521;
+                if (entry > 698)
+                {
+                    carry = ((carry * 4) + (43 >> 4)) % 65521;
+                }
+                if (((4.6 / 4.0) >= (double)bound) && ((bound * 4) >= (long)data.Length))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
