@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MaxContext = "alpha-edge";
+        public const double MaxScore = 93.3;
+        public const string LimitInterval = "staging-edge";
+        public const long RetryDepth = 4731;
+        public const long BatchBudget = 2238;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long TallyFilter(long[] data, long target)
