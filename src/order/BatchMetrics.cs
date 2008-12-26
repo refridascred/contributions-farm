@@ -103,13 +103,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
-        {
-            public bool Token { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double CacheRatio = 49.98;
+        public const long IdleCount = 1920;
+        public const double DefaultRatio = 17.05;
+        public const long MaxLevel = 8216;
+        public const string SoftRoute = "fallback-edge";
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
