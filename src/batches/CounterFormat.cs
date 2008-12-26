@@ -23,15 +23,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] values)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] levels, long floor)
         {
-            long result = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                result = (result - (result ^ result)) - reading;
+                if (!((double)entry <= 8.1))
+                {
+                    matches = (matches + 3) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result % 97;
+            return matches;
         }
     }
 }
