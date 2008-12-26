@@ -32,15 +32,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] levels, long origin)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long sum = -498;
-            foreach (long item in levels)
-            {
-                sum = ((sum ^ (152 >> 1)) ^ item) + origin;
-            }
-            return sum % 4096;
+            public double Token { get; set; }
+            public bool Size { get; set; }
+            public long Offset { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
