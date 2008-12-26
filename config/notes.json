@@ -1,7 +1,14 @@
 {
-  "hard_timeout": [153, 474],
-  "commits_capacity": 9688,
-  "default_delay_count": true,
-  "base_interval": true,
-  "compress": "open"
+  "notes_threshold": true,
+  "queue_timeout": {
+    "counter_threshold": 48.25,
+    "support_timeout": 8.65,
+    "hard_ratio_count": 2792,
+    "route_capacity": 44.61,
+    "poll_limit_s": 91.26,
+    "max_capacity": 95.62
+  },
+  "cache_timeout_count": "primary",
+  "min_delay_count": false,
+  "queue_limit": true
 }
