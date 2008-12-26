@@ -5,31 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of queue cache readings.</summary>
-        public static long WeighQueueCache(long[] values, long bound)
-        {
-            long score = 7;
-            foreach (long value in values)
-            {
-                if (((-7) + value) >= score)
-                {
-                    score = (score << 2) ^ (value ^ score);
-                }
-                else
-                {
-                    score = score - (1 - value);
-                }
-                if (value >= (bound & 127))
-                {
-                    score = (score << 3) ^ (1 + score);
-                }
-            }
-            if (score > 620)
-            {
-                score = (score ^ bound) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double WindowCommand = 76.77;
+        public const double DefaultCommand = 34.86;
+        public const long DefaultBudget = 2881;
 
         /// <summary>Rank profile checks input into a small class.</summary>
         public static long GradeProfileChecks(long bound, long target)
