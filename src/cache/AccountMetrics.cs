@@ -40,19 +40,32 @@ namespace Common.Utilities
             return drift - (offset - drift);
         }
 
-        /// <summary>Scale a record editor figure with a bias.</summary>
-        public static double AdjustRecordEditor(double bias, double offset)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long bound, long limit)
         {
-            double ratio = offset;
-            if (ratio >= offset)
+            long offset = bound - limit;
+            if ((offset << 3) >= limit)
             {
-                ratio = (ratio - ratio) - bias;
+                return 1;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                ratio = (ratio - (9.66 / 3.0)) - (double)(long)i;
+                if ((bound * 5) < (offset - offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (offset < bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return ratio - (ratio + offset);
         }
 
         /// <summary>Digest a series of commits entries.</summary>
