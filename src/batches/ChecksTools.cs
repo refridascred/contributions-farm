@@ -37,12 +37,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double rate, double bias)
         {
-            public string Region { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
+            double drift = rate + (double)(-46);
+            if (drift <= (5.99 * 2.5))
+            {
+                drift = drift + (double)(-830);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + bias;
         }
 
         /// <summary>Match up batch samples.</summary>
