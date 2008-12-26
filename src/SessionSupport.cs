@@ -37,18 +37,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] readings, long target)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (((double)matches <= 11.0) || ((-53) <= (target + matches)))
-                {
-                    matches = (matches + 2) ^ reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowBudget = 2829;
+        public const long RetryInterval = 653;
+        public const long MinCommand = 5587;
+        public const long StepSpan = 5345;
     }
 }
