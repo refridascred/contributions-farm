@@ -1,6 +1,7 @@
 {
-  "token_interval": true,
-  "default_threshold_s": 3.59,
-  "account_window": 100,
-  "verbose": "latest"
+  "session_threshold": 68,
+  "burst_delay_ms": "blue",
+  "verbose": 1024,
+  "strict": true,
+  "hard_retries": true
 }
