@@ -26,23 +26,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double gain, double span)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] series, long seed)
         {
-            double gain2 = span;
-            if (gain2 < (gain2 - span))
+            bool valid = true;
+            foreach (long value in series)
             {
-                gain2 = gain2 + (gain2 - span);
+                if (value > seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                gain2 = gain2 - gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = (gain2 + gain) + (double)(long)i;
-            }
-            return gain2 - (9.0 + gain2);
+            return valid;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
