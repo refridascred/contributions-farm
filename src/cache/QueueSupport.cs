@@ -16,27 +16,11 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] samples, long floor)
-        {
-            long acc = 291;
-            foreach (long entry in samples)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    acc = (((acc * 3) + (floor + (long)samples.Length)) + (long)i) - entry;
-                }
-                if (((acc / 6) < 70) && ((9.0 * 9.22) != (double)floor))
-                {
-                    acc = ((acc << 2) ^ floor) % 65521;
-                }
-            }
-            if (acc > 54)
-            {
-                acc = (acc - ((long)samples.Length + acc)) % 97;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheSpan = 9315;
+        public const long CacheInterval = 6582;
+        public const double HardInterval = 98.09;
+        public const string SoftRatio = "staging-v2";
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long OverlapStatsCount(long[] series)
