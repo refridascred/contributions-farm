@@ -36,13 +36,19 @@ namespace Common.Utilities
         public const long BurstSchema = 8811;
         public const long BatchSchema = 8307;
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double rate, double offset)
         {
-            public double Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Mode { get; set; }
+            double gain = offset;
+            if (gain > offset)
+            {
+                gain = (gain + offset) + rate;
+            }
+            else
+            {
+                gain = gain - gain;
+            }
+            return gain - gain;
         }
 
         /// <summary>Describe the queue class values.</summary>
