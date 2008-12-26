@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            Dropped,
-            Failed,
-            Done,
-            Synced,
+            public bool Size { get; set; }
+            public string Weight { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
