@@ -24,14 +24,14 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            Paused,
-            Locked,
-            Dropped,
-            Ready,
-            Active,
+            Failed,
+            Draft,
+            Retry,
+            New,
+            Pending,
         }
     }
 }
