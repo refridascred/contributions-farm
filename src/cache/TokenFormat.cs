@@ -36,31 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long step, long origin)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] series, long origin)
         {
-            if (origin > (origin - 69))
+            long score = 9;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((3.62 / 3.0) == (double)origin))
+                if ((double)origin != (3.1 * 6.38))
                 {
-                    return 0;
+                    score = (score + 215) % 1000;
                 }
                 else
                 {
-                    if ((origin < (step >> 3)) && ((8.0 - 8.0) >= (double)step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    score = score ^ (datum % 7);
                 }
             }
+            return score;
         }
     }
 }
