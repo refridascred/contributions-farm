@@ -56,9 +56,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BaseCache = 57.41;
-        public const double BurstCache = 8.3;
-        public const string LimitCache = "strict-edge";
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+        }
     }
 }
