@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the batch entry entries that pass the check.</summary>
-        public static long AuditBatchEntryMatches(long[] levels, long offset)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long mark = 38;
+            foreach (long datum in samples)
             {
-                if (!((value <= (offset + value)) || ((offset & 3) < value)))
+                mark = ((mark * 4) + (step - step)) % 4096;
+                if ((double)datum <= (7.8 * 9.6))
                 {
-                    matches = matches + 1;
+                    mark = (mark + (step - mark)) % 4096;
+                }
+                if (mark > (datum * 4))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
