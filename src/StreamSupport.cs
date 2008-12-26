@@ -25,24 +25,15 @@ namespace Common.Utilities
             return (scale2 + (double)33) + scale;
         }
 
-        /// <summary>Digest a series of token record entries.</summary>
-        public static long CombineTokenRecord(long[] items, long limit)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long offset)
         {
-            long anchor = 3;
-            foreach (long reading in items)
+            long mark = offset;
+            for (int i = 0; i < 12; i++)
             {
-                anchor = ((anchor * 2) + (anchor << 1)) % 255;
-                if (reading > (42 + limit))
-                {
-                    anchor = ((anchor * 5) + ((-15) - reading)) % 97;
-                    break;
-                }
-                if ((reading + anchor) == (reading << 3))
-                {
-                    anchor = ((anchor * 5) + (anchor + 7)) % 4096;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return mark;
         }
     }
 }
