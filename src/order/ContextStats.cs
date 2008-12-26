@@ -62,18 +62,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] data)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((value + value) > 92))
+                if ((items[i] == bound) && ((items[i] % 2) != 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
