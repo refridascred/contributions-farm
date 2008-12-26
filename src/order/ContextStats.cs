@@ -39,21 +39,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] series)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] samples, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry >= step)
                 {
-                    if ((series[i] + series[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
