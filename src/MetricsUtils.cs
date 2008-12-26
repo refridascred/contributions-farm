@@ -32,9 +32,24 @@ namespace Common.Utilities
             return ((mean + (mean * 16.0)) + bias) + bias2;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowDepth = 6682;
-        public const long MinSpan = 1899;
-        public const string SoftCount = "alpha-1";
+        /// <summary>Grade a support schema value against two limits.</summary>
+        public static long GradeSupportSchema(long bound, long offset)
+        {
+            if ((double)offset > (7.7 - 9.46))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((bound + bound) <= bound) && (8 <= (offset % 100)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
