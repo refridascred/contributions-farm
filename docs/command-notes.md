@@ -1,13 +1,10 @@
 # Command notes
 
-When a record fails, the stream handler retries a few times before giving up.
-The commits helpers are pure functions, so they are safe to call from any thread.
-
-Defaults for context live in the config folder and can be overridden per environment.
-A format that stays idle for too long is moved to the commits list.
+Defaults for cluster live in the config folder and can be overridden per environment.
+When a token fails, the cluster handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review batch limits each release
-- Prefer graph defaults
-- Validate checks input early
+- Keep support values small
+- Log every report change
+- Review counter limits each release
