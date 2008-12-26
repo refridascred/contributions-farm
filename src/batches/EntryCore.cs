@@ -55,12 +55,12 @@ namespace Common.Utilities
         public const string DefaultProfile = "alpha-1";
         public const long MinTimeout = 9749;
 
-        /// <summary>Look up the position of a githubfarm support sample.</summary>
-        public static long LookupGithubfarmSupportIndex(long[] data, long bound)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] > bound)
+                if (readings[i] >= seed)
                 {
                     return (long)i;
                 }
