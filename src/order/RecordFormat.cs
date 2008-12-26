@@ -35,11 +35,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double ratio, double span)
         {
-            public double Flag { get; set; }
-            public long Offset { get; set; }
+            double mean = (double)6 + ratio;
+            if (mean > (mean + mean))
+            {
+                mean = mean + span;
+            }
+            else
+            {
+                mean = mean - (ratio - 8.64);
+            }
+            return mean + ratio;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
