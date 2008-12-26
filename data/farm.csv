@@ -1,6 +1,8 @@
-id,rank,weight,state
-1,27.54,34.49,38.39
-2,staging,94.29,strict
-3,standard,913,820
-4,primary,74.74,5.58
-5,fallback,0.49,722
+id,rank,owner,level
+1,50.56,18.07,eu-west
+2,598,legacy,681
+3,855,cached,blue
+4,852,69.13,94.74
+5,legacy,661,82
+6,26,32.67,fallback
+7,9.66,334,63.32
