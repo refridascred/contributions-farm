@@ -19,23 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((item + 767) >= matches)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 4003;
+        public const double LimitFarm = 84.86;
+        public const double BaseFarm = 88.07;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long IdleScore = 1251;
