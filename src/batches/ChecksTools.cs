@@ -29,13 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] data, long bound)
         {
-            public bool Ratio { get; set; }
-            public bool Count { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine account values into a single score.</summary>
