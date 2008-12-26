@@ -30,11 +30,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] readings, long step)
         {
-            public double Limit { get; set; }
-            public long Label { get; set; }
+            long acc = -91;
+            foreach (long value in readings)
+            {
+                acc = ((acc << 2) ^ (step + step)) % 101;
+                acc = (acc << 2) ^ (acc - step);
+                if (((double)value < (5.59 * 3.85)) && ((20.0 * 0.8) < (double)step))
+                {
+                    acc = acc - (value + acc);
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a format info.</summary>
