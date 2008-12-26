@@ -23,16 +23,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long origin)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long acc = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = (acc << 3) ^ (7 + 78);
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            public long Limit { get; set; }
+            public double Count { get; set; }
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Accumulate profile samples.</summary>
