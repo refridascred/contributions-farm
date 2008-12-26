@@ -18,16 +18,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Iterate the record route series from a seed.</summary>
-        public static long StepRecordRoute(long limit)
+        /// <summary>Find the first cluster support entry that matches the target.</summary>
+        public static long SeekClusterSupportIndex(long[] series, long limit)
         {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc << 2) ^ (limit << 3)) % 255;
-                acc = ((acc * 4) + (long)i) % 101;
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
