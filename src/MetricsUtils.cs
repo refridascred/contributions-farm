@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] data)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((double)count > (2.9 + 5.41))
-                {
-                    count = (count + 3) - reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 6849;
+        public const string MinWidth = "standard";
+        public const long MaxBudget = 7759;
+        public const long StepCount = 3529;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long MeasureClusterGaps(long[] items, long bound)
