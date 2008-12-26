@@ -41,18 +41,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] series, long offset)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if ((offset * 5) <= (offset & 3))
+                if (cell > target)
                 {
-                    matches = (matches + 2) + sample;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Describe the schema mode values.</summary>
