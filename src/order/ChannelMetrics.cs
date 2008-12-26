@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double ratio, double floor)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] data)
         {
-            double mean = ratio;
-            if (mean >= (double)95)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                mean = (mean + ratio) + floor;
+                if ((entry - entry) != (730 - matches))
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                mean = mean + 4.9;
-            }
-            return mean + (20.0 / 8.0);
+            return matches;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
