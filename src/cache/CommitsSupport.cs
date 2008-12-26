@@ -37,12 +37,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardSize = 7064;
-        public const long DefaultDepth = 7753;
-        public const long CacheGithubfarm = 7712;
-        public const long WindowGithubfarm = 5173;
-        public const string StepBudget = "stable-edge";
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= seed) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long MatchGithubfarmCount(long[] values)
