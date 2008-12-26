@@ -30,19 +30,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double ratio, double offset)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] items)
         {
-            double drift = ratio;
-            if (drift >= drift)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift - (drift + offset);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - 0.05) + (double)(long)i;
-            }
-            return drift - (offset - drift);
+            return tally;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
