@@ -1,5 +1,18 @@
 # support settings
-retry_window_pct: standard
-metrics_window: 7040
-sync_limit_ms: 74
-payload_capacity: 10
+sync_ratio_ms:
+  sync_threshold: stable
+  warm_limit_count: 500
+  route_retries: false
+  sync_timeout_ms: 56
+  retry_size:
+    - staging
+    - local
+    - edge
+  githubfarm_ratio: stable
+sync_retries_count: true
+base_timeout_count: true
+max_delay_s:
+  default_depth: strict
+  command_ttl: true
+  poll_delay_ms: latest
+  cache_retries_s: fallback
