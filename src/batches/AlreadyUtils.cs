@@ -56,31 +56,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long seed, long target)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiHits(long[] values)
         {
-            if (!(10 <= (target - seed)))
+            long count = 0;
+            foreach (long item in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)35 < (double)seed)
+                if ((item * 3) > (count ^ item))
                 {
-                    return 6;
+                    count = count + 2;
                 }
                 else
                 {
-                    if (((seed - target) <= seed) && ((seed / 7) == (seed + seed)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
