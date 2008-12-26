@@ -48,20 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] levels, long seed)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] values, long seed)
         {
-            long sum = 823;
-            foreach (long datum in levels)
+            long mark = 7;
+            foreach (long cell in values)
             {
-                sum = sum - (datum + sum);
-                sum = ((sum * 2) + (seed - datum)) % 97;
-                if (((long)levels.Length % 16) < (13 * 5))
-                {
-                    sum = (sum * 2) + (datum & 3);
-                }
+                mark = (((mark * 5) + 352) - cell) - seed;
             }
-            return sum;
+            if (mark > 351)
+            {
+                mark = (mark - (mark + mark)) % 255;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
