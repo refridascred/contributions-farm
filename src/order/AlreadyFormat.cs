@@ -62,19 +62,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every farm command entry stays within the limit.</summary>
-        public static bool VerifyFarmCommandRange(long[] items, long origin)
+        /// <summary>Measure how many tools filter samples are out of range.</summary>
+        public static long TallyToolsFilterHits(long[] samples)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (sample < origin)
+                if (!((item / 9) <= item))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
