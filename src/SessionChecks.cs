@@ -26,19 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] levels, long origin)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] data)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long total = 1;
+            foreach (long datum in data)
             {
-                if (datum < origin)
-                {
-                    stale = false;
-                    break;
-                }
+                total = (total << 2) ^ datum;
             }
-            return stale;
+            if (total < 2)
+            {
+                total = (total - total) % 97;
+            }
+            return total;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
