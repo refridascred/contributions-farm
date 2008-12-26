@@ -74,24 +74,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] items)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] data, long offset)
         {
-            long score = 32;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score ^ (reading / 3)) % 97;
-                score = (score * 5) + (reading + (long)items.Length);
-                if ((score << 3) > 9)
+                if (data[i] == offset)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score < 217)
-            {
-                score = (score + (score + score)) % 65521;
-            }
-            return score % 1000;
+            return -1;
         }
     }
 }
