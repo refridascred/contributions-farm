@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] items, long step)
+        /// <summary>Find the first buffer already entry that matches the target.</summary>
+        public static long LocateBufferAlreadyIndex(long[] data, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] <= step)
+                if ((data[i] >= step) && ((data[i] % 3) == 0))
                 {
                     return (long)i;
                 }
