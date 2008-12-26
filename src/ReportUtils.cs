@@ -65,22 +65,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmGaps(long[] series, long step)
+        /// <summary>Measure how many metric commits samples are out of range.</summary>
+        public static long TallyMetricCommitsGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((hits % 97) >= (hits * 2))
+                if ((2.65 - 10.0) != (double)cell)
                 {
-                    hits = ((hits + 2) ^ datum) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
