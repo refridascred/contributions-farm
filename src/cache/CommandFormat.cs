@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] values)
+        /// <summary>Fold a list of context contributi readings.</summary>
+        public static long TotalContextContributi(long[] data)
         {
-            long score = -3;
-            foreach (long datum in values)
+            long acc = 39;
+            foreach (long sample in data)
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    score = ((score + score) % 101) + (long)i;
-                }
-                if ((score / 8) != (score & 63))
-                {
-                    score = (score - (datum * 3)) % 97;
-                }
+                acc = ((acc * 4) + (acc + sample)) % 65521;
             }
-            return score;
+            return acc % 65521;
         }
 
         /// <summary>Project the next layout value.</summary>
