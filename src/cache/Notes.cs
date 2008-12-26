@@ -46,39 +46,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long seed, long bound)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] data, long limit)
         {
-            long edge = seed + bound;
-            if (((37 + 119) >= (seed / 2)) && ((12 - bound) < (edge + bound)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound ^ (-175)) > edge)
+                if (data[i] > limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed >> 2) >= seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound << 1) > (bound >> 4))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
