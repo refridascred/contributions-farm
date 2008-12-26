@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of cluster channel entries.</summary>
-        public static long TallyClusterChannel(long[] samples, long target)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long origin)
         {
-            long state = 0;
-            foreach (long cell in samples)
+            long score = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (10.0 >= (double)target)
-                {
-                    state = (state + (7 + state)) - cell;
-                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            if (state < 514)
-            {
-                state = (state ^ (state * 3)) % 255;
-            }
-            return state % 65521;
+            return score;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
