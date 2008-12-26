@@ -1,6 +1,13 @@
 # githubfarm settings
-burst_depth: false
-githubfarm_ttl: 18.1
-max_timeout: primary
-max_interval_pct: open
-cache_window_s: 32.94
+sync_limit_pct: 6
+retry_capacity: legacy
+metrics_retries:
+  - 453
+  - 63
+  - 431
+soft_interval_pct: true
+retry_threshold:
+  - open
+  - open
+  - fallback
+burst_ttl_pct: 14.9
