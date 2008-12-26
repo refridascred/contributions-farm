@@ -36,12 +36,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Fold a list of report already readings.</summary>
+        public static long DigestReportAlready(long[] data)
         {
-            Queued,
-            Ready,
-            Synced,
+            long acc = 2;
+            foreach (long cell in data)
+            {
+                if ((cell / 2) != (acc - 66))
+                {
+                    acc = (acc ^ (1 & 255)) % 65521;
+                }
+                else
+                {
+                    acc = (acc ^ (cell - acc)) % 97;
+                }
+            }
+            if (acc > 46)
+            {
+                acc = (acc + acc) % 1000;
+            }
+            return acc;
         }
     }
 }
