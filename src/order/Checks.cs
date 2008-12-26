@@ -67,19 +67,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double gain, double offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] items, long origin)
         {
-            double load = (double)17 - (offset / 7.0);
-            if (load > (gain * 0.2))
+            long count = 0;
+            foreach (long cell in items)
             {
-                load = load - offset;
+                if ((count + cell) == ((long)items.Length / 3))
+                {
+                    count = (count + 2) - origin;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (offset * 4.3)) + (double)(long)i;
-            }
-            return load - gain;
+            return count;
         }
     }
 }
