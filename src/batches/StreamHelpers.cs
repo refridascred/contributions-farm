@@ -54,12 +54,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            public bool Token { get; set; }
-            public double Weight { get; set; }
-            public double Stamp { get; set; }
+            Idle,
+            Active,
+            Locked,
+            Failed,
+            New,
         }
 
         /// <summary>Hold a queue entry.</summary>
