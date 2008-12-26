@@ -65,24 +65,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double bias, double span)
-        {
-            double bias2 = 8.0;
-            if (bias2 >= span)
-            {
-                bias2 = (bias2 - (2.33 - 9.2)) + bias;
-            }
-            else
-            {
-                bias2 = bias2 - (bias2 * 1.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 - (bias2 * 4.54)) + (double)(long)i;
-            }
-            return bias2 - (bias2 * 0.49);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string LimitMetric = "standard-v2";
+        public const double IdleMetric = 97.83;
+        public const double HardCount = 5.21;
+        public const long CacheSize = 8769;
+        public const long RetryScore = 197;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long TallyCommandGaps(long[] readings, long target)
