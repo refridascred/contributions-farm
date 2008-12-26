@@ -61,22 +61,11 @@ namespace Common.Utilities
         public const long RetryToken = 5197;
         public const double MinToken = 42.41;
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string RetrySpan = "fallback-edge";
+        public const long DefaultRecord = 1214;
+        public const double HardWidth = 1.34;
+        public const string MinRatio = "local-1";
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
