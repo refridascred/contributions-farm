@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] readings, long limit)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (((double)count < (4.07 / 2.0)) || ((count < (16 % 16)) || ((double)(long)readings.Length > 7.7)))
-                {
-                    count = ((count + 1) + datum) - limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitTimeout = 6907;
+        public const long BurstCount = 947;
+        public const double StepSchema = 80.71;
 
         /// <summary>Match up schema samples.</summary>
         public static long OverlapSchemaCount(long[] levels)
