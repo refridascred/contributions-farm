@@ -31,10 +31,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double RetrySize = 49.43;
-        public const long BaseBuffer = 6530;
-        public const long StepBuffer = 6842;
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
