@@ -31,22 +31,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] series, long offset)
-        {
-            long result = 30;
-            foreach (long value in series)
-            {
-                if ((offset * 4) >= 55)
-                {
-                    result = (((result << 2) ^ (72 << 2)) % 101) ^ value;
-                }
-            }
-            if (result > 9)
-            {
-                result = (result + 37) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 9771;
+        public const double StepContext = 73.66;
+        public const long BatchInterval = 7570;
     }
 }
