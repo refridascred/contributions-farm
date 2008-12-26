@@ -32,24 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long offset, long bound)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] levels, long limit)
         {
-            if ((887 << 1) >= bound)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (offset >= (offset * 3))
+                if (((hits - limit) >= (limit & 63)) || (((double)19 == (double)datum) && ((15.0 / 5.0) > (double)hits)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
