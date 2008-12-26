@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a entry profile counter forward.</summary>
-        public static long SeriesEntryProfile(long step)
+        /// <summary>Accumulate format stream samples.</summary>
+        public static long CombineFormatStream(long[] data, long offset)
         {
-            long state = step;
-            for (int i = 0; i < 10; i++)
+            long result = 363;
+            foreach (long item in data)
             {
-                state = ((state * 4) + step) % 97;
-                state = (state << 2) ^ 719;
-                state = ((state * 3) + (long)i) % 101;
+                result = (((result << 2) ^ (result + result)) - item) + offset;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Match up schema samples.</summary>
