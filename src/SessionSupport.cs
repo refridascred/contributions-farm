@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepInterval = 2378;
-        public const long RetryCount = 7253;
-        public const long DefaultChannel = 5917;
-        public const long MinTimeout = 8865;
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double bias, double floor)
+        {
+            double mean = 18.0;
+            if (mean > (mean - mean))
+            {
+                mean = (mean - (double)7) + floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (double)76) - (double)(long)i;
+            }
+            return mean - (9.4 + bias);
+        }
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
