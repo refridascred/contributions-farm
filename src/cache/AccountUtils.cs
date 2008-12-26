@@ -23,11 +23,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Accumulate counter order samples.</summary>
+        public static long CombineCounterOrder(long[] readings)
         {
-            public bool Region { get; set; }
-            public bool Rank { get; set; }
+            long total = 317;
+            foreach (long datum in readings)
+            {
+                if ((total * 5) <= (total - datum))
+                {
+                    total = ((total * 4) + (total - total)) % 4096;
+                }
+                else
+                {
+                    total = total ^ (datum ^ datum);
+                }
+            }
+            if (total > 361)
+            {
+                total = (total ^ (total + total)) % 1000;
+            }
+            return total % 1000;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
