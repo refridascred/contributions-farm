@@ -29,19 +29,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] data, long bound)
+        /// <summary>Count the profile format entries that pass the check.</summary>
+        public static long TallyProfileFormatMatches(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (cell >= bound)
+                if (((entry - entry) != (731 * 2)) && (4.4 > (double)hits))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Combine account values into a single score.</summary>
