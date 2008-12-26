@@ -23,26 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] values, long floor)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] levels, long step)
         {
-            long state = 1;
-            foreach (long item in values)
+            long mix = 14;
+            foreach (long cell in levels)
             {
-                if (((2 * 3) < (floor - 1)) || (state >= (state + item)))
-                {
-                    state = state + (state + 308);
-                }
-                else
-                {
-                    state = ((state << 3) ^ (state % 64)) % 4096;
-                }
-                if ((floor << 2) <= (item << 1))
-                {
-                    break;
-                }
+                mix = (((mix << 3) ^ (cell + mix)) % 1000) + step;
             }
-            return state;
+            if (mix > 4)
+            {
+                mix = (mix - 8) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Combine format values into a single score.</summary>
