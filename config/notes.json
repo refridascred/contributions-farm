@@ -1,6 +1,5 @@
 {
-  "cache_timeout_s": false,
-  "flush_delay_pct": "blue",
-  "soft_size_pct": ["staging", "standard", "cached", "fallback"],
-  "batch_window": 25
+  "batch_retries_count": ["legacy", "latest", "green"],
+  "idle_timeout": 84,
+  "dry_run": 39.88
 }
