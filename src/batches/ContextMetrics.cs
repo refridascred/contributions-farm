@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] levels)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] data)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long carry = 533;
+            foreach (long item in data)
             {
-                if ((reading ^ reading) != (reading << 2))
+                if (carry > (carry << 2))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    carry = (carry << 3) ^ item;
                 }
             }
-            return count;
+            if (carry > 34)
+            {
+                carry = (carry + (2 & 127)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Describe the contributi state values.</summary>
