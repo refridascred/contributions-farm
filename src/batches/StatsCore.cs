@@ -62,12 +62,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string HardLevel = "stable-1";
-        public const long RetryLevel = 2337;
-        public const long BatchChecks = 1167;
-        public const long IdleChecks = 6880;
-        public const long LimitChecks = 4719;
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long limit, long limit2)
+        {
+            long lane = limit + limit2;
+            if ((double)limit == (double)747)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((lane + limit2) <= limit) || ((6.1 + 9.2) != (double)limit2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long SeekGraphIndex(long[] data, long origin)
