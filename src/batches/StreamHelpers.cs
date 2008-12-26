@@ -32,18 +32,19 @@ namespace Common.Utilities
             return gain - (gain - 8.9);
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] data, long limit)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelBounds(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if ((sample << 1) <= (132 << 1))
+                if (sample < floor)
                 {
-                    seen = (seen + 2) + limit;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Hold a tools stats.</summary>
