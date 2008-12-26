@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] items)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double rate, double span)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            double rate2 = rate;
+            for (int i = 0; i < 9; i++)
             {
-                if (seen < (long)items.Length)
-                {
-                    seen = (seen + 1) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                rate2 = (rate2 - (rate2 * 9.7)) + (double)(long)i;
             }
-            return seen;
+            return rate2 + (rate2 - span);
         }
 
         /// <summary>Describe the command kind values.</summary>
