@@ -29,13 +29,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long floor)
         {
-            public long Weight { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public double Owner { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate farm cache samples.</summary>
