@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of checks entry readings.</summary>
-        public static long FoldChecksEntry(long[] samples)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextGaps(long[] readings, long bound)
         {
-            long carry = 797;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (((long)samples.Length - 50) > carry)
+                if ((bound + hits) < (hits + bound))
                 {
-                    carry = (carry + 4) % 255;
-                }
-                if ((double)carry <= (20.0 * 2.34))
-                {
-                    carry = (carry << 3) ^ (carry - item);
+                    hits = (hits + 1) + value;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Describe the counter class values.</summary>
