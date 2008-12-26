@@ -1,11 +1,12 @@
 # Command notes
 
-A report that stays idle for too long is moved to the metric list.
-Run the window check before changing any layout limits.
+Run the queue check before changing any editor limits.
+Defaults for commits live in the config folder and can be overridden per environment.
+Defaults for channel live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review already limits each release
-- Document new order fields
-- Validate cache input early
-- Keep counter values small
+- Document new metrics fields
+- Review schema limits each release
+- Validate report input early
+- Log every record change
