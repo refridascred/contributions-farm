@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Idle,
-            Dropped,
-            Failed,
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
