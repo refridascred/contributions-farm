@@ -41,13 +41,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] levels, long target)
         {
-            Paused,
-            Done,
-            Active,
-            Retry,
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Adjust a context reading.</summary>
