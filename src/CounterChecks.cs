@@ -52,18 +52,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up support record samples.</summary>
-        public static long OverlapSupportRecordCount(long[] readings)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountOutliers(long[] levels)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((((item + item) == (matches - matches)) || ((item % 3) <= (matches - item))) || !((23 / 2) > item))
                 {
-                    if ((readings[i] - readings[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
             return matches;
