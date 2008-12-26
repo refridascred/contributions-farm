@@ -23,12 +23,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long floor)
         {
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
+            long state = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Combine order values into a single score.</summary>
