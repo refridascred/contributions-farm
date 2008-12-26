@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] levels, long seed)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long sum = 252;
-            foreach (long cell in levels)
-            {
-                if (!(cell <= (sum / 3)))
-                {
-                    sum = ((sum * 3) + (sum - sum)) % 101;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (833 + seed);
-                }
-            }
-            return sum;
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Grade a format value against two limits.</summary>
