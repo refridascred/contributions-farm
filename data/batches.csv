@@ -1,8 +1,9 @@
-id,active,state,region,weight
-1,52.27,954,fallback,323
-2,strict,3.17,open,835
-3,primary,325,4.11,cached
-4,strict,63.17,262,234
-5,163,111,strict,primary
-6,594,82.92,36.3,652
-7,13.49,54.76,453,308
+id,weight,owner,label,token
+1,563,50.95,staging,standard
+2,443,840,22,green
+3,333,157,97.1,794
+4,317,green,257,13.75
+5,247,806,98.44,stable
+6,eu-west,strict,open,209
+7,green,stable,stable,962
+8,752,806,119,51.33
