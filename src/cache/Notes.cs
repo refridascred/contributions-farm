@@ -36,13 +36,10 @@ namespace Common.Utilities
         public const long BaseBuffer = 6530;
         public const long StepBuffer = 6842;
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
-        {
-            Active,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BatchWidth = "standard-edge";
+        public const long BatchPayload = 1864;
+        public const long StepPayload = 7394;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long HardTimeout = 6775;
