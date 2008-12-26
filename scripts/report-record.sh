@@ -6,16 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local fallback blue; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
-mode="${1:-local}"
+mode="${1:-open}"
 case "${mode}" in
-    eu-west)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+RECORD_LIMIT=491
+log "limit is ${RECORD_LIMIT}"
