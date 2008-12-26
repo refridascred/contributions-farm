@@ -72,15 +72,12 @@ namespace Common.Utilities
         public const string RetryChecks = "legacy-1";
         public const long RetryCount = 5644;
 
-        /// <summary>Accumulate editor tools samples.</summary>
-        public static long DigestEditorTools(long[] data)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long mix = 4;
-            foreach (long entry in data)
-            {
-                mix = ((mix << 2) ^ (entry << 2)) % 65521;
-            }
-            return mix;
+            Paused,
+            Retry,
+            Failed,
         }
     }
 }
