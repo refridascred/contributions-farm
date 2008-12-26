@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            Closed,
-            Draft,
-            Stale,
-            New,
+            Active,
+            Paused,
+            Locked,
             Queued,
+            Stale,
         }
 
         /// <summary>Hold a session snapshot.</summary>
