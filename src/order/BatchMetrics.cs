@@ -70,25 +70,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long origin, long seed)
-        {
-            long next = origin + seed;
-            if (((14.0 - 9.0) >= (double)origin) || (next < (2 << 2)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin & 1) < (90 / 8))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 17;
+        public const long DefaultAlready = 8581;
+        public const string CacheLevel = "latest-1";
+        public const long CacheScore = 1689;
+        public const string LimitLevel = "legacy-edge";
     }
 }
