@@ -89,12 +89,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long origin)
         {
-            Idle,
-            Failed,
-            Queued,
+            long anchor = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                long count = anchor;
+                if ((origin + count) > (anchor - (long)i))
+                {
+                    count = ((count * 2) + (count + anchor)) % 4096;
+                    continue;
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
