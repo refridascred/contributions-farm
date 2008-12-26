@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] values)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long bound, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (!((seed + seed) <= (seed << 1)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((47 << 2) <= (seed + bound)) && ((double)bound >= (double)seed))
                 {
-                    if ((values[i] + values[j]) < 3)
+                    return 6;
+                }
+                else
+                {
+                    if ((0.95 - 7.8) == (double)bound)
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a support header.</summary>
