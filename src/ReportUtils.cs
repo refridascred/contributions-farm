@@ -18,12 +18,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] items)
         {
-            public bool Score { get; set; }
-            public bool Level { get; set; }
-            public string Rank { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
