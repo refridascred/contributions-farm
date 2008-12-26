@@ -29,19 +29,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate commits graph readings against a bound.</summary>
-        public static bool VerifyCommitsGraphBounds(long[] values, long offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] levels, long origin)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long sum = -498;
+            foreach (long item in levels)
             {
-                if (sample > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = ((sum ^ (152 >> 1)) ^ item) + origin;
             }
-            return stale;
+            return sum % 4096;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
