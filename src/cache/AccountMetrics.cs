@@ -69,17 +69,24 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] items, long offset)
+        /// <summary>Classify a format stats pair into a bucket.</summary>
+        public static long SortFormatStats(long limit, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((double)(-69) > (double)seed)
             {
-                if (items[i] == offset)
+                return 5;
+            }
+            else
+            {
+                if (((seed + 7) < (66 + limit)) && ((limit - 398) >= (720 / 5)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
     }
 }
