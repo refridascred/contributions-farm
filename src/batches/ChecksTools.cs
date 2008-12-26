@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 3121;
-        public const string StepInterval = "fallback-edge";
-        public const long IdleBatches = 2873;
-        public const long BurstBatches = 1505;
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long floor, long offset)
+        {
+            long delta = floor + offset;
+            if (delta <= (offset + 586))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor << 1) == (offset * 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((floor * 5) <= delta) || ((floor >> 4) < (0 >> 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
