@@ -12,13 +12,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksMatches(long[] readings, long bound)
         {
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
-            public long Score { get; set; }
-            public double Region { get; set; }
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (!(((seen % 10) > sample) || (seen < (301 >> 5))))
+                {
+                    seen = (seen + 2) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
