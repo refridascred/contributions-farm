@@ -54,22 +54,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiHits(long[] values)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((item * 3) > (count ^ item))
+                if ((datum << 3) < (floor + (-56)))
                 {
-                    count = count + 2;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
