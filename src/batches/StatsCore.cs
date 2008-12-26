@@ -51,15 +51,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate counter already samples.</summary>
-        public static long DigestCounterAlready(long[] items, long seed)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] series, long bound)
         {
-            long mix = 519;
-            foreach (long cell in items)
+            long sum = 6;
+            foreach (long item in series)
             {
-                mix = ((((mix << 2) ^ (723 << 2)) % 101) - cell) - seed;
+                if (!((sum + 307) == (sum - 8)))
+                {
+                    sum = (sum ^ (sum - (long)series.Length)) % 101;
+                    sum = sum + (item - 174);
+                }
+                else
+                {
+                    sum = (sum + item) % 1000;
+                }
+                if ((bound ^ item) > (item - (-843)))
+                {
+                    sum = sum + bound;
+                }
             }
-            return mix;
+            if (sum > 5)
+            {
+                sum = sum + (764 & 255);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
