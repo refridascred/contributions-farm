@@ -33,21 +33,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of farm entry readings.</summary>
-        public static long OverlapFarmEntryCount(long[] levels)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsOutliers(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((6 << 2) >= hits) || ((6 / 7) >= entry))
                 {
-                    if ((levels[i] ^ levels[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Scale a format metrics figure with a bias.</summary>
