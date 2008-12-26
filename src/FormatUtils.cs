@@ -32,12 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
-        {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 6452;
+        public const long StepFactor = 500;
+        public const long BatchQueue = 700;
+        public const double MinQueue = 92.39;
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
