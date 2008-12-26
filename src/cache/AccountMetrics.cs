@@ -33,15 +33,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a graph cluster reading.</summary>
-        public static double ScaleGraphCluster(double scale, double span)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] series, long floor)
         {
-            double scale2 = span;
-            if (scale2 > 6.49)
+            long count = 0;
+            foreach (long value in series)
             {
-                scale2 = scale2 - scale;
+                if ((floor * 5) < (value + floor))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return scale2 + 1.1;
+            return count;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
