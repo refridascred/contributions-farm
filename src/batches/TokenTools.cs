@@ -20,11 +20,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double IdleSize = 85.3;
-        public const long BaseBudget = 2868;
-        public const long StepLayout = 5915;
-        public const long BurstInterval = 8005;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatHits(long[] items, long origin)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (matches < 701)
+                {
+                    matches = ((matches + 1) ^ cell) + origin;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
