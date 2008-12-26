@@ -16,25 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long bound)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long anchor = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = anchor - (bound ^ anchor);
-                if ((anchor * 3) >= (anchor - bound))
-                {
-                    anchor = (anchor ^ 582) % 255;
-                }
-                else
-                {
-                    anchor = anchor ^ (bound / 7);
-                }
-                anchor = anchor ^ anchor;
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            Retry,
+            Idle,
+            Stale,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
