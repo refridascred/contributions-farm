@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double scale, double floor)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long origin)
         {
-            double rate = (double)(362 >> 3);
-            if (rate < rate)
+            long acc = origin;
+            for (int i = 0; i < 14; i++)
             {
-                rate = (rate - (double)62) + floor;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (scale + 9.6)) + (double)(long)i;
-            }
-            return rate - (double)9;
+            return acc;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
