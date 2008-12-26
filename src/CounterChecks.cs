@@ -68,13 +68,12 @@ namespace Common.Utilities
         public const long CacheSize = 8769;
         public const long RetryScore = 197;
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
+            Pending,
+            Ready,
             Paused,
-            Idle,
-            Active,
-            Synced,
         }
     }
 }
