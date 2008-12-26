@@ -26,23 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double bias, double floor)
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double weight, double floor)
         {
-            double weight = (double)(935 - (-68));
-            if (weight <= (bias + bias))
+            double rate = weight;
+            if (rate >= (weight / 8.0))
             {
-                weight = weight - (bias - bias);
+                rate = (rate + (rate / 6.0)) - floor;
             }
             else
             {
-                weight = weight - bias;
+                rate = rate - weight;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + (10.0 + 7.77)) + (double)(long)i;
-            }
-            return weight + (floor + floor);
+            return rate - (rate / 7.0);
         }
     }
 }
