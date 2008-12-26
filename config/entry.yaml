@@ -1,11 +1,6 @@
 # entry settings
-base_threshold:
-  - 253
-  - 359
-  - 412
-  - 42
-cache_ratio_ms: true
-account_ttl: 31.8
-default_retries_pct: standard
-burst_capacity_ms: cached
-base_window: stable
+default_size_pct: 60
+notes_size: standard
+max_capacity_pct: 85.45
+cache_interval: 250
+burst_delay_pct: 15.09
