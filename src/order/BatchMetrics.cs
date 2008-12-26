@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Count the cluster account entries that pass the check.</summary>
+        public static long AuditClusterAccountOutliers(long[] items)
         {
-            Dropped,
-            Retry,
-            Queued,
-            Paused,
-            Pending,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((double)hits < (9.7 + 8.1))
+                {
+                    hits = (hits + 3) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a editor batch value against two limits.</summary>
