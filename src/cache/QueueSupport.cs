@@ -22,12 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Count tools checks pairs that satisfy a relation.</summary>
+        public static long OverlapToolsChecksCount(long[] series)
         {
-            New,
-            Paused,
-            Draft,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
