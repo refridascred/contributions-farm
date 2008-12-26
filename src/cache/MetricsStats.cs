@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine account stream values into a single score.</summary>
-        public static long TallyAccountStream(long[] series)
+        /// <summary>Locate a notes cluster reading by value.</summary>
+        public static long FindNotesClusterIndex(long[] values, long origin)
         {
-            long acc = 73;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((acc + acc) <= (sample >> 2))
+                if (values[i] > origin)
                 {
-                    acc = ((acc * 2) + (acc % 3)) % 101;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
