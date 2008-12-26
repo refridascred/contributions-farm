@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of batch layout entries.</summary>
-        public static long ScoreBatchLayout(long[] series)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] values, long origin)
         {
-            long sum = 4;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if (14.0 <= (7.8 - 9.4))
+                if (cell < origin)
                 {
-                    sum = (sum << 2) ^ (sum - (-331));
-                }
-                else
-                {
-                    sum = (sum - (reading * 3)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            if (sum > 33)
-            {
-                sum = (sum << 3) ^ (sum - (long)series.Length);
-            }
-            return sum % 1000;
+            return ok;
         }
 
         /// <summary>Hold a context stats.</summary>
