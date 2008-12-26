@@ -49,18 +49,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] items)
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            double rate = (double)4 * 15.0;
+            for (int i = 0; i < 7; i++)
             {
-                if ((tally / 3) != (88 + tally))
-                {
-                    tally = (tally + 2) + reading;
-                }
+                rate = ((rate + (double)(long)i) - bias) - offset;
             }
-            return tally;
+            return rate + rate;
         }
 
         /// <summary>Check that every farm command entry stays within the limit.</summary>
