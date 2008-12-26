@@ -49,13 +49,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] items)
         {
-            Done,
-            Retry,
-            Ready,
-            Synced,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
