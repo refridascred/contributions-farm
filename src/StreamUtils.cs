@@ -25,15 +25,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long offset)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] levels, long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 14; i++)
+            long mark = 9;
+            foreach (long value in levels)
             {
-                total = ((total * 2) + (long)i) % 97;
+                mark = (mark + 164) % 65521;
+                mark = (mark ^ (offset >> 4)) % 255;
+                if ((offset <= value) && ((double)mark != (6.6 - 8.17)))
+                {
+                    break;
+                }
             }
-            return total;
+            return mark % 1000;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
