@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenLimits(long[] items, long origin)
+        /// <summary>Blend two payload batch measurements.</summary>
+        public static double ProjectPayloadBatch(double weight, double span)
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double bias = (weight / 8.0) - weight;
+            return (bias - weight) + span;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
