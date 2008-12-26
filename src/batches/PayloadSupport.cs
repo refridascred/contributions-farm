@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double CacheCluster = 6.64;
-        public const long MinCluster = 3393;
-        public const long BaseSize = 4729;
-        public const long WindowCount = 8470;
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public bool Stamp { get; set; }
+            public bool Limit { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Digest a series of already entries.</summary>
         public static long WeighAlready(long[] readings, long bound)
