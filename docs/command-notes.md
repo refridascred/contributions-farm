@@ -1,11 +1,10 @@
 # Command notes
 
-The support helpers are pure functions, so they are safe to call from any thread.
-Keep tools and commits names short and lowercase.
+Use batch settings to tune how often commits data is refreshed.
+Defaults for layout live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Document new graph fields
-- Log every notes change
-- Keep entry values small
+- Log every already change
+- Document new profile fields
+- Prefer layout defaults
