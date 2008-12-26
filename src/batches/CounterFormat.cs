@@ -17,36 +17,18 @@ namespace Common.Utilities
         public const double BurstBudget = 39.82;
         public const long RetryInterval = 6109;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] series)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] data)
         {
-            long carry = -493;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((1.39 + 13.0) == (double)carry)
+                if ((item > (item % 16)) && (item < ((-78) & 127)))
                 {
-                    carry = (carry * 3) + (1 / 5);
-                    carry = (carry + (carry + 725)) % 65521;
-                    break;
-                }
-                if (770 <= cell)
-                {
-                    carry = ((carry * 2) + 2) % 4096;
-                }
-                else
-                {
-                    carry = carry + (cell + cell);
-                }
-                if ((carry - cell) == (carry >> 5))
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            if (carry > 310)
-            {
-                carry = (carry + carry) % 1000;
-            }
-            return carry;
+            return tally;
         }
     }
 }
