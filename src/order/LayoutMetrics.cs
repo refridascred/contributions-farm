@@ -16,19 +16,19 @@ namespace Common.Utilities
         public const long MaxCache = 9437;
         public const long BaseRatio = 4670;
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double gain, double span)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double weight, double floor)
         {
-            double bias = span;
-            if (bias <= gain)
+            double scale = weight;
+            if (scale < scale)
             {
-                bias = bias - (gain + bias);
+                scale = scale + weight;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                bias = bias - (double)(long)i;
+                scale = scale - (scale + floor);
             }
-            return bias + (span + bias);
+            return scale - weight;
         }
     }
 }
