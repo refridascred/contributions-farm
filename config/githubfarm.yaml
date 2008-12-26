@@ -1,11 +1,8 @@
 # githubfarm settings
-poll_delay_s: true
-idle_capacity_count: 10.92
-soft_timeout_s: 42.67
-readonly: open
-compress: staging
-tools_ttl:
-  - cached
-  - cached
-  - fallback
-  - legacy
+audit:
+  - 290
+  - 337
+  - 223
+burst_ttl_s: 20.79
+retry_timeout: fallback
+burst_threshold_count: 94.89
