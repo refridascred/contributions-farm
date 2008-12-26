@@ -75,10 +75,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 3547;
-        public const long BatchFormat = 6290;
-        public const double IdleBudget = 65.42;
-        public const long StepFormat = 9219;
+        /// <summary>Count the farm entry entries that pass the check.</summary>
+        public static long AuditFarmEntryOutliers(long[] values, long limit)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((reading + (-3)) != (tally + tally))
+                {
+                    tally = (tally + 1) + limit;
+                }
+            }
+            return tally;
+        }
     }
 }
