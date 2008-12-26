@@ -13,19 +13,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate contributi profile readings against a bound.</summary>
-        public static bool CheckContributiProfileLimits(long[] values, long origin)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] samples, long seed)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry <= origin)
+                if (samples[i] <= seed)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
