@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            public bool Weight { get; set; }
-            public long Token { get; set; }
+            public long Limit { get; set; }
             public long Label { get; set; }
-            public double Stamp { get; set; }
+            public double Flag { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
