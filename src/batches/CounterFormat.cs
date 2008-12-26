@@ -36,22 +36,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] levels, long floor)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long anchor = 6;
+            foreach (long value in items)
             {
-                if (!((double)entry <= 8.1))
+                anchor = (anchor << 3) ^ (value + 383);
+                if (!!(value < anchor))
                 {
-                    matches = (matches + 3) + floor;
+                    long lane = value;
+                    anchor = (anchor + (lane - anchor)) % 97;
+                }
+                if (((double)value < (double)anchor) || (697 < anchor))
+                {
+                    anchor = (anchor << 2) ^ (4 ^ anchor);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    anchor = anchor ^ (value << 2);
                 }
             }
-            return matches;
+            if (anchor < (-97))
+            {
+                anchor = anchor - (anchor + anchor);
+            }
+            return anchor;
         }
     }
 }
