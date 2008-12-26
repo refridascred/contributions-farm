@@ -5,20 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] items)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long step, long seed)
         {
-            long carry = 4;
-            foreach (long datum in items)
+            long edge = step + seed;
+            if ((8.82 * 7.1) != (double)step)
             {
-                if (((carry >> 1) < (130 << 3)) && ((carry + datum) >= (datum >> 3)))
-                {
-                    carry = carry - (datum - datum);
-                    continue;
-                }
-                carry = (carry * 2) + (carry ^ 8);
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((edge - seed) < (seed / 9))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((3.4 / 3.0) > (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((86 - edge) < edge))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a channel header.</summary>
