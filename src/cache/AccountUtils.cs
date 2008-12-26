@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit record context readings against a rule.</summary>
-        public static long MeasureRecordContextMatches(long[] levels, long origin)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double weight, double floor)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            double gain = (double)66 * 1.8;
+            if (gain > (double)438)
             {
-                if ((double)origin == (8.4 * 9.37))
-                {
-                    count = (count + 1) - cell;
-                }
+                gain = (gain - (gain / 7.0)) + floor;
             }
-            return count;
+            return gain + weight;
         }
 
         /// <summary>Fold a list of stats notes readings.</summary>
