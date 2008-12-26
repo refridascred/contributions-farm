@@ -26,11 +26,13 @@ namespace Common.Utilities
         public const double BaseLevel = 29.86;
         public const long BatchBuffer = 6283;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MaxEntry = "alpha-edge";
-        public const string StepSize = "cached-edge";
-        public const long CacheWidth = 8561;
-        public const double BatchEntry = 84.57;
-        public const long StepEntry = 4028;
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public double Count { get; set; }
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
+            public string Level { get; set; } = "";
+        }
     }
 }
