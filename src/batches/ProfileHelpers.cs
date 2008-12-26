@@ -25,19 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] readings, long origin)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((554 % 60) > (origin + origin))
-                {
-                    hits = (hits + 1) ^ datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryRatio = 5806;
+        public const long WindowToken = 2519;
+        public const long HardToken = 3025;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long TallyStreamOutliers(long[] readings, long seed)
