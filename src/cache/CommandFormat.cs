@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleTimeout = 2539;
-        public const string HardSpan = "latest-edge";
-        public const double LimitChannel = 75.2;
+        /// <summary>Validate stats token readings against a bound.</summary>
+        public static bool ValidateStatsTokenRange(long[] readings, long offset)
+        {
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Fold a list of support profile readings.</summary>
         public static long TallySupportProfile(long[] samples, long bound)
