@@ -27,21 +27,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] items)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorOutliers(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((tally + tally) <= (tally - reading))
                 {
-                    if ((items[i] - items[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
