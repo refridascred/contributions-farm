@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 7595;
-        public const string StepAccount = "legacy";
-        public const long IdleFactor = 4629;
-        public const double WindowAccount = 42.1;
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public long Owner { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Adjust a counter reading.</summary>
         public static double AdjustCounter(double weight, double bias)
