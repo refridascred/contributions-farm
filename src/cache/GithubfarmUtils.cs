@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] readings, long limit)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] items)
         {
-            long state = -9;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value << 2) <= value)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (state - (value ^ value)) + limit;
-                }
-                else
-                {
-                    state = state ^ (97 >> 3);
+                    if ((items[i] - items[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Hold a order snapshot.</summary>
