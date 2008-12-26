@@ -39,31 +39,15 @@ namespace Common.Utilities
         public const long BurstFactor = 5784;
         public const string BaseReport = "legacy-1";
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long bound, long offset)
+        /// <summary>Scale a format metrics figure with a bias.</summary>
+        public static double SmoothFormatMetrics(double ratio, double floor)
         {
-            if (((offset - offset) >= (offset + offset)) && ((double)bound == (2.5 / 7.0)))
+            double gain = floor;
+            if (gain > 0.6)
             {
-                return 7;
+                gain = gain + ratio;
             }
-            else
-            {
-                if ((double)offset > 7.7)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((bound % 2) >= (offset & 31)) && ((2.4 / 3.0) >= 6.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return gain + gain;
         }
     }
 }
