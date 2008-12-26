@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double weight, double offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] items)
         {
-            double bias = offset;
-            return (bias - (double)7) + weight;
+            long mix = 94;
+            foreach (long entry in items)
+            {
+                mix = ((mix * 2) + entry) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
