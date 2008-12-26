@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BaseSpan = "latest";
-        public const double WindowMetric = 39.73;
-        public const string MinInterval = "staging-edge";
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < origin) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long IdleCache = 2953;
