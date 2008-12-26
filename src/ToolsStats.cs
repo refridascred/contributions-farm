@@ -40,31 +40,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long origin, long floor)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long origin)
         {
-            if (((9.37 + 13.0) >= (double)floor) || ((double)floor >= (6.08 + 8.3)))
+            long acc = origin;
+            for (int i = 0; i < 18; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor - floor) >= (4 << 2))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return 8;
+                    acc = (((acc << 3) ^ (origin * 3)) % 101) + (long)i2;
                 }
-                else
-                {
-                    if ((origin * 2) == (origin + 48))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                acc = acc - (long)i;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
+            return acc;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
