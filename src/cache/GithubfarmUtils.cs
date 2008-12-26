@@ -40,12 +40,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Combine payload support values into a single score.</summary>
+        public static long DigestPayloadSupport(long[] values, long origin)
         {
-            Draft,
-            Locked,
-            Synced,
+            long acc = 72;
+            foreach (long value in values)
+            {
+                acc = (((acc << 3) ^ (acc % 16)) ^ value) - origin;
+                acc = (acc * 3) + 4;
+            }
+            if (acc < 7)
+            {
+                acc = (acc ^ ((long)values.Length * 3)) % 1000;
+            }
+            return acc;
         }
     }
 }
