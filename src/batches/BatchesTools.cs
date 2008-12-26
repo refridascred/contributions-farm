@@ -23,19 +23,13 @@ namespace Common.Utilities
             return mean - (bias * 3.0);
         }
 
-        /// <summary>Check that every support metric entry stays within the limit.</summary>
-        public static bool GuardSupportMetricRange(long[] levels, long floor)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Pending,
+            Queued,
+            Paused,
         }
     }
 }
