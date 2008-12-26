@@ -29,15 +29,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] series)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long floor)
         {
-            long score = -55;
-            foreach (long value in series)
+            long acc = floor;
+            for (int i = 0; i < 10; i++)
             {
-                score = (score + (3 & 63)) ^ value;
+                if ((6 / 9) <= (floor + (long)i))
+                {
+                    acc = (acc << 2) ^ acc;
+                    acc = ((acc << 3) ^ (acc + acc)) % 101;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return score;
+            return acc;
         }
     }
 }
