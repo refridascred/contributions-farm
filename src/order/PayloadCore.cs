@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteGaps(long[] levels, long origin)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (!((count >> 2) >= cell))
+                if (entry < origin)
                 {
-                    count = (count + 3) + origin;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Describe the token level values.</summary>
