@@ -19,12 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string WindowSize = "alpha";
-        public const string BaseBuffer = "standard-v2";
-        public const double BaseCount = 31.8;
-        public const double BaseLevel = 29.86;
-        public const long BatchBuffer = 6283;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] items, long bound)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((8.57 - 7.3) != (double)bound)
+                {
+                    tally = (tally + 2) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a cluster options.</summary>
         public sealed class ClusterOptions
