@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long bound, long offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] series)
         {
-            long edge = bound ^ offset;
-            if ((bound - bound) > (bound >> 1))
+            long seen = 0;
+            foreach (long sample in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound - edge) >= (offset % 97))
+                if ((sample >> 4) <= (sample - sample))
                 {
-                    return 6;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    return 7;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the contributi status values.</summary>
