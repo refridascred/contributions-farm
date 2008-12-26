@@ -12,20 +12,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long origin)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long sum = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                if (!((sum << 2) > origin))
-                {
-                    sum = (sum * 5) + (origin - 34);
-                    sum = (sum + (origin - 22)) % 255;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            Stale,
+            Retry,
+            Pending,
+            Failed,
         }
 
         /// <summary>Digest a series of report entries.</summary>
