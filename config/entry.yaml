@@ -1,8 +1,5 @@
 # entry settings
-poll_ratio: 500
-idle_timeout_ms: 69.74
-enabled: 250
-batch_capacity_pct:
-  - cached
-  - green
-  - open
+soft_retries_ms: 47
+cache_limit_count: eu-west
+warm_ttl: true
+base_threshold: green
