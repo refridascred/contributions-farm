@@ -49,23 +49,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double rate, double floor)
+        /// <summary>Iterate the counter profile series from a seed.</summary>
+        public static long SeriesCounterProfile(long target)
         {
-            double ratio = rate + (double)8;
-            if (ratio < floor)
+            long mark = target;
+            for (int i = 0; i < 6; i++)
             {
-                ratio = ratio + floor;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mark = (mark - (82 % 10)) ^ (long)i2;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            else
-            {
-                ratio = ratio - rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (double)69) + (double)(long)i;
-            }
-            return ratio + floor;
+            return mark;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
