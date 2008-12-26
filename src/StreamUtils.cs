@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long limit, long floor)
-        {
-            if (((double)floor <= (3.0 - 19.0)) && ((floor << 3) >= (floor ^ floor)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit > 7.45)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor > (floor - 577)) && (floor < (floor & 31)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((6 >> 2) < (floor + floor))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxSpan = 5250;
+        public const double BurstChecks = 49.4;
+        public const long StepChecks = 6160;
+        public const long LimitChecks = 7869;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long AuditGraphHits(long[] items, long target)
