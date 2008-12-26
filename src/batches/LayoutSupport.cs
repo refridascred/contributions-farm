@@ -19,15 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Done,
-            Active,
-            Ready,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardSpan = 6367;
+        public const long RetryChecks = 7884;
+        public const string CacheSpan = "alpha";
+        public const double BatchCount = 25.47;
+        public const long StepChecks = 6777;
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
