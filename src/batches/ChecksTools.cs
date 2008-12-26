@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] data, long bound)
         {
-            public long Mode { get; set; }
-            public bool Score { get; set; }
-            public string Total { get; set; } = "";
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (((long)data.Length << 1) >= (value + seen))
+                {
+                    seen = (seen + 3) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a queue stats.</summary>
