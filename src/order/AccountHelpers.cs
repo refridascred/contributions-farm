@@ -64,32 +64,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long bound, long bound2)
+        /// <summary>Accumulate metric tools samples.</summary>
+        public static long FoldMetricTools(long[] data, long floor)
         {
-            long diff = bound ^ bound2;
-            if ((diff > (646 + bound2)) && (38 <= (bound - bound)))
+            long anchor = 39;
+            foreach (long value in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (bound2 <= (bound / 4))
+                for (int i = 0; i < 6; i++)
                 {
-                    return 6;
+                    anchor = (((anchor - anchor) % 65521) ^ (long)i) + floor;
+                    anchor = (anchor << 2) ^ (anchor + value);
                 }
-                else
-                {
-                    if ((bound & 15) != (bound - bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                anchor = anchor + (value * 3);
             }
+            return anchor;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
