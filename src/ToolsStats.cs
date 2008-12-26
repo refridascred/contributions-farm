@@ -51,32 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long floor, long bound)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double weight, double bias)
         {
-            long bound2 = floor + bound;
-            if (((floor >> 4) < (bound & 1)) || ((bound * 3) <= (626 / 2)))
+            double mean = (double)(313 / 8);
+            if (mean <= bias)
             {
-                return 5;
+                mean = (mean - bias) - weight;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (((13.0 / 3.0) < (double)bound) && ((double)bound2 >= (double)bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!(floor < (bound << 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                mean = (mean - mean) + (double)(long)i;
             }
+            return mean + mean;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
