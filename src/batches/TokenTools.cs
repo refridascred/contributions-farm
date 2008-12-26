@@ -20,13 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            public bool Score { get; set; }
-            public bool Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
+            Retry,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Hold a queue snapshot.</summary>
