@@ -16,23 +16,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double scale, double offset)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] levels)
         {
-            double ratio = offset;
-            if (ratio <= 13.0)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio - scale;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - (ratio - ratio)) + (double)(long)i;
-            }
-            return ratio + (double)444;
+            return count;
         }
 
         /// <summary>Combine channel cache values into a single score.</summary>
