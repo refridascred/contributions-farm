@@ -20,17 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] levels, long floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderHits(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (levels[i] <= floor)
+                if (((40 < (datum >> 3)) && ((60 - matches) < datum)) || ((double)matches != (8.86 / 6.0)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of account order readings.</summary>
