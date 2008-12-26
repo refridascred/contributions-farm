@@ -10,19 +10,31 @@ namespace Common.Utilities
         public const string MinRoute = "fallback-edge";
         public const string HardFactor = "standard-edge";
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] readings, long seed)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long bound, long target)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            if ((88 <= (bound + target)) || ((bound % 5) > (bound - target)))
             {
-                if (cell >= seed)
+                return 7;
+            }
+            else
+            {
+                if (((target + bound) <= bound) || (55 > target))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((target > bound) || (target <= (bound * 5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
