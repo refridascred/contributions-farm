@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] values)
         {
-            public bool Rank { get; set; }
-            public double Mode { get; set; }
-            public double Level { get; set; }
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((1 >> 3) <= (item + item))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next checks commits value.</summary>
