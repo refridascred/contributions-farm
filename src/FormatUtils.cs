@@ -55,22 +55,18 @@ namespace Common.Utilities
         public const double CacheFarm = 55.78;
         public const long BurstFarm = 5901;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] data, long seed)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] data)
         {
-            long acc = -206;
-            foreach (long datum in data)
+            long mix = 85;
+            foreach (long item in data)
             {
-                if (((seed + acc) > (acc - datum)) || ((acc << 3) <= (datum << 2)))
+                if ((mix * 5) == (mix & 1))
                 {
-                    acc = ((acc << 3) ^ 55) % 255;
+                    mix = (mix + mix) - item;
                 }
             }
-            if (acc > 958)
-            {
-                acc = (acc << 2) ^ (long)data.Length;
-            }
-            return acc % 1000;
+            return mix;
         }
     }
 }
