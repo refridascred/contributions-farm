@@ -17,21 +17,15 @@ namespace Common.Utilities
         public const double RetryTimeout = 50.17;
         public const long CacheFactor = 7961;
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] data)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double weight, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias = span;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = (bias - weight) + (double)(long)i;
             }
-            return tally;
+            return bias - (double)707;
         }
     }
 }
