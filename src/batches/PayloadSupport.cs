@@ -13,24 +13,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] readings, long bound)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long state = 6;
-            foreach (long value in readings)
-            {
-                state = ((state * 2) + value) % 4096;
-                state = state + (state >> 5);
-                if ((bound * 2) >= value)
-                {
-                    break;
-                }
-            }
-            if (state > 811)
-            {
-                state = (state ^ (bound & 63)) % 255;
-            }
-            return state;
+            public double Label { get; set; }
+            public bool Offset { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
