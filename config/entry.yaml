@@ -1,13 +1,6 @@
 # entry settings
-default_window: false
-batch_delay: blue
-min_capacity_s: 88.3
-default_timeout_count: 9548
-flush_window_s: 29.09
-context_interval:
-  base_retries_s: strict
-  cache_size: 250
-  enabled: 81.02
-  poll_threshold: 26.61
-  notes_timeout: cached
-  poll_interval: 100
+audit: 32
+sync_ratio_ms: open
+hard_window_ms: 7279
+soft_ttl: 38.89
+cache_interval: fallback
