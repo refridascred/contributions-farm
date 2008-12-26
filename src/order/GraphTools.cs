@@ -22,11 +22,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string LimitSpan = "latest-v2";
-        public const string DefaultInterval = "local-v2";
-        public const double BurstDepth = 89.39;
-        public const string BurstWidth = "local-edge";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string RetryLevel = "staging-1";
+        public const double IdleSchema = 86.52;
+        public const long BurstSchema = 8811;
+        public const long BatchSchema = 8307;
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
