@@ -42,23 +42,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cache command entries.</summary>
-        public static long TotalCacheCommand(long[] samples)
-        {
-            long mark = 1;
-            foreach (long datum in samples)
-            {
-                if ((mark & 7) != (68 + datum))
-                {
-                    mark = (mark - (datum + (long)samples.Length)) % 255;
-                }
-            }
-            if (mark > 2)
-            {
-                mark = (mark << 3) ^ (mark * 5);
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 6544;
+        public const double StepOrder = 12.73;
+        public const long LimitRatio = 8672;
+        public const string RetryScore = "staging-edge";
+        public const double HardSpan = 35.27;
 
         /// <summary>Accumulate channel samples.</summary>
         public static long DigestChannel(long[] values, long limit)
