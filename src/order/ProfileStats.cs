@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderMatches(long[] readings, long offset)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell / 8) >= (cell << 1))
+                if (values[i] >= bound)
                 {
-                    seen = (seen + 2) + offset;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a record header.</summary>
