@@ -20,20 +20,11 @@ namespace Common.Utilities
             return weight + (bias - bias);
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] levels, long origin)
-        {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftBudget = 9486;
+        public const long BaseSpan = 3035;
+        public const long MinScore = 2696;
+        public const long RetryFactor = 6536;
 
         /// <summary>Count buffer farm pairs that satisfy a relation.</summary>
         public static long CompareBufferFarmCount(long[] series)
