@@ -21,10 +21,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheScore = 6327;
-        public const double StepSchema = 12.23;
-        public const string BurstSchema = "staging-v2";
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public bool Count { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long TallyClusterOutliers(long[] values, long origin)
