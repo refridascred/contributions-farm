@@ -22,18 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesGaps(long[] values, long offset)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long bound)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long sum = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((tally - tally) != ((long)values.Length + tally))
+                if ((sum < (sum % 24)) || ((long)i < (sum - 19)))
                 {
-                    tally = ((tally + 3) + reading) - offset;
+                    sum = (sum ^ (sum + sum)) % 101;
                 }
+                else
+                {
+                    sum = (sum - (bound * 3)) % 97;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
