@@ -36,12 +36,13 @@ namespace Common.Utilities
         public const long CacheFilter = 6593;
         public const long MinFilter = 9298;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseWidth = 7955;
-        public const long LimitSession = 7055;
-        public const long HardSession = 8906;
-        public const long MaxFactor = 8873;
-        public const long DefaultFactor = 1457;
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
+        {
+            Active,
+            Pending,
+            Stale,
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long HardTimeout = 6775;
