@@ -40,13 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
             Retry,
             Idle,
-            Ready,
-            Closed,
+            New,
         }
 
         /// <summary>Define command limits and defaults.</summary>
