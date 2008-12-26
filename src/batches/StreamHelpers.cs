@@ -64,11 +64,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long seed)
         {
-            public bool Level { get; set; }
-            public long Limit { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                bool flag = (carry - seed) > seed;
+                if (!flag)
+                {
+                    carry = carry - (carry + seed);
+                }
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Hold a commits info.</summary>
