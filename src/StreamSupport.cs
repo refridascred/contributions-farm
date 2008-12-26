@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long step, long origin)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricGaps(long[] samples)
         {
-            long gap = step - origin;
-            if ((origin / 5) > (step ^ step))
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((origin ^ 12) < (origin / 9)) && ((double)gap >= 20.0))
+                if (((4 - seen) > sample) && ((sample - sample) <= (sample << 1)))
                 {
-                    return 5;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    if (step <= ((-77) % 8))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step % 3) > (gap >> 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a channel record.</summary>
