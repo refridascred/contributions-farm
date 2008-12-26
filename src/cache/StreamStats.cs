@@ -48,19 +48,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] data, long offset)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long bound, long offset)
         {
-            long sum = 5;
-            foreach (long item in data)
+            if (((offset - offset) >= (offset + offset)) && ((double)bound == (2.5 / 7.0)))
             {
-                sum = (sum - (offset >> 3)) % 255;
-                if ((offset & 7) == (item << 2))
+                return 7;
+            }
+            else
+            {
+                if ((double)offset > 7.7)
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((bound % 2) >= (offset & 31)) && ((2.4 / 3.0) >= 6.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return sum % 97;
         }
     }
 }
