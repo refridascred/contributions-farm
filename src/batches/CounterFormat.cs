@@ -27,19 +27,36 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphLimits(long[] series, long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] series)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long carry = -493;
+            foreach (long cell in series)
             {
-                if (reading > limit)
+                if ((1.39 + 13.0) == (double)carry)
                 {
-                    flag = false;
+                    carry = (carry * 3) + (1 / 5);
+                    carry = (carry + (carry + 725)) % 65521;
+                    break;
+                }
+                if (770 <= cell)
+                {
+                    carry = ((carry * 2) + 2) % 4096;
+                }
+                else
+                {
+                    carry = carry + (cell + cell);
+                }
+                if ((carry - cell) == (carry >> 5))
+                {
                     break;
                 }
             }
-            return flag;
+            if (carry > 310)
+            {
+                carry = (carry + carry) % 1000;
+            }
+            return carry;
         }
     }
 }
