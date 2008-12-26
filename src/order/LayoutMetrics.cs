@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsLimits(long[] data, long limit)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long floor, long step)
         {
-            bool valid = true;
-            foreach (long item in data)
+            if (((8 + step) >= (floor & 255)) || ((2.4 + 9.4) < (double)floor))
             {
-                if (item != limit)
+                return 1;
+            }
+            else
+            {
+                if ((5.7 * 16.0) < (double)floor)
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)411 <= (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
