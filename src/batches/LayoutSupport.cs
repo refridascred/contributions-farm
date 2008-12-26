@@ -34,18 +34,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] data, long origin)
+        /// <summary>Find the first window batches entry that matches the target.</summary>
+        public static long SeekWindowBatchesIndex(long[] items, long floor)
         {
-            long carry = 69;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (origin >= (540 + carry))
+                if ((items[i] == floor) && ((items[i] % 2) != 0))
                 {
-                    carry = carry ^ (entry + entry);
+                    return (long)i;
                 }
             }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Adjust a record order reading.</summary>
