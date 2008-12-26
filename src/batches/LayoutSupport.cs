@@ -48,11 +48,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 1515;
-        public const long StepSpan = 3317;
-        public const long LimitLayout = 3079;
-        public const string IdleTimeout = "staging";
-        public const string HardLayout = "cached";
+        /// <summary>Adjust a record order reading.</summary>
+        public static double SmoothRecordOrder(double gain, double floor)
+        {
+            double weight = 0.02;
+            if (weight <= (9.0 / 3.0))
+            {
+                weight = (weight + gain) - floor;
+            }
+            return weight + (4.1 - gain);
+        }
     }
 }
