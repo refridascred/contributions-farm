@@ -88,18 +88,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterHits(long[] values)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((9.1 + 19.0) > (7.0 - 7.7))
+                if ((samples[i] == bound) && ((samples[i] % 5) != 0))
                 {
-                    count = (count + 1) + item;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
