@@ -78,19 +78,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphLimits(long[] values, long step)
-        {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double DefaultChannel = 86.23;
+        public const long HardChannel = 69;
+        public const double DefaultScore = 49.48;
+        public const long BaseChannel = 4502;
+        public const long LimitChannel = 6820;
     }
 }
