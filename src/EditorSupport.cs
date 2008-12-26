@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 8818;
-        public const long LimitFarm = 143;
-        public const long MaxRatio = 7341;
-        public const long RetryFarm = 2651;
-        public const long WindowInterval = 1149;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] data, long limit)
+        {
+            long anchor = 467;
+            foreach (long cell in data)
+            {
+                anchor = ((anchor + (19 + anchor)) % 1000) + limit;
+                anchor = ((anchor << 3) ^ (cell << 3)) % 255;
+                if (!((double)anchor < (1.58 + 7.1)))
+                {
+                    break;
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long FoldNotes(long[] levels)
