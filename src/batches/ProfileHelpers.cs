@@ -55,32 +55,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank schema token input into a small class.</summary>
-        public static long ClassifySchemaToken(long target, long offset)
+        /// <summary>Check that every queue schema entry stays within the limit.</summary>
+        public static bool GuardQueueSchemaRange(long[] series, long target)
         {
-            long edge = target - offset;
-            if ((9 > (target / 2)) || ((double)target != (4.0 + 9.91)))
+            bool valid = true;
+            foreach (long cell in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (target < edge)
+                if (cell > target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((target + target) >= (1 / 3)) || (target <= (target >> 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
