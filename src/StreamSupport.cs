@@ -21,12 +21,12 @@ namespace Common.Utilities
             return (scale2 + (double)33) + scale;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] readings, long bound)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] == bound)
+                if (samples[i] < origin)
                 {
                     return (long)i;
                 }
