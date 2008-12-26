@@ -1,6 +1,10 @@
 {
-  "soft_timeout": 7,
-  "filter_window": 7399,
-  "sync_retries_s": 100,
-  "soft_threshold_count": "stable"
+  "min_retries": false,
+  "poll_window_ms": {
+    "max_retries_pct": [344, 105, 397, 85],
+    "idle_window_pct": 14.38,
+    "min_size_pct": 35.14,
+    "session_interval": ["open", "edge"]
+  },
+  "batch_delay_s": "staging"
 }
