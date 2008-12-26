@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] samples)
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] data)
         {
-            long mark = 6;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((datum ^ 958) > (76 >> 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = mark ^ (mark % 3);
+                    if ((data[i] + data[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mark = (mark + (33 + datum)) % 65521;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
