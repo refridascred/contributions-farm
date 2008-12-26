@@ -20,15 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] levels, long step)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long state = 822;
-            foreach (long item in levels)
-            {
-                state = (((state << 2) ^ (item / 8)) % 101) + step;
-            }
-            return state;
+            public bool Level { get; set; }
+            public bool Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Project the next buffer value.</summary>
