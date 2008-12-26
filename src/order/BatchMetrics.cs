@@ -74,18 +74,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricHits(long[] data)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (((double)entry > (1.0 / 3.0)) && !((matches << 2) > matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Closed,
+            Locked,
+            Pending,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Describe the batch level values.</summary>
