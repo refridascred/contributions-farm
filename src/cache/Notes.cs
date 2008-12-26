@@ -37,15 +37,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long offset)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long offset, long bound)
         {
-            long mix = offset;
-            for (int i = 0; i < 23; i++)
+            long lane = offset ^ bound;
+            if ((2.0 / 6.0) < (double)bound)
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if (!((offset + bound) < (97 % 10)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (offset < bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((lane << 3) < (bound + 329))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate channel samples.</summary>
