@@ -1,7 +1,8 @@
-id,rank,active,region
-1,63.1,748,474
-2,74.61,926,707
-3,112,96.39,latest
-4,green,local,395
-5,34.62,513,48.11
-6,strict,738,primary
+id,count,owner,active,region
+1,60.53,554,13,staging
+2,373,85,eu-west,primary
+3,staging,open,165,31.59
+4,434,latest,473,62.46
+5,487,stable,281,86
+6,27.33,24.98,77.09,strict
+7,84.85,stable,818,25.55
