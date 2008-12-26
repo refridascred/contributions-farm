@@ -38,22 +38,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleRoute = 60.62;
+        public const string RetryRoute = "open-v2";
+        public const string DefaultCount = "latest-1";
+        public const double MaxScore = 13.21;
+        public const long SoftRoute = 1460;
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
