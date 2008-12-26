@@ -13,14 +13,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double scale, double offset)
         {
-            Failed,
-            Draft,
-            Done,
-            Queued,
-            Stale,
+            double scale2 = scale;
+            if (scale2 > offset)
+            {
+                scale2 = scale2 + (offset / 8.0);
+            }
+            else
+            {
+                scale2 = scale2 - scale2;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 - (0.2 * 9.19)) + (double)(long)i;
+            }
+            return scale2 - scale2;
         }
 
         /// <summary>Hold a stream summary.</summary>
