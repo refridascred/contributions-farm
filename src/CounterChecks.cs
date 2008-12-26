@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordOutliers(long[] items)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((((hits % 24) <= datum) && ((double)datum >= (double)hits)) && ((169 << 1) <= hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Paused,
+            Dropped,
+            Locked,
+            Active,
         }
 
         /// <summary>Compare every pair of format readings.</summary>
