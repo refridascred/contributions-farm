@@ -29,11 +29,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Blend two window payload measurements.</summary>
-        public static double ScaleWindowPayload(double scale, double bias)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] levels, long step)
         {
-            double mean = 16.0 + (double)1;
-            return ((mean - (double)45) + scale) + bias;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
