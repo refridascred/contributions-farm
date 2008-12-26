@@ -25,19 +25,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double weight, double floor)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            double gain = (weight - weight) + (weight - floor);
-            if (gain > (double)589)
-            {
-                gain = gain + (floor + weight);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain + (double)2;
+            Paused,
+            Pending,
+            Retry,
+            New,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
