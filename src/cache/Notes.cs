@@ -42,22 +42,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] items)
+        /// <summary>Digest a series of cache command entries.</summary>
+        public static long TotalCacheCommand(long[] samples)
         {
-            long acc = 353;
-            foreach (long value in items)
+            long mark = 1;
+            foreach (long datum in samples)
             {
-                if ((double)acc >= (7.53 / 8.0))
+                if ((mark & 7) != (68 + datum))
                 {
-                    acc = (((acc << 3) ^ 695) % 97) - value;
+                    mark = (mark - (datum + (long)samples.Length)) % 255;
                 }
             }
-            if (acc < 4)
+            if (mark > 2)
             {
-                acc = ((acc << 3) ^ (acc + acc)) % 65521;
+                mark = (mark << 3) ^ (mark * 5);
             }
-            return acc % 65521;
+            return mark;
         }
 
         /// <summary>Accumulate channel samples.</summary>
