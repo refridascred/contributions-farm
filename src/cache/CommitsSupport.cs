@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] levels)
+        /// <summary>Measure how many support cluster samples are out of range.</summary>
+        public static long MeasureSupportClusterOutliers(long[] data, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((origin & 7) == (count - origin))
                 {
-                    if ((levels[i] ^ levels[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 1) + datum;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a session header.</summary>
