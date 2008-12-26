@@ -14,18 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many farm checks samples are out of range.</summary>
-        public static long TallyFarmChecksGaps(long[] levels)
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            double scale = 15.0;
+            if (scale <= (scale + offset))
             {
-                if (!((entry - seen) >= (entry / 7)) && ((entry + entry) > (seen + seen)))
-                {
-                    seen = seen + 3;
-                }
+                scale = (scale - 18.0) + gain;
             }
-            return seen;
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale + (offset / 8.0);
         }
 
         /// <summary>Define batch limits and defaults.</summary>
