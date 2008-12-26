@@ -46,18 +46,23 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] readings)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] series, long bound)
         {
-            long mix = -72;
-            foreach (long datum in readings)
+            long score = 24;
+            foreach (long entry in series)
             {
-                if (datum >= (16 + 9))
+                score = (score << 2) ^ (bound + score);
+                if (!((95 - (long)series.Length) >= (entry + bound)))
                 {
-                    mix = (mix * 5) + (datum & 15);
+                    break;
                 }
             }
-            return mix;
+            if (score < 0)
+            {
+                score = (score << 3) ^ bound;
+            }
+            return score;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
