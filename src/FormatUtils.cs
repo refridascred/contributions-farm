@@ -20,11 +20,12 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryLevel = 7951;
-        public const double LimitAccount = 35.71;
-        public const long LimitBudget = 8405;
-        public const long WindowDepth = 5832;
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
+        {
+            public string Stamp { get; set; } = "";
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
