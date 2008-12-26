@@ -1,5 +1,17 @@
 {
-  "min_capacity": 95.3,
-  "persist": "blue",
-  "command_delay": 500
+  "farm_retries": false,
+  "idle_capacity_s": {
+    "stream_size": {
+      "burst_delay": true,
+      "metrics_timeout": [423, 227, 492],
+      "account_timeout": "latest",
+      "token_threshold": false,
+      "soft_interval_count": 30
+    },
+    "sync_retries": 79.1,
+    "strict": 40,
+    "default_window_count": 500,
+    "record_threshold": 92.76
+  },
+  "max_interval": 63
 }
