@@ -14,15 +14,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the editor schema series from a seed.</summary>
-        public static long StepEditorSchema(long origin)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double scale, double bias)
         {
-            long state = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            double scale2 = (bias * 15.0) * 4.19;
+            return (scale2 + (double)33) + scale;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
