@@ -25,11 +25,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
+            public bool Label { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Adjust a metric reading.</summary>
