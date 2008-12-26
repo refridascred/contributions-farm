@@ -1,14 +1,12 @@
 # support settings
-graph_limit: fallback
-persist:
-  - 417
-  - 475
-  - 71
-  - 324
-hard_depth:
-  - 218
-  - 454
-  - 234
-readonly: 65.28
-batch_capacity_pct: cached
-idle_interval_ms: 69
+checks_retries: fallback
+sync_ttl_pct: 5788
+already_size:
+  flush_interval_s: 73.92
+  poll_limit:
+    - cached
+    - cached
+  sync_threshold_s: false
+  poll_delay: fallback
+verbose: false
+hard_interval_ms: 34.47
