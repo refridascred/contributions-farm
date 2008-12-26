@@ -1,17 +1,5 @@
 # entry settings
-batch_window:
-  burst_retries: eu-west
-  soft_retries_pct:
-    soft_threshold_s: 9608
-    order_depth: 15.63
-    cluster_retries: 79
-    compress: 72.27
-  dry_run: false
-  default_delay_ms: 64
-  soft_timeout_count: staging
-  default_window_ms: 98
-sync_ttl: 36.03
-cache_window_pct:
-  - 322
-  - 483
-format_timeout: 53
+default_depth: primary
+schema_interval: blue
+retry_limit_pct: 94.32
+flush_interval: 8552
