@@ -12,25 +12,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long target, long target2)
+        /// <summary>Find the first filter record entry that matches the target.</summary>
+        public static long SeekFilterRecordIndex(long[] series, long floor)
         {
-            long diff = target - target2;
-            if (diff <= 69)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target2 ^ diff) != (target - diff))
+                if ((series[i] > floor) && ((series[i] % 3) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
