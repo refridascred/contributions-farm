@@ -46,22 +46,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the route session entries that pass the check.</summary>
-        public static long AuditRouteSessionGaps(long[] values, long seed)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long limit)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long carry = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((30 & 255) > datum)
+                carry = ((carry * 2) + (carry ^ limit)) % 97;
+                if ((limit + limit) >= carry)
                 {
-                    seen = (seen + 2) - seed;
+                    long matches = ((long)i / 6) ^ (long)i;
+                    carry = carry ^ matches;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Classify a contributi filter pair into a bucket.</summary>
