@@ -44,15 +44,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a stats window reading.</summary>
-        public static double ProjectStatsWindow(double weight, double offset)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            double rate = (double)(95 / 6);
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (((rate - 0.16) + (double)(long)i) + weight) - offset;
-            }
-            return rate - 15.0;
+            public double Level { get; set; }
+            public bool Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a metric info.</summary>
