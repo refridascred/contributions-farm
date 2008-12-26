@@ -49,18 +49,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] levels, long bound)
+        /// <summary>Validate schema command readings against a bound.</summary>
+        public static bool ValidateSchemaCommandLimits(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                if (!((bound + 67) < (matches - bound)))
+                if (sample <= step)
                 {
-                    matches = (matches + 1) ^ sample;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
