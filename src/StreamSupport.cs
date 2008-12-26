@@ -55,22 +55,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the route order entries that pass the check.</summary>
-        public static long TallyRouteOrderHits(long[] items, long origin)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((9 + origin) > hits) && ((origin - origin) != (origin - datum)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] + samples[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
