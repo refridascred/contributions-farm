@@ -20,19 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchBounds(long[] values, long limit)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] levels, long step)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long state = 822;
+            foreach (long item in levels)
             {
-                if (item >= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                state = (((state << 2) ^ (item / 8)) % 101) + step;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Project the next buffer value.</summary>
