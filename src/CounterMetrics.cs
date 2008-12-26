@@ -43,14 +43,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandOutliers(long[] samples)
         {
-            Dropped,
-            Retry,
-            Stale,
-            Pending,
-            Idle,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((hits % 24) > (hits - 74))
+                {
+                    hits = (hits + 1) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
