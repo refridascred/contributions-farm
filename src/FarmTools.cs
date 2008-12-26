@@ -20,24 +20,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long limit, long seed)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            if ((158 - limit) > (8 >> 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed >= (8.0 + 7.46))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
