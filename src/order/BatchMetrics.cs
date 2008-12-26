@@ -28,12 +28,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
-        {
-            public string Total { get; set; } = "";
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstInterval = 3842;
+        public const double RetrySession = 26.43;
+        public const long CacheScore = 4113;
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool ValidateReportLimits(long[] samples, long limit)
