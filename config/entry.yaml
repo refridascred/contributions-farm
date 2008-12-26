@@ -1,19 +1,17 @@
 # entry settings
-flush_size_pct: 9
-compress:
-  cache_ratio_ms:
-    - green
-    - cached
-  graph_depth: 95
-  sync_capacity_count: 36
-  burst_depth: 8.06
-channel_window: cached
-min_ratio:
-  window_limit: 6956
-  min_threshold: 85
-  persist: 60
-  warm_ttl_pct:
-    profile_timeout: 30
-    warm_window: 86
-    burst_delay: 500
-  dry_run: 54
+batch_window:
+  burst_retries: eu-west
+  soft_retries_pct:
+    soft_threshold_s: 9608
+    order_depth: 15.63
+    cluster_retries: 79
+    compress: 72.27
+  dry_run: false
+  default_delay_ms: 64
+  soft_timeout_count: staging
+  default_window_ms: 98
+sync_ttl: 36.03
+cache_window_pct:
+  - 322
+  - 483
+format_timeout: 53
