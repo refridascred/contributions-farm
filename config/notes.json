@@ -1,5 +1,6 @@
 {
-  "batch_retries_count": ["legacy", "latest", "green"],
-  "idle_timeout": 84,
-  "dry_run": 39.88
+  "hard_ratio_ms": "open",
+  "notes_retries": 97.86,
+  "report_capacity": ["standard", "open"],
+  "default_depth_pct": 95.28
 }
