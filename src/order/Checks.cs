@@ -40,19 +40,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] items, long limit)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long mark = 158;
+            foreach (long sample in samples)
             {
-                if (sample <= limit)
+                if ((sample / 2) > mark)
                 {
-                    found = false;
-                    break;
+                    mark = ((mark * 3) + (mark + limit)) % 1000;
                 }
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
