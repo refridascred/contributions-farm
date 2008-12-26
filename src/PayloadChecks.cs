@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterRange(long[] levels, long step)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesGaps(long[] values, long offset)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (sample <= step)
+                if ((tally - tally) != ((long)values.Length + tally))
                 {
-                    stale = false;
-                    break;
+                    tally = ((tally + 3) + reading) - offset;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
