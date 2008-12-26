@@ -42,19 +42,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry < 3.47)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string LimitSpan = "strict";
+        public const string RetryBatch = "fallback";
+        public const string RetryTimeout = "cached";
+        public const long StepSpan = 1447;
+        public const string MinTimeout = "local-edge";
 
         /// <summary>Hold a commits options.</summary>
         public sealed class CommitsOptions
