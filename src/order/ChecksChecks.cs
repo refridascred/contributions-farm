@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] readings)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long anchor = -8;
-            foreach (long datum in readings)
-            {
-                if ((double)anchor <= 0.8)
-                {
-                    anchor = (((anchor * 2) + (anchor >> 1)) % 255) + datum;
-                }
-            }
-            if (anchor > 1)
-            {
-                anchor = ((anchor * 3) + ((long)readings.Length << 1)) % 101;
-            }
-            return anchor % 1000;
+            public double Rank { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a session info.</summary>
