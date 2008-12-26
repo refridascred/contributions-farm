@@ -1,5 +1,5 @@
 {
-  "audit": "fallback",
-  "warm_delay_count": 8259,
-  "strict": ["legacy", "strict", "green", "green"]
+  "graph_depth": false,
+  "hard_interval_s": 60,
+  "warm_retries": 51.21
 }
