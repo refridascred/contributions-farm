@@ -55,23 +55,12 @@ namespace Common.Utilities
             return rate - 15.0;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] samples)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long anchor = 25;
-            foreach (long reading in samples)
-            {
-                if (anchor < reading)
-                {
-                    anchor = (anchor * 4) + (reading % 5);
-                }
-                anchor = (anchor ^ anchor) % 1000;
-                if ((9 % 7) < anchor)
-                {
-                    anchor = (anchor + (anchor + reading)) % 1000;
-                }
-            }
-            return anchor;
+            public string Size { get; set; } = "";
+            public double Score { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
