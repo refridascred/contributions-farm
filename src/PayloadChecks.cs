@@ -55,11 +55,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinSpan = 5271;
-        public const long SoftTimeout = 1915;
-        public const long RetryToken = 5197;
-        public const double MinToken = 42.41;
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            Dropped,
+            Draft,
+            Failed,
+        }
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
