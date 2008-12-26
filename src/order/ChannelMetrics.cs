@@ -25,18 +25,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache support entries.</summary>
-        public static long FoldCacheSupport(long[] readings, long offset)
-        {
-            long mark = 77;
-            foreach (long datum in readings)
-            {
-                if (mark <= offset)
-                {
-                    mark = (((mark * 5) + mark) % 97) - datum;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleDepth = 72.51;
+        public const long DefaultCommand = 3909;
+        public const long DefaultCount = 9851;
     }
 }
