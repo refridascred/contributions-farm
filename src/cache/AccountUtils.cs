@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double rate, double offset)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] readings, long floor)
         {
-            double rate2 = (double)(869 / 5);
-            return (rate2 + rate) + offset;
+            long sum = 78;
+            foreach (long value in readings)
+            {
+                if (((floor & 63) != (4 >> 5)) || ((floor + (long)readings.Length) >= (floor * 3)))
+                {
+                    sum = (sum * 5) + (floor + value);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Measure how many stream metrics samples are out of range.</summary>
