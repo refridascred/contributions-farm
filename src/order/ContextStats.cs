@@ -62,17 +62,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] items, long bound)
+        /// <summary>Derive the next notes checks value from a seed.</summary>
+        public static long DeriveNotesChecks(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((items[i] == bound) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
     }
 }
