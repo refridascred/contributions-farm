@@ -19,12 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            Closed,
-            Retry,
-            Ready,
+            Active,
+            Idle,
+            New,
+            Synced,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
