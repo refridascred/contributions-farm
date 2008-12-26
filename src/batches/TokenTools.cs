@@ -28,11 +28,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BatchCounter = "local-v2";
-        public const long RetryInterval = 53;
-        public const long MaxCounter = 8343;
-        public const long RetryCounter = 4210;
-        public const long StepFactor = 3875;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string LimitContributi = "local-edge";
+        public const string BatchTimeout = "staging";
+        public const string CacheContributi = "staging-v2";
     }
 }
