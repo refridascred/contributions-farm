@@ -27,13 +27,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelOutliers(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (!!((entry ^ seen) < 8))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank command filter input into a small class.</summary>
