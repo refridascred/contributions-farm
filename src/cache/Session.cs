@@ -26,22 +26,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] readings)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long target)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long sum = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (entry > (entry << 1))
+                if ((target ^ 6) < 125)
                 {
-                    matches = matches + 2;
+                    sum = ((sum << 2) ^ (57 + 52)) % 255;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    sum = (sum ^ (sum & 15)) % 1000;
                 }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Locate a report entry reading by value.</summary>
