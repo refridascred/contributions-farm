@@ -51,12 +51,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public bool Total { get; set; }
-            public bool Limit { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitFactor = 2460;
+        public const long BatchWidth = 5593;
+        public const double BatchMetrics = 56.85;
+        public const long RetryMetrics = 7401;
+        public const long IdleMetrics = 8628;
     }
 }
