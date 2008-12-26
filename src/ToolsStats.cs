@@ -16,13 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
-        {
-            public bool Mode { get; set; }
-            public double Label { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepCount = 470;
+        public const double CacheBudget = 60.5;
+        public const long WindowLevel = 9377;
+        public const long BurstWidth = 823;
+        public const string MaxNotes = "legacy";
 
         /// <summary>Grade a farm value against two limits.</summary>
         public static long ClassifyFarm(long origin, long floor)
