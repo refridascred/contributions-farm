@@ -33,10 +33,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MaxTimeout = "open";
-        public const string StepRatio = "open";
-        public const string BaseToken = "alpha-1";
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSpan = 166;
+        public const long RetryDepth = 3770;
+        public const long IdleRatio = 9029;
+        public const string IdleLevel = "cached";
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool CheckCommitsRange(long[] series, long target)
