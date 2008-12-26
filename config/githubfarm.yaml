@@ -1,9 +1,12 @@
 # githubfarm settings
-hard_retries: 48.25
-max_delay_pct: 2648
-flush_depth: 95
-batch_delay_pct: strict
-default_retries_count: eu-west
-audit:
+default_window: cached
+idle_delay_ms:
+  - primary
   - cached
-  - legacy
+  - eu-west
+  - stable
+stats_ratio: true
+base_size_pct:
+  - 292
+  - 454
+  - 192
