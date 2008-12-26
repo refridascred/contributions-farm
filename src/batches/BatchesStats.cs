@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long origin)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] data, long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long value in data)
             {
-                score = ((score * 3) + (long)i) % 1000;
+                if (value >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Blend two account measurements.</summary>
