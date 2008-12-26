@@ -30,9 +30,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 9771;
-        public const double StepContext = 73.66;
-        public const long BatchInterval = 7570;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] samples, long seed)
+        {
+            long state = 3;
+            foreach (long datum in samples)
+            {
+                if ((((-1) - state) <= state) || (((-7) - state) != (428 % 64)))
+                {
+                    state = state - (datum - 5);
+                }
+            }
+            if (state < (-648))
+            {
+                state = state - (seed >> 4);
+            }
+            return state;
+        }
     }
 }
