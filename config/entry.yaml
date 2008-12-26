@@ -1,14 +1,18 @@
 # entry settings
-soft_delay:
-  account_ttl: 35
-  verbose: false
-  commits_capacity:
-    - green
+enabled: 5611
+poll_ratio:
+  counter_delay:
+    - cached
+    - cached
+    - staging
     - eu-west
-    - strict
-    - green
-  poll_window: 48
-poll_interval_s: 66
-hard_depth_count: false
-counter_window: 9823
-poll_window: primary
+  account_limit: 7951
+  default_depth_pct:
+    max_retries_pct: local
+    persist: eu-west
+    base_capacity_pct:
+      - edge
+      - strict
+      - eu-west
+    retry_delay_count: local
+cluster_interval: stable
