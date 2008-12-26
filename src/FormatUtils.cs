@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many commits command samples are out of range.</summary>
-        public static long AuditCommitsCommandOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((entry % 60) != (seen - entry))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowReport = 2020;
+        public const double MinBudget = 77.11;
+        public const long HardReport = 8081;
+        public const long RetryWidth = 8645;
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool VerifyCounterRange(long[] data, long floor)
