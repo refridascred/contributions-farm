@@ -33,17 +33,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] data, long offset)
+        /// <summary>Fold a list of account order readings.</summary>
+        public static long DigestAccountOrder(long[] series, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 816;
+            foreach (long item in series)
             {
-                if ((data[i] > offset) && ((data[i] % 5) != 0))
+                if ((5 + 4) >= item)
                 {
-                    return (long)i;
+                    total = (total * 2) + (origin >> 5);
+                }
+                else
+                {
+                    total = (total ^ total) % 97;
+                }
+                if ((total + total) != (total - (-53)))
+                {
+                    total = (total + (9 / 5)) % 255;
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
