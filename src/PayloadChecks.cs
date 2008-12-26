@@ -35,14 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchOutliers(long[] series, long offset)
         {
-            Done,
-            Pending,
-            Active,
-            Locked,
-            Synced,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((offset * 5) <= (offset & 3))
+                {
+                    matches = (matches + 2) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next report value.</summary>
