@@ -56,19 +56,38 @@ namespace Common.Utilities
             return gain - (double)72;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmBounds(long[] levels, long step)
+        /// <summary>Classify a route format pair into a bucket.</summary>
+        public static long BucketRouteFormat(long seed, long seed2)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            if ((-902) < (seed + seed))
             {
-                if (reading < step)
+                return 3;
+            }
+            else
+            {
+                if ((seed2 - 5) > (seed - seed))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (seed <= (seed << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((16.0 > (double)seed2) && (seed2 >= (seed / 4)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
