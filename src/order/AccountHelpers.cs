@@ -14,10 +14,14 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetryCount = 89.6;
-        public const long BaseSpan = 5387;
-        public const long MaxRecord = 1402;
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
+        {
+            public long Weight { get; set; }
+            public bool Label { get; set; }
+            public string Mode { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Accumulate profile samples.</summary>
         public static long TallyProfile(long[] levels, long target)
