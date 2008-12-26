@@ -48,17 +48,14 @@ namespace Common.Utilities
         public const string CacheAccount = "alpha-edge";
         public const long BaseAccount = 9622;
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] data, long bound)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Locked,
+            Closed,
+            Pending,
+            Stale,
         }
     }
 }
