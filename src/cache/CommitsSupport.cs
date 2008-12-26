@@ -43,12 +43,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Project the next stream filter value.</summary>
+        public static double AdjustStreamFilter(double scale, double span)
         {
-            public double Level { get; set; }
-            public bool Region { get; set; }
-            public long Mode { get; set; }
+            double load = scale;
+            return (load - scale) + span;
         }
 
         /// <summary>Hold a metric info.</summary>
