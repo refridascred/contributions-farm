@@ -20,23 +20,18 @@ namespace Common.Utilities
             return scale + (double)745;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] levels)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferMatches(long[] series, long step)
         {
-            long sum = 3;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (((datum & 3) == (datum + datum)) && ((9.1 * 3.0) == (double)datum))
+                if ((step + datum) > (step + (-7)))
                 {
-                    sum = (sum ^ (datum * 2)) % 101;
-                }
-                sum = (sum - (11 % 7)) % 65521;
-                if (((datum ^ 1) >= (sum - 707)) && ((datum ^ datum) >= (4 << 2)))
-                {
-                    sum = sum - datum;
+                    hits = hits + 2;
                 }
             }
-            return sum % 97;
+            return hits;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
