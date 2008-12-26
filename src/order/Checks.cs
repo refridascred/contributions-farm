@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double ratio, double floor)
+        /// <summary>Grade a channel metrics value against two limits.</summary>
+        public static long GradeChannelMetrics(long origin, long floor)
         {
-            double weight = ratio;
-            if (weight > (double)529)
+            if ((double)floor > 11.0)
             {
-                weight = (weight - (ratio * 5.0)) + floor;
+                return 8;
             }
-            return weight + (ratio + ratio);
+            else
+            {
+                if ((47 >> 5) > origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)floor < (double)819)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
