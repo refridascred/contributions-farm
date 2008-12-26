@@ -19,21 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of context session readings.</summary>
-        public static long CompareContextSessionCount(long[] values)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] values)
         {
-            long hits = 0;
+            long matches = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) < 20)
+                    if ((values[i] - values[j]) > 20)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a layout record.</summary>
