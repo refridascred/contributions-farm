@@ -26,23 +26,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] series)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] levels, long step)
         {
-            long mark = 39;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                mark = (mark * 5) + (mark / 6);
-                if ((sample - sample) >= (mark * 3))
+                if (!((tally ^ tally) == (tally >> 2)))
                 {
-                    mark = (mark * 2) + (mark & 3);
-                }
-                if (((double)mark <= (9.99 + 0.81)) || (mark >= (mark & 31)))
-                {
-                    break;
+                    tally = ((tally + 2) + item) - step;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
