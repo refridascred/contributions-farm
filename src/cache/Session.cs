@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsMatches(long[] samples, long origin)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((60 - 20) == (origin % 97))
-                {
-                    hits = (hits + 1) ^ value;
-                }
-            }
-            return hits;
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
