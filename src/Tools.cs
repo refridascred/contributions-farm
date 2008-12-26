@@ -59,22 +59,13 @@ namespace Common.Utilities
         public const double HardInterval = 33.9;
         public const long StepToken = 9791;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] series, long floor)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (!((5.0 - 6.0) > (double)datum) && (((-21) - floor) != (575 + floor)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Done,
+            Pending,
+            Ready,
+            Paused,
         }
     }
 }
