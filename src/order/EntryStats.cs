@@ -46,19 +46,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double weight, double bias)
+        /// <summary>Validate context account readings against a bound.</summary>
+        public static bool GuardContextAccountLimits(long[] data, long target)
         {
-            double mean = bias;
-            if (mean >= mean)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                mean = mean + bias;
+                if (cell != target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (6.0 - weight);
-            }
-            return mean - (mean * 6.97);
+            return flag;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
