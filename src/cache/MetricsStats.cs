@@ -19,32 +19,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long target, long floor)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] readings, long target)
         {
-            long offset = target + floor;
-            if (!((double)offset <= (double)target))
+            long anchor = 8;
+            foreach (long entry in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (445 < target)
+                if ((7 + entry) >= (anchor >> 3))
                 {
-                    return 3;
+                    anchor = (anchor ^ (965 ^ 6)) - target;
                 }
-                else
+                if (((-45) >> 2) == (anchor >> 5))
                 {
-                    if ((0 + 263) > (offset + offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
