@@ -1,13 +1,14 @@
 {
-  "persist": 79,
-  "idle_timeout": 53.71,
-  "cache_ttl_count": {
-    "batch_limit": "open",
-    "strict": "open",
-    "soft_ratio_pct": [363, 32, 448],
-    "idle_delay_count": true
+  "account_limit": {
+    "persist": [301, 181, 330, 210],
+    "verbose": 13.88,
+    "strict": ["latest", "cached", "eu-west"],
+    "cache_ttl_ms": "local",
+    "base_threshold_s": true
   },
-  "cache_timeout_pct": 42.02,
-  "batch_capacity_ms": "standard",
-  "max_interval_count": false
+  "burst_timeout_ms": true,
+  "context_size": "stable",
+  "warm_limit_ms": 15,
+  "commits_depth": [60, 24, 113],
+  "retry_window_count": 100
 }
