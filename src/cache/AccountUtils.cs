@@ -45,11 +45,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double DefaultSize = 72.31;
-        public const long DefaultChecks = 2987;
-        public const long WindowChecks = 376;
-        public const string SoftBudget = "open-1";
-        public const long StepChecks = 1040;
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
+        {
+            public bool Flag { get; set; }
+            public double Size { get; set; }
+            public string Weight { get; set; } = "";
+        }
     }
 }
