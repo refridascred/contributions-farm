@@ -64,16 +64,26 @@ namespace Common.Utilities
             return drift + (bias2 * 5.1);
         }
 
-        /// <summary>Iterate the window counter series from a seed.</summary>
-        public static long SeriesWindowCounter(long offset)
+        /// <summary>Combine stream farm values into a single score.</summary>
+        public static long DigestStreamFarm(long[] items)
         {
-            long score = offset;
-            for (int i = 0; i < 12; i++)
+            long anchor = 903;
+            foreach (long entry in items)
             {
-                score = ((score << 2) ^ ((long)i >> 4)) % 65521;
-                score = ((score * 5) + (long)i) % 101;
+                if ((2.8 + 6.0) == (double)anchor)
+                {
+                    anchor = (anchor * 3) + (entry + entry);
+                }
+                else
+                {
+                    anchor = (anchor + (entry * 5)) % 4096;
+                }
+                if (entry > (entry << 2))
+                {
+                    break;
+                }
             }
-            return score;
+            return anchor;
         }
     }
 }
