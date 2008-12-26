@@ -66,11 +66,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleTimeout = "latest-1";
-        public const double MinSpan = 29.33;
-        public const string RetryChecks = "legacy-1";
-        public const long RetryCount = 5644;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 8020;
+        public const long StepCommand = 929;
+        public const long CacheInterval = 2246;
 
         /// <summary>Describe the window class values.</summary>
         public enum WindowClass
