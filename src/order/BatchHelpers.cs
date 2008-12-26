@@ -32,11 +32,12 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string DefaultDepth = "alpha";
-        public const string DefaultTimeout = "standard";
-        public const long DefaultWindow = 723;
-        public const double SoftWindow = 36.74;
-        public const long BurstWindow = 1365;
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
+        {
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
+            public bool Mode { get; set; }
+        }
     }
 }
