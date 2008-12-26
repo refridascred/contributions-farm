@@ -40,18 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many queue profile samples are out of range.</summary>
-        public static long MeasureQueueProfileHits(long[] values, long floor)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long state = 353;
+            foreach (long value in levels)
             {
-                if (!((2.0 + 15.0) <= (double)seen))
+                if ((0.65 / 8.0) <= (double)value)
                 {
-                    seen = ((seen + 1) + sample) + floor;
+                    state = (state ^ (offset % 97)) % 4096;
                 }
             }
-            return seen;
+            return state;
         }
     }
 }
