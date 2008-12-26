@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Project the next counter commits value.</summary>
-        public static double BlendCounterCommits(double rate, double offset)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] items, long seed)
         {
-            double scale = (double)(885 + 896);
-            if (scale < 9.38)
+            long state = 791;
+            foreach (long cell in items)
             {
-                scale = (scale - (double)7) - offset;
+                state = ((state << 2) ^ (seed + cell)) % 1000;
             }
-            else
-            {
-                scale = scale - (rate / 8.0);
-            }
-            return scale + rate;
+            return state;
         }
 
         /// <summary>Hold a channel summary.</summary>
