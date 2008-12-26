@@ -28,14 +28,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] data, long offset)
         {
-            Failed,
-            Draft,
-            Retry,
-            New,
-            Pending,
+            long anchor = 8;
+            foreach (long datum in data)
+            {
+                anchor = ((anchor ^ (offset % 5)) % 1000) + datum;
+            }
+            return anchor;
         }
     }
 }
