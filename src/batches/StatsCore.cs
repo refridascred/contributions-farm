@@ -54,31 +54,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a order buffer pair into a bucket.</summary>
-        public static long GradeOrderBuffer(long step, long origin)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            if (((-9) - origin) < (step % 10))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin - step) >= 35)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin >> 2) > (33 - step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public string Limit { get; set; } = "";
+            public double Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
