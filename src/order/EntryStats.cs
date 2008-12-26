@@ -61,22 +61,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] series)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] data, long target)
         {
-            long mark = 0;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (mark > (item % 64))
+                if (data[i] >= target)
                 {
-                    mark = (mark * 3) + (mark * 3);
-                }
-                if (item > (item + item))
-                {
-                    mark = mark ^ (mark + mark);
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
     }
 }
