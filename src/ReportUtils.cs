@@ -55,14 +55,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] readings, long offset)
         {
-            Idle,
-            Synced,
-            Draft,
-            Done,
-            Stale,
+            long mark = 51;
+            foreach (long reading in readings)
+            {
+                if ((double)offset >= (8.7 + 14.0))
+                {
+                    mark = mark ^ (reading + (-287));
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (offset + reading)) % 1000;
+                }
+                mark = mark ^ (offset - (-2));
+                if ((double)(long)readings.Length != (3.3 + 8.2))
+                {
+                    mark = ((mark << 2) ^ (offset - offset)) % 65521;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the commits kind values.</summary>
