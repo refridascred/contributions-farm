@@ -19,15 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double ratio, double floor)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            double ratio2 = ratio;
-            if (ratio2 <= (ratio2 / 3.0))
-            {
-                ratio2 = ratio2 - ratio;
-            }
-            return ratio2 + (floor - ratio);
+            Ready,
+            Failed,
+            Locked,
+            Synced,
+            Idle,
         }
 
         /// <summary>Match up profile samples.</summary>
