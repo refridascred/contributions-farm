@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardSize = 4140;
-        public const string BaseAlready = "primary-edge";
-        public const string SoftFactor = "strict-v2";
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
+        {
+            Dropped,
+            New,
+            Stale,
+        }
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
