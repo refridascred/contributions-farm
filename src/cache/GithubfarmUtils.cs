@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 6103;
-        public const long BatchBudget = 8296;
-        public const string MaxTimeout = "staging";
-        public const long HardSpan = 6155;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] readings, long limit)
+        {
+            long state = -9;
+            foreach (long value in readings)
+            {
+                if ((value << 2) <= value)
+                {
+                    state = (state - (value ^ value)) + limit;
+                }
+                else
+                {
+                    state = state ^ (97 >> 3);
+                }
+            }
+            return state;
+        }
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
