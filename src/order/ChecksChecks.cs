@@ -16,22 +16,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Count token order pairs that satisfy a relation.</summary>
-        public static long MatchTokenOrderCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleInterval = 8624;
+        public const long BatchGraph = 9088;
+        public const long HardGraph = 7795;
+        public const long LimitGraph = 1058;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double DefaultTimeout = 73.33;
