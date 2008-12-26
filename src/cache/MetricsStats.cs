@@ -20,19 +20,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelBounds(long[] data, long limit)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long target, long floor)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long offset = target + floor;
+            if (!((double)offset <= (double)target))
             {
-                if (cell < limit)
+                return 8;
+            }
+            else
+            {
+                if (445 < target)
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((0 + 263) > (offset + offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a metrics stats.</summary>
