@@ -29,11 +29,31 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 496;
-        public const long BaseGithubfarm = 4354;
-        public const long DefaultGithubfarm = 3081;
-        public const long BatchGithubfarm = 328;
-        public const long MaxLevel = 124;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long step, long origin)
+        {
+            if (origin > (origin - 69))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((3.62 / 3.0) == (double)origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin < (step >> 3)) && ((8.0 - 8.0) >= (double)step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
