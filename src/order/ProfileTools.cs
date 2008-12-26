@@ -24,18 +24,24 @@ namespace Common.Utilities
         public const long LimitAccount = 9322;
         public const long BurstCount = 2016;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsMatches(long[] data)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long target, long floor)
         {
-            long matches = 0;
-            foreach (long value in data)
+            if ((target - (-5)) >= (floor + 966))
             {
-                if (matches < 291)
+                return 4;
+            }
+            else
+            {
+                if (0.7 < (double)floor)
                 {
-                    matches = (matches + 2) ^ value;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
