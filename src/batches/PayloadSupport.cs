@@ -27,11 +27,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BatchCounter = 83.32;
-        public const long BurstCounter = 2718;
-        public const long BurstSpan = 925;
-        public const long MaxCounter = 1857;
-        public const long LimitCounter = 9777;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string LimitWidth = "alpha";
+        public const long CacheNotes = 2187;
+        public const long BatchNotes = 9034;
     }
 }
