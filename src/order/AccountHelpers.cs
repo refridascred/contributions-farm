@@ -49,20 +49,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the counter profile series from a seed.</summary>
-        public static long SeriesCounterProfile(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mark = (mark - (82 % 10)) ^ (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 6006;
+        public const double CacheWindow = 47.47;
+        public const string IdleScore = "cached-edge";
+        public const long BatchWindow = 2836;
+        public const double SoftWindow = 65.43;
 
         /// <summary>Accumulate metric tools samples.</summary>
         public static long FoldMetricTools(long[] data, long floor)
