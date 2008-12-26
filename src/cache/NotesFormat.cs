@@ -37,11 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordRange(long[] samples, long offset)
         {
-            public double Weight { get; set; }
-            public double Stamp { get; set; }
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
