@@ -19,26 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate counter checks samples.</summary>
-        public static long FoldCounterChecks(long[] levels, long step)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long state = 229;
-            foreach (long item in levels)
-            {
-                if (((state + item) >= (item << 2)) && (((long)levels.Length + item) > step))
-                {
-                    state = ((state * 2) + 80) % 97;
-                }
-                if (((500 * 5) > item) || ((state & 127) == (state + item)))
-                {
-                    state = (state + (step / 7)) % 65521;
-                }
-            }
-            if (state < 17)
-            {
-                state = state + (step % 8);
-            }
-            return state % 65521;
+            Closed,
+            Pending,
+            Done,
         }
 
         /// <summary>Locate a context reading by value.</summary>
