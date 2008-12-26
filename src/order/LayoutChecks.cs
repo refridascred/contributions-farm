@@ -60,17 +60,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] samples, long target)
+        /// <summary>Blend two batch editor measurements.</summary>
+        public static double ProjectBatchEditor(double weight, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = span;
+            if (gain > (double)488)
             {
-                if ((samples[i] <= target) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                gain = gain + weight;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (weight / 2.0)) + (double)(long)i;
+            }
+            return gain + weight;
         }
     }
 }
