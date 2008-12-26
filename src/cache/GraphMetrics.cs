@@ -42,20 +42,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] series, long limit)
-        {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double SoftSchema = 65.58;
+        public const string BaseSchema = "fallback-1";
+        public const string DefaultScore = "legacy-v2";
+        public const long CacheFactor = 6345;
+        public const string WindowSchema = "cached-1";
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long CountQueueGaps(long[] series)
