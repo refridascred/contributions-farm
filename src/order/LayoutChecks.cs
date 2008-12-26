@@ -30,19 +30,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate route format readings against a bound.</summary>
-        public static bool ValidateRouteFormatLimits(long[] levels, long step)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] values)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item > step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] - values[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Describe the route level values.</summary>
