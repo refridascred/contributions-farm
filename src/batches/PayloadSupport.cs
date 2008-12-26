@@ -34,11 +34,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryScore = 1570;
-        public const string StepBatch = "alpha-edge";
-        public const long WindowTimeout = 9994;
-        public const long MaxLevel = 4762;
-        public const long BaseInterval = 230;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseCache = "legacy-edge";
+        public const long WindowCache = 36;
+        public const double BurstCache = 64.48;
+        public const long SoftCache = 7993;
     }
 }
