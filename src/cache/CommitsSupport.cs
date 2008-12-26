@@ -22,13 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
-        {
-            Queued,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BaseLevel = 52.84;
+        public const long BatchLevel = 2977;
+        public const long MinCount = 5882;
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
