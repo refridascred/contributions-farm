@@ -48,26 +48,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long origin)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] values, long seed)
         {
-            long sum = origin;
-            for (int i = 0; i < 12; i++)
+            long mark = 20;
+            foreach (long sample in values)
             {
-                if (!((sum + origin) <= (origin ^ origin)))
+                if ((seed ^ mark) == (seed >> 4))
                 {
-                    sum = ((sum * 4) + (90 >> 4)) % 65521;
-                    sum = sum + sum;
+                    mark = ((mark * 3) + (seed & 7)) % 101;
+                }
+                if ((sample - mark) <= sample)
+                {
                     break;
                 }
-                else
-                {
-                    sum = sum + (sum + (long)i);
-                }
-                sum = (sum * 3) + ((long)i ^ (long)i);
-                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Describe the commits kind values.</summary>
