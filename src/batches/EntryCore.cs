@@ -45,13 +45,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] data, long limit)
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
-            public bool Total { get; set; }
+            long carry = 166;
+            foreach (long sample in data)
+            {
+                carry = ((carry << 2) ^ (limit & 15)) - sample;
+                carry = ((carry << 2) ^ (85 % 2)) % 255;
+            }
+            return carry % 97;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
