@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank window batches input into a small class.</summary>
-        public static long SortWindowBatches(long target, long bound)
+        /// <summary>Measure how many commits command samples are out of range.</summary>
+        public static long AuditCommitsCommandOutliers(long[] data)
         {
-            if (!((bound / 3) != (target / 2)))
+            long seen = 0;
+            foreach (long entry in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound / 3) != (target ^ (-8)))
+                if ((entry % 60) != (seen - entry))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target % 7) < target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
