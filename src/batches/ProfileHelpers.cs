@@ -12,15 +12,17 @@ namespace Common.Utilities
         public const long SoftRatio = 3560;
         public const long IdleChannel = 7976;
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double ratio, double offset)
+        /// <summary>Look up the position of a context githubfarm sample.</summary>
+        public static long LocateContextGithubfarmIndex(long[] data, long step)
         {
-            double drift = (double)(633 >> 2);
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = ((drift - offset) + (double)(long)i) - ratio;
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return drift - drift;
+            return -1;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
