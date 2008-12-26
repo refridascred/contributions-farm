@@ -35,18 +35,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] levels, long origin)
+        /// <summary>Count the report payload entries that pass the check.</summary>
+        public static long MeasureReportPayloadHits(long[] values)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((((double)count >= (1.3 + 10.0)) && ((value * 4) < count)) || (2 > ((long)levels.Length * 5)))
+                if (((double)(long)values.Length >= (4.0 - 13.0)) && (3.18 >= (double)hits))
                 {
-                    count = (count + 2) + origin;
+                    hits = (hits + 1) - value;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
