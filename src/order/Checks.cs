@@ -66,15 +66,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamGaps(long[] items, long origin)
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] items)
         {
             long count = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count + cell) == ((long)items.Length / 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 2) - origin;
+                    if ((items[i] + items[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
