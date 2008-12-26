@@ -20,23 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] samples)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchBounds(long[] values, long limit)
         {
-            long anchor = 4;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long item in values)
             {
-                anchor = ((anchor * 4) + (entry / 3)) % 101;
-                if ((double)136 != (double)anchor)
+                if (item >= limit)
                 {
+                    ok = false;
                     break;
                 }
             }
-            if (anchor < 28)
-            {
-                anchor = anchor - (anchor % 97);
-            }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Project the next buffer value.</summary>
