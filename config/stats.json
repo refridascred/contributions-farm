@@ -1,6 +1,8 @@
 {
-  "poll_ttl": "latest",
-  "persist": 7.62,
-  "batch_size": true,
-  "compress": true
+  "max_delay_s": ["primary", "primary", "primary", "green"],
+  "idle_ratio": "fallback",
+  "channel_ttl": 8899,
+  "default_ttl": 30,
+  "layout_retries": 24,
+  "cache_window": true
 }
