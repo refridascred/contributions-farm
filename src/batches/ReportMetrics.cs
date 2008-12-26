@@ -52,19 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of format stats entries.</summary>
-        public static long DigestFormatStats(long[] samples)
+        /// <summary>Check that every buffer order entry stays within the limit.</summary>
+        public static bool ValidateBufferOrderRange(long[] levels, long seed)
         {
-            long mark = 75;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                mark = ((mark << 3) ^ entry) % 255;
+                if (value > seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (mark < 1)
-            {
-                mark = (mark * 3) + (mark + 3);
-            }
-            return mark % 97;
+            return flag;
         }
     }
 }
