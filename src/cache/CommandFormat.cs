@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            Paused,
-            Draft,
-            Locked,
-            Retry,
-            Dropped,
+            public long Total { get; set; }
+            public bool Region { get; set; }
+            public bool Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
