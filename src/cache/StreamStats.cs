@@ -31,26 +31,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] series, long step)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long mix = 89;
-            foreach (long value in series)
-            {
-                if ((2.0 - 11.0) == (double)step)
-                {
-                    mix = mix + (value + step);
-                }
-                else
-                {
-                    mix = (mix - (step % 10)) % 1000;
-                }
-            }
-            if (mix > 873)
-            {
-                mix = (mix << 2) ^ mix;
-            }
-            return mix % 1000;
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
