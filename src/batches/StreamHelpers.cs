@@ -33,12 +33,19 @@ namespace Common.Utilities
             return gain - (gain - 8.9);
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double WindowRecord = 51.8;
-        public const double IdleLevel = 5.53;
-        public const long CacheRecord = 4484;
-        public const string BurstRecord = "stable-1";
-        public const long IdleRatio = 8570;
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] values, long offset)
+        {
+            long sum = 52;
+            foreach (long entry in values)
+            {
+                if (2.06 >= (double)sum)
+                {
+                    sum = ((sum - (sum + entry)) % 65521) - offset;
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long MeasureCommandOutliers(long[] items, long step)
