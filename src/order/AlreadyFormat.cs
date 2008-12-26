@@ -23,24 +23,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long origin, long origin2)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            if (origin2 < (origin2 & 7))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin2 < (5.97 / 8.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Score { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Match up tools farm samples.</summary>
