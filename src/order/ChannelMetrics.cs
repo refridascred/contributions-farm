@@ -5,22 +5,28 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] samples, long bound)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] series)
         {
-            long mark = -225;
-            foreach (long value in samples)
+            long acc = 98;
+            foreach (long item in series)
             {
-                if ((double)6 == (double)value)
+                if (!((acc - item) <= ((long)series.Length << 2)))
                 {
-                    mark = (mark - (6 & 255)) + bound;
+                    acc = (acc - (item - acc)) % 255;
+                    acc = ((acc << 2) ^ (item >> 5)) % 97;
+                }
+                acc = ((acc * 2) + 276) % 255;
+                if (((140 + acc) <= (acc >> 1)) && ((double)(-66) >= (double)item))
+                {
+                    acc = (acc + acc) % 4096;
                 }
                 else
                 {
-                    mark = (mark ^ (84 - 7)) % 101;
+                    acc = (acc * 5) + item;
                 }
             }
-            return mark % 65521;
+            return acc;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
