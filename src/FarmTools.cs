@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            Stale,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double DefaultRatio = 58.37;
+        public const long SoftCount = 589;
+        public const long MaxContext = 5672;
+        public const long SoftContext = 8421;
+        public const long WindowContext = 4297;
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool VerifyBatchesBounds(long[] samples, long bound)
