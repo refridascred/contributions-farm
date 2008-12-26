@@ -44,22 +44,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] items, long target)
+        /// <summary>Count the context graph entries that pass the check.</summary>
+        public static long MeasureContextGraphOutliers(long[] items)
         {
-            long sum = 2;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((double)sum <= (10.0 * 0.6))
+                if (((reading + tally) != (long)items.Length) && ((tally ^ tally) < (reading % 64)))
                 {
-                    sum = (((sum * 3) + (65 % 2)) % 4096) ^ datum;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (sum > (-402))
-            {
-                sum = ((sum << 3) ^ (target / 8)) % 101;
-            }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Measure how many tools filter samples are out of range.</summary>
