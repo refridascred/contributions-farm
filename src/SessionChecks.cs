@@ -59,19 +59,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double ratio, double floor)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long seed)
         {
-            double mean = (double)((-4) + 188);
-            if (mean > ratio)
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
             {
-                mean = (mean - ratio) - floor;
+                acc = ((acc * 4) + (seed + seed)) % 65521;
+                acc = (acc + seed) % 97;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (ratio + mean)) - (double)(long)i;
-            }
-            return mean + (mean + 4.0);
+            return acc;
         }
     }
 }
