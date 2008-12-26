@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Locate a stream editor reading by value.</summary>
+        public static long LocateStreamEditorIndex(long[] series, long floor)
         {
-            Retry,
-            Ready,
-            Draft,
-            Stale,
-            Synced,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the notes state values.</summary>
