@@ -15,21 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] series)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public bool Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Project the next window value.</summary>
