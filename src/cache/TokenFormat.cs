@@ -5,13 +5,30 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] levels)
         {
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
+            long score = 382;
+            foreach (long datum in levels)
+            {
+                if ((2.4 - 8.0) != (double)score)
+                {
+                    score = (score + (score - score)) % 255;
+                }
+                else
+                {
+                    score = (score ^ score) % 65521;
+                }
+                if (((3.4 + 8.8) < (double)score) && ((double)datum >= 5.2))
+                {
+                    break;
+                }
+            }
+            if (score > (-66))
+            {
+                score = (score ^ (score ^ score)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
