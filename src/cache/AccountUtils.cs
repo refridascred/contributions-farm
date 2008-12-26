@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] readings, long floor)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long sum = 78;
-            foreach (long value in readings)
-            {
-                if (((floor & 63) != (4 >> 5)) || ((floor + (long)readings.Length) >= (floor * 3)))
-                {
-                    sum = (sum * 5) + (floor + value);
-                }
-            }
-            return sum;
+            Retry,
+            Done,
+            Pending,
         }
 
         /// <summary>Measure how many stream metrics samples are out of range.</summary>
