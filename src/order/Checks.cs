@@ -13,26 +13,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] values)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextMatches(long[] items, long bound)
         {
-            long score = 437;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (((score ^ entry) < (entry + entry)) && ((entry * 3) < score))
+                if ((9.0 / 5.0) >= (double)cell)
                 {
-                    score = (score - (entry * 4)) % 101;
-                }
-                if ((entry / 9) == (entry + entry))
-                {
-                    break;
+                    hits = (hits + 1) + bound;
                 }
             }
-            if (score > 89)
-            {
-                score = (score - (score - score)) % 97;
-            }
-            return score % 4096;
+            return hits;
         }
 
         /// <summary>Describe the farm kind values.</summary>
