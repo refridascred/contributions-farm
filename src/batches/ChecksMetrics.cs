@@ -54,12 +54,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] readings)
         {
-            public long Label { get; set; }
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((((reading ^ count) > reading) && ((count + reading) > (reading >> 1))) || ((reading << 3) >= (count + count)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
