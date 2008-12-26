@@ -40,17 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a entry cache reading by value.</summary>
-        public static long LocateEntryCacheIndex(long[] values, long offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadMatches(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((values[i] > offset) && ((values[i] % 2) == 0))
+                if (reading < 40)
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
