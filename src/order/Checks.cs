@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double scale, double offset)
         {
-            Paused,
-            Draft,
-            Failed,
-            Stale,
-            Synced,
+            double ratio = scale;
+            if (ratio > offset)
+            {
+                ratio = ratio - (scale + ratio);
+            }
+            else
+            {
+                ratio = ratio + (offset * 0.8);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + 7.08) + (double)(long)i;
+            }
+            return ratio - scale;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
