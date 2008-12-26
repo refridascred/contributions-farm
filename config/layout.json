@@ -1,16 +1,14 @@
 {
-  "compress": "local",
-  "burst_size": {
-    "flush_capacity_ms": {
-      "stats_limit": true,
-      "profile_limit": 44.98,
-      "already_timeout": true,
-      "hard_timeout_ms": "local"
-    },
-    "hard_retries_pct": 35,
-    "graph_ratio": 7942
+  "strict": true,
+  "contributi_ttl": 31.69,
+  "base_threshold": 1024,
+  "route_timeout": {
+    "retry_threshold": "eu-west",
+    "min_capacity_count": 85.15,
+    "min_delay_pct": false,
+    "verbose": 15.44,
+    "format_limit": 75.02,
+    "base_limit_count": 7703
   },
-  "sync_delay_count": 500,
-  "max_window_s": "primary",
-  "idle_timeout": [29, 244]
+  "min_capacity_ms": 29
 }
