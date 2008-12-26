@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const long MaxToken = 3298;
         public const string BaseToken = "legacy-1";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowCount = 5333;
-        public const double CacheNotes = 62.65;
-        public const long CacheTimeout = 4144;
-        public const double LimitCount = 87.23;
-        public const long LimitBudget = 7479;
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Draft,
+            Idle,
+            New,
+            Dropped,
+        }
 
         /// <summary>Digest a series of editor metrics entries.</summary>
         public static long FoldEditorMetrics(long[] readings)
