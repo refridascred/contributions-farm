@@ -20,18 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] samples)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (((40 < (datum >> 3)) && ((60 - matches) < datum)) || ((double)matches != (8.86 / 6.0)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Blend two window payload measurements.</summary>
