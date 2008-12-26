@@ -20,38 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long limit, long floor)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryBounds(long[] series, long seed)
         {
-            if (((3 ^ limit) < floor) || ((floor ^ floor) == (limit / 5)))
+            bool ready = true;
+            foreach (long item in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (limit > floor)
+                if (item < seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)floor >= (0.4 / 6.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((5 + limit) >= (limit + floor)) && ((floor - limit) < limit))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Look up the position of a account cluster sample.</summary>
