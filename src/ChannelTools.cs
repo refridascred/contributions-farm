@@ -28,10 +28,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCount = 3501;
-        public const long LimitCommits = 6736;
-        public const double IdleSize = 52.56;
-        public const double IdleSpan = 12.93;
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long limit, long step)
+        {
+            if ((double)step > (5.0 + 9.9))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit + limit) == (limit * 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((6.3 + 3.8) < (double)step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)step < (0.4 / 9.0)) || ((8.7 - 8.0) == (double)limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
