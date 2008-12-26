@@ -1,18 +1,13 @@
 {
-  "retry_ttl": 7013,
-  "already_timeout": {
-    "record_capacity": ["primary", "eu-west", "blue", "cached"],
-    "hard_ttl_pct": ["blue", "edge"],
-    "flush_timeout": 53.06,
-    "default_threshold": 27.35,
-    "min_ttl": "staging",
-    "layout_depth": 18.16
+  "cache_retries": {
+    "flush_threshold_ms": "latest",
+    "flush_retries": 12.02,
+    "base_retries_s": 30,
+    "layout_retries": 31.22
   },
-  "compress": {
-    "strict": "green",
-    "readonly": 683,
-    "audit": "fallback"
-  },
-  "profile_depth": "strict",
-  "retry_threshold": "fallback"
+  "default_window_pct": false,
+  "readonly": "strict",
+  "max_interval_ms": 74,
+  "poll_window": 60,
+  "command_timeout": 13
 }
