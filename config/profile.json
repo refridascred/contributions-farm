@@ -1,20 +1,8 @@
 {
-  "retry_threshold": {
-    "base_window": "local",
-    "flush_timeout_count": {
-      "cache_ttl_s": 500,
-      "sync_capacity": 23.07,
-      "notes_retries": 42.2,
-      "batch_timeout_pct": 72,
-      "cache_window_count": ["local", "open", "eu-west", "blue"]
-    },
-    "soft_retries_pct": false,
-    "cache_limit_s": ["local", "strict", "latest", "latest"],
-    "base_ratio": "blue",
-    "compress": ["primary", "open", "edge", "latest"]
-  },
-  "base_retries_pct": 68.83,
-  "soft_delay_pct": "legacy",
-  "batch_retries_s": false,
-  "sync_capacity": "local"
+  "channel_capacity": 4602,
+  "session_depth": 4.32,
+  "metric_retries": 49.34,
+  "already_ratio": [143, 397, 428, 470],
+  "max_size_ms": 41.57,
+  "flush_ttl_s": 65.14
 }
