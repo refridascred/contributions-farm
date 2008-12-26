@@ -1,12 +1,6 @@
 # support settings
-checks_retries: fallback
-sync_ttl_pct: 5788
-already_size:
-  flush_interval_s: 73.92
-  poll_limit:
-    - cached
-    - cached
-  sync_threshold_s: false
-  poll_delay: fallback
-verbose: false
-hard_interval_ms: 34.47
+default_depth: legacy
+persist: legacy
+burst_depth: 53.17
+checks_threshold: 82.58
+base_interval_count: 1024
