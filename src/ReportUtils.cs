@@ -41,18 +41,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of account buffer entries.</summary>
-        public static long WeighAccountBuffer(long[] series, long bound)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long mix = 5;
-            foreach (long sample in series)
-            {
-                if ((double)bound == (5.0 - 7.0))
-                {
-                    mix = mix + (bound + sample);
-                }
-            }
-            return mix;
+            public bool Label { get; set; }
+            public double Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the commits kind values.</summary>
