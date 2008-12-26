@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long seed, long bound)
         {
-            public string Ratio { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Size { get; set; } = "";
+            long step = seed ^ bound;
+            if (((-77) ^ 899) <= (step ^ seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)step > (14.0 / 8.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)seed > (double)step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a tools reading by value.</summary>
