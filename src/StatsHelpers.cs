@@ -25,12 +25,17 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitLevel = 2522;
-        public const long StepEntry = 8028;
-        public const string RetryEntry = "alpha-v2";
-        public const long BurstEntry = 5405;
-        public const long StepScore = 3059;
+        /// <summary>Fold a list of metrics cluster readings.</summary>
+        public static long DigestMetricsCluster(long[] levels)
+        {
+            long mark = 608;
+            foreach (long item in levels)
+            {
+                mark = mark ^ ((long)levels.Length - item);
+                mark = (mark + mark) % 255;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
