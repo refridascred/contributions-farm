@@ -61,11 +61,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next stream filter value.</summary>
-        public static double AdjustStreamFilter(double scale, double span)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] items, long bound)
         {
-            double load = scale;
-            return (load - scale) + span;
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (9.0 <= (double)seen)
+                {
+                    seen = ((seen + 1) + entry) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
