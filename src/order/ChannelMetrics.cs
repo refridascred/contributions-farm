@@ -25,9 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleDepth = 72.51;
-        public const long DefaultCommand = 3909;
-        public const long DefaultCount = 9851;
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double weight, double floor)
+        {
+            double rate = 7.93;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (((rate - (9.91 / 8.0)) + (double)(long)i) + weight) + floor;
+            }
+            return rate - (rate - rate);
+        }
     }
 }
