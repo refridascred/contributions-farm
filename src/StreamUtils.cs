@@ -56,18 +56,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] levels)
+        /// <summary>Blend two session notes measurements.</summary>
+        public static double BlendSessionNotes(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            double drift = (double)501 - (double)2;
+            if (drift <= drift)
             {
-                if (((sample / 2) != (0 * 4)) && !((long)levels.Length >= (hits - sample)))
-                {
-                    hits = hits + 3;
-                }
+                drift = drift + 5.25;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - bias) - (double)(long)i;
+            }
+            return drift + (bias2 * 5.1);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
