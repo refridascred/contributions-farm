@@ -21,10 +21,18 @@ namespace Common.Utilities
             return scale + (scale + gain);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseFactor = 2282;
-        public const long SoftGraph = 4955;
-        public const long WindowGraph = 7353;
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == limit) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine commits order values into a single score.</summary>
         public static long CombineCommitsOrder(long[] samples, long bound)
