@@ -24,18 +24,20 @@ namespace Common.Utilities
             return drift + (double)24;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] values, long target)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] values, long seed)
         {
-            long score = 138;
+            long state = 64;
             foreach (long entry in values)
             {
-                if ((score - target) > (score >> 5))
+                long cur = entry - (state / 2);
+                if ((double)state >= (double)cur)
                 {
-                    score = ((score - score) % 101) ^ entry;
+                    state = state ^ (seed + state);
                 }
+                state = ((state << 2) ^ (state % 8)) % 97;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Describe the order kind values.</summary>
