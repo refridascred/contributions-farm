@@ -19,14 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] values, long origin)
         {
-            Draft,
-            Done,
-            Closed,
-            Paused,
-            Retry,
+            long total = 5;
+            foreach (long cell in values)
+            {
+                if ((double)cell > (double)1)
+                {
+                    total = (total - (cell + origin)) % 65521;
+                }
+                else
+                {
+                    total = total - (cell >> 1);
+                }
+                if ((cell >> 3) < (cell & 1))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Match up profile samples.</summary>
