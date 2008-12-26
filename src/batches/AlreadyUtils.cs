@@ -32,11 +32,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSpan = 166;
-        public const long RetryDepth = 3770;
-        public const long IdleRatio = 9029;
-        public const string IdleLevel = "cached";
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long offset, long bound)
+        {
+            if (((bound << 2) < (offset / 7)) && ((offset * 5) == (bound & 3)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((0.2 - 4.1) <= (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(17.0 > (double)bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (bound >= (bound + 0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
