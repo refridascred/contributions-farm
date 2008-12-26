@@ -13,14 +13,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] data)
         {
-            Failed,
-            New,
-            Paused,
-            Idle,
-            Pending,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (hits <= (3 - hits))
+                {
+                    hits = (hits + 2) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the notes class values.</summary>
