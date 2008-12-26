@@ -74,19 +74,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double bias, double bias2)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] items)
         {
-            double rate = 1.0;
-            if (rate >= bias)
+            long score = 32;
+            foreach (long reading in items)
             {
-                rate = (rate + (double)591) - bias2;
+                score = (score ^ (reading / 3)) % 97;
+                score = (score * 5) + (reading + (long)items.Length);
+                if ((score << 3) > 9)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (score < 217)
             {
-                rate = rate + (double)(long)i;
+                score = (score + (score + score)) % 65521;
             }
-            return rate + bias;
+            return score % 1000;
         }
     }
 }
