@@ -29,19 +29,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Blend two token cache measurements.</summary>
-        public static double AdjustTokenCache(double ratio, double floor)
-        {
-            double drift = (double)(30 % 60);
-            if (drift < floor)
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (ratio - 6.45)) - (double)(long)i;
-            }
-            return drift - (double)953;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 496;
+        public const long BaseGithubfarm = 4354;
+        public const long DefaultGithubfarm = 3081;
+        public const long BatchGithubfarm = 328;
+        public const long MaxLevel = 124;
     }
 }
