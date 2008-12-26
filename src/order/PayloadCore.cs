@@ -13,22 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] data)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (hits <= (3 - hits))
+                if (!(((double)entry < (2.0 * 5.6)) || (1.5 > (double)seen)))
                 {
-                    hits = (hits + 2) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 3) + bound;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the notes class values.</summary>
