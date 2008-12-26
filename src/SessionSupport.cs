@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long DefaultChannel = 5917;
         public const long MinTimeout = 8865;
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] data)
         {
-            New,
-            Synced,
-            Idle,
-            Retry,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((value * 2) < value)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of token readings.</summary>
