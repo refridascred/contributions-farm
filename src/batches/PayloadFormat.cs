@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] series)
         {
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            long total = 386;
+            foreach (long sample in series)
+            {
+                total = (total - (sample & 127)) % 1000;
+            }
+            return total % 65521;
         }
 
         /// <summary>Match up notes samples.</summary>
