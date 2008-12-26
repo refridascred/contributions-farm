@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double weight, double bias)
+        /// <summary>Match up metrics notes samples.</summary>
+        public static long CompareMetricsNotesCount(long[] items)
         {
-            double drift = (double)(379 << 1);
-            if (drift > (7.7 - drift))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = (drift - bias) - weight;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return drift + bias;
+            return tally;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
