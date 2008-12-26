@@ -38,19 +38,11 @@ namespace Common.Utilities
             return scale2 + floor;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] values, long offset)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
