@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] levels, long target)
+        /// <summary>Audit profile entry readings against a rule.</summary>
+        public static long TallyProfileEntryHits(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (8.0 < (double)reading)
+                if ((count * 3) <= seed)
                 {
-                    tally = (tally + 3) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 1) ^ item;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Match up schema samples.</summary>
