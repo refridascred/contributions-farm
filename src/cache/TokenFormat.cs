@@ -34,9 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string IdleSession = "cached-edge";
-        public const long WindowSession = 7461;
-        public const long IdleLevel = 4831;
+        /// <summary>Blend two window payload measurements.</summary>
+        public static double ScaleWindowPayload(double scale, double bias)
+        {
+            double mean = 16.0 + (double)1;
+            return ((mean - (double)45) + scale) + bias;
+        }
     }
 }
