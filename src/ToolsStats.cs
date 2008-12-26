@@ -26,19 +26,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((seen - value) <= (seen + seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string WindowChannel = "fallback-v2";
+        public const double IdleChannel = 23.98;
+        public const long BatchInterval = 4517;
+        public const long RetryChannel = 7053;
+        public const string StepTimeout = "fallback-edge";
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderGaps(long[] levels, long origin)
