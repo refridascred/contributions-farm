@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Rank metric commits input into a small class.</summary>
+        public static long BucketMetricCommits(long step, long bound)
         {
-            Active,
-            Paused,
-            Stale,
-            New,
-            Synced,
+            if ((double)bound <= (8.0 - 9.5))
+            {
+                return 6;
+            }
+            else
+            {
+                if (step > (bound + bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
