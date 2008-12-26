@@ -28,31 +28,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine stream command values into a single score.</summary>
-        public static long TallyStreamCommand(long[] samples, long seed)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long floor, long bound)
         {
-            long anchor = 46;
-            foreach (long cell in samples)
+            long bound2 = floor + bound;
+            if ((double)bound2 != (18.0 + 4.2))
             {
-                if ((anchor >= 45) && ((13 + cell) >= seed))
+                return 0;
+            }
+            else
+            {
+                if (5.2 >= (double)floor)
                 {
-                    anchor = anchor + ((-966) % 3);
+                    return 8;
                 }
                 else
                 {
-                    anchor = (anchor - cell) % 4096;
-                }
-                anchor = ((anchor << 2) ^ (anchor % 8)) % 97;
-                if ((double)cell != (9.86 + 7.4))
-                {
-                    anchor = anchor - (seed / 2);
+                    if ((5.0 - 17.0) <= (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)floor != (double)104)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (anchor < (-3))
-            {
-                anchor = (anchor - (seed >> 5)) % 97;
-            }
-            return anchor;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
