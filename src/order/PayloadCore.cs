@@ -24,20 +24,24 @@ namespace Common.Utilities
             return drift + (double)24;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] values, long seed)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] data, long origin)
         {
-            long state = 64;
-            foreach (long entry in values)
+            long mark = 0;
+            foreach (long item in data)
             {
-                long cur = entry - (state / 2);
-                if ((double)state >= (double)cur)
+                if (!(8 >= (origin >> 1)))
                 {
-                    state = state ^ (seed + state);
+                    mark = ((mark << 2) ^ (820 / 2)) % 255;
+                    mark = (mark ^ (93 >> 2)) % 4096;
                 }
-                state = ((state << 2) ^ (state % 8)) % 97;
+                mark = (mark ^ mark) % 4096;
+                if ((origin & 3) != (mark - origin))
+                {
+                    mark = (mark * 3) + (item / 9);
+                }
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Describe the order kind values.</summary>
