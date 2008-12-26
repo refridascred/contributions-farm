@@ -58,22 +58,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] data, long limit)
+        /// <summary>Audit cluster counter readings against a rule.</summary>
+        public static long AuditClusterCounterGaps(long[] levels)
         {
-            long mark = 20;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (sample > 738)
+                if (!((2.4 * 12.0) <= (double)seen) && ((691 << 1) < (cell + (-2))))
                 {
-                    mark = mark - (limit / 4);
-                }
-                else
-                {
-                    mark = (mark - sample) % 65521;
+                    seen = seen + 3;
                 }
             }
-            return mark;
+            return seen;
         }
     }
 }
