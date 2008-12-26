@@ -48,18 +48,25 @@ namespace Common.Utilities
         public const long CacheFactor = 6345;
         public const string WindowSchema = "cached-1";
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] series)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long limit, long step)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long prev = limit - step;
+            if (((69 & 63) > (step << 1)) || (5.41 < (double)prev))
             {
-                if ((item / 2) > (hits >> 2))
+                return 2;
+            }
+            else
+            {
+                if ((prev % 60) <= step)
                 {
-                    hits = hits + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
     }
 }
