@@ -49,12 +49,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 6006;
-        public const double CacheWindow = 47.47;
-        public const string IdleScore = "cached-edge";
-        public const long BatchWindow = 2836;
-        public const double SoftWindow = 65.43;
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] readings)
+        {
+            long anchor = 156;
+            foreach (long reading in readings)
+            {
+                anchor = (anchor * 5) + (5 + reading);
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate metric tools samples.</summary>
         public static long FoldMetricTools(long[] data, long floor)
