@@ -1,6 +1,7 @@
 # support settings
-checks_size: 4769
-default_timeout_ms:
-  - blue
-  - local
-record_ttl: 84.17
+buffer_ttl: 71
+commits_ratio: eu-west
+hard_capacity_s: false
+audit: standard
+readonly: staging
+batch_size_s: standard
