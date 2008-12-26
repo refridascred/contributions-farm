@@ -67,39 +67,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long origin, long origin2)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] data, long seed)
         {
-            long bound = origin - origin2;
-            if ((origin2 < (bound * 2)) || (4.42 >= (double)origin))
+            long anchor = 6;
+            foreach (long cell in data)
             {
-                return 4;
+                anchor = ((anchor - seed) % 97) + cell;
             }
-            else
-            {
-                if (!((origin2 % 3) == (origin2 ^ bound)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound & 15) == ((-240) + origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((7.58 + 11.0) == (double)origin2)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return anchor % 4096;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
