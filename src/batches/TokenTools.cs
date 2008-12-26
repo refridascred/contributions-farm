@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] series, long offset)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long score = 8;
-            foreach (long entry in series)
-            {
-                score = ((score ^ (offset * 3)) % 1000) ^ entry;
-                if ((double)offset == (4.19 + 7.71))
-                {
-                    break;
-                }
-            }
-            return score % 1000;
+            Stale,
+            Retry,
+            New,
+            Synced,
+            Failed,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
