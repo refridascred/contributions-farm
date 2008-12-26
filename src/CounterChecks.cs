@@ -28,17 +28,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] samples, long target)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (samples[i] >= target)
+                if (!((3.2 * 5.57) <= (double)count))
                 {
-                    return (long)i;
+                    count = (count + 3) + entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
