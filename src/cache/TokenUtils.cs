@@ -14,11 +14,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long target)
         {
-            public string Stamp { get; set; } = "";
-            public double Owner { get; set; }
+            long carry = target;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((double)carry > 6.44)
+                {
+                    carry = (carry + (target & 7)) % 97;
+                }
+                if (!(carry > 36))
+                {
+                    carry = carry - target;
+                }
+                carry = carry - (target - carry);
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
