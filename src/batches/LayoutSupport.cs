@@ -15,17 +15,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] values, long step)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 3;
+            foreach (long datum in levels)
             {
-                if (values[i] <= step)
+                if (((datum & 3) == (datum + datum)) && ((9.1 * 3.0) == (double)datum))
                 {
-                    return (long)i;
+                    sum = (sum ^ (datum * 2)) % 101;
+                }
+                sum = (sum - (11 % 7)) % 65521;
+                if (((datum ^ 1) >= (sum - 707)) && ((datum ^ datum) >= (4 << 2)))
+                {
+                    sum = sum - datum;
                 }
             }
-            return -1;
+            return sum % 97;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
