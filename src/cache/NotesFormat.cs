@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] series, long bound)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long bound)
         {
-            long count = 0;
-            foreach (long item in series)
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (((count & 15) >= (bound + count)) && ((bound & 63) <= item))
-                {
-                    count = count + 2;
-                }
+                mark = (mark - bound) % 255;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
