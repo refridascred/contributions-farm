@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatGaps(long[] levels)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((double)(-212) >= (double)value)
+                if (!((double)matches == (4.0 / 9.0)) && (467 > bound))
                 {
-                    count = count + 3;
+                    matches = (matches + 1) ^ sample;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Audit account batch readings against a rule.</summary>
