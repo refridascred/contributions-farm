@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            Paused,
-            Dropped,
-            Locked,
-            Active,
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Match up batch samples.</summary>
