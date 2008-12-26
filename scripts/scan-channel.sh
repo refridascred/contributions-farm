@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-for item in green fallback; do
+for item in edge green latest standard; do
     log "checking ${item}"
 done
 
-mode="${1:-blue}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=235
+log "limit is ${CHANNEL_LIMIT}"
