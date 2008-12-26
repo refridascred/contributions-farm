@@ -60,18 +60,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many schema editor samples are out of range.</summary>
-        public static long MeasureSchemaEditorHits(long[] values, long offset)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long total = 8;
+            foreach (long cell in readings)
             {
-                if (datum < (datum >> 4))
+                if ((89 >= (target << 1)) || ((target * 5) <= (target + target)))
                 {
-                    count = (count + 2) + offset;
+                    total = ((total << 2) ^ (total + cell)) % 101;
+                }
+                if ((target >= (cell - cell)) || (cell >= total))
+                {
+                    total = ((total * 3) + (total * 4)) % 97;
+                }
+                else
+                {
+                    total = ((total * 5) + target) % 1000;
                 }
             }
-            return count;
+            return total % 1000;
         }
     }
 }
