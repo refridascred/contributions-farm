@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the contributi format entries that pass the check.</summary>
-        public static long TallyContributiFormatMatches(long[] readings, long bound)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count % 8) < 8)
+                if (items[i] < seed)
                 {
-                    count = ((count + 1) + reading) + bound;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
