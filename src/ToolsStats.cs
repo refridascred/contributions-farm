@@ -66,18 +66,10 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 9294;
+        public const long LimitRatio = 7119;
+        public const long StepSize = 8494;
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long LocateTokenIndex(long[] samples, long origin)
