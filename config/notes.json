@@ -1,6 +1,6 @@
 {
-  "checks_threshold": "green",
-  "compress": 3721,
-  "retry_ttl_ms": 34.58,
-  "retry_window": 6908
+  "min_ttl": "standard",
+  "poll_depth": "legacy",
+  "poll_timeout_count": 85,
+  "min_capacity_s": "latest"
 }
