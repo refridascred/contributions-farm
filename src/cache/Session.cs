@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double weight, double floor)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] data, long limit)
         {
-            double gain = (double)(918 << 2);
-            if (gain > (double)(-7))
+            long result = -6;
+            foreach (long reading in data)
             {
-                gain = (gain - weight) - floor;
+                if ((double)limit < (double)reading)
+                {
+                    result = result ^ limit;
+                    break;
+                }
+                if ((limit << 1) <= (limit * 3))
+                {
+                    result = (result - (reading + limit)) % 1000;
+                }
             }
-            return gain - 4.0;
+            if (result < 989)
+            {
+                result = ((result << 3) ^ result) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Hold a checks record.</summary>
