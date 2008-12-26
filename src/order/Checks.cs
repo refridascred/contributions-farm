@@ -51,19 +51,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] data)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] items)
         {
             long seen = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum - datum) < (68 - datum))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((items[i] + items[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
