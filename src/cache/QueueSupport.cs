@@ -31,10 +31,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double WindowScore = 76.71;
-        public const long WindowQueue = 9284;
-        public const string HardRatio = "legacy-edge";
-        public const long BurstQueue = 2985;
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            Ready,
+            Active,
+            Failed,
+            Done,
+            Draft,
+        }
     }
 }
