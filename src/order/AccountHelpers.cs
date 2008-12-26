@@ -14,32 +14,17 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long offset, long bound)
+        /// <summary>Look up the position of a buffer already sample.</summary>
+        public static long SeekBufferAlreadyIndex(long[] samples, long floor)
         {
-            long gap = offset ^ bound;
-            if (((double)offset > (4.14 / 5.0)) || ((bound & 3) <= (bound / 6)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound % 10) == (gap + bound))
+                if (samples[i] <= floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset < (329 * 4)) || ((offset / 4) >= (bound * 4)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate profile samples.</summary>
