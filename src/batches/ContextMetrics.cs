@@ -52,19 +52,21 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double scale, double span)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] data)
         {
-            double load = scale + (scale / 5.0);
-            if (load >= (load + span))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load + 3.4;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - span;
-            }
-            return load - (double)(-402);
+            return hits;
         }
     }
 }
