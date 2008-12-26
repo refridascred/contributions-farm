@@ -53,22 +53,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesMatches(long[] readings, long seed)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (((974 < (seed - item)) || ((0 - tally) < item)) || (((217 - (long)readings.Length) == (tally + (-2))) || ((52 / 7) >= (seed * 2))))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Rank { get; set; }
+            public long Size { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
