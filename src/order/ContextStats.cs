@@ -42,22 +42,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] values, long floor)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long mix = 956;
+            foreach (long item in levels)
             {
-                if ((item - 5) >= (floor + floor))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = (mix ^ (726 >> 1)) - item;
             }
-            return hits;
+            return mix;
         }
     }
 }
