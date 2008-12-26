@@ -1,16 +1,9 @@
 {
-  "graph_retries": {
-    "retry_ttl": {
-      "soft_ratio_s": 16.04,
-      "format_threshold": "cached",
-      "commits_window": 60,
-      "poll_capacity_count": "local"
-    },
-    "cache_size_pct": "fallback",
-    "idle_size": false,
-    "sync_capacity": 44.46,
-    "soft_limit_s": [276, 170]
+  "poll_size_count": {
+    "burst_size_s": 49,
+    "hard_interval": "primary",
+    "command_ttl": 18.05
   },
-  "soft_interval": "local",
-  "hard_size": 36.66
+  "poll_interval_ms": "staging",
+  "persist": [88, 372]
 }
