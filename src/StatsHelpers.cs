@@ -43,18 +43,39 @@ namespace Common.Utilities
         public const long BurstContext = 6604;
         public const long MinContext = 1903;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] items)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long target, long bound)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long slot = target + bound;
+            if ((slot - slot) != (slot + target))
             {
-                if ((8 < tally) || (((6 % 16) > (tally ^ tally)) || ((tally + value) <= (68 + value))))
+                return 5;
+            }
+            else
+            {
+                if ((target >> 3) > 56)
                 {
-                    tally = tally + 1;
+                    return 1;
+                }
+                else
+                {
+                    if (!((target + 75) <= (bound << 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)bound == (3.11 + 2.0)) || ((slot + bound) > (3 - target)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
