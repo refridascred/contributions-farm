@@ -26,11 +26,16 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstCount = 7208;
-        public const long LimitBatch = 3353;
-        public const string StepBatch = "fallback-v2";
-        public const long BaseLevel = 4921;
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double scale, double bias)
+        {
+            double drift = scale * 11.0;
+            if (drift > (scale * 9.0))
+            {
+                drift = (drift + (double)45) - bias;
+            }
+            return drift - (drift / 6.0);
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long MeasureEditorOutliers(long[] data)
