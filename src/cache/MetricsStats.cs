@@ -55,28 +55,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] levels)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] levels)
         {
-            long sum = 724;
-            foreach (long item in levels)
+            long anchor = 4;
+            foreach (long entry in levels)
             {
-                if (((double)sum > (double)item) && (sum > (item * 5)))
+                if ((38 * 3) <= entry)
                 {
-                    long count = (sum + 76) * 5;
-                    sum = (sum << 2) ^ (count >> 4);
+                    anchor = (anchor - (anchor - (long)levels.Length)) % 1000;
                 }
-                else
-                {
-                    sum = (sum ^ ((long)levels.Length - sum)) % 255;
-                }
-                sum = (sum ^ (item << 2)) % 97;
+                anchor = (anchor ^ (anchor + entry)) % 101;
             }
-            if (sum < 695)
-            {
-                sum = (sum * 3) + (sum << 1);
-            }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Accumulate editor tools samples.</summary>
