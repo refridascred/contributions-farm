@@ -26,13 +26,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] readings)
         {
-            Stale,
-            Failed,
-            Retry,
-            New,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (entry > (entry << 1))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a report entry reading by value.</summary>
