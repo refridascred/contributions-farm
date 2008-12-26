@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many token profile samples are out of range.</summary>
-        public static long TallyTokenProfileOutliers(long[] levels, long offset)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long step, long seed)
         {
-            long count = 0;
-            foreach (long item in levels)
+            if ((seed % 60) == (step - seed))
             {
-                if ((246 + count) < (count + count))
+                return 7;
+            }
+            else
+            {
+                if ((step + step) >= seed)
                 {
-                    count = ((count + 2) + item) + offset;
+                    return 6;
+                }
+                else
+                {
+                    if ((step * 5) == (923 & 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step % 12) >= (seed / 9))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Adjust a contributi notes reading.</summary>
