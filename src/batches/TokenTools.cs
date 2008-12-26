@@ -33,18 +33,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((value - value) >= (value / 9))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowBudget = 8844;
+        public const long LimitTools = 6507;
+        public const long MinDepth = 3193;
     }
 }
