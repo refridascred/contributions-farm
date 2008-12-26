@@ -24,17 +24,18 @@ namespace Common.Utilities
         public const long RetryTools = 8653;
         public const long StepTools = 7393;
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] items, long limit)
+        /// <summary>Accumulate batch editor samples.</summary>
+        public static long WeighBatchEditor(long[] series, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 637;
+            foreach (long cell in series)
             {
-                if (items[i] > limit)
+                if ((double)acc == (13.0 / 4.0))
                 {
-                    return (long)i;
+                    acc = (((acc ^ (acc * 2)) % 1000) ^ cell) + seed;
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
