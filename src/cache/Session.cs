@@ -34,26 +34,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] readings, long bound)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long sum = 1;
-            foreach (long reading in readings)
-            {
-                if ((9 + (long)readings.Length) != ((-6) << 3))
-                {
-                    sum = ((sum << 2) ^ (reading + sum)) % 101;
-                }
-                if ((35 - sum) > (bound + bound))
-                {
-                    sum = (sum ^ (reading + sum)) % 255;
-                }
-            }
-            if (sum < 96)
-            {
-                sum = sum - bound;
-            }
-            return sum;
+            Queued,
+            Idle,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
