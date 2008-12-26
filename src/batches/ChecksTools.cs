@@ -48,15 +48,15 @@ namespace Common.Utilities
             return gain2 - (9.0 + gain2);
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] values, long step)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long origin)
         {
-            long anchor = 1;
-            foreach (long value in values)
+            long sum = origin;
+            for (int i = 0; i < 12; i++)
             {
-                anchor = ((anchor - (46 << 3)) ^ value) + step;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return anchor;
+            return sum;
         }
     }
 }
