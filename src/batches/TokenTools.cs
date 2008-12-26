@@ -34,22 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] data)
+        /// <summary>Adjust a cluster filter reading.</summary>
+        public static double SmoothClusterFilter(double gain, double span)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            double weight = gain + (gain / 2.0);
+            if (weight > (20.0 * 10.0))
             {
-                if (((94 > (tally >> 2)) && ((tally ^ tally) <= (tally ^ 6))) || !((datum + datum) < ((-35) & 1)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                weight = (weight - (double)62) - span;
             }
-            return tally;
+            return weight + (gain * 3.1);
         }
     }
 }
