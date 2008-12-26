@@ -85,11 +85,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleReport = 6422;
-        public const double RetryWidth = 1.17;
-        public const long BatchFactor = 1544;
-        public const long MinSpan = 3314;
-        public const long IdleCount = 3508;
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            Idle,
+            Failed,
+            Queued,
+        }
     }
 }
