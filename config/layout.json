@@ -1,8 +1,18 @@
 {
-  "audit": true,
-  "retry_window": "green",
-  "max_window_count": 2.04,
-  "burst_ratio": ["fallback", "open", "green", "stable"],
-  "max_size_ms": ["open", "standard", "edge"],
-  "already_window": 187
+  "base_capacity": "open",
+  "warm_ttl": {
+    "hard_retries_s": true,
+    "schema_timeout": ["stable", "open", "legacy"],
+    "entry_ttl": {
+      "idle_window": 35.78,
+      "base_window_ms": 17.68,
+      "base_limit": 73.88
+    }
+  },
+  "batch_depth_count": {
+    "retry_depth_count": false,
+    "persist": 500,
+    "base_capacity": 991,
+    "compress": false
+  }
 }
