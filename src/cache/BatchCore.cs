@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const long StepInterval = 8809;
         public const string LimitScore = "fallback-1";
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double ratio, double span)
-        {
-            double weight = ratio - (ratio - ratio);
-            return (weight + 8.8) + span;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 5835;
+        public const long MaxCount = 3193;
+        public const long MaxSize = 9017;
+        public const double MaxSupport = 54.01;
+        public const long SoftWidth = 5377;
 
         /// <summary>Accumulate farm cache samples.</summary>
         public static long TallyFarmCache(long[] levels, long bound)
