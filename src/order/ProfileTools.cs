@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] readings, long step)
+        /// <summary>Fold a list of checks entry readings.</summary>
+        public static long FoldChecksEntry(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 797;
+            foreach (long item in samples)
             {
-                if ((readings[i] <= step) && ((readings[i] % 5) != 0))
+                if (((long)samples.Length - 50) > carry)
                 {
-                    return (long)i;
+                    carry = (carry + 4) % 255;
+                }
+                if ((double)carry <= (20.0 * 2.34))
+                {
+                    carry = (carry << 3) ^ (carry - item);
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the counter class values.</summary>
