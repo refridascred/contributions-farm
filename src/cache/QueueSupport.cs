@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            Dropped,
-            Synced,
             Paused,
-            Active,
-            Failed,
+            Closed,
+            Done,
         }
 
         /// <summary>Validate contributi profile readings against a bound.</summary>
