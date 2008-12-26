@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long step)
         {
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
+            long mix = step;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
