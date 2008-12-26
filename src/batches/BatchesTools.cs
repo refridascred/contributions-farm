@@ -18,13 +18,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long seed, long limit)
         {
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Flag { get; set; }
+            long edge = seed ^ limit;
+            if ((edge >> 3) >= (edge / 9))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((7.7 + 0.83) < (double)limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
