@@ -31,14 +31,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] items, long offset)
         {
-            Paused,
-            Active,
-            Synced,
-            New,
-            Retry,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((offset - tally) <= tally)
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a record editor figure with a bias.</summary>
