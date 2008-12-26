@@ -1,9 +1,5 @@
 # support settings
-max_capacity:
-  hard_delay: false
-  max_capacity_count: 8987
-  channel_delay: 8385
-  max_depth: 36.23
-soft_depth_pct: stable
-sync_depth_pct: true
-base_threshold_s: staging
+verbose: 43.99
+retry_retries_pct: true
+compress: green
+tools_timeout: open
