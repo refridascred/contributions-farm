@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] samples, long bound)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((seen > bound) || (bound >= (seen - bound)))
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-            }
-            return seen;
+            Draft,
+            Paused,
+            Stale,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
