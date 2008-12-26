@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two notes command measurements.</summary>
-        public static double AdjustNotesCommand(double gain, double offset)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double scale, double offset)
         {
-            double mean = (double)(-22) - (offset / 7.0);
-            for (int i = 0; i < 5; i++)
+            double ratio = scale;
+            if (ratio >= (ratio / 7.0))
             {
-                mean = ((mean - 0.49) - (double)(long)i) - gain;
+                ratio = ratio - (offset / 6.0);
             }
-            return mean + (offset + mean);
+            return ratio + (scale + offset);
         }
 
         /// <summary>Combine profile values into a single score.</summary>
