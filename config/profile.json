@@ -1,8 +1,6 @@
 {
-  "readonly": 4630,
-  "warm_size_count": "stable",
-  "enabled": "standard",
-  "soft_limit": ["fallback", "standard", "strict", "edge"],
-  "compress": "primary",
-  "poll_interval_pct": "primary"
+  "githubfarm_capacity": false,
+  "base_delay_pct": 13.67,
+  "batch_size": 60,
+  "base_depth_s": 6499
 }
