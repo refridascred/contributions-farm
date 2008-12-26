@@ -13,11 +13,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BatchCount = 0.67;
-        public const string LimitBudget = "primary";
-        public const long LimitBatches = 5109;
-        public const double HardTimeout = 77.74;
+        /// <summary>Scale a stream profile figure with a bias.</summary>
+        public static double BlendStreamProfile(double scale, double offset)
+        {
+            double rate = scale / 5.0;
+            if (rate > (double)0)
+            {
+                rate = (rate - 1.96) + offset;
+            }
+            else
+            {
+                rate = rate + scale;
+            }
+            return rate - (double)7;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double BurstCluster = 32.17;
