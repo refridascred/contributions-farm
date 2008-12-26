@@ -43,13 +43,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] levels, long bound)
         {
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
+            long anchor = 6;
+            foreach (long reading in levels)
+            {
+                anchor = ((anchor ^ ((-421) + reading)) % 255) - bound;
+            }
+            return anchor;
         }
     }
 }
