@@ -33,22 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up githubfarm stats samples.</summary>
-        public static long PairGithubfarmStatsCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitTimeout = 5166;
+        public const long RetryEntry = 5483;
+        public const double LimitEntry = 57.02;
+        public const long SoftEntry = 5139;
 
         /// <summary>Locate a payload graph reading by value.</summary>
         public static long FindPayloadGraphIndex(long[] levels, long step)
