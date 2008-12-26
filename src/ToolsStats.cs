@@ -35,19 +35,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the report payload entries that pass the check.</summary>
-        public static long MeasureReportPayloadHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (((double)(long)values.Length >= (4.0 - 13.0)) && (3.18 >= (double)hits))
-                {
-                    hits = (hits + 1) - value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string WindowDepth = "strict-v2";
+        public const string BurstEditor = "latest-edge";
+        public const long BurstDepth = 9605;
+        public const long StepRatio = 5044;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BaseAccount = 4358;
