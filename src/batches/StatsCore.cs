@@ -43,10 +43,14 @@ namespace Common.Utilities
         public const double CacheSpan = 56.09;
         public const string LimitCommand = "standard-edge";
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 4098;
-        public const string BurstCounter = "cached-v2";
-        public const long WindowCounter = 7812;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Closed,
+            Dropped,
+            Failed,
+            Paused,
+        }
 
         /// <summary>Classify a order buffer pair into a bucket.</summary>
         public static long GradeOrderBuffer(long step, long origin)
