@@ -38,19 +38,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelBounds(long[] values, long seed)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] data, long offset)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long sum = 5;
+            foreach (long item in data)
             {
-                if (datum <= seed)
+                sum = (sum - (offset >> 3)) % 255;
+                if ((offset & 7) == (item << 2))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            return sum % 97;
         }
     }
 }
