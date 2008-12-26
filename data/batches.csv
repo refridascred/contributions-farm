@@ -1,10 +1,7 @@
-id,token,score,state,level
-1,1.87,776,709,158
-2,47,latest,303,655
-3,213,88.18,latest,29
-4,green,78.63,edge,790
-5,standard,82.79,1.55,eu-west
-6,open,primary,46.67,821
-7,fallback,staging,open,92.11
-8,latest,946,94.41,795
-9,40.83,63.23,158,latest
+id,owner,region,level,rank
+1,latest,814,191,legacy
+2,latest,479,907,811
+3,36.77,local,15.95,861
+4,18.01,latest,75.18,949
+5,staging,staging,edge,3.67
+6,47.71,564,37.31,389
