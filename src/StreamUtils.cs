@@ -25,13 +25,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double rate, double floor)
         {
-            Paused,
-            Pending,
-            Retry,
-            New,
+            double rate2 = (floor / 6.0) * 3.67;
+            if (rate2 < floor)
+            {
+                rate2 = rate2 - (rate - rate2);
+            }
+            else
+            {
+                rate2 = rate2 + (rate * 7.48);
+            }
+            return rate2 + rate;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
