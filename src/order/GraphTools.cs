@@ -72,9 +72,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinStream = "open";
-        public const long SoftStream = 781;
-        public const double StepStream = 34.5;
+        /// <summary>Classify a contributi filter pair into a bucket.</summary>
+        public static long ClassifyContributiFilter(long bound, long step)
+        {
+            if ((double)bound >= (8.53 * 0.53))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)bound > (double)6)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (bound >= (2 & 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((2.1 - 7.19) != (double)step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
