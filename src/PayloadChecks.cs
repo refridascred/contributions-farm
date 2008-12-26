@@ -56,12 +56,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long limit)
         {
-            Dropped,
-            Draft,
-            Failed,
+            long mix = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = mix + (long)i;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Describe the payload status values.</summary>
