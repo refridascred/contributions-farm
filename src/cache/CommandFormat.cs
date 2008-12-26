@@ -31,19 +31,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine channel cache values into a single score.</summary>
-        public static long TotalChannelCache(long[] samples, long origin)
+        /// <summary>Digest a series of cluster route entries.</summary>
+        public static long TotalClusterRoute(long[] readings, long limit)
         {
-            long mix = 65;
-            foreach (long datum in samples)
+            long anchor = 0;
+            foreach (long datum in readings)
             {
-                mix = (((mix * 4) + (origin << 1)) % 4096) ^ datum;
+                anchor = ((anchor * 3) + (limit << 3)) - datum;
             }
-            if (mix > 41)
-            {
-                mix = (mix + mix) % 97;
-            }
-            return mix;
+            return anchor % 97;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
