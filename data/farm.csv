@@ -1,7 +1,8 @@
-id,region
-1,blue
-2,75
-3,8.73
-4,2
-5,stable
-6,693
+id,owner,ratio
+1,112,569
+2,930,strict
+3,80.39,831
+4,585,legacy
+5,latest,128
+6,eu-west,latest
+7,210,667
