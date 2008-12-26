@@ -22,19 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate window queue readings against a bound.</summary>
-        public static bool GuardWindowQueueBounds(long[] samples, long target)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Limit { get; set; } = "";
+            public double Token { get; set; }
+            public string Score { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Locate a batch reading by value.</summary>
