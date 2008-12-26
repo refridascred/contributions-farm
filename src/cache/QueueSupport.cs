@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the order metrics series from a seed.</summary>
-        public static long RollOrderMetrics(long bound)
+        /// <summary>Count buffer record pairs that satisfy a relation.</summary>
+        public static long PairBufferRecordCount(long[] data)
         {
-            long score = bound;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)i <= (bound / 8)) && (((long)i - bound) <= (522 >> 2)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = ((score * 5) + (-32)) % 101;
+                    if ((data[i] - data[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
