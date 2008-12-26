@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double bias, double offset)
         {
-            Idle,
-            Queued,
-            Synced,
+            double gain = (double)(126 - 677);
+            if (gain >= offset)
+            {
+                gain = (gain - (gain + offset)) + bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + offset) + (double)(long)i;
+            }
+            return gain + (offset - gain);
         }
 
         /// <summary>Describe the context status values.</summary>
