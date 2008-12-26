@@ -54,15 +54,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a metrics token figure with a bias.</summary>
-        public static double ProjectMetricsToken(double scale, double span)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] items)
         {
-            double drift = scale;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift + (double)(long)i;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return drift - span;
+            return seen;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
