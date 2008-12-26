@@ -19,21 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] levels)
+        /// <summary>Accumulate counter checks samples.</summary>
+        public static long FoldCounterChecks(long[] levels, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 229;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((state + item) >= (item << 2)) && (((long)levels.Length + item) > step))
                 {
-                    if ((levels[i] - levels[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state * 2) + 80) % 97;
+                }
+                if (((500 * 5) > item) || ((state & 127) == (state + item)))
+                {
+                    state = (state + (step / 7)) % 65521;
                 }
             }
-            return count;
+            if (state < 17)
+            {
+                state = state + (step % 8);
+            }
+            return state % 65521;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
