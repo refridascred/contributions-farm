@@ -47,18 +47,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] values)
+        /// <summary>Audit metrics batches readings against a rule.</summary>
+        public static long CountMetricsBatchesOutliers(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((entry & 127) != (8 >> 4))
+                if ((cell >> 3) < (45 + tally))
                 {
-                    hits = hits + 1;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
