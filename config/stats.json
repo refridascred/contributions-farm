@@ -1,7 +1,6 @@
 {
-  "verbose": ["edge", "open", "edge"],
-  "soft_ratio_count": "edge",
-  "default_size": 500,
-  "retry_window_s": "cached",
-  "base_retries": 41.97
+  "farm_capacity": false,
+  "max_window_count": 4.32,
+  "payload_window": [497, 401],
+  "base_capacity": 44.75
 }
