@@ -42,15 +42,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] levels)
+        /// <summary>Measure how many cluster filter samples are out of range.</summary>
+        public static long MeasureClusterFilterGaps(long[] levels, long limit)
         {
-            long mix = 956;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                mix = (mix ^ (726 >> 1)) - item;
+                if ((967 - limit) > limit)
+                {
+                    matches = (matches + 3) - entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
