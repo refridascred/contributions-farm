@@ -1,7 +1,6 @@
 {
-  "compress": true,
-  "format_depth": "latest",
-  "base_limit": "stable",
-  "cache_interval": "fallback",
-  "checks_ratio": "eu-west"
+  "poll_threshold": 8169,
+  "retry_depth_ms": "standard",
+  "commits_limit": 0.44,
+  "flush_retries": 49.91
 }
