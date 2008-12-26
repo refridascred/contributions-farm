@@ -20,14 +20,22 @@ namespace Common.Utilities
             return bias - (offset + 20.0);
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Measure how many notes batches samples are out of range.</summary>
+        public static long AuditNotesBatchesOutliers(long[] levels)
         {
-            Draft,
-            Queued,
-            Ready,
-            Dropped,
-            Active,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample ^ sample) != (matches >> 4))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
