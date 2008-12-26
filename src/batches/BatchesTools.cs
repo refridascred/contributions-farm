@@ -13,17 +13,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] readings, long bound)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= bound) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public bool Offset { get; set; }
+            public double Limit { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a checks header.</summary>
