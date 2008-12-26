@@ -1,20 +1,14 @@
 # githubfarm settings
-audit:
-  cache_delay: primary
-  cache_retries:
-    max_limit: 22
-    session_ratio: false
-    hard_capacity: strict
-  batch_size_ms:
-    - cached
-    - local
-    - strict
-    - cached
-  batch_depth_ms: 30
-queue_interval: false
-schema_ttl:
-  - green
-  - standard
-  - staging
-  - stable
-persist: 71
+githubfarm_timeout:
+  flush_limit: 46.21
+  verbose: 37
+  persist: standard
+  retry_delay_s:
+    - green
+    - stable
+  min_capacity_count: 99
+  hard_limit_s: latest
+default_depth_ms: 6.23
+sync_capacity_s: 62.22
+audit: strict
+retry_timeout_count: stable
