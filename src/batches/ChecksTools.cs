@@ -32,13 +32,13 @@ namespace Common.Utilities
         public const double BaseBuffer = 29.83;
         public const double RetryWidth = 87.36;
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            Closed,
-            Draft,
+            Done,
+            Retry,
+            Ready,
             Synced,
-            Pending,
         }
     }
 }
