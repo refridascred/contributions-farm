@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-RECORD_LIMIT=433
-log "limit is ${RECORD_LIMIT}"
-
-for item in legacy primary; do
+for item in legacy green; do
     log "checking ${item}"
 done
