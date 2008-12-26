@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepTimeout = 3765;
-        public const long BurstWindow = 7065;
-        public const long RetryWindow = 2968;
-        public const long LimitDepth = 1541;
-        public const long IdleWindow = 3188;
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
+        {
+            Retry,
+            Ready,
+            Draft,
+            Stale,
+            Synced,
+        }
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
