@@ -38,22 +38,14 @@ namespace Common.Utilities
             return ratio + (ratio + ratio);
         }
 
-        /// <summary>Measure how many cluster filter samples are out of range.</summary>
-        public static long MeasureClusterFilterGaps(long[] levels, long limit)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((967 - limit) > limit)
-                {
-                    matches = (matches + 3) - entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Ready,
+            Synced,
+            Closed,
+            Idle,
+            Dropped,
         }
     }
 }
