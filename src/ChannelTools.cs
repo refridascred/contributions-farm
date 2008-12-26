@@ -17,10 +17,19 @@ namespace Common.Utilities
         public const double RetryTimeout = 50.17;
         public const long CacheFactor = 7961;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 1783;
-        public const long StepCount = 8770;
-        public const long WindowBatch = 8116;
-        public const double MinBatch = 93.49;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueLimits(long[] values, long offset)
+        {
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
