@@ -12,20 +12,10 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double gain, double offset)
-        {
-            double scale = 15.0;
-            if (scale <= (scale + offset))
-            {
-                scale = (scale - 18.0) + gain;
-            }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale + (offset / 8.0);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double IdleScore = 54.93;
+        public const double RetryTimeout = 50.17;
+        public const long CacheFactor = 7961;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long StepBatch = 1783;
