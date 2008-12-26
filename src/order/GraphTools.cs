@@ -32,17 +32,13 @@ namespace Common.Utilities
         public const long MinFactor = 2866;
         public const long CacheTimeout = 169;
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] data, long offset)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= offset) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the queue class values.</summary>
