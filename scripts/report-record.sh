@@ -6,11 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=234
+RECORD_LIMIT=194
 log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-edge}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 total=0
 for i in $(seq 1 12); do
-    total=$((total + i * 3))
+    total=$((total + i * 4))
 done
 log "total ${total}"
