@@ -51,22 +51,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Count the farm payload entries that pass the check.</summary>
-        public static long TallyFarmPayloadGaps(long[] data)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen + 601) != (5 & 127))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 1) - reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((levels[i] ^ levels[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
