@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryRatio = 3462;
-        public const double BatchTimeout = 66.85;
-        public const long WindowSize = 8046;
-        public const double HardCommand = 77.99;
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long TotalProfile(long[] series)
