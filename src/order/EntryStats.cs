@@ -53,11 +53,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double DefaultSpan = 19.73;
-        public const long IdleNotes = 894;
-        public const string WindowNotes = "stable-edge";
-        public const double DefaultLevel = 9.5;
-        public const long StepNotes = 6331;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] series)
+        {
+            long mark = 0;
+            foreach (long item in series)
+            {
+                if (mark > (item % 64))
+                {
+                    mark = (mark * 3) + (mark * 3);
+                }
+                if (item > (item + item))
+                {
+                    mark = mark ^ (mark + mark);
+                }
+            }
+            return mark % 97;
+        }
     }
 }
