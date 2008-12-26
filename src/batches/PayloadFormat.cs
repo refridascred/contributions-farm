@@ -12,13 +12,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] data)
         {
-            Stale,
-            Retry,
-            Pending,
-            Failed,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (count <= (count ^ count))
+                {
+                    count = (count + 3) - item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of report entries.</summary>
