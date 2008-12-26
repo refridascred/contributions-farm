@@ -1,15 +1,19 @@
 # entry settings
-max_threshold: 1024
-verbose: local
-audit: primary
-warm_ratio_ms:
-  hard_size: 15.42
-  cache_delay:
-    - 187
-    - 379
-    - 455
-  token_window: false
-  cache_ratio: 10
-  cache_capacity: 38
-  sync_threshold_s: false
-hard_depth_count: 59.78
+flush_size_pct: 9
+compress:
+  cache_ratio_ms:
+    - green
+    - cached
+  graph_depth: 95
+  sync_capacity_count: 36
+  burst_depth: 8.06
+channel_window: cached
+min_ratio:
+  window_limit: 6956
+  min_threshold: 85
+  persist: 60
+  warm_ttl_pct:
+    profile_timeout: 30
+    warm_window: 86
+    burst_delay: 500
+  dry_run: 54
