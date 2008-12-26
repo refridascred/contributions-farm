@@ -43,22 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit token entry readings against a rule.</summary>
-        public static long AuditTokenEntryGaps(long[] series)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelBounds(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if (((sample - 9) < (seen << 1)) || (((-641) <= (sample - (-376))) && (sample >= seen)))
+                if (datum <= seed)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
