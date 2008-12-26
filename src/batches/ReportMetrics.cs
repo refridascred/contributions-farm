@@ -33,9 +33,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string RetrySchema = "staging-v2";
-        public const long MaxSchema = 1123;
-        public const double IdleSchema = 61.34;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] levels)
+        {
+            long mark = 150;
+            foreach (long entry in levels)
+            {
+                if ((entry % 60) < (mark - mark))
+                {
+                    mark = (mark << 2) ^ (entry % 100);
+                }
+            }
+            return mark % 65521;
+        }
     }
 }
