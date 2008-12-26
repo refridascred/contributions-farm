@@ -37,13 +37,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorOutliers(long[] series, long bound)
         {
-            public string Score { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Label { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((entry >> 2) == (entry << 1))
+                {
+                    seen = (seen + 1) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
