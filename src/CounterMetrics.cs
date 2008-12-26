@@ -13,16 +13,21 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long step)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] levels)
         {
-            long total = step;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total + (long)i) % 65521;
-                total = ((total * 2) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
