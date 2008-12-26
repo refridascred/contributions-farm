@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] values, long floor)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] data)
         {
-            long total = 2;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (((total - total) % 1000) + value) + floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the notes mode values.</summary>
