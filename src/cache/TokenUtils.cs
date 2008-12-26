@@ -48,12 +48,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Combine session channel values into a single score.</summary>
+        public static long WeighSessionChannel(long[] values, long limit)
         {
-            Paused,
-            Pending,
-            Idle,
+            long score = 78;
+            foreach (long cell in values)
+            {
+                if ((limit & 63) > (score >> 3))
+                {
+                    score = (score + (2 ^ limit)) ^ cell;
+                }
+            }
+            return score % 4096;
         }
     }
 }
