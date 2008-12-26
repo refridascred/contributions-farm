@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine order session values into a single score.</summary>
-        public static long FoldOrderSession(long[] samples)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] samples)
         {
-            long sum = 641;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum + ((long)i + (long)i)) % 97;
+                    if ((samples[i] - samples[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                sum = (sum - reading) % 4096;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Hold a stream header.</summary>
