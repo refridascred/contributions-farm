@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextGaps(long[] readings, long bound)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long acc = 46;
+            foreach (long cell in data)
             {
-                if ((bound + hits) < (hits + bound))
+                if ((5.0 - 11.0) <= (double)bound)
                 {
-                    hits = (hits + 1) + value;
+                    acc = ((acc - (acc + bound)) % 255) ^ cell;
                 }
+                acc = (acc - (bound & 255)) % 97;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Define account limits and defaults.</summary>
