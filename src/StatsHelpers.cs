@@ -51,11 +51,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MaxFilter = 80.42;
-        public const double DefaultRatio = 68.51;
-        public const string CacheFilter = "standard-1";
-        public const double RetryFilter = 14.04;
-        public const long MinFilter = 8491;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 616;
+        public const long BurstOrder = 9478;
+        public const long SoftOrder = 5387;
+        public const double BurstSpan = 80.89;
     }
 }
