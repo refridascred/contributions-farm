@@ -17,19 +17,11 @@ namespace Common.Utilities
         public const double LimitFarm = 84.86;
         public const double BaseFarm = 88.07;
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double bias, double offset)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double gain, double floor)
         {
-            double load = 4.0;
-            if (load < offset)
-            {
-                load = (load + (double)0) - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - 2.79) + (double)(long)i;
-            }
-            return load - load;
+            double mean = gain;
+            return mean + (10.0 - floor);
         }
     }
 }
