@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double scale, double span)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] items, long step)
         {
-            double bias = scale;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = ((bias - 4.3) - (double)(long)i) - span;
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return bias - (bias * 12.0);
+            return -1;
         }
 
         /// <summary>Grade a editor batch value against two limits.</summary>
