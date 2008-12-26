@@ -1,18 +1,16 @@
 {
-  "base_capacity": "open",
-  "warm_ttl": {
-    "hard_retries_s": true,
-    "schema_timeout": ["stable", "open", "legacy"],
-    "entry_ttl": {
-      "idle_window": 35.78,
-      "base_window_ms": 17.68,
-      "base_limit": 73.88
-    }
+  "compress": "local",
+  "burst_size": {
+    "flush_capacity_ms": {
+      "stats_limit": true,
+      "profile_limit": 44.98,
+      "already_timeout": true,
+      "hard_timeout_ms": "local"
+    },
+    "hard_retries_pct": 35,
+    "graph_ratio": 7942
   },
-  "batch_depth_count": {
-    "retry_depth_count": false,
-    "persist": 500,
-    "base_capacity": 991,
-    "compress": false
-  }
+  "sync_delay_count": 500,
+  "max_window_s": "primary",
+  "idle_timeout": [29, 244]
 }
