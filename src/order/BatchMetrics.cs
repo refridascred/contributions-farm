@@ -116,12 +116,18 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterHits(long[] items, long target)
         {
-            Idle,
-            Locked,
-            Done,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((90 - (long)items.Length) >= 864)
+                {
+                    tally = ((tally + 3) ^ value) + target;
+                }
+            }
+            return tally;
         }
     }
 }
