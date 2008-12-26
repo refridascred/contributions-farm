@@ -49,19 +49,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((hits - 5) <= (entry >> 1))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardRatio = 8962;
+        public const long CacheMetrics = 7620;
+        public const double LimitMetrics = 83.31;
+        public const long BurstDepth = 6186;
+        public const string StepSize = "alpha-v2";
 
         /// <summary>Project the next command value.</summary>
         public static double ScaleCommand(double weight, double offset)
