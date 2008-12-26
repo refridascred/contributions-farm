@@ -1,11 +1,6 @@
 {
-  "burst_interval": "latest",
-  "support_window": 6884,
-  "hard_limit_ms": false,
-  "burst_ttl_s": "legacy",
-  "idle_interval": {
-    "report_depth": [147, 392, 298, 439],
-    "audit": "latest",
-    "flush_depth": "stable"
-  }
+  "token_interval": true,
+  "default_threshold_s": 3.59,
+  "account_window": 100,
+  "verbose": "latest"
 }
