@@ -25,32 +25,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long offset, long limit)
-        {
-            if (!((78 / 8) >= (limit + offset)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset << 2) >= limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((3.61 - 6.6) < (double)offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitLevel = 2522;
+        public const long StepEntry = 8028;
+        public const string RetryEntry = "alpha-v2";
+        public const long BurstEntry = 5405;
+        public const long StepScore = 3059;
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
