@@ -53,12 +53,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Look up the position of a account contributi sample.</summary>
+        public static long LookupAccountContributiIndex(long[] samples, long seed)
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
