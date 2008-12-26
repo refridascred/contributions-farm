@@ -62,14 +62,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] values, long floor)
         {
-            New,
-            Ready,
-            Closed,
-            Locked,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
