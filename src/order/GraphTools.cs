@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] values, long origin)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] readings, long origin)
         {
-            long sum = 9;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((sum > (origin % 2)) || (1.0 >= (double)sum))
+                if ((origin & 3) > (cell % 5))
                 {
-                    sum = (((sum * 4) + (origin / 6)) % 101) - cell;
-                }
-                else
-                {
-                    sum = sum + (origin % 64);
+                    seen = seen + 3;
                 }
             }
-            if (sum > (-16))
-            {
-                sum = (sum - (45 >> 1)) % 101;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the cache state values.</summary>
