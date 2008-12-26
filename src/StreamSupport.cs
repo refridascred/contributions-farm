@@ -12,18 +12,17 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] data, long floor)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] values, long floor)
         {
-            long acc = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (9.0 >= (double)acc)
+                if ((values[i] < floor) && ((values[i] % 5) != 0))
                 {
-                    acc = ((acc ^ (datum - datum)) % 1000) + floor;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
