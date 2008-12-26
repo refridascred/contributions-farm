@@ -33,11 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftTimeout = "local-edge";
-        public const double CacheReport = 86.47;
-        public const long BurstFactor = 5784;
-        public const string BaseReport = "legacy-1";
+        /// <summary>Combine record queue values into a single score.</summary>
+        public static long TotalRecordQueue(long[] levels, long offset)
+        {
+            long mix = 597;
+            foreach (long cell in levels)
+            {
+                if ((mix - offset) < (offset / 5))
+                {
+                    mix = ((mix << 3) ^ ((long)levels.Length + mix)) + cell;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Scale a format metrics figure with a bias.</summary>
         public static double SmoothFormatMetrics(double ratio, double floor)
