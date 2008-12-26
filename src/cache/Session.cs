@@ -25,13 +25,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Count cluster route pairs that satisfy a relation.</summary>
+        public static long OverlapClusterRouteCount(long[] readings)
         {
-            Idle,
-            Retry,
-            Active,
-            Failed,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a report entry reading by value.</summary>
