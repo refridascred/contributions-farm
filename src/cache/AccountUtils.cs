@@ -27,17 +27,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] series, long step)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
