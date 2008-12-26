@@ -11,18 +11,38 @@ namespace Common.Utilities
         public const long BatchTools = 6005;
         public const long DefaultFactor = 2414;
 
-        /// <summary>Fold a list of token graph readings.</summary>
-        public static long CombineTokenGraph(long[] readings, long target)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long target, long seed)
         {
-            long carry = 0;
-            foreach (long value in readings)
+            if ((seed << 1) > (target << 1))
             {
-                if ((target * 2) >= (carry - value))
+                return 7;
+            }
+            else
+            {
+                if ((59 + target) > (seed - target))
                 {
-                    carry = (carry * 3) + (carry + value);
+                    return 5;
+                }
+                else
+                {
+                    if ((2 ^ target) == (seed + target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed >> 2) > (seed % 97))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Describe the commits level values.</summary>
