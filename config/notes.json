@@ -1,5 +1,6 @@
 {
-  "soft_window": "edge",
-  "retry_interval_pct": "open",
-  "sync_interval": true
+  "cache_timeout_s": false,
+  "flush_delay_pct": "blue",
+  "soft_size_pct": ["staging", "standard", "cached", "fallback"],
+  "batch_window": 25
 }
