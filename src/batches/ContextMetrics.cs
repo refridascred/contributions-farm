@@ -50,12 +50,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Locate a payload graph reading by value.</summary>
+        public static long FindPayloadGraphIndex(long[] levels, long step)
         {
-            public bool Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= step) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a cache summary.</summary>
