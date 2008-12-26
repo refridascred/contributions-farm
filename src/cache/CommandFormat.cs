@@ -28,22 +28,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] levels)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long carry = -3;
-            foreach (long reading in levels)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    carry = (((carry << 2) ^ (reading + reading)) % 65521) ^ (long)i;
-                }
-                if (((-7) & 255) >= (carry * 4))
-                {
-                    carry = ((carry * 5) + (carry % 100)) % 65521;
-                }
-            }
-            return carry % 1000;
+            public long Count { get; set; }
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
