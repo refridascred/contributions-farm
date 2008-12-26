@@ -12,17 +12,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Find the first filter record entry that matches the target.</summary>
-        public static long SeekFilterRecordIndex(long[] series, long floor)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > floor) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Rank { get; set; } = "";
+            public double Total { get; set; }
+            public bool Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
