@@ -20,19 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double bias, double bias2)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelBounds(long[] data, long limit)
         {
-            double gain = 7.15;
-            if (gain >= gain)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                gain = (gain - bias) - bias2;
+                if (cell < limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - (bias / 5.0);
-            }
-            return gain - (double)849;
+            return stale;
         }
 
         /// <summary>Hold a metrics stats.</summary>
