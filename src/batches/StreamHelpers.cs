@@ -47,12 +47,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Look up the position of a route checks sample.</summary>
+        public static long LocateRouteChecksIndex(long[] samples, long step)
         {
-            public long Offset { get; set; }
-            public double Label { get; set; }
-            public string Region { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == step) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
