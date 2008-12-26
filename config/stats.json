@@ -1,5 +1,26 @@
 {
-  "base_window": 67,
-  "batch_retries_ms": 70.09,
-  "graph_depth": 1024
+  "persist": 49.88,
+  "retry_window_pct": "open",
+  "flush_ratio_ms": 1885,
+  "warm_threshold": {
+    "graph_size": {
+      "max_delay_ms": 94.25,
+      "hard_window": true,
+      "batch_depth_count": 2086,
+      "profile_depth": true
+    },
+    "hard_ratio_pct": 7569,
+    "cache_threshold": true,
+    "dry_run": [353, 462, 363],
+    "min_ratio_ms": {
+      "max_retries_s": 9162,
+      "poll_size_ms": "local",
+      "idle_ratio_count": 60,
+      "max_depth_s": 250,
+      "max_threshold": 8.67
+    },
+    "batch_timeout": 60
+  },
+  "profile_limit": "strict",
+  "metric_interval": false
 }
