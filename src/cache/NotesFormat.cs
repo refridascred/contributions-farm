@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseReport = 51.26;
-        public const string CacheSpan = "legacy-edge";
-        public const long BurstRatio = 4660;
-        public const long StepInterval = 2382;
-        public const string BaseWidth = "standard-v2";
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmGaps(long[] series, long bound)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (((count & 15) >= (bound + count)) && ((bound & 63) <= item))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string WindowSize = "alpha";
