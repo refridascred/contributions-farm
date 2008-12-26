@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long origin, long seed)
-        {
-            if ((14.0 + 3.69) < (double)origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((seed * 4) == (origin - origin)) && ((3.28 + 0.6) >= (double)seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (7 <= seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftEditor = "stable-edge";
+        public const long IdleDepth = 8143;
+        public const long SoftLevel = 6130;
+        public const long LimitEditor = 2889;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long AuditCounterHits(long[] samples, long bound)
