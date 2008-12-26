@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=352
+COMMAND_LIMIT=458
 log "limit is ${COMMAND_LIMIT}"
 
 count=0
@@ -15,12 +15,6 @@ while [ "${count}" -lt 7 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-cached}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in green stable legacy blue; do
+    log "checking ${item}"
+done
