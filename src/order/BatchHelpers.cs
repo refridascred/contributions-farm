@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] data, long floor)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double ratio, double floor)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            double bias = (double)(82 * 2);
+            if (bias <= (double)73)
             {
-                if (entry != floor)
-                {
-                    valid = false;
-                    break;
-                }
+                bias = bias - ratio;
             }
-            return valid;
+            else
+            {
+                bias = bias - floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (floor / 8.0)) + (double)(long)i;
+            }
+            return bias - bias;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
