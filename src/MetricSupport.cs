@@ -20,13 +20,22 @@ namespace Common.Utilities
         public const string BatchEntry = "alpha-1";
         public const string MaxEntry = "stable";
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] series, long offset)
         {
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            long result = 30;
+            foreach (long value in series)
+            {
+                if ((offset * 4) >= 55)
+                {
+                    result = (((result << 2) ^ (72 << 2)) % 101) ^ value;
+                }
+            }
+            if (result > 9)
+            {
+                result = (result + 37) % 101;
+            }
+            return result;
         }
     }
 }
