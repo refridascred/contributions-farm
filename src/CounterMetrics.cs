@@ -26,22 +26,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 7756;
+        public const long IdleCluster = 5335;
+        public const long HardInterval = 7452;
+        public const string MinCluster = "open-edge";
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long MeasureCommandOutliers(long[] samples)
