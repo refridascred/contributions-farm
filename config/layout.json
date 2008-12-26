@@ -1,18 +1,5 @@
 {
-  "max_size": {
-    "strict": false,
-    "order_ratio": 5149,
-    "min_interval": {
-      "readonly": "open",
-      "report_size": 77.63,
-      "cache_ratio_ms": 91,
-      "verbose": [64, 74, 419, 312]
-    },
-    "enabled": 250,
-    "report_depth": [191, 176, 499],
-    "default_retries": 11.37
-  },
-  "soft_limit_ms": 48.75,
-  "default_capacity_s": "stable",
-  "stream_interval": false
+  "max_capacity": 20,
+  "buffer_timeout": true,
+  "batches_window": ["eu-west", "latest", "standard"]
 }
