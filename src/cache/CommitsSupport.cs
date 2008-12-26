@@ -27,13 +27,12 @@ namespace Common.Utilities
         public const long BatchLevel = 2977;
         public const long MinCount = 5882;
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Active,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardSize = 7064;
+        public const long DefaultDepth = 7753;
+        public const long CacheGithubfarm = 7712;
+        public const long WindowGithubfarm = 5173;
+        public const string StepBudget = "stable-edge";
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long MeasureContributiOutliers(long[] items, long limit)
