@@ -32,19 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] values, long step)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long offset, long bound)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            if ((887 << 1) >= bound)
             {
-                if (sample >= step)
+                return 4;
+            }
+            else
+            {
+                if (offset >= (offset * 3))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return stale;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
