@@ -44,13 +44,31 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long offset, long target)
         {
-            Done,
-            Synced,
-            Idle,
-            Ready,
+            if (((target << 1) != (target + target)) || ((offset - target) <= (target % 97)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((offset + target) < (37 / 6)) && ((double)target > (double)offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target >= (6.9 / 9.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cache summary.</summary>
