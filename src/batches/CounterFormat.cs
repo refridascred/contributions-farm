@@ -23,17 +23,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] data, long floor)
+        /// <summary>Validate session notes readings against a bound.</summary>
+        public static bool VerifySessionNotesBounds(long[] items, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if ((data[i] <= floor) && ((data[i] % 2) == 0))
+                if (value > offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
