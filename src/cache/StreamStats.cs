@@ -51,15 +51,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a format metrics figure with a bias.</summary>
-        public static double SmoothFormatMetrics(double ratio, double floor)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            double gain = floor;
-            if (gain > 0.6)
-            {
-                gain = gain + ratio;
-            }
-            return gain + gain;
+            public bool Total { get; set; }
+            public bool Limit { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
