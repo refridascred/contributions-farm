@@ -10,24 +10,12 @@ namespace Common.Utilities
         public const long BurstRecord = 7894;
         public const double BatchRatio = 91.45;
 
-        /// <summary>Combine buffer metrics values into a single score.</summary>
-        public static long TallyBufferMetrics(long[] levels)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long score = -1;
-            foreach (long value in levels)
-            {
-                score = (score ^ score) % 255;
-                if ((score - score) >= value)
-                {
-                    score = (score << 2) ^ score;
-                }
-                else
-                {
-                    score = (score * 2) + (value ^ score);
-                }
-                score = (score + (23 - value)) % 4096;
-            }
-            return score % 97;
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine stats values into a single score.</summary>
