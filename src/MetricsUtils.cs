@@ -29,11 +29,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            public bool Label { get; set; }
-            public bool Mode { get; set; }
+            Stale,
+            Done,
+            Idle,
+            Active,
+            Synced,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
