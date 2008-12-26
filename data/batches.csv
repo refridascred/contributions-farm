@@ -1,6 +1,10 @@
-id,region,token,owner,active
-1,30.91,open,963,342
-2,17.99,59.03,green,local
-3,737,206,972,563
-4,822,91.01,934,strict
-5,920,7.88,310,17.42
+id,token,score,state,level
+1,1.87,776,709,158
+2,47,latest,303,655
+3,213,88.18,latest,29
+4,green,78.63,edge,790
+5,standard,82.79,1.55,eu-west
+6,open,primary,46.67,821
+7,fallback,staging,open,92.11
+8,latest,946,94.41,795
+9,40.83,63.23,158,latest
