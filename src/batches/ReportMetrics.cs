@@ -28,18 +28,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] levels)
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            double bias2 = bias;
+            for (int i = 0; i < 5; i++)
             {
-                if ((67 - reading) > matches)
-                {
-                    matches = matches + 2;
-                }
+                bias2 = ((bias2 - (double)(-62)) + (double)(long)i) + floor;
             }
-            return matches;
+            return bias2 + (bias2 * 6.0);
         }
     }
 }
