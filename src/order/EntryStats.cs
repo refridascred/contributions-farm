@@ -20,19 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryBounds(long[] series, long seed)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] samples)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long anchor = 4;
+            foreach (long entry in samples)
             {
-                if (item < seed)
+                anchor = ((anchor * 4) + (entry / 3)) % 101;
+                if ((double)136 != (double)anchor)
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            if (anchor < 28)
+            {
+                anchor = anchor - (anchor % 97);
+            }
+            return anchor;
         }
 
         /// <summary>Project the next buffer value.</summary>
