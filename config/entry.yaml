@@ -1,6 +1,15 @@
 # entry settings
-audit: 32
-sync_ratio_ms: open
-hard_window_ms: 7279
-soft_ttl: 38.89
-cache_interval: fallback
+batch_timeout: cached
+hard_ratio_ms: 33.31
+account_window:
+  max_size_count:
+    - 435
+    - 140
+    - 110
+    - 224
+  strict: fallback
+  max_depth: 9948
+  checks_capacity: strict
+metric_timeout: fallback
+retry_depth: 1024
+audit: 2239
