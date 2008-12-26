@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long IdleBatches = 2873;
         public const long BurstBatches = 1505;
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            Queued,
-            Active,
-            Pending,
+            public long Stamp { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Blend two profile measurements.</summary>
