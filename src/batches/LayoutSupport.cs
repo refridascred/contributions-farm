@@ -22,18 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferMatches(long[] series, long step)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((step + datum) > (step + (-7)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Done,
+            Active,
+            Ready,
+            Closed,
+            Paused,
         }
 
         /// <summary>Validate contributi entry readings against a bound.</summary>
