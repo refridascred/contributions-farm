@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double bias, double floor)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            double mean = 18.0;
-            if (mean > (mean - mean))
-            {
-                mean = (mean - (double)7) + floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (double)76) - (double)(long)i;
-            }
-            return mean - (9.4 + bias);
+            Closed,
+            Idle,
+            Failed,
         }
 
         /// <summary>Describe the report class values.</summary>
