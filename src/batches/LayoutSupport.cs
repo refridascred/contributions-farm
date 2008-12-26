@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] data)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((11.0 * 3.9) <= (double)cell)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Ready,
+            Pending,
+            Queued,
+            Closed,
+            Draft,
         }
 
         /// <summary>Locate a account reading by value.</summary>
