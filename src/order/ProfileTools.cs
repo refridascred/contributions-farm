@@ -19,15 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
-        {
-            Locked,
-            Synced,
-            Ready,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseTimeout = 3449;
+        public const long LimitAccount = 9322;
+        public const long BurstCount = 2016;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long TallyFilter(long[] data, long bound)
