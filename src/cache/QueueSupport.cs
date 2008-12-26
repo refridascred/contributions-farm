@@ -16,11 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheSpan = 9315;
-        public const long CacheInterval = 6582;
-        public const double HardInterval = 98.09;
-        public const string SoftRatio = "staging-v2";
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            New,
+            Paused,
+            Draft,
+        }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long OverlapStatsCount(long[] series)
