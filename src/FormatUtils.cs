@@ -48,19 +48,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] values, long seed)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long mark = 7;
-            foreach (long cell in values)
-            {
-                mark = (((mark * 5) + 352) - cell) - seed;
-            }
-            if (mark > 351)
-            {
-                mark = (mark - (mark + mark)) % 255;
-            }
-            return mark % 65521;
+            public bool Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Digest a series of window entries.</summary>
