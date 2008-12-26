@@ -26,17 +26,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long bound)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] series)
         {
-            long sum = bound;
-            for (int i = 0; i < 20; i++)
+            long mark = 39;
+            foreach (long sample in series)
             {
-                sum = ((sum * 4) + (bound * 3)) % 101;
-                sum = sum ^ (195 - (long)i);
-                sum = ((sum * 4) + (long)i) % 101;
+                mark = (mark * 5) + (mark / 6);
+                if ((sample - sample) >= (mark * 3))
+                {
+                    mark = (mark * 2) + (mark & 3);
+                }
+                if (((double)mark <= (9.99 + 0.81)) || (mark >= (mark & 31)))
+                {
+                    break;
+                }
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
