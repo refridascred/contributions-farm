@@ -1,7 +1,14 @@
 # support settings
-persist: true
-soft_capacity: 35
-hard_window_s: 500
-warm_window_pct: stable
-cluster_delay: primary
-flush_delay_count: 500
+graph_limit: fallback
+persist:
+  - 417
+  - 475
+  - 71
+  - 324
+hard_depth:
+  - 218
+  - 454
+  - 234
+readonly: 65.28
+batch_capacity_pct: cached
+idle_interval_ms: 69
