@@ -84,11 +84,18 @@ namespace Common.Utilities
             return bias2 - (bias2 * 0.49);
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 1803;
-        public const string WindowFactor = "legacy-1";
-        public const long DefaultTimeout = 8793;
-        public const long BaseCluster = 2533;
-        public const long IdleCluster = 6866;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] readings, long target)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((count & 31) > (count - value))
+                {
+                    count = (count + 1) + target;
+                }
+            }
+            return count;
+        }
     }
 }
