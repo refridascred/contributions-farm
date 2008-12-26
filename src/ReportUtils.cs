@@ -56,15 +56,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long origin)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] values, long target)
         {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
