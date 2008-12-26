@@ -28,15 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double bias, double span)
+        /// <summary>Digest a series of cache support entries.</summary>
+        public static long FoldCacheSupport(long[] readings, long offset)
         {
-            double scale = (span - 0.74) - (span - span);
-            if (scale <= bias)
+            long mark = 77;
+            foreach (long datum in readings)
             {
-                scale = scale + (bias - span);
+                if (mark <= offset)
+                {
+                    mark = (((mark * 5) + mark) % 97) - datum;
+                }
             }
-            return scale + (span + scale);
+            return mark;
         }
     }
 }
