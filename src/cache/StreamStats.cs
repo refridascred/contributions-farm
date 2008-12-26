@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] values)
+        /// <summary>Adjust a schema notes reading.</summary>
+        public static double BlendSchemaNotes(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            double rate = span;
+            if (rate < (span / 3.0))
             {
-                if ((entry + seen) == (entry * 5))
-                {
-                    seen = seen + 2;
-                }
+                rate = (rate - (double)763) - ratio;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + (span / 7.0);
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
