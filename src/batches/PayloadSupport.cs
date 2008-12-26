@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank order graph input into a small class.</summary>
-        public static long SortOrderGraph(long offset, long seed)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenLimits(long[] items, long origin)
         {
-            if ((double)offset != (6.24 / 2.0))
+            bool flag = true;
+            foreach (long entry in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed > (double)offset)
+                if (entry <= origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((3.75 * 20.0) > (double)offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed % 100) >= seed)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define account limits and defaults.</summary>
