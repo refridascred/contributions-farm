@@ -1,5 +1,7 @@
 {
-  "readonly": 6719,
-  "verbose": true,
-  "poll_timeout_s": "open"
+  "min_depth_count": 47,
+  "max_ttl": "fallback",
+  "default_interval_count": 3674,
+  "cache_interval_pct": 49,
+  "warm_depth": "local"
 }
