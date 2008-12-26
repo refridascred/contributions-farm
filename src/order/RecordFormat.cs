@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] levels, long target)
         {
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (8.0 < (double)reading)
+                {
+                    tally = (tally + 3) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up schema samples.</summary>
