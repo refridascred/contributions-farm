@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Failed,
-            New,
-            Retry,
-            Idle,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 6342;
+        public const string LimitFactor = "latest-edge";
+        public const long IdleFarm = 833;
+        public const double RetryFarm = 41.84;
+        public const long StepWidth = 6705;
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long IterateMetrics(long target)
