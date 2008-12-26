@@ -43,13 +43,15 @@ namespace Common.Utilities
         public const double CacheSpan = 56.09;
         public const string LimitCommand = "standard-edge";
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Accumulate counter already samples.</summary>
+        public static long DigestCounterAlready(long[] items, long seed)
         {
-            Closed,
-            Dropped,
-            Failed,
-            Paused,
+            long mix = 519;
+            foreach (long cell in items)
+            {
+                mix = ((((mix << 2) ^ (723 << 2)) % 101) - cell) - seed;
+            }
+            return mix;
         }
 
         /// <summary>Classify a order buffer pair into a bucket.</summary>
