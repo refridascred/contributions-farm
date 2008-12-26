@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] samples, long step)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double rate, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = rate;
+            if (ratio > (rate + span))
             {
-                if ((samples[i] >= step) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio + ratio;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - (double)762;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (double)1) + (double)(long)i;
+            }
+            return ratio + 7.18;
         }
 
         /// <summary>Compare every pair of payload contributi readings.</summary>
