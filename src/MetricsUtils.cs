@@ -22,11 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] items, long bound)
         {
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((double)bound <= (9.0 * 8.3))
+                {
+                    hits = (hits + 3) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every already format entry stays within the limit.</summary>
