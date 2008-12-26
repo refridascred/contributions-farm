@@ -16,20 +16,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long target)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double ratio, double bias)
         {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
+            double load = (double)(2 ^ 4);
+            for (int i = 0; i < 2; i++)
             {
-                if ((3 * 4) >= (anchor - (long)i))
-                {
-                    anchor = ((anchor << 2) ^ (anchor - (long)i)) % 101;
-                    anchor = anchor - (target + anchor);
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
+                load = (((load - (2.4 * 9.0)) + (double)(long)i) + ratio) - bias;
             }
-            return anchor;
+            return load - (load * 2.0);
         }
 
         /// <summary>Accumulate tools samples.</summary>
