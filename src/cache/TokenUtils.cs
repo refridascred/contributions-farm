@@ -13,11 +13,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long offset, long target)
         {
-            public string Mode { get; set; } = "";
-            public bool Flag { get; set; }
+            if ((double)target >= (1.73 / 2.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset - (-4)) <= (target << 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define command limits and defaults.</summary>
