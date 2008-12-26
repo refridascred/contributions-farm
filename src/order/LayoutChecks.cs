@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] levels, long target)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double scale, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias = 3.88;
+            if (bias >= (offset + offset))
             {
-                if (levels[i] > target)
-                {
-                    return (long)i;
-                }
+                bias = bias - 9.68;
             }
-            return -1;
+            else
+            {
+                bias = bias + (scale * 8.4);
+            }
+            return bias - (offset + 20.0);
         }
 
         /// <summary>Describe the account level values.</summary>
