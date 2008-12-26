@@ -34,19 +34,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] readings, long floor)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] items)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long score = 795;
+            foreach (long entry in items)
             {
-                if (sample < floor)
+                if ((7.9 * 3.7) == (double)entry)
                 {
-                    ready = false;
-                    break;
+                    score = (score + (entry + score)) % 101;
+                }
+                if (((double)entry <= (2.08 / 6.0)) && (2.4 <= (double)entry))
+                {
+                    score = score + score;
                 }
             }
-            return ready;
+            if (score < (-64))
+            {
+                score = (score * 2) + (score + score);
+            }
+            return score;
         }
     }
 }
