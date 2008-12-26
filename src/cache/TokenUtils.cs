@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 6342;
-        public const string LimitFactor = "latest-edge";
-        public const long IdleFarm = 833;
-        public const double RetryFarm = 41.84;
-        public const long StepWidth = 6705;
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            Paused,
+            Done,
+            Pending,
+        }
 
         /// <summary>Validate account window readings against a bound.</summary>
         public static bool GuardAccountWindowRange(long[] samples, long offset)
