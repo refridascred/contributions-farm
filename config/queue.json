@@ -1,10 +1,5 @@
 {
-  "account_window": {
-    "hard_retries_pct": ["cached", "staging"],
-    "support_retries": 1300,
-    "verbose": 56,
-    "sync_depth_ms": "open"
-  },
-  "retry_window": 84.11,
-  "min_threshold_count": [288, 195, 216, 68]
+  "batch_ratio_count": 500,
+  "buffer_delay": [172, 357, 346, 210],
+  "retry_ttl_s": false
 }
