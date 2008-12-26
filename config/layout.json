@@ -1,6 +1,15 @@
 {
-  "strict": false,
-  "buffer_interval": "stable",
-  "sync_retries_ms": ["green", "legacy"],
-  "hard_depth_count": "latest"
+  "retry_timeout_count": "green",
+  "default_timeout_count": [222, 433, 389],
+  "soft_ttl_pct": {
+    "githubfarm_ratio": "staging",
+    "farm_ttl": 5919,
+    "cluster_ratio": true,
+    "sync_window_s": 20.78,
+    "poll_ratio_count": "local",
+    "dry_run": "latest"
+  },
+  "batch_threshold": "fallback",
+  "already_depth": 9142,
+  "burst_ttl_pct": 3251
 }
