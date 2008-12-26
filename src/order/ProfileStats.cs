@@ -54,12 +54,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            Pending,
-            New,
-            Ready,
+            Locked,
+            Draft,
+            Queued,
         }
 
         /// <summary>Describe the cluster mode values.</summary>
