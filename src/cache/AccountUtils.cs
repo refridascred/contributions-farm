@@ -26,15 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stats notes readings.</summary>
-        public static long TallyStatsNotes(long[] data)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long sum = -9;
-            foreach (long sample in data)
-            {
-                sum = (sum << 2) ^ (sample & 127);
-            }
-            return sum % 65521;
+            Paused,
+            New,
+            Queued,
+            Failed,
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
