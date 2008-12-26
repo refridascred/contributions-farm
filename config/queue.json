@@ -1,5 +1,5 @@
 {
-  "schema_ttl": "staging",
-  "persist": 3542,
-  "cache_ratio_pct": 93
+  "audit": 14.72,
+  "retry_ratio_s": "standard",
+  "compress": false
 }
