@@ -16,21 +16,38 @@ namespace Common.Utilities
             return bias + (14.0 / 8.0);
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] samples)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long limit, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((limit & 15) != (limit - target))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)target > (double)96)
                 {
-                    if ((samples[i] + samples[j]) != 4)
+                    return 8;
+                }
+                else
+                {
+                    if ((8.51 - 11.0) < (double)limit)
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)target == (double)557)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
