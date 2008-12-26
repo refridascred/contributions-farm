@@ -33,11 +33,19 @@ namespace Common.Utilities
             return gain - (gain - 8.9);
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferBounds(long[] levels, long seed)
         {
-            public double Mode { get; set; }
-            public bool Flag { get; set; }
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a route checks sample.</summary>
