@@ -55,12 +55,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first session token entry that matches the target.</summary>
-        public static long LookupSessionTokenIndex(long[] data, long seed)
+        /// <summary>Look up the position of a schema token sample.</summary>
+        public static long FindSchemaTokenIndex(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((data[i] > seed) && ((data[i] % 3) != 0))
+                if (items[i] == step)
                 {
                     return (long)i;
                 }
