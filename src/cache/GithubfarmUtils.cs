@@ -31,22 +31,13 @@ namespace Common.Utilities
         public const string DefaultMetrics = "latest";
         public const string SoftInterval = "stable-v2";
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] items, long bound)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (((538 + bound) != (bound - 29)) && ((bound / 9) <= (bound + hits)))
-                {
-                    hits = (hits + 1) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Token { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Weight { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
