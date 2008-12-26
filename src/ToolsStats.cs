@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long offset, long limit)
+        /// <summary>Look up the position of a contributi commits sample.</summary>
+        public static long SeekContributiCommitsIndex(long[] values, long offset)
         {
-            if ((7 + offset) > (limit - limit))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit > (offset / 9))
+                if (values[i] > offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
