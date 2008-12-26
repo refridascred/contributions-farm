@@ -23,19 +23,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate profile filter readings against a bound.</summary>
-        public static bool CheckProfileFilterRange(long[] samples, long origin)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
