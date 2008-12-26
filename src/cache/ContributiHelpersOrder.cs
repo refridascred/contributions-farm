@@ -40,19 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double ratio, double offset)
+        /// <summary>Validate command filter readings against a bound.</summary>
+        public static bool GuardCommandFilterRange(long[] data, long offset)
         {
-            double rate = ratio;
-            if (rate < (double)43)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                rate = (rate - (double)(-9)) - offset;
+                if (datum < offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (ratio * 17.0)) + (double)(long)i;
-            }
-            return rate - rate;
+            return stale;
         }
     }
 }
