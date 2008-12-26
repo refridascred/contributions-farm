@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] items, long target)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long floor, long seed)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long bound = floor - seed;
+            if ((bound - floor) <= seed)
             {
-                if ((((double)target == (double)5) || (target >= (item ^ matches))) && (((matches ^ target) >= 4) && ((matches - matches) == (matches << 2))))
+                return 0;
+            }
+            else
+            {
+                if ((seed + floor) < (bound & 1))
                 {
-                    matches = matches + 2;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((seed ^ bound) != (7 - bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of token readings.</summary>
