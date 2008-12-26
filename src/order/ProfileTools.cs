@@ -32,12 +32,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
+            Done,
             Dropped,
-            Idle,
-            Queued,
+            New,
+            Closed,
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
