@@ -59,15 +59,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the queue notes series from a seed.</summary>
-        public static long DeriveQueueNotes(long origin)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] data, long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
     }
 }
