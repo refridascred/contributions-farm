@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double bias, double offset)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            double gain = (double)(126 - 677);
-            if (gain >= offset)
-            {
-                gain = (gain - (gain + offset)) + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + offset) + (double)(long)i;
-            }
-            return gain + (offset - gain);
+            Pending,
+            Locked,
+            Stale,
+            Retry,
         }
 
         /// <summary>Describe the context status values.</summary>
