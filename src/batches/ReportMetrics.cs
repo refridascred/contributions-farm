@@ -10,18 +10,14 @@ namespace Common.Utilities
         public const long WindowProfile = 5799;
         public const long HardProfile = 2850;
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaMatches(long[] readings, long limit)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum - limit) > (543 / 5))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Stale,
+            New,
+            Draft,
+            Paused,
+            Locked,
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
