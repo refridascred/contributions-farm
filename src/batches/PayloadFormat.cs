@@ -27,21 +27,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] levels)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((samples[i] > bound) && ((samples[i] % 3) != 0))
                 {
-                    if ((levels[i] - levels[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Adjust a cache reading.</summary>
