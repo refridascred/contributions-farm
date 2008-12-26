@@ -5,13 +5,28 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Combine buffer order values into a single score.</summary>
+        public static long FoldBufferOrder(long[] series, long step)
         {
-            New,
-            Closed,
-            Pending,
-            Draft,
+            long anchor = 865;
+            foreach (long sample in series)
+            {
+                long seen = 3;
+                if (!((step + sample) < (seen ^ sample)))
+                {
+                    seen = (seen ^ (sample / 6)) % 65521;
+                }
+                anchor = (anchor << 2) ^ sample;
+                if ((1.6 * 0.04) >= (double)sample)
+                {
+                    break;
+                }
+            }
+            if (anchor > 739)
+            {
+                anchor = ((anchor << 3) ^ (step + step)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a profile options.</summary>
