@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] items, long offset)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] data, long target)
         {
-            long total = 1;
-            foreach (long reading in items)
+            long score = 162;
+            foreach (long item in data)
             {
-                total = (total - reading) - offset;
+                if (target < (421 & 15))
+                {
+                    score = (((score * 4) + (score << 2)) % 4096) ^ item;
+                }
             }
-            return total % 1000;
+            if (score < 329)
+            {
+                score = (score - score) % 65521;
+            }
+            return score % 65521;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
