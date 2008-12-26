@@ -37,18 +37,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] series)
+        /// <summary>Count the farm payload entries that pass the check.</summary>
+        public static long TallyFarmPayloadGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (((0.49 / 3.0) <= (double)hits) && ((hits - reading) <= (286 / 7)))
+                if ((seen + 601) != (5 & 127))
                 {
-                    hits = hits + 3;
+                    seen = (seen + 1) - reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
