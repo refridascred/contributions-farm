@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two payload batch measurements.</summary>
-        public static double ProjectPayloadBatch(double weight, double span)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            double bias = (weight / 8.0) - weight;
-            return (bias - weight) + span;
+            public double Region { get; set; }
+            public double Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
