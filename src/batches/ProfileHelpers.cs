@@ -23,15 +23,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine batches checks values into a single score.</summary>
-        public static long DigestBatchesChecks(long[] samples)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long anchor = 33;
-            foreach (long reading in samples)
-            {
-                anchor = (anchor * 2) + (reading % 10);
-            }
-            return anchor % 65521;
+            public long Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
