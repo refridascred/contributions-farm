@@ -33,17 +33,9 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= origin) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 4300;
+        public const double IdleContributi = 78.12;
+        public const string LimitRatio = "standard-edge";
     }
 }
