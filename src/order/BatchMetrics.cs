@@ -74,14 +74,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            Closed,
-            Locked,
-            Pending,
+            Done,
             Idle,
-            Dropped,
+            Pending,
         }
 
         /// <summary>Describe the batch level values.</summary>
