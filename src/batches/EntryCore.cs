@@ -17,32 +17,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long floor, long seed)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long step = floor ^ seed;
-            if ((1.0 > (7.74 + 4.1)) || ((934 - floor) > (seed + seed)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((step + seed) != (floor / 2)) && ((2.0 / 7.0) > (double)seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((8.36 - 3.2) == (double)seed) || ((4 / 5) < (floor - floor)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Locked,
+            Retry,
+            Idle,
+            Synced,
+            New,
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
