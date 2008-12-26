@@ -39,19 +39,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphRange(long[] values, long bound)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long offset)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long score = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (entry != bound)
+                double rate = (double)(long)i;
+                if (!(((rate / 2.0) != (rate * 8.56)) || (offset > score)))
                 {
-                    flag = false;
-                    break;
+                    score = ((score * 4) + (score % 24)) % 101;
                 }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Rank schema token input into a small class.</summary>
