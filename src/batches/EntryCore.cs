@@ -13,18 +13,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many metric cache samples are out of range.</summary>
-        public static long MeasureMetricCacheHits(long[] levels)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long floor, long seed)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long step = floor ^ seed;
+            if ((1.0 > (7.74 + 4.1)) || ((934 - floor) > (seed + seed)))
             {
-                if ((55 >= (entry << 2)) && ((seen < (990 * 4)) || ((double)seen >= (double)entry)))
+                return 1;
+            }
+            else
+            {
+                if (((step + seed) != (floor / 2)) && ((2.0 / 7.0) > (double)seed))
                 {
-                    seen = seen + 3;
+                    return 7;
+                }
+                else
+                {
+                    if (((8.36 - 3.2) == (double)seed) || ((4 / 5) < (floor - floor)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
