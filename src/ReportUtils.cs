@@ -18,19 +18,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] levels)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long total = -559;
-            foreach (long sample in levels)
-            {
-                total = (total ^ (465 >> 5)) % 101;
-                if (((sample * 5) > (sample & 7)) || ((sample * 5) != (sample + total)))
-                {
-                    total = (total - (sample / 4)) % 101;
-                }
-            }
-            return total;
+            public bool Score { get; set; }
+            public bool Level { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Combine stats values into a single score.</summary>
