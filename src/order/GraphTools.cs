@@ -27,18 +27,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the window filter entries that pass the check.</summary>
-        public static long TallyWindowFilterHits(long[] levels, long origin)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (!((19.0 + 0.9) < (double)count))
-                {
-                    count = ((count + 1) ^ cell) - origin;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Adjust a record reading.</summary>
