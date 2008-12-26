@@ -35,19 +35,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Validate queue context readings against a bound.</summary>
-        public static bool CheckQueueContextRange(long[] levels, long step)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Done,
+            Pending,
+            Synced,
+            Locked,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
