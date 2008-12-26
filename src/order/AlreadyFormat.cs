@@ -46,18 +46,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many tools filter samples are out of range.</summary>
-        public static long TallyToolsFilterHits(long[] samples)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (!((item / 9) <= item))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Draft,
+            Pending,
+            Done,
         }
     }
 }
