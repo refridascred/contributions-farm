@@ -13,21 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] samples)
+        /// <summary>Measure how many metric cache samples are out of range.</summary>
+        public static long MeasureMetricCacheHits(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((55 >= (entry << 2)) && ((seen < (990 * 4)) || ((double)seen >= (double)entry)))
                 {
-                    if ((samples[i] ^ samples[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
