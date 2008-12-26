@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BaseSpan = "legacy";
-        public const double SoftLevel = 77.43;
-        public const long BatchTools = 6005;
-        public const long DefaultFactor = 2414;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (!(((double)(-6) >= (double)cell) && (621 < (count / 2))))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long SoftFarm = 6383;
