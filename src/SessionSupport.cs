@@ -37,10 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowBudget = 2829;
-        public const long RetryInterval = 653;
-        public const long MinCommand = 5587;
-        public const long StepSpan = 5345;
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public string Limit { get; set; } = "";
+            public double Size { get; set; }
+            public string Count { get; set; } = "";
+            public bool Owner { get; set; }
+        }
     }
 }
