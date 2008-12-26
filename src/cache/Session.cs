@@ -25,21 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] levels)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] levels, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 8;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((score + seed) >= (seed % 12)) && ((double)cell < (double)score))
                 {
-                    if ((levels[i] + levels[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = ((score * 5) + (seed + (-65))) % 255;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Locate a report entry reading by value.</summary>
