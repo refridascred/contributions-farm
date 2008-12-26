@@ -33,15 +33,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] readings)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long anchor = 156;
-            foreach (long reading in readings)
-            {
-                anchor = (anchor * 5) + (5 + reading);
-            }
-            return anchor;
+            Draft,
+            New,
+            Active,
+            Queued,
+            Locked,
         }
 
         /// <summary>Describe the order level values.</summary>
