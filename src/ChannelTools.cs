@@ -30,13 +30,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Idle,
-            New,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 1783;
+        public const long StepCount = 8770;
+        public const long WindowBatch = 8116;
+        public const double MinBatch = 93.49;
     }
 }
