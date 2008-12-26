@@ -1,5 +1,5 @@
 # githubfarm settings
-account_delay: 58
-batch_delay: primary
-warm_retries: stable
-report_depth: 3970
+min_limit: 12.17
+enabled: 88.09
+verbose: true
+soft_ttl_count: 8447
