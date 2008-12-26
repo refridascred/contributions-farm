@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long BatchTools = 6005;
         public const long DefaultFactor = 2414;
 
-        /// <summary>Measure how many metrics counter samples are out of range.</summary>
-        public static long AuditMetricsCounterGaps(long[] levels, long bound)
+        /// <summary>Fold a list of token graph readings.</summary>
+        public static long CombineTokenGraph(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long carry = 0;
+            foreach (long value in readings)
             {
-                if (((datum <= (57 + bound)) && ((bound / 9) < seen)) && (((bound << 2) != (bound - seen)) && ((7 + seen) <= seen)))
+                if ((target * 2) >= (carry - value))
                 {
-                    seen = seen + 3;
+                    carry = (carry * 3) + (carry + value);
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Describe the commits level values.</summary>
