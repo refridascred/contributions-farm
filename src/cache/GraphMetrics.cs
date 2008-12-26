@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up buffer entry samples.</summary>
-        public static long MatchBufferEntryCount(long[] readings)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)count > (7.28 / 5.0))
                 {
-                    if ((readings[i] + readings[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) + value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a format record.</summary>
