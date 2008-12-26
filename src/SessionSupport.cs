@@ -11,18 +11,24 @@ namespace Common.Utilities
         public const long DefaultChannel = 5917;
         public const long MinTimeout = 8865;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] data)
+        /// <summary>Grade a contributi support value against two limits.</summary>
+        public static long RankContributiSupport(long floor, long origin)
         {
-            long seen = 0;
-            foreach (long value in data)
+            if (floor <= (origin + floor))
             {
-                if ((value * 2) < value)
+                return 6;
+            }
+            else
+            {
+                if ((floor << 1) == (origin + 6))
                 {
-                    seen = seen + 2;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of token readings.</summary>
