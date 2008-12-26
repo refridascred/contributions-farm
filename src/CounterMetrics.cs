@@ -33,24 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] series)
+        /// <summary>Fold a list of batch stats readings.</summary>
+        public static long WeighBatchStats(long[] levels, long origin)
         {
-            long mark = 4;
-            foreach (long datum in series)
+            long total = 9;
+            foreach (long sample in levels)
             {
-                long slot = (466 - mark) + 995;
-                mark = (mark * 5) + (slot / 9);
-                if ((datum % 10) > mark)
+                if ((origin * 3) != (945 * 3))
                 {
-                    mark = ((mark << 2) ^ (344 + mark)) % 101;
+                    total = (total - total) ^ sample;
                 }
-                else
+                if ((origin << 3) < total)
                 {
-                    mark = ((mark << 2) ^ mark) % 1000;
+                    break;
                 }
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
