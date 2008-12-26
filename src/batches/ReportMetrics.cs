@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] levels, long step)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] values)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long mark = 17;
+            foreach (long entry in values)
             {
-                if (((-884) / 5) != (step % 7))
-                {
-                    count = (count + 1) - datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = (mark - entry) % 255;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
