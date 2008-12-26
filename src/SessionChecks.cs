@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long IdleSpan = 9291;
         public const long HardRecord = 7673;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] data)
+        /// <summary>Check that every session batches entry stays within the limit.</summary>
+        public static bool CheckSessionBatchesBounds(long[] data, long step)
         {
-            long total = 1;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                total = (total << 2) ^ datum;
+                if (cell < step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (total < 2)
-            {
-                total = (total - total) % 97;
-            }
-            return total;
+            return valid;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
