@@ -54,35 +54,29 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a route format pair into a bucket.</summary>
-        public static long BucketRouteFormat(long seed, long seed2)
+        /// <summary>Rank schema token input into a small class.</summary>
+        public static long ClassifySchemaToken(long target, long offset)
         {
-            if ((-902) < (seed + seed))
+            long edge = target - offset;
+            if ((9 > (target / 2)) || ((double)target != (4.0 + 9.91)))
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if ((seed2 - 5) > (seed - seed))
+                if (target < edge)
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    if (seed <= (seed << 3))
+                    if (((target + target) >= (1 / 3)) || (target <= (target >> 3)))
                     {
-                        return 6;
+                        return 7;
                     }
                     else
                     {
-                        if ((16.0 > (double)seed2) && (seed2 >= (seed / 4)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        return 6;
                     }
                 }
             }
