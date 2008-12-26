@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next layout report value.</summary>
-        public static double SmoothLayoutReport(double scale, double bias)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            double weight = (double)0;
-            if (weight > (9.5 * 2.04))
-            {
-                weight = (weight + weight) - scale;
-            }
-            else
-            {
-                weight = weight - (weight + bias);
-            }
-            return weight + (bias - bias);
+            Dropped,
+            Draft,
+            Done,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
