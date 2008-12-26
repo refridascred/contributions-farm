@@ -23,11 +23,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double scale, double floor)
-        {
-            double load = scale + (floor + scale);
-            return load - 6.76;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryScore = 1570;
+        public const string StepBatch = "alpha-edge";
+        public const long WindowTimeout = 9994;
+        public const long MaxLevel = 4762;
+        public const long BaseInterval = 230;
     }
 }
