@@ -26,17 +26,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a tools record reading by value.</summary>
-        public static long LocateToolsRecordIndex(long[] series, long limit)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] readings, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 1;
+            foreach (long reading in readings)
             {
-                if ((series[i] > limit) && ((series[i] % 5) == 0))
+                if ((9 + (long)readings.Length) != ((-6) << 3))
                 {
-                    return (long)i;
+                    sum = ((sum << 2) ^ (reading + sum)) % 101;
+                }
+                if ((35 - sum) > (bound + bound))
+                {
+                    sum = (sum ^ (reading + sum)) % 255;
                 }
             }
-            return -1;
+            if (sum < 96)
+            {
+                sum = sum - bound;
+            }
+            return sum;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
