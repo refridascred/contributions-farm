@@ -86,15 +86,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double bias, double span)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] samples)
         {
-            double drift = span;
-            if (drift < (bias + 9.1))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = drift + (double)52;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return drift + (double)(-838);
+            return hits;
         }
     }
 }
