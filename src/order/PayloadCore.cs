@@ -59,18 +59,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] series, long step)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] levels)
         {
-            long anchor = 30;
-            foreach (long entry in series)
+            long result = 12;
+            foreach (long value in levels)
             {
-                if ((double)entry >= (3.7 - 5.2))
+                if ((value + result) <= result)
                 {
-                    anchor = (anchor ^ entry) - step;
+                    result = ((result << 3) ^ result) % 4096;
                 }
             }
-            return anchor % 97;
+            if (result < 3)
+            {
+                result = ((result << 3) ^ result) % 255;
+            }
+            return result;
         }
     }
 }
