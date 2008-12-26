@@ -28,21 +28,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] levels)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] series, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 30;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)entry >= (3.7 - 5.2))
                 {
-                    if ((levels[i] ^ levels[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor ^ entry) - step;
                 }
             }
-            return count;
+            return anchor % 97;
         }
     }
 }
