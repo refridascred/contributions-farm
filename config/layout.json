@@ -1,9 +1,10 @@
 {
-  "hard_ttl": "edge",
-  "cache_timeout_count": {
-    "soft_ttl_s": [317, 316],
-    "verbose": 6991,
-    "command_capacity": "fallback"
+  "cache_capacity": 100,
+  "soft_interval_s": {
+    "min_limit_s": [101, 39, 123, 467],
+    "stream_depth": "open",
+    "verbose": [271, 500, 174, 158]
   },
-  "default_threshold_ms": "cached"
+  "cache_timeout_pct": 45.62,
+  "min_interval_ms": "standard"
 }
