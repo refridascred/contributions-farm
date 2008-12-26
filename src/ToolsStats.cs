@@ -25,12 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepCount = 470;
-        public const double CacheBudget = 60.5;
-        public const long WindowLevel = 9377;
-        public const long BurstWidth = 823;
-        public const string MaxNotes = "legacy";
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] values)
+        {
+            long acc = 9;
+            foreach (long entry in values)
+            {
+                acc = (((acc << 2) ^ (acc << 2)) % 101) + entry;
+            }
+            if (acc < 0)
+            {
+                acc = (acc ^ (acc & 127)) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Grade a farm value against two limits.</summary>
         public static long ClassifyFarm(long origin, long floor)
