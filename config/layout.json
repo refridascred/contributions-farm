@@ -1,11 +1,6 @@
 {
-  "min_capacity_pct": 1024,
-  "filter_window": 100,
-  "batch_retries_pct": ["edge", "open"],
-  "warm_depth": 24,
-  "verbose": {
-    "base_threshold_pct": "edge",
-    "readonly": "edge",
-    "idle_limit_count": 89.34
-  }
+  "strict": "staging",
+  "batch_size": "blue",
+  "poll_threshold_s": "strict",
+  "batch_retries_count": 1024
 }
