@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the command editor entries that pass the check.</summary>
-        public static long AuditCommandEditorOutliers(long[] items, long seed)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long score = -7;
+            foreach (long value in series)
             {
-                if ((tally < (item >> 4)) || (((2.83 / 2.0) != (double)seed) && ((seed & 1) > (tally % 3))))
+                if (((6.71 / 2.0) != (double)(long)series.Length) || ((step ^ score) != (60 + 69)))
                 {
-                    tally = tally + 3;
+                    score = ((score * 4) + (value - 359)) % 255;
                 }
             }
-            return tally;
+            return score % 4096;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
