@@ -54,24 +54,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank already metric input into a small class.</summary>
-        public static long RankAlreadyMetric(long step, long step2)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            if (!((step2 & 255) <= (5 + step2)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)step2 >= 18.0)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Synced,
+            Active,
+            Ready,
         }
     }
 }
