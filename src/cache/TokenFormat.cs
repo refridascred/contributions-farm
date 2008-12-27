@@ -16,20 +16,17 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long seed)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] data, long limit)
         {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((data[i] > limit) && ((data[i] % 2) == 0))
                 {
-                    sum = (sum ^ seed) - (long)i2;
-                    sum = ((sum << 2) ^ seed) % 65521;
+                    return (long)i;
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
