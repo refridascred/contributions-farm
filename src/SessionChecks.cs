@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] data)
+        /// <summary>Audit buffer cache readings against a rule.</summary>
+        public static long MeasureBufferCacheOutliers(long[] data)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((61 - matches) <= (matches + 6))
+                if (!((double)99 != (double)tally))
                 {
-                    matches = (matches + 2) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 1) + entry;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a entry record.</summary>
