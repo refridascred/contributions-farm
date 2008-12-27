@@ -14,19 +14,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double weight, double bias)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long offset)
         {
-            double bias2 = (weight * 6.0) * 9.0;
-            if (bias2 >= 9.74)
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
             {
-                bias2 = (bias2 + 0.29) + bias;
+                sum = (sum * 3) + (sum << 1);
+                sum = sum - offset;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 + 1.4) + (double)(long)i;
-            }
-            return bias2 + (weight * 9.0);
+            return sum;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
