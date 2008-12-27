@@ -1,12 +1,7 @@
 {
-  "base_window": {
-    "audit": false,
-    "cache_retries_ms": ["standard", "legacy", "stable"],
-    "farm_ttl": 100,
-    "dry_run": 30
-  },
-  "readonly": 1986,
-  "batch_limit_count": [293, 229],
-  "base_timeout_s": 10.7,
-  "enabled": true
+  "cache_retries": 8413,
+  "soft_size": 21.72,
+  "max_ttl": 80.47,
+  "verbose": 78.7,
+  "order_ratio": 51.89
 }
