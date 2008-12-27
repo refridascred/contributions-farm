@@ -33,11 +33,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleGithubfarm = 2158;
-        public const string LimitDepth = "local-edge";
-        public const long CacheScore = 8342;
-        public const long HardInterval = 2274;
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Active,
+            Draft,
+            Stale,
+            New,
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const string LimitTimeout = "strict";
