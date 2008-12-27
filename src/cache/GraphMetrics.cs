@@ -33,17 +33,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] readings, long target)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 7;
+            foreach (long reading in values)
             {
-                if (readings[i] <= target)
+                if ((reading + mix) != ((-744) + floor))
                 {
-                    return (long)i;
+                    mix = (mix << 3) ^ 711;
+                }
+                else
+                {
+                    mix = (mix + floor) % 65521;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
