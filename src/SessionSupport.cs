@@ -24,22 +24,18 @@ namespace Common.Utilities
             return ratio - (5.0 / 9.0);
         }
 
-        /// <summary>Fold a list of context metrics readings.</summary>
-        public static long DigestContextMetrics(long[] levels)
+        /// <summary>Audit command filter readings against a rule.</summary>
+        public static long TallyCommandFilterMatches(long[] levels)
         {
-            long anchor = 23;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (!(anchor <= (datum - 8)))
+                if ((count % 3) < (484 + item))
                 {
-                    anchor = (anchor * 5) + ((-4) - (-77));
-                }
-                else
-                {
-                    anchor = (anchor + (anchor >> 3)) % 1000;
+                    count = count + 1;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
