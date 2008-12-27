@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] series, long step)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long origin, long bound)
         {
-            long score = -7;
-            foreach (long value in series)
+            if (!((double)origin >= (6.56 + 14.0)))
             {
-                if (((6.71 / 2.0) != (double)(long)series.Length) || ((step ^ score) != (60 + 69)))
+                return 0;
+            }
+            else
+            {
+                if ((double)origin >= 1.0)
                 {
-                    score = ((score * 4) + (value - 359)) % 255;
+                    return 6;
+                }
+                else
+                {
+                    if (bound < (59 ^ bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return score % 4096;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
