@@ -30,11 +30,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            public bool Flag { get; set; }
             public long Owner { get; set; }
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of channel readings.</summary>
