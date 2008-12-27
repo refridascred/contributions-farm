@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next tools command value from a seed.</summary>
-        public static long IterateToolsCommand(long bound)
+        /// <summary>Compare every pair of order stream readings.</summary>
+        public static long PairOrderStreamCount(long[] values)
         {
-            long state = bound;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state << 2) ^ (state & 1)) % 255;
-                state = ((state * 4) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
