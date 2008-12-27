@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            Retry,
-            New,
-            Pending,
+            Stale,
+            Idle,
+            Locked,
             Paused,
         }
 
