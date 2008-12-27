@@ -28,24 +28,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long seed, long limit)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterGaps(long[] items)
         {
-            if ((double)limit <= (18.0 / 4.0))
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed - limit) >= (626 ^ seed))
+                if ((double)datum <= (6.0 * 9.1))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Blend two payload measurements.</summary>
