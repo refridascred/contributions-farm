@@ -1,6 +1,4 @@
 # entry settings
-soft_interval: 61
-enabled: open
-poll_depth_pct: 83.81
-warm_delay_pct: 60
-min_timeout: 85.72
+max_delay_count: false
+warm_depth_count: 7145
+entry_limit: 250
