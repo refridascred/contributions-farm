@@ -1,17 +1,5 @@
 {
-  "report_depth": {
-    "metrics_delay": "stable",
-    "batch_ttl_count": "eu-west",
-    "profile_size": {
-      "flush_interval": true,
-      "warm_depth": "local",
-      "hard_window_pct": "strict",
-      "base_ratio_pct": [26, 116, 212],
-      "format_timeout": "blue",
-      "hard_ttl": "edge"
-    },
-    "base_delay": false
-  },
-  "checks_interval": "standard",
-  "cache_size": 8330
+  "flush_capacity": ["fallback", "edge", "blue"],
+  "strict": 6477,
+  "sync_limit_pct": ["fallback", "latest", "blue"]
 }
