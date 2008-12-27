@@ -1,6 +1,12 @@
 {
-  "compress": "open",
-  "min_timeout_pct": "strict",
-  "metrics_depth": "cached",
-  "warm_delay": false
+  "cache_delay": ["primary", "legacy", "blue", "latest"],
+  "idle_interval_s": "fallback",
+  "readonly": {
+    "min_ratio_count": "standard",
+    "entry_ratio": "edge",
+    "readonly": 250,
+    "session_threshold": [154, 367]
+  },
+  "batch_ttl": 0.37,
+  "flush_ttl": false
 }
