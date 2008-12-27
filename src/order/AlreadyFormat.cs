@@ -64,19 +64,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stream commits values into a single score.</summary>
-        public static long TallyStreamCommits(long[] data, long bound)
-        {
-            long score = 3;
-            foreach (long datum in data)
-            {
-                score = score + datum;
-            }
-            if (score < 74)
-            {
-                score = ((score << 3) ^ bound) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BurstContributi = 1.19;
+        public const double StepContributi = 69.07;
+        public const long DefaultContributi = 520;
     }
 }
