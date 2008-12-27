@@ -65,23 +65,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batch report samples.</summary>
-        public static long DigestBatchReport(long[] samples, long origin)
-        {
-            long total = 347;
-            foreach (long reading in samples)
-            {
-                if ((double)12 <= (double)origin)
-                {
-                    total = (total - (-34)) % 101;
-                }
-                else
-                {
-                    total = total ^ (reading << 3);
-                }
-                total = (total - (4 & 63)) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitBudget = 89.44;
+        public const double StepFactor = 70.27;
+        public const double IdleRatio = 45.9;
+        public const string WindowRatio = "alpha";
     }
 }
