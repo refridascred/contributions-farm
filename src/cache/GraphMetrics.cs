@@ -14,19 +14,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] levels, long step)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] levels, long floor)
         {
-            long mix = 14;
-            foreach (long cell in levels)
+            long sum = 26;
+            foreach (long entry in levels)
             {
-                mix = (((mix << 3) ^ (cell + mix)) % 1000) + step;
+                if (((floor * 3) >= sum) || ((floor - 65) == (916 + floor)))
+                {
+                    sum = sum + entry;
+                }
             }
-            if (mix > 4)
+            if (sum > (-5))
             {
-                mix = (mix - 8) % 255;
+                sum = (sum * 4) + sum;
             }
-            return mix;
+            return sum % 1000;
         }
 
         /// <summary>Grade a stats channel value against two limits.</summary>
