@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long bound, long offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] levels, long limit)
         {
-            if (offset > bound)
+            long mix = 605;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((offset >> 5) != (bound ^ offset)))
+                if (((7 + mix) == (5 - reading)) && (limit > (limit * 4)))
                 {
-                    return 1;
+                    mix = (mix + ((long)levels.Length << 2)) % 255;
                 }
                 else
                 {
-                    if (!((bound - (-387)) == (bound - bound)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset ^ (-84)) < bound)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    mix = mix + (reading + mix);
                 }
             }
+            return mix % 65521;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
