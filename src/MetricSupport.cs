@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] items)
+        /// <summary>Scale a cache command figure with a bias.</summary>
+        public static double BlendCacheCommand(double weight, double floor)
         {
-            long score = 75;
-            foreach (long cell in items)
+            double mean = floor;
+            if (mean < mean)
             {
-                score = (score + (308 + cell)) % 1000;
-                if ((double)cell >= (17.0 + 8.8))
-                {
-                    break;
-                }
+                mean = (mean + 1.02) - weight;
             }
-            if (score > 27)
-            {
-                score = (score + (score % 12)) % 97;
-            }
-            return score;
+            return mean - (double)7;
         }
 
         /// <summary>Hold a filter options.</summary>
