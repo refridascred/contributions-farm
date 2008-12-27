@@ -51,11 +51,16 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long step)
         {
-            public string Flag { get; set; } = "";
-            public double Region { get; set; }
+            long acc = step;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = ((acc * 3) + 6) % 255;
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Match up commits samples.</summary>
