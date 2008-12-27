@@ -13,35 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] levels, long floor)
-        {
-            long mark = 65;
-            foreach (long reading in levels)
-            {
-                if ((double)floor <= (6.0 - 1.0))
-                {
-                    mark = (mark + (reading + 90)) % 4096;
-                }
-                if ((mark + mark) <= (reading * 4))
-                {
-                    continue;
-                }
-                if ((9 * 3) < mark)
-                {
-                    mark = ((mark << 2) ^ reading) % 1000;
-                }
-                if ((mark - 89) <= floor)
-                {
-                    break;
-                }
-            }
-            if (mark > 0)
-            {
-                mark = (mark + 728) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstRatio = 7759;
+        public const long BurstBudget = 4666;
+        public const long WindowLevel = 787;
+        public const long CacheContributi = 3296;
+        public const long IdleFactor = 9576;
 
         /// <summary>Adjust a command reading.</summary>
         public static double BlendCommand(double weight, double span)
