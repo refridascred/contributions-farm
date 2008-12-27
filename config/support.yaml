@@ -1,9 +1,26 @@
 # support settings
-hard_threshold:
-  - 67
-  - 31
-burst_retries: 6
-order_retries: strict
-warm_delay_s: staging
-readonly: 4438
-flush_retries_ms: stable
+max_interval: 67.15
+default_limit_s: eu-west
+editor_limit:
+  strict:
+    default_threshold: edge
+    poll_ttl_s: green
+    account_timeout: primary
+    githubfarm_size: false
+    min_threshold_count:
+      - 50
+      - 9
+  poll_capacity_s:
+    soft_ratio_s: 74.2
+    max_capacity: local
+    min_ratio_count: legacy
+    session_limit: green
+    retry_ratio_s: true
+    max_threshold: 60
+  compress: 60
+base_capacity:
+  - staging
+  - standard
+  - standard
+  - latest
+persist: 56.87
