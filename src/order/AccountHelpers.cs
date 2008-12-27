@@ -11,17 +11,22 @@ namespace Common.Utilities
         public const long CacheSpan = 6889;
         public const double IdleDepth = 9.63;
 
-        /// <summary>Locate a command counter reading by value.</summary>
-        public static long FindCommandCounterIndex(long[] data, long seed)
+        /// <summary>Roll a profile editor counter forward.</summary>
+        public static long SeriesProfileEditor(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((data[i] == seed) && ((data[i] % 5) == 0))
+                acc = acc + (origin >> 4);
+                acc = ((acc << 2) ^ acc) % 97;
+                if ((origin >> 3) < (long)i)
                 {
-                    return (long)i;
+                    acc = (acc ^ (acc << 1)) % 255;
+                    break;
                 }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Accumulate profile samples.</summary>
