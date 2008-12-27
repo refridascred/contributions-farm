@@ -32,25 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long offset, long bound)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] readings, long seed)
         {
-            long delta = offset + bound;
-            if (!((0.2 + 3.31) <= (double)offset))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound > (double)delta)
+                if ((readings[i] > seed) && ((readings[i] % 2) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
