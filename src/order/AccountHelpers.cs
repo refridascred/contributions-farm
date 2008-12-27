@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const long StepQueue = 760;
         public const string MaxScore = "open-1";
 
-        /// <summary>Roll a profile editor counter forward.</summary>
-        public static long SeriesProfileEditor(long origin)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long acc = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = acc + (origin >> 4);
-                acc = ((acc << 2) ^ acc) % 97;
-                if ((origin >> 3) < (long)i)
-                {
-                    acc = (acc ^ (acc << 1)) % 255;
-                    break;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            public long Ratio { get; set; }
+            public double Total { get; set; }
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Accumulate profile samples.</summary>
