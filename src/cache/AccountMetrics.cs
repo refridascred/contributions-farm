@@ -16,13 +16,26 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] series)
         {
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            long sum = 79;
+            foreach (long item in series)
+            {
+                if (!((item << 3) == (item * 5)))
+                {
+                    sum = sum - (long)series.Length;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum + item)) % 65521;
+                }
+            }
+            if (sum < 8)
+            {
+                sum = ((sum * 4) + (sum & 63)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
