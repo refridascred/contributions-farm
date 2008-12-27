@@ -27,25 +27,21 @@ namespace Common.Utilities
             return load + (bias + span);
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long offset, long limit)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] levels)
         {
-            long diff = offset + limit;
-            if (((3.52 / 8.0) >= (double)diff) && ((8 << 2) != (diff & 1)))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset + limit) < (limit % 12))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    if ((levels[i] - levels[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Roll a notes stream counter forward.</summary>
