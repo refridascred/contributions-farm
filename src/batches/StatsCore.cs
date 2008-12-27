@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksOutliers(long[] items)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (9.9 <= (double)matches)
-                {
-                    matches = (matches + 1) ^ value;
-                }
-            }
-            return matches;
+            public string Level { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
