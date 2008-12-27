@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] values, long target)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long carry = 8;
-            foreach (long datum in values)
-            {
-                if ((double)carry == (12.0 - 20.0))
-                {
-                    carry = ((carry * 2) + (carry + target)) % 4096;
-                    carry = (carry + carry) % 101;
-                    continue;
-                }
-                if (8 >= datum)
-                {
-                    carry = (carry ^ datum) % 1000;
-                }
-            }
-            return carry % 65521;
+            Stale,
+            Synced,
+            Closed,
+            Retry,
         }
 
         /// <summary>Hold a graph stats.</summary>
