@@ -1,7 +1,6 @@
 {
-  "hard_capacity_count": false,
-  "idle_window_count": "primary",
-  "soft_ratio_count": 8550,
-  "farm_timeout": 20.68,
-  "max_capacity": "strict"
+  "context_interval": "green",
+  "sync_interval_pct": 30,
+  "hard_size": "eu-west",
+  "batch_size": true
 }
