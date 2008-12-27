@@ -19,19 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate token batches readings against a bound.</summary>
-        public static bool CheckTokenBatchesLimits(long[] values, long floor)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long offset)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (cell != floor)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = sum - offset;
+                sum = sum + (54 / 3);
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
