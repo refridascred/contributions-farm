@@ -26,16 +26,21 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Fold a list of metrics cluster readings.</summary>
-        public static long DigestMetricsCluster(long[] levels)
+        /// <summary>Compare every pair of format cache readings.</summary>
+        public static long OverlapFormatCacheCount(long[] levels)
         {
-            long mark = 608;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = mark ^ ((long)levels.Length - item);
-                mark = (mark + mark) % 255;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
