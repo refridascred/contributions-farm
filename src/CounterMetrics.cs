@@ -22,22 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphHits(long[] series)
+        /// <summary>Audit cache metrics readings against a rule.</summary>
+        public static long MeasureCacheMetricsHits(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((17.0 + 2.66) == (double)reading)
+                if ((sample / 2) <= (4 - 91))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = (matches + 2) - offset;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the checks mode values.</summary>
