@@ -1,7 +1,5 @@
 # entry settings
-buffer_retries:
-  - legacy
-  - edge
-burst_ttl: green
-soft_window: true
-compress: 500
+burst_threshold: 1024
+stream_threshold: blue
+soft_timeout_s: false
+metrics_window: false
