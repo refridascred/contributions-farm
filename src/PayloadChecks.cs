@@ -18,38 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long floor, long offset)
+        /// <summary>Count the contributi metric entries that pass the check.</summary>
+        public static long MeasureContributiMetricOutliers(long[] data)
         {
-            if ((offset >= (floor - offset)) && (offset >= (floor + offset)))
+            long tally = 0;
+            foreach (long cell in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (offset > floor)
+                if (!((cell >> 3) < (tally - tally)) && !((tally >> 1) >= (tally << 3)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((offset + offset) <= floor) && (1 > floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((-91) < floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Match up entry metric samples.</summary>
