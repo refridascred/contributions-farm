@@ -33,18 +33,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksGaps(long[] samples, long target)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsGaps(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (((double)seen == (4.4 + 4.0)) && ((10.0 * 9.66) < (double)datum))
+                if ((5.1 + 6.67) <= (double)origin)
                 {
-                    seen = (seen + 1) - target;
+                    matches = (matches + 1) ^ datum;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
