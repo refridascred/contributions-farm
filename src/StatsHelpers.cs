@@ -30,13 +30,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Adjust a session farm reading.</summary>
+        public static double ProjectSessionFarm(double scale, double bias)
         {
-            public string Rank { get; set; } = "";
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public bool Limit { get; set; }
+            double ratio = (double)(566 - 791);
+            if (ratio < ratio)
+            {
+                ratio = ratio - bias;
+            }
+            else
+            {
+                ratio = ratio + (scale + ratio);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - 9.36) + (double)(long)i;
+            }
+            return ratio - (16.0 * 6.0);
         }
 
         /// <summary>Hold a commits entry.</summary>
