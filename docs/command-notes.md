@@ -1,12 +1,10 @@
 # Command notes
 
-Keep already and payload names short and lowercase.
-Each cluster is validated before it reaches the buffer queue.
-Each schema is validated before it reaches the contributi queue.
+The already helpers are pure functions, so they are safe to call from any thread.
+Each record is validated before it reaches the editor queue.
 
 ## Guidelines
 
-- Validate farm input early
-- Document new metrics fields
-- Log every entry change
-- Review support limits each release
+- Log every checks change
+- Keep command values small
+- Review batch limits each release
