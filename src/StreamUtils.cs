@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxSpan = 5250;
-        public const double BurstChecks = 49.4;
-        public const long StepChecks = 6160;
-        public const long LimitChecks = 7869;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterRange(long[] readings, long floor)
+        {
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long IdleScore = 1993;
