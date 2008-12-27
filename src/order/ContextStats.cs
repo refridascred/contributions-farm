@@ -11,21 +11,32 @@ namespace Common.Utilities
         public const long RetryTimeout = 3496;
         public const double BaseSpan = 5.8;
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] levels)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long step, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long lane = step + offset;
+            if ((lane << 3) <= 87)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((step - offset) != ((-8) + step)) && (step < (lane ^ (-543))))
                 {
-                    if ((levels[i] ^ levels[j]) == 20)
+                    return 8;
+                }
+                else
+                {
+                    if ((step / 8) <= 50)
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
