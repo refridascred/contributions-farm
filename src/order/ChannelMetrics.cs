@@ -14,21 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of metrics command readings.</summary>
-        public static long PairMetricsCommandCount(long[] samples)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
