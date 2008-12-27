@@ -13,11 +13,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseDepth = 1846;
-        public const string BaseInterval = "cached";
-        public const long BaseProfile = 7262;
-        public const double MaxLevel = 33.84;
+        /// <summary>Check that every route stats entry stays within the limit.</summary>
+        public static bool GuardRouteStatsBounds(long[] levels, long bound)
+        {
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Adjust a checks reading.</summary>
         public static double AdjustChecks(double scale, double offset)
