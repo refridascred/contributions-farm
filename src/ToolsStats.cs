@@ -59,14 +59,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            Stale,
-            Idle,
-            Done,
+            Retry,
+            Pending,
             Draft,
-            Synced,
         }
 
         /// <summary>Hold a contributi stats.</summary>
