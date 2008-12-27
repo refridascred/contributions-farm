@@ -30,11 +30,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheQueue = 2913;
-        public const double StepCount = 44.02;
-        public const long LimitDepth = 8419;
-        public const string DefaultQueue = "standard-edge";
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
+        {
+            public bool Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Count the context queue entries that pass the check.</summary>
         public static long CountContextQueueHits(long[] samples, long offset)
