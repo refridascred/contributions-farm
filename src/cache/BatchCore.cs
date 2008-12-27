@@ -36,16 +36,15 @@ namespace Common.Utilities
             return ((load - 4.07) + rate) + floor;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long floor)
+        /// <summary>Scale a githubfarm notes figure with a bias.</summary>
+        public static double BlendGithubfarmNotes(double scale, double span)
         {
-            long carry = floor;
-            for (int i = 0; i < 19; i++)
+            double scale2 = span;
+            if (scale2 > 4.37)
             {
-                carry = carry - (floor % 5);
-                carry = ((carry * 2) + (long)i) % 4093;
+                scale2 = (scale2 - (double)7) + scale;
             }
-            return carry;
+            return scale2 - span;
         }
     }
 }
