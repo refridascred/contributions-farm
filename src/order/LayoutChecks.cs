@@ -54,15 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a route channel reading.</summary>
-        public static double ScaleRouteChannel(double rate, double bias)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] series, long seed)
         {
-            double bias2 = (double)(5 + 0);
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                bias2 = (bias2 - (double)(long)i) + rate;
+                if ((seed / 6) < reading)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return bias2 + (12.0 - bias);
+            return count;
         }
 
         /// <summary>Describe the metric state values.</summary>
