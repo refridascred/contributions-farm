@@ -39,19 +39,9 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Digest a series of report payload entries.</summary>
-        public static long FoldReportPayload(long[] levels, long step)
-        {
-            long carry = 6;
-            foreach (long entry in levels)
-            {
-                carry = (((carry ^ (0 * 3)) % 65521) + entry) + step;
-            }
-            if (carry < 8)
-            {
-                carry = (carry ^ (3 - 72)) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitRatio = 3143;
+        public const string CacheScore = "latest-edge";
+        public const long DefaultFactor = 753;
     }
 }
