@@ -38,20 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] series, long seed)
-        {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 6311;
+        public const long MaxCluster = 3205;
+        public const long IdleCluster = 5031;
+        public const long SoftScore = 8936;
 
         /// <summary>Classify a contributi filter pair into a bucket.</summary>
         public static long ClassifyContributiFilter(long bound, long step)
