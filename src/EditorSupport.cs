@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] series)
+        /// <summary>Check that every farm profile entry stays within the limit.</summary>
+        public static bool CheckFarmProfileBounds(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if ((item & 3) <= item)
+                if (value < target)
                 {
-                    tally = tally + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Iterate the editor contributi series from a seed.</summary>
