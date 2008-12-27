@@ -27,15 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ScaleProfile(double ratio, double floor)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            double scale = (floor - 6.7) - (ratio * 6.8);
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - 5.52) + (double)(long)i;
-            }
-            return scale - (double)227;
+            public bool Flag { get; set; }
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
