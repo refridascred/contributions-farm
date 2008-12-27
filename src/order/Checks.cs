@@ -25,19 +25,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] samples, long seed)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (((double)seed != (double)0) || ((count & 1) <= (sample << 3)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitProfile = "latest";
+        public const string CacheProfile = "alpha-1";
+        public const double RetryDepth = 60.26;
+        public const string IdleScore = "standard-1";
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long SortBatches(long seed, long bound)
