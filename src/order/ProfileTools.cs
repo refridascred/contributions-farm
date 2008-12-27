@@ -35,24 +35,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long seed, long step)
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double rate, double offset)
         {
-            if ((seed << 3) != (step % 3))
+            double gain = rate * 2.0;
+            if (gain >= 7.85)
             {
-                return 5;
+                gain = gain - (offset + gain);
             }
-            else
-            {
-                if ((double)step >= 2.45)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return gain - (rate / 4.0);
         }
 
         /// <summary>Blend two window measurements.</summary>
