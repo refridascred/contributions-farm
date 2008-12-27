@@ -27,14 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            Failed,
-            Locked,
+            New,
+            Dropped,
             Draft,
             Retry,
-            Dropped,
         }
     }
 }
