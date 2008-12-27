@@ -41,25 +41,15 @@ namespace Common.Utilities
         public const double MaxScore = 13.21;
         public const long SoftRoute = 1460;
 
-        /// <summary>Roll a channel notes counter forward.</summary>
-        public static long IterateChannelNotes(long offset)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long step)
         {
-            long total = offset;
-            for (int i = 0; i < 8; i++)
+            long mix = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((offset % 7) < offset)
-                {
-                    total = total + offset;
-                }
-                else
-                {
-                    total = total - ((long)i >> 2);
-                    total = (total - total) % 101;
-                }
-                total = (total ^ offset) % 65521;
-                total = ((total * 3) + (long)i) % 97;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Describe the editor level values.</summary>
