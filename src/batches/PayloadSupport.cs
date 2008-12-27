@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueRange(long[] data, long step)
+        /// <summary>Accumulate queue batch samples.</summary>
+        public static long CombineQueueBatch(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long carry = 7;
+            foreach (long value in readings)
             {
-                if (value != step)
+                if (6.0 < (double)carry)
                 {
-                    flag = false;
-                    break;
+                    carry = ((carry + (7 * 3)) - value) - step;
                 }
             }
-            return flag;
+            return carry % 1000;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
