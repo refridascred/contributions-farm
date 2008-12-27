@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long step, long seed)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] values, long seed)
         {
-            long next = step + seed;
-            if ((210 + step) != (next + next))
+            bool ok = true;
+            foreach (long datum in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((seed ^ 40) < (seed << 3)) || (64 > step))
+                if (datum != seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (282 < (seed ^ next))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!(seed <= (step >> 3)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Find the first tools entry entry that matches the target.</summary>
