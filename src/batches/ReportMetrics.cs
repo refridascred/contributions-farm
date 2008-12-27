@@ -17,38 +17,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long limit, long limit2)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] values, long offset)
         {
-            if (limit2 < (limit >> 1))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((1 + limit) <= (limit2 & 63)) && ((limit2 / 8) >= (limit2 + limit)))
+                if (values[i] >= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit < (limit << 2)) || (74 > (limit + limit)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)limit > (9.27 / 5.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the window mode values.</summary>
