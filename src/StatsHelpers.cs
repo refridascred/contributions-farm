@@ -38,19 +38,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many contributi format samples are out of range.</summary>
-        public static long MeasureContributiFormatMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)tally > (9.69 - 13.0))
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string LimitTimeout = "strict";
+        public const long BaseFactor = 6695;
+        public const double CacheCount = 60.86;
+        public const long SoftDepth = 9759;
+        public const long LimitCount = 1991;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TotalToken(long[] values, long floor)
