@@ -36,11 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] samples, long step)
         {
-            public bool Ratio { get; set; }
-            public string Owner { get; set; } = "";
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Find the first session already entry that matches the target.</summary>
