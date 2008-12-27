@@ -35,17 +35,31 @@ namespace Common.Utilities
         public const long StepSpan = 1447;
         public const string MinTimeout = "local-edge";
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] values, long bound)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long limit, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((limit + (-67)) == (limit % 16))
             {
-                if (values[i] >= bound)
+                return 1;
+            }
+            else
+            {
+                if ((offset > (5 + limit)) || ((44 ^ limit) > (offset + limit)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((4 >> 1) >= (offset + limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
