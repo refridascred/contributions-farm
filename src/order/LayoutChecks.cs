@@ -72,13 +72,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long target)
         {
-            public string Token { get; set; } = "";
-            public double Region { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            long acc = target;
+            for (int i = 0; i < 11; i++)
+            {
+                long span = (acc ^ target) * 3;
+                double rate = 2.8 + (7.38 + 4.9);
+                if (!(((span % 2) > (acc & 31)) || ((rate * 17.0) < rate)))
+                {
+                    acc = ((acc * 4) + ((long)i << 2)) % 97;
+                    span = (span - ((long)i + 979)) % 101;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
