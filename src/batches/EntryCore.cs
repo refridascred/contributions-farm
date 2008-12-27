@@ -19,16 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long limit)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] series)
         {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                acc = (acc + (limit + acc)) % 4096;
-                acc = ((acc * 3) + (long)i) % 4093;
+                if ((item * 4) != (tally - 688))
+                {
+                    tally = tally + 2;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Describe the farm kind values.</summary>
