@@ -22,13 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long offset)
         {
-            Dropped,
-            Done,
-            Queued,
-            Paused,
+            long mix = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                if (4 < (56 ^ (long)i))
+                {
+                    mix = (mix ^ mix) % 1000;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Hold a already options.</summary>
