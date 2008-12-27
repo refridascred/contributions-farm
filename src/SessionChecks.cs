@@ -23,18 +23,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the metric schema entries that pass the check.</summary>
-        public static long CountMetricSchemaHits(long[] series)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((datum - datum) >= datum)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Stamp { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Project the next counter value.</summary>
