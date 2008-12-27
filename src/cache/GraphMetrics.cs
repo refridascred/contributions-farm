@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long limit, long origin)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            if ((limit % 8) >= (origin / 6))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((origin + limit) > (limit & 15)) && ((double)origin == (3.0 * 5.98)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Count { get; set; }
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Accumulate layout samples.</summary>
