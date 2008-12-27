@@ -1,7 +1,5 @@
 {
-  "compress": ["primary", "stable", "legacy", "green"],
-  "cache_threshold_ms": "local",
-  "min_ratio_count": "cached",
-  "commits_threshold": "green",
-  "default_delay": "strict"
+  "batch_timeout": 1024,
+  "hard_threshold_count": ["standard", "primary", "latest", "stable"],
+  "base_ratio": 3468
 }
