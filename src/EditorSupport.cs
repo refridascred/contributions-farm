@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every farm profile entry stays within the limit.</summary>
-        public static bool CheckFarmProfileBounds(long[] levels, long target)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
