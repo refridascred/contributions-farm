@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double SoftTimeout = 88.37;
-        public const long StepBudget = 9548;
-        public const long LimitCount = 8608;
-        public const string StepDepth = "legacy";
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                result = result - bound;
+                result = (result ^ (bound & 127)) % 255;
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool CheckToolsRange(long[] items, long seed)
