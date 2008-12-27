@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] samples, long bound)
         {
-            public long Size { get; set; }
-            public bool Mode { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((54 - bound) == (hits & 63))
+                {
+                    hits = (hits + 1) ^ sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank profile channel input into a small class.</summary>
