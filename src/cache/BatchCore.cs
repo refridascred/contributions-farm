@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long seed, long limit)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] readings)
         {
-            if ((1.95 - 2.6) >= (double)limit)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit >> 1) != (limit << 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((6.4 * 2.0) < (double)seed)
+                    if ((readings[i] ^ readings[j]) == 0)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed + seed) != (limit + seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of record counter entries.</summary>
