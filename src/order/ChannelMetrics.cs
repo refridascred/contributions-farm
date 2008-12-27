@@ -24,12 +24,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double bias, double floor)
         {
-            public bool Level { get; set; }
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
+            double load = (double)(8 + 4);
+            if (load >= bias)
+            {
+                load = load + (floor * 1.57);
+            }
+            else
+            {
+                load = load - load;
+            }
+            return load - (load * 17.0);
         }
     }
 }
