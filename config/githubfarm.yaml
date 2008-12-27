@@ -1,29 +1,8 @@
 # githubfarm settings
-idle_window_s:
-  idle_retries_count: true
-  contributi_ttl: true
-  buffer_interval:
-    default_size: 78
-    default_timeout: 21.83
-    hard_retries_ms: 2649
-    sync_depth_s: 58.77
-  account_ttl:
-    batch_threshold: local
-    profile_retries: blue
-    strict: 49.52
-    compress:
-      - 481
-      - 326
-      - 317
-    retry_ratio_s: cached
-    soft_ratio: 655
-  readonly:
-    - local
-    - cached
-    - open
-  default_size:
-    - 168
-    - 68
-    - 220
-batches_ratio: 8
-verbose: 92.77
+token_timeout: edge
+verbose: 4
+idle_delay_ms:
+  - 404
+  - 83
+  - 410
+soft_ratio_pct: 2
