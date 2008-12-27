@@ -1,6 +1,14 @@
 {
-  "persist": "open",
-  "dry_run": 30,
-  "hard_ttl_count": false,
-  "verbose": "primary"
+  "min_depth": {
+    "audit": false,
+    "schema_threshold": 85.72,
+    "flush_timeout_s": 54.72
+  },
+  "retry_capacity_pct": {
+    "batch_size_ms": "eu-west",
+    "queue_threshold": 24.45,
+    "cluster_timeout": "stable"
+  },
+  "burst_window_count": 71,
+  "soft_depth_s": ["open", "cached", "primary", "legacy"]
 }
