@@ -28,20 +28,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricBounds(long[] series, long offset)
-        {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxChecks = "standard-1";
+        public const long StepChecks = 4547;
+        public const long RetrySize = 7433;
+        public const long LimitChecks = 7487;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long TallyReportMatches(long[] items, long bound)
