@@ -1,12 +1,8 @@
 {
-  "cache_delay": ["primary", "legacy", "blue", "latest"],
-  "idle_interval_s": "fallback",
-  "readonly": {
-    "min_ratio_count": "standard",
-    "entry_ratio": "edge",
-    "readonly": 250,
-    "session_threshold": [154, 367]
-  },
-  "batch_ttl": 0.37,
-  "flush_ttl": false
+  "profile_retries": 67,
+  "sync_capacity": 32.8,
+  "token_size": 95.09,
+  "hard_retries_count": "local",
+  "flush_depth_s": 6.25,
+  "poll_delay": 60
 }
