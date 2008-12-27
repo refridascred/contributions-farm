@@ -16,15 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] series)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long mark = 86;
-            foreach (long reading in series)
-            {
-                mark = ((mark * 3) + (reading ^ mark)) % 1000;
-            }
-            return mark % 97;
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit entry order readings against a rule.</summary>
