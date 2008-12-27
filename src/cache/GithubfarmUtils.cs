@@ -31,10 +31,25 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string IdleDepth = "alpha-v2";
-        public const string DefaultMetrics = "latest";
-        public const string SoftInterval = "stable-v2";
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long seed, long step)
+        {
+            if ((3.35 - 8.0) == (double)seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)seed != (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long TallyStats(long[] samples, long origin)
