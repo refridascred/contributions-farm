@@ -38,18 +38,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] data, long origin)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] readings, long floor)
         {
-            long anchor = 6;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (!((origin + (long)data.Length) > (anchor - (long)data.Length)))
+                if (item > floor)
                 {
-                    anchor = (anchor - anchor) - reading;
+                    stale = false;
+                    break;
                 }
             }
-            return anchor;
+            return stale;
         }
     }
 }
