@@ -53,19 +53,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] levels, long floor)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Retry,
+            Ready,
+            Queued,
+            Paused,
         }
     }
 }
