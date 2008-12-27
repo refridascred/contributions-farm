@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many stats metrics samples are out of range.</summary>
-        public static long TallyStatsMetricsOutliers(long[] items)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long carry = 677;
+            foreach (long reading in readings)
             {
-                if ((8.33 + 1.17) != (double)datum)
+                if ((carry + 8) > (carry % 5))
                 {
-                    hits = hits + 3;
+                    carry = (carry - (reading * 5)) % 65521;
+                }
+                else
+                {
+                    carry = carry - reading;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
