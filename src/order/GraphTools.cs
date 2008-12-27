@@ -5,25 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long target, long step)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] values, long target)
         {
-            long delta = target - step;
-            if ((target + target) != ((-24) * 5))
+            long carry = 8;
+            foreach (long datum in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (delta > (step % 24))
+                if ((double)carry == (12.0 - 20.0))
                 {
-                    return 4;
+                    carry = ((carry * 2) + (carry + target)) % 4096;
+                    carry = (carry + carry) % 101;
+                    continue;
                 }
-                else
+                if (8 >= datum)
                 {
-                    return 0;
+                    carry = (carry ^ datum) % 1000;
                 }
             }
+            return carry % 65521;
         }
 
         /// <summary>Compare every pair of buffer batch readings.</summary>
