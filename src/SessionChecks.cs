@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const long BaseSchema = 7623;
         public const string LimitSchema = "stable-1";
 
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double bias, double span)
-        {
-            double load = span;
-            if (load >= (bias / 8.0))
-            {
-                load = load - (span * 4.39);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (double)781) + (double)(long)i;
-            }
-            return load + (bias + span);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BatchNotes = 39.84;
+        public const string MinFactor = "fallback-1";
+        public const double DefaultDepth = 51.29;
+        public const double RetryNotes = 2.4;
+        public const long MaxNotes = 9915;
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long PairMetricsCount(long[] levels)
