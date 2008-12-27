@@ -14,15 +14,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ProjectCounter(double rate, double span)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            double bias = span;
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + (double)949) + (double)(long)i;
-            }
-            return bias - (rate / 3.0);
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
