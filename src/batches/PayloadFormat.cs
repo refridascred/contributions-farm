@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileHits(long[] series)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long item in series)
+            double mean = 3.85 * 20.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((item - matches) >= matches))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = (((mean + (mean / 2.0)) + (double)(long)i) - weight) - offset;
             }
-            return matches;
+            return mean + mean;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
