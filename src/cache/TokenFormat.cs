@@ -22,23 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long step)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long mix = step;
-            for (int i = 0; i < 11; i++)
-            {
-                if (!((7.6 + 3.0) == (double)mix))
-                {
-                    mix = mix ^ (step - mix);
-                }
-                else
-                {
-                    mix = (mix * 3) + (long)i;
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            Idle,
+            Queued,
+            Synced,
+            Done,
         }
 
         /// <summary>Describe the metrics phase values.</summary>
