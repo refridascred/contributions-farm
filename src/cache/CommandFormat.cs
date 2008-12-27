@@ -34,22 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] levels)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long bound)
         {
-            long carry = 9;
-            foreach (long item in levels)
+            long result = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((2 > (carry / 3)) && ((7 + carry) <= (carry % 16)))
+                if (!(((3.17 / 4.0) < (double)bound) && ((bound << 2) > ((long)i + (long)i))))
                 {
-                    carry = (carry ^ (item % 10)) % 255;
+                    result = (result + (bound + bound)) % 255;
                 }
-                if ((double)item >= (9.0 - 18.0))
-                {
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
