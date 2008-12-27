@@ -19,21 +19,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] values)
+        /// <summary>Validate graph account readings against a bound.</summary>
+        public static bool CheckGraphAccountRange(long[] levels, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell < limit)
                 {
-                    if ((values[i] ^ values[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
