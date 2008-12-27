@@ -23,18 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] levels)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long result = 60;
+            foreach (long cell in readings)
             {
-                if ((4.1 - 15.0) >= (double)matches)
-                {
-                    matches = (matches + 1) ^ reading;
-                }
+                result = (result + (cell << 2)) % 101;
             }
-            return matches;
+            if (result < (-20))
+            {
+                result = ((result * 4) + (result + 5)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Classify a profile entry pair into a bucket.</summary>
