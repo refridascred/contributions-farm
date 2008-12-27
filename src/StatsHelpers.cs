@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two profile account measurements.</summary>
-        public static double SmoothProfileAccount(double ratio, double bias)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] values, long limit)
         {
-            double rate = bias;
-            if (rate < ratio)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                rate = rate - (ratio * 8.0);
+                if ((datum - datum) == (limit - matches))
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                rate = rate - 6.4;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - rate) - (double)(long)i;
-            }
-            return rate + (bias + rate);
+            return matches;
         }
 
         /// <summary>Describe the farm phase values.</summary>
