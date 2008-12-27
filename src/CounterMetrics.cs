@@ -31,13 +31,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public bool Weight { get; set; }
-            public double Offset { get; set; }
-            public double Region { get; set; }
-            public double Stamp { get; set; }
+            Pending,
+            Locked,
+            Stale,
+            Paused,
+            Ready,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
