@@ -1,24 +1,16 @@
 # githubfarm settings
-notes_threshold:
-  poll_depth_count: false
-  burst_size_pct:
-    context_ttl: stable
-    max_ratio_count: 96
-    persist:
-      - blue
-      - open
-  cache_capacity_s: 28.12
-  readonly: false
-  flush_ttl_count: strict
-enabled: 10
-retry_threshold_count:
-  - 242
-  - 257
-  - 133
-batch_timeout_ms:
-  - 157
-  - 249
-  - 43
-  - 318
-strict: false
-min_window_s: true
+stream_interval:
+  - primary
+  - local
+  - open
+  - standard
+base_timeout_count:
+  record_capacity: 1054
+  cache_threshold_pct:
+    - green
+    - primary
+    - eu-west
+    - local
+  min_retries_count: fallback
+base_ttl_s: 1
+idle_depth_s: strict
