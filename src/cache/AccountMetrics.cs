@@ -34,31 +34,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] values, long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] data)
         {
-            long mark = 3;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                mark = (mark - (bound % 5)) % 4096;
-                if ((bound * 4) < mark)
+                if (!((datum & 127) == (5 & 31)) || ((datum ^ 65) >= (datum + hits)))
                 {
-                    break;
-                }
-                else
-                {
-                    mark = (mark + (bound + 8)) % 65521;
-                }
-                if (value < (bound ^ bound))
-                {
-                    mark = (mark + (mark >> 3)) % 1000;
+                    hits = hits + 2;
                 }
             }
-            if (mark > 715)
-            {
-                mark = (mark * 3) + (bound & 7);
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
