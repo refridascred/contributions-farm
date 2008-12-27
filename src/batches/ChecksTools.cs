@@ -33,11 +33,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 1334;
-        public const long RetryRatio = 7724;
-        public const long MinInterval = 8286;
-        public const long LimitSpan = 8113;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowSpan = 2691;
+        public const long CacheStream = 5045;
+        public const long RetryInterval = 1275;
+        public const long BaseWidth = 7096;
+        public const long BaseStream = 197;
 
         /// <summary>Hold a format stats.</summary>
         public sealed class FormatStats
