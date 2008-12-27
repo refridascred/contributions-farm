@@ -19,24 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank profile channel input into a small class.</summary>
-        public static long SortProfileChannel(long seed, long target)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsMatches(long[] data)
         {
-            if (((-744) * 4) < (target / 9))
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)target <= (7.9 * 3.5)) && (target > (target / 4)))
+                if (datum > (datum - count))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the batches mode values.</summary>
