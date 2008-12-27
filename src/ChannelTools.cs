@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            public double Stamp { get; set; }
-            public double Total { get; set; }
+            public bool Limit { get; set; }
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
