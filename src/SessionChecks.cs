@@ -46,16 +46,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a notes stream counter forward.</summary>
-        public static long IterateNotesStream(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = (acc << 3) ^ (acc % 5);
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BaseSchema = "primary-edge";
+        public const long HardCount = 4433;
+        public const long StepBudget = 9579;
     }
 }
