@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const string DefaultFactor = "primary-v2";
         public const long StepRatio = 3784;
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] items, long origin)
         {
-            public bool Token { get; set; }
-            public double Score { get; set; }
-            public long Offset { get; set; }
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define command limits and defaults.</summary>
