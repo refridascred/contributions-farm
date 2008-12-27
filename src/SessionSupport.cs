@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamGaps(long[] samples)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long origin, long offset)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            if ((offset << 1) >= origin)
             {
-                if ((entry - entry) < entry)
+                return 4;
+            }
+            else
+            {
+                if (11.0 >= (double)origin)
                 {
-                    hits = hits + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((376 & 1) < origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of account readings.</summary>
