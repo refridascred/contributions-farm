@@ -37,17 +37,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] items, long step)
+        /// <summary>Scale a checks account figure with a bias.</summary>
+        public static double ProjectChecksAccount(double rate, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = (double)(1 + 520);
+            if (mean > (rate - rate))
             {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
+                mean = mean + 20.0;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - 9.8) + (double)(long)i;
+            }
+            return mean - (offset * 8.0);
         }
     }
 }
