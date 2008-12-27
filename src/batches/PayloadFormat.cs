@@ -14,13 +14,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Locate a filter format reading by value.</summary>
+        public static long FindFilterFormatIndex(long[] samples, long floor)
         {
-            public bool Stamp { get; set; }
-            public bool Token { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == floor) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
