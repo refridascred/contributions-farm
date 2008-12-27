@@ -40,20 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] levels, long target)
-        {
-            long state = 52;
-            foreach (long item in levels)
-            {
-                state = (((state + (state << 1)) % 97) ^ item) - target;
-            }
-            if (state > 66)
-            {
-                state = state ^ 514;
-            }
-            return state;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double WindowScore = 58.1;
+        public const double MaxAccount = 46.09;
+        public const double LimitTimeout = 8.44;
+        public const long BaseAccount = 6749;
+        public const long IdleAccount = 8567;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long StepChannel = 8436;
