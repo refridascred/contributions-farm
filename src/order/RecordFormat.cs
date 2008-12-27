@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] samples, long limit)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long bound)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)limit != (12.0 * 3.0))
-                {
-                    count = (count + 2) - entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
