@@ -47,38 +47,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long limit, long step)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            if (limit <= (limit >> 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if (step < 1)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit >= (7.5 / 9.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit & 3) >= (step + 21))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine counter values into a single score.</summary>
