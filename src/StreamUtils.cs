@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            public double Size { get; set; }
-            public double Total { get; set; }
-            public long Owner { get; set; }
-            public double Score { get; set; }
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a metric options.</summary>
