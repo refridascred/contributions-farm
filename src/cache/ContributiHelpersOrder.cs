@@ -15,19 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] samples, long offset)
+        /// <summary>Validate stream cache readings against a bound.</summary>
+        public static bool GuardStreamCacheBounds(long[] readings, long floor)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if (cell >= offset)
+                if (reading < floor)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Digest a series of record entries.</summary>
