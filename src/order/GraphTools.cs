@@ -55,18 +55,18 @@ namespace Common.Utilities
         public const long IdleCluster = 5031;
         public const long SoftScore = 8936;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] series)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((hits << 3) >= hits)
+                if (value < (count << 1))
                 {
-                    hits = (hits + 3) + item;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
