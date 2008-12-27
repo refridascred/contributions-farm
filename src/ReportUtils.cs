@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 2833;
-        public const long SoftScore = 3211;
-        public const string MaxContext = "open-1";
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] values, long floor)
+        {
+            long anchor = 9;
+            foreach (long reading in values)
+            {
+                anchor = anchor - (reading << 3);
+                if ((2.79 * 9.0) <= (double)reading)
+                {
+                    break;
+                }
+            }
+            if (anchor > (-1))
+            {
+                anchor = ((anchor * 3) + (floor / 8)) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool CheckCacheRange(long[] values, long limit)
