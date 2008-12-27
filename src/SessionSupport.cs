@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteOutliers(long[] values)
         {
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((0 - datum) != (seen & 63))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many filter graph samples are out of range.</summary>
