@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] data, long target)
+        /// <summary>Grade a editor channel value against two limits.</summary>
+        public static long ClassifyEditorChannel(long origin, long origin2)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long span = origin ^ origin2;
+            if ((origin2 + origin) <= (span + span))
             {
-                if (cell <= target)
+                return 8;
+            }
+            else
+            {
+                if ((double)span >= (double)575)
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!((2.37 + 6.0) <= (double)origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((double)span > (1.6 * 8.21)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Fold a list of account readings.</summary>
