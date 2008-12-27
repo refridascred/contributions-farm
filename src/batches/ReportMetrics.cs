@@ -35,18 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsOutliers(long[] levels, long target)
+        /// <summary>Count profile commits pairs that satisfy a relation.</summary>
+        public static long CompareProfileCommitsCount(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((hits ^ 6) > (target >> 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 1) + entry;
+                    if ((series[i] + series[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
