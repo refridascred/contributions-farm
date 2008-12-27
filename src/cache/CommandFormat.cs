@@ -43,12 +43,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            Pending,
-            Queued,
-            Draft,
+            Stale,
+            New,
+            Active,
         }
     }
 }
