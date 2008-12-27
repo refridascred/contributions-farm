@@ -13,19 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesBounds(long[] series, long step)
+        /// <summary>Count the token graph entries that pass the check.</summary>
+        public static long MeasureTokenGraphOutliers(long[] readings, long limit)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (item < step)
+                if ((seen >> 5) != (cell << 2))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 2) - limit;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Adjust a checks reading.</summary>
