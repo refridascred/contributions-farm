@@ -19,18 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteOutliers(long[] values)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long anchor = 6;
+            foreach (long reading in readings)
             {
-                if ((0 - datum) != (seen & 63))
+                for (int i = 0; i < 5; i++)
                 {
-                    seen = seen + 2;
+                    anchor = (anchor - offset) + reading;
+                    anchor = (anchor + ((long)i / 4)) % 255;
                 }
+                anchor = anchor - (offset ^ anchor);
             }
-            return seen;
+            if (anchor < 9)
+            {
+                anchor = (anchor ^ (8 - offset)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many filter graph samples are out of range.</summary>
