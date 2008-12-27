@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] samples, long step)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] samples)
         {
-            long mark = 38;
+            long sum = 68;
             foreach (long datum in samples)
             {
-                mark = ((mark * 4) + (step - step)) % 4096;
-                if ((double)datum <= (7.8 * 9.6))
+                if (!((3.0 + 2.01) == (double)datum))
                 {
-                    mark = (mark + (step - mark)) % 4096;
+                    sum = sum - (datum * 3);
                 }
-                if (mark > (datum * 4))
+                if (!((sum * 5) >= sum))
                 {
-                    break;
+                    sum = (sum - sum) % 1000;
                 }
+                sum = (sum - ((long)samples.Length ^ datum)) % 255;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Hold a route record.</summary>
