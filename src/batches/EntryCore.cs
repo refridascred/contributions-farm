@@ -19,18 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] series)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long mark = 42;
+            foreach (long reading in readings)
             {
-                if ((item * 4) != (tally - 688))
+                if ((4.52 + 2.26) < (double)origin)
                 {
-                    tally = tally + 2;
+                    mark = (mark - (origin * 4)) % 65521;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ reading) % 1000;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Describe the farm kind values.</summary>
