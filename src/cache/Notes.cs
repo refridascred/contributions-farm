@@ -55,15 +55,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next record channel value from a seed.</summary>
-        public static long StepRecordChannel(long floor)
+        /// <summary>Count command stats pairs that satisfy a relation.</summary>
+        public static long MatchCommandStatsCount(long[] data)
         {
-            long score = floor;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score * 2) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
