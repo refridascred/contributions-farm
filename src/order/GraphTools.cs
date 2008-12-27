@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] series)
         {
-            Dropped,
-            Retry,
-            New,
-            Closed,
-            Queued,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (value < (count % 5))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
