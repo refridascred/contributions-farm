@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double DefaultFarm = 58.55;
-        public const long LimitFarm = 3503;
-        public const string BatchFarm = "stable-v2";
+        /// <summary>Audit counter commits readings against a rule.</summary>
+        public static long MeasureCounterCommitsGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((item - 0) == (item + matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long LocateCounterIndex(long[] levels, long floor)
