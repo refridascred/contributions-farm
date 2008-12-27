@@ -33,12 +33,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            Synced,
-            Draft,
-            Retry,
+            public bool Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
