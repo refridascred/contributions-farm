@@ -13,10 +13,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string StepBudget = "open-edge";
-        public const long RetryScore = 6661;
-        public const long BurstWidth = 7868;
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
+        {
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Count the order channel entries that pass the check.</summary>
         public static long MeasureOrderChannelGaps(long[] readings, long floor)
