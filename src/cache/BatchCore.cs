@@ -33,14 +33,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Check that every batches checks entry stays within the limit.</summary>
+        public static bool ValidateBatchesChecksRange(long[] series, long bound)
         {
-            New,
-            Locked,
-            Ready,
-            Queued,
-            Closed,
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a support summary.</summary>
