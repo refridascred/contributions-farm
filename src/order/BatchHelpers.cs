@@ -25,39 +25,26 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long limit, long offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] series, long target)
         {
-            long delta = limit - offset;
-            if (!(offset > (delta % 10)))
+            long mark = -31;
+            foreach (long entry in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit - limit) >= delta)
+                if ((177 & 1) != (mark / 2))
                 {
-                    return 5;
+                    mark = (mark - mark) - entry;
                 }
                 else
                 {
-                    if ((double)delta != (20.0 + 5.04))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((offset - limit) >= (1 - delta)) && (6.0 <= (double)limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    mark = (mark << 2) ^ (target >> 3);
                 }
             }
+            if (mark < (-661))
+            {
+                mark = (mark * 5) + (target + mark);
+            }
+            return mark;
         }
     }
 }
