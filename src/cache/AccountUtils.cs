@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every filter route entry stays within the limit.</summary>
-        public static bool ValidateFilterRouteBounds(long[] items, long floor)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] data)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long sum = 77;
+            foreach (long sample in data)
             {
-                if (cell < floor)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = (sum ^ sample) % 255;
             }
-            return stale;
+            if (sum > 9)
+            {
+                sum = (sum << 2) ^ sum;
+            }
+            return sum % 97;
         }
 
         /// <summary>Digest a series of support entries.</summary>
