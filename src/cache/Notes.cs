@@ -37,12 +37,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 6544;
-        public const double StepOrder = 12.73;
-        public const long LimitRatio = 8672;
-        public const string RetryScore = "staging-edge";
-        public const double HardSpan = 35.27;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinTimeout = 9982;
+        public const double MinBudget = 29.11;
+        public const long BaseStats = 2490;
 
         /// <summary>Accumulate channel samples.</summary>
         public static long DigestChannel(long[] values, long limit)
