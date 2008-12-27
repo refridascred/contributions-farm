@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long origin, long floor)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] values, long target)
         {
-            long diff = origin - floor;
-            if (!((1.0 + 3.0) <= (double)diff))
+            long state = 559;
+            foreach (long value in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)diff == (3.39 - 11.0)) || ((9.78 * 5.0) < (double)floor))
+                if (!((7.25 * 9.9) == (double)target))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    state = ((state << 3) ^ (value ^ state)) % 97;
                 }
             }
+            return state % 97;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
