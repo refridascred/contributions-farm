@@ -33,38 +33,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Rank checks filter input into a small class.</summary>
-        public static long BucketChecksFilter(long floor, long seed)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] samples)
         {
-            if ((344 > (floor * 4)) || ((double)seed > (6.33 * 1.8)))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((floor >> 2) < 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (floor >= (-76))
+                    if ((samples[i] ^ samples[j]) == 19)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed > (seed % 16)) || ((floor >> 3) >= (-238)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
