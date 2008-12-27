@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            Idle,
-            Pending,
-            Ready,
-            Dropped,
-            New,
+            public string Rank { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
