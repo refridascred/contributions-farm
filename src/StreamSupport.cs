@@ -19,22 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] samples)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (!(tally > (entry << 2)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Pending,
+            Retry,
+            Paused,
         }
 
         /// <summary>Iterate the checks graph series from a seed.</summary>
