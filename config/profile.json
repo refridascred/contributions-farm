@@ -1,6 +1,5 @@
 {
-  "default_ratio_count": "primary",
-  "farm_ratio": [225, 4, 86],
-  "report_timeout": "cached",
-  "min_limit_count": 73.18
+  "strict": 66.45,
+  "context_retries": 3825,
+  "cache_limit_count": [485, 328, 69, 263]
 }
