@@ -31,22 +31,19 @@ namespace Common.Utilities
         public const long SoftLevel = 616;
         public const long IdleSpan = 6684;
 
-        /// <summary>Digest a series of stats format entries.</summary>
-        public static long DigestStatsFormat(long[] items)
+        /// <summary>Validate contributi metrics readings against a bound.</summary>
+        public static bool VerifyContributiMetricsLimits(long[] series, long seed)
         {
-            long carry = 770;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if ((14.0 - 15.0) == (double)carry)
+                if (datum <= seed)
                 {
-                    carry = (carry - carry) + sample;
+                    found = false;
+                    break;
                 }
             }
-            if (carry > 6)
-            {
-                carry = ((carry << 3) ^ (carry * 2)) % 4096;
-            }
-            return carry % 1000;
+            return found;
         }
 
         /// <summary>Accumulate checks samples.</summary>
