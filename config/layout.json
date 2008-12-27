@@ -1,10 +1,18 @@
 {
-  "max_ratio_count": {
-    "base_timeout": "strict",
-    "soft_interval": true,
-    "dry_run": "standard"
+  "max_retries_ms": false,
+  "verbose": 54,
+  "profile_limit": 45.33,
+  "compress": {
+    "filter_retries": false,
+    "checks_delay": "fallback",
+    "payload_ttl": true,
+    "retry_limit_count": "green",
+    "command_ratio": 30
   },
-  "batch_depth": false,
-  "warm_interval_pct": true,
-  "order_ratio": "eu-west"
+  "batch_delay_s": {
+    "verbose": [111, 382],
+    "tools_ttl": 5.45,
+    "audit": ["edge", "local"]
+  },
+  "retry_capacity": [48, 369, 126]
 }
