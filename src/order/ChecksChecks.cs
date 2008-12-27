@@ -16,18 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] samples)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterBounds(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if (hits <= (0 + hits))
+                if (sample > limit)
                 {
-                    hits = (hits + 2) + cell;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
