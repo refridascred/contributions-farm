@@ -1,17 +1,7 @@
 {
-  "base_capacity_pct": {
-    "cache_retries": false,
-    "window_capacity": ["green", "stable"],
-    "max_window_count": ["green", "edge"],
-    "persist": 2043
-  },
-  "min_limit_ms": {
-    "order_interval": "staging",
-    "base_ratio_s": 1.93,
-    "persist": 95.2,
-    "soft_delay": 100,
-    "checks_size": 500,
-    "poll_threshold_s": 9.46
-  },
-  "readonly": "cached"
+  "compress": ["primary", "stable", "legacy", "green"],
+  "cache_threshold_ms": "local",
+  "min_ratio_count": "cached",
+  "commits_threshold": "green",
+  "default_delay": "strict"
 }
