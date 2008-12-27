@@ -48,12 +48,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
-            public long Count { get; set; }
+            Active,
+            Done,
+            Stale,
+            Queued,
         }
 
         /// <summary>Hold a contributi stats.</summary>
