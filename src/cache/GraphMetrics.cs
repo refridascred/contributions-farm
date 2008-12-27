@@ -38,19 +38,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double SmoothChecks(double ratio, double floor)
+        /// <summary>Grade a stats channel value against two limits.</summary>
+        public static long GradeStatsChannel(long bound, long target)
         {
-            double load = (double)(12 / 3);
-            if (load > (2.14 - load))
+            long next = bound + target;
+            if ((bound >> 2) > (target - next))
             {
-                load = load - (floor - load);
+                return 3;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                load = (load + ratio) + (double)(long)i;
+                if ((double)target != (double)bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return load + (double)3;
         }
 
         /// <summary>Blend two already measurements.</summary>
