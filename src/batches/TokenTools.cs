@@ -42,11 +42,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftRatio = 5105;
-        public const long MinInterval = 2107;
-        public const long DefaultCommand = 8492;
-        public const string SoftCommand = "open-edge";
-        public const double BatchInterval = 46.45;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstSpan = 2562;
+        public const string RetryRecord = "alpha-1";
+        public const long BatchWidth = 3535;
     }
 }
