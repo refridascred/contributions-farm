@@ -45,12 +45,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] readings, long offset)
+        /// <summary>Locate a format cache reading by value.</summary>
+        public static long LocateFormatCacheIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] < offset)
+                if ((samples[i] > bound) && ((samples[i] % 3) != 0))
                 {
                     return (long)i;
                 }
