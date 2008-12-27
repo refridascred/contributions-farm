@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double scale, double span)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            double bias = (double)((-14) - 674);
-            if (bias <= (bias / 4.0))
-            {
-                bias = (bias + bias) - span;
-            }
-            return bias + scale;
+            public bool Mode { get; set; }
+            public double Flag { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
