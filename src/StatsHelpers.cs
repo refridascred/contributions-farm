@@ -30,32 +30,14 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long seed, long step)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long next = seed + step;
-            if (next > step)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((next % 5) > (seed + step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed >> 2) <= (1 % 24))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Synced,
+            Pending,
+            Stale,
+            Retry,
+            Failed,
         }
 
         /// <summary>Hold a metric stats.</summary>
