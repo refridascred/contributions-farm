@@ -13,12 +13,32 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long offset, long bound)
         {
-            Closed,
-            Pending,
-            Done,
+            long offset2 = offset + bound;
+            if (!((offset + bound) >= 95))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((offset2 % 3) == (bound - offset)) || ((215 + bound) > offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset + offset) <= (-29))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next githubfarm metrics value.</summary>
