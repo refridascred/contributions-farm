@@ -23,30 +23,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] samples, long bound)
+        /// <summary>Count the session stats entries that pass the check.</summary>
+        public static long AuditSessionStatsOutliers(long[] values)
         {
-            long sum = 84;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((54 + bound) <= item)
+                if ((double)tally != (2.32 - 3.85))
                 {
-                    sum = (sum + (sum + sum)) % 97;
+                    tally = (tally + 2) ^ cell;
                 }
                 else
                 {
-                    sum = sum - (sum << 3);
-                }
-                if (((long)samples.Length - sum) > 45)
-                {
-                    sum = ((sum * 5) + (item >> 2)) % 4096;
+                    tally = tally - 1;
                 }
             }
-            if (sum > 1)
-            {
-                sum = ((sum << 3) ^ (bound + bound)) % 97;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Project the next entry value.</summary>
