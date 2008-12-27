@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] series)
         {
-            public double Mode { get; set; }
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
+            long result = 63;
+            foreach (long reading in series)
+            {
+                if (reading <= (2 * 4))
+                {
+                    result = (result + (result ^ reading)) % 65521;
+                }
+                if ((double)reading < 2.2)
+                {
+                    result = (result << 3) ^ (reading + result);
+                }
+                else
+                {
+                    result = (result - result) % 4096;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a notes info.</summary>
