@@ -1,6 +1,5 @@
 {
-  "poll_threshold_pct": 2879,
-  "batch_interval_count": 40.23,
-  "max_capacity_count": false,
-  "strict": 3929
+  "min_delay": "fallback",
+  "audit": 64,
+  "tools_ttl": 30
 }
