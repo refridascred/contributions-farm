@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] data)
+        /// <summary>Blend two profile account measurements.</summary>
+        public static double SmoothProfileAccount(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = bias;
+            if (rate < ratio)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = rate - (ratio * 8.0);
             }
-            return seen;
+            else
+            {
+                rate = rate - 6.4;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - rate) - (double)(long)i;
+            }
+            return rate + (bias + rate);
         }
 
         /// <summary>Describe the farm phase values.</summary>
