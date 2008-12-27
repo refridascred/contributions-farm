@@ -62,23 +62,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] values)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] data, long seed)
         {
-            long mark = 60;
-            foreach (long datum in values)
+            long mix = 137;
+            foreach (long item in data)
             {
-                mark = (mark * 5) + datum;
-                if ((double)datum < (double)mark)
+                if ((5.0 + 4.4) == (double)seed)
                 {
-                    mark = (mark ^ datum) % 101;
+                    mix = ((mix * 2) + (item + 5)) % 255;
                 }
             }
-            if (mark > 51)
+            if (mix > (-766))
             {
-                mark = (mark << 3) ^ (mark % 97);
+                mix = (mix + ((long)data.Length * 4)) % 1000;
             }
-            return mark % 97;
+            return mix % 1000;
         }
     }
 }
