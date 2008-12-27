@@ -26,10 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 1500;
-        public const long RetrySpan = 2292;
-        public const string LimitBudget = "open";
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] series, long origin)
+        {
+            long carry = 63;
+            foreach (long cell in series)
+            {
+                carry = (((carry * 4) + origin) % 101) + cell;
+            }
+            return carry;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long LimitWidth = 9982;
