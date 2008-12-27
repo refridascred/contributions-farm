@@ -79,10 +79,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardRatio = 5480;
-        public const long StepSize = 2176;
-        public const string SoftCluster = "cached-1";
-        public const string MaxCluster = "staging";
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((count + count) < (reading + count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
