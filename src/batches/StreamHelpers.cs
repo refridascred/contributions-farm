@@ -57,10 +57,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double StepSpan = 79.36;
-        public const double LimitDepth = 83.14;
-        public const double DefaultCache = 83.48;
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
+        {
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double DefaultFarm = 5.6;
