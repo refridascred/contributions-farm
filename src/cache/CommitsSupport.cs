@@ -26,14 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public string Limit { get; set; } = "";
-            public double Token { get; set; }
-            public string Score { get; set; } = "";
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string StepFactor = "stable-1";
+        public const long SoftLevel = 616;
+        public const long IdleSpan = 6684;
 
         /// <summary>Digest a series of stats format entries.</summary>
         public static long DigestStatsFormat(long[] items)
