@@ -35,12 +35,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            public double Label { get; set; }
-            public bool Owner { get; set; }
-            public double Size { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the notes mode values.</summary>
