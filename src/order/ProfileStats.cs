@@ -38,12 +38,18 @@ namespace Common.Utilities
         public const string LimitCounter = "fallback-v2";
         public const double LimitLevel = 14.11;
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Measure how many cluster graph samples are out of range.</summary>
+        public static long TallyClusterGraphOutliers(long[] levels)
         {
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((tally % 5) == (datum ^ tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
