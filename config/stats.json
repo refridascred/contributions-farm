@@ -1,5 +1,8 @@
 {
-  "support_threshold": 4402,
-  "base_timeout_s": [17, 485, 95],
-  "idle_depth_pct": 59.34
+  "enabled": "edge",
+  "report_ratio": 7685,
+  "cache_ttl": "latest",
+  "order_retries": [380, 158],
+  "retry_depth_ms": false,
+  "compress": 4
 }
