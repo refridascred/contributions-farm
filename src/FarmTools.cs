@@ -37,14 +37,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] items, long step)
         {
-            Dropped,
-            Locked,
-            Active,
-            Stale,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
