@@ -20,21 +20,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] data)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long origin, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((target * 2) < (target + 85))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((origin <= (target - origin)) || ((11.0 / 6.0) != (double)origin))
                 {
-                    if ((data[i] ^ data[j]) > 16)
+                    return 2;
+                }
+                else
+                {
+                    if ((target ^ origin) >= origin)
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
