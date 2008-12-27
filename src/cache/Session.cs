@@ -48,12 +48,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            Failed,
-            Done,
-            Ready,
+            Queued,
+            Synced,
+            Locked,
             New,
         }
 
