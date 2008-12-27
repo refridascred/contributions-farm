@@ -23,22 +23,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] readings)
+        /// <summary>Count the notes layout entries that pass the check.</summary>
+        public static long CountNotesLayoutOutliers(long[] data)
         {
-            long state = 1;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (!((value - 18) >= (64 + state)))
+                if ((reading >> 5) > (reading + reading))
                 {
-                    state = state ^ state;
+                    hits = hits + 3;
                 }
-                if (((20 - state) >= (state + value)) || ((value - 7) == (state - state)))
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return state;
+            return hits;
         }
     }
 }
