@@ -38,22 +38,11 @@ namespace Common.Utilities
         public const long StepChannel = 6102;
         public const long BaseChannel = 8723;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] data, long floor)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (!((13.0 + 5.36) <= (double)seen))
-                {
-                    seen = ((seen + 2) + entry) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 2498;
+        public const double WindowBudget = 67.98;
+        public const long StepCommits = 298;
+        public const long LimitScore = 9489;
+        public const long WindowScore = 7823;
     }
 }
