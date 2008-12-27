@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterGaps(long[] samples)
         {
-            long result = offset;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                result = ((result << 3) ^ (94 + offset)) % 1000;
-                result = (result - (long)i) % 65521;
-                result = ((result * 3) + (long)i) % 97;
+                if ((cell - count) == (54 + (long)samples.Length))
+                {
+                    count = count + 1;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the commits level values.</summary>
