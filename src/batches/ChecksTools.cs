@@ -33,12 +33,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowSpan = 2691;
-        public const long CacheStream = 5045;
-        public const long RetryInterval = 1275;
-        public const long BaseWidth = 7096;
-        public const long BaseStream = 197;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] samples, long target)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (!((datum * 5) >= (-643)))
+                {
+                    count = (count + 3) + target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a format stats.</summary>
         public sealed class FormatStats
