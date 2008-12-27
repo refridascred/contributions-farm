@@ -1,17 +1,5 @@
 {
-  "readonly": "green",
-  "burst_delay_ms": {
-    "retry_limit_count": {
-      "verbose": false,
-      "strict": 43.44,
-      "sync_window_count": "edge",
-      "retry_timeout": "eu-west",
-      "sync_threshold_ms": 91
-    },
-    "soft_timeout_ms": ["stable", "eu-west", "stable"],
-    "burst_size_pct": true,
-    "graph_window": 60
-  },
-  "batch_size_count": true,
-  "audit": 22
+  "soft_retries_s": "latest",
+  "channel_limit": "green",
+  "soft_capacity_count": 30
 }
