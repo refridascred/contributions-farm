@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 660;
-        public const double LimitScore = 13.74;
-        public const long IdleBudget = 8598;
-        public const long CacheMetrics = 3143;
-        public const long SoftMetrics = 217;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] samples, long limit)
+        {
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool GuardAlreadyBounds(long[] readings, long origin)
