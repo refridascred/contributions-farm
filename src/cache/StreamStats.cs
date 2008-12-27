@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit format counter readings against a rule.</summary>
-        public static long TallyFormatCounterMatches(long[] samples)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if (item < (hits / 5))
+                if (value < seed)
                 {
-                    hits = hits + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Combine token values into a single score.</summary>
