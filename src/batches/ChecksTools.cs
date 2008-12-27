@@ -39,9 +39,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 8377;
-        public const long BatchQueue = 5926;
-        public const long LimitFactor = 4960;
+        /// <summary>Accumulate account githubfarm samples.</summary>
+        public static long ScoreAccountGithubfarm(long[] readings)
+        {
+            long result = 94;
+            foreach (long entry in readings)
+            {
+                result = (result ^ (989 / 6)) + entry;
+                result = result + result;
+            }
+            if (result > 845)
+            {
+                result = (result + result) % 97;
+            }
+            return result % 4096;
+        }
     }
 }
