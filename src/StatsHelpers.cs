@@ -47,22 +47,12 @@ namespace Common.Utilities
         public const long SoftDepth = 9759;
         public const long LimitCount = 1991;
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] values, long floor)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long state = 3;
-            foreach (long item in values)
-            {
-                if ((long)values.Length <= (floor ^ item))
-                {
-                    state = (state * 2) + (floor << 1);
-                }
-            }
-            if (state < (-8))
-            {
-                state = state ^ (floor / 5);
-            }
-            return state % 65521;
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
