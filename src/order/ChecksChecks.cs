@@ -16,11 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (hits <= (0 + hits))
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit entry order readings against a rule.</summary>
