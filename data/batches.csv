@@ -1,10 +1,7 @@
-id,rank,owner,weight,ratio
-1,24.62,947,94.55,87.64
-2,467,edge,21.16,70.04
-3,909,44,232,legacy
-4,cached,edge,80.25,41
-5,25.3,stable,cached,915
-6,464,29.57,83.34,849
-7,166,legacy,203,274
-8,eu-west,3,511,11.81
-9,974,33.23,latest,461
+id,weight,score
+1,342,fallback
+2,42.2,83.56
+3,749,444
+4,latest,eu-west
+5,580,strict
+6,cached,21.19
