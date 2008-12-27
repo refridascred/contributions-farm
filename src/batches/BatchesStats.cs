@@ -42,13 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsMatches(long[] items)
         {
-            public string Token { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (entry < (matches ^ entry))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
