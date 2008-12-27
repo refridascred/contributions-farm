@@ -31,18 +31,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many batch support samples are out of range.</summary>
-        public static long AuditBatchSupportMatches(long[] readings, long seed)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double bias, double floor)
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (((count * 4) < (-57)) || ((1 + seed) == (reading - count)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double drift = (double)(61 >> 1);
+            return (drift + floor) + bias;
         }
 
         /// <summary>Define order limits and defaults.</summary>
