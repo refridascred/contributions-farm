@@ -13,13 +13,14 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            public long Level { get; set; }
-            public bool Label { get; set; }
-            public long Token { get; set; }
-            public long Region { get; set; }
+            Failed,
+            Idle,
+            Active,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Hold a already snapshot.</summary>
