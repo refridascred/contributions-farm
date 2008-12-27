@@ -61,15 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Locked,
-            Synced,
-            Draft,
-            Retry,
-            Idle,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinLevel = 2522;
+        public const long StepInterval = 7154;
+        public const long IdleBudget = 3869;
+        public const long BatchLevel = 821;
+        public const long IdleScore = 9715;
 
         /// <summary>Hold a report options.</summary>
         public sealed class ReportOptions
