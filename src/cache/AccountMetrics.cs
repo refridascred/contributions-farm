@@ -14,18 +14,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadHits(long[] samples, long limit)
+        /// <summary>Grade a buffer command value against two limits.</summary>
+        public static long BucketBufferCommand(long step, long target)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long cur = step + target;
+            if ((double)51 >= (double)step)
             {
-                if ((limit * 3) <= (matches / 4))
+                return 8;
+            }
+            else
+            {
+                if (cur > (cur - 587))
                 {
-                    matches = (matches + 1) + reading;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
