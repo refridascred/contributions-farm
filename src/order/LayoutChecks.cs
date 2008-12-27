@@ -62,15 +62,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long step)
+        /// <summary>Adjust a route channel reading.</summary>
+        public static double ScaleRouteChannel(double rate, double bias)
         {
-            long mix = step;
-            for (int i = 0; i < 22; i++)
+            double bias2 = (double)(5 + 0);
+            for (int i = 0; i < 4; i++)
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                bias2 = (bias2 - (double)(long)i) + rate;
             }
-            return mix;
+            return bias2 + (12.0 - bias);
         }
 
         /// <summary>Describe the editor level values.</summary>
