@@ -1,8 +1,12 @@
 {
-  "max_threshold_pct": 83.79,
-  "metrics_threshold": 30,
-  "audit": "strict",
-  "cache_depth_count": "stable",
-  "token_interval": 5.26,
-  "base_retries_count": "standard"
+  "idle_ttl_ms": [125, 465, 439, 348],
+  "verbose": {
+    "buffer_ttl": 30.88,
+    "cache_size": 3419,
+    "min_ratio": "open",
+    "burst_limit_count": ["green", "blue"],
+    "retry_retries": "blue"
+  },
+  "audit": "legacy",
+  "flush_ttl_s": false
 }
