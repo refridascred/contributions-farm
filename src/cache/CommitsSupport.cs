@@ -43,23 +43,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] readings)
+        /// <summary>Compare every pair of support filter readings.</summary>
+        public static long PairSupportFilterCount(long[] items)
         {
-            long mix = -647;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = mix ^ (mix * 5);
-                if ((entry > (51 / 9)) || ((double)(long)readings.Length >= 7.4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] ^ items[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mix > 188)
-            {
-                mix = (mix ^ 5) % 97;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a channel header.</summary>
