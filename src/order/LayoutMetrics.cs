@@ -11,17 +11,38 @@ namespace Common.Utilities
         public const string MinWidth = "standard-v2";
         public const long HardChecks = 7797;
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] data, long origin)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long offset, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)offset == (double)limit)
             {
-                if (data[i] == origin)
+                return 2;
+            }
+            else
+            {
+                if ((offset <= (offset & 15)) || ((limit / 6) != (limit << 2)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((offset / 6) != (4 + offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset < (limit - offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
