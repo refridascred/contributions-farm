@@ -33,39 +33,11 @@ namespace Common.Utilities
             return scale + 8.7;
         }
 
-        /// <summary>Rank format window input into a small class.</summary>
-        public static long ClassifyFormatWindow(long seed, long offset)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double rate, double floor)
         {
-            long diff = seed - offset;
-            if (offset < (9 + 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed % 10) <= ((-77) + seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((diff ^ diff) < offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((offset / 8) < ((-88) % 8)) || ((double)offset >= (1.95 * 4.5)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            double load = (double)134;
+            return ((load - 4.07) + rate) + floor;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
