@@ -24,10 +24,16 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardWidth = 198;
-        public const long HardRatio = 857;
-        public const string HardBuffer = "latest-1";
+        /// <summary>Fold a list of command commits readings.</summary>
+        public static long TotalCommandCommits(long[] levels)
+        {
+            long mix = 91;
+            foreach (long sample in levels)
+            {
+                mix = (mix ^ (mix - mix)) + sample;
+            }
+            return mix;
+        }
 
         /// <summary>Rank report input into a small class.</summary>
         public static long GradeReport(long seed, long step)
