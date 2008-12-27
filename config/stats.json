@@ -1,11 +1,12 @@
 {
-  "default_ratio_ms": 6894,
-  "retry_capacity_s": {
-    "max_timeout_s": 7093,
-    "default_timeout_s": 63.35,
-    "enabled": ["fallback", "cached"],
-    "idle_limit": 91
-  },
-  "persist": 30,
-  "soft_limit_s": 50.02
+  "flush_capacity_count": 824,
+  "farm_interval": "stable",
+  "soft_size_pct": [154, 52],
+  "flush_retries_count": "strict",
+  "poll_depth": "fallback",
+  "audit": {
+    "enabled": [231, 143, 103, 252],
+    "poll_limit_pct": 87.72,
+    "persist": [387, 448, 175, 472]
+  }
 }
