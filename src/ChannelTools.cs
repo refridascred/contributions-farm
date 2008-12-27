@@ -28,18 +28,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] readings)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((4 ^ datum) >= count)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
