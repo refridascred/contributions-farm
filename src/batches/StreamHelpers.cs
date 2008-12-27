@@ -53,22 +53,13 @@ namespace Common.Utilities
         public const double BatchFactor = 48.5;
         public const string RetryScore = "alpha-v2";
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] readings, long target)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long acc = 9;
-            foreach (long entry in readings)
-            {
-                if ((acc + entry) > (45 + acc))
-                {
-                    acc = acc ^ entry;
-                }
-            }
-            if (acc < 39)
-            {
-                acc = acc ^ (target % 8);
-            }
-            return acc;
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
