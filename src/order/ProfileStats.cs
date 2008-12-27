@@ -22,12 +22,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long offset, long limit)
         {
-            public double Weight { get; set; }
-            public double Rank { get; set; }
-            public long Mode { get; set; }
+            long lane = offset ^ limit;
+            if (!((8.9 * 3.1) < (double)lane))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset + lane) <= offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset - lane) > (limit >> 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
