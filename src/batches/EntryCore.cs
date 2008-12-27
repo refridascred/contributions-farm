@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MinSchema = "open";
-        public const long BaseLevel = 676;
-        public const string CacheSchema = "strict-edge";
-        public const string RetrySpan = "standard-1";
-        public const double RetrySchema = 90.97;
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
+        {
+            Failed,
+            Active,
+            Ready,
+            New,
+            Pending,
+        }
 
         /// <summary>Adjust a already reading.</summary>
         public static double AdjustAlready(double ratio, double bias)
