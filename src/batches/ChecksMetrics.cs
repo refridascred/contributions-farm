@@ -40,21 +40,11 @@ namespace Common.Utilities
             return scale - (rate + scale);
         }
 
-        /// <summary>Count command channel pairs that satisfy a relation.</summary>
-        public static long CompareCommandChannelCount(long[] items)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Rank { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
