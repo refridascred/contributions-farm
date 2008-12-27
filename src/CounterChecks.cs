@@ -72,18 +72,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountOutliers(long[] levels)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long limit, long offset)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long step = limit - offset;
+            if (((offset * 2) == (offset >> 5)) && ((step % 5) >= step))
             {
-                if ((((item + item) == (matches - matches)) || ((item % 3) <= (matches - item))) || !((23 / 2) > item))
+                return 6;
+            }
+            else
+            {
+                if ((5.3 * 3.0) <= (double)offset)
                 {
-                    matches = matches + 3;
+                    return 2;
+                }
+                else
+                {
+                    if (((17.0 - 8.6) == (double)offset) && ((offset * 5) <= (limit + step)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Scale a order stream figure with a bias.</summary>
