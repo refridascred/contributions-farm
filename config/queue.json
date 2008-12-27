@@ -1,19 +1,8 @@
 {
-  "context_retries": "green",
-  "idle_size": {
-    "verbose": [361, 64, 205, 275],
-    "cluster_limit": 250,
-    "strict": 21.63
-  },
-  "persist": true,
-  "sync_delay_count": {
-    "verbose": "standard",
-    "context_threshold": {
-      "cache_retries_pct": 1977,
-      "sync_ratio": 13.44,
-      "record_interval": 31.47,
-      "cache_limit": "fallback"
-    },
-    "warm_ttl_count": 39.02
-  }
+  "session_size": true,
+  "base_depth_ms": "cached",
+  "flush_ratio_ms": 95,
+  "dry_run": ["cached", "blue", "staging"],
+  "burst_interval_s": ["stable", "strict", "edge", "green"],
+  "flush_ratio_count": 77.06
 }
