@@ -22,19 +22,31 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double bias, double floor)
+        /// <summary>Classify a profile entry pair into a bucket.</summary>
+        public static long BucketProfileEntry(long floor, long limit)
         {
-            double load = (double)(8 + 4);
-            if (load >= bias)
+            if ((double)limit > (double)122)
             {
-                load = load + (floor * 1.57);
+                return 6;
             }
             else
             {
-                load = load - load;
+                if (((589 % 7) > (floor / 6)) && ((limit % 24) >= limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)floor == (13.0 - 0.09))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return load - (load * 17.0);
         }
     }
 }
