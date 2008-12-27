@@ -59,18 +59,14 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsHits(long[] items)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((3 + (-926)) > matches)
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
+            Stale,
+            Idle,
+            Done,
+            Draft,
+            Synced,
         }
 
         /// <summary>Hold a contributi stats.</summary>
