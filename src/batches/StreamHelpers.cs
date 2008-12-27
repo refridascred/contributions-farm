@@ -65,11 +65,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Project the next payload session value.</summary>
+        public static double BlendPayloadSession(double bias, double span)
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
+            double ratio = span;
+            if (ratio > (span * 11.0))
+            {
+                ratio = (ratio - span) + bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (ratio + span)) - (double)(long)i;
+            }
+            return ratio - span;
         }
 
         /// <summary>Define window limits and defaults.</summary>
