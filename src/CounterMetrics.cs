@@ -23,13 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
-        {
-            Done,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepLevel = 343;
+        public const long BaseQueue = 1183;
+        public const double HardCount = 93.3;
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
