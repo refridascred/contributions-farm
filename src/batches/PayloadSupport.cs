@@ -39,19 +39,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double weight, double floor)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            double rate = weight;
-            if (rate >= (weight / 8.0))
-            {
-                rate = (rate + (rate / 6.0)) - floor;
-            }
-            else
-            {
-                rate = rate - weight;
-            }
-            return rate - (rate / 7.0);
+            Failed,
+            Synced,
+            Locked,
         }
     }
 }
