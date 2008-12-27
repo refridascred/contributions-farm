@@ -11,13 +11,11 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 7502;
         public const string BurstGithubfarm = "fallback-1";
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
-        {
-            Synced,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 2210;
+        public const long DefaultToken = 1001;
+        public const long BurstLevel = 4852;
+        public const string MaxFactor = "open-edge";
 
         /// <summary>Accumulate command samples.</summary>
         public static long WeighCommand(long[] items)
