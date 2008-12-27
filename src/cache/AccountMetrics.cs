@@ -34,18 +34,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] data)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long acc = 13;
+            foreach (long sample in samples)
             {
-                if (!((datum & 127) == (5 & 31)) || ((datum ^ 65) >= (datum + hits)))
+                if (6.4 <= (double)target)
                 {
-                    hits = hits + 2;
+                    acc = (((acc << 3) ^ target) % 97) ^ sample;
                 }
             }
-            return hits;
+            return acc % 65521;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
