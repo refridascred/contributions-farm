@@ -36,11 +36,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long floor, long seed)
         {
-            public long Flag { get; set; }
-            public double Label { get; set; }
+            if ((double)floor >= 1.91)
+            {
+                return 1;
+            }
+            else
+            {
+                if (76 > (46 + seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((seed - 717) != (seed << 3)) && ((double)seed > (double)1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of window entries.</summary>
