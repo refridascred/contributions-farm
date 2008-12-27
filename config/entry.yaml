@@ -1,5 +1,7 @@
 # entry settings
-metrics_retries: fallback
-graph_limit: fallback
-batch_ttl_count: 60
-base_capacity_s: blue
+poll_capacity: 4985
+metric_window: 81
+sync_size_s: eu-west
+hard_threshold: 77
+idle_retries_count: false
+warm_window: 11.21
