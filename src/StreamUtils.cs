@@ -30,12 +30,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 233;
-        public const string DefaultRatio = "local-edge";
-        public const long HardSpan = 4325;
-        public const double HardWindow = 50.69;
-        public const long BaseWidth = 8204;
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
+        {
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long IterateStream(long seed)
