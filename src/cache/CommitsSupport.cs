@@ -62,14 +62,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
-        {
-            public double Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 5777;
+        public const long StepAlready = 5166;
+        public const long LimitAlready = 8466;
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long ScoreCommits(long[] series)
