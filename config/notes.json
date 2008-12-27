@@ -1,11 +1,7 @@
 {
-  "retry_ratio": {
-    "min_window_pct": 100,
-    "persist": false,
-    "record_ratio": false,
-    "cache_capacity": 50.68,
-    "strict": "open"
-  },
-  "warm_capacity": 69.36,
-  "account_depth": 92.65
+  "stats_limit": 54.48,
+  "warm_interval_count": 3743,
+  "schema_size": "standard",
+  "stream_threshold": true,
+  "max_size_count": 32
 }
