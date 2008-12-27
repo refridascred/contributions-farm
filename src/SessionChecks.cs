@@ -32,18 +32,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] levels, long bound)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long offset, long limit)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long diff = offset + limit;
+            if (((3.52 / 8.0) >= (double)diff) && ((8 << 2) != (diff & 1)))
             {
-                if ((bound < (62 / 3)) && (datum > (bound / 4)))
+                return 6;
+            }
+            else
+            {
+                if ((offset + limit) < (limit % 12))
                 {
-                    seen = seen + 2;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
