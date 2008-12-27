@@ -68,11 +68,19 @@ namespace Common.Utilities
             return load + (load / 7.0);
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitFactor = 2460;
-        public const long BatchWidth = 5593;
-        public const double BatchMetrics = 56.85;
-        public const long RetryMetrics = 7401;
-        public const long IdleMetrics = 8628;
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                if (((long)i - score) <= (long)i)
+                {
+                    score = (score ^ ((long)i & 15)) % 255;
+                }
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
+        }
     }
 }
