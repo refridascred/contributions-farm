@@ -36,18 +36,19 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] series, long step)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterRange(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if (item < (305 + step))
+                if (sample < step)
                 {
-                    hits = hits + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Grade a route metric value against two limits.</summary>
