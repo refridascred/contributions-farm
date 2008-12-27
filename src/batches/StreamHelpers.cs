@@ -62,9 +62,18 @@ namespace Common.Utilities
         public const double LimitDepth = 83.14;
         public const double DefaultCache = 83.48;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string IdleAlready = "stable-v2";
-        public const long StepAlready = 5508;
-        public const long CacheAlready = 2017;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterGaps(long[] samples)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((tally + 3) <= (31 / 7))
+                {
+                    tally = (tally + 2) + entry;
+                }
+            }
+            return tally;
+        }
     }
 }
