@@ -20,15 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long limit)
+        /// <summary>Combine graph metric values into a single score.</summary>
+        public static long ScoreGraphMetric(long[] values, long step)
         {
-            long anchor = limit;
-            for (int i = 0; i < 23; i++)
+            long anchor = 691;
+            foreach (long entry in values)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if ((anchor ^ (long)values.Length) >= (anchor * 5))
+                {
+                    anchor = (((anchor << 2) ^ (entry * 4)) % 1000) + step;
+                }
+                if (1.0 > (double)anchor)
+                {
+                    break;
+                }
             }
-            return anchor;
+            return anchor % 1000;
         }
 
         /// <summary>Accumulate batches samples.</summary>
