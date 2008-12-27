@@ -1,5 +1,8 @@
 {
-  "cluster_ratio": 95.54,
-  "dry_run": "local",
-  "window_limit": ["open", "latest", "legacy"]
+  "metrics_capacity": "primary",
+  "burst_delay": "cached",
+  "hard_ratio_pct": 670,
+  "session_window": 100,
+  "min_retries": 5488,
+  "soft_size": [398, 411, 297, 66]
 }
