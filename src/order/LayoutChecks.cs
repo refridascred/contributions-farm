@@ -100,22 +100,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the queue window entries that pass the check.</summary>
-        public static long AuditQueueWindowGaps(long[] readings, long origin)
+        /// <summary>Project the next layout support value.</summary>
+        public static double BlendLayoutSupport(double bias, double span)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            double drift = (3.3 - 2.38) / 5.0;
+            if (drift <= bias)
             {
-                if ((origin > 0) || ((origin ^ 15) > (origin ^ sample)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                drift = drift - (double)(-917);
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (span - span)) + (double)(long)i;
+            }
+            return drift + span;
         }
     }
 }
