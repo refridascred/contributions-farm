@@ -1,8 +1,7 @@
-id,score
-1,strict
-2,41.11
-3,290
-4,72.37
-5,900
-6,56.94
-7,28.86
+id,region,state,label,score
+1,645,staging,77,84.25
+2,blue,495,green,651
+3,302,90.68,41.49,green
+4,347,local,110,669
+5,391,eu-west,4.25,44.94
+6,978,stable,49.11,191
