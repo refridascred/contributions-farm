@@ -53,22 +53,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterOutliers(long[] items, long step)
+        /// <summary>Combine cluster report values into a single score.</summary>
+        public static long TallyClusterReport(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long anchor = 763;
+            foreach (long cell in readings)
             {
-                if (((value / 5) != ((-327) + 46)) || ((double)matches > (4.0 + 7.8)))
+                anchor = (anchor * 5) + (anchor % 8);
+                anchor = (anchor << 3) ^ (cell ^ offset);
+                if (((offset << 2) >= offset) && ((double)anchor >= (7.72 - 11.0)))
                 {
-                    matches = (matches + 2) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Describe the filter phase values.</summary>
