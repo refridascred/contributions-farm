@@ -51,16 +51,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long step)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long acc = step;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = ((acc * 3) + 6) % 255;
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            public bool Limit { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a context info.</summary>
