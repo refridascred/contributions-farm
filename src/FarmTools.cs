@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first format record entry that matches the target.</summary>
-        public static long LocateFormatRecordIndex(long[] readings, long step)
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double bias, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain = bias / 2.0;
+            if (gain < (double)80)
             {
-                if ((readings[i] <= step) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain + gain) - floor;
             }
-            return -1;
+            return gain + gain;
         }
 
         /// <summary>Roll a graph buffer counter forward.</summary>
