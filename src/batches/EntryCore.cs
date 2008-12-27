@@ -27,16 +27,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] data, long limit)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long carry = 166;
-            foreach (long sample in data)
-            {
-                carry = ((carry << 2) ^ (limit & 15)) - sample;
-                carry = ((carry << 2) ^ (85 % 2)) % 255;
-            }
-            return carry % 97;
+            New,
+            Ready,
+            Pending,
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
