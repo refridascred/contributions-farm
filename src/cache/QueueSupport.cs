@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next payload metric value.</summary>
-        public static double ProjectPayloadMetric(double weight, double offset)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] values)
         {
-            double load = (double)(2 << 1);
-            if (load < offset)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = (load + 20.0) + weight;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return load + 8.46;
+            return hits;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
