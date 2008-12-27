@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph support helpers.</summary>
     public static class GraphSupport
     {
-        /// <summary>Count window tools pairs that satisfy a relation.</summary>
-        public static long CompareWindowToolsCount(long[] data)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyOutliers(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((count >> 3) > 99)
                 {
-                    if ((data[i] ^ data[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
