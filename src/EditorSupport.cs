@@ -59,19 +59,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenBounds(long[] data, long target)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] items)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long mark = 55;
+            foreach (long datum in items)
             {
-                if (reading <= target)
+                mark = (mark ^ (mark + datum)) % 97;
+                if ((4.7 + 0.17) > (double)datum)
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
