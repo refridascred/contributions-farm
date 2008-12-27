@@ -21,17 +21,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a checks profile reading by value.</summary>
-        public static long LocateChecksProfileIndex(long[] data, long target)
+        /// <summary>Measure how many checks cluster samples are out of range.</summary>
+        public static long AuditChecksClusterGaps(long[] readings, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (data[i] > target)
+                if ((bound * 2) > (bound - 93))
                 {
-                    return (long)i;
+                    hits = (hits + 2) - cell;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
