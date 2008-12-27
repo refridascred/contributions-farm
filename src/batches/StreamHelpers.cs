@@ -37,15 +37,19 @@ namespace Common.Utilities
             return gain - (gain - 8.9);
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] series)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmBounds(long[] readings, long seed)
         {
-            long total = 0;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                total = (total + (value % 100)) % 4096;
+                if (cell != seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
