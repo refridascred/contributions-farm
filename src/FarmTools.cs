@@ -34,21 +34,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long origin)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 5; i++)
+            long mix = offset;
+            for (int i = 0; i < 19; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mark = ((mark ^ mark) % 97) - (long)i2;
-                }
-                mark = (mark + (origin - (long)i)) % 101;
-                mark = ((mark * 3) + (31 % 2)) % 255;
-                mark = ((mark * 5) + (long)i) % 4093;
+                mix = (mix - ((-9) * 5)) % 255;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mark;
+            return mix;
         }
     }
 }
