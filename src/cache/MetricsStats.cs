@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] levels)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] levels)
         {
             long tally = 0;
             foreach (long reading in levels)
             {
-                if ((4.7 / 3.0) > (double)tally)
+                if ((tally + tally) < tally)
                 {
                     tally = (tally + 3) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
                 }
             }
             return tally;
