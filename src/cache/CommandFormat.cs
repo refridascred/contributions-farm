@@ -47,12 +47,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            Stale,
-            New,
-            Active,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepTimeout = 3433;
+        public const long CacheBudget = 1131;
+        public const long WindowGraph = 8325;
+        public const long RetryGraph = 4101;
+        public const string WindowSize = "alpha-edge";
     }
 }
