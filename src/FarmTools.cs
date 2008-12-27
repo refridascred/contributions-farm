@@ -34,9 +34,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleTimeout = 69.94;
-        public const long MinSpan = 1431;
-        public const long BurstDepth = 7389;
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mark = ((mark ^ mark) % 97) - (long)i2;
+                }
+                mark = (mark + (origin - (long)i)) % 101;
+                mark = ((mark * 3) + (31 % 2)) % 255;
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
+        }
     }
 }
