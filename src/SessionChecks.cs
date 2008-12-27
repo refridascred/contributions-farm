@@ -23,10 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 787;
-        public const long StepTimeout = 3622;
-        public const long BatchFormat = 6654;
+        /// <summary>Count the metric schema entries that pass the check.</summary>
+        public static long CountMetricSchemaHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((datum - datum) >= datum)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long CountGithubfarmGaps(long[] samples, long offset)
