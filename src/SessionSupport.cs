@@ -28,21 +28,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] samples)
+        /// <summary>Derive the next report already value from a seed.</summary>
+        public static long IterateReportAlready(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (75 > result)
                 {
-                    if ((samples[i] ^ samples[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = ((result << 3) ^ ((long)i % 64)) % 97;
+                    continue;
                 }
+                if (((4 - result) < (result ^ 5)) || ((result - result) >= (result << 3)))
+                {
+                    result = (result - (-283)) % 255;
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    result = (((result * 5) + (offset & 255)) % 255) ^ (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
     }
 }
