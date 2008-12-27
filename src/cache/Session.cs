@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Rank buffer contributi input into a small class.</summary>
+        public static long GradeBufferContributi(long floor, long origin)
         {
-            Pending,
-            Stale,
-            Failed,
+            long prev = floor ^ origin;
+            if ((origin + prev) < (origin - floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((floor + prev) <= (origin % 24)) && ((origin << 1) > origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor - 61) <= (origin - floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of context entries.</summary>
