@@ -30,22 +30,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] values, long floor)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] values)
         {
-            long mix = 7;
-            foreach (long reading in values)
+            long anchor = 69;
+            foreach (long cell in values)
             {
-                if ((reading + mix) != ((-744) + floor))
+                if ((cell / 9) < ((long)values.Length << 2))
                 {
-                    mix = (mix << 3) ^ 711;
-                }
-                else
-                {
-                    mix = (mix + floor) % 65521;
+                    anchor = (anchor + (cell + 1)) % 101;
                 }
             }
-            return mix;
+            if (anchor < 31)
+            {
+                anchor = (anchor + 4) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
