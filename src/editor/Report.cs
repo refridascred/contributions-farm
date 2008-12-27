@@ -20,18 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] items)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((3 + tally) > (54 >> 2))
+                if ((double)hits != (8.1 - 6.0))
                 {
-                    tally = (tally + 1) + datum;
+                    hits = (hits + 3) - entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
