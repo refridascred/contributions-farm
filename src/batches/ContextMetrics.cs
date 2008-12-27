@@ -31,18 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphHits(long[] samples)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsRange(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if (sample < ((long)samples.Length ^ 90))
+                if (value <= offset)
                 {
-                    hits = hits + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
