@@ -14,18 +14,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] items, long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] readings, long offset)
         {
-            long score = 1;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((step % 100) >= sample)
+                if (!((offset * 2) == (offset >> 4)))
                 {
-                    score = (score << 2) ^ (step * 3);
+                    count = (count + 3) + reading;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
