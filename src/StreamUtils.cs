@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] values, long origin)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((entry << 2) >= origin)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Count { get; set; }
+            public long Size { get; set; }
+            public bool Score { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define notes limits and defaults.</summary>
