@@ -20,16 +20,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] data, long seed)
-        {
-            long mix = 50;
-            foreach (long item in data)
-            {
-                mix = ((mix << 3) ^ (seed + 5)) ^ item;
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MinMetric = 64.59;
+        public const long HardMetric = 3169;
+        public const string LimitInterval = "alpha-1";
+        public const string BurstMetric = "primary-edge";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BatchInterval = 6254;
