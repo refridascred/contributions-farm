@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] items, long offset)
+        /// <summary>Count the filter checks entries that pass the check.</summary>
+        public static long MeasureFilterChecksMatches(long[] levels, long step)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (item <= offset)
+                if (!!((tally ^ value) > tally))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 3) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Locate a session reading by value.</summary>
