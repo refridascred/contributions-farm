@@ -32,13 +32,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public bool Limit { get; set; }
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepInterval = 4029;
+        public const long BatchFilter = 7830;
+        public const string BaseFilter = "stable-edge";
+        public const long IdleSize = 905;
+        public const double StepFilter = 58.25;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportHits(long[] data, long floor)
