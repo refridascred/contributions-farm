@@ -22,22 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of record counter entries.</summary>
-        public static long TallyRecordCounter(long[] values)
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double rate, double floor)
         {
-            long state = 75;
-            foreach (long cell in values)
+            double scale = (floor - 0.38) - rate;
+            if (scale < (floor + 18.0))
             {
-                if ((double)cell > 16.0)
-                {
-                    state = ((state << 2) ^ cell) % 65521;
-                }
+                scale = scale - 8.0;
             }
-            if (state < 205)
-            {
-                state = ((state << 2) ^ (state + state)) % 97;
-            }
-            return state % 1000;
+            return scale + 8.7;
         }
 
         /// <summary>Rank format window input into a small class.</summary>
