@@ -24,17 +24,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next stats queue value from a seed.</summary>
-        public static long IterateStatsQueue(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 11; i++)
-            {
-                score = score - ((long)i + step);
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double LimitFactor = 56.84;
+        public const double LimitCount = 14.41;
+        public const long MinLevel = 3704;
 
         /// <summary>Accumulate account githubfarm samples.</summary>
         public static long ScoreAccountGithubfarm(long[] readings)
