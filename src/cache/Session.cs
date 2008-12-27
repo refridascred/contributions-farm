@@ -42,13 +42,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long seed, long bound)
         {
-            Queued,
-            Idle,
-            Dropped,
-            Failed,
+            long diff = seed + bound;
+            if ((double)diff != (15.0 * 6.11))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((diff << 1) >= (bound + seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
