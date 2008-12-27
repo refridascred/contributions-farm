@@ -23,10 +23,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 4446;
-        public const long BaseLevel = 2650;
-        public const long CacheCount = 2670;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 787;
+        public const long StepTimeout = 3622;
+        public const long BatchFormat = 6654;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long CountGithubfarmGaps(long[] samples, long offset)
