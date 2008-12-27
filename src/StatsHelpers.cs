@@ -28,21 +28,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] items)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
