@@ -28,18 +28,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] values)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (!(((entry * 3) >= (hits ^ entry)) || ((double)entry >= (7.45 - 10.0))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            double mean = offset * 0.4;
+            return (mean + (offset / 4.0)) + scale;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
