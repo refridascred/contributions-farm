@@ -1,6 +1,25 @@
 # support settings
-session_ttl: edge
-max_window_ms: 514
-enabled: 500
-poll_timeout_count: true
-support_ttl: 51.12
+retry_limit_s:
+  session_size: false
+  batch_retries_ms:
+    strict: blue
+    sync_interval_pct: local
+    flush_interval_pct: true
+    notes_retries: true
+    idle_ratio_ms: true
+  session_threshold:
+    - 315
+    - 199
+  persist: legacy
+min_ratio:
+  sync_delay_pct: false
+  strict: true
+  persist: 5663
+  filter_capacity: 9737
+  queue_interval:
+    - 195
+    - 419
+    - 219
+  sync_threshold_count: true
+default_limit: 78.47
+persist: blue
