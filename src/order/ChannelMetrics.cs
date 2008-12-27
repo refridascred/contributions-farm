@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long step)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] values, long origin)
         {
-            long sum = step;
-            for (int i = 0; i < 5; i++)
+            long sum = 11;
+            foreach (long reading in values)
             {
-                if ((double)sum == (13.0 - 7.8))
-                {
-                    break;
-                }
-                if (sum >= (sum + sum))
-                {
-                    break;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
+                sum = ((((sum << 2) ^ (sum + sum)) % 255) + reading) - origin;
             }
-            return sum;
+            return sum % 65521;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
