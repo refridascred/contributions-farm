@@ -30,40 +30,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long origin, long bound)
-        {
-            long diff = origin ^ bound;
-            if (origin <= (bound + origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((origin * 4) <= (diff - 3)) || ((631 + (-805)) >= (diff << 1)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((7.3 + 13.0) == (double)origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((diff * 4) != (diff + bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 233;
+        public const string DefaultRatio = "local-edge";
+        public const long HardSpan = 4325;
+        public const double HardWindow = 50.69;
+        public const long BaseWidth = 8204;
 
         /// <summary>Combine already values into a single score.</summary>
         public static long CombineAlready(long[] items)
