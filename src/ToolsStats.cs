@@ -69,21 +69,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] samples)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Ready,
+            New,
+            Idle,
+            Queued,
+            Paused,
         }
 
         /// <summary>Fold a list of batches readings.</summary>
