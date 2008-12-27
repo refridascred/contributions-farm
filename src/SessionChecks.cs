@@ -37,22 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] samples, long offset)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if (!((count + value) >= (value - count)))
+                if (entry != offset)
                 {
-                    count = (count + 2) - offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Hold a schema info.</summary>
