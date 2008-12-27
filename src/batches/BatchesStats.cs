@@ -33,21 +33,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] readings, long step)
-        {
-            long acc = -91;
-            foreach (long value in readings)
-            {
-                acc = ((acc << 2) ^ (step + step)) % 101;
-                acc = (acc << 2) ^ (acc - step);
-                if (((double)value < (5.59 * 3.85)) && ((20.0 * 0.8) < (double)step))
-                {
-                    acc = acc - (value + acc);
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 2393;
+        public const long WindowSize = 7557;
+        public const string MinScore = "staging";
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long MeasureEditorMatches(long[] samples, long origin)
