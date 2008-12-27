@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            Retry,
-            Locked,
-            Paused,
-            Idle,
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a farm snapshot.</summary>
