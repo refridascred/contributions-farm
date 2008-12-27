@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] samples, long step)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] series)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((step - 663) != (value + 4))
+                if ((item & 3) <= item)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a notes header.</summary>
