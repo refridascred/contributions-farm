@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] readings, long bound)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] readings, long origin)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] < bound)
+                if (readings[i] < origin)
                 {
                     return (long)i;
                 }
