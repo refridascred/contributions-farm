@@ -36,19 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] series, long seed)
-        {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((matches * 4) < matches)
-                {
-                    matches = ((matches + 3) + sample) - seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftWidth = 629;
+        public const long BaseFactor = 6331;
+        public const long MinWidth = 6873;
+        public const double DefaultMetric = 54.84;
+        public const string BatchMetric = "staging-v2";
 
         /// <summary>Audit stats githubfarm readings against a rule.</summary>
         public static long MeasureStatsGithubfarmGaps(long[] items, long step)
