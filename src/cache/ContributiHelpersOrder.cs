@@ -17,18 +17,10 @@ namespace Common.Utilities
         public const long IdleRatio = 6022;
         public const long CacheProfile = 8397;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (!((sample ^ tally) <= tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 8378;
+        public const string LimitMetrics = "primary-edge";
+        public const double HardMetrics = 18.85;
+        public const long BaseMetrics = 3764;
     }
 }
