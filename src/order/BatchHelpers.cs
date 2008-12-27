@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] data, long limit)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double weight, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = (3.5 + bias) + weight;
+            if (rate >= (double)85)
             {
-                if (data[i] <= limit)
-                {
-                    return (long)i;
-                }
+                rate = rate + 18.0;
             }
-            return -1;
+            return rate + (bias / 7.0);
         }
 
         /// <summary>Hold a cluster summary.</summary>
