@@ -1,12 +1,14 @@
 # Command notes
 
-Use context settings to tune how often order data is refreshed.
-When a route fails, the buffer handler retries a few times before giving up.
-Keep support and channel names short and lowercase.
+Use batch settings to tune how often githubfarm data is refreshed.
+Keep notes and format names short and lowercase.
+
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Defaults for payload live in the config folder and can be overridden per environment.
+Run the command check before changing any batches limits.
 
 ## Guidelines
 
-- Keep buffer values small
-- Prefer payload defaults
-- Review cache limits each release
-- Document new checks fields
+- Validate cluster input early
+- Document new record fields
+- Review channel limits each release
