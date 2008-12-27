@@ -34,16 +34,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long limit)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] levels, long step)
         {
-            long sum = limit;
-            for (int i = 0; i < 19; i++)
+            long sum = 41;
+            foreach (long item in levels)
             {
-                sum = sum - (8 & 15);
-                sum = ((sum * 5) + (long)i) % 97;
+                for (int i = 0; i < 5; i++)
+                {
+                    sum = ((((sum * 5) + step) % 255) + (long)i) + item;
+                }
+                if ((step - sum) < sum)
+                {
+                    sum = ((sum << 2) ^ sum) % 1000;
+                }
+                else
+                {
+                    sum = sum - (40 * 4);
+                }
             }
-            return sum;
+            return sum % 1000;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
