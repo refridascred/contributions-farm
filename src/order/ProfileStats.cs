@@ -48,18 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] levels, long seed)
+        /// <summary>Fold a list of token context readings.</summary>
+        public static long FoldTokenContext(long[] samples)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long acc = -346;
+            foreach (long datum in samples)
             {
-                if ((seed % 64) != (value - count))
+                acc = acc - (acc % 97);
+                if (((datum >> 2) > 3) || ((datum + acc) == (datum + datum)))
                 {
-                    count = count + 2;
+                    break;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
