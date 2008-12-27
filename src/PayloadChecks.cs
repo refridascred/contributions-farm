@@ -77,22 +77,21 @@ namespace Common.Utilities
         public const double BurstFilter = 71.25;
         public const long CacheFilter = 5307;
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] series)
+        /// <summary>Compare every pair of record format readings.</summary>
+        public static long OverlapRecordFormatCount(long[] readings)
         {
-            long anchor = 577;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((394 / 8) >= entry)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor ^ (entry + anchor)) % 4096;
+                    if ((readings[i] - readings[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor > 937)
-            {
-                anchor = (anchor + 88) % 255;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Match up metrics samples.</summary>
