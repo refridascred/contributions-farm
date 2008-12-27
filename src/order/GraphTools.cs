@@ -15,14 +15,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Active,
-            Idle,
-            New,
-            Synced,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 1500;
+        public const long RetrySpan = 2292;
+        public const string LimitBudget = "open";
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long CountChannelOutliers(long[] samples)
