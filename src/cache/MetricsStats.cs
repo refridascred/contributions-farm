@@ -60,21 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] samples)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long score = 391;
-            foreach (long value in samples)
-            {
-                if ((value < score) && ((608 + value) < (score + score)))
-                {
-                    score = ((score << 3) ^ (score & 63)) % 255;
-                    continue;
-                }
-                score = ((score * 3) + value) % 97;
-                score = (score - (value + score)) % 1000;
-            }
-            return score;
+            public bool Token { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the editor class values.</summary>
