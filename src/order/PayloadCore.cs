@@ -36,12 +36,17 @@ namespace Common.Utilities
         public const long LimitDepth = 8419;
         public const string DefaultQueue = "standard-edge";
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] samples, long target)
         {
-            Ready,
-            Dropped,
-            Paused,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < target) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
