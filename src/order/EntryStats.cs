@@ -33,22 +33,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandGaps(long[] items, long step)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long origin, long target)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long edge = origin ^ target;
+            if ((target >= origin) || (1 <= (origin + edge)))
             {
-                if ((datum + step) >= (datum % 12))
+                return 4;
+            }
+            else
+            {
+                if (origin >= (edge - target))
                 {
-                    matches = matches + 1;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((edge >= (988 + origin)) && ((double)edge == (double)target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((origin * 5) == (edge / 4)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
