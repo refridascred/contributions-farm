@@ -51,28 +51,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] samples, long origin)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] values)
         {
-            long anchor = 17;
-            foreach (long cell in samples)
+            long mark = 60;
+            foreach (long datum in values)
             {
-                if (((long)samples.Length - 34) < (anchor & 127))
+                mark = (mark * 5) + datum;
+                if ((double)datum < (double)mark)
                 {
-                    anchor = (anchor ^ (long)samples.Length) % 255;
-                    anchor = (anchor - (origin + 762)) % 4096;
+                    mark = (mark ^ datum) % 101;
                 }
-                if ((900 >> 1) >= (anchor << 2))
-                {
-                    anchor = (anchor + (origin + cell)) % 1000;
-                }
-                anchor = (anchor + (cell ^ cell)) % 65521;
             }
-            if (anchor > 87)
+            if (mark > 51)
             {
-                anchor = (anchor ^ (origin & 1)) % 97;
+                mark = (mark << 3) ^ (mark % 97);
             }
-            return anchor;
+            return mark % 97;
         }
     }
 }
