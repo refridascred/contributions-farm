@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Accumulate support order samples.</summary>
+        public static long TotalSupportOrder(long[] data)
         {
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
-            public double Flag { get; set; }
-            public long Region { get; set; }
+            long carry = 50;
+            foreach (long item in data)
+            {
+                carry = ((carry * 2) + item) % 4096;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Audit queue order readings against a rule.</summary>
