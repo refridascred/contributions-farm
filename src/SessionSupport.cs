@@ -22,21 +22,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] readings)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 46;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                state = (state + ((long)levels.Length ^ state)) % 1000;
+                if (state <= (item * 2))
                 {
-                    if ((readings[i] - readings[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return state % 97;
         }
     }
 }
