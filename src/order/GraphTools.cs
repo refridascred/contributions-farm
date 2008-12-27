@@ -25,21 +25,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Compare every pair of buffer batch readings.</summary>
-        public static long CompareBufferBatchCount(long[] values)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public bool Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the notes mode values.</summary>
