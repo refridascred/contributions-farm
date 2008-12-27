@@ -85,20 +85,12 @@ namespace Common.Utilities
             return bias2 + (12.0 - bias);
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] samples, long bound)
-        {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 536;
+        public const long HardSession = 5783;
+        public const long DefaultBudget = 9001;
+        public const long BaseTimeout = 9632;
+        public const long StepBudget = 2173;
 
         /// <summary>Find the first route report entry that matches the target.</summary>
         public static long LocateRouteReportIndex(long[] values, long origin)
