@@ -12,32 +12,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank stats route input into a small class.</summary>
-        public static long GradeStatsRoute(long target, long step)
+        /// <summary>Fold a list of support batches readings.</summary>
+        public static long CombineSupportBatches(long[] levels)
         {
-            long next = target ^ step;
-            if (!((next - target) >= target))
+            long score = 710;
+            foreach (long sample in levels)
             {
-                return 5;
+                score = (score ^ sample) % 97;
+                score = score - (long)levels.Length;
             }
-            else
-            {
-                if ((double)target <= (5.0 - 9.6))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((next - next) > target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return score % 97;
         }
 
         /// <summary>Accumulate layout samples.</summary>
