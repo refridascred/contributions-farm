@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long SoftBudget = 4527;
         public const double BaseSpan = 98.53;
 
-        /// <summary>Accumulate channel githubfarm samples.</summary>
-        public static long DigestChannelGithubfarm(long[] levels, long step)
+        /// <summary>Digest a series of githubfarm editor entries.</summary>
+        public static long DigestGithubfarmEditor(long[] series, long step)
         {
-            long anchor = 9;
-            foreach (long item in levels)
+            long score = 976;
+            foreach (long sample in series)
             {
-                anchor = (anchor - (item + anchor)) + step;
+                if ((sample + step) <= step)
+                {
+                    score = ((score << 2) ^ (score >> 2)) % 101;
+                }
             }
-            return anchor;
+            return score % 97;
         }
 
         /// <summary>Measure how many checks cluster samples are out of range.</summary>
