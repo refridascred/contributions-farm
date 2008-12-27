@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            Paused,
-            Failed,
-            Ready,
-            Synced,
-            Stale,
+            public bool Score { get; set; }
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Rank checks input into a small class.</summary>
