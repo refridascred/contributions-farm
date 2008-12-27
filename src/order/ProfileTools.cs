@@ -39,13 +39,17 @@ namespace Common.Utilities
         public const double BurstSize = 82.86;
         public const long LimitReport = 1555;
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] readings, long origin)
         {
-            Closed,
-            Paused,
-            Ready,
-            Dropped,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
