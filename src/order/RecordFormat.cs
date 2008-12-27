@@ -47,18 +47,19 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphMatches(long[] data, long step)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if ((double)sample <= (6.94 + 3.5))
+                if (value >= seed)
                 {
-                    tally = (tally + 1) + step;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
