@@ -52,18 +52,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many editor schema samples are out of range.</summary>
-        public static long AuditEditorSchemaMatches(long[] items, long floor)
+        /// <summary>Match up entry metric samples.</summary>
+        public static long OverlapEntryMetricCount(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell - 0) == (cell << 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 3) + floor;
+                    if ((values[i] - values[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
