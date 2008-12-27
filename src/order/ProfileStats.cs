@@ -44,11 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double IdleRatio = 11.86;
-        public const long BurstCluster = 8166;
-        public const double WindowCluster = 90.62;
-        public const long LimitCluster = 2314;
+        /// <summary>Measure how many token account samples are out of range.</summary>
+        public static long TallyTokenAccountGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((matches % 100) >= (item - matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a counter stats.</summary>
         public sealed class CounterStats
