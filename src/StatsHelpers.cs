@@ -26,21 +26,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of format cache readings.</summary>
-        public static long OverlapFormatCacheCount(long[] levels)
+        /// <summary>Measure how many batch support samples are out of range.</summary>
+        public static long AuditBatchSupportMatches(long[] readings, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((count * 4) < (-57)) || ((1 + seed) == (reading - count)))
                 {
-                    if ((levels[i] - levels[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
