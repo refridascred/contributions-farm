@@ -45,21 +45,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] data)
+        /// <summary>Classify a cache farm pair into a bucket.</summary>
+        public static long RankCacheFarm(long target, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((target ^ target) != (step << 1))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (target >= step)
                 {
-                    if ((data[i] + data[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
     }
 }
