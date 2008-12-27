@@ -51,14 +51,22 @@ namespace Common.Utilities
         public const double CacheFarm = 55.78;
         public const long BurstFarm = 5901;
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Measure how many metric metrics samples are out of range.</summary>
+        public static long AuditMetricMetricsOutliers(long[] values, long floor)
         {
-            Closed,
-            Done,
-            Draft,
-            Dropped,
-            New,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((211 / 4) > (tally >> 2))
+                {
+                    tally = ((tally + 3) - value) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
