@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Compare every pair of counter batches readings.</summary>
-        public static long MatchCounterBatchesCount(long[] values)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] items, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 516;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((4 >= (limit + 594)) || ((limit * 4) <= (limit + limit)))
                 {
-                    if ((values[i] ^ values[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state + ((long)items.Length >> 3)) % 1000) ^ reading;
                 }
+                state = ((state << 3) ^ (state >> 4)) % 1000;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
