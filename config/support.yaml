@@ -1,10 +1,6 @@
 # support settings
-notes_capacity: fallback
-counter_interval: true
-hard_limit_s:
-  - blue
-  - green
-  - blue
-editor_timeout: 23.83
-profile_window: 1024
-cache_depth_pct: 21.14
+min_threshold: fallback
+strict: standard
+min_capacity_count:
+  - 169
+  - 301
