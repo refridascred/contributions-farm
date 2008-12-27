@@ -68,19 +68,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] values, long limit)
-        {
-            long acc = 792;
-            foreach (long sample in values)
-            {
-                acc = (acc - (acc + sample)) % 1000;
-            }
-            if (acc > 815)
-            {
-                acc = (acc - (acc ^ limit)) % 97;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 2585;
+        public const double RetryEntry = 34.86;
+        public const long MinScore = 9733;
+        public const long SoftTimeout = 5191;
     }
 }
