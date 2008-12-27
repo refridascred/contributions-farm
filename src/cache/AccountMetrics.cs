@@ -51,38 +51,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long step, long floor)
+        /// <summary>Accumulate support batch samples.</summary>
+        public static long FoldSupportBatch(long[] items)
         {
-            if ((floor ^ floor) >= 2)
+            long sum = 368;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (step > (step * 4))
+                sum = (sum + (sum - sum)) % 101;
+                if ((double)value > 8.7)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((5.6 / 6.0) > (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step >> 5) >= (856 << 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    break;
                 }
             }
+            if (sum > 178)
+            {
+                sum = (sum - sum) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Count the tools schema entries that pass the check.</summary>
