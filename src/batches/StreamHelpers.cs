@@ -37,12 +37,15 @@ namespace Common.Utilities
             return gain - (gain - 8.9);
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] series)
         {
-            public double Token { get; set; }
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
+            long total = 0;
+            foreach (long value in series)
+            {
+                total = (total + (value % 100)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
