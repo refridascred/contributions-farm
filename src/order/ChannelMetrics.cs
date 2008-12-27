@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] values, long origin)
-        {
-            long sum = 11;
-            foreach (long reading in values)
-            {
-                sum = ((((sum << 2) ^ (sum + sum)) % 255) + reading) - origin;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 5795;
+        public const double StepScore = 8.6;
+        public const long BurstCommand = 7555;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long IdleSpan = 2051;
