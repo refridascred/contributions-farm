@@ -24,10 +24,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 5156;
-        public const long BurstRatio = 879;
-        public const long MinFarm = 9160;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 2401;
+        public const long DefaultLevel = 3594;
+        public const long StepEditor = 3950;
+        public const long HardEditor = 2615;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long MinTimeout = 9982;
