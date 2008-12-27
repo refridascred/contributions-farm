@@ -1,6 +1,5 @@
 {
-  "route_interval": false,
-  "verbose": 27,
-  "cluster_window": 100,
-  "idle_depth_ms": ["local", "edge", "blue"]
+  "retry_depth": 8,
+  "batches_ratio": ["primary", "strict", "cached", "edge"],
+  "cluster_interval": ["legacy", "open"]
 }
