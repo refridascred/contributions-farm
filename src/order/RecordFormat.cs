@@ -45,12 +45,24 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardFactor = 884;
-        public const long IdleEditor = 7206;
-        public const string WindowWidth = "staging-1";
-        public const long StepInterval = 5943;
-        public const long CacheEditor = 6595;
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double ratio, double bias)
+        {
+            double mean = (bias + bias) - (double)327;
+            if (mean <= bias)
+            {
+                mean = mean + (bias + bias);
+            }
+            else
+            {
+                mean = mean - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean + ratio;
+        }
 
         /// <summary>Match up farm samples.</summary>
         public static long MatchFarmCount(long[] data)
