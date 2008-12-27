@@ -73,18 +73,34 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] readings)
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long mix = 136;
+            foreach (long reading in levels)
             {
-                if ((count + count) < (reading + count))
+                if (((long)levels.Length - mix) <= (reading ^ 79))
                 {
-                    count = count + 3;
+                    mix = ((mix << 3) ^ (reading + mix)) % 65521;
+                }
+                if ((double)mix >= (0.7 * 1.14))
+                {
+                    mix = ((mix * 5) + (mix + 2)) % 97;
+                }
+                else
+                {
+                    mix = (mix * 4) + reading;
+                }
+                if ((double)reading >= (6.0 * 9.8))
+                {
+                    break;
                 }
             }
-            return count;
+            if (mix > 0)
+            {
+                mix = ((mix << 2) ^ (mix * 5)) % 65521;
+            }
+            return mix;
         }
     }
 }
