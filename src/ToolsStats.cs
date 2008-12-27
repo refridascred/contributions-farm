@@ -96,12 +96,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] readings, long origin)
         {
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
+            long mix = 6;
+            foreach (long reading in readings)
+            {
+                mix = ((mix << 2) ^ reading) % 65521;
+                if (!(origin >= (19 + mix)))
+                {
+                    mix = mix ^ origin;
+                }
+                if ((origin - mix) > 219)
+                {
+                    mix = ((mix << 2) ^ (64 + origin)) % 65521;
+                }
+                else
+                {
+                    mix = mix + (reading - mix);
+                }
+            }
+            return mix;
         }
     }
 }
