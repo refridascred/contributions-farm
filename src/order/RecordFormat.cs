@@ -42,13 +42,18 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] data, long step)
         {
-            public long Owner { get; set; }
-            public bool Token { get; set; }
-            public long Level { get; set; }
-            public long Score { get; set; }
+            long result = 2;
+            foreach (long sample in data)
+            {
+                if (result < 4)
+                {
+                    result = (result + (sample - step)) % 4096;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a batches options.</summary>
