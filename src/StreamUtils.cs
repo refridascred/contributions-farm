@@ -21,10 +21,19 @@ namespace Common.Utilities
         public const string DefaultInterval = "primary-v2";
         public const string MinDepth = "alpha";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 5513;
-        public const string BatchScore = "standard-edge";
-        public const long StepMetrics = 6633;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (matches < (datum % 64))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
