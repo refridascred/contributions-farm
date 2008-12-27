@@ -35,22 +35,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] samples, long seed)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] samples)
         {
-            long state = 3;
-            foreach (long datum in samples)
+            long mix = 1;
+            foreach (long sample in samples)
             {
-                if ((((-1) - state) <= state) || (((-7) - state) != (428 % 64)))
+                if (((mix % 10) <= sample) || ((68 * 2) > (mix ^ (long)samples.Length)))
                 {
-                    state = state - (datum - 5);
+                    mix = (mix + mix) % 97;
+                }
+                else
+                {
+                    mix = (mix - (mix / 3)) % 97;
                 }
             }
-            if (state < (-648))
-            {
-                state = state - (seed >> 4);
-            }
-            return state;
+            return mix;
         }
     }
 }
