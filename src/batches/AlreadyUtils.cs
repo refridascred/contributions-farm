@@ -12,11 +12,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheBudget = 108;
-        public const long BurstWindow = 5836;
-        public const long MinDepth = 15;
-        public const string MaxWindow = "cached-1";
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] series, long origin)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((item ^ item) == (origin + item))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool GuardAccountRange(long[] levels, long seed)
