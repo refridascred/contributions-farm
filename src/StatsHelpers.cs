@@ -16,12 +16,19 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitLevel = 6201;
-        public const long BatchSchema = 339;
-        public const long BurstSchema = 5184;
-        public const long RetryCount = 3423;
-        public const long DefaultLevel = 6750;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] levels)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((6 - sample) > matches)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
