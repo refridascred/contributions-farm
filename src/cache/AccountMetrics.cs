@@ -98,9 +98,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double DefaultAlready = 64.69;
-        public const long LimitFactor = 6500;
-        public const string IdleAlready = "primary-v2";
+        /// <summary>Count the tools schema entries that pass the check.</summary>
+        public static long CountToolsSchemaOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (item >= (long)levels.Length)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
