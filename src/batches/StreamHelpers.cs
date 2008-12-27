@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long limit)
+        /// <summary>Locate a cluster filter reading by value.</summary>
+        public static long LookupClusterFilterIndex(long[] series, long origin)
         {
-            long carry = limit;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry << 3) ^ carry;
-                carry = ((carry * 2) + (long)i) % 4093;
+                if (series[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Fold a list of report readings.</summary>
