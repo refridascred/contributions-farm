@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            Retry,
-            Paused,
-            Synced,
-            Failed,
+            public double Stamp { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a graph stats.</summary>
