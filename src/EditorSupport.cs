@@ -23,25 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metric farm samples.</summary>
-        public static long WeighMetricFarm(long[] items, long bound)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long mix = 6;
-            foreach (long value in items)
-            {
-                if ((bound / 9) < bound)
-                {
-                    mix = ((mix * 5) + mix) - value;
-                    mix = (mix - (bound - mix)) % 101;
-                    break;
-                }
-                mix = (mix << 2) ^ (long)items.Length;
-            }
-            if (mix > 74)
-            {
-                mix = mix ^ bound;
-            }
-            return mix;
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Grade a command value against two limits.</summary>
