@@ -31,15 +31,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] values, long target)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double gain, double span)
         {
-            long mark = 496;
-            foreach (long value in values)
+            double load = (double)(5 - 660);
+            if (load < (double)9)
             {
-                mark = (mark - target) ^ value;
+                load = load + span;
             }
-            return mark;
+            else
+            {
+                load = load - (gain / 6.0);
+            }
+            return load - gain;
         }
     }
 }
