@@ -64,19 +64,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] levels)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long mix = 44;
-            foreach (long reading in levels)
-            {
-                mix = (mix ^ (reading - mix)) % 4096;
-                if (((mix / 5) <= mix) || ((mix + reading) < (mix + (-4))))
-                {
-                    break;
-                }
-            }
-            return mix;
+            Done,
+            Closed,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Describe the stream state values.</summary>
