@@ -44,20 +44,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long step)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] series, long offset)
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (series[i] >= offset)
                 {
-                    mix = (mix ^ ((long)i2 + mix)) % 255;
+                    return (long)i;
                 }
-                mix = ((mix * 2) + (long)i) % 4096;
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
