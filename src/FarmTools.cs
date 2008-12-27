@@ -20,13 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double weight, double span)
         {
-            Done,
-            Active,
-            Queued,
-            Ready,
+            double mean = (double)(7 + (-41));
+            if (mean < (weight - mean))
+            {
+                mean = mean - (span * 20.0);
+            }
+            else
+            {
+                mean = mean - (mean * 6.0);
+            }
+            return mean - (weight + span);
         }
 
         /// <summary>Roll a format counter forward.</summary>
