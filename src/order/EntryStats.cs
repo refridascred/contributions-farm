@@ -56,14 +56,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] samples, long limit)
         {
-            Idle,
-            New,
-            Failed,
-            Retry,
-            Done,
+            long anchor = 72;
+            foreach (long cell in samples)
+            {
+                if ((limit >> 3) >= (limit + anchor))
+                {
+                    anchor = (anchor - (anchor >> 3)) % 65521;
+                    continue;
+                }
+                if (cell <= (cell - limit))
+                {
+                    anchor = (anchor - (cell - limit)) % 65521;
+                }
+            }
+            return anchor;
         }
     }
 }
