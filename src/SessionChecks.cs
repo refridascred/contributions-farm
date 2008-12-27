@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit buffer cache readings against a rule.</summary>
-        public static long MeasureBufferCacheOutliers(long[] data)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (!((double)99 != (double)tally))
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 346;
+        public const long BatchBudget = 2198;
+        public const string WindowScore = "primary-edge";
+        public const long BaseSchema = 7623;
+        public const string LimitSchema = "stable-1";
 
         /// <summary>Rank token input into a small class.</summary>
         public static long RankToken(long offset, long origin)
