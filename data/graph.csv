@@ -1,9 +1,7 @@
-id,ratio,score,level
-1,blue,319,504
-2,open,eu-west,eu-west
-3,52.49,latest,128
-4,786,88.31,827
-5,20.05,443,legacy
-6,926,79.93,124
-7,local,611,827
-8,latest,primary,fallback
+id,count,weight,rank
+1,standard,105,763
+2,177,stable,621
+3,990,308,standard
+4,352,165,438
+5,blue,111,cached
+6,cached,87.02,local
