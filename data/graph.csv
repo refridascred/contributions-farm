@@ -1,7 +1,7 @@
-id,weight,level,score,ratio
-1,fallback,59,524,671
-2,edge,latest,22.5,744
-3,42.75,469,green,746
-4,latest,cached,22.2,55
-5,909,primary,573,edge
-6,93.52,536,54.95,915
+id,label,score
+1,74.32,535
+2,edge,75.08
+3,114,486
+4,527,29.55
+5,89.19,eu-west
+6,stable,9.51
