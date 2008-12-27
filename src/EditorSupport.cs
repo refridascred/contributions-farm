@@ -42,15 +42,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of githubfarm report readings.</summary>
-        public static long TotalGithubfarmReport(long[] items)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] samples)
         {
-            long total = 465;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total * 2) + (reading + reading);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total % 4096;
+            return tally;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
