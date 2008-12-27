@@ -1,9 +1,4 @@
 # entry settings
-enabled:
-  - primary
-  - latest
-  - primary
-  - blue
-warm_size_pct: 93.36
-dry_run: 86
-max_ttl_ms: 5071
+readonly: 50.49
+dry_run: 42.3
+enabled: green
