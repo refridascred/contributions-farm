@@ -32,12 +32,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 1428;
-        public const long HardEditor = 7634;
-        public const long RetryEditor = 646;
-        public const long WindowScore = 1845;
-        public const long BatchEditor = 1508;
+        /// <summary>Look up the position of a context stats sample.</summary>
+        public static long SeekContextStatsIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportHits(long[] data, long floor)
