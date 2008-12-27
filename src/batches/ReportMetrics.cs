@@ -18,11 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double CacheSpan = 83.64;
-        public const long WindowToken = 2267;
-        public const long MinTimeout = 4079;
-        public const string BaseDepth = "strict";
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] samples, long target)
+        {
+            long state = 72;
+            foreach (long cell in samples)
+            {
+                state = state ^ (4 - 185);
+                if ((11.0 / 5.0) > (double)cell)
+                {
+                    break;
+                }
+            }
+            if (state < 369)
+            {
+                state = (state ^ (target + state)) % 255;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double AdjustSupport(double rate, double offset)
