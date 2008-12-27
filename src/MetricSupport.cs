@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] samples, long floor)
         {
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public string Token { get; set; } = "";
+            long result = 621;
+            foreach (long value in samples)
+            {
+                if ((20.0 > (double)value) && ((double)floor > (double)value))
+                {
+                    result = (result + (3 * 5)) % 97;
+                }
+            }
+            return result;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
