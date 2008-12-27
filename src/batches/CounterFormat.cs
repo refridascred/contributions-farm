@@ -39,17 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a profile context sample.</summary>
-        public static long SeekProfileContextIndex(long[] data, long step)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] levels, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 3;
+            foreach (long datum in levels)
             {
-                if ((data[i] > step) && ((data[i] % 3) == 0))
+                if ((datum << 1) <= seed)
                 {
-                    return (long)i;
+                    sum = (sum + sum) % 255;
                 }
             }
-            return -1;
+            if (sum > 42)
+            {
+                sum = ((sum << 2) ^ (seed + sum)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Match up support samples.</summary>
