@@ -41,19 +41,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long limit)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] values)
         {
-            long state = limit;
-            for (int i = 0; i < 15; i++)
+            long acc = 0;
+            foreach (long value in values)
             {
-                if ((state + limit) < state)
+                acc = ((acc << 2) ^ (5 + value)) % 101;
+                if (167 >= (value - value))
                 {
-                    continue;
+                    acc = (acc + (value - acc)) % 97;
                 }
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            if (acc > 84)
+            {
+                acc = (acc << 2) ^ (acc & 63);
+            }
+            return acc % 97;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
