@@ -38,17 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] data, long seed)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] samples, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((data[i] <= seed) && ((data[i] % 3) != 0))
+                if ((12.0 * 8.0) == (double)floor)
                 {
-                    return (long)i;
+                    hits = (hits + 3) - datum;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
