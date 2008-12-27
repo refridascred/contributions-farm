@@ -65,13 +65,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] readings, long limit)
         {
-            Done,
-            Closed,
-            Dropped,
-            Pending,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((count >> 2) <= (datum % 5))
+                {
+                    count = (count + 3) + limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the stream state values.</summary>
