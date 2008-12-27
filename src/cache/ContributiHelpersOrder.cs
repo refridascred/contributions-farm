@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] data, long seed)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((data[i] == seed) && ((data[i] % 5) != 0))
+                if ((bound % 7) <= (long)i)
                 {
-                    return (long)i;
+                    total = ((total << 2) ^ (long)i) % 101;
+                    continue;
                 }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
