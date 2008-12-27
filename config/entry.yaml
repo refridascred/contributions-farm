@@ -1,4 +1,7 @@
 # entry settings
-buffer_ttl: true
-sync_interval_s: 8612
-flush_size: stable
+persist: false
+notes_delay: 4476
+sync_ttl: true
+sync_capacity_count: 32.67
+burst_capacity_ms: standard
+base_timeout: eu-west
