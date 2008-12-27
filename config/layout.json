@@ -1,8 +1,13 @@
 {
-  "readonly": "strict",
-  "warm_window_count": 662,
-  "cache_ttl": 65,
-  "strict": "legacy",
-  "dry_run": "staging",
-  "verbose": "stable"
+  "strict": "cached",
+  "base_threshold_pct": ["open", "primary", "eu-west", "legacy"],
+  "base_ratio_pct": 30,
+  "counter_depth": {
+    "batch_size": "eu-west",
+    "warm_delay": "open",
+    "base_window_count": 6250,
+    "context_size": 1024,
+    "cache_threshold_s": true,
+    "layout_capacity": 39.68
+  }
 }
