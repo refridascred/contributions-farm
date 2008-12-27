@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Stale,
-            Retry,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double IdleEditor = 64.21;
+        public const string BaseEditor = "latest";
+        public const long SoftLevel = 3849;
+        public const long RetryEditor = 8695;
 
         /// <summary>Hold a already record.</summary>
         public sealed class AlreadyRecord
