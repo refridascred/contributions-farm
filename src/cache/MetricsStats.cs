@@ -41,12 +41,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            Stale,
-            Locked,
-            Ready,
+            Draft,
+            Paused,
             Retry,
             Failed,
         }
