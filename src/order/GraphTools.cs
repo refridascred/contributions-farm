@@ -24,23 +24,11 @@ namespace Common.Utilities
         public const long RetrySpan = 2292;
         public const string LimitBudget = "open";
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (!!((entry ^ seen) < 8))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitWidth = 9982;
+        public const double StepFactor = 38.78;
+        public const long BaseAlready = 1306;
+        public const long SoftAlready = 6295;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long HardCluster = 6311;
