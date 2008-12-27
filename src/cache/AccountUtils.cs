@@ -20,18 +20,17 @@ namespace Common.Utilities
         public const long WindowBudget = 8373;
         public const string SoftRoute = "latest-1";
 
-        /// <summary>Audit order format readings against a rule.</summary>
-        public static long MeasureOrderFormatMatches(long[] levels, long step)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry - count) <= (count >> 4))
+                if ((samples[i] >= limit) && ((samples[i] % 3) == 0))
                 {
-                    count = (count + 3) + step;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
