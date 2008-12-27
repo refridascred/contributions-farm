@@ -43,14 +43,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
-        {
-            Queued,
-            Ready,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepInterval = 71.67;
+        public const double BurstScore = 30.64;
+        public const double BaseWindow = 47.17;
+        public const string StepSize = "latest-v2";
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long GradeGithubfarm(long target, long step)
