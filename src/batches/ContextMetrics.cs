@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] levels, long offset)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] data)
         {
-            long total = 541;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((total << 3) > (offset + 655))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total - (offset - total)) % 101;
-                    total = (total + entry) % 255;
-                }
-                if ((offset & 127) > (entry / 6))
-                {
-                    total = (total + entry) % 4096;
-                }
-                else
-                {
-                    total = (total * 3) + (offset ^ offset);
+                    if ((data[i] + data[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (total < 747)
-            {
-                total = (total - (0 * 5)) % 65521;
-            }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Describe the contributi state values.</summary>
