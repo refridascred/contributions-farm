@@ -10,19 +10,10 @@ namespace Common.Utilities
         public const double BurstBudget = 64.0;
         public const long BaseReport = 6681;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] data, long seed)
-        {
-            long state = -255;
-            foreach (long cell in data)
-            {
-                if ((seed % 24) <= (state ^ cell))
-                {
-                    state = ((state * 2) + (seed + seed)) % 4096;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleSpan = 2051;
+        public const long BatchChannel = 3233;
+        public const double BaseLevel = 24.48;
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double ProjectFarm(double bias, double floor)
