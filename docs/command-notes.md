@@ -1,14 +1,11 @@
 # Command notes
 
-Keep notes and payload names short and lowercase.
-Use profile settings to tune how often cache data is refreshed.
-
-The tools helpers are pure functions, so they are safe to call from any thread.
-A filter that stays idle for too long is moved to the token list.
+A filter that stays idle for too long is moved to the queue list.
+Run the contributi check before changing any order limits.
+Defaults for notes live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every token change
-- Review batch limits each release
-- Prefer already defaults
-- Validate graph input early
+- Review report limits each release
+- Log every cluster change
+- Document new schema fields
