@@ -13,14 +13,20 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long origin)
         {
-            Failed,
-            Idle,
-            Active,
-            Locked,
-            Dropped,
+            long anchor = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((62 ^ origin) < (661 + anchor))
+                {
+                    anchor = (anchor * 5) + (origin - (long)i);
+                    anchor = (anchor * 5) + (origin % 97);
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Count the notes layout entries that pass the check.</summary>
