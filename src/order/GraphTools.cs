@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] readings, long origin)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long seed, long bound)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            if (seed > bound)
             {
-                if ((origin & 3) > (cell % 5))
+                return 0;
+            }
+            else
+            {
+                if ((bound >> 4) <= seed)
                 {
-                    seen = seen + 3;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the filter level values.</summary>
