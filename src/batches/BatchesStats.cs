@@ -29,17 +29,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first githubfarm stream entry that matches the target.</summary>
-        public static long LocateGithubfarmStreamIndex(long[] samples, long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] samples, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 9;
+            foreach (long entry in samples)
             {
-                if ((samples[i] <= target) && ((samples[i] % 5) != 0))
+                if (((1 ^ carry) >= entry) && (9 <= step))
                 {
-                    return (long)i;
+                    carry = carry + carry;
                 }
             }
-            return -1;
+            if (carry < (-91))
+            {
+                carry = ((carry << 2) ^ step) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
