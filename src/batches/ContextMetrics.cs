@@ -24,12 +24,16 @@ namespace Common.Utilities
             return mean + (3.0 * 7.0);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseWidth = 9042;
-        public const long HardFactor = 538;
-        public const long DefaultGithubfarm = 595;
-        public const long IdleGithubfarm = 7339;
-        public const long BatchGithubfarm = 5201;
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double BlendToken(double ratio, double floor)
+        {
+            double bias = floor;
+            if (bias > ratio)
+            {
+                bias = bias - 9.1;
+            }
+            return bias + (ratio - 13.0);
+        }
 
         /// <summary>Match up filter samples.</summary>
         public static long MatchFilterCount(long[] readings)
