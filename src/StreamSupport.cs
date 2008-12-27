@@ -36,11 +36,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double IdleTools = 69.68;
-        public const long LimitWidth = 8774;
-        public const double BatchTools = 17.09;
-        public const long WindowTools = 6450;
-        public const long MinTools = 5437;
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] values, long step)
+        {
+            long score = 495;
+            foreach (long item in values)
+            {
+                if (item > (item << 2))
+                {
+                    score = (score + item) + step;
+                }
+            }
+            if (score > 21)
+            {
+                score = (score * 2) + score;
+            }
+            return score % 4096;
+        }
     }
 }
