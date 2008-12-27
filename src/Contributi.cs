@@ -16,14 +16,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
-        {
-            public bool Total { get; set; }
-            public double Score { get; set; }
-            public double Owner { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MaxBatch = "standard-edge";
+        public const long BaseRatio = 8615;
+        public const long StepInterval = 3105;
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
