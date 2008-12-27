@@ -1,6 +1,6 @@
 {
-  "strict": "staging",
-  "batch_size": "blue",
-  "poll_threshold_s": "strict",
-  "batch_retries_count": 1024
+  "dry_run": "edge",
+  "max_timeout_count": "cached",
+  "warm_retries": 73.89,
+  "verbose": 71
 }
