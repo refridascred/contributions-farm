@@ -1,15 +1,15 @@
 # Command notes
 
-Defaults for farm live in the config folder and can be overridden per environment.
-Use token settings to tune how often queue data is refreshed.
-A report that stays idle for too long is moved to the command list.
+The metrics report groups every metric by command.
+When a filter fails, the queue handler retries a few times before giving up.
 
-Run the record check before changing any graph limits.
-Use channel settings to tune how often metrics data is refreshed.
+Use token settings to tune how often cluster data is refreshed.
+Run the queue check before changing any farm limits.
+Run the session check before changing any counter limits.
 
 ## Guidelines
 
+- Log every githubfarm change
+- Keep commits values small
 - Prefer cache defaults
-- Keep layout values small
-- Review record limits each release
-- Log every cache change
+- Review route limits each release
