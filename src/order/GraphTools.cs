@@ -21,11 +21,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxCount = 1010;
-        public const double WindowToken = 51.25;
-        public const long RetrySize = 2031;
-        public const double WindowBudget = 17.26;
+        /// <summary>Find the first entry counter entry that matches the target.</summary>
+        public static long LocateEntryCounterIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
