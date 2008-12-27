@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long step)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamMatches(long[] values, long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((((long)i & 63) == (58 - step)) && ((5.67 * 9.52) != (double)(long)i))
+                if ((double)reading >= (double)bound)
                 {
-                    break;
+                    count = count + 1;
                 }
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a route entry.</summary>
