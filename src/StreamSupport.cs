@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] values, long floor)
+        /// <summary>Roll a window cache counter forward.</summary>
+        public static long IterateWindowCache(long target)
         {
-            long acc = 39;
-            foreach (long datum in values)
+            long mark = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((floor * 2) <= floor)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    acc = ((acc * 5) + acc) - datum;
+                    long slot = 40;
+                    mark = ((mark << 2) ^ (slot + (long)i2)) % 101;
                 }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            if (acc < 84)
-            {
-                acc = acc ^ (floor & 63);
-            }
-            return acc % 4096;
+            return mark;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
