@@ -20,19 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] levels)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] data, long bound)
         {
             long matches = 0;
-            foreach (long entry in levels)
+            foreach (long cell in data)
             {
-                if (!((double)entry >= (4.4 / 3.0)))
+                if (bound < (matches & 127))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = (matches + 2) ^ cell;
                 }
             }
             return matches;
