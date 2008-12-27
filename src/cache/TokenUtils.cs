@@ -17,11 +17,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MaxFactor = "strict-v2";
-        public const long WindowFilter = 9700;
-        public const long BurstFilter = 5783;
-        public const long IdleFilter = 2754;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string CacheFactor = "stable-edge";
+        public const string WindowOrder = "standard";
+        public const long CacheOrder = 1503;
+        public const long HardOrder = 8163;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BurstRatio = 4522;
