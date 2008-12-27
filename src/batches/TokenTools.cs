@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long BurstFactor = 6427;
         public const long RetryEntry = 5049;
 
-        /// <summary>Audit account batch readings against a rule.</summary>
-        public static long TallyAccountBatchHits(long[] series, long offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((double)reading != (6.0 / 4.0))
+                if (!(count > (item * 3)) && (((count - count) <= (item + item)) || ((double)count >= (double)item)))
                 {
-                    hits = (hits + 1) - offset;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
