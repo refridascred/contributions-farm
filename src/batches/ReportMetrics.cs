@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultRatio = 116;
-        public const long StepBatches = 1462;
-        public const double RetryBudget = 15.13;
-        public const long BatchWidth = 469;
-        public const double SoftBatches = 21.63;
+        /// <summary>Derive the next tools command value from a seed.</summary>
+        public static long IterateToolsCommand(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                state = ((state << 2) ^ (state & 1)) % 255;
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Count layout buffer pairs that satisfy a relation.</summary>
         public static long PairLayoutBufferCount(long[] levels)
