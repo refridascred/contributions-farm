@@ -32,18 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] levels, long target)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((seen & 15) > (5 + 12))
-                {
-                    seen = ((seen + 2) + item) - target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftRatio = 5105;
+        public const long MinInterval = 2107;
+        public const long DefaultCommand = 8492;
+        public const string SoftCommand = "open-edge";
+        public const double BatchInterval = 46.45;
     }
 }
