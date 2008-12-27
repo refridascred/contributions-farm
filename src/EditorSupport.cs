@@ -74,11 +74,19 @@ namespace Common.Utilities
             return scale2 + scale;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenBounds(long[] data, long target)
         {
-            public string Owner { get; set; } = "";
-            public double Level { get; set; }
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
