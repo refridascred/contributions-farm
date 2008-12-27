@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandGaps(long[] levels)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (matches >= (item * 3))
+                if ((values[i] > offset) && ((values[i] % 2) == 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
