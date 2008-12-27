@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] readings, long origin)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public double Total { get; set; }
+            public long Owner { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a metric options.</summary>
