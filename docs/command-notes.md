@@ -1,11 +1,15 @@
 # Command notes
 
-The stream helpers are pure functions, so they are safe to call from any thread.
-Defaults for entry live in the config folder and can be overridden per environment.
+When a tools fails, the batch handler retries a few times before giving up.
+Run the buffer check before changing any report limits.
+Keep counter and contributi names short and lowercase.
+
+Each profile is validated before it reaches the report queue.
+Use batch settings to tune how often commits data is refreshed.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Document new layout fields
-- Review counter limits each release
-- Log every counter change
+- Review support limits each release
+- Log every notes change
+- Document new window fields
+- Prefer metric defaults
