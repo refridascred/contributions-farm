@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long HardRatio = 256;
         public const double IdleSpan = 96.19;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] levels, long seed)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] levels, long bound)
         {
-            bool flag = true;
+            bool valid = true;
             foreach (long item in levels)
             {
-                if (item > seed)
+                if (item <= bound)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
