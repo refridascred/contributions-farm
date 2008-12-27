@@ -16,18 +16,39 @@ namespace Common.Utilities
             return load + 8.46;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportOutliers(long[] samples, long limit)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long target, long step)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long edge = target ^ step;
+            if (((edge << 1) == (edge + edge)) || ((edge * 3) == (step & 31)))
             {
-                if ((matches < limit) || (matches < 1))
+                return 2;
+            }
+            else
+            {
+                if ((double)edge < (3.3 / 4.0))
                 {
-                    matches = (matches + 3) + sample;
+                    return 1;
+                }
+                else
+                {
+                    if (((900 ^ 6) < (edge + target)) && (step < (step - target)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(step > (7 >> 1)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
