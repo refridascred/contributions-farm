@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Scale a queue stats figure with a bias.</summary>
-        public static double AdjustQueueStats(double rate, double bias)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] levels, long floor)
         {
-            double bias2 = (bias / 5.0) / 9.0;
-            return (bias2 + 3.0) + rate;
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample <= (matches + sample)) || ((8.9 - 14.0) != (double)floor))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a support reading by value.</summary>
