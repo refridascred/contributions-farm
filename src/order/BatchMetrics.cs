@@ -25,32 +25,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long floor, long offset)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long bound = floor - offset;
-            if ((offset + bound) != (floor * 4))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((bound + bound) <= (bound * 2)) && (bound < (floor % 100)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((88 >= offset) || ((offset + floor) < (bound & 127)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
