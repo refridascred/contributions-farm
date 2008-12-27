@@ -18,18 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] samples)
+        /// <summary>Roll a graph buffer counter forward.</summary>
+        public static long SeriesGraphBuffer(long target)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long carry = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((4.9 - 7.5) > (double)cell)
+                bool flag = ((40 >> 3) >= (target >> 5)) && (target < (25 % 64));
+                if (flag)
                 {
-                    tally = tally + 1;
+                    flag = target <= ((long)i % 16);
+                    break;
                 }
+                else
+                {
+                    carry = ((carry * 5) + 1) % 4096;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Fold a list of session readings.</summary>
