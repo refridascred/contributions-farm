@@ -72,19 +72,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long target)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long carry = target;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    carry = (((carry << 2) ^ (carry * 4)) % 101) - (long)i2;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            public string Token { get; set; } = "";
+            public double Region { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
