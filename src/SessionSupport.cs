@@ -22,23 +22,21 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double gain, double bias)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] readings)
         {
-            double gain2 = (bias / 7.0) - bias;
-            if (gain2 <= (gain2 + bias))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain2 = gain2 - (gain2 * 15.0);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                gain2 = gain2 - (gain / 9.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 - gain2) + (double)(long)i;
-            }
-            return gain2 + (gain2 - gain2);
+            return tally;
         }
     }
 }
