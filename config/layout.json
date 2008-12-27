@@ -1,5 +1,6 @@
 {
-  "poll_limit": "local",
-  "batch_delay": 2,
-  "batch_retries_count": 83
+  "audit": 89.12,
+  "flush_ratio_s": 100,
+  "dry_run": 29,
+  "base_timeout_s": true
 }
