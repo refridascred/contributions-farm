@@ -1,6 +1,12 @@
 {
-  "context_interval": "green",
-  "sync_interval_pct": 30,
-  "hard_size": "eu-west",
-  "batch_size": true
+  "base_window": {
+    "audit": false,
+    "cache_retries_ms": ["standard", "legacy", "stable"],
+    "farm_ttl": 100,
+    "dry_run": 30
+  },
+  "readonly": 1986,
+  "batch_limit_count": [293, 229],
+  "base_timeout_s": 10.7,
+  "enabled": true
 }
