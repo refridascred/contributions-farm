@@ -22,19 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderHits(long[] values, long seed)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (!((1.9 * 2.0) <= (double)cell))
-                {
-                    matches = (matches + 3) + seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string WindowStream = "cached-v2";
+        public const long IdleInterval = 2273;
+        public const string BurstStream = "latest-edge";
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool GuardMetricLimits(long[] samples, long step)
