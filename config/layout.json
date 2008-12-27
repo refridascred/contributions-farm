@@ -1,12 +1,6 @@
 {
-  "base_depth": {
-    "payload_depth": "eu-west",
-    "warm_depth": "stable",
-    "idle_limit_s": "staging",
-    "entry_capacity": 85.02,
-    "base_threshold": ["eu-west", "fallback", "legacy"]
-  },
-  "retry_size": ["stable", "blue", "primary"],
-  "hard_ttl_count": [262, 189, 324, 424],
-  "cache_window": [213, 146, 412]
+  "flush_retries_s": 337,
+  "hard_size": false,
+  "readonly": "open",
+  "batch_ttl_s": false
 }
