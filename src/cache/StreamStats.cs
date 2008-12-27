@@ -57,20 +57,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long bound)
+        /// <summary>Measure how many entry profile samples are out of range.</summary>
+        public static long AuditEntryProfileMatches(long[] values)
         {
-            long mark = bound;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (!!((mark >> 2) == (mark ^ mark)))
+                if ((count / 4) > datum)
                 {
-                    mark = (mark * 2) + (bound + 95);
+                    count = count + 2;
                 }
-                mark = mark - (bound + (long)i);
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return count;
         }
     }
 }
