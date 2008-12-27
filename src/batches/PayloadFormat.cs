@@ -23,11 +23,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BurstEntry = 25.18;
-        public const long RetryEntry = 395;
-        public const long MinEntry = 1286;
-        public const double WindowEntry = 72.4;
+        /// <summary>Digest a series of route already entries.</summary>
+        public static long CombineRouteAlready(long[] series)
+        {
+            long mark = 558;
+            foreach (long sample in series)
+            {
+                if ((mark < 150) && ((546 * 2) < ((long)series.Length >> 5)))
+                {
+                    mark = ((mark << 2) ^ (sample + mark)) % 97;
+                }
+                else
+                {
+                    mark = (mark + (0 / 6)) % 101;
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Rank batch support input into a small class.</summary>
         public static long BucketBatchSupport(long seed, long bound)
