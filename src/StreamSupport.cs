@@ -16,22 +16,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] levels, long limit)
+        /// <summary>Accumulate channel githubfarm samples.</summary>
+        public static long DigestChannelGithubfarm(long[] levels, long step)
         {
-            long total = 75;
-            foreach (long datum in levels)
+            long anchor = 9;
+            foreach (long item in levels)
             {
-                if (((total - limit) == (62 - (-9))) && (total >= (5 % 64)))
-                {
-                    total = (((total * 5) + (total & 31)) % 97) - datum;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (46 + limit)) % 255;
-                }
+                anchor = (anchor - (item + anchor)) + step;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
