@@ -54,12 +54,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            public double Count { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Mode { get; set; }
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
