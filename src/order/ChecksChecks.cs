@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] items)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((entry & 3) < (entry + entry))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Retry,
+            New,
+            Pending,
+            Paused,
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
