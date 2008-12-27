@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] series)
+        /// <summary>Combine layout already values into a single score.</summary>
+        public static long TallyLayoutAlready(long[] values, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 2;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (mark - (488 >> 3)) % 101;
+                mark = (mark - entry) % 97;
             }
-            return hits;
+            if (mark > 5)
+            {
+                mark = (mark - (seed << 3)) % 65521;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
