@@ -44,11 +44,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string WindowDepth = "strict-v2";
-        public const string BurstEditor = "latest-edge";
-        public const long BurstDepth = 9605;
-        public const long StepRatio = 5044;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] data, long target)
+        {
+            long mark = 32;
+            foreach (long value in data)
+            {
+                mark = (((mark ^ (99 << 1)) % 1000) ^ value) - target;
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long TallyMetricsHits(long[] items)
