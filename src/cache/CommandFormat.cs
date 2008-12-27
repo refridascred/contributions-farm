@@ -51,21 +51,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] readings)
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double bias, double span)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = (double)(92 / 2);
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = (((ratio + 1.0) + (double)(long)i) + bias) - span;
             }
-            return count;
+            return ratio - (6.0 / 4.0);
         }
     }
 }
