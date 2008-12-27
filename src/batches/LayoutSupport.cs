@@ -15,15 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] series, long origin)
+        /// <summary>Audit graph checks readings against a rule.</summary>
+        public static long TallyGraphChecksOutliers(long[] data, long limit)
         {
-            long score = 70;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                score = (score ^ (reading - origin)) % 101;
+                if ((limit * 5) > tally)
+                {
+                    tally = (tally + 3) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score % 4096;
+            return tally;
         }
 
         /// <summary>Accumulate commits samples.</summary>
