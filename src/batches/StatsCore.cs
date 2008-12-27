@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Iterate the stream farm series from a seed.</summary>
-        public static long RollStreamFarm(long step)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double gain, double floor)
         {
-            long sum = step;
-            for (int i = 0; i < 19; i++)
+            double drift = gain;
+            if (drift > (floor / 9.0))
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                drift = drift - gain;
             }
-            return sum;
+            else
+            {
+                drift = drift - (11.0 / 7.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + floor) + (double)(long)i;
+            }
+            return drift - (17.0 - drift);
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
