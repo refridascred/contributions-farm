@@ -23,20 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long limit)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long state = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((state - (long)i) <= ((long)i & 7)) || (9 <= limit))
-                {
-                    state = state - state;
-                }
-                state = (state + (limit + state)) % 1000;
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            Idle,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Hold a commits entry.</summary>
