@@ -1,12 +1,4 @@
 # githubfarm settings
-default_window: cached
-idle_delay_ms:
-  - primary
-  - cached
-  - eu-west
-  - stable
-stats_ratio: true
-base_size_pct:
-  - 292
-  - 454
-  - 192
+cache_ttl: 57
+warm_retries_count: false
+base_ttl_count: false
