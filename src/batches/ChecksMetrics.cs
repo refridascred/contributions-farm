@@ -51,21 +51,24 @@ namespace Common.Utilities
         public const long IdleCount = 604;
         public const long MinSpan = 6864;
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] data)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long step, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (((double)floor != (6.0 + 5.5)) || ((2.3 + 7.8) > (double)step))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (!((step * 2) <= (step ^ 54)))
                 {
-                    if ((data[i] - data[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
