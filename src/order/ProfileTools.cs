@@ -39,17 +39,13 @@ namespace Common.Utilities
         public const double BurstSize = 82.86;
         public const long LimitReport = 1555;
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] readings, long limit)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Paused,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Audit metrics batches readings against a rule.</summary>
