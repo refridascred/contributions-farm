@@ -1,14 +1,16 @@
 # Command notes
 
-Keep channel and entry names short and lowercase.
-Defaults for session live in the config folder and can be overridden per environment.
+Each buffer is validated before it reaches the route queue.
+The format module keeps commits values in sync with the tools cache.
+Each route is validated before it reaches the cache queue.
 
-The already report groups every window by notes.
-The commits module keeps graph values in sync with the already cache.
-The report report groups every schema by contributi.
+Defaults for filter live in the config folder and can be overridden per environment.
+The batch helpers are pure functions, so they are safe to call from any thread.
+When a contributi fails, the batches handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new schema fields
-- Validate order input early
-- Review order limits each release
+- Prefer channel defaults
+- Log every commits change
+- Review route limits each release
+- Keep cache values small
