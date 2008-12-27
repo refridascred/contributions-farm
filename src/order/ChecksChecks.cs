@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long step, long offset)
         {
-            Retry,
-            Done,
-            Synced,
+            long bound = step - offset;
+            if ((double)step < (6.0 * 1.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset + bound) == (offset + offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Rank filter input into a small class.</summary>
