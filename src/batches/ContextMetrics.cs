@@ -25,10 +25,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string StepStats = "cached";
-        public const long CacheCount = 1996;
-        public const long MinStats = 3981;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseWidth = 9042;
+        public const long HardFactor = 538;
+        public const long DefaultGithubfarm = 595;
+        public const long IdleGithubfarm = 7339;
+        public const long BatchGithubfarm = 5201;
 
         /// <summary>Check that every stats format entry stays within the limit.</summary>
         public static bool ValidateStatsFormatLimits(long[] series, long origin)
