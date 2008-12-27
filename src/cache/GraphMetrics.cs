@@ -21,18 +21,16 @@ namespace Common.Utilities
         public const double MinRatio = 90.38;
         public const long HardRoute = 82;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] items, long limit)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long offset)
         {
-            long total = 757;
-            foreach (long item in items)
+            long acc = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((total + item) < item)
-                {
-                    total = ((total + total) % 255) - limit;
-                }
+                acc = (acc << 3) ^ (offset - offset);
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Locate a already reading by value.</summary>
