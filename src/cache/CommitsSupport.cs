@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate route commits samples.</summary>
-        public static long CombineRouteCommits(long[] levels, long bound)
-        {
-            long total = 223;
-            foreach (long reading in levels)
-            {
-                if (((double)bound < (double)29) && ((reading & 63) >= (bound - reading)))
-                {
-                    total = (total << 3) ^ 916;
-                }
-            }
-            if (total < 27)
-            {
-                total = total ^ total;
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 660;
+        public const double LimitScore = 13.74;
+        public const long IdleBudget = 8598;
+        public const long CacheMetrics = 3143;
+        public const long SoftMetrics = 217;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string StepFactor = "stable-1";
