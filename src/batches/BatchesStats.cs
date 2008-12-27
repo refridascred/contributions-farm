@@ -30,22 +30,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] samples, long step)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long limit)
         {
-            long carry = 9;
-            foreach (long entry in samples)
+            long result = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (((1 ^ carry) >= entry) && (9 <= step))
-                {
-                    carry = carry + carry;
-                }
+                result = result - limit;
+                result = ((result * 3) + (long)i) % 101;
             }
-            if (carry < (-91))
-            {
-                carry = ((carry << 2) ^ step) % 97;
-            }
-            return carry;
+            return result;
         }
 
         /// <summary>Fold a list of account readings.</summary>
