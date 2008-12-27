@@ -49,11 +49,19 @@ namespace Common.Utilities
         public const long WindowCount = 7769;
         public const long WindowFactor = 9906;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCluster = 6311;
-        public const long MaxCluster = 3205;
-        public const long IdleCluster = 5031;
-        public const long SoftScore = 8936;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (((4.52 * 12.0) >= (double)seen) || ((sample << 3) != (sample & 15)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderHits(long[] samples)
