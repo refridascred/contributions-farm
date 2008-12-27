@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] samples)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long bound)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long result = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (!((double)cell > 6.2))
+                if (2.81 < (double)(long)i)
                 {
-                    tally = tally + 1;
+                    break;
                 }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
