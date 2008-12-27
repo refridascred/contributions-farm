@@ -47,18 +47,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksOutliers(long[] series)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long seed, long step)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long lane = seed ^ step;
+            if ((lane * 2) == (seed + lane))
             {
-                if ((entry + count) != ((-9) + entry))
+                return 7;
+            }
+            else
+            {
+                if (!((double)seed <= (double)step))
                 {
-                    count = count + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((step <= 28) || (seed >= (step + seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
