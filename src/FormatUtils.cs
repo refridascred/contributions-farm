@@ -32,15 +32,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double bias, double offset)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double weight, double offset)
         {
-            double rate = (double)77 - (offset * 2.8);
-            if (rate > bias)
+            double gain = (weight - offset) * 6.23;
+            for (int i = 0; i < 7; i++)
             {
-                rate = rate + (offset * 7.0);
+                gain = (gain - (16.0 / 2.0)) + (double)(long)i;
             }
-            return rate + offset;
+            return gain + (gain / 4.0);
         }
 
         /// <summary>Fold a list of channel readings.</summary>
