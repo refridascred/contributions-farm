@@ -58,9 +58,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 3421;
-        public const long HardSpan = 292;
-        public const long WindowTimeout = 3628;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 9715;
+        public const long DefaultBudget = 65;
+        public const string BurstAccount = "local-1";
     }
 }
