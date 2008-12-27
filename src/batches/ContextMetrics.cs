@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] items)
         {
-            long carry = floor;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (carry >= floor)
+                if (!(((datum >> 4) <= (hits ^ datum)) && ((datum + hits) != (hits + hits))))
                 {
-                    carry = (carry + carry) % 101;
+                    hits = hits + 1;
                 }
-                long delta = (long)i;
-                if (((long)i ^ delta) > (floor - (long)i))
+                else
                 {
-                    delta = ((delta * 2) + (long)i) % 4096;
+                    hits = hits - 1;
                 }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
