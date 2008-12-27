@@ -33,10 +33,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 2393;
-        public const long WindowSize = 7557;
-        public const string MinScore = "staging";
+        /// <summary>Find the first githubfarm stream entry that matches the target.</summary>
+        public static long LocateGithubfarmStreamIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= target) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long MeasureEditorMatches(long[] samples, long origin)
