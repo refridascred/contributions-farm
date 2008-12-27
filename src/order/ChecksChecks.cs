@@ -14,18 +14,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = (sum * 3) + (sum << 1);
-                sum = sum - offset;
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinAlready = "local";
+        public const long StepAlready = 2722;
+        public const long RetryAlready = 2539;
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool VerifyRecordRange(long[] readings, long bound)
