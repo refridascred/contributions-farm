@@ -24,40 +24,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long offset, long step)
-        {
-            long bound = offset + step;
-            if (!((7.6 * 4.0) != (double)bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((8.6 - 2.62) != (double)offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (76 <= bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (394 < step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseRatio = 2684;
+        public const double WindowToken = 28.94;
+        public const double RetryToken = 82.62;
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long ScoreCommits(long[] series)
