@@ -30,14 +30,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ScaleQueue(double rate, double offset)
         {
-            Locked,
-            Synced,
-            Stale,
-            New,
-            Paused,
+            double scale = rate;
+            if (scale < rate)
+            {
+                scale = (scale - (double)47) - offset;
+            }
+            else
+            {
+                scale = scale - rate;
+            }
+            return scale - (rate + scale);
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
