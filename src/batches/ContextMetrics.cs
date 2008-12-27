@@ -18,19 +18,19 @@ namespace Common.Utilities
         public const long CacheCount = 1996;
         public const long MinStats = 3981;
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheRange(long[] samples, long seed)
+        /// <summary>Check that every stats format entry stays within the limit.</summary>
+        public static bool ValidateStatsFormatLimits(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if (datum >= seed)
+                if (entry >= origin)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
