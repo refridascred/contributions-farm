@@ -12,19 +12,16 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] series, long limit)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long seed)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long anchor = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (entry > limit)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = (anchor ^ (anchor << 3)) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Hold a session entry.</summary>
