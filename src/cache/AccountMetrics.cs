@@ -37,13 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            Synced,
-            Active,
-            Stale,
-            New,
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate support batch samples.</summary>
