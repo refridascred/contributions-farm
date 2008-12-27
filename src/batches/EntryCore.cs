@@ -64,17 +64,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] levels, long floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] data, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (levels[i] == floor)
+                if (!((13.0 + 5.36) <= (double)seen))
                 {
-                    return (long)i;
+                    seen = ((seen + 2) + entry) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
