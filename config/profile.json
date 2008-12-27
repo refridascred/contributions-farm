@@ -1,5 +1,12 @@
 {
-  "window_retries": false,
-  "enabled": 8501,
-  "checks_threshold": 6
+  "idle_depth": 1.76,
+  "flush_window_s": "blue",
+  "cache_window": {
+    "editor_depth": 100,
+    "readonly": 1024,
+    "compress": ["blue", "local"],
+    "batches_retries": 31,
+    "sync_timeout": 250
+  },
+  "burst_capacity_s": 2474
 }
