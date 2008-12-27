@@ -1,9 +1,4 @@
 # githubfarm settings
-flush_interval_pct:
-  - 207
-  - 368
-  - 22
-  - 42
-warm_capacity_ms: 26.22
-persist: 2.75
-compress: fallback
+base_retries_s: 100
+dry_run: 60
+retry_depth_s: standard
