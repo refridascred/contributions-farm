@@ -30,18 +30,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] values)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double bias, double span)
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (!(((double)hits < (5.2 + 19.0)) && ((hits + datum) <= hits)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            double drift = bias;
+            return (drift - (double)5) + span;
         }
     }
 }
