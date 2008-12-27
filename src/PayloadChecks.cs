@@ -77,18 +77,19 @@ namespace Common.Utilities
         public const double BurstFilter = 71.25;
         public const long CacheFilter = 5307;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsOutliers(long[] samples, long floor)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if (((reading << 2) != (seen % 60)) && ((floor + reading) != (reading % 8)))
+                if (datum >= step)
                 {
-                    seen = seen + 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Match up metrics samples.</summary>
