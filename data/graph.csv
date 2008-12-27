@@ -1,7 +1,7 @@
-id,count,weight,rank
-1,standard,105,763
-2,177,stable,621
-3,990,308,standard
-4,352,165,438
-5,blue,111,cached
-6,cached,87.02,local
+id,weight,level,score,ratio
+1,fallback,59,524,671
+2,edge,latest,22.5,744
+3,42.75,469,green,746
+4,latest,cached,22.2,55
+5,909,primary,573,edge
+6,93.52,536,54.95,915
