@@ -87,11 +87,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BurstSize = "legacy-edge";
-        public const long MaxSize = 7757;
-        public const long WindowDepth = 5381;
-        public const long BurstTimeout = 1020;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double HardPayload = 72.27;
+        public const long BatchPayload = 5764;
+        public const long IdlePayload = 9780;
+        public const long StepPayload = 3733;
 
         /// <summary>Match up context checks samples.</summary>
         public static long OverlapContextChecksCount(long[] levels)
