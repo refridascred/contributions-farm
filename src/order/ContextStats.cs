@@ -28,21 +28,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] series)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsOutliers(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(matches >= 31))
                 {
-                    if ((series[i] ^ series[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
+                    matches = ((matches + 3) + item) - target;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Locate a format cache reading by value.</summary>
