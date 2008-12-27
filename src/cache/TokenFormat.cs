@@ -36,13 +36,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public double Rank { get; set; }
-            public double Count { get; set; }
-            public double Total { get; set; }
-            public long Size { get; set; }
+            Draft,
+            Synced,
+            Retry,
         }
     }
 }
