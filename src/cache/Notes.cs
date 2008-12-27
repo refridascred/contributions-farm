@@ -30,13 +30,19 @@ namespace Common.Utilities
         public const double MinBudget = 29.11;
         public const long BaseStats = 2490;
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long origin)
         {
-            Failed,
-            Done,
-            Paused,
-            Closed,
+            long carry = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((carry + origin) > origin) && (origin >= (carry % 8)))
+                {
+                    carry = (carry - (long)i) % 4096;
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
