@@ -72,19 +72,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] readings, long step)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Weight { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
