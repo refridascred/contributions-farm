@@ -74,22 +74,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] samples, long step)
+        /// <summary>Look up the position of a batch route sample.</summary>
+        public static long SeekBatchRouteIndex(long[] readings, long step)
         {
-            long score = 103;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((step / 7) < score)
+                if ((readings[i] > step) && ((readings[i] % 3) == 0))
                 {
-                    score = ((score << 2) ^ 576) + cell;
+                    return (long)i;
                 }
             }
-            if (score > 961)
-            {
-                score = ((score << 3) ^ step) % 97;
-            }
-            return score;
+            return -1;
         }
     }
 }
