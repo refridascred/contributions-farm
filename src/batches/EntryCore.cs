@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long seed)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] values)
         {
-            long result = seed;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                result = (result + (669 % 3)) % 1000;
-                result = ((result * 2) + (long)i) % 97;
+                if (((0.26 / 4.0) < (double)sample) && (((8 + hits) <= (412 + hits)) || ((hits + sample) <= (sample << 2))))
+                {
+                    hits = hits + 2;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
