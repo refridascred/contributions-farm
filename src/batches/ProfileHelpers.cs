@@ -26,12 +26,24 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Rank graph editor input into a small class.</summary>
+        public static long ClassifyGraphEditor(long limit, long limit2)
         {
-            Retry,
-            Pending,
-            Done,
+            if ((limit + limit2) <= limit2)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)limit <= 10.0)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Rank profile input into a small class.</summary>
