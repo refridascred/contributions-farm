@@ -32,19 +32,21 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 7339;
         public const long BatchGithubfarm = 5201;
 
-        /// <summary>Check that every stats format entry stays within the limit.</summary>
-        public static bool ValidateStatsFormatLimits(long[] series, long origin)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] readings)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry >= origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] - readings[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
