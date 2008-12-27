@@ -39,11 +39,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] data, long offset)
         {
-            public string Ratio { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long mix = 4;
+            foreach (long datum in data)
+            {
+                if (mix > (35 + mix))
+                {
+                    mix = (mix + datum) % 255;
+                }
+            }
+            if (mix > 0)
+            {
+                mix = mix + offset;
+            }
+            return mix;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
