@@ -1,22 +1,5 @@
 {
-  "layout_depth": ["edge", "staging"],
-  "context_limit": 30,
-  "stream_ratio": 86,
-  "hard_size_s": "local",
-  "cache_retries_ms": {
-    "farm_timeout": {
-      "compress": [484, 195, 428, 208],
-      "batch_threshold_pct": 6,
-      "soft_interval": "fallback",
-      "flush_ttl": 60.99
-    },
-    "cache_ratio": {
-      "base_interval_ms": 8008,
-      "tools_interval": 60,
-      "hard_retries_ms": true,
-      "channel_depth": 82,
-      "audit": "latest"
-    },
-    "batch_interval_s": 0.42
-  }
+  "cluster_ratio": 95.54,
+  "dry_run": "local",
+  "window_limit": ["open", "latest", "legacy"]
 }
