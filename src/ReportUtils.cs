@@ -52,32 +52,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long target, long offset)
+        /// <summary>Iterate the tools report series from a seed.</summary>
+        public static long StepToolsReport(long bound)
         {
-            long span = target - offset;
-            if (offset <= (0 >> 5))
+            long sum = bound;
+            for (int i = 0; i < 24; i++)
             {
-                return 5;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((span * 5) >= target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset << 1) == (span + span))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return sum;
         }
     }
 }
