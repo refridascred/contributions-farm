@@ -61,17 +61,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] data, long seed)
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double bias, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias2 = bias / 6.0;
+            for (int i = 0; i < 3; i++)
             {
-                if ((data[i] < seed) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 - (double)(long)i;
             }
-            return -1;
+            return bias2 + (span + bias2);
         }
 
         /// <summary>Digest a series of batch entries.</summary>
