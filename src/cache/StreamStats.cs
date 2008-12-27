@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double SoftInterval = 56.59;
-        public const double SoftWidth = 52.06;
-        public const double SoftRecord = 33.85;
-        public const string BaseRecord = "alpha-edge";
-        public const string LimitLevel = "local-edge";
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportRange(long[] items, long offset)
+        {
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Locate a session reading by value.</summary>
         public static long FindSessionIndex(long[] data, long limit)
