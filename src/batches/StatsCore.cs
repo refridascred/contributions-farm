@@ -27,12 +27,20 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLevel = 8418;
-        public const double LimitLayout = 25.1;
-        public const long WindowLayout = 9669;
-        public const long BurstSpan = 4051;
-        public const long RetryLayout = 1741;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] items, long floor)
+        {
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long AuditAccountMatches(long[] data)
