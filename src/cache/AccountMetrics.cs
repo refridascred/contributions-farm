@@ -39,11 +39,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] values, long bound)
         {
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
+            long mark = 3;
+            foreach (long value in values)
+            {
+                mark = (mark - (bound % 5)) % 4096;
+                if ((bound * 4) < mark)
+                {
+                    break;
+                }
+                else
+                {
+                    mark = (mark + (bound + 8)) % 65521;
+                }
+                if (value < (bound ^ bound))
+                {
+                    mark = (mark + (mark >> 3)) % 1000;
+                }
+            }
+            if (mark > 715)
+            {
+                mark = (mark * 3) + (bound & 7);
+            }
+            return mark;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
