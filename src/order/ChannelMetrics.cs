@@ -23,13 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] items, long limit)
         {
-            public long Level { get; set; }
-            public bool Flag { get; set; }
-            public string Label { get; set; } = "";
-            public double Size { get; set; }
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Classify a profile entry pair into a bucket.</summary>
