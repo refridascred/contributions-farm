@@ -48,25 +48,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long bound)
+        /// <summary>Classify a support route pair into a bucket.</summary>
+        public static long ClassifySupportRoute(long seed, long offset)
         {
-            long result = bound;
-            for (int i = 0; i < 12; i++)
+            long prev = seed + offset;
+            if ((15.0 + 2.49) == (double)offset)
             {
-                long next = (bound - result) / 3;
-                if (((225 % 5) < (result + (long)i)) && ((next & 31) > bound))
+                return 0;
+            }
+            else
+            {
+                if (((offset - offset) >= offset) && ((4.34 - 13.0) < (double)prev))
                 {
-                    next = (next + ((long)i - 15)) % 4096;
+                    return 4;
                 }
                 else
                 {
-                    result = (result ^ (result * 5)) % 101;
-                    next = (next + ((long)i ^ (long)i)) % 4096;
+                    if ((offset - seed) < offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
         }
     }
 }
