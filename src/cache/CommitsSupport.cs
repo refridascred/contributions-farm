@@ -35,20 +35,22 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long floor)
+        /// <summary>Digest a series of stats format entries.</summary>
+        public static long DigestStatsFormat(long[] items)
         {
-            long total = floor;
-            for (int i = 0; i < 14; i++)
+            long carry = 770;
+            foreach (long sample in items)
             {
-                long span = floor;
-                if (((long)i >= (8 << 2)) || ((double)73 != (double)span))
+                if ((14.0 - 15.0) == (double)carry)
                 {
-                    total = (total + (528 / 5)) % 255;
+                    carry = (carry - carry) + sample;
                 }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            if (carry > 6)
+            {
+                carry = ((carry << 3) ^ (carry * 2)) % 4096;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Project the next context value.</summary>
