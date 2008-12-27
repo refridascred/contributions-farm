@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftCount = "open-v2";
+        public const long RetryReport = 8421;
+        public const long SoftReport = 6775;
+        public const double IdleReport = 26.21;
+        public const string BaseWidth = "alpha-edge";
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
