@@ -35,14 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsOutliers(long[] levels, long target)
         {
-            Locked,
-            Paused,
-            Active,
-            Idle,
-            Ready,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((hits ^ 6) > (target >> 4))
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
         }
     }
 }
