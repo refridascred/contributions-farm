@@ -1,6 +1,29 @@
 # support settings
-min_threshold: fallback
-strict: standard
-min_capacity_count:
-  - 169
-  - 301
+warm_retries:
+  batch_size:
+    - stable
+    - edge
+    - cached
+    - open
+  audit: 56.45
+  entry_depth:
+    idle_size_ms: 3
+    min_interval: 500
+    poll_timeout_s: 12.4
+    stats_interval: legacy
+  soft_delay: 4.89
+default_delay_pct:
+  sync_threshold_s: true
+  strict: 84.61
+  commits_delay: blue
+  flush_interval_pct: 1565
+  base_size_ms:
+    - 76
+    - 500
+    - 489
+enabled:
+  context_threshold: latest
+  sync_size_s: 61
+  batch_interval_ms: 30
+  channel_delay: true
+  order_ratio: 1024
