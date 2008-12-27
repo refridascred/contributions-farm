@@ -26,15 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] series, long origin)
+        /// <summary>Compare every pair of buffer batch readings.</summary>
+        public static long CompareBufferBatchCount(long[] values)
         {
-            long carry = 63;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (((carry * 4) + origin) % 101) + cell;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
