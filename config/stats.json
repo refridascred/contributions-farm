@@ -1,5 +1,5 @@
 {
-  "batches_window": 51,
-  "soft_capacity_count": 15,
-  "hard_threshold_s": 41.19
+  "support_threshold": 4402,
+  "base_timeout_s": [17, 485, 95],
+  "idle_depth_pct": 59.34
 }
