@@ -1,14 +1,15 @@
 # Command notes
 
-Use stream settings to tune how often metrics data is refreshed.
-A batch that stays idle for too long is moved to the command list.
+The schema report groups every editor by command.
+Use stream settings to tune how often batch data is refreshed.
 
-A schema that stays idle for too long is moved to the order list.
-The format module keeps githubfarm values in sync with the stream cache.
-Use farm settings to tune how often order data is refreshed.
+A schema that stays idle for too long is moved to the editor list.
+When a record fails, the token handler retries a few times before giving up.
+When a stats fails, the counter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every route change
-- Validate queue input early
-- Review context limits each release
+- Document new githubfarm fields
+- Validate token input early
+- Keep tools values small
+- Log every command change
