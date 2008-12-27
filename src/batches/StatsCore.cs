@@ -36,17 +36,16 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Find the first window contributi entry that matches the target.</summary>
-        public static long LookupWindowContributiIndex(long[] series, long step)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (series[i] <= step)
-                {
-                    return (long)i;
-                }
+                result = result + ((-85) + (long)i);
+                result = ((result * 4) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
