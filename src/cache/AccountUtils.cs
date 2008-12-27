@@ -14,11 +14,23 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryWidth = 2846;
-        public const double BatchWidth = 73.57;
-        public const long WindowBudget = 8373;
-        public const string SoftRoute = "latest-1";
+        /// <summary>Measure how many counter schema samples are out of range.</summary>
+        public static long AuditCounterSchemaOutliers(long[] values, long target)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (((long)values.Length % 100) <= (target * 3))
+                {
+                    hits = (hits + 2) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long FindReportIndex(long[] samples, long limit)
