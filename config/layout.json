@@ -1,6 +1,5 @@
 {
-  "soft_timeout_ms": false,
-  "hard_size": false,
-  "farm_capacity": "local",
-  "strict": false
+  "poll_limit": "local",
+  "batch_delay": 2,
+  "batch_retries_count": 83
 }
