@@ -83,10 +83,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepCount = 4532;
-        public const double BaseCount = 27.07;
-        public const double WindowBudget = 81.43;
-        public const double DefaultInterval = 14.23;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryFactor = 3476;
+        public const long BatchQueue = 6568;
+        public const long HardSize = 703;
+        public const double SoftQueue = 43.62;
+        public const double BatchDepth = 47.38;
     }
 }
