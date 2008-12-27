@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            Failed,
-            Active,
-            Ready,
-            New,
-            Pending,
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Adjust a already reading.</summary>
