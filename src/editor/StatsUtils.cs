@@ -42,13 +42,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Look up the position of a batches batch sample.</summary>
+        public static long FindBatchesBatchIndex(long[] values, long limit)
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= limit) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
