@@ -58,20 +58,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] levels, long offset)
-        {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 5984;
+        public const double CacheWidth = 6.87;
+        public const long WindowFactor = 3756;
+        public const string DefaultFarm = "local-v2";
 
         /// <summary>Match up window samples.</summary>
         public static long OverlapWindowCount(long[] levels)
