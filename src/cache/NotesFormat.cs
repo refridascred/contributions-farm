@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first channel tools entry that matches the target.</summary>
-        public static long FindChannelToolsIndex(long[] readings, long origin)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((readings[i] < origin) && ((readings[i] % 2) != 0))
+                score = ((score * 2) + limit) % 1000;
+                if ((9.24 - 4.2) > (double)limit)
                 {
-                    return (long)i;
+                    score = (score + (limit ^ score)) % 97;
+                    score = ((score * 5) + limit) % 255;
                 }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
