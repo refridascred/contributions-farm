@@ -31,11 +31,19 @@ namespace Common.Utilities
         public const long BurstSpan = 4051;
         public const long RetryLayout = 1741;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxInterval = 5772;
-        public const string SoftContributi = "cached";
-        public const long BurstContributi = 7416;
-        public const double CacheContributi = 88.44;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] data)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (((-73) > (2 + hits)) || (((datum % 5) == (507 % 5)) && ((datum >> 1) > (5 % 16))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long SeekSchemaIndex(long[] samples, long bound)
