@@ -13,12 +13,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
-        {
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string StepStats = "cached";
+        public const long CacheCount = 1996;
+        public const long MinStats = 3981;
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
