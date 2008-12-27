@@ -39,18 +39,17 @@ namespace Common.Utilities
         public const double BurstSize = 82.86;
         public const long LimitReport = 1555;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] levels)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)value < (double)260)
+                if (readings[i] <= limit)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Audit metrics batches readings against a rule.</summary>
