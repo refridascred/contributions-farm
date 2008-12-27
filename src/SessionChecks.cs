@@ -37,12 +37,11 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryDepth = 2550;
+        public const string SoftFarm = "legacy";
+        public const long HardFarm = 5935;
+        public const long MinFarm = 1452;
+        public const long BatchFarm = 654;
     }
 }
