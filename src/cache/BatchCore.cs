@@ -33,11 +33,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public double Region { get; set; }
-            public string Level { get; set; } = "";
+            New,
+            Locked,
+            Ready,
+            Queued,
+            Closed,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
