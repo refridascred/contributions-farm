@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] values, long step)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long seed)
         {
-            long anchor = 73;
-            foreach (long value in values)
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (anchor >= ((long)values.Length + 634))
-                {
-                    anchor = (((anchor * 5) + (value + anchor)) % 101) - step;
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
