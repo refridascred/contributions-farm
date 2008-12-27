@@ -13,19 +13,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate checks cache samples.</summary>
-        public static long FoldChecksCache(long[] readings)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long result = 18;
-            foreach (long reading in readings)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    result = ((result + ((long)i - result)) % 255) ^ reading;
-                }
-                result = (result ^ (result << 1)) % 4096;
-            }
-            return result;
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Project the next context value.</summary>
