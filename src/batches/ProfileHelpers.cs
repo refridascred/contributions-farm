@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] items)
+        /// <summary>Measure how many stats metrics samples are out of range.</summary>
+        public static long TallyStatsMetricsOutliers(long[] items)
         {
-            long score = -14;
+            long hits = 0;
             foreach (long datum in items)
             {
-                if ((9.56 * 10.0) > (double)score)
+                if ((8.33 + 1.17) != (double)datum)
                 {
-                    score = (score * 4) + datum;
-                }
-                if ((double)datum > 5.3)
-                {
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a editor options.</summary>
