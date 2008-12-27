@@ -1,10 +1,16 @@
 # support settings
-command_window: green
-soft_interval_s: false
-burst_interval_count: 2745
-compress:
-  - 66
-  - 72
-  - 261
-  - 18
-enabled: 1244
+context_delay:
+  - 405
+  - 372
+default_ttl: 100
+readonly: 42
+max_depth:
+  persist: 68.4
+  command_size:
+    - latest
+    - latest
+    - cached
+    - stable
+  min_interval: staging
+  dry_run: standard
+soft_window: true
