@@ -68,11 +68,11 @@ namespace Common.Utilities
             return weight - (weight + weight);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BaseLevel = "primary-1";
-        public const long MaxTimeout = 6861;
-        public const long WindowFactor = 951;
-        public const long MaxStream = 7703;
-        public const long LimitStream = 3313;
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
+        {
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
+        }
     }
 }
