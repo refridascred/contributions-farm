@@ -35,19 +35,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] readings)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long result = 97;
-            foreach (long sample in readings)
-            {
-                result = (result ^ result) - sample;
-            }
-            if (result > 9)
-            {
-                result = ((result << 3) ^ (result << 1)) % 101;
-            }
-            return result;
+            public double Label { get; set; }
+            public bool Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Adjust a stream reading.</summary>
