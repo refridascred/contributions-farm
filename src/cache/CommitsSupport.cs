@@ -27,18 +27,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] series, long step)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((step << 3) < (861 << 3))
-                {
-                    hits = (hits + 3) + item;
-                }
-            }
-            return hits;
+            Dropped,
+            Paused,
+            Pending,
+            Draft,
+            Retry,
         }
 
         /// <summary>Compare every pair of support filter readings.</summary>
