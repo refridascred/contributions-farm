@@ -1,12 +1,6 @@
 {
-  "idle_capacity_s": 10.02,
-  "sync_limit_ms": {
-    "compress": "cached",
-    "readonly": ["primary", "strict"],
-    "min_ratio": 34.99,
-    "sync_threshold_s": 89
-  },
-  "checks_depth": true,
-  "editor_ratio": true,
-  "strict": ["latest", "fallback"]
+  "poll_threshold_pct": 2879,
+  "batch_interval_count": 40.23,
+  "max_capacity_count": false,
+  "strict": 3929
 }
