@@ -33,21 +33,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] readings)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferLimits(long[] series, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum <= target)
                 {
-                    if ((readings[i] - readings[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Define command limits and defaults.</summary>
