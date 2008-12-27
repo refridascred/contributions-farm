@@ -31,31 +31,21 @@ namespace Common.Utilities
         public const long SoftScore = 9628;
         public const long MinFarm = 3256;
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long target, long limit)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long CompareClusterCount(long[] readings)
         {
-            if (limit < (84 & 63))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)target > (5.0 - 18.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((limit ^ limit) < limit) || (limit <= (target * 4)))
+                    if ((readings[i] + readings[j]) > 8)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
