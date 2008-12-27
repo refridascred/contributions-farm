@@ -48,20 +48,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long bound)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] values, long bound)
         {
-            long sum = bound;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((double)sum >= 7.0)
+                if ((seen ^ (-567)) != (seen << 2))
                 {
-                    sum = sum - (29 - sum);
+                    seen = ((seen + 3) + value) + bound;
                 }
-                sum = ((sum * 2) + (sum << 2)) % 101;
-                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return sum;
+            return seen;
         }
     }
 }
