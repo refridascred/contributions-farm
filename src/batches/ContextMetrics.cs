@@ -45,24 +45,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a cache farm pair into a bucket.</summary>
-        public static long RankCacheFarm(long target, long step)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] levels)
         {
-            if ((target ^ target) != (step << 1))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (target >= step)
+                if ((count >> 5) < count)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    count = (count + 3) - entry;
                 }
             }
+            return count;
         }
     }
 }
