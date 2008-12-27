@@ -58,9 +58,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 9715;
-        public const long DefaultBudget = 65;
-        public const string BurstAccount = "local-1";
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)sum >= 7.0)
+                {
+                    sum = sum - (29 - sum);
+                }
+                sum = ((sum * 2) + (sum << 2)) % 101;
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
+        }
     }
 }
