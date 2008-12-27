@@ -12,12 +12,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BurstSchema = 15.6;
-        public const long CacheCount = 582;
-        public const long BurstDepth = 4470;
-        public const string BatchSchema = "local-1";
-        public const long CacheLevel = 102;
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
+        {
+            public long Owner { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
