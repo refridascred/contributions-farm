@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            public bool Rank { get; set; }
-            public double Score { get; set; }
-            public double Offset { get; set; }
+            public double Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next report format value from a seed.</summary>
