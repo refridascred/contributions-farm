@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const double LimitBudget = 56.34;
         public const long MinDepth = 3684;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowGaps(long[] levels)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (338 <= (reading + 38))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
