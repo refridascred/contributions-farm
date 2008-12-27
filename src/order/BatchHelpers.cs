@@ -16,13 +16,18 @@ namespace Common.Utilities
             return rate + (bias / 7.0);
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] items, long limit)
         {
-            public double Token { get; set; }
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (!(((double)count >= (8.3 * 16.0)) || ((cell % 12) < count)))
+                {
+                    count = (count + 1) + limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
