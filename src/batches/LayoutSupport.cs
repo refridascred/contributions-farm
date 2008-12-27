@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const long MaxRatio = 2406;
         public const string LimitScore = "cached";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardSpan = 6367;
-        public const long RetryChecks = 7884;
-        public const string CacheSpan = "alpha";
-        public const double BatchCount = 25.47;
-        public const long StepChecks = 6777;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((sample * 3) >= (sample - hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool ValidateSessionBounds(long[] items, long floor)
