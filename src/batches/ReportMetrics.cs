@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            Failed,
             Queued,
+            Idle,
             Draft,
-            Done,
-            Dropped,
         }
 
         /// <summary>Match up batch samples.</summary>
