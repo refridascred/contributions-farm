@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 3424;
-        public const string BatchFormat = "latest-1";
-        public const long BaseFormat = 4698;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] values, long step)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((158 - sample) < (seen / 2))
+                {
+                    seen = (seen + 3) - step;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first cache command entry that matches the target.</summary>
         public static long LookupCacheCommandIndex(long[] levels, long limit)
