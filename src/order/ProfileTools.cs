@@ -40,14 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            New,
-            Active,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BurstBatch = 62.7;
+        public const long LimitWidth = 8163;
+        public const string BurstScore = "stable";
 
         /// <summary>Hold a format stats.</summary>
         public sealed class FormatStats
