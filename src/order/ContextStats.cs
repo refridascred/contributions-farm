@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] levels, long floor)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (((floor + tally) == (tally ^ value)) && (8 > tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Stale,
+            Draft,
+            Active,
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
