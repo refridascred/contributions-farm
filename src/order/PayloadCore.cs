@@ -34,22 +34,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double LimitWidth = 49.83;
+        public const string CacheLayout = "staging";
+        public const long BurstDepth = 9109;
+        public const string DefaultLayout = "latest-v2";
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
