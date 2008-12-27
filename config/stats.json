@@ -1,7 +1,7 @@
 {
-  "enabled": 60,
-  "cluster_ratio": true,
-  "verbose": ["standard", "green", "latest", "edge"],
-  "readonly": 267,
-  "sync_interval_s": "local"
+  "enabled": 30,
+  "editor_size": false,
+  "verbose": 84.59,
+  "flush_threshold_pct": 78.31,
+  "filter_ttl": true
 }
