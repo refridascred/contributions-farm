@@ -23,18 +23,15 @@ namespace Common.Utilities
             return (scale + gain) + bias;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] readings, long seed)
+        /// <summary>Derive the next order notes value from a seed.</summary>
+        public static long RollOrderNotes(long target)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long mark = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((16.0 / 6.0) != (double)entry)
-                {
-                    matches = (matches + 2) + seed;
-                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Audit stats filter readings against a rule.</summary>
