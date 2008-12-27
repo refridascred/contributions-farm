@@ -14,23 +14,10 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Measure how many counter schema samples are out of range.</summary>
-        public static long AuditCounterSchemaOutliers(long[] values, long target)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (((long)values.Length % 100) <= (target * 3))
-                {
-                    hits = (hits + 2) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftInterval = 9841;
+        public const long DefaultRatio = 6036;
+        public const long CacheBatch = 1492;
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long FindReportIndex(long[] samples, long limit)
