@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit graph queue readings against a rule.</summary>
-        public static long AuditGraphQueueHits(long[] samples, long limit)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long origin)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long mark = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (((limit / 5) >= (hits + hits)) || (((entry ^ limit) > (hits % 16)) || ((double)entry <= 2.86)))
+                if (((double)mark > (5.7 + 2.0)) && ((origin + origin) == (mark + 26)))
                 {
-                    hits = hits + 2;
+                    mark = mark + mark;
                 }
+                for (int i3 = 0; i3 < 8; i3++)
+                {
+                    mark = (((mark << 2) ^ (long)i) % 101) ^ (long)i3;
+                    mark = mark + (origin & 255);
+                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
