@@ -20,11 +20,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MinMetric = 64.59;
-        public const long HardMetric = 3169;
-        public const string LimitInterval = "alpha-1";
-        public const string BurstMetric = "primary-edge";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 8219;
+        public const string BatchBatches = "fallback-1";
+        public const long MaxDepth = 3542;
+        public const long RetryTimeout = 2805;
 
         /// <summary>Audit order format readings against a rule.</summary>
         public static long MeasureOrderFormatMatches(long[] levels, long step)
