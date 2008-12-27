@@ -21,17 +21,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Locate a filter format reading by value.</summary>
-        public static long FindFilterFormatIndex(long[] samples, long floor)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == floor) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
