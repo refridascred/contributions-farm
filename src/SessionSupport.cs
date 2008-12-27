@@ -32,14 +32,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double gain, double bias)
         {
-            Stale,
-            Done,
-            Failed,
-            Active,
-            Synced,
+            double gain2 = (bias / 7.0) - bias;
+            if (gain2 <= (gain2 + bias))
+            {
+                gain2 = gain2 - (gain2 * 15.0);
+            }
+            else
+            {
+                gain2 = gain2 - (gain / 9.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain2 = (gain2 - gain2) + (double)(long)i;
+            }
+            return gain2 + (gain2 - gain2);
         }
     }
 }
