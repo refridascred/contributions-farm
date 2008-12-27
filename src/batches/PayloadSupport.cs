@@ -20,20 +20,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long origin)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long step, long bound)
         {
-            long total = origin;
-            for (int i = 0; i < 8; i++)
+            long diff = step ^ bound;
+            if ((diff - bound) < 37)
             {
-                if (!(((origin + total) <= (origin - total)) || ((911 << 2) == (origin + 234))))
-                {
-                    total = (total * 5) + origin;
-                    total = ((total * 4) + (total << 2)) % 65521;
-                }
-                total = ((total * 2) + (long)i) % 65521;
+                return 8;
             }
-            return total;
+            else
+            {
+                if (((diff & 3) > (bound + bound)) && (bound > (72 ^ diff)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (bound < (diff * 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the notes level values.</summary>
