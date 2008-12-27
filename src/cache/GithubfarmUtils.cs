@@ -62,22 +62,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] data, long seed)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long origin)
         {
-            long mix = 137;
-            foreach (long item in data)
+            long total = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if ((5.0 + 4.4) == (double)seed)
-                {
-                    mix = ((mix * 2) + (item + 5)) % 255;
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            if (mix > (-766))
-            {
-                mix = (mix + ((long)data.Length * 4)) % 1000;
-            }
-            return mix % 1000;
+            return total;
         }
     }
 }
