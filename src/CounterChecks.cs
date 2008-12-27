@@ -60,18 +60,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenGaps(long[] levels, long step)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if ((399 >> 1) <= (156 - step))
+                if (cell <= offset)
                 {
-                    count = (count + 1) ^ entry;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Describe the layout phase values.</summary>
