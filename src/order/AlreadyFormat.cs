@@ -29,17 +29,23 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Find the first metric context entry that matches the target.</summary>
-        public static long LocateMetricContextIndex(long[] data, long origin)
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double gain, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = gain;
+            if (drift < gain)
             {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
+                drift = (drift - (8.0 * 9.2)) - offset;
             }
-            return -1;
+            else
+            {
+                drift = drift - (gain / 7.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - 1.17) + (double)(long)i;
+            }
+            return drift + 10.0;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
