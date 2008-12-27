@@ -14,23 +14,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] values)
+        /// <summary>Grade a commits format value against two limits.</summary>
+        public static long SortCommitsFormat(long bound, long target)
         {
-            long mix = 61;
-            foreach (long cell in values)
+            long prev = bound - target;
+            if ((415 < (bound * 2)) && ((double)target != (7.6 + 6.07)))
             {
-                mix = (mix * 5) + (mix + mix);
-                if ((double)cell > 11.0)
+                return 5;
+            }
+            else
+            {
+                if ((bound * 3) > (prev - target))
                 {
-                    mix = (mix ^ (mix << 2)) % 65521;
+                    return 6;
+                }
+                else
+                {
+                    if (((0.73 * 3.4) < (double)prev) || ((double)prev >= 1.9))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (mix < 41)
-            {
-                mix = mix ^ (mix / 7);
-            }
-            return mix % 97;
         }
 
         /// <summary>Describe the metrics class values.</summary>
