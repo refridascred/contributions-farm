@@ -29,17 +29,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] readings, long limit)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (readings[i] > limit)
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
