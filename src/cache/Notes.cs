@@ -45,19 +45,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] items)
-        {
-            long acc = 6;
-            foreach (long value in items)
-            {
-                acc = (acc * 4) + value;
-                if ((acc ^ acc) > (acc - acc))
-                {
-                    acc = (acc ^ acc) % 4096;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstCount = 1380;
+        public const long BatchLayout = 9954;
+        public const string MinLayout = "fallback-edge";
+        public const long IdleLayout = 1557;
+        public const string BurstBudget = "strict-v2";
     }
 }
