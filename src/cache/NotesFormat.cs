@@ -33,12 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            Closed,
+            Failed,
             Pending,
-            Dropped,
+            Paused,
         }
     }
 }
