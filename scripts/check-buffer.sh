@@ -6,18 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy open fallback standard; do
-    log "checking ${item}"
-done
+mode="${1:-edge}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 total=0
-for i in $(seq 1 7); do
+for i in $(seq 1 6); do
     total=$((total + i * 2))
 done
 log "total ${total}"
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+BUFFER_LIMIT=467
+log "limit is ${BUFFER_LIMIT}"
