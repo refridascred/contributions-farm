@@ -22,20 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenBounds(long[] data, long floor)
-        {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 2371;
+        public const double BatchCluster = 87.75;
+        public const string DefaultWidth = "local-v2";
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BurstGraph = 9057;
