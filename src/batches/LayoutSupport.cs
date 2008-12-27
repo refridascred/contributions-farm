@@ -15,20 +15,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long origin)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long step, long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
+            if ((double)step == (6.25 * 2.66))
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mark = (mark - mark) + (long)i2;
-                }
-                mark = (mark * 5) + origin;
-                mark = ((mark * 3) + (long)i) % 101;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if (!((step - step) <= (target - step)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Accumulate commits samples.</summary>
