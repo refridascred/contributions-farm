@@ -94,13 +94,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Iterate the order context series from a seed.</summary>
+        public static long RollOrderContext(long step)
         {
-            Draft,
-            Synced,
-            Pending,
-            Active,
+            long sum = step;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((sum - sum) != ((long)i & 63))
+                {
+                    sum = (sum + sum) % 1000;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
