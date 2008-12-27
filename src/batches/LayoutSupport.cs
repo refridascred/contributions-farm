@@ -15,18 +15,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiGaps(long[] values, long seed)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long origin)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)seed > (4.9 - 9.4))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    seen = (seen + 2) - cell;
+                    mark = (mark - mark) + (long)i2;
                 }
+                mark = (mark * 5) + origin;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Accumulate commits samples.</summary>
