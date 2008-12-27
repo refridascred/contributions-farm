@@ -40,13 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] items, long seed)
         {
-            Paused,
-            Locked,
-            Failed,
-            Ready,
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Derive the next record channel value from a seed.</summary>
