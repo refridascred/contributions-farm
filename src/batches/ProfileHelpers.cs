@@ -50,10 +50,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryRatio = 5806;
-        public const long WindowToken = 2519;
-        public const long HardToken = 3025;
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double rate, double floor)
+        {
+            double scale = (double)(509 * 5);
+            if (scale > (scale / 8.0))
+            {
+                scale = (scale + 8.0) - floor;
+            }
+            return scale + rate;
+        }
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double AdjustSession(double scale, double floor)
