@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Measure how many stream account samples are out of range.</summary>
+        public static long AuditStreamAccountHits(long[] levels)
         {
-            public double Region { get; set; }
-            public string Size { get; set; } = "";
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((value << 2) > (value >> 4))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a entry summary.</summary>
