@@ -20,19 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every githubfarm stream entry stays within the limit.</summary>
-        public static bool CheckGithubfarmStreamBounds(long[] series, long offset)
+        /// <summary>Locate a command counter reading by value.</summary>
+        public static long FindCommandCounterIndex(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value < offset)
+                if ((data[i] == seed) && ((data[i] % 5) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Accumulate profile samples.</summary>
