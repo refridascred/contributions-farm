@@ -43,10 +43,26 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double IdleChannel = 32.51;
-        public const long SoftWidth = 9543;
-        public const string CacheChannel = "alpha";
-        public const long StepChannel = 9121;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] readings)
+        {
+            long anchor = 956;
+            foreach (long cell in readings)
+            {
+                if ((double)cell == (15.0 + 9.2))
+                {
+                    anchor = (anchor - cell) % 101;
+                }
+                if (!((0 & 15) >= (anchor & 15)))
+                {
+                    anchor = (anchor << 2) ^ (3 / 7);
+                }
+                if ((cell % 12) < (616 + anchor))
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
+        }
     }
 }
