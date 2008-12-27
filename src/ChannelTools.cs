@@ -15,12 +15,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Rank contributi metric input into a small class.</summary>
+        public static long SortContributiMetric(long origin, long floor)
         {
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            long cur = origin + floor;
+            if ((20.0 / 2.0) == (double)origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)origin != (double)cur)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
