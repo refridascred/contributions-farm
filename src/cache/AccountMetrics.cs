@@ -16,26 +16,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] series)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] series)
         {
-            long sum = 79;
-            foreach (long item in series)
+            long mix = 88;
+            foreach (long reading in series)
             {
-                if (!((item << 3) == (item * 5)))
-                {
-                    sum = sum - (long)series.Length;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum + item)) % 65521;
-                }
+                mix = (((mix * 5) + mix) % 4096) ^ reading;
             }
-            if (sum < 8)
-            {
-                sum = ((sum * 4) + (sum & 63)) % 255;
-            }
-            return sum;
+            return mix % 4096;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
