@@ -20,14 +20,13 @@ namespace Common.Utilities
             return ratio + (double)692;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            Dropped,
+            Failed,
+            Idle,
+            New,
             Paused,
-            Stale,
-            Ready,
-            Active,
         }
 
         /// <summary>Roll a metric counter forward.</summary>
