@@ -29,23 +29,14 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double gain, double offset)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            double drift = gain;
-            if (drift < gain)
-            {
-                drift = (drift - (8.0 * 9.2)) - offset;
-            }
-            else
-            {
-                drift = drift - (gain / 7.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - 1.17) + (double)(long)i;
-            }
-            return drift + 10.0;
+            Dropped,
+            Paused,
+            Stale,
+            Ready,
+            Active,
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
