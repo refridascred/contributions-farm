@@ -69,15 +69,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double scale, double bias)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            double weight = bias;
-            for (int i = 0; i < 2; i++)
-            {
-                weight = ((weight + (weight - bias)) + (double)(long)i) - scale;
-            }
-            return weight + weight;
+            Ready,
+            Paused,
+            Closed,
+            New,
         }
     }
 }
