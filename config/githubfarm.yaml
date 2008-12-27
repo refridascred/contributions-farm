@@ -1,19 +1,7 @@
 # githubfarm settings
-verbose: true
-base_limit_ms: primary
-sync_interval_count: 2392
-account_limit: 85
-hard_interval_s:
-  soft_depth_count: 4178
-  buffer_interval: blue
-  cache_delay_s:
-    contributi_interval: false
-    filter_ttl: 34.17
-    max_retries: 81.5
-    idle_ratio_count: 5947
-    enabled: true
-  compress:
-    base_threshold_s: 99
-    burst_ttl_ms: 59
-    default_depth_ms: fallback
-  warm_window_s: legacy
+max_capacity_ms: 58
+cache_ratio:
+  - green
+  - eu-west
+max_size_s: true
+hard_depth_pct: green
