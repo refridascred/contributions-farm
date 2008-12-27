@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next githubfarm report value from a seed.</summary>
-        public static long StepGithubfarmReport(long offset)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] values, long step)
         {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
+            long anchor = 7;
+            foreach (long entry in values)
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                long edge = anchor;
+                if (!!(edge > (anchor << 2)))
+                {
+                    edge = ((edge * 5) + (step + step)) - entry;
+                }
+                if ((double)anchor < (1.0 + 1.71))
+                {
+                    anchor = anchor ^ (anchor - 75);
+                }
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
