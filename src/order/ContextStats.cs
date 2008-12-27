@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            Stale,
-            Draft,
-            Active,
+            public long Rank { get; set; }
+            public double Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
