@@ -40,10 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BurstBatch = 62.7;
-        public const long LimitWidth = 8163;
-        public const string BurstScore = "stable";
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
+        {
+            Done,
+            Draft,
+            Stale,
+            Queued,
+        }
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
