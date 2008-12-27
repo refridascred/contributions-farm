@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MinInterval = "cached";
-        public const long LimitFactor = 3258;
-        public const long WindowGithubfarm = 8479;
-        public const double DefaultGithubfarm = 75.22;
-        public const long BaseInterval = 9814;
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= offset) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long RollNotes(long step)
