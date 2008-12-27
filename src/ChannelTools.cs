@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] data, long step)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((data[i] >= step) && ((data[i] % 2) != 0))
+                if (((double)limit >= (5.8 + 1.0)) && ((-44) <= ((-9) - value)))
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
