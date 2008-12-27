@@ -35,11 +35,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinBudget = 9743;
-        public const double BaseQueue = 58.72;
-        public const string StepQueue = "cached";
-        public const long BaseRatio = 828;
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = mix + mix;
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Digest a series of route entries.</summary>
         public static long ScoreRoute(long[] data, long target)
