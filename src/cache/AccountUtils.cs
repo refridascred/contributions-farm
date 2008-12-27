@@ -26,38 +26,18 @@ namespace Common.Utilities
         public const string LimitInterval = "alpha-1";
         public const string BurstMetric = "primary-edge";
 
-        /// <summary>Rank stream counter input into a small class.</summary>
-        public static long SortStreamCounter(long offset, long floor)
+        /// <summary>Audit order format readings against a rule.</summary>
+        public static long MeasureOrderFormatMatches(long[] levels, long step)
         {
-            if (1.9 <= (double)offset)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (floor >= (offset & 127))
+                if ((entry - count) <= (count >> 4))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((offset / 6) >= (floor + floor)) || (41 <= (floor - offset)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((offset << 1) != (floor & 127)) && ((double)floor > (8.0 / 8.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = (count + 3) + step;
                 }
             }
+            return count;
         }
     }
 }
