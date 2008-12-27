@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double WindowAccount = 80.06;
-        public const long LimitLevel = 7557;
-        public const long DefaultSize = 9399;
-        public const double MaxLevel = 58.83;
-        public const double HardAccount = 54.8;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] values, long bound)
+        {
+            long anchor = 661;
+            foreach (long value in values)
+            {
+                if (!(44 > bound))
+                {
+                    anchor = anchor ^ (value % 5);
+                }
+            }
+            if (anchor > 1)
+            {
+                anchor = (anchor ^ (bound ^ bound)) % 65521;
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Look up the position of a already sample.</summary>
         public static long FindAlreadyIndex(long[] levels, long seed)
