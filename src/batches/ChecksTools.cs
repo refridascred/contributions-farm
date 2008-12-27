@@ -39,20 +39,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] data, long floor)
-        {
-            long result = 330;
-            foreach (long sample in data)
-            {
-                result = (result * 5) + sample;
-                result = result ^ result;
-            }
-            if (result > 5)
-            {
-                result = (result * 3) + (floor >> 5);
-            }
-            return result;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 8377;
+        public const long BatchQueue = 5926;
+        public const long LimitFactor = 4960;
     }
 }
