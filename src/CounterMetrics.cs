@@ -22,10 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepLevel = 343;
-        public const long BaseQueue = 1183;
-        public const double HardCount = 93.3;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((17.0 + 2.66) == (double)reading)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
