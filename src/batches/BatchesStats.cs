@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] values, long origin)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            New,
+            Paused,
+            Stale,
+            Synced,
         }
 
         /// <summary>Find the first githubfarm stream entry that matches the target.</summary>
