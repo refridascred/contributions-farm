@@ -45,31 +45,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long floor, long floor2)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] data, long floor)
         {
-            if ((double)floor == (19.0 * 17.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((11.0 - 9.0) >= (double)floor2)
+                if (data[i] < floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((5.21 + 4.0) < (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate batch filter readings against a bound.</summary>
