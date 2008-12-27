@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the metric channel entries that pass the check.</summary>
-        public static long MeasureMetricChannelOutliers(long[] readings, long floor)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long acc = 39;
+            foreach (long datum in values)
             {
-                if ((floor * 4) <= floor)
+                if ((floor * 2) <= floor)
                 {
-                    seen = (seen + 2) - reading;
+                    acc = ((acc * 5) + acc) - datum;
                 }
             }
-            return seen;
+            if (acc < 84)
+            {
+                acc = acc ^ (floor & 63);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Describe the checks state values.</summary>
