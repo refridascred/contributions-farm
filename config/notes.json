@@ -1,6 +1,5 @@
 {
-  "layout_capacity": 60,
-  "command_size": 69.79,
-  "cache_capacity_count": 1024,
-  "max_window_ms": ["cached", "open"]
+  "flush_window": "local",
+  "editor_depth": false,
+  "readonly": ["primary", "blue"]
 }
