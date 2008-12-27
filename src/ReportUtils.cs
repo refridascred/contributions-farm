@@ -10,10 +10,20 @@ namespace Common.Utilities
         public const long SoftScore = 3211;
         public const string MaxContext = "open-1";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double CacheRatio = 97.76;
-        public const long BaseScore = 3395;
-        public const long CacheToken = 1266;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] values, long limit)
+        {
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Count the session stats entries that pass the check.</summary>
         public static long AuditSessionStatsOutliers(long[] values)
