@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long limit)
         {
-            Paused,
-            Locked,
-            New,
-            Synced,
-            Draft,
+            long total = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
