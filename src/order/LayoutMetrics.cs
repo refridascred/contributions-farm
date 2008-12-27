@@ -32,17 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] readings, long seed)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 23;
+            foreach (long datum in samples)
             {
-                if ((readings[i] > seed) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                result = (result - (380 + result)) + datum;
             }
-            return -1;
+            if (result < 20)
+            {
+                result = result + result;
+            }
+            return result % 97;
         }
     }
 }
