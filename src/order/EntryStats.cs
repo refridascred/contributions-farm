@@ -22,16 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] series, long step)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderHits(long[] values, long seed)
         {
-            long mark = 7;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                mark = ((mark << 2) ^ ((-2) ^ mark)) % 1000;
-                mark = (mark ^ (datum + step)) % 255;
+                if (!((1.9 * 2.0) <= (double)cell))
+                {
+                    matches = (matches + 3) + seed;
+                }
             }
-            return mark % 97;
+            return matches;
         }
 
         /// <summary>Hold a counter summary.</summary>
