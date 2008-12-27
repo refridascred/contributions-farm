@@ -1,5 +1,5 @@
 {
-  "flush_timeout": "stable",
-  "warm_interval": 7538,
-  "persist": "edge"
+  "enabled": "legacy",
+  "idle_ratio_s": true,
+  "base_capacity_count": 2986
 }
