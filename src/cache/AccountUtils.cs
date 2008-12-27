@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] data)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] items, long bound)
         {
-            long sum = 77;
-            foreach (long sample in data)
+            long mix = 915;
+            foreach (long reading in items)
             {
-                sum = (sum ^ sample) % 255;
+                if (((mix & 1) == (mix ^ bound)) && (((long)items.Length ^ mix) <= 52))
+                {
+                    mix = ((mix + (mix * 4)) % 101) ^ reading;
+                }
+                else
+                {
+                    mix = mix + 99;
+                }
             }
-            if (sum > 9)
+            if (mix > 90)
             {
-                sum = (sum << 2) ^ sum;
+                mix = mix + (bound * 4);
             }
-            return sum % 97;
+            return mix % 1000;
         }
 
         /// <summary>Define route limits and defaults.</summary>
