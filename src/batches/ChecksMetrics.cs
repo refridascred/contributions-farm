@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine entry report values into a single score.</summary>
-        public static long FoldEntryReport(long[] levels)
-        {
-            long acc = 633;
-            foreach (long datum in levels)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    acc = (((acc << 3) ^ (acc << 1)) + (long)i) ^ datum;
-                }
-                acc = (acc - acc) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MaxToken = "cached";
+        public const double StepToken = 68.57;
+        public const string BatchDepth = "fallback-edge";
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
