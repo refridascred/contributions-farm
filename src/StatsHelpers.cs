@@ -22,11 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public bool Count { get; set; }
-            public double Owner { get; set; }
+            Locked,
+            Idle,
+            Ready,
+            New,
         }
 
         /// <summary>Measure how many batch support samples are out of range.</summary>
