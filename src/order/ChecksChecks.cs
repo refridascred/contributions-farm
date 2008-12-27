@@ -25,13 +25,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Audit entry order readings against a rule.</summary>
+        public static long MeasureEntryOrderGaps(long[] data, long seed)
         {
-            public string Level { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Region { get; set; }
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((tally << 3) <= seed)
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
