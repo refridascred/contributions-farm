@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long floor)
         {
-            public bool Mode { get; set; }
-            public double Flag { get; set; }
-            public double Level { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                if (carry >= floor)
+                {
+                    carry = (carry + carry) % 101;
+                }
+                long delta = (long)i;
+                if (((long)i ^ delta) > (floor - (long)i))
+                {
+                    delta = ((delta * 2) + (long)i) % 4096;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
