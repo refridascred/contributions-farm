@@ -39,13 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] samples)
         {
-            New,
-            Failed,
-            Active,
-            Draft,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((78 + sample) == (sample & 63))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the account kind values.</summary>
