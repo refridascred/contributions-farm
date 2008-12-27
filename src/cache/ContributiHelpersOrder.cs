@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long limit)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mix = (mix - (mix & 15)) ^ (long)i2;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            Idle,
+            Pending,
+            Ready,
+            Dropped,
+            New,
         }
 
         /// <summary>Hold a metrics options.</summary>
