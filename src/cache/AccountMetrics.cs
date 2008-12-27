@@ -44,17 +44,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] samples, long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 3) == 0))
+                if ((reading ^ tally) > reading)
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
