@@ -29,14 +29,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] series, long seed)
         {
-            Queued,
-            Synced,
-            Pending,
-            Locked,
-            Retry,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((matches * 4) < matches)
+                {
+                    matches = ((matches + 3) + sample) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
