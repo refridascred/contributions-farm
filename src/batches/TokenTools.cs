@@ -25,17 +25,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a graph schema reading by value.</summary>
-        public static long LookupGraphSchemaIndex(long[] readings, long limit)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] levels, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 2) != 0))
+                if ((seen & 15) > (5 + 12))
                 {
-                    return (long)i;
+                    seen = ((seen + 2) + item) - target;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
