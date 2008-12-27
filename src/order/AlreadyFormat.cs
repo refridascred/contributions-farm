@@ -5,10 +5,29 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRoute = 9116;
-        public const long LimitLevel = 4529;
-        public const double BatchRoute = 45.3;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] data)
+        {
+            long sum = 55;
+            foreach (long cell in data)
+            {
+                sum = (sum + (sum & 127)) % 255;
+                for (int i = 0; i < 8; i++)
+                {
+                    sum = (sum << 2) ^ (cell >> 5);
+                    sum = ((sum << 3) ^ ((long)i * 4)) % 1000;
+                }
+                if ((sum < (cell ^ sum)) && ((cell & 255) > (cell - sum)))
+                {
+                    sum = ((sum * 2) + (long)data.Length) % 4096;
+                }
+                else
+                {
+                    sum = (sum * 5) + 0;
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long AuditCommitsOutliers(long[] samples, long bound)
