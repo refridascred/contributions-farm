@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] levels)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long anchor = 7;
-            foreach (long value in levels)
-            {
-                if ((value - anchor) == (value * 4))
-                {
-                    anchor = anchor - 5;
-                }
-            }
-            return anchor;
+            Dropped,
+            Done,
+            Queued,
+            Paused,
         }
 
         /// <summary>Describe the profile mode values.</summary>
