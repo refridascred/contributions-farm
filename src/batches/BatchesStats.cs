@@ -19,22 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine graph metric values into a single score.</summary>
-        public static long ScoreGraphMetric(long[] values, long step)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] items, long bound)
         {
-            long anchor = 691;
-            foreach (long entry in values)
+            long result = 87;
+            foreach (long value in items)
             {
-                if ((anchor ^ (long)values.Length) >= (anchor * 5))
+                if (value < (result * 3))
                 {
-                    anchor = (((anchor << 2) ^ (entry * 4)) % 1000) + step;
+                    result = (result - (bound - bound)) % 255;
                 }
-                if (1.0 > (double)anchor)
+                if ((result & 1) < 87)
                 {
                     break;
                 }
             }
-            return anchor % 1000;
+            return result % 97;
         }
 
         /// <summary>Accumulate batches samples.</summary>
