@@ -45,11 +45,11 @@ namespace Common.Utilities
         public const long LimitWidth = 8163;
         public const string BurstScore = "stable";
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public long Count { get; set; }
-            public double Score { get; set; }
+            public bool Score { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
