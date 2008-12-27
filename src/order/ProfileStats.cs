@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine checks order values into a single score.</summary>
-        public static long TallyChecksOrder(long[] values)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long sum = 6;
-            foreach (long sample in values)
-            {
-                if ((sum & 7) < (sample / 5))
-                {
-                    sum = (sum * 2) + (3 + sample);
-                }
-            }
-            return sum;
+            Stale,
+            Retry,
+            Closed,
+            Synced,
         }
 
         /// <summary>Hold a already record.</summary>
