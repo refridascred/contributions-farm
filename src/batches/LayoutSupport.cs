@@ -50,15 +50,17 @@ namespace Common.Utilities
         public const long LimitMetrics = 6756;
         public const long LimitCount = 2078;
 
-        /// <summary>Adjust a record order reading.</summary>
-        public static double SmoothRecordOrder(double gain, double floor)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] levels, long origin)
         {
-            double weight = 0.02;
-            if (weight <= (9.0 / 3.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = (weight + gain) - floor;
+                if ((levels[i] < origin) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight + (4.1 - gain);
+            return -1;
         }
     }
 }
