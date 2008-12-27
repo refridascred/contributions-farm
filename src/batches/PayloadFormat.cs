@@ -23,22 +23,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of route already entries.</summary>
-        public static long CombineRouteAlready(long[] series)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] series)
         {
-            long mark = 558;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((mark < 150) && ((546 * 2) < ((long)series.Length >> 5)))
+                if ((value << 1) > (value ^ count))
                 {
-                    mark = ((mark << 2) ^ (sample + mark)) % 97;
-                }
-                else
-                {
-                    mark = (mark + (0 / 6)) % 101;
+                    count = count + 3;
                 }
             }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Rank batch support input into a small class.</summary>
