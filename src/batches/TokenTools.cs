@@ -33,18 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] data, long seed)
+        /// <summary>Locate a graph schema reading by value.</summary>
+        public static long LookupGraphSchemaIndex(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seed ^ value) <= (value - seed))
+                if ((readings[i] <= limit) && ((readings[i] % 2) != 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
