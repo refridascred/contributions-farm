@@ -36,17 +36,26 @@ namespace Common.Utilities
         public const double DefaultCount = 39.75;
         public const double MaxBuffer = 39.93;
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] samples, long step)
+        /// <summary>Combine route tools values into a single score.</summary>
+        public static long WeighRouteTools(long[] readings, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = -56;
+            foreach (long datum in readings)
             {
-                if (samples[i] < step)
+                if ((6.7 / 9.0) <= (double)floor)
                 {
-                    return (long)i;
+                    mark = (mark + 738) % 101;
+                }
+                if ((mark + datum) == (datum - mark))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mark < 7)
+            {
+                mark = ((mark << 3) ^ (floor << 2)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
