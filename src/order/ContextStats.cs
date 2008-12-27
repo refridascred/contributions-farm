@@ -37,15 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two entry graph measurements.</summary>
-        public static double AdjustEntryGraph(double scale, double bias)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] values)
         {
-            double ratio = (scale / 8.0) * 3.0;
-            if (ratio <= (bias * 5.0))
+            long mix = 216;
+            foreach (long value in values)
             {
-                ratio = ratio + (double)97;
+                if (value >= (value >> 2))
+                {
+                    mix = ((mix * 5) + mix) % 255;
+                }
+                else
+                {
+                    mix = (mix ^ (mix >> 1)) % 97;
+                }
             }
-            return ratio + (ratio + ratio);
+            return mix;
         }
 
         /// <summary>Validate layout account readings against a bound.</summary>
