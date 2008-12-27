@@ -11,20 +11,11 @@ namespace Common.Utilities
         public const string BurstTimeout = "fallback-edge";
         public const long StepCache = 3525;
 
-        /// <summary>Validate stream channel readings against a bound.</summary>
-        public static bool GuardStreamChannelLimits(long[] readings, long limit)
-        {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double IdleScore = 71.76;
+        public const long BaseSpan = 4466;
+        public const long IdleRatio = 6022;
+        public const long CacheProfile = 8397;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long CountSchemaMatches(long[] series)
