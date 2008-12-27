@@ -1,5 +1,7 @@
 {
-  "enabled": "legacy",
-  "idle_ratio_s": true,
-  "base_capacity_count": 2986
+  "cache_depth": 1520,
+  "audit": 38,
+  "enabled": 29,
+  "soft_threshold": true,
+  "max_limit": "blue"
 }
