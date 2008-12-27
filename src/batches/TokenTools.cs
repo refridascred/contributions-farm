@@ -42,38 +42,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long bound, long floor)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] readings)
         {
-            if ((bound * 4) > (bound - 496))
+            long acc = 51;
+            foreach (long item in readings)
             {
-                return 7;
+                acc = (acc << 2) ^ (item / 6);
             }
-            else
-            {
-                if ((14.0 / 6.0) > (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((13.0 / 9.0) == (double)floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor << 3) != (bound & 255))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return acc % 4096;
         }
     }
 }
