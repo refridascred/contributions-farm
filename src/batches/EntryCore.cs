@@ -47,27 +47,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate schema context samples.</summary>
-        public static long CombineSchemaContext(long[] series, long seed)
-        {
-            long total = 9;
-            foreach (long sample in series)
-            {
-                if (((seed << 3) >= (total & 63)) || ((sample + 74) < total))
-                {
-                    total = (total * 5) + (total & 3);
-                }
-                else
-                {
-                    total = (total << 2) ^ seed;
-                }
-            }
-            if (total > (-130))
-            {
-                total = (total ^ (total % 12)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 1428;
+        public const long HardEditor = 7634;
+        public const long RetryEditor = 646;
+        public const long WindowScore = 1845;
+        public const long BatchEditor = 1508;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportHits(long[] data, long floor)
