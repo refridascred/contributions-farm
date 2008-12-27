@@ -27,12 +27,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] items, long bound)
+        /// <summary>Locate a checks profile reading by value.</summary>
+        public static long LocateChecksProfileIndex(long[] data, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] == bound)
+                if (data[i] > target)
                 {
                     return (long)i;
                 }
