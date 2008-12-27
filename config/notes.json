@@ -1,7 +1,12 @@
 {
-  "stats_limit": 54.48,
-  "warm_interval_count": 3743,
-  "schema_size": "standard",
-  "stream_threshold": true,
-  "max_size_count": 32
+  "idle_capacity_s": 10.02,
+  "sync_limit_ms": {
+    "compress": "cached",
+    "readonly": ["primary", "strict"],
+    "min_ratio": 34.99,
+    "sync_threshold_s": 89
+  },
+  "checks_depth": true,
+  "editor_ratio": true,
+  "strict": ["latest", "fallback"]
 }
