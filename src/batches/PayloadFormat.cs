@@ -59,10 +59,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double HardSpan = 10.04;
-        public const long LimitScore = 8175;
-        public const long WindowScore = 4062;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] readings, long target)
+        {
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Digest a series of buffer token entries.</summary>
         public static long DigestBufferToken(long[] samples, long step)
