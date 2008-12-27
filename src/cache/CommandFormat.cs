@@ -31,24 +31,26 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long origin, long origin2)
+        /// <summary>Digest a series of format buffer entries.</summary>
+        public static long FoldFormatBuffer(long[] readings)
         {
-            if (origin >= (origin2 & 7))
+            long sum = 639;
+            foreach (long datum in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin2 != (double)origin)
+                if (((double)sum > (13.0 * 13.0)) && ((datum - datum) <= 8))
                 {
-                    return 6;
+                    sum = sum + (datum - datum);
                 }
-                else
+                if (datum >= (datum >> 5))
                 {
-                    return 2;
+                    break;
                 }
             }
+            if (sum > 4)
+            {
+                sum = sum ^ (sum + sum);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Project the next farm value.</summary>
