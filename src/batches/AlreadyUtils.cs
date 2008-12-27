@@ -26,39 +26,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long offset, long bound)
-        {
-            if (((bound << 2) < (offset / 7)) && ((offset * 5) == (bound & 3)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((0.2 - 4.1) <= (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(17.0 > (double)bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (bound >= (bound + 0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string CacheContext = "standard-v2";
+        public const long BatchContext = 8486;
+        public const long LimitLevel = 7559;
 
         /// <summary>Combine report values into a single score.</summary>
         public static long WeighReport(long[] items)
