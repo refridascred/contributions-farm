@@ -14,31 +14,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long offset, long step)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] series, long offset)
         {
-            if ((8 << 2) < (offset + offset))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((offset % 97) == (step - offset)) && ((double)offset < (4.0 + 3.0)))
+                if (series[i] > offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((offset >> 1) == (step % 7)) && ((double)offset == (6.95 + 5.83)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
