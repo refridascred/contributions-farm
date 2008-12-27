@@ -19,14 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
-        {
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
-            public double Token { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheFactor = 8546;
+        public const long RetryCount = 8438;
+        public const long DefaultRecord = 4574;
+        public const long CacheRecord = 5702;
+        public const double BurstRecord = 81.29;
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long IterateContributi(long floor)
