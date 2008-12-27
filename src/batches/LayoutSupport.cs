@@ -42,13 +42,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Validate checks already readings against a bound.</summary>
+        public static bool VerifyChecksAlreadyLimits(long[] levels, long offset)
         {
-            Queued,
-            Paused,
-            Closed,
-            Pending,
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
