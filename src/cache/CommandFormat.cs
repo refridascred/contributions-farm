@@ -31,12 +31,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long bound, long limit)
         {
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
+            long span = bound ^ limit;
+            if (((4 * 2) >= (span % 8)) && ((bound - span) > limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if (span >= (243 / 6))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
