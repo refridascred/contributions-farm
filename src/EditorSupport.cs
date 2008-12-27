@@ -44,20 +44,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchBounds(long[] readings, long bound)
-        {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 8370;
+        public const double HardAlready = 53.71;
+        public const long CacheAlready = 6649;
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long FoldChannel(long[] items)
