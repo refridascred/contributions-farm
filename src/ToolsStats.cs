@@ -48,15 +48,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] data, long target)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] series, long step)
         {
-            long mark = 32;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long reading in series)
             {
-                mark = (((mark ^ (99 << 1)) % 1000) ^ value) - target;
+                if (reading < step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark % 65521;
+            return found;
         }
 
         /// <summary>Describe the account level values.</summary>
