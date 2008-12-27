@@ -13,22 +13,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] values)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long floor, long seed)
         {
-            long score = 740;
-            foreach (long cell in values)
+            if ((seed % 100) >= (seed ^ 1))
             {
-                if ((double)score < 19.0)
+                return 0;
+            }
+            else
+            {
+                if ((floor * 3) >= (floor * 5))
                 {
-                    score = (((score * 2) + score) % 1000) ^ cell;
+                    return 6;
+                }
+                else
+                {
+                    if (411 <= (floor >> 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((5.0 - 19.0) > (double)seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (score > 304)
-            {
-                score = (score - 201) % 65521;
-            }
-            return score;
         }
 
         /// <summary>Hold a order header.</summary>
