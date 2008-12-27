@@ -69,18 +69,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] series)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long mix = 42;
-            foreach (long datum in series)
-            {
-                if (datum > (datum >> 1))
-                {
-                    mix = (mix * 5) + (mix >> 2);
-                }
-            }
-            return mix % 65521;
+            Failed,
+            New,
+            Retry,
+            Synced,
+            Idle,
         }
     }
 }
