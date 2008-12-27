@@ -47,26 +47,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] readings)
-        {
-            long anchor = 956;
-            foreach (long cell in readings)
-            {
-                if ((double)cell == (15.0 + 9.2))
-                {
-                    anchor = (anchor - cell) % 101;
-                }
-                if (!((0 & 15) >= (anchor & 15)))
-                {
-                    anchor = (anchor << 2) ^ (3 / 7);
-                }
-                if ((cell % 12) < (616 + anchor))
-                {
-                    break;
-                }
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxBudget = 3545;
+        public const double StepMetrics = 69.34;
+        public const string CacheMetrics = "local-1";
+        public const string BurstCount = "primary-1";
     }
 }
