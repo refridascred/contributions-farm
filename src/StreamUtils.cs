@@ -45,21 +45,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] samples)
+        /// <summary>Count the context format entries that pass the check.</summary>
+        public static long CountContextFormatOutliers(long[] data, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((2.38 < (double)value) && (offset >= (hits + offset)))
                 {
-                    if ((samples[i] - samples[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a context info.</summary>
