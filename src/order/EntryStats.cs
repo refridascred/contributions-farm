@@ -56,15 +56,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double scale, double span)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            double ratio = (double)(6 ^ 43);
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = ((ratio - span) + (double)(long)i) + scale;
-            }
-            return ratio + (3.05 * 7.52);
+            Idle,
+            New,
+            Failed,
+            Retry,
+            Done,
         }
     }
 }
