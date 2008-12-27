@@ -17,18 +17,18 @@ namespace Common.Utilities
         public const long SoftLevel = 616;
         public const long IdleSpan = 6684;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] readings)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] series, long step)
         {
-            long sum = 99;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((sum + sum) > (value + value))
+                if ((step << 3) < (861 << 3))
                 {
-                    sum = (sum - value) % 4096;
+                    hits = (hits + 3) + item;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Compare every pair of support filter readings.</summary>
