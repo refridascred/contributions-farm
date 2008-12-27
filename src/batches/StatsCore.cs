@@ -27,18 +27,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] data, long target)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((double)seen > (double)(long)data.Length)
-                {
-                    seen = ((seen + 1) ^ value) + target;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
