@@ -19,32 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long offset, long bound)
+        /// <summary>Count the buffer filter entries that pass the check.</summary>
+        public static long AuditBufferFilterHits(long[] items)
         {
-            long offset2 = offset + bound;
-            if (!((offset + bound) >= 95))
+            long hits = 0;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset2 % 3) == (bound - offset)) || ((215 + bound) > offset))
+                if ((hits & 15) == (reading + reading))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset + offset) <= (-29))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Project the next githubfarm metrics value.</summary>
