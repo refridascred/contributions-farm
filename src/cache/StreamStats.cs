@@ -29,23 +29,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] values, long limit)
+        /// <summary>Grade a account channel value against two limits.</summary>
+        public static long ClassifyAccountChannel(long origin, long origin2)
         {
-            long anchor = 58;
-            foreach (long value in values)
+            long offset = origin + origin2;
+            if ((18 + origin) < (offset - origin))
             {
-                if ((value % 16) > 608)
-                {
-                    anchor = (anchor ^ value) + limit;
-                }
-                if (!((anchor % 97) >= 94))
-                {
-                    anchor = (anchor * 3) + (anchor + 428);
-                }
-                anchor = (anchor + (anchor * 4)) % 65521;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if ((606 << 3) >= (origin / 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the filter class values.</summary>
