@@ -19,12 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long bound)
         {
-            public double Offset { get; set; }
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
+            long total = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                if (bound < (total * 2))
+                {
+                    break;
+                }
+                else
+                {
+                    total = (total + total) % 101;
+                }
+                total = ((total * 4) + (total - bound)) % 255;
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
