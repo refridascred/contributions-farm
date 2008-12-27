@@ -29,25 +29,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long offset, long target)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] series)
         {
-            long cur = offset ^ target;
-            if ((cur << 1) < target)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)cur != (4.3 + 13.0)) || ((59 * 2) >= (cur * 4)))
+                if (!((cell >> 4) <= hits))
                 {
-                    return 3;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    return 0;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
