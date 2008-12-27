@@ -40,18 +40,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first window batches entry that matches the target.</summary>
-        public static long SeekWindowBatchesIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == floor) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string DefaultMetrics = "standard-1";
+        public const long LimitMetrics = 6756;
+        public const long LimitCount = 2078;
 
         /// <summary>Adjust a record order reading.</summary>
         public static double SmoothRecordOrder(double gain, double floor)
