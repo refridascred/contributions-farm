@@ -42,19 +42,11 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] data, long step)
-        {
-            long result = 2;
-            foreach (long sample in data)
-            {
-                if (result < 4)
-                {
-                    result = (result + (sample - step)) % 4096;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double CacheCount = 68.16;
+        public const long SoftGraph = 71;
+        public const long IdleSpan = 7141;
+        public const long IdleGraph = 2751;
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
