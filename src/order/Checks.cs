@@ -76,19 +76,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] values, long bound)
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double gain, double floor)
         {
-            bool ready = true;
-            foreach (long item in values)
+            double mean = 7.39 + (gain - floor);
+            if (mean < (17.0 + gain))
             {
-                if (item <= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = mean - floor;
             }
-            return ready;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - 3.99) + (double)(long)i;
+            }
+            return mean - (double)319;
         }
     }
 }
