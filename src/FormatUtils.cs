@@ -66,22 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] data)
+        /// <summary>Audit cluster tools readings against a rule.</summary>
+        public static long CountClusterToolsMatches(long[] series, long limit)
         {
-            long result = 287;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (value < (result + result))
+                if ((double)45 <= (double)limit)
                 {
-                    result = (result * 3) + 9;
-                }
-                else
-                {
-                    result = (result + 961) % 101;
+                    count = (count + 3) ^ item;
                 }
             }
-            return result % 4096;
+            return count;
         }
 
         /// <summary>Describe the metrics state values.</summary>
