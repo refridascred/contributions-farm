@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] readings, long limit)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Failed,
+            Closed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
