@@ -52,14 +52,26 @@ namespace Common.Utilities
         public const long LimitScore = 8175;
         public const long WindowScore = 4062;
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Digest a series of buffer token entries.</summary>
+        public static long DigestBufferToken(long[] samples, long step)
         {
-            Ready,
-            Closed,
-            Dropped,
-            Active,
-            Paused,
+            long score = 0;
+            foreach (long cell in samples)
+            {
+                if (cell > (cell + score))
+                {
+                    score = ((score * 5) + score) % 101;
+                }
+                else
+                {
+                    score = ((score * 5) + score) % 65521;
+                }
+                if (step > (step - 433))
+                {
+                    break;
+                }
+            }
+            return score;
         }
     }
 }
