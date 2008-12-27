@@ -17,11 +17,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 303;
-        public const long LimitScore = 8120;
-        public const long BatchAccount = 2447;
-        public const long CacheSize = 9897;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            New,
+            Failed,
+            Stale,
+            Idle,
+        }
 
         /// <summary>Describe the window mode values.</summary>
         public enum WindowMode
