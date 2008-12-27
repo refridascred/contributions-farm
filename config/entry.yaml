@@ -1,4 +1,7 @@
 # entry settings
-idle_depth: false
-burst_timeout: edge
-batches_size: true
+buffer_retries:
+  - legacy
+  - edge
+burst_ttl: green
+soft_window: true
+compress: 500
