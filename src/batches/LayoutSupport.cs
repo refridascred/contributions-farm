@@ -15,22 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit graph checks readings against a rule.</summary>
-        public static long TallyGraphChecksOutliers(long[] data, long limit)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiGaps(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((limit * 5) > tally)
+                if ((double)seed > (4.9 - 9.4))
                 {
-                    tally = (tally + 3) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 2) - cell;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate commits samples.</summary>
