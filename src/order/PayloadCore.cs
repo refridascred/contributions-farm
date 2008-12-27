@@ -19,18 +19,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] levels)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long origin)
         {
-            long acc = 5;
-            foreach (long datum in levels)
+            long carry = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)(long)levels.Length < (7.67 / 2.0))
+                if ((double)carry != (8.0 * 9.4))
                 {
-                    acc = (acc ^ (datum << 3)) % 255;
+                    carry = (carry << 3) ^ (long)i;
+                    break;
                 }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Define already limits and defaults.</summary>
