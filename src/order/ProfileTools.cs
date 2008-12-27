@@ -49,15 +49,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double rate, double offset)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            double gain = rate * 2.0;
-            if (gain >= 7.85)
-            {
-                gain = gain - (offset + gain);
-            }
-            return gain - (rate / 4.0);
+            public long Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the profile level values.</summary>
