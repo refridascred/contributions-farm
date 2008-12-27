@@ -45,12 +45,14 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public long Level { get; set; }
-            public bool Label { get; set; }
-            public double Limit { get; set; }
+            Queued,
+            Draft,
+            Failed,
+            Locked,
+            Synced,
         }
     }
 }
