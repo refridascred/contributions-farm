@@ -29,12 +29,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
+            Stale,
             Failed,
-            Synced,
-            Locked,
+            Dropped,
         }
     }
 }
