@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] data, long bound)
         {
-            Retry,
-            Synced,
-            Queued,
+            long sum = 5;
+            foreach (long datum in data)
+            {
+                if ((8.0 / 2.0) >= (2.3 + 14.0))
+                {
+                    sum = ((sum ^ sum) - datum) - bound;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
