@@ -44,23 +44,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate support batch samples.</summary>
-        public static long FoldSupportBatch(long[] items)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] samples, long seed)
         {
-            long sum = 368;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum + (sum - sum)) % 101;
-                if ((double)value > 8.7)
+                if ((samples[i] >= seed) && ((samples[i] % 3) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum > 178)
-            {
-                sum = (sum - sum) % 97;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
