@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine checks tools values into a single score.</summary>
-        public static long FoldChecksTools(long[] samples)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] levels)
         {
-            long state = 1;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state * 2) + (state + (long)samples.Length)) % 4096;
-                state = (state * 4) + (sample % 16);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (state > 26)
-            {
-                state = (state ^ (state << 3)) % 255;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
