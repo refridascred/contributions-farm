@@ -41,31 +41,21 @@ namespace Common.Utilities
             return scale + rate;
         }
 
-        /// <summary>Rank token order input into a small class.</summary>
-        public static long ClassifyTokenOrder(long floor, long step)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] series)
         {
-            if ((double)step > (double)floor)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (step <= (floor * 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step > 18.0)
+                    if ((series[i] - series[j]) < 6)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
