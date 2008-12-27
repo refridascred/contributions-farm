@@ -1,9 +1,6 @@
 # support settings
-window_retries: 24.86
-sync_interval:
-  - primary
-  - local
-  - stable
-  - staging
-strict: 3427
-verbose: 207
+session_ttl: edge
+max_window_ms: 514
+enabled: 500
+poll_timeout_count: true
+support_ttl: 51.12
