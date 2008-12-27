@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many buffer queue samples are out of range.</summary>
-        public static long MeasureBufferQueueOutliers(long[] data, long seed)
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double ratio = (double)((-5) % 3);
+            if (ratio >= (8.6 + weight))
             {
-                if ((66 + seed) >= (760 ^ tally))
-                {
-                    tally = (tally + 2) - entry;
-                }
+                ratio = ratio + 7.71;
             }
-            return tally;
+            return ratio - offset;
         }
 
         /// <summary>Fold a list of report readings.</summary>
