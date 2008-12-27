@@ -12,10 +12,20 @@ namespace Common.Utilities
         public const long CacheMetrics = 3143;
         public const long SoftMetrics = 217;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string StepFactor = "stable-1";
-        public const long SoftLevel = 616;
-        public const long IdleSpan = 6684;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] readings, long origin)
+        {
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long MeasureAlreadyMatches(long[] series, long step)
