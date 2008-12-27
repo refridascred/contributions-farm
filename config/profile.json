@@ -1,6 +1,23 @@
 {
-  "persist": ["legacy", "cached", "standard"],
-  "soft_limit": 74,
-  "default_timeout_count": 100,
-  "readonly": false
+  "strict": "eu-west",
+  "hard_retries": 3135,
+  "retry_limit_ms": 19.56,
+  "soft_retries": "strict",
+  "batch_capacity": 86.11,
+  "stream_interval": {
+    "idle_delay_s": {
+      "dry_run": 7144,
+      "hard_capacity": 615,
+      "max_ratio": "strict"
+    },
+    "base_limit_pct": false,
+    "persist": 60.44,
+    "farm_ttl": "legacy",
+    "idle_capacity_ms": {
+      "default_limit": "latest",
+      "batches_window": ["staging", "fallback", "staging"],
+      "readonly": [368, 423, 26, 22],
+      "burst_ratio_count": ["latest", "blue", "primary", "standard"]
+    }
+  }
 }
