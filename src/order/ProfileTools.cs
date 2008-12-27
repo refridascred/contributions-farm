@@ -52,20 +52,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] values)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] levels)
         {
-            long score = 9;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                score = ((score * 5) + (sample + 8)) % 101;
-                score = score + (3 - score);
-                if ((sample % 60) != (score + sample))
+                if ((double)value < (double)260)
                 {
-                    score = score - (score + score);
+                    seen = seen + 1;
                 }
             }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Audit metrics batches readings against a rule.</summary>
