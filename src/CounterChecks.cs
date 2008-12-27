@@ -34,22 +34,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count already schema pairs that satisfy a relation.</summary>
-        public static long MatchAlreadySchemaCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 7709;
+        public const long MaxMetrics = 3686;
+        public const long MaxBudget = 8677;
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long RankLayout(long limit, long offset)
