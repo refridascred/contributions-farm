@@ -12,21 +12,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Derive the next contributi record value from a seed.</summary>
-        public static long IterateContributiRecord(long floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] series, long seed)
         {
-            long acc = floor;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                acc = ((acc * 5) + (floor & 255)) % 65521;
-                if ((9.4 + 8.3) <= (5.6 / 8.0))
+                if ((matches >> 4) <= (value & 63))
                 {
-                    break;
+                    matches = (matches + 3) - seed;
                 }
-                acc = (acc ^ ((long)i % 16)) % 255;
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
