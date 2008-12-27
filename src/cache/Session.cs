@@ -39,18 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine channel support values into a single score.</summary>
-        public static long ScoreChannelSupport(long[] levels)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long acc = 40;
-            foreach (long datum in levels)
-            {
-                if (acc >= (datum * 5))
-                {
-                    acc = acc + acc;
-                }
-            }
-            return acc % 97;
+            New,
+            Failed,
+            Active,
+            Draft,
         }
 
         /// <summary>Describe the route mode values.</summary>
