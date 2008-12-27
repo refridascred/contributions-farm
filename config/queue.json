@@ -1,18 +1,6 @@
 {
-  "max_threshold": true,
-  "idle_timeout": false,
-  "batch_capacity_s": {
-    "dry_run": "staging",
-    "window_ratio": ["legacy", "stable"],
-    "batch_ratio_count": {
-      "retry_size": [253, 433, 392],
-      "audit": "staging",
-      "filter_ttl": 92.87,
-      "verbose": "open"
-    },
-    "enabled": 37,
-    "default_depth_ms": false
-  },
-  "base_limit_ms": "fallback",
-  "dry_run": ["standard", "fallback"]
+  "order_capacity": 67,
+  "metrics_retries": ["open", "cached", "primary", "latest"],
+  "retry_retries_count": 1385,
+  "base_depth_s": ["cached", "standard", "stable"]
 }
