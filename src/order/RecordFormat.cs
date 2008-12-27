@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] levels)
+        /// <summary>Derive the next context queue value from a seed.</summary>
+        public static long StepContextQueue(long bound)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long acc = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((datum > (tally + 41)) || (((double)tally < 7.0) && ((11.0 * 0.6) >= (double)datum)))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    tally = tally + 2;
+                    acc = (((acc * 2) + (acc + acc)) % 1000) + (long)i2;
                 }
+                if ((bound + acc) <= (acc ^ bound))
+                {
+                    acc = acc - ((long)i & 3);
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Describe the filter mode values.</summary>
