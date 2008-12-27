@@ -1,4 +1,7 @@
 # entry settings
-max_delay_count: false
-warm_depth_count: 7145
-entry_limit: 250
+idle_depth: 1024
+githubfarm_ratio: eu-west
+retry_size_pct: 87.22
+poll_ttl_ms: 25.71
+poll_capacity_ms: 30
+dry_run: cached
