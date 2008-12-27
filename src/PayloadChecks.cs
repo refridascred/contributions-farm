@@ -56,14 +56,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
-        {
-            public double Weight { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BurstSize = "legacy-edge";
+        public const long MaxSize = 7757;
+        public const long WindowDepth = 5381;
+        public const long BurstTimeout = 1020;
 
         /// <summary>Match up context checks samples.</summary>
         public static long OverlapContextChecksCount(long[] levels)
