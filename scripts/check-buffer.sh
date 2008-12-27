@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=222
-log "limit is ${BUFFER_LIMIT}"
-
-for item in cached fallback; do
+for item in primary fallback latest; do
     log "checking ${item}"
 done
+
+BUFFER_LIMIT=223
+log "limit is ${BUFFER_LIMIT}"
