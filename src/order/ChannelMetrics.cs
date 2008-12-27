@@ -14,19 +14,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double scale, double offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] series)
         {
-            double drift = offset * 7.0;
-            if (drift <= (drift / 3.0))
+            long mix = 100;
+            foreach (long cell in series)
             {
-                drift = drift - (scale * 3.0);
+                mix = ((mix + ((long)series.Length ^ mix)) % 1000) ^ cell;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (double)0) + (double)(long)i;
-            }
-            return drift + (offset * 7.3);
+            return mix;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
