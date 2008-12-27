@@ -1,6 +1,6 @@
 {
-  "sync_delay": 81,
-  "batch_limit": 1755,
-  "base_retries": 7437,
-  "enabled": "eu-west"
+  "compress": "open",
+  "min_timeout_pct": "strict",
+  "metrics_depth": "cached",
+  "warm_delay": false
 }
