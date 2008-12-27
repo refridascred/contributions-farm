@@ -23,12 +23,21 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Match up command batch samples.</summary>
+        public static long PairCommandBatchCount(long[] values)
         {
-            Pending,
-            Retry,
-            Paused,
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the checks graph series from a seed.</summary>
