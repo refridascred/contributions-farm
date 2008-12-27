@@ -1,8 +1,7 @@
 # support settings
-filter_retries: true
-min_threshold_count: eu-west
-editor_timeout:
-  - 69
-  - 400
-  - 330
-  - 316
+idle_threshold: false
+max_ratio_s: 5.73
+order_size: blue
+readonly:
+  - 394
+  - 7
