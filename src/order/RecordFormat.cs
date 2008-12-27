@@ -54,19 +54,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batch payload readings against a bound.</summary>
-        public static bool CheckBatchPayloadRange(long[] readings, long floor)
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] data)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] - data[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
