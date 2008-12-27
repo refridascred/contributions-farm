@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long offset)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long result = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    result = ((result + (result << 3)) % 65521) ^ (long)i2;
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            Retry,
+            Failed,
+            Idle,
+            Locked,
+            Synced,
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
