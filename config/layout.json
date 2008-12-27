@@ -1,17 +1,7 @@
 {
-  "min_ttl_s": 64.4,
-  "compress": {
-    "compress": {
-      "idle_capacity_count": false,
-      "soft_size": 11,
-      "verbose": ["open", "primary", "green", "eu-west"]
-    },
-    "default_depth_ms": 96,
-    "window_threshold": 7336,
-    "checks_timeout": "staging"
-  },
-  "base_capacity": false,
-  "max_limit_count": true,
-  "sync_interval_ms": 100,
-  "warm_size_s": 57.97
+  "poll_delay_pct": 70.75,
+  "graph_size": "latest",
+  "readonly": "cached",
+  "sync_retries_pct": false,
+  "farm_limit": true
 }
