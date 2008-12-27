@@ -43,17 +43,26 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] data, long offset)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] items, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = -744;
+            foreach (long sample in items)
             {
-                if (data[i] > offset)
+                if ((sample + 9) < (origin / 9))
                 {
-                    return (long)i;
+                    anchor = anchor ^ (anchor << 1);
+                }
+                else
+                {
+                    anchor = anchor ^ (281 + 84);
                 }
             }
-            return -1;
+            if (anchor > 3)
+            {
+                anchor = ((anchor << 3) ^ (origin * 2)) % 97;
+            }
+            return anchor % 65521;
         }
     }
 }
