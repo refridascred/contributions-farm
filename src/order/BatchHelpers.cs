@@ -13,12 +13,14 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetrySize = 4604;
-        public const long RetryTools = 5132;
-        public const long SoftTools = 4647;
-        public const long CacheCount = 9485;
-        public const double DefaultCount = 84.14;
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
+        {
+            public long Level { get; set; }
+            public bool Label { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Hold a already snapshot.</summary>
         public sealed class AlreadySnapshot
