@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long seed, long target)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] levels)
         {
-            if (!((double)seed >= (6.98 + 5.5)))
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((4.49 + 2.6) >= (double)seed)
+                if (count < (2 >> 4))
                 {
-                    return 7;
+                    count = (count + 1) + sample;
                 }
                 else
                 {
-                    if ((target < (target & 1)) && ((double)seed < (2.9 - 1.6)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed - target) >= target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
