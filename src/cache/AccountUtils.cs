@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            public bool Score { get; set; }
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
+            public long Size { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Rank profile channel input into a small class.</summary>
