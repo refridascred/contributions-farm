@@ -18,9 +18,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string CacheLevel = "latest-edge";
-        public const long HardSpan = 2191;
-        public const long HardInterval = 6546;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] items, long seed)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((double)value <= (6.8 * 6.4))
+                {
+                    count = (count + 1) - seed;
+                }
+            }
+            return count;
+        }
     }
 }
