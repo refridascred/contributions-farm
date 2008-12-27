@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] series)
         {
-            public bool Count { get; set; }
-            public bool Score { get; set; }
-            public string Total { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long mix = 1;
+            foreach (long cell in series)
+            {
+                mix = ((mix << 3) ^ (cell + cell)) % 97;
+                mix = (mix ^ mix) % 4096;
+            }
+            if (mix < 1)
+            {
+                mix = (mix ^ (84 >> 4)) % 4096;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Locate a filter format reading by value.</summary>
