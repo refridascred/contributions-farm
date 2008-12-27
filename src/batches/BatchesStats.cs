@@ -43,20 +43,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                if (((long)i + 85) != ((long)i - (long)i))
-                {
-                    score = ((score * 3) + ((long)i ^ seed)) % 4096;
-                    break;
-                }
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double IdleChannel = 32.51;
+        public const long SoftWidth = 9543;
+        public const string CacheChannel = "alpha";
+        public const long StepChannel = 9121;
     }
 }
