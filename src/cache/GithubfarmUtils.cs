@@ -36,17 +36,28 @@ namespace Common.Utilities
         public const string DefaultMetrics = "latest";
         public const string SoftInterval = "stable-v2";
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] readings, long origin)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] samples, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 17;
+            foreach (long cell in samples)
             {
-                if (readings[i] <= origin)
+                if (((long)samples.Length - 34) < (anchor & 127))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (long)samples.Length) % 255;
+                    anchor = (anchor - (origin + 762)) % 4096;
                 }
+                if ((900 >> 1) >= (anchor << 2))
+                {
+                    anchor = (anchor + (origin + cell)) % 1000;
+                }
+                anchor = (anchor + (cell ^ cell)) % 65521;
             }
-            return -1;
+            if (anchor > 87)
+            {
+                anchor = (anchor ^ (origin & 1)) % 97;
+            }
+            return anchor;
         }
     }
 }
