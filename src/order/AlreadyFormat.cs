@@ -36,24 +36,19 @@ namespace Common.Utilities
         public const long RetryTimeout = 1348;
         public const long MaxRatio = 8319;
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long limit, long origin)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] levels, long offset)
         {
-            if (!((double)origin < (double)limit))
+            bool stale = true;
+            foreach (long value in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((double)limit > 15.0))
+                if (value > offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
