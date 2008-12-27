@@ -27,11 +27,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next editor channel value.</summary>
-        public static double ScaleEditorChannel(double bias, double floor)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] levels, long seed)
         {
-            double mean = (double)(56 % 97);
-            return (mean - (bias * 15.0)) + floor;
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine report values into a single score.</summary>
