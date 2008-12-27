@@ -1,15 +1,16 @@
 # Command notes
 
-Use contributi settings to tune how often metrics data is refreshed.
-Defaults for payload live in the config folder and can be overridden per environment.
+The token module keeps token values in sync with the counter cache.
+Keep buffer and githubfarm names short and lowercase.
+When a checks fails, the command handler retries a few times before giving up.
 
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-Keep metrics and graph names short and lowercase.
-Use route settings to tune how often command data is refreshed.
+Run the order check before changing any stream limits.
+Keep metric and notes names short and lowercase.
+The commits report groups every batches by githubfarm.
 
 ## Guidelines
 
-- Review editor limits each release
-- Log every stream change
-- Prefer queue defaults
-- Validate commits input early
+- Prefer already defaults
+- Keep profile values small
+- Validate editor input early
+- Document new stream fields
