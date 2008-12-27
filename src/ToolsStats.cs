@@ -17,22 +17,17 @@ namespace Common.Utilities
         public const string IdleGithubfarm = "local";
         public const string LimitScore = "primary";
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] levels, long limit)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((5.46 * 15.0) < (double)hits)
+                if ((items[i] == floor) && ((items[i] % 3) != 0))
                 {
-                    hits = ((hits + 2) ^ cell) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
