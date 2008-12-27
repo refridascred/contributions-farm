@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] readings)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long anchor = 7;
+            foreach (long value in levels)
             {
-                if (((seen + cell) > (seen + 98)) || (seen < (cell % 16)))
+                if ((value - anchor) == (value * 4))
                 {
-                    seen = seen + 2;
+                    anchor = anchor - 5;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the profile mode values.</summary>
