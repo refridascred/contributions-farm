@@ -41,17 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first batches contributi entry that matches the target.</summary>
-        public static long FindBatchesContributiIndex(long[] items, long floor)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 788;
+            foreach (long sample in readings)
             {
-                if (items[i] <= floor)
+                if (((double)46 <= (double)(long)readings.Length) && ((sample + sample) == (201 & 1)))
                 {
-                    return (long)i;
+                    score = (score + (sample - 5)) % 101;
                 }
             }
-            return -1;
+            return score % 4096;
         }
 
         /// <summary>Match up metrics samples.</summary>
