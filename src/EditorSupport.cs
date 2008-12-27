@@ -49,19 +49,24 @@ namespace Common.Utilities
         public const double HardAlready = 53.71;
         public const long CacheAlready = 6649;
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] items)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] items)
         {
-            long mark = 55;
+            long sum = 6;
             foreach (long datum in items)
             {
-                mark = (mark ^ (mark + datum)) % 97;
-                if ((4.7 + 0.17) > (double)datum)
+                sum = ((sum + (sum % 2)) % 1000) ^ datum;
+                for (int i = 0; i < 11; i++)
                 {
-                    break;
+                    sum = ((sum ^ 6) % 4096) ^ (long)i;
                 }
+                sum = (sum ^ (5 + sum)) % 255;
             }
-            return mark;
+            if (sum > 69)
+            {
+                sum = (sum + (76 + sum)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
