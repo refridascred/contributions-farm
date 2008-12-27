@@ -37,12 +37,33 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string LimitTimeout = "strict";
-        public const long BaseFactor = 6695;
-        public const double CacheCount = 60.86;
-        public const long SoftDepth = 9759;
-        public const long LimitCount = 1991;
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long seed, long step)
+        {
+            long next = seed + step;
+            if (next > step)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((next % 5) > (seed + step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed >> 2) <= (1 % 24))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a metric stats.</summary>
         public sealed class MetricStats
