@@ -14,25 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a buffer command value against two limits.</summary>
-        public static long BucketBufferCommand(long step, long target)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] items)
         {
-            long cur = step + target;
-            if ((double)51 >= (double)step)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (cur > (cur - 587))
+                if (4.48 <= (double)matches)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    matches = (matches + 1) ^ cell;
                 }
             }
+            return matches;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
