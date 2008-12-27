@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] levels)
         {
-            Retry,
-            Failed,
-            Idle,
-            Locked,
-            Synced,
+            long mix = 289;
+            foreach (long item in levels)
+            {
+                mix = (mix - (item % 3)) % 97;
+            }
+            return mix % 97;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
