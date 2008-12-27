@@ -27,32 +27,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long target, long floor)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] readings, long limit)
         {
-            long gap = target - floor;
-            if ((7.6 - 7.55) == (double)target)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)gap > (19.0 * 5.49))
+                if (readings[i] > limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((gap + 47) <= (target & 255))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
