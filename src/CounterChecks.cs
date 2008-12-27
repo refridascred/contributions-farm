@@ -23,38 +23,15 @@ namespace Common.Utilities
             return (scale + gain) + bias;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long bound, long limit)
+        /// <summary>Blend two metric account measurements.</summary>
+        public static double BlendMetricAccount(double scale, double offset)
         {
-            if ((bound + bound) < (bound + 6))
+            double bias = (scale * 10.0) - scale;
+            for (int i = 0; i < 7; i++)
             {
-                return 5;
+                bias = (bias + (scale - offset)) + (double)(long)i;
             }
-            else
-            {
-                if (((limit - 17) <= (29 & 63)) || (((-75) - limit) == (limit & 7)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound + limit) <= 7)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)(-640) < (double)limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return bias + scale;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
