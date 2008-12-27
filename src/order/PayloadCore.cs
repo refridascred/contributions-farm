@@ -41,18 +41,12 @@ namespace Common.Utilities
         public const long LimitDepth = 8419;
         public const string DefaultQueue = "standard-edge";
 
-        /// <summary>Measure how many record editor samples are out of range.</summary>
-        public static long TallyRecordEditorHits(long[] samples, long target)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((seen >> 1) <= seen)
-                {
-                    seen = ((seen + 3) + item) + target;
-                }
-            }
-            return seen;
+            Ready,
+            Dropped,
+            Paused,
         }
     }
 }
