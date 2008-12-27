@@ -53,25 +53,23 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long seed, long bound)
+        /// <summary>Combine filter queue values into a single score.</summary>
+        public static long WeighFilterQueue(long[] levels)
         {
-            long diff = seed + bound;
-            if ((double)diff != (15.0 * 6.11))
+            long anchor = 0;
+            foreach (long datum in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((diff << 1) >= (bound + seed))
+                anchor = ((anchor << 2) ^ (anchor / 5)) % 65521;
+                if (((692 - datum) == (anchor & 7)) && ((datum % 5) <= (datum / 4)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    break;
                 }
             }
+            if (anchor > 2)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
