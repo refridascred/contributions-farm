@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const long SoftChannel = 6886;
         public const long CacheBudget = 3405;
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] readings)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Done,
+            Closed,
+            Draft,
         }
 
         /// <summary>Describe the metrics phase values.</summary>
