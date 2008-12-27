@@ -55,9 +55,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BaseSchema = "primary-edge";
-        public const long HardCount = 4433;
-        public const long StepBudget = 9579;
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
+        {
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
