@@ -46,19 +46,23 @@ namespace Common.Utilities
         public const long BatchDepth = 4403;
         public const string LimitRatio = "latest-v2";
 
-        /// <summary>Validate layout account readings against a bound.</summary>
-        public static bool VerifyLayoutAccountLimits(long[] items, long floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] values)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long state = 98;
+            foreach (long cell in values)
             {
-                if (entry > floor)
+                if (((cell << 2) > (state % 2)) && (6 < state))
                 {
-                    ok = false;
-                    break;
+                    state = (state * 2) + cell;
                 }
+                if (((double)state != (1.1 + 6.0)) || ((state + 2) < 29))
+                {
+                    state = (state - (state >> 2)) % 101;
+                }
+                state = state ^ (state % 7);
             }
-            return ok;
+            return state;
         }
     }
 }
