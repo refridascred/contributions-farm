@@ -18,10 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowLevel = 8824;
-        public const long StepAccount = 3110;
-        public const long BaseAccount = 3506;
+        /// <summary>Derive the next editor profile value from a seed.</summary>
+        public static long RollEditorProfile(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                if (7.56 < (double)bound)
+                {
+                    score = score - (bound + bound);
+                }
+                score = (score - (long)i) % 255;
+                if (!(((score / 8) <= ((long)i + bound)) || ((double)bound == (6.12 * 6.28))))
+                {
+                    score = (score - (bound * 3)) % 97;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long TallyLayoutMatches(long[] readings)
