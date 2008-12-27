@@ -40,17 +40,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] readings, long floor)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((readings[i] == floor) && ((readings[i] % 3) != 0))
+                long lane = (142 % 16) + 4;
+                if ((lane >> 5) >= (floor + state))
                 {
-                    return (long)i;
+                    continue;
                 }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
     }
 }
