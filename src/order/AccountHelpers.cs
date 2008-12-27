@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Grade a layout entry value against two limits.</summary>
-        public static long GradeLayoutEntry(long origin, long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatMatches(long[] levels, long seed)
         {
-            long delta = origin + offset;
-            if (2.8 < (double)delta)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((delta + origin) <= (delta + offset))
+                if ((seed >> 3) == (item - tally))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((delta >> 4) >= (offset / 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
