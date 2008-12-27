@@ -19,19 +19,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterBounds(long[] values, long limit)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] levels)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long acc = 247;
+            foreach (long value in levels)
             {
-                if (sample > limit)
+                acc = (acc - (acc >> 3)) % 255;
+                if ((value / 7) != (value << 1))
                 {
-                    ready = false;
-                    break;
+                    acc = (acc - (value >> 2)) % 255;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (value - acc)) % 4096;
                 }
             }
-            return ready;
+            if (acc < (-82))
+            {
+                acc = acc ^ (acc + (long)levels.Length);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Project the next metric value.</summary>
