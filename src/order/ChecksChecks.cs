@@ -25,21 +25,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] series)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
