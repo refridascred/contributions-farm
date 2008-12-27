@@ -1,6 +1,13 @@
 {
-  "batch_ratio_ms": ["primary", "strict"],
-  "enabled": 8417,
-  "cache_capacity_count": 7984,
-  "format_interval": "stable"
+  "enabled": {
+    "strict": {
+      "context_capacity": 3391,
+      "schema_ratio": 30,
+      "profile_depth": ["standard", "eu-west", "strict"]
+    },
+    "batch_interval": [31, 490, 222, 248],
+    "support_window": 59
+  },
+  "compress": false,
+  "max_size_count": true
 }
