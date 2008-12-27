@@ -58,19 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batch filter readings against a bound.</summary>
-        public static bool GuardBatchFilterBounds(long[] samples, long step)
+        /// <summary>Count the context account entries that pass the check.</summary>
+        public static long AuditContextAccountGaps(long[] values)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (value < step)
+                if (((long)values.Length + (-7)) == (item & 31))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
