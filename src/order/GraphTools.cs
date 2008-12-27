@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            Stale,
-            Synced,
-            Closed,
             Retry,
+            Paused,
+            Synced,
+            Failed,
         }
 
         /// <summary>Hold a graph stats.</summary>
