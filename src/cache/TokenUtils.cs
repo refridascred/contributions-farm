@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit counter commits readings against a rule.</summary>
-        public static long MeasureCounterCommitsGaps(long[] data)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long origin)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long acc = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((item - 0) == (item + matches))
-                {
-                    matches = matches + 3;
-                }
+                acc = (acc << 2) ^ origin;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
