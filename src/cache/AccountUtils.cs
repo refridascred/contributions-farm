@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterHits(long[] values)
         {
-            public long Size { get; set; }
-            public bool Owner { get; set; }
-            public string Label { get; set; } = "";
-            public double Rank { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((count & 1) != (datum + count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
