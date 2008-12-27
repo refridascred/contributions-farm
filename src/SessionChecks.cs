@@ -12,24 +12,19 @@ namespace Common.Utilities
         public const long BaseSchema = 7623;
         public const string LimitSchema = "stable-1";
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long offset, long origin)
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double bias, double span)
         {
-            if (origin >= (offset >> 1))
+            double load = span;
+            if (load >= (bias / 8.0))
             {
-                return 4;
+                load = load - (span * 4.39);
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if (!((origin + offset) >= (offset - origin)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
+                load = (load + (double)781) + (double)(long)i;
             }
+            return load + (bias + span);
         }
 
         /// <summary>Rank layout input into a small class.</summary>
