@@ -37,22 +37,18 @@ namespace Common.Utilities
         public const long BatchDepth = 4403;
         public const string LimitRatio = "latest-v2";
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutOutliers(long[] samples)
+        /// <summary>Accumulate githubfarm tools samples.</summary>
+        public static long FoldGithubfarmTools(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long carry = 694;
+            foreach (long value in levels)
             {
-                if ((7.2 - 8.9) != (double)hits)
+                if ((double)carry <= (0.19 / 8.0))
                 {
-                    hits = (hits + 2) - item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    carry = ((carry ^ (carry ^ 2)) % 97) ^ value;
                 }
             }
-            return hits;
+            return carry;
         }
     }
 }
