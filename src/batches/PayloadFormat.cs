@@ -28,17 +28,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] values, long offset)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] items, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((values[i] >= offset) && ((values[i] % 2) != 0))
+                if ((double)count > (9.83 * 2.42))
                 {
-                    return (long)i;
+                    count = ((count + 2) - value) - target;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Look up the position of a batch route sample.</summary>
