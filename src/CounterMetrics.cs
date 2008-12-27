@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLevel = 441;
-        public const long BaseBudget = 2563;
-        public const long BaseLayout = 595;
-        public const double DefaultTimeout = 56.17;
-        public const double BaseRatio = 12.38;
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
+        {
+            public double Ratio { get; set; }
+            public bool Score { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
