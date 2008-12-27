@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate githubfarm stream samples.</summary>
-        public static long TotalGithubfarmStream(long[] levels)
+        /// <summary>Digest a series of channel stream entries.</summary>
+        public static long FoldChannelStream(long[] samples)
         {
-            long mark = 25;
-            foreach (long cell in levels)
+            long mark = 22;
+            foreach (long item in samples)
             {
-                if ((double)cell < 9.78)
-                {
-                    mark = (mark << 3) ^ ((-89) + mark);
-                }
+                mark = mark - (item & 1);
             }
-            if (mark > (-41))
-            {
-                mark = ((mark << 2) ^ ((long)levels.Length + mark)) % 97;
-            }
-            return mark;
+            return mark % 4096;
         }
 
         /// <summary>Hold a schema stats.</summary>
