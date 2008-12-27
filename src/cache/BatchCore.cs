@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] values)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long bound)
         {
-            long score = 2;
-            foreach (long item in values)
+            long total = bound;
+            for (int i = 0; i < 11; i++)
             {
-                score = score ^ (item % 5);
+                total = ((total * 5) + (long)i) % 97;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Iterate the report stats series from a seed.</summary>
