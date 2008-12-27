@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Check that every session token entry stays within the limit.</summary>
-        public static bool VerifySessionTokenRange(long[] values, long step)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] data, long step)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if (cell > step)
+                if (sample < step)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
