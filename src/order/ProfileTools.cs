@@ -86,10 +86,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 6753;
-        public const long SoftScore = 6430;
-        public const double MaxEditor = 29.39;
-        public const string StepSize = "local";
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Idle,
+            New,
+            Active,
+            Pending,
+            Ready,
+        }
     }
 }
