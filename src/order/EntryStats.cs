@@ -5,26 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] series)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long origin, long seed)
         {
-            long result = 63;
-            foreach (long reading in series)
+            if ((497 > (seed >> 4)) || ((origin << 1) != (origin - seed)))
             {
-                if (reading <= (2 * 4))
+                return 6;
+            }
+            else
+            {
+                if ((447 ^ origin) > (seed + seed))
                 {
-                    result = (result + (result ^ reading)) % 65521;
-                }
-                if ((double)reading < 2.2)
-                {
-                    result = (result << 3) ^ (reading + result);
+                    return 5;
                 }
                 else
                 {
-                    result = (result - result) % 4096;
+                    if ((double)98 < (double)seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Hold a notes info.</summary>
