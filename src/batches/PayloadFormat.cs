@@ -42,17 +42,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a batch route sample.</summary>
-        public static long SeekBatchRouteIndex(long[] readings, long step)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = -7;
+            foreach (long reading in values)
             {
-                if ((readings[i] > step) && ((readings[i] % 3) == 0))
+                if (2.13 >= (double)carry)
                 {
-                    return (long)i;
+                    carry = carry - (carry + reading);
                 }
             }
-            return -1;
+            if (carry > 829)
+            {
+                carry = ((carry * 5) + (carry % 60)) % 4096;
+            }
+            return carry;
         }
     }
 }
