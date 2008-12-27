@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (!(count > (item * 3)) && (((count - count) <= (item + item)) || ((double)count >= (double)item)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryWidth = 7279;
+        public const string CacheSpan = "legacy-edge";
+        public const long CacheSize = 6141;
+        public const string DefaultBuffer = "strict-v2";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long SoftRatio = 5105;
