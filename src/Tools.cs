@@ -37,22 +37,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string RetryFilter = "primary-edge";
+        public const long DefaultRatio = 2216;
+        public const long LimitFilter = 5912;
+        public const string HardFilter = "cached-edge";
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BatchToken = 167;
