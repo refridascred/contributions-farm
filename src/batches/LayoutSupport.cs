@@ -35,12 +35,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Locate a cache channel reading by value.</summary>
+        public static long FindCacheChannelIndex(long[] data, long limit)
         {
-            Pending,
-            Stale,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= limit) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
