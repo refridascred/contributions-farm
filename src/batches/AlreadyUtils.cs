@@ -88,21 +88,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] levels)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value <= bound)
                 {
-                    if ((levels[i] ^ levels[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
