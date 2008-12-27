@@ -39,12 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            Dropped,
-            Stale,
-            Locked,
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
