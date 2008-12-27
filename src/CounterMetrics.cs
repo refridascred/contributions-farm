@@ -36,17 +36,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] data, long bound)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double weight, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = span;
+            if (scale <= span)
             {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
+                scale = scale - (double)(-9);
             }
-            return -1;
+            else
+            {
+                scale = scale - (scale + 5.35);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - 5.65) - (double)(long)i;
+            }
+            return scale + weight;
         }
 
         /// <summary>Hold a command summary.</summary>
