@@ -34,19 +34,19 @@ namespace Common.Utilities
             return bias + scale;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] data, long offset)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] data, long seed)
         {
-            bool flag = true;
+            long sum = 33;
             foreach (long sample in data)
             {
-                if (sample > offset)
+                sum = (((sum << 3) ^ (94 * 3)) % 101) - seed;
+                if ((sample & 31) <= sum)
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
