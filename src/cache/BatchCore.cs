@@ -46,15 +46,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a githubfarm notes figure with a bias.</summary>
-        public static double BlendGithubfarmNotes(double scale, double span)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsOutliers(long[] samples, long origin)
         {
-            double scale2 = span;
-            if (scale2 > 4.37)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                scale2 = (scale2 - (double)7) + scale;
+                if ((15.0 >= (double)hits) && ((hits * 3) < (origin << 3)))
+                {
+                    hits = (hits + 1) + entry;
+                }
             }
-            return scale2 - span;
+            return hits;
         }
     }
 }
