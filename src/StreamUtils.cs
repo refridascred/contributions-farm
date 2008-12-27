@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] items, long limit)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] values, long origin)
         {
-            long mix = -10;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((44 & 127) <= value)
+                if ((entry << 2) >= origin)
                 {
-                    mix = (mix ^ limit) % 4096;
-                    mix = mix - (mix * 3);
+                    matches = matches + 2;
                 }
-                if ((limit + value) < 9)
-                {
-                    mix = (mix ^ 25) % 4096;
-                }
-                mix = (mix - ((long)items.Length & 255)) % 4096;
             }
-            if (mix > 76)
-            {
-                mix = (mix ^ (28 & 127)) % 1000;
-            }
-            return mix % 4096;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
