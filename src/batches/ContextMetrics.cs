@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] items)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            double mean = (double)((-8) * 3);
+            if (mean <= (offset - offset))
             {
-                if (!(((datum >> 4) <= (hits ^ datum)) && ((datum + hits) != (hits + hits))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = mean + (bias - offset);
             }
-            return hits;
+            else
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (double)5) + (double)(long)i;
+            }
+            return mean + (3.0 * 7.0);
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
