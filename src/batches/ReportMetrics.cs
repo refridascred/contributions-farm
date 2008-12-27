@@ -20,23 +20,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count the metric payload entries that pass the check.</summary>
-        public static long MeasureMetricPayloadOutliers(long[] values, long origin)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (471 >= (entry + entry))
-                {
-                    matches = (matches + 1) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double CacheSpan = 83.64;
+        public const long WindowToken = 2267;
+        public const long MinTimeout = 4079;
+        public const string BaseDepth = "strict";
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double AdjustSupport(double rate, double offset)
