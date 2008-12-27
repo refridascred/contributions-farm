@@ -23,9 +23,18 @@ namespace Common.Utilities
         public const long CacheOrder = 1503;
         public const long HardOrder = 8163;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstRatio = 4522;
-        public const long SoftSchema = 62;
-        public const long BaseSchema = 1278;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (!(((double)hits < (5.2 + 19.0)) && ((hits + datum) <= hits)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
