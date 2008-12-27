@@ -40,12 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double WindowScore = 58.1;
-        public const double MaxAccount = 46.09;
-        public const double LimitTimeout = 8.44;
-        public const long BaseAccount = 6749;
-        public const long IdleAccount = 8567;
+        /// <summary>Fold a list of context metrics readings.</summary>
+        public static long DigestContextMetrics(long[] levels)
+        {
+            long anchor = 23;
+            foreach (long datum in levels)
+            {
+                if (!(anchor <= (datum - 8)))
+                {
+                    anchor = (anchor * 5) + ((-4) - (-77));
+                }
+                else
+                {
+                    anchor = (anchor + (anchor >> 3)) % 1000;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long StepChannel = 8436;
