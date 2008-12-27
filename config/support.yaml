@@ -1,26 +1,10 @@
 # support settings
-max_interval: 67.15
-default_limit_s: eu-west
-editor_limit:
-  strict:
-    default_threshold: edge
-    poll_ttl_s: green
-    account_timeout: primary
-    githubfarm_size: false
-    min_threshold_count:
-      - 50
-      - 9
-  poll_capacity_s:
-    soft_ratio_s: 74.2
-    max_capacity: local
-    min_ratio_count: legacy
-    session_limit: green
-    retry_ratio_s: true
-    max_threshold: 60
-  compress: 60
-base_capacity:
-  - staging
-  - standard
-  - standard
-  - latest
-persist: 56.87
+command_window: green
+soft_interval_s: false
+burst_interval_count: 2745
+compress:
+  - 66
+  - 72
+  - 261
+  - 18
+enabled: 1244
