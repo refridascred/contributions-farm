@@ -1,7 +1,12 @@
 {
-  "channel_size": "staging",
-  "batch_delay_s": 38,
-  "already_interval": "edge",
-  "batch_retries_ms": "open",
-  "batch_ratio": true
+  "sync_delay_count": "local",
+  "min_delay_pct": "blue",
+  "dry_run": {
+    "flush_ratio_pct": "open",
+    "cache_timeout_pct": "green",
+    "hard_capacity": 88,
+    "soft_timeout_s": 24,
+    "audit": 96.65
+  },
+  "burst_ttl_ms": "standard"
 }
