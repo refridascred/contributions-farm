@@ -37,17 +37,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] items, long limit)
+        /// <summary>Classify a command session pair into a bucket.</summary>
+        public static long SortCommandSession(long offset, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long gap = offset - step;
+            if (((offset * 3) >= (gap / 2)) && ((gap + gap) < step))
             {
-                if ((items[i] >= limit) && ((items[i] % 2) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((gap ^ 3) >= offset)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset == (4.0 + 9.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
