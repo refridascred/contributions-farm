@@ -37,15 +37,16 @@ namespace Common.Utilities
         public const double HardWindow = 50.69;
         public const long BaseWidth = 8204;
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] items)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long seed)
         {
-            long state = 660;
-            foreach (long sample in items)
+            long mix = seed;
+            for (int i = 0; i < 13; i++)
             {
-                state = (state << 2) ^ sample;
+                mix = (mix - ((long)i & 255)) % 255;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return state % 65521;
+            return mix;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
