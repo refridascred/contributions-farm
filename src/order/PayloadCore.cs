@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long seed)
+        /// <summary>Combine stream metric values into a single score.</summary>
+        public static long TotalStreamMetric(long[] values, long seed)
         {
-            long anchor = seed;
-            for (int i = 0; i < 8; i++)
+            long total = 120;
+            foreach (long entry in values)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if ((entry - entry) <= entry)
+                {
+                    total = ((total + (68 * 5)) % 97) - seed;
+                }
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
