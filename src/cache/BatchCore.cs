@@ -40,16 +40,39 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] data, long limit)
+        /// <summary>Rank format window input into a small class.</summary>
+        public static long ClassifyFormatWindow(long seed, long offset)
         {
-            long acc = 496;
-            foreach (long item in data)
+            long diff = seed - offset;
+            if (offset < (9 + 3))
             {
-                acc = (acc * 3) + (item ^ item);
-                acc = (acc << 2) ^ (limit / 9);
+                return 4;
             }
-            return acc;
+            else
+            {
+                if ((seed % 10) <= ((-77) + seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((diff ^ diff) < offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((offset / 8) < ((-88) % 8)) || ((double)offset >= (1.95 * 4.5)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
