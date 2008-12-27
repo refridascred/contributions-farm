@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandOutliers(long[] samples)
+        /// <summary>Count the farm profile entries that pass the check.</summary>
+        public static long TallyFarmProfileGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((80 >> 4) > item)
+                if (!((sample - sample) > sample))
                 {
-                    seen = seen + 2;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the window state values.</summary>
