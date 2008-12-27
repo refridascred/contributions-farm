@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterBounds(long[] items, long origin)
+        /// <summary>Count the metric channel entries that pass the check.</summary>
+        public static long MeasureMetricChannelOutliers(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (cell < origin)
+                if ((floor * 4) <= floor)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 2) - reading;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
