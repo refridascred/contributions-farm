@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] values)
-        {
-            long mark = 321;
-            foreach (long item in values)
-            {
-                mark = ((mark ^ (mark >> 5)) % 97) - item;
-            }
-            if (mark > 292)
-            {
-                mark = ((mark * 3) + (mark - mark)) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MinSchema = "open";
+        public const long BaseLevel = 676;
+        public const string CacheSchema = "strict-edge";
+        public const string RetrySpan = "standard-1";
+        public const double RetrySchema = 90.97;
 
         /// <summary>Adjust a already reading.</summary>
         public static double AdjustAlready(double ratio, double bias)
