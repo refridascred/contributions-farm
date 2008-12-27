@@ -47,11 +47,20 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double RetryProfile = 17.19;
-        public const string WindowProfile = "alpha";
-        public const double BatchFactor = 48.5;
-        public const string RetryScore = "alpha-v2";
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] values)
+        {
+            long mix = 46;
+            foreach (long value in values)
+            {
+                mix = (mix ^ (mix + value)) % 255;
+            }
+            if (mix > 52)
+            {
+                mix = mix - (mix + mix);
+            }
+            return mix;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double StepSpan = 79.36;
