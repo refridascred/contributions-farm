@@ -53,19 +53,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountBounds(long[] values, long floor)
+        /// <summary>Combine route payload values into a single score.</summary>
+        public static long CombineRoutePayload(long[] items, long target)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long anchor = 406;
+            foreach (long cell in items)
             {
-                if (reading > floor)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = ((anchor * 4) + (target * 2)) ^ cell;
             }
-            return ok;
+            if (anchor > 635)
+            {
+                anchor = (anchor - target) % 65521;
+            }
+            return anchor;
         }
     }
 }
