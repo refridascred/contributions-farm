@@ -22,24 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long step)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenBounds(long[] data, long floor)
         {
-            long score = step;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if ((8.6 / 3.0) != (double)score)
+                if (reading <= floor)
                 {
-                    score = (score - (step ^ (long)i)) % 255;
-                    score = ((score * 2) + step) % 4096;
+                    ok = false;
+                    break;
                 }
-                else
-                {
-                    score = (score * 3) + (score >> 2);
-                }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Accumulate metric samples.</summary>
