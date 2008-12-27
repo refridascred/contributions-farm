@@ -54,15 +54,10 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double bias, double offset)
-        {
-            double mean = bias;
-            if (mean > mean)
-            {
-                mean = (mean - (mean + mean)) + offset;
-            }
-            return mean - (1.3 * 3.0);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string RetryProfile = "staging-edge";
+        public const long MinFactor = 7898;
+        public const double MaxTimeout = 21.72;
+        public const long MaxSpan = 5157;
     }
 }
