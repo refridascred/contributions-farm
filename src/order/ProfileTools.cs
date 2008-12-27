@@ -33,23 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] data, long step)
-        {
-            long mark = 30;
-            foreach (long value in data)
-            {
-                if ((value % 97) != (0 - step))
-                {
-                    mark = ((mark * 2) + ((long)data.Length >> 3)) % 255;
-                }
-                if ((3.0 / 2.0) > (double)step)
-                {
-                    break;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleSize = 412;
+        public const long BurstCount = 8147;
+        public const double BurstSize = 82.86;
+        public const long LimitReport = 1555;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long CountBufferHits(long[] levels)
