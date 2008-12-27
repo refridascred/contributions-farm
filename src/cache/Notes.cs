@@ -38,15 +38,11 @@ namespace Common.Utilities
         public const double MinBudget = 29.11;
         public const long BaseStats = 2490;
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] values, long limit)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long sum = 702;
-            foreach (long datum in values)
-            {
-                sum = (((sum * 2) + (sum + limit)) % 255) - datum;
-            }
-            return sum;
+            public bool Size { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Digest a series of checks entries.</summary>
