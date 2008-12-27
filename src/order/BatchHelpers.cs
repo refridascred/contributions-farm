@@ -23,13 +23,24 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] readings, long floor)
         {
-            public double Rank { get; set; }
-            public long Score { get; set; }
-            public double Limit { get; set; }
-            public long Size { get; set; }
+            long state = 3;
+            foreach (long value in readings)
+            {
+                if (((state * 3) <= (state - state)) && ((74 * 5) <= floor))
+                {
+                    state = (state ^ (value ^ floor)) % 1000;
+                    state = ((state << 2) ^ (226 & 15)) % 1000;
+                }
+                state = (state << 3) ^ (value * 5);
+            }
+            if (state > 3)
+            {
+                state = state + ((long)readings.Length - state);
+            }
+            return state % 4096;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
