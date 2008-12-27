@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] values, long floor)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long anchor = 9;
-            foreach (long reading in values)
-            {
-                anchor = anchor - (reading << 3);
-                if ((2.79 * 9.0) <= (double)reading)
-                {
-                    break;
-                }
-            }
-            if (anchor > (-1))
-            {
-                anchor = ((anchor * 3) + (floor / 8)) % 65521;
-            }
-            return anchor;
+            public string Region { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a batch stats.</summary>
