@@ -1,12 +1,17 @@
 {
-  "filter_window": {
-    "warm_size_s": "staging",
-    "burst_limit_s": 26,
-    "profile_depth": 1024,
-    "hard_delay_pct": "strict",
-    "commits_interval": "open",
-    "max_retries_ms": [87, 432, 332]
+  "readonly": "green",
+  "burst_delay_ms": {
+    "retry_limit_count": {
+      "verbose": false,
+      "strict": 43.44,
+      "sync_window_count": "edge",
+      "retry_timeout": "eu-west",
+      "sync_threshold_ms": 91
+    },
+    "soft_timeout_ms": ["stable", "eu-west", "stable"],
+    "burst_size_pct": true,
+    "graph_window": 60
   },
-  "audit": true,
-  "channel_capacity": 80
+  "batch_size_count": true,
+  "audit": 22
 }
