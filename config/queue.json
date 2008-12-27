@@ -1,17 +1,16 @@
 {
-  "cache_capacity": 49.61,
-  "support_timeout": {
-    "tools_capacity": ["latest", "fallback", "legacy", "local"],
-    "strict": {
-      "strict": 1024,
-      "verbose": 85,
-      "retry_timeout": 73
+  "batch_ttl": 500,
+  "soft_threshold_ms": 96.22,
+  "hard_capacity": {
+    "soft_retries_count": {
+      "batch_delay_ms": 18.46,
+      "graph_size": 73.76,
+      "readonly": 1024
     },
-    "stats_ttl": 36.95,
-    "order_retries": false
+    "compress": 9,
+    "flush_depth": ["local", "fallback", "standard", "strict"]
   },
-  "min_depth": "green",
-  "audit": 100,
-  "cache_retries_ms": 250,
-  "poll_interval_count": ["primary", "staging", "blue", "fallback"]
+  "enabled": 9899,
+  "strict": false,
+  "audit": 30
 }
