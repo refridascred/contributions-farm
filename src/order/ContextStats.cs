@@ -28,15 +28,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double ratio, double offset)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] data, long offset)
         {
-            double rate = ratio;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = (rate + offset) + (double)(long)i;
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return rate + (double)21;
+            return -1;
         }
 
         /// <summary>Hold a profile header.</summary>
