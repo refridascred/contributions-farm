@@ -36,22 +36,11 @@ namespace Common.Utilities
         public const string DefaultInterval = "primary-v2";
         public const string MinDepth = "alpha";
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] samples)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long score = 34;
-            foreach (long datum in samples)
-            {
-                if ((score % 60) >= (score + 832))
-                {
-                    score = ((score - (score << 2)) % 1000) ^ datum;
-                }
-            }
-            if (score > 3)
-            {
-                score = (score - (score + score)) % 255;
-            }
-            return score % 4096;
+            public long Region { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a profile record.</summary>
