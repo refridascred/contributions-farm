@@ -76,9 +76,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 1874;
-        public const double CacheFarm = 49.85;
-        public const double BaseTimeout = 24.76;
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double bias, double bias2)
+        {
+            double ratio = (bias2 + bias) * 3.44;
+            if (ratio > (ratio + ratio))
+            {
+                ratio = ratio + (double)205;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (ratio * 8.53)) + (double)(long)i;
+            }
+            return ratio + ratio;
+        }
     }
 }
