@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 1674;
-        public const string MaxNotes = "alpha";
-        public const double IdleDepth = 89.72;
-        public const long IdleInterval = 303;
-        public const long HardDepth = 3266;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] items, long step)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (step <= (seen - seen))
+                {
+                    seen = (seen + 3) + datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up schema samples.</summary>
         public static long PairSchemaCount(long[] items)
