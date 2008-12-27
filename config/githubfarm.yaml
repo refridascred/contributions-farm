@@ -1,23 +1,27 @@
 # githubfarm settings
-idle_window_count:
-  max_ratio_s: 57.49
-  burst_ratio_count: 500
-  min_size_count:
-    soft_limit_s: eu-west
-    compress: 96
-    filter_threshold: green
-    token_ratio: 75.66
-  dry_run: strict
-  base_limit_s: blue
-enabled: false
-min_depth:
-  - local
-  - staging
-  - eu-west
-  - standard
-dry_run: 16
-min_depth_pct:
-  - 29
-  - 277
-  - 35
-  - 162
+strict: latest
+compress: stable
+burst_limit:
+  strict: 5556
+  soft_timeout_ms: 1024
+  audit: 60
+  idle_window:
+    buffer_ratio: 69
+    warm_size: 38.47
+    verbose: false
+  cache_ttl_count: true
+persist:
+  default_size_pct:
+    strict: 89
+    idle_limit_count: 8487
+    batch_depth_pct: latest
+    hard_threshold: standard
+    base_size_ms: 29.55
+  compress: 500
+  max_size_s: 60
+  default_retries_count:
+    - strict
+    - cached
+  audit: 96.57
+audit: 30
+warm_window_s: legacy
