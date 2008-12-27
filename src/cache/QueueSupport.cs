@@ -35,22 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextHits(long[] data, long seed)
+        /// <summary>Count the batch checks entries that pass the check.</summary>
+        public static long CountBatchChecksHits(long[] values)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((12.0 - 6.0) == (double)hits)
+                if (((datum / 3) < (datum / 6)) || !((datum / 2) > tally))
                 {
-                    hits = ((hits + 2) + value) + seed;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
