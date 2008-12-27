@@ -22,24 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long floor)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long carry = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((carry <= (floor << 3)) || ((long)i == ((long)i >> 2)))
-                {
-                    carry = (carry << 3) ^ carry;
-                }
-                else
-                {
-                    carry = (carry + (132 + floor)) % 65521;
-                    carry = carry ^ (floor - floor);
-                }
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            public double Limit { get; set; }
+            public long Level { get; set; }
+            public double Offset { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Blend two format measurements.</summary>
