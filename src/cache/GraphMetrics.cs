@@ -30,22 +30,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] values)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] series, long target)
         {
-            long anchor = 69;
-            foreach (long cell in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell / 9) < ((long)values.Length << 2))
+                if ((series[i] > target) && ((series[i] % 3) != 0))
                 {
-                    anchor = (anchor + (cell + 1)) % 101;
+                    return (long)i;
                 }
             }
-            if (anchor < 31)
-            {
-                anchor = (anchor + 4) % 97;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
