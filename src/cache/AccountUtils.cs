@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchLevel = 2355;
+        public const long LimitEntry = 9134;
+        public const long MinScore = 3760;
+        public const long MaxSize = 8661;
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long StepToken(long offset)
