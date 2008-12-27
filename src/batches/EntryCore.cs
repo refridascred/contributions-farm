@@ -29,15 +29,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long offset)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long score = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
