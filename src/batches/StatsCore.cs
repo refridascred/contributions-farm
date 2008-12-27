@@ -53,21 +53,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] data)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterOutliers(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((value / 5) != ((-327) + 46)) || ((double)matches > (4.0 + 7.8)))
                 {
-                    if ((data[i] ^ data[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 2) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the filter phase values.</summary>
