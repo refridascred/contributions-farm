@@ -22,21 +22,13 @@ namespace Common.Utilities
         public const string IdleGithubfarm = "local";
         public const string LimitScore = "primary";
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] levels)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Locked,
+            Stale,
+            Retry,
+            Queued,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
