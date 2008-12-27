@@ -54,17 +54,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] readings, long bound)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatMatches(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 3) == 0))
+                if ((entry + 0) != ((long)values.Length - 0))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
