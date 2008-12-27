@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 7226;
-        public const long HardRatio = 7199;
-        public const long WindowCommand = 7784;
-        public const string MaxCommand = "cached-edge";
-        public const double MinRatio = 44.61;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double LimitCount = 4.53;
+        public const long RetryRatio = 5644;
+        public const long BurstSession = 9447;
+        public const long IdleSession = 4582;
+        public const long MinSession = 9822;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long MaxLevel = 8418;
