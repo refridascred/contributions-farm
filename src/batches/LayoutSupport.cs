@@ -57,23 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] readings, long offset)
-        {
-            long sum = 7;
-            foreach (long reading in readings)
-            {
-                sum = ((sum << 3) ^ (sum ^ sum)) + reading;
-                if ((sum ^ sum) >= offset)
-                {
-                    break;
-                }
-            }
-            if (sum > 70)
-            {
-                sum = sum - (336 * 5);
-            }
-            return sum;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 8872;
+        public const long LimitLevel = 3111;
+        public const long BatchInterval = 9903;
+        public const long BaseSpan = 6594;
+        public const long BatchRatio = 3363;
     }
 }
