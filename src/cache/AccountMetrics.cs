@@ -53,32 +53,13 @@ namespace Common.Utilities
             return bias2 - (9.0 - 0.87);
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long bound, long limit)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long offset = bound - limit;
-            if ((offset << 3) >= limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound * 5) < (offset - offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (offset < bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Ready,
+            Closed,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Match up githubfarm contributi samples.</summary>
