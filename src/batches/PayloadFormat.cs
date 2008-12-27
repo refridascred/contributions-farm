@@ -34,38 +34,14 @@ namespace Common.Utilities
         public const long LimitScore = 8175;
         public const long WindowScore = 4062;
 
-        /// <summary>Rank batch support input into a small class.</summary>
-        public static long BucketBatchSupport(long seed, long bound)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            if (((bound & 31) == (seed + bound)) && ((5.5 - 0.3) >= (double)bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((1.4 * 0.13) == (double)seed) || ((bound >> 1) > (seed ^ bound)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((4.2 / 2.0) <= (double)bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((2.87 * 7.06) <= (double)bound)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Closed,
+            Dropped,
+            Active,
+            Paused,
         }
     }
 }
