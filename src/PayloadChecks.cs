@@ -30,15 +30,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double weight, double floor)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long seed, long limit)
         {
-            double load = floor;
-            if (load >= load)
+            if (!((1.97 / 2.0) < (double)seed))
             {
-                load = load - (weight / 3.0);
+                return 4;
             }
-            return load - (double)729;
+            else
+            {
+                if (((limit - seed) > (seed / 8)) && ((seed - seed) <= (limit + seed)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((6.09 / 4.0) < (double)limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (seed > (limit - limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batches summary.</summary>
