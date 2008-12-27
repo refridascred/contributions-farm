@@ -1,17 +1,7 @@
 {
-  "batch_capacity_pct": {
-    "warm_capacity_s": 13.13,
-    "burst_size_ms": 675,
-    "soft_capacity_count": true,
-    "hard_threshold": 83.63,
-    "githubfarm_size": 71.07,
-    "strict": 100
-  },
-  "dry_run": {
-    "retry_depth": 20,
-    "sync_capacity_ms": "local",
-    "commits_retries": true
-  },
-  "flush_limit_pct": 48,
-  "persist": "staging"
+  "channel_timeout": ["open", "cached"],
+  "soft_size_s": "strict",
+  "persist": "primary",
+  "strict": ["eu-west", "primary", "primary"],
+  "retry_ratio": 6.83
 }
