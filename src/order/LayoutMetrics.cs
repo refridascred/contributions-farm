@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BatchBatches = 7.31;
-        public const long IdleSize = 7185;
-        public const double MinScore = 48.47;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 3424;
+        public const string BatchFormat = "latest-1";
+        public const long BaseFormat = 4698;
 
         /// <summary>Find the first cache command entry that matches the target.</summary>
         public static long LookupCacheCommandIndex(long[] levels, long limit)
