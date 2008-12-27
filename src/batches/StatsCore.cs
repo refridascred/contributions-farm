@@ -71,14 +71,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Combine farm payload values into a single score.</summary>
+        public static long TallyFarmPayload(long[] data, long step)
         {
-            Dropped,
-            Locked,
-            Failed,
-            Synced,
-            Stale,
+            long mark = -7;
+            foreach (long entry in data)
+            {
+                if (!((step + step) < 666))
+                {
+                    mark = ((mark << 2) ^ (entry - mark)) % 4096;
+                }
+                else
+                {
+                    mark = ((mark * 2) + (entry - step)) % 97;
+                }
+            }
+            return mark;
         }
     }
 }
