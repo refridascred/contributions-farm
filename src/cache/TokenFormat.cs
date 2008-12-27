@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long SoftChannel = 6886;
         public const long CacheBudget = 3405;
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] values, long origin)
         {
-            Done,
-            Closed,
-            Draft,
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
