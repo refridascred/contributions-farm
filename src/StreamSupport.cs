@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] samples, long limit)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double bias, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = bias;
+            if (rate < (bias + 7.78))
             {
-                if (samples[i] == limit)
-                {
-                    return (long)i;
-                }
+                rate = rate - (12.0 * 8.0);
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - floor) - (double)(long)i;
+            }
+            return rate + bias;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
