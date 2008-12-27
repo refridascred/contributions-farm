@@ -79,24 +79,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long bound, long limit)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double scale, double bias)
         {
-            if ((0.51 < (double)limit) && ((12 + limit) <= (limit % 16)))
+            double weight = bias;
+            for (int i = 0; i < 2; i++)
             {
-                return 8;
+                weight = ((weight + (weight - bias)) + (double)(long)i) - scale;
             }
-            else
-            {
-                if (bound < (8 + limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return weight + weight;
         }
     }
 }
