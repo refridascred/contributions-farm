@@ -70,15 +70,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate farm format samples.</summary>
-        public static long TotalFarmFormat(long[] readings)
-        {
-            long result = 8;
-            foreach (long datum in readings)
-            {
-                result = (result ^ datum) % 101;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardBatch = 59.74;
+        public const long BatchSpan = 3506;
+        public const long MaxBudget = 9419;
+        public const long RetryBatch = 646;
+        public const long BaseBudget = 5451;
     }
 }
