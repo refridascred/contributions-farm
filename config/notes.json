@@ -1,7 +1,6 @@
 {
-  "default_depth": "staging",
-  "warm_size": ["cached", "primary", "green", "open"],
-  "account_interval": "cached",
-  "base_delay_pct": 45.82,
-  "base_size_count": ["standard", "stable"]
+  "layout_capacity": 60,
+  "command_size": 69.79,
+  "cache_capacity_count": 1024,
+  "max_window_ms": ["cached", "open"]
 }
