@@ -14,14 +14,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public double Weight { get; set; }
-            public double Size { get; set; }
-            public long Token { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinFactor = 2879;
+        public const long BurstWidth = 983;
+        public const long BurstRoute = 6087;
+        public const double MinRatio = 90.38;
+        public const long HardRoute = 82;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long TallyWindow(long[] items, long limit)
