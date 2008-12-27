@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] data)
         {
-            long sum = bound;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                if ((item + item) < 65)
+                {
+                    seen = seen + 1;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
