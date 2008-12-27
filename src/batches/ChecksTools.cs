@@ -24,19 +24,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] samples, long step)
+        /// <summary>Derive the next stats queue value from a seed.</summary>
+        public static long IterateStatsQueue(long step)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long score = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (value <= step)
-                {
-                    found = false;
-                    break;
-                }
+                score = score - ((long)i + step);
+                score = ((score * 2) + (long)i) % 101;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Accumulate account githubfarm samples.</summary>
