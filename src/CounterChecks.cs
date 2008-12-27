@@ -19,22 +19,38 @@ namespace Common.Utilities
             return (scale + gain) + bias;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] readings)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long bound, long limit)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            if ((bound + bound) < (bound + 6))
             {
-                if (!((3.2 * 5.57) <= (double)count))
+                return 5;
+            }
+            else
+            {
+                if (((limit - 17) <= (29 & 63)) || (((-75) - limit) == (limit & 7)))
                 {
-                    count = (count + 3) + entry;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((bound + limit) <= 7)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)(-640) < (double)limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
