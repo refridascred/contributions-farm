@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine stream metric values into a single score.</summary>
-        public static long TotalStreamMetric(long[] values, long seed)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] readings)
         {
-            long total = 120;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry - entry) <= entry)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = ((total + (68 * 5)) % 97) - seed;
+                    if ((readings[i] + readings[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
