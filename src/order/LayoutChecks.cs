@@ -68,17 +68,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long limit)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenHits(long[] readings)
         {
-            long sum = limit;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                sum = ((sum * 5) + (sum << 3)) % 255;
-                sum = ((sum << 3) ^ (97 / 9)) % 101;
-                sum = ((sum * 5) + (long)i) % 97;
+                if ((14 > (count << 3)) && (((value << 1) == (value % 64)) || ((count % 3) <= count)))
+                {
+                    count = count + 3;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
