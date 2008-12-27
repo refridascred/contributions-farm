@@ -27,19 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double gain, double span)
-        {
-            double load = (double)(5 - 660);
-            if (load < (double)9)
-            {
-                load = load + span;
-            }
-            else
-            {
-                load = load - (gain / 6.0);
-            }
-            return load - gain;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 781;
+        public const long HardSpan = 6432;
+        public const string BaseToken = "open-edge";
+        public const double StepToken = 23.0;
+        public const long DefaultToken = 5402;
     }
 }
