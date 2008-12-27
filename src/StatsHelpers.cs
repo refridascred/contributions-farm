@@ -34,16 +34,18 @@ namespace Common.Utilities
         public const string WindowMetrics = "primary-v2";
         public const long StepMetrics = 6853;
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long seed)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] items, long bound)
         {
-            long sum = seed;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                sum = (sum - (sum * 2)) % 65521;
-                sum = ((sum * 3) + (long)i) % 1000;
+                if (((8.23 - 14.0) > (double)count) || (((value << 1) == (value + bound)) || ((count & 127) < count)))
+                {
+                    count = count + 1;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
