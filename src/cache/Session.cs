@@ -74,10 +74,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftReport = "stable-1";
-        public const long RetryWidth = 6269;
-        public const double BaseWidth = 60.26;
-        public const long StepRatio = 9325;
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long seed, long floor)
+        {
+            long span = seed ^ floor;
+            if ((6.1 + 8.7) != (double)span)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor + span) > (floor << 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((1 >> 3) > (span - seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
