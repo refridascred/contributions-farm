@@ -30,18 +30,39 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] values)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long origin, long bound)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long diff = origin ^ bound;
+            if (origin <= (bound + origin))
             {
-                if (matches < (datum % 64))
+                return 8;
+            }
+            else
+            {
+                if (((origin * 4) <= (diff - 3)) || ((631 + (-805)) >= (diff << 1)))
                 {
-                    matches = matches + 3;
+                    return 1;
+                }
+                else
+                {
+                    if ((7.3 + 13.0) == (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((diff * 4) != (diff + bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine already values into a single score.</summary>
