@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] samples, long origin)
         {
-            Draft,
-            Active,
-            New,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((origin % 8) == (sample << 1))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit cache metrics readings against a rule.</summary>
