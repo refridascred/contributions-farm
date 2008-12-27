@@ -13,19 +13,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (((tally + 974) < entry) && !(entry >= (entry % 3)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string StepBudget = "open-edge";
+        public const long RetryScore = 6661;
+        public const long BurstWidth = 7868;
 
         /// <summary>Count the order channel entries that pass the check.</summary>
         public static long MeasureOrderChannelGaps(long[] readings, long floor)
