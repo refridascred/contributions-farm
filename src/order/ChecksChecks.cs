@@ -31,18 +31,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferMatches(long[] readings)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long mark = 496;
+            foreach (long value in values)
             {
-                if ((double)seen < (3.0 + 13.0))
-                {
-                    seen = (seen + 1) ^ item;
-                }
+                mark = (mark - target) ^ value;
             }
-            return seen;
+            return mark;
         }
     }
 }
