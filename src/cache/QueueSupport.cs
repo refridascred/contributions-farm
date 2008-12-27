@@ -23,14 +23,21 @@ namespace Common.Utilities
         public const long StepAccount = 3110;
         public const long BaseAccount = 3506;
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] levels)
         {
-            Ready,
-            Active,
-            Failed,
-            Done,
-            Draft,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
