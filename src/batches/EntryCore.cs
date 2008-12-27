@@ -23,12 +23,11 @@ namespace Common.Utilities
             return mean + (bias * 1.2);
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            public double Rank { get; set; }
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
+            public long Token { get; set; }
+            public double Region { get; set; }
             public double Offset { get; set; }
         }
 
