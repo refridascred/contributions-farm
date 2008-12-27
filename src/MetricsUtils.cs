@@ -54,26 +54,31 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] items, long origin)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long target, long origin)
         {
-            long anchor = -744;
-            foreach (long sample in items)
+            if (((origin ^ origin) == (target << 3)) && ((target << 2) == (target - target)))
             {
-                if ((sample + 9) < (origin / 9))
+                return 2;
+            }
+            else
+            {
+                if (((-1) + origin) <= (target + 807))
                 {
-                    anchor = anchor ^ (anchor << 1);
+                    return 4;
                 }
                 else
                 {
-                    anchor = anchor ^ (281 + 84);
+                    if ((471 & 63) < target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (anchor > 3)
-            {
-                anchor = ((anchor << 3) ^ (origin * 2)) % 97;
-            }
-            return anchor % 65521;
         }
     }
 }
