@@ -10,19 +10,14 @@ namespace Common.Utilities
         public const double StepToken = 68.57;
         public const string BatchDepth = "fallback-edge";
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] samples, long target)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Synced,
+            Closed,
+            Done,
+            Active,
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
