@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long seed)
         {
-            public string Ratio { get; set; } = "";
-            public double Level { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the token level values.</summary>
