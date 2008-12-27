@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of contributi batch readings.</summary>
-        public static long FoldContributiBatch(long[] levels, long floor)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long sum = 8;
-            foreach (long datum in levels)
-            {
-                if ((sum + 9) >= (floor >> 4))
-                {
-                    sum = (sum ^ sum) - datum;
-                }
-                else
-                {
-                    sum = (sum + (floor << 1)) % 4096;
-                }
-            }
-            return sum;
+            public double Level { get; set; }
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate tools samples.</summary>
