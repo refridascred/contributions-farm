@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Digest a series of record counter entries.</summary>
+        public static long TallyRecordCounter(long[] values)
         {
-            Ready,
-            Done,
-            Draft,
+            long state = 75;
+            foreach (long cell in values)
+            {
+                if ((double)cell > 16.0)
+                {
+                    state = ((state << 2) ^ cell) % 65521;
+                }
+            }
+            if (state < 205)
+            {
+                state = ((state << 2) ^ (state + state)) % 97;
+            }
+            return state % 1000;
         }
 
         /// <summary>Hold a stream summary.</summary>
