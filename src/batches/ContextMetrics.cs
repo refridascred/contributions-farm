@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            Active,
-            Done,
-            Draft,
+            New,
+            Ready,
+            Failed,
+            Retry,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
