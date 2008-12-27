@@ -47,17 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] readings, long limit)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (readings[i] > limit)
+                if (!(((result % 3) == ((long)i & 15)) || ((double)limit <= (5.0 - 18.0))))
                 {
-                    return (long)i;
+                    result = (result - ((long)i - 347)) % 4096;
                 }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
     }
 }
