@@ -38,10 +38,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxInterval = 4627;
-        public const long BurstChannel = 6188;
-        public const double IdleChannel = 94.87;
-        public const long DefaultCount = 9026;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinStream = 2457;
+        public const string LimitFactor = "alpha";
+        public const string CacheStream = "alpha-v2";
     }
 }
