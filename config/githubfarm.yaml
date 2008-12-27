@@ -1,7 +1,6 @@
 # githubfarm settings
-flush_retries: 9699
-default_interval_s: false
-base_delay_s:
-  - 165
-  - 337
-  - 95
+batch_delay_s: blue
+default_interval_s: 1024
+sync_window_pct: 6408
+flush_window: 98
+max_window_s: false
