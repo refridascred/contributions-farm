@@ -1,5 +1,6 @@
 {
-  "flush_window": "local",
-  "editor_depth": false,
-  "readonly": ["primary", "blue"]
+  "persist": "open",
+  "dry_run": 30,
+  "hard_ttl_count": false,
+  "verbose": "primary"
 }
