@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] samples, long floor)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksRange(long[] items, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if (samples[i] > floor)
+                if (entry >= target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Match up entry metric samples.</summary>
