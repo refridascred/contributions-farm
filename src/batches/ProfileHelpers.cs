@@ -34,11 +34,40 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstBudget = 3735;
-        public const long IdleTimeout = 4930;
-        public const long StepGraph = 6932;
-        public const string MaxDepth = "staging-v2";
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long step, long target)
+        {
+            long edge = step + target;
+            if (((double)edge != (2.0 / 5.0)) && ((edge >> 5) <= (edge + step)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)3 != (double)step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step * 2) != (edge % 12))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (step <= (edge ^ target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a stream filter sample.</summary>
         public static long FindStreamFilterIndex(long[] series, long target)
