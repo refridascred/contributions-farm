@@ -13,12 +13,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double HardBudget = 84.67;
-        public const string BurstAlready = "standard";
-        public const long BaseAlready = 2145;
-        public const string StepAlready = "alpha-v2";
-        public const string BurstSpan = "alpha-edge";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetrySize = 4604;
+        public const long RetryTools = 5132;
+        public const long SoftTools = 4647;
+        public const long CacheCount = 9485;
+        public const double DefaultCount = 84.14;
 
         /// <summary>Hold a already snapshot.</summary>
         public sealed class AlreadySnapshot
