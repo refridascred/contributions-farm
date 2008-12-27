@@ -60,22 +60,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] series, long limit)
-        {
-            long state = 86;
-            foreach (long item in series)
-            {
-                if (state > (limit << 1))
-                {
-                    state = (state * 5) + (item >> 1);
-                }
-            }
-            if (state > 11)
-            {
-                state = ((state << 2) ^ (limit / 8)) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string WindowFactor = "fallback-v2";
+        public const long HardTools = 1656;
+        public const string HardFactor = "open-edge";
+        public const double RetryDepth = 91.75;
     }
 }
