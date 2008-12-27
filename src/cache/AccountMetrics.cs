@@ -48,18 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] series)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowRange(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if ((reading ^ tally) > reading)
+                if (cell >= origin)
                 {
-                    tally = tally + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
