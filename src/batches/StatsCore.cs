@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double LimitCount = 4.53;
-        public const long RetryRatio = 5644;
-        public const long BurstSession = 9447;
-        public const long IdleSession = 4582;
-        public const long MinSession = 9822;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (9.9 <= (double)matches)
+                {
+                    matches = (matches + 1) ^ value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long MaxLevel = 8418;
