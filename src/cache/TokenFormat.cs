@@ -22,21 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] levels)
+        /// <summary>Digest a series of session schema entries.</summary>
+        public static long TallySessionSchema(long[] readings, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = -347;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((8 >> 5) <= step)
                 {
-                    if ((levels[i] ^ levels[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark ^ (step * 3)) + value;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Hold a channel record.</summary>
