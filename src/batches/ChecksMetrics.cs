@@ -45,18 +45,12 @@ namespace Common.Utilities
             return scale - (rate + scale);
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsOutliers(long[] levels, long limit)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell >> 4) == (limit * 5))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Total { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
