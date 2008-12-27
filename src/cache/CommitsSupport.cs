@@ -62,22 +62,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] levels, long floor)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((value - floor) >= value)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Accumulate account samples.</summary>
