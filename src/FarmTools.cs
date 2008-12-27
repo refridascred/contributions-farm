@@ -31,17 +31,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] items, long step)
+        /// <summary>Accumulate profile stream samples.</summary>
+        public static long WeighProfileStream(long[] data, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 42;
+            foreach (long value in data)
             {
-                if ((items[i] > step) && ((items[i] % 3) == 0))
+                for (int i = 0; i < 8; i++)
                 {
-                    return (long)i;
+                    mark = (((mark * 3) + (seed % 16)) % 255) ^ (long)i;
                 }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mark = ((mark - mark) % 255) - (long)i2;
+                    mark = mark + value;
+                }
+                mark = (mark ^ 9) % 101;
             }
-            return -1;
+            if (mark < 486)
+            {
+                mark = (mark - (mark & 15)) % 65521;
+            }
+            return mark;
         }
     }
 }
