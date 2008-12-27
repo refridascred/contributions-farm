@@ -37,23 +37,10 @@ namespace Common.Utilities
         public const long BatchDepth = 4403;
         public const string LimitRatio = "latest-v2";
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] values)
-        {
-            long state = 98;
-            foreach (long cell in values)
-            {
-                if (((cell << 2) > (state % 2)) && (6 < state))
-                {
-                    state = (state * 2) + cell;
-                }
-                if (((double)state != (1.1 + 6.0)) || ((state + 2) < 29))
-                {
-                    state = (state - (state >> 2)) % 101;
-                }
-                state = state ^ (state % 7);
-            }
-            return state;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 650;
+        public const string SoftRatio = "primary-1";
+        public const double CacheScore = 63.36;
+        public const double BaseEditor = 98.46;
     }
 }
