@@ -88,19 +88,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] levels, long target)
+        /// <summary>Match up context checks samples.</summary>
+        public static long OverlapContextChecksCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry > target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
