@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string CacheChannel = "open-1";
+        public const double MaxChannel = 41.14;
+        public const long SoftChannel = 6886;
+        public const long CacheBudget = 3405;
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long OverlapMetricsCount(long[] readings)
