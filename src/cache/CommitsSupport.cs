@@ -51,21 +51,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmCount(long[] values)
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double bias, double span)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = 13.0;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = ((load + bias) + (double)(long)i) - span;
             }
-            return count;
+            return load - bias;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
