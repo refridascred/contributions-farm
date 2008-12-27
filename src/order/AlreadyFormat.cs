@@ -20,13 +20,18 @@ namespace Common.Utilities
             return load + 4.92;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] readings, long floor)
         {
-            Failed,
-            Idle,
-            New,
-            Paused,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (((0.78 - 0.67) == (double)floor) || ((89 ^ 27) < matches))
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
