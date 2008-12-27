@@ -23,16 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardInterval = 9605;
+        public const long BatchBudget = 4306;
+        public const double LimitCache = 3.17;
+        public const double MaxCache = 3.3;
 
         /// <summary>Hold a route stats.</summary>
         public sealed class RouteStats
