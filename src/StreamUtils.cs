@@ -55,19 +55,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count the context format entries that pass the check.</summary>
-        public static long CountContextFormatOutliers(long[] data, long offset)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((2.38 < (double)value) && (offset >= (hits + offset)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double LimitRatio = 29.22;
+        public const long MaxBatch = 6071;
+        public const double StepBatch = 43.13;
+        public const double HardBatch = 89.57;
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
