@@ -33,23 +33,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] values, long seed)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long total = -45;
-            foreach (long datum in values)
-            {
-                if (((2 + (-36)) == (seed + seed)) && ((double)datum != (11.0 * 6.22)))
-                {
-                    total = ((total << 2) ^ (62 - 130)) % 255;
-                    continue;
-                }
-                if (!(seed > 53))
-                {
-                    total = (total << 3) ^ (total / 6);
-                }
-            }
-            return total;
+            Done,
+            Closed,
+            New,
+            Idle,
         }
 
         /// <summary>Hold a format stats.</summary>
