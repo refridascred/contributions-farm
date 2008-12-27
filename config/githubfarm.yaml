@@ -1,27 +1,4 @@
 # githubfarm settings
-strict: latest
-compress: stable
-burst_limit:
-  strict: 5556
-  soft_timeout_ms: 1024
-  audit: 60
-  idle_window:
-    buffer_ratio: 69
-    warm_size: 38.47
-    verbose: false
-  cache_ttl_count: true
-persist:
-  default_size_pct:
-    strict: 89
-    idle_limit_count: 8487
-    batch_depth_pct: latest
-    hard_threshold: standard
-    base_size_ms: 29.55
-  compress: 500
-  max_size_s: 60
-  default_retries_count:
-    - strict
-    - cached
-  audit: 96.57
-audit: 30
-warm_window_s: legacy
+hard_ttl_ms: 500
+persist: 500
+batch_depth_pct: fallback
