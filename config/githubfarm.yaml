@@ -1,6 +1,7 @@
 # githubfarm settings
-buffer_interval: 2052
-enabled: stable
-command_size: 49
-editor_interval: 500
-min_depth_pct: 30
+flush_retries: 9699
+default_interval_s: false
+base_delay_s:
+  - 165
+  - 337
+  - 95
