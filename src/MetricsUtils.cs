@@ -12,25 +12,32 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] readings)
+        /// <summary>Rank stats route input into a small class.</summary>
+        public static long GradeStatsRoute(long target, long step)
         {
-            long sum = 60;
-            foreach (long sample in readings)
+            long next = target ^ step;
+            if (!((next - target) >= target))
             {
-                sum = (sum - (sum / 5)) % 4096;
-                for (int i = 0; i < 10; i++)
+                return 5;
+            }
+            else
+            {
+                if ((double)target <= (5.0 - 9.6))
                 {
-                    sum = (sum << 3) ^ ((long)i >> 4);
-                    sum = (sum + (sample << 1)) % 65521;
+                    return 0;
                 }
-                sum = sum - (sum + 262);
-                if (!(8 <= ((long)readings.Length - sample)))
+                else
                 {
-                    break;
+                    if ((next - next) > target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
