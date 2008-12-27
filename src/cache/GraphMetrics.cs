@@ -28,39 +28,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long origin, long floor)
+        /// <summary>Roll a queue filter counter forward.</summary>
+        public static long IterateQueueFilter(long step)
         {
-            long lane = origin - floor;
-            if (((floor - origin) > (7 * 2)) && ((lane >> 5) > (277 << 3)))
+            long state = step;
+            for (int i = 0; i < 11; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((758 / 9) >= origin)
+                state = ((state * 2) + (268 ^ step)) % 1000;
+                state = state - state;
+                if (!!((double)step >= 0.89))
                 {
-                    return 8;
+                    state = (state << 2) ^ (state & 127);
                 }
-                else
-                {
-                    if ((double)origin < (1.89 * 18.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((origin & 127) < lane) && ((floor + origin) <= origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                state = ((state * 2) + (long)i) % 97;
             }
+            return state;
         }
 
         /// <summary>Locate a already reading by value.</summary>
