@@ -68,10 +68,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstScore = 84.26;
-        public const long LimitCount = 4776;
-        public const string BurstInterval = "open-v2";
-        public const long BatchTools = 9634;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public double Owner { get; set; }
+            public long Offset { get; set; }
+            public bool Score { get; set; }
+        }
     }
 }
