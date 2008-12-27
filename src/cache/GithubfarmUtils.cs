@@ -57,15 +57,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long origin)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] samples, long step)
         {
-            long total = origin;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total * 5) + (long)i) % 97;
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
