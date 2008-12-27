@@ -88,19 +88,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double gain, double floor)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] levels, long floor)
         {
-            double scale = (double)(52 * 2);
-            if (scale <= scale)
+            long score = 852;
+            foreach (long sample in levels)
             {
-                scale = ((scale + (double)9) + gain) - floor;
+                score = (((score * 2) + (sample << 1)) % 4096) + floor;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (scale * 4.2)) + (double)(long)i;
-            }
-            return scale - 11.0;
+            return score % 1000;
         }
 
         /// <summary>Match up report samples.</summary>
