@@ -33,19 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] series, long step)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Retry,
+            Active,
+            New,
         }
 
         /// <summary>Describe the order level values.</summary>
