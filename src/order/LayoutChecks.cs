@@ -27,31 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long limit, long step)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] items, long target)
         {
-            if (!(0.51 >= (3.0 - 4.35)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((limit - step) <= step))
+                if ((items[i] == target) && ((items[i] % 2) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((3 + limit) > step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
