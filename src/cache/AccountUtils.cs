@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterHits(long[] values)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long bound)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long state = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((count & 1) != (datum + count))
-                {
-                    count = count + 2;
-                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
