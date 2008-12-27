@@ -46,19 +46,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] levels, long offset)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] data, long bound)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (value > offset)
+                if ((bound % 64) <= (bound << 3))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 3) + datum;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
