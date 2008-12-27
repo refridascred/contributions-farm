@@ -1,6 +1,8 @@
 {
-  "farm_capacity": false,
-  "max_window_count": 4.32,
-  "payload_window": [497, 401],
-  "base_capacity": 44.75
+  "base_retries_ms": "staging",
+  "poll_window_ms": 7,
+  "retry_ttl_count": "latest",
+  "dry_run": "legacy",
+  "poll_interval_pct": 1024,
+  "retry_capacity": [109, 24, 436]
 }
