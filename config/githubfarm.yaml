@@ -1,14 +1,27 @@
 # githubfarm settings
-profile_delay: 38.84
-max_limit_ms: true
-idle_timeout_count:
-  - 8
-  - 252
-readonly: 100
-idle_retries_s: 60
-compress:
-  burst_capacity_s: cached
-  max_retries_pct: 21
-  max_depth: 1
-  session_window: 87.64
-  cache_depth: cached
+base_size_s: 68.17
+idle_size:
+  burst_window:
+    - strict
+    - eu-west
+  burst_depth: false
+  flush_depth_pct:
+    soft_interval:
+      - local
+      - legacy
+      - cached
+      - staging
+    max_limit: blue
+    min_interval: false
+    poll_depth_pct: true
+    readonly: 15
+  sync_ttl:
+    min_ttl_pct: 7
+    sync_capacity: 250
+    burst_depth: false
+    route_capacity: stable
+    batch_capacity: 0.96
+    report_retries: 91
+  max_ratio_ms: latest
+compress: strict
+poll_ttl_ms: latest
