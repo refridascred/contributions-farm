@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long origin)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] readings, long bound)
         {
-            long mark = origin;
-            for (int i = 0; i < 13; i++)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if (((double)mark > (5.7 + 2.0)) && ((origin + origin) == (mark + 26)))
+                if (value < bound)
                 {
-                    mark = mark + mark;
+                    valid = false;
+                    break;
                 }
-                for (int i3 = 0; i3 < 8; i3++)
-                {
-                    mark = (((mark << 2) ^ (long)i) % 101) ^ (long)i3;
-                    mark = mark + (origin & 255);
-                }
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
