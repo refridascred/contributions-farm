@@ -47,19 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferLimits(long[] series, long target)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksOutliers(long[] series)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (datum <= target)
+                if ((entry + count) != ((-9) + entry))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
