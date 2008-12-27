@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] readings)
         {
-            Active,
-            Failed,
-            Closed,
-            Pending,
-            Queued,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
