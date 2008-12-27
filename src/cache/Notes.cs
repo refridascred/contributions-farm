@@ -38,11 +38,13 @@ namespace Common.Utilities
         public const double MinBudget = 29.11;
         public const long BaseStats = 2490;
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            public bool Size { get; set; }
-            public bool Weight { get; set; }
+            Failed,
+            Done,
+            Paused,
+            Closed,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
