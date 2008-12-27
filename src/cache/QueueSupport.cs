@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesRange(long[] samples, long bound)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double ratio, double span)
         {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double scale = (ratio - span) / 7.0;
+            return scale - span;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
