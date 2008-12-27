@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] values, long limit)
         {
-            public double Limit { get; set; }
-            public bool Mode { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((tally + item) > tally)
+                {
+                    tally = (tally + 1) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of batch stats readings.</summary>
