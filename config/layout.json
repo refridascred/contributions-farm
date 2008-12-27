@@ -1,6 +1,21 @@
 {
-  "compress": "stable",
-  "min_interval_pct": "strict",
-  "retry_capacity": 32,
-  "enabled": [370, 309, 286]
+  "token_window": false,
+  "min_ttl_count": 1024,
+  "audit": {
+    "min_interval": ["open", "legacy", "standard", "legacy"],
+    "persist": 60,
+    "idle_ratio_pct": 42,
+    "retry_size": {
+      "readonly": 61.87,
+      "strict": "stable",
+      "hard_interval_count": 22.41,
+      "metric_depth": "edge"
+    },
+    "hard_depth": {
+      "enabled": "edge",
+      "already_limit": [118, 377, 8],
+      "hard_window_s": 100
+    }
+  },
+  "idle_delay_ms": 8490
 }
