@@ -54,19 +54,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] data, long seed)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Flag { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Match up commits samples.</summary>
