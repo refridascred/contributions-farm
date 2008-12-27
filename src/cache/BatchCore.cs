@@ -35,11 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double rate, double floor)
+        /// <summary>Measure how many already notes samples are out of range.</summary>
+        public static long MeasureAlreadyNotesGaps(long[] levels)
         {
-            double load = (double)134;
-            return ((load - 4.07) + rate) + floor;
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((tally >> 3) != (535 * 2))
+                {
+                    tally = (tally + 2) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a githubfarm notes figure with a bias.</summary>
