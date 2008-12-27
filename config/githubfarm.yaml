@@ -1,33 +1,12 @@
 # githubfarm settings
-strict: 3766
-warm_size:
-  warm_threshold: 8112
-  strict: 3895
-  warm_window: strict
-  buffer_timeout:
-    - cached
-    - stable
-  farm_ttl:
-    farm_retries: primary
-    persist:
-      - 195
-      - 209
-      - 17
-      - 150
-    window_ratio: 81.45
-    hard_size_count:
-      - 236
-      - 347
-      - 199
-    readonly: 3703
-    batch_interval:
-      - latest
-      - open
-      - legacy
-      - latest
-  soft_delay_s:
-    readonly: fallback
-    verbose: 6596
-    retry_depth_pct: 758
-readonly: cached
-dry_run: 393
+route_capacity: 3345
+readonly:
+  metrics_size: 478
+  format_ratio: 53.1
+  cache_capacity: 9331
+min_limit_ms: 69
+sync_timeout: true
+warm_size_count:
+  - 398
+  - 8
+  - 471
