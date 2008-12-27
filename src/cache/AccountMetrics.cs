@@ -63,22 +63,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the tools schema entries that pass the check.</summary>
-        public static long CountToolsSchemaOutliers(long[] levels)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] data)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item >= (long)levels.Length)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((data[i] - data[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
