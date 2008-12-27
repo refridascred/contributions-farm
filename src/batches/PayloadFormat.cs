@@ -14,17 +14,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] readings, long seed)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Stamp { get; set; }
+            public bool Token { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
