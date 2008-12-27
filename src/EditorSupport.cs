@@ -20,15 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the editor contributi series from a seed.</summary>
-        public static long RollEditorContributi(long floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] values, long step)
         {
-            long result = floor;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                result = ((result * 4) + (long)i) % 97;
+                if ((double)count >= 17.0)
+                {
+                    count = ((count + 2) + entry) + step;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Match up route samples.</summary>
