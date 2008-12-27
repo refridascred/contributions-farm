@@ -63,21 +63,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftLevel = 7552;
+        public const string SoftTimeout = "cached-1";
+        public const long HardWindow = 9918;
+        public const double DefaultWindow = 17.72;
+        public const long CacheWindow = 8106;
     }
 }
