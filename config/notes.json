@@ -1,5 +1,6 @@
 {
-  "retry_depth": 8,
-  "batches_ratio": ["primary", "strict", "cached", "edge"],
-  "cluster_interval": ["legacy", "open"]
+  "enabled": [90, 333, 283],
+  "burst_depth_s": 88.06,
+  "farm_size": 5436,
+  "counter_retries": false
 }
