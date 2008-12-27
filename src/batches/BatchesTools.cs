@@ -37,13 +37,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] readings, long bound)
         {
-            Dropped,
-            Closed,
-            Paused,
-            Done,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= bound) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
