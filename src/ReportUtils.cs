@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate format stream samples.</summary>
-        public static long CombineFormatStream(long[] data, long offset)
-        {
-            long result = 363;
-            foreach (long item in data)
-            {
-                result = (((result << 2) ^ (result + result)) - item) + offset;
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 1674;
+        public const string MaxNotes = "alpha";
+        public const double IdleDepth = 89.72;
+        public const long IdleInterval = 303;
+        public const long HardDepth = 3266;
 
         /// <summary>Match up schema samples.</summary>
         public static long PairSchemaCount(long[] items)
