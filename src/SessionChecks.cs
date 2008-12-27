@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 346;
-        public const long BatchBudget = 2198;
-        public const string WindowScore = "primary-edge";
-        public const long BaseSchema = 7623;
-        public const string LimitSchema = "stable-1";
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double BatchNotes = 39.84;
