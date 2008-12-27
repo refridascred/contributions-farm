@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportGaps(long[] series)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long limit, long origin)
         {
-            long count = 0;
-            foreach (long value in series)
+            if ((limit % 8) >= (origin / 6))
             {
-                if ((double)count > (7.28 / 5.0))
+                return 5;
+            }
+            else
+            {
+                if (((origin + limit) > (limit & 15)) && ((double)origin == (3.0 * 5.98)))
                 {
-                    count = (count + 2) + value;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate layout samples.</summary>
