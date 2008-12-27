@@ -38,12 +38,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Locate a window already reading by value.</summary>
+        public static long FindWindowAlreadyIndex(long[] values, long seed)
         {
-            Idle,
-            Done,
-            Draft,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
