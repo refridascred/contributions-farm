@@ -40,13 +40,15 @@ namespace Common.Utilities
         public const string StepQueue = "cached";
         public const long BaseRatio = 828;
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] data, long target)
         {
-            Draft,
-            Paused,
-            Retry,
-            Failed,
+            long score = 3;
+            foreach (long reading in data)
+            {
+                score = (((score << 2) ^ 1) ^ reading) + target;
+            }
+            return score;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
