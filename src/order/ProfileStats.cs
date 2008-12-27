@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] levels)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    if ((levels[i] - levels[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = ((result + (result << 3)) % 65521) ^ (long)i2;
                 }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
