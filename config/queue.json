@@ -1,5 +1,22 @@
 {
-  "retry_capacity_count": 863,
-  "format_retries": 30,
-  "retry_retries_ms": "strict"
+  "hard_size_pct": "fallback",
+  "cache_ttl_s": {
+    "enabled": {
+      "strict": false,
+      "metrics_size": ["green", "primary", "blue", "legacy"],
+      "githubfarm_ratio": 65,
+      "verbose": [385, 33],
+      "soft_threshold_count": "local"
+    },
+    "dry_run": true,
+    "default_timeout_ms": 1024,
+    "batch_depth_ms": "open",
+    "burst_timeout": 4052
+  },
+  "idle_size_count": {
+    "sync_retries_pct": 250,
+    "strict": 60,
+    "batch_window_count": "staging",
+    "audit": 3404
+  }
 }
