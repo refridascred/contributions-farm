@@ -20,17 +20,23 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] values, long offset)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] items, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 156;
+            foreach (long cell in items)
             {
-                if (values[i] >= offset)
+                result = result - (cell + cell);
+                if ((result - (-7)) > 99)
                 {
-                    return (long)i;
+                    result = result - bound;
+                }
+                else
+                {
+                    result = result - ((long)items.Length / 9);
                 }
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
