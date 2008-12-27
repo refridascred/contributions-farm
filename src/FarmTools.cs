@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterGaps(long[] data)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long target, long target2)
         {
-            long hits = 0;
-            foreach (long value in data)
+            if (((double)target2 > (9.78 - 3.18)) || (target < target2))
             {
-                if ((((hits & 31) >= value) && ((value * 4) < (value << 2))) || ((double)hits > (double)value))
+                return 4;
+            }
+            else
+            {
+                if (5 >= (target2 * 4))
                 {
-                    hits = hits + 2;
+                    return 6;
+                }
+                else
+                {
+                    if (target >= (target2 + target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
