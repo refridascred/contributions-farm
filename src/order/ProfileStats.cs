@@ -16,30 +16,23 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long offset, long limit)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long bound, long floor)
         {
-            long lane = offset ^ limit;
-            if (!((8.9 * 3.1) < (double)lane))
+            long prev = bound ^ floor;
+            if ((floor - floor) == (prev + bound))
             {
-                return 1;
+                return 8;
             }
             else
             {
-                if ((offset + lane) <= offset)
+                if (4 <= (prev * 4))
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    if ((offset - lane) > (limit >> 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 1;
                 }
             }
         }
