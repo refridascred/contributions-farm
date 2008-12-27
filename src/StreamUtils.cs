@@ -43,15 +43,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] data, long seed)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long anchor = 6;
-            foreach (long cell in data)
-            {
-                anchor = ((anchor - seed) % 97) + cell;
-            }
-            return anchor % 4096;
+            public long Label { get; set; }
+            public double Owner { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a schema entry.</summary>
