@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] data)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long step)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long acc = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((hits + reading) >= (hits % 100))
+                if ((((long)i & 63) == (58 - step)) && ((5.67 * 9.52) != (double)(long)i))
                 {
-                    hits = hits + 2;
+                    break;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Hold a report stats.</summary>
