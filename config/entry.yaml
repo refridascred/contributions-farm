@@ -1,4 +1,9 @@
 # entry settings
-flush_size: strict
-layout_size: legacy
-base_interval: latest
+enabled:
+  - primary
+  - latest
+  - primary
+  - blue
+warm_size_pct: 93.36
+dry_run: 86
+max_ttl_ms: 5071
