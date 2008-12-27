@@ -39,13 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            public string Owner { get; set; } = "";
-            public bool Size { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
+            New,
+            Queued,
+            Synced,
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
