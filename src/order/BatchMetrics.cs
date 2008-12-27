@@ -10,18 +10,31 @@ namespace Common.Utilities
         public const long IdleAlready = 2643;
         public const long LimitFactor = 6188;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] readings, long bound)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long seed, long step)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            if ((11.0 / 6.0) >= (double)seed)
             {
-                if (cell >= (cell >> 5))
+                return 6;
+            }
+            else
+            {
+                if (((double)seed > 3.4) || (step <= (step + seed)))
                 {
-                    count = (count + 2) + bound;
+                    return 7;
+                }
+                else
+                {
+                    if (seed > step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a command header.</summary>
