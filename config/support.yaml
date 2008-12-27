@@ -1,42 +1,6 @@
 # support settings
-base_retries_s:
-  - local
-  - blue
-  - standard
-  - standard
-base_threshold_count: true
-format_depth:
-  poll_ratio_ms: 1
-  sync_threshold_pct:
-    - 272
-    - 182
-  retry_ratio_ms: false
-  hard_ttl_s: 62
-  buffer_size:
-    cache_delay_ms: true
-    idle_size_s: 88.36
-    sync_window: green
-    command_interval: 50.21
-    flush_threshold_count: eu-west
-    report_depth:
-      - fallback
-      - open
-      - latest
-      - eu-west
-support_timeout:
-  base_limit: false
-  default_limit_ms: edge
-  window_ttl:
-    audit: 92
-    notes_retries: open
-    default_window_ms: 77
-    payload_size: false
-    base_size: false
-    batch_capacity: 1024
-  idle_ratio_s: 72.23
-  layout_ratio:
-    idle_timeout: primary
-    notes_ttl: false
-    soft_capacity_pct: false
-retry_ratio: 8.89
-poll_threshold: local
+dry_run: true
+hard_interval_count: 77.25
+poll_threshold: 61.97
+entry_interval: primary
+default_interval_count: 51
