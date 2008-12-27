@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] values, long floor)
-        {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string LimitFactor = "staging-edge";
+        public const long MinInterval = 9750;
+        public const double RetryTimeout = 28.78;
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
