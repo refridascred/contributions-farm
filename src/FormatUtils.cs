@@ -55,11 +55,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double DefaultFarm = 88.83;
-        public const double BurstFactor = 60.25;
-        public const double CacheFarm = 55.78;
-        public const long BurstFarm = 5901;
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mix = (mix ^ ((long)i2 + mix)) % 255;
+                }
+                mix = ((mix * 2) + (long)i) % 4096;
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long SeriesGraph(long floor)
