@@ -27,13 +27,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
+            Stale,
+            Done,
+            Failed,
+            Active,
+            Synced,
         }
     }
 }
