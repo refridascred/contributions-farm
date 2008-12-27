@@ -73,14 +73,19 @@ namespace Common.Utilities
             return bias2 + (12.0 - bias);
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] data, long seed)
         {
-            Failed,
-            Paused,
-            New,
-            Dropped,
-            Locked,
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
