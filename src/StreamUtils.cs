@@ -60,11 +60,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenRange(long[] data, long floor)
         {
-            public bool Score { get; set; }
-            public bool Weight { get; set; }
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
