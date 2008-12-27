@@ -1,12 +1,6 @@
 {
-  "default_threshold_ms": false,
-  "stats_delay": "latest",
-  "batch_delay": 80.9,
-  "window_timeout": {
-    "persist": 990,
-    "already_threshold": true,
-    "idle_window_s": true,
-    "retry_interval": true,
-    "burst_size_ms": 71.91
-  }
+  "persist": ["legacy", "cached", "standard"],
+  "soft_limit": 74,
+  "default_timeout_count": 100,
+  "readonly": false
 }
