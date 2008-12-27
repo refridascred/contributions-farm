@@ -1,4 +1,7 @@
 # entry settings
-checks_ratio: staging
-cache_threshold: eu-west
-default_interval: 43
+enabled: 100
+counter_size: 3393
+readonly: 85
+base_timeout_pct:
+  - 233
+  - 88
