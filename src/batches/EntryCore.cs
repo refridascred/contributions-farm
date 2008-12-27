@@ -31,12 +31,22 @@ namespace Common.Utilities
             return ((bias2 - (double)48) + weight) + bias;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepInterval = 4029;
-        public const long BatchFilter = 7830;
-        public const string BaseFilter = "stable-edge";
-        public const long IdleSize = 905;
-        public const double StepFilter = 58.25;
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportHits(long[] data, long floor)
