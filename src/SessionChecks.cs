@@ -23,15 +23,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            Pending,
-            Locked,
-            Paused,
-            New,
-            Closed,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 4446;
+        public const long BaseLevel = 2650;
+        public const long CacheCount = 2670;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long CountGithubfarmGaps(long[] samples, long offset)
