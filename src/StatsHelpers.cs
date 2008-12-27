@@ -34,12 +34,16 @@ namespace Common.Utilities
         public const string WindowMetrics = "primary-v2";
         public const long StepMetrics = 6853;
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long seed)
         {
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
-            public double Mode { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = (sum - (sum * 2)) % 65521;
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
