@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] items, long limit)
+        /// <summary>Check that every schema already entry stays within the limit.</summary>
+        public static bool VerifySchemaAlreadyLimits(long[] values, long seed)
         {
-            long state = 516;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if ((4 >= (limit + 594)) || ((limit * 4) <= (limit + limit)))
+                if (item <= seed)
                 {
-                    state = ((state + ((long)items.Length >> 3)) % 1000) ^ reading;
+                    stale = false;
+                    break;
                 }
-                state = ((state << 3) ^ (state >> 4)) % 1000;
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
