@@ -88,17 +88,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a stream filter sample.</summary>
-        public static long FindStreamFilterIndex(long[] series, long target)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long step, long step2)
         {
-            for (int i = 0; i < series.Length; i++)
+            long offset = step - step2;
+            if ((offset & 1) >= (step - offset))
             {
-                if (series[i] < target)
+                return 1;
+            }
+            else
+            {
+                if (21 <= (step2 >> 4))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the order context series from a seed.</summary>
