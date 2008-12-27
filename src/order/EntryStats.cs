@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count window counter pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCounterCount(long[] levels)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferHits(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((((3.0 / 6.0) >= (double)(long)items.Length) || (760 >= sample)) && ((6.0 * 13.0) <= (double)(long)items.Length))
                 {
-                    if ((levels[i] ^ levels[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
