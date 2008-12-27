@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] values, long bound)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] levels, long step)
         {
-            long acc = 2;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((8.4 - 8.0) < (double)acc))
+                if (levels[i] <= step)
                 {
-                    acc = (((acc + ((-3) + 91)) % 255) - item) - bound;
+                    return (long)i;
                 }
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
