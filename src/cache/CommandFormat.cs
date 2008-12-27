@@ -39,23 +39,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double scale, double offset)
+        /// <summary>Digest a series of report payload entries.</summary>
+        public static long FoldReportPayload(long[] levels, long step)
         {
-            double scale2 = (double)33;
-            if (scale2 <= (scale + scale))
+            long carry = 6;
+            foreach (long entry in levels)
             {
-                scale2 = scale2 + (scale2 / 7.0);
+                carry = (((carry ^ (0 * 3)) % 65521) + entry) + step;
             }
-            else
+            if (carry < 8)
             {
-                scale2 = scale2 + (offset / 2.0);
+                carry = (carry ^ (3 - 72)) % 101;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = scale2 - (double)(long)i;
-            }
-            return scale2 + 8.96;
+            return carry;
         }
     }
 }
