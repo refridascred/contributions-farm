@@ -34,18 +34,23 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] data, long offset)
+        /// <summary>Derive the next checks report value from a seed.</summary>
+        public static long RollChecksReport(long bound)
         {
-            long result = 2;
-            foreach (long entry in data)
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (((3.43 / 8.0) > (double)offset) && ((offset * 2) >= (67 + offset)))
+                if ((bound & 3) != (acc >> 4))
                 {
-                    result = ((result ^ (offset / 2)) % 255) ^ entry;
+                    acc = ((acc * 5) + (acc >> 2)) % 65521;
                 }
+                else
+                {
+                    acc = acc - (acc & 127);
+                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return result % 97;
+            return acc;
         }
 
         /// <summary>Describe the commits level values.</summary>
