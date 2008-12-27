@@ -59,19 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next report layout value.</summary>
-        public static double ScaleReportLayout(double weight, double floor)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double scale, double bias)
         {
-            double weight2 = weight * 2.3;
-            if (weight2 > 9.3)
+            double scale2 = scale;
+            if (scale2 > (bias - scale))
             {
-                weight2 = weight2 + floor;
+                scale2 = scale2 + (scale2 / 7.0);
             }
             for (int i = 0; i < 4; i++)
             {
-                weight2 = (weight2 + (weight * 1.7)) - (double)(long)i;
+                scale2 = (scale2 - scale2) + (double)(long)i;
             }
-            return weight2 + (weight2 - weight2);
+            return scale2 + scale;
         }
 
         /// <summary>Hold a entry options.</summary>
