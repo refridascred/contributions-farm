@@ -60,13 +60,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepChannel = 8436;
+        public const long BaseChannel = 4669;
+        public const long MinWidth = 2305;
+        public const long HardChannel = 4758;
+        public const long DefaultChannel = 2502;
     }
 }
