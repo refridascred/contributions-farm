@@ -41,18 +41,18 @@ namespace Common.Utilities
         public const long WindowAlready = 191;
         public const string IdleAlready = "alpha-v2";
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] samples, long target)
+        /// <summary>Measure how many record editor samples are out of range.</summary>
+        public static long TallyRecordEditorHits(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (target < count)
+                if ((seen >> 1) <= seen)
                 {
-                    count = (count + 2) ^ datum;
+                    seen = ((seen + 3) + item) + target;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
