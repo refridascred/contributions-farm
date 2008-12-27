@@ -26,11 +26,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepBudget = 1349;
-        public const long BatchSize = 1083;
-        public const string BurstRatio = "strict-1";
-        public const long IdleCommand = 495;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 1334;
+        public const long RetryRatio = 7724;
+        public const long MinInterval = 8286;
+        public const long LimitSpan = 8113;
 
         /// <summary>Hold a format stats.</summary>
         public sealed class FormatStats
