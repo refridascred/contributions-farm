@@ -1,12 +1,13 @@
 {
-  "graph_limit": {
-    "cache_window": "blue",
-    "hard_timeout_count": 7551,
-    "max_timeout": "strict",
-    "audit": 32,
-    "stats_capacity": ["latest", "fallback", "edge", "eu-west"]
+  "cache_window": {
+    "poll_limit": ["standard", "cached", "staging", "blue"],
+    "readonly": "standard",
+    "idle_retries_s": ["strict", "staging", "stable", "blue"],
+    "min_size_s": "eu-west"
   },
-  "min_timeout": false,
-  "strict": "primary",
-  "batch_ttl_pct": 76
+  "batch_threshold": 7363,
+  "readonly": ["primary", "blue"],
+  "hard_retries_ms": true,
+  "min_limit_ms": 8.37,
+  "sync_limit_count": ["standard", "open", "cached"]
 }
