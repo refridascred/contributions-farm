@@ -16,26 +16,10 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Roll a graph buffer counter forward.</summary>
-        public static long SeriesGraphBuffer(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 19; i++)
-            {
-                bool flag = ((40 >> 3) >= (target >> 5)) && (target < (25 % 64));
-                if (flag)
-                {
-                    flag = target <= ((long)i % 16);
-                    break;
-                }
-                else
-                {
-                    carry = ((carry * 5) + 1) % 4096;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 2442;
+        public const long MinOrder = 7310;
+        public const long SoftOrder = 9969;
 
         /// <summary>Scale a checks account figure with a bias.</summary>
         public static double ProjectChecksAccount(double rate, double offset)
