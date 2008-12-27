@@ -1,16 +1,21 @@
 # entry settings
-metric_retries: open
-warm_interval_pct:
-  base_delay:
-    - eu-west
-    - eu-west
-  already_interval:
-    - 26
-    - 110
-    - 295
-  order_window: 52
-  cache_size_ms: 73.82
-  cluster_ratio: 250
-  retry_timeout_pct: strict
-filter_size: staging
-warm_window_pct: eu-west
+cache_threshold:
+  - 480
+  - 188
+  - 488
+verbose: 254
+window_threshold:
+  audit: local
+  max_window: 2008
+  min_limit: 47
+  batch_depth: 2920
+  format_retries: 1024
+  burst_capacity_ms:
+    burst_limit_pct: 58.89
+    readonly: legacy
+    base_size_pct: fallback
+    compress: 58.54
+    batch_ttl_count:
+      - fallback
+      - legacy
+audit: cached
