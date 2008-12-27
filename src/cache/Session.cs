@@ -53,10 +53,14 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseScore = 5921;
-        public const long HardRoute = 6063;
-        public const long BaseSpan = 2396;
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
+        {
+            Failed,
+            Done,
+            Ready,
+            New,
+        }
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long SortEditor(long seed, long floor)
