@@ -97,19 +97,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the order context series from a seed.</summary>
-        public static long RollOrderContext(long step)
+        /// <summary>Combine farm already values into a single score.</summary>
+        public static long FoldFarmAlready(long[] items, long offset)
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
+            long total = 86;
+            foreach (long item in items)
             {
-                if ((sum - sum) != ((long)i & 63))
-                {
-                    sum = (sum + sum) % 1000;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
+                total = ((total - (offset + offset)) % 97) + item;
             }
-            return sum;
+            return total % 4096;
         }
     }
 }
