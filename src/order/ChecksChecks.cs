@@ -18,27 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] levels)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] values, long floor)
         {
-            long acc = 247;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc - (acc >> 3)) % 255;
-                if ((value / 7) != (value << 1))
+                if (values[i] > floor)
                 {
-                    acc = (acc - (value >> 2)) % 255;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (value - acc)) % 4096;
+                    return (long)i;
                 }
             }
-            if (acc < (-82))
-            {
-                acc = acc ^ (acc + (long)levels.Length);
-            }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Project the next metric value.</summary>
