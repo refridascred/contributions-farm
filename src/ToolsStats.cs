@@ -39,11 +39,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long origin, long floor)
         {
-            public bool Count { get; set; }
-            public double Total { get; set; }
+            if (((double)origin > (7.9 * 5.0)) || ((double)origin != (5.81 / 9.0)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor / 9) >= origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
