@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double weight, double offset)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] items, long origin)
         {
-            double ratio = (double)((-5) % 3);
-            if (ratio >= (8.6 + weight))
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio + 7.71;
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - offset;
+            return -1;
         }
 
         /// <summary>Digest a series of token entries.</summary>
