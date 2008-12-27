@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileOutliers(long[] items, long offset)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long item in items)
+            double mean = (double)(721 % 16);
+            if (mean < bias)
             {
-                if ((((9 - 606) > (offset ^ matches)) || ((4.6 + 0.12) > (double)offset)) || ((double)matches < (double)780))
-                {
-                    matches = (matches + 2) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = mean + (mean / 4.0);
             }
-            return matches;
+            return mean - gain;
         }
 
         /// <summary>Hold a route entry.</summary>
