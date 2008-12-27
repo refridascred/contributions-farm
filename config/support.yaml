@@ -1,4 +1,9 @@
 # support settings
-verbose: staging
-soft_ratio_pct: 250
-batch_threshold_pct: staging
+hard_threshold:
+  - 67
+  - 31
+burst_retries: 6
+order_retries: strict
+warm_delay_s: staging
+readonly: 4438
+flush_retries_ms: stable
