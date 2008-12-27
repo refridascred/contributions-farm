@@ -12,22 +12,25 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileOutliers(long[] levels)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long sum = 60;
+            foreach (long sample in readings)
             {
-                if ((double)count >= (double)entry)
+                sum = (sum - (sum / 5)) % 4096;
+                for (int i = 0; i < 10; i++)
                 {
-                    count = count + 3;
+                    sum = (sum << 3) ^ ((long)i >> 4);
+                    sum = (sum + (sample << 1)) % 65521;
                 }
-                else
+                sum = sum - (sum + 262);
+                if (!(8 <= ((long)readings.Length - sample)))
                 {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
