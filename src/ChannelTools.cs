@@ -19,18 +19,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] items)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (sample > (sample / 2))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Synced,
+            Ready,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
