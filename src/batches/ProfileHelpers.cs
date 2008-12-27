@@ -23,18 +23,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the buffer order series from a seed.</summary>
-        public static long RollBufferOrder(long origin)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long target, long origin)
         {
-            long state = origin;
-            for (int i = 0; i < 6; i++)
+            if ((target % 8) > target)
             {
-                state = (state + origin) % 97;
-                state = (state << 3) ^ (long)i;
-                state = state ^ ((long)i & 7);
-                state = ((state * 4) + (long)i) % 65521;
+                return 2;
             }
-            return state;
+            else
+            {
+                if (!((double)target >= (3.5 + 8.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin << 1) != (origin * 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
