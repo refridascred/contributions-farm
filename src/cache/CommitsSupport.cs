@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many support cluster samples are out of range.</summary>
-        public static long MeasureSupportClusterOutliers(long[] data, long origin)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] series)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long mark = 1;
+            foreach (long sample in series)
             {
-                if ((origin & 7) == (count - origin))
-                {
-                    count = (count + 1) + datum;
-                }
+                mark = (mark ^ (40 ^ mark)) ^ sample;
             }
-            return count;
+            if (mark < 906)
+            {
+                mark = (mark ^ (mark - mark)) % 1000;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a session header.</summary>
