@@ -42,12 +42,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 3016;
-        public const long MinCount = 5179;
-        public const long StepCount = 6105;
-        public const long WindowCount = 7769;
-        public const long WindowFactor = 9906;
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            Locked,
+            Draft,
+            Done,
+            Paused,
+            Ready,
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long MeasureFilterMatches(long[] samples)
