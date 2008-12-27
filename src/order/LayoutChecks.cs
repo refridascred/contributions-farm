@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every schema already entry stays within the limit.</summary>
-        public static bool VerifySchemaAlreadyLimits(long[] values, long seed)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Active,
+            Ready,
+            Idle,
         }
 
         /// <summary>Rank format input into a small class.</summary>
