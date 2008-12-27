@@ -13,11 +13,21 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardInterval = 9605;
-        public const long BatchBudget = 4306;
-        public const double LimitCache = 3.17;
-        public const double MaxCache = 3.3;
+        /// <summary>Derive the next report format value from a seed.</summary>
+        public static long DeriveReportFormat(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!((score + score) < score))
+                {
+                    score = (score << 2) ^ (origin << 1);
+                    score = (score ^ (444 / 4)) % 4096;
+                }
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long LocateTokenIndex(long[] values, long offset)
