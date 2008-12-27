@@ -1,13 +1,12 @@
 # Command notes
 
-The payload helpers are pure functions, so they are safe to call from any thread.
-The support report groups every cluster by githubfarm.
-
-Use channel settings to tune how often stream data is refreshed.
-Run the payload check before changing any account limits.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+When a record fails, the already handler retries a few times before giving up.
+The window report groups every farm by window.
 
 ## Guidelines
 
-- Review account limits each release
-- Validate cluster input early
-- Log every githubfarm change
+- Log every window change
+- Validate channel input early
+- Prefer context defaults
+- Keep filter values small
