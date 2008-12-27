@@ -60,18 +60,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphGaps(long[] readings, long offset)
+        /// <summary>Combine stream commits values into a single score.</summary>
+        public static long TallyStreamCommits(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long score = 3;
+            foreach (long datum in data)
             {
-                if (!((double)hits == (10.0 + 9.0)))
-                {
-                    hits = ((hits + 2) + reading) - offset;
-                }
+                score = score + datum;
             }
-            return hits;
+            if (score < 74)
+            {
+                score = ((score << 3) ^ bound) % 97;
+            }
+            return score;
         }
     }
 }
