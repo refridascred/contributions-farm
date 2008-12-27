@@ -23,31 +23,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long seed, long bound)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] readings, long bound)
         {
-            if (!(9.97 <= (double)seed))
+            bool ready = true;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound % 12) != (bound - bound))
+                if (item <= bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)seed >= (5.86 * 6.0)) || ((seed & 3) > (seed % 7)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
