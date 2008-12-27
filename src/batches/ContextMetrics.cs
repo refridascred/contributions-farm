@@ -43,21 +43,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of metrics commits readings.</summary>
-        public static long MatchMetricsCommitsCount(long[] values)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Queued,
+            Done,
+            Stale,
+            New,
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
