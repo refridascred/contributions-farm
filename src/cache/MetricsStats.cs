@@ -61,22 +61,14 @@ namespace Common.Utilities
         }
 
         /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double bias, double offset)
+        public static double AdjustGraph(double gain, double bias)
         {
-            double drift = 10.0;
-            if (drift >= drift)
+            double mean = gain;
+            for (int i = 0; i < 7; i++)
             {
-                drift = (drift - bias) + offset;
+                mean = ((mean + (gain * 6.0)) + (double)(long)i) + bias;
             }
-            else
-            {
-                drift = drift + (4.18 - drift);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + 6.35) + (double)(long)i;
-            }
-            return drift - (0.01 + bias);
+            return mean + (gain / 5.0);
         }
 
         /// <summary>Describe the editor class values.</summary>
