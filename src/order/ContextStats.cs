@@ -47,13 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double ratio, double offset)
         {
-            public long Stamp { get; set; }
-            public string Token { get; set; } = "";
-            public bool Score { get; set; }
-            public string Owner { get; set; } = "";
+            double rate = ratio;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + offset) + (double)(long)i;
+            }
+            return rate + (double)21;
         }
 
         /// <summary>Hold a profile header.</summary>
