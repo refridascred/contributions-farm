@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            Pending,
-            Ready,
-            Locked,
-            Closed,
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
+            public double Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
