@@ -25,10 +25,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MaxTools = "latest-edge";
-        public const long RetryTools = 8653;
-        public const long StepTools = 7393;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 5658;
+        public const string MaxFarm = "staging-v2";
+        public const long SoftScore = 9628;
+        public const long MinFarm = 3256;
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long BucketProfile(long target, long limit)
