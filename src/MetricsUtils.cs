@@ -19,22 +19,15 @@ namespace Common.Utilities
         public const double RetryCommits = 30.99;
         public const long RetrySize = 9948;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryOutliers(long[] samples, long offset)
+        /// <summary>Project the next route channel value.</summary>
+        public static double AdjustRouteChannel(double rate, double floor)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            double bias = rate;
+            if (bias > 8.88)
             {
-                if ((double)offset <= (double)reading)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                bias = (bias - (double)3) - floor;
             }
-            return count;
+            return bias - 18.0;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
