@@ -1,12 +1,6 @@
 {
-  "sync_delay_count": "local",
-  "min_delay_pct": "blue",
-  "dry_run": {
-    "flush_ratio_pct": "open",
-    "cache_timeout_pct": "green",
-    "hard_capacity": 88,
-    "soft_timeout_s": 24,
-    "audit": 96.65
-  },
-  "burst_ttl_ms": "standard"
+  "default_ratio_count": "primary",
+  "farm_ratio": [225, 4, 86],
+  "report_timeout": "cached",
+  "min_limit_count": 73.18
 }
