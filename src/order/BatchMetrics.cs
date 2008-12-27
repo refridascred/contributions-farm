@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long IdleAlready = 2643;
         public const long LimitFactor = 6188;
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long floor)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] readings, long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((floor * 2) <= 21)
+                if (cell >= (cell >> 5))
                 {
-                    mix = (mix + mix) % 255;
-                    mix = ((mix * 3) + (floor >> 2)) % 1000;
+                    count = (count + 2) + bound;
                 }
-                mix = mix - (mix % 100);
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a command header.</summary>
