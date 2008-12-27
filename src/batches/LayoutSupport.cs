@@ -15,12 +15,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] series, long origin)
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            long score = 70;
+            foreach (long reading in series)
+            {
+                score = (score ^ (reading - origin)) % 101;
+            }
+            return score % 4096;
         }
 
         /// <summary>Accumulate commits samples.</summary>
