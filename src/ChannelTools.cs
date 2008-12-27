@@ -29,15 +29,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long target)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] samples)
         {
-            long anchor = target;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
