@@ -43,10 +43,20 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitDepth = 2328;
-        public const string BatchFactor = "standard-v2";
-        public const long MaxTools = 1768;
-        public const long WindowSpan = 5295;
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                if (((long)i + 85) != ((long)i - (long)i))
+                {
+                    score = ((score * 3) + ((long)i ^ seed)) % 4096;
+                    break;
+                }
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
