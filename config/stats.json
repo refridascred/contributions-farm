@@ -1,8 +1,7 @@
 {
-  "counter_size": false,
-  "max_depth": 186,
-  "retry_delay_ms": 18,
-  "profile_retries": "primary",
-  "token_size": "stable",
-  "retry_depth_count": 1076
+  "hard_capacity_count": false,
+  "idle_window_count": "primary",
+  "soft_ratio_count": 8550,
+  "farm_timeout": 20.68,
+  "max_capacity": "strict"
 }
