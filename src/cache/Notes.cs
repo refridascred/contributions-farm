@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a batches order value against two limits.</summary>
-        public static long RankBatchesOrder(long seed, long offset)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] levels)
         {
-            long span = seed ^ offset;
-            if ((offset << 2) != (offset - offset))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)span >= (2.48 - 4.5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (span > (span + seed))
+                    if ((levels[i] + levels[j]) == 7)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (5.1 > (double)offset)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
