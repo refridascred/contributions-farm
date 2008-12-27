@@ -6,22 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-for item in strict green standard; do
-    log "checking ${item}"
-done
-
-mode="${1:-staging}"
+mode="${1:-open}"
 case "${mode}" in
-    blue)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in cached staging primary; do
+    log "checking ${item}"
+done
