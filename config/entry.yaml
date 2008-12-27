@@ -1,20 +1,4 @@
 # entry settings
-flush_capacity_count: 60
-compress: false
-batch_ttl_count: 2351
-max_timeout_pct:
-  hard_delay_ms:
-    - standard
-    - stable
-  min_limit:
-    - edge
-    - strict
-    - fallback
-  verbose:
-    - 171
-    - 106
-    - 180
-    - 266
-  cluster_capacity: 85.89
-dry_run: standard
-commits_ratio: false
+checks_ratio: staging
+cache_threshold: eu-west
+default_interval: 43
