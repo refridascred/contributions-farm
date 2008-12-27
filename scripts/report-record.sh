@@ -7,10 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 1))
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-RECORD_LIMIT=212
-log "limit is ${RECORD_LIMIT}"
+for item in primary legacy strict local; do
+    log "checking ${item}"
+done
