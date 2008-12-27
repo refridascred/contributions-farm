@@ -35,21 +35,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count profile commits pairs that satisfy a relation.</summary>
-        public static long CompareProfileCommitsCount(long[] series)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double rate, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = rate;
+            if (bias >= (double)97)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = bias - 5.2;
             }
-            return seen;
+            else
+            {
+                bias = bias - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - rate) + (double)(long)i;
+            }
+            return bias + (11.0 + bias);
         }
     }
 }
