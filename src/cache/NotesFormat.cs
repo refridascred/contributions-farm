@@ -20,17 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] items, long bound)
+        /// <summary>Measure how many metric context samples are out of range.</summary>
+        public static long CountMetricContextGaps(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (items[i] >= bound)
+                if ((datum % 64) > ((long)data.Length ^ datum))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
