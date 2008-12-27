@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a report cache counter forward.</summary>
-        public static long DeriveReportCache(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double IdleLevel = 27.51;
+        public const long SoftBudget = 4527;
+        public const double BaseSpan = 98.53;
 
         /// <summary>Accumulate channel githubfarm samples.</summary>
         public static long DigestChannelGithubfarm(long[] levels, long step)
