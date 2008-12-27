@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary fallback latest; do
-    log "checking ${item}"
-done
+mode="${1:-cached}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-BUFFER_LIMIT=223
+BUFFER_LIMIT=329
 log "limit is ${BUFFER_LIMIT}"
