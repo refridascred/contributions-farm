@@ -18,18 +18,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] series, long origin)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long seed)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long total = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((item ^ item) == (origin + item))
+                if (!((double)seed <= 2.11))
                 {
-                    tally = tally + 3;
+                    total = (total << 2) ^ ((long)i * 4);
                 }
+                else
+                {
+                    total = (total + (total << 1)) % 97;
+                }
+                total = total + (seed % 2);
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
