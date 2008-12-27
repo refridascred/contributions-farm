@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] readings)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueRange(long[] data, long step)
         {
-            long score = 40;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long value in data)
             {
-                score = (score + (datum + datum)) % 101;
-                score = (score - (51 / 8)) % 4096;
+                if (value != step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (score > 771)
-            {
-                score = score + (score ^ score);
-            }
-            return score;
+            return flag;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
