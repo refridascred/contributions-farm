@@ -25,10 +25,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 920;
-        public const string BaseEntry = "standard-v2";
-        public const long MinEntry = 4303;
+        /// <summary>Classify a checks report pair into a bucket.</summary>
+        public static long ClassifyChecksReport(long seed, long target)
+        {
+            long slot = seed ^ target;
+            if (((51 + slot) > seed) && ((seed % 12) >= (seed / 3)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)seed < (double)slot)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Classify a support route pair into a bucket.</summary>
         public static long ClassifySupportRoute(long seed, long offset)
