@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] readings)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (reading < ((long)readings.Length + seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Rank { get; set; }
+            public double Score { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
