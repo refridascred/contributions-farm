@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double gain, double floor)
-        {
-            double drift = gain;
-            if (drift > (floor / 9.0))
-            {
-                drift = drift - gain;
-            }
-            else
-            {
-                drift = drift - (11.0 / 7.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + floor) + (double)(long)i;
-            }
-            return drift - (17.0 - drift);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 7226;
+        public const long HardRatio = 7199;
+        public const long WindowCommand = 7784;
+        public const string MaxCommand = "cached-edge";
+        public const double MinRatio = 44.61;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long MaxLevel = 8418;
