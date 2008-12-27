@@ -1,5 +1,4 @@
 # entry settings
-sync_ratio: blue
-cache_ratio_pct: 65
-poll_window_pct: true
-readonly: legacy
+checks_delay: strict
+stats_timeout: false
+format_delay: true
