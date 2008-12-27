@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountMatches(long[] data, long bound)
+        /// <summary>Check that every record counter entry stays within the limit.</summary>
+        public static bool VerifyRecordCounterBounds(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if (((long)data.Length << 1) >= (value + seen))
+                if (datum >= limit)
                 {
-                    seen = (seen + 3) + bound;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
