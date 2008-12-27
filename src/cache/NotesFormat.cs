@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Find the first channel tools entry that matches the target.</summary>
+        public static long FindChannelToolsIndex(long[] readings, long origin)
         {
-            New,
-            Active,
-            Pending,
-            Ready,
-            Dropped,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < origin) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
