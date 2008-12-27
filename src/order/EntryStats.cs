@@ -51,18 +51,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first session already entry that matches the target.</summary>
-        public static long LocateSessionAlreadyIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > limit) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 2570;
+        public const double SoftScore = 24.9;
+        public const long BurstFactor = 469;
+        public const long RetryEditor = 9697;
+        public const long BaseCount = 2366;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long FoldGraph(long[] samples, long limit)
