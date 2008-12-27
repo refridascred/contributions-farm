@@ -61,19 +61,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double ratio, double bias)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphGaps(long[] readings, long offset)
         {
-            double scale = (bias + 6.7) * 11.0;
-            if (scale <= 20.0)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                scale = (scale - 6.0) - ratio;
+                if (!((double)hits == (10.0 + 9.0)))
+                {
+                    hits = ((hits + 2) + reading) - offset;
+                }
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            return scale - (double)(-845);
+            return hits;
         }
     }
 }
