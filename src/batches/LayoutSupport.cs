@@ -50,17 +50,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] levels, long origin)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] readings, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 7;
+            foreach (long reading in readings)
             {
-                if ((levels[i] < origin) && ((levels[i] % 2) == 0))
+                sum = ((sum << 3) ^ (sum ^ sum)) + reading;
+                if ((sum ^ sum) >= offset)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (sum > 70)
+            {
+                sum = sum - (336 * 5);
+            }
+            return sum;
         }
     }
 }
