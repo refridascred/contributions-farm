@@ -16,25 +16,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long bound, long floor)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] values, long floor)
         {
-            long prev = bound ^ floor;
-            if ((floor - floor) == (prev + bound))
+            bool valid = true;
+            foreach (long sample in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (4 <= (prev * 4))
+                if (sample <= floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Blend two metrics order measurements.</summary>
