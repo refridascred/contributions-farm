@@ -23,24 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long origin, long seed)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long limit)
         {
-            if ((3.41 - 2.4) == (double)origin)
+            long state = limit;
+            for (int i = 0; i < 8; i++)
             {
-                return 4;
+                state = ((state * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (seed <= (seed / 9))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return state;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
