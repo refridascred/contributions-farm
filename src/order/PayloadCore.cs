@@ -43,18 +43,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the context queue entries that pass the check.</summary>
-        public static long CountContextQueueHits(long[] samples, long offset)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((double)seen < (double)68)
-                {
-                    seen = ((seen + 2) ^ item) - offset;
-                }
-            }
-            return seen;
+            public double Total { get; set; }
+            public long Ratio { get; set; }
+            public double Token { get; set; }
         }
     }
 }
