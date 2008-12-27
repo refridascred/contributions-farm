@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long seed)
         {
-            Stale,
-            Pending,
-            Ready,
-            Idle,
-            Retry,
+            long result = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                result = (result << 2) ^ seed;
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
