@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] data, long origin)
+        /// <summary>Count the session entry entries that pass the check.</summary>
+        public static long MeasureSessionEntryMatches(long[] items)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((long)data.Length != (count - 9))
+                if (((8.3 * 16.0) >= (double)item) || ((seen << 1) != (seen % 64)))
                 {
-                    count = ((count + 1) + reading) - origin;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
