@@ -20,21 +20,24 @@ namespace Common.Utilities
             return load - (bias / 7.0);
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] items)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long target, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((19.0 + 2.48) != (double)offset) || (target > offset))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((offset << 1) > (target + target)) || (3.0 > (double)offset))
                 {
-                    if ((items[i] ^ items[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
