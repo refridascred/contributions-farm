@@ -13,19 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the token graph entries that pass the check.</summary>
-        public static long MeasureTokenGraphOutliers(long[] readings, long limit)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((seen >> 5) != (cell << 2))
-                {
-                    seen = (seen + 2) - limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseDepth = 1846;
+        public const string BaseInterval = "cached";
+        public const long BaseProfile = 7262;
+        public const double MaxLevel = 33.84;
 
         /// <summary>Adjust a checks reading.</summary>
         public static double AdjustChecks(double scale, double offset)
