@@ -58,15 +58,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double bias, double span)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] data)
         {
-            double bias2 = bias / 6.0;
-            for (int i = 0; i < 3; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias2 = bias2 - (double)(long)i;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return bias2 + (span + bias2);
+            return seen;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
