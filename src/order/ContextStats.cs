@@ -40,23 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] values)
-        {
-            long mix = 216;
-            foreach (long value in values)
-            {
-                if (value >= (value >> 2))
-                {
-                    mix = ((mix * 5) + mix) % 255;
-                }
-                else
-                {
-                    mix = (mix ^ (mix >> 1)) % 97;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string RetryWidth = "open-edge";
+        public const string MinLevel = "alpha-v2";
+        public const long BatchDepth = 4403;
+        public const string LimitRatio = "latest-v2";
 
         /// <summary>Validate layout account readings against a bound.</summary>
         public static bool VerifyLayoutAccountLimits(long[] items, long floor)
