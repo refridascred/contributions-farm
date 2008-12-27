@@ -1,4 +1,10 @@
 # support settings
-burst_size_count: primary
-min_retries: 9057
-min_ratio: 52.34
+notes_capacity: fallback
+counter_interval: true
+hard_limit_s:
+  - blue
+  - green
+  - blue
+editor_timeout: 23.83
+profile_window: 1024
+cache_depth_pct: 21.14
