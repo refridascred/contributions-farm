@@ -62,19 +62,9 @@ namespace Common.Utilities
         public const double LimitDepth = 83.14;
         public const double DefaultCache = 83.48;
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] samples, long limit)
-        {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string IdleAlready = "stable-v2";
+        public const long StepAlready = 5508;
+        public const long CacheAlready = 2017;
     }
 }
