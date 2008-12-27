@@ -44,18 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many token account samples are out of range.</summary>
-        public static long TallyTokenAccountGaps(long[] values)
+        /// <summary>Blend two metrics order measurements.</summary>
+        public static double AdjustMetricsOrder(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long item in values)
+            double scale = floor;
+            if (scale < (floor * 6.0))
             {
-                if ((matches % 100) >= (item - matches))
-                {
-                    matches = matches + 2;
-                }
+                scale = (scale + (floor * 2.6)) - ratio;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (5.3 * 8.2)) - (double)(long)i;
+            }
+            return scale + (double)414;
         }
 
         /// <summary>Hold a counter stats.</summary>
