@@ -1,5 +1,5 @@
 # entry settings
-burst_threshold: 1024
-stream_threshold: blue
-soft_timeout_s: false
-metrics_window: false
+checks_capacity: local
+base_capacity: true
+idle_window_s: 25.39
+poll_ratio_count: true
