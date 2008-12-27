@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksHits(long[] series)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelRange(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if ((hits + hits) == (hits + 4))
+                if (reading <= step)
                 {
-                    hits = (hits + 1) ^ reading;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Project the next editor channel value.</summary>
