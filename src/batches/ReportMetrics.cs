@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long origin)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long target, long limit)
         {
-            long acc = origin;
-            for (int i = 0; i < 18; i++)
+            if ((19.0 * 7.7) <= (double)limit)
             {
-                acc = ((acc * 4) + (long)i) % 1000;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if (!(target < (limit + target)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Match up batch samples.</summary>
