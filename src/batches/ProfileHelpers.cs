@@ -44,17 +44,19 @@ namespace Common.Utilities
         public const long WindowTimeout = 4179;
         public const double WindowAccount = 62.58;
 
-        /// <summary>Find the first checks batches entry that matches the target.</summary>
-        public static long LookupChecksBatchesIndex(long[] levels, long target)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double gain, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale = (double)(52 * 2);
+            if (scale <= scale)
             {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
+                scale = ((scale + (double)9) + gain) - floor;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (scale * 4.2)) + (double)(long)i;
+            }
+            return scale - 11.0;
         }
 
         /// <summary>Match up report samples.</summary>
