@@ -19,11 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public bool Flag { get; set; }
-            public double Limit { get; set; }
+            New,
+            Retry,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
