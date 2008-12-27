@@ -28,23 +28,37 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a stats channel value against two limits.</summary>
-        public static long GradeStatsChannel(long bound, long target)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long origin, long floor)
         {
-            long next = bound + target;
-            if ((bound >> 2) > (target - next))
+            long lane = origin - floor;
+            if (((floor - origin) > (7 * 2)) && ((lane >> 5) > (277 << 3)))
             {
                 return 3;
             }
             else
             {
-                if ((double)target != (double)bound)
+                if ((758 / 9) >= origin)
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    return 7;
+                    if ((double)origin < (1.89 * 18.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((origin & 127) < lane) && ((floor + origin) <= origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
