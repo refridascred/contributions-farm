@@ -67,31 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long limit, long offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] samples, long target)
         {
-            if ((limit + (-67)) == (limit % 16))
+            long count = 0;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset > (5 + limit)) || ((44 ^ limit) > (offset + limit)))
+                if (target < count)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((4 >> 1) >= (offset + limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = (count + 2) ^ datum;
                 }
             }
+            return count;
         }
     }
 }
