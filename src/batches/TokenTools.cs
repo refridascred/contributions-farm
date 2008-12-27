@@ -42,9 +42,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstSpan = 2562;
-        public const string RetryRecord = "alpha-1";
-        public const long BatchWidth = 3535;
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long bound, long floor)
+        {
+            if ((bound * 4) > (bound - 496))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((14.0 / 6.0) > (double)floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((13.0 / 9.0) == (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor << 3) != (bound & 255))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
