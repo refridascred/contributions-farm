@@ -1,27 +1,12 @@
 # githubfarm settings
-filter_retries:
-  retry_retries: true
-  max_depth_ms:
-    persist: 1024
-    account_limit: strict
-    burst_interval_s: blue
-    cache_limit:
-      - staging
-      - stable
-      - green
-      - staging
-  batch_capacity: 556
-  commits_size: true
-  entry_capacity: primary
-  contributi_ttl:
-    - open
-    - primary
-    - open
-    - primary
-base_ratio_pct: blue
-audit:
-  - 156
-  - 476
-  - 241
-  - 173
-batch_interval: 90.46
+idle_threshold: 21.15
+idle_window_count: stable
+verbose: false
+burst_threshold_count:
+  flush_size_s: 97
+  persist:
+    - edge
+    - edge
+    - standard
+  strict: true
+  notes_interval: legacy
