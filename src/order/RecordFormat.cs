@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next context queue value from a seed.</summary>
-        public static long StepContextQueue(long bound)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long acc = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    acc = (((acc * 2) + (acc + acc)) % 1000) + (long)i2;
-                }
-                if ((bound + acc) <= (acc ^ bound))
-                {
-                    acc = acc - ((long)i & 3);
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            public bool Weight { get; set; }
+            public bool Label { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the filter mode values.</summary>
