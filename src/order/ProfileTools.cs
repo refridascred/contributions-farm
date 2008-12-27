@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] data)
+        /// <summary>Find the first token record entry that matches the target.</summary>
+        public static long FindTokenRecordIndex(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value * 4) <= (value ^ value))
+                if ((series[i] >= limit) && ((series[i] % 5) != 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
