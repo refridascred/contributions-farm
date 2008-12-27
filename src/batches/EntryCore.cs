@@ -19,25 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long offset, long floor)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long offset2 = offset + floor;
-            if ((offset2 + offset2) <= floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset2 + offset) == (125 + 253))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public double Offset { get; set; }
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Audit report readings against a rule.</summary>
