@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit token queue readings against a rule.</summary>
-        public static long CountTokenQueueOutliers(long[] data, long seed)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((entry - seed) <= (seed + entry))
+                if ((8.2 - 7.47) >= (double)item)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 3) - seed;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Match up cache filter samples.</summary>
