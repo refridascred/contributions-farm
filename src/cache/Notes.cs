@@ -28,10 +28,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinTimeout = 9982;
-        public const double MinBudget = 29.11;
-        public const long BaseStats = 2490;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (!(((entry * 3) >= (hits ^ entry)) || ((double)entry >= (7.45 - 10.0))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long DeriveFormat(long origin)
