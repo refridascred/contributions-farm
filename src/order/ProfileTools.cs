@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank context layout input into a small class.</summary>
-        public static long GradeContextLayout(long step, long floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] data)
         {
-            long edge = step ^ floor;
-            if ((double)edge <= (4.1 + 4.0))
+            long tally = 0;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (step >= (step ^ floor))
+                if ((value * 4) <= (value ^ value))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor + floor) == (floor * 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
