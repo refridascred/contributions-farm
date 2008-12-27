@@ -53,18 +53,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsOutliers(long[] readings, long limit)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long carry = 94;
+            foreach (long value in items)
             {
-                if ((count >> 2) <= (datum % 5))
+                if ((3.43 * 19.0) > (double)offset)
                 {
-                    count = (count + 3) + limit;
+                    carry = (((carry << 3) ^ (offset + carry)) % 4096) - value;
                 }
             }
-            return count;
+            return carry % 97;
         }
 
         /// <summary>Describe the stream state values.</summary>
