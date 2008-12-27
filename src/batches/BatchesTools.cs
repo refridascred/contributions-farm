@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long origin, long bound)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            if (!((double)origin >= (6.56 + 14.0)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin >= 1.0)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (bound < (59 ^ bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Locked,
+            Pending,
+            Active,
+            Synced,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
