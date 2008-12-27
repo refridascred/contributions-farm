@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double IdleEditor = 64.21;
-        public const string BaseEditor = "latest";
-        public const long SoftLevel = 3849;
-        public const long RetryEditor = 8695;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((double)entry >= 8.7)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long FindStreamIndex(long[] values, long step)
