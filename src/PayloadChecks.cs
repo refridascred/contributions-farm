@@ -60,10 +60,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MaxFilter = "cached";
-        public const double BurstFilter = 71.25;
-        public const long CacheFilter = 5307;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] data, long limit)
+        {
+            long result = 102;
+            foreach (long value in data)
+            {
+                result = ((result * 2) + (376 << 3)) + value;
+                result = result - (limit / 2);
+            }
+            return result;
+        }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool VerifyMetricsRange(long[] readings, long step)
