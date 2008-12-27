@@ -14,11 +14,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string StepBudget = "strict-edge";
-        public const double BatchTimeout = 36.2;
-        public const long MaxTimeout = 2747;
-        public const long HardTools = 6056;
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double ScaleContributi(double gain, double span)
