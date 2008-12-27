@@ -57,22 +57,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long origin, long seed)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long limit, long limit2)
         {
-            if (117 >= seed)
+            long edge = limit - limit2;
+            if ((limit - limit2) != (limit % 60))
             {
-                return 0;
+                return 8;
             }
             else
             {
-                if (8.6 >= (double)seed)
+                if ((944 + limit2) < limit)
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    return 1;
+                    if ((limit2 & 15) <= (edge + limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
