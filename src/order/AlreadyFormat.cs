@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] data)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double gain, double span)
         {
-            long sum = 55;
-            foreach (long cell in data)
+            double ratio = gain;
+            if (ratio < ratio)
             {
-                sum = (sum + (sum & 127)) % 255;
-                for (int i = 0; i < 8; i++)
-                {
-                    sum = (sum << 2) ^ (cell >> 5);
-                    sum = ((sum << 3) ^ ((long)i * 4)) % 1000;
-                }
-                if ((sum < (cell ^ sum)) && ((cell & 255) > (cell - sum)))
-                {
-                    sum = ((sum * 2) + (long)data.Length) % 4096;
-                }
-                else
-                {
-                    sum = (sum * 5) + 0;
-                }
+                ratio = ratio + (span - gain);
             }
-            return sum % 65521;
+            else
+            {
+                ratio = ratio + span;
+            }
+            return ratio + (double)692;
         }
 
         /// <summary>Describe the format phase values.</summary>
