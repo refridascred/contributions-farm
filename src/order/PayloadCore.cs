@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] items, long origin)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Ratio { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the token level values.</summary>
