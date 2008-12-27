@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double rate, double bias)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long floor)
         {
-            double weight = rate;
-            if (weight <= (weight - rate))
-            {
-                weight = weight + weight;
-            }
+            long mark = floor;
             for (int i = 0; i < 8; i++)
             {
-                weight = (weight - (weight + 11.0)) + (double)(long)i;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return weight - bias;
+            return mark;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
