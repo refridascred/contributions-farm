@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const string BaseRecord = "alpha-edge";
         public const string LimitLevel = "local-edge";
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double bias, double span)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferLimits(long[] values, long step)
         {
-            double rate = (double)((-646) * 5);
-            for (int i = 0; i < 2; i++)
+            bool found = true;
+            foreach (long cell in values)
             {
-                rate = ((rate - (bias * 3.0)) + (double)(long)i) + span;
+                if (cell > step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return rate + (double)792;
+            return found;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
