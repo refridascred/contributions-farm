@@ -1,8 +1,27 @@
 # githubfarm settings
-token_timeout: edge
-verbose: 4
-idle_delay_ms:
-  - 404
-  - 83
-  - 410
-soft_ratio_pct: 2
+filter_retries:
+  retry_retries: true
+  max_depth_ms:
+    persist: 1024
+    account_limit: strict
+    burst_interval_s: blue
+    cache_limit:
+      - staging
+      - stable
+      - green
+      - staging
+  batch_capacity: 556
+  commits_size: true
+  entry_capacity: primary
+  contributi_ttl:
+    - open
+    - primary
+    - open
+    - primary
+base_ratio_pct: blue
+audit:
+  - 156
+  - 476
+  - 241
+  - 173
+batch_interval: 90.46
