@@ -1,7 +1,6 @@
 # support settings
-idle_threshold: false
-max_ratio_s: 5.73
-order_size: blue
-readonly:
-  - 394
-  - 7
+sync_depth_ms: false
+max_ttl_count: 87
+poll_window_pct: 33.35
+cache_timeout_pct: 3927
+entry_window: strict
