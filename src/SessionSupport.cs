@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a cluster queue reading.</summary>
-        public static double AdjustClusterQueue(double rate, double bias)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            double ratio = 0.8 - (rate * 4.04);
-            if (ratio >= (ratio - bias))
-            {
-                ratio = ratio - 2.8;
-            }
-            else
-            {
-                ratio = ratio + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - rate) - (double)(long)i;
-            }
-            return ratio - (5.0 / 9.0);
+            Idle,
+            Done,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Audit command filter readings against a rule.</summary>
