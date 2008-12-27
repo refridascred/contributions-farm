@@ -19,19 +19,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate graph account readings against a bound.</summary>
-        public static bool CheckGraphAccountRange(long[] levels, long limit)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] levels)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long acc = 5;
+            foreach (long datum in levels)
             {
-                if (cell < limit)
+                if ((double)(long)levels.Length < (7.67 / 2.0))
                 {
-                    stale = false;
-                    break;
+                    acc = (acc ^ (datum << 3)) % 255;
                 }
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Classify a metric report pair into a bucket.</summary>
