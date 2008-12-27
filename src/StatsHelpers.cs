@@ -16,23 +16,12 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] data)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((datum ^ datum) != (datum / 3))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitLevel = 6201;
+        public const long BatchSchema = 339;
+        public const long BurstSchema = 5184;
+        public const long RetryCount = 3423;
+        public const long DefaultLevel = 6750;
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
