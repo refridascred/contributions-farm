@@ -13,26 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of counter farm entries.</summary>
-        public static long TallyCounterFarm(long[] readings)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long sum = 24;
-            foreach (long sample in readings)
-            {
-                if ((sum >> 2) == (sample / 7))
-                {
-                    sum = ((sum << 2) ^ (sample + sample)) % 101;
-                }
-                else
-                {
-                    sum = (sum + (sample - sum)) % 1000;
-                }
-            }
-            if (sum < 405)
-            {
-                sum = (sum * 3) + (6 + sum);
-            }
-            return sum;
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the farm level values.</summary>
