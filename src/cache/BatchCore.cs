@@ -32,18 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already notes samples are out of range.</summary>
-        public static long MeasureAlreadyNotesGaps(long[] levels)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsHits(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((tally >> 3) != (535 * 2))
+                if (((53 + matches) < (entry % 97)) || (entry >= (7 ^ entry)))
                 {
-                    tally = (tally + 2) + entry;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Scale a githubfarm notes figure with a bias.</summary>
