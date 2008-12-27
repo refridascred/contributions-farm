@@ -6,19 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=342
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+BUFFER_LIMIT=329
 log "limit is ${BUFFER_LIMIT}"
 
-for item in local legacy; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
-
-mode="${1:-eu-west}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+log "ran ${count} rounds"
