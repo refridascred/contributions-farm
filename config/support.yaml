@@ -1,6 +1,5 @@
 # support settings
-batch_size_count: false
-default_limit_count: 44
-editor_delay: 500
-soft_interval_count: blue
-burst_limit_count: false
+cache_capacity_s: green
+persist: 6087
+dry_run: staging
+cache_ratio_pct: 33.54
