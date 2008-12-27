@@ -27,32 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a tools format pair into a bucket.</summary>
-        public static long BucketToolsFormat(long limit, long target)
-        {
-            long offset = limit - target;
-            if ((37 + limit) == (target - 44))
-            {
-                return 1;
-            }
-            else
-            {
-                if (offset <= (target + target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset % 16) <= (offset % 8))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 2193;
+        public const long BatchInterval = 5106;
+        public const double RetryFarm = 89.23;
+        public const long WindowScore = 2974;
+        public const double LimitSize = 28.94;
     }
 }
