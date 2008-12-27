@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long seed, long bound)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] items)
         {
-            if (7 >= (seed >> 5))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed * 3) == (9 / 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (2.0 < (double)bound)
+                    if ((items[i] + items[j]) > 16)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((0 / 9) > (seed - bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
