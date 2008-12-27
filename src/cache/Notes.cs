@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Grade a batches order value against two limits.</summary>
+        public static long RankBatchesOrder(long seed, long offset)
         {
-            Closed,
-            Paused,
-            New,
+            long span = seed ^ offset;
+            if ((offset << 2) != (offset - offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)span >= (2.48 - 4.5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (span > (span + seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (5.1 > (double)offset)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a githubfarm graph value against two limits.</summary>
