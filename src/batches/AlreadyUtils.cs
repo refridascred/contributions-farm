@@ -12,20 +12,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelRange(long[] readings, long step)
-        {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheBudget = 108;
+        public const long BurstWindow = 5836;
+        public const long MinDepth = 15;
+        public const string MaxWindow = "cached-1";
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool GuardAccountRange(long[] levels, long seed)
