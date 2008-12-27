@@ -12,16 +12,11 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long seed)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long anchor = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = (anchor ^ (anchor << 3)) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            public string Owner { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a session entry.</summary>
