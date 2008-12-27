@@ -51,11 +51,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 84;
-        public const long MaxFilter = 3279;
-        public const long LimitDepth = 4723;
-        public const long RetryFilter = 8804;
-        public const double HardScore = 47.07;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] values, long offset)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((offset * 4) < (hits ^ (long)values.Length))
+                {
+                    hits = (hits + 1) + value;
+                }
+            }
+            return hits;
+        }
     }
 }
