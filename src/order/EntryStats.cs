@@ -57,19 +57,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] items, long limit)
+        /// <summary>Find the first session already entry that matches the target.</summary>
+        public static long LocateSessionAlreadyIndex(long[] data, long limit)
         {
-            bool ready = true;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value != limit)
+                if ((data[i] > limit) && ((data[i] % 3) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the farm status values.</summary>
