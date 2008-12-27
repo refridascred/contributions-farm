@@ -14,15 +14,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double scale, double offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorHits(long[] items)
         {
-            double ratio = 11.0;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                ratio = (((ratio + ratio) + (double)(long)i) - scale) - offset;
+                if ((value * 4) >= (6 % 5))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return ratio - ratio;
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
