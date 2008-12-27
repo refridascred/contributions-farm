@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftDepth = 1244;
+        public const double SoftQueue = 69.24;
+        public const long IdleQueue = 4501;
+        public const double RetrySpan = 36.62;
+        public const long RetryQueue = 5020;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long WeighQueue(long[] samples)
