@@ -29,11 +29,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] samples)
         {
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (value >= (value << 3))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
