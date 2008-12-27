@@ -32,14 +32,13 @@ namespace Common.Utilities
         public const string BurstRatio = "strict-1";
         public const long IdleCommand = 495;
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Paused,
-            Active,
-            Draft,
-            Retry,
-            Pending,
+            public bool Mode { get; set; }
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+            public double Total { get; set; }
         }
     }
 }
