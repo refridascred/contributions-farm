@@ -1,8 +1,6 @@
 {
-  "min_interval_ms": "standard",
-  "flush_depth_ms": "primary",
-  "dry_run": ["cached", "green"],
-  "retry_interval_pct": false,
-  "idle_delay_count": false,
-  "batch_delay": 87
+  "compress": "stable",
+  "min_interval_pct": "strict",
+  "retry_capacity": 32,
+  "enabled": [370, 309, 286]
 }
