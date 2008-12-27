@@ -42,25 +42,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long origin, long offset)
-        {
-            if ((offset - 2) > (offset / 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if (930 > (offset + origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 3016;
+        public const long MinCount = 5179;
+        public const long StepCount = 6105;
+        public const long WindowCount = 7769;
+        public const long WindowFactor = 9906;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long HardCluster = 6311;
