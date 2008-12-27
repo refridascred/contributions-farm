@@ -16,18 +16,23 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] levels)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            double scale = weight;
+            if (scale > (weight + bias))
             {
-                if ((6 - sample) > matches)
-                {
-                    matches = matches + 1;
-                }
+                scale = scale - (7.82 / 7.0);
             }
-            return matches;
+            else
+            {
+                scale = scale - (double)9;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + bias) - (double)(long)i;
+            }
+            return scale - (6.0 + scale);
         }
 
         /// <summary>Adjust a session farm reading.</summary>
