@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge local blue; do
-    log "checking ${item}"
-done
-
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-CHANNEL_LIMIT=490
+CHANNEL_LIMIT=430
 log "limit is ${CHANNEL_LIMIT}"
+
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
