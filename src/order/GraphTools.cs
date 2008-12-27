@@ -55,18 +55,18 @@ namespace Common.Utilities
         public const long IdleCluster = 5031;
         public const long SoftScore = 8936;
 
-        /// <summary>Audit batch token readings against a rule.</summary>
-        public static long MeasureBatchTokenMatches(long[] readings)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((double)(long)readings.Length != (6.5 * 3.0))
+                if ((hits << 3) >= hits)
                 {
-                    matches = (matches + 2) ^ reading;
+                    hits = (hits + 3) + item;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
