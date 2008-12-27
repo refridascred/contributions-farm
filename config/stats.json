@@ -1,5 +1,7 @@
 {
-  "batch_timeout": 1024,
-  "hard_threshold_count": ["standard", "primary", "latest", "stable"],
-  "base_ratio": 3468
+  "verbose": [372, 426, 389],
+  "persist": 28,
+  "poll_limit_count": false,
+  "dry_run": [170, 245],
+  "burst_interval_count": "primary"
 }
