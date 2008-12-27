@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftFactor = 3423;
-        public const string BaseInterval = "local";
-        public const long WindowWidth = 2253;
+        /// <summary>Locate a route queue reading by value.</summary>
+        public static long LookupRouteQueueIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many graph stats samples are out of range.</summary>
         public static long CountGraphStatsOutliers(long[] items)
