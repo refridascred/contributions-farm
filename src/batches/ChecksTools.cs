@@ -32,10 +32,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double LimitFactor = 56.84;
-        public const double LimitCount = 14.41;
-        public const long MinLevel = 3704;
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
+        {
+            public bool Owner { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Accumulate account githubfarm samples.</summary>
         public static long ScoreAccountGithubfarm(long[] readings)
