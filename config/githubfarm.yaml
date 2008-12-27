@@ -1,4 +1,6 @@
 # githubfarm settings
-base_retries_s: 100
-dry_run: 60
-retry_depth_s: standard
+buffer_interval: 2052
+enabled: stable
+command_size: 49
+editor_interval: 500
+min_depth_pct: 30
