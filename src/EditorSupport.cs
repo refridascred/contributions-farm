@@ -69,21 +69,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] samples)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) == 6)
+                    if ((values[i] - values[j]) < 10)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
