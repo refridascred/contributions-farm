@@ -51,18 +51,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportMatches(long[] readings)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((seen / 3) <= (reading - reading))
+                if (!((hits + origin) >= origin))
                 {
-                    seen = seen + 2;
+                    hits = (hits + 1) + datum;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
