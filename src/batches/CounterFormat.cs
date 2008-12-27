@@ -39,22 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] levels, long seed)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] items, long bound)
         {
-            long sum = 3;
-            foreach (long datum in levels)
+            long mix = 84;
+            foreach (long datum in items)
             {
-                if ((datum << 1) <= seed)
+                if ((bound * 4) <= (mix >> 3))
                 {
-                    sum = (sum + sum) % 255;
+                    mix = (((mix << 3) ^ 0) % 65521) ^ datum;
                 }
             }
-            if (sum > 42)
+            if (mix < 146)
             {
-                sum = ((sum << 2) ^ (seed + sum)) % 255;
+                mix = (mix + (mix + mix)) % 255;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Match up support samples.</summary>
