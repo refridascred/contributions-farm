@@ -82,18 +82,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 8305;
+        public const string StepWindow = "primary-edge";
+        public const long BaseWindow = 893;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BurstCount = 1380;
