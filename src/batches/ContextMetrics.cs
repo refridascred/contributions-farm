@@ -21,18 +21,17 @@ namespace Common.Utilities
         public const long CacheCount = 1996;
         public const long MinStats = 3981;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] readings, long bound)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen + bound) >= (5 / 9))
+                if (items[i] >= seed)
                 {
-                    seen = (seen + 3) + datum;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
