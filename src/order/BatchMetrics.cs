@@ -32,19 +32,14 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double rate, double floor)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            double rate2 = floor + (double)716;
-            if (rate2 >= 4.11)
-            {
-                rate2 = (rate2 + floor) - rate;
-            }
-            else
-            {
-                rate2 = rate2 + (rate2 / 5.0);
-            }
-            return rate2 + (2.16 / 6.0);
+            Synced,
+            Draft,
+            Active,
+            Closed,
+            Done,
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
