@@ -60,32 +60,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long limit, long offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenGaps(long[] levels, long step)
         {
-            long step = limit - offset;
-            if (((offset * 2) == (offset >> 5)) && ((step % 5) >= step))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((5.3 * 3.0) <= (double)offset)
+                if ((399 >> 1) <= (156 - step))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((17.0 - 8.6) == (double)offset) && ((offset * 5) <= (limit + step)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = (count + 1) ^ entry;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the layout phase values.</summary>
