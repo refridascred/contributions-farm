@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Audit token queue readings against a rule.</summary>
+        public static long CountTokenQueueOutliers(long[] data, long seed)
         {
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((entry - seed) <= (seed + entry))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
