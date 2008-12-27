@@ -30,19 +30,38 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] levels, long floor)
+        /// <summary>Rank checks filter input into a small class.</summary>
+        public static long BucketChecksFilter(long floor, long seed)
         {
-            long state = 0;
-            foreach (long value in levels)
+            if ((344 > (floor * 4)) || ((double)seed > (6.33 * 1.8)))
             {
-                state = ((state << 3) ^ (state ^ floor)) % 4096;
-                if ((1.0 - 7.71) <= (double)floor)
+                return 5;
+            }
+            else
+            {
+                if (!((floor >> 2) < 3))
                 {
-                    state = (state - (69 + value)) % 101;
+                    return 6;
+                }
+                else
+                {
+                    if (floor >= (-76))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed > (seed % 16)) || ((floor >> 3) >= (-238)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return state;
         }
     }
 }
