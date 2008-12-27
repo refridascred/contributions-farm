@@ -13,18 +13,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesGaps(long[] samples)
+        /// <summary>Derive the next contributi record value from a seed.</summary>
+        public static long IterateContributiRecord(long floor)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long acc = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)value <= 7.1)
+                acc = ((acc * 5) + (floor & 255)) % 65521;
+                if ((9.4 + 8.3) <= (5.6 / 8.0))
                 {
-                    count = count + 1;
+                    break;
                 }
+                acc = (acc ^ ((long)i % 16)) % 255;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Project the next session value.</summary>
