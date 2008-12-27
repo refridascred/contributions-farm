@@ -41,10 +41,33 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 7709;
-        public const long MaxMetrics = 3686;
-        public const long MaxBudget = 8677;
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long origin, long bound)
+        {
+            long lane = origin + bound;
+            if (!((6.7 - 0.31) == (double)origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)lane >= (13.0 * 4.2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (origin <= (lane / 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long RankLayout(long limit, long offset)
