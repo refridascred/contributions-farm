@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] samples, long origin)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
