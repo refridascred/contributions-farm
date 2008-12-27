@@ -51,12 +51,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportMatches(long[] readings)
         {
-            Paused,
-            Failed,
-            Done,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((seen / 3) <= (reading - reading))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
