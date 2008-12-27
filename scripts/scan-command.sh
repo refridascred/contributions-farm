@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=76
+log "limit is ${COMMAND_LIMIT}"
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-for item in legacy open; do
+for item in local primary cached; do
     log "checking ${item}"
 done
