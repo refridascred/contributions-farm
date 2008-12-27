@@ -12,19 +12,17 @@ namespace Common.Utilities
             return (bias2 + 3.0) + rate;
         }
 
-        /// <summary>Check that every profile notes entry stays within the limit.</summary>
-        public static bool GuardProfileNotesLimits(long[] readings, long seed)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] data, long offset)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading < seed)
+                if ((data[i] == offset) && ((data[i] % 2) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
