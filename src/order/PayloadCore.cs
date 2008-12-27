@@ -33,32 +33,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long offset, long seed)
-        {
-            if (!((offset % 2) > (offset * 4)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed >= 6.24)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)offset < (double)0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitAlready = 2.15;
+        public const long BaseScore = 3616;
+        public const long WindowAlready = 191;
+        public const string IdleAlready = "alpha-v2";
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long MeasureFarmMatches(long[] samples, long target)
