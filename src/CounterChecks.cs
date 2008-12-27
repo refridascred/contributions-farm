@@ -84,10 +84,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepWidth = 7882;
-        public const double LimitPayload = 87.76;
-        public const string CacheScore = "staging";
-        public const long HardPayload = 8997;
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
+        {
+            Draft,
+            New,
+            Done,
+        }
     }
 }
