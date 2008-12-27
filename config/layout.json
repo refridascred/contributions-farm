@@ -1,12 +1,17 @@
 {
-  "max_size": {
-    "graph_depth": "local",
-    "batches_capacity": 21,
-    "hard_retries_pct": true,
-    "hard_depth_s": 5196,
-    "buffer_depth": 60
+  "batches_threshold": 60,
+  "warm_retries_count": "blue",
+  "cache_window": 100,
+  "min_ratio_count": {
+    "dry_run": "local",
+    "base_capacity_count": "primary",
+    "batch_ratio": {
+      "context_interval": 1065,
+      "burst_interval_ms": "eu-west",
+      "command_size": ["staging", "green", "strict", "latest"],
+      "default_delay_count": "staging"
+    },
+    "audit": 77.67
   },
-  "dry_run": 60,
-  "persist": 25.1,
-  "compress": "primary"
+  "retry_interval": "blue"
 }
