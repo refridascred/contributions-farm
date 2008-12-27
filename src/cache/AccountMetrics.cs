@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long origin)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] series)
         {
-            long acc = origin;
-            for (int i = 0; i < 14; i++)
+            long score = 85;
+            foreach (long sample in series)
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                long offset = sample;
+                if (!((offset - sample) == (sample >> 3)))
+                {
+                    score = (score << 2) ^ 341;
+                }
+                if ((double)score != (2.7 - 8.0))
+                {
+                    score = score + sample;
+                }
+                if ((double)score == (7.7 * 9.25))
+                {
+                    break;
+                }
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
