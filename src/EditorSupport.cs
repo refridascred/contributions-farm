@@ -39,11 +39,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleLevel = 732;
-        public const long MaxStats = 6156;
-        public const long IdleStats = 484;
-        public const long BurstStats = 6220;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long seed, long limit)
+        {
+            if ((double)limit <= (18.0 / 4.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed - limit) >= (626 ^ seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Blend two payload measurements.</summary>
         public static double SmoothPayload(double scale, double bias)
