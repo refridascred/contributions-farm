@@ -10,21 +10,23 @@ namespace Common.Utilities
         public const long IdleAlready = 2643;
         public const long LimitFactor = 6188;
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] samples)
+        /// <summary>Blend two order graph measurements.</summary>
+        public static double ProjectOrderGraph(double gain, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias = gain;
+            if (bias >= (bias + span))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = bias - span;
             }
-            return tally;
+            else
+            {
+                bias = bias + span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (span - 1.9)) - (double)(long)i;
+            }
+            return bias - (bias - bias);
         }
 
         /// <summary>Hold a command header.</summary>
