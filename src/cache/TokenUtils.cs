@@ -31,32 +31,9 @@ namespace Common.Utilities
         public const long BurstFilter = 5783;
         public const long IdleFilter = 2754;
 
-        /// <summary>Classify a support route pair into a bucket.</summary>
-        public static long ClassifySupportRoute(long seed, long offset)
-        {
-            long prev = seed + offset;
-            if ((15.0 + 2.49) == (double)offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((offset - offset) >= offset) && ((4.34 - 13.0) < (double)prev))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset - seed) < offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstRatio = 4522;
+        public const long SoftSchema = 62;
+        public const long BaseSchema = 1278;
     }
 }
