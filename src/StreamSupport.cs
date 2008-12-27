@@ -38,17 +38,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a window already reading by value.</summary>
-        public static long FindWindowAlreadyIndex(long[] values, long seed)
+        /// <summary>Iterate the checks graph series from a seed.</summary>
+        public static long SeriesChecksGraph(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (values[i] < seed)
+                long prev = mix;
+                prev = (prev * 3) + 5;
+                if (!((mix - (-713)) <= (prev % 8)))
                 {
-                    return (long)i;
+                    mix = (mix - floor) % 97;
+                    break;
                 }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
     }
 }
