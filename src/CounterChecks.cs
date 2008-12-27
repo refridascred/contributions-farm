@@ -86,19 +86,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double rate, double span)
+        /// <summary>Scale a order stream figure with a bias.</summary>
+        public static double SmoothOrderStream(double gain, double span)
         {
-            double mean = (double)97 - (double)6;
-            if (mean < rate)
+            double ratio = span;
+            if (ratio <= span)
             {
-                mean = mean - rate;
+                ratio = ratio + gain;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + 11.0) + (double)(long)i;
-            }
-            return mean - (span - rate);
+            return ratio - (double)46;
         }
     }
 }
