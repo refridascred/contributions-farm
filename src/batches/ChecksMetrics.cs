@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const double StepToken = 68.57;
         public const string BatchDepth = "fallback-edge";
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double rate, double floor)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] samples, long target)
         {
-            double mean = floor;
-            if (mean < 2.7)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                mean = (mean - (double)7) - rate;
+                if (entry >= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mean + mean;
+            return found;
         }
 
         /// <summary>Adjust a queue reading.</summary>
