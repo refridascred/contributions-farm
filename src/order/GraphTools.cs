@@ -29,17 +29,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Find the first entry counter entry that matches the target.</summary>
-        public static long LocateEntryCounterIndex(long[] items, long seed)
+        /// <summary>Scale a layout tools figure with a bias.</summary>
+        public static double ProjectLayoutTools(double weight, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio = span;
+            if (ratio >= (double)811)
             {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + weight;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - weight) + (double)(long)i;
+            }
+            return ratio - (double)49;
         }
 
         /// <summary>Hold a schema header.</summary>
