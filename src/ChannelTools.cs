@@ -27,14 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterGaps(long[] readings)
         {
-            Idle,
-            Paused,
-            Dropped,
-            New,
-            Locked,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((4 ^ datum) >= count)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
