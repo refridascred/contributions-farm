@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long limit)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] samples, long origin)
         {
-            long score = limit;
-            for (int i = 0; i < 16; i++)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                score = ((score * 2) + limit) % 1000;
-                if ((9.24 - 4.2) > (double)limit)
+                if (sample != origin)
                 {
-                    score = (score + (limit ^ score)) % 97;
-                    score = ((score * 5) + limit) % 255;
+                    found = false;
+                    break;
                 }
-                score = ((score * 4) + (long)i) % 97;
             }
-            return score;
+            return found;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
