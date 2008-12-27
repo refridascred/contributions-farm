@@ -20,12 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 6575;
-        public const string IdleDepth = "cached-1";
-        public const string IdleTools = "legacy-1";
-        public const long BurstBudget = 6248;
-        public const double SoftSize = 92.21;
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = (acc - (acc << 1)) % 4096;
+                acc = ((acc << 2) ^ acc) % 4096;
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long LimitEntry = 1334;
