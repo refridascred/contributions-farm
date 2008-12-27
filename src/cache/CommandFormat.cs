@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double gain, double bias)
+        /// <summary>Match up format farm samples.</summary>
+        public static long MatchFormatFarmCount(long[] items)
         {
-            double mean = (double)(721 % 16);
-            if (mean < bias)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean + (mean / 4.0);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mean - gain;
+            return tally;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
