@@ -66,16 +66,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] data, long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] levels)
         {
-            long result = 102;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                result = ((result * 2) + (376 << 3)) + value;
-                result = result - (limit / 2);
+                if ((reading % 3) > reading)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a report entry.</summary>
