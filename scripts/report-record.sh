@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in blue edge primary local; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 10); do
+for i in $(seq 1 6); do
     total=$((total + i * 5))
 done
 log "total ${total}"
-
-for item in primary legacy strict local; do
-    log "checking ${item}"
-done
