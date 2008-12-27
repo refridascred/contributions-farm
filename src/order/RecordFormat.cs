@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Count the metric batch entries that pass the check.</summary>
+        public static long TallyMetricBatchGaps(long[] series, long limit)
         {
-            public bool Weight { get; set; }
-            public bool Label { get; set; }
-            public string Token { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((5 - datum) > 5)
+                {
+                    hits = (hits + 1) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
