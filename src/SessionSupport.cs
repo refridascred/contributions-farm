@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] readings, long floor)
         {
-            Idle,
-            Done,
-            Retry,
-            Dropped,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit command filter readings against a rule.</summary>
