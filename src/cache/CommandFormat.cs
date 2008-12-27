@@ -25,26 +25,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Digest a series of format buffer entries.</summary>
-        public static long FoldFormatBuffer(long[] readings)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] levels)
         {
-            long sum = 639;
-            foreach (long datum in readings)
+            long carry = 9;
+            foreach (long item in levels)
             {
-                if (((double)sum > (13.0 * 13.0)) && ((datum - datum) <= 8))
+                if ((2 > (carry / 3)) && ((7 + carry) <= (carry % 16)))
                 {
-                    sum = sum + (datum - datum);
+                    carry = (carry ^ (item % 10)) % 255;
                 }
-                if (datum >= (datum >> 5))
+                if ((double)item >= (9.0 - 18.0))
                 {
                     break;
                 }
             }
-            if (sum > 4)
-            {
-                sum = sum ^ (sum + sum);
-            }
-            return sum % 65521;
+            return carry;
         }
 
         /// <summary>Describe the context kind values.</summary>
