@@ -82,18 +82,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] values, long limit)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (686 >= (reading << 1))
-                {
-                    seen = (seen + 1) + limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string StepLevel = "primary-edge";
+        public const long CacheBudget = 1459;
+        public const long MaxChannel = 3910;
+        public const long BaseRatio = 9947;
+        public const string LimitChannel = "stable-1";
     }
 }
