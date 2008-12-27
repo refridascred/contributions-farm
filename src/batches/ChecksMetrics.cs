@@ -35,12 +35,21 @@ namespace Common.Utilities
             return scale - (rate + scale);
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Count command channel pairs that satisfy a relation.</summary>
+        public static long CompareCommandChannelCount(long[] items)
         {
-            public double Total { get; set; }
-            public long Score { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the batches mode values.</summary>
