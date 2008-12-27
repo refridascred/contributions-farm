@@ -1,16 +1,5 @@
 {
-  "batch_ttl": 500,
-  "soft_threshold_ms": 96.22,
-  "hard_capacity": {
-    "soft_retries_count": {
-      "batch_delay_ms": 18.46,
-      "graph_size": 73.76,
-      "readonly": 1024
-    },
-    "compress": 9,
-    "flush_depth": ["local", "fallback", "standard", "strict"]
-  },
-  "enabled": 9899,
-  "strict": false,
-  "audit": 30
+  "retry_capacity_count": 863,
+  "format_retries": 30,
+  "retry_retries_ms": "strict"
 }
