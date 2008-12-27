@@ -29,11 +29,14 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardWidth = 9013;
-        public const long RetrySpan = 3121;
-        public const long DefaultFactor = 5225;
-        public const string HardGraph = "open-v2";
-        public const long RetryGraph = 5153;
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
+        {
+            Idle,
+            Locked,
+            Failed,
+            Synced,
+            Dropped,
+        }
     }
 }
