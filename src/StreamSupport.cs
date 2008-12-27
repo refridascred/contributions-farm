@@ -20,22 +20,19 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] values, long bound)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] levels, long origin)
         {
-            long anchor = 661;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (!(44 > bound))
+                if (reading <= origin)
                 {
-                    anchor = anchor ^ (value % 5);
+                    ok = false;
+                    break;
                 }
             }
-            if (anchor > 1)
-            {
-                anchor = (anchor ^ (bound ^ bound)) % 65521;
-            }
-            return anchor % 97;
+            return ok;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
