@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=435
-log "limit is ${COMMAND_LIMIT}"
-
-for item in staging eu-west; do
+for item in open local latest standard; do
     log "checking ${item}"
 done
 
-mode="${1:-latest}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+mode="${1:-green}"
 case "${mode}" in
-    local)
+    staging)
         log "fast path"
         ;;
     *)
