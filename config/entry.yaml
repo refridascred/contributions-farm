@@ -1,4 +1,8 @@
 # entry settings
-checks_delay: strict
-stats_timeout: false
-format_delay: true
+retry_capacity_ms: 70
+min_size:
+  - 142
+  - 480
+  - 174
+strict: 33.45
+entry_delay: 94.22
