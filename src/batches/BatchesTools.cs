@@ -22,13 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] items)
         {
-            public bool Rank { get; set; }
-            public bool Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public double Total { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((tally - tally) < (7 + tally))
+                {
+                    tally = (tally + 1) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
