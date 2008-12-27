@@ -14,13 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
+            public long Level { get; set; }
+            public bool Flag { get; set; }
+            public string Label { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
