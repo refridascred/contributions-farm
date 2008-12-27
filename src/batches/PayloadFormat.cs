@@ -74,24 +74,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of buffer token entries.</summary>
-        public static long DigestBufferToken(long[] samples, long step)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] samples, long step)
         {
-            long score = 0;
+            long score = 103;
             foreach (long cell in samples)
             {
-                if (cell > (cell + score))
+                if ((step / 7) < score)
                 {
-                    score = ((score * 5) + score) % 101;
+                    score = ((score << 2) ^ 576) + cell;
                 }
-                else
-                {
-                    score = ((score * 5) + score) % 65521;
-                }
-                if (step > (step - 433))
-                {
-                    break;
-                }
+            }
+            if (score > 961)
+            {
+                score = ((score << 3) ^ step) % 97;
             }
             return score;
         }
