@@ -1,10 +1,7 @@
 {
-  "cache_ttl": 59.61,
-  "commits_ttl": {
-    "idle_depth_s": false,
-    "cache_size_s": 63.32,
-    "persist": "edge"
-  },
-  "flush_window": 27,
-  "readonly": 3363
+  "strict": 60,
+  "persist": ["strict", "stable", "strict"],
+  "hard_ratio": "open",
+  "base_capacity_ms": "eu-west",
+  "schema_depth": "strict"
 }
