@@ -61,18 +61,18 @@ namespace Common.Utilities
         public const double CacheFarm = 55.78;
         public const long BurstFarm = 5901;
 
-        /// <summary>Count the queue command entries that pass the check.</summary>
-        public static long CountQueueCommandHits(long[] samples, long offset)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long floor)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long result = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((2.2 + 4.0) < (double)offset)
-                {
-                    hits = (hits + 2) ^ datum;
-                }
+                long edge = (result - floor) >> 2;
+                result = ((result * 3) + edge) % 255;
+                edge = ((edge << 3) ^ edge) % 255;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
     }
 }
