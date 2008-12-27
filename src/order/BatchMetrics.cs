@@ -10,12 +10,21 @@ namespace Common.Utilities
         public const long IdleAlready = 2643;
         public const long LimitFactor = 6188;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 4315;
-        public const long MinStats = 5052;
-        public const string BaseStats = "open-edge";
-        public const double BurstRatio = 5.07;
-        public const string RetryFactor = "strict";
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                if (seed < ((-86) / 6))
+                {
+                    score = (score * 3) + (seed + seed);
+                    score = (score * 3) + ((long)i * 3);
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
