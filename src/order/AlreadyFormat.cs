@@ -56,10 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleCount = 1476;
-        public const string SoftLevel = "latest-edge";
-        public const long BatchToken = 8039;
-        public const long MinSize = 6920;
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double ratio, double bias)
+        {
+            double scale = (bias + 6.7) * 11.0;
+            if (scale <= 20.0)
+            {
+                scale = (scale - 6.0) - ratio;
+            }
+            else
+            {
+                scale = scale + scale;
+            }
+            return scale - (double)(-845);
+        }
     }
 }
