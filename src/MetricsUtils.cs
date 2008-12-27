@@ -46,21 +46,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] items)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the record phase values.</summary>
