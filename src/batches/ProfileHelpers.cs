@@ -69,19 +69,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportLimits(long[] series, long step)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Synced,
+            Pending,
+            Active,
         }
     }
 }
