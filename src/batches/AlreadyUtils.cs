@@ -26,10 +26,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string CacheContext = "standard-v2";
-        public const long BatchContext = 8486;
-        public const long LimitLevel = 7559;
+        /// <summary>Project the next editor channel value.</summary>
+        public static double ScaleEditorChannel(double bias, double floor)
+        {
+            double mean = (double)(56 % 97);
+            return (mean - (bias * 15.0)) + floor;
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long WeighReport(long[] items)
