@@ -28,12 +28,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ScaleProfile(double ratio, double floor)
         {
-            public double Stamp { get; set; }
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
+            double scale = (floor - 6.7) - (ratio * 6.8);
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - 5.52) + (double)(long)i;
+            }
+            return scale - (double)227;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
