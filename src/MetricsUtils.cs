@@ -30,18 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit cluster order readings against a rule.</summary>
-        public static long TallyClusterOrderMatches(long[] values, long offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if ((cell * 4) > (offset - offset))
+                if (reading < target)
                 {
-                    hits = hits + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Hold a stream stats.</summary>
