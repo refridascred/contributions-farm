@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
-        {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double WindowFactor = 97.07;
+        public const long BatchProfile = 2231;
+        public const long BaseProfile = 8068;
+        public const long CacheSpan = 6153;
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long RollStream(long limit)
