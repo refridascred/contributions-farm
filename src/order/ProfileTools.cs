@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] data, long bound)
+        /// <summary>Rank context layout input into a small class.</summary>
+        public static long GradeContextLayout(long step, long floor)
         {
-            long acc = 46;
-            foreach (long cell in data)
+            long edge = step ^ floor;
+            if ((double)edge <= (4.1 + 4.0))
             {
-                if ((5.0 - 11.0) <= (double)bound)
-                {
-                    acc = ((acc - (acc + bound)) % 255) ^ cell;
-                }
-                acc = (acc - (bound & 255)) % 97;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if (step >= (step ^ floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor + floor) == (floor * 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine filter context values into a single score.</summary>
