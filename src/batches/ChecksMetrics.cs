@@ -53,24 +53,18 @@ namespace Common.Utilities
         public const long IdleCount = 604;
         public const long MinSpan = 6864;
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long step, long floor)
+        /// <summary>Measure how many record format samples are out of range.</summary>
+        public static long CountRecordFormatMatches(long[] readings)
         {
-            if (((double)floor != (6.0 + 5.5)) || ((2.3 + 7.8) > (double)step))
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((step * 2) <= (step ^ 54)))
+                if ((tally + tally) >= tally)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    tally = (tally + 2) + datum;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
