@@ -14,18 +14,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] series)
+        /// <summary>Audit queue order readings against a rule.</summary>
+        public static long AuditQueueOrderMatches(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (!((entry ^ seen) != (96 & 63)) || ((long)series.Length != (seen << 2)))
+                if (!((double)matches <= (7.3 / 2.0)) && (5.0 > (double)entry))
                 {
-                    seen = seen + 3;
+                    matches = (matches + 3) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the metrics class values.</summary>
