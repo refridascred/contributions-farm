@@ -39,22 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] samples, long bound)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadRange(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if (((722 >> 1) < (matches >> 4)) && (((double)matches <= (2.04 - 2.1)) && ((1 >> 5) < (matches + bound))))
+                if (value <= step)
                 {
-                    matches = (matches + 2) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Match up support samples.</summary>
