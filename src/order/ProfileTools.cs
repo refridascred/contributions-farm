@@ -5,20 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long step)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long seed, long limit)
         {
-            long state = step;
-            for (int i = 0; i < 8; i++)
+            long lane = seed ^ limit;
+            if (!((lane / 7) >= (seed << 1)))
             {
-                if ((step > (37 * 2)) && ((5.5 / 6.0) != (double)step))
-                {
-                    state = (state - (long)i) % 97;
-                    break;
-                }
-                state = ((state * 4) + (long)i) % 4093;
+                return 3;
             }
-            return state;
+            else
+            {
+                if (!(seed > (lane ^ limit)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((842 >> 2) > seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((96 * 4) == (lane & 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the window class values.</summary>
