@@ -12,12 +12,16 @@ namespace Common.Utilities
         public const string BaseRecord = "alpha-edge";
         public const string LimitLevel = "local-edge";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstRatio = 7759;
-        public const long BurstBudget = 4666;
-        public const long WindowLevel = 787;
-        public const long CacheContributi = 3296;
-        public const long IdleFactor = 9576;
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double bias, double span)
+        {
+            double rate = (double)((-646) * 5);
+            for (int i = 0; i < 2; i++)
+            {
+                rate = ((rate - (bias * 3.0)) + (double)(long)i) + span;
+            }
+            return rate + (double)792;
+        }
 
         /// <summary>Adjust a command reading.</summary>
         public static double BlendCommand(double weight, double span)
