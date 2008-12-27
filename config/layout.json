@@ -1,13 +1,8 @@
 {
-  "strict": "cached",
-  "base_threshold_pct": ["open", "primary", "eu-west", "legacy"],
-  "base_ratio_pct": 30,
-  "counter_depth": {
-    "batch_size": "eu-west",
-    "warm_delay": "open",
-    "base_window_count": 6250,
-    "context_size": 1024,
-    "cache_threshold_s": true,
-    "layout_capacity": 39.68
-  }
+  "warm_delay_pct": 5780,
+  "default_capacity_pct": 5029,
+  "metric_limit": 1024,
+  "soft_ratio_pct": "latest",
+  "counter_size": true,
+  "strict": 23
 }
