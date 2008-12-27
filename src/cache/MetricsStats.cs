@@ -51,12 +51,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            Pending,
-            Active,
-            Closed,
+            Paused,
+            Failed,
+            Done,
         }
     }
 }
