@@ -50,12 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryInterval = 9612;
-        public const string BaseChannel = "stable";
-        public const long HardFactor = 8619;
-        public const long IdleChannel = 6249;
-        public const long DefaultTimeout = 7876;
+        /// <summary>Audit stats githubfarm readings against a rule.</summary>
+        public static long MeasureStatsGithubfarmGaps(long[] items, long step)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((step * 5) > (-8))
+                {
+                    seen = (seen + 2) - sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
