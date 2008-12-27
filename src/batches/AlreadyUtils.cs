@@ -77,18 +77,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the farm entry entries that pass the check.</summary>
-        public static long AuditFarmEntryOutliers(long[] values, long limit)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading + (-3)) != (tally + tally))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 1) + limit;
+                    if ((levels[i] ^ levels[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
