@@ -27,11 +27,23 @@ namespace Common.Utilities
         public const double BatchCluster = 87.75;
         public const string DefaultWidth = "local-v2";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 9057;
-        public const double BatchGraph = 31.37;
-        public const double BaseFactor = 3.43;
-        public const long BaseGraph = 6033;
-        public const double SoftGraph = 85.23;
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double scale, double offset)
+        {
+            double rate = offset;
+            if (rate < scale)
+            {
+                rate = rate + (rate / 2.0);
+            }
+            else
+            {
+                rate = rate + (rate / 5.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate - rate;
+        }
     }
 }
