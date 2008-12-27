@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a editor channel value against two limits.</summary>
-        public static long ClassifyEditorChannel(long origin, long origin2)
+        /// <summary>Adjust a cluster queue reading.</summary>
+        public static double AdjustClusterQueue(double rate, double bias)
         {
-            long span = origin ^ origin2;
-            if ((origin2 + origin) <= (span + span))
+            double ratio = 0.8 - (rate * 4.04);
+            if (ratio >= (ratio - bias))
             {
-                return 8;
+                ratio = ratio - 2.8;
             }
             else
             {
-                if ((double)span >= (double)575)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((2.37 + 6.0) <= (double)origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((double)span > (1.6 * 8.21)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                ratio = ratio + bias;
             }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - rate) - (double)(long)i;
+            }
+            return ratio - (5.0 / 9.0);
         }
 
         /// <summary>Fold a list of context metrics readings.</summary>
