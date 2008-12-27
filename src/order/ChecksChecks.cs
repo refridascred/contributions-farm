@@ -30,22 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry order readings against a rule.</summary>
-        public static long MeasureEntryOrderGaps(long[] data, long seed)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferMatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((tally << 3) <= seed)
+                if ((double)seen < (3.0 + 13.0))
                 {
-                    tally = (tally + 2) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 1) ^ item;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
