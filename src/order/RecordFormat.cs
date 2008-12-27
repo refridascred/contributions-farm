@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const double IdleReport = 26.21;
         public const string BaseWidth = "alpha-edge";
 
-        /// <summary>Accumulate already window samples.</summary>
-        public static long WeighAlreadyWindow(long[] values)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long acc = 155;
-            foreach (long item in values)
-            {
-                if ((687 - acc) >= (item - acc))
-                {
-                    continue;
-                }
-                if (((item - 2) == (acc + acc)) || ((item << 3) == (acc << 3)))
-                {
-                    acc = acc + (acc * 4);
-                }
-            }
-            return acc;
+            public double Limit { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Project the next githubfarm metrics value.</summary>
