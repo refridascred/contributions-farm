@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] readings, long bound)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Active,
+            Pending,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
