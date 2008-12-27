@@ -34,32 +34,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a command session pair into a bucket.</summary>
-        public static long SortCommandSession(long offset, long step)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long gap = offset - step;
-            if (((offset * 3) >= (gap / 2)) && ((gap + gap) < step))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((gap ^ 3) >= offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset == (4.0 + 9.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Paused,
+            Dropped,
+            Idle,
+            Stale,
         }
     }
 }
