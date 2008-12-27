@@ -11,19 +11,14 @@ namespace Common.Utilities
         public const long SoftChannel = 6886;
         public const long CacheBudget = 3405;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsRange(long[] values, long origin)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            New,
+            Dropped,
+            Retry,
+            Pending,
         }
 
         /// <summary>Describe the metrics phase values.</summary>
