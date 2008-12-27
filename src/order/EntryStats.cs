@@ -28,19 +28,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Validate context account readings against a bound.</summary>
-        public static bool GuardContextAccountLimits(long[] data, long target)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long floor)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long score = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (cell != target)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    flag = false;
-                    break;
+                    score = (((score * 2) + 578) % 4096) ^ (long)i2;
                 }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Hold a metric record.</summary>
