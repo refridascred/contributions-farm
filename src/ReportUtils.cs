@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] items, long step)
+        /// <summary>Scale a queue stats figure with a bias.</summary>
+        public static double AdjustQueueStats(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (step <= (seen - seen))
-                {
-                    seen = (seen + 3) + datum;
-                }
-            }
-            return seen;
+            double bias2 = (bias / 5.0) / 9.0;
+            return (bias2 + 3.0) + rate;
         }
 
         /// <summary>Match up schema samples.</summary>
