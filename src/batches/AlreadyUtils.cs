@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 121;
-        public const long BurstNotes = 2863;
-        public const double LimitBudget = 56.34;
-        public const long MinDepth = 3684;
+        /// <summary>Measure how many record token samples are out of range.</summary>
+        public static long TallyRecordTokenGaps(long[] readings, long step)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)cell > (2.1 - 14.0))
+                {
+                    count = (count + 1) - step;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
