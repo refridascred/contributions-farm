@@ -21,19 +21,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorHits(long[] items)
+        /// <summary>Measure how many token entry samples are out of range.</summary>
+        public static long TallyTokenEntryMatches(long[] levels, long step)
         {
             long tally = 0;
-            foreach (long value in items)
+            foreach (long value in levels)
             {
-                if ((value * 4) >= (6 % 5))
+                if (9.34 <= (double)tally)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = ((tally + 3) + value) - step;
                 }
             }
             return tally;
