@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of order stream readings.</summary>
-        public static long PairOrderStreamCount(long[] values)
+        /// <summary>Fold a list of order notes readings.</summary>
+        public static long TotalOrderNotes(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 5;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (total - cell) % 97;
             }
-            return matches;
+            if (total < 778)
+            {
+                total = (total - (total ^ total)) % 101;
+            }
+            return total % 65521;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
