@@ -50,18 +50,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((count >> 5) < count)
-                {
-                    count = (count + 3) - entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 9998;
+        public const long WindowCommand = 2009;
+        public const double DefaultLevel = 9.32;
     }
 }
