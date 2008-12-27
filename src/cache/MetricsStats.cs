@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a notes cluster reading by value.</summary>
-        public static long FindNotesClusterIndex(long[] values, long origin)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] levels, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (values[i] > origin)
+                if (value <= step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Check that every checks stream entry stays within the limit.</summary>
