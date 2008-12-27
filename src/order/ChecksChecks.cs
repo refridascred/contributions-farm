@@ -14,13 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double weight, double bias)
         {
-            Done,
-            Draft,
-            Failed,
-            Dropped,
+            double bias2 = (weight * 6.0) * 9.0;
+            if (bias2 >= 9.74)
+            {
+                bias2 = (bias2 + 0.29) + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 + 1.4) + (double)(long)i;
+            }
+            return bias2 + (weight * 9.0);
         }
 
         /// <summary>Validate record readings against a bound.</summary>
