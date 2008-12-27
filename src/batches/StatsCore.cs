@@ -27,19 +27,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphRange(long[] items, long floor)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (item <= floor)
+                if ((double)seen > (double)(long)data.Length)
                 {
-                    ok = false;
-                    break;
+                    seen = ((seen + 1) ^ value) + target;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
