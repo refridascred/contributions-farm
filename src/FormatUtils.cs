@@ -32,15 +32,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double weight, double offset)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long floor, long target)
         {
-            double gain = (weight - offset) * 6.23;
-            for (int i = 0; i < 7; i++)
+            if (floor < (floor * 3))
             {
-                gain = (gain - (16.0 / 2.0)) + (double)(long)i;
+                return 8;
             }
-            return gain + (gain / 4.0);
+            else
+            {
+                if ((target + (-726)) >= (target & 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((721 - target) < target) || (floor >= 22))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor % 8) < (36 & 15))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of channel readings.</summary>
