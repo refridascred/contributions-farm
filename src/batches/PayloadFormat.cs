@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long floor)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long sum = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((double)sum < (20.0 - 3.0))
-                {
-                    sum = ((sum << 3) ^ ((long)i % 24)) % 1000;
-                }
-                if ((sum & 7) > (long)i)
-                {
-                    sum = (sum + (sum >> 4)) % 97;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            public bool Count { get; set; }
+            public bool Score { get; set; }
+            public string Total { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
