@@ -1,13 +1,11 @@
 # Command notes
 
-Defaults for filter live in the config folder and can be overridden per environment.
-A filter that stays idle for too long is moved to the editor list.
-
-Keep cache and support names short and lowercase.
-Each layout is validated before it reaches the token queue.
+The record module keeps session values in sync with the entry cache.
+The notes helpers are pure functions, so they are safe to call from any thread.
+The buffer helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate order input early
-- Review channel limits each release
-- Keep graph values small
+- Log every entry change
+- Validate entry input early
+- Keep stats values small
