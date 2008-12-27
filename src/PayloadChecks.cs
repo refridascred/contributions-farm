@@ -18,39 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long seed, long limit)
-        {
-            if (!((1.97 / 2.0) < (double)seed))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((limit - seed) > (seed / 8)) && ((seed - seed) <= (limit + seed)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((6.09 / 4.0) < (double)limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (seed > (limit - limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double HardLayout = 67.89;
+        public const double BatchLayout = 64.29;
+        public const double SoftSpan = 32.34;
+        public const double IdleDepth = 95.87;
 
         /// <summary>Measure how many editor schema samples are out of range.</summary>
         public static long AuditEditorSchemaMatches(long[] items, long floor)
