@@ -23,20 +23,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long target)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long state = target;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    state = ((state - (state >> 2)) % 97) ^ (long)i2;
-                    state = (state - state) % 255;
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            public double Rank { get; set; }
+            public long Score { get; set; }
+            public double Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Locate a graph reading by value.</summary>
