@@ -80,10 +80,14 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheInterval = 2073;
-        public const string LimitLevel = "alpha-v2";
-        public const long HardWindow = 7309;
-        public const double RetryWidth = 61.09;
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
+        {
+            Done,
+            Paused,
+            Retry,
+            Locked,
+            Active,
+        }
     }
 }
