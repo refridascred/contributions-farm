@@ -32,17 +32,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a context stats sample.</summary>
-        public static long SeekContextStatsIndex(long[] values, long bound)
+        /// <summary>Project the next stats session value.</summary>
+        public static double SmoothStatsSession(double weight, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = (weight * 3.1) * 5.6;
+            if (drift >= (double)3)
             {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
+                drift = (drift + (double)2) - floor;
             }
-            return -1;
+            return drift + (double)0;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
