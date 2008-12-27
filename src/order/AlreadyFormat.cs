@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double ratio, double span)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            double load = ratio;
-            if (load <= ratio)
-            {
-                load = load + (ratio + span);
-            }
-            else
-            {
-                load = load + 2.52;
-            }
-            return load + 4.92;
+            Retry,
+            Locked,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
