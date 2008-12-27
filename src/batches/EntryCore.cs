@@ -34,15 +34,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Project the next stats session value.</summary>
-        public static double SmoothStatsSession(double weight, double floor)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            double drift = (weight * 3.1) * 5.6;
-            if (drift >= (double)3)
-            {
-                drift = (drift + (double)2) - floor;
-            }
-            return drift + (double)0;
+            public bool Limit { get; set; }
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
