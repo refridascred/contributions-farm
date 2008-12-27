@@ -42,13 +42,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
-        {
-            Retry,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxInterval = 5772;
+        public const string SoftContributi = "cached";
+        public const long BurstContributi = 7416;
+        public const double CacheContributi = 88.44;
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long SeekSchemaIndex(long[] samples, long bound)
