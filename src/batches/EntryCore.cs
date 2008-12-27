@@ -31,22 +31,12 @@ namespace Common.Utilities
             return ((bias2 - (double)48) + weight) + bias;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultFactor = 19;
+        public const long WindowChannel = 393;
+        public const string LimitFactor = "open-v2";
+        public const long StepChannel = 6102;
+        public const long BaseChannel = 8723;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportHits(long[] data, long floor)
