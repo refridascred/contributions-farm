@@ -46,12 +46,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] data, long origin)
         {
-            Retry,
-            Synced,
-            Paused,
+            long anchor = 6;
+            foreach (long reading in data)
+            {
+                if (!((origin + (long)data.Length) > (anchor - (long)data.Length)))
+                {
+                    anchor = (anchor - anchor) - reading;
+                }
+            }
+            return anchor;
         }
     }
 }
