@@ -16,11 +16,18 @@ namespace Common.Utilities
             return drift - (bias / 2.0);
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double gain, double bias)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] data)
         {
-            double scale = gain;
-            return (scale + gain) + bias;
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((616 + seen) < seen)
+                {
+                    seen = (seen + 2) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next order notes value from a seed.</summary>
