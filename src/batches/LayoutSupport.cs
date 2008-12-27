@@ -57,11 +57,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 8872;
-        public const long LimitLevel = 3111;
-        public const long BatchInterval = 9903;
-        public const long BaseSpan = 6594;
-        public const long BatchRatio = 3363;
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long origin, long seed)
+        {
+            if (117 >= seed)
+            {
+                return 0;
+            }
+            else
+            {
+                if (8.6 >= (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
