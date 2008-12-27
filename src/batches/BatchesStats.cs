@@ -42,22 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] samples, long origin)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (((double)cell > (14.0 * 11.0)) || ((448 & 255) < cell))
-                {
-                    matches = (matches + 1) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Score { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
