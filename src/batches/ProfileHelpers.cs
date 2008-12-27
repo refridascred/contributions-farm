@@ -23,31 +23,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long target, long origin)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            if ((target % 8) > target)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)target >= (3.5 + 8.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin << 1) != (origin * 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Blend two cache measurements.</summary>
