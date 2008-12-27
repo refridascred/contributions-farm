@@ -71,19 +71,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long floor)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] readings, long step)
         {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
+            long result = 446;
+            foreach (long value in readings)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                result = ((result << 3) ^ (value % 60)) % 97;
+                if ((68 & 3) < (result + (long)readings.Length))
                 {
-                    total = ((total * 2) + total) - (long)i2;
+                    result = (result + (value ^ 872)) % 97;
                 }
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            if (result > 6)
+            {
+                result = (result + step) % 1000;
+            }
+            return result;
         }
     }
 }
