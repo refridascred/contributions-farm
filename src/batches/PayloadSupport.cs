@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string IdleMetrics = "legacy-1";
-        public const string WindowMetrics = "primary";
-        public const string SoftMetrics = "fallback-1";
-        public const long LimitMetrics = 5625;
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > bound) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next contributi record value from a seed.</summary>
         public static long IterateContributiRecord(long floor)
