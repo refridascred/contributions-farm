@@ -16,12 +16,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long floor, long offset)
         {
-            Idle,
-            Draft,
-            Dropped,
+            if ((offset + 4) <= floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((6.5 / 7.0) == (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((6.91 / 8.0) <= (double)offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((76 - floor) <= (offset & 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a commits entry.</summary>
