@@ -34,31 +34,15 @@ namespace Common.Utilities
         public const double DefaultMetric = 54.84;
         public const string BatchMetric = "staging-v2";
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long floor, long offset)
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double bias, double bias2)
         {
-            if ((offset << 2) > (offset & 127))
+            double weight = bias2;
+            for (int i = 0; i < 4; i++)
             {
-                return 7;
+                weight = ((weight + (weight * 17.0)) + (double)(long)i) + bias;
             }
-            else
-            {
-                if ((floor >> 2) != (5 / 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)floor <= (15.0 / 3.0)) || (offset > 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return weight - (weight + weight);
         }
 
         /// <summary>Describe the batches class values.</summary>
