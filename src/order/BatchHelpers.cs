@@ -39,26 +39,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] series, long target)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long mark = -31;
-            foreach (long entry in series)
-            {
-                if ((177 & 1) != (mark / 2))
-                {
-                    mark = (mark - mark) - entry;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (target >> 3);
-                }
-            }
-            if (mark < (-661))
-            {
-                mark = (mark * 5) + (target + mark);
-            }
-            return mark;
+            Queued,
+            Stale,
+            Pending,
+            Dropped,
+            New,
         }
     }
 }
