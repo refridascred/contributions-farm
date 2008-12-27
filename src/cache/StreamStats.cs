@@ -38,25 +38,16 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Grade a account channel value against two limits.</summary>
-        public static long ClassifyAccountChannel(long origin, long origin2)
+        /// <summary>Iterate the format cluster series from a seed.</summary>
+        public static long SeriesFormatCluster(long origin)
         {
-            long offset = origin + origin2;
-            if ((18 + origin) < (offset - origin))
+            long carry = origin;
+            for (int i = 0; i < 13; i++)
             {
-                return 4;
+                carry = ((carry * 4) + ((long)i + carry)) % 65521;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((606 << 3) >= (origin / 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Describe the filter class values.</summary>
