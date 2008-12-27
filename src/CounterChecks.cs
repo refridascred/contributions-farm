@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double ratio, double bias)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            double drift = 20.0;
-            if (drift > (drift + drift))
-            {
-                drift = (drift + drift) + ratio;
-            }
-            return drift - (bias / 2.0);
+            Done,
+            Queued,
+            Closed,
+            Idle,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
