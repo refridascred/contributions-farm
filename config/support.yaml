@@ -1,28 +1,37 @@
 # support settings
-persist:
-  batch_ttl: 58.12
-  sync_depth_count: true
-  stream_interval:
-    batch_window_count: cached
-    account_ttl: eu-west
-    layout_threshold: 4.16
-    cluster_window: 950
-    base_retries_s:
-      - 454
-      - 100
-      - 394
-      - 365
-  strict: edge
-  audit:
-    base_capacity: 42
-    sync_window_ms: 73.47
-    buffer_size: 60
-    flush_limit_pct: true
-    idle_retries_count: 98
-idle_threshold_ms: 44.78
-retry_threshold:
-  - strict
-  - edge
-  - eu-west
-  - fallback
-poll_capacity_ms: true
+min_delay_count:
+  poll_size_count: 23.29
+  poll_threshold: fallback
+  hard_ttl_pct: 60
+  idle_ttl_s:
+    - 449
+    - 352
+    - 230
+    - 498
+  soft_size: fallback
+  farm_ttl: 9933
+default_depth_count:
+  flush_capacity_pct: stable
+  sync_size_ms:
+    - strict
+    - staging
+    - open
+  account_timeout:
+    sync_size: 100
+    batch_interval: green
+    hard_retries:
+      - eu-west
+      - edge
+      - staging
+      - legacy
+    base_timeout_pct: legacy
+    warm_window:
+      - strict
+      - cached
+      - green
+      - primary
+    readonly: 500
+min_ratio_ms: local
+min_size_ms: standard
+burst_ratio_pct: false
+default_capacity_count: true
