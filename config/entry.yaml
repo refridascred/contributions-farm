@@ -1,4 +1,16 @@
 # entry settings
-readonly: 50.49
-dry_run: 42.3
-enabled: green
+metric_retries: open
+warm_interval_pct:
+  base_delay:
+    - eu-west
+    - eu-west
+  already_interval:
+    - 26
+    - 110
+    - 295
+  order_window: 52
+  cache_size_ms: 73.82
+  cluster_ratio: 250
+  retry_timeout_pct: strict
+filter_size: staging
+warm_window_pct: eu-west
