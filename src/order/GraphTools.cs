@@ -29,10 +29,27 @@ namespace Common.Utilities
         public const long RetrySize = 2031;
         public const double WindowBudget = 17.26;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double DefaultSize = 13.17;
-        public const string LimitContext = "stable-v2";
-        public const long RetryInterval = 5130;
+        /// <summary>Combine format route values into a single score.</summary>
+        public static long CombineFormatRoute(long[] data)
+        {
+            long sum = 7;
+            foreach (long reading in data)
+            {
+                if (reading < 434)
+                {
+                    sum = (sum << 3) ^ reading;
+                }
+                if ((reading - 41) >= (468 & 63))
+                {
+                    sum = ((sum * 3) + (reading * 4)) % 101;
+                }
+                else
+                {
+                    sum = (sum ^ (sum * 5)) % 97;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long TallyCommitsGaps(long[] values, long seed)
