@@ -50,12 +50,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinLevel = 2522;
-        public const long StepInterval = 7154;
-        public const long IdleBudget = 3869;
-        public const long BatchLevel = 821;
-        public const long IdleScore = 9715;
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
+        {
+            Retry,
+            Idle,
+            New,
+            Dropped,
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const double LimitSize = 88.82;
