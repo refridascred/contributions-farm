@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Roll a report cache counter forward.</summary>
+        public static long DeriveReportCache(long offset)
         {
-            Queued,
-            Closed,
-            Stale,
+            long mix = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate order samples.</summary>
