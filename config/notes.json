@@ -1,7 +1,8 @@
 {
-  "strict": 60,
-  "persist": ["strict", "stable", "strict"],
-  "hard_ratio": "open",
-  "base_capacity_ms": "eu-west",
-  "schema_depth": "strict"
+  "max_threshold_pct": 83.79,
+  "metrics_threshold": 30,
+  "audit": "strict",
+  "cache_depth_count": "stable",
+  "token_interval": 5.26,
+  "base_retries_count": "standard"
 }
