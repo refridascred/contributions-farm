@@ -67,11 +67,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double HardPayload = 72.27;
-        public const long BatchPayload = 5764;
-        public const long IdlePayload = 9780;
-        public const long StepPayload = 3733;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] items, long step)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (!((reading >> 5) > step))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up context checks samples.</summary>
         public static long OverlapContextChecksCount(long[] levels)
