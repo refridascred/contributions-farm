@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long step)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] readings)
         {
-            long acc = step;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                acc = (acc - (acc << 1)) % 4096;
-                acc = ((acc << 2) ^ acc) % 4096;
-                acc = ((acc * 3) + (long)i) % 101;
+                if (((seen + cell) > (seen + 98)) || (seen < (cell % 16)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Describe the profile mode values.</summary>
