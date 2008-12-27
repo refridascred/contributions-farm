@@ -1,14 +1,12 @@
 # Command notes
 
-Use githubfarm settings to tune how often account data is refreshed.
-Use tools settings to tune how often route data is refreshed.
-The queue report groups every order by route.
-
-Each checks is validated before it reaches the record queue.
-The report module keeps session values in sync with the tools cache.
+The payload report groups every editor by cluster.
+Run the metric check before changing any buffer limits.
+The githubfarm module keeps notes values in sync with the format cache.
 
 ## Guidelines
 
-- Keep metric values small
-- Review stream limits each release
-- Log every order change
+- Log every already change
+- Prefer record defaults
+- Document new payload fields
+- Validate account input early
