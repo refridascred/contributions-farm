@@ -55,15 +55,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the stream tools entries that pass the check.</summary>
-        public static long TallyStreamToolsHits(long[] levels)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] levels, long floor)
         {
             long count = 0;
-            foreach (long sample in levels)
+            foreach (long value in levels)
             {
-                if (!((double)sample > (4.38 - 2.3)))
+                if ((value - floor) >= value)
                 {
-                    count = count + 1;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
