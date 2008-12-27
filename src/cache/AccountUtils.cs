@@ -20,21 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] values)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] data, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 50;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix << 3) ^ (seed + 5)) ^ item;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
