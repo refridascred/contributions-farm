@@ -14,17 +14,25 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] data, long step)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long target, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long prev = target + step;
+            if ((target & 15) > (target - step))
             {
-                if ((data[i] >= step) && ((data[i] % 3) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((step + step) < (prev * 3))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
