@@ -1,5 +1,4 @@
 # entry settings
-strict: primary
-dry_run: 33
-compress: eu-west
-schema_threshold: false
+warm_window_s: false
+contributi_size: 37.0
+dry_run: 17
