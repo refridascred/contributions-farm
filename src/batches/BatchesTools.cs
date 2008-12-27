@@ -22,18 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] items)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] values, long seed)
         {
-            long score = 12;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((reading + 842) != (score / 7))
+                if ((sample ^ seed) >= (524 + 924))
                 {
-                    score = score ^ (71 % 2);
+                    count = count + 1;
                 }
             }
-            return score % 4096;
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
