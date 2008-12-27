@@ -32,28 +32,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate profile stream samples.</summary>
-        public static long WeighProfileStream(long[] data, long seed)
-        {
-            long mark = 42;
-            foreach (long value in data)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    mark = (((mark * 3) + (seed % 16)) % 255) ^ (long)i;
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mark = ((mark - mark) % 255) - (long)i2;
-                    mark = mark + value;
-                }
-                mark = (mark ^ 9) % 101;
-            }
-            if (mark < 486)
-            {
-                mark = (mark - (mark & 15)) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleTimeout = 69.94;
+        public const long MinSpan = 1431;
+        public const long BurstDepth = 7389;
     }
 }
