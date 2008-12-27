@@ -45,12 +45,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstDepth = 943;
-        public const double CacheEntry = 39.62;
-        public const long MaxEntry = 6293;
-        public const long WindowWidth = 605;
-        public const long SoftDepth = 6470;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowScore = 3067;
+        public const long StepScore = 7866;
+        public const long IdleCount = 604;
+        public const long MinSpan = 6864;
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long MatchRecordCount(long[] data)
