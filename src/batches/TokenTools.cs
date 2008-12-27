@@ -18,11 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryWidth = 7279;
-        public const string CacheSpan = "legacy-edge";
-        public const long CacheSize = 6141;
-        public const string DefaultBuffer = "strict-v2";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double RetryStats = 23.81;
+        public const long IdleStats = 3284;
+        public const long IdleScore = 2601;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long SoftRatio = 5105;
