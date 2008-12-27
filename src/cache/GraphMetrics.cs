@@ -59,19 +59,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double ratio, double floor)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            double drift = ratio + (1.74 + floor);
-            if (drift > (double)1)
-            {
-                drift = drift - floor;
-            }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift + drift;
+            Locked,
+            Synced,
+            Draft,
+            Retry,
+            Idle,
         }
 
         /// <summary>Hold a report options.</summary>
