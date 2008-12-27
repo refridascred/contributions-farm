@@ -39,19 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] series, long step)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] data, long floor)
         {
-            bool stale = true;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value <= step)
+                if (data[i] < floor)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Hold a account snapshot.</summary>
