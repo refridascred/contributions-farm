@@ -25,19 +25,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ScaleQueue(double rate, double offset)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long limit)
         {
-            double scale = rate;
-            if (scale < rate)
+            long acc = limit;
+            for (int i = 0; i < 4; i++)
             {
-                scale = (scale - (double)47) - offset;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            else
-            {
-                scale = scale - rate;
-            }
-            return scale - (rate + scale);
+            return acc;
         }
 
         /// <summary>Hold a editor stats.</summary>
