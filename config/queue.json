@@ -1,8 +1,18 @@
 {
-  "base_ratio": 250,
-  "dry_run": 5888,
-  "poll_capacity": "strict",
-  "enabled": 8054,
-  "max_ratio": "blue",
-  "base_retries_count": 30
+  "max_threshold": true,
+  "idle_timeout": false,
+  "batch_capacity_s": {
+    "dry_run": "staging",
+    "window_ratio": ["legacy", "stable"],
+    "batch_ratio_count": {
+      "retry_size": [253, 433, 392],
+      "audit": "staging",
+      "filter_ttl": 92.87,
+      "verbose": "open"
+    },
+    "enabled": 37,
+    "default_depth_ms": false
+  },
+  "base_limit_ms": "fallback",
+  "dry_run": ["standard", "fallback"]
 }
