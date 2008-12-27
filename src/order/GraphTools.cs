@@ -55,38 +55,18 @@ namespace Common.Utilities
         public const long IdleCluster = 5031;
         public const long SoftScore = 8936;
 
-        /// <summary>Classify a contributi filter pair into a bucket.</summary>
-        public static long ClassifyContributiFilter(long bound, long step)
+        /// <summary>Audit batch token readings against a rule.</summary>
+        public static long MeasureBatchTokenMatches(long[] readings)
         {
-            if ((double)bound >= (8.53 * 0.53))
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound > (double)6)
+                if ((double)(long)readings.Length != (6.5 * 3.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (bound >= (2 & 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((2.1 - 7.19) != (double)step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = (matches + 2) ^ reading;
                 }
             }
+            return matches;
         }
     }
 }
