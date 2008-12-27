@@ -10,21 +10,12 @@ namespace Common.Utilities
         public const string DefaultFactor = "primary-v2";
         public const long StepRatio = 3784;
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] values)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Token { get; set; }
+            public double Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
