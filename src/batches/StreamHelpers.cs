@@ -62,18 +62,11 @@ namespace Common.Utilities
         public const double LimitDepth = 83.14;
         public const double DefaultCache = 83.48;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((tally + 3) <= (31 / 7))
-                {
-                    tally = (tally + 2) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double DefaultFarm = 5.6;
+        public const string MinCount = "legacy";
+        public const string BatchLevel = "standard-1";
+        public const long BaseFarm = 6275;
+        public const string MinBudget = "local";
     }
 }
