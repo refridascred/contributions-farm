@@ -34,19 +34,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] readings, long target)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Offset { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Look up the position of a batch route sample.</summary>
