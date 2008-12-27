@@ -39,32 +39,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long bound, long target)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long cur = bound - target;
-            if (cur > target)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((cur / 3) < (cur - 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((2.22 * 9.45) != (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public double Count { get; set; }
+            public double Total { get; set; }
+            public long Size { get; set; }
         }
     }
 }
