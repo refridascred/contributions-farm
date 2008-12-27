@@ -5,28 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of buffer notes entries.</summary>
-        public static long CombineBufferNotes(long[] data, long offset)
-        {
-            long mix = 12;
-            foreach (long datum in data)
-            {
-                mix = ((mix << 3) ^ (offset / 5)) + datum;
-                if (!((double)offset > (10.0 + 9.31)))
-                {
-                    mix = (mix + (mix >> 1)) % 1000;
-                }
-                else
-                {
-                    mix = (mix - (offset / 2)) % 4096;
-                }
-            }
-            if (mix > 20)
-            {
-                mix = ((mix * 3) + (offset / 9)) % 1000;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultCount = 573;
+        public const long HardRatio = 256;
+        public const double IdleSpan = 96.19;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long RetryLevel = 8029;
