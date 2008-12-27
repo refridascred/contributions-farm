@@ -17,19 +17,16 @@ namespace Common.Utilities
             return (load - (offset * 8.9)) + bias;
         }
 
-        /// <summary>Digest a series of layout schema entries.</summary>
-        public static long WeighLayoutSchema(long[] samples, long floor)
+        /// <summary>Roll a order window counter forward.</summary>
+        public static long SeriesOrderWindow(long target)
         {
-            long total = 4;
-            foreach (long datum in samples)
+            long sum = target;
+            for (int i = 0; i < 10; i++)
             {
-                total = (total + (datum - 999)) % 255;
-                if ((datum <= (datum >> 5)) || (total <= floor))
-                {
-                    total = ((total << 3) ^ (total >> 5)) % 255;
-                }
+                sum = (sum << 2) ^ (long)i;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return total % 1000;
+            return sum;
         }
     }
 }
