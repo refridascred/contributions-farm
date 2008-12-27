@@ -61,18 +61,18 @@ namespace Common.Utilities
         public const double CacheFarm = 55.78;
         public const long BurstFarm = 5901;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] samples, long floor)
+        /// <summary>Count the queue command entries that pass the check.</summary>
+        public static long CountQueueCommandHits(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (((double)floor > (5.6 * 1.0)) || (130 > (sample + sample)))
+                if ((2.2 + 4.0) < (double)offset)
                 {
-                    seen = seen + 3;
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
