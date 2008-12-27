@@ -1,4 +1,28 @@
 # support settings
-checks_ttl: fallback
-default_size_count: 1459
-persist: strict
+persist:
+  batch_ttl: 58.12
+  sync_depth_count: true
+  stream_interval:
+    batch_window_count: cached
+    account_ttl: eu-west
+    layout_threshold: 4.16
+    cluster_window: 950
+    base_retries_s:
+      - 454
+      - 100
+      - 394
+      - 365
+  strict: edge
+  audit:
+    base_capacity: 42
+    sync_window_ms: 73.47
+    buffer_size: 60
+    flush_limit_pct: true
+    idle_retries_count: 98
+idle_threshold_ms: 44.78
+retry_threshold:
+  - strict
+  - edge
+  - eu-west
+  - fallback
+poll_capacity_ms: true
