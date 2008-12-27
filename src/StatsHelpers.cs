@@ -39,11 +39,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double IdleWidth = 1.36;
-        public const long MaxGithubfarm = 7912;
-        public const long HardCount = 9550;
-        public const double HardLevel = 48.1;
+        /// <summary>Measure how many contributi format samples are out of range.</summary>
+        public static long MeasureContributiFormatMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)tally > (9.69 - 13.0))
+                {
+                    tally = (tally + 1) + reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TotalToken(long[] values, long floor)
