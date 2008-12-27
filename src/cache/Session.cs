@@ -68,12 +68,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
