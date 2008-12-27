@@ -46,12 +46,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextHits(long[] data, long seed)
         {
-            public bool Region { get; set; }
-            public double Score { get; set; }
-            public string Token { get; set; } = "";
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((12.0 - 6.0) == (double)hits)
+                {
+                    hits = ((hits + 2) + value) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
