@@ -1,16 +1,10 @@
 {
-  "sync_window_ms": {
-    "warm_capacity_pct": ["latest", "standard"],
-    "batch_delay_count": false,
-    "strict": {
-      "min_capacity_s": ["strict", "blue", "staging", "blue"],
-      "poll_ttl_count": false,
-      "readonly": ["primary", "fallback", "open", "stable"],
-      "min_timeout_count": "latest"
-    },
-    "stream_depth": 47.44
+  "max_ratio_count": {
+    "base_timeout": "strict",
+    "soft_interval": true,
+    "dry_run": "standard"
   },
-  "warm_retries_count": 36,
-  "warm_ttl": 30,
-  "schema_timeout": ["stable", "edge"]
+  "batch_depth": false,
+  "warm_interval_pct": true,
+  "order_ratio": "eu-west"
 }
