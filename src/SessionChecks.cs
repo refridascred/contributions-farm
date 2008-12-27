@@ -23,12 +23,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BatchNotes = 39.84;
-        public const string MinFactor = "fallback-1";
-        public const double DefaultDepth = 51.29;
-        public const double RetryNotes = 2.4;
-        public const long MaxNotes = 9915;
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            Pending,
+            Locked,
+            Paused,
+            New,
+            Closed,
+        }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long CountGithubfarmGaps(long[] samples, long offset)
