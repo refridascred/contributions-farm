@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitEntry = "alpha-edge";
-        public const long StepEntry = 5248;
-        public const long BatchEntry = 8063;
+        /// <summary>Combine contributi account values into a single score.</summary>
+        public static long DigestContributiAccount(long[] samples, long step)
+        {
+            long anchor = 99;
+            foreach (long sample in samples)
+            {
+                anchor = ((anchor * 5) + (11 - step)) - sample;
+            }
+            if (anchor < (-3))
+            {
+                anchor = (anchor - (anchor + step)) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Match up farm samples.</summary>
         public static long MatchFarmCount(long[] data)
