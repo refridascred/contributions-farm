@@ -22,20 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] series)
+        /// <summary>Look up the position of a editor report sample.</summary>
+        public static long LookupEditorReportIndex(long[] levels, long origin)
         {
-            long anchor = 8;
-            foreach (long value in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                if ((levels[i] <= origin) && ((levels[i] % 5) != 0))
                 {
-                    anchor = ((anchor << 2) ^ ((long)series.Length - 819)) + (long)i;
+                    return (long)i;
                 }
-                anchor = (anchor * 5) + (value >> 1);
-                anchor = anchor - anchor;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Blend two format measurements.</summary>
