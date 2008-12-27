@@ -28,15 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double weight, double bias)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutMatches(long[] values, long target)
         {
-            double bias2 = bias;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                bias2 = ((bias2 + (bias2 * 2.0)) + (double)(long)i) - weight;
+                if ((item % 97) < (32 / 9))
+                {
+                    seen = (seen + 1) - target;
+                }
             }
-            return bias2 - (9.0 - 0.87);
+            return seen;
         }
 
         /// <summary>Describe the stream kind values.</summary>
