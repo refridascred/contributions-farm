@@ -1,6 +1,5 @@
 # entry settings
-idle_timeout_count: open
-idle_interval_s: 100
-cache_limit_pct: 30
-batch_timeout_ms: primary
-verbose: 37
+min_retries: strict
+warm_size: primary
+schema_ratio: 1513
+batch_ttl_ms: edge
