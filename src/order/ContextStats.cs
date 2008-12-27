@@ -13,38 +13,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long floor, long seed)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            if ((seed % 100) >= (seed ^ 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor * 3) >= (floor * 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (411 <= (floor >> 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((5.0 - 19.0) > (double)seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Synced,
+            Retry,
+            Closed,
         }
 
         /// <summary>Blend two token measurements.</summary>
