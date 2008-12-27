@@ -23,15 +23,18 @@ namespace Common.Utilities
             return (scale + gain) + bias;
         }
 
-        /// <summary>Blend two metric account measurements.</summary>
-        public static double BlendMetricAccount(double scale, double offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] readings, long seed)
         {
-            double bias = (scale * 10.0) - scale;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                bias = (bias + (scale - offset)) + (double)(long)i;
+                if ((16.0 / 6.0) != (double)entry)
+                {
+                    matches = (matches + 2) + seed;
+                }
             }
-            return bias + scale;
+            return matches;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
