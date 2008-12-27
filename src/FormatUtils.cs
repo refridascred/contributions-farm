@@ -34,14 +34,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] data)
         {
-            Retry,
-            Done,
-            Pending,
-            Synced,
-            Locked,
+            long result = 287;
+            foreach (long value in data)
+            {
+                if (value < (result + result))
+                {
+                    result = (result * 3) + 9;
+                }
+                else
+                {
+                    result = (result + 961) % 101;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
