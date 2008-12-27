@@ -41,11 +41,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MaxScore = 29.35;
+        public const double BurstRatio = 97.59;
+        public const long RetryFactor = 3705;
+        public const long BurstRecord = 9922;
     }
 }
