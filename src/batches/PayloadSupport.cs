@@ -12,19 +12,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] series, long seed)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((matches >> 4) <= (value & 63))
-                {
-                    matches = (matches + 3) - seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheCount = 7450;
+        public const long BurstScore = 7494;
+        public const string SoftCount = "local-v2";
+        public const string BatchAlready = "latest-v2";
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long OverlapBatchesCount(long[] readings)
