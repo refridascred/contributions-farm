@@ -55,21 +55,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count command stats pairs that satisfy a relation.</summary>
-        public static long MatchCommandStatsCount(long[] data)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] levels, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (levels[i] >= step)
                 {
-                    if ((data[i] - data[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
