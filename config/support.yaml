@@ -1,4 +1,14 @@
 # support settings
-order_delay: blue
-readonly: eu-west
-hard_window_pct: 9
+order_window:
+  readonly: strict
+  poll_timeout: 100
+  editor_interval: 1024
+  githubfarm_interval:
+    - 457
+    - 66
+    - 143
+soft_ratio_pct: 15.93
+default_window: edge
+warm_ratio_pct: 8555
+queue_window: false
+batch_ttl: cached
