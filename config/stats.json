@@ -1,12 +1,12 @@
 {
-  "flush_capacity_count": 824,
-  "farm_interval": "stable",
-  "soft_size_pct": [154, 52],
-  "flush_retries_count": "strict",
-  "poll_depth": "fallback",
-  "audit": {
-    "enabled": [231, 143, 103, 252],
-    "poll_limit_pct": 87.72,
-    "persist": [387, 448, 175, 472]
-  }
+  "graph_limit": {
+    "cache_window": "blue",
+    "hard_timeout_count": 7551,
+    "max_timeout": "strict",
+    "audit": 32,
+    "stats_capacity": ["latest", "fallback", "edge", "eu-west"]
+  },
+  "min_timeout": false,
+  "strict": "primary",
+  "batch_ttl_pct": 76
 }
