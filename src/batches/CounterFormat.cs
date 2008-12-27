@@ -39,25 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of order buffer entries.</summary>
-        public static long ScoreOrderBuffer(long[] series)
+        /// <summary>Look up the position of a profile context sample.</summary>
+        public static long SeekProfileContextIndex(long[] data, long step)
         {
-            long mark = 0;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark << 2) ^ value;
-                if (6.79 < (double)mark)
+                if ((data[i] > step) && ((data[i] % 3) == 0))
                 {
-                    long tally = (value >> 4) + mark;
-                    mark = ((mark << 2) ^ tally) % 1000;
-                    break;
-                }
-                if (4.4 >= (double)value)
-                {
-                    mark = (mark << 2) ^ value;
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Match up support samples.</summary>
