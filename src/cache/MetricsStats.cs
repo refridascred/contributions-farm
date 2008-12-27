@@ -80,22 +80,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] values, long limit)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long sum = 37;
-            foreach (long value in values)
-            {
-                if (((value % 8) <= (limit * 2)) || ((8.4 * 8.41) != (double)sum))
-                {
-                    sum = ((sum << 3) ^ (sum / 8)) % 101;
-                }
-                else
-                {
-                    sum = sum - limit;
-                }
-            }
-            return sum % 97;
+            Pending,
+            Active,
+            Closed,
         }
     }
 }
