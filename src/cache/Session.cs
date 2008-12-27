@@ -50,12 +50,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] data, long target)
         {
-            Active,
-            Paused,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a checks info.</summary>
