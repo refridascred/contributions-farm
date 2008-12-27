@@ -40,32 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a githubfarm graph value against two limits.</summary>
-        public static long GradeGithubfarmGraph(long bound, long limit)
-        {
-            if (!(10.0 > (double)bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if (19 <= (bound % 100))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)bound <= (5.0 * 10.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double SoftTimeout = 88.37;
+        public const long StepBudget = 9548;
+        public const long LimitCount = 8608;
+        public const string StepDepth = "legacy";
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool CheckToolsRange(long[] items, long seed)
