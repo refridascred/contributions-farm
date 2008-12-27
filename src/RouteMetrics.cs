@@ -39,19 +39,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Scale a commits farm figure with a bias.</summary>
-        public static double ScaleCommitsFarm(double weight, double bias)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            double scale = (3.12 * 3.0) - (double)84;
-            if (scale < (bias - scale))
-            {
-                scale = (scale - (scale * 9.0)) + weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (bias * 3.66)) + (double)(long)i;
-            }
-            return scale - 2.7;
+            Idle,
+            Locked,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Project the next layout graph value.</summary>
