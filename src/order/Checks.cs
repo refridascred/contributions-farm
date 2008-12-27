@@ -25,14 +25,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] samples, long seed)
         {
-            Retry,
-            Synced,
-            Locked,
-            Ready,
-            Dropped,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (((double)seed != (double)0) || ((count & 1) <= (sample << 3)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
