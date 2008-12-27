@@ -32,11 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] samples, long limit)
         {
-            public string Owner { get; set; } = "";
-            public bool Token { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((matches < limit) || (matches < 1))
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a session entry.</summary>
