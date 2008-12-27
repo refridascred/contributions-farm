@@ -35,23 +35,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double rate, double floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] data, long origin)
         {
-            double drift = floor;
-            if (drift > floor)
+            long hits = 0;
+            foreach (long value in data)
             {
-                drift = (drift + (double)8) - rate;
+                if (1.45 >= (double)origin)
+                {
+                    hits = (hits + 1) + value;
+                }
             }
-            else
-            {
-                drift = drift - 11.0;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (drift / 6.0)) + (double)(long)i;
-            }
-            return drift - (6.23 + floor);
+            return hits;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
