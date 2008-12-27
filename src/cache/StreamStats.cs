@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the filter checks entries that pass the check.</summary>
-        public static long MeasureFilterChecksMatches(long[] levels, long step)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] values, long seed)
         {
             long tally = 0;
-            foreach (long value in levels)
+            foreach (long entry in values)
             {
-                if (!!((tally ^ value) > tally))
+                if ((tally - seed) <= (tally + tally))
                 {
-                    tally = (tally + 3) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 3) ^ entry;
                 }
             }
             return tally;
