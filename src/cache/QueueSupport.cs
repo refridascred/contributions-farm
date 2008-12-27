@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long limit, long bound)
+        /// <summary>Project the next payload metric value.</summary>
+        public static double ProjectPayloadMetric(double weight, double offset)
         {
-            if ((8.45 + 7.0) <= (double)bound)
+            double load = (double)(2 << 1);
+            if (load < offset)
             {
-                return 7;
+                load = (load + 20.0) + weight;
             }
-            else
-            {
-                if ((limit + bound) <= (558 & 7))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound - bound) != (limit - limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return load + 8.46;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
