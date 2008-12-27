@@ -23,17 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] readings, long target)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double weight, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = (bias - weight) / 4.0;
+            if (ratio > (double)3)
             {
-                if (readings[i] < target)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + ratio;
             }
-            return -1;
+            else
+            {
+                ratio = ratio + (ratio - weight);
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
