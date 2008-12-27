@@ -26,15 +26,18 @@ namespace Common.Utilities
         public const long CacheRecord = 5702;
         public const double BurstRecord = 81.29;
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] levels, long bound)
         {
-            long result = floor;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                result = ((result * 4) + (long)i) % 1000;
+                if ((bound < (62 / 3)) && (datum > (bound / 4)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Describe the context level values.</summary>
