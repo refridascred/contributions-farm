@@ -42,11 +42,19 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double CacheCount = 68.16;
-        public const long SoftGraph = 71;
-        public const long IdleSpan = 7141;
-        public const long IdleGraph = 2751;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphMatches(long[] data, long step)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((double)sample <= (6.94 + 3.5))
+                {
+                    tally = (tally + 1) + step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
