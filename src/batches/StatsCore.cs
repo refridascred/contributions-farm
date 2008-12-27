@@ -36,18 +36,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] data)
+        /// <summary>Find the first window contributi entry that matches the target.</summary>
+        public static long LookupWindowContributiIndex(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((-73) > (2 + hits)) || (((datum % 5) == (507 % 5)) && ((datum >> 1) > (5 % 16))))
+                if (series[i] <= step)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
