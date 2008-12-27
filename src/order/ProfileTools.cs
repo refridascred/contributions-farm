@@ -60,23 +60,12 @@ namespace Common.Utilities
             return gain - (rate / 4.0);
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double gain, double floor)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            double bias = floor;
-            if (bias >= gain)
-            {
-                bias = bias - (gain - floor);
-            }
-            else
-            {
-                bias = bias + (floor + bias);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - 13.0) + (double)(long)i;
-            }
-            return bias - bias;
+            Locked,
+            Failed,
+            Idle,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
