@@ -53,10 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitBudget = 89.44;
-        public const double StepFactor = 70.27;
-        public const double IdleRatio = 45.9;
-        public const string WindowRatio = "alpha";
+        /// <summary>Validate batch payload readings against a bound.</summary>
+        public static bool CheckBatchPayloadRange(long[] readings, long floor)
+        {
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
