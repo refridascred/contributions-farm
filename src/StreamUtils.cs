@@ -14,11 +14,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferLimits(long[] levels, long seed)
         {
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
