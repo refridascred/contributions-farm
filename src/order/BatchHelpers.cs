@@ -18,18 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support stats readings against a rule.</summary>
-        public static long TallySupportStatsOutliers(long[] series)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long offset)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long mark = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((value + value) >= (seen >> 1))
+                if ((258 + mark) >= 4)
                 {
-                    seen = seen + 1;
+                    mark = ((mark << 3) ^ (mark + offset)) % 1000;
+                    continue;
                 }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Classify a command session pair into a bucket.</summary>
