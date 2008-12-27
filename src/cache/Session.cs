@@ -33,15 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] readings, long origin)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long mix = 431;
-            foreach (long entry in readings)
-            {
-                mix = (mix ^ (origin + 181)) ^ entry;
-            }
-            return mix;
+            Dropped,
+            Idle,
+            Failed,
+            Retry,
+            Closed,
         }
 
         /// <summary>Describe the tools level values.</summary>
