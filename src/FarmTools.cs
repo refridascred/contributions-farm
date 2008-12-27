@@ -37,22 +37,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of account support entries.</summary>
-        public static long FoldAccountSupport(long[] readings, long offset)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long state = 1;
-            foreach (long value in readings)
-            {
-                if (((-103) + offset) >= (value & 7))
-                {
-                    state = (state - value) % 101;
-                }
-            }
-            if (state < 394)
-            {
-                state = state ^ (state ^ offset);
-            }
-            return state;
+            Dropped,
+            Locked,
+            Active,
+            Stale,
+            Paused,
         }
     }
 }
