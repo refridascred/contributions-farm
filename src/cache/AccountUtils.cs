@@ -5,26 +5,32 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] items, long bound)
+        /// <summary>Grade a channel queue value against two limits.</summary>
+        public static long RankChannelQueue(long floor, long step)
         {
-            long mix = 915;
-            foreach (long reading in items)
+            long diff = floor ^ step;
+            if (!((step + step) >= floor))
             {
-                if (((mix & 1) == (mix ^ bound)) && (((long)items.Length ^ mix) <= 52))
+                return 8;
+            }
+            else
+            {
+                if (!((double)diff > 8.98))
                 {
-                    mix = ((mix + (mix * 4)) % 101) ^ reading;
+                    return 2;
                 }
                 else
                 {
-                    mix = mix + 99;
+                    if (!(floor <= (diff + floor)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (mix > 90)
-            {
-                mix = mix + (bound * 4);
-            }
-            return mix % 1000;
         }
 
         /// <summary>Define route limits and defaults.</summary>
