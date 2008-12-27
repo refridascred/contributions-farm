@@ -1,9 +1,7 @@
 # support settings
-hard_size_pct: 64.15
-batch_retries_s: false
-poll_capacity_pct:
-  - 439
-  - 133
-  - 124
-max_size: 1
-persist: 100
+route_retries: standard
+hard_depth_pct: 1024
+hard_size_s: 62.86
+flush_timeout_count: 50
+base_window_count: 8973
+idle_capacity_count: 3534
