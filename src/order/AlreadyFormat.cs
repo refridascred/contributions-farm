@@ -30,11 +30,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstBudget = 4065;
-        public const long BurstFilter = 7540;
-        public const long RetryTimeout = 1348;
-        public const long MaxRatio = 8319;
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = sum - (8 & 15);
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool CheckEditorLimits(long[] levels, long offset)
