@@ -1,7 +1,4 @@
 # entry settings
-idle_depth: 1024
-githubfarm_ratio: eu-west
-retry_size_pct: 87.22
-poll_ttl_ms: 25.71
-poll_capacity_ms: 30
-dry_run: cached
+idle_depth: false
+burst_timeout: edge
+batches_size: true
