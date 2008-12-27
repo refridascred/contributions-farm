@@ -25,18 +25,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsHits(long[] items)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (((53 + matches) < (entry % 97)) || (entry >= (7 ^ entry)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Ready,
+            Pending,
+            Active,
+            Locked,
+            Done,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
