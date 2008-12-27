@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] data, long bound)
+        /// <summary>Combine entry metric values into a single score.</summary>
+        public static long ScoreEntryMetric(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 650;
+            foreach (long sample in data)
             {
-                if ((data[i] > bound) && ((data[i] % 5) != 0))
+                if ((double)sample > 19.0)
                 {
-                    return (long)i;
+                    anchor = anchor ^ sample;
+                }
+                if (((sample * 5) >= (55 - sample)) || (233 >= (sample - anchor)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor % 1000;
         }
 
         /// <summary>Derive the next contributi record value from a seed.</summary>
