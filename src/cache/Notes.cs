@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] levels)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] values, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 73;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (anchor >= ((long)values.Length + 634))
                 {
-                    if ((levels[i] + levels[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (((anchor * 5) + (value + anchor)) % 101) - step;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
