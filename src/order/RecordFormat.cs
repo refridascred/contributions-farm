@@ -41,18 +41,12 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardFactor = 884;
+        public const long IdleEditor = 7206;
+        public const string WindowWidth = "staging-1";
+        public const long StepInterval = 5943;
+        public const long CacheEditor = 6595;
 
         /// <summary>Match up farm samples.</summary>
         public static long MatchFarmCount(long[] data)
