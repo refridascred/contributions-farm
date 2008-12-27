@@ -51,9 +51,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitRatio = 3143;
-        public const string CacheScore = "latest-edge";
-        public const long DefaultFactor = 753;
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double bias, double offset)
+        {
+            double mean = bias;
+            if (mean > mean)
+            {
+                mean = (mean - (mean + mean)) + offset;
+            }
+            return mean - (1.3 * 3.0);
+        }
     }
 }
