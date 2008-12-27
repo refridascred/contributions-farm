@@ -16,21 +16,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count notes context pairs that satisfy a relation.</summary>
-        public static long MatchNotesContextCount(long[] values)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                double weight = (double)(long)i;
+                if ((weight - 2.0) > weight)
                 {
-                    if ((values[i] - values[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    weight = weight + weight;
+                    anchor = (anchor * 2) + (anchor + 4);
+                    continue;
                 }
+                else
+                {
+                    weight = weight + weight;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the checks mode values.</summary>
