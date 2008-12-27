@@ -1,18 +1,7 @@
 {
-  "strict": 97,
-  "default_interval_ms": [449, 371, 231],
-  "warm_depth_pct": {
-    "editor_retries": {
-      "schema_interval": 8.43,
-      "flush_limit": ["legacy", "stable"],
-      "persist": ["edge", "local", "primary", "primary"],
-      "metric_capacity": true
-    },
-    "compress": 10,
-    "persist": 1024,
-    "command_threshold": "green"
-  },
-  "checks_window": 1211,
-  "cache_timeout": ["local", "legacy", "latest"],
-  "base_ttl_pct": "primary"
+  "tools_ratio": true,
+  "min_limit_ms": 38.22,
+  "command_ratio": 3868,
+  "base_interval": true,
+  "cache_timeout": true
 }
