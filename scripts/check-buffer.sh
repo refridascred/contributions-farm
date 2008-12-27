@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest green blue; do
+BUFFER_LIMIT=222
+log "limit is ${BUFFER_LIMIT}"
+
+for item in cached fallback; do
     log "checking ${item}"
 done
-
-mode="${1:-standard}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
