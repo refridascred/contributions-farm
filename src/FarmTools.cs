@@ -20,19 +20,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileRange(long[] samples, long target)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Active,
+            Queued,
+            Ready,
         }
 
         /// <summary>Roll a format counter forward.</summary>
