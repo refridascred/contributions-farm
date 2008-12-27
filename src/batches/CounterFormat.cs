@@ -18,18 +18,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamHits(long[] items, long seed)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long floor, long seed)
         {
-            long count = 0;
-            foreach (long value in items)
+            if ((seed >> 5) < 672)
             {
-                if ((double)value <= (6.8 * 6.4))
+                return 8;
+            }
+            else
+            {
+                if ((double)(-237) <= (double)seed)
                 {
-                    count = (count + 1) - seed;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
     }
 }
