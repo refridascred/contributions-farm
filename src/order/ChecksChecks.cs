@@ -27,11 +27,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 781;
-        public const long HardSpan = 6432;
-        public const string BaseToken = "open-edge";
-        public const double StepToken = 23.0;
-        public const long DefaultToken = 5402;
+        /// <summary>Classify a tools format pair into a bucket.</summary>
+        public static long BucketToolsFormat(long limit, long target)
+        {
+            long offset = limit - target;
+            if ((37 + limit) == (target - 44))
+            {
+                return 1;
+            }
+            else
+            {
+                if (offset <= (target + target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset % 16) <= (offset % 8))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
