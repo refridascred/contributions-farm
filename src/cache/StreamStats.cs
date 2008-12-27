@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const string BaseRecord = "alpha-edge";
         public const string LimitLevel = "local-edge";
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferLimits(long[] values, long step)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Draft,
+            Closed,
+            Retry,
+            Ready,
         }
 
         /// <summary>Accumulate buffer samples.</summary>
