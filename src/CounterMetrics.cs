@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const double DefaultTimeout = 56.17;
         public const double BaseRatio = 12.38;
 
-        /// <summary>Fold a list of batch stats readings.</summary>
-        public static long WeighBatchStats(long[] levels, long origin)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLimits(long[] items, long step)
         {
-            long total = 9;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if ((origin * 3) != (945 * 3))
+                if (entry < step)
                 {
-                    total = (total - total) ^ sample;
-                }
-                if ((origin << 3) < total)
-                {
+                    stale = false;
                     break;
                 }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Hold a batch entry.</summary>
