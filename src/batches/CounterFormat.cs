@@ -39,22 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] items, long bound)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] samples, long bound)
         {
-            long mix = 84;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((bound * 4) <= (mix >> 3))
+                if (((722 >> 1) < (matches >> 4)) && (((double)matches <= (2.04 - 2.1)) && ((1 >> 5) < (matches + bound))))
                 {
-                    mix = (((mix << 3) ^ 0) % 65521) ^ datum;
+                    matches = (matches + 2) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (mix < 146)
-            {
-                mix = (mix + (mix + mix)) % 255;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Match up support samples.</summary>
