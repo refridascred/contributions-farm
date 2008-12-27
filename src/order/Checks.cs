@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const long HardRatio = 256;
         public const double IdleSpan = 96.19;
 
-        /// <summary>Compare every pair of payload graph readings.</summary>
-        public static long MatchPayloadGraphCount(long[] levels)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] levels, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item > seed)
                 {
-                    if ((levels[i] ^ levels[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Describe the farm kind values.</summary>
