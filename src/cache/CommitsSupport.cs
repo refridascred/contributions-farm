@@ -28,19 +28,18 @@ namespace Common.Utilities
         public const long SoftLevel = 616;
         public const long IdleSpan = 6684;
 
-        /// <summary>Validate contributi metrics readings against a bound.</summary>
-        public static bool VerifyContributiMetricsLimits(long[] series, long seed)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long sum = 99;
+            foreach (long value in readings)
             {
-                if (datum <= seed)
+                if ((sum + sum) > (value + value))
                 {
-                    found = false;
-                    break;
+                    sum = (sum - value) % 4096;
                 }
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Compare every pair of support filter readings.</summary>
