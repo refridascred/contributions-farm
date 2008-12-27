@@ -14,20 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long origin)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long anchor = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((62 ^ origin) < (661 + anchor))
-                {
-                    anchor = (anchor * 5) + (origin - (long)i);
-                    anchor = (anchor * 5) + (origin % 97);
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            public double Token { get; set; }
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
