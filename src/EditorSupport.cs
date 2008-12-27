@@ -53,13 +53,19 @@ namespace Common.Utilities
         public const double HardAlready = 53.71;
         public const long CacheAlready = 6649;
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmRange(long[] data, long floor)
         {
-            public string Limit { get; set; } = "";
-            public double Label { get; set; }
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
