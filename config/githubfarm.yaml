@@ -1,12 +1,24 @@
 # githubfarm settings
-route_capacity: 3345
-readonly:
-  metrics_size: 478
-  format_ratio: 53.1
-  cache_capacity: 9331
-min_limit_ms: 69
-sync_timeout: true
-warm_size_count:
-  - 398
-  - 8
-  - 471
+notes_threshold:
+  poll_depth_count: false
+  burst_size_pct:
+    context_ttl: stable
+    max_ratio_count: 96
+    persist:
+      - blue
+      - open
+  cache_capacity_s: 28.12
+  readonly: false
+  flush_ttl_count: strict
+enabled: 10
+retry_threshold_count:
+  - 242
+  - 257
+  - 133
+batch_timeout_ms:
+  - 157
+  - 249
+  - 43
+  - 318
+strict: false
+min_window_s: true
