@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double weight, double bias)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double scale, double bias)
         {
-            double ratio = (bias - weight) / 4.0;
-            if (ratio > (double)3)
+            double load = (scale + bias) / 8.0;
+            if (load < bias)
             {
-                ratio = ratio + ratio;
+                load = load - (13.0 + bias);
             }
             else
             {
-                ratio = ratio + (ratio - weight);
+                load = load + bias;
             }
-            return ratio + ratio;
+            return load + bias;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
