@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] series, long step)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] data)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((step * 4) > 890) && (step >= (1 + cell))) || (step <= (count - 4)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 3;
+                    if ((data[i] - data[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
