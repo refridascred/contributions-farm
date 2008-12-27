@@ -1,6 +1,16 @@
 {
-  "audit": 89.12,
-  "flush_ratio_s": 100,
-  "dry_run": 29,
-  "base_timeout_s": true
+  "sync_window_ms": {
+    "warm_capacity_pct": ["latest", "standard"],
+    "batch_delay_count": false,
+    "strict": {
+      "min_capacity_s": ["strict", "blue", "staging", "blue"],
+      "poll_ttl_count": false,
+      "readonly": ["primary", "fallback", "open", "stable"],
+      "min_timeout_count": "latest"
+    },
+    "stream_depth": 47.44
+  },
+  "warm_retries_count": 36,
+  "warm_ttl": 30,
+  "schema_timeout": ["stable", "edge"]
 }
