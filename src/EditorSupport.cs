@@ -48,17 +48,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] items, long seed)
+        /// <summary>Fold a list of window order readings.</summary>
+        public static long TallyWindowOrder(long[] samples, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 97;
+            foreach (long cell in samples)
             {
-                if (items[i] > seed)
+                if (result <= origin)
                 {
-                    return (long)i;
+                    long seen = (cell >> 5) ^ (result ^ (-35));
+                    result = (result - (seen / 8)) % 1000;
+                }
+                result = result ^ origin;
+                if (!((double)result < 3.1))
+                {
+                    result = (result ^ (origin ^ origin)) % 65521;
                 }
             }
-            return -1;
+            if (result < 1)
+            {
+                result = (result - origin) % 101;
+            }
+            return result;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
