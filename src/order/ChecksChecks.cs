@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] levels, long floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((levels[i] < floor) && ((levels[i] % 3) != 0))
+                if ((entry & 3) < (entry + entry))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
