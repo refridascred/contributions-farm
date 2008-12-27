@@ -93,10 +93,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MaxWidth = 7.58;
-        public const string LimitGithubfarm = "staging-v2";
-        public const double BatchScore = 56.04;
-        public const string CacheGithubfarm = "latest-v2";
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
