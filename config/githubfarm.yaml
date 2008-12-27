@@ -1,7 +1,14 @@
 # githubfarm settings
-max_capacity_ms: 58
-cache_ratio:
-  - green
-  - eu-west
-max_size_s: true
-hard_depth_pct: green
+profile_delay: 38.84
+max_limit_ms: true
+idle_timeout_count:
+  - 8
+  - 252
+readonly: 100
+idle_retries_s: 60
+compress:
+  burst_capacity_s: cached
+  max_retries_pct: 21
+  max_depth: 1
+  session_window: 87.64
+  cache_depth: cached
