@@ -57,14 +57,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            Active,
-            Retry,
-            Ready,
-            Queued,
-            Paused,
+            public long Level { get; set; }
+            public bool Label { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
