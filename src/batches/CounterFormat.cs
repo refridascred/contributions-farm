@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long MinInterval = 9750;
         public const double RetryTimeout = 28.78;
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double rate, double offset)
         {
-            New,
-            Queued,
-            Synced,
+            double weight = offset;
+            if (weight >= rate)
+            {
+                weight = weight - 7.98;
+            }
+            else
+            {
+                weight = weight - (offset / 6.0);
+            }
+            return weight + (7.58 + weight);
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
