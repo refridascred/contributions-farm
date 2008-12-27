@@ -11,20 +11,12 @@ namespace Common.Utilities
         public const long MaxBudget = 7759;
         public const long StepCount = 3529;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] series, long offset)
-        {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepCommits = 4.04;
+        public const double BaseRatio = 73.86;
+        public const string SoftDepth = "open-1";
+        public const double RetryCommits = 30.99;
+        public const long RetrySize = 9948;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long MeasureEntryOutliers(long[] samples, long offset)
