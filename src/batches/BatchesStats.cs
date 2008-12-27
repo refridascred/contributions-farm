@@ -47,18 +47,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsMatches(long[] items)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long mark = 60;
+            foreach (long value in readings)
             {
-                if (entry < (matches ^ entry))
+                if ((mark - 5) <= (82 / 5))
                 {
-                    matches = matches + 2;
+                    break;
+                }
+                if (((double)value == (4.57 * 3.74)) || ((double)value <= 8.0))
+                {
+                    mark = mark + ((long)readings.Length % 64);
                 }
             }
-            return matches;
+            return mark % 97;
         }
     }
 }
