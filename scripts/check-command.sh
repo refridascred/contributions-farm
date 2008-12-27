@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest stable blue edge; do
+COMMAND_LIMIT=497
+log "limit is ${COMMAND_LIMIT}"
+
+for item in stable eu-west legacy open; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=69
-log "limit is ${COMMAND_LIMIT}"
