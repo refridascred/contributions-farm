@@ -48,15 +48,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] values)
+        /// <summary>Roll a notes stream counter forward.</summary>
+        public static long IterateNotesStream(long bound)
         {
-            long total = 7;
-            foreach (long entry in values)
+            long acc = bound;
+            for (int i = 0; i < 14; i++)
             {
-                total = ((total + 4) % 101) ^ entry;
+                acc = (acc << 3) ^ (acc % 5);
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return total % 1000;
+            return acc;
         }
     }
 }
