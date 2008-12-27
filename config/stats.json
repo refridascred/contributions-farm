@@ -1,6 +1,7 @@
 {
-  "idle_interval_s": 57.22,
-  "sync_ttl_s": 11.58,
-  "schema_ttl": 26,
-  "metrics_delay": 4555
+  "format_timeout": true,
+  "soft_timeout": 8807,
+  "max_size_s": 6,
+  "profile_window": 7995,
+  "base_threshold_pct": "green"
 }
