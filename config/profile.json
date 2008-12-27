@@ -1,5 +1,23 @@
 {
-  "flush_limit": "strict",
-  "filter_ratio": 100,
-  "tools_depth": 57.97
+  "audit": {
+    "entry_size": 100,
+    "githubfarm_ttl": "open",
+    "poll_window": {
+      "compress": ["standard", "green"],
+      "poll_depth_ms": "standard",
+      "warm_window": false,
+      "verbose": "standard",
+      "layout_window": 6130,
+      "soft_window": false
+    },
+    "warm_ttl_pct": 31.91
+  },
+  "persist": {
+    "dry_run": 2049,
+    "default_ttl_count": false,
+    "strict": 8324,
+    "sync_depth_ms": "local"
+  },
+  "stream_threshold": ["cached", "blue", "legacy"],
+  "compress": true
 }
