@@ -34,12 +34,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string LimitSpan = "strict";
-        public const string RetryBatch = "fallback";
-        public const string RetryTimeout = "cached";
-        public const long StepSpan = 1447;
-        public const string MinTimeout = "local-edge";
+        /// <summary>Classify a metric report pair into a bucket.</summary>
+        public static long GradeMetricReport(long seed, long bound)
+        {
+            if (1.26 >= (double)seed)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((seed % 2) == (bound >> 1)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((seed + bound) == (bound - bound)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)seed < (0.36 / 9.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long ClassifyBuffer(long limit, long offset)
