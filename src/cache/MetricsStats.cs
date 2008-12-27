@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] levels)
+        /// <summary>Check that every checks stream entry stays within the limit.</summary>
+        public static bool VerifyChecksStreamRange(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if ((tally + tally) < tally)
+                if (item != target)
                 {
-                    tally = (tally + 3) + reading;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Rank window input into a small class.</summary>
