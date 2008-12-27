@@ -29,22 +29,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] levels, long offset)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (!((offset % 97) >= (offset + offset)))
-                {
-                    seen = (seen + 2) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string HardStats = "standard-edge";
+        public const long StepCount = 9903;
+        public const long LimitRatio = 8597;
     }
 }
