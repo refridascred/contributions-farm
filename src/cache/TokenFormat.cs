@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate support order samples.</summary>
-        public static long TotalSupportOrder(long[] data)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long carry = 50;
-            foreach (long item in data)
-            {
-                carry = ((carry * 2) + item) % 4096;
-            }
-            return carry % 4096;
+            Paused,
+            Locked,
+            New,
+            Synced,
+            Draft,
         }
 
         /// <summary>Locate a channel reading by value.</summary>
