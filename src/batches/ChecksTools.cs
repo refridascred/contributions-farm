@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] items, long offset)
         {
-            Synced,
-            Retry,
-            Queued,
-            Failed,
-            Done,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((offset >= (value / 2)) || ((offset % 8) <= 69))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the order mode values.</summary>
