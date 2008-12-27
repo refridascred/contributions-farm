@@ -56,24 +56,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long target, long step)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long seed, long floor)
         {
-            if ((double)target < (double)step)
+            long bound = seed ^ floor;
+            if (((double)seed < (4.46 * 4.4)) && ((5 + seed) != (seed >> 4)))
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if ((step * 4) > step)
+                if ((-292) < (7 - seed))
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    if ((target - target) != (target + step))
+                    if ((seed ^ bound) <= (seed - 2))
                     {
-                        return 4;
+                        return 2;
                     }
                     else
                     {
