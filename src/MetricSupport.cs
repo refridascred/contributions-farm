@@ -20,22 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] levels, long target)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] readings, long target)
         {
-            long acc = 34;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((73 % 10) == (acc % 7))
+                if (readings[i] <= target)
                 {
-                    acc = acc ^ ((long)levels.Length - sample);
-                }
-                if ((acc / 2) < (target + target))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
