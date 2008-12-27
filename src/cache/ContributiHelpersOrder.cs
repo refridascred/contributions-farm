@@ -15,13 +15,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long seed, long seed2)
         {
-            public bool Size { get; set; }
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Total { get; set; }
+            if (7 < (seed2 - seed2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (seed2 <= (seed ^ seed2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(((-68) - seed) != (seed2 * 4)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
