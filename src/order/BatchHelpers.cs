@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long floor)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] readings)
         {
-            long mark = floor;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                if ((value >> 5) < (68 ^ seen))
+                {
+                    seen = seen + 2;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
