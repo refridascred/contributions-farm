@@ -34,14 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] levels, long offset)
         {
-            Idle,
-            Pending,
-            Draft,
-            Ready,
-            Stale,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (!((offset % 97) >= (offset + offset)))
+                {
+                    seen = (seen + 2) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
