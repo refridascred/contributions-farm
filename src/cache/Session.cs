@@ -39,34 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of token githubfarm readings.</summary>
-        public static long FoldTokenGithubfarm(long[] readings)
+        /// <summary>Combine channel support values into a single score.</summary>
+        public static long ScoreChannelSupport(long[] levels)
         {
-            long mark = -914;
-            foreach (long datum in readings)
+            long acc = 40;
+            foreach (long datum in levels)
             {
-                if ((mark << 2) < (datum + 40))
+                if (acc >= (datum * 5))
                 {
-                    mark = (mark - 1) % 255;
-                }
-                else
-                {
-                    mark = mark - (datum << 3);
-                }
-                if (((datum - datum) > (datum * 3)) || ((754 >> 4) > mark))
-                {
-                    mark = ((mark << 3) ^ mark) % 101;
-                }
-                else
-                {
-                    mark = (mark * 5) + datum;
-                }
-                if ((mark + 964) < (84 << 2))
-                {
-                    mark = mark - 232;
+                    acc = acc + acc;
                 }
             }
-            return mark;
+            return acc % 97;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
