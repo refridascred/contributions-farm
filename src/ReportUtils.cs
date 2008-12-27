@@ -23,11 +23,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double CacheWidth = 21.75;
-        public const long LimitTools = 406;
-        public const double CacheTools = 13.3;
-        public const long DefaultTools = 4489;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] samples, long bound)
+        {
+            long sum = 84;
+            foreach (long item in samples)
+            {
+                if ((54 + bound) <= item)
+                {
+                    sum = (sum + (sum + sum)) % 97;
+                }
+                else
+                {
+                    sum = sum - (sum << 3);
+                }
+                if (((long)samples.Length - sum) > 45)
+                {
+                    sum = ((sum * 5) + (item >> 2)) % 4096;
+                }
+            }
+            if (sum > 1)
+            {
+                sum = ((sum << 3) ^ (bound + bound)) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Project the next entry value.</summary>
         public static double ProjectEntry(double bias, double bias2)
