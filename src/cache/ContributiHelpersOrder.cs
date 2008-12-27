@@ -31,18 +31,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] series, long origin)
-        {
-            long acc = 845;
-            foreach (long value in series)
-            {
-                if ((value >> 4) >= acc)
-                {
-                    acc = (acc + (value >> 5)) + origin;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string SoftSize = "staging-v2";
+        public const string StepCount = "latest";
+        public const long MinWidth = 5390;
     }
 }
