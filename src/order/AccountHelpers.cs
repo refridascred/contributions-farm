@@ -43,11 +43,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepInterval = 71.67;
-        public const double BurstScore = 30.64;
-        public const double BaseWindow = 47.17;
-        public const string StepSize = "latest-v2";
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < bound) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long GradeGithubfarm(long target, long step)
