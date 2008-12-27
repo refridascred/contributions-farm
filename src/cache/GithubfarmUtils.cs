@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] levels)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long limit)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long total = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (count < (2 >> 4))
-                {
-                    count = (count + 1) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
