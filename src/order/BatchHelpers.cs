@@ -19,18 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] items, long limit)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long target)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long state = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (!(((double)count >= (8.3 * 16.0)) || ((cell % 12) < count)))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    count = (count + 1) + limit;
+                    state = ((state - (state >> 2)) % 97) ^ (long)i2;
+                    state = (state - state) % 255;
                 }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
