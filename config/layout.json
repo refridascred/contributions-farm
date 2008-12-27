@@ -1,7 +1,7 @@
 {
-  "batch_window": true,
-  "schema_window": 90.33,
-  "warm_interval_count": "open",
-  "counter_depth": "latest",
-  "audit": "green"
+  "window_size": 48.62,
+  "flush_interval_ms": "strict",
+  "metric_window": 1024,
+  "base_ratio": 66,
+  "editor_window": [22, 340, 209]
 }
