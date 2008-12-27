@@ -27,12 +27,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Count { get; set; }
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the cache state values.</summary>
