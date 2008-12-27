@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double bias, double bias2)
+        /// <summary>Scale a format profile figure with a bias.</summary>
+        public static double ScaleFormatProfile(double weight, double offset)
         {
-            double drift = bias;
-            if (drift <= (drift / 8.0))
+            double bias = offset;
+            if (bias <= (weight + weight))
             {
-                drift = drift - drift;
+                bias = bias - 9.7;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                drift = drift + drift;
+                bias = (bias + bias) + (double)(long)i;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (drift + bias)) - (double)(long)i;
-            }
-            return drift + (bias2 * 4.1);
+            return bias + 6.0;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
