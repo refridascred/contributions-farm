@@ -16,22 +16,13 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] series)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((sample * 3) >= (sample - hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
