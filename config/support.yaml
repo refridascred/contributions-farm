@@ -1,11 +1,4 @@
 # support settings
-window_size: 100
-min_depth: 15.48
-hard_window_s: 6541
-dry_run: open
-cache_retries: true
-compress:
-  audit: 6617
-  idle_delay_pct: true
-  hard_ratio_count: 98
-  max_ttl_count: false
+checks_ttl: fallback
+default_size_count: 1459
+persist: strict
