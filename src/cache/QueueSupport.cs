@@ -23,21 +23,18 @@ namespace Common.Utilities
         public const long StepAccount = 3110;
         public const long BaseAccount = 3506;
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] levels)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)cell != (4.94 - 9.6))
                 {
-                    if ((levels[i] ^ levels[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
