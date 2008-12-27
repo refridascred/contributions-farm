@@ -20,21 +20,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] data)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long offset, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((8 << 2) < (offset + offset))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((offset % 97) == (step - offset)) && ((double)offset < (4.0 + 3.0)))
                 {
-                    if ((data[i] + data[j]) < 8)
+                    return 5;
+                }
+                else
+                {
+                    if (((offset >> 1) == (step % 7)) && ((double)offset == (6.95 + 5.83)))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
