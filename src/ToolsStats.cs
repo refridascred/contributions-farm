@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitBudget = 9607;
-        public const string SoftTimeout = "latest-v2";
-        public const long WindowTimeout = 2014;
-        public const long LimitProfile = 5753;
+        /// <summary>Classify a context tools pair into a bucket.</summary>
+        public static long BucketContextTools(long offset, long offset2)
+        {
+            if ((offset > 16) || (offset2 > (offset + offset)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (offset2 > offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double CacheGithubfarm = 73.44;
