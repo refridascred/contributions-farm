@@ -1,9 +1,7 @@
-id,region,ratio,level
-1,341,488,14.55
-2,912,10.08,472
-3,3.56,800,103
-4,staging,3.75,688
-5,5.85,blue,68.35
-6,91.64,178,legacy
-7,943,eu-west,77.37
-8,latest,206,709
+id,weight
+1,stable
+2,open
+3,955
+4,830
+5,edge
+6,661
