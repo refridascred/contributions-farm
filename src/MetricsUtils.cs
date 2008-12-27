@@ -12,19 +12,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] levels, long limit)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Closed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Compare every pair of checks graph readings.</summary>
