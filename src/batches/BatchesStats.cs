@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long seed, long bound)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] levels, long limit)
         {
-            if ((seed << 3) == (seed + bound))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((seed - 7) < (bound - bound)))
+                if ((levels[i] >= limit) && ((levels[i] % 3) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound - bound) >= 5)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the window state values.</summary>
