@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] levels, long step)
         {
-            Dropped,
-            New,
-            Closed,
-            Draft,
-            Pending,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate metric farm samples.</summary>
