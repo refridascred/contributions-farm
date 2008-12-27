@@ -30,12 +30,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            public bool Owner { get; set; }
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
+            public bool Weight { get; set; }
+            public double Offset { get; set; }
+            public double Region { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
