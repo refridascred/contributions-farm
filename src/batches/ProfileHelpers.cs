@@ -23,13 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Iterate the buffer order series from a seed.</summary>
+        public static long RollBufferOrder(long origin)
         {
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
+            long state = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                state = (state + origin) % 97;
+                state = (state << 3) ^ (long)i;
+                state = state ^ ((long)i & 7);
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Define token limits and defaults.</summary>
