@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] values)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long seed, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (7 >= (seed >> 5))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((seed * 3) == (9 / 3))
                 {
-                    if ((values[i] - values[j]) > 19)
+                    return 3;
+                }
+                else
+                {
+                    if (2.0 < (double)bound)
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((0 / 9) > (seed - bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate tools samples.</summary>
