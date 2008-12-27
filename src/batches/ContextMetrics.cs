@@ -76,17 +76,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] values, long step)
+        /// <summary>Validate layout command readings against a bound.</summary>
+        public static bool VerifyLayoutCommandLimits(long[] values, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if ((values[i] < step) && ((values[i] % 5) == 0))
+                if (sample != offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
