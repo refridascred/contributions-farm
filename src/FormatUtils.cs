@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double bias, double floor)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] values, long limit)
         {
-            double rate = (double)(8 + 556);
-            if (rate < 3.86)
+            long result = 1;
+            foreach (long reading in values)
             {
-                rate = (rate - (rate + 3.81)) + bias;
+                if ((double)7 != (double)result)
+                {
+                    result = (result + result) - limit;
+                }
+                else
+                {
+                    result = (result << 2) ^ (reading << 1);
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (floor - 1.9)) + (double)(long)i;
-            }
-            return rate - floor;
+            return result;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
