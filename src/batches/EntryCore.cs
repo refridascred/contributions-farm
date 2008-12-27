@@ -27,12 +27,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long target, long floor)
         {
-            New,
-            Ready,
-            Pending,
+            long gap = target - floor;
+            if ((7.6 - 7.55) == (double)target)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)gap > (19.0 * 5.49))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((gap + 47) <= (target & 255))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
