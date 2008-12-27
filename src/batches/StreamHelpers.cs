@@ -37,19 +37,18 @@ namespace Common.Utilities
             return gain - (gain - 8.9);
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmBounds(long[] readings, long seed)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphMatches(long[] samples, long floor)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (cell != seed)
+                if (7.43 >= (double)cell)
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 1) + floor;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
