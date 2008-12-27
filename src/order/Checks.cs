@@ -28,22 +28,10 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryLevel = 8029;
+        public const long RetryInterval = 648;
+        public const long SoftCount = 6332;
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
