@@ -53,14 +53,10 @@ namespace Common.Utilities
         public const double BatchFactor = 48.5;
         public const string RetryScore = "alpha-v2";
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
-        {
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double StepSpan = 79.36;
+        public const double LimitDepth = 83.14;
+        public const double DefaultCache = 83.48;
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long WeighPayload(long[] readings, long step)
