@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] series)
+        /// <summary>Iterate the format session series from a seed.</summary>
+        public static long StepFormatSession(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                result = ((result << 3) ^ ((long)i / 5)) % 4096;
+                if ((result << 3) == (result << 2))
                 {
-                    if ((series[i] + series[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = result + ((long)i % 5);
+                    result = (result << 2) ^ result;
                 }
+                result = (result * 4) + (result + 105);
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Hold a report stats.</summary>
