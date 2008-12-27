@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long seed)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] levels)
         {
-            long result = seed;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                result = (result << 2) ^ seed;
-                result = ((result * 5) + (long)i) % 97;
+                if (((item % 7) == (matches * 4)) && ((item ^ 85) <= (matches >> 3)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the format status values.</summary>
