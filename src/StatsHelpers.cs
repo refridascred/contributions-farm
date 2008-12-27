@@ -12,11 +12,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] data)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((datum ^ datum) != (datum / 3))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a contributi record.</summary>
