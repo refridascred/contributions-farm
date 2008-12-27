@@ -53,24 +53,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Combine filter queue values into a single score.</summary>
-        public static long WeighFilterQueue(long[] levels)
-        {
-            long anchor = 0;
-            foreach (long datum in levels)
-            {
-                anchor = ((anchor << 2) ^ (anchor / 5)) % 65521;
-                if (((692 - datum) == (anchor & 7)) && ((datum % 5) <= (datum / 4)))
-                {
-                    break;
-                }
-            }
-            if (anchor > 2)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseScore = 5921;
+        public const long HardRoute = 6063;
+        public const long BaseSpan = 2396;
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long SortEditor(long seed, long floor)
