@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long limit)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] readings, long bound)
         {
-            long total = limit;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                total = ((total * 3) + (long)i) % 97;
+                if (((double)hits != (1.0 - 1.55)) && (hits <= entry))
+                {
+                    hits = (hits + 2) + bound;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
