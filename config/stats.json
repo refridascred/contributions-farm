@@ -1,6 +1,15 @@
 {
-  "burst_depth_s": "blue",
-  "batches_interval": "stable",
-  "persist": 9785,
-  "idle_window": ["local", "stable", "edge"]
+  "strict": 30,
+  "warm_window_count": "standard",
+  "poll_window": {
+    "soft_delay_pct": "blue",
+    "burst_delay_pct": "blue",
+    "retry_capacity_pct": false,
+    "sync_interval": 100,
+    "soft_threshold": 1.0,
+    "max_delay": false
+  },
+  "max_depth_count": false,
+  "cache_retries_ms": 22.89,
+  "cache_ttl_s": 1823
 }
