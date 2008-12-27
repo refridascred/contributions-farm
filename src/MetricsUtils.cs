@@ -61,17 +61,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first channel cluster entry that matches the target.</summary>
-        public static long SeekChannelClusterIndex(long[] samples, long offset)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] levels, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (samples[i] <= offset)
+                if (item > floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
