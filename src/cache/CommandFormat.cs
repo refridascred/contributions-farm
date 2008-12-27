@@ -31,19 +31,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long bound, long limit)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long origin, long origin2)
         {
-            long span = bound ^ limit;
-            if (((4 * 2) >= (span % 8)) && ((bound - span) > limit))
+            if (origin >= (origin2 & 7))
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if (span >= (243 / 6))
+                if ((double)origin2 != (double)origin)
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
