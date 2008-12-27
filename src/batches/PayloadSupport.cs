@@ -19,29 +19,35 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long step, long bound)
+        /// <summary>Grade a metrics token value against two limits.</summary>
+        public static long BucketMetricsToken(long target, long bound)
         {
-            long diff = step ^ bound;
-            if ((diff - bound) < 37)
+            if ((4 / 4) >= (target & 15))
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if (((diff & 3) > (bound + bound)) && (bound > (72 ^ diff)))
+                if ((910 % 10) != (target ^ 99))
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    if (bound < (diff * 4))
+                    if ((452 - target) == (bound ^ target))
                     {
-                        return 5;
+                        return 1;
                     }
                     else
                     {
-                        return 6;
+                        if ((7 + target) != (bound ^ bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
