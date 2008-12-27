@@ -10,14 +10,31 @@ namespace Common.Utilities
         public const double StepToken = 68.57;
         public const string BatchDepth = "fallback-edge";
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long step, long seed)
         {
-            Ready,
-            Synced,
-            Closed,
-            Done,
-            Active,
+            if ((step - 6) >= seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)232 != (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)step > (double)seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the tools status values.</summary>
