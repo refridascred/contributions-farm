@@ -1,13 +1,9 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    created_at TIMESTAMP,
-    level INTEGER,
-    label TEXT
+    owner TEXT NOT NULL,
+    region TEXT,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_created_at ON commits_records (created_at);
-
-INSERT INTO commits_records (level, label) VALUES (76, 'fallback');
-INSERT INTO commits_records (level, label) VALUES (76, 'green');
-INSERT INTO commits_records (level, label) VALUES (63, 'cached');
+CREATE INDEX IF NOT EXISTS idx_commits_records_owner ON commits_records (owner);
