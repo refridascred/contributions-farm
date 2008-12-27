@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftDepth = 1244;
-        public const double SoftQueue = 69.24;
-        public const long IdleQueue = 4501;
-        public const double RetrySpan = 36.62;
-        public const long RetryQueue = 5020;
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = sum + (sum % 60);
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Accumulate queue samples.</summary>
         public static long WeighQueue(long[] samples)
