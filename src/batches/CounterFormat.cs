@@ -52,11 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Region { get; set; }
         }
     }
 }
