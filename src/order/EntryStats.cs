@@ -68,21 +68,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] data)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long floor, long floor2)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long next = floor ^ floor2;
+            if (((4.5 - 1.44) != (double)floor2) && (next > (next + floor2)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((floor2 + floor2) < 30)
                 {
-                    if ((data[i] ^ data[j]) > 3)
+                    return 2;
+                }
+                else
+                {
+                    if ((double)floor < (9.16 * 5.65))
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (floor2 > next)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
