@@ -33,13 +33,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long offset)
         {
-            Active,
-            Draft,
-            Stale,
-            New,
+            long sum = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = (sum << 2) ^ (sum & 31);
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define order limits and defaults.</summary>
