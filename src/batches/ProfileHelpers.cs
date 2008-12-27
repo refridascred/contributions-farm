@@ -42,13 +42,15 @@ namespace Common.Utilities
         public const long WindowToken = 2519;
         public const long HardToken = 3025;
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double scale, double floor)
         {
-            Closed,
-            Stale,
-            New,
-            Queued,
+            double load = scale;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + 8.0) + (double)(long)i;
+            }
+            return load - floor;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
