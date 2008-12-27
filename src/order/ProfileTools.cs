@@ -49,11 +49,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] samples)
         {
-            public bool Score { get; set; }
-            public string Label { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
