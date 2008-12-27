@@ -61,22 +61,18 @@ namespace Common.Utilities
         public const double CacheFarm = 55.78;
         public const long BurstFarm = 5901;
 
-        /// <summary>Measure how many metric metrics samples are out of range.</summary>
-        public static long AuditMetricMetricsOutliers(long[] values, long floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenOutliers(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((211 / 4) > (tally >> 2))
+                if (((double)floor > (5.6 * 1.0)) || (130 > (sample + sample)))
                 {
-                    tally = ((tally + 3) - value) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
