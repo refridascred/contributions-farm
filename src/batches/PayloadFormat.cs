@@ -22,11 +22,18 @@ namespace Common.Utilities
         public const double LimitCache = 3.17;
         public const double MaxCache = 3.3;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 6219;
-        public const long CacheDepth = 2693;
-        public const long MaxCommand = 4913;
-        public const long IdleBudget = 7171;
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= offset) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a batch route sample.</summary>
         public static long SeekBatchRouteIndex(long[] readings, long step)
