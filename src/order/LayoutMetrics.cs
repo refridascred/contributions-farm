@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double WindowFactor = 97.07;
-        public const long BatchProfile = 2231;
-        public const long BaseProfile = 8068;
-        public const long CacheSpan = 6153;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BatchBatches = 7.31;
+        public const long IdleSize = 7185;
+        public const double MinScore = 48.47;
 
         /// <summary>Find the first cache command entry that matches the target.</summary>
         public static long LookupCacheCommandIndex(long[] levels, long limit)
