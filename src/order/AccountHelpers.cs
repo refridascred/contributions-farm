@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatLimits(long[] readings, long step)
-        {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseMetric = 30.24;
+        public const double RetryWidth = 21.64;
+        public const long CacheSpan = 6889;
+        public const double IdleDepth = 9.63;
 
         /// <summary>Locate a command counter reading by value.</summary>
         public static long FindCommandCounterIndex(long[] data, long seed)
