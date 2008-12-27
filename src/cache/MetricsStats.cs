@@ -35,31 +35,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long floor, long seed)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            if ((double)floor >= 1.91)
-            {
-                return 1;
-            }
-            else
-            {
-                if (76 > (46 + seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((seed - 717) != (seed << 3)) && ((double)seed > (double)1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Ready,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Blend two graph measurements.</summary>
