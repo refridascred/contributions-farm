@@ -49,18 +49,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] samples, long limit)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long bound, long step)
         {
-            long mark = 158;
-            foreach (long sample in samples)
+            if (!((double)step >= 8.27))
             {
-                if ((sample / 2) > mark)
+                return 5;
+            }
+            else
+            {
+                if (((step & 255) > step) || ((double)bound < (2.89 * 7.41)))
                 {
-                    mark = ((mark * 3) + (mark + limit)) % 1000;
+                    return 6;
+                }
+                else
+                {
+                    if (!((bound + step) == (bound + 26)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
