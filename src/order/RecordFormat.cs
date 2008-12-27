@@ -61,13 +61,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricGaps(long[] samples, long step)
         {
-            public bool Count { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((matches & 7) >= (value << 2))
+                {
+                    matches = (matches + 2) - step;
+                }
+            }
+            return matches;
         }
     }
 }
