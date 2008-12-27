@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double ratio, double span)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long limit, long bound)
         {
-            double scale = (ratio - span) / 7.0;
-            return scale - span;
+            if ((8.45 + 7.0) <= (double)bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit + bound) <= (558 & 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound - bound) != (limit - limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm record.</summary>
