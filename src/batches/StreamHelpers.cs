@@ -33,11 +33,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] data, long offset)
         {
-            public bool Level { get; set; }
-            public long Score { get; set; }
+            long result = 2;
+            foreach (long entry in data)
+            {
+                if (((3.43 / 8.0) > (double)offset) && ((offset * 2) >= (67 + offset)))
+                {
+                    result = ((result ^ (offset / 2)) % 255) ^ entry;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
