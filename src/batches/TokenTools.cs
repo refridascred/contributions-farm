@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 1143;
-        public const string DefaultFactor = "primary-v2";
-        public const long StepRatio = 3784;
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool ValidateClusterRange(long[] items, long origin)
