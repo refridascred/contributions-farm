@@ -12,11 +12,22 @@ namespace Common.Utilities
         public const double IdleReport = 26.21;
         public const string BaseWidth = "alpha-edge";
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Accumulate already window samples.</summary>
+        public static long WeighAlreadyWindow(long[] values)
         {
-            public bool Label { get; set; }
-            public string Ratio { get; set; } = "";
+            long acc = 155;
+            foreach (long item in values)
+            {
+                if ((687 - acc) >= (item - acc))
+                {
+                    continue;
+                }
+                if (((item - 2) == (acc + acc)) || ((item << 3) == (acc << 3)))
+                {
+                    acc = acc + (acc * 4);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Project the next githubfarm metrics value.</summary>
