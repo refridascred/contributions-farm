@@ -54,10 +54,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxBudget = 3545;
-        public const double StepMetrics = 69.34;
-        public const string CacheMetrics = "local-1";
-        public const string BurstCount = "primary-1";
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountBounds(long[] values, long floor)
+        {
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
