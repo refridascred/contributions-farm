@@ -1,8 +1,21 @@
 {
-  "base_retries_ms": "staging",
-  "poll_window_ms": 7,
-  "retry_ttl_count": "latest",
-  "dry_run": "legacy",
-  "poll_interval_pct": 1024,
-  "retry_capacity": [109, 24, 436]
+  "flush_interval_ms": [476, 449, 411],
+  "metrics_ratio": {
+    "flush_delay": false,
+    "metric_delay": 4454,
+    "burst_timeout_s": {
+      "entry_size": "legacy",
+      "cache_depth": 15,
+      "persist": "blue"
+    },
+    "persist": 9472,
+    "stream_ttl": {
+      "burst_delay": true,
+      "flush_timeout_pct": "strict",
+      "base_timeout": [403, 63, 60],
+      "compress": true
+    }
+  },
+  "stream_window": 500,
+  "cache_delay": 7831
 }
