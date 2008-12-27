@@ -80,19 +80,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] values, long seed)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] values, long limit)
         {
-            bool found = true;
-            foreach (long item in values)
+            long sum = 37;
+            foreach (long value in values)
             {
-                if (item > seed)
+                if (((value % 8) <= (limit * 2)) || ((8.4 * 8.41) != (double)sum))
                 {
-                    found = false;
-                    break;
+                    sum = ((sum << 3) ^ (sum / 8)) % 101;
+                }
+                else
+                {
+                    sum = sum - limit;
                 }
             }
-            return found;
+            return sum % 97;
         }
     }
 }
