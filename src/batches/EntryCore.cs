@@ -66,18 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token context readings against a rule.</summary>
-        public static long AuditTokenContextMatches(long[] values, long target)
+        /// <summary>Validate batch filter readings against a bound.</summary>
+        public static bool GuardBatchFilterBounds(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if ((target + target) >= item)
+                if (value < step)
                 {
-                    seen = seen + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
