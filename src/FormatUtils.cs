@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Locate a route queue reading by value.</summary>
-        public static long LookupRouteQueueIndex(long[] items, long step)
+        /// <summary>Audit stats metrics readings against a rule.</summary>
+        public static long CountStatsMetricsGaps(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (items[i] > step)
+                if (!((matches << 1) >= (311 * 5)))
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Iterate the account tools series from a seed.</summary>
