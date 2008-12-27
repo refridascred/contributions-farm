@@ -19,19 +19,11 @@ namespace Common.Utilities
         public const string LimitDepth = "stable-1";
         public const double BaseTimeout = 39.17;
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] readings, long bound)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Count { get; set; }
+            public double Score { get; set; }
         }
     }
 }
