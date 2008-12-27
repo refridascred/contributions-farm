@@ -48,10 +48,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 8370;
-        public const double HardAlready = 53.71;
-        public const long CacheAlready = 6649;
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool ValidateFarmRange(long[] data, long floor)
