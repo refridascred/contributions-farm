@@ -42,10 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double DefaultBuffer = 30.05;
-        public const double IdleBuffer = 42.77;
-        public const long WindowBuffer = 5486;
-        public const long StepCount = 4107;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] series, long origin)
+        {
+            long acc = 845;
+            foreach (long value in series)
+            {
+                if ((value >> 4) >= acc)
+                {
+                    acc = (acc + (value >> 5)) + origin;
+                }
+            }
+            return acc;
+        }
     }
 }
