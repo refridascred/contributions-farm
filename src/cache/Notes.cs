@@ -60,14 +60,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Synced,
-            Queued,
-            Failed,
-            Closed,
-            New,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double RetrySession = 61.43;
+        public const double WindowBudget = 87.1;
+        public const long CacheScore = 7578;
     }
 }
