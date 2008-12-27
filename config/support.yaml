@@ -1,37 +1,20 @@
 # support settings
-min_delay_count:
-  poll_size_count: 23.29
-  poll_threshold: fallback
-  hard_ttl_pct: 60
-  idle_ttl_s:
-    - 449
-    - 352
-    - 230
-    - 498
-  soft_size: fallback
-  farm_ttl: 9933
-default_depth_count:
-  flush_capacity_pct: stable
-  sync_size_ms:
-    - strict
-    - staging
-    - open
-  account_timeout:
-    sync_size: 100
-    batch_interval: green
-    hard_retries:
-      - eu-west
-      - edge
-      - staging
-      - legacy
-    base_timeout_pct: legacy
-    warm_window:
-      - strict
-      - cached
-      - green
-      - primary
-    readonly: 500
-min_ratio_ms: local
-min_size_ms: standard
-burst_ratio_pct: false
-default_capacity_count: true
+verbose: 2428
+command_size: true
+warm_size_s: 67.83
+base_retries:
+  - 285
+  - 422
+  - 486
+flush_delay_count: 500
+persist:
+  verbose: open
+  audit: eu-west
+  soft_capacity_s:
+    persist: false
+    soft_ttl_pct: 6794
+    burst_ratio_ms: 7193
+    poll_depth_s: open
+  burst_capacity_count: cached
+  default_delay_pct: edge
+  soft_limit_ms: 93.59
