@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long step, long offset)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long bound)
         {
-            long bound = step - offset;
-            if ((double)step < (6.0 * 1.0))
+            long sum = bound;
+            for (int i = 0; i < 24; i++)
             {
-                return 8;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((offset + bound) == (offset + offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
