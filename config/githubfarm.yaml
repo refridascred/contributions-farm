@@ -1,17 +1,23 @@
 # githubfarm settings
-dry_run: false
-hard_ttl: 1024
-poll_ttl_count: edge
-min_retries_ms: 14
-audit:
-  base_ratio_count: standard
-  window_window:
-    command_ttl: 92
-    profile_capacity: 61
-    support_ttl: 67.78
-    cache_depth_pct: primary
-  burst_interval_count: stable
-  verbose:
-    - 62
-    - 299
-  metric_window: 1024
+idle_window_count:
+  max_ratio_s: 57.49
+  burst_ratio_count: 500
+  min_size_count:
+    soft_limit_s: eu-west
+    compress: 96
+    filter_threshold: green
+    token_ratio: 75.66
+  dry_run: strict
+  base_limit_s: blue
+enabled: false
+min_depth:
+  - local
+  - staging
+  - eu-west
+  - standard
+dry_run: 16
+min_depth_pct:
+  - 29
+  - 277
+  - 35
+  - 162
