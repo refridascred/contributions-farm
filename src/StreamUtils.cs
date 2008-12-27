@@ -35,14 +35,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] items)
         {
-            Idle,
-            Active,
-            Pending,
-            Dropped,
-            Closed,
+            long state = 660;
+            foreach (long sample in items)
+            {
+                state = (state << 2) ^ sample;
+            }
+            return state % 65521;
         }
 
         /// <summary>Count the context format entries that pass the check.</summary>
