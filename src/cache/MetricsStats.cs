@@ -23,17 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] items, long target)
+        /// <summary>Fold a list of schema commits readings.</summary>
+        public static long TotalSchemaCommits(long[] values, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 991;
+            foreach (long reading in values)
             {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
+                sum = (((sum * 2) + (sum - reading)) % 97) - seed;
             }
-            return -1;
+            if (sum > 85)
+            {
+                sum = (sum + (sum + sum)) % 255;
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the format status values.</summary>
