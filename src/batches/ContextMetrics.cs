@@ -22,13 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] values)
         {
-            Active,
-            Retry,
-            Stale,
-            Pending,
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((((tally * 5) <= sample) || ((sample + sample) > (7 - tally))) || !((-774) >= (53 + tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the farm level values.</summary>
