@@ -45,15 +45,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
-        {
-            Synced,
-            Draft,
-            Active,
-            Closed,
-            Done,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double WindowReport = 85.98;
+        public const long MinSpan = 4806;
+        public const long BurstReport = 2406;
+        public const long BatchInterval = 5151;
+        public const string SoftReport = "staging-1";
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
