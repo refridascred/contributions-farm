@@ -28,21 +28,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] readings)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Closed,
+            Ready,
+            Active,
+            Failed,
         }
     }
 }
