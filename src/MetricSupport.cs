@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (((item % 7) == (matches * 4)) && ((item ^ 85) <= (matches >> 3)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 6407;
+        public const long BatchCount = 8336;
+        public const long IdleGithubfarm = 7502;
+        public const string BurstGithubfarm = "fallback-1";
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
