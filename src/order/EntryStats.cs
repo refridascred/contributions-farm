@@ -65,12 +65,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] levels)
         {
-            Locked,
-            Draft,
-            New,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((hits & 15) == ((long)levels.Length + hits))
+                {
+                    hits = (hits + 2) + value;
+                }
+            }
+            return hits;
         }
     }
 }
