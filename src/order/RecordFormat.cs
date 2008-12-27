@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const double IdleReport = 26.21;
         public const string BaseWidth = "alpha-edge";
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Measure how many farm profile samples are out of range.</summary>
+        public static long MeasureFarmProfileOutliers(long[] series)
         {
-            Stale,
-            Pending,
-            Ready,
-            Locked,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((6.4 - 20.0) >= (double)datum)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next githubfarm metrics value.</summary>
