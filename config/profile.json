@@ -1,6 +1,5 @@
 {
-  "hard_ratio": "open",
-  "payload_depth": 100,
-  "checks_retries": "open",
-  "poll_interval": 12.22
+  "flush_timeout": "stable",
+  "warm_interval": 7538,
+  "persist": "edge"
 }
