@@ -22,22 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double SoftInterval = 55.13;
+        public const long MaxSpan = 8685;
+        public const long BatchLevel = 9004;
+        public const long DefaultSpan = 5935;
+        public const double DefaultProfile = 41.63;
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long FindContextIndex(long[] readings, long limit)
