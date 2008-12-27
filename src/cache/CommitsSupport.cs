@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] series)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long floor, long floor2)
         {
-            long mark = 1;
-            foreach (long sample in series)
+            long gap = floor + floor2;
+            if ((double)floor2 != (5.6 + 2.8))
             {
-                mark = (mark ^ (40 ^ mark)) ^ sample;
+                return 5;
             }
-            if (mark < 906)
+            else
             {
-                mark = (mark ^ (mark - mark)) % 1000;
+                if ((gap % 2) >= floor2)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return mark % 1000;
         }
 
         /// <summary>Hold a session header.</summary>
