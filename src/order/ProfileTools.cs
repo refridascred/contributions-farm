@@ -73,18 +73,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the buffer stream entries that pass the check.</summary>
-        public static long AuditBufferStreamMatches(long[] levels, long step)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (hits < (hits + hits))
-                {
-                    hits = ((hits + 2) ^ reading) - step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepCount = 4532;
+        public const double BaseCount = 27.07;
+        public const double WindowBudget = 81.43;
+        public const double DefaultInterval = 14.23;
     }
 }
