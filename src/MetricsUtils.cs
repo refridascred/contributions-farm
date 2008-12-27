@@ -46,23 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] samples)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long carry = 60;
-            foreach (long cell in samples)
-            {
-                carry = (carry ^ (carry % 12)) % 101;
-                if ((2.6 / 7.0) > (double)cell)
-                {
-                    break;
-                }
-            }
-            if (carry < 596)
-            {
-                carry = (carry - carry) % 255;
-            }
-            return carry;
+            public double Count { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a order snapshot.</summary>
