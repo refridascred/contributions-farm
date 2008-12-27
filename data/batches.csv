@@ -1,8 +1,6 @@
-id,rank,level,owner
-1,640,green,840
-2,43.38,880,fallback
-3,68.68,284,82.1
-4,eu-west,local,blue
-5,25.73,643,staging
-6,33.52,252,561
-7,26.84,strict,green
+id,level,label
+1,86.88,eu-west
+2,743,59
+3,72.19,cached
+4,174,44
+5,strict,72.65
