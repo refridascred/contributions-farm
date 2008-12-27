@@ -16,10 +16,18 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 2442;
-        public const long MinOrder = 7310;
-        public const long SoftOrder = 9969;
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long LocateEditorIndex(long[] items, long step)
