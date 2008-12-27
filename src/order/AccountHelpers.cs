@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatMatches(long[] levels, long seed)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((seed >> 3) == (item - tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Stale,
+            Pending,
+            New,
         }
 
         /// <summary>Hold a tools snapshot.</summary>
