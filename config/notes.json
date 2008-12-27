@@ -1,12 +1,6 @@
 {
-  "idle_ttl_ms": [125, 465, 439, 348],
-  "verbose": {
-    "buffer_ttl": 30.88,
-    "cache_size": 3419,
-    "min_ratio": "open",
-    "burst_limit_count": ["green", "blue"],
-    "retry_retries": "blue"
-  },
-  "audit": "legacy",
-  "flush_ttl_s": false
+  "batch_ratio_ms": ["primary", "strict"],
+  "enabled": 8417,
+  "cache_capacity_count": 7984,
+  "format_interval": "stable"
 }
