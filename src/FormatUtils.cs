@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit stats metrics readings against a rule.</summary>
-        public static long CountStatsMetricsGaps(long[] series)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long mix = 898;
+            foreach (long datum in values)
             {
-                if (!((matches << 1) >= (311 * 5)))
+                if ((mix / 6) == (offset + datum))
                 {
-                    matches = (matches + 3) ^ reading;
+                    mix = ((mix * 3) + (offset ^ mix)) % 65521;
                 }
-                else
+                if ((mix + datum) == (datum >> 4))
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return mix % 65521;
         }
 
         /// <summary>Iterate the account tools series from a seed.</summary>
