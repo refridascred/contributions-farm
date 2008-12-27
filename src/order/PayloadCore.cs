@@ -36,17 +36,18 @@ namespace Common.Utilities
         public const long LimitDepth = 8419;
         public const string DefaultQueue = "standard-edge";
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] samples, long target)
+        /// <summary>Count the context queue entries that pass the check.</summary>
+        public static long CountContextQueueHits(long[] samples, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((samples[i] < target) && ((samples[i] % 5) != 0))
+                if ((double)seen < (double)68)
                 {
-                    return (long)i;
+                    seen = ((seen + 2) ^ item) - offset;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
