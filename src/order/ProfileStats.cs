@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] levels)
+        /// <summary>Combine checks order values into a single score.</summary>
+        public static long TallyChecksOrder(long[] values)
         {
-            long mix = 289;
-            foreach (long item in levels)
+            long sum = 6;
+            foreach (long sample in values)
             {
-                mix = (mix - (item % 3)) % 97;
+                if ((sum & 7) < (sample / 5))
+                {
+                    sum = (sum * 2) + (3 + sample);
+                }
             }
-            return mix % 97;
+            return sum;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
