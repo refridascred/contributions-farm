@@ -14,10 +14,25 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftInterval = 9841;
-        public const long DefaultRatio = 6036;
-        public const long CacheBatch = 1492;
+        /// <summary>Rank profile channel input into a small class.</summary>
+        public static long SortProfileChannel(long seed, long target)
+        {
+            if (((-744) * 4) < (target / 9))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)target <= (7.9 * 3.5)) && (target > (target / 4)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long FindReportIndex(long[] samples, long limit)
