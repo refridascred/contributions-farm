@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] values)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long mark = 17;
-            foreach (long entry in values)
-            {
-                mark = (mark - entry) % 255;
-            }
-            return mark;
+            Failed,
+            Queued,
+            Draft,
+            Done,
+            Dropped,
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
