@@ -19,13 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Iterate the editor contributi series from a seed.</summary>
+        public static long RollEditorContributi(long floor)
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
+            long result = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
