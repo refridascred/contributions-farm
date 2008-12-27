@@ -1,14 +1,6 @@
 # entry settings
-flush_delay_count:
-  - open
-  - edge
-  - eu-west
-  - green
-retry_limit_pct: standard
-flush_ratio_s: edge
-min_threshold_count: true
-audit:
-  - 240
-  - 29
-  - 19
-  - 297
+soft_interval: 61
+enabled: open
+poll_depth_pct: 83.81
+warm_delay_pct: 60
+min_timeout: 85.72
