@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long origin)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long anchor = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((double)anchor < (0.56 + 16.0))
-                {
-                    anchor = (anchor * 4) + ((long)i >> 3);
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of batch stats readings.</summary>
