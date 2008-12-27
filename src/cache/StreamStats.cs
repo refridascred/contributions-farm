@@ -47,18 +47,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many entry profile samples are out of range.</summary>
-        public static long AuditEntryProfileMatches(long[] values)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((count / 4) > datum)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Retry,
+            Draft,
+            Ready,
+            Active,
+            Stale,
         }
     }
 }
