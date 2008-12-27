@@ -20,15 +20,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long limit)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long acc = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            Dropped,
+            Stale,
+            Locked,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
