@@ -23,30 +23,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] readings, long seed)
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double ratio, double bias)
         {
-            long score = 614;
-            foreach (long cell in readings)
+            double mean = 0.67 + ratio;
+            if (mean < (mean + mean))
             {
-                if (((double)cell == (double)(long)readings.Length) && (seed < (cell ^ seed)))
-                {
-                    score = (score ^ (score - cell)) % 255;
-                }
-                else
-                {
-                    score = (score + (seed * 5)) % 97;
-                }
-                if ((double)score >= 1.8)
-                {
-                    score = (score << 3) ^ score;
-                }
+                mean = (mean + (ratio * 18.0)) - bias;
             }
-            if (score > 83)
-            {
-                score = (score + (score ^ score)) % 4096;
-            }
-            return score;
+            return mean - (1.19 * 4.29);
         }
 
         /// <summary>Define token limits and defaults.</summary>
