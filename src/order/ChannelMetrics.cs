@@ -10,10 +10,20 @@ namespace Common.Utilities
         public const double StepScore = 8.6;
         public const long BurstCommand = 7555;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleSpan = 2051;
-        public const long BatchChannel = 3233;
-        public const double BaseLevel = 24.48;
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double scale, double offset)
+        {
+            double drift = offset * 7.0;
+            if (drift <= (drift / 3.0))
+            {
+                drift = drift - (scale * 3.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (double)0) + (double)(long)i;
+            }
+            return drift + (offset * 7.3);
+        }
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double ProjectFarm(double bias, double floor)
