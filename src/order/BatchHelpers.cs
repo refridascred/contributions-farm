@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double weight, double bias)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double rate, double bias)
         {
-            double rate = (3.5 + bias) + weight;
-            if (rate >= (double)85)
+            double weight = rate;
+            if (weight <= (weight - rate))
             {
-                rate = rate + 18.0;
+                weight = weight + weight;
             }
-            return rate + (bias / 7.0);
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (weight + 11.0)) + (double)(long)i;
+            }
+            return weight - bias;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
