@@ -15,25 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank contributi metric input into a small class.</summary>
-        public static long SortContributiMetric(long origin, long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] items)
         {
-            long cur = origin + floor;
-            if ((20.0 / 2.0) == (double)origin)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin != (double)cur)
+                if (sample > (sample / 2))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
