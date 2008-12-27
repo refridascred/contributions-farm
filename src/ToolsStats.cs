@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepRoute = "stable";
-        public const double IdleCount = 65.67;
-        public const long RetryRoute = 2619;
+        /// <summary>Derive the next githubfarm report value from a seed.</summary>
+        public static long StepGithubfarmReport(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double CacheGithubfarm = 73.44;
