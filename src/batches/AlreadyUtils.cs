@@ -19,13 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] readings)
         {
-            New,
-            Retry,
-            Dropped,
-            Draft,
+            long score = 636;
+            foreach (long value in readings)
+            {
+                if ((double)score == (5.5 / 8.0))
+                {
+                    score = score ^ (33 + score);
+                }
+                if (!((value + score) > (score >> 1)))
+                {
+                    break;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
