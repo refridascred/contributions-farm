@@ -31,25 +31,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long seed, long step)
-        {
-            if ((3.35 - 8.0) == (double)seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed != (double)step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 5590;
+        public const long SoftRatio = 6183;
+        public const long SoftQueue = 7885;
+        public const long MaxQueue = 8876;
+        public const long DefaultQueue = 4113;
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long TotalCounter(long[] values)
