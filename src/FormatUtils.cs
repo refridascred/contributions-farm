@@ -55,17 +55,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a cluster support sample.</summary>
-        public static long FindClusterSupportIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MaxWidth = 7.58;
+        public const string LimitGithubfarm = "staging-v2";
+        public const double BatchScore = 56.04;
+        public const string CacheGithubfarm = "latest-v2";
     }
 }
