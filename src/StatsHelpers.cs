@@ -28,16 +28,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long bound)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] items)
         {
-            long result = bound;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result << 3) ^ ((-69) / 8)) % 1000;
-                result = ((result * 2) + (long)i) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
