@@ -28,16 +28,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next order notes value from a seed.</summary>
-        public static long RollOrderNotes(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string CacheBudget = "open-edge";
+        public const string SoftCount = "latest-v2";
+        public const long HardInterval = 113;
+        public const string IdleDepth = "latest-edge";
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long TallyEntry(long[] values)
