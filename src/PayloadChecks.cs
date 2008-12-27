@@ -92,21 +92,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] series)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] levels, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry > target)
                 {
-                    if ((series[i] ^ series[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
