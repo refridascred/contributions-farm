@@ -67,11 +67,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseChecks = "staging";
-        public const long MinChecks = 4674;
-        public const long WindowChecks = 6001;
-        public const long HardLevel = 3805;
-        public const long BurstChecks = 4868;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleCount = 1476;
+        public const string SoftLevel = "latest-edge";
+        public const long BatchToken = 8039;
+        public const long MinSize = 6920;
     }
 }
