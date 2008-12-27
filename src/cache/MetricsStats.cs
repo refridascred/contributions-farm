@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinInterval = 5024;
-        public const double BatchReport = 20.4;
-        public const long HardSize = 4809;
-        public const long IdleSize = 5003;
-        public const double WindowReport = 16.4;
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long DeriveStats(long bound)
