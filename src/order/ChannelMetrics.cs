@@ -27,31 +27,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a cluster token value against two limits.</summary>
-        public static long ClassifyClusterToken(long offset, long limit)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            if (((limit << 2) >= (limit & 1)) || ((double)offset <= (4.39 - 1.75)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset <= (offset / 5)) && (limit <= (offset + offset)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((limit / 7) <= limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
