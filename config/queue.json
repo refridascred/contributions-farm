@@ -1,6 +1,18 @@
 {
-  "poll_window": [236, 201, 334, 84],
-  "warm_capacity": ["stable", "cached"],
-  "dry_run": 93.89,
-  "enabled": "edge"
+  "farm_timeout": {
+    "max_retries": {
+      "max_size_ms": [494, 355, 107],
+      "dry_run": 57,
+      "min_ratio_count": 42.59
+    },
+    "graph_depth": "blue",
+    "min_retries": 60,
+    "sync_ratio_s": 59,
+    "layout_retries": "local",
+    "persist": "staging"
+  },
+  "record_depth": 6143,
+  "cache_delay_s": 42,
+  "cluster_size": "legacy",
+  "dry_run": ["latest", "local", "cached", "fallback"]
 }
