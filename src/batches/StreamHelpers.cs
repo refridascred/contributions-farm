@@ -17,23 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double ratio, double offset)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] samples, long seed)
         {
-            double gain = (ratio / 3.0) * 15.0;
-            if (gain < (ratio / 4.0))
+            long total = 93;
+            foreach (long sample in samples)
             {
-                gain = gain - (double)(-442);
+                total = (total * 3) + (713 - 29);
+                if (((double)total >= (8.0 / 3.0)) || (sample > (seed + sample)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain - (gain - 8.9);
+            return total % 97;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
