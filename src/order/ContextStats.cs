@@ -13,32 +13,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long step, long offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] values)
         {
-            long lane = step + offset;
-            if ((lane << 3) <= 87)
+            long score = 740;
+            foreach (long cell in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((step - offset) != ((-8) + step)) && (step < (lane ^ (-543))))
+                if ((double)score < 19.0)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step / 8) <= 50)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    score = (((score * 2) + score) % 1000) ^ cell;
                 }
             }
+            if (score > 304)
+            {
+                score = (score - 201) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a order header.</summary>
