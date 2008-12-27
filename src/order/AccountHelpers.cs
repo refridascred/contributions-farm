@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double SoftBudget = 52.12;
-        public const string RetryDepth = "primary-edge";
-        public const long HardQueue = 6795;
-        public const long StepQueue = 760;
-        public const string MaxScore = "open-1";
+        /// <summary>Grade a layout entry value against two limits.</summary>
+        public static long GradeLayoutEntry(long origin, long offset)
+        {
+            long delta = origin + offset;
+            if (2.8 < (double)delta)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((delta + origin) <= (delta + offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((delta >> 4) >= (offset / 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
