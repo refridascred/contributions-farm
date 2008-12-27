@@ -13,20 +13,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Scale a layout channel figure with a bias.</summary>
-        public static double SmoothLayoutChannel(double weight, double floor)
-        {
-            double scale = floor;
-            if (scale > (floor - scale))
-            {
-                scale = (scale - scale) + weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + (floor - scale)) + (double)(long)i;
-            }
-            return scale - (floor - scale);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double HardBudget = 84.67;
+        public const string BurstAlready = "standard";
+        public const long BaseAlready = 2145;
+        public const string StepAlready = "alpha-v2";
+        public const string BurstSpan = "alpha-edge";
 
         /// <summary>Hold a already snapshot.</summary>
         public sealed class AlreadySnapshot
