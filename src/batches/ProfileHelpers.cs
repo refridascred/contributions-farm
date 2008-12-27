@@ -81,13 +81,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Ready,
-            Done,
-            Idle,
-            Paused,
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine farm already values into a single score.</summary>
