@@ -18,17 +18,19 @@ namespace Common.Utilities
         public const long CacheCount = 1996;
         public const long MinStats = 3981;
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] items, long seed)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheRange(long[] samples, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if (items[i] >= seed)
+                if (datum >= seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
