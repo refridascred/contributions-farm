@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long bound)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            Done,
+            Idle,
+            Locked,
+            Paused,
         }
 
         /// <summary>Iterate the report stats series from a seed.</summary>
