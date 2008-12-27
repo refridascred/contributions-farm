@@ -48,22 +48,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit metrics batches readings against a rule.</summary>
-        public static long CountMetricsBatchesOutliers(long[] data)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long target)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long total = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((cell >> 3) < (45 + tally))
+                if (((long)i + target) >= (target ^ target))
                 {
-                    tally = tally + 2;
+                    total = (total << 3) ^ (total + (long)i);
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = (total ^ target) % 97;
+                total = (total * 4) + (target * 4);
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
