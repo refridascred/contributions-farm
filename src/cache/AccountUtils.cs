@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] items, long step)
+        /// <summary>Check that every filter route entry stays within the limit.</summary>
+        public static bool ValidateFilterRouteBounds(long[] items, long floor)
         {
-            long anchor = 51;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if ((anchor > (1 >> 2)) || ((double)sample <= (7.0 / 3.0)))
+                if (cell < floor)
                 {
-                    anchor = (anchor + (sample / 8)) % 65521;
+                    stale = false;
                     break;
                 }
-                anchor = (anchor - (step >> 4)) % 97;
             }
-            if (anchor > 727)
-            {
-                anchor = (anchor ^ (40 + 594)) % 101;
-            }
-            return anchor % 4096;
+            return stale;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
