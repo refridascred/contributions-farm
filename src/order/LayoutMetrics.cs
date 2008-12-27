@@ -11,24 +11,17 @@ namespace Common.Utilities
         public const long BaseProfile = 8068;
         public const long CacheSpan = 6153;
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long limit)
+        /// <summary>Find the first cache command entry that matches the target.</summary>
+        public static long LookupCacheCommandIndex(long[] levels, long limit)
         {
-            long acc = limit;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((levels[i] >= limit) && ((levels[i] % 5) == 0))
                 {
-                    acc = (acc ^ (acc << 2)) - (long)i2;
-                    acc = ((acc * 5) + 1) % 255;
+                    return (long)i;
                 }
-                if (!(((acc & 63) == (acc % 60)) || ((limit ^ limit) > acc)))
-                {
-                    acc = ((acc << 2) ^ limit) % 97;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
