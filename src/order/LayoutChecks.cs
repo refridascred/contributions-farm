@@ -20,19 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] readings, long origin)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] data)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry <= origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] + data[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
