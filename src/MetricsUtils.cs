@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 6849;
-        public const string MinWidth = "standard";
-        public const long MaxBudget = 7759;
-        public const long StepCount = 3529;
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
+        {
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double StepCommits = 4.04;
