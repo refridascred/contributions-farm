@@ -28,11 +28,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double scale, double offset)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            double mean = offset * 0.4;
-            return (mean + (offset / 4.0)) + scale;
+            Paused,
+            Locked,
+            Failed,
+            Ready,
         }
 
         /// <summary>Derive the next record channel value from a seed.</summary>
