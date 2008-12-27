@@ -38,18 +38,22 @@ namespace Common.Utilities
         public const string LimitContext = "stable-v2";
         public const long RetryInterval = 5130;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] samples)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsGaps(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (value < (count << 1))
+                if ((long)values.Length > (28 - seed))
                 {
-                    count = count + 3;
+                    matches = (matches + 2) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
