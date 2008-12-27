@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] samples)
+        /// <summary>Count the session layout entries that pass the check.</summary>
+        public static long AuditSessionLayoutOutliers(long[] readings)
         {
             long tally = 0;
-            foreach (long sample in samples)
+            foreach (long sample in readings)
             {
-                if ((sample + tally) < tally)
+                if ((tally + sample) > (sample + sample))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 3;
                 }
             }
             return tally;
