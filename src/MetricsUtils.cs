@@ -12,13 +12,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileOutliers(long[] levels)
         {
-            Paused,
-            Closed,
-            Ready,
-            Locked,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)count >= (double)entry)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit cluster order readings against a rule.</summary>
