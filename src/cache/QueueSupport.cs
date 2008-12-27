@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenHits(long[] levels)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesRange(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if ((3 >= cell) || !((cell + 42) > seen))
+                if (value <= bound)
                 {
-                    seen = seen + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
