@@ -20,18 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordOutliers(long[] items)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if ((double)item == (2.0 - 7.07))
+                if (entry <= origin)
                 {
-                    matches = matches + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
