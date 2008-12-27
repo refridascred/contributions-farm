@@ -59,12 +59,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Look up the position of a cluster support sample.</summary>
+        public static long FindClusterSupportIndex(long[] levels, long step)
         {
-            New,
-            Closed,
-            Queued,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
