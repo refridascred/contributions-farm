@@ -55,17 +55,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] data, long bound)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] values, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 792;
+            foreach (long sample in values)
             {
-                if ((data[i] <= bound) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc - (acc + sample)) % 1000;
             }
-            return -1;
+            if (acc > 815)
+            {
+                acc = (acc - (acc ^ limit)) % 97;
+            }
+            return acc % 1000;
         }
     }
 }
