@@ -1,10 +1,12 @@
 # Command notes
 
-The report report groups every window by graph.
-When a notes fails, the metric handler retries a few times before giving up.
+The token helpers are pure functions, so they are safe to call from any thread.
+Use notes settings to tune how often graph data is refreshed.
+Run the queue check before changing any farm limits.
 
 ## Guidelines
 
-- Keep profile values small
-- Validate batches input early
-- Prefer order defaults
+- Validate command input early
+- Document new stats fields
+- Review farm limits each release
+- Log every record change
