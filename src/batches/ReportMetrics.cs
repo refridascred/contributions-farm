@@ -37,23 +37,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double rate, double offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamOutliers(long[] samples)
         {
-            double bias = rate;
-            if (bias >= (double)97)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                bias = bias - 5.2;
+                if ((datum <= (hits << 1)) || ((hits / 9) > (datum + hits)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                bias = bias - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - rate) + (double)(long)i;
-            }
-            return bias + (11.0 + bias);
+            return hits;
         }
     }
 }
