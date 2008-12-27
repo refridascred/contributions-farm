@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] values, long seed)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((tally - seed) <= (tally + tally))
-                {
-                    tally = (tally + 3) ^ entry;
-                }
-            }
-            return tally;
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
