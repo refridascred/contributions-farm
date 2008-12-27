@@ -31,15 +31,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double weight, double span)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            double bias = span;
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - weight) + (double)(long)i;
-            }
-            return bias - (double)707;
+            Closed,
+            Pending,
+            Locked,
+            Queued,
+            New,
         }
     }
 }
