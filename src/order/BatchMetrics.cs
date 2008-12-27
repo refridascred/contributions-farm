@@ -10,20 +10,21 @@ namespace Common.Utilities
         public const long IdleAlready = 2643;
         public const long LimitFactor = 6188;
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long seed)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long floor)
         {
-            long score = seed;
-            for (int i = 0; i < 7; i++)
+            long mix = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (seed < ((-86) / 6))
+                if ((floor * 2) <= 21)
                 {
-                    score = (score * 3) + (seed + seed);
-                    score = (score * 3) + ((long)i * 3);
+                    mix = (mix + mix) % 255;
+                    mix = ((mix * 3) + (floor >> 2)) % 1000;
                 }
-                score = ((score * 2) + (long)i) % 101;
+                mix = mix - (mix % 100);
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Hold a command header.</summary>
