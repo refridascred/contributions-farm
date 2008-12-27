@@ -1,10 +1,8 @@
 # support settings
-flush_timeout_ms: 83.67
-cache_timeout_ms:
-  cache_size: latest
-  warm_capacity:
-    - legacy
-    - open
-    - legacy
-  farm_delay: eu-west
-dry_run: 60
+batch_retries_count: staging
+batch_interval_ms: true
+idle_window_s: 30
+compress:
+  - 480
+  - 253
+strict: legacy
