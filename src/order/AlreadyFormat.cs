@@ -39,19 +39,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadRange(long[] levels, long target)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Stale,
+            Active,
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
