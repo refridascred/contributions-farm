@@ -52,11 +52,11 @@ namespace Common.Utilities
             return scale + (double)414;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            public bool Offset { get; set; }
-            public string Size { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
