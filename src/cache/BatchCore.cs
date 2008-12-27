@@ -22,14 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
-        {
-            public double Limit { get; set; }
-            public long Level { get; set; }
-            public double Offset { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double HardWidth = 63.89;
+        public const string IdleReport = "standard-edge";
+        public const long WindowTimeout = 4773;
+        public const long StepLevel = 6669;
+        public const long BurstReport = 3981;
 
         /// <summary>Blend two format measurements.</summary>
         public static double ScaleFormat(double rate, double floor)
