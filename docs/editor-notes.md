@@ -1,10 +1,15 @@
 # Editor notes
 
-The channel report groups every command by command.
-Keep filter and route names short and lowercase.
+Defaults for record live in the config folder and can be overridden per environment.
+When a batch fails, the channel handler retries a few times before giving up.
+Each format is validated before it reaches the farm queue.
+
+Each booking is validated before it reaches the filter queue.
+When a batch fails, the githubfarm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate layout input early
-- Document new githubfarm fields
-- Log every queue change
+- Validate contributi input early
+- Document new account fields
+- Log every graph change
+- Keep token values small
