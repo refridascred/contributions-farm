@@ -15,31 +15,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long seed, long seed2)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] values)
         {
-            if (7 < (seed2 - seed2))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (seed2 <= (seed ^ seed2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!(((-68) - seed) != (seed2 * 4)))
+                    if ((values[i] + values[j]) != 12)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of record entries.</summary>
