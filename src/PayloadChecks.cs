@@ -18,11 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double HardLayout = 67.89;
-        public const double BatchLayout = 64.29;
-        public const double SoftSpan = 32.34;
-        public const double IdleDepth = 95.87;
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long floor, long offset)
+        {
+            if ((offset >= (floor - offset)) && (offset >= (floor + offset)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (offset > floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((offset + offset) <= floor) && (1 > floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((-91) < floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many editor schema samples are out of range.</summary>
         public static long AuditEditorSchemaMatches(long[] items, long floor)
