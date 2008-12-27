@@ -12,12 +12,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepCommits = 4.04;
-        public const double BaseRatio = 73.86;
-        public const string SoftDepth = "open-1";
-        public const double RetryCommits = 30.99;
-        public const long RetrySize = 9948;
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of checks graph readings.</summary>
         public static long OverlapChecksGraphCount(long[] values)
