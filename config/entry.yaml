@@ -1,9 +1,4 @@
 # entry settings
-cache_ratio_pct: 45.79
-batch_delay_ms: 735
-max_retries_pct:
-  - 222
-  - 12
-  - 265
-sync_depth: 37.57
-max_retries_s: legacy
+flush_size: strict
+layout_size: legacy
+base_interval: latest
