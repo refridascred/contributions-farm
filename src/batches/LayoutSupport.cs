@@ -44,10 +44,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string DefaultMetrics = "standard-1";
-        public const long LimitMetrics = 6756;
-        public const long LimitCount = 2078;
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
+        {
+            Pending,
+            Stale,
+            Idle,
+        }
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long FindFilterIndex(long[] levels, long origin)
