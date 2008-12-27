@@ -1,5 +1,6 @@
 {
-  "persist": [163, 496],
-  "format_retries": true,
-  "warm_limit": 43.31
+  "idle_interval_s": 57.22,
+  "sync_ttl_s": 11.58,
+  "schema_ttl": 26,
+  "metrics_delay": 4555
 }
