@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] values, long limit)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((datum - datum) == (limit - matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the farm phase values.</summary>
