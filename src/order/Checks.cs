@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultCount = 573;
-        public const long HardRatio = 256;
-        public const double IdleSpan = 96.19;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardSpan = 469;
+        public const long MaxMetrics = 7101;
+        public const long SoftMetrics = 2372;
+        public const long HardMetrics = 1279;
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool GuardLayoutBounds(long[] levels, long bound)
