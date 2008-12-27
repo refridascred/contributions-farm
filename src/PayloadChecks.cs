@@ -5,29 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] samples, long floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] levels)
         {
-            long mark = 811;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                mark = (mark << 2) ^ (mark % 5);
-                if ((floor / 5) > (cell * 5))
+                if (matches >= (item * 3))
                 {
-                    mark = (mark * 3) + (mark / 6);
-                    mark = mark + ((long)samples.Length << 1);
-                    continue;
-                }
-                if ((mark * 3) <= (long)samples.Length)
-                {
-                    mark = ((mark * 2) + (cell & 127)) % 101;
-                }
-                if ((double)cell >= (4.21 + 12.0))
-                {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
