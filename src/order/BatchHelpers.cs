@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] data, long limit)
         {
-            New,
-            Pending,
-            Synced,
-            Failed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a cluster summary.</summary>
