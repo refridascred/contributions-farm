@@ -1,5 +1,9 @@
 # support settings
-base_delay_count: 3521
-idle_threshold_ms: open
-flush_delay_count: false
-audit: 15
+hard_size_pct: 64.15
+batch_retries_s: false
+poll_capacity_pct:
+  - 439
+  - 133
+  - 124
+max_size: 1
+persist: 100
