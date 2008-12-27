@@ -24,15 +24,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Fold a list of command commits readings.</summary>
-        public static long TotalCommandCommits(long[] levels)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long mix = 91;
-            foreach (long sample in levels)
-            {
-                mix = (mix ^ (mix - mix)) + sample;
-            }
-            return mix;
+            New,
+            Active,
+            Queued,
+            Stale,
         }
 
         /// <summary>Project the next route value.</summary>
