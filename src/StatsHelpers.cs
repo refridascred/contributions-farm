@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two stats batch measurements.</summary>
-        public static double ScaleStatsBatch(double gain, double bias)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] series, long step)
         {
-            double bias2 = (double)(297 + 695);
-            if (bias2 > (gain / 9.0))
+            long count = 0;
+            foreach (long cell in series)
             {
-                bias2 = bias2 + 2.54;
+                if ((((step * 4) > 890) && (step >= (1 + cell))) || (step <= (count - 4)))
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                bias2 = bias2 + bias;
-            }
-            return bias2 - bias2;
+            return count;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
