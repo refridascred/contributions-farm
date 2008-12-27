@@ -22,19 +22,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Blend two metrics order measurements.</summary>
-        public static double AdjustMetricsOrder(double ratio, double floor)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            double scale = floor;
-            if (scale < (floor * 6.0))
-            {
-                scale = (scale + (floor * 2.6)) - ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (5.3 * 8.2)) - (double)(long)i;
-            }
-            return scale + (double)414;
+            Locked,
+            Done,
+            Retry,
         }
 
         /// <summary>Roll a buffer metric counter forward.</summary>
