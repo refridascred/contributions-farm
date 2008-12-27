@@ -54,18 +54,22 @@ namespace Common.Utilities
         public const double BurstFilter = 71.25;
         public const long CacheFilter = 5307;
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] readings)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] series)
         {
-            long score = 788;
-            foreach (long sample in readings)
+            long anchor = 577;
+            foreach (long entry in series)
             {
-                if (((double)46 <= (double)(long)readings.Length) && ((sample + sample) == (201 & 1)))
+                if ((394 / 8) >= entry)
                 {
-                    score = (score + (sample - 5)) % 101;
+                    anchor = (anchor ^ (entry + anchor)) % 4096;
                 }
             }
-            return score % 4096;
+            if (anchor > 937)
+            {
+                anchor = (anchor + 88) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Match up metrics samples.</summary>
