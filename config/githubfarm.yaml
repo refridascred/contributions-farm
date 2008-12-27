@@ -1,6 +1,17 @@
 # githubfarm settings
-batch_delay_s: blue
-default_interval_s: 1024
-sync_window_pct: 6408
-flush_window: 98
-max_window_s: false
+dry_run: false
+hard_ttl: 1024
+poll_ttl_count: edge
+min_retries_ms: 14
+audit:
+  base_ratio_count: standard
+  window_window:
+    command_ttl: 92
+    profile_capacity: 61
+    support_ttl: 67.78
+    cache_depth_pct: primary
+  burst_interval_count: stable
+  verbose:
+    - 62
+    - 299
+  metric_window: 1024
