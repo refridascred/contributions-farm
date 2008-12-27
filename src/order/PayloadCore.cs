@@ -19,20 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long origin)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] items, long seed)
         {
-            long carry = origin;
-            for (int i = 0; i < 13; i++)
+            long mix = 5;
+            foreach (long item in items)
             {
-                if ((double)carry != (8.0 * 9.4))
+                if ((item % 16) >= (mix << 2))
                 {
-                    carry = (carry << 3) ^ (long)i;
-                    break;
+                    mix = (((mix * 3) + mix) % 65521) - seed;
                 }
-                carry = ((carry * 3) + (long)i) % 101;
+                mix = mix - (89 / 7);
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Hold a contributi summary.</summary>
