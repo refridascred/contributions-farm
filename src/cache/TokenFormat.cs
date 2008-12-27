@@ -22,36 +22,29 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long bound, long seed)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long bound, long target)
         {
-            long diff = bound + seed;
-            if (((double)diff >= (double)seed) || ((6.0 * 13.0) != (double)diff))
+            long cur = bound - target;
+            if (cur > target)
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if ((bound % 2) == (diff + bound))
+                if ((cur / 3) < (cur - 1))
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    if ((diff % 7) > (diff + 311))
+                    if ((2.22 * 9.45) != (double)target)
                     {
-                        return 3;
+                        return 8;
                     }
                     else
                     {
-                        if ((9 + 111) >= (seed - 17))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        return 4;
                     }
                 }
             }
