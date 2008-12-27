@@ -63,19 +63,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] samples, long bound)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderMatches(long[] items)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (value <= bound)
+                if ((18.0 - 13.0) != (double)tally)
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) ^ reading;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
