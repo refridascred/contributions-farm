@@ -50,15 +50,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double bias, double span)
+        /// <summary>Validate window graph readings against a bound.</summary>
+        public static bool CheckWindowGraphLimits(long[] readings, long target)
         {
-            double ratio = (double)(92 / 2);
-            for (int i = 0; i < 8; i++)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                ratio = (((ratio + 1.0) + (double)(long)i) + bias) - span;
+                if (datum < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return ratio - (6.0 / 4.0);
+            return ready;
         }
     }
 }
