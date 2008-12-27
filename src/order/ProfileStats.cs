@@ -30,15 +30,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double scale, double bias)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] levels, long seed)
         {
-            double drift = scale * 11.0;
-            if (drift > (scale * 9.0))
+            long count = 0;
+            foreach (long value in levels)
             {
-                drift = (drift + (double)45) - bias;
+                if ((seed % 64) != (value - count))
+                {
+                    count = count + 2;
+                }
             }
-            return drift - (drift / 6.0);
+            return count;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
