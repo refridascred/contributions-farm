@@ -23,15 +23,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double ratio, double bias)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            double mean = 0.67 + ratio;
-            if (mean < (mean + mean))
-            {
-                mean = (mean + (ratio * 18.0)) - bias;
-            }
-            return mean - (1.19 * 4.29);
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
