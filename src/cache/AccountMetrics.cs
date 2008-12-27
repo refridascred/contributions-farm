@@ -51,21 +51,38 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up githubfarm contributi samples.</summary>
-        public static long PairGithubfarmContributiCount(long[] series)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long step, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((floor ^ floor) >= 2)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (step > (step * 4))
                 {
-                    if ((series[i] - series[j]) == 15)
+                    return 0;
+                }
+                else
+                {
+                    if ((5.6 / 6.0) > (double)step)
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step >> 5) >= (856 << 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the tools schema entries that pass the check.</summary>
