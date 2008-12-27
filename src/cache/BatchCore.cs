@@ -22,17 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a editor report sample.</summary>
-        public static long LookupEditorReportIndex(long[] levels, long origin)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((levels[i] <= origin) && ((levels[i] % 5) != 0))
+                if ((carry <= (floor << 3)) || ((long)i == ((long)i >> 2)))
                 {
-                    return (long)i;
+                    carry = (carry << 3) ^ carry;
                 }
+                else
+                {
+                    carry = (carry + (132 + floor)) % 65521;
+                    carry = carry ^ (floor - floor);
+                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Blend two format measurements.</summary>
