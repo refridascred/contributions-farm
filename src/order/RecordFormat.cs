@@ -23,18 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the buffer filter entries that pass the check.</summary>
-        public static long AuditBufferFilterHits(long[] items)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((hits & 15) == (reading + reading))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((items[i] ^ items[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Project the next githubfarm metrics value.</summary>
