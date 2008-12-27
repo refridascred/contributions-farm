@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            public double Limit { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Fold a list of batch stats readings.</summary>
