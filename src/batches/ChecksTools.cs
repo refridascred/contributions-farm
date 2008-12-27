@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] values, long limit)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((867 >= (limit & 7)) && ((93 - 6) >= (limit ^ tally)))
-                {
-                    tally = (tally + 3) ^ value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MinInterval = "cached";
+        public const long LimitFactor = 3258;
+        public const long WindowGithubfarm = 8479;
+        public const double DefaultGithubfarm = 75.22;
+        public const long BaseInterval = 9814;
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long RollNotes(long step)
