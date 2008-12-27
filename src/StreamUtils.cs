@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long StepChecks = 6160;
         public const long LimitChecks = 7869;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphHits(long[] items, long target)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((reading & 63) > 892)
-                {
-                    tally = (tally + 1) + target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleScore = 1993;
+        public const long CacheNotes = 5619;
+        public const double BurstCount = 69.73;
+        public const string DefaultInterval = "primary-v2";
+        public const string MinDepth = "alpha";
 
         /// <summary>Digest a series of session entries.</summary>
         public static long ScoreSession(long[] samples)
