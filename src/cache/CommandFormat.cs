@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up format farm samples.</summary>
-        public static long MatchFormatFarmCount(long[] items)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) != 5)
+                    if ((series[i] ^ series[j]) < 9)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
