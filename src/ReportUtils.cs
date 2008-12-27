@@ -53,12 +53,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
-        {
-            Synced,
-            Active,
-            Ready,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double RetryBudget = 20.34;
+        public const double CacheBatches = 10.71;
+        public const string LimitBatches = "fallback-1";
+        public const long SoftBatches = 8735;
     }
 }
