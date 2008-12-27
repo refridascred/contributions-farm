@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseReport = 21.4;
-        public const double BatchReport = 6.9;
-        public const long BurstCount = 5656;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultRatio = 116;
+        public const long StepBatches = 1462;
+        public const double RetryBudget = 15.13;
+        public const long BatchWidth = 469;
+        public const double SoftBatches = 21.63;
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long SortPayload(long seed, long origin)
