@@ -49,16 +49,13 @@ namespace Common.Utilities
             return ratio - (16.0 * 6.0);
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long seed)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long anchor = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = anchor - (seed + seed);
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            New,
+            Draft,
+            Failed,
+            Done,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
