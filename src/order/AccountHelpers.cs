@@ -67,12 +67,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] samples)
         {
-            Paused,
-            Active,
-            Closed,
+            long score = 225;
+            foreach (long entry in samples)
+            {
+                if (((65 >> 4) <= (entry & 3)) || ((0 << 3) >= (entry / 7)))
+                {
+                    score = (score - entry) % 101;
+                }
+            }
+            return score;
         }
     }
 }
