@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric core helpers.</summary>
     public static class MetricCore
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
-        {
-            Closed,
-            Dropped,
-            Pending,
-            Active,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 8765;
+        public const string BurstEntry = "open-1";
+        public const long LimitTimeout = 4670;
+        public const long CacheEntry = 4465;
+        public const long SoftEntry = 1014;
 
         /// <summary>Classify a contributi metrics pair into a bucket.</summary>
         public static long SortContributiMetrics(long floor, long limit)
