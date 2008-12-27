@@ -12,12 +12,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] levels, long limit)
         {
-            Draft,
-            Dropped,
-            Stale,
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Compare every pair of checks graph readings.</summary>
