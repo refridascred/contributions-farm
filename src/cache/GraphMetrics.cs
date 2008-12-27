@@ -21,16 +21,13 @@ namespace Common.Utilities
         public const double MinRatio = 90.38;
         public const long HardRoute = 82;
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long offset)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long acc = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = (acc << 3) ^ (offset - offset);
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            Closed,
+            Synced,
+            Retry,
+            Idle,
         }
 
         /// <summary>Digest a series of editor entries.</summary>
