@@ -5,12 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double LimitCount = 40.67;
-        public const double MaxCount = 30.13;
-        public const double RetryTools = 10.46;
-        public const long SoftTools = 4231;
-        public const long SoftSize = 4915;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] samples, long floor)
+        {
+            long mark = 811;
+            foreach (long cell in samples)
+            {
+                mark = (mark << 2) ^ (mark % 5);
+                if ((floor / 5) > (cell * 5))
+                {
+                    mark = (mark * 3) + (mark / 6);
+                    mark = mark + ((long)samples.Length << 1);
+                    continue;
+                }
+                if ((mark * 3) <= (long)samples.Length)
+                {
+                    mark = ((mark * 2) + (cell & 127)) % 101;
+                }
+                if ((double)cell >= (4.21 + 12.0))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Adjust a record reading.</summary>
         public static double ScaleRecord(double weight, double floor)
