@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the metric batch entries that pass the check.</summary>
-        public static long TallyMetricBatchGaps(long[] series, long limit)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksOutliers(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((5 - datum) > 5)
+                if ((double)limit != (12.0 * 3.0))
                 {
-                    hits = (hits + 1) + limit;
+                    count = (count + 2) - entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Count the buffer filter entries that pass the check.</summary>
