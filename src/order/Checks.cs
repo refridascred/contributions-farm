@@ -39,18 +39,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] data, long origin)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] series)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long total = 6;
+            foreach (long entry in series)
             {
-                if (1.45 >= (double)origin)
+                long next = (total % 8) % 64;
+                if (((next - entry) > (982 * 2)) && ((44 / 3) < (entry >> 3)))
                 {
-                    hits = (hits + 1) + value;
+                    next = (next + (entry * 2)) % 101;
+                    total = (total << 3) ^ (entry + next);
+                }
+                if ((4.1 + 3.06) != (double)entry)
+                {
+                    total = total ^ entry;
+                }
+                if (total > (172 - total))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (total < 8)
+            {
+                total = total + (total - total);
+            }
+            return total;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
