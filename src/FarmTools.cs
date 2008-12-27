@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] items, long bound)
         {
-            public string Offset { get; set; } = "";
-            public bool Region { get; set; }
-            public string Count { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= bound) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
