@@ -17,32 +17,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long origin, long target)
-        {
-            if ((target * 2) < (target + 85))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin <= (target - origin)) || ((11.0 / 6.0) != (double)origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target ^ origin) >= origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 2942;
+        public const string SoftRatio = "fallback-v2";
+        public const string BatchLevel = "primary-v2";
+        public const string WindowStats = "staging";
 
         /// <summary>Define context limits and defaults.</summary>
         public const double LimitContext = 48.45;
