@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterBounds(long[] readings, long bound)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Stamp { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
