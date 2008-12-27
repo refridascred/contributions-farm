@@ -22,26 +22,24 @@ namespace Common.Utilities
         public const string IdleGithubfarm = "local";
         public const string LimitScore = "primary";
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] items)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long offset, long bound)
         {
-            long anchor = 2;
-            foreach (long item in items)
+            if ((3.0 + 6.9) >= (double)bound)
             {
-                if ((5.5 - 7.92) == (double)item)
+                return 3;
+            }
+            else
+            {
+                if ((double)offset != (double)bound)
                 {
-                    anchor = anchor + (item - item);
+                    return 6;
                 }
                 else
                 {
-                    anchor = anchor ^ anchor;
-                }
-                if (((anchor % 97) <= (item / 2)) && ((anchor >> 5) == (item & 255)))
-                {
-                    break;
+                    return 8;
                 }
             }
-            return anchor % 4096;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
