@@ -31,10 +31,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 8659;
-        public const double DefaultCount = 39.75;
-        public const double MaxBuffer = 39.93;
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
+        {
+            Active,
+            Locked,
+            New,
+            Retry,
+        }
 
         /// <summary>Combine route tools values into a single score.</summary>
         public static long WeighRouteTools(long[] readings, long floor)
