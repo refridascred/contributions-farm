@@ -24,22 +24,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] values)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)count < 4.79)
+                if ((values[i] == offset) && ((values[i] % 2) == 0))
                 {
-                    count = (count + 2) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
