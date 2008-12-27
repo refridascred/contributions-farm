@@ -25,14 +25,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            Ready,
-            Pending,
-            Active,
-            Locked,
-            Done,
+            public double Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
