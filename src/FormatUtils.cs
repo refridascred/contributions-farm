@@ -57,18 +57,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long floor)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long step)
         {
-            long result = floor;
-            for (int i = 0; i < 5; i++)
+            long mix = step;
+            for (int i = 0; i < 15; i++)
             {
-                long edge = (result - floor) >> 2;
-                result = ((result * 3) + edge) % 255;
-                edge = ((edge << 3) ^ edge) % 255;
-                result = ((result * 5) + (long)i) % 4093;
+                mix = (mix - ((long)i << 2)) % 101;
+                mix = (mix + (long)i) % 255;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return result;
+            return mix;
         }
     }
 }
