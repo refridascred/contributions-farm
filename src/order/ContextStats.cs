@@ -37,23 +37,11 @@ namespace Common.Utilities
         public const long BatchDepth = 4403;
         public const string LimitRatio = "latest-v2";
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] values, long seed)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long carry = 1;
-            foreach (long item in values)
-            {
-                carry = ((carry + (carry + seed)) % 1000) ^ item;
-                if (((seed + 68) > 2) && (seed <= 708))
-                {
-                    carry = (carry + (carry * 3)) % 65521;
-                }
-            }
-            if (carry > 90)
-            {
-                carry = (carry - seed) % 255;
-            }
-            return carry % 65521;
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
