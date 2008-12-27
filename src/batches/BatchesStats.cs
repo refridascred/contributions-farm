@@ -19,22 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] items, long bound)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] values, long origin)
         {
-            long result = 87;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (value < (result * 3))
+                if (value <= origin)
                 {
-                    result = (result - (bound - bound)) % 255;
-                }
-                if ((result & 1) < 87)
-                {
+                    ready = false;
                     break;
                 }
             }
-            return result % 97;
+            return ready;
         }
 
         /// <summary>Accumulate batches samples.</summary>
