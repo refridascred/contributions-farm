@@ -53,10 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double RetryBudget = 20.34;
-        public const double CacheBatches = 10.71;
-        public const string LimitBatches = "fallback-1";
-        public const long SoftBatches = 8735;
+        /// <summary>Validate format stream readings against a bound.</summary>
+        public static bool VerifyFormatStreamRange(long[] readings, long origin)
+        {
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
