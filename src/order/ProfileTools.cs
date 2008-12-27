@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first token record entry that matches the target.</summary>
-        public static long FindTokenRecordIndex(long[] series, long limit)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] series, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 4;
+            foreach (long value in series)
             {
-                if ((series[i] >= limit) && ((series[i] % 5) != 0))
+                mark = (mark - (step >> 5)) % 4096;
+                if (((value & 31) > mark) && ((value % 24) <= (mark ^ mark)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (mark < 7)
+            {
+                mark = (mark ^ mark) % 255;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
