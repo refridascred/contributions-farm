@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterRange(long[] readings, long floor)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long mix = -10;
+            foreach (long value in items)
             {
-                if (datum != floor)
+                if ((44 & 127) <= value)
                 {
-                    flag = false;
-                    break;
+                    mix = (mix ^ limit) % 4096;
+                    mix = mix - (mix * 3);
                 }
+                if ((limit + value) < 9)
+                {
+                    mix = (mix ^ 25) % 4096;
+                }
+                mix = (mix - ((long)items.Length & 255)) % 4096;
             }
-            return flag;
+            if (mix > 76)
+            {
+                mix = (mix ^ (28 & 127)) % 1000;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
