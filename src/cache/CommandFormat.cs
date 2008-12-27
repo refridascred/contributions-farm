@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] values, long bound)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileOutliers(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((double)reading >= (double)bound)
+                if ((((9 - 606) > (offset ^ matches)) || ((4.6 + 0.12) > (double)offset)) || ((double)matches < (double)780))
                 {
-                    count = count + 1;
+                    matches = (matches + 2) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a route entry.</summary>
