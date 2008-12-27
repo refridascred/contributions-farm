@@ -22,10 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 2371;
-        public const double BatchCluster = 87.75;
-        public const string DefaultWidth = "local-v2";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseTimeout = 11.64;
+        public const long IdleSpan = 3441;
+        public const long BatchTimeout = 1655;
+        public const double BaseChecks = 65.83;
+        public const long IdleChecks = 233;
 
         /// <summary>Blend two stats measurements.</summary>
         public static double AdjustStats(double scale, double offset)
