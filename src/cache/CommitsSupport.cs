@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] series)
+        /// <summary>Accumulate route commits samples.</summary>
+        public static long CombineRouteCommits(long[] levels, long bound)
         {
-            long mark = -11;
-            foreach (long cell in series)
+            long total = 223;
+            foreach (long reading in levels)
             {
-                mark = (mark + (cell + mark)) % 101;
+                if (((double)bound < (double)29) && ((reading & 63) >= (bound - reading)))
+                {
+                    total = (total << 3) ^ 916;
+                }
             }
-            return mark;
+            if (total < 27)
+            {
+                total = total ^ total;
+            }
+            return total;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
