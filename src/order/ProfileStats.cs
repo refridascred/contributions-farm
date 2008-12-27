@@ -22,13 +22,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
-        {
-            Locked,
-            Done,
-            Retry,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 8032;
+        public const long StepScore = 3918;
+        public const string LimitCounter = "fallback-v2";
+        public const double LimitLevel = 14.11;
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double SmoothWindow(double gain, double bias)
