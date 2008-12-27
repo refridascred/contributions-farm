@@ -1,7 +1,9 @@
-id,rank,weight,token,score
-1,stable,711,9.6,458
-2,20.4,49.57,cached,982
-3,primary,latest,800,staging
-4,cached,699,68.32,935
-5,staging,60.89,423,93.03
-6,53.26,latest,open,602
+id,active,level,owner
+1,663,949,primary
+2,staging,primary,blue
+3,standard,local,stable
+4,primary,717,895
+5,37.64,eu-west,429
+6,standard,stable,14.07
+7,997,14,589
+8,261,938,3.68
