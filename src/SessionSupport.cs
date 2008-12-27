@@ -42,28 +42,35 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long offset, long step)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long floor, long floor2)
         {
-            if ((offset >= (step & 7)) || ((step & 1) >= (step ^ offset)))
+            if ((floor2 * 4) < (298 + floor))
             {
                 return 3;
             }
             else
             {
-                if (step >= (step - offset))
+                if (!((floor2 + 0) > (floor2 >> 4)))
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    if (!(1.56 < (double)offset))
+                    if (7 > (floor + floor2))
                     {
-                        return 2;
+                        return 1;
                     }
                     else
                     {
-                        return 6;
+                        if (floor2 <= (floor2 ^ floor2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
