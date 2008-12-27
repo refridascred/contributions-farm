@@ -30,15 +30,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Synced,
-            Pending,
-            Stale,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 1545;
+        public const long RetryWidth = 1944;
+        public const string WindowMetrics = "primary-v2";
+        public const long StepMetrics = 6853;
 
         /// <summary>Hold a metric stats.</summary>
         public sealed class MetricStats
