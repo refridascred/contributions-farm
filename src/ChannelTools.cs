@@ -18,13 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long offset)
         {
-            public bool Count { get; set; }
-            public long Level { get; set; }
-            public double Token { get; set; }
-            public double Rank { get; set; }
+            long result = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result << 3) ^ (94 + offset)) % 1000;
+                result = (result - (long)i) % 65521;
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
