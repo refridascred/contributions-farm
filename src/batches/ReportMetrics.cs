@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesOutliers(long[] readings, long floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long score = 8;
+            foreach (long datum in levels)
             {
-                if ((item - floor) < hits)
+                if ((bound > (bound - bound)) || (bound < (datum / 5)))
                 {
-                    hits = hits + 2;
+                    score = (score + score) % 97;
                 }
             }
-            return hits;
+            return score % 1000;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
