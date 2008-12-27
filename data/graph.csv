@@ -1,9 +1,7 @@
-id,count,active
-1,98.02,11.87
-2,113,284
-3,60.79,634
-4,14.08,5.26
-5,legacy,152
-6,267,416
-7,681,998
-8,62.24,11.17
+id,rank,weight,token,score
+1,stable,711,9.6,458
+2,20.4,49.57,cached,982
+3,primary,latest,800,staging
+4,cached,699,68.32,935
+5,staging,60.89,423,93.03
+6,53.26,latest,open,602
