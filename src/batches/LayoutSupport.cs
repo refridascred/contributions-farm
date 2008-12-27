@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BurstLevel = "primary-edge";
-        public const string MinTools = "fallback-v2";
-        public const long RetrySize = 2651;
-        public const long MaxRatio = 2406;
-        public const string LimitScore = "cached";
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double bias, double floor)
+        {
+            double ratio = floor - 6.3;
+            if (ratio <= 14.0)
+            {
+                ratio = ratio + (bias + bias);
+            }
+            return ratio + floor;
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long CountChecksMatches(long[] series)
