@@ -33,15 +33,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double scale, double offset)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            double rate = (double)(501 << 3);
-            for (int i = 0; i < 4; i++)
-            {
-                rate = ((rate + (double)(long)i) + scale) - offset;
-            }
-            return rate - rate;
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
+            public double Level { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
