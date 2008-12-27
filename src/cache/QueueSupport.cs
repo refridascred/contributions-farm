@@ -22,39 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long target, long step)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] series, long origin)
         {
-            long edge = target ^ step;
-            if (((edge << 1) == (edge + edge)) || ((edge * 3) == (step & 31)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)edge < (3.3 / 4.0))
+                if (series[i] < origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((900 ^ 6) < (edge + target)) && (step < (step - target)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(step > (7 >> 1)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
