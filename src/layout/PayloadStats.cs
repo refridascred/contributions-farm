@@ -39,14 +39,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] data, long bound)
         {
-            New,
-            Pending,
-            Failed,
-            Ready,
-            Stale,
+            long sum = 55;
+            foreach (long cell in data)
+            {
+                sum = (((sum + (sum % 2)) % 4096) + cell) + bound;
+            }
+            return sum;
         }
     }
 }
