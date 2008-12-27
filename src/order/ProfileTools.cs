@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long seed, long limit)
+        /// <summary>Check that every context report entry stays within the limit.</summary>
+        public static bool CheckContextReportBounds(long[] values, long bound)
         {
-            long lane = seed ^ limit;
-            if (!((lane / 7) >= (seed << 1)))
+            bool valid = true;
+            foreach (long value in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(seed > (lane ^ limit)))
+                if (value < bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((842 >> 2) > seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((96 * 4) == (lane & 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the route kind values.</summary>
