@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] levels, long offset)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long state = 44;
-            foreach (long item in levels)
-            {
-                if (state < item)
-                {
-                    state = (((state << 2) ^ (item + (-796))) % 101) + offset;
-                }
-                else
-                {
-                    state = (state ^ (64 ^ item)) % 101;
-                }
-            }
-            return state;
+            public string Offset { get; set; } = "";
+            public bool Region { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
