@@ -1,7 +1,7 @@
-id,region,state,label,score
-1,645,staging,77,84.25
-2,blue,495,green,651
-3,302,90.68,41.49,green
-4,347,local,110,669
-5,391,eu-west,4.25,44.94
-6,978,stable,49.11,191
+id,state,owner
+1,stable,9.5
+2,stable,1.03
+3,18.38,94.47
+4,520,964
+5,90.54,primary
+6,448,eu-west
