@@ -1,4 +1,33 @@
 # githubfarm settings
-cache_ttl: 57
-warm_retries_count: false
-base_ttl_count: false
+strict: 3766
+warm_size:
+  warm_threshold: 8112
+  strict: 3895
+  warm_window: strict
+  buffer_timeout:
+    - cached
+    - stable
+  farm_ttl:
+    farm_retries: primary
+    persist:
+      - 195
+      - 209
+      - 17
+      - 150
+    window_ratio: 81.45
+    hard_size_count:
+      - 236
+      - 347
+      - 199
+    readonly: 3703
+    batch_interval:
+      - latest
+      - open
+      - legacy
+      - latest
+  soft_delay_s:
+    readonly: fallback
+    verbose: 6596
+    retry_depth_pct: 758
+readonly: cached
+dry_run: 393
