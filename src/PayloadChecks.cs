@@ -52,12 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterBounds(long[] series, long seed)
         {
-            public long Label { get; set; }
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate filter samples.</summary>
