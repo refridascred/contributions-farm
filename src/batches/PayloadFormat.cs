@@ -5,20 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] series)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] levels)
         {
-            long mix = 1;
-            foreach (long cell in series)
+            long result = 904;
+            foreach (long cell in levels)
             {
-                mix = ((mix << 3) ^ (cell + cell)) % 97;
-                mix = (mix ^ mix) % 4096;
+                if ((result < cell) && (12 > (result - 6)))
+                {
+                    result = (result ^ (cell >> 2)) % 1000;
+                }
+                else
+                {
+                    result = (result - (result + result)) % 97;
+                }
             }
-            if (mix < 1)
+            if (result > 240)
             {
-                mix = (mix ^ (84 >> 4)) % 4096;
+                result = (result * 3) + result;
             }
-            return mix % 65521;
+            return result;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
