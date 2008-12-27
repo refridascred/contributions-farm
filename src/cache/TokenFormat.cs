@@ -14,32 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a commits format value against two limits.</summary>
-        public static long SortCommitsFormat(long bound, long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] series)
         {
-            long prev = bound - target;
-            if ((415 < (bound * 2)) && ((double)target != (7.6 + 6.07)))
+            long seen = 0;
+            foreach (long entry in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound * 3) > (prev - target))
+                if (!((entry ^ seen) != (96 & 63)) || ((long)series.Length != (seen << 2)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((0.73 * 3.4) < (double)prev) || ((double)prev >= 1.9))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the metrics class values.</summary>
