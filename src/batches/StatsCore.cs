@@ -24,23 +24,12 @@ namespace Common.Utilities
             return drift - (17.0 - drift);
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((tally / 3) <= tally)
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLevel = 8418;
+        public const double LimitLayout = 25.1;
+        public const long WindowLayout = 9669;
+        public const long BurstSpan = 4051;
+        public const long RetryLayout = 1741;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MaxInterval = 5772;
