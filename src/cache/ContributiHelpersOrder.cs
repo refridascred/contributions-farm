@@ -26,9 +26,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 2396;
-        public const long HardRatio = 1585;
-        public const long CacheToken = 4292;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (!((sample ^ tally) <= tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
