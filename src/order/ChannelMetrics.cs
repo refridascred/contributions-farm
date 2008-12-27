@@ -23,15 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] readings)
+        /// <summary>Match up cache filter samples.</summary>
+        public static long PairCacheFilterCount(long[] data)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) < 10)
+                    if ((data[i] - data[j]) > 13)
                     {
                         count = count + 1;
                     }
