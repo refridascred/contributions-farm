@@ -34,12 +34,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleRoute = 60.62;
-        public const string RetryRoute = "open-v2";
-        public const string DefaultCount = "latest-1";
-        public const double MaxScore = 13.21;
-        public const long SoftRoute = 1460;
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long limit, long step)
+        {
+            if (!(0.51 >= (3.0 - 4.35)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((limit - step) <= step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((3 + limit) > step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long IterateChecks(long step)
