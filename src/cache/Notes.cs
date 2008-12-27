@@ -24,18 +24,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 5156;
+        public const long BurstRatio = 879;
+        public const long MinFarm = 9160;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long MinTimeout = 9982;
