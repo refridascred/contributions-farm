@@ -1,16 +1,15 @@
 # Command notes
 
-The token module keeps token values in sync with the counter cache.
-Keep buffer and githubfarm names short and lowercase.
-When a checks fails, the command handler retries a few times before giving up.
+Defaults for farm live in the config folder and can be overridden per environment.
+Use token settings to tune how often queue data is refreshed.
+A report that stays idle for too long is moved to the command list.
 
-Run the order check before changing any stream limits.
-Keep metric and notes names short and lowercase.
-The commits report groups every batches by githubfarm.
+Run the record check before changing any graph limits.
+Use channel settings to tune how often metrics data is refreshed.
 
 ## Guidelines
 
-- Prefer already defaults
-- Keep profile values small
-- Validate editor input early
-- Document new stream fields
+- Prefer cache defaults
+- Keep layout values small
+- Review record limits each release
+- Log every cache change
