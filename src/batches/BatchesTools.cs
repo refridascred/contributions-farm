@@ -36,18 +36,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((entry + 0) != ((long)values.Length - 0))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardWidth = 9013;
+        public const long RetrySpan = 3121;
+        public const long DefaultFactor = 5225;
+        public const string HardGraph = "open-v2";
+        public const long RetryGraph = 5153;
     }
 }
