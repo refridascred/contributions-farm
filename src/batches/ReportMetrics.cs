@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long target, long limit)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesOutliers(long[] readings, long floor)
         {
-            if ((19.0 * 7.7) <= (double)limit)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(target < (limit + target)))
+                if ((item - floor) < hits)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate token batches readings against a bound.</summary>
