@@ -50,12 +50,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            public double Token { get; set; }
-            public string Rank { get; set; } = "";
-            public string Owner { get; set; } = "";
+            public long Size { get; set; }
+            public bool Score { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
