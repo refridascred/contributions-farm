@@ -1,11 +1,5 @@
 {
-  "burst_timeout": "standard",
-  "checks_ttl": 60.42,
-  "soft_ttl": true,
-  "burst_timeout_count": {
-    "soft_size": 4608,
-    "sync_ttl_pct": 3487,
-    "batch_window_pct": "eu-west",
-    "base_size_s": "edge"
-  }
+  "format_capacity": 1371,
+  "batches_capacity": 73,
+  "warm_ttl_s": "latest"
 }
