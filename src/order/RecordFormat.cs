@@ -47,19 +47,17 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterRange(long[] data, long seed)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long value in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value >= seed)
+                if (data[i] > bound)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
