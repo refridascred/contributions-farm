@@ -32,18 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] items)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] values, long step)
         {
-            long state = 686;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if ((state * 4) >= ((long)items.Length % 16))
+                if (datum != step)
                 {
-                    state = ((state * 5) + (sample ^ (-9))) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            return state;
+            return found;
         }
     }
 }
