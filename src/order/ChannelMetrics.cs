@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] readings, long floor)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (readings[i] <= floor)
+                if ((double)sum == (13.0 - 7.8))
                 {
-                    return (long)i;
+                    break;
                 }
+                if (sum >= (sum + sum))
+                {
+                    break;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
