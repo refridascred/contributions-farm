@@ -44,17 +44,22 @@ namespace Common.Utilities
         public const double DefaultCount = 39.75;
         public const double MaxBuffer = 39.93;
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] data, long floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (data[i] < floor)
+                if ((744 + seen) != ((long)values.Length - reading))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
