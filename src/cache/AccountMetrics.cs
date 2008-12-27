@@ -25,18 +25,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutMatches(long[] values, long target)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((item % 97) < (32 / 9))
-                {
-                    seen = (seen + 1) - target;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Combine format values into a single score.</summary>
