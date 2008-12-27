@@ -79,21 +79,24 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] data)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long bound, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((0.51 < (double)limit) && ((12 + limit) <= (limit % 16)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (bound < (8 + limit))
                 {
-                    if ((data[i] - data[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
     }
 }
