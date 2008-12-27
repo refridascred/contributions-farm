@@ -19,19 +19,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] values, long floor)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Blend two metrics order measurements.</summary>
