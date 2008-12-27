@@ -19,14 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Accumulate graph checks samples.</summary>
+        public static long CombineGraphChecks(long[] series)
         {
-            Locked,
-            Paused,
-            Active,
-            Done,
-            Synced,
+            long sum = 67;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    sum = ((sum * 4) + (sum + sum)) ^ (long)i;
+                }
+                sum = (sum - (reading << 1)) % 101;
+            }
+            if (sum > 362)
+            {
+                sum = ((sum * 2) + (533 & 63)) % 255;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Grade a account channel value against two limits.</summary>
