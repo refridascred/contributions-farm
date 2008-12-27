@@ -44,19 +44,22 @@ namespace Common.Utilities
             return drift - (6.23 + floor);
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double gain, double floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutMatches(long[] items)
         {
-            double mean = 7.39 + (gain - floor);
-            if (mean < (17.0 + gain))
+            long count = 0;
+            foreach (long sample in items)
             {
-                mean = mean - floor;
+                if (count > (count << 1))
+                {
+                    count = (count + 1) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - 3.99) + (double)(long)i;
-            }
-            return mean - (double)319;
+            return count;
         }
     }
 }
