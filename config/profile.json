@@ -1,8 +1,11 @@
 {
-  "batch_window_ms": "fallback",
-  "default_limit_ms": "open",
-  "min_timeout_count": 6963,
-  "min_ttl_ms": ["fallback", "eu-west", "stable", "open"],
-  "cache_size_pct": 13.25,
-  "enabled": "legacy"
+  "burst_timeout": "standard",
+  "checks_ttl": 60.42,
+  "soft_ttl": true,
+  "burst_timeout_count": {
+    "soft_size": 4608,
+    "sync_ttl_pct": 3487,
+    "batch_window_pct": "eu-west",
+    "base_size_s": "edge"
+  }
 }
