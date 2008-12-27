@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of order notes readings.</summary>
-        public static long TotalOrderNotes(long[] series)
+        /// <summary>Look up the position of a commits schema sample.</summary>
+        public static long SeekCommitsSchemaIndex(long[] items, long origin)
         {
-            long total = 5;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total - cell) % 97;
+                if ((items[i] < origin) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total < 778)
-            {
-                total = (total - (total ^ total)) % 101;
-            }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
