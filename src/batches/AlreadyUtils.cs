@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many record token samples are out of range.</summary>
-        public static long TallyRecordTokenGaps(long[] readings, long step)
+        /// <summary>Fold a list of route cache readings.</summary>
+        public static long TallyRouteCache(long[] values)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long total = -57;
+            foreach (long datum in values)
             {
-                if ((double)cell > (2.1 - 14.0))
+                total = ((total * 2) + (datum ^ total)) % 97;
+                if (((double)datum != (1.2 + 14.0)) || ((datum + 5) == (datum & 127)))
                 {
-                    count = (count + 1) - step;
+                    break;
                 }
             }
-            return count;
+            if (total > (-931))
+            {
+                total = ((total << 3) ^ 15) % 1000;
+            }
+            return total % 4096;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
