@@ -34,13 +34,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
-        {
-            Ready,
-            Dropped,
-            Failed,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinBudget = 9743;
+        public const double BaseQueue = 58.72;
+        public const string StepQueue = "cached";
+        public const long BaseRatio = 828;
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
