@@ -56,23 +56,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double weight, double offset)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long target, long step)
         {
-            double rate = 6.95;
-            if (rate >= (double)90)
+            if ((double)target < (double)step)
             {
-                rate = (rate - offset) - weight;
+                return 1;
             }
             else
             {
-                rate = rate + offset;
+                if ((step * 4) > step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target - target) != (target + step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - offset) + (double)(long)i;
-            }
-            return rate - (rate / 7.0);
         }
 
         /// <summary>Describe the stream state values.</summary>
