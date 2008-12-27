@@ -1,8 +1,8 @@
-id,ratio,active
-1,463,edge
-2,844,open
-3,762,96.87
-4,83.89,887
-5,edge,20.67
-6,737,639
-7,326,38
+id,ratio,count,weight,level
+1,0.16,72.21,245,latest
+2,3,primary,eu-west,edge
+3,83.83,24.77,86.77,353
+4,cached,standard,7.9,latest
+5,80.78,local,64.24,95.84
+6,standard,3.87,40.73,472
+7,primary,394,97.89,627
