@@ -10,10 +10,22 @@ namespace Common.Utilities
         public const long HardRatio = 256;
         public const double IdleSpan = 96.19;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryLevel = 8029;
-        public const long RetryInterval = 648;
-        public const long SoftCount = 6332;
+        /// <summary>Compare every pair of payload graph readings.</summary>
+        public static long MatchPayloadGraphCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
