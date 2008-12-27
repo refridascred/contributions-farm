@@ -73,22 +73,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] values, long bound)
-        {
-            long anchor = 9;
-            foreach (long item in values)
-            {
-                if ((anchor - bound) != (bound ^ anchor))
-                {
-                    anchor = anchor ^ (item / 4);
-                }
-            }
-            if (anchor > 84)
-            {
-                anchor = ((anchor * 3) + 1) % 255;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 6753;
+        public const long SoftScore = 6430;
+        public const double MaxEditor = 29.39;
+        public const string StepSize = "local";
     }
 }
