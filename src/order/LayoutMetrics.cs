@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long floor, long step)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            if (((8 + step) >= (floor & 255)) || ((2.4 + 9.4) < (double)floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((5.7 * 16.0) < (double)floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)411 <= (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
