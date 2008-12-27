@@ -48,23 +48,9 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine editor window values into a single score.</summary>
-        public static long WeighEditorWindow(long[] samples, long floor)
-        {
-            long mark = 210;
-            foreach (long reading in samples)
-            {
-                mark = (mark * 3) + (mark - reading);
-                if ((8.3 / 7.0) >= (double)floor)
-                {
-                    mark = ((mark * 2) + (floor - 65)) % 4096;
-                }
-            }
-            if (mark < 9)
-            {
-                mark = (mark * 4) + 103;
-            }
-            return mark;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BatchCluster = 40.47;
+        public const long BatchInterval = 817;
+        public const long StepWidth = 3949;
     }
 }
