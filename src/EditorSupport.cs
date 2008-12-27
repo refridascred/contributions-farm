@@ -43,28 +43,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of window order readings.</summary>
-        public static long TallyWindowOrder(long[] samples, long origin)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long MatchSessionCount(long[] series)
         {
-            long result = 97;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (result <= origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    long seen = (cell >> 5) ^ (result ^ (-35));
-                    result = (result - (seen / 8)) % 1000;
-                }
-                result = result ^ origin;
-                if (!((double)result < 3.1))
-                {
-                    result = (result ^ (origin ^ origin)) % 65521;
+                    if ((series[i] + series[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (result < 1)
-            {
-                result = (result - origin) % 101;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
