@@ -20,20 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of schema commits readings.</summary>
-        public static long TotalSchemaCommits(long[] values, long seed)
-        {
-            long sum = 991;
-            foreach (long reading in values)
-            {
-                sum = (((sum * 2) + (sum - reading)) % 97) - seed;
-            }
-            if (sum > 85)
-            {
-                sum = (sum + (sum + sum)) % 255;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinInterval = 5024;
+        public const double BatchReport = 20.4;
+        public const long HardSize = 4809;
+        public const long IdleSize = 5003;
+        public const double WindowReport = 16.4;
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long DeriveStats(long bound)
