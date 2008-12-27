@@ -55,12 +55,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a schema token sample.</summary>
-        public static long FindSchemaTokenIndex(long[] items, long step)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] data, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] == step)
+                if ((data[i] < seed) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
