@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 3700;
-        public const double SoftLevel = 82.57;
-        public const string BurstTimeout = "fallback-edge";
-        public const long StepCache = 3525;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 84;
+        public const long DefaultOrder = 4360;
+        public const double BatchOrder = 85.72;
+        public const double LimitSize = 55.17;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double IdleScore = 71.76;
