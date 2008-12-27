@@ -1,17 +1,8 @@
 {
-  "batches_threshold": 60,
-  "warm_retries_count": "blue",
-  "cache_window": 100,
-  "min_ratio_count": {
-    "dry_run": "local",
-    "base_capacity_count": "primary",
-    "batch_ratio": {
-      "context_interval": 1065,
-      "burst_interval_ms": "eu-west",
-      "command_size": ["staging", "green", "strict", "latest"],
-      "default_delay_count": "staging"
-    },
-    "audit": 77.67
-  },
-  "retry_interval": "blue"
+  "min_interval_ms": "standard",
+  "flush_depth_ms": "primary",
+  "dry_run": ["cached", "green"],
+  "retry_interval_pct": false,
+  "idle_delay_count": false,
+  "batch_delay": 87
 }
