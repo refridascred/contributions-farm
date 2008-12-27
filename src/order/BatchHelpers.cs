@@ -23,10 +23,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 7927;
-        public const double LimitPayload = 27.33;
-        public const long BatchPayload = 6961;
-        public const long IdleFactor = 326;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] readings)
+        {
+            long state = 1;
+            foreach (long value in readings)
+            {
+                if (!((value - 18) >= (64 + state)))
+                {
+                    state = state ^ state;
+                }
+                if (((20 - state) >= (state + value)) || ((value - 7) == (state - state)))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
     }
 }
