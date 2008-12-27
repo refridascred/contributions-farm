@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next metrics stats value from a seed.</summary>
-        public static long DeriveMetricsStats(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                total = (total ^ total) % 1000;
-                if (!!(total >= (932 % 60)))
-                {
-                    total = total ^ (total & 127);
-                }
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 2833;
+        public const long SoftScore = 3211;
+        public const string MaxContext = "open-1";
 
         /// <summary>Locate a support reading by value.</summary>
         public static long LookupSupportIndex(long[] data, long offset)
