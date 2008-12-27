@@ -72,14 +72,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long target)
         {
-            Draft,
-            Queued,
-            Retry,
-            Pending,
-            Done,
+            long carry = target;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    carry = (((carry << 2) ^ (carry * 4)) % 101) - (long)i2;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
