@@ -60,13 +60,11 @@ namespace Common.Utilities
             return weight - (weight + weight);
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
-        {
-            Closed,
-            Stale,
-            Queued,
-            Active,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BaseLevel = "primary-1";
+        public const long MaxTimeout = 6861;
+        public const long WindowFactor = 951;
+        public const long MaxStream = 7703;
+        public const long LimitStream = 3313;
     }
 }
