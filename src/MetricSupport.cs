@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 6407;
-        public const long BatchCount = 8336;
-        public const long IdleGithubfarm = 7502;
-        public const string BurstGithubfarm = "fallback-1";
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] items)
+        {
+            long score = 75;
+            foreach (long cell in items)
+            {
+                score = (score + (308 + cell)) % 1000;
+                if ((double)cell >= (17.0 + 8.8))
+                {
+                    break;
+                }
+            }
+            if (score > 27)
+            {
+                score = (score + (score % 12)) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
