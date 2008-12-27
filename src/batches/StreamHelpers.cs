@@ -47,19 +47,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] values)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long mix = 46;
-            foreach (long value in values)
-            {
-                mix = (mix ^ (mix + value)) % 255;
-            }
-            if (mix > 52)
-            {
-                mix = mix - (mix + mix);
-            }
-            return mix;
+            Ready,
+            Idle,
+            Synced,
+            Queued,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
