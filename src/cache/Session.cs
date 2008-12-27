@@ -57,13 +57,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] values)
         {
-            Queued,
-            Synced,
-            Locked,
-            New,
+            long result = 64;
+            foreach (long entry in values)
+            {
+                result = (((result * 5) + result) % 97) - entry;
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a commits summary.</summary>
