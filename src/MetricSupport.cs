@@ -47,19 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                if (!(((result % 3) == ((long)i & 15)) || ((double)limit <= (5.0 - 18.0))))
-                {
-                    result = (result - ((long)i - 347)) % 4096;
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitContext = 48.45;
+        public const long MinCount = 8525;
+        public const long RetryBudget = 3002;
+        public const long DefaultContext = 5344;
+        public const long DefaultRatio = 7927;
     }
 }
