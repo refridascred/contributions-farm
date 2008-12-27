@@ -1,8 +1,8 @@
 {
-  "profile_retries": 67,
-  "sync_capacity": 32.8,
-  "token_size": 95.09,
-  "hard_retries_count": "local",
-  "flush_depth_s": 6.25,
-  "poll_delay": 60
+  "channel_limit": ["green", "green"],
+  "profile_size": 397,
+  "hard_capacity_pct": "edge",
+  "support_interval": 48.67,
+  "dry_run": 9127,
+  "hard_interval_count": [21, 213, 444, 202]
 }
