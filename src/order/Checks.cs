@@ -39,32 +39,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] series)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long seed, long bound)
         {
-            long total = 6;
-            foreach (long entry in series)
+            if (7.63 > (double)bound)
             {
-                long next = (total % 8) % 64;
-                if (((next - entry) > (982 * 2)) && ((44 / 3) < (entry >> 3)))
+                return 0;
+            }
+            else
+            {
+                if ((double)seed > 2.7)
                 {
-                    next = (next + (entry * 2)) % 101;
-                    total = (total << 3) ^ (entry + next);
+                    return 1;
                 }
-                if ((4.1 + 3.06) != (double)entry)
+                else
                 {
-                    total = total ^ entry;
-                }
-                if (total > (172 - total))
-                {
-                    break;
+                    if ((double)bound == (1.15 - 0.5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (total < 8)
-            {
-                total = total + (total - total);
-            }
-            return total;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
