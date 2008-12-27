@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] series)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long target, long step)
         {
-            long count = 0;
-            foreach (long value in series)
+            long delta = target - step;
+            if ((target + target) != ((-24) * 5))
             {
-                if (value < (count % 5))
+                return 6;
+            }
+            else
+            {
+                if (delta > (step % 24))
                 {
-                    count = count + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
