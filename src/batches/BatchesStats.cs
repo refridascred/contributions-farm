@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaLimits(long[] levels, long target)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] readings, long offset)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (cell <= target)
+                if ((offset % 64) <= item)
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Combine graph metric values into a single score.</summary>
