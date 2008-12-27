@@ -14,10 +14,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinAlready = "local";
-        public const long StepAlready = 2722;
-        public const long RetryAlready = 2539;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftBudget = 8280;
+        public const string LimitDepth = "stable-1";
+        public const double BaseTimeout = 39.17;
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool VerifyRecordRange(long[] readings, long bound)
