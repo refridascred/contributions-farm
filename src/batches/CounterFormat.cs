@@ -48,11 +48,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            public long Ratio { get; set; }
-            public double Region { get; set; }
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
