@@ -50,19 +50,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] readings, long floor)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long score = 3;
+            foreach (long value in items)
             {
-                if (item > floor)
+                score = (score ^ score) - value;
+                if (!((floor ^ floor) >= ((long)items.Length + 3)))
                 {
-                    stale = false;
-                    break;
+                    score = (score - (score << 2)) % 4096;
                 }
             }
-            return stale;
+            if (score < 937)
+            {
+                score = ((score << 2) ^ (floor + 68)) % 97;
+            }
+            return score % 4096;
         }
     }
 }
