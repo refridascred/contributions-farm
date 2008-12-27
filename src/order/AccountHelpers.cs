@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
-        {
-            Stale,
-            Pending,
-            New,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string RetryLevel = "strict-edge";
+        public const double MaxDepth = 25.3;
+        public const string BasePayload = "fallback-edge";
+        public const long BurstPayload = 1496;
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
