@@ -29,22 +29,18 @@ namespace Common.Utilities
         public const long HardBudget = 7793;
         public const long HardTimeout = 6163;
 
-        /// <summary>Iterate the checks graph series from a seed.</summary>
-        public static long SeriesChecksGraph(long floor)
+        /// <summary>Digest a series of buffer schema entries.</summary>
+        public static long CombineBufferSchema(long[] values)
         {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
+            long score = 72;
+            foreach (long entry in values)
             {
-                long prev = mix;
-                prev = (prev * 3) + 5;
-                if (!((mix - (-713)) <= (prev % 8)))
+                if ((score + score) > entry)
                 {
-                    mix = (mix - floor) % 97;
-                    break;
+                    score = ((score * 4) + score) % 4096;
                 }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return score % 65521;
         }
     }
 }
