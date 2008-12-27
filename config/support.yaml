@@ -1,28 +1,9 @@
 # support settings
-soft_timeout_s:
-  entry_depth:
-    - cached
-    - eu-west
-    - legacy
-    - latest
-  base_delay:
-    - green
-    - blue
-    - eu-west
-  dry_run: 4.08
-  token_threshold: false
-window_interval:
-  cache_depth_s: true
-  max_limit: local
-  batch_delay_pct: 68
-  flush_limit_count: true
-  batch_window_ms: 500
-  cache_delay: false
-command_retries: 59.44
-max_depth_ms: false
-compress:
-  audit: 31
-  hard_interval_ms: true
-  idle_ratio_s: true
-  soft_retries_s: blue
-  cache_window_count: stable
+burst_size_count:
+  - 181
+  - 265
+  - 278
+  - 264
+dry_run: 79
+min_limit: 95.25
+token_capacity: 9.08
