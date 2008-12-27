@@ -17,19 +17,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandBounds(long[] items, long step)
+        /// <summary>Derive the next order githubfarm value from a seed.</summary>
+        public static long SeriesOrderGithubfarm(long origin)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long score = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (cell < step)
-                {
-                    ok = false;
-                    break;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
