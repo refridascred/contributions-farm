@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long seed, long bound)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            if (seed > bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound >> 4) <= seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Dropped,
+            Retry,
+            New,
+            Closed,
+            Queued,
         }
 
         /// <summary>Describe the filter level values.</summary>
