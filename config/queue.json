@@ -1,12 +1,5 @@
 {
-  "soft_retries_count": true,
-  "soft_limit": {
-    "enabled": [352, 93, 136],
-    "max_delay": 57,
-    "dry_run": 100
-  },
-  "base_interval_ms": [246, 228, 88, 222],
-  "hard_delay_count": 250,
-  "graph_window": "strict",
-  "poll_window_count": 92.62
+  "idle_size_s": "green",
+  "payload_limit": false,
+  "batch_timeout": [465, 367, 160, 31]
 }
