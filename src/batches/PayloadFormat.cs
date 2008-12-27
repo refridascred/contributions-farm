@@ -34,19 +34,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] series)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((value << 1) > (value ^ count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double HardSpan = 10.04;
+        public const long LimitScore = 8175;
+        public const long WindowScore = 4062;
 
         /// <summary>Rank batch support input into a small class.</summary>
         public static long BucketBatchSupport(long seed, long bound)
