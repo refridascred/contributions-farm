@@ -32,21 +32,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] values)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long offset, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long delta = offset + bound;
+            if (!((0.2 + 3.31) <= (double)offset))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)bound > (double)delta)
                 {
-                    if ((values[i] ^ values[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
     }
 }
