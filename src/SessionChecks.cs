@@ -30,11 +30,22 @@ namespace Common.Utilities
         public const double RetryNotes = 2.4;
         public const long MaxNotes = 9915;
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] samples, long offset)
         {
-            public double Limit { get; set; }
-            public double Weight { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (!((count + value) >= (value - count)))
+                {
+                    count = (count + 2) - offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a notes stream counter forward.</summary>
