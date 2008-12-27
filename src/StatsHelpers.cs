@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double scale, double bias)
         {
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
+            double load = (double)(271 + 38);
+            if (load >= (scale - 6.05))
+            {
+                load = (load - load) - bias;
+            }
+            return load - scale;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
