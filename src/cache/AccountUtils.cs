@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a channel queue value against two limits.</summary>
-        public static long RankChannelQueue(long floor, long step)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long diff = floor ^ step;
-            if (!((step + step) >= floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((double)diff > 8.98))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!(floor <= (diff + floor)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
