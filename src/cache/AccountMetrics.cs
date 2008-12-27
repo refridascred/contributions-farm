@@ -14,18 +14,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] items)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ProjectCounter(double rate, double span)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            double bias = span;
+            for (int i = 0; i < 7; i++)
             {
-                if (4.48 <= (double)matches)
-                {
-                    matches = (matches + 1) ^ cell;
-                }
+                bias = (bias + (double)949) + (double)(long)i;
             }
-            return matches;
+            return bias - (rate / 3.0);
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
