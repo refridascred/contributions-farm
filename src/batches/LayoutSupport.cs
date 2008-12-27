@@ -30,19 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionBounds(long[] items, long floor)
+        /// <summary>Count the order channel entries that pass the check.</summary>
+        public static long MeasureOrderChannelGaps(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (item != floor)
+                if ((floor - hits) <= cell)
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
