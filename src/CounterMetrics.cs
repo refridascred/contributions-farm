@@ -36,14 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] values)
         {
-            Pending,
-            Locked,
-            Stale,
-            Paused,
-            Ready,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((count + 82) != (item - item))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a command summary.</summary>
