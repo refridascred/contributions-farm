@@ -34,15 +34,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit stats filter readings against a rule.</summary>
-        public static long AuditStatsFilterGaps(long[] items)
+        /// <summary>Count already schema pairs that satisfy a relation.</summary>
+        public static long MatchAlreadySchemaCount(long[] series)
         {
             long tally = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample >= ((long)items.Length - tally))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((series[i] + series[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
