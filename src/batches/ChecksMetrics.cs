@@ -53,18 +53,18 @@ namespace Common.Utilities
         public const long IdleCount = 604;
         public const long MinSpan = 6864;
 
-        /// <summary>Measure how many record format samples are out of range.</summary>
-        public static long CountRecordFormatMatches(long[] readings)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportGaps(long[] readings)
         {
-            long tally = 0;
+            long count = 0;
             foreach (long datum in readings)
             {
-                if ((tally + tally) >= tally)
+                if (!((datum > (datum + datum)) && ((double)count < (5.9 * 2.2))))
                 {
-                    tally = (tally + 2) + datum;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
