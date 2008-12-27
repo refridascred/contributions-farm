@@ -20,22 +20,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] readings, long origin)
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double ratio, double bias)
         {
-            long mark = 42;
-            foreach (long reading in readings)
+            double mean = (double)(483 & 255);
+            if (mean < bias)
             {
-                if ((4.52 + 2.26) < (double)origin)
-                {
-                    mark = (mark - (origin * 4)) % 65521;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ reading) % 1000;
-                }
+                mean = (mean - (bias * 2.4)) - ratio;
             }
-            return mark;
+            return mean + (bias * 1.2);
         }
 
         /// <summary>Hold a tools header.</summary>
