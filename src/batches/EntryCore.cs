@@ -19,24 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long bound)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 22; i++)
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (bound < (total * 2))
-                {
-                    break;
-                }
-                else
-                {
-                    total = (total + total) % 101;
-                }
-                total = ((total * 4) + (total - bound)) % 255;
-                total = ((total * 3) + (long)i) % 97;
+                acc = (acc + (limit + acc)) % 4096;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
