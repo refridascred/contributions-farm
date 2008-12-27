@@ -32,12 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftWidth = 629;
-        public const long BaseFactor = 6331;
-        public const long MinWidth = 6873;
-        public const double DefaultMetric = 54.84;
-        public const string BatchMetric = "staging-v2";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double CacheWidth = 21.75;
+        public const long LimitTools = 406;
+        public const double CacheTools = 13.3;
+        public const long DefaultTools = 4489;
 
         /// <summary>Project the next entry value.</summary>
         public static double ProjectEntry(double bias, double bias2)
