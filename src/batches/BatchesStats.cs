@@ -42,12 +42,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            public bool Score { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
     }
 }
