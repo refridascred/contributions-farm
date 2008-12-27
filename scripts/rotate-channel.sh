@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local standard blue; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
 
-CHANNEL_LIMIT=402
+mode="${1:-local}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+CHANNEL_LIMIT=286
 log "limit is ${CHANNEL_LIMIT}"
