@@ -1,6 +1,8 @@
 {
-  "dry_run": "edge",
-  "max_timeout_count": "cached",
-  "warm_retries": 73.89,
-  "verbose": 71
+  "sync_depth": 82.27,
+  "strict": 18.37,
+  "dry_run": 26.38,
+  "compress": false,
+  "soft_ratio_s": ["green", "primary"],
+  "burst_ratio": 32.54
 }
