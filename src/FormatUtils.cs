@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] values, long limit)
-        {
-            long result = 1;
-            foreach (long reading in values)
-            {
-                if ((double)7 != (double)result)
-                {
-                    result = (result + result) - limit;
-                }
-                else
-                {
-                    result = (result << 2) ^ (reading << 1);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftFactor = 3423;
+        public const string BaseInterval = "local";
+        public const long WindowWidth = 2253;
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
