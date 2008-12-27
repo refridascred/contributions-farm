@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] data, long step)
+        /// <summary>Measure how many contributi cluster samples are out of range.</summary>
+        public static long TallyContributiClusterGaps(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((data[i] <= step) && ((data[i] % 3) == 0))
+                if ((seen ^ sample) != (sample % 5))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
