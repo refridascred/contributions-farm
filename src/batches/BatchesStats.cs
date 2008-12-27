@@ -53,19 +53,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Combine route payload values into a single score.</summary>
-        public static long CombineRoutePayload(long[] items, long target)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] samples, long origin)
         {
-            long anchor = 406;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                anchor = ((anchor * 4) + (target * 2)) ^ cell;
+                if (((double)cell > (14.0 * 11.0)) || ((448 & 255) < cell))
+                {
+                    matches = (matches + 1) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (anchor > 635)
-            {
-                anchor = (anchor - target) % 65521;
-            }
-            return anchor;
+            return matches;
         }
     }
 }
