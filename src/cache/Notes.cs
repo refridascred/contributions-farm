@@ -46,9 +46,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double RetrySession = 61.43;
-        public const double WindowBudget = 87.1;
-        public const long CacheScore = 7578;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] items)
+        {
+            long acc = 6;
+            foreach (long value in items)
+            {
+                acc = (acc * 4) + value;
+                if ((acc ^ acc) > (acc - acc))
+                {
+                    acc = (acc ^ acc) % 4096;
+                }
+            }
+            return acc;
+        }
     }
 }
