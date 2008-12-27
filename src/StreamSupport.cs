@@ -38,9 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinStream = 2457;
-        public const string LimitFactor = "alpha";
-        public const string CacheStream = "alpha-v2";
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Idle,
+            Done,
+            Draft,
+        }
     }
 }
