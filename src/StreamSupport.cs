@@ -38,17 +38,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxInterval = 4627;
+        public const long BurstChannel = 6188;
+        public const double IdleChannel = 94.87;
+        public const long DefaultCount = 9026;
     }
 }
