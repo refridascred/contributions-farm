@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] values, long target)
+        /// <summary>Derive the next token graph value from a seed.</summary>
+        public static long SeriesTokenGraph(long seed)
         {
-            long state = 559;
-            foreach (long value in values)
+            long result = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((7.25 * 9.9) == (double)target))
-                {
-                    state = ((state << 3) ^ (value ^ state)) % 97;
-                }
+                result = (result << 3) ^ result;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return state % 97;
+            return result;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
