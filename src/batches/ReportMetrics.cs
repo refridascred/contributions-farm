@@ -25,21 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] samples)
+        /// <summary>Validate token batches readings against a bound.</summary>
+        public static bool CheckTokenBatchesLimits(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell != floor)
                 {
-                    if ((samples[i] - samples[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
