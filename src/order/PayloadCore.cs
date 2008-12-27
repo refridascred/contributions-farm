@@ -33,38 +33,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a metric report pair into a bucket.</summary>
-        public static long GradeMetricReport(long seed, long bound)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            if (1.26 >= (double)seed)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((seed % 2) == (bound >> 1)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((seed + bound) == (bound - bound)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)seed < (0.36 / 9.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Idle,
+            Dropped,
+            Synced,
+            Active,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
