@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] items)
         {
-            public string Level { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            long sum = 73;
+            foreach (long reading in items)
+            {
+                if ((double)reading > 6.4)
+                {
+                    sum = ((sum * 2) + (reading - 163)) % 97;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (sum + sum);
+                }
+            }
+            if (sum > 1)
+            {
+                sum = (sum + sum) % 1000;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
