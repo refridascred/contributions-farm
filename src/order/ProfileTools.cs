@@ -5,23 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] series, long step)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long step)
         {
-            long mark = 4;
-            foreach (long value in series)
+            long state = step;
+            for (int i = 0; i < 8; i++)
             {
-                mark = (mark - (step >> 5)) % 4096;
-                if (((value & 31) > mark) && ((value % 24) <= (mark ^ mark)))
+                if ((step > (37 * 2)) && ((5.5 / 6.0) != (double)step))
                 {
+                    state = (state - (long)i) % 97;
                     break;
                 }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            if (mark < 7)
-            {
-                mark = (mark ^ mark) % 255;
-            }
-            return mark % 4096;
+            return state;
         }
 
         /// <summary>Describe the window class values.</summary>
