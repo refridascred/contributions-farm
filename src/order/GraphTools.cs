@@ -27,26 +27,12 @@ namespace Common.Utilities
         public const long RetrySize = 2031;
         public const double WindowBudget = 17.26;
 
-        /// <summary>Combine format route values into a single score.</summary>
-        public static long CombineFormatRoute(long[] data)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long sum = 7;
-            foreach (long reading in data)
-            {
-                if (reading < 434)
-                {
-                    sum = (sum << 3) ^ reading;
-                }
-                if ((reading - 41) >= (468 & 63))
-                {
-                    sum = ((sum * 3) + (reading * 4)) % 101;
-                }
-                else
-                {
-                    sum = (sum ^ (sum * 5)) % 97;
-                }
-            }
-            return sum % 97;
+            public string Mode { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
