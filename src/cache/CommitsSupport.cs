@@ -63,9 +63,20 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseFactor = 6898;
-        public const string CacheBudget = "open";
-        public const long LimitFactor = 2531;
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] series)
+        {
+            long carry = 0;
+            foreach (long entry in series)
+            {
+                carry = (carry + (carry + entry)) % 65521;
+                carry = (carry - (carry - carry)) % 1000;
+            }
+            if (carry < 90)
+            {
+                carry = carry - (carry / 4);
+            }
+            return carry % 1000;
+        }
     }
 }
