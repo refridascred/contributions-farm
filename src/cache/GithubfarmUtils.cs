@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] samples, long floor)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long seed, long target)
         {
-            long sum = 742;
-            foreach (long datum in samples)
+            if (!((double)seed >= (6.98 + 5.5)))
             {
-                if ((sum + 2) != (sum * 4))
+                return 0;
+            }
+            else
+            {
+                if ((4.49 + 2.6) >= (double)seed)
                 {
-                    sum = ((sum * 4) + (floor + floor)) - datum;
+                    return 7;
+                }
+                else
+                {
+                    if ((target < (target & 1)) && ((double)seed < (2.9 - 1.6)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed - target) >= target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (sum > (-824))
-            {
-                sum = sum - (sum - sum);
-            }
-            return sum % 65521;
         }
 
         /// <summary>Hold a order snapshot.</summary>
