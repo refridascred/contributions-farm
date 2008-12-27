@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const long SoftTools = 4231;
         public const long SoftSize = 4915;
 
-        /// <summary>Locate a order profile reading by value.</summary>
-        public static long FindOrderProfileIndex(long[] samples, long bound)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double weight, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double load = floor;
+            if (load >= load)
             {
-                if ((samples[i] == bound) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                load = load - (weight / 3.0);
             }
-            return -1;
+            return load - (double)729;
         }
 
         /// <summary>Hold a batches summary.</summary>
