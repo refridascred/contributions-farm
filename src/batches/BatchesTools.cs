@@ -32,22 +32,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] data, long step)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] items, long bound)
         {
-            long result = 833;
-            foreach (long reading in data)
+            long result = -7;
+            foreach (long datum in items)
             {
-                if ((4.0 + 3.0) > (double)reading)
+                if ((double)datum <= (11.0 - 18.0))
                 {
-                    break;
+                    result = ((result * 3) + datum) + bound;
                 }
-                if ((137 + step) <= (7 + 6))
+                if (!(2 >= (datum % 8)))
                 {
-                    result = (result * 5) + 3;
+                    result = result - result;
                 }
             }
-            return result;
+            if (result < 61)
+            {
+                result = (result - result) % 97;
+            }
+            return result % 65521;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
