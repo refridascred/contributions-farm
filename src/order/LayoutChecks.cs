@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            Synced,
-            Active,
-            Ready,
-            Idle,
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
