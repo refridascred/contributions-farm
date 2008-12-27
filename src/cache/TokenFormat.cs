@@ -16,22 +16,20 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit queue order readings against a rule.</summary>
-        public static long AuditQueueOrderMatches(long[] data, long limit)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long seed)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((double)matches <= (7.3 / 2.0)) && (5.0 > (double)entry))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    matches = (matches + 3) - limit;
+                    sum = (sum ^ seed) - (long)i2;
+                    sum = ((sum << 2) ^ seed) % 65521;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
