@@ -1,21 +1,19 @@
 # githubfarm settings
-layout_capacity:
-  burst_threshold_pct: 7420
-  metric_delay: 97
-  min_capacity:
-    hard_depth_s: staging
-    farm_threshold: fallback
-    default_size_count: green
-    default_ratio_s:
-      - primary
-      - fallback
-      - green
-  default_ttl_ms: fallback
-base_ratio_s:
-  - cached
-  - local
-  - fallback
-base_ttl_count:
-  - legacy
-  - local
-tools_ratio: 3
+verbose: true
+base_limit_ms: primary
+sync_interval_count: 2392
+account_limit: 85
+hard_interval_s:
+  soft_depth_count: 4178
+  buffer_interval: blue
+  cache_delay_s:
+    contributi_interval: false
+    filter_ttl: 34.17
+    max_retries: 81.5
+    idle_ratio_count: 5947
+    enabled: true
+  compress:
+    base_threshold_s: 99
+    burst_ttl_ms: 59
+    default_depth_ms: fallback
+  warm_window_s: legacy
