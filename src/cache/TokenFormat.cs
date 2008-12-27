@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double IdleInterval = 21.53;
-        public const string BaseAlready = "standard-1";
-        public const long HardAlready = 2731;
-        public const long SoftFactor = 3143;
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
+        {
+            Pending,
+            Ready,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long FoldEntry(long[] values)
