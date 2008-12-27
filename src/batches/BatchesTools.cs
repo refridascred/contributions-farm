@@ -37,21 +37,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] data)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Dropped,
+            Closed,
+            Paused,
+            Done,
         }
     }
 }
