@@ -21,11 +21,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleInterval = 5413;
-        public const long BatchTimeout = 757;
-        public const long HardBudget = 7793;
-        public const long HardTimeout = 6163;
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long step, long limit)
+        {
+            if ((4 - limit) == (77 & 15))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit + step) < (limit - step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (limit >= (limit * 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((0.8 + 5.8) <= (2.89 / 4.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of buffer schema entries.</summary>
         public static long CombineBufferSchema(long[] values)
