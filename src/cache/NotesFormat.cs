@@ -27,12 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderLimits(long[] items, long target)
         {
-            Failed,
-            Pending,
-            Paused,
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
