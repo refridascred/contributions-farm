@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] readings)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long bound, long offset)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            if (offset > bound)
             {
-                if ((value >> 5) < (68 ^ seen))
+                return 0;
+            }
+            else
+            {
+                if (!((offset >> 5) != (bound ^ offset)))
                 {
-                    seen = seen + 2;
+                    return 1;
+                }
+                else
+                {
+                    if (!((bound - (-387)) == (bound - bound)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset ^ (-84)) < bound)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
