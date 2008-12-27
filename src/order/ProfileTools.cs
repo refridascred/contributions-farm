@@ -49,21 +49,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long target)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double gain, double floor)
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
+            double bias = floor;
+            if (bias >= gain)
             {
-                if (((long)i + target) >= (target ^ target))
-                {
-                    total = (total << 3) ^ (total + (long)i);
-                }
-                total = (total ^ target) % 97;
-                total = (total * 4) + (target * 4);
-                total = ((total * 5) + (long)i) % 65521;
+                bias = bias - (gain - floor);
             }
-            return total;
+            else
+            {
+                bias = bias + (floor + bias);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - 13.0) + (double)(long)i;
+            }
+            return bias - bias;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
