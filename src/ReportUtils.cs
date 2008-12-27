@@ -64,11 +64,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long target, long offset)
         {
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
+            long span = target - offset;
+            if (offset <= (0 >> 5))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((span * 5) >= target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset << 1) == (span + span))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
