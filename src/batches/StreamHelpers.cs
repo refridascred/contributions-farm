@@ -47,19 +47,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandOutliers(long[] items, long step)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((entry - step) < (entry + step))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double RetryProfile = 17.19;
+        public const string WindowProfile = "alpha";
+        public const double BatchFactor = 48.5;
+        public const string RetryScore = "alpha-v2";
 
         /// <summary>Digest a series of record entries.</summary>
         public static long FoldRecord(long[] readings, long target)
