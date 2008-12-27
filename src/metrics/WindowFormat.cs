@@ -42,19 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsBounds(long[] readings, long floor)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsBounds(long[] items, long seed)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if (sample <= floor)
+                if (cell >= seed)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Derive the next cluster metrics value from a seed.</summary>
