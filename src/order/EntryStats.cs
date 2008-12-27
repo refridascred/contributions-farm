@@ -43,12 +43,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double scale, double span)
         {
-            public long Owner { get; set; }
-            public double Rank { get; set; }
-            public long Token { get; set; }
+            double ratio = (double)(6 ^ 43);
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = ((ratio - span) + (double)(long)i) + scale;
+            }
+            return ratio + (3.05 * 7.52);
         }
     }
 }
