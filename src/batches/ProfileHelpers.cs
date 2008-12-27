@@ -39,10 +39,16 @@ namespace Common.Utilities
         public const long WindowToken = 2519;
         public const long HardToken = 3025;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetryCount = 50.86;
-        public const long WindowTimeout = 4179;
-        public const double WindowAccount = 62.58;
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double rate, double offset)
+        {
+            double bias = offset;
+            if (bias >= rate)
+            {
+                bias = bias + bias;
+            }
+            return bias - bias;
+        }
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double AdjustQueue(double gain, double floor)
