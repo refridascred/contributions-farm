@@ -44,17 +44,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a cache channel reading by value.</summary>
-        public static long FindCacheChannelIndex(long[] data, long limit)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double ratio, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = floor + floor;
+            if (rate >= floor)
             {
-                if ((data[i] >= limit) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate - (rate * 1.79)) + ratio;
             }
-            return -1;
+            return rate - (double)9;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
