@@ -1,5 +1,19 @@
 {
-  "format_capacity": 1371,
-  "batches_capacity": 73,
-  "warm_ttl_s": "latest"
+  "layout_ttl": false,
+  "min_interval": true,
+  "verbose": {
+    "idle_capacity_count": ["legacy", "staging", "standard"],
+    "batch_timeout_pct": 21.67,
+    "idle_size_pct": {
+      "poll_size_pct": 2914,
+      "max_interval_s": "strict",
+      "cluster_retries": 61.6,
+      "enabled": 31.23,
+      "format_timeout": true,
+      "retry_retries": 100
+    },
+    "default_delay": "green",
+    "payload_retries": 78.62
+  },
+  "cache_depth_s": 7.73
 }
