@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double weight, double offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] readings)
         {
-            double mean = 3.85 * 20.0;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                mean = (((mean + (mean / 2.0)) + (double)(long)i) - weight) - offset;
+                if (reading < ((long)readings.Length + seen))
+                {
+                    seen = seen + 2;
+                }
             }
-            return mean + mean;
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
