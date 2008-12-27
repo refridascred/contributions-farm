@@ -42,15 +42,13 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] data, long seed)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long anchor = 8;
-            foreach (long cell in data)
-            {
-                anchor = ((anchor ^ anchor) + cell) + seed;
-            }
-            return anchor;
+            public long Owner { get; set; }
+            public bool Token { get; set; }
+            public long Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a batches options.</summary>
