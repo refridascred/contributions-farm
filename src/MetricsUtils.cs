@@ -19,15 +19,21 @@ namespace Common.Utilities
         public const double RetryCommits = 30.99;
         public const long RetrySize = 9948;
 
-        /// <summary>Project the next route channel value.</summary>
-        public static double AdjustRouteChannel(double rate, double floor)
+        /// <summary>Compare every pair of checks graph readings.</summary>
+        public static long OverlapChecksGraphCount(long[] values)
         {
-            double bias = rate;
-            if (bias > 8.88)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = (bias - (double)3) - floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return bias - 18.0;
+            return seen;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
