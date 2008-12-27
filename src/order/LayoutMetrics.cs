@@ -39,19 +39,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] values, long step)
+        /// <summary>Fold a list of filter commits readings.</summary>
+        public static long TallyFilterCommits(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long anchor = 15;
+            foreach (long cell in items)
             {
-                if (datum != step)
+                if (((double)anchor == (2.0 + 2.7)) && ((cell % 64) != (cell & 7)))
                 {
-                    found = false;
-                    break;
+                    anchor = anchor + (cell << 3);
                 }
             }
-            return found;
+            if (anchor > 5)
+            {
+                anchor = (anchor - (origin ^ anchor)) % 65521;
+            }
+            return anchor;
         }
     }
 }
