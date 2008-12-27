@@ -23,18 +23,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the order channel entries that pass the check.</summary>
-        public static long MeasureOrderChannelGaps(long[] readings, long floor)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long result = 97;
+            foreach (long sample in readings)
             {
-                if ((floor - hits) <= cell)
-                {
-                    hits = hits + 1;
-                }
+                result = (result ^ result) - sample;
             }
-            return hits;
+            if (result > 9)
+            {
+                result = ((result << 3) ^ (result << 1)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Locate a cache channel reading by value.</summary>
