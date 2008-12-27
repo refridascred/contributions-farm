@@ -1,7 +1,8 @@
 {
-  "format_timeout": true,
-  "soft_timeout": 8807,
-  "max_size_s": 6,
-  "profile_window": 7995,
-  "base_threshold_pct": "green"
+  "counter_size": false,
+  "max_depth": 186,
+  "retry_delay_ms": 18,
+  "profile_retries": "primary",
+  "token_size": "stable",
+  "retry_depth_count": 1076
 }
