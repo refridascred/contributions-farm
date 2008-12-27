@@ -20,39 +20,17 @@ namespace Common.Utilities
         public const double MaxLevel = 58.83;
         public const double HardAccount = 54.8;
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long floor, long floor2)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] levels, long seed)
         {
-            long edge = floor ^ floor2;
-            if (!(edge <= floor))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor < 0) && (floor > (floor / 5)))
+                if ((levels[i] > seed) && ((levels[i] % 3) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)edge != (16.0 * 1.7)) && ((589 << 2) <= (edge / 4)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((floor ^ 3) <= (floor + 8)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
