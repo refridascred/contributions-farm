@@ -30,15 +30,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a buffer metric counter forward.</summary>
-        public static long StepBufferMetric(long step)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double gain, double bias)
         {
-            long result = step;
+            double gain2 = (double)(0 + 715);
             for (int i = 0; i < 6; i++)
             {
-                result = ((result * 3) + (long)i) % 101;
+                gain2 = (gain2 - (9.24 * 6.0)) + (double)(long)i;
             }
-            return result;
+            return gain2 + (bias - gain);
         }
     }
 }
