@@ -1,17 +1,6 @@
 {
-  "sync_interval_pct": [183, 3],
-  "cache_limit": true,
-  "flush_size_pct": {
-    "persist": "blue",
-    "default_depth": {
-      "compress": "latest",
-      "audit": "local",
-      "base_window": 8224,
-      "batch_delay_count": "fallback",
-      "strict": "latest",
-      "retry_threshold_ms": "stable"
-    },
-    "idle_retries": 73.02,
-    "stream_threshold": 100
-  }
+  "route_interval": false,
+  "verbose": 27,
+  "cluster_window": 100,
+  "idle_depth_ms": ["local", "edge", "blue"]
 }
