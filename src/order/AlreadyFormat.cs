@@ -29,22 +29,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] samples, long bound)
+        /// <summary>Find the first metric context entry that matches the target.</summary>
+        public static long LocateMetricContextIndex(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((sample + bound) >= 32))
+                if (data[i] >= origin)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
