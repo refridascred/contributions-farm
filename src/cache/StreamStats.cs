@@ -42,19 +42,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] series, long limit)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] readings, long target)
         {
-            long sum = 0;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                sum = (sum * 4) + (5 << 1);
-                if ((837 + limit) >= sum)
+                if (datum > target)
                 {
-                    sum = sum + sample;
+                    ok = false;
+                    break;
                 }
             }
-            return sum;
+            return ok;
         }
     }
 }
