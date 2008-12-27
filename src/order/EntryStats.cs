@@ -22,13 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] series, long step)
         {
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
-            public double Count { get; set; }
-            public long Rank { get; set; }
+            long mark = 7;
+            foreach (long datum in series)
+            {
+                mark = ((mark << 2) ^ ((-2) ^ mark)) % 1000;
+                mark = (mark ^ (datum + step)) % 255;
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a counter summary.</summary>
