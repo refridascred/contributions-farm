@@ -60,19 +60,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenRange(long[] data, long floor)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long mix = 42;
+            foreach (long datum in series)
             {
-                if (datum != floor)
+                if (datum > (datum >> 1))
                 {
-                    valid = false;
-                    break;
+                    mix = (mix * 5) + (mix >> 2);
                 }
             }
-            return valid;
+            return mix % 65521;
         }
     }
 }
