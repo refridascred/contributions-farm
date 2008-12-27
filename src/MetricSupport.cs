@@ -35,22 +35,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] samples)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long mix = 1;
-            foreach (long sample in samples)
-            {
-                if (((mix % 10) <= sample) || ((68 * 2) > (mix ^ (long)samples.Length)))
-                {
-                    mix = (mix + mix) % 97;
-                }
-                else
-                {
-                    mix = (mix - (mix / 3)) % 97;
-                }
-            }
-            return mix;
+            public string Limit { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
