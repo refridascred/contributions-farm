@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long SeekRecordIndex(long[] data, long seed)
         {
-            public string Rank { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Size { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == seed) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
