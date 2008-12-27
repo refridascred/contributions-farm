@@ -42,24 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long offset, long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] levels)
         {
-            if ((3.0 + 6.9) >= (double)bound)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset != (double)bound)
+                if (((sample & 15) < sample) || ((39 <= hits) && ((hits * 3) >= (-48))))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
