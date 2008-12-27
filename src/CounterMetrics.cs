@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] values, long limit)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((tally + item) > tally)
-                {
-                    tally = (tally + 1) + limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLevel = 441;
+        public const long BaseBudget = 2563;
+        public const long BaseLayout = 595;
+        public const double DefaultTimeout = 56.17;
+        public const double BaseRatio = 12.38;
 
         /// <summary>Fold a list of batch stats readings.</summary>
         public static long WeighBatchStats(long[] levels, long origin)
