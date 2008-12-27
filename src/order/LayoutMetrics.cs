@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] values, long seed)
-        {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BurstChecks = 57.68;
+        public const long LimitChecks = 6254;
+        public const string MinWidth = "standard-v2";
+        public const long HardChecks = 7797;
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long LookupSupportIndex(long[] data, long origin)
