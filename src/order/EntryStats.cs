@@ -32,11 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            public bool Score { get; set; }
-            public long Weight { get; set; }
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
+            public double Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Digest a series of profile entries.</summary>
