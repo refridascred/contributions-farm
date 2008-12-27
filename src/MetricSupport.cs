@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] samples, long floor)
+        /// <summary>Combine checks tools values into a single score.</summary>
+        public static long FoldChecksTools(long[] samples)
         {
-            long result = 621;
-            foreach (long value in samples)
+            long state = 1;
+            foreach (long sample in samples)
             {
-                if ((20.0 > (double)value) && ((double)floor > (double)value))
-                {
-                    result = (result + (3 * 5)) % 97;
-                }
+                state = ((state * 2) + (state + (long)samples.Length)) % 4096;
+                state = (state * 4) + (sample % 16);
             }
-            return result;
+            if (state > 26)
+            {
+                state = (state ^ (state << 3)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
