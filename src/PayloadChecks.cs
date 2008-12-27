@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the contributi metric entries that pass the check.</summary>
-        public static long MeasureContributiMetricOutliers(long[] data)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((cell >> 3) < (tally - tally)) && !((tally >> 1) >= (tally << 3)))
+                if (samples[i] > floor)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Match up entry metric samples.</summary>
