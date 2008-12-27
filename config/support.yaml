@@ -1,4 +1,4 @@
 # support settings
-retry_capacity_count: staging
-cache_retries_ms: 9172
-default_ratio: false
+burst_size_count: primary
+min_retries: 9057
+min_ratio: 52.34
