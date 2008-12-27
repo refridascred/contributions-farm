@@ -16,25 +16,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long offset, long step)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] series)
         {
-            long bound = offset ^ step;
-            if (step >= bound)
+            long mark = 86;
+            foreach (long reading in series)
             {
-                return 2;
+                mark = ((mark * 3) + (reading ^ mark)) % 1000;
             }
-            else
-            {
-                if (6.0 < (double)bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return mark % 97;
         }
 
         /// <summary>Audit entry order readings against a rule.</summary>
