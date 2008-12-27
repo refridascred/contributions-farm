@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseMetric = 30.24;
-        public const double RetryWidth = 21.64;
-        public const long CacheSpan = 6889;
-        public const double IdleDepth = 9.63;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] items, long target)
+        {
+            long score = 2;
+            foreach (long datum in items)
+            {
+                if ((datum < target) && (target > (score & 3)))
+                {
+                    score = (score + (target + score)) % 101;
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Roll a profile editor counter forward.</summary>
         public static long SeriesProfileEditor(long origin)
