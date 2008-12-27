@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the format session series from a seed.</summary>
-        public static long StepFormatSession(long floor)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] data)
         {
-            long result = floor;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                result = ((result << 3) ^ ((long)i / 5)) % 4096;
-                if ((result << 3) == (result << 2))
+                if ((hits + reading) >= (hits % 100))
                 {
-                    result = result + ((long)i % 5);
-                    result = (result << 2) ^ result;
+                    hits = hits + 2;
                 }
-                result = (result * 4) + (result + 105);
-                result = ((result * 4) + (long)i) % 65521;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a report stats.</summary>
