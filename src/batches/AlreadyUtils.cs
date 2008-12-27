@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long bound)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long mark = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = (mark ^ (mark + (long)i)) % 101;
-                mark = (mark * 4) + (bound - (long)i);
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            public bool Stamp { get; set; }
+            public double Weight { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
