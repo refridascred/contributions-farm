@@ -39,12 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long origin, long seed)
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public bool Total { get; set; }
+            if ((3.41 - 2.4) == (double)origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if (seed <= (seed / 9))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
