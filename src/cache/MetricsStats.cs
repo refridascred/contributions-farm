@@ -54,18 +54,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchGaps(long[] readings, long origin)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (!((hits + origin) >= origin))
-                {
-                    hits = (hits + 1) + datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string CacheFilter = "alpha-1";
+        public const double SoftFilter = 58.07;
+        public const long IdleFactor = 8324;
+        public const string MaxCount = "standard-1";
+        public const double BaseSize = 0.97;
     }
 }
