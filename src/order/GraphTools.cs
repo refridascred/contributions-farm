@@ -23,14 +23,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] data)
         {
-            Locked,
-            Draft,
-            Done,
-            Paused,
-            Ready,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((10 * 3) != (tally >> 3))
+                {
+                    tally = (tally + 3) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
