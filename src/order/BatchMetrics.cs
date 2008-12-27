@@ -51,12 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] series)
         {
-            public bool Flag { get; set; }
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((tally & 7) > tally)
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the commits level values.</summary>
