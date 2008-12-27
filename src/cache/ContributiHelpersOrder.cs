@@ -15,19 +15,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate stream cache readings against a bound.</summary>
-        public static bool GuardStreamCacheBounds(long[] readings, long floor)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] items)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading < floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] ^ items[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Digest a series of record entries.</summary>
