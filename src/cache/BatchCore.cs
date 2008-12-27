@@ -57,11 +57,23 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double weight, double bias)
         {
-            public string Mode { get; set; } = "";
-            public string Count { get; set; } = "";
+            double ratio = (6.0 * 6.0) - (double)432;
+            if (ratio < bias)
+            {
+                ratio = (ratio + (12.0 - bias)) - weight;
+            }
+            else
+            {
+                ratio = ratio + (ratio * 2.9);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (ratio - bias)) + (double)(long)i;
+            }
+            return ratio + (bias * 20.0);
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
