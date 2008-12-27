@@ -39,18 +39,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenHits(long[] readings, long limit)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)limit >= 6.0)
-                {
-                    matches = (matches + 3) ^ reading;
-                }
-            }
-            return matches;
+            public bool Count { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
