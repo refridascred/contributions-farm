@@ -34,22 +34,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] values, long step)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] items, long bound)
         {
-            long score = 495;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item > (item << 2))
+                if (items[i] == bound)
                 {
-                    score = (score + item) + step;
+                    return (long)i;
                 }
             }
-            if (score > 21)
-            {
-                score = (score * 2) + score;
-            }
-            return score % 4096;
+            return -1;
         }
     }
 }
