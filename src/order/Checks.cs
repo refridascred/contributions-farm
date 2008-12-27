@@ -56,22 +56,22 @@ namespace Common.Utilities
             return drift - (6.23 + floor);
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutMatches(long[] items)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] values, long step)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (count > (count << 1))
+                if (!(18.0 > (double)entry))
                 {
-                    count = (count + 1) ^ sample;
+                    hits = (hits + 2) - step;
                 }
                 else
                 {
-                    count = count - 1;
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
