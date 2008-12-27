@@ -33,23 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine filter context values into a single score.</summary>
-        public static long WeighFilterContext(long[] readings, long floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] data, long step)
         {
-            long total = 59;
-            foreach (long item in readings)
+            long mark = 30;
+            foreach (long value in data)
             {
-                for (int i = 0; i < 3; i++)
+                if ((value % 97) != (0 - step))
                 {
-                    total = (total + ((long)readings.Length ^ floor)) % 4096;
-                    total = ((total << 2) ^ ((long)i * 4)) % 65521;
+                    mark = ((mark * 2) + ((long)data.Length >> 3)) % 255;
                 }
-                if ((double)item > 9.73)
+                if ((3.0 / 2.0) > (double)step)
                 {
-                    total = (total * 2) + (floor ^ item);
+                    break;
                 }
             }
-            return total % 65521;
+            return mark % 1000;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
