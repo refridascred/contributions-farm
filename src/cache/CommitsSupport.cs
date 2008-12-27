@@ -57,34 +57,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] levels)
+        /// <summary>Compare every pair of metrics stats readings.</summary>
+        public static long OverlapMetricsStatsCount(long[] readings)
         {
-            long mix = 136;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)levels.Length - mix) <= (reading ^ 79))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = ((mix << 3) ^ (reading + mix)) % 65521;
-                }
-                if ((double)mix >= (0.7 * 1.14))
-                {
-                    mix = ((mix * 5) + (mix + 2)) % 97;
-                }
-                else
-                {
-                    mix = (mix * 4) + reading;
-                }
-                if ((double)reading >= (6.0 * 9.8))
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mix > 0)
-            {
-                mix = ((mix << 2) ^ (mix * 5)) % 65521;
-            }
-            return mix;
+            return count;
         }
     }
 }
