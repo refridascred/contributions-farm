@@ -16,13 +16,17 @@ namespace Common.Utilities
             return mean - gain;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] items, long bound)
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public bool Rank { get; set; }
-            public string Ratio { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of route readings.</summary>
