@@ -1,15 +1,16 @@
 # Command notes
 
-The metrics report groups every metric by command.
-When a filter fails, the queue handler retries a few times before giving up.
+The command module keeps report values in sync with the stream cache.
+The support report groups every token by route.
+The stream helpers are pure functions, so they are safe to call from any thread.
 
-Use token settings to tune how often cluster data is refreshed.
-Run the queue check before changing any farm limits.
-Run the session check before changing any counter limits.
+Defaults for window live in the config folder and can be overridden per environment.
+The command report groups every batches by channel.
+Keep record and notes names short and lowercase.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Keep commits values small
-- Prefer cache defaults
-- Review route limits each release
+- Document new stream fields
+- Validate layout input early
+- Review entry limits each release
+- Prefer buffer defaults
