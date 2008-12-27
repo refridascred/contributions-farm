@@ -22,15 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double rate, double floor)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] series)
         {
-            double scale = (floor - 0.38) - rate;
-            if (scale < (floor + 18.0))
+            long anchor = 8;
+            foreach (long value in series)
             {
-                scale = scale - 8.0;
+                for (int i = 0; i < 9; i++)
+                {
+                    anchor = ((anchor << 2) ^ ((long)series.Length - 819)) + (long)i;
+                }
+                anchor = (anchor * 5) + (value >> 1);
+                anchor = anchor - anchor;
             }
-            return scale + 8.7;
+            return anchor;
         }
 
         /// <summary>Blend two format measurements.</summary>
