@@ -29,12 +29,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] levels, long origin)
         {
-            Stale,
-            Failed,
-            Dropped,
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
