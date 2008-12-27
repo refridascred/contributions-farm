@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long step, long seed)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] values, long floor)
         {
-            if ((seed % 60) == (step - seed))
+            bool ok = true;
+            foreach (long sample in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step + step) >= seed)
+                if (sample < floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step * 5) == (923 & 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step % 12) >= (seed / 9))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the cluster state values.</summary>
