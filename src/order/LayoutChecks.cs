@@ -100,22 +100,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long target)
+        /// <summary>Count the queue window entries that pass the check.</summary>
+        public static long AuditQueueWindowGaps(long[] readings, long origin)
         {
-            long acc = target;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                long span = (acc ^ target) * 3;
-                double rate = 2.8 + (7.38 + 4.9);
-                if (!(((span % 2) > (acc & 31)) || ((rate * 17.0) < rate)))
+                if ((origin > 0) || ((origin ^ 15) > (origin ^ sample)))
                 {
-                    acc = ((acc * 4) + ((long)i << 2)) % 97;
-                    span = (span - ((long)i + 979)) % 101;
+                    tally = tally + 2;
                 }
-                acc = ((acc * 3) + (long)i) % 101;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
