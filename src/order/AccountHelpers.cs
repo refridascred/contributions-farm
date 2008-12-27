@@ -49,18 +49,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheRatio = 1778;
+        public const long IdleInterval = 292;
+        public const double RetrySize = 4.09;
+        public const long BaseCount = 2041;
+        public const long BurstChecks = 7965;
 
         /// <summary>Project the next command value.</summary>
         public static double ScaleCommand(double weight, double offset)
