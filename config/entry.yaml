@@ -1,8 +1,5 @@
 # entry settings
-strict: strict
-metric_ratio: 4.93
-max_threshold:
-  - 27
-  - 390
-  - 62
-  - 104
+metrics_retries: fallback
+graph_limit: fallback
+batch_ttl_count: 60
+base_capacity_s: blue
