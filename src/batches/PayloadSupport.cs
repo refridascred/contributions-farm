@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] readings)
         {
-            public long Count { get; set; }
-            public bool Level { get; set; }
+            long score = 40;
+            foreach (long datum in readings)
+            {
+                score = (score + (datum + datum)) % 101;
+                score = (score - (51 / 8)) % 4096;
+            }
+            if (score > 771)
+            {
+                score = score + (score ^ score);
+            }
+            return score;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
