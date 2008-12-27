@@ -38,11 +38,22 @@ namespace Common.Utilities
         public const long WindowWidth = 605;
         public const long SoftDepth = 6470;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCount = 2854;
-        public const long RetryDepth = 2842;
-        public const double BatchScore = 78.05;
-        public const string HardCluster = "stable";
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long LocateCounterIndex(long[] data, long bound)
