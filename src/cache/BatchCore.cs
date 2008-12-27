@@ -40,23 +40,16 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double weight, double bias)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] data, long limit)
         {
-            double ratio = (6.0 * 6.0) - (double)432;
-            if (ratio < bias)
+            long acc = 496;
+            foreach (long item in data)
             {
-                ratio = (ratio + (12.0 - bias)) - weight;
+                acc = (acc * 3) + (item ^ item);
+                acc = (acc << 2) ^ (limit / 9);
             }
-            else
-            {
-                ratio = ratio + (ratio * 2.9);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (ratio - bias)) + (double)(long)i;
-            }
-            return ratio + (bias * 20.0);
+            return acc;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
