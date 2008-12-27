@@ -22,18 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of session schema entries.</summary>
-        public static long TallySessionSchema(long[] readings, long step)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long step)
         {
-            long mark = -347;
-            foreach (long value in readings)
+            long mix = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((8 >> 5) <= step)
+                if (!((7.6 + 3.0) == (double)mix))
                 {
-                    mark = (mark ^ (step * 3)) + value;
+                    mix = mix ^ (step - mix);
                 }
+                else
+                {
+                    mix = (mix * 3) + (long)i;
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
