@@ -29,24 +29,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long origin, long floor)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] data)
         {
-            if (((double)origin > (7.9 * 5.0)) || ((double)origin != (5.81 / 9.0)))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor / 9) >= origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    if ((data[i] ^ data[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
