@@ -1,9 +1,8 @@
 # support settings
-burst_size_count:
-  - 181
-  - 265
-  - 278
-  - 264
-dry_run: 79
-min_limit: 95.25
-token_capacity: 9.08
+filter_retries: true
+min_threshold_count: eu-west
+editor_timeout:
+  - 69
+  - 400
+  - 330
+  - 316
