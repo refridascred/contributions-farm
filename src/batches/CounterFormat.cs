@@ -48,11 +48,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Combine editor window values into a single score.</summary>
+        public static long WeighEditorWindow(long[] samples, long floor)
         {
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
+            long mark = 210;
+            foreach (long reading in samples)
+            {
+                mark = (mark * 3) + (mark - reading);
+                if ((8.3 / 7.0) >= (double)floor)
+                {
+                    mark = ((mark * 2) + (floor - 65)) % 4096;
+                }
+            }
+            if (mark < 9)
+            {
+                mark = (mark * 4) + 103;
+            }
+            return mark;
         }
     }
 }
