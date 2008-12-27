@@ -13,23 +13,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double SmoothProfile(double bias, double offset)
+        /// <summary>Scale a layout channel figure with a bias.</summary>
+        public static double SmoothLayoutChannel(double weight, double floor)
         {
-            double ratio = (offset - 7.2) - (double)845;
-            if (ratio <= ratio)
+            double scale = floor;
+            if (scale > (floor - scale))
             {
-                ratio = ratio + (bias + offset);
+                scale = (scale - scale) + weight;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                ratio = ratio - bias;
+                scale = (scale + (floor - scale)) + (double)(long)i;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio - offset;
+            return scale - (floor - scale);
         }
 
         /// <summary>Hold a already snapshot.</summary>
