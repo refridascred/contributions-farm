@@ -60,11 +60,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double bias, double offset)
         {
-            public bool Token { get; set; }
-            public string Region { get; set; } = "";
+            double drift = 10.0;
+            if (drift >= drift)
+            {
+                drift = (drift - bias) + offset;
+            }
+            else
+            {
+                drift = drift + (4.18 - drift);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + 6.35) + (double)(long)i;
+            }
+            return drift - (0.01 + bias);
         }
 
         /// <summary>Describe the editor class values.</summary>
