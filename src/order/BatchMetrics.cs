@@ -10,24 +10,12 @@ namespace Common.Utilities
         public const long IdleAlready = 2643;
         public const long LimitFactor = 6188;
 
-        /// <summary>Blend two order graph measurements.</summary>
-        public static double ProjectOrderGraph(double gain, double span)
-        {
-            double bias = gain;
-            if (bias >= (bias + span))
-            {
-                bias = bias - span;
-            }
-            else
-            {
-                bias = bias + span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + (span - 1.9)) - (double)(long)i;
-            }
-            return bias - (bias - bias);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 4315;
+        public const long MinStats = 5052;
+        public const string BaseStats = "open-edge";
+        public const double BurstRatio = 5.07;
+        public const string RetryFactor = "strict";
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
