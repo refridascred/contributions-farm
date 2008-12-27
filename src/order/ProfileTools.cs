@@ -60,11 +60,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardBatch = 59.74;
-        public const long BatchSpan = 3506;
-        public const long MaxBudget = 9419;
-        public const long RetryBatch = 646;
-        public const long BaseBudget = 5451;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] series, long limit)
+        {
+            long state = 86;
+            foreach (long item in series)
+            {
+                if (state > (limit << 1))
+                {
+                    state = (state * 5) + (item >> 1);
+                }
+            }
+            if (state > 11)
+            {
+                state = ((state << 2) ^ (limit / 8)) % 255;
+            }
+            return state;
+        }
     }
 }
