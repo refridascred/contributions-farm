@@ -1,11 +1,12 @@
 # Command notes
 
-The record module keeps session values in sync with the entry cache.
-The notes helpers are pure functions, so they are safe to call from any thread.
-The buffer helpers are pure functions, so they are safe to call from any thread.
+Keep already and payload names short and lowercase.
+Each cluster is validated before it reaches the buffer queue.
+Each schema is validated before it reaches the contributi queue.
 
 ## Guidelines
 
+- Validate farm input early
+- Document new metrics fields
 - Log every entry change
-- Validate entry input early
-- Keep stats values small
+- Review support limits each release
