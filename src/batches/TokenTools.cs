@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] items)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterLimits(long[] readings, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item > target)
                 {
-                    if ((items[i] ^ items[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
