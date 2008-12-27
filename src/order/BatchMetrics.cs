@@ -49,15 +49,17 @@ namespace Common.Utilities
             return rate2 + (2.16 / 6.0);
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long limit)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] samples, long offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                if ((samples[i] > offset) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
