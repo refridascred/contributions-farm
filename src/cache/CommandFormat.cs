@@ -50,19 +50,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Validate window graph readings against a bound.</summary>
-        public static bool CheckWindowGraphLimits(long[] readings, long target)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Ready,
+            Idle,
+            Paused,
         }
     }
 }
