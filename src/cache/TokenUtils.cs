@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long floor)
+        /// <summary>Iterate the stats channel series from a seed.</summary>
+        public static long StepStatsChannel(long limit)
         {
-            long total = floor;
-            for (int i = 0; i < 16; i++)
+            long acc = limit;
+            for (int i = 0; i < 10; i++)
             {
-                total = ((total << 3) ^ 951) % 1000;
-                if ((331 + total) > (floor / 4))
+                double mean = (6.0 * 15.0) / 4.0;
+                if (mean <= (3.64 * 9.6))
                 {
-                    total = (total + (total / 4)) % 4096;
+                    break;
                 }
-                total = ((total * 3) + (long)i) % 65521;
+                else
+                {
+                    acc = (acc ^ (acc - (long)i)) % 97;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
