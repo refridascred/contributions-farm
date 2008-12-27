@@ -54,15 +54,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] levels, long floor)
+        /// <summary>Look up the position of a stream filter sample.</summary>
+        public static long FindStreamFilterIndex(long[] series, long target)
         {
-            long score = 852;
-            foreach (long sample in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (((score * 2) + (sample << 1)) % 4096) + floor;
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Describe the report class values.</summary>
