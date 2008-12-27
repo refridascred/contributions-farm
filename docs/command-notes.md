@@ -1,15 +1,13 @@
 # Command notes
 
-When a tools fails, the batch handler retries a few times before giving up.
-Run the buffer check before changing any report limits.
-Keep counter and contributi names short and lowercase.
+The payload helpers are pure functions, so they are safe to call from any thread.
+The support report groups every cluster by githubfarm.
 
-Each profile is validated before it reaches the report queue.
-Use batch settings to tune how often commits data is refreshed.
+Use channel settings to tune how often stream data is refreshed.
+Run the payload check before changing any account limits.
 
 ## Guidelines
 
-- Review support limits each release
-- Log every notes change
-- Document new window fields
-- Prefer metric defaults
+- Review account limits each release
+- Validate cluster input early
+- Log every githubfarm change
