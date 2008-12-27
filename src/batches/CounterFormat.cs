@@ -17,16 +17,13 @@ namespace Common.Utilities
             return (load - (offset * 8.9)) + bias;
         }
 
-        /// <summary>Roll a order window counter forward.</summary>
-        public static long SeriesOrderWindow(long target)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = (sum << 2) ^ (long)i;
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            Stale,
+            Idle,
+            Queued,
+            Retry,
         }
     }
 }
