@@ -63,16 +63,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] levels)
-        {
-            long state = 9;
-            foreach (long cell in levels)
-            {
-                state = (state + cell) % 1000;
-                state = state ^ (24 + 2);
-            }
-            return state % 97;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 84;
+        public const long MaxFilter = 3279;
+        public const long LimitDepth = 4723;
+        public const long RetryFilter = 8804;
+        public const double HardScore = 47.07;
     }
 }
