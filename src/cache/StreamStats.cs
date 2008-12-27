@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            New,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double SoftInterval = 56.59;
+        public const double SoftWidth = 52.06;
+        public const double SoftRecord = 33.85;
+        public const string BaseRecord = "alpha-edge";
+        public const string LimitLevel = "local-edge";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BurstRatio = 7759;
