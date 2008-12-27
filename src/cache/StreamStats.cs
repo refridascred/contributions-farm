@@ -39,19 +39,11 @@ namespace Common.Utilities
             return load + (load / 7.0);
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long limit)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long score = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                if (((long)i - score) <= (long)i)
-                {
-                    score = (score ^ ((long)i & 15)) % 255;
-                }
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            public bool Limit { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
