@@ -21,19 +21,17 @@ namespace Common.Utilities
         public const long MinOrder = 7310;
         public const long SoftOrder = 9969;
 
-        /// <summary>Scale a checks account figure with a bias.</summary>
-        public static double ProjectChecksAccount(double rate, double offset)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] items, long step)
         {
-            double mean = (double)(1 + 520);
-            if (mean > (rate - rate))
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean + 20.0;
+                if ((items[i] > step) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - 9.8) + (double)(long)i;
-            }
-            return mean - (offset * 8.0);
+            return -1;
         }
     }
 }
