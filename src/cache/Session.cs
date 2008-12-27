@@ -57,15 +57,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] values)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long result = 64;
-            foreach (long entry in values)
-            {
-                result = (((result * 5) + result) % 97) - entry;
-            }
-            return result % 4096;
+            Active,
+            Paused,
+            Idle,
         }
 
         /// <summary>Hold a checks info.</summary>
