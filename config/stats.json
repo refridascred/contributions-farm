@@ -1,17 +1,6 @@
 {
-  "warm_retries_pct": 64.9,
-  "window_retries": {
-    "context_limit": 41,
-    "flush_window": [188, 336, 420, 386],
-    "poll_capacity_pct": 16,
-    "sync_limit_count": "standard"
-  },
-  "max_limit_count": {
-    "min_timeout_count": 29,
-    "cache_window": true,
-    "buffer_threshold": 6.3,
-    "audit": false,
-    "layout_timeout": "staging"
-  },
-  "cache_delay": "primary"
+  "soft_ratio_s": ["fallback", "latest"],
+  "default_delay": 6.71,
+  "sync_ttl_pct": 94.45,
+  "hard_retries": "latest"
 }
