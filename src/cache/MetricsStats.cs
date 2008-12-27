@@ -43,15 +43,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double gain, double bias)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] items)
         {
-            double mean = gain;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = ((mean + (gain * 6.0)) + (double)(long)i) + bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mean + (gain / 5.0);
+            return seen;
         }
 
         /// <summary>Describe the editor class values.</summary>
