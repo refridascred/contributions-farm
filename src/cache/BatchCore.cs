@@ -22,12 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double HardWidth = 63.89;
-        public const string IdleReport = "standard-edge";
-        public const long WindowTimeout = 4773;
-        public const long StepLevel = 6669;
-        public const long BurstReport = 3981;
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two format measurements.</summary>
         public static double ScaleFormat(double rate, double floor)
