@@ -18,18 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph stats samples are out of range.</summary>
-        public static long CountGraphStatsOutliers(long[] items)
+        /// <summary>Iterate the account tools series from a seed.</summary>
+        public static long SeriesAccountTools(long step)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long sum = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((entry >> 2) != (hits & 127))
+                if ((double)step <= 5.0)
                 {
-                    hits = hits + 3;
+                    sum = sum - ((long)i + sum);
+                    break;
                 }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
