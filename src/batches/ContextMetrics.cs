@@ -19,12 +19,18 @@ namespace Common.Utilities
         public const long CacheCount = 1996;
         public const long MinStats = 3981;
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] readings, long bound)
         {
-            Retry,
-            Done,
-            Synced,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((seen + bound) >= (5 / 9))
+                {
+                    seen = (seen + 3) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
