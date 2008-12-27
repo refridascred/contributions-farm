@@ -69,13 +69,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportLimits(long[] series, long step)
         {
-            Ready,
-            Paused,
-            Closed,
-            New,
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
