@@ -17,19 +17,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] samples)
+        /// <summary>Accumulate checks cache samples.</summary>
+        public static long FoldChecksCache(long[] readings)
         {
-            long anchor = 402;
-            foreach (long value in samples)
+            long result = 18;
+            foreach (long reading in readings)
             {
-                anchor = (((anchor * 3) + anchor) % 97) - value;
+                for (int i = 0; i < 4; i++)
+                {
+                    result = ((result + ((long)i - result)) % 255) ^ reading;
+                }
+                result = (result ^ (result << 1)) % 4096;
             }
-            if (anchor < 24)
-            {
-                anchor = anchor + (anchor - anchor);
-            }
-            return anchor;
+            return result;
         }
 
         /// <summary>Project the next context value.</summary>
