@@ -37,11 +37,15 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryDepth = 2550;
-        public const string SoftFarm = "legacy";
-        public const long HardFarm = 5935;
-        public const long MinFarm = 1452;
-        public const long BatchFarm = 654;
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
+        }
     }
 }
