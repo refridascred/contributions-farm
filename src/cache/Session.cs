@@ -13,22 +13,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] samples)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long mix = 431;
+            foreach (long entry in readings)
             {
-                if ((78 + sample) == (sample & 63))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = (mix ^ (origin + 181)) ^ entry;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Describe the tools level values.</summary>
