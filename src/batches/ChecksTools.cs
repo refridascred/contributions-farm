@@ -42,13 +42,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] levels)
         {
-            public bool Mode { get; set; }
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
-            public double Total { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
