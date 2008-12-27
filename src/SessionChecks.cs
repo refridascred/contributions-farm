@@ -53,20 +53,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long bound)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] values)
         {
-            long total = bound;
-            for (int i = 0; i < 13; i++)
+            long total = 7;
+            foreach (long entry in values)
             {
-                if (bound >= (912 * 5))
-                {
-                    total = (total << 3) ^ (total + (long)i);
-                }
-                total = (total * 5) + ((long)i * 2);
-                total = ((total * 3) + (long)i) % 97;
+                total = ((total + 4) % 101) ^ entry;
             }
-            return total;
+            return total % 1000;
         }
     }
 }
