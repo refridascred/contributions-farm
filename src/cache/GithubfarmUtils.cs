@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] items)
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double bias, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = (double)(80 + 702);
+            if (mean <= floor)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = (mean + (double)2) - bias;
             }
-            return hits;
+            else
+            {
+                mean = mean - floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - floor) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Hold a order snapshot.</summary>
