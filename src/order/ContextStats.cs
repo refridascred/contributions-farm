@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double bias, double floor)
-        {
-            double load = bias;
-            if (load > (bias + load))
-            {
-                load = load - (17.0 - floor);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (0.3 / 8.0)) - (double)(long)i;
-            }
-            return load - (bias / 7.0);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 6571;
+        public const long WindowToken = 3355;
+        public const long RetryTimeout = 3496;
+        public const double BaseSpan = 5.8;
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long SortChecks(long target, long offset)
