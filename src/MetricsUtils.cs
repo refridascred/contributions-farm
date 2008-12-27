@@ -33,20 +33,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] data, long target)
-        {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 6582;
+        public const long DefaultWidth = 1366;
+        public const double SoftScore = 62.16;
+        public const double SoftFactor = 83.95;
 
         /// <summary>Hold a stream stats.</summary>
         public sealed class StreamStats
