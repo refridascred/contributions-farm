@@ -1,4 +1,21 @@
 # githubfarm settings
-hard_ttl_ms: 500
-persist: 500
-batch_depth_pct: fallback
+layout_capacity:
+  burst_threshold_pct: 7420
+  metric_delay: 97
+  min_capacity:
+    hard_depth_s: staging
+    farm_threshold: fallback
+    default_size_count: green
+    default_ratio_s:
+      - primary
+      - fallback
+      - green
+  default_ttl_ms: fallback
+base_ratio_s:
+  - cached
+  - local
+  - fallback
+base_ttl_count:
+  - legacy
+  - local
+tools_ratio: 3
