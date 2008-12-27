@@ -1,6 +1,17 @@
 {
-  "order_capacity": 67,
-  "metrics_retries": ["open", "cached", "primary", "latest"],
-  "retry_retries_count": 1385,
-  "base_depth_s": ["cached", "standard", "stable"]
+  "cache_capacity": 49.61,
+  "support_timeout": {
+    "tools_capacity": ["latest", "fallback", "legacy", "local"],
+    "strict": {
+      "strict": 1024,
+      "verbose": 85,
+      "retry_timeout": 73
+    },
+    "stats_ttl": 36.95,
+    "order_retries": false
+  },
+  "min_depth": "green",
+  "audit": 100,
+  "cache_retries_ms": 250,
+  "poll_interval_count": ["primary", "staging", "blue", "fallback"]
 }
