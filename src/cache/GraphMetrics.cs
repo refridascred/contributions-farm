@@ -28,21 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a queue filter counter forward.</summary>
-        public static long IterateQueueFilter(long step)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] items, long limit)
         {
-            long state = step;
-            for (int i = 0; i < 11; i++)
+            long total = 757;
+            foreach (long item in items)
             {
-                state = ((state * 2) + (268 ^ step)) % 1000;
-                state = state - state;
-                if (!!((double)step >= 0.89))
+                if ((total + item) < item)
                 {
-                    state = (state << 2) ^ (state & 127);
+                    total = ((total + total) % 255) - limit;
                 }
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Locate a already reading by value.</summary>
