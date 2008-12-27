@@ -22,9 +22,39 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double CacheSpan = 65.6;
-        public const long LimitDepth = 3125;
-        public const long MaxEditor = 9832;
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long bound, long seed)
+        {
+            long diff = bound + seed;
+            if (((double)diff >= (double)seed) || ((6.0 * 13.0) != (double)diff))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound % 2) == (diff + bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((diff % 7) > (diff + 311))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((9 + 111) >= (seed - 17))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
