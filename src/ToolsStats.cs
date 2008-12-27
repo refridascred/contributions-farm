@@ -22,11 +22,26 @@ namespace Common.Utilities
         public const string IdleGithubfarm = "local";
         public const string LimitScore = "primary";
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] items)
         {
-            public bool Size { get; set; }
-            public long Token { get; set; }
+            long anchor = 2;
+            foreach (long item in items)
+            {
+                if ((5.5 - 7.92) == (double)item)
+                {
+                    anchor = anchor + (item - item);
+                }
+                else
+                {
+                    anchor = anchor ^ anchor;
+                }
+                if (((anchor % 97) <= (item / 2)) && ((anchor >> 5) == (item & 255)))
+                {
+                    break;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
