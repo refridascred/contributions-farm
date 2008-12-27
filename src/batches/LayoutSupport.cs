@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            Retry,
+            Paused,
+            Failed,
+            Ready,
+            Synced,
             Stale,
-            Done,
         }
 
         /// <summary>Hold a stats record.</summary>
