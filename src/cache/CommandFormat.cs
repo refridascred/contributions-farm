@@ -22,13 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            Closed,
-            New,
-            Done,
-            Stale,
+            public bool Score { get; set; }
+            public double Offset { get; set; }
+            public double Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
