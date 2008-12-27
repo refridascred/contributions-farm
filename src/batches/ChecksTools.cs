@@ -27,13 +27,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] samples, long step)
         {
-            Done,
-            Closed,
-            New,
-            Idle,
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of session readings.</summary>
