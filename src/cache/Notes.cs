@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double WindowEntry = 7.58;
-        public const double StepRatio = 89.26;
-        public const long BaseEntry = 3690;
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Closed,
+            Paused,
+            New,
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool CheckBatchesBounds(long[] series, long step)
