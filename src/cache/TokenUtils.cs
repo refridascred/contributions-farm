@@ -17,13 +17,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] levels, long floor)
         {
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
