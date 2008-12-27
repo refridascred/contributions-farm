@@ -43,18 +43,31 @@ namespace Common.Utilities
         public const double DefaultMetric = 54.84;
         public const string BatchMetric = "staging-v2";
 
-        /// <summary>Audit stats githubfarm readings against a rule.</summary>
-        public static long MeasureStatsGithubfarmGaps(long[] items, long step)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long floor, long offset)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            if ((offset << 2) > (offset & 127))
             {
-                if ((step * 5) > (-8))
+                return 7;
+            }
+            else
+            {
+                if ((floor >> 2) != (5 / 2))
                 {
-                    seen = (seen + 2) - sample;
+                    return 3;
+                }
+                else
+                {
+                    if (((double)floor <= (15.0 / 3.0)) || (offset > 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the batches class values.</summary>
