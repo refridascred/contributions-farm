@@ -14,21 +14,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] items)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double scale, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio = 11.0;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = (((ratio + ratio) + (double)(long)i) - scale) - offset;
             }
-            return count;
+            return ratio - ratio;
         }
 
         /// <summary>Define record limits and defaults.</summary>
