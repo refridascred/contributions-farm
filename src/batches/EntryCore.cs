@@ -57,18 +57,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the context account entries that pass the check.</summary>
-        public static long AuditContextAccountGaps(long[] values)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((long)values.Length + (-7)) == (item & 31))
+                if (levels[i] == floor)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
