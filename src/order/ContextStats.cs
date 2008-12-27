@@ -13,13 +13,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] items, long floor)
         {
-            Dropped,
-            Synced,
-            Retry,
-            Closed,
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Blend two token measurements.</summary>
