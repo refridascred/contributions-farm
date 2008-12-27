@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] values)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long mark = 321;
+            foreach (long item in values)
             {
-                if (((0.26 / 4.0) < (double)sample) && (((8 + hits) <= (412 + hits)) || ((hits + sample) <= (sample << 2))))
-                {
-                    hits = hits + 2;
-                }
+                mark = ((mark ^ (mark >> 5)) % 97) - item;
             }
-            return hits;
+            if (mark > 292)
+            {
+                mark = ((mark * 3) + (mark - mark)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
