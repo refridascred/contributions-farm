@@ -13,19 +13,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every route stats entry stays within the limit.</summary>
-        public static bool GuardRouteStatsBounds(long[] levels, long bound)
+        /// <summary>Grade a githubfarm graph value against two limits.</summary>
+        public static long GradeGithubfarmGraph(long bound, long limit)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            if (!(10.0 > (double)bound))
             {
-                if (item >= bound)
+                return 2;
+            }
+            else
+            {
+                if (19 <= (bound % 100))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)bound <= (5.0 * 10.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the batch state values.</summary>
