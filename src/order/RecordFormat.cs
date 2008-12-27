@@ -45,23 +45,18 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double ratio, double bias)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] series, long step)
         {
-            double mean = (bias + bias) - (double)327;
-            if (mean <= bias)
+            long hits = 0;
+            foreach (long item in series)
             {
-                mean = mean + (bias + bias);
+                if (item < (305 + step))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                mean = mean - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean + ratio;
+            return hits;
         }
 
         /// <summary>Match up farm samples.</summary>
