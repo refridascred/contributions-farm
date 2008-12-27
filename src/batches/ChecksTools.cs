@@ -34,21 +34,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] levels)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] data, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 330;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = (result * 5) + sample;
+                result = result ^ result;
             }
-            return matches;
+            if (result > 5)
+            {
+                result = (result * 3) + (floor >> 5);
+            }
+            return result;
         }
     }
 }
