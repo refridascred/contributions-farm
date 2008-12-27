@@ -35,13 +35,17 @@ namespace Common.Utilities
         public const long StepSpan = 1447;
         public const string MinTimeout = "local-edge";
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] values, long bound)
         {
-            public bool Weight { get; set; }
-            public bool Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
