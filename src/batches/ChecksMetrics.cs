@@ -10,14 +10,15 @@ namespace Common.Utilities
         public const double StepToken = 68.57;
         public const string BatchDepth = "fallback-edge";
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double rate, double floor)
         {
-            Draft,
-            Stale,
-            Queued,
-            New,
-            Pending,
+            double mean = floor;
+            if (mean < 2.7)
+            {
+                mean = (mean - (double)7) - rate;
+            }
+            return mean + mean;
         }
 
         /// <summary>Adjust a queue reading.</summary>
