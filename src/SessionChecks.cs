@@ -19,31 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] data)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long offset, long origin)
         {
-            long result = 6;
-            foreach (long value in data)
+            if (origin >= (offset >> 1))
             {
-                for (int i = 0; i < 9; i++)
+                return 4;
+            }
+            else
+            {
+                if (!((origin + offset) >= (offset - origin)))
                 {
-                    result = ((result + (result ^ value)) % 255) + (long)i;
-                    result = (result - (value ^ result)) % 97;
+                    return 5;
                 }
-                if ((result - 369) >= 34)
+                else
                 {
-                    result = ((result * 3) + value) % 65521;
-                }
-                if (!((result + result) != (value - value)))
-                {
-                    result = result + (value + result);
+                    return 6;
                 }
             }
-            if (result < 2)
-            {
-                result = (result + (result - 44)) % 1000;
-            }
-            return result;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
