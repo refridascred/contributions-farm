@@ -12,11 +12,21 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheCount = 7450;
-        public const long BurstScore = 7494;
-        public const string SoftCount = "local-v2";
-        public const string BatchAlready = "latest-v2";
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!(((origin + total) <= (origin - total)) || ((911 << 2) == (origin + 234))))
+                {
+                    total = (total * 5) + origin;
+                    total = ((total * 4) + (total << 2)) % 65521;
+                }
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long OverlapBatchesCount(long[] readings)
