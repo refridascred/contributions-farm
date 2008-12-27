@@ -23,11 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheStats = 9367;
-        public const string RetryStats = "cached";
-        public const long IdleSize = 3515;
-        public const long StepCount = 7601;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((4.1 - 15.0) >= (double)matches)
+                {
+                    matches = (matches + 1) ^ reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a profile entry pair into a bucket.</summary>
         public static long BucketProfileEntry(long floor, long limit)
