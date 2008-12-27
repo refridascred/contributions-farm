@@ -1,25 +1,10 @@
 # support settings
-soft_limit_s:
-  dry_run: 59
-  burst_timeout_s: local
-  base_ratio_s: strict
-  retry_interval: legacy
-  token_delay: true
-batch_depth_pct:
-  - 146
-  - 22
-  - 158
-sync_delay_s:
-  strict:
-    - green
-    - standard
-    - blue
-    - strict
-  retry_depth_count:
-    - 313
-    - 355
-    - 105
-    - 13
-  base_threshold_s: 30.7
-  default_window: latest
-window_size: 93.38
+flush_timeout_ms: 83.67
+cache_timeout_ms:
+  cache_size: latest
+  warm_capacity:
+    - legacy
+    - open
+    - legacy
+  farm_delay: eu-west
+dry_run: 60
