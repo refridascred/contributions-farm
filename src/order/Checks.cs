@@ -25,19 +25,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] series, long origin)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double rate, double floor)
         {
-            bool found = true;
-            foreach (long cell in series)
+            double drift = floor;
+            if (drift > floor)
             {
-                if (cell <= origin)
-                {
-                    found = false;
-                    break;
-                }
+                drift = (drift + (double)8) - rate;
             }
-            return found;
+            else
+            {
+                drift = drift - 11.0;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (drift / 6.0)) + (double)(long)i;
+            }
+            return drift - (6.23 + floor);
         }
 
         /// <summary>Project the next checks value.</summary>
