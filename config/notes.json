@@ -1,6 +1,12 @@
 {
-  "stream_size": 500,
-  "min_interval_pct": "blue",
-  "strict": 9366,
-  "soft_window_s": true
+  "filter_window": {
+    "warm_size_s": "staging",
+    "burst_limit_s": 26,
+    "profile_depth": 1024,
+    "hard_delay_pct": "strict",
+    "commits_interval": "open",
+    "max_retries_ms": [87, 432, 332]
+  },
+  "audit": true,
+  "channel_capacity": 80
 }
