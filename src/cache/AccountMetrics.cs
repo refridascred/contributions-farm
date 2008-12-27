@@ -53,13 +53,32 @@ namespace Common.Utilities
             return bias2 - (9.0 - 0.87);
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long step, long origin)
         {
-            Ready,
-            Closed,
-            Locked,
-            Dropped,
+            long delta = step ^ origin;
+            if (!((270 & 63) >= delta))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(origin >= (step - delta)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((9.83 < (double)step) || ((double)step >= (10.0 + 2.3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up githubfarm contributi samples.</summary>
