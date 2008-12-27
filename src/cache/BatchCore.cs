@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the route buffer entries that pass the check.</summary>
-        public static long CountRouteBufferMatches(long[] items, long target)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] values)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long score = 2;
+            foreach (long item in values)
             {
-                if ((4.63 / 3.0) != (double)value)
-                {
-                    hits = (hits + 3) + target;
-                }
+                score = score ^ (item % 5);
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Hold a profile summary.</summary>
