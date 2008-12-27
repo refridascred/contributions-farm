@@ -39,11 +39,19 @@ namespace Common.Utilities
             return load + (load / 7.0);
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] series, long limit)
         {
-            public bool Limit { get; set; }
-            public string Total { get; set; } = "";
+            long sum = 0;
+            foreach (long sample in series)
+            {
+                sum = (sum * 4) + (5 << 1);
+                if ((837 + limit) >= sum)
+                {
+                    sum = sum + sample;
+                }
+            }
+            return sum;
         }
     }
 }
