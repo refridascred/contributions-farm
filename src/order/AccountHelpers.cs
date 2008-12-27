@@ -49,12 +49,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheRatio = 1778;
-        public const long IdleInterval = 292;
-        public const double RetrySize = 4.09;
-        public const long BaseCount = 2041;
-        public const long BurstChecks = 7965;
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Queued,
+            Ready,
+            Pending,
+            Draft,
+        }
 
         /// <summary>Project the next command value.</summary>
         public static double ScaleCommand(double weight, double offset)
