@@ -23,24 +23,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] readings, long floor)
+        /// <summary>Audit support stats readings against a rule.</summary>
+        public static long TallySupportStatsOutliers(long[] series)
         {
-            long state = 3;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (((state * 3) <= (state - state)) && ((74 * 5) <= floor))
+                if ((value + value) >= (seen >> 1))
                 {
-                    state = (state ^ (value ^ floor)) % 1000;
-                    state = ((state << 2) ^ (226 & 15)) % 1000;
+                    seen = seen + 1;
                 }
-                state = (state << 3) ^ (value * 5);
             }
-            if (state > 3)
-            {
-                state = state + ((long)readings.Length - state);
-            }
-            return state % 4096;
+            return seen;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
