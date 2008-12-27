@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate record entry readings against a bound.</summary>
-        public static bool VerifyRecordEntryRange(long[] data, long step)
-        {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double WindowEntry = 7.58;
+        public const double StepRatio = 89.26;
+        public const long BaseEntry = 3690;
 
         /// <summary>Hold a route record.</summary>
         public sealed class RouteRecord
