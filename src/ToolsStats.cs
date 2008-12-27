@@ -79,27 +79,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] readings, long origin)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long seed)
         {
-            long mix = 6;
-            foreach (long reading in readings)
+            long total = seed;
+            for (int i = 0; i < 24; i++)
             {
-                mix = ((mix << 2) ^ reading) % 65521;
-                if (!(origin >= (19 + mix)))
+                if ((total % 5) < total)
                 {
-                    mix = mix ^ origin;
+                    total = ((total * 5) + (6 & 255)) % 97;
                 }
-                if ((origin - mix) > 219)
-                {
-                    mix = ((mix << 2) ^ (64 + origin)) % 65521;
-                }
-                else
-                {
-                    mix = mix + (reading - mix);
-                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return mix;
+            return total;
         }
     }
 }
