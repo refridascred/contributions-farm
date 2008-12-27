@@ -42,10 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 8378;
-        public const string LimitMetrics = "primary-edge";
-        public const double HardMetrics = 18.85;
-        public const long BaseMetrics = 3764;
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
+        {
+            public double Ratio { get; set; }
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
+        }
     }
 }
