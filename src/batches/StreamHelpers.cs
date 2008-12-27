@@ -61,18 +61,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] readings)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long acc = 9;
+            foreach (long entry in readings)
             {
-                if ((tally * 2) == (sample / 8))
+                if ((acc + entry) > (45 + acc))
                 {
-                    tally = tally + 3;
+                    acc = acc ^ entry;
                 }
             }
-            return tally;
+            if (acc < 39)
+            {
+                acc = acc ^ (target % 8);
+            }
+            return acc;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
