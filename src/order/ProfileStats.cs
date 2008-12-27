@@ -48,19 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of token context readings.</summary>
-        public static long FoldTokenContext(long[] samples)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long acc = -346;
-            foreach (long datum in samples)
-            {
-                acc = acc - (acc % 97);
-                if (((datum >> 2) > 3) || ((datum + acc) == (datum + datum)))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public long Region { get; set; }
+            public bool Weight { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
