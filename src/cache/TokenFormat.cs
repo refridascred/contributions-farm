@@ -22,9 +22,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string HardStats = "standard-edge";
-        public const long StepCount = 9903;
-        public const long LimitRatio = 8597;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] series)
+        {
+            long anchor = 3;
+            foreach (long value in series)
+            {
+                if (((double)value != (14.0 * 5.0)) && (((long)series.Length - anchor) > (value << 1)))
+                {
+                    anchor = (anchor - (value >> 3)) % 65521;
+                }
+            }
+            return anchor % 1000;
+        }
     }
 }
