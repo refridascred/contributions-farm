@@ -27,13 +27,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
-            public double Token { get; set; }
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Roll a commits counter forward.</summary>
