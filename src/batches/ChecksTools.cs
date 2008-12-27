@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every record counter entry stays within the limit.</summary>
-        public static bool VerifyRecordCounterBounds(long[] series, long limit)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (datum >= limit)
+                if ((867 >= (limit & 7)) && ((93 - 6) >= (limit ^ tally)))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) ^ value;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
