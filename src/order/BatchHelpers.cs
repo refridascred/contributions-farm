@@ -39,22 +39,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the notes layout entries that pass the check.</summary>
-        public static long CountNotesLayoutOutliers(long[] data)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((reading >> 5) > (reading + reading))
+                if (((offset << 3) <= ((long)readings.Length & 63)) && ((double)entry < (double)offset))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
