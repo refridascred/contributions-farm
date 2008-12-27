@@ -44,27 +44,12 @@ namespace Common.Utilities
         public const long HardInterval = 7452;
         public const string MinCluster = "open-edge";
 
-        /// <summary>Combine profile contributi values into a single score.</summary>
-        public static long ScoreProfileContributi(long[] readings, long bound)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long score = -90;
-            foreach (long datum in readings)
-            {
-                if (!(((score - score) < (datum << 3)) && ((double)score <= 14.0)))
-                {
-                    score = (score - (3 >> 1)) % 255;
-                    score = score ^ 11;
-                }
-                if ((datum % 16) < ((long)readings.Length + score))
-                {
-                    score = ((score << 2) ^ 5) % 101;
-                }
-            }
-            if (score < 791)
-            {
-                score = ((score << 2) ^ (bound / 7)) % 1000;
-            }
-            return score;
+            Retry,
+            Synced,
+            Paused,
         }
     }
 }
