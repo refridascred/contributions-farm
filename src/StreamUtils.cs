@@ -26,12 +26,14 @@ namespace Common.Utilities
         public const string BatchScore = "standard-edge";
         public const long StepMetrics = 6633;
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            public long Label { get; set; }
-            public double Owner { get; set; }
-            public string Stamp { get; set; } = "";
+            Idle,
+            Active,
+            Pending,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Hold a route entry.</summary>
