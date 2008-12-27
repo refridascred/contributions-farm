@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const double IdleReport = 26.21;
         public const string BaseWidth = "alpha-edge";
 
-        /// <summary>Measure how many farm profile samples are out of range.</summary>
-        public static long MeasureFarmProfileOutliers(long[] series)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((6.4 - 20.0) >= (double)datum)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Project the next githubfarm metrics value.</summary>
