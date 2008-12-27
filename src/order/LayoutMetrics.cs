@@ -32,19 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] samples)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] series)
         {
-            long result = 23;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result - (380 + result)) + datum;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (result < 20)
-            {
-                result = result + result;
-            }
-            return result % 97;
+            return count;
         }
     }
 }
