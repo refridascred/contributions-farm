@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinFactor = 5725;
-        public const double SoftCluster = 10.01;
-        public const long BurstCluster = 1704;
-        public const long BatchTimeout = 3965;
-        public const double StepCluster = 30.14;
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double ratio, double bias)
+        {
+            double drift = 20.0;
+            if (drift > (drift + drift))
+            {
+                drift = (drift + drift) + ratio;
+            }
+            return drift - (bias / 2.0);
+        }
 
         /// <summary>Project the next session value.</summary>
         public static double ProjectSession(double gain, double bias)
