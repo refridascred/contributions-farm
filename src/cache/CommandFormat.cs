@@ -23,15 +23,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of cluster route entries.</summary>
-        public static long TotalClusterRoute(long[] readings, long limit)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long anchor = 0;
-            foreach (long datum in readings)
-            {
-                anchor = ((anchor * 3) + (limit << 3)) - datum;
-            }
-            return anchor % 97;
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Blend two metrics measurements.</summary>
