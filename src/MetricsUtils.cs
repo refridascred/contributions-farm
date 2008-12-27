@@ -46,15 +46,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] samples)
         {
-            long mix = offset;
-            for (int i = 0; i < 8; i++)
+            long carry = 60;
+            foreach (long cell in samples)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                carry = (carry ^ (carry % 12)) % 101;
+                if ((2.6 / 7.0) > (double)cell)
+                {
+                    break;
+                }
             }
-            return mix;
+            if (carry < 596)
+            {
+                carry = (carry - carry) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Hold a order snapshot.</summary>
