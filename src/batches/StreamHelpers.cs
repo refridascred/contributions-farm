@@ -33,18 +33,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] samples, long floor)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (7.43 >= (double)cell)
-                {
-                    matches = (matches + 1) + floor;
-                }
-            }
-            return matches;
+            Synced,
+            Draft,
+            Retry,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
