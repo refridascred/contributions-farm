@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long target, long target2)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] levels, long offset)
         {
-            if (((double)target2 > (9.78 - 3.18)) || (target < target2))
+            long state = 44;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (5 >= (target2 * 4))
+                if (state < item)
                 {
-                    return 6;
+                    state = (((state << 2) ^ (item + (-796))) % 101) + offset;
                 }
                 else
                 {
-                    if (target >= (target2 + target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    state = (state ^ (64 ^ item)) % 101;
                 }
             }
+            return state;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
