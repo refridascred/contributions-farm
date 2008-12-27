@@ -1,5 +1,17 @@
 {
-  "persist": [315, 262],
-  "layout_timeout": 60.27,
-  "burst_delay_s": 6789
+  "report_depth": {
+    "metrics_delay": "stable",
+    "batch_ttl_count": "eu-west",
+    "profile_size": {
+      "flush_interval": true,
+      "warm_depth": "local",
+      "hard_window_pct": "strict",
+      "base_ratio_pct": [26, 116, 212],
+      "format_timeout": "blue",
+      "hard_ttl": "edge"
+    },
+    "base_delay": false
+  },
+  "checks_interval": "standard",
+  "cache_size": 8330
 }
