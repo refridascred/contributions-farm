@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] series)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long mix = -512;
-            foreach (long datum in series)
-            {
-                mix = ((mix - mix) % 65521) + datum;
-            }
-            return mix;
+            public double Mode { get; set; }
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a notes info.</summary>
