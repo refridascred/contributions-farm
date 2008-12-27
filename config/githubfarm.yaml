@@ -1,26 +1,9 @@
 # githubfarm settings
-record_interval:
-  - eu-west
-  - primary
-  - latest
-  - standard
-warm_size: blue
-verbose:
-  sync_threshold_pct: strict
-  soft_depth_ms: 5584
-  tools_timeout: latest
-  order_retries: 3.25
-  hard_capacity_ms: 65.18
-  max_window:
-    entry_depth: 50
-    soft_size_count: 4047
-    context_limit: 49
-    verbose:
-      - blue
-      - legacy
-    sync_retries_ms: 60
-    githubfarm_ratio: 7641
-session_delay:
-  - 225
-  - 492
-  - 248
+flush_interval_pct:
+  - 207
+  - 368
+  - 22
+  - 42
+warm_capacity_ms: 26.22
+persist: 2.75
+compress: fallback
