@@ -68,20 +68,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cluster report values into a single score.</summary>
-        public static long TallyClusterReport(long[] readings, long offset)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long anchor = 763;
-            foreach (long cell in readings)
-            {
-                anchor = (anchor * 5) + (anchor % 8);
-                anchor = (anchor << 3) ^ (cell ^ offset);
-                if (((offset << 2) >= offset) && ((double)anchor >= (7.72 - 11.0)))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the farm kind values.</summary>
