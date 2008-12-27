@@ -38,18 +38,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] readings)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((double)cell != (4.94 - 9.6))
+                if (((double)seen == (4.4 + 4.0)) && ((10.0 * 9.66) < (double)datum))
                 {
-                    count = count + 3;
+                    seen = (seen + 1) - target;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
