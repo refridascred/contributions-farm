@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
-            public double Score { get; set; }
+            Stale,
+            Pending,
+            Ready,
+            Idle,
+            Retry,
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
