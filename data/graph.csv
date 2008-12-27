@@ -1,7 +1,9 @@
-id,rank,level,token
-1,862,47.59,815
-2,green,320,829
-3,25.28,465,97
-4,stable,legacy,staging
-5,28.63,751,640
-6,57.97,34.34,40.53
+id,ratio,count,token,active
+1,staging,76.13,744,14
+2,829,79.57,498,stable
+3,530,local,55.44,97.42
+4,98.98,standard,26.54,7
+5,cached,stable,44.71,3.45
+6,cached,4.69,legacy,78.54
+7,138,65.42,40.34,691
+8,405,92.42,66.35,668
