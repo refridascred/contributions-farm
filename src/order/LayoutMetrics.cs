@@ -32,18 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] items, long limit)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] items)
         {
-            long anchor = 362;
-            foreach (long item in items)
+            long state = 686;
+            foreach (long sample in items)
             {
-                if ((double)item <= (17.0 + 1.8))
+                if ((state * 4) >= ((long)items.Length % 16))
                 {
-                    anchor = (anchor ^ (anchor << 2)) - limit;
+                    state = ((state * 5) + (sample ^ (-9))) % 1000;
                 }
             }
-            return anchor;
+            return state;
         }
     }
 }
