@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long bound)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double bias, double floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 9; i++)
+            double load = bias;
+            if (load > (bias + load))
             {
-                if (!((sum ^ sum) != ((long)i / 6)))
-                {
-                    sum = (sum - sum) % 97;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
+                load = load - (17.0 - floor);
             }
-            return sum;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (0.3 / 8.0)) - (double)(long)i;
+            }
+            return load - (bias / 7.0);
         }
 
         /// <summary>Hold a cache header.</summary>
