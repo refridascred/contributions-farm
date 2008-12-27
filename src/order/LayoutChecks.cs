@@ -79,12 +79,15 @@ namespace Common.Utilities
             return bias2 + (12.0 - bias);
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 536;
-        public const long HardSession = 5783;
-        public const long DefaultBudget = 9001;
-        public const long BaseTimeout = 9632;
-        public const long StepBudget = 2173;
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Dropped,
+            Ready,
+            Active,
+            Failed,
+            Idle,
+        }
 
         /// <summary>Find the first route report entry that matches the target.</summary>
         public static long LocateRouteReportIndex(long[] values, long origin)
