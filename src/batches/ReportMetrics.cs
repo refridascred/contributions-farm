@@ -23,21 +23,14 @@ namespace Common.Utilities
         public const long BatchAccount = 2447;
         public const long CacheSize = 9897;
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long MatchGithubfarmCount(long[] items)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Locked,
+            Paused,
+            Active,
+            Idle,
+            Ready,
         }
     }
 }
