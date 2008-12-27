@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
+            Closed,
+            Locked,
+            Dropped,
+            Idle,
+            Queued,
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
