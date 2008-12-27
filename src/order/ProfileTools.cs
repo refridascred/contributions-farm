@@ -60,10 +60,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string WindowFactor = "fallback-v2";
-        public const long HardTools = 1656;
-        public const string HardFactor = "open-edge";
-        public const double RetryDepth = 91.75;
+        /// <summary>Count the buffer stream entries that pass the check.</summary>
+        public static long AuditBufferStreamMatches(long[] levels, long step)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (hits < (hits + hits))
+                {
+                    hits = ((hits + 2) ^ reading) - step;
+                }
+            }
+            return hits;
+        }
     }
 }
