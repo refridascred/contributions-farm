@@ -16,15 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long limit)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaGaps(long[] levels)
         {
-            long state = limit;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                if ((tally / 3) <= tally)
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Describe the queue mode values.</summary>
