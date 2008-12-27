@@ -7,21 +7,13 @@ log() {
 }
 
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 2))
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in latest legacy staging; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
-
-mode="${1:-cached}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+log "ran ${count} rounds"
