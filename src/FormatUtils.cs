@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const string BaseInterval = "local";
         public const long WindowWidth = 2253;
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Measure how many graph stats samples are out of range.</summary>
+        public static long CountGraphStatsOutliers(long[] items)
         {
-            public string Stamp { get; set; } = "";
-            public string Count { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((entry >> 2) != (hits & 127))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two checks measurements.</summary>
