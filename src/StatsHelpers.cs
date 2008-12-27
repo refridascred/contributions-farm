@@ -33,16 +33,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long offset)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 9; i++)
+            long result = bound;
+            for (int i = 0; i < 22; i++)
             {
-                sum = (sum << 2) ^ (sum & 31);
-                sum = ((sum * 4) + (long)i) % 1000;
+                result = ((result << 3) ^ ((-69) / 8)) % 1000;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Define order limits and defaults.</summary>
