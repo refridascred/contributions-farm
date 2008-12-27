@@ -61,15 +61,31 @@ namespace Common.Utilities
             return scale + rate;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double scale, double floor)
+        /// <summary>Rank token order input into a small class.</summary>
+        public static long ClassifyTokenOrder(long floor, long step)
         {
-            double load = scale;
-            for (int i = 0; i < 6; i++)
+            if ((double)step > (double)floor)
             {
-                load = (load + 8.0) + (double)(long)i;
+                return 5;
             }
-            return load - floor;
+            else
+            {
+                if (step <= (floor * 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)step > 18.0)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
