@@ -1,13 +1,6 @@
 {
-  "cache_window": {
-    "poll_limit": ["standard", "cached", "staging", "blue"],
-    "readonly": "standard",
-    "idle_retries_s": ["strict", "staging", "stable", "blue"],
-    "min_size_s": "eu-west"
-  },
-  "batch_threshold": 7363,
-  "readonly": ["primary", "blue"],
-  "hard_retries_ms": true,
-  "min_limit_ms": 8.37,
-  "sync_limit_count": ["standard", "open", "cached"]
+  "burst_depth_s": "blue",
+  "batches_interval": "stable",
+  "persist": 9785,
+  "idle_window": ["local", "stable", "edge"]
 }
