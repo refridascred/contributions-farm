@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const string BurstTimeout = "fallback-edge";
         public const long StepCache = 3525;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileGaps(long[] data, long limit)
+        /// <summary>Validate stream channel readings against a bound.</summary>
+        public static bool GuardStreamChannelLimits(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if (((limit & 31) != (reading ^ matches)) || ((38 + reading) != (74 / 3)))
+                if (item != limit)
                 {
-                    matches = matches + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Define token limits and defaults.</summary>
