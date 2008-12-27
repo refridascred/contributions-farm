@@ -69,22 +69,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Combine farm payload values into a single score.</summary>
-        public static long TallyFarmPayload(long[] data, long step)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] readings)
         {
-            long mark = -7;
-            foreach (long entry in data)
+            long mix = 2;
+            foreach (long reading in readings)
             {
-                if (!((step + step) < 666))
+                if ((mix & 1) < (-8))
                 {
-                    mark = ((mark << 2) ^ (entry - mark)) % 4096;
+                    mix = (mix ^ (mix + reading)) % 65521;
                 }
-                else
+                if (mix >= (0 * 3))
                 {
-                    mark = ((mark * 2) + (entry - step)) % 97;
+                    break;
                 }
             }
-            return mark;
+            return mix;
         }
     }
 }
