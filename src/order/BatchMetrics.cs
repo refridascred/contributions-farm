@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const long MaxBatches = 2551;
         public const string MinBatches = "cached-edge";
 
-        /// <summary>Measure how many buffer metric samples are out of range.</summary>
-        public static long TallyBufferMetricGaps(long[] data, long origin)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] samples)
         {
-            long count = 0;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)origin > (8.5 * 0.28))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 1) + value;
+                    if ((samples[i] ^ samples[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a schema stats.</summary>
