@@ -54,11 +54,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
