@@ -39,18 +39,12 @@ namespace Common.Utilities
             return gain - (gain - 8.9);
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] values, long offset)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long sum = 52;
-            foreach (long entry in values)
-            {
-                if (2.06 >= (double)sum)
-                {
-                    sum = ((sum - (sum + entry)) % 65521) - offset;
-                }
-            }
-            return sum % 4096;
+            public double Token { get; set; }
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
