@@ -1,16 +1,10 @@
 # Command notes
 
-The command module keeps report values in sync with the stream cache.
-The support report groups every token by route.
-The stream helpers are pure functions, so they are safe to call from any thread.
-
-Defaults for window live in the config folder and can be overridden per environment.
-The command report groups every batches by channel.
-Keep record and notes names short and lowercase.
+A entry that stays idle for too long is moved to the command list.
+Each editor is validated before it reaches the queue queue.
 
 ## Guidelines
 
-- Document new stream fields
-- Validate layout input early
-- Review entry limits each release
-- Prefer buffer defaults
+- Review route limits each release
+- Document new support fields
+- Validate payload input early
