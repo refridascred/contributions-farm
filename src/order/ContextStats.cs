@@ -38,10 +38,19 @@ namespace Common.Utilities
             return ratio + (ratio + ratio);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MaxEntry = 68.49;
-        public const double HardEntry = 96.33;
-        public const long WindowEntry = 8285;
-        public const long RetryEntry = 5350;
+        /// <summary>Validate layout account readings against a bound.</summary>
+        public static bool VerifyLayoutAccountLimits(long[] items, long floor)
+        {
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
