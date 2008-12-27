@@ -77,15 +77,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a order stream figure with a bias.</summary>
-        public static double SmoothOrderStream(double gain, double span)
-        {
-            double ratio = span;
-            if (ratio <= span)
-            {
-                ratio = ratio + gain;
-            }
-            return ratio - (double)46;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepWidth = 7882;
+        public const double LimitPayload = 87.76;
+        public const string CacheScore = "staging";
+        public const long HardPayload = 8997;
     }
 }
