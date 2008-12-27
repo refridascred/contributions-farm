@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every command metrics entry stays within the limit.</summary>
-        public static bool GuardCommandMetricsRange(long[] samples, long offset)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
