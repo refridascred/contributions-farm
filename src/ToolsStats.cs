@@ -22,13 +22,21 @@ namespace Common.Utilities
         public const string IdleGithubfarm = "local";
         public const string LimitScore = "primary";
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] values)
         {
-            Locked,
-            Stale,
-            Retry,
-            Queued,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
