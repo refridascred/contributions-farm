@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long floor, long floor2)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] series)
         {
-            long gap = floor + floor2;
-            if ((double)floor2 != (5.6 + 2.8))
+            long mark = -11;
+            foreach (long cell in series)
             {
-                return 5;
+                mark = (mark + (cell + mark)) % 101;
             }
-            else
-            {
-                if ((gap % 2) >= floor2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
