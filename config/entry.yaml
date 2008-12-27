@@ -1,5 +1,4 @@
 # entry settings
-checks_capacity: local
-base_capacity: true
-idle_window_s: 25.39
-poll_ratio_count: true
+batch_interval: 77
+report_timeout: green
+warm_retries: 60.57
