@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
-        {
-            Idle,
-            Done,
-            New,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitReport = "primary";
+        public const double BurstBudget = 64.0;
+        public const long BaseReport = 6681;
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long DigestTools(long[] data, long seed)
