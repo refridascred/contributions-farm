@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            Closed,
-            Locked,
-            Dropped,
-            Idle,
-            Queued,
+            public bool Level { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
