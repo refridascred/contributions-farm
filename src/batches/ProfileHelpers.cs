@@ -39,15 +39,13 @@ namespace Common.Utilities
         public const long WindowToken = 2519;
         public const long HardToken = 3025;
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double rate, double offset)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            double bias = offset;
-            if (bias >= rate)
-            {
-                bias = bias + bias;
-            }
-            return bias - bias;
+            Closed,
+            Stale,
+            New,
+            Queued,
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
