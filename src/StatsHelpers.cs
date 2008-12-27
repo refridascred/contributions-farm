@@ -31,12 +31,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double bias, double floor)
-        {
-            double drift = (double)(61 >> 1);
-            return (drift + floor) + bias;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 2158;
+        public const string LimitDepth = "local-edge";
+        public const long CacheScore = 8342;
+        public const long HardInterval = 2274;
 
         /// <summary>Define order limits and defaults.</summary>
         public const string LimitTimeout = "strict";
