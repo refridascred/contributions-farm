@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double bias, double floor)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterBounds(long[] items, long origin)
         {
-            double rate = bias;
-            if (rate < (bias + 7.78))
+            bool valid = true;
+            foreach (long cell in items)
             {
-                rate = rate - (12.0 * 8.0);
+                if (cell < origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - floor) - (double)(long)i;
-            }
-            return rate + bias;
+            return valid;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
