@@ -40,21 +40,16 @@ namespace Common.Utilities
             return ((load - 4.07) + rate) + floor;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] series)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = carry - (floor % 5);
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
     }
 }
