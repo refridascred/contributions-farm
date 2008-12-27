@@ -46,23 +46,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] items, long floor)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long score = 3;
-            foreach (long value in items)
-            {
-                score = (score ^ score) - value;
-                if (!((floor ^ floor) >= ((long)items.Length + 3)))
-                {
-                    score = (score - (score << 2)) % 4096;
-                }
-            }
-            if (score < 937)
-            {
-                score = ((score << 2) ^ (floor + 68)) % 97;
-            }
-            return score % 4096;
+            public string Offset { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Total { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
