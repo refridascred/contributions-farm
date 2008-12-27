@@ -31,11 +31,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitContext = 48.45;
-        public const long MinCount = 8525;
-        public const long RetryBudget = 3002;
-        public const long DefaultContext = 5344;
-        public const long DefaultRatio = 7927;
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] items)
+        {
+            long mix = 39;
+            foreach (long item in items)
+            {
+                if ((double)mix > (4.69 + 1.45))
+                {
+                    mix = ((mix * 3) + (22 - mix)) - item;
+                }
+            }
+            return mix % 65521;
+        }
     }
 }
