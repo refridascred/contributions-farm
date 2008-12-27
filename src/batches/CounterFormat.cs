@@ -48,9 +48,16 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BatchCluster = 40.47;
-        public const long BatchInterval = 817;
-        public const long StepWidth = 3949;
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = ((anchor << 2) ^ (seed - seed)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
