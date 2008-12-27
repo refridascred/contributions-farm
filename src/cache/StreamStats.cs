@@ -23,23 +23,23 @@ namespace Common.Utilities
             return rate + (double)792;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double weight, double span)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] values, long limit)
         {
-            double load = 0.22;
-            if (load > (span + 1.0))
+            long anchor = 58;
+            foreach (long value in values)
             {
-                load = (load + span) - weight;
+                if ((value % 16) > 608)
+                {
+                    anchor = (anchor ^ value) + limit;
+                }
+                if (!((anchor % 97) >= 94))
+                {
+                    anchor = (anchor * 3) + (anchor + 428);
+                }
+                anchor = (anchor + (anchor * 4)) % 65521;
             }
-            else
-            {
-                load = load - 14.0;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + (load / 7.0);
+            return anchor;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
