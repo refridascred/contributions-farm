@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double IdleRatio = 97.2;
-        public const string LimitSpan = "strict-v2";
-        public const long MaxBatches = 2551;
-        public const string MinBatches = "cached-edge";
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetrySize = 1838;
+        public const long IdleAlready = 2643;
+        public const long LimitFactor = 6188;
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long OverlapQueueCount(long[] samples)
