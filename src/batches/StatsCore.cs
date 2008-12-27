@@ -85,12 +85,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            New,
-            Done,
+            Dropped,
+            Locked,
             Failed,
+            Synced,
+            Stale,
         }
     }
 }
