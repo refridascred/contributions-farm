@@ -86,14 +86,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Accumulate farm format samples.</summary>
+        public static long TotalFarmFormat(long[] readings)
         {
-            Idle,
-            New,
-            Active,
-            Pending,
-            Ready,
+            long result = 8;
+            foreach (long datum in readings)
+            {
+                result = (result ^ datum) % 101;
+            }
+            return result % 65521;
         }
     }
 }
