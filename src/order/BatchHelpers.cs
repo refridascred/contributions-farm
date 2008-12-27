@@ -25,18 +25,39 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] readings, long offset)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long limit, long offset)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long delta = limit - offset;
+            if (!(offset > (delta % 10)))
             {
-                if (((offset << 3) <= ((long)readings.Length & 63)) && ((double)entry < (double)offset))
+                return 7;
+            }
+            else
+            {
+                if ((limit - limit) >= delta)
                 {
-                    matches = matches + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)delta != (20.0 + 5.04))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((offset - limit) >= (1 - delta)) && (6.0 <= (double)limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
