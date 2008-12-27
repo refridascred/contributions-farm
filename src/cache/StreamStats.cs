@@ -19,19 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double scale, double bias)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            double load = (scale + bias) / 8.0;
-            if (load < bias)
-            {
-                load = load - (13.0 + bias);
-            }
-            else
-            {
-                load = load + bias;
-            }
-            return load + bias;
+            Locked,
+            Paused,
+            Active,
+            Done,
+            Synced,
         }
 
         /// <summary>Accumulate buffer samples.</summary>
