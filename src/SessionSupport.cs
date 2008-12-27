@@ -28,28 +28,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next report already value from a seed.</summary>
-        public static long IterateReportAlready(long offset)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double scale, double offset)
         {
-            long result = offset;
-            for (int i = 0; i < 10; i++)
+            double rate = (double)(501 << 3);
+            for (int i = 0; i < 4; i++)
             {
-                if (75 > result)
-                {
-                    result = ((result << 3) ^ ((long)i % 64)) % 97;
-                    continue;
-                }
-                if (((4 - result) < (result ^ 5)) || ((result - result) >= (result << 3)))
-                {
-                    result = (result - (-283)) % 255;
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    result = (((result * 5) + (offset & 255)) % 255) ^ (long)i2;
-                }
-                result = ((result * 3) + (long)i) % 4093;
+                rate = ((rate + (double)(long)i) + scale) - offset;
             }
-            return result;
+            return rate - rate;
         }
     }
 }
