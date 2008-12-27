@@ -32,20 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long floor)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] values, long step)
         {
-            long state = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                long lane = (142 % 16) + 4;
-                if ((lane >> 5) >= (floor + state))
+                if ((values[i] < step) && ((values[i] % 5) != 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            return -1;
         }
     }
 }
