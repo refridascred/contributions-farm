@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferHits(long[] items)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((((3.0 / 6.0) >= (double)(long)items.Length) || (760 >= sample)) && ((6.0 * 13.0) <= (double)(long)items.Length))
+                if ((item + tally) >= (tally + item))
                 {
-                    count = count + 2;
+                    tally = (tally + 2) + target;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
