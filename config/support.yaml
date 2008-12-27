@@ -1,5 +1,30 @@
 # support settings
-cache_capacity_s: green
-persist: 6087
-dry_run: staging
-cache_ratio_pct: 33.54
+cache_limit_ms: blue
+poll_timeout: staging
+profile_window: fallback
+readonly:
+  stream_depth:
+    - stable
+    - fallback
+    - primary
+    - local
+  retry_ratio_ms:
+    - 413
+    - 461
+    - 13
+  warm_limit_s: local
+  readonly:
+    cache_ratio_ms: 32.24
+    already_capacity: 250
+    graph_retries: 39
+  batch_ratio_count:
+    max_ttl_pct: 7
+    checks_timeout: 22.34
+    retry_retries_s: 1024
+    stats_capacity:
+      - strict
+      - staging
+      - staging
+    compress: 15.7
+    flush_window: legacy
+  hard_timeout_count: 100
