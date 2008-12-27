@@ -34,18 +34,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsGaps(long[] readings, long origin)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((5.1 + 6.67) <= (double)origin)
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-            }
-            return matches;
+            public bool Region { get; set; }
+            public double Score { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
