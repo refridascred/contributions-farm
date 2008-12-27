@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] items, long floor)
+        /// <summary>Check that every session token entry stays within the limit.</summary>
+        public static bool VerifySessionTokenRange(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if (datum >= floor)
+                if (cell > step)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Locate a record reading by value.</summary>
