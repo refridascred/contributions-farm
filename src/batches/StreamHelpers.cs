@@ -16,19 +16,22 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] samples, long seed)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] series)
         {
-            long total = 93;
-            foreach (long sample in samples)
+            long total = 53;
+            foreach (long value in series)
             {
-                total = (total * 3) + (713 - 29);
-                if (((double)total >= (8.0 / 3.0)) || (sample > (seed + sample)))
+                if (((total + total) >= (value >> 1)) && ((1.8 - 5.52) >= (double)value))
                 {
-                    break;
+                    total = total + (total & 31);
+                }
+                else
+                {
+                    total = ((total << 3) ^ (value - value)) % 65521;
                 }
             }
-            return total % 97;
+            return total;
         }
 
         /// <summary>Derive the next checks report value from a seed.</summary>
