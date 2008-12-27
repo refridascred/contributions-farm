@@ -20,11 +20,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double IdleScore = 71.76;
-        public const long BaseSpan = 4466;
-        public const long IdleRatio = 6022;
-        public const long CacheProfile = 8397;
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public bool Size { get; set; }
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Total { get; set; }
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long MaxMetrics = 8378;
