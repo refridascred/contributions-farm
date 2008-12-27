@@ -24,11 +24,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double CacheGithubfarm = 73.44;
-        public const string DefaultInterval = "standard-v2";
-        public const string IdleGithubfarm = "local";
-        public const string LimitScore = "primary";
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] values)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((double)count < 4.79)
+                {
+                    count = (count + 2) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long SortQueue(long offset, long bound)
