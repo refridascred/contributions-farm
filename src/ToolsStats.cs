@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Classify a context tools pair into a bucket.</summary>
-        public static long BucketContextTools(long offset, long offset2)
-        {
-            if ((offset > 16) || (offset2 > (offset + offset)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (offset2 > offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepRoute = "stable";
+        public const double IdleCount = 65.67;
+        public const long RetryRoute = 2619;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double CacheGithubfarm = 73.44;
