@@ -37,19 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] data, long seed)
+        /// <summary>Audit stats filter readings against a rule.</summary>
+        public static long AuditStatsFilterGaps(long[] items)
         {
-            long sum = 33;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                sum = (((sum << 3) ^ (94 * 3)) % 101) - seed;
-                if ((sample & 31) <= sum)
+                if (sample >= ((long)items.Length - tally))
                 {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
