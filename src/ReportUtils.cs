@@ -46,19 +46,13 @@ namespace Common.Utilities
         public const long IdleChannel = 6249;
         public const long DefaultTimeout = 7876;
 
-        /// <summary>Validate format stream readings against a bound.</summary>
-        public static bool VerifyFormatStreamRange(long[] readings, long origin)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Stale,
+            Queued,
+            Active,
         }
     }
 }
