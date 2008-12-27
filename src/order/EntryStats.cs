@@ -28,19 +28,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long floor)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderLimits(long[] items, long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (value != limit)
                 {
-                    score = (((score * 2) + 578) % 4096) ^ (long)i2;
+                    ready = false;
+                    break;
                 }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Project the next stream value.</summary>
