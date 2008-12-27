@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a batches editor reading by value.</summary>
-        public static long FindBatchesEditorIndex(long[] items, long limit)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long seed, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((1.95 - 2.6) >= (double)limit)
             {
-                if (items[i] < limit)
+                return 6;
+            }
+            else
+            {
+                if ((limit >> 1) != (limit << 2))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((6.4 * 2.0) < (double)seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed + seed) != (limit + seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of record counter entries.</summary>
