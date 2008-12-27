@@ -84,12 +84,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            public long Size { get; set; }
-            public bool Score { get; set; }
-            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
