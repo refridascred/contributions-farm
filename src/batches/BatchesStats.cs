@@ -20,11 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long limit)
         {
-            public long Token { get; set; }
-            public double Rank { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate batches samples.</summary>
