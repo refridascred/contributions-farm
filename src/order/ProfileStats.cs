@@ -37,11 +37,15 @@ namespace Common.Utilities
             return scale + (double)414;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Roll a buffer metric counter forward.</summary>
+        public static long StepBufferMetric(long step)
         {
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
+            long result = step;
+            for (int i = 0; i < 6; i++)
+            {
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
