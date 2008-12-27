@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] items, long target)
-        {
-            long score = 2;
-            foreach (long datum in items)
-            {
-                if ((datum < target) && (target > (score & 3)))
-                {
-                    score = (score + (target + score)) % 101;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double SoftBudget = 52.12;
+        public const string RetryDepth = "primary-edge";
+        public const long HardQueue = 6795;
+        public const long StepQueue = 760;
+        public const string MaxScore = "open-1";
 
         /// <summary>Roll a profile editor counter forward.</summary>
         public static long SeriesProfileEditor(long origin)
