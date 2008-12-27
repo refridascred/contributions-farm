@@ -1,8 +1,8 @@
 {
-  "sync_depth": 82.27,
-  "strict": 18.37,
-  "dry_run": 26.38,
-  "compress": false,
-  "soft_ratio_s": ["green", "primary"],
-  "burst_ratio": 32.54
+  "readonly": "strict",
+  "warm_window_count": 662,
+  "cache_ttl": 65,
+  "strict": "legacy",
+  "dry_run": "staging",
+  "verbose": "stable"
 }
