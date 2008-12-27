@@ -33,14 +33,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long offset, long seed)
         {
-            Paused,
-            Idle,
-            Dropped,
-            Synced,
-            Active,
+            if (!((offset % 2) > (offset * 4)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)seed >= 6.24)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)offset < (double)0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
