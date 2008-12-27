@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a format profile figure with a bias.</summary>
-        public static double ScaleFormatProfile(double weight, double offset)
-        {
-            double bias = offset;
-            if (bias <= (weight + weight))
-            {
-                bias = bias - 9.7;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + 6.0;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 8702;
+        public const double HardGithubfarm = 91.55;
+        public const long MinScore = 7850;
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool ValidateMetricsLimits(long[] data, long floor)
