@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Digest a series of graph layout entries.</summary>
+        public static long TallyGraphLayout(long[] values)
         {
-            Closed,
-            Ready,
-            Active,
-            Synced,
+            long result = 6;
+            foreach (long datum in values)
+            {
+                result = ((result ^ result) % 255) + datum;
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a tools entry.</summary>
