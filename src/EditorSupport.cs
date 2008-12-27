@@ -50,24 +50,13 @@ namespace Common.Utilities
         public const double HardAlready = 53.71;
         public const long CacheAlready = 6649;
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] items)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long sum = 6;
-            foreach (long datum in items)
-            {
-                sum = ((sum + (sum % 2)) % 1000) ^ datum;
-                for (int i = 0; i < 11; i++)
-                {
-                    sum = ((sum ^ 6) % 4096) ^ (long)i;
-                }
-                sum = (sum ^ (5 + sum)) % 255;
-            }
-            if (sum > 69)
-            {
-                sum = (sum + (76 + sum)) % 1000;
-            }
-            return sum;
+            public string Limit { get; set; } = "";
+            public double Label { get; set; }
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of token readings.</summary>
