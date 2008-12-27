@@ -53,15 +53,23 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double bias, double span)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] readings)
         {
-            double load = 13.0;
-            for (int i = 0; i < 6; i++)
+            long mix = -647;
+            foreach (long entry in readings)
             {
-                load = ((load + bias) + (double)(long)i) - span;
+                mix = mix ^ (mix * 5);
+                if ((entry > (51 / 9)) || ((double)(long)readings.Length >= 7.4))
+                {
+                    break;
+                }
             }
-            return load - bias;
+            if (mix > 188)
+            {
+                mix = (mix ^ 5) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
