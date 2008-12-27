@@ -24,11 +24,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 2401;
-        public const long DefaultLevel = 3594;
-        public const long StepEditor = 3950;
-        public const long HardEditor = 2615;
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
+        {
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public double Stamp { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long MinTimeout = 9982;
