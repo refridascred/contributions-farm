@@ -1,10 +1,11 @@
 # Command notes
 
-A entry that stays idle for too long is moved to the command list.
-Each editor is validated before it reaches the queue queue.
+Run the stats check before changing any payload limits.
+When a entry fails, the stream handler retries a few times before giving up.
+When a order fails, the batch handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review route limits each release
-- Document new support fields
-- Validate payload input early
+- Prefer route defaults
+- Validate counter input early
+- Document new farm fields
