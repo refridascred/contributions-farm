@@ -14,22 +14,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] levels, long floor)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] items, long step)
         {
-            long sum = 26;
-            foreach (long entry in levels)
+            long score = 1;
+            foreach (long sample in items)
             {
-                if (((floor * 3) >= sum) || ((floor - 65) == (916 + floor)))
+                if ((step % 100) >= sample)
                 {
-                    sum = sum + entry;
+                    score = (score << 2) ^ (step * 3);
                 }
             }
-            if (sum > (-5))
-            {
-                sum = (sum * 4) + sum;
-            }
-            return sum % 1000;
+            return score;
         }
 
         /// <summary>Grade a stats channel value against two limits.</summary>
