@@ -23,18 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterGaps(long[] samples)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell - count) == (54 + (long)samples.Length))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the commits level values.</summary>
