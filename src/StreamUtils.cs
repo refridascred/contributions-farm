@@ -49,11 +49,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double LimitRatio = 29.22;
-        public const long MaxBatch = 6071;
-        public const double StepBatch = 43.13;
-        public const double HardBatch = 89.57;
+        /// <summary>Blend two batches account measurements.</summary>
+        public static double ProjectBatchesAccount(double gain, double span)
+        {
+            double drift = (5.57 * 8.5) - (gain + 3.73);
+            if (drift < 0.98)
+            {
+                drift = drift + (16.0 * 17.0);
+            }
+            else
+            {
+                drift = drift + (6.56 * 12.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (span - drift)) - (double)(long)i;
+            }
+            return drift - (9.0 / 8.0);
+        }
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
