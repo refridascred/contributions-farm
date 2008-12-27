@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 6571;
-        public const long WindowToken = 3355;
-        public const long RetryTimeout = 3496;
-        public const double BaseSpan = 5.8;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] levels, long floor)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (((floor + tally) == (tally ^ value)) && (8 > tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long BucketBuffer(long step, long offset)
