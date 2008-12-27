@@ -19,22 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up cache filter samples.</summary>
-        public static long PairCacheFilterCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchFarm = "cached-edge";
+        public const long MaxSize = 1879;
+        public const long BaseRatio = 7729;
+        public const long WindowFarm = 2023;
+        public const long IdleFarm = 4099;
 
         /// <summary>Classify a profile entry pair into a bucket.</summary>
         public static long BucketProfileEntry(long floor, long limit)
