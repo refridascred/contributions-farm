@@ -1,5 +1,6 @@
 # entry settings
-min_retries: strict
-warm_size: primary
-schema_ratio: 1513
-batch_ttl_ms: edge
+checks_retries:
+  - 81
+  - 367
+batch_ratio_s: 8360
+warm_retries_ms: latest
