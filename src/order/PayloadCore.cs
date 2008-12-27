@@ -35,11 +35,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitAlready = 2.15;
-        public const long BaseScore = 3616;
-        public const long WindowAlready = 191;
-        public const string IdleAlready = "alpha-v2";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheQueue = 2913;
+        public const double StepCount = 44.02;
+        public const long LimitDepth = 8419;
+        public const string DefaultQueue = "standard-edge";
 
         /// <summary>Measure how many record editor samples are out of range.</summary>
         public static long TallyRecordEditorHits(long[] samples, long target)
