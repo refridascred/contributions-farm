@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a window cache counter forward.</summary>
-        public static long IterateWindowCache(long target)
+        /// <summary>Compare every pair of already order readings.</summary>
+        public static long CompareAlreadyOrderCount(long[] items)
         {
-            long mark = target;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    long slot = 40;
-                    mark = ((mark << 2) ^ (slot + (long)i2)) % 101;
+                    if ((items[i] ^ items[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Rank account input into a small class.</summary>
