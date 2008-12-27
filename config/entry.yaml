@@ -1,7 +1,8 @@
 # entry settings
-persist: false
-notes_delay: 4476
-sync_ttl: true
-sync_capacity_count: 32.67
-burst_capacity_ms: standard
-base_timeout: eu-west
+strict: strict
+metric_ratio: 4.93
+max_threshold:
+  - 27
+  - 390
+  - 62
+  - 104
