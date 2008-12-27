@@ -1,5 +1,14 @@
 {
-  "min_ratio": 60,
-  "format_timeout": "legacy",
-  "warm_retries": 73.26
+  "compress": [227, 20, 36],
+  "warm_window": 16.7,
+  "enabled": "strict",
+  "contributi_ttl": {
+    "hard_interval_ms": false,
+    "sync_capacity": 89.18,
+    "warm_limit_pct": 49.93,
+    "compress": true,
+    "burst_retries": "standard",
+    "idle_size": "eu-west"
+  },
+  "dry_run": 61
 }
