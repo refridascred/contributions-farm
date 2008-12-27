@@ -1,7 +1,8 @@
 {
-  "retry_window": 3873,
-  "format_threshold": 98.49,
-  "max_threshold_count": [484, 239, 89, 180],
-  "enabled": ["green", "strict"],
-  "graph_size": 50
+  "contributi_timeout": 33,
+  "order_interval": 76.91,
+  "contributi_size": 2.68,
+  "min_ratio_ms": 69.27,
+  "support_limit": "edge",
+  "entry_timeout": "latest"
 }
