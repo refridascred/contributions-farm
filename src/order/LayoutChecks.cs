@@ -89,17 +89,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first route report entry that matches the target.</summary>
-        public static long LocateRouteReportIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstScore = 84.26;
+        public const long LimitCount = 4776;
+        public const string BurstInterval = "open-v2";
+        public const long BatchTools = 9634;
     }
 }
