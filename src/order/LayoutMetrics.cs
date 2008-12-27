@@ -25,22 +25,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of filter commits readings.</summary>
-        public static long TallyFilterCommits(long[] items, long origin)
-        {
-            long anchor = 15;
-            foreach (long cell in items)
-            {
-                if (((double)anchor == (2.0 + 2.7)) && ((cell % 64) != (cell & 7)))
-                {
-                    anchor = anchor + (cell << 3);
-                }
-            }
-            if (anchor > 5)
-            {
-                anchor = (anchor - (origin ^ anchor)) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double DefaultAlready = 14.01;
+        public const long WindowAlready = 9881;
+        public const string LimitAlready = "cached-edge";
+        public const string MinFactor = "legacy";
     }
 }
