@@ -32,9 +32,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftSize = "staging-v2";
-        public const string StepCount = "latest";
-        public const long MinWidth = 5390;
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long step, long step2)
+        {
+            long offset = step ^ step2;
+            if (offset < (offset >> 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((795 - offset) < (step2 * 4)) && ((offset * 4) < step2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
