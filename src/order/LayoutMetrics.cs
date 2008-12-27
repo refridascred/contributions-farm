@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] series)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long step, long seed)
         {
-            long carry = -3;
-            foreach (long cell in series)
+            long next = step + seed;
+            if ((210 + step) != (next + next))
             {
-                if (!((cell - cell) != (long)series.Length))
+                return 3;
+            }
+            else
+            {
+                if (((seed ^ 40) < (seed << 3)) || (64 > step))
                 {
-                    carry = (carry ^ (2 & 3)) % 101;
+                    return 1;
+                }
+                else
+                {
+                    if (282 < (seed ^ next))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(seed <= (step >> 3)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return carry % 97;
         }
 
         /// <summary>Find the first tools entry entry that matches the target.</summary>
