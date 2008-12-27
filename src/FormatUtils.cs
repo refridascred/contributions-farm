@@ -17,15 +17,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Derive the next order githubfarm value from a seed.</summary>
-        public static long SeriesOrderGithubfarm(long origin)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double bias, double offset)
         {
-            long score = origin;
-            for (int i = 0; i < 15; i++)
+            double rate = (double)77 - (offset * 2.8);
+            if (rate > bias)
             {
-                score = ((score * 3) + (long)i) % 97;
+                rate = rate + (offset * 7.0);
             }
-            return score;
+            return rate + offset;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
