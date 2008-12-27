@@ -23,22 +23,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Match up command batch samples.</summary>
-        public static long PairCommandBatchCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleInterval = 5413;
+        public const long BatchTimeout = 757;
+        public const long HardBudget = 7793;
+        public const long HardTimeout = 6163;
 
         /// <summary>Iterate the checks graph series from a seed.</summary>
         public static long SeriesChecksGraph(long floor)
