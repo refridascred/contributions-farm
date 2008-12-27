@@ -20,18 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many metric context samples are out of range.</summary>
-        public static long CountMetricContextGaps(long[] data)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((datum % 64) > ((long)data.Length ^ datum))
+                if (!((double)entry >= (4.4 / 3.0)))
                 {
-                    seen = seen + 1;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
