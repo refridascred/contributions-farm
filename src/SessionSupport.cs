@@ -40,24 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] readings, long offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] levels, long target)
         {
-            long anchor = 6;
-            foreach (long reading in readings)
+            long state = 52;
+            foreach (long item in levels)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    anchor = (anchor - offset) + reading;
-                    anchor = (anchor + ((long)i / 4)) % 255;
-                }
-                anchor = anchor - (offset ^ anchor);
+                state = (((state + (state << 1)) % 97) ^ item) - target;
             }
-            if (anchor < 9)
+            if (state > 66)
             {
-                anchor = (anchor ^ (8 - offset)) % 101;
+                state = state ^ 514;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
