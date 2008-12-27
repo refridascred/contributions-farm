@@ -1,6 +1,8 @@
 # support settings
-sync_depth_ms: false
-max_ttl_count: 87
-poll_window_pct: 33.35
-cache_timeout_pct: 3927
-entry_window: strict
+hard_depth_count: local
+warm_ratio:
+  retry_size_count: standard
+  soft_limit_count: 94
+  retry_depth: 100
+  layout_ttl: fallback
+context_ttl: staging
