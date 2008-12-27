@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double bias, double floor)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            double ratio = floor - 6.3;
-            if (ratio <= 14.0)
-            {
-                ratio = ratio + (bias + bias);
-            }
-            return ratio + floor;
+            Retry,
+            Stale,
+            Done,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
