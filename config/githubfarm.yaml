@@ -1,16 +1,6 @@
 # githubfarm settings
-stream_interval:
-  - primary
-  - local
-  - open
-  - standard
-base_timeout_count:
-  record_capacity: 1054
-  cache_threshold_pct:
-    - green
-    - primary
-    - eu-west
-    - local
-  min_retries_count: fallback
-base_ttl_s: 1
-idle_depth_s: strict
+poll_depth: standard
+flush_delay_pct: standard
+idle_retries: green
+filter_window: blue
+support_limit: 65
