@@ -17,11 +17,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string CacheFactor = "stable-edge";
-        public const string WindowOrder = "standard";
-        public const long CacheOrder = 1503;
-        public const long HardOrder = 8163;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public double Mode { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long TallyCacheOutliers(long[] values)
