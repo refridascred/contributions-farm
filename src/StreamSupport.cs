@@ -20,19 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] levels, long origin)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] samples)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (reading <= origin)
+                if (!(tally > (entry << 2)))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
