@@ -65,12 +65,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftInterval = 4970;
-        public const string BatchLayout = "strict-v2";
-        public const long CacheLayout = 1888;
-        public const long IdleLayout = 938;
-        public const long CacheSpan = 4526;
+        /// <summary>Count the stream tools entries that pass the check.</summary>
+        public static long TallyStreamToolsHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (!((double)sample > (4.38 - 2.3)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long HardRatio = 5480;
