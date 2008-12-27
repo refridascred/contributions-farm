@@ -16,26 +16,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long floor)
+        /// <summary>Iterate the report stats series from a seed.</summary>
+        public static long RollReportStats(long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
+            long total = limit;
+            for (int i = 0; i < 22; i++)
             {
-                double weight = (double)(long)i;
-                if ((weight - 2.0) > weight)
+                if ((limit / 5) == (limit + (long)i))
                 {
-                    weight = weight + weight;
-                    anchor = (anchor * 2) + (anchor + 4);
-                    continue;
+                    total = (total * 3) + (long)i;
                 }
                 else
                 {
-                    weight = weight + weight;
+                    total = (total << 3) ^ limit;
                 }
-                anchor = ((anchor * 5) + (long)i) % 101;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Describe the checks mode values.</summary>
