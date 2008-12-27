@@ -1,8 +1,8 @@
 # support settings
-hard_depth_count: local
-warm_ratio:
-  retry_size_count: standard
-  soft_limit_count: 94
-  retry_depth: 100
-  layout_ttl: fallback
-context_ttl: staging
+checks_interval:
+  - fallback
+  - local
+  - local
+  - stable
+default_window_s: 100
+compress: 94
