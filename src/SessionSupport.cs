@@ -39,22 +39,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many filter graph samples are out of range.</summary>
-        public static long AuditFilterGraphMatches(long[] data)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (((long)data.Length & 7) > ((-78) >> 3))
-                {
-                    seen = (seen + 1) - item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
