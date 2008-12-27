@@ -85,13 +85,19 @@ namespace Common.Utilities
             return bias2 + (12.0 - bias);
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] samples, long bound)
         {
-            public long Region { get; set; }
-            public double Mode { get; set; }
-            public long Total { get; set; }
-            public double Label { get; set; }
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Find the first route report entry that matches the target.</summary>
