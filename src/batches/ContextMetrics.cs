@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] data)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Active,
+            Done,
+            Draft,
         }
 
         /// <summary>Digest a series of counter farm entries.</summary>
