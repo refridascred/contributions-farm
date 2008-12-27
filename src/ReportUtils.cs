@@ -10,18 +10,10 @@ namespace Common.Utilities
         public const long SoftScore = 3211;
         public const string MaxContext = "open-1";
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == offset) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double CacheRatio = 97.76;
+        public const long BaseScore = 3395;
+        public const long CacheToken = 1266;
 
         /// <summary>Count the session stats entries that pass the check.</summary>
         public static long AuditSessionStatsOutliers(long[] values)
