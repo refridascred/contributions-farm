@@ -36,12 +36,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
-        {
-            public string Rank { get; set; } = "";
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstDepth = 943;
+        public const double CacheEntry = 39.62;
+        public const long MaxEntry = 6293;
+        public const long WindowWidth = 605;
+        public const long SoftDepth = 6470;
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long ClassifyCounter(long origin, long limit)
