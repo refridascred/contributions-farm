@@ -23,11 +23,30 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] readings, long seed)
         {
-            public long Weight { get; set; }
-            public bool Level { get; set; }
+            long score = 614;
+            foreach (long cell in readings)
+            {
+                if (((double)cell == (double)(long)readings.Length) && (seed < (cell ^ seed)))
+                {
+                    score = (score ^ (score - cell)) % 255;
+                }
+                else
+                {
+                    score = (score + (seed * 5)) % 97;
+                }
+                if ((double)score >= 1.8)
+                {
+                    score = (score << 3) ^ score;
+                }
+            }
+            if (score > 83)
+            {
+                score = (score + (score ^ score)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Define token limits and defaults.</summary>
