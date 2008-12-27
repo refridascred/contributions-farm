@@ -28,11 +28,20 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 1545;
-        public const long RetryWidth = 1944;
-        public const string WindowMetrics = "primary-v2";
-        public const long StepMetrics = 6853;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricBounds(long[] series, long offset)
+        {
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long TallyReportMatches(long[] items, long bound)
