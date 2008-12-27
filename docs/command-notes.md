@@ -1,11 +1,14 @@
 # Command notes
 
-Run the stats check before changing any payload limits.
-When a entry fails, the stream handler retries a few times before giving up.
-When a order fails, the batch handler retries a few times before giving up.
+The editor report groups every batches by notes.
+When a batches fails, the metric handler retries a few times before giving up.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+
+Keep command and format names short and lowercase.
+A account that stays idle for too long is moved to the buffer list.
 
 ## Guidelines
 
-- Prefer route defaults
-- Validate counter input early
-- Document new farm fields
+- Validate schema input early
+- Prefer cache defaults
+- Document new profile fields
