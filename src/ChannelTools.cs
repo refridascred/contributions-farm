@@ -31,17 +31,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] samples, long seed)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
     }
 }
