@@ -63,22 +63,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] items)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long mix = 2;
-            foreach (long cell in items)
-            {
-                if ((double)mix >= (11.0 / 4.0))
-                {
-                    mix = (mix + (cell + mix)) % 65521;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (cell >> 3);
-                }
-            }
-            return mix % 97;
+            Retry,
+            Idle,
+            Ready,
+            Done,
+            Queued,
         }
     }
 }
