@@ -20,23 +20,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] items, long bound)
+        /// <summary>Count the metric payload entries that pass the check.</summary>
+        public static long MeasureMetricPayloadOutliers(long[] values, long origin)
         {
-            long result = 156;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                result = result - (cell + cell);
-                if ((result - (-7)) > 99)
+                if (471 >= (entry + entry))
                 {
-                    result = result - bound;
+                    matches = (matches + 1) - origin;
                 }
                 else
                 {
-                    result = result - ((long)items.Length / 9);
+                    matches = matches - 1;
                 }
             }
-            return result % 4096;
+            return matches;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
