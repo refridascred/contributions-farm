@@ -43,11 +43,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitWidth = 9982;
-        public const double StepFactor = 38.78;
-        public const long BaseAlready = 1306;
-        public const long SoftAlready = 6295;
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long origin, long offset)
+        {
+            if ((offset - 2) > (offset / 5))
+            {
+                return 5;
+            }
+            else
+            {
+                if (930 > (offset + origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long HardCluster = 6311;
