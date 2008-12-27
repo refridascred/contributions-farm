@@ -43,31 +43,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long bound, long step)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] series, long origin)
         {
-            if (!((double)step >= 8.27))
+            bool found = true;
+            foreach (long cell in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (((step & 255) > step) || ((double)bound < (2.89 * 7.41)))
+                if (cell <= origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((bound + step) == (bound + 26)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Project the next checks value.</summary>
