@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long seed)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long sum = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = sum + (sum % 60);
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            Ready,
+            Idle,
+            Closed,
         }
 
         /// <summary>Accumulate checks cache samples.</summary>
