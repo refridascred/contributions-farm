@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long origin, long seed)
+        /// <summary>Count window counter pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCounterCount(long[] levels)
         {
-            if ((497 > (seed >> 4)) || ((origin << 1) != (origin - seed)))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((447 ^ origin) > (seed + seed))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)98 < (double)seed)
+                    if ((levels[i] ^ levels[j]) == 7)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a session summary.</summary>
