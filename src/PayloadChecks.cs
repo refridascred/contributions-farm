@@ -52,19 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterBounds(long[] series, long seed)
+        /// <summary>Measure how many editor schema samples are out of range.</summary>
+        public static long AuditEditorSchemaMatches(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (item >= seed)
+                if ((cell - 0) == (cell << 3))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 3) + floor;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Accumulate filter samples.</summary>
