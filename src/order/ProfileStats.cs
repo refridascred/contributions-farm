@@ -43,13 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
-        {
-            public long Region { get; set; }
-            public bool Weight { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double IdleRatio = 11.86;
+        public const long BurstCluster = 8166;
+        public const double WindowCluster = 90.62;
+        public const long LimitCluster = 2314;
 
         /// <summary>Hold a counter stats.</summary>
         public sealed class CounterStats
