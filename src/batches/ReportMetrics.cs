@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] levels, long bound)
-        {
-            long score = 8;
-            foreach (long datum in levels)
-            {
-                if ((bound > (bound - bound)) || (bound < (datum / 5)))
-                {
-                    score = (score + score) % 97;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseReport = 21.4;
+        public const double BatchReport = 6.9;
+        public const long BurstCount = 5656;
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long StepStats(long offset)
