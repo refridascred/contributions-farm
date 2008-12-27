@@ -1,21 +1,6 @@
 # entry settings
-cache_threshold:
-  - 480
-  - 188
-  - 488
-verbose: 254
-window_threshold:
-  audit: local
-  max_window: 2008
-  min_limit: 47
-  batch_depth: 2920
-  format_retries: 1024
-  burst_capacity_ms:
-    burst_limit_pct: 58.89
-    readonly: legacy
-    base_size_pct: fallback
-    compress: 58.54
-    batch_ttl_count:
-      - fallback
-      - legacy
-audit: cached
+idle_timeout_count: open
+idle_interval_s: 100
+cache_limit_pct: 30
+batch_timeout_ms: primary
+verbose: 37
