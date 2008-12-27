@@ -51,10 +51,21 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string RetryProfile = "staging-edge";
-        public const long MinFactor = 7898;
-        public const double MaxTimeout = 21.72;
-        public const long MaxSpan = 5157;
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
