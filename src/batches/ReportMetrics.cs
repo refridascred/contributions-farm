@@ -12,24 +12,21 @@ namespace Common.Utilities
         public const long BatchWidth = 469;
         public const double SoftBatches = 21.63;
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long seed, long origin)
+        /// <summary>Count layout buffer pairs that satisfy a relation.</summary>
+        public static long PairLayoutBufferCount(long[] levels)
         {
-            if (origin < (seed - origin))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((13.0 + 7.0) != (double)seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    if ((levels[i] ^ levels[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
