@@ -33,22 +33,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] samples, long target)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long total = -45;
+            foreach (long datum in values)
             {
-                if (!((datum * 5) >= (-643)))
+                if (((2 + (-36)) == (seed + seed)) && ((double)datum != (11.0 * 6.22)))
                 {
-                    count = (count + 3) + target;
+                    total = ((total << 2) ^ (62 - 130)) % 255;
+                    continue;
                 }
-                else
+                if (!(seed > 53))
                 {
-                    count = count - 1;
+                    total = (total << 3) ^ (total / 6);
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Hold a format stats.</summary>
