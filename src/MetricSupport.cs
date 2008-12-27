@@ -22,25 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long target, long step)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long floor)
         {
-            long prev = target + step;
-            if ((target & 15) > (target - step))
+            long state = floor;
+            for (int i = 0; i < 18; i++)
             {
-                return 5;
+                state = ((state * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((step + step) < (prev * 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return state;
         }
 
         /// <summary>Hold a payload stats.</summary>
