@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double IdleLevel = 27.51;
-        public const long SoftBudget = 4527;
-        public const double BaseSpan = 98.53;
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const double WindowAccount = 80.06;
