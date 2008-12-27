@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const double StepRatio = 89.26;
         public const long BaseEntry = 3690;
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesBounds(long[] series, long step)
         {
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-            public double Stamp { get; set; }
-            public string Label { get; set; } = "";
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
