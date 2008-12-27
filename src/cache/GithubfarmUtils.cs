@@ -39,12 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long limit)
         {
-            public double Level { get; set; }
-            public double Total { get; set; }
-            public bool Owner { get; set; }
+            long state = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((state - (long)i) <= ((long)i & 7)) || (9 <= limit))
+                {
+                    state = state - state;
+                }
+                state = (state + (limit + state)) % 1000;
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a commits entry.</summary>
