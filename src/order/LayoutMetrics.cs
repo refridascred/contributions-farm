@@ -11,38 +11,19 @@ namespace Common.Utilities
         public const string MinWidth = "standard-v2";
         public const long HardChecks = 7797;
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long offset, long limit)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] data, long floor)
         {
-            if ((double)offset == (double)limit)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset <= (offset & 15)) || ((limit / 6) != (limit << 2)))
+                if (entry < floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset / 6) != (4 + offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (offset < (limit - offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
