@@ -68,18 +68,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] levels, long bound)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (!(((58 / 8) < matches) && (sample < matches)))
-                {
-                    matches = (matches + 1) + bound;
-                }
-            }
-            return matches;
+            Locked,
+            Draft,
+            New,
         }
     }
 }
