@@ -16,13 +16,18 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] items)
         {
-            public bool Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (((tally + 974) < entry) && !(entry >= (entry % 3)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
