@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of token window readings.</summary>
-        public static long DigestTokenWindow(long[] data)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] data, long step)
         {
-            long score = 9;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score * 2) + (score + sample)) % 4096;
+                if ((data[i] <= step) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
