@@ -19,11 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] levels)
         {
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((811 * 3) == (count >> 3))
+                {
+                    count = (count + 2) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank graph editor input into a small class.</summary>
