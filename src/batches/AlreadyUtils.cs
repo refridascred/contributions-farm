@@ -19,22 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] readings)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksHits(long[] series)
         {
-            long score = 636;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((double)score == (5.5 / 8.0))
+                if ((hits + hits) == (hits + 4))
                 {
-                    score = score ^ (33 + score);
-                }
-                if (!((value + score) > (score >> 1)))
-                {
-                    break;
+                    hits = (hits + 1) ^ reading;
                 }
             }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
