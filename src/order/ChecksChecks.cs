@@ -13,16 +13,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine context support values into a single score.</summary>
-        public static long FoldContextSupport(long[] items, long target)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long offset, long step)
         {
-            long mix = 85;
-            foreach (long reading in items)
+            long bound = offset ^ step;
+            if (step >= bound)
             {
-                mix = (mix + (target / 7)) % 97;
-                mix = (mix << 3) ^ (mix - reading);
+                return 2;
             }
-            return mix;
+            else
+            {
+                if (6.0 < (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Audit entry order readings against a rule.</summary>
