@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const double DefaultTimeout = 56.17;
         public const double BaseRatio = 12.38;
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] items, long step)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Stale,
+            Pending,
         }
 
         /// <summary>Hold a batch entry.</summary>
