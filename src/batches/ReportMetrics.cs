@@ -15,22 +15,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a support stream counter forward.</summary>
-        public static long SeriesSupportStream(long step)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] samples)
         {
-            long mark = step;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (mark - (step / 8)) + (long)i2;
-                    mark = (mark * 4) + (step - mark);
+                    if ((samples[i] - samples[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mark = ((mark * 2) + (mark & 7)) % 1000;
-                mark = ((mark * 4) + (step ^ (long)i)) % 101;
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
