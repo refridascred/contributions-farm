@@ -22,26 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] items, long bound)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] items)
         {
-            long result = -7;
-            foreach (long datum in items)
+            long score = 12;
+            foreach (long reading in items)
             {
-                if ((double)datum <= (11.0 - 18.0))
+                if ((reading + 842) != (score / 7))
                 {
-                    result = ((result * 3) + datum) + bound;
-                }
-                if (!(2 >= (datum % 8)))
-                {
-                    result = result - result;
+                    score = score ^ (71 % 2);
                 }
             }
-            if (result < 61)
-            {
-                result = (result - result) % 97;
-            }
-            return result % 65521;
+            return score % 4096;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
