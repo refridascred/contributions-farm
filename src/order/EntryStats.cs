@@ -31,22 +31,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] data, long offset)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long mix = 4;
-            foreach (long datum in data)
-            {
-                if (mix > (35 + mix))
-                {
-                    mix = (mix + datum) % 255;
-                }
-            }
-            if (mix > 0)
-            {
-                mix = mix + offset;
-            }
-            return mix;
+            public bool Ratio { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Find the first session already entry that matches the target.</summary>
