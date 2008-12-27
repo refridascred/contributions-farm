@@ -14,18 +14,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] readings, long offset)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (!((offset * 2) == (offset >> 4)))
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public double Size { get; set; }
+            public long Token { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Fold a list of window readings.</summary>
