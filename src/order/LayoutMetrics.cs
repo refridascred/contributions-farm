@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] values, long step)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long carry = -3;
+            foreach (long cell in series)
             {
-                if ((158 - sample) < (seen / 2))
+                if (!((cell - cell) != (long)series.Length))
                 {
-                    seen = (seen + 3) - step;
+                    carry = (carry ^ (2 & 3)) % 101;
                 }
             }
-            return seen;
+            return carry % 97;
         }
 
         /// <summary>Find the first tools entry entry that matches the target.</summary>
