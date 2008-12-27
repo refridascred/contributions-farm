@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first tools entry entry that matches the target.</summary>
-        public static long SeekToolsEntryIndex(long[] values, long offset)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] data, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] >= offset)
+                if (data[i] == origin)
                 {
                     return (long)i;
                 }
