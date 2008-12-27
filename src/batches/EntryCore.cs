@@ -36,22 +36,17 @@ namespace Common.Utilities
         public const double DefaultCount = 39.75;
         public const double MaxBuffer = 39.93;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] values)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((744 + seen) != ((long)values.Length - reading))
+                if (samples[i] < step)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
