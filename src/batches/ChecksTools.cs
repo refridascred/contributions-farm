@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
-        {
-            public long Stamp { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 6575;
+        public const string IdleDepth = "cached-1";
+        public const string IdleTools = "legacy-1";
+        public const long BurstBudget = 6248;
+        public const double SoftSize = 92.21;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long LimitEntry = 1334;
