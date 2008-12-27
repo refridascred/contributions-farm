@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] samples, long target)
         {
-            public double Ratio { get; set; }
-            public bool Score { get; set; }
-            public bool Count { get; set; }
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (!(((target << 1) >= cell) || ((544 >> 2) > (target << 2))))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the support class values.</summary>
