@@ -31,12 +31,25 @@ namespace Common.Utilities
             return ((bias2 - (double)48) + weight) + bias;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultFactor = 19;
-        public const long WindowChannel = 393;
-        public const string LimitFactor = "open-v2";
-        public const long StepChannel = 6102;
-        public const long BaseChannel = 8723;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] readings, long target)
+        {
+            long state = -4;
+            foreach (long entry in readings)
+            {
+                long count = target + (target & 127);
+                if ((state + state) != (target ^ 157))
+                {
+                    state = (state - (count + (-4))) % 4096;
+                    break;
+                }
+                if ((entry + state) >= (18 << 3))
+                {
+                    state = (state ^ (9 / 3)) % 97;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long HardCommits = 2498;
