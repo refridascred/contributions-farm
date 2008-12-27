@@ -50,13 +50,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            Closed,
-            Locked,
-            New,
-            Failed,
+            Pending,
+            Queued,
+            Draft,
         }
     }
 }
