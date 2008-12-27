@@ -27,23 +27,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double weight, double span)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordGaps(long[] levels, long floor)
         {
-            double scale = span;
-            if (scale <= span)
+            long count = 0;
+            foreach (long value in levels)
             {
-                scale = scale - (double)(-9);
+                if ((double)count != (9.82 * 15.0))
+                {
+                    count = ((count + 3) ^ value) + floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                scale = scale - (scale + 5.35);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - 5.65) - (double)(long)i;
-            }
-            return scale + weight;
+            return count;
         }
 
         /// <summary>Hold a command summary.</summary>
