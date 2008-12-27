@@ -51,22 +51,14 @@ namespace Common.Utilities
         public const double CacheFarm = 55.78;
         public const long BurstFarm = 5901;
 
-        /// <summary>Fold a list of batch support readings.</summary>
-        public static long DigestBatchSupport(long[] items)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long sum = 719;
-            foreach (long entry in items)
-            {
-                if ((sum + entry) > (sum & 7))
-                {
-                    sum = sum - 8;
-                }
-                if (sum <= (79 >> 2))
-                {
-                    sum = sum - (entry - entry);
-                }
-            }
-            return sum % 65521;
+            Closed,
+            Done,
+            Draft,
+            Dropped,
+            New,
         }
     }
 }
