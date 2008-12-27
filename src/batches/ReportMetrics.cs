@@ -17,13 +17,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long limit, long limit2)
         {
-            New,
-            Failed,
-            Stale,
-            Idle,
+            if (limit2 < (limit >> 1))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((1 + limit) <= (limit2 & 63)) && ((limit2 / 8) >= (limit2 + limit)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit < (limit << 2)) || (74 > (limit + limit)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)limit > (9.27 / 5.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the window mode values.</summary>
