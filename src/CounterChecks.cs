@@ -41,32 +41,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long origin, long bound)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long limit)
         {
-            long lane = origin + bound;
-            if (!((6.7 - 0.31) == (double)origin))
+            long state = limit;
+            for (int i = 0; i < 15; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)lane >= (13.0 * 4.2))
+                if ((state + limit) < state)
                 {
-                    return 7;
+                    continue;
                 }
-                else
-                {
-                    if (origin <= (lane / 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 97;
             }
+            return state;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
