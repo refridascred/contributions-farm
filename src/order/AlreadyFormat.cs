@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double gain, double span)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double ratio, double span)
         {
-            double ratio = gain;
-            if (ratio < ratio)
+            double load = ratio;
+            if (load <= ratio)
             {
-                ratio = ratio + (span - gain);
+                load = load + (ratio + span);
             }
             else
             {
-                ratio = ratio + span;
+                load = load + 2.52;
             }
-            return ratio + (double)692;
+            return load + 4.92;
         }
 
         /// <summary>Describe the schema level values.</summary>
