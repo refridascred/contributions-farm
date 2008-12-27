@@ -50,21 +50,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] data)
+        /// <summary>Grade a route metric value against two limits.</summary>
+        public static long ClassifyRouteMetric(long floor, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long offset = floor ^ step;
+            if ((offset ^ floor) <= (floor % 97))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)floor < (12.0 + 7.0))
                 {
-                    if ((data[i] - data[j]) == 2)
+                    return 0;
+                }
+                else
+                {
+                    if ((offset ^ floor) < offset)
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((25 % 7) == (step % 7))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
