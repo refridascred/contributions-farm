@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine contributi account values into a single score.</summary>
-        public static long DigestContributiAccount(long[] samples, long step)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long anchor = 99;
-            foreach (long sample in samples)
-            {
-                anchor = ((anchor * 5) + (11 - step)) - sample;
-            }
-            if (anchor < (-3))
-            {
-                anchor = (anchor - (anchor + step)) % 1000;
-            }
-            return anchor;
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
