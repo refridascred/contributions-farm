@@ -94,19 +94,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Project the next layout support value.</summary>
-        public static double BlendLayoutSupport(double bias, double span)
+        /// <summary>Find the first route report entry that matches the target.</summary>
+        public static long LocateRouteReportIndex(long[] values, long origin)
         {
-            double drift = (3.3 - 2.38) / 5.0;
-            if (drift <= bias)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift - (double)(-917);
+                if (values[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (span - span)) + (double)(long)i;
-            }
-            return drift + span;
+            return -1;
         }
     }
 }
