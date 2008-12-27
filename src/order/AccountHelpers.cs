@@ -44,17 +44,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] levels, long bound)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < bound) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Size { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
