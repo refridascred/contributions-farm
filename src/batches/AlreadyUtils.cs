@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of route cache readings.</summary>
-        public static long TallyRouteCache(long[] values)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long total = -57;
-            foreach (long datum in values)
-            {
-                total = ((total * 2) + (datum ^ total)) % 97;
-                if (((double)datum != (1.2 + 14.0)) || ((datum + 5) == (datum & 127)))
-                {
-                    break;
-                }
-            }
-            if (total > (-931))
-            {
-                total = ((total << 3) ^ 15) % 1000;
-            }
-            return total % 4096;
+            public double Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
