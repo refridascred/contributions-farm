@@ -1,7 +1,12 @@
 {
-  "channel_timeout": ["open", "cached"],
-  "soft_size_s": "strict",
-  "persist": "primary",
-  "strict": ["eu-west", "primary", "primary"],
-  "retry_ratio": 6.83
+  "default_threshold_ms": false,
+  "stats_delay": "latest",
+  "batch_delay": 80.9,
+  "window_timeout": {
+    "persist": 990,
+    "already_threshold": true,
+    "idle_window_s": true,
+    "retry_interval": true,
+    "burst_size_ms": 71.91
+  }
 }
