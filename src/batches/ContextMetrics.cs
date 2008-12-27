@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double scale, double span)
         {
-            New,
-            Ready,
-            Failed,
-            Retry,
+            double bias = (double)((-14) - 674);
+            if (bias <= (bias / 4.0))
+            {
+                bias = (bias + bias) - span;
+            }
+            return bias + scale;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
