@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double bias, double floor)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            double gain = bias / 2.0;
-            if (gain < (double)80)
-            {
-                gain = (gain + gain) - floor;
-            }
-            return gain + gain;
+            New,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
