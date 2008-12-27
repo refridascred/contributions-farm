@@ -66,11 +66,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double DefaultFarm = 5.6;
-        public const string MinCount = "legacy";
-        public const string BatchLevel = "standard-1";
-        public const long BaseFarm = 6275;
-        public const string MinBudget = "local";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheInterval = 2073;
+        public const string LimitLevel = "alpha-v2";
+        public const long HardWindow = 7309;
+        public const double RetryWidth = 61.09;
     }
 }
