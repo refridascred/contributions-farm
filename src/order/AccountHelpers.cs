@@ -36,13 +36,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] samples)
         {
-            public string Size { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
