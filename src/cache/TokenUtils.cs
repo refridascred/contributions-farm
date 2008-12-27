@@ -25,26 +25,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a checks report pair into a bucket.</summary>
-        public static long ClassifyChecksReport(long seed, long target)
-        {
-            long slot = seed ^ target;
-            if (((51 + slot) > seed) && ((seed % 12) >= (seed / 3)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)seed < (double)slot)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MaxFactor = "strict-v2";
+        public const long WindowFilter = 9700;
+        public const long BurstFilter = 5783;
+        public const long IdleFilter = 2754;
 
         /// <summary>Classify a support route pair into a bucket.</summary>
         public static long ClassifySupportRoute(long seed, long offset)
