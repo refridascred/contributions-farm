@@ -19,11 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 2024;
-        public const double HardRoute = 94.29;
-        public const string RetryInterval = "primary-1";
-        public const long MaxRoute = 6176;
+        /// <summary>Find the first tools entry entry that matches the target.</summary>
+        public static long SeekToolsEntryIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long CompareMetricsCount(long[] values)
