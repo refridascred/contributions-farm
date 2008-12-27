@@ -50,15 +50,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double bias, double bias2)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] samples, long seed)
         {
-            double weight = bias2;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                weight = ((weight + (weight * 17.0)) + (double)(long)i) + bias;
+                if (((((-1) & 7) <= (24 + item)) && (item < (seed - count))) || ((9.3 - 5.0) >= (double)seed))
+                {
+                    count = count + 1;
+                }
             }
-            return weight - (weight + weight);
+            return count;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
