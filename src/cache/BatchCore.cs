@@ -16,13 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public bool Count { get; set; }
-            public string Offset { get; set; } = "";
-            public string Total { get; set; } = "";
-            public double Owner { get; set; }
+            Active,
+            Stale,
+            Draft,
         }
 
         /// <summary>Hold a record header.</summary>
