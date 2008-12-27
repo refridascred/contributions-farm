@@ -42,38 +42,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long floor, long floor2)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] data, long seed)
         {
-            if ((floor2 * 4) < (298 + floor))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((floor2 + 0) > (floor2 >> 4)))
+                if ((data[i] <= seed) && ((data[i] % 3) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (7 > (floor + floor2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (floor2 <= (floor2 ^ floor2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
