@@ -11,24 +11,21 @@ namespace Common.Utilities
         public const long RetryTimeout = 3496;
         public const double BaseSpan = 5.8;
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long target, long offset)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] levels)
         {
-            if (((19.0 + 2.48) != (double)offset) || (target > offset))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((offset << 1) > (target + target)) || (3.0 > (double)offset))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    if ((levels[i] ^ levels[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
