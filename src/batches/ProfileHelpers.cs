@@ -26,15 +26,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double rate, double floor)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            double scale = (double)(509 * 5);
-            if (scale > (scale / 8.0))
-            {
-                scale = (scale + 8.0) - floor;
-            }
-            return scale + rate;
+            Retry,
+            Pending,
+            Done,
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
