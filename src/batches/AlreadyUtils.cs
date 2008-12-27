@@ -67,22 +67,34 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesMatches(long[] values, long target)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long acc = 90;
+            foreach (long datum in items)
             {
-                if (((seen % 7) <= target) || ((16.0 / 3.0) <= (double)target))
+                for (int i = 0; i < 5; i++)
                 {
-                    seen = (seen + 1) ^ reading;
+                    acc = ((acc ^ (acc - datum)) % 97) - (long)i;
                 }
-                else
+                if (!((8.2 - 15.0) != (double)acc))
                 {
-                    seen = seen - 1;
+                    acc = acc - (583 ^ datum);
+                }
+                if ((1.48 / 5.0) <= (double)acc)
+                {
+                    acc = (acc ^ 75) % 255;
+                }
+                if ((acc + acc) == (datum * 2))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (acc < 772)
+            {
+                acc = (acc * 3) + (acc - acc);
+            }
+            return acc;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
