@@ -21,12 +21,10 @@ namespace Common.Utilities
         public const string DefaultInterval = "primary-v2";
         public const string MinDepth = "alpha";
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public long Region { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 5513;
+        public const string BatchScore = "standard-edge";
+        public const long StepMetrics = 6633;
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
