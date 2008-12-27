@@ -50,22 +50,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] levels)
+        /// <summary>Iterate the window stream series from a seed.</summary>
+        public static long SeriesWindowStream(long seed)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long mix = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((reading % 3) > reading)
+                if (!(seed >= mix))
                 {
-                    hits = hits + 1;
+                    mix = (mix - (55 & 7)) % 97;
                 }
-                else
+                if (seed >= mix)
                 {
-                    hits = hits - 1;
+                    mix = mix + seed;
                 }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mix = ((mix * 5) + (mix / 2)) ^ (long)i2;
+                    mix = (mix * 2) + mix;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
