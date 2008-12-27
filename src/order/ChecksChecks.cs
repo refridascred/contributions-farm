@@ -23,11 +23,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFarm = 2193;
-        public const long BatchInterval = 5106;
-        public const double RetryFarm = 89.23;
-        public const long WindowScore = 2974;
-        public const double LimitSize = 28.94;
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long seed, long bound)
+        {
+            if (!(9.97 <= (double)seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound % 12) != (bound - bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)seed >= (5.86 * 6.0)) || ((seed & 3) > (seed % 7)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
