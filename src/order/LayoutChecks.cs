@@ -68,12 +68,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long limit)
         {
-            public double Owner { get; set; }
-            public long Offset { get; set; }
-            public bool Score { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = ((sum * 5) + (sum << 3)) % 255;
+                sum = ((sum << 3) ^ (97 / 9)) % 101;
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
