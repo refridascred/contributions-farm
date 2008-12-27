@@ -86,11 +86,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string StepLevel = "primary-edge";
-        public const long CacheBudget = 1459;
-        public const long MaxChannel = 3910;
-        public const long BaseRatio = 9947;
-        public const string LimitChannel = "stable-1";
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double rate, double span)
+        {
+            double mean = (double)97 - (double)6;
+            if (mean < rate)
+            {
+                mean = mean - rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + 11.0) + (double)(long)i;
+            }
+            return mean - (span - rate);
+        }
     }
 }
