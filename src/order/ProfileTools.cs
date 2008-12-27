@@ -29,17 +29,24 @@ namespace Common.Utilities
         public const long HardRatio = 857;
         public const string HardBuffer = "latest-1";
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] readings, long origin)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long seed, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((seed << 3) != (step % 3))
             {
-                if (readings[i] <= origin)
+                return 5;
+            }
+            else
+            {
+                if ((double)step >= 2.45)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
