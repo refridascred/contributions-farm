@@ -18,16 +18,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = ((anchor << 2) ^ (seed - seed)) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string CacheLevel = "latest-edge";
+        public const long HardSpan = 2191;
+        public const long HardInterval = 6546;
     }
 }
