@@ -39,18 +39,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] data)
+        /// <summary>Digest a series of account support entries.</summary>
+        public static long FoldAccountSupport(long[] readings, long offset)
         {
-            long result = 54;
-            foreach (long cell in data)
+            long state = 1;
+            foreach (long value in readings)
             {
-                if ((cell - 134) > (result - cell))
+                if (((-103) + offset) >= (value & 7))
                 {
-                    result = (result ^ ((long)data.Length & 127)) % 101;
+                    state = (state - value) % 101;
                 }
             }
-            return result % 1000;
+            if (state < 394)
+            {
+                state = state ^ (state ^ offset);
+            }
+            return state;
         }
     }
 }
