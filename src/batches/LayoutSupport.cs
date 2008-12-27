@@ -43,15 +43,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double ratio, double floor)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            double rate = floor + floor;
-            if (rate >= floor)
-            {
-                rate = (rate - (rate * 1.79)) + ratio;
-            }
-            return rate - (double)9;
+            Queued,
+            Paused,
+            Closed,
+            Pending,
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
