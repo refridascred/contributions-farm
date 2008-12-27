@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] samples)
+        /// <summary>Validate record entry readings against a bound.</summary>
+        public static bool VerifyRecordEntryRange(long[] data, long step)
         {
-            long sum = 68;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if (!((3.0 + 2.01) == (double)datum))
+                if (reading > step)
                 {
-                    sum = sum - (datum * 3);
+                    found = false;
+                    break;
                 }
-                if (!((sum * 5) >= sum))
-                {
-                    sum = (sum - sum) % 1000;
-                }
-                sum = (sum - ((long)samples.Length ^ datum)) % 255;
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Hold a route record.</summary>
