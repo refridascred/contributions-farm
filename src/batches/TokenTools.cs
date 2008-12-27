@@ -37,15 +37,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] readings)
-        {
-            long acc = 51;
-            foreach (long item in readings)
-            {
-                acc = (acc << 2) ^ (item / 6);
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 9057;
+        public const double BatchGraph = 31.37;
+        public const double BaseFactor = 3.43;
+        public const long BaseGraph = 6033;
+        public const double SoftGraph = 85.23;
     }
 }
