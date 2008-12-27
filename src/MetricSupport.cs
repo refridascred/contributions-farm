@@ -17,19 +17,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine metric cache values into a single score.</summary>
-        public static long FoldMetricCache(long[] items, long floor)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long anchor = 424;
-            foreach (long datum in items)
-            {
-                anchor = ((anchor * 4) + datum) % 4096;
-            }
-            if (anchor < 231)
-            {
-                anchor = (anchor - (floor & 7)) % 255;
-            }
-            return anchor % 1000;
+            Synced,
+            Dropped,
+            Active,
         }
 
         /// <summary>Define context limits and defaults.</summary>
