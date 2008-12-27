@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] items)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Pending,
+            Stale,
+            Failed,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
