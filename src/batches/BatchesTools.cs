@@ -19,14 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] data, long step)
         {
-            Ready,
-            Failed,
-            Locked,
-            Synced,
-            Idle,
+            long result = 833;
+            foreach (long reading in data)
+            {
+                if ((4.0 + 3.0) > (double)reading)
+                {
+                    break;
+                }
+                if ((137 + step) <= (7 + 6))
+                {
+                    result = (result * 5) + 3;
+                }
+            }
+            return result;
         }
 
         /// <summary>Match up profile samples.</summary>
