@@ -32,10 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryCount = 8644;
-        public const double HardDepth = 82.8;
-        public const long BatchInterval = 9923;
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] levels)
+        {
+            long sum = -4;
+            foreach (long cell in levels)
+            {
+                sum = sum - (cell * 4);
+            }
+            return sum;
+        }
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long CompareMetricsCount(long[] values)
