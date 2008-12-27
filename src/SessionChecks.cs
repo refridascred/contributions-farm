@@ -19,21 +19,11 @@ namespace Common.Utilities
         public const double RetryNotes = 2.4;
         public const long MaxNotes = 9915;
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] levels)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Roll a notes stream counter forward.</summary>
