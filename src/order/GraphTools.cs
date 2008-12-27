@@ -23,19 +23,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((10 * 3) != (tally >> 3))
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxCount = 1010;
+        public const double WindowToken = 51.25;
+        public const long RetrySize = 2031;
+        public const double WindowBudget = 17.26;
 
         /// <summary>Define context limits and defaults.</summary>
         public const double DefaultSize = 13.17;
