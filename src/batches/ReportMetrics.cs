@@ -15,17 +15,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] items, long seed)
+        /// <summary>Roll a support stream counter forward.</summary>
+        public static long SeriesSupportStream(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (items[i] > seed)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return (long)i;
+                    mark = (mark - (step / 8)) + (long)i2;
+                    mark = (mark * 4) + (step - mark);
                 }
+                mark = ((mark * 2) + (mark & 7)) % 1000;
+                mark = ((mark * 4) + (step ^ (long)i)) % 101;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
