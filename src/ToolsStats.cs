@@ -47,13 +47,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long seed, long target)
         {
-            Active,
-            Done,
-            Stale,
-            Queued,
+            long step = seed - target;
+            if ((target % 2) == (target - 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((target - target) < step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (94 < (seed - seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (step >= (step * 5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a contributi stats.</summary>
