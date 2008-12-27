@@ -97,13 +97,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate profile command readings against a bound.</summary>
-        public static bool GuardProfileCommandRange(long[] readings, long limit)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionRange(long[] data, long target)
         {
             bool stale = true;
-            foreach (long cell in readings)
+            foreach (long datum in data)
             {
-                if (cell > limit)
+                if (datum > target)
                 {
                     stale = false;
                     break;
