@@ -1,25 +1,25 @@
 # support settings
-retry_limit_s:
-  session_size: false
-  batch_retries_ms:
-    strict: blue
-    sync_interval_pct: local
-    flush_interval_pct: true
-    notes_retries: true
-    idle_ratio_ms: true
-  session_threshold:
-    - 315
-    - 199
-  persist: legacy
-min_ratio:
-  sync_delay_pct: false
-  strict: true
-  persist: 5663
-  filter_capacity: 9737
-  queue_interval:
-    - 195
-    - 419
-    - 219
-  sync_threshold_count: true
-default_limit: 78.47
-persist: blue
+soft_limit_s:
+  dry_run: 59
+  burst_timeout_s: local
+  base_ratio_s: strict
+  retry_interval: legacy
+  token_delay: true
+batch_depth_pct:
+  - 146
+  - 22
+  - 158
+sync_delay_s:
+  strict:
+    - green
+    - standard
+    - blue
+    - strict
+  retry_depth_count:
+    - 313
+    - 355
+    - 105
+    - 13
+  base_threshold_s: 30.7
+  default_window: latest
+window_size: 93.38
