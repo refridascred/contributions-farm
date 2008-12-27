@@ -10,17 +10,24 @@ namespace Common.Utilities
         public const double BatchReport = 6.9;
         public const long BurstCount = 5656;
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long offset)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long seed, long origin)
         {
-            long sum = offset;
-            for (int i = 0; i < 8; i++)
+            if (origin < (seed - origin))
             {
-                sum = sum - offset;
-                sum = sum + (54 / 3);
-                sum = ((sum * 2) + (long)i) % 4093;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if ((13.0 + 7.0) != (double)seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
