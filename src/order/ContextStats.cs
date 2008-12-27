@@ -47,11 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string RetryWidth = "open-edge";
-        public const string MinLevel = "alpha-v2";
-        public const long BatchDepth = 4403;
-        public const string LimitRatio = "latest-v2";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseLevel = 7433;
+        public const double MinFactor = 14.38;
+        public const long DefaultReport = 531;
+        public const string BurstReport = "cached-1";
+        public const long DefaultCount = 5963;
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
