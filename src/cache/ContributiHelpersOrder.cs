@@ -42,13 +42,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
-        {
-            public double Ratio { get; set; }
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double DefaultBuffer = 30.05;
+        public const double IdleBuffer = 42.77;
+        public const long WindowBuffer = 5486;
+        public const long StepCount = 4107;
     }
 }
