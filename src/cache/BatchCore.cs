@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] readings)
+        /// <summary>Count the route buffer entries that pass the check.</summary>
+        public static long CountRouteBufferMatches(long[] items, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((4.63 / 3.0) != (double)value)
                 {
-                    if ((readings[i] ^ readings[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) + target;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
