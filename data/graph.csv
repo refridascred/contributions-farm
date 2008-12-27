@@ -1,8 +1,6 @@
-id,weight
-1,95.56
-2,206
-3,primary
-4,220
-5,870
-6,221
-7,cached
+id,weight,count,state
+1,local,71.8,eu-west
+2,402,strict,604
+3,8.05,168,23.43
+4,879,13.95,37.42
+5,legacy,6.09,eu-west
