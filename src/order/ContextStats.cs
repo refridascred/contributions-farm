@@ -41,12 +41,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseLevel = 7433;
-        public const double MinFactor = 14.38;
-        public const long DefaultReport = 531;
-        public const string BurstReport = "cached-1";
-        public const long DefaultCount = 5963;
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
+        {
+            public long Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public bool Score { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
