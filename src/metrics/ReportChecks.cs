@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Report checks helpers.</summary>
     public static class ReportChecks
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long seed, long bound)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            if ((100 >> 4) == (seed << 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound / 7) != (seed << 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Flag { get; set; }
+            public double Mode { get; set; }
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Iterate the window stream series from a seed.</summary>
