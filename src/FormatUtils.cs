@@ -59,17 +59,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long step)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long mix = step;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = (mix - ((long)i << 2)) % 101;
-                mix = (mix + (long)i) % 255;
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            New,
+            Closed,
+            Queued,
         }
     }
 }
