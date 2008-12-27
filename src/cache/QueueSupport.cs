@@ -18,24 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next editor profile value from a seed.</summary>
-        public static long RollEditorProfile(long bound)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] series, long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if (7.56 < (double)bound)
+                if (entry > limit)
                 {
-                    score = score - (bound + bound);
+                    found = false;
+                    break;
                 }
-                score = (score - (long)i) % 255;
-                if (!(((score / 8) <= ((long)i + bound)) || ((double)bound == (6.12 * 6.28))))
-                {
-                    score = (score - (bound * 3)) % 97;
-                }
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return found;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
