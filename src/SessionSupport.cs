@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long origin, long offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] data, long target)
         {
-            if ((offset << 1) >= origin)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (11.0 >= (double)origin)
+                if (cell <= target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((376 & 1) < origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Fold a list of account readings.</summary>
