@@ -33,9 +33,14 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BatchRoute = 5.82;
-        public const long RetryRoute = 8888;
-        public const double BaseTimeout = 67.04;
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
+        {
+            Idle,
+            Pending,
+            Draft,
+            Ready,
+            Stale,
+        }
     }
 }
