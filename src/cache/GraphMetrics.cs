@@ -62,11 +62,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double LimitSize = 88.82;
-        public const double BatchSupport = 98.35;
-        public const string WindowSupport = "staging-v2";
-        public const long WindowBudget = 620;
-        public const double HardSupport = 28.4;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 3421;
+        public const long HardSpan = 292;
+        public const long WindowTimeout = 3628;
     }
 }
