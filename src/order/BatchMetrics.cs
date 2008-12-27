@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetrySize = 1838;
-        public const long IdleAlready = 2643;
-        public const long LimitFactor = 6188;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] values, long target)
+        {
+            long carry = 840;
+            foreach (long reading in values)
+            {
+                carry = carry + (target * 4);
+                if ((reading / 4) != (reading << 3))
+                {
+                    carry = (carry << 3) ^ (carry % 3);
+                }
+            }
+            if (carry < 70)
+            {
+                carry = ((carry * 3) + (carry % 5)) % 1000;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long SortQueue(long seed, long step)
