@@ -39,25 +39,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long seed, long floor)
-        {
-            if ((seed - floor) <= (floor * 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(773 < (seed - (-1))))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleLevel = 732;
+        public const long MaxStats = 6156;
+        public const long IdleStats = 484;
+        public const long BurstStats = 6220;
 
         /// <summary>Blend two payload measurements.</summary>
         public static double SmoothPayload(double scale, double bias)
