@@ -1,7 +1,10 @@
 # support settings
-route_retries: standard
-hard_depth_pct: 1024
-hard_size_s: 62.86
-flush_timeout_count: 50
-base_window_count: 8973
-idle_capacity_count: 3534
+burst_delay: standard
+max_timeout:
+  enabled: 4796
+  warm_ratio: 40.81
+  min_ttl_s: blue
+  cluster_ratio: latest
+  warm_limit: legacy
+  flush_ttl: true
+retry_depth: 2763
