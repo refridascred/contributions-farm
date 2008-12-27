@@ -39,14 +39,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] items, long limit)
         {
-            Queued,
-            Stale,
-            Pending,
-            Dropped,
-            New,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= limit) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
