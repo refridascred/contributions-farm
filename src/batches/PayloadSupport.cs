@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine entry metric values into a single score.</summary>
-        public static long ScoreEntryMetric(long[] data)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long anchor = 650;
-            foreach (long sample in data)
-            {
-                if ((double)sample > 19.0)
-                {
-                    anchor = anchor ^ sample;
-                }
-                if (((sample * 5) >= (55 - sample)) || (233 >= (sample - anchor)))
-                {
-                    break;
-                }
-            }
-            return anchor % 1000;
+            public long Count { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Derive the next contributi record value from a seed.</summary>
