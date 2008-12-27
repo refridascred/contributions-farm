@@ -32,25 +32,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long step, long step2)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] data, long target)
         {
-            long offset = step ^ step2;
-            if (offset < (offset >> 1))
+            long result = 2;
+            foreach (long sample in data)
             {
-                return 0;
+                result = ((((result * 5) + (long)data.Length) % 4096) ^ sample) - target;
             }
-            else
-            {
-                if (((795 - offset) < (step2 * 4)) && ((offset * 4) < step2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return result % 4096;
         }
     }
 }
