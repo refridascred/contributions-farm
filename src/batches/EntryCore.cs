@@ -38,13 +38,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            Active,
-            Locked,
-            New,
-            Retry,
+            public double Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
