@@ -48,11 +48,12 @@ namespace Common.Utilities
         public const string StepWindow = "primary-edge";
         public const long BaseWindow = 893;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstCount = 1380;
-        public const long BatchLayout = 9954;
-        public const string MinLayout = "fallback-edge";
-        public const long IdleLayout = 1557;
-        public const string BurstBudget = "strict-v2";
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
+        {
+            Queued,
+            New,
+            Locked,
+        }
     }
 }
