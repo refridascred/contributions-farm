@@ -51,18 +51,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] values, long offset)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((offset * 4) < (hits ^ (long)values.Length))
-                {
-                    hits = (hits + 1) + value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 1874;
+        public const double CacheFarm = 49.85;
+        public const double BaseTimeout = 24.76;
     }
 }
