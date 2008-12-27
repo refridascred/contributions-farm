@@ -49,12 +49,16 @@ namespace Common.Utilities
             return ratio - (16.0 * 6.0);
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long seed)
         {
-            public double Count { get; set; }
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
+            long anchor = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = anchor - (seed + seed);
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
