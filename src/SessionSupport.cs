@@ -42,11 +42,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 8436;
-        public const long BaseChannel = 4669;
-        public const long MinWidth = 2305;
-        public const long HardChannel = 4758;
-        public const long DefaultChannel = 2502;
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long offset, long step)
+        {
+            if ((offset >= (step & 7)) || ((step & 1) >= (step ^ offset)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (step >= (step - offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(1.56 < (double)offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
