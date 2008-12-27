@@ -57,13 +57,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long origin, long limit)
         {
-            Idle,
-            New,
-            Failed,
-            Active,
+            long step = origin ^ limit;
+            if (((double)origin != (double)962) && ((step % 12) <= origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if (98 > (46 - limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(step >= limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
