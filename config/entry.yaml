@@ -1,7 +1,4 @@
 # entry settings
-enabled: 100
-counter_size: 3393
-readonly: 85
-base_timeout_pct:
-  - 233
-  - 88
+buffer_ttl: true
+sync_interval_s: 8612
+flush_size: stable
