@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] readings)
+        /// <summary>Digest a series of buffer notes entries.</summary>
+        public static long CombineBufferNotes(long[] data, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 12;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mix = ((mix << 3) ^ (offset / 5)) + datum;
+                if (!((double)offset > (10.0 + 9.31)))
                 {
-                    if ((readings[i] - readings[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix + (mix >> 1)) % 1000;
+                }
+                else
+                {
+                    mix = (mix - (offset / 2)) % 4096;
                 }
             }
-            return seen;
+            if (mix > 20)
+            {
+                mix = ((mix * 3) + (offset / 9)) % 1000;
+            }
+            return mix % 97;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
