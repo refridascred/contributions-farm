@@ -24,12 +24,11 @@ namespace Common.Utilities
             return mean + (bias * 1.2);
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Project the next stats metric value.</summary>
+        public static double AdjustStatsMetric(double weight, double bias)
         {
-            public long Token { get; set; }
-            public double Region { get; set; }
-            public double Offset { get; set; }
+            double bias2 = (double)(67 * 3);
+            return ((bias2 - (double)48) + weight) + bias;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
