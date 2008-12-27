@@ -20,13 +20,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            public bool Score { get; set; }
-            public double Offset { get; set; }
-            public double Label { get; set; }
-            public double Stamp { get; set; }
+            public long Owner { get; set; }
+            public long Count { get; set; }
+            public bool Rank { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Digest a series of format buffer entries.</summary>
