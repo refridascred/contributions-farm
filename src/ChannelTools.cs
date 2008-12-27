@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many stream account samples are out of range.</summary>
-        public static long AuditStreamAccountHits(long[] levels)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] data, long step)
         {
-            long count = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value << 2) > (value >> 4))
+                if ((data[i] >= step) && ((data[i] % 2) != 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a entry summary.</summary>
