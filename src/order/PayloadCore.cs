@@ -19,19 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] items, long seed)
+        /// <summary>Adjust a layout filter reading.</summary>
+        public static double ScaleLayoutFilter(double gain, double floor)
         {
-            long mix = 5;
-            foreach (long item in items)
-            {
-                if ((item % 16) >= (mix << 2))
-                {
-                    mix = (((mix * 3) + mix) % 65521) - seed;
-                }
-                mix = mix - (89 / 7);
-            }
-            return mix;
+            double drift = floor;
+            return drift - gain;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
