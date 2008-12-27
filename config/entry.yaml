@@ -1,4 +1,16 @@
 # entry settings
-batch_interval: 77
-report_timeout: green
-warm_retries: 60.57
+soft_limit_count: 500
+soft_threshold:
+  - stable
+  - staging
+flush_timeout_ms: true
+batch_depth: 1024
+retry_size: green
+strict:
+  max_size_ms: cached
+  hard_depth_pct:
+    - edge
+    - legacy
+  idle_interval: true
+  enabled: 30.12
+  flush_threshold: 1024
