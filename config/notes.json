@@ -1,7 +1,11 @@
 {
-  "soft_interval": 31.88,
-  "queue_timeout": "local",
-  "route_interval": "open",
-  "cache_ttl_ms": true,
-  "flush_interval": 78.97
+  "retry_ratio": {
+    "min_window_pct": 100,
+    "persist": false,
+    "record_ratio": false,
+    "cache_capacity": 50.68,
+    "strict": "open"
+  },
+  "warm_capacity": 69.36,
+  "account_depth": 92.65
 }
