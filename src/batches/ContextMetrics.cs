@@ -26,13 +26,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] samples)
         {
-            Queued,
-            Done,
-            Stale,
-            New,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (sample < ((long)samples.Length ^ 90))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
