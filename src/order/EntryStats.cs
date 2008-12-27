@@ -22,10 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string WindowStream = "cached-v2";
-        public const long IdleInterval = 2273;
-        public const string BurstStream = "latest-edge";
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextOutliers(long[] values)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (!((count < (370 % 10)) && (count > (count ^ sample))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool GuardMetricLimits(long[] samples, long step)
