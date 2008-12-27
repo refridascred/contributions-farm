@@ -53,21 +53,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] items)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Idle,
+            New,
+            Failed,
+            Active,
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
