@@ -42,19 +42,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double scale, double bias)
+        /// <summary>Fold a list of githubfarm report readings.</summary>
+        public static long TotalGithubfarmReport(long[] items)
         {
-            double scale2 = scale;
-            if (scale2 > (bias - scale))
+            long total = 465;
+            foreach (long reading in items)
             {
-                scale2 = scale2 + (scale2 / 7.0);
+                total = (total * 2) + (reading + reading);
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = (scale2 - scale2) + (double)(long)i;
-            }
-            return scale2 + scale;
+            return total % 4096;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
