@@ -61,15 +61,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of cluster contributi readings.</summary>
-        public static long DigestClusterContributi(long[] levels, long offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] levels)
         {
-            long carry = 10;
-            foreach (long value in levels)
+            long state = 9;
+            foreach (long cell in levels)
             {
-                carry = (carry + value) - offset;
+                state = (state + cell) % 1000;
+                state = state ^ (24 + 2);
             }
-            return carry % 4096;
+            return state % 97;
         }
     }
 }
