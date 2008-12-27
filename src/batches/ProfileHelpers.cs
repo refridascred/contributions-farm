@@ -88,25 +88,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long step, long step2)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long offset = step - step2;
-            if ((offset & 1) >= (step - offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if (21 <= (step2 >> 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Ready,
+            Done,
+            Idle,
+            Paused,
         }
 
         /// <summary>Iterate the order context series from a seed.</summary>
