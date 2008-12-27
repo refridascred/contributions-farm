@@ -44,11 +44,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double CacheCount = 68.56;
-        public const long MinCache = 4456;
-        public const long BurstCache = 3508;
-        public const long LimitCache = 2727;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchBounds(long[] readings, long bound)
+        {
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool GuardTokenBounds(long[] data, long target)
