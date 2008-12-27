@@ -1,18 +1,17 @@
 {
-  "max_retries_ms": false,
-  "verbose": 54,
-  "profile_limit": 45.33,
+  "min_ttl_s": 64.4,
   "compress": {
-    "filter_retries": false,
-    "checks_delay": "fallback",
-    "payload_ttl": true,
-    "retry_limit_count": "green",
-    "command_ratio": 30
+    "compress": {
+      "idle_capacity_count": false,
+      "soft_size": 11,
+      "verbose": ["open", "primary", "green", "eu-west"]
+    },
+    "default_depth_ms": 96,
+    "window_threshold": 7336,
+    "checks_timeout": "staging"
   },
-  "batch_delay_s": {
-    "verbose": [111, 382],
-    "tools_ttl": 5.45,
-    "audit": ["edge", "local"]
-  },
-  "retry_capacity": [48, 369, 126]
+  "base_capacity": false,
+  "max_limit_count": true,
+  "sync_interval_ms": 100,
+  "warm_size_s": 57.97
 }
