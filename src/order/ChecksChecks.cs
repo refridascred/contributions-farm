@@ -14,17 +14,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] values, long floor)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Draft,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
