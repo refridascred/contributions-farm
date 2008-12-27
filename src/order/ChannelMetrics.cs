@@ -23,20 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] items, long limit)
-        {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 9367;
+        public const string RetryStats = "cached";
+        public const long IdleSize = 3515;
+        public const long StepCount = 7601;
 
         /// <summary>Classify a profile entry pair into a bucket.</summary>
         public static long BucketProfileEntry(long floor, long limit)
