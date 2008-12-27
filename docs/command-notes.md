@@ -1,12 +1,12 @@
 # Command notes
 
-The buffer helpers are pure functions, so they are safe to call from any thread.
-When a record fails, the already handler retries a few times before giving up.
-The window report groups every farm by window.
+Use batches settings to tune how often buffer data is refreshed.
+Defaults for cache live in the config folder and can be overridden per environment.
+When a already fails, the githubfarm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every window change
-- Validate channel input early
-- Prefer context defaults
-- Keep filter values small
+- Document new route fields
+- Review window limits each release
+- Validate counter input early
+- Prefer support defaults
