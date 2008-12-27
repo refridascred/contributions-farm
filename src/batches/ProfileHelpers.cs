@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((811 * 3) == (count >> 3))
-                {
-                    count = (count + 2) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCluster = 9691;
+        public const double BatchSpan = 28.88;
+        public const long IdleCluster = 7330;
+        public const long RetryWidth = 3946;
+        public const long MinCluster = 9858;
 
         /// <summary>Rank graph editor input into a small class.</summary>
         public static long ClassifyGraphEditor(long limit, long limit2)
