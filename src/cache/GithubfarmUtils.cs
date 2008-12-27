@@ -47,12 +47,39 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 5590;
-        public const long SoftRatio = 6183;
-        public const long SoftQueue = 7885;
-        public const long MaxQueue = 8876;
-        public const long DefaultQueue = 4113;
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long limit, long step)
+        {
+            if (limit <= (limit >> 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if (step < 1)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit >= (7.5 / 9.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit & 3) >= (step + 21))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long TotalCounter(long[] values)
