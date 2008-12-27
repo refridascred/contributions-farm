@@ -39,13 +39,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
-        {
-            Closed,
-            Stale,
-            Active,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstBudget = 4065;
+        public const long BurstFilter = 7540;
+        public const long RetryTimeout = 1348;
+        public const long MaxRatio = 8319;
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long GradeAlready(long limit, long origin)
