@@ -39,24 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] readings, long origin)
+        /// <summary>Count the session farm entries that pass the check.</summary>
+        public static long AuditSessionFarmHits(long[] series)
         {
-            long sum = 65;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                sum = (sum * 3) + sum;
-                sum = (sum - (9 + origin)) % 97;
-                if ((value - (long)readings.Length) >= (sum + origin))
+                if ((datum + datum) < (datum << 3))
                 {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            if (sum < 97)
-            {
-                sum = ((sum * 4) + sum) % 65521;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
