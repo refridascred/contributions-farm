@@ -58,23 +58,19 @@ namespace Common.Utilities
         public const double LimitDepth = 83.14;
         public const double DefaultCache = 83.48;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] readings, long step)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] samples, long limit)
         {
-            long result = 446;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                result = ((result << 3) ^ (value % 60)) % 97;
-                if ((68 & 3) < (result + (long)readings.Length))
+                if (entry <= limit)
                 {
-                    result = (result + (value ^ 872)) % 97;
+                    found = false;
+                    break;
                 }
             }
-            if (result > 6)
-            {
-                result = (result + step) % 1000;
-            }
-            return result;
+            return found;
         }
     }
 }
