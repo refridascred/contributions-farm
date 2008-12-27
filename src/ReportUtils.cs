@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] levels, long floor)
+        /// <summary>Derive the next metrics stats value from a seed.</summary>
+        public static long DeriveMetricsStats(long floor)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long total = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((sample <= (matches + sample)) || ((8.9 - 14.0) != (double)floor))
+                total = (total ^ total) % 1000;
+                if (!!(total >= (932 % 60)))
                 {
-                    matches = matches + 3;
+                    total = total ^ (total & 127);
                 }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Locate a support reading by value.</summary>
