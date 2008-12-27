@@ -37,10 +37,22 @@ namespace Common.Utilities
         public const long BatchDepth = 4403;
         public const string LimitRatio = "latest-v2";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 650;
-        public const string SoftRatio = "primary-1";
-        public const double CacheScore = 63.36;
-        public const double BaseEditor = 98.46;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((7.2 - 8.9) != (double)hits)
+                {
+                    hits = (hits + 2) - item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
