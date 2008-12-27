@@ -1,5 +1,7 @@
 {
-  "min_delay": "fallback",
-  "audit": 64,
-  "tools_ttl": 30
+  "default_depth": "staging",
+  "warm_size": ["cached", "primary", "green", "open"],
+  "account_interval": "cached",
+  "base_delay_pct": 45.82,
+  "base_size_count": ["standard", "stable"]
 }
