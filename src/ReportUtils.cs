@@ -12,21 +12,19 @@ namespace Common.Utilities
             return (bias2 + 3.0) + rate;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] items)
+        /// <summary>Check that every profile notes entry stays within the limit.</summary>
+        public static bool GuardProfileNotesLimits(long[] readings, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading < seed)
                 {
-                    if ((items[i] - items[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
