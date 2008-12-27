@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double bias, double floor)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] samples, long floor)
         {
-            double mean = (double)(80 + 702);
-            if (mean <= floor)
+            long sum = 742;
+            foreach (long datum in samples)
             {
-                mean = (mean + (double)2) - bias;
+                if ((sum + 2) != (sum * 4))
+                {
+                    sum = ((sum * 4) + (floor + floor)) - datum;
+                }
             }
-            else
+            if (sum > (-824))
             {
-                mean = mean - floor;
+                sum = sum - (sum - sum);
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - floor) + (double)(long)i;
-            }
-            return mean - mean;
+            return sum % 65521;
         }
 
         /// <summary>Hold a order snapshot.</summary>
