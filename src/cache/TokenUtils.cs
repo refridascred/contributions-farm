@@ -5,24 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the stats channel series from a seed.</summary>
-        public static long StepStatsChannel(long limit)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long origin, long floor)
         {
-            long acc = limit;
-            for (int i = 0; i < 10; i++)
+            long diff = origin - floor;
+            if (!((1.0 + 3.0) <= (double)diff))
             {
-                double mean = (6.0 * 15.0) / 4.0;
-                if (mean <= (3.64 * 9.6))
+                return 6;
+            }
+            else
+            {
+                if (((double)diff == (3.39 - 11.0)) || ((9.78 * 5.0) < (double)floor))
                 {
-                    break;
+                    return 7;
                 }
                 else
                 {
-                    acc = (acc ^ (acc - (long)i)) % 97;
+                    return 4;
                 }
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
