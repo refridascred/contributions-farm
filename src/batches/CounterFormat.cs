@@ -54,13 +54,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public double Score { get; set; }
-            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
     }
 }
