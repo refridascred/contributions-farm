@@ -17,24 +17,19 @@ namespace Common.Utilities
             return (load - (offset * 8.9)) + bias;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long floor, long seed)
+        /// <summary>Digest a series of layout schema entries.</summary>
+        public static long WeighLayoutSchema(long[] samples, long floor)
         {
-            if ((seed >> 5) < 672)
+            long total = 4;
+            foreach (long datum in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)(-237) <= (double)seed)
+                total = (total + (datum - 999)) % 255;
+                if ((datum <= (datum >> 5)) || (total <= floor))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    total = ((total << 3) ^ (total >> 5)) % 255;
                 }
             }
+            return total % 1000;
         }
     }
 }
