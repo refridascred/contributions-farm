@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command filter readings against a rule.</summary>
-        public static long TallyCommandFilterMatches(long[] levels)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] samples)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long anchor = 402;
+            foreach (long value in samples)
             {
-                if ((count % 3) < (484 + item))
-                {
-                    count = count + 1;
-                }
+                anchor = (((anchor * 3) + anchor) % 97) - value;
             }
-            return count;
+            if (anchor < 24)
+            {
+                anchor = anchor + (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
