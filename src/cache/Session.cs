@@ -57,32 +57,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long seed, long floor)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long span = seed ^ floor;
-            if ((6.1 + 8.7) != (double)span)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor + span) > (floor << 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((1 >> 3) > (span - seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
