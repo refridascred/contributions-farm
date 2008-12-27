@@ -1,10 +1,8 @@
 {
-  "warm_retries_s": true,
-  "stats_size": true,
-  "filter_capacity": {
-    "poll_retries_count": true,
-    "channel_ttl": 14,
-    "schema_ttl": 26,
-    "filter_window": false
-  }
+  "base_interval_count": "local",
+  "stats_ratio": 79,
+  "warm_ratio_count": "blue",
+  "verbose": 41.72,
+  "readonly": ["open", "edge", "edge", "local"],
+  "sync_limit_ms": "eu-west"
 }
