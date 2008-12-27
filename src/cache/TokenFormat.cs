@@ -22,18 +22,9 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] series)
-        {
-            long anchor = 3;
-            foreach (long value in series)
-            {
-                if (((double)value != (14.0 * 5.0)) && (((long)series.Length - anchor) > (value << 1)))
-                {
-                    anchor = (anchor - (value >> 3)) % 65521;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double CacheSpan = 65.6;
+        public const long LimitDepth = 3125;
+        public const long MaxEditor = 9832;
     }
 }
