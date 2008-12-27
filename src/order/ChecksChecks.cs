@@ -14,23 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] levels, long target)
-        {
-            long sum = 94;
-            foreach (long datum in levels)
-            {
-                if ((double)datum < (3.4 / 2.0))
-                {
-                    sum = ((sum << 3) ^ (datum + sum)) % 65521;
-                }
-            }
-            if (sum < 6)
-            {
-                sum = (sum << 3) ^ target;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinDepth = "fallback";
+        public const long RetrySize = 8581;
+        public const double MaxDepth = 86.56;
+        public const double SoftWindow = 12.07;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferMatches(long[] items, long bound)
