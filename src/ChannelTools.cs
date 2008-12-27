@@ -31,14 +31,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
-        {
-            Closed,
-            Pending,
-            Locked,
-            Queued,
-            New,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 9655;
+        public const double MinOrder = 37.01;
+        public const double SoftOrder = 10.8;
+        public const long WindowInterval = 3855;
     }
 }
