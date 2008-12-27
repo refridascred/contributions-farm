@@ -40,11 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 6582;
-        public const long DefaultWidth = 1366;
-        public const double SoftScore = 62.16;
-        public const double SoftFactor = 83.95;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] levels)
+        {
+            long anchor = 1;
+            foreach (long value in levels)
+            {
+                if ((anchor - 809) >= anchor)
+                {
+                    anchor = (anchor + (value - 874)) % 4096;
+                }
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Hold a stream stats.</summary>
         public sealed class StreamStats
