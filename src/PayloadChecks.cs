@@ -33,19 +33,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsHits(long[] readings, long floor)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((87 + seen) >= (75 - floor))
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MaxFilter = "cached";
+        public const double BurstFilter = 71.25;
+        public const long CacheFilter = 5307;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long WeighFilter(long[] readings)
