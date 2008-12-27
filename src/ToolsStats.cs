@@ -49,39 +49,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long seed, long target)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] samples)
         {
-            long step = seed - target;
-            if ((target % 2) == (target - 1))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((target - target) < step))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (94 < (seed - seed))
+                    if ((samples[i] - samples[j]) == 11)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (step >= (step * 5))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a record info.</summary>
