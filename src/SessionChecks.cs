@@ -60,14 +60,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long bound)
         {
-            Retry,
-            Pending,
-            Ready,
-            Failed,
-            Closed,
+            long total = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                if (bound >= (912 * 5))
+                {
+                    total = (total << 3) ^ (total + (long)i);
+                }
+                total = (total * 5) + ((long)i * 2);
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
