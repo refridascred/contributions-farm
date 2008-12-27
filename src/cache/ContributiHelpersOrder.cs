@@ -36,15 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] data, long target)
-        {
-            long result = 2;
-            foreach (long sample in data)
-            {
-                result = ((((result * 5) + (long)data.Length) % 4096) ^ sample) - target;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseLevel = 364;
+        public const double BurstRatio = 18.7;
+        public const string BurstScore = "staging";
+        public const long BatchSession = 3528;
+        public const long RetryInterval = 7797;
     }
 }
