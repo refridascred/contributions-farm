@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] data, long origin)
         {
-            public string Size { get; set; } = "";
-            public long Offset { get; set; }
-            public double Level { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((long)data.Length != (count - 9))
+                {
+                    count = ((count + 1) + reading) - origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
