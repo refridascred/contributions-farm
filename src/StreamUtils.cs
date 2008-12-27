@@ -14,12 +14,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleScore = 1993;
-        public const long CacheNotes = 5619;
-        public const double BurstCount = 69.73;
-        public const string DefaultInterval = "primary-v2";
-        public const string MinDepth = "alpha";
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
+        {
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long MeasureClusterHits(long[] values)
