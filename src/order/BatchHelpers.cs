@@ -23,12 +23,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 7927;
+        public const double LimitPayload = 27.33;
+        public const long BatchPayload = 6961;
+        public const long IdleFactor = 326;
     }
 }
