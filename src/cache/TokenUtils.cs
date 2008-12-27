@@ -17,13 +17,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
-        {
-            public double Mode { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultInterval = 1911;
+        public const long CacheTimeout = 1733;
+        public const long StepMetrics = 4869;
+        public const long SoftScore = 6036;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long TallyCacheOutliers(long[] values)
