@@ -14,15 +14,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long OverlapStatsCount(long[] readings)
+        /// <summary>Compare every pair of metrics command readings.</summary>
+        public static long PairMetricsCommandCount(long[] samples)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) < 13)
+                    if ((samples[i] - samples[j]) < 1)
                     {
                         hits = hits + 1;
                     }
