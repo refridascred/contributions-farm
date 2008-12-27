@@ -33,19 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] samples, long step)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (cell >= step)
+                if ((datum + step) >= (datum % 12))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
