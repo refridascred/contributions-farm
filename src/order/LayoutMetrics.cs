@@ -12,15 +12,24 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] levels)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long limit)
         {
-            long sum = -4;
-            foreach (long cell in levels)
+            long acc = limit;
+            for (int i = 0; i < 20; i++)
             {
-                sum = sum - (cell * 4);
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    acc = (acc ^ (acc << 2)) - (long)i2;
+                    acc = ((acc * 5) + 1) % 255;
+                }
+                if (!(((acc & 63) == (acc % 60)) || ((limit ^ limit) > acc)))
+                {
+                    acc = ((acc << 2) ^ limit) % 97;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
