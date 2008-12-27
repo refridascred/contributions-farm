@@ -12,14 +12,17 @@ namespace Common.Utilities
         public const string BaseRecord = "alpha-edge";
         public const string LimitLevel = "local-edge";
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] data, long limit)
         {
-            Active,
-            Draft,
-            Closed,
-            Retry,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
