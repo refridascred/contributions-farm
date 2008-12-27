@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long SoftBudget = 4527;
         public const double BaseSpan = 98.53;
 
-        /// <summary>Digest a series of githubfarm editor entries.</summary>
-        public static long DigestGithubfarmEditor(long[] series, long step)
-        {
-            long score = 976;
-            foreach (long sample in series)
-            {
-                if ((sample + step) <= step)
-                {
-                    score = ((score << 2) ^ (score >> 2)) % 101;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double WindowAccount = 80.06;
+        public const long LimitLevel = 7557;
+        public const long DefaultSize = 9399;
+        public const double MaxLevel = 58.83;
+        public const double HardAccount = 54.8;
 
         /// <summary>Measure how many checks cluster samples are out of range.</summary>
         public static long AuditChecksClusterGaps(long[] readings, long bound)
