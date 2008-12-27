@@ -59,23 +59,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] samples, long limit)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] levels, long bound)
         {
-            long anchor = 72;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((limit >> 3) >= (limit + anchor))
+                if (!(((58 / 8) < matches) && (sample < matches)))
                 {
-                    anchor = (anchor - (anchor >> 3)) % 65521;
-                    continue;
-                }
-                if (cell <= (cell - limit))
-                {
-                    anchor = (anchor - (cell - limit)) % 65521;
+                    matches = (matches + 1) + bound;
                 }
             }
-            return anchor;
+            return matches;
         }
     }
 }
