@@ -21,21 +21,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of checks graph readings.</summary>
-        public static long OverlapChecksGraphCount(long[] values)
+        /// <summary>Audit cluster order readings against a rule.</summary>
+        public static long TallyClusterOrderMatches(long[] values, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((cell * 4) > (offset - offset))
                 {
-                    if ((values[i] ^ values[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a stream stats.</summary>
