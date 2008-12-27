@@ -46,17 +46,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] series, long offset)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            New,
+            Locked,
+            Pending,
         }
 
         /// <summary>Look up the position of a cluster support sample.</summary>
