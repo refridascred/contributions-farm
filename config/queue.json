@@ -1,8 +1,7 @@
 {
-  "channel_limit": ["green", "green"],
-  "profile_size": 397,
-  "hard_capacity_pct": "edge",
-  "support_interval": 48.67,
-  "dry_run": 9127,
-  "hard_interval_count": [21, 213, 444, 202]
+  "layout_ttl": "primary",
+  "strict": true,
+  "readonly": "standard",
+  "burst_delay_ms": 3125,
+  "base_depth": ["green", "legacy"]
 }
