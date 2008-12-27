@@ -43,18 +43,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsOutliers(long[] samples, long origin)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((15.0 >= (double)hits) && ((hits * 3) < (origin << 3)))
-                {
-                    hits = (hits + 1) + entry;
-                }
-            }
-            return hits;
+            public bool Score { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
