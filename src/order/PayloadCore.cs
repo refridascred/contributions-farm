@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterGaps(long[] levels, long limit)
         {
-            public long Ratio { get; set; }
-            public double Size { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (((limit * 4) > (value + seen)) && (((5.3 + 3.0) == (double)seen) || ((seen << 2) != ((long)levels.Length / 2))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
