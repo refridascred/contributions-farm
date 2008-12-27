@@ -48,12 +48,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            Retry,
-            Pending,
-            Draft,
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a contributi stats.</summary>
