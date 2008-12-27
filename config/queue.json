@@ -1,5 +1,5 @@
 {
-  "batch_ratio_count": 500,
-  "buffer_delay": [172, 357, 346, 210],
-  "retry_ttl_s": false
+  "persist": [315, 262],
+  "layout_timeout": 60.27,
+  "burst_delay_s": 6789
 }
