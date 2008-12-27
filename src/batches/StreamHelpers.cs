@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Locate a cluster filter reading by value.</summary>
-        public static long LookupClusterFilterIndex(long[] series, long origin)
+        /// <summary>Measure how many buffer queue samples are out of range.</summary>
+        public static long MeasureBufferQueueOutliers(long[] data, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (series[i] < origin)
+                if ((66 + seed) >= (760 ^ tally))
                 {
-                    return (long)i;
+                    tally = (tally + 2) - entry;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of report readings.</summary>
