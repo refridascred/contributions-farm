@@ -56,32 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long seed, long floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] levels)
         {
-            long bound = seed ^ floor;
-            if (((double)seed < (4.46 * 4.4)) && ((5 + seed) != (seed >> 4)))
+            long mix = 44;
+            foreach (long reading in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((-292) < (7 - seed))
+                mix = (mix ^ (reading - mix)) % 4096;
+                if (((mix / 5) <= mix) || ((mix + reading) < (mix + (-4))))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed ^ bound) <= (seed - 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    break;
                 }
             }
+            return mix;
         }
 
         /// <summary>Describe the stream state values.</summary>
