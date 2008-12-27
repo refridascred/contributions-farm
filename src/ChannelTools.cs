@@ -31,10 +31,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 9655;
-        public const double MinOrder = 37.01;
-        public const double SoftOrder = 10.8;
-        public const long WindowInterval = 3855;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
