@@ -37,18 +37,19 @@ namespace Common.Utilities
             return drift - (drift / 6.0);
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] data)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadRange(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (cell <= (cell - tally))
+                if (reading != target)
                 {
-                    tally = tally + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
