@@ -22,19 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] levels, long seed)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Flag { get; set; }
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
