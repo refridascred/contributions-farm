@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 5795;
-        public const double StepScore = 8.6;
-        public const long BurstCommand = 7555;
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Retry,
+            Locked,
+            Paused,
+            Idle,
+        }
 
         /// <summary>Scale a report figure with a bias.</summary>
         public static double AdjustReport(double scale, double offset)
