@@ -19,11 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleSize = 412;
-        public const long BurstCount = 8147;
-        public const double BurstSize = 82.86;
-        public const long LimitReport = 1555;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardWidth = 198;
+        public const long HardRatio = 857;
+        public const string HardBuffer = "latest-1";
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long SeekChecksIndex(long[] readings, long origin)
