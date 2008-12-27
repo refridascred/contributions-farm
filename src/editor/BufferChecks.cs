@@ -32,19 +32,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] readings, long step)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Level { get; set; }
+            public bool Ratio { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Blend two report measurements.</summary>
