@@ -34,12 +34,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public long Owner { get; set; }
+            Retry,
+            Active,
+            Stale,
         }
 
         /// <summary>Validate checks already readings against a bound.</summary>
