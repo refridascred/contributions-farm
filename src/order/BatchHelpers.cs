@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] levels, long limit)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long mix = 605;
-            foreach (long reading in levels)
-            {
-                if (((7 + mix) == (5 - reading)) && (limit > (limit * 4)))
-                {
-                    mix = (mix + ((long)levels.Length << 2)) % 255;
-                }
-                else
-                {
-                    mix = mix + (reading + mix);
-                }
-            }
-            return mix % 65521;
+            Paused,
+            Dropped,
+            Closed,
+            Synced,
+            Idle,
         }
 
         /// <summary>Audit support stats readings against a rule.</summary>
