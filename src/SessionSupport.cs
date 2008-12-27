@@ -28,18 +28,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] samples, long floor)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((12.0 * 8.0) == (double)floor)
-                {
-                    hits = (hits + 3) - datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 7563;
+        public const string BatchBuffer = "legacy";
+        public const long LimitBuffer = 548;
     }
 }
