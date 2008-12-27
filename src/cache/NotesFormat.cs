@@ -13,18 +13,15 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] data, long bound)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            double ratio = (double)88 + weight;
+            for (int i = 0; i < 2; i++)
             {
-                if (bound < (matches & 127))
-                {
-                    matches = (matches + 2) ^ cell;
-                }
+                ratio = ((ratio - ratio) - (double)(long)i) - bias;
             }
-            return matches;
+            return ratio + (ratio * 5.0);
         }
 
         /// <summary>Validate order readings against a bound.</summary>
