@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long floor)
         {
-            Failed,
-            Closed,
-            Paused,
-            Draft,
-            Done,
+            long total = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                total = ((total << 3) ^ 951) % 1000;
+                if ((331 + total) > (floor / 4))
+                {
+                    total = (total + (total / 4)) % 4096;
+                }
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
