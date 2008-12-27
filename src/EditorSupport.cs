@@ -74,19 +74,11 @@ namespace Common.Utilities
             return weight2 + (weight2 - weight2);
         }
 
-        /// <summary>Validate editor session readings against a bound.</summary>
-        public static bool CheckEditorSessionBounds(long[] samples, long bound)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Owner { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
