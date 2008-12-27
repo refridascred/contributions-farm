@@ -35,19 +35,15 @@ namespace Common.Utilities
             return (mean + (offset / 4.0)) + scale;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long origin)
+        /// <summary>Derive the next record channel value from a seed.</summary>
+        public static long StepRecordChannel(long floor)
         {
-            long carry = origin;
-            for (int i = 0; i < 20; i++)
+            long score = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (((carry + origin) > origin) && (origin >= (carry % 8)))
-                {
-                    carry = (carry - (long)i) % 4096;
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
