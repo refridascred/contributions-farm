@@ -1,12 +1,11 @@
 # Command notes
 
-When a session fails, the format handler retries a few times before giving up.
-Keep farm and order names short and lowercase.
-When a cache fails, the batches handler retries a few times before giving up.
+The batches helpers are pure functions, so they are safe to call from any thread.
+Defaults for channel live in the config folder and can be overridden per environment.
+A filter that stays idle for too long is moved to the report list.
 
 ## Guidelines
 
-- Validate session input early
-- Prefer entry defaults
-- Document new metric fields
-- Review metrics limits each release
+- Validate entry input early
+- Document new batch fields
+- Review cluster limits each release
