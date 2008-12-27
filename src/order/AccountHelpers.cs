@@ -75,9 +75,12 @@ namespace Common.Utilities
             return rate - (rate / 7.0);
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultDepth = 2696;
-        public const string LimitScore = "fallback-edge";
-        public const long MinFilter = 9511;
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
+        {
+            Paused,
+            Active,
+            Closed,
+        }
     }
 }
