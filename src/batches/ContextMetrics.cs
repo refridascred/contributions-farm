@@ -22,18 +22,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] values)
+        /// <summary>Digest a series of counter farm entries.</summary>
+        public static long TallyCounterFarm(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long sum = 24;
+            foreach (long sample in readings)
             {
-                if ((((tally * 5) <= sample) || ((sample + sample) > (7 - tally))) || !((-774) >= (53 + tally)))
+                if ((sum >> 2) == (sample / 7))
                 {
-                    tally = tally + 1;
+                    sum = ((sum << 2) ^ (sample + sample)) % 101;
+                }
+                else
+                {
+                    sum = (sum + (sample - sum)) % 1000;
                 }
             }
-            return tally;
+            if (sum < 405)
+            {
+                sum = (sum * 3) + (6 + sum);
+            }
+            return sum;
         }
 
         /// <summary>Describe the farm level values.</summary>
