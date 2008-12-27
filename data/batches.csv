@@ -1,7 +1,8 @@
-id,owner,token
-1,230,404
-2,451,525
-3,green,52
-4,104,20.16
-5,294,standard
-6,92.5,76
+id,rank,level,owner
+1,640,green,840
+2,43.38,880,fallback
+3,68.68,284,82.1
+4,eu-west,local,blue
+5,25.73,643,staging
+6,33.52,252,561
+7,26.84,strict,green
