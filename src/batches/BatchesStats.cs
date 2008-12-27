@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the farm profile entries that pass the check.</summary>
-        public static long TallyFarmProfileGaps(long[] readings)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long seed, long bound)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            if ((seed << 3) == (seed + bound))
             {
-                if (!((sample - sample) > sample))
+                return 4;
+            }
+            else
+            {
+                if (!((seed - 7) < (bound - bound)))
                 {
-                    hits = hits + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((bound - bound) >= 5)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the window state values.</summary>
