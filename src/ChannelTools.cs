@@ -27,13 +27,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            New,
+            Idle,
+            Paused,
             Dropped,
-            Draft,
-            Retry,
+            New,
+            Locked,
         }
     }
 }
