@@ -12,11 +12,17 @@ namespace Common.Utilities
         public const long SoftTools = 4231;
         public const long SoftSize = 4915;
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double weight, double offset)
+        /// <summary>Locate a order profile reading by value.</summary>
+        public static long FindOrderProfileIndex(long[] samples, long bound)
         {
-            double gain = (weight - offset) + (offset + offset);
-            return gain - weight;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == bound) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batches summary.</summary>
