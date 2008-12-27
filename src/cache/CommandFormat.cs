@@ -50,13 +50,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            Done,
-            Ready,
-            Idle,
-            Paused,
+            Closed,
+            Locked,
+            New,
+            Failed,
         }
     }
 }
