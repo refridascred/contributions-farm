@@ -64,14 +64,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            Retry,
-            Idle,
-            Ready,
+            New,
             Done,
-            Queued,
+            Failed,
         }
     }
 }
