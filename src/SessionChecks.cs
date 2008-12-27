@@ -37,19 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmLimits(long[] values, long offset)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double bias, double floor)
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double weight = (double)4 + (13.0 + bias);
+            return weight + floor;
         }
 
         /// <summary>Hold a schema info.</summary>
