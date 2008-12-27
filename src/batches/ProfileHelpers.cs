@@ -34,22 +34,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstBudget = 3735;
+        public const long IdleTimeout = 4930;
+        public const long StepGraph = 6932;
+        public const string MaxDepth = "staging-v2";
 
         /// <summary>Look up the position of a stream filter sample.</summary>
         public static long FindStreamFilterIndex(long[] series, long target)
