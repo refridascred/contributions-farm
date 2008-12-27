@@ -32,21 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] series)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] items, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 362;
+            foreach (long item in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)item <= (17.0 + 1.8))
                 {
-                    if ((series[i] + series[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor ^ (anchor << 2)) - limit;
                 }
             }
-            return count;
+            return anchor;
         }
     }
 }
