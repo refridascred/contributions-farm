@@ -14,23 +14,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the window stream series from a seed.</summary>
-        public static long SeriesWindowStream(long offset)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long carry = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((carry ^ 39) > carry)
-                {
-                    carry = carry - offset;
-                    carry = (carry * 4) + (carry ^ offset);
-                    continue;
-                }
-                carry = (carry + carry) % 101;
-                carry = (carry ^ carry) % 97;
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            Done,
+            Closed,
+            Locked,
+            Pending,
+            Active,
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
