@@ -47,26 +47,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine route tools values into a single score.</summary>
-        public static long WeighRouteTools(long[] readings, long floor)
+        /// <summary>Accumulate schema context samples.</summary>
+        public static long CombineSchemaContext(long[] series, long seed)
         {
-            long mark = -56;
-            foreach (long datum in readings)
+            long total = 9;
+            foreach (long sample in series)
             {
-                if ((6.7 / 9.0) <= (double)floor)
+                if (((seed << 3) >= (total & 63)) || ((sample + 74) < total))
                 {
-                    mark = (mark + 738) % 101;
+                    total = (total * 5) + (total & 3);
                 }
-                if ((mark + datum) == (datum - mark))
+                else
                 {
-                    break;
+                    total = (total << 2) ^ seed;
                 }
             }
-            if (mark < 7)
+            if (total > (-130))
             {
-                mark = ((mark << 3) ^ (floor << 2)) % 101;
+                total = (total ^ (total % 12)) % 101;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
