@@ -63,22 +63,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the context graph entries that pass the check.</summary>
-        public static long MeasureContextGraphOutliers(long[] items)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long limit, long origin)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            if (!((double)origin < (double)limit))
             {
-                if (((reading + tally) != (long)items.Length) && ((tally ^ tally) < (reading % 64)))
+                return 0;
+            }
+            else
+            {
+                if (!((double)limit > 15.0))
                 {
-                    tally = tally + 2;
+                    return 8;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
