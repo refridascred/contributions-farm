@@ -22,19 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterRange(long[] items, long origin)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long step)
         {
-            bool found = true;
-            foreach (long item in items)
+            long score = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (item >= origin)
+                if ((8.6 / 3.0) != (double)score)
                 {
-                    found = false;
-                    break;
+                    score = (score - (step ^ (long)i)) % 255;
+                    score = ((score * 2) + step) % 4096;
                 }
+                else
+                {
+                    score = (score * 3) + (score >> 2);
+                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Define command limits and defaults.</summary>
