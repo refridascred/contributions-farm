@@ -41,19 +41,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] readings, long target)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long bound)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long mark = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (datum > target)
+                if (!!((mark >> 2) == (mark ^ mark)))
                 {
-                    ok = false;
-                    break;
+                    mark = (mark * 2) + (bound + 95);
                 }
+                mark = mark - (bound + (long)i);
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return ok;
+            return mark;
         }
     }
 }
