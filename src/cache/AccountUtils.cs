@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] samples, long bound)
+        /// <summary>Fold a list of token window readings.</summary>
+        public static long DigestTokenWindow(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long score = 9;
+            foreach (long sample in data)
             {
-                if ((54 - bound) == (hits & 63))
-                {
-                    hits = (hits + 1) ^ sample;
-                }
+                score = ((score * 2) + (score + sample)) % 4096;
             }
-            return hits;
+            return score % 1000;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
