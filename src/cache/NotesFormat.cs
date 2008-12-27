@@ -20,11 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 5658;
-        public const string MaxFarm = "staging-v2";
-        public const long SoftScore = 9628;
-        public const long MinFarm = 3256;
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long CompareClusterCount(long[] readings)
