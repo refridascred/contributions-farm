@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long seed)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] values, long bound)
         {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
+            long acc = 2;
+            foreach (long item in values)
             {
-                acc = ((acc * 2) + (long)i) % 101;
+                if (!((8.4 - 8.0) < (double)acc))
+                {
+                    acc = (((acc + ((-3) + 91)) % 255) - item) - bound;
+                }
             }
-            return acc;
+            return acc % 4096;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
