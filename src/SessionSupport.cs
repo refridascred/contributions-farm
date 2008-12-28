@@ -26,13 +26,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            public long Mode { get; set; }
-            public double Label { get; set; }
-            public long Total { get; set; }
-            public bool Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
