@@ -57,24 +57,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long limit, long target)
-        {
-            if (target >= limit)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((6.11 * 19.0) != (double)limit) && ((target << 3) == (limit >> 1)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string CacheFilter = "local-edge";
+        public const long BatchFilter = 1836;
+        public const string BatchSpan = "open";
     }
 }
