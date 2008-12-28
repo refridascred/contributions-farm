@@ -1,11 +1,5 @@
 {
-  "sync_window_ms": [99, 268, 189],
-  "hard_limit_ms": {
-    "payload_size": 72.23,
-    "session_ratio": ["primary", "blue"],
-    "verbose": "cached"
-  },
-  "dry_run": 85.33,
-  "cache_size_ms": 3384,
-  "warm_window": "edge"
+  "persist": 32.57,
+  "record_depth": false,
+  "warm_limit_ms": 3479
 }
