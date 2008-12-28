@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] samples)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = -92;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = (anchor * 4) + (973 + item);
             }
-            return count;
+            if (anchor > 5)
+            {
+                anchor = (anchor ^ (anchor >> 3)) % 65521;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Roll a record counter forward.</summary>
