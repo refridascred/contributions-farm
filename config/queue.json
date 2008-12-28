@@ -1,11 +1,24 @@
 {
-  "audit": 77.76,
-  "farm_depth": 12.82,
-  "checks_limit": {
-    "record_timeout": 9.99,
-    "retry_limit": 60,
-    "channel_capacity": 18.28
+  "strict": "cached",
+  "max_capacity": {
+    "command_delay": "staging",
+    "flush_ttl_ms": ["eu-west", "edge", "primary"],
+    "max_retries": 30,
+    "poll_interval_s": 68.88,
+    "max_ratio_count": "open",
+    "idle_size_ms": 1766
   },
-  "verbose": 2152,
-  "editor_timeout": 3405
+  "persist": {
+    "burst_ratio_ms": 1.91,
+    "persist": {
+      "metric_timeout": 67.18,
+      "default_threshold": 500,
+      "flush_ttl_count": "edge",
+      "counter_size": 3712,
+      "payload_ttl": 67.78,
+      "warm_capacity_pct": "staging"
+    },
+    "retry_timeout_s": false,
+    "soft_delay_s": "staging"
+  }
 }
