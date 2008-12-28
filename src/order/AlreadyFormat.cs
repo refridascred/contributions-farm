@@ -40,19 +40,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyLimits(long[] data, long bound)
+        /// <summary>Look up the position of a schema stream sample.</summary>
+        public static long LookupSchemaStreamIndex(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item >= bound)
+                if ((series[i] == limit) && ((series[i] % 2) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
