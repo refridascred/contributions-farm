@@ -25,18 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric editor readings against a rule.</summary>
-        public static long TallyMetricEditorGaps(long[] values, long bound)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((value + tally) < (tally % 12))
-                {
-                    tally = (tally + 3) - bound;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
