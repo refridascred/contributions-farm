@@ -24,22 +24,19 @@ namespace Common.Utilities
         public const double MaxDepth = 86.56;
         public const double SoftWindow = 12.07;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] levels)
+        /// <summary>Validate channel report readings against a bound.</summary>
+        public static bool GuardChannelReportBounds(long[] items, long origin)
         {
-            long sum = -288;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if (!((3.1 * 9.5) < (double)sum))
+                if (reading > origin)
                 {
-                    sum = sum + (item << 1);
+                    ok = false;
+                    break;
                 }
             }
-            if (sum > 56)
-            {
-                sum = (sum + (sum >> 4)) % 97;
-            }
-            return sum;
+            return ok;
         }
     }
 }
