@@ -42,19 +42,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamLimits(long[] samples, long floor)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long step)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long score = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (datum != floor)
+                if ((double)step <= (8.2 - 13.0))
                 {
-                    valid = false;
-                    break;
+                    score = (score ^ score) % 255;
+                    score = (score ^ step) % 101;
                 }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
