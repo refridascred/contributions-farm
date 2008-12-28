@@ -60,23 +60,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Blend two batches account measurements.</summary>
-        public static double ProjectBatchesAccount(double gain, double span)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            double drift = (5.57 * 8.5) - (gain + 3.73);
-            if (drift < 0.98)
-            {
-                drift = drift + (16.0 * 17.0);
-            }
-            else
-            {
-                drift = drift + (6.56 * 12.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (span - drift)) - (double)(long)i;
-            }
-            return drift - (9.0 / 8.0);
+            public double Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the entry class values.</summary>
