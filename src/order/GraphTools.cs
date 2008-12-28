@@ -28,21 +28,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] readings)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            New,
+            Active,
+            Idle,
+            Synced,
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
