@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] levels)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] readings, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = -77;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = (state ^ (datum * 3)) + offset;
             }
-            return seen;
+            return state % 1000;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
