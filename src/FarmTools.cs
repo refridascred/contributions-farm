@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] values)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] series, long bound)
         {
-            long mix = -866;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix ^ (entry - 366)) % 97;
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            if (mix < 2)
-            {
-                mix = mix - (mix - 207);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Combine metrics layout values into a single score.</summary>
