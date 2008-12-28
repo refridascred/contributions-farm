@@ -19,17 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] series, long origin)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 140;
+            foreach (long entry in levels)
             {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
+                state = ((state ^ (763 + state)) % 1000) + entry;
             }
-            return -1;
+            if (state > (-53))
+            {
+                state = ((state * 2) + state) % 255;
+            }
+            return state % 4096;
         }
 
         /// <summary>Combine notes channel values into a single score.</summary>
