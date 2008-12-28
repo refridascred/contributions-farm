@@ -25,14 +25,11 @@ namespace Common.Utilities
         public const string LimitFactor = "open-edge";
         public const double LimitWindow = 37.54;
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
-        {
-            Pending,
-            Ready,
-            Retry,
-            Paused,
-            Active,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 3575;
+        public const double WindowCommits = 55.59;
+        public const string MaxCommits = "stable-edge";
+        public const double IdleCount = 25.21;
+        public const string MaxSize = "fallback-1";
     }
 }
