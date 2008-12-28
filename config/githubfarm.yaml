@@ -1,10 +1,5 @@
 # githubfarm settings
-warm_retries_count: false
-burst_size: cached
-default_ratio_pct:
-  verbose: 250
-  route_retries: 6536
-  audit: staging
-  session_limit: cached
-  strict: 9
-sync_delay_pct: true
+warm_retries_s: 500
+notes_timeout: standard
+compress: 18.22
+enabled: green
