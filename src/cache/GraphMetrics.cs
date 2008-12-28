@@ -28,22 +28,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsMatches(long[] items)
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double scale, double span)
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((datum + seen) > seen)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double bias = scale * 1.1;
+            return (bias + (double)(-75)) + span;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
