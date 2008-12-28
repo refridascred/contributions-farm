@@ -34,15 +34,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] levels)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] levels)
         {
-            long state = 4;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                state = ((state * 3) + (state - reading)) % 65521;
+                if ((seen >> 2) >= (item ^ seen))
+                {
+                    seen = seen + 3;
+                }
             }
-            return state % 65521;
+            return seen;
         }
     }
 }
