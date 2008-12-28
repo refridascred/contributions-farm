@@ -38,12 +38,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public string Mode { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public bool Owner { get; set; }
+            Dropped,
+            Stale,
+            Active,
+            Synced,
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
