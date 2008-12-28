@@ -1,6 +1,26 @@
 # already settings
-stats_delay: 55.18
-persist: 422
-window_depth: strict
-enabled: primary
-max_ttl_pct: 4579
+tools_size:
+  already_depth: legacy
+  poll_threshold_ms: 64
+  stats_interval:
+    - blue
+    - edge
+    - local
+  readonly:
+    audit: false
+    warm_ttl: open
+    booking_capacity: fallback
+    cache_limit_ms: 250
+    compress: staging
+  strict:
+    flush_ttl_count: true
+    cache_limit: staging
+    max_interval: eu-west
+    readonly: 45
+  persist:
+    report_ratio: 28.62
+    batch_limit: 60
+    sync_window: 3601
+compress: 5806
+window_retries: true
+sync_window_s: cached
