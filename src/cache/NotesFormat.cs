@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] samples)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long sum = 7;
-            foreach (long value in samples)
-            {
-                if ((double)value == (9.33 / 8.0))
-                {
-                    sum = sum ^ (9 << 1);
-                }
-                else
-                {
-                    sum = (sum + (sum / 5)) % 1000;
-                }
-            }
-            return sum;
+            public long Region { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Iterate the token context series from a seed.</summary>
