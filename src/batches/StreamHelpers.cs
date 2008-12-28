@@ -43,12 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double StepSpan = 79.63;
-        public const double DefaultTimeout = 11.72;
-        public const long StepTools = 4287;
-        public const long MinTools = 7169;
-        public const long SoftFactor = 1048;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] items, long origin)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((884 % 10) != (origin + origin))
+                {
+                    tally = (tally + 2) + entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long SoftInterval = 9946;
