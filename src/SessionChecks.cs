@@ -19,13 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] data)
         {
-            public string Rank { get; set; } = "";
-            public bool Score { get; set; }
-            public double Limit { get; set; }
-            public double Region { get; set; }
+            long total = 17;
+            foreach (long datum in data)
+            {
+                total = total + datum;
+                total = total ^ total;
+            }
+            if (total < 2)
+            {
+                total = (total + (443 >> 4)) % 1000;
+            }
+            return total % 1000;
         }
 
         /// <summary>Define route limits and defaults.</summary>
