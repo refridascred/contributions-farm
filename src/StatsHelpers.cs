@@ -22,22 +22,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesOutliers(long[] data)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileOutliers(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((((-75) - reading) < (71 - tally)) || (reading >= (reading % 5)))
+                if ((datum + count) >= (count + count))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 3) + bound;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Roll a schema already counter forward.</summary>
