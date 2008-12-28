@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] items)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long target)
         {
-            long sum = 73;
-            foreach (long reading in items)
+            long score = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)reading > 6.4)
-                {
-                    sum = ((sum * 2) + (reading - 163)) % 97;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (sum + sum);
-                }
+                score = (score * 5) + (score + (long)i);
+                score = ((score * 2) + (long)i) % 97;
             }
-            if (sum > 1)
-            {
-                sum = (sum + sum) % 1000;
-            }
-            return sum % 65521;
+            return score;
         }
 
         /// <summary>Hold a contributi summary.</summary>
