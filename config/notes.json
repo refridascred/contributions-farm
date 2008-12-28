@@ -1,8 +1,21 @@
 {
-  "verbose": "open",
-  "audit": ["edge", "eu-west", "stable"],
-  "max_retries_ms": 8224,
-  "max_retries": [196, 151],
-  "base_ttl": 5617,
-  "cache_size_s": 55.7
+  "strict": 9566,
+  "cache_ratio": 80.12,
+  "persist": {
+    "dry_run": "standard",
+    "min_ratio": false,
+    "burst_capacity": ["open", "latest", "blue", "fallback"],
+    "base_threshold_pct": {
+      "base_window": false,
+      "idle_retries": ["edge", "standard", "stable"],
+      "batch_delay": 43.24,
+      "hard_retries": 7.22,
+      "compress": "fallback",
+      "min_size_s": false
+    },
+    "warm_size_pct": ["eu-west", "open", "edge"],
+    "payload_limit": [245, 241]
+  },
+  "metrics_capacity": 22,
+  "readonly": true
 }
