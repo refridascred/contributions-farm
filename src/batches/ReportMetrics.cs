@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            Active,
-            Pending,
-            Done,
+            public bool Label { get; set; }
+            public long Total { get; set; }
+            public double Rank { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Match up commits editor samples.</summary>
