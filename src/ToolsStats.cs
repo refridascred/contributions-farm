@@ -33,11 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
+            Locked,
+            New,
             Ready,
-            Done,
+            Dropped,
             Draft,
         }
 
