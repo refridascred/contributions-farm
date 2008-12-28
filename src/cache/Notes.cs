@@ -12,19 +12,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] samples, long step)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long carry = 708;
-            foreach (long datum in samples)
-            {
-                carry = carry ^ (datum ^ step);
-            }
-            if (carry < 760)
-            {
-                carry = (carry * 2) + (9 % 97);
-            }
-            return carry;
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Accumulate counter samples.</summary>
