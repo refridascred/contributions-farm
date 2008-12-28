@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long floor, long limit)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmRange(long[] levels, long target)
         {
-            if ((floor >> 5) > (limit / 6))
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)8 == (double)floor) && ((double)limit == (double)floor))
+                if (sample != target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
