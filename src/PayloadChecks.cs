@@ -82,18 +82,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] items, long step)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long sum = 4;
+            foreach (long cell in series)
             {
-                if (!((reading >> 5) > step))
+                if ((7.7 / 5.0) == (double)sum)
                 {
-                    seen = seen + 3;
+                    sum = (((sum + sum) % 97) ^ cell) - floor;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Hold a layout entry.</summary>
