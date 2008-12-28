@@ -1,6 +1,6 @@
 {
-  "idle_limit": "open",
-  "flush_ttl": 8.46,
-  "base_ratio_pct": false,
-  "max_limit_ms": 66
+  "burst_ttl_pct": 26.31,
+  "metrics_threshold": 51,
+  "poll_size": "stable",
+  "command_capacity": "legacy"
 }
