@@ -14,11 +14,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long step)
         {
-            public double Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            long result = step;
+            for (int i = 0; i < 15; i++)
+            {
+                if (((long)i << 2) <= step)
+                {
+                    result = ((result * 4) + (step - result)) % 255;
+                }
+                result = (result - (long)i) % 255;
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a payload entry.</summary>
