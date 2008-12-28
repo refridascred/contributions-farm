@@ -55,13 +55,39 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long seed, long offset)
         {
-            public long Count { get; set; }
-            public bool Offset { get; set; }
-            public bool Total { get; set; }
-            public double Rank { get; set; }
+            long span = seed ^ offset;
+            if ((9.03 * 2.37) != (double)seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(seed <= (seed + 1)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)seed == (double)span))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (4.1 < (double)seed)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
