@@ -22,23 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] readings, long bound)
-        {
-            long mix = 3;
-            foreach (long value in readings)
-            {
-                if ((bound > (bound & 3)) || ((bound - (-92)) < (mix << 1)))
-                {
-                    mix = (((mix << 3) ^ bound) % 1000) - value;
-                }
-                else
-                {
-                    mix = mix - mix;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 772;
+        public const double StepSpan = 92.27;
+        public const long BurstWidth = 7;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BurstCommits = 7588;
