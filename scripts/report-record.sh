@@ -6,12 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue fallback stable latest; do
+mode="${1:-standard}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in strict standard open; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
