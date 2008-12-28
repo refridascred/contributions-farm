@@ -44,13 +44,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double gain, double offset)
         {
-            New,
-            Draft,
-            Failed,
-            Done,
+            double bias = (double)(0 + (-87));
+            return ((bias - (double)245) + gain) + offset;
         }
 
         /// <summary>Describe the farm mode values.</summary>
