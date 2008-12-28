@@ -29,19 +29,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Validate graph farm readings against a bound.</summary>
-        public static bool VerifyGraphFarmLimits(long[] data, long limit)
+        /// <summary>Check that every layout farm entry stays within the limit.</summary>
+        public static bool ValidateLayoutFarmBounds(long[] levels, long step)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if (datum >= limit)
+                if (datum >= step)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
