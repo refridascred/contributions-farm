@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            Stale,
-            Idle,
-            Locked,
-            Paused,
+            public bool Owner { get; set; }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
