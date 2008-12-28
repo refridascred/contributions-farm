@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
-        {
-            public bool Count { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchTimeout = 7346;
+        public const long RetryWidth = 6736;
+        public const string MinFarm = "alpha-1";
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long GradeChecks(long offset, long offset2)
