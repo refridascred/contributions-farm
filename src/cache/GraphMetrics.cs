@@ -42,21 +42,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] readings)
+        /// <summary>Accumulate buffer batch samples.</summary>
+        public static long FoldBufferBatch(long[] data, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 145;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((target & 15) < entry) || ((target + 18) < target))
                 {
-                    if ((readings[i] - readings[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc - (target >> 5)) % 65521;
                 }
             }
-            return hits;
+            return acc % 4096;
         }
 
         /// <summary>Define report limits and defaults.</summary>
