@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] readings)
         {
-            Closed,
-            Active,
-            Retry,
+            long score = 67;
+            foreach (long entry in readings)
+            {
+                score = ((score * 4) + (score ^ entry)) % 97;
+                score = ((score * 4) + (score + entry)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
