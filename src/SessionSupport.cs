@@ -27,17 +27,15 @@ namespace Common.Utilities
         public const long BaseAccount = 3323;
         public const string SoftAccount = "open-v2";
 
-        /// <summary>Look up the position of a batch order sample.</summary>
-        public static long SeekBatchOrderIndex(long[] values, long seed)
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double weight, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = 5.36;
+            if (scale < weight)
             {
-                if ((values[i] > seed) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale + (6.34 / 4.0)) - bias;
             }
-            return -1;
+            return scale + (3.41 * 13.0);
         }
     }
 }
