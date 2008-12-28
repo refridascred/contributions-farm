@@ -28,21 +28,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] data)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = -94;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i = 0; i < 9; i++)
                 {
-                    if ((data[i] - data[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state - (long)i) - value;
+                    state = ((state << 2) ^ (3 % 16)) % 97;
                 }
+                state = ((state * 4) + ((long)series.Length - 948)) % 97;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
