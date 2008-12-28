@@ -32,19 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (((sample & 15) < sample) || ((39 <= hits) && ((hits * 3) >= (-48))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetrySpan = 5336;
+        public const long SoftSpan = 8395;
+        public const long CacheRoute = 6571;
+        public const string HardRoute = "open-1";
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
