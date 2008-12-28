@@ -49,19 +49,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double gain, double bias)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] samples, long origin)
         {
-            double bias2 = (bias + gain) * 12.0;
-            if (bias2 <= 2.14)
+            long score = 975;
+            foreach (long item in samples)
             {
-                bias2 = bias2 + (gain - bias2);
+                score = ((score << 3) ^ (origin + score)) - item;
+                score = (score ^ score) % 1000;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + bias) - (double)(long)i;
-            }
-            return bias2 + 7.16;
+            return score % 4096;
         }
 
         /// <summary>Check that every session queue entry stays within the limit.</summary>
