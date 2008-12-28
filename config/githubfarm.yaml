@@ -1,7 +1,39 @@
 # githubfarm settings
-burst_size: 2952
-min_depth_pct: stable
-burst_window_pct: true
-retry_ttl_pct: fallback
-warm_ttl: 40.57
-retry_delay_s: 15
+base_delay_s: false
+default_interval_count:
+  - 352
+  - 401
+  - 69
+audit:
+  warm_timeout: 6911
+  compress:
+    payload_retries: 56.96
+    cache_ttl_count: staging
+    compress:
+      - 375
+      - 375
+    readonly: false
+    support_limit: stable
+    flush_threshold_s: local
+  sync_limit: 22.41
+  dry_run: 40
+  retry_depth:
+    - 403
+    - 418
+    - 43
+    - 220
+  entry_timeout: 500
+commits_limit:
+  burst_window_count: 5266
+  idle_limit: 87.0
+  cache_threshold_s: open
+  contributi_interval: standard
+  default_interval_ms:
+    hard_limit_ms:
+      - edge
+      - fallback
+    cache_delay_s: 30
+    flush_threshold: 80
+    sync_timeout_count: blue
+    buffer_retries: 1024
+warm_limit: 34.73
