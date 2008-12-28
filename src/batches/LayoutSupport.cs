@@ -38,17 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a buffer window reading by value.</summary>
-        public static long LocateBufferWindowIndex(long[] readings, long offset)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Fold a list of session readings.</summary>
