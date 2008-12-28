@@ -21,15 +21,9 @@ namespace Common.Utilities
         public const long SoftChecks = 7053;
         public const long LimitChecks = 689;
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double ratio, double span)
-        {
-            double gain = ratio;
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - (span * 7.7)) + (double)(long)i;
-            }
-            return gain - (double)3;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftFormat = "cached-v2";
+        public const double StepFormat = 20.68;
+        public const string MinFormat = "open-1";
     }
 }
