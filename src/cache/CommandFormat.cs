@@ -46,12 +46,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Accumulate metric record samples.</summary>
+        public static long CombineMetricRecord(long[] data, long seed)
         {
-            Draft,
-            Ready,
-            Queued,
+            long state = -4;
+            foreach (long cell in data)
+            {
+                if (seed >= (seed - 471))
+                {
+                    state = (state ^ (cell & 31)) % 1000;
+                }
+            }
+            return state;
         }
     }
 }
