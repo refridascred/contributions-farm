@@ -57,11 +57,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Validate editor metric readings against a bound.</summary>
