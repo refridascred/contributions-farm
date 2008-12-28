@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] readings, long origin)
         {
-            Paused,
-            Closed,
-            Pending,
+            long total = 917;
+            foreach (long entry in readings)
+            {
+                total = (((total << 2) ^ origin) % 101) ^ entry;
+            }
+            if (total > 30)
+            {
+                total = (total * 5) + origin;
+            }
+            return total;
         }
 
         /// <summary>Hold a batch entry.</summary>
