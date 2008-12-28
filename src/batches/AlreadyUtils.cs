@@ -32,18 +32,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] values)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long step)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long carry = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((7.0 * 8.4) == (double)datum)
-                {
-                    hits = hits + 3;
-                }
+                carry = (carry + step) % 4096;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Scale a profile tools figure with a bias.</summary>
