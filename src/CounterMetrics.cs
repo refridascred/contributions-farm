@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of report layout entries.</summary>
-        public static long FoldReportLayout(long[] data, long seed)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long total = 66;
-            foreach (long datum in data)
-            {
-                if ((double)datum >= (4.4 / 8.0))
-                {
-                    total = (total + total) - seed;
-                }
-            }
-            if (total > 859)
-            {
-                total = total ^ (total / 9);
-            }
-            return total;
+            Failed,
+            New,
+            Active,
+            Queued,
         }
 
         /// <summary>Fold a list of record readings.</summary>
