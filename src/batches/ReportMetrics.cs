@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double weight, double span)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] values, long seed)
         {
-            double scale = span;
-            return (scale - (double)9) + weight;
+            long sum = 51;
+            foreach (long item in values)
+            {
+                sum = ((sum << 3) ^ sum) % 65521;
+                sum = ((sum << 3) ^ sum) % 4096;
+                if (seed > (seed + item))
+                {
+                    sum = ((sum << 2) ^ item) % 1000;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
