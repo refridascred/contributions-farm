@@ -57,16 +57,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] series)
         {
-            long mark = step;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                mark = (mark - (mark - 87)) % 101;
-                mark = ((mark * 4) + (long)i) % 65521;
+                if (((7.7 / 3.0) < (double)hits) && !((hits << 3) < (hits / 5)))
+                {
+                    hits = (hits + 3) + sample;
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
