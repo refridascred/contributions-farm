@@ -28,12 +28,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Find the first metrics tools entry that matches the target.</summary>
+        public static long SeekMetricsToolsIndex(long[] data, long target)
         {
-            Idle,
-            Stale,
-            Synced,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
