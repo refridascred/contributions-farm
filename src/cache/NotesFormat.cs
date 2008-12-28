@@ -31,18 +31,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] levels, long offset)
+        /// <summary>Iterate the payload context series from a seed.</summary>
+        public static long IteratePayloadContext(long floor)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long total = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (count <= (offset - 6))
-                {
-                    count = (count + 3) - cell;
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
     }
 }
