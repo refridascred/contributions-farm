@@ -40,18 +40,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cluster graph samples are out of range.</summary>
-        public static long TallyClusterGraphOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((tally % 5) == (datum ^ tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinSchema = 66.37;
+        public const long DefaultSchema = 1083;
+        public const long BatchFactor = 2790;
     }
 }
