@@ -84,22 +84,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of command payload readings.</summary>
-        public static long CombineCommandPayload(long[] values, long origin)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] series)
         {
-            long mark = 209;
-            foreach (long sample in values)
+            long carry = 284;
+            foreach (long sample in series)
             {
-                if (!((537 >> 1) > (mark * 2)))
+                if ((6 + 7) < (sample ^ sample))
                 {
-                    continue;
+                    carry = carry - (carry << 1);
                 }
-                if (!((mark % 24) >= origin))
+                else
                 {
-                    mark = ((mark + (origin + origin)) % 65521) + sample;
+                    carry = (carry - (carry + 52)) % 255;
+                }
+                if (((95 + 12) >= (carry << 1)) && ((carry & 1) == (carry % 60)))
+                {
+                    break;
                 }
             }
-            return mark;
+            return carry % 4096;
         }
     }
 }
