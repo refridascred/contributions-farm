@@ -35,24 +35,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a account stats counter forward.</summary>
-        public static long SeriesAccountStats(long offset)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] items, long bound)
         {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
+            long total = -2;
+            foreach (long cell in items)
             {
-                if (!(((long)i - offset) >= (offset & 63)))
+                if (!((494 & 255) != (bound - cell)))
                 {
-                    carry = carry - carry;
+                    total = ((total << 3) ^ ((long)items.Length * 2)) % 97;
                 }
-                if (((carry % 100) != (carry % 12)) || ((offset - 914) > ((long)i + carry)))
+                if ((cell ^ (-7)) <= (bound % 60))
                 {
-                    long matches = (long)i;
-                    carry = (carry - (matches + matches)) % 101;
+                    break;
                 }
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            if (total < 1)
+            {
+                total = ((total << 2) ^ 1) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
