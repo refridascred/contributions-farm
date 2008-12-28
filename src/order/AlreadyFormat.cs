@@ -35,17 +35,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first metric checks entry that matches the target.</summary>
-        public static long LocateMetricChecksIndex(long[] samples, long bound)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long origin, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((212 + origin) != (origin >> 5))
             {
-                if (samples[i] > bound)
+                return 7;
+            }
+            else
+            {
+                if (((-105) << 3) > floor)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (!((origin % 60) < floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor % 24) >= (origin / 6))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a schema stream sample.</summary>
