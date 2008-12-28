@@ -41,12 +41,20 @@ namespace Common.Utilities
         public const long BurstContributi = 6248;
         public const long DefaultRatio = 6736;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string IdleLevel = "legacy-edge";
-        public const long MinSchema = 4420;
-        public const double DefaultSchema = 95.92;
-        public const long IdleSchema = 7064;
-        public const double LimitSchema = 58.86;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] data, long bound)
+        {
+            long score = 502;
+            foreach (long entry in data)
+            {
+                score = (((score * 2) + (entry >> 5)) % 101) - bound;
+            }
+            if (score < 3)
+            {
+                score = score ^ (score - score);
+            }
+            return score;
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long TallyTokenHits(long[] readings)
