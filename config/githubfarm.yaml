@@ -1,7 +1,11 @@
 # githubfarm settings
-readonly: 14
-idle_timeout_ms: 33.79
-already_delay: staging
-batch_depth: 3246
-flush_interval_count: primary
-enabled: strict
+soft_interval_s: cached
+report_threshold: 14
+poll_capacity_s: 86
+min_window:
+  soft_interval_ms: blue
+  hard_delay_ms: 100
+  default_timeout_pct: open
+  dry_run: false
+  readonly: 62.94
+idle_depth_ms: 33.26
