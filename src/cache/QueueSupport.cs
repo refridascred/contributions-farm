@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long BaseMetric = 5627;
         public const double StepMetric = 45.13;
 
-        /// <summary>Look up the position of a queue context sample.</summary>
-        public static long LookupQueueContextIndex(long[] data, long bound)
+        /// <summary>Count the support counter entries that pass the check.</summary>
+        public static long CountSupportCounterGaps(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((data[i] >= bound) && ((data[i] % 3) != 0))
+                if ((datum - datum) > datum)
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
