@@ -5,31 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank contributi report input into a small class.</summary>
-        public static long GradeContributiReport(long bound, long bound2)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long target)
         {
-            if (bound2 > (bound % 60))
+            long mark = target;
+            for (int i = 0; i < 21; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((bound2 ^ bound2) < bound) && ((double)bound2 > (12.0 / 3.0)))
+                if (((1.2 / 2.0) < (double)target) && ((target - target) >= (mark + mark)))
                 {
-                    return 7;
+                    continue;
                 }
                 else
                 {
-                    if (((bound2 ^ 510) >= (0 << 3)) || (7.44 < (double)bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    mark = ((mark * 3) + target) % 97;
+                    mark = ((mark << 2) ^ (7 * 3)) % 255;
                 }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
+            return mark;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
