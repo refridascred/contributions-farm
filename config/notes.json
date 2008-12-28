@@ -1,6 +1,7 @@
 {
-  "strict": 44,
-  "hard_window_ms": "legacy",
-  "flush_size": [120, 272],
-  "persist": [397, 35, 337]
+  "hard_size_count": ["primary", "eu-west"],
+  "default_retries": true,
+  "record_ratio": 4,
+  "cache_retries": 1736,
+  "retry_window_pct": "blue"
 }
