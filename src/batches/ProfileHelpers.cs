@@ -12,19 +12,32 @@ namespace Common.Utilities
         public const long BurstLevel = 4047;
         public const long BatchBudget = 6682;
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] data, long origin)
+        /// <summary>Rank order token input into a small class.</summary>
+        public static long BucketOrderToken(long bound, long origin)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long lane = bound ^ origin;
+            if ((bound ^ origin) > (origin + bound))
             {
-                if (cell != origin)
+                return 0;
+            }
+            else
+            {
+                if (((lane * 5) > (87 % 2)) && ((double)bound == (14.0 / 6.0)))
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((lane * 4) != (bound + origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
