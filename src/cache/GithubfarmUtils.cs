@@ -39,10 +39,27 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepTimeout = 90.79;
-        public const long BaseGithubfarm = 7713;
-        public const double BatchLevel = 79.37;
-        public const string LimitGithubfarm = "strict-1";
+        /// <summary>Roll a githubfarm route counter forward.</summary>
+        public static long SeriesGithubfarmRoute(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    score = ((score * 4) + (score >> 2)) + (long)i2;
+                }
+                if ((7.1 - 3.4) > (double)score)
+                {
+                    score = score + (score - seed);
+                }
+                if (!((long)i <= score))
+                {
+                    score = score + (seed / 8);
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
+        }
     }
 }
