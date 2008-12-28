@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many editor metric samples are out of range.</summary>
-        public static long AuditEditorMetricGaps(long[] levels, long step)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (datum <= 9)
-                {
-                    count = (count + 3) + step;
-                }
-            }
-            return count;
+            public bool Size { get; set; }
+            public bool Rank { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
