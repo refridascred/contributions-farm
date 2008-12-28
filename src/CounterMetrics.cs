@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] items, long bound)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long origin)
         {
-            long state = 387;
-            foreach (long entry in items)
+            long score = origin;
+            for (int i = 0; i < 18; i++)
             {
-                state = ((state << 3) ^ (state << 3)) % 101;
-                if ((571 / 9) != (87 ^ entry))
-                {
-                    state = ((state * 3) + (state << 2)) % 255;
-                    break;
-                }
-                if ((bound + entry) < (state & 255))
-                {
-                    state = state ^ (113 ^ bound);
-                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
