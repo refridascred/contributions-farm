@@ -34,19 +34,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] data, long step)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Limit { get; set; } = "";
+            public bool Score { get; set; }
+            public string Mode { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
