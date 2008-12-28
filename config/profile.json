@@ -1,17 +1,8 @@
 {
-  "idle_window_pct": 60,
-  "dry_run": "edge",
-  "support_capacity": {
-    "poll_timeout_s": [129, 216, 443, 224],
-    "flush_size": {
-      "max_depth_pct": 1297,
-      "retry_interval": "green",
-      "warm_window": 26,
-      "compress": "open",
-      "strict": 78
-    },
-    "verbose": "primary",
-    "hard_capacity_ms": "staging"
-  },
-  "sync_depth_s": 6477
+  "burst_limit": 24,
+  "burst_size_ms": 53.03,
+  "soft_interval_count": 3817,
+  "burst_depth_count": "legacy",
+  "notes_timeout": 51.39,
+  "flush_size_s": ["fallback", "blue", "open"]
 }
