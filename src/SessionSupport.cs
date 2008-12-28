@@ -26,12 +26,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            public bool Region { get; set; }
-            public double Score { get; set; }
-            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
