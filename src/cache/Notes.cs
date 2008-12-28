@@ -31,19 +31,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] items, long seed)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] data)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long score = 6;
+            foreach (long reading in data)
             {
-                if (sample != seed)
-                {
-                    stale = false;
-                    break;
-                }
+                score = ((score ^ 36) % 4096) - reading;
             }
-            return stale;
+            if (score < 99)
+            {
+                score = ((score << 3) ^ 100) % 97;
+            }
+            return score % 65521;
         }
 
         /// <summary>Define window limits and defaults.</summary>
