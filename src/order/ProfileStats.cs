@@ -14,22 +14,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] items)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] levels)
         {
-            long result = -1;
-            foreach (long value in items)
+            long carry = 5;
+            foreach (long value in levels)
             {
-                if ((value + value) <= result)
+                if ((carry << 3) > ((long)levels.Length - carry))
                 {
-                    result = (result << 2) ^ (result / 5);
-                }
-                else
-                {
-                    result = ((result << 3) ^ (result + result)) % 4096;
+                    carry = ((carry - (carry * 3)) % 4096) ^ value;
                 }
             }
-            return result;
+            if (carry < 989)
+            {
+                carry = (carry << 3) ^ (5 << 1);
+            }
+            return carry;
         }
 
         /// <summary>Adjust a notes reading.</summary>
