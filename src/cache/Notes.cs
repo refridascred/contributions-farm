@@ -68,19 +68,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a session commits reading.</summary>
-        public static double SmoothSessionCommits(double bias, double span)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] values)
         {
-            double load = span / 6.0;
-            if (load > load)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load - (double)6;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - span) - (double)(long)i;
-            }
-            return load - (2.0 + bias);
+            return count;
         }
     }
 }
