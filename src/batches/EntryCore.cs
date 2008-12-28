@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
+            Idle,
+            Failed,
+            Stale,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Adjust a already reading.</summary>
