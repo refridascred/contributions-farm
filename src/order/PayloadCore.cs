@@ -52,18 +52,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks metrics samples are out of range.</summary>
-        public static long TallyChecksMetricsOutliers(long[] values, long offset)
+        /// <summary>Measure how many editor farm samples are out of range.</summary>
+        public static long AuditEditorFarmMatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (((long)values.Length ^ cell) < (offset + offset))
+                if ((cell - cell) >= cell)
                 {
-                    tally = tally + 2;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
