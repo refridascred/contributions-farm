@@ -20,14 +20,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Dropped,
-            Locked,
-            Failed,
-            Ready,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseLevel = 351;
+        public const string MaxRatio = "primary-v2";
+        public const string MaxChannel = "alpha-v2";
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double HardMetric = 28.54;
