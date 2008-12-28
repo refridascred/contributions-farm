@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double rate, double offset)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            double drift = (double)87 - (offset + offset);
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + rate) + (double)(long)i;
-            }
-            return drift - (offset / 6.0);
+            public bool Mode { get; set; }
+            public bool Total { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
