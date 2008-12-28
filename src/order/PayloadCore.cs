@@ -48,12 +48,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] items)
         {
-            Paused,
-            Failed,
-            Dropped,
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a commits info.</summary>
