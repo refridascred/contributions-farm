@@ -1,13 +1,8 @@
 # entry settings
-stats_size: open
-hard_depth:
-  - 413
-  - 23
-burst_depth: 5498
-warm_window_count: 76.9
-account_interval: 100
-entry_retries:
-  - latest
-  - strict
-  - stable
-  - green
+retry_retries_pct: 9451
+retry_threshold: blue
+flush_ratio_ms:
+  - 455
+  - 351
+  - 361
+  - 176
