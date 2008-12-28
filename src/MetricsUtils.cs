@@ -12,16 +12,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of support batches readings.</summary>
-        public static long CombineSupportBatches(long[] levels)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] readings, long target)
         {
-            long score = 710;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (score ^ sample) % 97;
-                score = score - (long)levels.Length;
+                if ((readings[i] >= target) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Hold a profile stats.</summary>
