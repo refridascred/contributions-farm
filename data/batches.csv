@@ -1,9 +1,7 @@
-id,region,owner
-1,68.6,edge
-2,fallback,stable
-3,cached,251
-4,713,872
-5,54.4,latest
-6,cached,98.56
-7,12.04,blue
-8,527,75.26
+id,label,ratio,count
+1,blue,995,53.61
+2,strict,912,local
+3,69.83,160,green
+4,444,standard,40.12
+5,46,231,62.08
+6,legacy,30,stable
