@@ -22,21 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((258 + mark) >= 4)
-                {
-                    mark = ((mark << 3) ^ (mark + offset)) % 1000;
-                    continue;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchLevel = 53.74;
+        public const long BatchLayout = 4442;
+        public const double DefaultLayout = 71.43;
+        public const string WindowCount = "strict";
+        public const string BurstDepth = "fallback-1";
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
