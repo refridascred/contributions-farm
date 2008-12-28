@@ -67,17 +67,21 @@ namespace Common.Utilities
         public const long StepDepth = 1574;
         public const double MaxCount = 96.05;
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long limit)
+        /// <summary>Roll a batch tools counter forward.</summary>
+        public static long IterateBatchTools(long origin)
         {
-            long result = limit;
-            for (int i = 0; i < 20; i++)
+            long sum = origin;
+            for (int i = 0; i < 21; i++)
             {
-                result = (result + (result + (long)i)) % 101;
-                result = result - (result / 6);
-                result = ((result * 3) + (long)i) % 1000;
+                bool valid = ((69 * 3) >= sum) && ((long)i > 0);
+                if (!valid)
+                {
+                    valid = (35 + sum) <= (origin + 5);
+                    valid = (origin % 60) != (origin + origin);
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return result;
+            return sum;
         }
     }
 }
