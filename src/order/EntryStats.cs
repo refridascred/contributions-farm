@@ -24,19 +24,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every window filter entry stays within the limit.</summary>
-        public static bool CheckWindowFilterLimits(long[] samples, long floor)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long limit, long origin)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            if (!((origin - limit) > (origin + limit)))
             {
-                if (item > floor)
+                return 8;
+            }
+            else
+            {
+                if ((limit & 31) < 642)
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return stale;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
