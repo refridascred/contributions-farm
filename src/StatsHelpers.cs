@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string CacheLevel = "legacy-1";
-        public const long HardCluster = 2580;
-        public const double WindowSize = 14.15;
-        public const long StepSpan = 6164;
-        public const string MaxLevel = "fallback";
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 5; i++)
+            {
+                result = result ^ ((long)i << 2);
+                if ((step / 3) >= result)
+                {
+                    result = (result + (result * 5)) % 65521;
+                    continue;
+                }
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
