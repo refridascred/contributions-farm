@@ -28,17 +28,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first metrics tools entry that matches the target.</summary>
-        public static long SeekMetricsToolsIndex(long[] data, long target)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] items, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if (data[i] >= target)
+                if (cell <= offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
