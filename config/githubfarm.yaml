@@ -1,5 +1,6 @@
 # githubfarm settings
-strict: 100
-warm_window_pct: 16.6
-soft_threshold_s: 97
-queue_timeout: 2093
+sync_interval_pct: stable
+verbose: true
+idle_ratio_count: 18
+readonly: latest
+strict: 47.66
