@@ -81,13 +81,21 @@ namespace Common.Utilities
         public const string MaxDepth = "fallback";
         public const long HardCount = 6695;
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] items)
         {
-            Retry,
-            Draft,
-            Failed,
-            Idle,
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
