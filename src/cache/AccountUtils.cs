@@ -22,19 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsBounds(long[] levels, long floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] readings, long bound)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long mix = 3;
+            foreach (long value in readings)
             {
-                if (datum <= floor)
+                if ((bound > (bound & 3)) || ((bound - (-92)) < (mix << 1)))
                 {
-                    valid = false;
-                    break;
+                    mix = (((mix << 3) ^ bound) % 1000) - value;
+                }
+                else
+                {
+                    mix = mix - mix;
                 }
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Describe the format state values.</summary>
