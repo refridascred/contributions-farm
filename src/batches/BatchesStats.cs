@@ -32,14 +32,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            Draft,
-            Closed,
-            Active,
-            Queued,
-            Retry,
+            public string Level { get; set; } = "";
+            public double Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define command limits and defaults.</summary>
