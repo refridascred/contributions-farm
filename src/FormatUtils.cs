@@ -69,21 +69,15 @@ namespace Common.Utilities
         public const long MinBuffer = 2652;
         public const long DefaultBuffer = 6545;
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] values)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 6;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = (result - result) - value;
             }
-            return count;
+            return result;
         }
     }
 }
