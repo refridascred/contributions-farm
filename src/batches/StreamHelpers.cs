@@ -5,22 +5,34 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] data, long bound)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] items)
         {
-            long sum = 27;
-            foreach (long entry in data)
+            long carry = 3;
+            foreach (long value in items)
             {
-                if ((bound + bound) < (bound % 2))
+                if ((double)value >= (0.4 / 3.0))
                 {
-                    sum = ((sum * 4) + (144 / 3)) ^ entry;
+                    break;
+                }
+                if ((2.0 * 2.93) < (double)value)
+                {
+                    carry = carry + carry;
+                }
+                else
+                {
+                    carry = carry - (value / 9);
+                }
+                if (1.9 > (8.64 / 9.0))
+                {
+                    break;
                 }
             }
-            if (sum < 4)
+            if (carry < 769)
             {
-                sum = (sum - bound) % 65521;
+                carry = (carry ^ (carry - carry)) % 101;
             }
-            return sum % 97;
+            return carry;
         }
 
         /// <summary>Grade a record queue value against two limits.</summary>
