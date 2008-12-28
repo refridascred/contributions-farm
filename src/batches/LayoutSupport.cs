@@ -38,18 +38,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many counter command samples are out of range.</summary>
-        public static long TallyCounterCommandHits(long[] data)
+        /// <summary>Locate a buffer window reading by value.</summary>
+        public static long LocateBufferWindowIndex(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)value == (double)matches)
+                if (readings[i] > offset)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of session readings.</summary>
