@@ -5,24 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long target)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long floor, long origin)
         {
-            long mark = target;
-            for (int i = 0; i < 21; i++)
+            long offset = floor - origin;
+            if ((331 < offset) || ((origin + origin) != (offset * 3)))
             {
-                if (((1.2 / 2.0) < (double)target) && ((target - target) >= (mark + mark)))
+                return 0;
+            }
+            else
+            {
+                if ((double)origin >= (double)offset)
                 {
-                    continue;
+                    return 4;
                 }
                 else
                 {
-                    mark = ((mark * 3) + target) % 97;
-                    mark = ((mark << 2) ^ (7 * 3)) % 255;
+                    if (!(floor > (origin & 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)offset > 2.69) || ((double)offset != (15.0 + 4.52)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
-                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mark;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
