@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchWidth = 4898;
-        public const string WindowWidth = "alpha-1";
-        public const long SoftRecord = 8496;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 3366;
+        public const long WindowNotes = 5180;
+        public const long IdleBudget = 6747;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long CountChecksGaps(long[] items, long offset)
