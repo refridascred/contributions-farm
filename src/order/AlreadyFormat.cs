@@ -27,19 +27,19 @@ namespace Common.Utilities
         public const double BaseScore = 51.76;
         public const double IdleAlready = 25.18;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] items, long limit)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long mix = 83;
+            foreach (long reading in samples)
             {
-                if (item >= limit)
+                if (mix < (seed * 2))
                 {
-                    stale = false;
-                    break;
+                    mix = (((mix * 5) + (seed / 5)) % 101) + reading;
                 }
+                mix = mix ^ (mix + seed);
             }
-            return stale;
+            return mix % 4096;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
