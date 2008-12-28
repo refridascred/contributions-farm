@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string LimitRatio = "strict";
-        public const long WindowBuffer = 8497;
-        public const long StepBuffer = 4459;
-        public const long WindowFactor = 8000;
-        public const string BurstBuffer = "primary-1";
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long bound, long offset)
+        {
+            if ((double)bound < (1.6 - 1.32))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset ^ bound) <= (bound - bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((4.9 / 2.0) < (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((96 + offset) <= (offset * 4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank token batch input into a small class.</summary>
         public static long SortTokenBatch(long offset, long step)
