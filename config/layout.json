@@ -1,16 +1,5 @@
 {
-  "compress": "staging",
-  "persist": [415, 446, 30],
-  "hard_window": "standard",
-  "strict": {
-    "burst_capacity_pct": "strict",
-    "stats_interval": "local",
-    "soft_window": {
-      "context_delay": ["edge", "legacy"],
-      "token_timeout": 71.65,
-      "min_depth": 41,
-      "retry_interval_ms": 2316
-    },
-    "enabled": 1024
-  }
+  "min_ttl_count": 2122,
+  "stats_capacity": "strict",
+  "command_delay": ["edge", "latest", "blue", "stable"]
 }
