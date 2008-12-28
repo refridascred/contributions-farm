@@ -32,18 +32,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] data, long seed)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (((tally * 3) >= (tally & 3)) || (13 <= (seed + tally)))
-                {
-                    tally = (tally + 1) + value;
-                }
-            }
-            return tally;
+            Closed,
+            Failed,
+            Idle,
+            Queued,
+            Ready,
         }
     }
 }
