@@ -52,17 +52,10 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > seed) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowInterval = 220;
+        public const double BatchCount = 9.63;
+        public const double SoftSize = 59.49;
+        public const long MinTimeout = 7483;
     }
 }
