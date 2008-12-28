@@ -47,38 +47,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long step, long offset)
+        /// <summary>Derive the next token githubfarm value from a seed.</summary>
+        public static long StepTokenGithubfarm(long bound)
         {
-            if (!(step < offset))
+            long mark = bound;
+            for (int i = 0; i < 14; i++)
             {
-                return 3;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((offset / 9) > step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)offset == (5.5 / 8.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset & 3) == (step + step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Hold a window header.</summary>
