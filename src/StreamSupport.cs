@@ -24,19 +24,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long offset)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] readings, long origin)
         {
-            long mix = offset;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((6 + mix) == (offset & 31))
+                if (readings[i] >= origin)
                 {
-                    continue;
+                    return (long)i;
                 }
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
