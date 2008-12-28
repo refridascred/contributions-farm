@@ -18,21 +18,22 @@ namespace Common.Utilities
         public const string MinInterval = "open";
         public const string MaxScore = "strict-edge";
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] readings)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] samples, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = -4;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((95 + seed) != (62 ^ seed)))
                 {
-                    if ((readings[i] + readings[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    total = total + (entry - entry);
                 }
             }
-            return count;
+            if (total < 4)
+            {
+                total = ((total << 3) ^ seed) % 97;
+            }
+            return total;
         }
     }
 }
