@@ -75,19 +75,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] data, long target)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long state = 98;
-            foreach (long entry in data)
-            {
-                state = (((state << 3) ^ (target >> 2)) % 1000) ^ entry;
-            }
-            if (state > (-5))
-            {
-                state = state + state;
-            }
-            return state;
+            Draft,
+            Locked,
+            Retry,
+            Done,
+            Queued,
         }
     }
 }
