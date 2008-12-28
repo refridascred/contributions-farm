@@ -26,13 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public bool Count { get; set; }
-            public bool Weight { get; set; }
-            public bool Level { get; set; }
-            public double Stamp { get; set; }
+            Done,
+            Stale,
+            Active,
         }
 
         /// <summary>Combine batch notes values into a single score.</summary>
