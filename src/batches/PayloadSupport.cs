@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 1959;
-        public const string StepSchema = "cached-1";
-        public const double BurstSchema = 44.38;
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine queue farm values into a single score.</summary>
         public static long TotalQueueFarm(long[] values)
