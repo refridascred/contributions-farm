@@ -77,14 +77,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            Draft,
-            Locked,
-            Retry,
-            Done,
-            Queued,
+            Synced,
+            Paused,
+            New,
+            Pending,
         }
     }
 }
