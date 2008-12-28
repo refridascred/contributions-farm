@@ -63,19 +63,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate layout command readings against a bound.</summary>
-        public static bool VerifyLayoutCommandLimits(long[] values, long offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] items)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long acc = 992;
+            foreach (long sample in items)
             {
-                if (sample != offset)
+                acc = acc + sample;
+                if (((871 ^ sample) < sample) && ((double)sample > 6.96))
                 {
-                    ready = false;
-                    break;
+                    acc = (acc + (sample + sample)) % 4096;
+                }
+                else
+                {
+                    acc = (acc ^ acc) % 255;
                 }
             }
-            return ready;
+            return acc % 4096;
         }
     }
 }
