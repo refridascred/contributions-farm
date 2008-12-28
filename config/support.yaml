@@ -1,8 +1,19 @@
 # support settings
-retry_interval:
-  - staging
-  - blue
-  - standard
-soft_ttl_ms: 500
-context_window: local
-command_window: open
+default_size:
+  batch_window: strict
+  strict: latest
+  idle_retries: false
+batch_retries_pct: 250
+checks_ttl:
+  dry_run: green
+  retry_retries_count: true
+  counter_capacity: 500
+  stream_ratio:
+    tools_delay: 8329
+    cache_ratio_pct:
+      - latest
+      - local
+    notes_depth:
+      - 408
+      - 121
+      - 305
