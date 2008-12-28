@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterRange(long[] data, long offset)
-        {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 5895;
+        public const double DefaultAccount = 35.42;
+        public const long StepAccount = 6296;
+        public const long HardDepth = 5555;
 
         /// <summary>Find the first context metrics entry that matches the target.</summary>
         public static long SeekContextMetricsIndex(long[] values, long floor)
