@@ -13,10 +13,10 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string HardGithubfarm = "open";
-        public const double IdleScore = 82.92;
-        public const string RetryGithubfarm = "alpha-v2";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepChecks = 15.16;
+        public const long SoftChecks = 7053;
+        public const long LimitChecks = 689;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long CombineNotes(long[] series, long target)
