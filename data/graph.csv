@@ -1,6 +1,9 @@
-id,level,ratio
-1,725,staging
-2,72.42,cached
-3,84.77,608
-4,37.78,edge
-5,667,43.45
+id,owner,state,count,ratio
+1,legacy,legacy,502,91.1
+2,91.07,local,20,233
+3,688,739,fallback,82.78
+4,757,83.47,401,legacy
+5,711,19.13,25.26,local
+6,fallback,local,370,21.26
+7,open,82.72,cached,98.95
+8,334,10.18,latest,30
