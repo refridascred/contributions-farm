@@ -13,11 +13,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 9436;
-        public const string DefaultWindow = "standard";
-        public const string LimitDepth = "strict-v2";
-        public const string SoftSpan = "staging-edge";
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a order stats.</summary>
         public sealed class OrderStats
