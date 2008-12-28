@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] readings, long offset)
-        {
-            long state = -77;
-            foreach (long datum in readings)
-            {
-                state = (state ^ (datum * 3)) + offset;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitSpan = 4928;
+        public const string BaseOrder = "primary";
+        public const string WindowRatio = "fallback-1";
+        public const long CacheDepth = 9568;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long CountSupportGaps(long[] data)
