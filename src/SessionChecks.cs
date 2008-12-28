@@ -34,22 +34,39 @@ namespace Common.Utilities
         public const string StepRoute = "staging-1";
         public const long LimitRoute = 1175;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] items)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long target, long bound)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long span = target - bound;
+            if (!((double)bound == (1.9 * 17.0)))
             {
-                if ((((matches + cell) == (matches + 637)) && ((matches ^ cell) <= cell)) || (98 > (cell / 9)))
+                return 0;
+            }
+            else
+            {
+                if ((bound + span) >= target)
                 {
-                    matches = matches + 1;
+                    return 6;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((double)33 >= (double)span)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (span < (span << 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
