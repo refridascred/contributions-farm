@@ -19,11 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a window editor figure with a bias.</summary>
-        public static double BlendWindowEditor(double bias, double offset)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long target)
         {
-            double weight = bias;
-            return (weight - (bias - weight)) + offset;
+            long anchor = target;
+            for (int i = 0; i < 12; i++)
+            {
+                if (7 > ((long)i + anchor))
+                {
+                    anchor = (anchor + (target + (long)i)) % 4096;
+                }
+                else
+                {
+                    anchor = anchor + (46 + 5);
+                }
+                anchor = (anchor + 4) % 255;
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
