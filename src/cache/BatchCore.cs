@@ -13,31 +13,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long offset, long floor)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            if (offset >= (floor + 23))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor - offset) != (offset ^ offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((9.23 / 6.0) > (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Active,
+            New,
+            Retry,
+            Stale,
+            Paused,
         }
 
         /// <summary>Check that every batches checks entry stays within the limit.</summary>
