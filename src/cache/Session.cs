@@ -14,10 +14,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double CacheWidth = 52.35;
-        public const double MaxEntry = 90.25;
-        public const double MinInterval = 78.88;
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
