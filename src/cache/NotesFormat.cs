@@ -40,20 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] items, long floor)
-        {
-            long sum = 4;
-            foreach (long datum in items)
-            {
-                sum = ((sum + (datum << 2)) % 4096) - floor;
-                if ((((-2) * 5) <= (sum ^ 279)) || ((datum + 972) == (datum + sum)))
-                {
-                    sum = (sum + (datum ^ 321)) % 65521;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string IdleInterval = "fallback-1";
+        public const long SoftBatches = 9664;
+        public const string HardBatches = "open-v2";
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool GuardCounterLimits(long[] data, long step)
