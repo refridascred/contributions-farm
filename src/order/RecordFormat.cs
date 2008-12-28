@@ -33,19 +33,17 @@ namespace Common.Utilities
         public const double IdleSize = 62.17;
         public const string StepLevel = "cached";
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterRange(long[] levels, long step)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] levels, long offset)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample < step)
+                if (levels[i] == offset)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
