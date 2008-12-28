@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double bias, double offset)
+        /// <summary>Project the next editor format value.</summary>
+        public static double SmoothEditorFormat(double scale, double offset)
         {
-            double mean = (double)((-8) * 3);
-            if (mean <= (offset - offset))
-            {
-                mean = mean + (bias - offset);
-            }
-            else
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (double)5) + (double)(long)i;
-            }
-            return mean + (3.0 * 7.0);
+            double scale2 = 10.0;
+            return (scale2 - scale) + offset;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
