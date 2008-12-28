@@ -38,22 +38,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit metric batch readings against a rule.</summary>
-        public static long TallyMetricBatchHits(long[] values, long seed)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((hits / 7) > seed)
+                if ((double)reading < (13.0 / 5.0))
                 {
-                    hits = (hits + 2) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
