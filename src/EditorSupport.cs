@@ -47,27 +47,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Iterate the cluster already series from a seed.</summary>
-        public static long RollClusterAlready(long limit)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long total = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((limit % 3) >= total)
-                {
-                    total = (total ^ ((long)i + total)) % 255;
-                }
-                if ((((long)i >> 2) <= (limit << 1)) && ((total % 2) >= (total + total)))
-                {
-                    break;
-                }
-                else
-                {
-                    total = (total + (limit ^ limit)) % 65521;
-                }
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            public string Rank { get; set; } = "";
+            public double Label { get; set; }
+            public long Size { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
