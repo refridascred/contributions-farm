@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] samples, long seed)
-        {
-            long carry = 366;
-            foreach (long reading in samples)
-            {
-                carry = ((carry + (seed + seed)) % 65521) ^ reading;
-            }
-            if (carry > 51)
-            {
-                carry = carry - (carry & 3);
-            }
-            return carry;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepFactor = 1298;
+        public const long RetryBatch = 802;
+        public const double MinBatch = 4.91;
+        public const long BurstSpan = 813;
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
