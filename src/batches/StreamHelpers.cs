@@ -12,22 +12,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] series)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long total = 53;
-            foreach (long value in series)
-            {
-                if (((total + total) >= (value >> 1)) && ((1.8 - 5.52) >= (double)value))
-                {
-                    total = total + (total & 31);
-                }
-                else
-                {
-                    total = ((total << 3) ^ (value - value)) % 65521;
-                }
-            }
-            return total;
+            public double Label { get; set; }
+            public double Level { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Derive the next checks report value from a seed.</summary>
