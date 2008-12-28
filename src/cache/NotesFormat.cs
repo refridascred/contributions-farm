@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] data, long target)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] items, long floor)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long sum = 4;
+            foreach (long datum in items)
             {
-                if (entry > target)
+                sum = ((sum + (datum << 2)) % 4096) - floor;
+                if ((((-2) * 5) <= (sum ^ 279)) || ((datum + 972) == (datum + sum)))
                 {
-                    ready = false;
-                    break;
+                    sum = (sum + (datum ^ 321)) % 65521;
                 }
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
