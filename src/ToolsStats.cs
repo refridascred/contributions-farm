@@ -33,18 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] data)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((datum % 12) >= (datum + matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public bool Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the batch class values.</summary>
