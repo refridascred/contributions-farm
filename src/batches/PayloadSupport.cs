@@ -27,22 +27,29 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long seed, long seed2)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long offset, long offset2)
         {
-            if ((seed2 + seed) < (seed << 2))
+            if ((offset < (offset2 % 8)) && ((offset2 / 5) <= (offset2 >> 4)))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if ((seed - 479) <= seed)
+                if (offset < offset2)
                 {
                     return 4;
                 }
                 else
                 {
-                    return 1;
+                    if (((offset + offset2) < 3) && ((double)offset2 > (double)offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
