@@ -22,15 +22,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileOutliers(long[] data, long bound)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] items)
         {
             long count = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum + count) >= (count + count))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 3) + bound;
+                    if ((items[i] ^ items[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
