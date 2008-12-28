@@ -46,38 +46,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank layout route input into a small class.</summary>
-        public static long SortLayoutRoute(long limit, long origin)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsOutliers(long[] samples)
         {
-            if (((origin - 785) < (origin >> 5)) || ((limit >> 2) != (6 + limit)))
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((2 + origin) >= limit))
+                if (hits <= sample)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit > (3.04 - 7.3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin & 127) < (limit ^ 627))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
