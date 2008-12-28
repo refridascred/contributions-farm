@@ -35,11 +35,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string SoftTimeout = "cached-1";
-        public const long IdleScore = 4187;
-        public const string StepRoute = "staging-1";
-        public const long LimitRoute = 1175;
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long GradeFormat(long target, long bound)
