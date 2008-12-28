@@ -60,18 +60,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterMatches(long[] readings, long origin)
+        /// <summary>Validate batch context readings against a bound.</summary>
+        public static bool ValidateBatchContextRange(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (!((6.65 - 1.0) < (double)origin))
+                if (item > origin)
                 {
-                    count = (count + 1) - cell;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
