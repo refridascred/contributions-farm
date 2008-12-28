@@ -35,13 +35,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double rate, double offset)
         {
-            public long Offset { get; set; }
-            public double Size { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
+            double ratio = (double)30 * 4.56;
+            return ((ratio - (double)3) + rate) + offset;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
