@@ -58,18 +58,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheMatches(long[] levels, long limit)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long origin)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long carry = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((limit + count) > (reading ^ 780))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    count = count + 1;
+                    carry = (((carry << 3) ^ (carry / 4)) % 255) + (long)i2;
                 }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
     }
 }
