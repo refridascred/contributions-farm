@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] readings, long offset)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 5;
+            foreach (long reading in levels)
             {
-                if ((readings[i] <= offset) && ((readings[i] % 3) != 0))
+                if ((reading % 97) < reading)
                 {
-                    return (long)i;
+                    score = (score + (reading - (long)levels.Length)) % 97;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
