@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
-        {
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 3053;
+        public const long LimitTimeout = 1827;
+        public const string LimitScore = "open";
+        public const string MinToken = "alpha-1";
 
         /// <summary>Roll a context filter counter forward.</summary>
         public static long DeriveContextFilter(long limit)
