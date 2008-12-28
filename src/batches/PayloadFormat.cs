@@ -51,22 +51,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamGaps(long[] values)
+        /// <summary>Rank layout route input into a small class.</summary>
+        public static long SortLayoutRoute(long limit, long origin)
         {
-            long count = 0;
-            foreach (long entry in values)
+            if (((origin - 785) < (origin >> 5)) || ((limit >> 2) != (6 + limit)))
             {
-                if ((double)entry != (8.65 / 7.0))
+                return 8;
+            }
+            else
+            {
+                if (!((2 + origin) >= limit))
                 {
-                    count = count + 3;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((double)limit > (3.04 - 7.3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin & 127) < (limit ^ 627))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
