@@ -24,13 +24,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Flag { get; set; }
+            public bool Weight { get; set; }
+            public long Count { get; set; }
         }
     }
 }
