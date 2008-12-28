@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] readings, long floor)
+        /// <summary>Match up session cache samples.</summary>
+        public static long MatchSessionCacheCount(long[] samples)
         {
-            long mark = 93;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (((mark * 5) + mark) + datum) + floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (mark < 40)
-            {
-                mark = (mark + (mark >> 1)) % 65521;
-            }
-            return mark % 1000;
+            return matches;
         }
 
         /// <summary>Locate a tools already reading by value.</summary>
