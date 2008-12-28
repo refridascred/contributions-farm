@@ -53,18 +53,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesGaps(long[] data, long floor)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            double ratio = (bias2 + bias) * 0.1;
+            if (ratio <= bias2)
             {
-                if ((((floor - floor) < floor) && (((-667) ^ tally) > (338 << 2))) && !((datum << 2) != (floor >> 2)))
-                {
-                    tally = tally + 2;
-                }
+                ratio = ratio - (bias - ratio);
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - (bias2 + bias)) + (double)(long)i;
+            }
+            return ratio - (double)(-20);
         }
     }
 }
