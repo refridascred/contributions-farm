@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenOutliers(long[] samples, long bound)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] values, long bound)
         {
             long count = 0;
-            foreach (long datum in samples)
+            foreach (long sample in values)
             {
-                if ((count + count) == (bound & 15))
+                if (bound < (count + sample))
                 {
-                    count = (count + 2) + datum;
+                    count = count + 1;
                 }
                 else
                 {
