@@ -1,11 +1,6 @@
-id,rank,active,region
-1,54,25.14,staging
-2,standard,4.85,90
-3,469,30.13,cached
-4,49.83,73,68.15
-5,246,55.5,818
-6,edge,eu-west,996
-7,33.03,26,278
-8,96.68,stable,green
-9,61.58,open,97.74
-10,840,63.35,82.95
+id,level,ratio
+1,725,staging
+2,72.42,cached
+3,84.77,608
+4,37.78,edge
+5,667,43.45
