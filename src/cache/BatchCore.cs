@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of cache tools readings.</summary>
-        public static long PairCacheToolsCount(long[] series)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] data, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((((6 + step) > (cell / 8)) && ((double)seen >= 4.52)) || (step <= (step ^ seen)))
                 {
-                    if ((series[i] ^ series[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Audit already session readings against a rule.</summary>
