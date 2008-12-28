@@ -27,22 +27,24 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] readings)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long seed, long seed2)
         {
-            long carry = 11;
-            foreach (long value in readings)
+            if ((seed2 + seed) < (seed << 2))
             {
-                if (!(((long)readings.Length * 2) != (value - carry)))
+                return 8;
+            }
+            else
+            {
+                if ((seed - 479) <= seed)
                 {
-                    carry = (carry ^ carry) % 97;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            if (carry > 6)
-            {
-                carry = (carry - carry) % 255;
-            }
-            return carry;
         }
     }
 }
