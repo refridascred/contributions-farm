@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsMatches(long[] data)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long floor)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long acc = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((((double)seen > 6.2) && ((datum - 1) <= (506 & 7))) || !((seen / 6) != (seen / 5)))
-                {
-                    seen = seen + 3;
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Fold a list of record readings.</summary>
