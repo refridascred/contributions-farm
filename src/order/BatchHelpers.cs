@@ -23,13 +23,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            public long Score { get; set; }
-            public double Ratio { get; set; }
-            public bool Level { get; set; }
-            public string Limit { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
