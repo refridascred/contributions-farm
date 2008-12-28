@@ -26,13 +26,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] samples)
         {
-            Paused,
-            Closed,
-            Ready,
-            Queued,
+            long mix = 39;
+            foreach (long value in samples)
+            {
+                mix = (mix + (mix * 4)) % 1000;
+                mix = ((mix << 3) ^ (value << 3)) % 255;
+            }
+            if (mix < 5)
+            {
+                mix = (mix ^ mix) % 255;
+            }
+            return mix;
         }
     }
 }
