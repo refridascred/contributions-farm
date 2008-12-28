@@ -45,19 +45,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsBounds(long[] items, long offset)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long score = 663;
+            foreach (long reading in values)
             {
-                if (reading <= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                score = ((score ^ (204 - 2)) % 255) + reading;
             }
-            return stale;
+            if (score > 60)
+            {
+                score = score + (4 + target);
+            }
+            return score;
         }
 
         /// <summary>Grade a account record value against two limits.</summary>
