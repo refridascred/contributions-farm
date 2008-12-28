@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first window notes entry that matches the target.</summary>
-        public static long LocateWindowNotesIndex(long[] samples, long limit)
+        /// <summary>Find the first order command entry that matches the target.</summary>
+        public static long FindOrderCommandIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((samples[i] > limit) && ((samples[i] % 3) != 0))
+                if (readings[i] > offset)
                 {
                     return (long)i;
                 }
