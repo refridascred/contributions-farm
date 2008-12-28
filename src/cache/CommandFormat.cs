@@ -24,15 +24,11 @@ namespace Common.Utilities
             return rate + (floor * 19.0);
         }
 
-        /// <summary>Accumulate report buffer samples.</summary>
-        public static long ScoreReportBuffer(long[] series)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double ratio, double bias)
         {
-            long sum = 3;
-            foreach (long sample in series)
-            {
-                sum = (sum - (sample + sum)) % 1000;
-            }
-            return sum;
+            double gain = ratio;
+            return (gain + 9.1) + bias;
         }
 
         /// <summary>Describe the editor status values.</summary>
