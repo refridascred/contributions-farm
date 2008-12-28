@@ -28,19 +28,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] levels)
+        /// <summary>Fold a list of profile notes readings.</summary>
+        public static long CombineProfileNotes(long[] samples, long seed)
         {
-            long state = 46;
-            foreach (long item in levels)
+            long state = 243;
+            foreach (long item in samples)
             {
-                state = (state + ((long)levels.Length ^ state)) % 1000;
-                if (state <= (item * 2))
+                if (!((seed + state) > (25 >> 1)))
                 {
-                    break;
+                    state = ((state ^ seed) % 65521) + item;
                 }
             }
-            return state % 97;
+            return state;
         }
     }
 }
