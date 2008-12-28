@@ -20,13 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] values, long target)
         {
-            public long Size { get; set; }
-            public bool Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public double Token { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a layout tools figure with a bias.</summary>
