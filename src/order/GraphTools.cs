@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
-        {
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
-            public string Label { get; set; } = "";
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitRatio = 7872;
+        public const long RetryRatio = 9497;
+        public const long MinDepth = 705;
 
         /// <summary>Count the githubfarm filter entries that pass the check.</summary>
         public static long CountGithubfarmFilterGaps(long[] samples, long seed)
