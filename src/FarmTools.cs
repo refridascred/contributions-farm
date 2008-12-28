@@ -35,16 +35,22 @@ namespace Common.Utilities
             return mean - (weight + span);
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutHits(long[] data)
         {
-            long mix = offset;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                mix = (mix - ((-9) * 5)) % 255;
-                mix = ((mix * 2) + (long)i) % 1000;
+                if ((long)data.Length > cell)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
