@@ -31,11 +31,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double IdleReport = 42.45;
-        public const long CacheBudget = 3807;
-        public const long IdleScore = 7849;
-        public const long HardReport = 5856;
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double weight, double floor)
+        {
+            double bias = 5.0;
+            if (bias < (bias + 5.0))
+            {
+                bias = (bias - (double)(-55)) - floor;
+            }
+            else
+            {
+                bias = bias - (weight / 6.0);
+            }
+            return bias + (double)32;
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long CountMetricsOutliers(long[] samples)
