@@ -58,14 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Blend two editor metrics measurements.</summary>
+        public static double BlendEditorMetrics(double bias, double bias2)
         {
-            Active,
-            Pending,
-            Closed,
-            Paused,
-            Locked,
+            double mean = (bias + bias) - 2.1;
+            if (mean <= (mean / 2.0))
+            {
+                mean = (mean + bias) - bias2;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean - bias;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
