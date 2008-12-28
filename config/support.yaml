@@ -1,7 +1,11 @@
 # support settings
-min_depth_count: true
-min_limit_count:
-  - local
-  - fallback
-warm_interval_ms: staging
-soft_capacity_count: stable
+verbose:
+  flush_retries: 3.37
+  persist: 131
+  metrics_delay: 390
+  poll_window_count: standard
+  poll_depth_s: 84
+  cache_limit_ms: primary
+cache_timeout: 70.13
+readonly: 6303
+batch_threshold_ms: 87
