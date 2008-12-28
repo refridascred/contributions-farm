@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] readings)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((count + 3) == (entry * 2))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Stale,
+            Paused,
+            Idle,
         }
 
         /// <summary>Look up the position of a already sample.</summary>
