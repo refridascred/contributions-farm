@@ -71,25 +71,19 @@ namespace Common.Utilities
         public const double BaseSpan = 81.39;
         public const double MinLevel = 62.58;
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long target, long offset)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long bound)
         {
-            long delta = target ^ offset;
-            if ((target & 7) > (delta ^ offset))
+            long mark = bound;
+            for (int i = 0; i < 10; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset / 9) > (target / 2))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return 4;
+                    mark = ((mark - (570 % 3)) % 97) ^ (long)i2;
                 }
-                else
-                {
-                    return 3;
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
+            return mark;
         }
 
         /// <summary>Describe the record state values.</summary>
