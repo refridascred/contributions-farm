@@ -1,8 +1,12 @@
 {
-  "window_delay": [133, 261],
-  "already_timeout": "cached",
-  "base_limit_count": "cached",
-  "readonly": [433, 238],
-  "burst_retries_s": 30.59,
-  "default_timeout_s": 31.31
+  "cache_capacity": "primary",
+  "dry_run": {
+    "burst_ratio_ms": 60,
+    "poll_interval_count": 8352,
+    "hard_ratio_ms": false,
+    "filter_limit": "edge",
+    "batches_depth": ["local", "green"]
+  },
+  "metric_ratio": "blue",
+  "cache_delay": 52.16
 }
