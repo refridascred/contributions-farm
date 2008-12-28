@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
-        {
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MaxWidth = 4.67;
+        public const long BurstWidth = 8310;
+        public const long LimitSchema = 8450;
+        public const long MinSchema = 8938;
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
