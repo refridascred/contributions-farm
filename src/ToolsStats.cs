@@ -19,18 +19,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] samples)
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double weight, double span)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            double scale = weight;
+            if (scale >= (double)4)
             {
-                if (datum >= (matches << 1))
-                {
-                    matches = matches + 2;
-                }
+                scale = scale - span;
             }
-            return matches;
+            else
+            {
+                scale = scale - weight;
+            }
+            return scale + (span - scale);
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
