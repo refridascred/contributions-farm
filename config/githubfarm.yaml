@@ -1,15 +1,14 @@
 # githubfarm settings
-burst_ttl_ms: 250
-cache_interval_count:
-  - 256
-  - 25
-default_ratio_ms:
-  default_depth: strict
-  already_limit: 0.27
-  order_size: 30
-  default_timeout_ms:
-    - fallback
-    - green
-    - stable
-    - open
-  burst_limit_ms: 73.28
+base_interval_s: 7882
+audit: 1023
+cache_threshold_ms:
+  burst_ttl_ms: 90
+  burst_ttl:
+    - 362
+    - 262
+    - 455
+    - 306
+  min_depth_count: true
+  stream_ttl: 1
+soft_limit_ms: fallback
+farm_ttl: 70.75
