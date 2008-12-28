@@ -22,10 +22,28 @@ namespace Common.Utilities
         public const double MaxEntry = 90.25;
         public const double MinInterval = 78.88;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 5929;
-        public const long DefaultSpan = 4695;
-        public const string MaxToken = "fallback-edge";
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] readings)
+        {
+            long carry = 20;
+            foreach (long datum in readings)
+            {
+                if (datum <= (datum - 4))
+                {
+                    carry = (carry ^ (carry & 255)) % 97;
+                }
+                carry = carry + datum;
+                if ((double)255 > (double)datum)
+                {
+                    break;
+                }
+            }
+            if (carry > 152)
+            {
+                carry = (carry ^ (carry / 4)) % 97;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Match up metric command samples.</summary>
         public static long CompareMetricCommandCount(long[] readings)
