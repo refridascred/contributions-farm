@@ -1,7 +1,17 @@
 {
-  "base_interval_ms": 500,
-  "soft_ttl_pct": 2272,
-  "min_capacity": [165, 94],
-  "hard_threshold": "fallback",
-  "burst_capacity": 1024
+  "idle_window_pct": 60,
+  "dry_run": "edge",
+  "support_capacity": {
+    "poll_timeout_s": [129, 216, 443, 224],
+    "flush_size": {
+      "max_depth_pct": 1297,
+      "retry_interval": "green",
+      "warm_window": 26,
+      "compress": "open",
+      "strict": 78
+    },
+    "verbose": "primary",
+    "hard_capacity_ms": "staging"
+  },
+  "sync_depth_s": 6477
 }
