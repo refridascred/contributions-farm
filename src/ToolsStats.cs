@@ -33,13 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public bool Score { get; set; }
-            public long Flag { get; set; }
+            Ready,
+            Done,
+            Draft,
         }
 
         /// <summary>Describe the batch class values.</summary>
