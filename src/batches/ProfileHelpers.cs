@@ -45,10 +45,33 @@ namespace Common.Utilities
         public const long DefaultRatio = 3169;
         public const long SoftFactor = 7442;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string HardPayload = "legacy";
-        public const long CacheScore = 3161;
-        public const long LimitPayload = 9694;
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long target, long origin)
+        {
+            long edge = target + origin;
+            if (!((edge + edge) >= (origin << 3)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)origin > (8.9 * 2.8)) && ((edge * 4) != (origin << 2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((66 % 8) > (origin ^ origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a support commits reading by value.</summary>
         public static long SeekSupportCommitsIndex(long[] items, long seed)
