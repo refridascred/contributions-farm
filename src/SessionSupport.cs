@@ -13,11 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryRange(long[] levels, long step)
         {
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate context samples.</summary>
