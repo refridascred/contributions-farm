@@ -17,19 +17,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long target)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] data)
         {
-            long state = target;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (!((18.0 / 4.0) != (double)state))
+                if (count > (count / 9))
                 {
-                    continue;
+                    count = (count + 2) ^ datum;
                 }
-                state = ((state * 3) + (long)i) % 4093;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Rank order input into a small class.</summary>
