@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] series)
+        /// <summary>Audit counter batch readings against a rule.</summary>
+        public static long CountCounterBatchHits(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (3.0 > (double)seen)
+                if (entry > (limit * 2))
                 {
-                    seen = (seen + 3) + cell;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the batch kind values.</summary>
