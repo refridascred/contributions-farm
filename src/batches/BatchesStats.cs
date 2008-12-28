@@ -42,31 +42,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank support command input into a small class.</summary>
-        public static long ClassifySupportCommand(long limit, long floor)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsBounds(long[] readings, long floor)
         {
-            if ((limit - limit) == (floor - limit))
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (2.3 >= (19.0 + 20.0))
+                if (datum < floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit + (-869)) != (floor % 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
