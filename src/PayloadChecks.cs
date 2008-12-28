@@ -27,24 +27,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long target, long offset)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] levels, long origin)
         {
-            if ((6 - target) >= target)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset - 6) <= target)
+                if (levels[i] < origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the tools state values.</summary>
