@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitScore = 7850;
-        public const string RetryGithubfarm = "primary-edge";
-        public const long BatchGithubfarm = 1254;
-        public const long CacheWidth = 4154;
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
+        {
+            public bool Count { get; set; }
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long HardScore = 6859;
