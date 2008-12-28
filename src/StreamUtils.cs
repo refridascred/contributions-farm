@@ -31,20 +31,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] values, long offset)
-        {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 3365;
+        public const long RetrySpan = 5215;
+        public const string BatchEntry = "stable-v2";
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
