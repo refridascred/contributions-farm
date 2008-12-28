@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchRatio = 8632;
-        public const long DefaultEntry = 4363;
-        public const double MaxEntry = 65.88;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesOutliers(long[] levels)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((count % 16) != ((long)levels.Length / 8))
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double BaseTimeout = 11.64;
