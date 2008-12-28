@@ -25,21 +25,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long MatchChannelCount(long[] items)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 430;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i = 0; i < 12; i++)
                 {
-                    if ((items[i] ^ items[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (((carry << 3) ^ (long)i) ^ item) - origin;
                 }
+                carry = (carry + (7 >> 1)) % 101;
             }
-            return count;
+            return carry % 97;
         }
 
         /// <summary>Hold a commits info.</summary>
