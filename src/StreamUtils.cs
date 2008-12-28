@@ -51,14 +51,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterMatches(long[] readings, long origin)
         {
-            Synced,
-            Failed,
-            Active,
-            Stale,
-            Dropped,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (!((6.65 - 1.0) < (double)origin))
+                {
+                    count = (count + 1) - cell;
+                }
+            }
+            return count;
         }
     }
 }
