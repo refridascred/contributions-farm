@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double ratio, double span)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            double scale = (double)385 + ratio;
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - ratio) + (double)(long)i;
-            }
-            return scale + span;
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
