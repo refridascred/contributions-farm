@@ -37,15 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double weight, double offset)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] readings, long origin)
         {
-            double rate = (offset - 11.0) + offset;
-            if (rate >= (weight + rate))
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate - (double)5;
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return rate + (offset * 7.9);
+            return -1;
         }
     }
 }
