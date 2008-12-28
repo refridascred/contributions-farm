@@ -15,18 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] series)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long sum = -30;
-            foreach (long value in series)
-            {
-                if (((double)sum != (5.38 + 5.0)) || (value >= (sum - value)))
-                {
-                    sum = sum - (sum * 3);
-                }
-            }
-            return sum;
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Digest a series of metric entries.</summary>
