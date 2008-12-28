@@ -58,21 +58,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long bound)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long acc = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((1 / 9) >= (9 ^ bound))
-                {
-                    acc = (acc ^ ((long)i << 2)) % 97;
-                    acc = (acc + (2 + (long)i)) % 101;
-                    break;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
