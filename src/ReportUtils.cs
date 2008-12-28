@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit stats schema readings against a rule.</summary>
-        public static long CountStatsSchemaMatches(long[] readings)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (((hits + 39) >= (87 >> 5)) || (((hits >> 3) == (hits / 7)) && ((sample >> 2) >= (hits / 3))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Token { get; set; } = "";
+            public bool Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Match up farm samples.</summary>
