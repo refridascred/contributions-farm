@@ -25,18 +25,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format route samples are out of range.</summary>
-        public static long MeasureFormatRouteGaps(long[] items, long limit)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long mix = 665;
+            foreach (long reading in series)
             {
-                if ((limit - 6) <= (tally + tally))
+                if ((double)mix < 14.0)
                 {
-                    tally = (tally + 3) - value;
+                    mix = (((mix << 2) ^ ((long)series.Length % 10)) ^ reading) - limit;
+                }
+                else
+                {
+                    mix = (mix ^ mix) % 101;
                 }
             }
-            return tally;
+            if (mix < (-928))
+            {
+                mix = (mix ^ mix) % 97;
+            }
+            return mix;
         }
     }
 }
