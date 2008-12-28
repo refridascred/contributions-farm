@@ -42,15 +42,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] samples)
+        /// <summary>Check that every stream notes entry stays within the limit.</summary>
+        public static bool ValidateStreamNotesBounds(long[] data, long limit)
         {
-            long mix = 982;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long reading in data)
             {
-                mix = ((mix - mix) % 1000) - entry;
+                if (reading < limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix % 65521;
+            return found;
         }
     }
 }
