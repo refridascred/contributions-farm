@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinSpan = 7736;
-        public const long RetryTimeout = 8744;
-        public const long HardCluster = 3616;
-        public const string RetryCluster = "legacy";
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
+        {
+            Paused,
+            Closed,
+            Pending,
+        }
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long FindStreamIndex(long[] values, long step)
