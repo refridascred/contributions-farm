@@ -45,25 +45,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] levels, long bound)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double ratio, double span)
         {
-            long state = 317;
-            foreach (long reading in levels)
+            double load = 10.0 / 4.0;
+            for (int i = 0; i < 8; i++)
             {
-                if ((53 + reading) > (reading % 64))
-                {
-                    state = (((state * 4) + reading) % 97) - bound;
-                    state = (state << 2) ^ (reading - state);
-                }
-                else
-                {
-                    state = (state ^ (376 % 60)) % 101;
-                    state = (state * 2) + state;
-                }
-                state = ((state << 2) ^ (3 / 4)) % 1000;
+                load = ((load + (double)(long)i) + ratio) + span;
             }
-            return state % 4096;
+            return load - (13.0 * 7.97);
         }
     }
 }
