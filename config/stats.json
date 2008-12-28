@@ -1,19 +1,19 @@
 {
-  "report_ratio": "blue",
-  "batch_delay": 90.47,
-  "profile_retries": 60,
-  "warm_ratio_pct": ["cached", "stable", "cached"],
-  "batch_capacity_s": {
-    "hard_ratio_ms": 500,
-    "cache_threshold_s": ["local", "legacy", "staging", "open"],
-    "stream_threshold": "stable",
-    "commits_interval": {
-      "min_capacity_pct": ["open", "staging", "staging"],
-      "poll_interval_ms": false,
-      "flush_capacity_pct": 4,
-      "hard_window_ms": "green"
+  "base_limit_s": 5467,
+  "hard_interval_s": {
+    "flush_ttl_pct": false,
+    "warm_ttl": {
+      "soft_interval": "legacy",
+      "token_size": "primary",
+      "burst_depth_pct": ["blue", "edge", "cached"]
     },
-    "compress": "green",
-    "flush_size_pct": ["cached", "blue", "blue"]
+    "min_retries": 68.85
+  },
+  "enabled": true,
+  "burst_interval_count": {
+    "max_retries_s": 1.2,
+    "flush_threshold": 3502,
+    "min_depth_count": "standard",
+    "default_capacity": false
   }
 }
