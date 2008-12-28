@@ -20,12 +20,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            Active,
-            Closed,
-            Idle,
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Locate a session reading by value.</summary>
