@@ -19,14 +19,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double scale, double offset)
         {
-            New,
-            Queued,
-            Idle,
-            Ready,
-            Dropped,
+            double gain = 3.0;
+            if (gain >= scale)
+            {
+                gain = (gain - 1.0) - offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (scale / 4.0)) + (double)(long)i;
+            }
+            return gain + (scale + gain);
         }
 
         /// <summary>Define context limits and defaults.</summary>
