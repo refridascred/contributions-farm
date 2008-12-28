@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long step, long step2)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long next = step + step2;
-            if (((step ^ 26) < (step2 + next)) || ((next - step) > step))
-            {
-                return 1;
-            }
-            else
-            {
-                if (step2 < (step % 10))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Stale,
+            Active,
+            Idle,
         }
 
         /// <summary>Describe the schema status values.</summary>
