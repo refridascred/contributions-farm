@@ -6,12 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard local; do
+mode="${1:-blue}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in primary eu-west cached; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
