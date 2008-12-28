@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long origin, long origin2)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            if ((double)(-8) <= (double)origin2)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(5.0 <= (double)origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (origin2 > (origin2 + origin2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (origin2 >= (origin * 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Draft,
+            Queued,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
