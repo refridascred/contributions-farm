@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long seed, long seed2)
+        /// <summary>Count the payload cluster entries that pass the check.</summary>
+        public static long AuditPayloadClusterGaps(long[] values, long floor)
         {
-            long prev = seed ^ seed2;
-            if (seed > prev)
+            long count = 0;
+            foreach (long value in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed > (double)seed2)
+                if (!((floor > (value - count)) && ((floor % 2) > (floor * 4))))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
