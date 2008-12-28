@@ -30,15 +30,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] series)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long limit, long bound)
         {
-            long carry = 1;
-            foreach (long sample in series)
+            long prev = limit ^ bound;
+            if (!((bound >> 3) == (prev + bound)))
             {
-                carry = ((carry * 2) + (carry - 5)) ^ sample;
+                return 3;
             }
-            return carry % 65521;
+            else
+            {
+                if (bound >= 67)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit > (59 >> 2)) || (limit < (prev - bound)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((limit / 4) < (bound - prev)) || ((5 & 31) > prev))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
