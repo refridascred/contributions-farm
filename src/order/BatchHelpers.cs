@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] readings, long seed)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] series, long origin)
         {
-            long sum = 25;
-            foreach (long entry in readings)
+            long mix = 65;
+            foreach (long value in series)
             {
-                if ((8.5 + 0.19) < (double)seed)
+                if ((mix - origin) < (8 - mix))
                 {
-                    sum = ((sum << 3) ^ (entry - seed)) % 65521;
+                    mix = (mix + value) % 4096;
                 }
             }
-            return sum;
+            if (mix > 995)
+            {
+                mix = mix ^ (origin & 15);
+            }
+            return mix;
         }
 
         /// <summary>Hold a checks info.</summary>
