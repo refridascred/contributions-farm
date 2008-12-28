@@ -57,9 +57,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string CacheFilter = "local-edge";
-        public const long BatchFilter = 1836;
-        public const string BatchSpan = "open";
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long bound, long bound2)
+        {
+            if ((bound * 2) >= (bound2 << 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound2 > bound) || (bound <= (bound2 + (-11))))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (bound2 <= (bound2 >> 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
