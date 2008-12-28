@@ -31,13 +31,24 @@ namespace Common.Utilities
             return (gain + 9.1) + bias;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long offset, long floor)
         {
-            Idle,
-            Dropped,
-            Retry,
-            Pending,
+            if ((double)offset <= (7.0 * 5.74))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((380 ^ offset) == (799 + offset)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
