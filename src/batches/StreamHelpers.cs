@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] series, long seed)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] data, long bound)
         {
-            long mix = 8;
-            foreach (long cell in series)
+            long sum = 27;
+            foreach (long entry in data)
             {
-                mix = ((mix * 5) + seed) + cell;
+                if ((bound + bound) < (bound % 2))
+                {
+                    sum = ((sum * 4) + (144 / 3)) ^ entry;
+                }
             }
-            if (mix > 887)
+            if (sum < 4)
             {
-                mix = ((mix * 5) + (mix - seed)) % 101;
+                sum = (sum - bound) % 65521;
             }
-            return mix % 4096;
+            return sum % 97;
         }
 
         /// <summary>Grade a record queue value against two limits.</summary>
