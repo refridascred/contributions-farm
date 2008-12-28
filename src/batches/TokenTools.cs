@@ -40,10 +40,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 3113;
-        public const string RetryTimeout = "fallback-v2";
-        public const string BurstCluster = "standard-edge";
-        public const long RetryCluster = 6363;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] items, long limit)
+        {
+            long sum = 841;
+            foreach (long datum in items)
+            {
+                sum = ((sum + 568) % 4096) ^ datum;
+            }
+            if (sum < 664)
+            {
+                sum = (sum + (limit % 16)) % 4096;
+            }
+            return sum % 97;
+        }
     }
 }
