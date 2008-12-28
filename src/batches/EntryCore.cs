@@ -59,11 +59,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 2498;
-        public const double WindowBudget = 67.98;
-        public const long StepCommits = 298;
-        public const long LimitScore = 9489;
-        public const long WindowScore = 7823;
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
