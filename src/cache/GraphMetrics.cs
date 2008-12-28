@@ -56,10 +56,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BatchInterval = "standard-1";
-        public const double MinReport = 81.26;
-        public const long MinSize = 2383;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] series, long target)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((cell - tally) != (tally + target))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a cluster summary.</summary>
         public sealed class ClusterSummary
