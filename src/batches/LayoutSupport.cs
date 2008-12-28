@@ -60,21 +60,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] readings)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    if ((readings[i] ^ readings[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix ^ ((long)i2 ^ (long)i2)) % 1000;
                 }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
     }
 }
