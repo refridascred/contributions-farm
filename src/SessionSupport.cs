@@ -23,32 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a stats graph pair into a bucket.</summary>
-        public static long GradeStatsGraph(long seed, long target)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double ratio, double bias)
         {
-            long prev = seed + target;
-            if ((seed <= (178 >> 3)) || (prev > (target << 3)))
+            double weight = bias;
+            if (weight >= (ratio + weight))
             {
-                return 3;
+                weight = weight + 1.53;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((seed << 3) <= 31)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target + 889) > (target + seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                weight = (weight + (ratio - bias)) + (double)(long)i;
             }
+            return weight - weight;
         }
 
         /// <summary>Rank route input into a small class.</summary>
