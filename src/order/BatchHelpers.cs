@@ -31,10 +31,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double WindowContext = 93.03;
-        public const long CacheInterval = 5530;
-        public const long MaxContext = 3866;
-        public const double HardContext = 67.25;
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            Retry,
+            Active,
+            Dropped,
+        }
     }
 }
