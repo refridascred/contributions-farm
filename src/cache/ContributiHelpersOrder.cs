@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Measure how many notes metric samples are out of range.</summary>
+        public static long TallyNotesMetricMatches(long[] samples)
         {
-            public string Limit { get; set; } = "";
-            public string Level { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)5 < (double)tally)
+                {
+                    tally = (tally + 1) - sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
