@@ -12,19 +12,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Validate entry checks readings against a bound.</summary>
-        public static bool CheckEntryChecksRange(long[] samples, long limit)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] series, long bound)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (reading <= limit)
+                if (value <= bound)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Measure how many format route samples are out of range.</summary>
