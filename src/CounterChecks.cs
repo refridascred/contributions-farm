@@ -90,10 +90,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSpan = 3217;
-        public const long StepSupport = 5124;
-        public const double RetryDepth = 67.02;
-        public const long MinSupport = 2356;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] data, long offset)
+        {
+            long mix = 172;
+            foreach (long sample in data)
+            {
+                mix = ((mix << 3) ^ offset) ^ sample;
+            }
+            return mix;
+        }
     }
 }
