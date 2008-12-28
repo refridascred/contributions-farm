@@ -14,21 +14,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] samples)
+        /// <summary>Classify a editor farm pair into a bucket.</summary>
+        public static long ClassifyEditorFarm(long limit, long limit2)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long edge = limit - limit2;
+            if (13.0 <= (19.0 - 9.6))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (!((edge & 1) <= (limit ^ edge)))
                 {
-                    if ((samples[i] - samples[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
