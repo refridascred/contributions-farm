@@ -37,18 +37,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueOutliers(long[] levels, long seed)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long bound, long floor)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            if ((floor % 2) < (725 + floor))
             {
-                if (seed > tally)
+                return 5;
+            }
+            else
+            {
+                if (!((floor % 3) <= floor))
                 {
-                    tally = (tally + 1) + entry;
+                    return 7;
+                }
+                else
+                {
+                    if (((bound + 21) <= (floor + floor)) || ((floor % 3) >= bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((75 + 2) >= bound) || ((floor >> 4) >= bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
