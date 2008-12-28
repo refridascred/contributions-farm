@@ -1,5 +1,9 @@
 # githubfarm settings
-checks_interval: 3541
-max_window_ms: 31
-batch_capacity: 3435
-account_ttl: 7551
+warm_window_count:
+  - 376
+  - 310
+  - 14
+soft_size: stable
+strict: false
+flush_window_ms: 33.71
+batch_retries: open
