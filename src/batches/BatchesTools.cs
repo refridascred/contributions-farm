@@ -13,18 +13,23 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Audit tools channel readings against a rule.</summary>
-        public static long TallyToolsChannelOutliers(long[] data)
+        /// <summary>Derive the next cache command value from a seed.</summary>
+        public static long DeriveCacheCommand(long step)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long mark = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)tally < 8.4)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    tally = (tally + 2) ^ value;
+                    mark = (((mark * 5) + (step * 2)) % 255) + (long)i2;
                 }
+                if ((step + step) < step)
+                {
+                    mark = mark + (step * 3);
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Describe the notes class values.</summary>
