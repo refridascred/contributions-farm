@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetryBudget = "standard-edge";
-        public const long BatchFactor = 4509;
-        public const double MinTimeout = 14.64;
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long SeriesLayout(long offset)
