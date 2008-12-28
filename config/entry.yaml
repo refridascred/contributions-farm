@@ -1,12 +1,5 @@
 # entry settings
-contributi_window: 85.06
-strict:
-  max_delay_s: 250
-  format_ttl: 13.17
-  token_depth:
-    - blue
-    - stable
-    - edge
-    - staging
-sync_ratio_pct: 21
-report_ratio: 52.71
+min_threshold_s: 73.2
+commits_ttl: false
+hard_limit: 250
+compress: true
