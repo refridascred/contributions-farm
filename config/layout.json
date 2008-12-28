@@ -1,17 +1,8 @@
 {
-  "flush_threshold": 500,
-  "format_depth": 27.05,
-  "default_window_s": true,
-  "readonly": {
-    "idle_interval_pct": ["edge", "strict", "blue", "open"],
-    "max_size_pct": 9.35,
-    "base_interval": {
-      "metrics_window": 11,
-      "dry_run": "strict",
-      "profile_retries": "fallback",
-      "account_window": 250,
-      "enabled": 500
-    },
-    "hard_limit": "fallback"
-  }
+  "burst_capacity_count": [221, 335, 397],
+  "tools_delay": 37,
+  "base_interval_ms": 5889,
+  "burst_retries": ["standard", "strict", "edge"],
+  "batch_ratio": true,
+  "verbose": "cached"
 }
