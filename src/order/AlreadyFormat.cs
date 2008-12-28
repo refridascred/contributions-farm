@@ -14,20 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] values)
-        {
-            long mark = 933;
-            foreach (long item in values)
-            {
-                if ((0.81 - 1.0) > (double)mark)
-                {
-                    mark = (mark + (58 / 7)) % 65521;
-                }
-                mark = (mark + (item << 1)) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 9636;
+        public const double MinDepth = 22.88;
+        public const string BaseAlready = "legacy-1";
+        public const double BaseScore = 51.76;
+        public const double IdleAlready = 25.18;
 
         /// <summary>Accumulate filter samples.</summary>
         public static long FoldFilter(long[] levels, long step)
