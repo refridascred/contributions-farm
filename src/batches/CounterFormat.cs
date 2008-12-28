@@ -19,22 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of queue already readings.</summary>
-        public static long TallyQueueAlready(long[] samples, long bound)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long sum = -9;
-            foreach (long reading in samples)
-            {
-                if ((4.7 * 7.0) != (double)reading)
-                {
-                    sum = (sum ^ (sum + reading)) + bound;
-                }
-            }
-            if (sum < 9)
-            {
-                sum = (sum << 2) ^ (7 >> 2);
-            }
-            return sum;
+            Queued,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Describe the notes mode values.</summary>
