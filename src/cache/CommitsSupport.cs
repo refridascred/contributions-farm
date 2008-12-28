@@ -34,13 +34,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Compare every pair of stats counter readings.</summary>
+        public static long OverlapStatsCounterCount(long[] readings)
         {
-            public double Owner { get; set; }
-            public string Count { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of support filter readings.</summary>
