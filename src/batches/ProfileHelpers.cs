@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long MaxRatio = 677;
         public const double BurstInterval = 75.27;
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public double Flag { get; set; }
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
