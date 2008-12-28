@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportGaps(long[] items, long offset)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long step, long origin)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long gap = step + origin;
+            if ((85 - origin) < step)
             {
-                if (!((96 + item) <= (item << 1)) || (((18.0 * 1.0) != (double)item) && ((tally >> 5) >= (offset % 24))))
+                return 1;
+            }
+            else
+            {
+                if (((double)origin != (5.15 - 5.6)) || ((double)gap >= 20.0))
                 {
-                    tally = tally + 3;
+                    return 7;
+                }
+                else
+                {
+                    if (step >= origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate checks samples.</summary>
