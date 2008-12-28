@@ -1,19 +1,6 @@
 {
-  "support_limit": 35.08,
-  "filter_delay": "strict",
-  "report_window": 8547,
-  "warm_capacity": {
-    "graph_limit": "blue",
-    "base_interval_count": 68,
-    "burst_timeout_count": 100,
-    "order_ttl": 99,
-    "audit": {
-      "idle_interval_ms": [445, 419, 70],
-      "max_limit_s": "standard",
-      "hard_retries_pct": true,
-      "token_retries": 35.04,
-      "verbose": false
-    },
-    "poll_threshold_pct": "primary"
-  }
+  "stream_size": 48,
+  "metric_limit": 2906,
+  "record_retries": true,
+  "dry_run": 55
 }
