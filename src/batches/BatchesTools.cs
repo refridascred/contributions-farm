@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every batches channel entry stays within the limit.</summary>
-        public static bool CheckBatchesChannelRange(long[] levels, long offset)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Locked,
+            Done,
+            Synced,
+            Paused,
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
