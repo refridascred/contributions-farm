@@ -25,32 +25,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank tools filter input into a small class.</summary>
-        public static long BucketToolsFilter(long offset, long seed)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long delta = offset ^ seed;
-            if (offset <= seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if (delta <= offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((((-1) >> 1) <= (offset / 9)) && ((seed / 4) > (offset ^ seed)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Pending,
+            Ready,
+            Retry,
+            Paused,
+            Active,
         }
     }
 }
