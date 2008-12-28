@@ -12,13 +12,10 @@ namespace Common.Utilities
         public const double LimitTimeout = 92.23;
         public const long CacheCount = 8321;
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Done,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 4670;
+        public const long DefaultFactor = 2012;
+        public const long LimitAlready = 3169;
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long PairAlreadyCount(long[] readings)
