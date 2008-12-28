@@ -32,19 +32,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] items, long limit)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long sum = 841;
-            foreach (long datum in items)
-            {
-                sum = ((sum + 568) % 4096) ^ datum;
-            }
-            if (sum < 664)
-            {
-                sum = (sum + (limit % 16)) % 4096;
-            }
-            return sum % 97;
+            Locked,
+            New,
+            Synced,
         }
     }
 }
