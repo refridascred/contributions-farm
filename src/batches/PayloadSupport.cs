@@ -53,13 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            Closed,
-            Ready,
-            Active,
-            Failed,
+            public string Size { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
         }
     }
 }
