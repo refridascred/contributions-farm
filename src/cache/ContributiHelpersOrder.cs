@@ -15,19 +15,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] data, long bound)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long bound)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long sum = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry > bound)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = (sum - (bound - bound)) % 65521;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
