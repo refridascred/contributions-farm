@@ -40,10 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string IdleInterval = "fallback-1";
-        public const long SoftBatches = 9664;
-        public const string HardBatches = "open-v2";
+        /// <summary>Iterate the token context series from a seed.</summary>
+        public static long SeriesTokenContext(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool GuardCounterLimits(long[] data, long step)
