@@ -14,24 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank token batch input into a small class.</summary>
-        public static long SortTokenBatch(long offset, long step)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] values, long bound)
         {
-            if ((step - step) == (step * 2))
+            long hits = 0;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset <= (double)step)
+                if (((-5) * 4) > hits)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    hits = ((hits + 2) ^ cell) + bound;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
