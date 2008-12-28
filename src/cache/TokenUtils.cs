@@ -12,17 +12,12 @@ namespace Common.Utilities
         public const double LimitTimeout = 92.23;
         public const long CacheCount = 8321;
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] levels, long floor)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
