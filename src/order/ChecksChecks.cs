@@ -19,14 +19,12 @@ namespace Common.Utilities
         public const double MaxDepth = 86.56;
         public const double SoftWindow = 12.07;
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            Dropped,
-            Synced,
-            Queued,
-            Pending,
-            Paused,
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
+            public double Token { get; set; }
         }
     }
 }
