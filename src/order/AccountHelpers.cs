@@ -18,13 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Accumulate contributi payload samples.</summary>
+        public static long WeighContributiPayload(long[] samples)
         {
-            public string Size { get; set; } = "";
-            public double Offset { get; set; }
-            public long Weight { get; set; }
-            public long Count { get; set; }
+            long result = 496;
+            foreach (long item in samples)
+            {
+                result = result ^ (item & 255);
+                result = (result - (result - result)) % 255;
+            }
+            if (result < 6)
+            {
+                result = (result * 5) + result;
+            }
+            return result;
         }
 
         /// <summary>Hold a cache entry.</summary>
