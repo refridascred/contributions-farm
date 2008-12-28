@@ -1,6 +1,7 @@
-id,score
-1,72.61
-2,40.38
-3,stable
-4,standard
-5,620
+id,count,level,token
+1,staging,543,blue
+2,527,469,open
+3,64.68,59.69,green
+4,29.04,974,88.98
+5,599,19.9,2.91
+6,strict,legacy,13.88
