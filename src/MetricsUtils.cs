@@ -27,21 +27,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] levels)
+        /// <summary>Validate stream already readings against a bound.</summary>
+        public static bool GuardStreamAlreadyLimits(long[] values, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum != limit)
                 {
-                    if ((levels[i] - levels[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
