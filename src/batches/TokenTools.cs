@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepFactor = 1298;
-        public const long RetryBatch = 802;
-        public const double MinBatch = 4.91;
-        public const long BurstSpan = 813;
+        /// <summary>Find the first format queue entry that matches the target.</summary>
+        public static long LookupFormatQueueIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
