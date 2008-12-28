@@ -47,19 +47,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] series)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsBounds(long[] items, long offset)
         {
-            long score = 11;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                for (int i = 0; i < 10; i++)
+                if (reading <= offset)
                 {
-                    score = (((score + (score & 127)) % 101) ^ (long)i) - sample;
+                    stale = false;
+                    break;
                 }
-                score = (score << 2) ^ (score / 5);
             }
-            return score % 65521;
+            return stale;
         }
 
         /// <summary>Grade a account record value against two limits.</summary>
