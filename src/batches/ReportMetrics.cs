@@ -19,14 +19,11 @@ namespace Common.Utilities
         public const string MinCommits = "fallback";
         public const long SoftCommits = 3520;
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            Locked,
-            Queued,
-            Retry,
-            Closed,
-            Dropped,
+            public bool Label { get; set; }
+            public double Token { get; set; }
         }
     }
 }
