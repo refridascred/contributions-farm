@@ -68,31 +68,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stream stats pair into a bucket.</summary>
-        public static long SortStreamStats(long limit, long origin)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] samples)
         {
-            if (!((limit & 15) < (limit << 1)))
+            long mark = 5;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((origin - limit) != (origin * 3)) && ((limit + 661) > origin))
+                mark = ((mark * 5) + (mark + reading)) % 101;
+                mark = ((mark << 3) ^ (reading >> 4)) % 65521;
+                if ((5.7 + 5.0) <= (double)mark)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin & 63) <= (624 & 255))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            return mark % 97;
         }
     }
 }
