@@ -56,18 +56,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] values)
+        /// <summary>Digest a series of githubfarm entry entries.</summary>
+        public static long CombineGithubfarmEntry(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long score = 43;
+            foreach (long value in samples)
             {
-                if ((count + 486) <= count)
+                if ((49 - score) >= (score >> 5))
                 {
-                    count = (count + 3) + sample;
+                    score = (((score << 3) ^ (score & 7)) % 255) + value;
                 }
             }
-            return count;
+            if (score > 2)
+            {
+                score = (score - (107 & 127)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Count batch contributi pairs that satisfy a relation.</summary>
