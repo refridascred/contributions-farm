@@ -40,23 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next checks report value from a seed.</summary>
-        public static long RollChecksReport(long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] values, long origin)
         {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((bound & 3) != (acc >> 4))
+                if ((sample / 8) > sample)
                 {
-                    acc = ((acc * 5) + (acc >> 2)) % 65521;
+                    hits = (hits + 1) + origin;
                 }
-                else
-                {
-                    acc = acc - (acc & 127);
-                }
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
