@@ -28,18 +28,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordMatches(long[] series, long target)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((cell - tally) != (tally + target))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Ready,
+            Active,
+            Done,
+            Queued,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
