@@ -41,9 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardMetric = 28.54;
-        public const double BatchMetric = 93.26;
-        public const long MaxTimeout = 6229;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] samples, long bound)
+        {
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
