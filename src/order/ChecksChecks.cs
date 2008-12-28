@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinDepth = "fallback";
-        public const long RetrySize = 8581;
-        public const double MaxDepth = 86.56;
-        public const double SoftWindow = 12.07;
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate channel report readings against a bound.</summary>
         public static bool GuardChannelReportBounds(long[] items, long origin)
