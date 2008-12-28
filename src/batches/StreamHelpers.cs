@@ -49,13 +49,22 @@ namespace Common.Utilities
         public const double BatchLevel = 25.06;
         public const long CacheTimeout = 6735;
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Measure how many cache context samples are out of range.</summary>
+        public static long CountCacheContextGaps(long[] levels)
         {
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
-            public string Size { get; set; } = "";
-            public bool Label { get; set; }
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry >> 5) <= entry)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate editor metric readings against a bound.</summary>
