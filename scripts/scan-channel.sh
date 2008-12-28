@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=302
+CHANNEL_LIMIT=14
 log "limit is ${CHANNEL_LIMIT}"
 
 count=0
@@ -15,6 +15,12 @@ while [ "${count}" -lt 5 ]; do
 done
 log "ran ${count} rounds"
 
-for item in eu-west cached edge local; do
-    log "checking ${item}"
-done
+mode="${1:-latest}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
