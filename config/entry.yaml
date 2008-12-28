@@ -1,5 +1,14 @@
 # entry settings
-min_threshold_s: 73.2
-commits_ttl: false
-hard_limit: 250
-compress: true
+enabled: 8469
+checks_window:
+  - 311
+  - 93
+  - 275
+  - 235
+burst_size_count: 500
+audit: true
+readonly:
+  enabled: false
+  min_retries: latest
+  compress: primary
+retry_threshold_count: open
