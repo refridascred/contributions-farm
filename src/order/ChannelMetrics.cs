@@ -29,19 +29,18 @@ namespace Common.Utilities
         public const string HardCount = "staging-edge";
         public const double HardPayload = 21.55;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesRange(long[] readings, long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] data)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (entry != bound)
+                if ((6 & 15) == (reading << 2))
                 {
-                    stale = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
