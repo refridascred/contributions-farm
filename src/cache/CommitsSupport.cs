@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] samples, long limit)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] levels, long floor)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (sample >= limit)
+                if ((double)value < (double)23)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) + floor;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
