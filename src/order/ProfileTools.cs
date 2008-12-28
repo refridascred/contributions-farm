@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of notes already readings.</summary>
-        public static long ScoreNotesAlready(long[] series)
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double rate, double floor)
         {
-            long state = 90;
-            foreach (long cell in series)
+            double scale = rate;
+            if (scale <= (scale * 5.0))
             {
-                state = ((state << 2) ^ (state / 2)) + cell;
+                scale = scale + (floor * 4.0);
             }
-            if (state < 245)
+            else
             {
-                state = state - (state / 6);
+                scale = scale + (floor / 6.0);
             }
-            return state % 1000;
+            return scale - floor;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
