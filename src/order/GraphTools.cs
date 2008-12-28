@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionRange(long[] series, long seed)
-        {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string WindowBudget = "strict";
+        public const string BatchGithubfarm = "standard-v2";
+        public const long RetryGithubfarm = 6484;
+        public const string StepScore = "strict-v2";
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
