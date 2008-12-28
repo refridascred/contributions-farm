@@ -78,13 +78,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] levels)
         {
-            public string Stamp { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (datum < (matches ^ matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
