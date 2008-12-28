@@ -13,39 +13,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long step, long floor)
-        {
-            if ((floor - floor) >= floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step + floor) > (step << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((1 > (step << 1)) && (step > (floor % 7)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)step >= 7.1) || ((step / 7) > step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 5330;
+        public const long MinBatch = 5387;
+        public const long BaseSize = 1715;
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
