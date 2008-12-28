@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] levels, long target)
+        /// <summary>Check that every session support entry stays within the limit.</summary>
+        public static bool VerifySessionSupportRange(long[] readings, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if ((levels[i] > target) && ((levels[i] % 5) != 0))
+                if (cell > limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define window limits and defaults.</summary>
