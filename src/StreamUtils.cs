@@ -43,16 +43,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long seed)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long mix = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = (mix - ((long)i & 255)) % 255;
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            public double Size { get; set; }
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Blend two batches account measurements.</summary>
