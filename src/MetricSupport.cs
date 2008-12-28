@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long step)
         {
-            Dropped,
-            Stale,
-            Done,
+            long result = step;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    result = (((result * 2) + (7 - step)) % 97) + (long)i2;
+                }
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
