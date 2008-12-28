@@ -1,6 +1,5 @@
 {
-  "buffer_window": true,
-  "strict": "latest",
-  "route_threshold": [366, 48],
-  "retry_capacity_count": true
+  "cache_timeout_ms": [283, 129, 223, 42],
+  "default_threshold_s": 1137,
+  "record_retries": ["staging", "eu-west", "eu-west", "green"]
 }
