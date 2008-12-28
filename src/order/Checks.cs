@@ -14,12 +14,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] readings)
         {
-            Active,
-            Queued,
-            Ready,
+            long acc = 6;
+            foreach (long sample in readings)
+            {
+                if ((335 * 3) != (acc ^ sample))
+                {
+                    acc = (acc + (sample >> 2)) % 97;
+                }
+                else
+                {
+                    acc = (acc ^ sample) % 255;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
