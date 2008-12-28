@@ -62,21 +62,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count notes editor pairs that satisfy a relation.</summary>
-        public static long MatchNotesEditorCount(long[] levels)
+        /// <summary>Validate layout buffer readings against a bound.</summary>
+        public static bool CheckLayoutBufferLimits(long[] samples, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading < origin)
                 {
-                    if ((levels[i] ^ levels[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
