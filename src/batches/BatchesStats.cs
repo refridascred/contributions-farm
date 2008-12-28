@@ -42,21 +42,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] series)
+        /// <summary>Rank support command input into a small class.</summary>
+        public static long ClassifySupportCommand(long limit, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((limit - limit) == (floor - limit))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (2.3 >= (19.0 + 20.0))
                 {
-                    if ((series[i] + series[j]) < 11)
+                    return 8;
+                }
+                else
+                {
+                    if ((limit + (-869)) != (floor % 2))
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return hits;
         }
     }
 }
