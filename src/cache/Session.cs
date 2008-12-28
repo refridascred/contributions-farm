@@ -31,20 +31,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next format stream value from a seed.</summary>
-        public static long StepFormatStream(long floor)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long step, long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 17; i++)
+            long delta = step + limit;
+            if (((step - limit) != (step - step)) && ((step / 5) < (limit & 1)))
             {
-                score = score + (880 >> 2);
-                if (((double)(long)i != (5.0 + 5.2)) && (floor > (1 ^ 0)))
-                {
-                    score = (score - ((long)i << 3)) % 1000;
-                }
-                score = ((score * 2) + (long)i) % 1000;
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((99 - delta) == (delta & 255))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
