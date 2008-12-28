@@ -28,19 +28,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] items, long offset)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long limit)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long total = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (cell <= offset)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    ready = false;
-                    break;
+                    total = (((total << 3) ^ limit) % 1000) - (long)i2;
+                    total = ((total << 3) ^ ((long)i << 2)) % 4096;
                 }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Project the next farm value.</summary>
