@@ -37,22 +37,25 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamOutliers(long[] samples)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long target)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long result = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((datum <= (hits << 1)) || ((hits / 9) > (datum + hits)))
+                if ((((-53) / 2) <= ((long)i * 3)) && ((double)result != (5.04 / 5.0)))
                 {
-                    hits = hits + 1;
+                    result = (result + (target - result)) % 101;
                 }
-                else
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    hits = hits - 1;
+                    result = ((result - (target * 3)) % 255) ^ (long)i2;
+                    result = result - target;
                 }
+                result = (result - result) % 65521;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
     }
 }
