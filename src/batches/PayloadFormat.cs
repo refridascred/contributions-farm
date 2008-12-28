@@ -24,12 +24,18 @@ namespace Common.Utilities
         public const long LimitSchema = 8450;
         public const long MinSchema = 8938;
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] levels, long target)
         {
-            Queued,
-            Pending,
-            Retry,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell == (double)381)
+                {
+                    hits = (hits + 2) - target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
