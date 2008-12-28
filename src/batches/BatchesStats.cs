@@ -47,19 +47,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Check that every tools filter entry stays within the limit.</summary>
-        public static bool CheckToolsFilterRange(long[] readings, long bound)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] series, long seed)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum < bound)
+                if ((series[i] > seed) && ((series[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
