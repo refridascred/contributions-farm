@@ -35,11 +35,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            public string Limit { get; set; } = "";
-            public double Label { get; set; }
+            public long Owner { get; set; }
+            public double Rank { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
