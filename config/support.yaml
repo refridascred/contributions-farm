@@ -1,17 +1,12 @@
 # support settings
-already_ratio:
-  - 500
-  - 134
-compress: 100
-hard_retries_ms: 88
-idle_delay_pct: 39.62
-cache_depth_pct:
-  cluster_limit: blue
-  min_delay_s: 5189
-  soft_interval_ms: blue
-  max_retries_pct: true
-record_depth:
+batch_delay_count: legacy
+stream_size: edge
+persist:
+  - cached
+  - fallback
   - eu-west
-  - green
-  - latest
-  - blue
+  - primary
+sync_capacity:
+  - 38
+  - 355
+  - 80
