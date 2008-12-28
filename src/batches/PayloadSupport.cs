@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferRange(long[] values, long origin)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (reading < origin)
+                if ((double)hits <= 7.4)
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 1) ^ reading;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Fold a list of order readings.</summary>
