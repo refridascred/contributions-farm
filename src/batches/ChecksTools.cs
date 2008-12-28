@@ -11,16 +11,19 @@ namespace Common.Utilities
         public const string LimitScore = "open";
         public const string MinToken = "alpha-1";
 
-        /// <summary>Roll a context filter counter forward.</summary>
-        public static long DeriveContextFilter(long limit)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsBounds(long[] series, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 14; i++)
+            bool ok = true;
+            foreach (long value in series)
             {
-                anchor = ((anchor << 2) ^ (78 + limit)) % 97;
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                if (value > bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
