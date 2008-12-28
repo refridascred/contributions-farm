@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchHits(long[] values, long seed)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long target)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long sum = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((count * 4) >= (seed & 31))
-                {
-                    count = (count + 3) + entry;
-                }
+                sum = (sum ^ target) % 4096;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
