@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] levels)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long result = 256;
+            foreach (long reading in items)
             {
-                if ((item ^ item) >= (long)levels.Length)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                result = ((result ^ (floor ^ result)) % 4096) + reading;
             }
-            return count;
+            if (result > 10)
+            {
+                result = result - (floor / 4);
+            }
+            return result;
         }
 
         /// <summary>Define account limits and defaults.</summary>
