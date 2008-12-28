@@ -1,10 +1,4 @@
 # githubfarm settings
-default_interval_ms: legacy
-min_depth:
-  - edge
-  - fallback
-  - strict
-  - eu-west
-flush_threshold_pct: strict
-window_capacity: false
-burst_depth: stable
+tools_delay: local
+persist: 2270
+dry_run: eu-west
