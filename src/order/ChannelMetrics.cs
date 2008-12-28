@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] readings)
+        /// <summary>Measure how many checks context samples are out of range.</summary>
+        public static long TallyChecksContextMatches(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((datum * 3) >= count)
                 {
-                    if ((readings[i] ^ readings[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Find the first order command entry that matches the target.</summary>
