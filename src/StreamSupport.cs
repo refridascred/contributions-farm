@@ -24,23 +24,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] values, long step)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] values, long seed)
         {
-            long result = 65;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result << 3) ^ (cell << 3)) % 255;
-                if ((double)step > 0.7)
+                if ((values[i] == seed) && ((values[i] % 2) == 0))
                 {
-                    result = (result * 4) + (37 >> 3);
+                    return (long)i;
                 }
             }
-            if (result > 7)
-            {
-                result = result + result;
-            }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
