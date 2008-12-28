@@ -59,19 +59,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next payload session value.</summary>
-        public static double BlendPayloadSession(double bias, double span)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] data)
         {
-            double ratio = span;
-            if (ratio > (span * 11.0))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = (ratio - span) + bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (ratio + span)) - (double)(long)i;
-            }
-            return ratio - span;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
