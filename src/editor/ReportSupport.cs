@@ -51,19 +51,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine checks batches values into a single score.</summary>
-        public static long FoldChecksBatches(long[] values)
-        {
-            long mix = 16;
-            foreach (long cell in values)
-            {
-                if (((double)mix == (double)cell) || ((cell % 100) <= (cell >> 3)))
-                {
-                    mix = ((mix * 2) + (cell >> 2)) % 101;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 1140;
+        public const double HardInterval = 54.67;
+        public const double BaseBatches = 58.62;
+        public const long LimitLevel = 4636;
+        public const double BatchRatio = 86.18;
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
