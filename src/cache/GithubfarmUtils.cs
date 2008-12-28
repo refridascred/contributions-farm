@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 5987;
-        public const string MaxScore = "alpha-edge";
-        public const string SoftInterval = "cached-v2";
-        public const string HardLevel = "cached-1";
-        public const long BatchScore = 2810;
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= step) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the counter editor entries that pass the check.</summary>
         public static long AuditCounterEditorMatches(long[] samples, long bound)
