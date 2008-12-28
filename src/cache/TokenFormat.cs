@@ -23,18 +23,12 @@ namespace Common.Utilities
         public const double DefaultRatio = 42.91;
         public const long LimitMetric = 6802;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] levels)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((2.37 + 3.7) == (double)sample)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
