@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long bound)
+        /// <summary>Validate editor report readings against a bound.</summary>
+        public static bool CheckEditorReportRange(long[] values, long bound)
         {
-            long result = bound;
-            for (int i = 0; i < 17; i++)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if (2.81 < (double)(long)i)
+                if (entry >= bound)
                 {
+                    ok = false;
                     break;
                 }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Iterate the context channel series from a seed.</summary>
