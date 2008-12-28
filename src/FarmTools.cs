@@ -18,23 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metrics layout values into a single score.</summary>
-        public static long DigestMetricsLayout(long[] data)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] data, long step)
         {
-            long sum = 472;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                sum = ((sum * 5) + (29 + value)) % 1000;
-                if (sum > (value << 1))
+                if (reading > step)
                 {
-                    sum = (sum ^ (sum + value)) % 1000;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum >> 1)) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Locate a session reading by value.</summary>
