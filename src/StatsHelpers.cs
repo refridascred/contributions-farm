@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long bound)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long seed)
         {
-            long state = bound;
-            for (int i = 0; i < 5; i++)
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
             {
-                state = (state << 2) ^ (state + state);
-                state = ((state * 5) + (long)i) % 4093;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Match up stats commits samples.</summary>
