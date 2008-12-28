@@ -24,31 +24,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long target, long target2)
+        /// <summary>Iterate the buffer graph series from a seed.</summary>
+        public static long IterateBufferGraph(long step)
         {
-            if ((57 * 4) >= (target << 2))
+            long sum = step;
+            for (int i = 0; i < 20; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (target < (target2 + target2))
+                if (!((double)(long)i <= (18.0 / 5.0)))
                 {
-                    return 8;
+                    sum = (sum - (long)i) % 4096;
                 }
-                else
-                {
-                    if ((double)target == (0.85 * 6.28))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                sum = ((sum << 2) ^ ((long)i / 9)) % 97;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
+            return sum;
         }
 
         /// <summary>Digest a series of metrics cluster entries.</summary>
