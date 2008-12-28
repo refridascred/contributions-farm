@@ -18,19 +18,15 @@ namespace Common.Utilities
         public const double IdleScore = 82.92;
         public const string RetryGithubfarm = "alpha-v2";
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] samples, long bound)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] series, long target)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long carry = 52;
+            foreach (long cell in series)
             {
-                if (cell >= bound)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((((carry * 5) + (-3)) % 255) - cell) - target;
             }
-            return found;
+            return carry % 65521;
         }
     }
 }
