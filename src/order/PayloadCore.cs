@@ -53,21 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count support command pairs that satisfy a relation.</summary>
-        public static long PairSupportCommandCount(long[] data)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Paused,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Hold a commits info.</summary>
