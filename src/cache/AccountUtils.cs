@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public long Owner { get; set; }
+            Closed,
+            Active,
+            Retry,
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
