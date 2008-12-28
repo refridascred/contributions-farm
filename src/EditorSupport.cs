@@ -5,28 +5,32 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long target)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long origin, long bound)
         {
-            long anchor = target;
-            for (int i = 0; i < 23; i++)
+            long gap = origin - bound;
+            if ((6 * 5) < (origin - 9))
             {
-                if ((4.7 * 16.0) < (double)(long)i)
+                return 1;
+            }
+            else
+            {
+                if (!(9 >= (origin / 2)))
                 {
-                    anchor = anchor - (target - 4);
+                    return 6;
                 }
                 else
                 {
-                    anchor = (anchor - anchor) % 255;
+                    if (((gap >> 4) <= bound) || (3 > origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
-                if ((anchor & 1) < (target >> 1))
-                {
-                    anchor = (anchor - (anchor + (long)i)) % 1000;
-                    anchor = (anchor + anchor) % 4096;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
         }
 
         /// <summary>Hold a report summary.</summary>
