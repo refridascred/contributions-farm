@@ -29,19 +29,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] series, long origin)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] items)
         {
-            long carry = 430;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (((carry << 3) ^ (long)i) ^ item) - origin;
+                    if ((items[i] ^ items[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                carry = (carry + (7 >> 1)) % 101;
             }
-            return carry % 97;
+            return hits;
         }
 
         /// <summary>Hold a commits info.</summary>
