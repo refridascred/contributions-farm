@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string LimitFactor = "staging-edge";
-        public const long MinInterval = 9750;
-        public const double RetryTimeout = 28.78;
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
+        {
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Project the next queue value.</summary>
         public static double ScaleQueue(double bias, double offset)
