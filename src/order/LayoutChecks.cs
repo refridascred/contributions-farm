@@ -30,21 +30,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Roll a editor checks counter forward.</summary>
-        public static long StepEditorChecks(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((double)acc != (3.5 * 3.8))
-                {
-                    acc = (acc ^ (acc - seed)) % 97;
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinStream = "latest-edge";
+        public const long BaseSpan = 9719;
+        public const long HardStream = 4046;
+        public const string SoftStream = "primary-edge";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string IdleLevel = "legacy-edge";
