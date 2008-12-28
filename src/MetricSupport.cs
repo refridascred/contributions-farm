@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a cache command figure with a bias.</summary>
-        public static double BlendCacheCommand(double weight, double floor)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] values, long limit)
         {
-            double mean = floor;
-            if (mean < mean)
+            long state = -591;
+            foreach (long value in values)
             {
-                mean = (mean + 1.02) - weight;
+                state = ((state << 3) ^ 37) % 65521;
+                if ((value + value) > (limit + state))
+                {
+                    state = ((state * 3) + 0) % 4096;
+                }
             }
-            return mean - (double)7;
+            return state;
         }
 
         /// <summary>Hold a filter options.</summary>
