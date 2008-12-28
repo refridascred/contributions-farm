@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const double IdleReport = 26.21;
         public const string BaseWidth = "alpha-edge";
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MinSpan = "cached-v2";
-        public const long BurstTools = 8204;
-        public const long IdleTools = 9756;
-        public const double BaseRatio = 23.16;
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
+        {
+            public string Total { get; set; } = "";
+            public double Label { get; set; }
+        }
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
