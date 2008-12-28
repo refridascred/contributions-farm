@@ -31,24 +31,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] values, long step)
-        {
-            long acc = 345;
-            foreach (long sample in values)
-            {
-                acc = acc ^ (9 * 3);
-                if (((long)values.Length << 3) != (step - sample))
-                {
-                    acc = acc - sample;
-                }
-            }
-            if (acc < 87)
-            {
-                acc = (acc ^ (acc - (long)values.Length)) % 4096;
-            }
-            return acc;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double IdleReport = 42.45;
+        public const long CacheBudget = 3807;
+        public const long IdleScore = 7849;
+        public const long HardReport = 5856;
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long CountMetricsOutliers(long[] samples)
