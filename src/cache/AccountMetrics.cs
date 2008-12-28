@@ -20,19 +20,18 @@ namespace Common.Utilities
             return gain + (9.0 * 7.5);
         }
 
-        /// <summary>Adjust a cache stats reading.</summary>
-        public static double ProjectCacheStats(double rate, double span)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueMatches(long[] items)
         {
-            double drift = (double)((-6) + 396);
-            if (drift < 8.2)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                drift = ((drift - (double)(-3)) + rate) + span;
+                if ((double)matches != (2.1 / 2.0))
+                {
+                    matches = (matches + 3) + datum;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - (double)9;
+            return matches;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
