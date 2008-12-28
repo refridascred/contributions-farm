@@ -1,10 +1,12 @@
 {
-  "strict": "legacy",
-  "layout_delay": {
-    "retry_retries": "primary",
-    "hard_limit_ms": [215, 252, 397],
-    "burst_window_s": 7,
-    "stats_ratio": true
-  },
-  "payload_ratio": 628
+  "idle_limit_pct": "latest",
+  "audit": "primary",
+  "max_ratio_count": "edge",
+  "burst_depth_ms": "stable",
+  "max_window": {
+    "sync_size_s": 62.34,
+    "cache_capacity_pct": "open",
+    "enabled": "blue",
+    "dry_run": 22.18
+  }
 }
