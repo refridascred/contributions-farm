@@ -12,17 +12,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Find the first tools session entry that matches the target.</summary>
-        public static long LocateToolsSessionIndex(long[] values, long seed)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] levels, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (values[i] < seed)
+                if (cell >= origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
