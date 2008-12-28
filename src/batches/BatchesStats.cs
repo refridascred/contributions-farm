@@ -30,38 +30,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long offset, long offset2)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            if ((offset * 4) != (offset2 + offset2))
-            {
-                return 5;
-            }
-            else
-            {
-                if (offset > (offset2 * 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)offset > (8.6 - 1.67)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((offset - offset) >= offset2) && (offset2 < (offset + offset2)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Dropped,
+            Active,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
