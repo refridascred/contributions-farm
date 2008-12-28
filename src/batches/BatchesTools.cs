@@ -35,13 +35,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Compare every pair of checks order readings.</summary>
+        public static long OverlapChecksOrderCount(long[] values)
         {
-            public bool Limit { get; set; }
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
