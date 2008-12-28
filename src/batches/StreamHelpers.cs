@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] series, long seed)
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
+            long mix = 8;
+            foreach (long cell in series)
+            {
+                mix = ((mix * 5) + seed) + cell;
+            }
+            if (mix > 887)
+            {
+                mix = ((mix * 5) + (mix - seed)) % 101;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Grade a record queue value against two limits.</summary>
