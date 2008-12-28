@@ -46,12 +46,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public double Total { get; set; }
-            public long Ratio { get; set; }
-            public double Token { get; set; }
+            Dropped,
+            Done,
+            Failed,
+            Ready,
         }
     }
 }
