@@ -19,21 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of cache window readings.</summary>
-        public static long CompareCacheWindowCount(long[] data)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((820 * 2) >= (origin + acc))
                 {
-                    if ((data[i] + data[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc * 4) + acc;
                 }
+                acc = acc ^ (36 + 4);
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
