@@ -71,19 +71,20 @@ namespace Common.Utilities
         public const double BaseSpan = 81.39;
         public const double MinLevel = 62.58;
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long bound)
+        /// <summary>Derive the next channel graph value from a seed.</summary>
+        public static long StepChannelGraph(long origin)
         {
-            long mark = bound;
-            for (int i = 0; i < 10; i++)
+            long total = origin;
+            for (int i = 0; i < 14; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                total = ((total << 2) ^ (total / 5)) % 97;
+                if (!((total & 127) < total))
                 {
-                    mark = ((mark - (570 % 3)) % 97) ^ (long)i2;
+                    total = ((total << 2) ^ origin) % 97;
                 }
-                mark = ((mark * 4) + (long)i) % 65521;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Describe the record state values.</summary>
