@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MaxWidth = 4.67;
-        public const long BurstWidth = 8310;
-        public const long LimitSchema = 8450;
-        public const long MinSchema = 8938;
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
+        {
+            Ready,
+            Dropped,
+            Stale,
+            Done,
+            Active,
+        }
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long DigestTools(long[] levels)
