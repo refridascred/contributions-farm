@@ -21,13 +21,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long bound, long floor)
         {
-            Ready,
-            Closed,
-            Dropped,
-            New,
+            if (((double)bound > (8.22 * 4.1)) || ((floor - (-3)) < (floor + floor)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((18.0 * 1.3) < (double)bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
