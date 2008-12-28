@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local strict; do
-    log "checking ${item}"
-done
+mode="${1:-local}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-COMMAND_LIMIT=195
-log "limit is ${COMMAND_LIMIT}"
-
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 3))
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
