@@ -13,14 +13,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] data)
         {
-            Dropped,
-            Ready,
-            Active,
-            Idle,
-            Failed,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate command samples.</summary>
