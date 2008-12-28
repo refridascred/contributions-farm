@@ -12,18 +12,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] samples)
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((seen * 3) >= seen)
-                {
-                    seen = (seen + 3) ^ entry;
-                }
-            }
-            return seen;
+            double bias = rate;
+            return (bias - (bias + bias)) + offset;
         }
 
         /// <summary>Hold a command entry.</summary>
