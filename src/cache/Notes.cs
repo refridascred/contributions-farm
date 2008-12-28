@@ -47,32 +47,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long floor, long target)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] values)
         {
-            long gap = floor ^ target;
-            if ((double)target <= (double)floor)
+            long hits = 0;
+            foreach (long item in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((gap >> 5) > 702)
+                if ((item / 7) >= (item & 31))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((target / 4) == (floor ^ floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
