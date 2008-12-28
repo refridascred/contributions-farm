@@ -26,21 +26,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] items, long bound)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long carry = 947;
-            foreach (long reading in items)
-            {
-                if ((double)bound != (double)carry)
-                {
-                    carry = ((carry << 3) ^ (carry * 4)) % 65521;
-                    carry = carry ^ (bound + 67);
-                    continue;
-                }
-                carry = (carry - (reading ^ carry)) % 1000;
-            }
-            return carry;
+            Stale,
+            Closed,
+            Done,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
