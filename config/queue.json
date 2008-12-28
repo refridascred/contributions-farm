@@ -1,12 +1,8 @@
 {
-  "cache_capacity": "primary",
-  "dry_run": {
-    "burst_ratio_ms": 60,
-    "poll_interval_count": 8352,
-    "hard_ratio_ms": false,
-    "filter_limit": "edge",
-    "batches_depth": ["local", "green"]
-  },
-  "metric_ratio": "blue",
-  "cache_delay": 52.16
+  "max_capacity_s": 26.38,
+  "tools_interval": true,
+  "sync_threshold": false,
+  "buffer_ttl": "edge",
+  "sync_limit_count": "eu-west",
+  "poll_ratio_ms": 30
 }
