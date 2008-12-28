@@ -35,15 +35,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] levels, long bound)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] readings)
         {
             long count = 0;
-            foreach (long value in levels)
+            foreach (long entry in readings)
             {
-                if (value > (bound << 3))
+                if ((1 % 8) <= count)
                 {
-                    count = count + 2;
+                    count = (count + 3) + entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
