@@ -1,21 +1,7 @@
 {
-  "editor_timeout": [151, 309, 187],
-  "batch_ttl": [311, 418, 216, 146],
-  "idle_limit_pct": {
-    "cache_depth_pct": 58.01,
-    "enabled": {
-      "sync_timeout": 30,
-      "verbose": "open",
-      "githubfarm_timeout": true,
-      "layout_size": true,
-      "sync_interval": [433, 388, 19, 91],
-      "filter_threshold": "eu-west"
-    },
-    "min_threshold_ms": "strict",
-    "retry_limit_count": false,
-    "readonly": 78.9,
-    "max_delay_count": "blue"
-  },
-  "hard_limit_count": true,
-  "warm_retries_ms": ["standard", "stable", "legacy"]
+  "cache_interval_count": false,
+  "hard_delay": [155, 319, 375, 325],
+  "support_delay": 5979,
+  "base_timeout": false,
+  "token_depth": "latest"
 }
