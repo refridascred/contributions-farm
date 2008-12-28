@@ -1,4 +1,17 @@
 # githubfarm settings
-tools_delay: local
-persist: 2270
-dry_run: eu-west
+soft_timeout_ms:
+  - 340
+  - 464
+  - 362
+  - 425
+base_depth_pct:
+  - open
+  - primary
+  - cached
+  - legacy
+compress: 6736
+readonly: primary
+sync_delay: 28.24
+warm_limit_ms:
+  - 187
+  - 22
