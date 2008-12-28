@@ -1,8 +1,7 @@
 {
-  "verbose": 1468,
-  "report_interval": "local",
-  "compress": "latest",
-  "session_threshold": "strict",
-  "metrics_ratio": "blue",
-  "warm_depth": 18.69
+  "cache_size": false,
+  "idle_delay_pct": true,
+  "min_size_pct": "latest",
+  "enabled": ["staging", "staging"],
+  "dry_run": "latest"
 }
