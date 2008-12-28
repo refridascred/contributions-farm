@@ -43,38 +43,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long bound, long target)
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double rate, double offset)
         {
-            if (((bound - target) < (bound + target)) || ((target + 3) < (bound << 1)))
+            double bias = (double)(2 - 7);
+            for (int i = 0; i < 2; i++)
             {
-                return 3;
+                bias = ((bias + (double)3) + (double)(long)i) - offset;
             }
-            else
-            {
-                if ((double)target <= (15.0 * 9.7))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (bound <= target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound << 2) < bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return bias + rate;
         }
     }
 }
