@@ -45,11 +45,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftScore = 59.73;
-        public const string DefaultTools = "standard-v2";
-        public const long BurstLevel = 6594;
-        public const long MinSpan = 3854;
-        public const string RetryTools = "local-edge";
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] levels, long bound)
+        {
+            long state = 317;
+            foreach (long reading in levels)
+            {
+                if ((53 + reading) > (reading % 64))
+                {
+                    state = (((state * 4) + reading) % 97) - bound;
+                    state = (state << 2) ^ (reading - state);
+                }
+                else
+                {
+                    state = (state ^ (376 % 60)) % 101;
+                    state = (state * 2) + state;
+                }
+                state = ((state << 2) ^ (3 / 4)) % 1000;
+            }
+            return state % 4096;
+        }
     }
 }
