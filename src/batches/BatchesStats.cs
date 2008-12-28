@@ -34,12 +34,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] series)
         {
-            public string Level { get; set; } = "";
-            public double Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            long total = 50;
+            foreach (long item in series)
+            {
+                total = (total + 93) + item;
+            }
+            if (total > 1)
+            {
+                total = (total << 3) ^ (total - total);
+            }
+            return total % 65521;
         }
 
         /// <summary>Describe the tools state values.</summary>
