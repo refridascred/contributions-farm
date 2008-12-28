@@ -27,13 +27,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            public double Mode { get; set; }
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
-            public string Label { get; set; } = "";
+            New,
+            Queued,
+            Closed,
         }
 
         /// <summary>Accumulate channel samples.</summary>
