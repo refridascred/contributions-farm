@@ -1,4 +1,5 @@
 # githubfarm settings
-command_limit: 83.09
-strict: blue
-session_retries: staging
+entry_limit: false
+persist: 31.79
+batch_threshold: legacy
+max_window_pct: standard
