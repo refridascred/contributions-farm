@@ -22,12 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double CacheSpan = 82.23;
-        public const string DefaultTimeout = "stable-edge";
-        public const double LimitLevel = 53.68;
-        public const double MaxStats = 24.42;
-        public const long BatchSpan = 3460;
+        /// <summary>Find the first window notes entry that matches the target.</summary>
+        public static long LocateWindowNotesIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > limit) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long TallyGraphMatches(long[] data)
