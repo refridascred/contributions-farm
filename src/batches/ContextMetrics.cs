@@ -45,18 +45,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] items, long offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] readings)
         {
-            long count = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (!((double)value < (double)count) || ((value >> 4) != (value - offset)))
+                if (((datum % 16) <= matches) || ((double)datum < (2.6 / 5.0)))
                 {
-                    count = count + 3;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
