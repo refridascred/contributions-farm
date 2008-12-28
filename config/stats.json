@@ -1,7 +1,5 @@
 {
-  "warm_capacity_s": 1001,
-  "format_threshold": 42.94,
-  "sync_timeout_ms": "latest",
-  "audit": "open",
-  "warm_retries_ms": "legacy"
+  "soft_size": 100,
+  "base_depth_count": "latest",
+  "entry_ratio": "stable"
 }
