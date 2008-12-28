@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchRange(long[] readings, long target)
         {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-            public double Stamp { get; set; }
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
