@@ -34,12 +34,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheTimeout = "stable";
-        public const long WindowWidth = 5758;
-        public const string RetryGraph = "standard-1";
-        public const long DefaultCount = 5980;
-        public const long BurstGraph = 5134;
+        /// <summary>Locate a channel githubfarm reading by value.</summary>
+        public static long SeekChannelGithubfarmIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool CheckWindowRange(long[] data, long origin)
