@@ -40,17 +40,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a report format sample.</summary>
-        public static long LookupReportFormatIndex(long[] data, long target)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (data[i] < target)
+                if (((979 & 15) >= (total * 2)) && ((total + (long)i) > (total >> 3)))
                 {
-                    return (long)i;
+                    total = (total * 4) + (step + 42);
+                    total = ((total << 2) ^ (step / 7)) % 101;
                 }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count the layout counter entries that pass the check.</summary>
