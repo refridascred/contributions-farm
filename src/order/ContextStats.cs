@@ -40,10 +40,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleDepth = 8160;
-        public const long BaseFactor = 5184;
-        public const long SoftGithubfarm = 951;
-        public const string LimitGithubfarm = "fallback";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 2723;
+        public const long DefaultPayload = 8377;
+        public const double MaxBudget = 5.5;
+        public const long BurstCount = 2784;
+        public const long MinPayload = 9769;
     }
 }
