@@ -20,18 +20,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelOutliers(long[] readings)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (!((229 ^ matches) >= (matches - entry)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Done,
+            Locked,
+            Stale,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
