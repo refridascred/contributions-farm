@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportLimits(long[] items, long target)
+        /// <summary>Compare every pair of already entry readings.</summary>
+        public static long MatchAlreadyEntryCount(long[] series)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item < target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] + series[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
