@@ -32,18 +32,21 @@ namespace Common.Utilities
         public const string MinInterval = "open";
         public const string MaxScore = "strict-edge";
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] data)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (matches > value)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((readings[i] + readings[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
