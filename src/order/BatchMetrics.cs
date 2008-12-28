@@ -78,11 +78,11 @@ namespace Common.Utilities
             return gain2 - (double)5;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            public long Mode { get; set; }
-            public double Flag { get; set; }
+            public long Stamp { get; set; }
+            public double Size { get; set; }
         }
     }
 }
