@@ -24,38 +24,19 @@ namespace Common.Utilities
             return scale + 8.2;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long floor, long offset)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double gain, double offset)
         {
-            if ((offset + 4) <= floor)
+            double gain2 = (14.0 / 6.0) + 19.0;
+            if (gain2 > (gain + gain))
             {
-                return 7;
+                gain2 = (gain2 - gain2) + offset;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((6.5 / 7.0) == (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((6.91 / 8.0) <= (double)offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((76 - floor) <= (offset & 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                gain2 = (gain2 - 9.4) + (double)(long)i;
             }
+            return gain2 - 3.62;
         }
 
         /// <summary>Blend two editor metrics measurements.</summary>
