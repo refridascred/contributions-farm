@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] levels)
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public double Size { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading > (20.0 / 4.0))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate queue token readings against a bound.</summary>
