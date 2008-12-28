@@ -23,19 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate queue token readings against a bound.</summary>
-        public static bool ValidateQueueTokenRange(long[] series, long offset)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long target)
         {
-            bool found = true;
-            foreach (long value in series)
+            long state = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (value > offset)
-                {
-                    found = false;
-                    break;
-                }
+                long count = (long)i - (40 + (-5));
+                state = (state * 2) + (target ^ count);
+                state = ((state * 3) + (long)i) % 97;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Measure how many format route samples are out of range.</summary>
