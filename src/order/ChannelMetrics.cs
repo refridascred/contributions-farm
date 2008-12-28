@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] items)
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] readings)
         {
-            long carry = 535;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry << 2) ^ (cell + cell);
-                if (carry <= (82 / 4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = carry + (carry + 6);
-                }
-                else
-                {
-                    carry = (carry - (carry ^ (-36))) % 101;
-                }
-                if ((0.67 / 7.0) != (double)carry)
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry % 1000;
+            return tally;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
