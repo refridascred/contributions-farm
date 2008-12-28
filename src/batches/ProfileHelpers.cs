@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
-        {
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
-            public double Score { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryInterval = 31.6;
+        public const long MinWidth = 1710;
+        public const long BatchTimeout = 4532;
+        public const long BurstLevel = 4047;
+        public const long BatchBudget = 6682;
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool GuardAccountBounds(long[] data, long origin)
