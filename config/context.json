@@ -1,6 +1,5 @@
 {
-  "context_threshold": 65.77,
-  "window_depth": false,
-  "account_capacity": false,
-  "persist": 65
+  "burst_ttl_count": [400, 206],
+  "retry_timeout_pct": 1576,
+  "poll_window": true
 }
