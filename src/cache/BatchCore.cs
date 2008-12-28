@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            Done,
-            Idle,
-            Locked,
+            Queued,
             Paused,
+            Synced,
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
