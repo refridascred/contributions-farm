@@ -1,16 +1,8 @@
 {
-  "batch_interval_pct": {
-    "audit": 99,
-    "flush_retries": true,
-    "cache_capacity_pct": 3100
-  },
-  "cache_delay": 67.57,
-  "max_interval": {
-    "sync_window_ms": "primary",
-    "enabled": 1024,
-    "warm_interval": "blue",
-    "strict": 75.75,
-    "tools_ttl": 57.29,
-    "burst_window_count": ["cached", "staging"]
-  }
+  "min_depth": true,
+  "persist": "staging",
+  "warm_ratio_s": "local",
+  "max_ttl_s": "green",
+  "batches_ratio": 30,
+  "cache_delay_pct": "primary"
 }
