@@ -1,20 +1,6 @@
 {
-  "farm_delay": ["cached", "legacy", "eu-west"],
-  "base_limit_s": "open",
-  "compress": {
-    "metric_timeout": 500,
-    "filter_retries": "cached",
-    "strict": 100,
-    "cache_window": 78,
-    "batch_retries_pct": {
-      "idle_timeout": false,
-      "readonly": ["edge", "standard", "staging", "staging"],
-      "strict": "cached",
-      "batch_threshold_pct": "open"
-    },
-    "contributi_timeout": "latest"
-  },
-  "default_capacity": 250,
-  "retry_timeout_ms": false,
-  "warm_window_count": "cached"
+  "min_capacity": [267, 449],
+  "default_capacity": true,
+  "persist": 8256,
+  "default_delay_ms": 30
 }
