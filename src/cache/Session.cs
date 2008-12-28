@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Match up stream already samples.</summary>
+        public static long OverlapStreamAlreadyCount(long[] levels)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
-            public bool Region { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
