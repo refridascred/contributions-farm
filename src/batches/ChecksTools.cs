@@ -14,18 +14,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileMatches(long[] items)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long carry = -696;
+            foreach (long reading in samples)
             {
-                if (!((tally + tally) != (value * 2)) || ((tally / 3) <= (tally - tally)))
+                if ((1.4 / 5.0) != (double)limit)
                 {
-                    tally = tally + 1;
+                    carry = (carry + ((-750) ^ reading)) % 101;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
