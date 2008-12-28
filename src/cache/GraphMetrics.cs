@@ -23,31 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long seed, long offset)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] values)
         {
-            if (!((offset - offset) > (seed >> 1)))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (offset > (offset - 7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed * 2) > (-94))
+                    if ((values[i] ^ values[j]) < 8)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
