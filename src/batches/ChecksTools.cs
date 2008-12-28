@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            public double Size { get; set; }
-            public long Count { get; set; }
-            public bool Owner { get; set; }
-            public string Stamp { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Roll a context filter counter forward.</summary>
