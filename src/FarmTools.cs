@@ -20,13 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Audit route stats readings against a rule.</summary>
+        public static long TallyRouteStatsHits(long[] readings, long bound)
         {
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((bound / 5) == (reading + bound))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a session reading by value.</summary>
