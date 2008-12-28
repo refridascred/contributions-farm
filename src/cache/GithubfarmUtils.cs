@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double rate, double floor)
-        {
-            double ratio = floor * 7.0;
-            if (ratio < (0.1 * 7.1))
-            {
-                ratio = (ratio - floor) - rate;
-            }
-            return ratio - ratio;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitSpan = 6078;
+        public const double CacheSize = 47.31;
+        public const string CacheCommand = "staging-v2";
+        public const double SoftInterval = 62.2;
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double AdjustTools(double gain, double offset)
