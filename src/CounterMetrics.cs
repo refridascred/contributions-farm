@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double bias, double bias2)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueHits(long[] items)
         {
-            double load = 1.0;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                load = ((load + 0.1) + (double)(long)i) - bias;
+                if ((sample - sample) != (matches * 2))
+                {
+                    matches = matches + 1;
+                }
             }
-            return load + bias2;
+            return matches;
         }
 
         /// <summary>Match up format samples.</summary>
