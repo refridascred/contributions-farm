@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Measure how many editor metric samples are out of range.</summary>
+        public static long AuditEditorMetricGaps(long[] levels, long step)
         {
-            Draft,
-            Idle,
-            Done,
-            Active,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (datum <= 9)
+                {
+                    count = (count + 3) + step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a record record.</summary>
