@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] levels)
-        {
-            long mark = 252;
-            foreach (long entry in levels)
-            {
-                mark = ((mark * 5) + (mark ^ mark)) - entry;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepSpan = "cached-edge";
+        public const string StepWidth = "standard";
+        public const long CacheMetric = 7095;
+        public const long BaseMetric = 5627;
+        public const double StepMetric = 45.13;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long DigestChecks(long[] levels)
