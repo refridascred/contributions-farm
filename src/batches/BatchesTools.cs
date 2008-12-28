@@ -23,15 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the cache schema series from a seed.</summary>
-        public static long IterateCacheSchema(long seed)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long anchor = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            Retry,
+            Dropped,
+            Pending,
+            Locked,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
