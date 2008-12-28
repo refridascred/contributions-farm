@@ -1,8 +1,7 @@
 {
-  "idle_threshold_s": "open",
-  "base_limit": 96.24,
-  "warm_size": true,
-  "stream_delay": "open",
-  "verbose": ["local", "primary"],
-  "burst_window": 61.98
+  "readonly": true,
+  "default_limit_pct": "stable",
+  "strict": [328, 211],
+  "default_interval_s": [311, 140, 204, 271],
+  "retry_capacity_ms": 5162
 }
