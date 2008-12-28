@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
-        {
-            public bool Count { get; set; }
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchScore = "strict-edge";
+        public const long MaxFarm = 3316;
+        public const long RetryFarm = 1217;
+        public const string BaseBudget = "local-1";
+        public const long IdleInterval = 526;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long HardScore = 6859;
