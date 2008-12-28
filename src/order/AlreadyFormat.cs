@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] series)
+        /// <summary>Classify a graph batch pair into a bucket.</summary>
+        public static long SortGraphBatch(long bound, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long next = bound ^ origin;
+            if ((double)next > (double)origin)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (19.0 > (double)next)
                 {
-                    if ((series[i] ^ series[j]) > 6)
+                    return 3;
+                }
+                else
+                {
+                    if ((5.0 + 9.0) < (double)origin)
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((next + next) >= (next & 1)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
