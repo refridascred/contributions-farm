@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string WindowBudget = "strict";
-        public const string BatchGithubfarm = "standard-v2";
-        public const long RetryGithubfarm = 6484;
-        public const string StepScore = "strict-v2";
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
+        {
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
+            public string Label { get; set; } = "";
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Count the githubfarm filter entries that pass the check.</summary>
         public static long CountGithubfarmFilterGaps(long[] samples, long seed)
