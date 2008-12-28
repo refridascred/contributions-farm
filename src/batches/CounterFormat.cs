@@ -37,12 +37,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
-            public bool Level { get; set; }
+            Retry,
+            Ready,
+            Stale,
+            Closed,
+            Pending,
         }
     }
 }
