@@ -32,22 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch checks entries that pass the check.</summary>
-        public static long CountBatchChecksHits(long[] values)
+        /// <summary>Combine notes channel values into a single score.</summary>
+        public static long ScoreNotesChannel(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long mix = 32;
+            foreach (long reading in samples)
             {
-                if (((datum / 3) < (datum / 6)) || !((datum / 2) > tally))
+                if ((double)reading != (5.0 + 4.2))
                 {
-                    tally = tally + 2;
+                    mix = ((mix << 2) ^ (mix << 2)) % 4096;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mix = (mix + (reading / 8)) % 255;
                 }
             }
-            return tally;
+            return mix % 97;
         }
     }
 }
