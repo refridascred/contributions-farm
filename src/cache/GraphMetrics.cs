@@ -12,11 +12,11 @@ namespace Common.Utilities
         public const long RetryBudget = 7543;
         public const double CacheWindow = 26.06;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinRecord = 79.5;
-        public const long WindowDepth = 1909;
-        public const double BatchDepth = 51.43;
-        public const long IdleRecord = 6002;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 2612;
+        public const long IdleGraph = 8234;
+        public const long BurstDepth = 897;
+        public const string RetryGraph = "local-v2";
 
         /// <summary>Accumulate buffer batch samples.</summary>
         public static long FoldBufferBatch(long[] data, long target)
