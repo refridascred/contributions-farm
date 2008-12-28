@@ -1,6 +1,9 @@
-id,state,token,owner,rank
-1,59.6,stable,94.67,77.6
-2,690,72.08,98.74,921
-3,213,412,legacy,148
-4,staging,338,36.3,local
-5,local,606,primary,eu-west
+id,owner,region
+1,72.31,green
+2,206,4.33
+3,41.79,41
+4,eu-west,994
+5,34.12,557
+6,19.32,286
+7,578,strict
+8,269,fallback
