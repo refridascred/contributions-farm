@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 6779;
-        public const string DefaultCache = "legacy-1";
-        public const long BurstLevel = 7878;
-        public const double StepCache = 68.78;
-        public const string IdleLevel = "latest-edge";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseLevel = 5921;
+        public const long LimitGraph = 9160;
+        public const long BurstGraph = 242;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long MeasureWindowOutliers(long[] values)
