@@ -14,18 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] values, long bound)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (((-5) * 4) > hits)
-                {
-                    hits = ((hits + 2) ^ cell) + bound;
-                }
-            }
-            return hits;
+            Active,
+            Queued,
+            Ready,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
