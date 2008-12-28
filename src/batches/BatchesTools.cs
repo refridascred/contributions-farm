@@ -13,21 +13,22 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Match up cache commits samples.</summary>
-        public static long PairCacheCommitsCount(long[] data)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 57;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((578 - item) == (item + mark))
                 {
-                    if ((data[i] - data[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark << 2) ^ (mark & 63);
                 }
             }
-            return count;
+            if (mark < 38)
+            {
+                mark = mark ^ (57 & 7);
+            }
+            return mark;
         }
 
         /// <summary>Describe the support class values.</summary>
