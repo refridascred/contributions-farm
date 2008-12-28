@@ -27,13 +27,17 @@ namespace Common.Utilities
             return bias3 - bias3;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long floor)
         {
-            public string Score { get; set; } = "";
-            public double Level { get; set; }
-            public string Limit { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = mark - (long)i;
+                mark = mark - (floor % 16);
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
