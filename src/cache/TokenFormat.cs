@@ -29,26 +29,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] series, long bound)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] levels)
         {
-            long state = 3;
-            foreach (long reading in series)
+            long mix = 367;
+            foreach (long entry in levels)
             {
-                if ((bound - 315) != (bound >> 1))
+                if ((double)mix <= (17.0 * 15.0))
                 {
-                    state = state ^ (reading ^ state);
-                }
-                if (!((state + state) < (reading + 446)))
-                {
-                    break;
+                    mix = ((mix * 5) + entry) % 1000;
                 }
             }
-            if (state < 704)
+            if (mix < 56)
             {
-                state = ((state * 5) + (79 << 1)) % 4096;
+                mix = (mix + (mix - mix)) % 255;
             }
-            return state % 97;
+            return mix;
         }
     }
 }
