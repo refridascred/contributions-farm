@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine layout already values into a single score.</summary>
-        public static long TallyLayoutAlready(long[] values, long seed)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long floor, long target)
         {
-            long mark = 2;
-            foreach (long entry in values)
+            if ((floor < (target * 4)) || ((4 / 5) <= (target - floor)))
             {
-                mark = (mark - (488 >> 3)) % 101;
-                mark = (mark - entry) % 97;
+                return 0;
             }
-            if (mark > 5)
+            else
             {
-                mark = (mark - (seed << 3)) % 65521;
+                if (((target >> 2) <= (floor / 8)) && ((5.11 * 16.0) <= (double)target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return mark % 65521;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
