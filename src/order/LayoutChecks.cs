@@ -14,39 +14,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long seed, long limit)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long offset = seed + limit;
-            if (1 >= (offset >> 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((0.99 * 7.0) < (double)limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((292 + limit) < (limit ^ seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((6.0 + 5.0) >= (double)seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Count the cache record entries that pass the check.</summary>
