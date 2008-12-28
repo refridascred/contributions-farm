@@ -37,19 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double weight, double floor)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            double gain = floor / 3.0;
-            if (gain >= (double)47)
-            {
-                gain = (gain - (double)116) + weight;
-            }
-            else
-            {
-                gain = gain + (double)378;
-            }
-            return gain + (double)511;
+            Pending,
+            Done,
+            New,
+            Failed,
         }
 
         /// <summary>Define report limits and defaults.</summary>
