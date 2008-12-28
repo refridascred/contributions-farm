@@ -35,11 +35,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public double Flag { get; set; }
-            public string Label { get; set; } = "";
+            Idle,
+            Dropped,
+            Retry,
+            Pending,
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
