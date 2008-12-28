@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 6484;
         public const string StepScore = "strict-v2";
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Count the githubfarm filter entries that pass the check.</summary>
+        public static long CountGithubfarmFilterGaps(long[] samples, long seed)
         {
-            Failed,
-            Stale,
-            Synced,
-            Closed,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((double)item <= (double)seed)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the cache kind values.</summary>
