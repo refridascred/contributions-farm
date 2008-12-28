@@ -39,12 +39,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Find the first channel buffer entry that matches the target.</summary>
+        public static long LookupChannelBufferIndex(long[] items, long floor)
         {
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
-            public bool Flag { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
