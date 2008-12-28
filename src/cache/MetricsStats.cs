@@ -23,21 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] values)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 25;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i = 0; i < 11; i++)
                 {
-                    if ((values[i] + values[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (((mix * 3) + 3) % 97) ^ value;
+                    mix = (mix << 3) ^ (long)i;
                 }
+                mix = ((mix << 3) ^ (mix >> 3)) % 1000;
+                mix = ((mix << 3) ^ 5) % 101;
             }
-            return hits;
+            return mix % 65521;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
