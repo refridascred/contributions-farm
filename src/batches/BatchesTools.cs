@@ -13,22 +13,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] data)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long mark = 57;
-            foreach (long item in data)
-            {
-                if ((578 - item) == (item + mark))
-                {
-                    mark = (mark << 2) ^ (mark & 63);
-                }
-            }
-            if (mark < 38)
-            {
-                mark = mark ^ (57 & 7);
-            }
-            return mark;
+            public long Size { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Adjust a cache reading.</summary>
