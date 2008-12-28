@@ -24,10 +24,14 @@ namespace Common.Utilities
             return rate + (floor * 19.0);
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepTimeout = "legacy-edge";
-        public const double SoftRatio = 5.2;
-        public const string RetryDepth = "primary";
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Pending,
+            Closed,
+            Stale,
+            Synced,
+        }
 
         /// <summary>Match up schema samples.</summary>
         public static long OverlapSchemaCount(long[] readings)
