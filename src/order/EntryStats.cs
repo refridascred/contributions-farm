@@ -49,12 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double rate, double bias)
         {
-            Retry,
-            Draft,
-            Closed,
+            double weight = (bias / 5.0) + (double)94;
+            if (weight > bias)
+            {
+                weight = weight - (double)822;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (rate * 9.8)) + (double)(long)i;
+            }
+            return weight - rate;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
