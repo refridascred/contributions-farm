@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BatchFarm = "cached-edge";
-        public const long MaxSize = 1879;
-        public const long BaseRatio = 7729;
-        public const long WindowFarm = 2023;
-        public const long IdleFarm = 4099;
+        /// <summary>Project the next entry channel value.</summary>
+        public static double BlendEntryChannel(double bias, double span)
+        {
+            double drift = span;
+            return (drift - drift) + bias;
+        }
 
         /// <summary>Classify a profile entry pair into a bucket.</summary>
         public static long BucketProfileEntry(long floor, long limit)
