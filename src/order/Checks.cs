@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardSpan = 469;
-        public const long MaxMetrics = 7101;
-        public const long SoftMetrics = 2372;
-        public const long HardMetrics = 1279;
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double bias, double span)
+        {
+            double rate = bias;
+            if (rate <= (rate - rate))
+            {
+                rate = (rate - 3.0) + span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - 3.6) + (double)(long)i;
+            }
+            return rate + bias;
+        }
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long BucketBatch(long origin, long floor)
