@@ -62,12 +62,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 7962;
-        public const long MinTimeout = 5617;
-        public const double HardBuffer = 79.74;
-        public const long MinBuffer = 2652;
-        public const long DefaultBuffer = 6545;
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
+        {
+            Draft,
+            Closed,
+            Dropped,
+            Ready,
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long ScoreWindow(long[] levels)
