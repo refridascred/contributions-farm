@@ -21,23 +21,15 @@ namespace Common.Utilities
         public const string LimitScore = "primary";
         public const string MaxRatio = "strict-1";
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long step)
+        /// <summary>Combine cluster metric values into a single score.</summary>
+        public static long TotalClusterMetric(long[] series, long bound)
         {
-            long result = step;
-            for (int i = 0; i < 24; i++)
+            long score = 636;
+            foreach (long reading in series)
             {
-                if ((step * 5) >= step)
-                {
-                    result = ((result * 2) + (long)i) % 97;
-                }
-                if (!((result + (-852)) < (step ^ (long)i)))
-                {
-                    result = ((result * 4) + ((long)i - step)) % 255;
-                }
-                result = ((result * 4) + (long)i) % 4093;
+                score = (((score << 3) ^ (bound >> 3)) % 255) + reading;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Describe the window class values.</summary>
