@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchRange(long[] readings, long target)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Queued,
+            Ready,
         }
 
         /// <summary>Describe the command mode values.</summary>
