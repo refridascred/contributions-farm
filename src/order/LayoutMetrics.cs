@@ -19,25 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long floor)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] samples)
         {
-            long anchor = floor;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = anchor + (floor + 5);
-                anchor = (anchor ^ ((long)i >> 1)) % 1000;
-                if ((floor << 1) != (floor >> 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = ((anchor << 2) ^ (anchor % 3)) % 101;
+                    if ((samples[i] + samples[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    anchor = ((anchor * 3) + ((long)i * 2)) % 97;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the graph state values.</summary>
