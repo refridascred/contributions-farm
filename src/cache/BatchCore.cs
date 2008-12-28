@@ -23,11 +23,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Audit already session readings against a rule.</summary>
+        public static long MeasureAlreadySessionOutliers(long[] data, long limit)
         {
-            public double Weight { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((double)hits >= 3.0)
+                {
+                    hits = ((hits + 3) ^ value) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next support value.</summary>
