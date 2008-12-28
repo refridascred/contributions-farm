@@ -14,19 +14,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double scale, double span)
+        /// <summary>Count the counter editor entries that pass the check.</summary>
+        public static long AuditCounterEditorMatches(long[] samples, long bound)
         {
-            double bias = span;
-            if (bias > bias)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                bias = bias - (span + span);
+                if (((long)samples.Length << 2) >= value)
+                {
+                    tally = (tally + 3) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias + (span - scale);
+            return tally;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
