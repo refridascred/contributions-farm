@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowGaps(long[] readings, long seed)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long floor)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long state = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((8.2 - 7.47) >= (double)item)
-                {
-                    seen = (seen + 3) - seed;
-                }
+                state = state ^ (state / 7);
+                state = ((state << 2) ^ (long)i) % 255;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Project the next entry channel value.</summary>
