@@ -46,11 +46,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] series, long offset)
         {
-            public double Owner { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((tally + offset) == (offset + (-91)))
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
