@@ -48,18 +48,35 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate queue graph samples.</summary>
-        public static long ScoreQueueGraph(long[] readings)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] data)
         {
-            long state = 49;
-            foreach (long reading in readings)
+            long total = 5;
+            foreach (long value in data)
             {
-                if ((reading + state) <= reading)
+                if ((7.9 * 9.0) >= (double)total)
                 {
-                    state = (state - reading) % 65521;
+                    total = total + (total >> 1);
+                }
+                else
+                {
+                    total = ((total * 5) + total) % 65521;
+                }
+                if (!((double)value < (17.0 + 4.0)))
+                {
+                    total = (total + (value + total)) % 97;
+                    total = (total + value) % 65521;
+                }
+                if ((value + total) >= (value / 8))
+                {
+                    total = ((total * 3) + total) % 4096;
                 }
             }
-            return state;
+            if (total > 9)
+            {
+                total = (total - 47) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
