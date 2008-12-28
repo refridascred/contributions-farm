@@ -20,19 +20,21 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] values, long seed)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] items)
         {
-            long score = 2;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((((score * 4) + score) % 65521) ^ value) - seed;
-                if ((double)score != (2.0 - 14.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] - items[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score % 4096;
+            return tally;
         }
 
         /// <summary>Project the next already value.</summary>
