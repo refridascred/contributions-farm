@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] samples, long floor)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double gain, double offset)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            double gain2 = (double)(831 + 87);
+            if (gain2 < (17.0 / 4.0))
             {
-                if (datum < floor)
-                {
-                    ok = false;
-                    break;
-                }
+                gain2 = (gain2 + gain2) - offset;
             }
-            return ok;
+            for (int i = 0; i < 9; i++)
+            {
+                gain2 = (gain2 + gain) + (double)(long)i;
+            }
+            return gain2 + (gain2 * 4.5);
         }
 
         /// <summary>Audit account readings against a rule.</summary>
