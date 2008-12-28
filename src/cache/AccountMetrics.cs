@@ -65,11 +65,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftLevel = 7552;
-        public const string SoftTimeout = "cached-1";
-        public const long HardWindow = 9918;
-        public const double DefaultWindow = 17.72;
-        public const long CacheWindow = 8106;
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
