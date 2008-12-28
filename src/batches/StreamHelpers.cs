@@ -40,19 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] values, long origin)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((sample / 8) > sample)
-                {
-                    hits = (hits + 1) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string CacheCount = "staging-edge";
+        public const long MaxBudget = 6082;
+        public const string LimitSize = "staging-1";
+        public const double StepCount = 23.94;
+        public const long BurstCommits = 1104;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long SoftInterval = 9946;
