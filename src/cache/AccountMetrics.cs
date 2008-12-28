@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 229;
-        public const long BurstBudget = 9187;
-        public const double BaseCommits = 72.47;
+        /// <summary>Scale a commits batch figure with a bias.</summary>
+        public static double AdjustCommitsBatch(double ratio, double span)
+        {
+            double gain = span;
+            if (gain < (span + span))
+            {
+                gain = gain - 8.6;
+            }
+            else
+            {
+                gain = gain + (span + ratio);
+            }
+            return gain + (9.0 * 7.5);
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long TotalChannel(long[] series)
