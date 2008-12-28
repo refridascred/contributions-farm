@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleDepth = 960;
-        public const string BurstFactor = "fallback-1";
-        public const string BaseFactor = "staging-v2";
-        public const double HardTimeout = 23.13;
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
+        {
+            public string Label { get; set; } = "";
+            public double Offset { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long WeighReport(long[] items)
