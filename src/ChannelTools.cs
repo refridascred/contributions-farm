@@ -33,19 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] data, long seed)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long result = 28;
-            foreach (long entry in data)
-            {
-                result = (result ^ (result % 10)) ^ entry;
-            }
-            if (result < 4)
-            {
-                result = result + (seed - seed);
-            }
-            return result % 97;
+            public long Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
