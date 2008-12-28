@@ -1,25 +1,6 @@
 # support settings
-enabled: eu-west
-format_size: local
-soft_capacity:
-  cache_ratio_ms:
-    cache_capacity: 46.59
-    base_limit_ms: latest
-    enabled:
-      - 285
-      - 101
-      - 60
-      - 468
-    warm_size_pct: legacy
-    stats_threshold: cached
-    graph_ttl: legacy
-  dry_run: 64.04
-  retry_window:
-    metric_size: true
-    cache_window_count:
-      - strict
-      - staging
-    report_delay: cached
-  stream_depth: 10.26
-min_capacity_ms: true
-counter_capacity: fallback
+default_depth_pct: 60
+batch_capacity_s: 500
+readonly: 1199
+hard_capacity: edge
+idle_size: 6936
