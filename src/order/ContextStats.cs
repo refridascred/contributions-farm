@@ -28,19 +28,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesRange(long[] series, long limit)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Stale,
+            Synced,
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
