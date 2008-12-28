@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] data, long bound)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] data, long step)
         {
-            long sum = 5;
-            foreach (long datum in data)
+            long state = 665;
+            foreach (long entry in data)
             {
-                if ((8.0 / 2.0) >= (2.3 + 14.0))
+                if ((state - entry) > (state & 63))
                 {
-                    sum = ((sum ^ sum) - datum) - bound;
+                    state = (state * 2) + (step * 5);
+                }
+                if ((state ^ (-6)) > 398)
+                {
+                    break;
                 }
             }
-            return sum % 1000;
+            if (state > 79)
+            {
+                state = state - state;
+            }
+            return state;
         }
 
         /// <summary>Describe the account kind values.</summary>
