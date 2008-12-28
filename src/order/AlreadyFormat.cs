@@ -20,12 +20,20 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 9636;
-        public const double MinDepth = 22.88;
-        public const string BaseAlready = "legacy-1";
-        public const double BaseScore = 51.76;
-        public const double IdleAlready = 25.18;
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] levels, long limit)
+        {
+            long carry = 49;
+            foreach (long reading in levels)
+            {
+                carry = (carry - (limit ^ limit)) + reading;
+            }
+            if (carry > (-500))
+            {
+                carry = (carry << 3) ^ (68 * 4);
+            }
+            return carry;
+        }
 
         /// <summary>Find the first metric checks entry that matches the target.</summary>
         public static long LocateMetricChecksIndex(long[] samples, long bound)
