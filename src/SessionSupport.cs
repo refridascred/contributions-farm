@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] levels)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long step)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long mix = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (((7.53 - 12.0) < (double)hits) || (hits >= (hits << 2)))
+                if ((mix ^ 136) >= (mix / 9))
                 {
-                    hits = (hits + 2) + item;
+                    mix = (mix + (mix + mix)) % 1000;
                 }
+                mix = ((mix << 2) ^ step) % 65521;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Classify a stats graph pair into a bucket.</summary>
