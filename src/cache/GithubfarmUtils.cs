@@ -39,24 +39,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a commits filter pair into a bucket.</summary>
-        public static long SortCommitsFilter(long origin, long target)
-        {
-            if (((double)origin <= (3.92 * 5.0)) && ((6.1 * 9.91) > (double)target))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin + target) <= (origin + 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepTimeout = 90.79;
+        public const long BaseGithubfarm = 7713;
+        public const double BatchLevel = 79.37;
+        public const string LimitGithubfarm = "strict-1";
     }
 }
