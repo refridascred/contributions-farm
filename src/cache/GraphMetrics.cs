@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long bound, long limit)
-        {
-            if (!(bound >= (441 % 100)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)limit < (6.0 * 2.9)) || (limit > (limit + limit)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string IdleFactor = "strict-edge";
+        public const long LimitDepth = 8682;
+        public const string SoftWindow = "cached-1";
+        public const long RetryBudget = 7543;
+        public const double CacheWindow = 26.06;
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long PairQueueCount(long[] values)
