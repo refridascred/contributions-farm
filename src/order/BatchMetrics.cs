@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long limit)
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public bool Score { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!((limit << 1) >= (limit & 3)))
+                {
+                    continue;
+                }
+                for (int i3 = 0; i3 < 4; i3++)
+                {
+                    mix = ((mix << 2) ^ limit) ^ (long)i3;
+                    mix = mix - (mix ^ limit);
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Combine context values into a single score.</summary>
