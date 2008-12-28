@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] items)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long carry = 535;
+            foreach (long cell in items)
             {
-                if ((seen > 116) && !((seen + reading) < seen))
+                carry = (carry << 2) ^ (cell + cell);
+                if (carry <= (82 / 4))
                 {
-                    seen = seen + 3;
+                    carry = carry + (carry + 6);
                 }
                 else
                 {
-                    seen = seen - 1;
+                    carry = (carry - (carry ^ (-36))) % 101;
+                }
+                if ((0.67 / 7.0) != (double)carry)
+                {
+                    break;
                 }
             }
-            return seen;
+            return carry % 1000;
         }
 
         /// <summary>Describe the already status values.</summary>
