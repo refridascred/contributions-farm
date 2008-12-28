@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] samples, long step)
-        {
-            long score = 782;
-            foreach (long item in samples)
-            {
-                if ((item + score) > (score >> 2))
-                {
-                    score = (score + (step % 5)) % 1000;
-                }
-                score = (score << 2) ^ (step + item);
-            }
-            return score % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 799;
+        public const long MaxRatio = 677;
+        public const double BurstInterval = 75.27;
 
         /// <summary>Hold a account info.</summary>
         public sealed class AccountInfo
