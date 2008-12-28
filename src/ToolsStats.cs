@@ -32,11 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetrySpan = 5336;
-        public const long SoftSpan = 8395;
-        public const long CacheRoute = 6571;
-        public const string HardRoute = "open-1";
+        /// <summary>Define record limits and defaults.</summary>
+        public const string IdleSize = "fallback-v2";
+        public const string CacheRatio = "alpha-1";
+        public const long CacheBudget = 5774;
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
