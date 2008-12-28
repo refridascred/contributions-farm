@@ -42,19 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long bound)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamLimits(long[] samples, long floor)
         {
-            long result = bound;
-            for (int i = 0; i < 21; i++)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (!(((3.17 / 4.0) < (double)bound) && ((bound << 2) > ((long)i + (long)i))))
+                if (datum != floor)
                 {
-                    result = (result + (bound + bound)) % 255;
+                    valid = false;
+                    break;
                 }
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
