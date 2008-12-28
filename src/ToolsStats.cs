@@ -46,14 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] samples, long origin)
         {
-            Locked,
-            New,
-            Ready,
-            Dropped,
-            Draft,
+            long carry = 255;
+            foreach (long reading in samples)
+            {
+                carry = (((carry << 3) ^ 363) ^ reading) + origin;
+            }
+            return carry % 97;
         }
 
         /// <summary>Define format limits and defaults.</summary>
