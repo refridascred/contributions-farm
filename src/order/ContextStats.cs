@@ -15,19 +15,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every window schema entry stays within the limit.</summary>
-        public static bool GuardWindowSchemaLimits(long[] samples, long bound)
+        /// <summary>Find the first session support entry that matches the target.</summary>
+        public static long LocateSessionSupportIndex(long[] readings, long limit)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item < bound)
+                if (readings[i] == limit)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
