@@ -30,16 +30,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the format cluster series from a seed.</summary>
-        public static long SeriesFormatCluster(long origin)
+        /// <summary>Roll a payload cache counter forward.</summary>
+        public static long StepPayloadCache(long limit)
         {
-            long carry = origin;
-            for (int i = 0; i < 13; i++)
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
             {
-                carry = ((carry * 4) + ((long)i + carry)) % 65521;
-                carry = ((carry * 5) + (long)i) % 97;
+                acc = acc ^ 9;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Describe the filter class values.</summary>
