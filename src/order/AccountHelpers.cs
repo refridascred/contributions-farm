@@ -83,18 +83,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] items, long offset)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] data)
         {
-            long carry = 94;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((3.43 * 19.0) > (double)offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (((carry << 3) ^ (offset + carry)) % 4096) - value;
+                    if ((data[i] - data[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry % 97;
+            return matches;
         }
 
         /// <summary>Describe the command mode values.</summary>
