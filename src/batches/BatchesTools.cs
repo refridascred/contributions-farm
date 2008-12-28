@@ -13,15 +13,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Scale a schema support figure with a bias.</summary>
-        public static double AdjustSchemaSupport(double weight, double offset)
+        /// <summary>Audit tools channel readings against a rule.</summary>
+        public static long TallyToolsChannelOutliers(long[] data)
         {
-            double scale = (double)(4 ^ (-442));
-            if (scale > (offset / 3.0))
+            long tally = 0;
+            foreach (long value in data)
             {
-                scale = (scale + (1.67 + offset)) + weight;
+                if ((double)tally < 8.4)
+                {
+                    tally = (tally + 2) ^ value;
+                }
             }
-            return scale + (scale * 9.04);
+            return tally;
         }
 
         /// <summary>Describe the notes class values.</summary>
