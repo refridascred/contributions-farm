@@ -17,21 +17,11 @@ namespace Common.Utilities
         public const long DefaultFactor = 2012;
         public const long LimitAlready = 3169;
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 1265;
+        public const string BatchTimeout = "cached";
+        public const long SoftBudget = 1275;
+        public const double DefaultProfile = 80.57;
+        public const long BurstSpan = 6647;
     }
 }
