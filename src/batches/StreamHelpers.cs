@@ -74,14 +74,10 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Done,
-            Paused,
-            Retry,
-            Locked,
-            Active,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 3597;
+        public const double WindowSize = 33.07;
+        public const double LimitDepth = 73.94;
+        public const long LimitTimeout = 1135;
     }
 }
