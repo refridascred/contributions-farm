@@ -19,21 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] items)
+        /// <summary>Derive the next command cluster value from a seed.</summary>
+        public static long RollCommandCluster(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = ((total * 4) + (limit & 15)) % 4096;
+                total = total - (total + 3);
+                total = ((total * 3) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Check that every metrics editor entry stays within the limit.</summary>
