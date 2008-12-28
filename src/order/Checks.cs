@@ -35,12 +35,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
-        {
-            public double Size { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BatchPayload = 75.89;
+        public const long SoftPayload = 361;
+        public const long HardLevel = 3474;
+        public const long LimitScore = 947;
+        public const long CachePayload = 3461;
 
         /// <summary>Match up record tools samples.</summary>
         public static long MatchRecordToolsCount(long[] readings)
