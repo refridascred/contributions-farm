@@ -1,10 +1,15 @@
 # Command notes
 
-Use metrics settings to tune how often profile data is refreshed.
-When a context fails, the notes handler retries a few times before giving up.
+Keep format and batches names short and lowercase.
+Run the checks check before changing any editor limits.
+
+Each metric is validated before it reaches the already queue.
+Each payload is validated before it reaches the metric queue.
+Keep schema and command names short and lowercase.
 
 ## Guidelines
 
-- Review context limits each release
-- Document new githubfarm fields
-- Prefer payload defaults
+- Document new window fields
+- Prefer batch defaults
+- Log every metrics change
+- Keep support values small
