@@ -41,15 +41,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next token githubfarm value from a seed.</summary>
-        public static long StepTokenGithubfarm(long bound)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long origin, long floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 14; i++)
+            if ((floor ^ floor) <= (floor % 100))
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if ((origin >= 81) || ((1.0 / 2.0) == (double)origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (2 < (origin * 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next cache notes value.</summary>
