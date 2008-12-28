@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] items)
+        /// <summary>Iterate the farm session series from a seed.</summary>
+        public static long RollFarmSession(long bound)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long total = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((entry - count) >= (entry + count))
-                {
-                    count = count + 1;
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define window limits and defaults.</summary>
