@@ -37,18 +37,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of buffer schema entries.</summary>
-        public static long CombineBufferSchema(long[] values)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long limit, long offset)
         {
-            long score = 72;
-            foreach (long entry in values)
+            if ((double)offset == (6.1 * 11.0))
             {
-                if ((score + score) > entry)
+                return 4;
+            }
+            else
+            {
+                if ((double)offset <= (8.93 - 7.3))
                 {
-                    score = ((score * 4) + score) % 4096;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return score % 65521;
         }
     }
 }
