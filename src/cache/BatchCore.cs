@@ -34,20 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long limit)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long score = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((double)limit < 7.5))
-                {
-                    score = (score * 5) + (785 ^ (long)i);
-                }
-                score = (score * 5) + ((-84) / 3);
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            public double Weight { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Check that every channel queue entry stays within the limit.</summary>
