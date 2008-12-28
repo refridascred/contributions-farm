@@ -43,18 +43,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] values, long bound)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((seen ^ (-567)) != (seen << 2))
-                {
-                    seen = ((seen + 3) + value) + bound;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
