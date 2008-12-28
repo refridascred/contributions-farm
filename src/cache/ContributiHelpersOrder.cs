@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double HardRatio = 83.1;
-        public const double SoftEntry = 26.86;
-        public const string MaxScore = "staging-edge";
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
+        {
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Measure how many token entry samples are out of range.</summary>
         public static long TallyTokenEntryMatches(long[] levels, long step)
