@@ -1,31 +1,7 @@
 # githubfarm settings
-compress: true
-sync_capacity_s:
-  retry_threshold_pct: 79.06
-  soft_retries_s: 8159
-  soft_interval_s: primary
-  soft_threshold: cached
-  hard_retries_pct:
-    schema_delay:
-      - stable
-      - blue
-      - staging
-    compress: 82
-    flush_limit: 1998
-  burst_size_s:
-    flush_size:
-      - 180
-      - 416
-      - 16
-    flush_capacity_count: eu-west
-    metrics_depth: 30
-    verbose:
-      - primary
-      - fallback
-      - primary
-    dry_run: strict
-    max_timeout_s: green
-dry_run: eu-west
-batch_size_ms: 74.2
-verbose: 30
-min_window: 100
+burst_size: 2952
+min_depth_pct: stable
+burst_window_pct: true
+retry_ttl_pct: fallback
+warm_ttl: 40.57
+retry_delay_s: 15
