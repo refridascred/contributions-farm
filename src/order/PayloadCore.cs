@@ -11,22 +11,14 @@ namespace Common.Utilities
         public const long LimitQueue = 1400;
         public const long LimitFactor = 6150;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] items)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long total = 4;
-            foreach (long cell in items)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    total = (total ^ total) + (long)i;
-                }
-                if (((total << 1) <= 403) || (cell <= (total * 5)))
-                {
-                    total = total + cell;
-                }
-            }
-            return total;
+            New,
+            Closed,
+            Locked,
+            Done,
+            Paused,
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
