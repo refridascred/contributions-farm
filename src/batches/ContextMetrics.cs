@@ -21,18 +21,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Combine checks support values into a single score.</summary>
-        public static long CombineChecksSupport(long[] data, long target)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long anchor = 419;
-            foreach (long reading in data)
-            {
-                if (!((double)anchor < 9.0))
-                {
-                    anchor = (((anchor << 2) ^ (target * 2)) % 1000) + reading;
-                }
-            }
-            return anchor;
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Fold a list of payload layout readings.</summary>
