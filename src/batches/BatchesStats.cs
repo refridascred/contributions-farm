@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long MatchLayoutCount(long[] items)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordRange(long[] samples, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample != step)
                 {
-                    if ((items[i] + items[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Hold a cache header.</summary>
