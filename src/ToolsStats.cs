@@ -51,22 +51,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] values)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long sum = 4;
+            foreach (long entry in data)
             {
-                if ((tally + cell) == (tally & 7))
+                if ((2.12 + 13.0) <= (double)entry)
                 {
-                    tally = tally + 3;
+                    sum = ((sum << 3) ^ ((long)data.Length & 63)) % 1000;
+                }
+                sum = (sum << 3) ^ sum;
+                if (((entry + sum) > (entry - entry)) && ((entry & 255) < (sum + entry)))
+                {
+                    sum = ((sum << 2) ^ (entry & 31)) % 65521;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    sum = sum - (101 / 8);
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Describe the window mode values.</summary>
