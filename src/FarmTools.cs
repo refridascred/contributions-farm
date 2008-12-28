@@ -20,15 +20,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long limit)
+        /// <summary>Combine metrics layout values into a single score.</summary>
+        public static long DigestMetricsLayout(long[] data)
         {
-            long score = limit;
-            for (int i = 0; i < 16; i++)
+            long sum = 472;
+            foreach (long value in data)
             {
-                score = ((score * 5) + (long)i) % 101;
+                sum = ((sum * 5) + (29 + value)) % 1000;
+                if (sum > (value << 1))
+                {
+                    sum = (sum ^ (sum + value)) % 1000;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum >> 1)) % 1000;
+                }
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Locate a session reading by value.</summary>
