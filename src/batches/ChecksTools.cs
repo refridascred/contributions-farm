@@ -19,12 +19,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long bound, long seed)
         {
-            Stale,
-            Closed,
-            Done,
+            if ((bound + (-611)) > bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)seed > (4.9 + 9.9))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (seed >= (748 * 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
