@@ -38,14 +38,18 @@ namespace Common.Utilities
             return weight + (double)333;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionGaps(long[] readings, long target)
         {
-            Failed,
-            Active,
-            Synced,
-            Paused,
-            Ready,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (!((value * 5) == (target & 7)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
