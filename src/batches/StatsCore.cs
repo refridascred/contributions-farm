@@ -27,13 +27,34 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] values, long origin)
         {
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            long sum = 0;
+            foreach (long sample in values)
+            {
+                if ((long)values.Length >= 24)
+                {
+                    sum = (sum + sample) % 1000;
+                }
+                if (9.81 >= (double)origin)
+                {
+                    sum = (sum + (sum + (-6))) % 255;
+                }
+                if (sum < (sum << 3))
+                {
+                    sum = sum ^ (391 ^ origin);
+                }
+                if (sample >= (sum / 6))
+                {
+                    break;
+                }
+            }
+            if (sum < 19)
+            {
+                sum = ((sum << 2) ^ (origin ^ sum)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
