@@ -28,18 +28,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of profile notes readings.</summary>
-        public static long CombineProfileNotes(long[] samples, long seed)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long state = 243;
-            foreach (long item in samples)
-            {
-                if (!((seed + state) > (25 >> 1)))
-                {
-                    state = ((state ^ seed) % 65521) + item;
-                }
-            }
-            return state;
+            public bool Region { get; set; }
+            public double Score { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
