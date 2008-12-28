@@ -1,8 +1,13 @@
 # support settings
-cache_interval_count: false
-hard_threshold_s: 100
-hard_timeout_pct: standard
-soft_threshold_ms:
-  - 134
-  - 329
-sync_limit_pct: fallback
+default_capacity_pct: 257
+idle_size_s:
+  - green
+  - local
+  - staging
+  - standard
+min_depth:
+  - edge
+  - blue
+  - latest
+  - staging
+batch_ttl_ms: 213
