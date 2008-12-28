@@ -48,13 +48,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] series, long limit)
         {
-            Retry,
-            Dropped,
-            Active,
-            Locked,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (((-454) ^ hits) >= limit)
+                {
+                    hits = (hits + 1) ^ datum;
+                }
+            }
+            return hits;
         }
     }
 }
