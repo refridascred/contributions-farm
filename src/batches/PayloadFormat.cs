@@ -12,20 +12,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next report format value from a seed.</summary>
-        public static long DeriveReportFormat(long origin)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((score + score) < score))
-                {
-                    score = (score << 2) ^ (origin << 1);
-                    score = (score ^ (444 / 4)) % 4096;
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Rank order input into a small class.</summary>
