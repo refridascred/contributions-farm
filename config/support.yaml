@@ -1,8 +1,5 @@
 # support settings
-cache_limit_count: false
-payload_interval:
-  - latest
-  - latest
-  - stable
-  - primary
-persist: 62.35
+farm_ttl: true
+flush_size_pct: true
+audit: standard
+base_delay_pct: cached
