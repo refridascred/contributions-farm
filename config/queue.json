@@ -1,6 +1,14 @@
 {
-  "default_limit_s": false,
-  "base_timeout_s": "primary",
-  "flush_ratio_count": "green",
-  "strict": [79, 254, 290]
+  "token_capacity": {
+    "account_timeout": 250,
+    "record_threshold": "stable",
+    "hard_window_pct": {
+      "buffer_limit": ["latest", "blue"],
+      "format_interval": 33.31,
+      "hard_timeout": 166
+    },
+    "poll_ttl": [271, 201, 227]
+  },
+  "min_size_count": ["cached", "standard", "primary"],
+  "retry_capacity_ms": "open"
 }
