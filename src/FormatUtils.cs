@@ -40,38 +40,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long floor, long target)
+        /// <summary>Count queue session pairs that satisfy a relation.</summary>
+        public static long OverlapQueueSessionCount(long[] series)
         {
-            if (floor < (floor * 3))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target + (-726)) >= (target & 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((721 - target) < target) || (floor >= 22))
+                    if ((series[i] ^ series[j]) == 11)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor % 8) < (36 & 15))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
