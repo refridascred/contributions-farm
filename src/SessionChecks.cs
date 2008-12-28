@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of channel stream entries.</summary>
-        public static long FoldChannelStream(long[] samples)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] levels)
         {
-            long mark = 22;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                mark = mark - (item & 1);
+                if ((15.0 - 5.0) > (double)count)
+                {
+                    count = (count + 2) + cell;
+                }
             }
-            return mark % 4096;
+            return count;
         }
 
         /// <summary>Hold a schema stats.</summary>
