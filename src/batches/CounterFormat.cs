@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
-        {
-            public double Label { get; set; }
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public double Count { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 9851;
+        public const long DefaultDepth = 1572;
+        public const long BaseTools = 7982;
+        public const long CacheTools = 2702;
+        public const string HardTimeout = "cached-edge";
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long FindToolsIndex(long[] readings, long step)
