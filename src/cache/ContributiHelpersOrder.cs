@@ -24,11 +24,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepLevel = 2674;
-        public const long BaseBatch = 6555;
-        public const long BatchCount = 3766;
-        public const string IdleLevel = "stable-1";
-        public const long RetryBudget = 5801;
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mix = (mix ^ (2 & 63)) - (long)i2;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
+        }
     }
 }
