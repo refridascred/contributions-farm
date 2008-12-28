@@ -1,6 +1,4 @@
 # support settings
-min_ttl_pct: fallback
-warm_ttl: 7
-batch_ttl: edge
-soft_capacity_count: 76
-enabled: 28.55
+warm_interval_pct: 50
+poll_limit_count: 500
+default_depth_pct: open
