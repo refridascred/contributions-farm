@@ -69,15 +69,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a counter channel reading.</summary>
-        public static double ScaleCounterChannel(double ratio, double bias)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] values, long target)
         {
-            double rate = (double)(931 % 12);
-            if (rate > 19.0)
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = (rate + (rate * 1.1)) + ratio;
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return rate + bias;
+            return -1;
         }
     }
 }
