@@ -57,18 +57,19 @@ namespace Common.Utilities
             return (drift + (floor / 7.0)) + ratio;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] data, long floor)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if (679 >= floor)
+                if (cell != origin)
                 {
-                    hits = (hits + 3) - item;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
