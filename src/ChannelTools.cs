@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] data)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long origin, long origin2)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)(-8) <= (double)origin2)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (!(5.0 <= (double)origin))
                 {
-                    if ((data[i] ^ data[j]) < 20)
+                    return 5;
+                }
+                else
+                {
+                    if (origin2 > (origin2 + origin2))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (origin2 >= (origin * 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
