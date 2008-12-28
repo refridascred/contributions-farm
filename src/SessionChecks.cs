@@ -32,19 +32,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] samples, long bound)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading > bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] + readings[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
