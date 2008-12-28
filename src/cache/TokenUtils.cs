@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = (acc << 2) ^ origin;
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MaxLevel = "legacy";
+        public const long WindowPayload = 5293;
+        public const double RetryCount = 13.39;
+        public const double LimitTimeout = 92.23;
+        public const long CacheCount = 8321;
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long LocateCounterIndex(long[] levels, long floor)
