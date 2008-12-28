@@ -42,17 +42,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] samples, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferOutliers(long[] data, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((samples[i] < seed) && ((samples[i] % 5) != 0))
+                if (679 >= floor)
                 {
-                    return (long)i;
+                    hits = (hits + 3) - item;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
