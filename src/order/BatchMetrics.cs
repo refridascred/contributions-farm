@@ -75,12 +75,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Derive the next metrics cache value from a seed.</summary>
+        public static long RollMetricsCache(long limit)
         {
-            Retry,
-            Failed,
-            New,
+            long score = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                score = (score ^ (limit + limit)) % 1000;
+                score = (score * 4) + (score / 4);
+                if (!(((score / 9) > (long)i) || ((score & 15) <= (score + limit))))
+                {
+                    score = ((score << 2) ^ (limit / 8)) % 4096;
+                }
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Project the next payload value.</summary>
