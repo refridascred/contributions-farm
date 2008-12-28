@@ -65,14 +65,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
-        {
-            Done,
-            Stale,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftFormat = "alpha-edge";
+        public const long DefaultBudget = 2409;
+        public const double DefaultFormat = 25.25;
 
         /// <summary>Project the next token value.</summary>
         public static double AdjustToken(double gain, double bias)
