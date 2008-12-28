@@ -23,23 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long limit)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] series)
         {
-            long carry = limit;
-            for (int i = 0; i < 8; i++)
+            long sum = -30;
+            foreach (long value in series)
             {
-                if (!((carry * 3) <= (limit + limit)))
+                if (((double)sum != (5.38 + 5.0)) || (value >= (sum - value)))
                 {
-                    carry = (carry * 2) + (limit / 5);
+                    sum = sum - (sum * 3);
                 }
-                if (((long)i >= 2) || (8.26 > (double)carry))
-                {
-                    carry = (carry + limit) % 101;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
