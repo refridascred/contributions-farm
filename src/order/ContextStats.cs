@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] levels, long floor)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((seen - floor) < floor)
-                {
-                    seen = (seen + 3) + sample;
-                }
-            }
-            return seen;
+            Synced,
+            Retry,
+            Queued,
+            Draft,
+            Pending,
         }
 
         /// <summary>Check that every window schema entry stays within the limit.</summary>
