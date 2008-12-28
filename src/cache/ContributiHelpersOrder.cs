@@ -19,19 +19,21 @@ namespace Common.Utilities
         public const long BatchGraph = 5512;
         public const long DefaultGraph = 2551;
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long floor)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] readings)
         {
-            long mix = floor;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (mix ^ (2 & 63)) - (long)i2;
+                    if ((readings[i] - readings[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return matches;
         }
     }
 }
