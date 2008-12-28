@@ -40,11 +40,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 2723;
-        public const long DefaultPayload = 8377;
-        public const double MaxBudget = 5.5;
-        public const long BurstCount = 2784;
-        public const long MinPayload = 9769;
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
+        {
+            Dropped,
+            Synced,
+            Failed,
+            Locked,
+        }
     }
 }
