@@ -1,17 +1,6 @@
 {
-  "idle_retries_count": 94.01,
-  "hard_window_ms": false,
-  "readonly": false,
-  "verbose": {
-    "cache_ttl_pct": ["latest", "cached", "fallback"],
-    "min_retries": "green",
-    "min_depth": {
-      "persist": 85.72,
-      "layout_retries": [51, 60],
-      "max_delay_ms": 3360
-    },
-    "default_ratio": true,
-    "enabled": "primary"
-  },
-  "audit": ["latest", "latest"]
+  "poll_size_ms": 89.9,
+  "verbose": [22, 91],
+  "idle_timeout": 56.03,
+  "retry_depth_pct": true
 }
