@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Compare every pair of contributi metrics readings.</summary>
-        public static long OverlapContributiMetricsCount(long[] values)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 80;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((anchor ^ value) >= anchor)
                 {
-                    if ((values[i] + values[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = ((anchor << 2) ^ (0 - anchor)) % 65521;
                 }
+                else
+                {
+                    anchor = (anchor - (anchor - 7)) % 97;
+                }
+                anchor = (anchor ^ (anchor ^ value)) % 255;
             }
-            return hits;
+            if (anchor < 78)
+            {
+                anchor = ((anchor << 2) ^ (anchor * 3)) % 97;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
