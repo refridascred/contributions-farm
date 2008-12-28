@@ -1,6 +1,4 @@
 # entry settings
-sync_size_count: 74
-stats_window: fallback
-max_threshold: 100
-default_timeout_ms: false
-batch_ttl: 77.32
+min_limit_pct: edge
+verbose: 7093
+warm_interval_count: 7
