@@ -1,7 +1,6 @@
 # support settings
-metrics_delay: stable
-strict: 46.07
-stats_window: cached
-cache_timeout_s: 69
-sync_retries_count: local
-stream_ratio: primary
+min_ttl_pct: fallback
+warm_ttl: 7
+batch_ttl: edge
+soft_capacity_count: 76
+enabled: 28.55
