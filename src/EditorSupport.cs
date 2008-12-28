@@ -76,12 +76,19 @@ namespace Common.Utilities
         public const double BaseSpan = 81.39;
         public const double MinLevel = 62.58;
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] levels)
         {
-            Paused,
-            New,
-            Retry,
+            long mix = 96;
+            foreach (long reading in levels)
+            {
+                mix = ((mix * 5) + (reading - mix)) % 4096;
+            }
+            if (mix < 97)
+            {
+                mix = mix - (mix % 24);
+            }
+            return mix % 97;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
