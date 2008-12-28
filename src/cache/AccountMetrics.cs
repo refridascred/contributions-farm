@@ -57,19 +57,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowRange(long[] data, long origin)
+        /// <summary>Measure how many filter token samples are out of range.</summary>
+        public static long TallyFilterTokenHits(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (cell >= origin)
+                if ((4.7 - 5.28) < (double)origin)
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 1) - item;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Derive the next batch stream value from a seed.</summary>
