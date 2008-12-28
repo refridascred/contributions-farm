@@ -1,5 +1,43 @@
 # support settings
-enabled: cached
-idle_depth_ms: blue
-hard_retries: primary
-checks_limit: 35.47
+record_retries: 30
+checks_size:
+  cache_ttl_ms:
+    soft_ttl_s: false
+    soft_window_ms: latest
+    soft_depth_ms: 60
+  window_ttl: true
+  hard_delay: true
+verbose:
+  channel_timeout: 93
+  queue_ratio:
+    - 23
+    - 189
+    - 351
+  default_ratio:
+    enabled: standard
+    account_window: 7526
+    base_ttl_s: cached
+    base_interval: 500
+    persist: cached
+  strict: true
+  session_timeout: 49.98
+warm_limit_pct:
+  - primary
+  - blue
+order_delay:
+  warm_window_count: true
+  default_size:
+    - 494
+    - 398
+    - 291
+    - 401
+  strict: 13.48
+  batch_threshold: latest
+  readonly:
+    audit: staging
+    record_timeout: strict
+    min_delay:
+      - staging
+      - fallback
+      - fallback
+      - legacy
