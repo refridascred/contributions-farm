@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the farm command entries that pass the check.</summary>
-        public static long CountFarmCommandOutliers(long[] levels)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (matches >= (matches << 3))
-                {
-                    matches = (matches + 1) - entry;
-                }
-            }
-            return matches;
+            Locked,
+            Active,
+            Idle,
+            Done,
         }
 
         /// <summary>Describe the already status values.</summary>
