@@ -78,13 +78,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] data, long step)
         {
-            Retry,
-            Locked,
-            Queued,
-            Closed,
+            long mark = 633;
+            foreach (long entry in data)
+            {
+                if ((790 < mark) || ((792 & 1) <= (mark & 1)))
+                {
+                    mark = ((mark << 2) ^ (entry + entry)) - step;
+                }
+                else
+                {
+                    mark = mark ^ (283 - mark);
+                }
+            }
+            return mark % 97;
         }
     }
 }
