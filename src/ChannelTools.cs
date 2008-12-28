@@ -36,9 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultRatio = 448;
-        public const double RetryCommits = 2.21;
-        public const long LimitCommits = 3745;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] values)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (!(((-2) + tally) > tally))
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+            }
+            return tally;
+        }
     }
 }
