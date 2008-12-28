@@ -44,12 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Measure how many counter command samples are out of range.</summary>
+        public static long TallyCounterCommandHits(long[] data)
         {
-            Retry,
-            Active,
-            Stale,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((double)value == (double)matches)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate checks already readings against a bound.</summary>
