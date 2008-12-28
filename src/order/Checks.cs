@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const long SoftMetrics = 2372;
         public const long HardMetrics = 1279;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] levels, long bound)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] levels, long offset)
         {
             bool valid = true;
-            foreach (long item in levels)
+            foreach (long sample in levels)
             {
-                if (item <= bound)
+                if (sample > offset)
                 {
                     valid = false;
                     break;
