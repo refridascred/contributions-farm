@@ -46,27 +46,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] data)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long sum = 4;
-            foreach (long entry in data)
-            {
-                if ((2.12 + 13.0) <= (double)entry)
-                {
-                    sum = ((sum << 3) ^ ((long)data.Length & 63)) % 1000;
-                }
-                sum = (sum << 3) ^ sum;
-                if (((entry + sum) > (entry - entry)) && ((entry & 255) < (sum + entry)))
-                {
-                    sum = ((sum << 2) ^ (entry & 31)) % 65521;
-                }
-                else
-                {
-                    sum = sum - (101 / 8);
-                }
-            }
-            return sum;
+            Done,
+            Ready,
+            Failed,
+            Closed,
+            Idle,
         }
 
         /// <summary>Hold a tools record.</summary>
