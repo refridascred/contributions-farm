@@ -13,14 +13,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long step, long floor)
         {
-            Paused,
-            Done,
-            Draft,
-            Retry,
-            Locked,
+            if ((floor - floor) >= floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step + floor) > (step << 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((1 > (step << 1)) && (step > (floor % 7)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)step >= 7.1) || ((step / 7) > step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a format options.</summary>
