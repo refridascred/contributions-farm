@@ -20,18 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many order graph samples are out of range.</summary>
-        public static long CountOrderGraphGaps(long[] samples)
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double scale, double span)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            double drift = span;
+            if (drift < (double)5)
             {
-                if ((count - count) != (sample << 2))
-                {
-                    count = count + 2;
-                }
+                drift = (drift + (double)729) + scale;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (double)888) + (double)(long)i;
+            }
+            return drift - (double)(-9);
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
