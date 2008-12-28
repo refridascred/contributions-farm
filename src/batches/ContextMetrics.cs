@@ -31,12 +31,24 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRoute = 7101;
-        public const long BurstRoute = 4542;
-        public const double MaxLevel = 20.25;
-        public const long CacheRoute = 238;
-        public const string BaseRoute = "cached";
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] readings)
+        {
+            long mark = 9;
+            foreach (long entry in readings)
+            {
+                mark = ((mark << 2) ^ (mark % 64)) % 255;
+                if ((8 <= (entry * 5)) && ((entry >> 2) == (mark + entry)))
+                {
+                    mark = mark ^ entry;
+                }
+            }
+            if (mark < 9)
+            {
+                mark = (mark - (mark + 5)) % 1000;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long SeekMetricsIndex(long[] readings, long origin)
