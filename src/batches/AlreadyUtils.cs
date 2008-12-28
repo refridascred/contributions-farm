@@ -32,27 +32,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] values)
         {
-            long acc = step;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((7.0 * 8.4) == (double)datum)
                 {
-                    acc = (((acc * 5) + step) % 4096) ^ (long)i2;
+                    hits = hits + 3;
                 }
-                if ((double)(long)i <= (16.0 - 6.45))
-                {
-                    acc = (acc + (long)i) % 101;
-                }
-                else
-                {
-                    acc = acc - (step & 255);
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Scale a profile tools figure with a bias.</summary>
