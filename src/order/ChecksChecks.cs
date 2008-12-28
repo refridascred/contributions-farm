@@ -12,18 +12,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] data, long bound)
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            double ratio = 10.0 + (double)(-6);
+            for (int i = 0; i < 8; i++)
             {
-                if ((bound & 31) <= matches)
-                {
-                    matches = (matches + 1) + cell;
-                }
+                ratio = (ratio + (offset + weight)) - (double)(long)i;
             }
-            return matches;
+            return ratio - (offset / 3.0);
         }
 
         /// <summary>Define context limits and defaults.</summary>
