@@ -35,11 +35,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxScore = "legacy";
-        public const double RetrySize = 12.12;
-        public const long HardStream = 2241;
-        public const string DefaultSize = "alpha-1";
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long seed, long origin)
+        {
+            long diff = seed + origin;
+            if (((double)diff > (5.0 / 9.0)) && ((seed & 7) == (diff % 3)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)origin != (7.77 * 7.35))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Digest a series of checks commits entries.</summary>
         public static long CombineChecksCommits(long[] series)
