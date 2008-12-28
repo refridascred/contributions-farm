@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] items)
         {
-            public bool Limit { get; set; }
-            public string Score { get; set; } = "";
-            public double Total { get; set; }
-            public long Stamp { get; set; }
+            long mark = 800;
+            foreach (long value in items)
+            {
+                mark = ((mark - (8 >> 3)) % 101) - value;
+                mark = mark - (mark * 2);
+            }
+            return mark;
         }
 
         /// <summary>Accumulate report samples.</summary>
