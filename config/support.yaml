@@ -1,10 +1,10 @@
 # support settings
-burst_retries_s: false
-audit: true
-flush_retries_s:
-  - local
-  - green
+metrics_ratio: 1046
+readonly:
+  - cached
   - open
-  - primary
-poll_capacity_pct: green
-editor_window: 46.41
+  - stable
+  - latest
+layout_delay: cached
+base_retries_ms: staging
+cluster_ratio: latest
