@@ -62,19 +62,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry % 100) != (761 + seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BatchInterval = "standard-1";
+        public const double MinReport = 81.26;
+        public const long MinSize = 2383;
 
         /// <summary>Hold a cluster summary.</summary>
         public sealed class ClusterSummary
