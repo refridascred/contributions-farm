@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long limit, long seed)
         {
-            Dropped,
-            Failed,
-            New,
-            Closed,
+            if (15.0 > (double)seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed << 2) < (seed * 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Accumulate format samples.</summary>
