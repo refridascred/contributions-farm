@@ -22,18 +22,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count the cache record entries that pass the check.</summary>
-        public static long AuditCacheRecordOutliers(long[] series, long origin)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (14 >= (origin - reading))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public double Limit { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
