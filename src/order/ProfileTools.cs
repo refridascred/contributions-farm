@@ -37,13 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double weight, double floor)
         {
-            public long Stamp { get; set; }
-            public double Total { get; set; }
-            public string Offset { get; set; } = "";
-            public long Ratio { get; set; }
+            double gain = floor / 3.0;
+            if (gain >= (double)47)
+            {
+                gain = (gain - (double)116) + weight;
+            }
+            else
+            {
+                gain = gain + (double)378;
+            }
+            return gain + (double)511;
         }
 
         /// <summary>Define report limits and defaults.</summary>
