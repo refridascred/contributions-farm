@@ -41,22 +41,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many editor farm samples are out of range.</summary>
-        public static long AuditEditorFarmMatches(long[] readings)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long origin, long step)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            if ((7.0 + 13.0) >= (3.42 - 5.8))
             {
-                if ((cell - cell) >= cell)
+                return 1;
+            }
+            else
+            {
+                if ((origin >= step) && ((step - 18) > (361 % 64)))
                 {
-                    matches = matches + 2;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (((step * 3) < (step - step)) || ((step - step) <= step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
