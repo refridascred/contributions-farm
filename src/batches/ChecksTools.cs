@@ -26,12 +26,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] items, long bound)
         {
-            Draft,
-            Queued,
-            Synced,
+            long carry = 947;
+            foreach (long reading in items)
+            {
+                if ((double)bound != (double)carry)
+                {
+                    carry = ((carry << 3) ^ (carry * 4)) % 65521;
+                    carry = carry ^ (bound + 67);
+                    continue;
+                }
+                carry = (carry - (reading ^ carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate account githubfarm samples.</summary>
