@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of contributi payload entries.</summary>
-        public static long TotalContributiPayload(long[] levels)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long total = 845;
-            foreach (long reading in levels)
-            {
-                if ((reading - total) < (reading % 64))
-                {
-                    total = (total + (total / 7)) % 4096;
-                }
-            }
-            return total;
+            Dropped,
+            Idle,
+            Closed,
+            Ready,
         }
 
         /// <summary>Describe the record status values.</summary>
