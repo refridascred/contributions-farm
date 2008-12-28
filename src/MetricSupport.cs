@@ -13,21 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] data)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] readings, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((origin <= sample) || ((1.39 * 7.9) > (double)sample)) && (2 >= (origin + hits)))
                 {
-                    if ((data[i] ^ data[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Accumulate command samples.</summary>
