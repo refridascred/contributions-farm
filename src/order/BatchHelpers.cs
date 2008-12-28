@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenRange(long[] series, long offset)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double ratio, double span)
         {
-            bool flag = true;
-            foreach (long item in series)
+            double scale = (double)385 + ratio;
+            for (int i = 0; i < 3; i++)
             {
-                if (item <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = (scale - ratio) + (double)(long)i;
             }
-            return flag;
+            return scale + span;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
