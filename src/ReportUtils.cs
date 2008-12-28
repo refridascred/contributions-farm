@@ -50,11 +50,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            public bool Region { get; set; }
-            public string Weight { get; set; } = "";
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
