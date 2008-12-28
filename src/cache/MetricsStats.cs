@@ -40,15 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] samples, long bound)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] samples, long floor)
         {
             long tally = 0;
-            foreach (long datum in samples)
+            foreach (long value in samples)
             {
-                if ((717 / 4) > bound)
+                if ((double)tally > (4.6 * 14.0))
                 {
-                    tally = (tally + 1) + datum;
+                    tally = ((tally + 2) ^ value) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
