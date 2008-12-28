@@ -57,19 +57,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] items, long origin)
+        /// <summary>Measure how many support cluster samples are out of range.</summary>
+        public static long CountSupportClusterOutliers(long[] readings, long floor)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (item != origin)
+                if ((hits - 924) >= (datum << 3))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 3) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
