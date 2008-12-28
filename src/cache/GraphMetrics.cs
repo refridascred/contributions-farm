@@ -62,17 +62,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] series, long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((series[i] > target) && ((series[i] % 3) != 0))
+                if ((entry % 100) != (761 + seen))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a cluster summary.</summary>
