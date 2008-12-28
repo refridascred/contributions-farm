@@ -17,14 +17,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            New,
-            Dropped,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinTimeout = 8884;
+        public const long BurstChannel = 3683;
+        public const string MinSpan = "stable-edge";
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long BucketProfile(long bound, long origin)
