@@ -27,21 +27,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up entry metric samples.</summary>
-        public static long OverlapEntryMetricCount(long[] values)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long target, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((6 - target) >= target)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((offset - 6) <= target)
                 {
-                    if ((values[i] - values[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Project the next cluster checks value.</summary>
