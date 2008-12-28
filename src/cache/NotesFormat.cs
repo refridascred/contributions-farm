@@ -32,17 +32,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] readings, long origin)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long floor, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long bound2 = floor + bound;
+            if (((8 % 10) >= (bound2 - bound)) || ((-904) >= (bound2 - bound2)))
             {
-                if ((readings[i] <= origin) && ((readings[i] % 5) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((floor + floor) != (floor << 1))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
