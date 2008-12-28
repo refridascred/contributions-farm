@@ -16,23 +16,21 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double weight, double bias)
+        /// <summary>Match up stats commits samples.</summary>
+        public static long CompareStatsCommitsCount(long[] samples)
         {
-            double scale = weight;
-            if (scale > (weight + bias))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale - (7.82 / 7.0);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale - (double)9;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + bias) - (double)(long)i;
-            }
-            return scale - (6.0 + scale);
+            return tally;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
