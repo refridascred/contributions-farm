@@ -22,12 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Measure how many tools checks samples are out of range.</summary>
+        public static long MeasureToolsChecksOutliers(long[] data)
         {
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((double)count >= 1.0)
+                {
+                    count = (count + 1) - item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
