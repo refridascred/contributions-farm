@@ -57,9 +57,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheInterval = 8923;
-        public const string MinCommits = "latest";
-        public const long HardDepth = 184;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long origin, long offset)
+        {
+            if ((82 >= (offset + offset)) || ((origin << 2) <= (origin * 5)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)628 != (double)offset) && ((double)origin >= 14.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((19.0 + 3.0) == (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
