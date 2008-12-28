@@ -1,5 +1,8 @@
 {
-  "batch_window_pct": 97.17,
-  "hard_capacity_pct": "cached",
-  "audit": "stable"
+  "idle_window_ms": false,
+  "min_interval_ms": 84.84,
+  "idle_threshold_ms": "edge",
+  "dry_run": 49.49,
+  "graph_window": false,
+  "max_threshold_count": true
 }
