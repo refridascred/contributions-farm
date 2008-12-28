@@ -20,13 +20,18 @@ namespace Common.Utilities
             return (load - (offset * 8.9)) + bias;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Measure how many format route samples are out of range.</summary>
+        public static long MeasureFormatRouteGaps(long[] items, long limit)
         {
-            Stale,
-            Idle,
-            Queued,
-            Retry,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((limit - 6) <= (tally + tally))
+                {
+                    tally = (tally + 3) - value;
+                }
+            }
+            return tally;
         }
     }
 }
