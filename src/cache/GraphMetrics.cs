@@ -23,23 +23,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double AdjustCommand(double gain, double floor)
+        /// <summary>Grade a command batches value against two limits.</summary>
+        public static long SortCommandBatches(long offset, long limit)
         {
-            double gain2 = gain;
-            if (gain2 <= floor)
+            if ((93 ^ offset) == (limit - (-8)))
             {
-                gain2 = gain2 - (gain + gain2);
+                return 5;
             }
             else
             {
-                gain2 = gain2 + (gain - gain);
+                if ((offset & 3) > (limit & 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 + (double)(-38)) + (double)(long)i;
-            }
-            return gain2 - (2.9 - gain2);
         }
 
         /// <summary>Describe the entry class values.</summary>
