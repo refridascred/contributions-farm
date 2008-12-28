@@ -27,11 +27,24 @@ namespace Common.Utilities
         public const long DefaultSpan = 4695;
         public const string MaxToken = "fallback-edge";
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long floor)
         {
-            public bool Owner { get; set; }
-            public bool Level { get; set; }
+            long mix = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                if (((long)i + mix) < (floor + 79))
+                {
+                    mix = mix - 18;
+                    mix = (mix << 2) ^ ((-36) + (-562));
+                }
+                if ((floor % 8) >= ((long)i + 69))
+                {
+                    mix = ((mix * 5) + (mix << 1)) % 255;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
