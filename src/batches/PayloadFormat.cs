@@ -32,16 +32,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] levels)
+        /// <summary>Roll a account stats counter forward.</summary>
+        public static long SeriesAccountStats(long offset)
         {
-            long acc = 6;
-            foreach (long value in levels)
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
             {
-                acc = ((acc << 3) ^ (acc / 3)) % 65521;
-                acc = (acc - (value >> 3)) % 97;
+                if (!(((long)i - offset) >= (offset & 63)))
+                {
+                    carry = carry - carry;
+                }
+                if (((carry % 100) != (carry % 12)) || ((offset - 914) > ((long)i + carry)))
+                {
+                    long matches = (long)i;
+                    carry = (carry - (matches + matches)) % 101;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return acc % 97;
+            return carry;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
