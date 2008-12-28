@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double StepMetric = 61.0;
-        public const string MinMetric = "primary-v2";
-        public const string WindowSpan = "cached-edge";
-        public const string BaseMetric = "standard-1";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MinBatch = 39.14;
+        public const long IdleFactor = 5971;
+        public const long IdleBatch = 4821;
+        public const long DefaultBatch = 764;
+        public const long StepBatch = 9913;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long DigestMetrics(long[] values)
