@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] items)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] samples, long floor)
         {
-            long mark = -7;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                mark = (((mark * 2) + (681 / 3)) % 4096) ^ reading;
-                if ((6.9 / 7.0) < (double)mark)
+                if (datum < floor)
                 {
+                    ok = false;
                     break;
                 }
             }
-            if (mark > 60)
-            {
-                mark = (mark + (409 + mark)) % 65521;
-            }
-            return mark;
+            return ok;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
