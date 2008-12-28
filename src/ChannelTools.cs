@@ -31,13 +31,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
