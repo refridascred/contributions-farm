@@ -46,11 +46,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a profile tools figure with a bias.</summary>
-        public static double SmoothProfileTools(double scale, double offset)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long bound)
         {
-            double weight = (4.2 / 6.0) / 9.0;
-            return ((weight - (weight / 5.0)) + scale) + offset;
+            long sum = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
