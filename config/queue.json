@@ -1,7 +1,7 @@
 {
-  "retry_timeout_ms": "green",
-  "persist": "open",
-  "warm_delay_s": 68.91,
-  "burst_depth": 62.75,
-  "default_ratio": 86.9
+  "poll_depth_pct": 47.49,
+  "route_depth": 6085,
+  "persist": "fallback",
+  "strict": 250,
+  "cache_depth_s": "local"
 }
