@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] levels)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long MatchLayoutCount(long[] items)
         {
-            long score = 5;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((reading % 97) < reading)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score + (reading - (long)levels.Length)) % 97;
+                    if ((items[i] + items[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
