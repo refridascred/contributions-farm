@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadLimits(long[] readings, long bound)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] series)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (cell != bound)
+                if ((datum + hits) < (datum ^ datum))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
