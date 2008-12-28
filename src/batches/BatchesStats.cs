@@ -42,19 +42,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] readings, long floor)
-        {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 5136;
+        public const long BaseRatio = 1331;
+        public const double HardCommand = 78.75;
+        public const long DefaultCommand = 2944;
     }
 }
