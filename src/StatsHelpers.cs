@@ -24,15 +24,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Combine cluster metric values into a single score.</summary>
-        public static long TotalClusterMetric(long[] series, long bound)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long score = 636;
-            foreach (long reading in series)
-            {
-                score = (((score << 3) ^ (bound >> 3)) % 255) + reading;
-            }
-            return score;
+            public string Level { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the window class values.</summary>
