@@ -12,32 +12,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long offset, long limit)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyBounds(long[] series, long seed)
         {
-            long span = offset + limit;
-            if ((limit + limit) != (3 & 1))
+            bool ready = true;
+            foreach (long item in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (span >= (offset & 255))
+                if (item < seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)span >= 1.19)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
