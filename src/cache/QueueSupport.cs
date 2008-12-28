@@ -27,11 +27,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
+            Ready,
+            Closed,
+            Dropped,
+            New,
         }
     }
 }
