@@ -23,20 +23,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Iterate the account tools series from a seed.</summary>
-        public static long SeriesAccountTools(long step)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long sum = step;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((double)step <= 5.0)
-                {
-                    sum = sum - ((long)i + sum);
-                    break;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            Synced,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Rank counter input into a small class.</summary>
