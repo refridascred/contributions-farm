@@ -27,34 +27,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] values, long origin)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long sum = 0;
-            foreach (long sample in values)
-            {
-                if ((long)values.Length >= 24)
-                {
-                    sum = (sum + sample) % 1000;
-                }
-                if (9.81 >= (double)origin)
-                {
-                    sum = (sum + (sum + (-6))) % 255;
-                }
-                if (sum < (sum << 3))
-                {
-                    sum = sum ^ (391 ^ origin);
-                }
-                if (sample >= (sum / 6))
-                {
-                    break;
-                }
-            }
-            if (sum < 19)
-            {
-                sum = ((sum << 2) ^ (origin ^ sum)) % 4096;
-            }
-            return sum;
+            Locked,
+            Idle,
+            Ready,
         }
 
         /// <summary>Hold a checks snapshot.</summary>
