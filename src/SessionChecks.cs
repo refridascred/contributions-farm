@@ -36,17 +36,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Find the first channel buffer entry that matches the target.</summary>
-        public static long LookupChannelBufferIndex(long[] items, long floor)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if (items[i] == floor)
+                if (reading > bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
