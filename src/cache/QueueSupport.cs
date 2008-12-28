@@ -38,11 +38,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 4581;
-        public const long MinChannel = 3951;
-        public const long HardChannel = 6865;
-        public const string WindowChannel = "alpha-1";
-        public const long BatchChannel = 112;
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public double Ratio { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
