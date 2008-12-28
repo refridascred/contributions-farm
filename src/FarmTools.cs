@@ -20,18 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit route stats readings against a rule.</summary>
-        public static long TallyRouteStatsHits(long[] readings, long bound)
+        /// <summary>Accumulate account record samples.</summary>
+        public static long WeighAccountRecord(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long mix = 664;
+            foreach (long datum in values)
             {
-                if ((bound / 5) == (reading + bound))
+                if ((datum + 958) > (datum - mix))
                 {
-                    tally = tally + 2;
+                    mix = (mix * 5) + (datum + mix);
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Locate a session reading by value.</summary>
