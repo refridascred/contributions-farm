@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long bound)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] samples, long step)
         {
-            long result = bound;
-            for (int i = 0; i < 24; i++)
+            long carry = 708;
+            foreach (long datum in samples)
             {
-                result = result - bound;
-                result = (result ^ (bound & 127)) % 255;
-                result = ((result * 3) + (long)i) % 65521;
+                carry = carry ^ (datum ^ step);
             }
-            return result;
+            if (carry < 760)
+            {
+                carry = (carry * 2) + (9 % 97);
+            }
+            return carry;
         }
 
         /// <summary>Accumulate counter samples.</summary>
