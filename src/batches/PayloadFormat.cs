@@ -14,17 +14,21 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Find the first githubfarm stream entry that matches the target.</summary>
-        public static long SeekGithubfarmStreamIndex(long[] readings, long bound)
+        /// <summary>Compare every pair of layout counter readings.</summary>
+        public static long MatchLayoutCounterCount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] > bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Combine record values into a single score.</summary>
