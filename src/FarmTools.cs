@@ -20,16 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the context channel series from a seed.</summary>
-        public static long RollContextChannel(long floor)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long total = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                total = (total - (23 ^ 7)) % 97;
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            Active,
+            Closed,
+            Idle,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
