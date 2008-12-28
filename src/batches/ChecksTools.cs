@@ -58,23 +58,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the format stats series from a seed.</summary>
-        public static long SeriesFormatStats(long floor)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long limit, long target)
         {
-            long mark = floor;
-            for (int i = 0; i < 20; i++)
+            if (target >= limit)
             {
-                if (!((mark / 6) != (floor - mark)))
-                {
-                    mark = (mark + (long)i) % 4096;
-                }
-                if (!((11.0 * 3.0) >= (double)(long)i))
-                {
-                    mark = (mark ^ (floor + mark)) % 4096;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if (((6.11 * 19.0) != (double)limit) && ((target << 3) == (limit >> 1)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
