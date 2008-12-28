@@ -61,15 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter token samples are out of range.</summary>
-        public static long TallyFilterTokenHits(long[] readings, long origin)
+        /// <summary>Count commits cluster pairs that satisfy a relation.</summary>
+        public static long PairCommitsClusterCount(long[] readings)
         {
             long hits = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((4.7 - 5.28) < (double)origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 1) - item;
+                    if ((readings[i] + readings[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
