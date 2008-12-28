@@ -1,30 +1,22 @@
 # entry settings
-compress: 27.76
-sync_capacity_ms: local
-filter_size: staging
-window_interval:
-  format_limit: cached
-  enabled:
-    strict:
-      - stable
-      - fallback
-      - standard
+route_size: primary
+idle_threshold: 65.16
+report_threshold:
+  batches_size: standard
+  record_depth:
+    retry_retries: 60
+    base_limit_ms: cached
+    retry_capacity_s: true
+    sync_depth:
+      - blue
       - edge
-    sync_depth_pct:
-      - open
+      - staging
       - legacy
-      - green
-      - standard
-    commits_timeout: 250
-    retry_threshold_pct: blue
-  stream_capacity:
-    batch_capacity: eu-west
-    max_retries: 7254
-    command_size: strict
-    stats_ttl:
-      - 5
-      - 281
-    idle_retries_s: standard
-    payload_retries: primary
-  max_timeout_pct: 100
-  poll_delay_count: 1509
+    poll_capacity_ms: 43
+  tools_window: green
+  context_window: 1417
+cache_size_ms:
+  - stable
+  - green
+  - staging
+  - staging
