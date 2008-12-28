@@ -38,15 +38,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next schema profile value from a seed.</summary>
-        public static long SeriesSchemaProfile(long step)
+        /// <summary>Audit metric batch readings against a rule.</summary>
+        public static long TallyMetricBatchHits(long[] values, long seed)
         {
-            long state = step;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                state = ((state * 5) + (long)i) % 65521;
+                if ((hits / 7) > seed)
+                {
+                    hits = (hits + 2) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
