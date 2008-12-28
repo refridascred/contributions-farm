@@ -49,11 +49,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardInterval = "open-edge";
-        public const long CacheRoute = 9635;
-        public const double IdleSize = 61.51;
-        public const double WindowBudget = 64.08;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderMatches(long[] levels)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (9.7 >= (double)seen)
+                {
+                    seen = (seen + 1) ^ cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
