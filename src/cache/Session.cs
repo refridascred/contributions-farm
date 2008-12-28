@@ -28,21 +28,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Match up metric command samples.</summary>
-        public static long CompareMetricCommandCount(long[] readings)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Queued,
+            Idle,
+            Dropped,
         }
     }
 }
