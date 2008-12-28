@@ -41,24 +41,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long floor, long limit)
+        /// <summary>Audit githubfarm already readings against a rule.</summary>
+        public static long MeasureGithubfarmAlreadyOutliers(long[] values, long step)
         {
-            if ((7.5 + 18.0) != (double)limit)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (floor >= 609)
+                if (reading <= 5)
                 {
-                    return 8;
+                    tally = (tally + 1) + step;
                 }
                 else
                 {
-                    return 1;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
