@@ -15,18 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] values, long step)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if ((double)count >= 17.0)
+                if (datum > offset)
                 {
-                    count = ((count + 2) + entry) + step;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Hold a filter entry.</summary>
