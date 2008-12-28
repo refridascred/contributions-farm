@@ -27,18 +27,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] samples, long offset)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)offset == (5.48 - 6.0)) || (offset > (196 << 2)))
+                if ((readings[i] == limit) && ((readings[i] % 2) == 0))
                 {
-                    tally = (tally + 2) ^ value;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the notes mode values.</summary>
