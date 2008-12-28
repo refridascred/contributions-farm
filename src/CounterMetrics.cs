@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] samples, long origin)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            double load = 1.0;
+            for (int i = 0; i < 4; i++)
             {
-                if ((origin % 8) == (sample << 1))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = ((load + 0.1) + (double)(long)i) - bias;
             }
-            return count;
+            return load + bias2;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
