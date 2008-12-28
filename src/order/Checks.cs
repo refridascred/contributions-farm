@@ -77,16 +77,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long offset)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long mark = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = (mark + (4 - 525)) % 255;
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            Paused,
+            Draft,
+            Ready,
+            Stale,
+            Closed,
         }
     }
 }
