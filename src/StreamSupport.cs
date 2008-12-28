@@ -28,18 +28,32 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamHits(long[] values)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long seed, long origin)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long diff = seed + origin;
+            if ((double)diff < 7.4)
             {
-                if ((9.76 / 2.0) < (double)sample)
+                return 1;
+            }
+            else
+            {
+                if ((seed + diff) == (diff - seed))
                 {
-                    hits = hits + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin == (0.8 - 5.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
