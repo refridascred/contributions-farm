@@ -62,17 +62,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] values, long target)
+        /// <summary>Roll a stream batch counter forward.</summary>
+        public static long DeriveStreamBatch(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((values[i] < target) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                acc = acc ^ (acc + 929);
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
