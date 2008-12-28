@@ -53,13 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public string Size { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
-            public double Level { get; set; }
+            Active,
+            Ready,
+            Draft,
         }
     }
 }
