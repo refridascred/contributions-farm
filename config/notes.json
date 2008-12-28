@@ -1,7 +1,6 @@
 {
-  "hard_size_count": ["primary", "eu-west"],
-  "default_retries": true,
-  "record_ratio": 4,
-  "cache_retries": 1736,
-  "retry_window_pct": "blue"
+  "warm_capacity_pct": 1024,
+  "flush_ratio_ms": "edge",
+  "burst_size_s": 250,
+  "batches_limit": 72.34
 }
