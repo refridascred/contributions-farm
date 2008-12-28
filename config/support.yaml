@@ -1,5 +1,23 @@
 # support settings
-farm_ttl: true
-flush_size_pct: true
-audit: standard
-base_delay_pct: cached
+burst_interval_count: 6918
+base_interval:
+  hard_delay: staging
+  compress: true
+  max_window_ms:
+    - stable
+    - standard
+  readonly: cached
+  poll_limit_ms:
+    - eu-west
+    - strict
+    - primary
+layout_depth: local
+enabled:
+  compress: 86.64
+  cache_capacity_ms: latest
+  route_ratio: false
+burst_retries_count:
+  - standard
+  - strict
+  - primary
+  - legacy
