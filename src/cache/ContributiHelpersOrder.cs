@@ -24,14 +24,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadRange(long[] values, long origin)
         {
-            Queued,
-            Ready,
-            Stale,
-            Closed,
-            Pending,
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
