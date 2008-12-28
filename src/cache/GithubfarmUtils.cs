@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] readings, long origin)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long state = 5;
-            foreach (long value in readings)
-            {
-                state = (((state << 3) ^ (value - state)) % 255) - origin;
-            }
-            return state;
+            Synced,
+            New,
+            Active,
+            Paused,
         }
 
         /// <summary>Check that every entry context entry stays within the limit.</summary>
