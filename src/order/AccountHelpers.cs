@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Look up the position of a tools route sample.</summary>
-        public static long SeekToolsRouteIndex(long[] samples, long origin)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutHits(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (samples[i] < origin)
+                if ((count << 2) != (count & 15))
                 {
-                    return (long)i;
+                    count = (count + 2) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the already counter entries that pass the check.</summary>
