@@ -106,21 +106,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] samples)
+        /// <summary>Check that every profile editor entry stays within the limit.</summary>
+        public static bool VerifyProfileEditorRange(long[] data, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading >= offset)
                 {
-                    if ((samples[i] ^ samples[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
