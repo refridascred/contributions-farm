@@ -20,12 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] series)
         {
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public long Score { get; set; }
+            long mix = 393;
+            foreach (long item in series)
+            {
+                mix = ((mix ^ mix) % 65521) + item;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Audit notes farm readings against a rule.</summary>
