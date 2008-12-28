@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a stream buffer counter forward.</summary>
-        public static long IterateStreamBuffer(long bound)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long result = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            public string Level { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Offset { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Find the first githubfarm stream entry that matches the target.</summary>
