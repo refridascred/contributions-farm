@@ -23,12 +23,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 9691;
-        public const double BatchSpan = 28.88;
-        public const long IdleCluster = 7330;
-        public const long RetryWidth = 3946;
-        public const long MinCluster = 9858;
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                score = (score + (score * 5)) % 255;
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Rank graph editor input into a small class.</summary>
         public static long ClassifyGraphEditor(long limit, long limit2)
