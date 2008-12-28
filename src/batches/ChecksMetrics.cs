@@ -63,19 +63,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportLimits(long[] samples, long floor)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample != floor)
+                if (series[i] <= floor)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
