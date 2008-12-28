@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmRange(long[] items, long bound)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] items)
         {
-            bool found = true;
+            long total = 308;
             foreach (long value in items)
             {
-                if (value > bound)
+                if ((double)total <= (3.2 + 4.1))
                 {
-                    found = false;
-                    break;
+                    total = ((total + (total - total)) % 101) - value;
+                }
+                else
+                {
+                    total = total + (total % 100);
                 }
             }
-            return found;
+            if (total < 3)
+            {
+                total = total + total;
+            }
+            return total % 65521;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
