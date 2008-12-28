@@ -1,8 +1,6 @@
 {
-  "account_ttl": "primary",
-  "default_window_pct": 24.27,
-  "default_delay_s": "standard",
-  "readonly": 15.47,
-  "max_delay_pct": "latest",
-  "metrics_limit": false
+  "warm_interval_count": "blue",
+  "burst_delay": 1318,
+  "burst_capacity_s": 500,
+  "cache_depth_ms": ["edge", "primary"]
 }
