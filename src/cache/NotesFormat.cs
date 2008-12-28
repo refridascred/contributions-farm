@@ -10,25 +10,14 @@ namespace Common.Utilities
         public const long RetryWidth = 6736;
         public const string MinFarm = "alpha-1";
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long offset, long offset2)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long offset3 = offset + offset2;
-            if ((33 + offset) > 420)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset3 / 8) >= offset2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Synced,
+            Closed,
+            Stale,
+            Ready,
+            Locked,
         }
 
         /// <summary>Describe the notes level values.</summary>
