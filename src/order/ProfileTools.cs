@@ -69,13 +69,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public string Weight { get; set; } = "";
-            public double Score { get; set; }
-            public long Level { get; set; }
-            public double Rank { get; set; }
+            Retry,
+            Locked,
+            Queued,
+            Closed,
         }
     }
 }
