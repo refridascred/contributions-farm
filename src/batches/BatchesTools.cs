@@ -13,38 +13,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long seed, long step)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long seed)
         {
-            if ((seed >> 2) == (step + step))
+            long state = seed;
+            for (int i = 0; i < 22; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((7.86 + 7.02) > (double)seed)
+                state = ((state * 2) + (1 >> 2)) % 97;
+                state = (state + ((long)i >> 4)) % 65521;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return 7;
+                    state = (state - (state + state)) ^ (long)i2;
+                    state = (state ^ (long)i) % 101;
                 }
-                else
-                {
-                    if ((double)step != (12.0 * 0.32))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((1.57 / 2.0) != (double)seed)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                state = ((state * 3) + (long)i) % 1000;
             }
+            return state;
         }
 
         /// <summary>Describe the notes class values.</summary>
