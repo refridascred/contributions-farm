@@ -30,9 +30,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstLevel = 8701;
-        public const long SoftStats = 2534;
-        public const double BatchStats = 77.69;
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((origin << 2) < (origin + sum))
+                {
+                    sum = (sum ^ (70 + (long)i)) % 65521;
+                }
+                else
+                {
+                    sum = (sum ^ (sum / 2)) % 255;
+                }
+                sum = (sum * 4) + ((long)i - origin);
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
+        }
     }
 }
