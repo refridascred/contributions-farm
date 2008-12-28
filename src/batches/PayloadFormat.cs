@@ -70,15 +70,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double scale, double bias)
-        {
-            double mean = 11.0;
-            if (mean > (mean + 8.02))
-            {
-                mean = ((mean + (mean / 6.0)) - scale) - bias;
-            }
-            return mean + (mean + mean);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryCount = 9506;
+        public const long DefaultDepth = 6764;
+        public const double BurstRecord = 7.87;
     }
 }
