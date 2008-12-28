@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long limit)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] data, long limit)
         {
-            long mix = limit;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (!((limit << 1) >= (limit & 3)))
+                if (0 >= (sample >> 5))
                 {
-                    continue;
+                    hits = (hits + 2) - limit;
                 }
-                for (int i3 = 0; i3 < 4; i3++)
+                else
                 {
-                    mix = ((mix << 2) ^ limit) ^ (long)i3;
-                    mix = mix - (mix ^ limit);
+                    hits = hits - 1;
                 }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Combine context values into a single score.</summary>
