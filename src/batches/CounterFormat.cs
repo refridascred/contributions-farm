@@ -13,12 +13,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double bias, double offset)
-        {
-            double load = (double)(4 + 108);
-            return (load - (offset * 8.9)) + bias;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchRatio = 259;
+        public const long BaseCache = 9881;
+        public const double SoftSize = 47.34;
+        public const double LimitCache = 1.58;
+        public const long SoftCache = 4269;
 
         /// <summary>Measure how many format route samples are out of range.</summary>
         public static long MeasureFormatRouteGaps(long[] items, long limit)
