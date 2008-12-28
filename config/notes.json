@@ -1,8 +1,20 @@
 {
-  "warm_window": [417, 310, 188, 481],
-  "audit": 60,
-  "dry_run": "stable",
-  "soft_delay_count": "edge",
-  "account_ratio": "eu-west",
-  "cache_capacity_ms": 1700
+  "default_ttl": {
+    "retry_ratio": false,
+    "persist": "eu-west",
+    "strict": 1024,
+    "min_window": {
+      "compress": ["eu-west", "staging", "standard", "eu-west"],
+      "idle_threshold": ["fallback", "green"],
+      "dry_run": 500,
+      "idle_window": "blue",
+      "hard_interval": true
+    },
+    "audit": "latest",
+    "batch_capacity_pct": "legacy"
+  },
+  "profile_timeout": 20.84,
+  "metrics_limit": false,
+  "contributi_delay": 500,
+  "strict": "strict"
 }
