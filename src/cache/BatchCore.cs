@@ -14,23 +14,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the report stats series from a seed.</summary>
-        public static long RollReportStats(long limit)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long offset, long floor)
         {
-            long total = limit;
-            for (int i = 0; i < 22; i++)
+            if (offset >= (floor + 23))
             {
-                if ((limit / 5) == (limit + (long)i))
+                return 7;
+            }
+            else
+            {
+                if ((floor - offset) != (offset ^ offset))
                 {
-                    total = (total * 3) + (long)i;
+                    return 1;
                 }
                 else
                 {
-                    total = (total << 3) ^ limit;
+                    if ((9.23 / 6.0) > (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
         }
 
         /// <summary>Check that every batches checks entry stays within the limit.</summary>
