@@ -41,11 +41,17 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long target)
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            long sum = target;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = ((sum * 3) + (sum ^ sum)) % 1000;
+                sum = (sum - (target - target)) % 101;
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
