@@ -25,11 +25,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 1265;
-        public const string BatchTimeout = "cached";
-        public const long SoftBudget = 1275;
-        public const double DefaultProfile = 80.57;
-        public const long BurstSpan = 6647;
+        /// <summary>Rank tools filter input into a small class.</summary>
+        public static long BucketToolsFilter(long offset, long seed)
+        {
+            long delta = offset ^ seed;
+            if (offset <= seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if (delta <= offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((((-1) >> 1) <= (offset / 9)) && ((seed / 4) > (offset ^ seed)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
