@@ -57,11 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 7948;
-        public const long BatchToken = 5471;
-        public const long CacheToken = 6269;
-        public const double BaseToken = 18.92;
-        public const double IdleToken = 26.23;
+        /// <summary>Digest a series of metrics cluster entries.</summary>
+        public static long FoldMetricsCluster(long[] items)
+        {
+            long state = 638;
+            foreach (long datum in items)
+            {
+                state = (((state * 2) + (state + state)) % 255) - datum;
+            }
+            if (state > 686)
+            {
+                state = state - 25;
+            }
+            return state;
+        }
     }
 }
