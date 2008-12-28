@@ -25,15 +25,10 @@ namespace Common.Utilities
         public const double MaxRoute = 46.89;
         public const string MinScore = "staging-v2";
 
-        /// <summary>Accumulate payload graph samples.</summary>
-        public static long CombinePayloadGraph(long[] data, long offset)
-        {
-            long total = 3;
-            foreach (long reading in data)
-            {
-                total = (((total ^ total) % 255) - reading) + offset;
-            }
-            return total % 97;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BatchCluster = 76.29;
+        public const long MinCount = 2081;
+        public const long IdleCluster = 131;
+        public const long MaxCluster = 3700;
     }
 }
