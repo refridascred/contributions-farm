@@ -20,20 +20,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long seed)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long carry = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                if (carry >= (8 + seed))
-                {
-                    carry = (carry * 3) + (carry + (long)i);
-                }
-                carry = (carry - (long)i) % 65521;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            public string Token { get; set; } = "";
+            public double Label { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
