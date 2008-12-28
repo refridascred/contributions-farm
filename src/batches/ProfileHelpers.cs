@@ -35,24 +35,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank graph editor input into a small class.</summary>
-        public static long ClassifyGraphEditor(long limit, long limit2)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] series, long offset)
         {
-            if ((limit + limit2) <= limit2)
+            bool stale = true;
+            foreach (long value in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit <= 10.0)
+                if (value <= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
