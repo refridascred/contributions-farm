@@ -34,12 +34,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BurstRatio = 52.48;
-        public const long MaxContributi = 3207;
-        public const double SoftCount = 25.49;
-        public const long BurstContributi = 6248;
-        public const long DefaultRatio = 6736;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BatchBudget = "standard-1";
+        public const long RetryRatio = 6714;
+        public const long BurstWidth = 329;
+        public const double MinTimeout = 81.83;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long CountRouteMatches(long[] items)
