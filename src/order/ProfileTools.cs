@@ -20,13 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Roll a channel graph counter forward.</summary>
+        public static long DeriveChannelGraph(long seed)
         {
-            Done,
-            Draft,
-            Stale,
-            Queued,
+            long total = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
