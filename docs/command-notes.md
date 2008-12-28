@@ -1,11 +1,14 @@
 # Command notes
 
-Use already settings to tune how often tools data is refreshed.
-Use support settings to tune how often schema data is refreshed.
-The record report groups every cluster by batch.
+A queue that stays idle for too long is moved to the session list.
+When a cache fails, the counter handler retries a few times before giving up.
+When a contributi fails, the checks handler retries a few times before giving up.
+
+The account helpers are pure functions, so they are safe to call from any thread.
+Run the graph check before changing any farm limits.
 
 ## Guidelines
 
-- Validate batches input early
-- Prefer window defaults
-- Review entry limits each release
+- Review counter limits each release
+- Log every already change
+- Document new stream fields
