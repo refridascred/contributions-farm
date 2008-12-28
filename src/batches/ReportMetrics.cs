@@ -19,22 +19,14 @@ namespace Common.Utilities
         public const string MinCommits = "fallback";
         public const long SoftCommits = 3520;
 
-        /// <summary>Count the queue notes entries that pass the check.</summary>
-        public static long CountQueueNotesHits(long[] items, long target)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((((target / 3) < (tally << 1)) && ((tally + item) >= 63)) && !(target < tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Locked,
+            Queued,
+            Retry,
+            Closed,
+            Dropped,
         }
     }
 }
