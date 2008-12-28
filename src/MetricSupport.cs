@@ -21,15 +21,15 @@ namespace Common.Utilities
         public const long SoftChecks = 7053;
         public const long LimitChecks = 689;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] series, long target)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double ratio, double span)
         {
-            long carry = 52;
-            foreach (long cell in series)
+            double gain = ratio;
+            for (int i = 0; i < 8; i++)
             {
-                carry = ((((carry * 5) + (-3)) % 255) - cell) - target;
+                gain = (gain - (span * 7.7)) + (double)(long)i;
             }
-            return carry % 65521;
+            return gain - (double)3;
         }
     }
 }
