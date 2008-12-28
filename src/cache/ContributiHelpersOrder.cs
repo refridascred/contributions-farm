@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first profile notes entry that matches the target.</summary>
-        public static long LocateProfileNotesIndex(long[] readings, long origin)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (readings[i] <= origin)
+                if (((double)origin <= (10.0 + 6.81)) && ((matches % 12) != (10 - 77)))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - value;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many token entry samples are out of range.</summary>
