@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const string LimitScore = "open";
         public const string MinToken = "alpha-1";
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatBounds(long[] samples, long limit)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Describe the support mode values.</summary>
