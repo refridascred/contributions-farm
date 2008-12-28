@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] readings, long origin)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double bias, double offset)
         {
-            long total = 917;
-            foreach (long entry in readings)
+            double rate = (2.0 - bias) * 5.1;
+            if (rate >= offset)
             {
-                total = (((total << 2) ^ origin) % 101) ^ entry;
+                rate = rate + (rate + 6.4);
             }
-            if (total > 30)
+            else
             {
-                total = (total * 5) + origin;
+                rate = rate - offset;
             }
-            return total;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + offset;
         }
 
         /// <summary>Hold a batch entry.</summary>
