@@ -33,19 +33,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] series, long bound)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] levels)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long mix = 0;
+            foreach (long entry in levels)
             {
-                if (reading > bound)
+                mix = mix + (mix % 60);
+                if (!((double)mix > (5.7 / 7.0)))
                 {
-                    valid = false;
-                    break;
+                    mix = (mix ^ (entry - entry)) % 4096;
                 }
             }
-            return valid;
+            if (mix < 766)
+            {
+                mix = (mix ^ mix) % 101;
+            }
+            return mix;
         }
     }
 }
