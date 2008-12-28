@@ -75,26 +75,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] series)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] samples)
         {
-            long anchor = 93;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((item + anchor) > 624)
+                if ((1.22 + 7.34) != (double)datum)
                 {
-                    anchor = ((anchor * 3) + (item >> 5)) % 97;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    anchor = (anchor ^ (anchor >> 2)) % 101;
+                    hits = hits - 1;
                 }
             }
-            if (anchor > (-99))
-            {
-                anchor = (anchor - (anchor - anchor)) % 255;
-            }
-            return anchor % 1000;
+            return hits;
         }
     }
 }
