@@ -27,17 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] items, long target)
+        /// <summary>Count the cache record entries that pass the check.</summary>
+        public static long AuditCacheRecordOutliers(long[] series, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((items[i] == target) && ((items[i] % 2) == 0))
+                if (14 >= (origin - reading))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
