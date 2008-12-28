@@ -16,31 +16,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long floor, long seed)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            if (((floor & 63) <= (floor + floor)) || ((floor >> 3) == (seed + floor)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (165 < (seed << 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)seed != (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public bool Token { get; set; }
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a filter header.</summary>
