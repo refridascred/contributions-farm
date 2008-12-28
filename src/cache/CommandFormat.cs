@@ -24,12 +24,10 @@ namespace Common.Utilities
             return rate + (floor * 19.0);
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double ratio, double bias)
-        {
-            double gain = ratio;
-            return (gain + 9.1) + bias;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepTimeout = "legacy-edge";
+        public const double SoftRatio = 5.2;
+        public const string RetryDepth = "primary";
 
         /// <summary>Match up schema samples.</summary>
         public static long OverlapSchemaCount(long[] readings)
