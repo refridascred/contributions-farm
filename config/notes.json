@@ -1,5 +1,25 @@
 {
-  "notes_retries": ["primary", "local", "eu-west"],
-  "poll_depth": 27.11,
-  "base_ratio_s": "open"
+  "retry_ttl_ms": 86.78,
+  "dry_run": {
+    "verbose": 5242,
+    "retry_ttl": {
+      "compress": "edge",
+      "burst_limit_pct": "open",
+      "contributi_depth": true,
+      "strict": false,
+      "filter_ratio": true
+    },
+    "min_delay": {
+      "default_timeout_pct": ["strict", "primary"],
+      "default_ratio": 100,
+      "buffer_threshold": "edge",
+      "max_retries": "primary",
+      "contributi_size": "local",
+      "profile_retries": "eu-west"
+    },
+    "compress": 62.37,
+    "context_ttl": "open"
+  },
+  "batch_window_pct": 68.27,
+  "retry_window": 100
 }
