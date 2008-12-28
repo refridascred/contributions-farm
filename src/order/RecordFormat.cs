@@ -35,27 +35,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] samples, long step)
+        /// <summary>Match up cache batches samples.</summary>
+        public static long CompareCacheBatchesCount(long[] samples)
         {
-            long carry = 190;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry * 4) + (850 / 9)) % 255;
-                if (!((step >> 3) > step))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = (carry - (carry % 5)) % 97;
-                }
-                else
-                {
-                    carry = (carry ^ (906 - sample)) % 97;
+                    if ((samples[i] - samples[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry < (-941))
-            {
-                carry = ((carry << 2) ^ step) % 65521;
-            }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Rank already input into a small class.</summary>
