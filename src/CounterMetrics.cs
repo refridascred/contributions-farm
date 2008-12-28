@@ -38,22 +38,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordGaps(long[] levels, long floor)
+        /// <summary>Check that every metrics editor entry stays within the limit.</summary>
+        public static bool CheckMetricsEditorRange(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if ((double)count != (9.82 * 15.0))
+                if (reading <= seed)
                 {
-                    count = ((count + 3) ^ value) + floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Hold a command summary.</summary>
