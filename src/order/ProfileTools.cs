@@ -37,11 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double rate, double offset)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            double ratio = (double)30 * 4.56;
-            return ((ratio - (double)3) + rate) + offset;
+            public long Stamp { get; set; }
+            public double Total { get; set; }
+            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
