@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long BurstReport = 8036;
         public const string BatchReport = "fallback-1";
 
-        /// <summary>Locate a notes githubfarm reading by value.</summary>
-        public static long LookupNotesGithubfarmIndex(long[] data, long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueMatches(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((data[i] <= floor) && ((data[i] % 2) != 0))
+                if (!((double)seen <= 19.0))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + entry;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
