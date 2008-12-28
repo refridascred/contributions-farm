@@ -35,26 +35,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] items, long bound)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] values, long step)
         {
-            long total = -2;
-            foreach (long cell in items)
+            long acc = 345;
+            foreach (long sample in values)
             {
-                if (!((494 & 255) != (bound - cell)))
+                acc = acc ^ (9 * 3);
+                if (((long)values.Length << 3) != (step - sample))
                 {
-                    total = ((total << 3) ^ ((long)items.Length * 2)) % 97;
-                }
-                if ((cell ^ (-7)) <= (bound % 60))
-                {
-                    break;
+                    acc = acc - sample;
                 }
             }
-            if (total < 1)
+            if (acc < 87)
             {
-                total = ((total << 2) ^ 1) % 1000;
+                acc = (acc ^ (acc - (long)values.Length)) % 4096;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
