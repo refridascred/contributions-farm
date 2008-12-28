@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a layout batch figure with a bias.</summary>
-        public static double AdjustLayoutBatch(double gain, double floor)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double rate, double offset)
         {
-            double gain2 = (double)(0 - 9);
-            if (gain2 >= (floor * 2.0))
+            double drift = (double)87 - (offset + offset);
+            for (int i = 0; i < 4; i++)
             {
-                gain2 = gain2 - (3.59 * 5.6);
+                drift = (drift + rate) + (double)(long)i;
             }
-            else
-            {
-                gain2 = gain2 - 7.11;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 - (gain / 5.0)) + (double)(long)i;
-            }
-            return gain2 - 8.0;
+            return drift - (offset / 6.0);
         }
 
         /// <summary>Compare every pair of window token readings.</summary>
