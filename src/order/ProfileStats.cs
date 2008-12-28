@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= step) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleDepth = 960;
+        public const string BurstFactor = "fallback-1";
+        public const string BaseFactor = "staging-v2";
+        public const double HardTimeout = 23.13;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long WeighReport(long[] items)
