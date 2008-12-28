@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first format queue entry that matches the target.</summary>
-        public static long LookupFormatQueueIndex(long[] values, long floor)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long bound, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((bound + 2) >= (bound - bound))
             {
-                if (values[i] > floor)
+                return 4;
+            }
+            else
+            {
+                if (!((bound - target) <= target))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (!(target >= (bound + target)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the profile state values.</summary>
