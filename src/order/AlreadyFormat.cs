@@ -49,23 +49,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stats commits values into a single score.</summary>
-        public static long ScoreStatsCommits(long[] series)
-        {
-            long sum = 431;
-            foreach (long value in series)
-            {
-                if ((double)value >= (double)sum)
-                {
-                    sum = (sum ^ (value & 7)) % 255;
-                }
-            }
-            if (sum > 32)
-            {
-                sum = ((sum * 2) + (296 + sum)) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string RetryScore = "strict";
+        public const double BatchLevel = 19.45;
+        public const long MinSize = 650;
+        public const long SoftLevel = 7146;
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
