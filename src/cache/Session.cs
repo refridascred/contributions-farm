@@ -16,16 +16,38 @@ namespace Common.Utilities
         public const double BurstFilter = 52.96;
         public const double RetryFilter = 21.72;
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long limit)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long bound, long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 21; i++)
+            if ((double)floor <= (7.29 * 5.81))
             {
-                carry = carry ^ (limit + (long)i);
-                carry = ((carry * 2) + (long)i) % 4093;
+                return 5;
             }
-            return carry;
+            else
+            {
+                if (((bound - bound) <= bound) || (4 <= (floor ^ bound)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound + floor) <= (floor / 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((0.26 - 1.0) <= (double)floor)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
