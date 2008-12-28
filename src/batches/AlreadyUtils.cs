@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Locate a payload profile reading by value.</summary>
-        public static long LookupPayloadProfileIndex(long[] readings, long bound)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] series, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if ((readings[i] == bound) && ((readings[i] % 3) != 0))
+                if (item != step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
