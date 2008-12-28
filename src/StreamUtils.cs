@@ -78,19 +78,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batch context readings against a bound.</summary>
-        public static bool ValidateBatchContextRange(long[] series, long origin)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Stamp { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
