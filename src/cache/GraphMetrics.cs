@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long target)
         {
-            public bool Count { get; set; }
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
-            public string Score { get; set; } = "";
+            long sum = target;
+            for (int i = 0; i < 16; i++)
+            {
+                if (target >= ((long)i + target))
+                {
+                    sum = (sum + target) % 255;
+                }
+                if ((target % 16) >= (target & 7))
+                {
+                    sum = ((sum << 2) ^ (sum >> 1)) % 1000;
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
