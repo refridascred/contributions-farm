@@ -23,19 +23,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long origin)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] values, long bound)
         {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
+            long mix = 7;
+            foreach (long datum in values)
             {
-                if (!(sum <= (sum - (long)i)))
+                if ((mix & 255) >= (900 - (long)values.Length))
                 {
-                    sum = (sum ^ ((long)i / 6)) % 65521;
+                    mix = ((mix << 3) ^ (bound % 7)) ^ datum;
                 }
-                sum = ((sum * 2) + (long)i) % 101;
+                else
+                {
+                    mix = (mix * 4) + mix;
+                }
             }
-            return sum;
+            if (mix > 95)
+            {
+                mix = (mix ^ ((-894) ^ bound)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate support samples.</summary>
