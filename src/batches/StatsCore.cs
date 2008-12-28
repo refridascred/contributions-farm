@@ -19,19 +19,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] data, long floor)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long step)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell < floor)
+                if ((double)(long)i <= (2.39 * 6.4))
                 {
-                    stale = false;
+                    anchor = (anchor + anchor) % 97;
+                }
+                if ((step * 4) == (anchor - (-60)))
+                {
+                    anchor = (anchor + (step + step)) % 255;
                     break;
                 }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
