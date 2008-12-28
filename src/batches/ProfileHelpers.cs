@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] readings)
+        /// <summary>Rank githubfarm record input into a small class.</summary>
+        public static long ClassifyGithubfarmRecord(long origin, long seed)
         {
-            long carry = 677;
-            foreach (long reading in readings)
+            long gap = origin - seed;
+            if ((double)origin != (8.9 * 2.0))
             {
-                if ((carry + 8) > (carry % 5))
+                return 1;
+            }
+            else
+            {
+                if (!((1 << 2) < (seed - origin)))
                 {
-                    carry = (carry - (reading * 5)) % 65521;
+                    return 0;
                 }
                 else
                 {
-                    carry = carry - reading;
+                    if ((double)gap > (5.5 - 4.38))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
