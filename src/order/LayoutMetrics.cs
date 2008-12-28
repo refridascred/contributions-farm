@@ -19,12 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitFactor = 7884;
-        public const double HardFactor = 63.09;
-        public const string HardTimeout = "alpha";
-        public const double MinCount = 17.88;
-        public const string SoftRecord = "strict-edge";
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = anchor + (floor + 5);
+                anchor = (anchor ^ ((long)i >> 1)) % 1000;
+                if ((floor << 1) != (floor >> 2))
+                {
+                    anchor = ((anchor << 2) ^ (anchor % 3)) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + ((long)i * 2)) % 97;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
