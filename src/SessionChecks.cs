@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = (acc ^ acc) % 101;
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double HardSpan = 17.67;
+        public const double RetryReport = 18.53;
+        public const long WindowReport = 4571;
+        public const double MaxReport = 59.25;
+        public const string BaseReport = "strict-1";
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long CountSupportOutliers(long[] data)
