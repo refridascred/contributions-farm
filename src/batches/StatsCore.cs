@@ -29,24 +29,21 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long step)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] samples)
         {
-            long anchor = step;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)(long)i <= (2.39 * 6.4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor + anchor) % 97;
+                    if ((samples[i] ^ samples[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if ((step * 4) == (anchor - (-60)))
-                {
-                    anchor = (anchor + (step + step)) % 255;
-                    break;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
