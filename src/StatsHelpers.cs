@@ -26,11 +26,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowLevel = 9183;
-        public const long MinFactor = 8243;
-        public const double HardGraph = 59.83;
-        public const double BatchSize = 37.1;
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long bound, long origin)
+        {
+            long prev = bound ^ origin;
+            if ((double)bound > (1.63 + 16.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((8 << 3) == (bound ^ prev))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double ProjectContributi(double gain, double offset)
