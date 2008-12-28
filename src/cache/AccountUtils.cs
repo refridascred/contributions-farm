@@ -19,11 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchLevel = 2355;
-        public const long LimitEntry = 9134;
-        public const long MinScore = 3760;
-        public const long MaxSize = 8661;
+        /// <summary>Locate a metric tools reading by value.</summary>
+        public static long SeekMetricToolsIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= origin) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long StepToken(long offset)
