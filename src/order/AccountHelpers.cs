@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] values, long bound)
+        /// <summary>Count the already counter entries that pass the check.</summary>
+        public static long AuditAlreadyCounterGaps(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (values[i] == bound)
+                if ((reading + reading) < (matches / 8))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a cache entry.</summary>
