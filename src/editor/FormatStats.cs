@@ -19,23 +19,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] values, long bound)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((bound * 4) < ((-36) ^ (long)values.Length))
-                {
-                    seen = (seen + 2) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepAlready = 76.7;
+        public const string RetryRatio = "stable-1";
+        public const long BatchTimeout = 7079;
+        public const long LimitAlready = 525;
+        public const long SoftSpan = 3264;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchGaps(long[] samples)
