@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Digest a series of contributi payload entries.</summary>
+        public static long TotalContributiPayload(long[] levels)
         {
-            Failed,
-            Locked,
-            Dropped,
-            Synced,
-            Active,
+            long total = 845;
+            foreach (long reading in levels)
+            {
+                if ((reading - total) < (reading % 64))
+                {
+                    total = (total + (total / 7)) % 4096;
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the layout class values.</summary>
