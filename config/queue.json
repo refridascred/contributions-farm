@@ -1,16 +1,6 @@
 {
-  "idle_ratio_pct": "green",
-  "contributi_window": {
-    "counter_threshold": "edge",
-    "default_window": true,
-    "persist": "strict",
-    "retry_window_pct": true
-  },
-  "warm_ratio": true,
-  "editor_ratio": "eu-west",
-  "verbose": {
-    "soft_timeout_count": "standard",
-    "strict": 74.23,
-    "record_size": "stable"
-  }
+  "default_limit_s": false,
+  "base_timeout_s": "primary",
+  "flush_ratio_count": "green",
+  "strict": [79, 254, 290]
 }
