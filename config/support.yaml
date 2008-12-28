@@ -1,7 +1,8 @@
 # support settings
-batches_timeout: 39.46
-buffer_size: 250
-retry_size: true
-githubfarm_capacity: primary
-sync_retries: false
-retry_delay: 34.03
+retry_interval:
+  - staging
+  - blue
+  - standard
+soft_ttl_ms: 500
+context_window: local
+command_window: open
