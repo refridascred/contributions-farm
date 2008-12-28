@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Count the githubfarm schema entries that pass the check.</summary>
+        public static long CountGithubfarmSchemaHits(long[] readings, long origin)
         {
-            public string Region { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((double)origin != (9.6 - 6.0))
+                {
+                    matches = (matches + 2) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a batch stats.</summary>
