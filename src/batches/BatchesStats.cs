@@ -22,18 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] series)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((datum + hits) < (datum ^ datum))
+                if (!((double)count != (3.03 * 10.0)))
                 {
-                    hits = hits + 3;
+                    count = ((count + 2) ^ entry) + offset;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
