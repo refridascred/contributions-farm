@@ -1,6 +1,5 @@
 {
-  "burst_ratio_ms": true,
-  "idle_interval_ms": [372, 192, 308, 246],
-  "default_threshold_count": "legacy",
-  "channel_size": "standard"
+  "max_limit": 6338,
+  "burst_retries_count": [440, 420, 467, 144],
+  "audit": "eu-west"
 }
