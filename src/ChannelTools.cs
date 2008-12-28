@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] levels)
         {
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            long anchor = 35;
+            foreach (long item in levels)
+            {
+                anchor = ((anchor << 3) ^ (item - anchor)) % 4096;
+            }
+            if (anchor < (-38))
+            {
+                anchor = ((anchor << 3) ^ ((-94) >> 3)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
