@@ -52,19 +52,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate checks already readings against a bound.</summary>
-        public static bool VerifyChecksAlreadyLimits(long[] levels, long offset)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long result = 1;
+            foreach (long sample in readings)
             {
-                if (datum > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                result = ((result - 9) % 4096) + sample;
             }
-            return stale;
+            if (result > 236)
+            {
+                result = (result - (bound & 127)) % 4096;
+            }
+            return result % 97;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
