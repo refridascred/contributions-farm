@@ -12,38 +12,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long floor, long limit)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double gain, double floor)
         {
-            if (2.86 < (double)floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor >= (3.4 - 2.2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (limit <= (77 >> 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit / 2) > limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            double mean = floor * 10.0;
+            return mean - gain;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
