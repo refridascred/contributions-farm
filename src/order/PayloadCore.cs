@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterGaps(long[] levels, long limit)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((limit * 4) > (value + seen)) && (((5.3 + 3.0) == (double)seen) || ((seen << 2) != ((long)levels.Length / 2))))
+                if ((items[i] >= origin) && ((items[i] % 3) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Adjust a layout filter reading.</summary>
