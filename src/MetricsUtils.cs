@@ -39,13 +39,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
-        {
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
-            public bool Score { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxRatio = 1642;
+        public const string SoftBatch = "cached-edge";
+        public const long IdleBudget = 262;
+        public const long HardDepth = 9419;
+        public const long DefaultTimeout = 9675;
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long RankOrder(long target, long origin)
