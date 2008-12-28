@@ -67,15 +67,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] levels)
+        /// <summary>Find the first graph command entry that matches the target.</summary>
+        public static long LookupGraphCommandIndex(long[] data, long target)
         {
-            long result = 6;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result - result) - value;
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
