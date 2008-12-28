@@ -22,12 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchLevel = 53.74;
-        public const long BatchLayout = 4442;
-        public const double DefaultLayout = 71.43;
-        public const string WindowCount = "strict";
-        public const string BurstDepth = "fallback-1";
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] data, long origin)
+        {
+            long sum = -2;
+            foreach (long entry in data)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    sum = ((((sum * 2) + sum) % 101) ^ (long)i) - entry;
+                }
+                sum = (sum + (origin + sum)) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const double WindowContext = 93.03;
