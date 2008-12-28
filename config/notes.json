@@ -1,6 +1,6 @@
 {
-  "enabled": [90, 333, 283],
-  "burst_depth_s": 88.06,
-  "farm_size": 5436,
-  "counter_retries": false
+  "strict": 44,
+  "hard_window_ms": "legacy",
+  "flush_size": [120, 272],
+  "persist": [397, 35, 337]
 }
