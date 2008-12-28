@@ -5,30 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] items, long target)
-        {
-            long acc = 52;
-            foreach (long sample in items)
-            {
-                acc = (acc ^ (acc ^ sample)) % 255;
-                if (((acc + acc) < (acc - target)) || ((sample + 442) < (26 - sample)))
-                {
-                    acc = acc - acc;
-                    acc = (acc * 3) + sample;
-                    break;
-                }
-                else
-                {
-                    acc = (acc - (target ^ 8)) % 1000;
-                }
-                if ((0.22 + 2.19) > (double)acc)
-                {
-                    acc = (acc ^ target) % 255;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitBuffer = 14.43;
+        public const string MinInterval = "local-1";
+        public const string StepBuffer = "legacy-edge";
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
