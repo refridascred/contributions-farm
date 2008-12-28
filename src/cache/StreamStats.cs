@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] samples)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double scale, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale2 = scale;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale2 = (scale2 - (scale + scale2)) + (double)(long)i;
             }
-            return seen;
+            return scale2 - (16.0 + offset);
         }
 
         /// <summary>Hold a record record.</summary>
