@@ -1,6 +1,10 @@
 # support settings
-flush_window_ms: latest
-flush_ttl: false
-notes_timeout:
+burst_retries_s: false
+audit: true
+flush_retries_s:
+  - local
   - green
-  - stable
+  - open
+  - primary
+poll_capacity_pct: green
+editor_window: 46.41
