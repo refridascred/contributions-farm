@@ -39,13 +39,24 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Classify a commits filter pair into a bucket.</summary>
+        public static long SortCommitsFilter(long origin, long target)
         {
-            Active,
-            Closed,
-            Idle,
-            Queued,
+            if (((double)origin <= (3.92 * 5.0)) && ((6.1 * 9.91) > (double)target))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin + target) <= (origin + 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
