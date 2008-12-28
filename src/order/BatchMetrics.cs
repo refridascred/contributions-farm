@@ -51,19 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] samples, long seed)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueMatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (item <= seed)
+                if ((seen ^ (-10)) <= (reading / 8))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Describe the commits level values.</summary>
