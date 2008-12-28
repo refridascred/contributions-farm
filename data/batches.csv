@@ -1,8 +1,6 @@
-id,ratio,token
-1,36.24,cached
-2,240,19.82
-3,98.84,local
-4,261,635
-5,fallback,49.46
-6,83.19,600
-7,22.41,latest
+id,ratio,level,token
+1,55.97,latest,26.3
+2,edge,853,518
+3,374,375,open
+4,406,local,603
+5,primary,blue,865
