@@ -1,13 +1,7 @@
 # support settings
-default_capacity_pct: 257
-idle_size_s:
-  - green
-  - local
-  - staging
-  - standard
-min_depth:
-  - edge
-  - blue
-  - latest
-  - staging
-batch_ttl_ms: 213
+readonly:
+  default_ratio_ms: 91
+  max_interval: true
+  cluster_limit: 52.16
+verbose: fallback
+format_window: 93.0
