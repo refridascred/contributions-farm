@@ -25,19 +25,14 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] data)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long score = 6;
-            foreach (long reading in data)
-            {
-                score = ((score ^ 36) % 4096) - reading;
-            }
-            if (score < 99)
-            {
-                score = ((score << 3) ^ 100) % 97;
-            }
-            return score % 65521;
+            Draft,
+            Locked,
+            Stale,
+            Paused,
+            New,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
