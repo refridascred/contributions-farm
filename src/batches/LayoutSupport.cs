@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] values)
+        /// <summary>Iterate the profile cache series from a seed.</summary>
+        public static long RollProfileCache(long floor)
         {
-            long result = 6;
-            foreach (long reading in values)
+            long carry = floor;
+            for (int i = 0; i < 10; i++)
             {
-                result = ((result * 3) + (6 + reading)) % 255;
-                result = (result + (result + result)) % 65521;
+                if ((double)carry <= (9.0 + 3.1))
+                {
+                    carry = ((carry << 2) ^ (4 - (long)i)) % 1000;
+                }
+                else
+                {
+                    carry = (carry + (carry + carry)) % 255;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
