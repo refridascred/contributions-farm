@@ -87,18 +87,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] items, long floor)
+        /// <summary>Count batch contributi pairs that satisfy a relation.</summary>
+        public static long MatchBatchContributiCount(long[] samples)
         {
-            long result = 468;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)value > (5.0 - 0.4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = ((result - result) % 4096) + floor;
+                    if ((samples[i] + samples[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result;
+            return seen;
         }
     }
 }
