@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepSpan = "cached-edge";
-        public const string StepWidth = "standard";
-        public const long CacheMetric = 7095;
-        public const long BaseMetric = 5627;
-        public const double StepMetric = 45.13;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] samples, long offset)
+        {
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count the support counter entries that pass the check.</summary>
         public static long CountSupportCounterGaps(long[] series)
