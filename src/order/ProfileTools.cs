@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every context report entry stays within the limit.</summary>
-        public static bool CheckContextReportBounds(long[] values, long bound)
+        /// <summary>Count the filter profile entries that pass the check.</summary>
+        public static long MeasureFilterProfileHits(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (value < bound)
+                if (floor > (floor << 3))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) - item;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Project the next support value.</summary>
