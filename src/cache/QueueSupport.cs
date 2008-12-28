@@ -34,21 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] levels)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteGaps(long[] readings, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((4 & 3) <= count)
                 {
-                    if ((levels[i] + levels[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = ((count + 2) ^ cell) + target;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
