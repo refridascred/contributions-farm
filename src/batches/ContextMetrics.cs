@@ -14,11 +14,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            public double Rank { get; set; }
-            public string Count { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Combine checks support values into a single score.</summary>
