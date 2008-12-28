@@ -1,6 +1,5 @@
 {
-  "queue_ttl": ["fallback", "green", "standard"],
-  "base_depth": "legacy",
-  "max_capacity_ms": 3051,
-  "base_size_count": 68.41
+  "verbose": "latest",
+  "enabled": "blue",
+  "base_delay_count": "green"
 }
