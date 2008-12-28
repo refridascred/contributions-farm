@@ -46,13 +46,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            public string Offset { get; set; } = "";
-            public bool Owner { get; set; }
-            public bool Total { get; set; }
-            public bool Limit { get; set; }
+            public double Total { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
