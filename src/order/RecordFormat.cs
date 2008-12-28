@@ -56,18 +56,21 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] series)
+        /// <summary>Compare every pair of contributi already readings.</summary>
+        public static long PairContributiAlreadyCount(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((7.7 / 3.0) < (double)hits) && !((hits << 3) < (hits / 5)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 3) + sample;
+                    if ((data[i] - data[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
