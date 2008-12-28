@@ -56,12 +56,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public string Weight { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
+            Dropped,
+            Queued,
+            Pending,
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
