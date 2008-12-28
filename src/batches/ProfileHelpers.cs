@@ -47,16 +47,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a stream batch counter forward.</summary>
-        public static long DeriveStreamBatch(long offset)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] levels)
         {
-            long acc = offset;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = acc ^ (acc + 929);
-                acc = ((acc * 4) + (long)i) % 65521;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
