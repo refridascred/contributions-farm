@@ -12,11 +12,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double ratio, double span)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long target)
         {
-            double scale = 5.55 + 5.34;
-            return ((scale - scale) + ratio) + span;
+            long state = target;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!((18.0 / 4.0) != (double)state))
+                {
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Rank order input into a small class.</summary>
