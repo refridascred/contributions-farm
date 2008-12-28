@@ -40,18 +40,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((seen >> 2) >= (item ^ seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string IdleSpan = "strict-edge";
+        public const long IdleRoute = 7649;
+        public const string HardRoute = "fallback-v2";
+        public const double BatchSize = 2.28;
     }
 }
