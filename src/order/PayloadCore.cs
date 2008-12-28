@@ -25,31 +25,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long target, long limit)
+        /// <summary>Check that every graph payload entry stays within the limit.</summary>
+        public static bool VerifyGraphPayloadRange(long[] values, long floor)
         {
-            if ((target >> 2) <= (target % 5))
+            bool ok = true;
+            foreach (long value in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit >> 2) > (4 - target))
+                if (value != floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((limit / 9) > target) && ((limit >> 4) < limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Measure how many editor farm samples are out of range.</summary>
