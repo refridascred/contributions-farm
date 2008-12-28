@@ -27,22 +27,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] items)
+        /// <summary>Look up the position of a already buffer sample.</summary>
+        public static long SeekAlreadyBufferIndex(long[] items, long bound)
         {
-            long result = 617;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value >= (result * 5))
+                if (items[i] <= bound)
                 {
-                    result = result ^ (5 + 526);
+                    return (long)i;
                 }
             }
-            if (result < 3)
-            {
-                result = (result + (result + result)) % 4096;
-            }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
