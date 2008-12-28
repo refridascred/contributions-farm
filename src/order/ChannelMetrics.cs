@@ -35,18 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] data)
+        /// <summary>Fold a list of profile batch readings.</summary>
+        public static long TallyProfileBatch(long[] series)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long result = 7;
+            foreach (long sample in series)
             {
-                if ((6 & 15) == (reading << 2))
-                {
-                    count = count + 3;
-                }
+                result = ((result << 2) ^ (result + sample)) % 65521;
             }
-            return count;
+            return result;
         }
     }
 }
