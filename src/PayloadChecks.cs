@@ -47,10 +47,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BatchSchema = 98.02;
-        public const long MinSchema = 980;
-        public const double HardCount = 90.65;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] data)
+        {
+            long state = -9;
+            foreach (long item in data)
+            {
+                if ((double)state == (double)item)
+                {
+                    state = ((state << 3) ^ (state ^ item)) % 255;
+                }
+                else
+                {
+                    state = (state - (state % 2)) % 101;
+                }
+                if ((item + state) >= state)
+                {
+                    break;
+                }
+            }
+            if (state < 2)
+            {
+                state = state + (state - state);
+            }
+            return state;
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long TallySchemaGaps(long[] items, long step)
