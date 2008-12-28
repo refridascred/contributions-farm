@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long floor, long step)
-        {
-            long prev = floor ^ step;
-            if ((3.59 - 5.2) > (double)floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((prev << 2) < 19)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetryCommits = "latest-v2";
+        public const long DefaultRatio = 5936;
+        public const string IdleFactor = "local-edge";
 
         /// <summary>Hold a record record.</summary>
         public sealed class RecordRecord
