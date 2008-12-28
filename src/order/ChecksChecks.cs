@@ -31,19 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate channel report readings against a bound.</summary>
-        public static bool GuardChannelReportBounds(long[] items, long origin)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsMatches(long[] levels, long floor)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (reading > origin)
+                if ((floor - matches) != (matches ^ datum))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
