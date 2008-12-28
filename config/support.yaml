@@ -1,7 +1,6 @@
 # support settings
-min_capacity_s: open
-retry_window_ms: false
-max_depth_s: legacy
-commits_delay: 133
-audit: cached
-warm_timeout_s: 49.17
+flush_window_ms: latest
+flush_ttl: false
+notes_timeout:
+  - green
+  - stable
