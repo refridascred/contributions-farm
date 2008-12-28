@@ -27,20 +27,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next farm commits value.</summary>
-        public static double ScaleFarmCommits(double gain, double span)
-        {
-            double load = 0.8;
-            if (load > (gain * 7.59))
-            {
-                load = (load + load) + span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + gain) + (double)(long)i;
-            }
-            return load - 7.3;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitLevel = 3454;
+        public const long BatchProfile = 2189;
+        public const string DefaultProfile = "open-1";
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
