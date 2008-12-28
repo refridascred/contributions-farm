@@ -17,13 +17,13 @@ namespace Common.Utilities
         public const string BurstCluster = "latest-edge";
         public const long WindowCluster = 8218;
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Done,
-            Retry,
-            Locked,
-            Synced,
+            public string Score { get; set; } = "";
+            public double Level { get; set; }
+            public string Limit { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
