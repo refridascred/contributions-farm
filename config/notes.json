@@ -1,15 +1,8 @@
 {
-  "warm_timeout": "strict",
-  "schema_capacity": true,
-  "warm_delay_pct": "open",
-  "warm_depth_ms": {
-    "dry_run": 31.23,
-    "min_ttl_pct": {
-      "persist": [224, 361, 479],
-      "audit": 3597,
-      "min_limit_count": 79.32,
-      "burst_window": "strict"
-    },
-    "account_size": "cached"
-  }
+  "verbose": "fallback",
+  "command_retries": 2.1,
+  "min_window": false,
+  "dry_run": [193, 182, 42],
+  "min_limit_pct": "latest",
+  "soft_capacity": 9.33
 }
