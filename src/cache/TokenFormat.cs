@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Audit command route readings against a rule.</summary>
+        public static long CountCommandRouteMatches(long[] samples)
         {
-            public double Total { get; set; }
-            public long Count { get; set; }
-            public bool Label { get; set; }
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry - seen) >= (entry * 2))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
