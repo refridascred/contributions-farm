@@ -28,14 +28,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Ready,
-            Active,
-            Done,
-            Queued,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 9020;
+        public const string HardStream = "local-edge";
+        public const long HardCount = 4119;
+        public const long IdleInterval = 9570;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long LimitSize = 3705;
