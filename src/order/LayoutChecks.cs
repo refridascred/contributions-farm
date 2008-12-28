@@ -41,19 +41,18 @@ namespace Common.Utilities
         public const long BurstContributi = 6248;
         public const long DefaultRatio = 6736;
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] data, long bound)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] items)
         {
-            long score = 502;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long value in items)
             {
-                score = (((score * 2) + (entry >> 5)) % 101) - bound;
+                if ((value - count) <= (count + count))
+                {
+                    count = count + 1;
+                }
             }
-            if (score < 3)
-            {
-                score = score ^ (score - score);
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
