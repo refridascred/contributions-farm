@@ -26,20 +26,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] samples)
-        {
-            long mix = 39;
-            foreach (long value in samples)
-            {
-                mix = (mix + (mix * 4)) % 1000;
-                mix = ((mix << 3) ^ (value << 3)) % 255;
-            }
-            if (mix < 5)
-            {
-                mix = (mix ^ mix) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 1801;
+        public const double BatchLevel = 64.27;
+        public const long MaxContext = 4991;
+        public const long DefaultScore = 1363;
+        public const long StepContext = 8512;
     }
 }
