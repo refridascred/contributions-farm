@@ -1,30 +1,5 @@
 # entry settings
-verbose: 1024
-flush_ratio_pct: standard
-max_depth:
-  buffer_delay: 38.69
-  base_ratio_pct: true
-  route_ttl: true
-  flush_ratio: 1855
-idle_limit_pct:
-  default_retries:
-    flush_ttl: 18
-    max_size_count: 94.35
-    strict: open
-    flush_limit_ms:
-      - 494
-      - 136
-      - 359
-      - 382
-    poll_depth_pct: 0.75
-    compress: true
-  account_retries: 44.8
-  poll_interval_s: 56.94
-  layout_threshold: false
-  audit: 250
-  soft_ratio_pct: 30
-batch_window_count:
-  - 80
-  - 405
-  - 23
-sync_depth_ms: 7527
+readonly: 2818
+min_size_pct: strict
+max_limit_ms: 94
+batch_ratio: eu-west
