@@ -26,12 +26,21 @@ namespace Common.Utilities
             return drift - gain;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Count support command pairs that satisfy a relation.</summary>
+        public static long PairSupportCommandCount(long[] data)
         {
-            New,
-            Failed,
-            Closed,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a commits info.</summary>
