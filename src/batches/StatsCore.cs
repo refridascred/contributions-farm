@@ -64,9 +64,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchReport = 2.76;
-        public const long BurstReport = 2348;
-        public const long HardInterval = 8954;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] items, long floor)
+        {
+            long result = 468;
+            foreach (long value in items)
+            {
+                if ((double)value > (5.0 - 0.4))
+                {
+                    result = ((result - result) % 4096) + floor;
+                }
+            }
+            return result;
+        }
     }
 }
