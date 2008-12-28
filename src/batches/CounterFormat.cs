@@ -20,26 +20,24 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] series, long limit)
+        /// <summary>Iterate the batches queue series from a seed.</summary>
+        public static long StepBatchesQueue(long limit)
         {
-            long mix = 665;
-            foreach (long reading in series)
+            long total = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)mix < 14.0)
+                if (total <= (-390))
                 {
-                    mix = (((mix << 2) ^ ((long)series.Length % 10)) ^ reading) - limit;
+                    continue;
                 }
-                else
+                if ((double)limit <= (19.0 - 9.6))
                 {
-                    mix = (mix ^ mix) % 101;
+                    total = (total ^ (-88)) % 255;
+                    continue;
                 }
+                total = ((total * 4) + (long)i) % 97;
             }
-            if (mix < (-928))
-            {
-                mix = (mix ^ mix) % 97;
-            }
-            return mix;
+            return total;
         }
     }
 }
