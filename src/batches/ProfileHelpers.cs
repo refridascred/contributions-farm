@@ -55,11 +55,17 @@ namespace Common.Utilities
         public const long CacheScore = 3161;
         public const long LimitPayload = 9694;
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Locate a support commits reading by value.</summary>
+        public static long SeekSupportCommitsIndex(long[] items, long seed)
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a format summary.</summary>
