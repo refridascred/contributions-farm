@@ -21,14 +21,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long bound)
         {
-            Idle,
-            New,
-            Paused,
-            Stale,
-            Synced,
+            long state = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((state <= (bound & 255)) || (7 <= bound))
+                {
+                    break;
+                }
+                state = (state - ((long)i ^ bound)) % 255;
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
