@@ -25,12 +25,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BatchAccount = "stable";
-        public const double MinScore = 75.84;
-        public const double BaseTimeout = 85.74;
-        public const double BurstWidth = 22.08;
-        public const long LimitAccount = 3742;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleCount = 6750;
+        public const double DefaultSpan = 64.92;
+        public const double RetryBudget = 27.81;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long MeasureStatsOutliers(long[] readings)
