@@ -1,10 +1,6 @@
 # entry settings
-commits_limit: legacy
-default_window: 48.85
-base_depth_ms:
-  - open
-  - eu-west
-  - latest
-  - standard
-poll_limit: false
-commits_threshold: false
+sync_size_count: 74
+stats_window: fallback
+max_threshold: 100
+default_timeout_ms: false
+batch_ttl: 77.32
