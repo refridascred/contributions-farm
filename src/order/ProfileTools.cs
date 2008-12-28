@@ -33,11 +33,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string StepBatch = "cached-v2";
-        public const long BurstBatch = 2006;
-        public const double HardBatch = 98.12;
-        public const long DefaultBatch = 8262;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (hits >= entry)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double BaseBudget = 23.97;
