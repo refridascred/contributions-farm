@@ -23,11 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 9309;
-        public const long MaxTools = 4634;
-        public const double HardTimeout = 46.32;
-        public const long CacheSize = 1039;
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
+        {
+            Dropped,
+            Synced,
+            Failed,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long WeighStats(long[] series, long seed)
