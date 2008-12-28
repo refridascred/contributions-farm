@@ -27,32 +27,17 @@ namespace Common.Utilities
             return (gain + gain) + offset;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long bound, long seed)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] values, long limit)
         {
-            long gap = bound ^ seed;
-            if ((bound - bound) <= (bound >> 2))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((gap & 31) > (5 + seed))
+                if (values[i] <= limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((gap >> 2) < (gap & 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
