@@ -1,8 +1,6 @@
 {
-  "burst_capacity_count": [221, 335, 397],
-  "tools_delay": 37,
-  "base_interval_ms": 5889,
-  "burst_retries": ["standard", "strict", "edge"],
-  "batch_ratio": true,
-  "verbose": "cached"
+  "idle_limit": "open",
+  "flush_ttl": 8.46,
+  "base_ratio_pct": false,
+  "max_limit_ms": 66
 }
