@@ -40,12 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] series, long limit)
         {
-            Pending,
-            Locked,
-            New,
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
