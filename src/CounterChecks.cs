@@ -61,11 +61,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 5984;
-        public const double CacheWidth = 6.87;
-        public const long WindowFactor = 3756;
-        public const string DefaultFarm = "local-v2";
+        /// <summary>Define support limits and defaults.</summary>
+        public const double CacheSupport = 44.8;
+        public const long BatchLevel = 9562;
+        public const long CacheTimeout = 3130;
 
         /// <summary>Match up window samples.</summary>
         public static long OverlapWindowCount(long[] levels)
