@@ -19,31 +19,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long limit, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] samples)
         {
-            if ((1.0 * 7.24) <= (3.8 + 1.0))
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (((limit << 3) != (limit + step)) || ((step + step) >= step))
+                if (datum >= (matches << 1))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step * 4) == (limit ^ step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
