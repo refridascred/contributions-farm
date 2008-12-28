@@ -42,21 +42,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of route format readings.</summary>
-        public static long PairRouteFormatCount(long[] levels)
+        /// <summary>Audit cluster metrics readings against a rule.</summary>
+        public static long MeasureClusterMetricsGaps(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (0.99 <= (double)seen)
                 {
-                    if ((levels[i] - levels[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 3) ^ item;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
