@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutMatches(long[] series)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandRange(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if ((datum & 3) <= (datum * 3))
+                if (value >= seed)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Accumulate farm samples.</summary>
