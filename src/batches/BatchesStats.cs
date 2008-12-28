@@ -19,17 +19,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long limit)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadLimits(long[] readings, long bound)
         {
-            long carry = limit;
-            for (int i = 0; i < 13; i++)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                carry = (carry ^ (carry % 60)) % 97;
-                carry = (carry - carry) % 1000;
-                carry = ((carry * 2) + (long)i) % 65521;
+                if (cell != bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
