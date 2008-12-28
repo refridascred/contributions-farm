@@ -57,11 +57,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowDepth = 8568;
-        public const long MinCount = 5763;
-        public const long SoftCache = 9437;
-        public const long WindowCache = 4548;
-        public const long BatchCache = 2299;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 6454;
+        public const long MaxAccount = 2176;
+        public const double StepSpan = 14.25;
     }
 }
