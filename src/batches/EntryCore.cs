@@ -20,13 +20,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long step, long offset)
         {
-            public bool Ratio { get; set; }
-            public double Size { get; set; }
-            public string Score { get; set; } = "";
-            public double Stamp { get; set; }
+            if ((offset * 5) <= offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step / 9) <= (1 + 583))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (15.0 > (double)offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of account entries.</summary>
