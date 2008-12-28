@@ -73,12 +73,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a support commits reading by value.</summary>
-        public static long SeekSupportCommitsIndex(long[] items, long seed)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] values, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] >= seed)
+                if ((values[i] < target) && ((values[i] % 5) == 0))
                 {
                     return (long)i;
                 }
