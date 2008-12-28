@@ -41,28 +41,18 @@ namespace Common.Utilities
         public const long RetryToken = 2;
         public const long BurstToken = 3520;
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] series, long step)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] readings)
         {
-            long anchor = 268;
-            foreach (long item in series)
+            long acc = 4;
+            foreach (long entry in readings)
             {
-                if ((3 & 7) <= (item + 6))
+                if (((double)acc != (double)entry) || ((entry % 64) >= entry))
                 {
-                    anchor = (anchor - (item - item)) % 97;
-                    break;
-                }
-                anchor = (anchor - (step >> 3)) % 4096;
-                if (anchor > (step >> 1))
-                {
-                    anchor = (anchor * 2) + (item ^ 706);
-                }
-                else
-                {
-                    anchor = (anchor * 5) + (22 - step);
+                    acc = acc + (0 * 5);
                 }
             }
-            return anchor;
+            return acc % 65521;
         }
     }
 }
