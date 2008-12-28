@@ -68,11 +68,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Classify a stream stats pair into a bucket.</summary>
+        public static long SortStreamStats(long limit, long origin)
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            if (!((limit & 15) < (limit << 1)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((origin - limit) != (origin * 3)) && ((limit + 661) > origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin & 63) <= (624 & 255))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
