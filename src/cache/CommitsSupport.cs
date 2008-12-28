@@ -61,19 +61,19 @@ namespace Common.Utilities
         public const long StepAlready = 5166;
         public const long LimitAlready = 8466;
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double rate, double offset)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchRange(long[] data, long seed)
         {
-            double rate2 = (offset + rate) - rate;
-            if (rate2 < offset)
+            bool ready = true;
+            foreach (long value in data)
             {
-                rate2 = rate2 + (rate * 3.4);
+                if (value < seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 + (rate + offset)) + (double)(long)i;
-            }
-            return rate2 - 8.09;
+            return ready;
         }
     }
 }
