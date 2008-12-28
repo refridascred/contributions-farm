@@ -36,16 +36,14 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long origin)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long result = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                result = result + ((-85) + (long)i);
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            Failed,
+            Active,
+            Synced,
+            Paused,
+            Ready,
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
