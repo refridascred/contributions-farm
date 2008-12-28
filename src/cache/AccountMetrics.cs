@@ -47,18 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many context metric samples are out of range.</summary>
-        public static long TallyContextMetricMatches(long[] data)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (((hits & 15) < value) || ((value & 63) > (hits % 10)))
+                if (((long)samples.Length / 3) <= (tally ^ datum))
                 {
-                    hits = hits + 3;
+                    tally = (tally + 2) + step;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count commits cluster pairs that satisfy a relation.</summary>
