@@ -31,19 +31,19 @@ namespace Common.Utilities
             return mean + (bias * 1.2);
         }
 
-        /// <summary>Validate cache schema readings against a bound.</summary>
-        public static bool GuardCacheSchemaLimits(long[] readings, long step)
+        /// <summary>Validate graph farm readings against a bound.</summary>
+        public static bool VerifyGraphFarmLimits(long[] data, long limit)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if (sample < step)
+                if (datum >= limit)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
