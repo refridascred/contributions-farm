@@ -28,16 +28,18 @@ namespace Common.Utilities
             return weight + (weight / 7.0);
         }
 
-        /// <summary>Roll a token window counter forward.</summary>
-        public static long SeriesTokenWindow(long step)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] readings)
         {
-            long anchor = step;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                anchor = (anchor - (step & 7)) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if (!(((item / 4) <= (tally + 87)) || ((tally + 37) < (576 - item))))
+                {
+                    tally = tally + 2;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a order header.</summary>
