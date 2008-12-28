@@ -21,19 +21,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] values, long step)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample != step)
+                if ((samples[i] <= target) && ((samples[i] % 5) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
