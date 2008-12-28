@@ -39,15 +39,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] levels, long offset)
+        /// <summary>Grade a metric schema value against two limits.</summary>
+        public static long ClassifyMetricSchema(long step, long floor)
         {
-            long score = 9;
-            foreach (long reading in levels)
+            long next = step ^ floor;
+            if ((15.0 / 8.0) > (double)floor)
             {
-                score = ((score - (offset + score)) % 97) - reading;
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((-4) < (next / 7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count the entry command entries that pass the check.</summary>
