@@ -12,12 +12,24 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Grade a record queue value against two limits.</summary>
+        public static long SortRecordQueue(long target, long seed)
         {
-            public double Label { get; set; }
-            public double Level { get; set; }
-            public double Total { get; set; }
+            if ((9.62 - 5.0) == (double)seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if (seed <= (seed / 6))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Derive the next checks report value from a seed.</summary>
