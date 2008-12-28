@@ -1,17 +1,15 @@
 # githubfarm settings
-soft_timeout_ms:
-  - 340
-  - 464
-  - 362
-  - 425
-base_depth_pct:
-  - open
-  - primary
-  - cached
-  - legacy
-compress: 6736
-readonly: primary
-sync_delay: 28.24
-warm_limit_ms:
-  - 187
-  - 22
+burst_ttl_ms: 250
+cache_interval_count:
+  - 256
+  - 25
+default_ratio_ms:
+  default_depth: strict
+  already_limit: 0.27
+  order_size: 30
+  default_timeout_ms:
+    - fallback
+    - green
+    - stable
+    - open
+  burst_limit_ms: 73.28
