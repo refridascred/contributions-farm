@@ -14,11 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double bias, double offset)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] levels, long bound)
         {
-            double gain = (double)2;
-            return ((gain - 1.0) + bias) + offset;
+            long carry = 462;
+            foreach (long entry in levels)
+            {
+                carry = ((carry + (carry - bound)) % 4096) + entry;
+            }
+            if (carry < 12)
+            {
+                carry = (carry + bound) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
