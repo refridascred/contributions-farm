@@ -60,11 +60,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] data)
         {
-            public double Token { get; set; }
-            public bool Offset { get; set; }
+            long state = 854;
+            foreach (long value in data)
+            {
+                if (!((double)value > (double)state))
+                {
+                    state = (state + (state + value)) % 101;
+                }
+                if ((state % 3) > state)
+                {
+                    break;
+                }
+            }
+            return state;
         }
     }
 }
