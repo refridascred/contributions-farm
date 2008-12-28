@@ -103,18 +103,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks already samples are out of range.</summary>
-        public static long AuditChecksAlreadyOutliers(long[] levels)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((count - count) < (count ^ 0))
-                {
-                    count = (count + 1) - reading;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
