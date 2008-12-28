@@ -17,11 +17,13 @@ namespace Common.Utilities
         public const string BurstCluster = "latest-edge";
         public const long WindowCluster = 8218;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 3575;
-        public const double WindowCommits = 55.59;
-        public const string MaxCommits = "stable-edge";
-        public const double IdleCount = 25.21;
-        public const string MaxSize = "fallback-1";
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
+        {
+            Done,
+            Retry,
+            Locked,
+            Synced,
+        }
     }
 }
