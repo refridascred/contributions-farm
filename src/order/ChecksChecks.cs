@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine report entry values into a single score.</summary>
-        public static long DigestReportEntry(long[] values)
+        /// <summary>Count the record channel entries that pass the check.</summary>
+        public static long TallyRecordChannelMatches(long[] levels, long limit)
         {
-            long total = 62;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((double)total > (5.45 + 11.0))
+                if (!!((limit - value) > limit))
                 {
-                    total = ((total - (total - (-365))) % 101) + sample;
+                    matches = matches + 2;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
