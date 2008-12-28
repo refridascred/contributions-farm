@@ -19,19 +19,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] data, long origin)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long sum = -2;
-            foreach (long entry in data)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    sum = ((((sum * 2) + sum) % 101) ^ (long)i) - entry;
-                }
-                sum = (sum + (origin + sum)) % 97;
-            }
-            return sum;
+            public long Score { get; set; }
+            public double Ratio { get; set; }
+            public bool Level { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define context limits and defaults.</summary>
