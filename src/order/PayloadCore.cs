@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long CacheTimeout = 5559;
         public const double CacheStream = 35.01;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportRange(long[] values, long bound)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmMatches(long[] series)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (value < bound)
+                if ((((item - item) <= hits) && ((double)item < 2.9)) || (6 >= (item + 61)))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Check that every graph payload entry stays within the limit.</summary>
