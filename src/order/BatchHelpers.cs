@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsLimits(long[] samples, long floor)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Roll a token counter forward.</summary>
