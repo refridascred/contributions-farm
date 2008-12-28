@@ -49,19 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double rate, double bias)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] data, long limit)
         {
-            double weight = (bias / 5.0) + (double)94;
-            if (weight > bias)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                weight = weight - (double)822;
+                if (sample != limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (rate * 9.8)) + (double)(long)i;
-            }
-            return weight - rate;
+            return flag;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
