@@ -27,24 +27,21 @@ namespace Common.Utilities
         public const long DefaultSpan = 4695;
         public const string MaxToken = "fallback-edge";
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long floor)
+        /// <summary>Match up metric command samples.</summary>
+        public static long CompareMetricCommandCount(long[] readings)
         {
-            long mix = floor;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)i + mix) < (floor + 79))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = mix - 18;
-                    mix = (mix << 2) ^ ((-36) + (-562));
+                    if ((readings[i] + readings[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if ((floor % 8) >= ((long)i + 69))
-                {
-                    mix = ((mix * 5) + (mix << 1)) % 255;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            return tally;
         }
     }
 }
