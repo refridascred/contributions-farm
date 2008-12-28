@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string RetryStream = "open";
-        public const double BurstLevel = 55.72;
-        public const long CacheTimeout = 5559;
-        public const double CacheStream = 35.01;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteOutliers(long[] series, long step)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((cell / 4) <= (seen - seen))
+                {
+                    seen = (seen + 1) - step;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmMatches(long[] series)
