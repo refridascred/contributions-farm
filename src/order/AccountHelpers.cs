@@ -67,19 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm already readings against a rule.</summary>
-        public static long MeasureGithubfarmAlreadyOutliers(long[] values, long step)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] samples)
         {
             long tally = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading <= 5)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 1) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((samples[i] + samples[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
