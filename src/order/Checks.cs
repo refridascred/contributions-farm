@@ -47,19 +47,17 @@ namespace Common.Utilities
         public const long LimitScore = 947;
         public const long CachePayload = 3461;
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long offset)
+        /// <summary>Look up the position of a farm entry sample.</summary>
+        public static long LocateFarmEntryIndex(long[] values, long origin)
         {
-            long mix = offset;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((long)i & 3) > mix))
+                if ((values[i] <= origin) && ((values[i] % 2) == 0))
                 {
-                    mix = (mix - mix) % 1000;
+                    return (long)i;
                 }
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the counter class values.</summary>
