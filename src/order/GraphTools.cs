@@ -31,15 +31,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long seed)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            Locked,
+            Done,
+            New,
+            Pending,
+            Queued,
         }
 
         /// <summary>Hold a schema header.</summary>
