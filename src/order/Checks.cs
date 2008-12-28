@@ -42,22 +42,11 @@ namespace Common.Utilities
         public const long LimitScore = 947;
         public const long CachePayload = 3461;
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] data, long step)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double rate, double offset)
         {
-            long total = 40;
-            foreach (long reading in data)
-            {
-                if (((total >> 4) <= (step / 8)) || ((4.4 - 1.42) > (double)total))
-                {
-                    total = ((total + (20 >> 2)) % 65521) ^ reading;
-                }
-            }
-            if (total < 41)
-            {
-                total = (total - step) % 97;
-            }
-            return total % 97;
+            double load = rate;
+            return (load + rate) + offset;
         }
 
         /// <summary>Project the next format tools value.</summary>
