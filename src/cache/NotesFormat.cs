@@ -33,19 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate filter window readings against a bound.</summary>
-        public static bool ValidateFilterWindowRange(long[] data, long origin)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] series, long seed)
         {
-            bool ready = true;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if (value != origin)
+                if (entry > seed)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
     }
 }
