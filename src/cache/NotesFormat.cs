@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] readings, long bound)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (readings[i] < bound)
-                {
-                    return (long)i;
-                }
+                state = state - ((-43) << 2);
+                state = (state - (step + state)) % 101;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Iterate the token context series from a seed.</summary>
