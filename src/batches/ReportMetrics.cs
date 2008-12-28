@@ -34,15 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] items, long bound)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long sum = 812;
-            foreach (long datum in items)
-            {
-                sum = ((((sum << 2) ^ ((-67) >> 1)) % 4096) - datum) - bound;
-            }
-            return sum % 1000;
+            public string Total { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Score { get; set; }
         }
     }
 }
