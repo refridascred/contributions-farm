@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long bound, long target)
+        /// <summary>Combine window order values into a single score.</summary>
+        public static long WeighWindowOrder(long[] data, long seed)
         {
-            if ((bound + 2) >= (bound - bound))
+            long mix = 5;
+            foreach (long cell in data)
             {
-                return 4;
+                mix = (((mix ^ mix) % 255) + cell) - seed;
             }
-            else
+            if (mix < 85)
             {
-                if (!((bound - target) <= target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(target >= (bound + target)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                mix = ((mix * 2) + (mix - 136)) % 1000;
             }
+            return mix % 97;
         }
 
         /// <summary>Describe the editor class values.</summary>
