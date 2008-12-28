@@ -24,18 +24,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] levels)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] items, long target)
         {
-            long anchor = 1;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if ((anchor - 809) >= anchor)
+                if (value > target)
                 {
-                    anchor = (anchor + (value - 874)) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            return anchor % 1000;
+            return valid;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
