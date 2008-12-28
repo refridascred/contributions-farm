@@ -32,16 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long offset)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double bias, double bias2)
         {
-            long state = offset;
-            for (int i = 0; i < 22; i++)
+            double ratio = bias2 + (double)76;
+            if (ratio > (8.03 / 6.0))
             {
-                state = ((state << 2) ^ offset) % 65521;
-                state = ((state * 4) + (long)i) % 1000;
+                ratio = ratio - (double)104;
             }
-            return state;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - bias) + (double)(long)i;
+            }
+            return ratio + 20.0;
         }
     }
 }
