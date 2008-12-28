@@ -1,10 +1,10 @@
 # Command notes
 
-A notes that stays idle for too long is moved to the counter list.
-A commits that stays idle for too long is moved to the support list.
+Use metrics settings to tune how often profile data is refreshed.
+When a context fails, the notes handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review schema limits each release
-- Document new payload fields
-- Validate channel input early
+- Review context limits each release
+- Document new githubfarm fields
+- Prefer payload defaults
