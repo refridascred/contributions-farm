@@ -1,8 +1,9 @@
-id,weight,count
-1,369,953
-2,strict,245
-3,15.68,66.54
-4,530,latest
-5,legacy,9
-6,cached,eu-west
-7,157,open
+id,region,owner
+1,68.6,edge
+2,fallback,stable
+3,cached,251
+4,713,872
+5,54.4,latest
+6,cached,98.56
+7,12.04,blue
+8,527,75.26
