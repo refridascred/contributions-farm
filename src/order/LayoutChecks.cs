@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            public bool Owner { get; set; }
-            public bool Region { get; set; }
-            public double Token { get; set; }
-            public long Ratio { get; set; }
+            public double Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Adjust a channel reading.</summary>
