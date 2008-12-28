@@ -91,22 +91,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] values, long floor)
+        /// <summary>Validate editor metric readings against a bound.</summary>
+        public static bool VerifyEditorMetricRange(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if ((floor * 4) <= datum)
+                if (reading != step)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
