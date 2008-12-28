@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long step, long origin)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] samples)
         {
-            long gap = step + origin;
-            if ((85 - origin) < step)
+            long state = 9;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)origin != (5.15 - 5.6)) || ((double)gap >= 20.0))
+                if ((19 + state) > (sample + sample))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (step >= origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    state = (state ^ (sample + state)) % 65521;
                 }
             }
+            return state;
         }
 
         /// <summary>Accumulate checks samples.</summary>
