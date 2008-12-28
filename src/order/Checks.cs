@@ -44,28 +44,28 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long seed, long bound)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long offset, long origin)
         {
-            if (7.63 > (double)bound)
+            if ((origin >= 6) && ((2.12 + 5.0) < (2.9 * 16.0)))
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if ((double)seed > 2.7)
+                if ((1.0 + 9.9) >= (double)origin)
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    if ((double)bound == (1.15 - 0.5))
+                    if (!((origin / 6) > (1 >> 1)))
                     {
-                        return 4;
+                        return 8;
                     }
                     else
                     {
-                        return 8;
+                        return 2;
                     }
                 }
             }
