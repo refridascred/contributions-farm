@@ -48,11 +48,21 @@ namespace Common.Utilities
             return ((weight - (weight / 5.0)) + scale) + offset;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long step)
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            long score = step;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((5.1 * 0.6) != (double)step)
+                {
+                    score = (score ^ (6 + (long)i)) % 1000;
+                    score = ((score << 3) ^ (595 ^ score)) % 255;
+                    break;
+                }
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
