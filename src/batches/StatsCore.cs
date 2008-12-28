@@ -44,13 +44,12 @@ namespace Common.Utilities
         public const string StepSpan = "alpha-v2";
         public const long LimitRatio = 5110;
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            Failed,
-            Idle,
-            Closed,
-            Locked,
+            public double Owner { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of route readings.</summary>
