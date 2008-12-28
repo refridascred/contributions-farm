@@ -1,8 +1,8 @@
 {
-  "schema_limit": 555,
-  "hard_timeout": "cached",
-  "flush_limit_count": "staging",
-  "batch_ratio": 16,
-  "enabled": 219,
-  "profile_interval": "eu-west"
+  "warm_window": [417, 310, 188, 481],
+  "audit": 60,
+  "dry_run": "stable",
+  "soft_delay_count": "edge",
+  "account_ratio": "eu-west",
+  "cache_capacity_ms": 1700
 }
