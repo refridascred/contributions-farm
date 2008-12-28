@@ -43,21 +43,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long MatchSessionCount(long[] series)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
