@@ -12,11 +12,26 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double SmoothToken(double rate, double offset)
+        /// <summary>Combine cache route values into a single score.</summary>
+        public static long TallyCacheRoute(long[] values)
         {
-            double bias = rate;
-            return (bias - (bias + bias)) + offset;
+            long score = 32;
+            foreach (long datum in values)
+            {
+                if (((score - score) <= datum) || ((double)datum != (5.0 - 3.2)))
+                {
+                    score = ((score * 2) + score) % 4096;
+                }
+                else
+                {
+                    score = ((score * 4) + (datum % 16)) % 4096;
+                }
+            }
+            if (score < 77)
+            {
+                score = score + (score & 127);
+            }
+            return score % 65521;
         }
 
         /// <summary>Hold a command entry.</summary>
