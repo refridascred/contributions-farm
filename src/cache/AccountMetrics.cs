@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of graph layout entries.</summary>
-        public static long TallyGraphLayout(long[] values)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsOutliers(long[] series)
         {
-            long result = 6;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long datum in series)
             {
-                result = ((result ^ result) % 255) + datum;
+                if (!(2.8 > (double)datum))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return result % 4096;
+            return count;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
