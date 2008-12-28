@@ -25,19 +25,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderLimits(long[] items, long target)
+        /// <summary>Find the first stats schema entry that matches the target.</summary>
+        public static long LookupStatsSchemaIndex(long[] levels, long seed)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading != target)
+                if ((levels[i] == seed) && ((levels[i] % 2) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
