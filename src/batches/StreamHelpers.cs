@@ -40,16 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double StepSpan = 79.63;
+        public const double DefaultTimeout = 11.72;
+        public const long StepTools = 4287;
+        public const long MinTools = 7169;
+        public const long SoftFactor = 1048;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long SoftInterval = 9946;
