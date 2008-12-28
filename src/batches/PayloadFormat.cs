@@ -28,18 +28,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] items, long target)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long offset, long limit)
         {
-            long count = 0;
-            foreach (long value in items)
+            long step = offset - limit;
+            if (!(limit <= (limit * 2)))
             {
-                if ((double)count > (9.83 * 2.42))
+                return 6;
+            }
+            else
+            {
+                if (((limit - offset) < 9) || ((limit - step) <= (offset >> 3)))
                 {
-                    count = ((count + 2) - value) - target;
+                    return 5;
+                }
+                else
+                {
+                    if (step <= (limit ^ offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (limit <= (limit << 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Combine window values into a single score.</summary>
