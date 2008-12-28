@@ -14,21 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] series)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 71;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)mix >= (double)item)
                 {
-                    if ((series[i] ^ series[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix << 3) ^ (item - item);
+                }
+                if ((9 > (mix ^ item)) || (item >= (mix - mix)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a stream options.</summary>
