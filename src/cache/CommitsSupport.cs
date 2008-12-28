@@ -51,23 +51,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((tally - tally) > (tally >> 1))
-                {
-                    tally = (tally + 3) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double SoftScore = 28.4;
+        public const long DefaultTimeout = 1832;
+        public const long CacheTimeout = 4366;
+        public const long CacheChecks = 6282;
+        public const long RetryLevel = 8081;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long HardAlready = 5777;
