@@ -49,14 +49,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
+            Retry,
             Dropped,
-            New,
-            Stale,
-            Failed,
-            Closed,
+            Synced,
+            Paused,
         }
     }
 }
