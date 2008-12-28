@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepScore = 62.23;
-        public const long HardCommand = 9348;
-        public const long RetryTimeout = 1239;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double weight, double bias)
+        {
+            double mean = (bias / 4.0) * 5.86;
+            return (mean + mean) + weight;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long MeasureEditorHits(long[] data)
