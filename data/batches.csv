@@ -1,7 +1,7 @@
-id,label,ratio,count
-1,blue,995,53.61
-2,strict,912,local
-3,69.83,160,green
-4,444,standard,40.12
-5,46,231,62.08
-6,legacy,30,stable
+id,region,level
+1,open,349
+2,strict,local
+3,fallback,61.54
+4,97.99,73.47
+5,346,9.55
+6,20.89,966
