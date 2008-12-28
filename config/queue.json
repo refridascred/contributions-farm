@@ -1,8 +1,6 @@
 {
-  "checks_ratio": 500,
-  "audit": 13.75,
-  "support_interval": "fallback",
-  "already_ratio": false,
-  "min_threshold_s": "eu-west",
-  "poll_timeout": "edge"
+  "filter_retries": "primary",
+  "warm_depth_ms": 60.52,
+  "window_timeout": "standard",
+  "strict": "standard"
 }
