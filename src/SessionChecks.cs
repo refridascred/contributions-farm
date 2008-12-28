@@ -18,20 +18,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] data)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportOutliers(long[] data)
         {
-            long total = 17;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                total = total + datum;
-                total = total ^ total;
+                if (cell > (matches ^ cell))
+                {
+                    matches = matches + 1;
+                }
             }
-            if (total < 2)
-            {
-                total = (total + (443 >> 4)) % 1000;
-            }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
