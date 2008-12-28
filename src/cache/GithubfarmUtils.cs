@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            New,
-            Locked,
-            Closed,
-            Active,
-            Idle,
+            Dropped,
+            Paused,
+            Stale,
         }
 
         /// <summary>Check that every window metric entry stays within the limit.</summary>
