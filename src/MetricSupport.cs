@@ -16,23 +16,10 @@ namespace Common.Utilities
             return drift - (offset / 6.0);
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutOutliers(long[] levels, long bound)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((bound * 5) <= (hits - (-8)))
-                {
-                    hits = (hits + 2) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string HardGithubfarm = "open";
+        public const double IdleScore = 82.92;
+        public const string RetryGithubfarm = "alpha-v2";
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteLimits(long[] samples, long bound)
