@@ -27,22 +27,18 @@ namespace Common.Utilities
             return weight - (double)50;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] readings)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordHits(long[] data)
         {
-            long acc = 40;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (acc > entry)
+                if ((matches * 5) <= (matches & 1))
                 {
-                    acc = (acc - (744 / 4)) % 65521;
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            if (acc > 89)
-            {
-                acc = (acc ^ (acc + acc)) % 255;
-            }
-            return acc;
+            return matches;
         }
     }
 }
