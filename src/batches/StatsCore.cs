@@ -51,12 +51,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public double Token { get; set; }
+            Failed,
+            Idle,
+            Closed,
+            Locked,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
