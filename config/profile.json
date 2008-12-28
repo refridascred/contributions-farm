@@ -1,5 +1,10 @@
 {
-  "persist": 30,
-  "checks_capacity": 1024,
-  "checks_delay": "stable"
+  "readonly": "open",
+  "max_threshold": {
+    "batches_size": 500,
+    "schema_interval": "eu-west",
+    "report_ttl": 9.8
+  },
+  "soft_limit_pct": false,
+  "command_size": "staging"
 }
