@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            New,
-            Locked,
-            Pending,
-            Retry,
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
