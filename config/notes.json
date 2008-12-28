@@ -1,5 +1,6 @@
 {
-  "batch_timeout": false,
-  "compress": 250,
-  "poll_capacity": "green"
+  "max_retries_pct": false,
+  "layout_window": 94,
+  "hard_window_ms": 87.08,
+  "audit": 500
 }
