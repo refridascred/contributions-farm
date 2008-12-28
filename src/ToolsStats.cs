@@ -33,11 +33,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long floor, long origin)
         {
-            public double Weight { get; set; }
-            public bool Level { get; set; }
+            long gap = floor ^ origin;
+            if (((floor % 100) != (gap << 1)) || ((gap % 16) != (70 >> 5)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor + gap) <= (gap - gap))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor - floor) == (87 << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((gap + (-5)) >= (gap / 9)) && (gap < (origin % 10)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
