@@ -31,25 +31,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long step, long limit)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsLimits(long[] series, long origin)
         {
-            long delta = step + limit;
-            if (((step - limit) != (step - step)) && ((step / 5) < (limit & 1)))
+            bool found = true;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((99 - delta) == (delta & 255))
+                if (value >= origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
