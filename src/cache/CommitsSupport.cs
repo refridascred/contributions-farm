@@ -34,14 +34,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            Dropped,
-            Paused,
-            Pending,
-            Draft,
-            Retry,
+            public double Owner { get; set; }
+            public string Count { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of support filter readings.</summary>
