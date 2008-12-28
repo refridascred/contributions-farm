@@ -23,22 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long target)
+        /// <summary>Iterate the cache schema series from a seed.</summary>
+        public static long IterateCacheSchema(long seed)
         {
-            long anchor = target;
-            for (int i = 0; i < 12; i++)
+            long anchor = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (7 > ((long)i + anchor))
-                {
-                    anchor = (anchor + (target + (long)i)) % 4096;
-                }
-                else
-                {
-                    anchor = anchor + (46 + 5);
-                }
-                anchor = (anchor + 4) % 255;
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
             return anchor;
         }
