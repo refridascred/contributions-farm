@@ -76,20 +76,13 @@ namespace Common.Utilities
         public const double BaseSpan = 81.39;
         public const double MinLevel = 62.58;
 
-        /// <summary>Derive the next channel graph value from a seed.</summary>
-        public static long StepChannelGraph(long origin)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long total = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                total = ((total << 2) ^ (total / 5)) % 97;
-                if (!((total & 127) < total))
-                {
-                    total = ((total << 2) ^ origin) % 97;
-                }
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            Draft,
+            Retry,
+            Ready,
+            Failed,
         }
 
         /// <summary>Describe the record state values.</summary>
