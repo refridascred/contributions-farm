@@ -1,9 +1,6 @@
-id,weight,state,token
-1,254,blue,29.12
-2,742,7.08,35.19
-3,fallback,30.16,39.71
-4,33,stable,99
-5,edge,edge,77.02
-6,eu-west,817,legacy
-7,63.31,eu-west,97
-8,93.68,35.0,89.51
+id,weight,active,state
+1,88.24,662,local
+2,489,35.24,394
+3,stable,478,576
+4,89.76,edge,stable
+5,888,20.32,fallback
