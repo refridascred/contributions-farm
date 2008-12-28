@@ -33,19 +33,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] levels, long origin)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long score = 9;
+            foreach (long reading in levels)
             {
-                if (sample >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                score = ((score - (offset + score)) % 97) - reading;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Count the entry command entries that pass the check.</summary>
