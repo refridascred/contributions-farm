@@ -23,24 +23,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a command batches value against two limits.</summary>
-        public static long SortCommandBatches(long offset, long limit)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] readings, long floor)
         {
-            if ((93 ^ offset) == (limit - (-8)))
+            long sum = 657;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset & 3) > (limit & 1))
+                if ((double)entry > (6.73 * 5.1))
                 {
-                    return 2;
+                    break;
                 }
-                else
+                if ((double)entry != (8.44 / 6.0))
                 {
-                    return 3;
+                    sum = (sum * 5) + (sum << 1);
                 }
             }
+            if (sum > 55)
+            {
+                sum = (sum ^ (sum + floor)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Describe the entry class values.</summary>
