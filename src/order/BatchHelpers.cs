@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] series, long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] samples)
         {
-            long mix = 65;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((mix - origin) < (8 - mix))
+                if ((tally / 9) <= (4 + tally))
                 {
-                    mix = (mix + value) % 4096;
+                    tally = (tally + 1) ^ cell;
                 }
             }
-            if (mix > 995)
-            {
-                mix = mix ^ (origin & 15);
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Match up report samples.</summary>
