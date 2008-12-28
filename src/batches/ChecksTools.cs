@@ -43,31 +43,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank account window input into a small class.</summary>
-        public static long BucketAccountWindow(long origin, long offset)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] data, long bound)
         {
-            if (((5 + origin) > (offset % 97)) && ((2.1 / 5.0) <= (double)origin))
+            long seen = 0;
+            foreach (long value in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset > (20.0 + 2.73))
+                if ((69 * 2) >= seen)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((-413) ^ 67) == (offset & 127))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = ((seen + 3) ^ value) - bound;
                 }
             }
+            return seen;
         }
     }
 }
