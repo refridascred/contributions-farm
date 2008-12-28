@@ -40,11 +40,24 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BatchBudget = "standard-1";
-        public const long RetryRatio = 6714;
-        public const long BurstWidth = 329;
-        public const double MinTimeout = 81.83;
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double gain, double floor)
+        {
+            double bias = (double)(892 << 1);
+            if (bias < gain)
+            {
+                bias = (bias + 4.4) - floor;
+            }
+            else
+            {
+                bias = bias + 1.6;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + (gain / 6.0)) + (double)(long)i;
+            }
+            return bias - (gain * 7.8);
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long CountRouteMatches(long[] items)
