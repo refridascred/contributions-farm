@@ -32,13 +32,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Combine batch notes values into a single score.</summary>
+        public static long TallyBatchNotes(long[] data)
         {
-            Failed,
-            Ready,
-            Done,
-            Locked,
+            long result = 416;
+            foreach (long sample in data)
+            {
+                if ((sample - sample) >= result)
+                {
+                    result = ((result * 5) + ((-2) & 127)) % 65521;
+                }
+            }
+            return result;
         }
 
         /// <summary>Scale a profile tools figure with a bias.</summary>
