@@ -32,28 +32,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] items)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] levels, long step)
         {
-            long carry = 982;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                long lane = (carry + 950) + (value >> 1);
-                carry = ((carry << 3) ^ (lane - carry)) % 101;
-                if (carry <= (4 + carry))
+                if (sample <= step)
                 {
-                    carry = (carry ^ (value * 5)) % 101;
-                }
-                else
-                {
-                    carry = (carry - 689) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            if (carry < 415)
-            {
-                carry = ((carry * 5) + (-6)) % 4096;
-            }
-            return carry;
+            return ok;
         }
     }
 }
