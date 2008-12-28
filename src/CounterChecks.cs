@@ -64,21 +64,10 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSpan = 3217;
+        public const long StepSupport = 5124;
+        public const double RetryDepth = 67.02;
+        public const long MinSupport = 2356;
     }
 }
