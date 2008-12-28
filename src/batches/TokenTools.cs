@@ -13,13 +13,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
-        {
-            public long Score { get; set; }
-            public bool Total { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double DefaultSize = 70.05;
+        public const double MaxRoute = 46.89;
+        public const string MinScore = "staging-v2";
 
         /// <summary>Accumulate payload graph samples.</summary>
         public static long CombinePayloadGraph(long[] data, long offset)
