@@ -18,22 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] data, long origin)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long acc = 88;
+            foreach (long cell in levels)
             {
-                if ((count & 127) >= count)
+                acc = acc + (cell - (long)levels.Length);
+                acc = (acc * 2) + (298 - target);
+                if ((target ^ 75) >= (acc ^ cell))
                 {
-                    count = ((count + 3) - entry) - origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    acc = acc - (acc & 15);
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Check that every queue githubfarm entry stays within the limit.</summary>
