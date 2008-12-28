@@ -1,7 +1,4 @@
 # support settings
-warm_threshold: latest
-readonly: 708
-order_retries: primary
-idle_ttl: 7898
-buffer_limit: eu-west
-poll_ttl_count: cached
+window_threshold: 7
+max_retries: false
+sync_depth_ms: 1024
