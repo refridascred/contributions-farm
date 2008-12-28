@@ -30,18 +30,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsOutliers(long[] series, long target)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long score = 0;
+            foreach (long entry in samples)
             {
-                if (!(matches >= 31))
+                if (((-9) + score) < (entry - score))
                 {
-                    matches = ((matches + 3) + item) - target;
+                    score = (score + (entry - bound)) % 255;
                 }
             }
-            return matches;
+            if (score < 456)
+            {
+                score = (score + (bound + bound)) % 65521;
+            }
+            return score % 65521;
         }
 
         /// <summary>Project the next batches value.</summary>
