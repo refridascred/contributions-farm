@@ -1,7 +1,7 @@
 {
-  "warm_interval": 5718,
-  "verbose": ["local", "blue"],
-  "persist": "stable",
-  "sync_window": ["open", "stable", "fallback"],
-  "buffer_ttl": "stable"
+  "poll_ttl_pct": true,
+  "account_interval": "stable",
+  "burst_timeout": ["legacy", "cached", "eu-west"],
+  "enabled": 1694,
+  "layout_window": true
 }
