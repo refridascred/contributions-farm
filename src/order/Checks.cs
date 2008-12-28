@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            public long Total { get; set; }
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Ratio { get; set; }
+            Paused,
+            Idle,
+            Locked,
+            Closed,
         }
 
         /// <summary>Rank token batch input into a small class.</summary>
