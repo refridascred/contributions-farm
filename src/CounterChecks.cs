@@ -55,10 +55,14 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double CacheSupport = 44.8;
-        public const long BatchLevel = 9562;
-        public const long CacheTimeout = 3130;
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
+        {
+            public long Count { get; set; }
+            public bool Offset { get; set; }
+            public bool Total { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Match up window samples.</summary>
         public static long OverlapWindowCount(long[] levels)
