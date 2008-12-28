@@ -31,15 +31,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the payload context series from a seed.</summary>
-        public static long IteratePayloadContext(long floor)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long total = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Locked,
+            Queued,
+            Closed,
+            Failed,
         }
     }
 }
