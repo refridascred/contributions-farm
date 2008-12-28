@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a notes stream pair into a bucket.</summary>
-        public static long ClassifyNotesStream(long offset, long target)
+        /// <summary>Digest a series of queue record entries.</summary>
+        public static long TotalQueueRecord(long[] samples)
         {
-            long slot = offset - target;
-            if (3.5 >= (double)slot)
+            long state = 593;
+            foreach (long cell in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (slot < (slot / 2))
+                if (state < (state - state))
                 {
-                    return 2;
+                    state = (state ^ (85 ^ state)) % 255;
                 }
-                else
+                if (((cell % 64) <= state) || ((state + cell) >= (state + state)))
                 {
-                    if ((target + 181) > target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (slot <= (target & 255))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    state = (state + (5 * 4)) % 4096;
                 }
             }
+            return state % 4096;
         }
 
         /// <summary>Iterate the token context series from a seed.</summary>
