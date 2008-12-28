@@ -66,19 +66,28 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long limit)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] series, long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 15; i++)
+            long anchor = 268;
+            foreach (long item in series)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((3 & 7) <= (item + 6))
                 {
-                    mix = (mix ^ ((long)i2 ^ (long)i2)) % 1000;
+                    anchor = (anchor - (item - item)) % 97;
+                    break;
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
+                anchor = (anchor - (step >> 3)) % 4096;
+                if (anchor > (step >> 1))
+                {
+                    anchor = (anchor * 2) + (item ^ 706);
+                }
+                else
+                {
+                    anchor = (anchor * 5) + (22 - step);
+                }
             }
-            return mix;
+            return anchor;
         }
     }
 }
