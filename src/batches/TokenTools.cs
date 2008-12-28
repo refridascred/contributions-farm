@@ -20,20 +20,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long origin)
+        /// <summary>Accumulate payload graph samples.</summary>
+        public static long CombinePayloadGraph(long[] data, long offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 4; i++)
+            long total = 3;
+            foreach (long reading in data)
             {
-                sum = ((sum * 2) + ((long)i + origin)) % 4096;
-                if (!((sum / 5) > ((long)i - origin)))
-                {
-                    sum = sum ^ (374 & 3);
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
+                total = (((total ^ total) % 255) - reading) + offset;
             }
-            return sum;
+            return total % 97;
         }
     }
 }
