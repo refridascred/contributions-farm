@@ -1,5 +1,11 @@
 {
-  "githubfarm_ratio": 519,
-  "max_capacity_ms": false,
-  "burst_depth_ms": 87.82
+  "burst_capacity_s": 250,
+  "persist": 83.83,
+  "cache_size_count": "stable",
+  "hard_capacity_pct": {
+    "queue_ttl": false,
+    "persist": true,
+    "min_window": "green"
+  },
+  "poll_size_pct": "green"
 }
