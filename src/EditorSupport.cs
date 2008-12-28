@@ -32,15 +32,17 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long floor)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] series, long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                if ((series[i] == origin) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
