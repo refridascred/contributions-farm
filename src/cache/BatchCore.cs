@@ -27,19 +27,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batches checks entry stays within the limit.</summary>
-        public static bool ValidateBatchesChecksRange(long[] series, long bound)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long limit)
         {
-            bool found = true;
-            foreach (long item in series)
+            long score = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (item != bound)
+                if (!((double)limit < 7.5))
                 {
-                    found = false;
-                    break;
+                    score = (score * 5) + (785 ^ (long)i);
                 }
+                score = (score * 5) + ((-84) / 3);
+                score = ((score * 2) + (long)i) % 101;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Hold a support summary.</summary>
