@@ -19,11 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double rate, double offset)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] items, long offset)
         {
-            double scale = offset / 9.0;
-            return (scale - (double)57) + rate;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= offset) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine report values into a single score.</summary>
