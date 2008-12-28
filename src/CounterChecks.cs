@@ -31,22 +31,22 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] samples, long limit)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] samples)
         {
-            long score = 796;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((6.1 - 2.84) == (double)reading)
+                if (sample < (sample << 3))
                 {
-                    score = ((score * 4) + (680 >> 4)) + limit;
+                    count = count + 2;
                 }
                 else
                 {
-                    score = (score ^ (8 << 3)) % 97;
+                    count = count - 1;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
