@@ -22,13 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] readings)
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((value ^ seen) >= seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of buffer schema entries.</summary>
