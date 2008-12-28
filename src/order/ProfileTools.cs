@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double rate, double floor)
+        /// <summary>Count support contributi pairs that satisfy a relation.</summary>
+        public static long PairSupportContributiCount(long[] data)
         {
-            double scale = rate;
-            if (scale <= (scale * 5.0))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale + (floor * 4.0);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + (floor / 6.0);
-            }
-            return scale - floor;
+            return count;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
