@@ -31,18 +31,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Audit notes farm readings against a rule.</summary>
-        public static long CountNotesFarmGaps(long[] readings)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((509 + (long)readings.Length) >= 96)
-                {
-                    tally = (tally + 3) + sample;
-                }
-            }
-            return tally;
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
