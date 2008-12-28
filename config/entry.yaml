@@ -1,9 +1,9 @@
 # entry settings
-soft_delay_s: blue
-persist: 90.05
-idle_timeout_s: latest
-sync_ratio_s:
-  - 358
-  - 341
-  - 322
-  - 259
+warm_limit:
+  - blue
+  - eu-west
+  - staging
+base_limit_s: fallback
+soft_threshold: edge
+contributi_interval: false
+poll_timeout: 500
