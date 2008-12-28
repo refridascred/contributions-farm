@@ -13,23 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] samples, long target)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesBounds(long[] items, long target)
         {
-            long state = 72;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                state = state ^ (4 - 185);
-                if ((11.0 / 5.0) > (double)cell)
+                if (reading > target)
                 {
+                    stale = false;
                     break;
                 }
             }
-            if (state < 369)
-            {
-                state = (state ^ (target + state)) % 255;
-            }
-            return state % 1000;
+            return stale;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
