@@ -58,17 +58,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] series, long offset)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public double Rank { get; set; }
+            public double Count { get; set; }
         }
     }
 }
