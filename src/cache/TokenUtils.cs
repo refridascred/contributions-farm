@@ -12,11 +12,10 @@ namespace Common.Utilities
         public const long StepWindow = 2650;
         public const long SoftInterval = 7324;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 5632;
-        public const double LimitCount = 78.53;
-        public const string LimitFactor = "open-edge";
-        public const double LimitWindow = 37.54;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 3325;
+        public const string BurstCluster = "latest-edge";
+        public const long WindowCluster = 8218;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BatchCommits = 3575;
