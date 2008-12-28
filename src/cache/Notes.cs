@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Look up the position of a already tools sample.</summary>
+        public static long FindAlreadyToolsIndex(long[] readings, long seed)
         {
-            public bool Weight { get; set; }
-            public string Total { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a format record.</summary>
