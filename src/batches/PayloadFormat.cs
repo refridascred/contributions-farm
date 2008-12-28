@@ -57,13 +57,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamGaps(long[] values)
         {
-            Active,
-            Dropped,
-            Retry,
-            Paused,
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((double)entry != (8.65 / 7.0))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
