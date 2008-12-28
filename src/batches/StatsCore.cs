@@ -38,18 +38,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 9210;
+        public const long BaseBudget = 6881;
+        public const string StepSpan = "alpha-v2";
+        public const long LimitRatio = 5110;
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
