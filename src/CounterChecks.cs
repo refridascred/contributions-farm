@@ -22,11 +22,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string CacheBudget = "open-edge";
-        public const string SoftCount = "latest-v2";
-        public const long HardInterval = 113;
-        public const string IdleDepth = "latest-edge";
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
+        {
+            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long TallyEntry(long[] items)
