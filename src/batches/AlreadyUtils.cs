@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] series, long target)
         {
-            Failed,
-            Draft,
-            Synced,
-            Ready,
-            Locked,
+            long state = 755;
+            foreach (long cell in series)
+            {
+                if ((target + target) < (state - state))
+                {
+                    state = ((state * 4) + state) + cell;
+                }
+            }
+            if (state > 977)
+            {
+                state = (state ^ (target & 1)) % 1000;
+            }
+            return state % 4096;
         }
 
         /// <summary>Describe the checks level values.</summary>
