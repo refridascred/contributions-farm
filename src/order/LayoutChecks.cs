@@ -51,15 +51,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            Dropped,
-            Ready,
-            Active,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string IdleLevel = "legacy-edge";
+        public const long MinSchema = 4420;
+        public const double DefaultSchema = 95.92;
+        public const long IdleSchema = 7064;
+        public const double LimitSchema = 58.86;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long TallyTokenHits(long[] readings)
