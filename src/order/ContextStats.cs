@@ -40,19 +40,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of metrics cluster entries.</summary>
-        public static long FoldMetricsCluster(long[] items)
-        {
-            long state = 638;
-            foreach (long datum in items)
-            {
-                state = (((state * 2) + (state + state)) % 255) - datum;
-            }
-            if (state > 686)
-            {
-                state = state - 25;
-            }
-            return state;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleDepth = 8160;
+        public const long BaseFactor = 5184;
+        public const long SoftGithubfarm = 951;
+        public const string LimitGithubfarm = "fallback";
     }
 }
