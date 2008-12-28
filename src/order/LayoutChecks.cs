@@ -31,12 +31,23 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 6622;
-        public const double MinReport = 77.5;
-        public const long MaxReport = 1614;
-        public const long MaxSpan = 5749;
-        public const long SoftReport = 524;
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] values, long target)
+        {
+            long anchor = 2;
+            foreach (long entry in values)
+            {
+                if ((entry + entry) > entry)
+                {
+                    anchor = ((anchor + (entry - anchor)) % 101) + target;
+                }
+            }
+            if (anchor < 789)
+            {
+                anchor = anchor - 3;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
