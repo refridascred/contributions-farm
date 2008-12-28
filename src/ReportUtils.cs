@@ -58,15 +58,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the tools report series from a seed.</summary>
-        public static long StepToolsReport(long bound)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] series, long offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
