@@ -1,11 +1,7 @@
 # support settings
-verbose:
-  flush_retries: 3.37
-  persist: 131
-  metrics_delay: 390
-  poll_window_count: standard
-  poll_depth_s: 84
-  cache_limit_ms: primary
-cache_timeout: 70.13
-readonly: 6303
-batch_threshold_ms: 87
+warm_threshold: latest
+readonly: 708
+order_retries: primary
+idle_ttl: 7898
+buffer_limit: eu-west
+poll_ttl_count: cached
