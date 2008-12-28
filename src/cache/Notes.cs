@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((double)seen >= 2.54)
-                {
-                    seen = (seen + 2) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double CacheMetrics = 90.84;
+        public const string BatchDepth = "legacy";
+        public const double BurstBudget = 33.59;
+        public const string StepMetrics = "latest-1";
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
