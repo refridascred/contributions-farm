@@ -25,15 +25,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double rate, double span)
+        /// <summary>Find the first farm contributi entry that matches the target.</summary>
+        public static long LocateFarmContributiIndex(long[] samples, long seed)
         {
-            double scale = 1.2;
-            if (scale < (span - scale))
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale + (16.0 - rate);
+                if ((samples[i] <= seed) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale + (span * 8.02);
+            return -1;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
