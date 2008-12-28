@@ -17,23 +17,14 @@ namespace Common.Utilities
         public const double BaseChecks = 65.83;
         public const long IdleChecks = 233;
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double scale, double offset)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            double rate = offset;
-            if (rate < scale)
-            {
-                rate = rate + (rate / 2.0);
-            }
-            else
-            {
-                rate = rate + (rate / 5.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate - rate;
+            Queued,
+            Paused,
+            Closed,
+            Stale,
+            Pending,
         }
     }
 }
