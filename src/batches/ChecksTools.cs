@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 3053;
-        public const long LimitTimeout = 1827;
-        public const string LimitScore = "open";
-        public const string MinToken = "alpha-1";
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] items, long target)
+        {
+            long carry = -694;
+            foreach (long cell in items)
+            {
+                if (!((double)carry >= (1.49 + 6.0)))
+                {
+                    carry = (carry ^ carry) - target;
+                }
+                if (cell >= (1 - carry))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
