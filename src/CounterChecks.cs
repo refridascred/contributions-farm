@@ -49,19 +49,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit cluster metrics readings against a rule.</summary>
-        public static long MeasureClusterMetricsGaps(long[] readings)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (0.99 <= (double)seen)
-                {
-                    seen = (seen + 3) ^ item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardInterval = "open-edge";
+        public const long CacheRoute = 9635;
+        public const double IdleSize = 61.51;
+        public const double WindowBudget = 64.08;
 
         /// <summary>Combine order values into a single score.</summary>
         public static long TotalOrder(long[] samples, long bound)
