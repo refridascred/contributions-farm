@@ -19,14 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ProjectBatches(double rate, double offset)
         {
-            Active,
-            New,
-            Dropped,
-            Retry,
-            Pending,
+            double scale = offset / 9.0;
+            return (scale - (double)57) + rate;
         }
 
         /// <summary>Combine report values into a single score.</summary>
