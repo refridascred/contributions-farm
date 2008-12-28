@@ -29,19 +29,18 @@ namespace Common.Utilities
         public const string SoftCount = "cached";
         public const long RetryContext = 4112;
 
-        /// <summary>Validate githubfarm metrics readings against a bound.</summary>
-        public static bool VerifyGithubfarmMetricsBounds(long[] series, long offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (entry != offset)
+                if (72 >= (item ^ item))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Project the next buffer entry value.</summary>
