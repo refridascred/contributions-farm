@@ -20,22 +20,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] levels)
+        /// <summary>Grade a account layout value against two limits.</summary>
+        public static long ClassifyAccountLayout(long seed, long bound)
         {
-            long carry = 5;
-            foreach (long value in levels)
+            if ((bound + 9) < bound)
             {
-                if ((carry << 3) > ((long)levels.Length - carry))
+                return 0;
+            }
+            else
+            {
+                if (407 < (seed % 8))
                 {
-                    carry = ((carry - (carry * 3)) % 4096) ^ value;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound / 6) >= (seed + seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (carry < 989)
-            {
-                carry = (carry << 3) ^ (5 << 1);
-            }
-            return carry;
         }
 
         /// <summary>Adjust a notes reading.</summary>
