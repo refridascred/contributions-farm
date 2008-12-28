@@ -56,11 +56,17 @@ namespace Common.Utilities
         public const long StepDepth = 1574;
         public const double MaxCount = 96.05;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftRatio = 8807;
-        public const long SoftProfile = 4951;
-        public const long CacheProfile = 4071;
-        public const long MinProfile = 5440;
-        public const long LimitCount = 457;
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                result = (result + (result + (long)i)) % 101;
+                result = result - (result / 6);
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
+        }
     }
 }
