@@ -12,19 +12,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Measure how many token entry samples are out of range.</summary>
-        public static long TallyTokenEntryMatches(long[] levels, long step)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (9.34 <= (double)tally)
-                {
-                    tally = ((tally + 3) + value) - step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitBudget = 9202;
+        public const long IdleScore = 4503;
+        public const string LimitGraph = "legacy";
+        public const long BatchGraph = 5512;
+        public const long DefaultGraph = 2551;
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long IterateCounter(long floor)
