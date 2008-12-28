@@ -55,34 +55,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] items)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] series)
         {
-            long acc = 90;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = ((acc ^ (acc - datum)) % 97) - (long)i;
-                }
-                if (!((8.2 - 15.0) != (double)acc))
-                {
-                    acc = acc - (583 ^ datum);
-                }
-                if ((1.48 / 5.0) <= (double)acc)
-                {
-                    acc = (acc ^ 75) % 255;
-                }
-                if ((acc + acc) == (datum * 2))
-                {
-                    break;
+                    if ((series[i] - series[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (acc < 772)
-            {
-                acc = (acc * 3) + (acc - acc);
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Digest a series of order entries.</summary>
