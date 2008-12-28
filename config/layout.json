@@ -1,5 +1,10 @@
 {
-  "retry_ttl_pct": [85, 422],
-  "soft_retries": ["green", "staging", "local", "blue"],
-  "poll_limit": "blue"
+  "strict": "legacy",
+  "layout_delay": {
+    "retry_retries": "primary",
+    "hard_limit_ms": [215, 252, 397],
+    "burst_window_s": 7,
+    "stats_ratio": true
+  },
+  "payload_ratio": 628
 }
