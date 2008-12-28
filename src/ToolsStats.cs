@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Match up session cache samples.</summary>
-        public static long MatchSessionCacheCount(long[] samples)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryGaps(long[] levels, long step)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((value % 12) < (value ^ 12))
                 {
-                    if ((samples[i] + samples[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 3) - step;
                 }
             }
             return matches;
