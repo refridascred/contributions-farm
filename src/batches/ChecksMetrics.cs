@@ -62,17 +62,32 @@ namespace Common.Utilities
         public const string CacheRecord = "open-1";
         public const long StepCount = 6678;
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] series, long floor)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long bound, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long cur = bound + floor;
+            if (4.58 >= (double)floor)
             {
-                if (series[i] <= floor)
+                return 1;
+            }
+            else
+            {
+                if ((floor + cur) <= 9)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)cur <= (double)floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
