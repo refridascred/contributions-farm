@@ -58,18 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchMatches(long[] data, long target)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((double)seen == (9.0 - 1.0))
-                {
-                    seen = ((seen + 3) + cell) - target;
-                }
-            }
-            return seen;
+            public double Size { get; set; }
+            public bool Level { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
