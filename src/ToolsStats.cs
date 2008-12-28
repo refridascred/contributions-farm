@@ -68,17 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] items, long floor)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] data, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 94;
+            foreach (long entry in data)
             {
-                if ((items[i] < floor) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result - (floor * 4)) % 255) ^ entry;
             }
-            return -1;
+            if (result > (-529))
+            {
+                result = (result ^ result) % 255;
+            }
+            return result;
         }
 
         /// <summary>Describe the payload kind values.</summary>
