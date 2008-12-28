@@ -12,21 +12,24 @@ namespace Common.Utilities
         public const long WindowFactor = 8000;
         public const string BurstBuffer = "primary-1";
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] items)
+        /// <summary>Rank token batch input into a small class.</summary>
+        public static long SortTokenBatch(long offset, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((step - step) == (step * 2))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((double)offset <= (double)step)
                 {
-                    if ((items[i] ^ items[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
