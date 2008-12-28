@@ -1,6 +1,7 @@
-id,count,ratio,region
-1,675,9.32,blue
-2,cached,390,98.49
-3,862,43.49,open
-4,green,22.51,22.74
-5,legacy,710,staging
+id,state,rank
+1,44.63,930
+2,801,505
+3,447,19.22
+4,389,local
+5,61.98,145
+6,standard,85.93
