@@ -1,18 +1,7 @@
 {
-  "default_size_ms": "blue",
-  "already_ttl": 2027,
-  "cache_window_ms": 4789,
-  "cache_timeout": 7528,
-  "burst_limit": "latest",
-  "default_ttl_pct": {
-    "batch_size_pct": {
-      "dry_run": 30,
-      "graph_capacity": 53.99,
-      "max_limit": "latest",
-      "cache_depth": [18, 313, 262]
-    },
-    "default_delay": 6.92,
-    "graph_limit": ["strict", "local", "open"],
-    "checks_delay": 4227
-  }
+  "metrics_depth": 36.6,
+  "max_retries": false,
+  "warm_size_ms": 37.79,
+  "record_size": 34,
+  "retry_ttl_pct": 2027
 }
