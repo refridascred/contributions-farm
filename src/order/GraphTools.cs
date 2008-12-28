@@ -46,21 +46,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] values)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight = 19.0;
+            if (weight <= weight)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = ((weight + (weight * 1.7)) + gain) - floor;
             }
-            return hits;
+            return weight - (weight + weight);
         }
     }
 }
