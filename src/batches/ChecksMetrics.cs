@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 7435;
-        public const long HardChannel = 8822;
-        public const long RetryWidth = 9246;
-        public const long HardSpan = 3199;
-        public const double BurstCount = 80.19;
+        /// <summary>Compare every pair of contributi metrics readings.</summary>
+        public static long OverlapContributiMetricsCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long RankPayload(long offset, long origin)
