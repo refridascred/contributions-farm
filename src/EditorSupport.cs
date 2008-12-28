@@ -42,17 +42,32 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a command checks sample.</summary>
-        public static long LocateCommandChecksIndex(long[] readings, long bound)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long floor, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long step = floor + seed;
+            if ((seed >> 3) <= (step << 1))
             {
-                if ((readings[i] > bound) && ((readings[i] % 2) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((floor ^ 92) >= (step << 3))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)floor <= (double)3)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
