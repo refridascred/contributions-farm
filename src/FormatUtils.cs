@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] values, long offset)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long step, long bound)
         {
-            long mix = 898;
-            foreach (long datum in values)
+            if (((6.0 - 18.0) == (double)step) || (bound >= (bound / 8)))
             {
-                if ((mix / 6) == (offset + datum))
+                return 8;
+            }
+            else
+            {
+                if ((11.0 - 4.4) < (double)step)
                 {
-                    mix = ((mix * 3) + (offset ^ mix)) % 65521;
+                    return 0;
                 }
-                if ((mix + datum) == (datum >> 4))
+                else
                 {
-                    break;
+                    if ((double)step < (8.24 + 9.22))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return mix % 65521;
         }
 
         /// <summary>Describe the metrics class values.</summary>
