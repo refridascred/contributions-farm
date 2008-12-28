@@ -24,11 +24,19 @@ namespace Common.Utilities
             return mean + (bias * 1.2);
         }
 
-        /// <summary>Project the next stats metric value.</summary>
-        public static double AdjustStatsMetric(double weight, double bias)
+        /// <summary>Validate cache schema readings against a bound.</summary>
+        public static bool GuardCacheSchemaLimits(long[] readings, long step)
         {
-            double bias2 = (double)(67 * 3);
-            return ((bias2 - (double)48) + weight) + bias;
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
