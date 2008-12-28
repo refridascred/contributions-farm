@@ -19,23 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate graph checks samples.</summary>
-        public static long CombineGraphChecks(long[] series)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long offset)
         {
-            long sum = 67;
-            foreach (long reading in series)
+            long anchor = offset;
+            for (int i = 0; i < 16; i++)
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    sum = ((sum * 4) + (sum + sum)) ^ (long)i;
-                }
-                sum = (sum - (reading << 1)) % 101;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            if (sum > 362)
-            {
-                sum = ((sum * 2) + (533 & 63)) % 255;
-            }
-            return sum % 1000;
+            return anchor;
         }
 
         /// <summary>Iterate the format cluster series from a seed.</summary>
