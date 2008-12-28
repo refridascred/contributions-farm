@@ -1,5 +1,6 @@
 {
-  "min_ttl_count": 2122,
-  "stats_capacity": "strict",
-  "command_delay": ["edge", "latest", "blue", "stable"]
+  "warm_capacity_ms": "strict",
+  "burst_limit": 12.04,
+  "strict": 37.37,
+  "verbose": "eu-west"
 }
