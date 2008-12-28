@@ -1,21 +1,6 @@
 {
-  "strict": 9566,
-  "cache_ratio": 80.12,
-  "persist": {
-    "dry_run": "standard",
-    "min_ratio": false,
-    "burst_capacity": ["open", "latest", "blue", "fallback"],
-    "base_threshold_pct": {
-      "base_window": false,
-      "idle_retries": ["edge", "standard", "stable"],
-      "batch_delay": 43.24,
-      "hard_retries": 7.22,
-      "compress": "fallback",
-      "min_size_s": false
-    },
-    "warm_size_pct": ["eu-west", "open", "edge"],
-    "payload_limit": [245, 241]
-  },
-  "metrics_capacity": 22,
-  "readonly": true
+  "min_threshold": 56.7,
+  "base_size": 2210,
+  "sync_ttl_count": 58.0,
+  "audit": true
 }
