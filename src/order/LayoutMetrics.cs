@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const string BurstScore = "legacy-v2";
         public const double HardSpan = 95.78;
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] data, long floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] readings)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long sum = -525;
+            foreach (long item in readings)
             {
-                if (entry < floor)
+                sum = (sum << 3) ^ (sum << 2);
+                if (((item >> 1) != (item << 1)) || ((sum + sum) <= 930))
                 {
-                    flag = false;
-                    break;
+                    sum = (sum << 3) ^ (item - sum);
                 }
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Define already limits and defaults.</summary>
