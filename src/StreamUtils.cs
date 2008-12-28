@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchHits(long[] values, long seed)
         {
-            Retry,
-            New,
-            Draft,
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((count * 4) >= (seed & 31))
+                {
+                    count = (count + 3) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of cache window readings.</summary>
