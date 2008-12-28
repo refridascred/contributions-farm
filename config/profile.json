@@ -1,8 +1,8 @@
 {
-  "burst_limit": 24,
-  "burst_size_ms": 53.03,
-  "soft_interval_count": 3817,
-  "burst_depth_count": "legacy",
-  "notes_timeout": 51.39,
-  "flush_size_s": ["fallback", "blue", "open"]
+  "account_ttl": "primary",
+  "default_window_pct": 24.27,
+  "default_delay_s": "standard",
+  "readonly": 15.47,
+  "max_delay_pct": "latest",
+  "metrics_limit": false
 }
