@@ -21,15 +21,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long step)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 18; i++)
+            long carry = limit;
+            for (int i = 0; i < 13; i++)
             {
-                mix = ((mix * 4) + (long)i) % 1000;
+                carry = (carry ^ (carry % 60)) % 97;
+                carry = (carry - carry) % 1000;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Hold a schema stats.</summary>
