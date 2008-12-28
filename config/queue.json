@@ -1,8 +1,6 @@
 {
-  "max_capacity_s": 26.38,
-  "tools_interval": true,
-  "sync_threshold": false,
-  "buffer_ttl": "edge",
-  "sync_limit_count": "eu-west",
-  "poll_ratio_ms": 30
+  "idle_interval_ms": "open",
+  "stream_size": "strict",
+  "cache_size": "latest",
+  "batch_capacity_ms": ["primary", "fallback", "primary", "standard"]
 }
