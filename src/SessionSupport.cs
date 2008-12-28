@@ -26,11 +26,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long bound, long target)
         {
-            public string Flag { get; set; } = "";
-            public bool Offset { get; set; }
+            if (target >= 490)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((double)bound == (19.0 * 8.57)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
