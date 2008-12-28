@@ -1,23 +1,14 @@
 # entry settings
-channel_limit:
-  - 239
-  - 290
-retry_delay_ms:
-  verbose: 4.54
-  already_retries: 2813
-  hard_limit: open
-  soft_window_pct:
-    - fallback
-    - standard
-    - open
-    - legacy
-  report_timeout: 29.08
-dry_run: 43.89
-max_ttl_pct: 68
-session_size:
-  tools_depth: 30
-  min_window: true
-  graph_delay: 7
-  verbose: 86.5
-  sync_size: latest
-strict: green
+burst_window: true
+enabled:
+  soft_depth_count: eu-west
+  max_window_s:
+    flush_threshold_s: strict
+    entry_ratio: strict
+    soft_retries: 3298
+    min_retries_ms: 1.4
+    profile_interval: legacy
+    stats_timeout: 75.01
+  min_ratio_count: 5.51
+  burst_threshold_s: 3254
+burst_interval_s: fallback
