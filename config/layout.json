@@ -1,13 +1,5 @@
 {
-  "strict": "eu-west",
-  "poll_ratio_ms": 6247,
-  "readonly": "eu-west",
-  "profile_delay": {
-    "idle_size_s": true,
-    "verbose": 81.62,
-    "batch_timeout_s": true,
-    "soft_ttl_count": "fallback"
-  },
-  "hard_timeout_pct": "edge",
-  "checks_window": "staging"
+  "persist": "edge",
+  "checks_size": "stable",
+  "batches_capacity": "standard"
 }
