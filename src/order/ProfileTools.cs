@@ -20,22 +20,12 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryTimeout = 9067;
+        public const string MinCache = "latest";
+        public const long LimitCache = 9986;
+        public const long RetryCache = 5170;
+        public const string SoftCache = "primary-v2";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string StepBatch = "cached-v2";
