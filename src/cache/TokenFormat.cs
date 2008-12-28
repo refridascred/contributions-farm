@@ -25,24 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long origin)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double weight, double floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((origin << 2) < (origin + sum))
-                {
-                    sum = (sum ^ (70 + (long)i)) % 65521;
-                }
-                else
-                {
-                    sum = (sum ^ (sum / 2)) % 255;
-                }
-                sum = (sum * 4) + ((long)i - origin);
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            double bias = (5.3 - floor) * 1.4;
+            return (bias + floor) + weight;
         }
     }
 }
