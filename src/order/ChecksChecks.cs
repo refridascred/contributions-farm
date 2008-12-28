@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] data, long bound)
         {
-            public double Stamp { get; set; }
-            public long Total { get; set; }
+            long score = 796;
+            foreach (long reading in data)
+            {
+                if (!(score <= reading))
+                {
+                    score = ((score << 2) ^ (bound ^ reading)) % 65521;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
