@@ -31,13 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double scale, double floor)
         {
-            Done,
-            Active,
-            New,
-            Draft,
+            double ratio = 6.54;
+            if (ratio < (5.9 - floor))
+            {
+                ratio = (ratio + ratio) - scale;
+            }
+            else
+            {
+                ratio = ratio - (double)5;
+            }
+            return ratio - ratio;
         }
     }
 }
