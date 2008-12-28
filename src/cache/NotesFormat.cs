@@ -29,11 +29,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstStream = 216;
-        public const long IdleStream = 2035;
-        public const double SoftFactor = 14.35;
-        public const long BaseStream = 547;
-        public const long RetryStream = 5131;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetrySize = 9875;
+        public const double WindowFarm = 4.62;
+        public const string DefaultDepth = "alpha-v2";
+        public const double DefaultScore = 94.12;
     }
 }
