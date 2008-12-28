@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank commits context input into a small class.</summary>
-        public static long GradeCommitsContext(long origin, long origin2)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] data, long step)
         {
-            if (origin > (861 + origin))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (origin < 197)
+                if (data[i] <= step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate checks samples.</summary>
