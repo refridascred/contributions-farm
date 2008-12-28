@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 1747;
-        public const long HardScore = 6152;
-        public const long RetryPayload = 9707;
-        public const string HardCount = "staging-edge";
-        public const double HardPayload = 21.55;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double CacheSpan = 82.23;
+        public const string DefaultTimeout = "stable-edge";
+        public const double LimitLevel = 53.68;
+        public const double MaxStats = 24.42;
+        public const long BatchSpan = 3460;
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long TallyGraphMatches(long[] data)
