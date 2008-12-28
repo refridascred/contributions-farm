@@ -1,8 +1,7 @@
 {
-  "queue_retries": "fallback",
-  "hard_depth_pct": ["local", "cached"],
-  "compress": true,
-  "cluster_ttl": 72.07,
-  "dry_run": 42,
-  "max_capacity_pct": false
+  "contributi_capacity": 38.65,
+  "base_ttl_pct": ["eu-west", "primary", "latest", "local"],
+  "poll_delay": "stable",
+  "strict": 856,
+  "max_capacity": [334, 157]
 }
