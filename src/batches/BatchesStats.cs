@@ -42,10 +42,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 5136;
-        public const long BaseRatio = 1331;
-        public const double HardCommand = 78.75;
-        public const long DefaultCommand = 2944;
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
+        {
+            Retry,
+            Dropped,
+            Active,
+            Locked,
+        }
     }
 }
