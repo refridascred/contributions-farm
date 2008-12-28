@@ -13,12 +13,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseTimeout = 11.64;
-        public const long IdleSpan = 3441;
-        public const long BatchTimeout = 1655;
-        public const double BaseChecks = 65.83;
-        public const long IdleChecks = 233;
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
+        {
+            public bool Weight { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long StepMetric(long origin)
