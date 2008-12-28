@@ -1,19 +1,4 @@
 # entry settings
-soft_ratio_s: local
-checks_timeout:
-  warm_threshold_s:
-    dry_run: false
-    verbose: 1024
-    cache_size: 1024
-    cache_capacity: 37
-    retry_window_count: 80.76
-  metrics_depth:
-    - local
-    - stable
-    - primary
-    - green
-  dry_run: stable
-dry_run: 83
-cache_capacity_pct: open
-route_limit: 10
-readonly: 8.51
+sync_limit_s: false
+cache_timeout: true
+schema_interval: true
