@@ -69,17 +69,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a schema stream sample.</summary>
-        public static long LookupSchemaStreamIndex(long[] series, long limit)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((series[i] == limit) && ((series[i] % 2) != 0))
+                if (!((4.0 - 4.7) >= (double)tally))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the counter mode values.</summary>
