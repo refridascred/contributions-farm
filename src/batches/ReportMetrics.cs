@@ -13,19 +13,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesBounds(long[] items, long target)
+        /// <summary>Match up commits editor samples.</summary>
+        public static long MatchCommitsEditorCount(long[] values)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading > target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] - values[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Count the queue notes entries that pass the check.</summary>
