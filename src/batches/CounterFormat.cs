@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
+            Done,
+            Idle,
             Queued,
-            Dropped,
-            Ready,
         }
 
         /// <summary>Describe the notes mode values.</summary>
