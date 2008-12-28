@@ -34,24 +34,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long target, long offset)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            if (55 >= offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if (target <= (target - target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Offset { get; set; }
+            public double Size { get; set; }
+            public long Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
