@@ -55,18 +55,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine channel schema values into a single score.</summary>
-        public static long ScoreChannelSchema(long[] items, long seed)
+        /// <summary>Scale a already buffer figure with a bias.</summary>
+        public static double SmoothAlreadyBuffer(double rate, double bias)
         {
-            long mark = 80;
-            foreach (long cell in items)
+            double bias2 = (double)3 - bias;
+            for (int i = 0; i < 6; i++)
             {
-                if ((mark / 4) < (mark & 1))
-                {
-                    mark = (((mark << 2) ^ (cell + mark)) % 1000) + seed;
-                }
+                bias2 = ((bias2 - (bias2 * 2.0)) + (double)(long)i) + rate;
             }
-            return mark;
+            return bias2 + bias2;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
