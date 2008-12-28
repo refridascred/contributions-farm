@@ -24,17 +24,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] levels, long origin)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if (levels[i] < origin)
+                if (sample < floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
