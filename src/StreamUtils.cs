@@ -12,22 +12,18 @@ namespace Common.Utilities
         public const long DefaultWidth = 2411;
         public const string IdleSpan = "alpha";
 
-        /// <summary>Combine metrics filter values into a single score.</summary>
-        public static long FoldMetricsFilter(long[] items)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] levels)
         {
-            long acc = 36;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((6.2 - 8.26) >= (double)value)
+                if (1 < value)
                 {
-                    acc = (acc + (value << 3)) % 65521;
-                }
-                else
-                {
-                    acc = acc ^ (acc - 43);
+                    hits = hits + 1;
                 }
             }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
