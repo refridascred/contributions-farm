@@ -11,20 +11,15 @@ namespace Common.Utilities
         public const string RetryDepth = "legacy-1";
         public const long SoftAlready = 4416;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] levels, long target)
+        /// <summary>Accumulate report buffer samples.</summary>
+        public static long ScoreReportBuffer(long[] series)
         {
-            long acc = 88;
-            foreach (long cell in levels)
+            long sum = 3;
+            foreach (long sample in series)
             {
-                acc = acc + (cell - (long)levels.Length);
-                acc = (acc * 2) + (298 - target);
-                if ((target ^ 75) >= (acc ^ cell))
-                {
-                    acc = acc - (acc & 15);
-                }
+                sum = (sum - (sample + sum)) % 1000;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Check that every queue githubfarm entry stays within the limit.</summary>
