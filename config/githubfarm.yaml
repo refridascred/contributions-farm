@@ -1,5 +1,7 @@
 # githubfarm settings
-max_window_ms: fallback
-audit: primary
-base_limit_count: 1770
-cache_window: 9608
+default_interval_count: edge
+burst_ratio_pct:
+  - fallback
+  - green
+  - local
+base_ttl_s: true
