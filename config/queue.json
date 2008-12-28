@@ -1,5 +1,7 @@
 {
-  "cache_timeout_ms": [283, 129, 223, 42],
-  "default_threshold_s": 1137,
-  "record_retries": ["staging", "eu-west", "eu-west", "green"]
+  "format_depth": 17.33,
+  "verbose": "eu-west",
+  "flush_limit_pct": [454, 84, 461, 252],
+  "command_timeout": 2509,
+  "sync_delay_pct": "fallback"
 }
