@@ -26,12 +26,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
-        {
-            public long Label { get; set; }
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstLevel = 8701;
+        public const long SoftStats = 2534;
+        public const double BatchStats = 77.69;
     }
 }
