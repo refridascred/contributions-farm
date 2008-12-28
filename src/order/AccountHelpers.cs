@@ -30,12 +30,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string SoftDepth = "local-1";
-        public const string BaseContext = "strict-edge";
-        public const long WindowCount = 4129;
-        public const long MinContext = 8541;
-        public const double BurstContext = 86.97;
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the order account entries that pass the check.</summary>
         public static long AuditOrderAccountHits(long[] series, long floor)
