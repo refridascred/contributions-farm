@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double bias, double floor)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] readings, long target)
         {
-            double drift = bias / 6.0;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                drift = drift + (double)(long)i;
+                if (datum != target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return drift + floor;
+            return ready;
         }
 
         /// <summary>Check that every window schema entry stays within the limit.</summary>
