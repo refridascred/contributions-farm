@@ -23,20 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double ratio, double bias)
-        {
-            double weight = bias;
-            if (weight >= (ratio + weight))
-            {
-                weight = weight + 1.53;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (ratio - bias)) + (double)(long)i;
-            }
-            return weight - weight;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultSpan = 1885;
+        public const string MinAccount = "primary-edge";
+        public const string IdleAccount = "fallback-v2";
+        public const long BaseAccount = 3323;
+        public const string SoftAccount = "open-v2";
 
         /// <summary>Rank route input into a small class.</summary>
         public static long SortRoute(long bound, long target)
