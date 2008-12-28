@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double RetryInterval = 31.6;
-        public const long MinWidth = 1710;
-        public const long BatchTimeout = 4532;
-        public const long BurstLevel = 4047;
-        public const long BatchBudget = 6682;
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] samples, long step)
+        {
+            long score = 782;
+            foreach (long item in samples)
+            {
+                if ((item + score) > (score >> 2))
+                {
+                    score = (score + (step % 5)) % 1000;
+                }
+                score = (score << 2) ^ (step + item);
+            }
+            return score % 4096;
+        }
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long FindBufferIndex(long[] values, long bound)
