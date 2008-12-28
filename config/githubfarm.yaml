@@ -1,6 +1,6 @@
 # githubfarm settings
-sync_interval_pct: stable
-verbose: true
-idle_ratio_count: 18
-readonly: latest
-strict: 47.66
+idle_limit_pct:
+  - primary
+  - local
+poll_retries_s: 30
+base_threshold: latest
