@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate batches stream samples.</summary>
-        public static long TallyBatchesStream(long[] samples, long limit)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] readings)
         {
-            long mix = 89;
-            foreach (long sample in samples)
+            long result = 5;
+            foreach (long value in readings)
             {
-                mix = (mix << 2) ^ (sample % 7);
+                if (5 > (value - value))
+                {
+                    result = (result * 5) + (value - result);
+                }
             }
-            if (mix < (-62))
-            {
-                mix = mix ^ limit;
-            }
-            return mix;
+            return result % 65521;
         }
 
         /// <summary>Locate a tools already reading by value.</summary>
