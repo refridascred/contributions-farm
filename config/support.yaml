@@ -1,4 +1,6 @@
 # support settings
-idle_retries_count: blue
-metrics_retries: 93
-max_interval_count: true
+cache_window: 16.56
+enabled: standard
+stream_timeout: blue
+default_retries: 98.38
+batch_retries_s: stable
