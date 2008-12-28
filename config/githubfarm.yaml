@@ -1,7 +1,19 @@
 # githubfarm settings
-soft_window_ms:
-  - 43
-  - 443
-max_threshold: 100
-soft_limit: stable
-max_limit: 30
+metric_depth:
+  verbose: 8194
+  retry_capacity:
+    - 14
+    - 24
+    - 132
+  record_depth: 23.3
+  context_delay: 37.34
+  metrics_capacity:
+    - 86
+    - 358
+  route_size: true
+profile_timeout: primary
+default_timeout: 4983
+burst_size_s:
+  - 376
+  - 61
+  - 439
