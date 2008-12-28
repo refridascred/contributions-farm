@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] data, long offset)
         {
-            public string Level { get; set; } = "";
-            public bool Region { get; set; }
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Find the first context metrics entry that matches the target.</summary>
