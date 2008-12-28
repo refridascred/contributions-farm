@@ -33,17 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] samples, long seed)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 21;
+            foreach (long entry in data)
             {
-                if (samples[i] >= seed)
+                if ((state & 255) < entry)
                 {
-                    return (long)i;
+                    state = (state << 2) ^ state;
                 }
             }
-            return -1;
+            return state % 4096;
         }
 
         /// <summary>Iterate the cluster already series from a seed.</summary>
