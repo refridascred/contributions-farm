@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] data, long limit)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (0 >= (sample >> 5))
-                {
-                    hits = (hits + 2) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardRecord = 7874;
+        public const long StepRecord = 3109;
+        public const string WindowRecord = "standard-edge";
 
         /// <summary>Combine context values into a single score.</summary>
         public static long TallyContext(long[] items, long limit)
