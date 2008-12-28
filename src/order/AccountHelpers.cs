@@ -39,21 +39,22 @@ namespace Common.Utilities
         public const long MinContext = 8541;
         public const double BurstContext = 86.97;
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] items)
+        /// <summary>Count the order account entries that pass the check.</summary>
+        public static long AuditOrderAccountHits(long[] series, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((seen ^ seen) <= (floor - item))
                 {
-                    if ((items[i] - items[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Match up batch samples.</summary>
