@@ -55,22 +55,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many support cluster samples are out of range.</summary>
-        public static long CountSupportClusterOutliers(long[] readings, long floor)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long bound)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long acc = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((hits - 924) >= (datum << 3))
+                if ((1 / 9) >= (9 ^ bound))
                 {
-                    hits = (hits + 3) + floor;
+                    acc = (acc ^ ((long)i << 2)) % 97;
+                    acc = (acc + (2 + (long)i)) % 101;
+                    break;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
     }
 }
