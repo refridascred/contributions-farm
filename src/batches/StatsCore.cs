@@ -27,15 +27,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double ratio, double bias)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            double weight = 19.0;
-            if (weight >= weight)
-            {
-                weight = ((weight - weight) - ratio) - bias;
-            }
-            return weight + (double)333;
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a checks snapshot.</summary>
