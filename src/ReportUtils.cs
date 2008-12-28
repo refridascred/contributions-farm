@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] readings, long step)
         {
-            public string Token { get; set; } = "";
-            public bool Region { get; set; }
-            public long Level { get; set; }
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up farm samples.</summary>
