@@ -1,11 +1,10 @@
 # Command notes
 
-When a metric fails, the session handler retries a few times before giving up.
-Each window is validated before it reaches the batches queue.
-The profile report groups every route by format.
+When a batch fails, the farm handler retries a few times before giving up.
+The token report groups every profile by queue.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Validate format input early
-- Log every stats change
+- Log every counter change
+- Prefer command defaults
+- Keep cluster values small
