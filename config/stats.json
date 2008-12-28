@@ -1,5 +1,19 @@
 {
-  "persist": 32.57,
-  "record_depth": false,
-  "warm_limit_ms": 3479
+  "readonly": {
+    "cache_window": [327, 454],
+    "idle_timeout_s": 4955,
+    "warm_threshold_pct": [161, 172],
+    "cache_ratio_pct": true,
+    "poll_limit_ms": 100,
+    "warm_ttl_count": ["staging", "staging", "eu-west"]
+  },
+  "context_capacity": {
+    "retry_capacity_s": "open",
+    "verbose": 93.68,
+    "soft_timeout": 60
+  },
+  "persist": "open",
+  "sync_interval_ms": "primary",
+  "notes_capacity": 9330,
+  "base_retries_s": false
 }
