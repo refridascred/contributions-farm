@@ -23,21 +23,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] readings)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long floor, long floor2)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((floor + floor2) >= (floor2 ^ floor2))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((floor2 + floor2) >= (floor << 3))
                 {
-                    if ((readings[i] - readings[j]) < 1)
+                    return 2;
+                }
+                else
+                {
+                    if ((5.6 / 8.0) == (double)floor2)
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Match up contributi samples.</summary>
