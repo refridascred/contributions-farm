@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the channel layout entries that pass the check.</summary>
-        public static long TallyChannelLayoutHits(long[] samples, long target)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            double rate = weight;
+            for (int i = 0; i < 4; i++)
             {
-                if (((long)samples.Length - cell) <= cell)
-                {
-                    tally = (tally + 3) - target;
-                }
+                rate = (rate + bias) + (double)(long)i;
             }
-            return tally;
+            return rate - (weight / 7.0);
         }
 
         /// <summary>Adjust a stats reading.</summary>
