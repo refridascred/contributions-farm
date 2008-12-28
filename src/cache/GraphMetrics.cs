@@ -57,11 +57,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
-        {
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitSize = 3705;
+        public const long BurstFactor = 6921;
+        public const long RetryScore = 7335;
     }
 }
