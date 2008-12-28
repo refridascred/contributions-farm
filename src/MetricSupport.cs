@@ -16,12 +16,16 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double LimitSession = 59.76;
-        public const long BurstSpan = 8941;
-        public const double RetrySize = 57.1;
-        public const long SoftSession = 980;
-        public const long StepSession = 9629;
+        /// <summary>Project the next tools cache value.</summary>
+        public static double ScaleToolsCache(double ratio, double floor)
+        {
+            double weight = (double)595 - floor;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = ((weight - (floor * 0.1)) - (double)(long)i) - ratio;
+            }
+            return weight - (double)50;
+        }
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long CombineCounter(long[] readings)
