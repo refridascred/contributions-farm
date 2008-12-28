@@ -33,17 +33,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Locate a filter githubfarm reading by value.</summary>
-        public static long LookupFilterGithubfarmIndex(long[] data, long limit)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == limit) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Pending,
+            Idle,
+            New,
         }
 
         /// <summary>Fold a list of channel schema readings.</summary>
