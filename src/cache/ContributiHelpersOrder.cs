@@ -15,16 +15,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long bound)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long sum = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = (sum - (bound - bound)) % 65521;
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            Dropped,
+            Stale,
+            Closed,
+            Retry,
+            Failed,
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
