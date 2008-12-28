@@ -13,10 +13,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 5330;
-        public const long MinBatch = 5387;
-        public const long BaseSize = 1715;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
