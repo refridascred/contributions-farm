@@ -33,10 +33,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetrySize = 9875;
-        public const double WindowFarm = 4.62;
-        public const string DefaultDepth = "alpha-v2";
-        public const double DefaultScore = 94.12;
+        /// <summary>Accumulate editor support samples.</summary>
+        public static long DigestEditorSupport(long[] samples, long seed)
+        {
+            long score = 8;
+            foreach (long sample in samples)
+            {
+                if ((seed * 4) >= (seed >> 3))
+                {
+                    score = ((score * 4) + (seed << 1)) ^ sample;
+                }
+                if ((score ^ score) > (score & 15))
+                {
+                    break;
+                }
+            }
+            if (score < 58)
+            {
+                score = (score << 2) ^ ((-4) + score);
+            }
+            return score % 65521;
+        }
     }
 }
