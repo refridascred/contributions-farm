@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public long Ratio { get; set; }
-            public double Total { get; set; }
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
+            public string Size { get; set; } = "";
+            public double Offset { get; set; }
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
