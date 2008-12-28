@@ -46,18 +46,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] series, long limit)
+        /// <summary>Check that every tools filter entry stays within the limit.</summary>
+        public static bool CheckToolsFilterRange(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if (((-454) ^ hits) >= limit)
+                if (datum < bound)
                 {
-                    hits = (hits + 1) ^ datum;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
