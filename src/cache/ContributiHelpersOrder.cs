@@ -22,12 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitBudget = 9202;
-        public const long IdleScore = 4503;
-        public const string LimitGraph = "legacy";
-        public const long BatchGraph = 5512;
-        public const long DefaultGraph = 2551;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] data, long bound)
+        {
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long PairGithubfarmCount(long[] readings)
