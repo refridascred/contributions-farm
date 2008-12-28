@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long bound, long offset)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            if ((double)bound < (1.6 - 1.32))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset ^ bound) <= (bound - bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((4.9 / 2.0) < (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((96 + offset) <= (offset * 4))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Rank token batch input into a small class.</summary>
