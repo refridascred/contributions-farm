@@ -57,9 +57,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 6454;
-        public const long MaxAccount = 2176;
-        public const double StepSpan = 14.25;
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
+        {
+            Active,
+            Dropped,
+            Retry,
+            Paused,
+        }
     }
 }
