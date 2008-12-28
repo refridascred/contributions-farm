@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] levels, long target)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((item + tally) >= (tally + item))
-                {
-                    tally = (tally + 2) + target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchWidth = 4898;
+        public const string WindowWidth = "alpha-1";
+        public const long SoftRecord = 8496;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long TallyContextOutliers(long[] values)
