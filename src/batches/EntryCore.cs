@@ -20,15 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double ratio, double bias)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            double mean = (double)(483 & 255);
-            if (mean < bias)
-            {
-                mean = (mean - (bias * 2.4)) - ratio;
-            }
-            return mean + (bias * 1.2);
+            public bool Ratio { get; set; }
+            public double Size { get; set; }
+            public string Score { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Validate graph farm readings against a bound.</summary>
