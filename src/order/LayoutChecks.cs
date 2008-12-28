@@ -30,12 +30,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] items, long limit)
         {
-            public long Count { get; set; }
-            public string Offset { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long carry = 267;
+            foreach (long value in items)
+            {
+                if ((12.0 + 7.74) != (double)carry)
+                {
+                    carry = ((carry + (569 + value)) % 4096) - limit;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
