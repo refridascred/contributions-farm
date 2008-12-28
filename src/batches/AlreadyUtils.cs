@@ -30,24 +30,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long seed)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long total = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!((double)seed <= 2.11))
-                {
-                    total = (total << 2) ^ ((long)i * 4);
-                }
-                else
-                {
-                    total = (total + (total << 1)) % 97;
-                }
-                total = total + (seed % 2);
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            Queued,
+            Retry,
+            Active,
+            Stale,
         }
 
         /// <summary>Roll a context counter forward.</summary>
