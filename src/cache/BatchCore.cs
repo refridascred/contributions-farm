@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string DefaultContext = "primary-1";
-        public const long LimitRatio = 6906;
-        public const double RetrySize = 16.51;
-        public const long WindowTimeout = 8083;
-        public const double BurstContext = 82.31;
+        /// <summary>Locate a filter metric reading by value.</summary>
+        public static long FindFilterMetricIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
