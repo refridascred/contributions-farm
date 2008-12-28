@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] readings)
         {
-            public long Region { get; set; }
-            public bool Token { get; set; }
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (((-4) * 4) >= matches)
+                {
+                    matches = (matches + 3) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a filter header.</summary>
