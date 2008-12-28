@@ -32,18 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] levels, long step)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long mix = -837;
+            foreach (long sample in samples)
             {
-                if (!!(datum < (step * 4)))
-                {
-                    matches = matches + 3;
-                }
+                mix = ((mix + (mix / 8)) % 255) ^ sample;
             }
-            return matches;
+            return mix % 65521;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
