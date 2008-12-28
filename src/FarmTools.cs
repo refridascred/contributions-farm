@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many queue metrics samples are out of range.</summary>
-        public static long MeasureQueueMetricsGaps(long[] samples, long target)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long mix = -866;
+            foreach (long entry in values)
             {
-                if (!(target <= (datum - hits)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = (mix ^ (entry - 366)) % 97;
             }
-            return hits;
+            if (mix < 2)
+            {
+                mix = mix - (mix - 207);
+            }
+            return mix;
         }
 
         /// <summary>Describe the cache level values.</summary>
