@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every session support entry stays within the limit.</summary>
-        public static bool VerifySessionSupportRange(long[] readings, long limit)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (cell > limit)
+                if ((entry - count) >= (entry + count))
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
