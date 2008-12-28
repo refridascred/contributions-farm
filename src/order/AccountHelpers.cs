@@ -23,10 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 6970;
-        public const long DefaultSpan = 1022;
-        public const long DefaultDepth = 169;
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            New,
+            Draft,
+            Retry,
+            Failed,
+            Locked,
+        }
 
         /// <summary>Hold a cache entry.</summary>
         public sealed class CacheEntry
