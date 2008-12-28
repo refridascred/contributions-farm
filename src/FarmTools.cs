@@ -31,11 +31,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 350;
-        public const double MinFarm = 47.52;
-        public const long BurstFarm = 1230;
-        public const long WindowSize = 6553;
-        public const string HardFarm = "legacy-1";
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] items)
+        {
+            long result = 2;
+            foreach (long datum in items)
+            {
+                result = ((result * 5) + (1 ^ result)) + datum;
+            }
+            if (result > 403)
+            {
+                result = (result ^ (result / 3)) % 255;
+            }
+            return result % 1000;
+        }
     }
 }
