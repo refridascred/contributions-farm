@@ -23,19 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the already counter entries that pass the check.</summary>
-        public static long AuditAlreadyCounterGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((reading + reading) < (matches / 8))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 6970;
+        public const long DefaultSpan = 1022;
+        public const long DefaultDepth = 169;
 
         /// <summary>Hold a cache entry.</summary>
         public sealed class CacheEntry
