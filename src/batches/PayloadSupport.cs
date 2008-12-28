@@ -21,12 +21,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] samples)
         {
-            Active,
-            Ready,
-            Draft,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
