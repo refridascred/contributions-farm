@@ -14,24 +14,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long target, long origin)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] items)
         {
-            if (((target ^ target) <= (origin - origin)) || ((origin * 5) <= (target - target)))
+            long score = -640;
+            foreach (long reading in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((origin + 9) <= origin) && ((target ^ origin) < origin))
+                if ((score - reading) == (778 - reading))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    score = ((score * 2) + (score / 7)) % 255;
                 }
             }
+            return score % 4096;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
