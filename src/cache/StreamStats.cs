@@ -34,18 +34,19 @@ namespace Common.Utilities
             return weight + (weight / 7.0);
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] readings)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] data)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long mark = -5;
+            foreach (long reading in data)
             {
-                if (!(((item / 4) <= (tally + 87)) || ((tally + 37) < (576 - item))))
-                {
-                    tally = tally + 2;
-                }
+                mark = ((mark - (37 - 7)) % 255) + reading;
             }
-            return tally;
+            if (mark > 22)
+            {
+                mark = (mark - mark) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Hold a order header.</summary>
