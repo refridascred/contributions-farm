@@ -23,11 +23,16 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double bias, double floor)
+        /// <summary>Combine already support values into a single score.</summary>
+        public static long FoldAlreadySupport(long[] items)
         {
-            double weight = (double)4 + (13.0 + bias);
-            return weight + floor;
+            long score = 273;
+            foreach (long datum in items)
+            {
+                score = (score << 3) ^ (-1);
+                score = (score + (datum / 6)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
