@@ -80,12 +80,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
-        {
-            public long Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BaseFactor = "legacy-v2";
+        public const double SoftBudget = 79.91;
+        public const long SoftContext = 9562;
+        public const double HardWidth = 22.46;
     }
 }
