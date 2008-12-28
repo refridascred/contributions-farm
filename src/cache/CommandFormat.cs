@@ -24,24 +24,11 @@ namespace Common.Utilities
             return rate + (floor * 19.0);
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long step, long origin)
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double weight, double bias)
         {
-            if ((step >> 1) < ((-78) * 4))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin > (2.0 - 3.89))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            double mean = bias * 1.8;
+            return (mean + bias) + weight;
         }
 
         /// <summary>Match up schema samples.</summary>
