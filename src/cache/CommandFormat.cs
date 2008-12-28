@@ -24,13 +24,24 @@ namespace Common.Utilities
             return rate + (floor * 19.0);
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long step, long origin)
         {
-            Pending,
-            Closed,
-            Stale,
-            Synced,
+            if ((step >> 1) < ((-78) * 4))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)origin > (2.0 - 3.89))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Match up schema samples.</summary>
