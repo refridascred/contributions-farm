@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] series, long bound)
+        /// <summary>Rank contributi report input into a small class.</summary>
+        public static long GradeContributiReport(long bound, long bound2)
         {
-            long count = 0;
-            foreach (long cell in series)
+            if (bound2 > (bound % 60))
             {
-                if ((cell & 3) <= count)
+                return 5;
+            }
+            else
+            {
+                if (((bound2 ^ bound2) < bound) && ((double)bound2 > (12.0 / 3.0)))
                 {
-                    count = (count + 1) + bound;
+                    return 7;
+                }
+                else
+                {
+                    if (((bound2 ^ 510) >= (0 << 3)) || (7.44 < (double)bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Match up batch samples.</summary>
