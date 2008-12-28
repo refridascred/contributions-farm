@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long CacheTools = 2702;
         public const string HardTimeout = "cached-edge";
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            Dropped,
-            Locked,
-            Done,
-            New,
+            public long Size { get; set; }
+            public long Total { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Combine order values into a single score.</summary>
