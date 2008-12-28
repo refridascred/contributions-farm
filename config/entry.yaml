@@ -1,12 +1,27 @@
 # entry settings
-soft_ttl_count: 47
-sync_window_count: true
-idle_ttl_pct:
-  warm_limit_ms: 74.61
-  metrics_depth:
-    - standard
-    - green
-    - open
-    - fallback
-  order_interval: 4424
-  warm_depth_s: stable
+min_interval_ms: 16
+min_delay:
+  poll_retries_pct: false
+  dry_run:
+    soft_threshold_count: legacy
+    audit: stable
+    idle_threshold: false
+    githubfarm_window: 250
+  base_limit: 1024
+min_ratio_pct:
+  burst_limit_ms: 2241
+  min_size_count: 90.46
+  stream_ttl: cached
+  hard_window_s:
+    soft_delay_pct:
+      - 182
+      - 285
+      - 462
+      - 253
+    burst_capacity_count: stable
+    default_depth_ms: legacy
+    sync_threshold_s: 58.19
+    soft_depth_s: edge
+  audit: false
+order_ttl: edge
+poll_retries_pct: cached
