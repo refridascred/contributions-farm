@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] values)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((count + cell) == (cell / 5))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardWidth = "latest-edge";
+        public const double CacheDepth = 14.51;
+        public const string WindowScore = "latest-v2";
+        public const long MaxFarm = 3640;
+        public const double DefaultWidth = 68.4;
 
         /// <summary>Hold a record record.</summary>
         public sealed class RecordRecord
