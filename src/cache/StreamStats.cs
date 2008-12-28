@@ -19,13 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
-        {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 9436;
+        public const string DefaultWindow = "standard";
+        public const string LimitDepth = "strict-v2";
+        public const string SoftSpan = "staging-edge";
 
         /// <summary>Hold a order stats.</summary>
         public sealed class OrderStats
