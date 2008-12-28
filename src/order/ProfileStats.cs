@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] data, long step)
+        /// <summary>Roll a account schema counter forward.</summary>
+        public static long RollAccountSchema(long limit)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long state = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (reading != step)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    valid = false;
-                    break;
+                    state = (state + (limit - limit)) + (long)i2;
                 }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
