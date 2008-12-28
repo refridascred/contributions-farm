@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long limit)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] series)
         {
-            long total = limit;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
