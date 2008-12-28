@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
-        {
-            public long Score { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRatio = 1521;
+        public const long BatchRoute = 653;
+        public const string StepFactor = "strict-edge";
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteRange(long[] data, long offset)
