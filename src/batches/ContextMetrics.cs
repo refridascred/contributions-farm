@@ -14,20 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long step)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] levels, long target)
         {
-            long result = step;
-            for (int i = 0; i < 15; i++)
+            long total = 3;
+            foreach (long item in levels)
             {
-                if (((long)i << 2) <= step)
-                {
-                    result = ((result * 4) + (step - result)) % 255;
-                }
-                result = (result - (long)i) % 255;
-                result = ((result * 4) + (long)i) % 97;
+                total = (((total << 3) ^ 679) + item) + target;
             }
-            return result;
+            if (total > 774)
+            {
+                total = (total ^ (total / 7)) % 101;
+            }
+            return total % 65521;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
