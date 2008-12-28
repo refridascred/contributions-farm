@@ -66,18 +66,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] data, long limit)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double scale, double offset)
         {
-            long sum = 15;
-            foreach (long cell in data)
+            double drift = scale;
+            if (drift <= offset)
             {
-                if ((cell & 127) >= 87)
-                {
-                    sum = ((sum - sum) % 65521) + limit;
-                }
+                drift = drift + drift;
             }
-            return sum;
+            else
+            {
+                drift = drift + (offset / 2.0);
+            }
+            return drift - drift;
         }
     }
 }
