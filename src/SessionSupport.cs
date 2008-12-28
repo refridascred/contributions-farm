@@ -13,14 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
-        {
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 1492;
+        public const string BatchCommits = "primary-edge";
+        public const long IdleCount = 140;
+        public const long DefaultSpan = 3335;
+        public const long CacheCount = 8763;
 
         /// <summary>Accumulate context samples.</summary>
         public static long ScoreContext(long[] levels)
