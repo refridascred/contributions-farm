@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double DefaultAlready = 14.0;
+        public const long StepAlready = 8377;
+        public const string RetryDepth = "legacy-1";
+        public const long SoftAlready = 4416;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long TallyQueue(long[] levels, long target)
