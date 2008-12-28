@@ -12,28 +12,36 @@ namespace Common.Utilities
         public const long HardSpan = 3199;
         public const double BurstCount = 80.19;
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long step, long seed)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long offset, long origin)
         {
-            if ((step - 6) >= seed)
+            long bound = offset - origin;
+            if (((offset << 1) > offset) || ((2.0 * 4.3) >= (double)origin))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if ((double)232 != (double)step)
+                if ((double)origin > (7.48 - 6.19))
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    if (!((double)step > (double)seed))
+                    if (offset <= (31 + offset))
                     {
                         return 6;
                     }
                     else
                     {
-                        return 0;
+                        if ((bound >> 2) <= bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
