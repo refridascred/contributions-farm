@@ -33,18 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] data)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long state = 21;
-            foreach (long entry in data)
-            {
-                if ((state & 255) < entry)
-                {
-                    state = (state << 2) ^ state;
-                }
-            }
-            return state % 4096;
+            Locked,
+            Dropped,
+            Done,
         }
 
         /// <summary>Hold a buffer entry.</summary>
