@@ -27,18 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] items)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long mix = 39;
-            foreach (long item in items)
-            {
-                if ((double)mix > (4.69 + 1.45))
-                {
-                    mix = ((mix * 3) + (22 - mix)) - item;
-                }
-            }
-            return mix % 65521;
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
