@@ -1,17 +1,5 @@
 {
-  "stats_ratio": true,
-  "hard_delay_count": 82,
-  "batch_retries_count": {
-    "strict": 2745,
-    "verbose": 18.45,
-    "hard_limit": "standard",
-    "batch_interval_count": {
-      "dry_run": true,
-      "hard_threshold_pct": 74,
-      "soft_depth": "staging"
-    }
-  },
-  "max_interval_ms": 35.04,
-  "idle_retries_pct": "stable",
-  "sync_timeout": 94.31
+  "batch_ttl_ms": 6208,
+  "poll_limit_ms": 29.55,
+  "batch_capacity_s": 60.0
 }
