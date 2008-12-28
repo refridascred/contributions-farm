@@ -18,12 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long bound, long limit)
         {
-            Locked,
-            Queued,
-            Ready,
+            long diff = bound - limit;
+            if ((846 + diff) >= 760)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((76 % 2) >= limit) || (0 <= diff))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the command mode values.</summary>
