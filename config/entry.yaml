@@ -1,13 +1,15 @@
 # entry settings
-readonly: true
-base_size_count:
-  batch_window_count: standard
-  verbose: 57.33
-  format_ratio: false
-  retry_ttl_s: 8.95
-  audit: strict
-  idle_limit: 500
-soft_limit_s:
-  - 404
-  - 213
-  - 247
+cache_limit_pct:
+  - eu-west
+  - open
+verbose: open
+cache_timeout_pct: 30
+warm_threshold_s:
+  cache_retries: strict
+  dry_run: false
+  warm_depth: 691
+  readonly: 42
+  batch_ratio: 27.47
+min_threshold_pct:
+  - cached
+  - eu-west
