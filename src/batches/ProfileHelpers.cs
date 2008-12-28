@@ -20,17 +20,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] values, long bound)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= bound) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
