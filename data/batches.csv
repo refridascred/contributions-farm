@@ -1,7 +1,6 @@
-id,count,score,token,state
-1,6.55,781,standard,primary
-2,open,14.53,latest,59.52
-3,820,55.44,73.26,524
-4,23.66,747,146,standard
-5,116,465,951,874
-6,58.57,354,38.14,59.97
+id,region,score,state
+1,67.55,726,85.95
+2,60.7,642,669
+3,104,local,95.45
+4,primary,12.49,10.65
+5,559,latest,edge
