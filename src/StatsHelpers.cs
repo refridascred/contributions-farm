@@ -22,12 +22,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesOutliers(long[] data)
         {
-            public bool Weight { get; set; }
-            public double Size { get; set; }
-            public string Offset { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((((-75) - reading) < (71 - tally)) || (reading >= (reading % 5)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a schema already counter forward.</summary>
