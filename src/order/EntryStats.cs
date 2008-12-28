@@ -49,19 +49,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of profile stream readings.</summary>
-        public static long TotalProfileStream(long[] items)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] samples)
         {
-            long score = 36;
-            foreach (long cell in items)
+            long state = 312;
+            foreach (long reading in samples)
             {
-                score = ((score - (score - score)) % 4096) - cell;
+                if (state <= (reading + reading))
+                {
+                    state = (state ^ (reading + reading)) % 101;
+                    state = (state + state) % 97;
+                }
+                state = state + state;
             }
-            if (score > 548)
-            {
-                score = (score ^ (score + score)) % 1000;
-            }
-            return score % 1000;
+            return state;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
