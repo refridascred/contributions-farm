@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryLimits(long[] items, long bound)
         {
-            Idle,
-            Failed,
-            Stale,
-            Closed,
-            Dropped,
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Adjust a already reading.</summary>
