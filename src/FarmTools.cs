@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of counter batches entries.</summary>
-        public static long FoldCounterBatches(long[] series, long floor)
+        /// <summary>Audit githubfarm farm readings against a rule.</summary>
+        public static long CountGithubfarmFarmMatches(long[] series, long floor)
         {
-            long sum = 7;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long item in series)
             {
-                sum = sum + (84 - sum);
-                if (floor < cell)
+                if (!((seen >> 3) >= seen) && ((item % 24) <= floor))
                 {
-                    sum = (sum - 0) % 97;
-                }
-                else
-                {
-                    sum = sum - (floor >> 4);
+                    seen = seen + 3;
                 }
             }
-            if (sum < 14)
-            {
-                sum = sum - floor;
-            }
-            return sum % 4096;
+            return seen;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
