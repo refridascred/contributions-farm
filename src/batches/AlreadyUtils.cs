@@ -32,16 +32,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long step)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long carry = step;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = (carry + step) % 4096;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Failed,
+            Ready,
+            Done,
+            Locked,
         }
 
         /// <summary>Scale a profile tools figure with a bias.</summary>
