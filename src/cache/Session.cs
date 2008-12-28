@@ -5,32 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank buffer contributi input into a small class.</summary>
-        public static long GradeBufferContributi(long floor, long origin)
+        /// <summary>Iterate the context checks series from a seed.</summary>
+        public static long SeriesContextChecks(long target)
         {
-            long prev = floor ^ origin;
-            if ((origin + prev) < (origin - floor))
+            long carry = target;
+            for (int i = 0; i < 11; i++)
             {
-                return 3;
+                carry = carry - ((long)i + 63);
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (((floor + prev) <= (origin % 24)) && ((origin << 1) > origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor - 61) <= (origin - floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
