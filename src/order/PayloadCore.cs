@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const long CacheTimeout = 5559;
         public const double CacheStream = 35.01;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandMatches(long[] items, long step)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] readings, long origin)
         {
             long hits = 0;
-            foreach (long sample in items)
+            foreach (long reading in readings)
             {
-                if ((step - 902) >= step)
+                if ((3 * 2) >= hits)
                 {
-                    hits = (hits + 2) + sample;
+                    hits = ((hits + 2) + reading) - origin;
                 }
             }
             return hits;
