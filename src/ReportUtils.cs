@@ -19,25 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long bound, long limit)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long diff = bound - limit;
-            if ((846 + diff) >= 760)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((76 % 2) >= limit) || (0 <= diff))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Queued,
+            Failed,
+            New,
+            Paused,
+            Ready,
         }
 
         /// <summary>Describe the command mode values.</summary>
