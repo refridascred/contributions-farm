@@ -11,19 +11,10 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 1254;
         public const long CacheWidth = 4154;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] data)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (!((double)seen <= 19.0))
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardScore = 6859;
+        public const string IdleWindow = "primary";
+        public const double LimitInterval = 67.06;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool GuardBufferLimits(long[] series, long floor)
