@@ -1,9 +1,16 @@
 # entry settings
-warm_limit:
-  - blue
-  - eu-west
-  - staging
-base_limit_s: fallback
-soft_threshold: edge
-contributi_interval: false
-poll_timeout: 500
+counter_capacity:
+  soft_timeout_count:
+    soft_depth_ms: 37.44
+    poll_threshold_ms: true
+    verbose: primary
+    command_capacity: staging
+  session_retries: 4429
+  tools_window: standard
+  min_limit: primary
+cache_retries: 60
+layout_ratio:
+  - 292
+  - 1
+  - 42
+  - 64
