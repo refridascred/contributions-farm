@@ -35,17 +35,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 350;
+        public const double MinFarm = 47.52;
+        public const long BurstFarm = 1230;
+        public const long WindowSize = 6553;
+        public const string HardFarm = "legacy-1";
     }
 }
