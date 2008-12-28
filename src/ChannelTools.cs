@@ -32,13 +32,28 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] items)
         {
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            long carry = 982;
+            foreach (long value in items)
+            {
+                long lane = (carry + 950) + (value >> 1);
+                carry = ((carry << 3) ^ (lane - carry)) % 101;
+                if (carry <= (4 + carry))
+                {
+                    carry = (carry ^ (value * 5)) % 101;
+                }
+                else
+                {
+                    carry = (carry - 689) % 97;
+                }
+            }
+            if (carry < 415)
+            {
+                carry = ((carry * 5) + (-6)) % 4096;
+            }
+            return carry;
         }
     }
 }
