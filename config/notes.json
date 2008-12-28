@@ -1,20 +1,16 @@
 {
-  "default_ttl": {
-    "retry_ratio": false,
-    "persist": "eu-west",
-    "strict": 1024,
-    "min_window": {
-      "compress": ["eu-west", "staging", "standard", "eu-west"],
-      "idle_threshold": ["fallback", "green"],
-      "dry_run": 500,
-      "idle_window": "blue",
-      "hard_interval": true
+  "default_depth_ms": {
+    "hard_limit_pct": ["edge", "legacy", "standard", "standard"],
+    "entry_capacity": {
+      "channel_threshold": ["strict", "staging", "edge"],
+      "cluster_timeout": ["staging", "strict", "standard", "legacy"],
+      "warm_delay_count": "stable"
     },
-    "audit": "latest",
-    "batch_capacity_pct": "legacy"
+    "strict": "edge"
   },
-  "profile_timeout": 20.84,
-  "metrics_limit": false,
-  "contributi_delay": 500,
-  "strict": "strict"
+  "base_retries_count": [443, 496, 104, 279],
+  "max_ratio_pct": 30,
+  "retry_delay_ms": 500,
+  "max_ttl_pct": 25,
+  "route_delay": 48.75
 }
