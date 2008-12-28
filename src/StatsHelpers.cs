@@ -30,17 +30,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] series, long bound)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long target, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long cur = target + step;
+            if (((target >> 3) < target) || ((cur + target) <= (cur - step)))
             {
-                if (series[i] < bound)
+                return 4;
+            }
+            else
+            {
+                if ((61 + target) >= target)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (cur < target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of cache route readings.</summary>
