@@ -40,11 +40,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmBounds(long[] series, long floor)
         {
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
