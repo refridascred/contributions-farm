@@ -13,15 +13,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long target)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long floor)
         {
-            long mark = target;
-            for (int i = 0; i < 24; i++)
+            long total = floor;
+            for (int i = 0; i < 14; i++)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                total = (total + (total - total)) % 4096;
+                total = (total ^ floor) % 255;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Hold a format options.</summary>
