@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next context graph value from a seed.</summary>
-        public static long IterateContextGraph(long floor)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportBounds(long[] items, long target)
         {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                acc = acc - (floor ^ acc);
-                acc = ((acc * 3) + (long)i) % 1000;
+                if (cell <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
