@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
+            public double Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Rank token input into a small class.</summary>
