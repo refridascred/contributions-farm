@@ -16,22 +16,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up stats commits samples.</summary>
-        public static long CompareStatsCommitsCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxTimeout = 5973;
+        public const string LimitScore = "primary";
+        public const string MaxRatio = "strict-1";
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long IteratePayload(long step)
