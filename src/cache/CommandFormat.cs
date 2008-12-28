@@ -46,32 +46,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long seed, long bound)
+        /// <summary>Blend two support payload measurements.</summary>
+        public static double SmoothSupportPayload(double scale, double span)
         {
-            long bound2 = seed + bound;
-            if ((bound - bound) <= (bound2 - bound2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed / 2) != (bound2 << 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)142 < (double)bound2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            double load = scale;
+            return (load + (scale * 4.7)) + span;
         }
     }
 }
