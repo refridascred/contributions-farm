@@ -49,20 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] data, long limit)
-        {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 7828;
+        public const long BaseAccount = 7421;
+        public const double RetryAccount = 7.53;
+        public const long StepDepth = 1574;
+        public const double MaxCount = 96.05;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long SoftRatio = 8807;
