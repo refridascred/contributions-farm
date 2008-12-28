@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 5672;
-        public const string BurstMetrics = "legacy";
-        public const long StepCount = 1332;
-        public const long WindowWidth = 8623;
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = (acc * 4) + (long)i;
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long HardFilter = 2564;
