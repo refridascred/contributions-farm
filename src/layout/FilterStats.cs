@@ -20,14 +20,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] readings, long bound)
         {
-            Closed,
-            Dropped,
-            Queued,
-            Locked,
-            Paused,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)sample >= (5.42 * 16.0))
+                {
+                    matches = (matches + 2) - bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
