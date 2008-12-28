@@ -1,12 +1,14 @@
 # Command notes
 
-Keep graph and schema names short and lowercase.
-Use tools settings to tune how often order data is refreshed.
-The schema helpers are pure functions, so they are safe to call from any thread.
+A commits that stays idle for too long is moved to the channel list.
+When a batches fails, the batches handler retries a few times before giving up.
+The commits report groups every entry by counter.
+
+A entry that stays idle for too long is moved to the stats list.
+When a batch fails, the context handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new filter fields
-- Keep batches values small
-- Prefer layout defaults
-- Log every notes change
+- Log every buffer change
+- Document new queue fields
+- Keep graph values small
