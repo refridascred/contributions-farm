@@ -48,38 +48,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long limit, long bound)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] data, long target)
         {
-            if ((708 ^ bound) > limit)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((limit << 1) < limit))
+                if (entry > target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)bound > (4.88 / 2.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (bound <= (limit - limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the order mode values.</summary>
