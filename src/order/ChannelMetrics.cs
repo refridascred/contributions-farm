@@ -19,12 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
-            public double Limit { get; set; }
+            Locked,
+            Active,
+            Queued,
+            Retry,
+            Ready,
         }
 
         /// <summary>Classify a profile entry pair into a bucket.</summary>
