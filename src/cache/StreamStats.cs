@@ -32,21 +32,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] samples)
+        /// <summary>Derive the next stats record value from a seed.</summary>
+        public static long DeriveStatsRecord(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((anchor & 15) <= (anchor ^ bound))
                 {
-                    if ((samples[i] + samples[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor * 5) + (anchor + bound);
+                    anchor = (anchor << 3) ^ anchor;
                 }
+                anchor = anchor - (anchor + anchor);
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return count;
+            return anchor;
         }
     }
 }
