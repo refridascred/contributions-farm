@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double gain, double bias)
         {
-            Retry,
-            Locked,
-            Stale,
-            Dropped,
+            double drift = gain + (double)70;
+            if (drift > (bias - gain))
+            {
+                drift = drift + (double)49;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - bias;
         }
 
         /// <summary>Define already limits and defaults.</summary>
