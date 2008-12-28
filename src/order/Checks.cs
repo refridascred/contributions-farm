@@ -42,11 +42,18 @@ namespace Common.Utilities
         public const long LimitScore = 947;
         public const long CachePayload = 3461;
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double rate, double offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] data)
         {
-            double load = rate;
-            return (load + rate) + offset;
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (((long)data.Length - count) > (count % 5))
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next format tools value.</summary>
