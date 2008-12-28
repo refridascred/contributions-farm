@@ -1,13 +1,14 @@
 # Command notes
 
-Run the notes check before changing any channel limits.
-The stats report groups every format by counter.
+Keep graph and filter names short and lowercase.
+Each graph is validated before it reaches the record queue.
 
-Defaults for channel live in the config folder and can be overridden per environment.
-Run the tools check before changing any metric limits.
+The session helpers are pure functions, so they are safe to call from any thread.
+Keep context and schema names short and lowercase.
+The buffer report groups every metrics by metric.
 
 ## Guidelines
 
-- Review order limits each release
-- Validate metric input early
-- Document new token fields
+- Keep stats values small
+- Review command limits each release
+- Validate commits input early
