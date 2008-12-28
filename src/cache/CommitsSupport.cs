@@ -51,21 +51,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of support filter readings.</summary>
-        public static long PairSupportFilterCount(long[] items)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphHits(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((tally - tally) > (tally >> 1))
                 {
-                    if ((items[i] ^ items[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
