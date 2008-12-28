@@ -1,5 +1,5 @@
 {
-  "warm_retries_ms": 3645,
-  "retry_retries_pct": 4186,
-  "farm_ratio": "edge"
+  "dry_run": "standard",
+  "githubfarm_threshold": 500,
+  "readonly": false
 }
