@@ -1,10 +1,10 @@
 # support settings
-metrics_ratio: 1046
-readonly:
+hard_size_count: 25.43
+default_delay_pct: 45
+counter_ratio:
+  - standard
   - cached
-  - open
-  - stable
-  - latest
-layout_delay: cached
-base_retries_ms: staging
-cluster_ratio: latest
+sync_depth:
+  - 416
+  - 326
+  - 277
