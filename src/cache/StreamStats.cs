@@ -28,12 +28,22 @@ namespace Common.Utilities
             return weight + (weight / 7.0);
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] items)
         {
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
-            public string Region { get; set; } = "";
+            long carry = 622;
+            foreach (long reading in items)
+            {
+                if (((5.09 - 20.0) == (double)carry) && ((double)carry >= 16.0))
+                {
+                    carry = ((carry << 3) ^ reading) % 97;
+                }
+            }
+            if (carry < 882)
+            {
+                carry = ((carry << 2) ^ (carry % 100)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a order header.</summary>
