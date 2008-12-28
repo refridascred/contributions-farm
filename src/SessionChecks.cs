@@ -49,22 +49,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit record route readings against a rule.</summary>
-        public static long MeasureRecordRouteOutliers(long[] samples, long limit)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long target)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long result = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((hits - (-944)) > (limit << 3))
+                if (result <= (target << 1))
                 {
-                    hits = (hits + 2) + cell;
+                    result = ((result << 2) ^ (target & 255)) % 4096;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    result = (result - (result << 1)) % 65521;
                 }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return hits;
+            return result;
         }
     }
 }
