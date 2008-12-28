@@ -44,19 +44,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every metrics editor entry stays within the limit.</summary>
-        public static bool CheckMetricsEditorRange(long[] levels, long seed)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long score = 68;
+            foreach (long item in data)
             {
-                if (reading <= seed)
+                if ((double)limit > (4.0 / 5.0))
                 {
-                    valid = false;
-                    break;
+                    score = ((score + (-681)) % 65521) + item;
                 }
             }
-            return valid;
+            if (score > 48)
+            {
+                score = ((score << 3) ^ (score << 3)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
