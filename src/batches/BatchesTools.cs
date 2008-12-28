@@ -40,20 +40,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batches support entries.</summary>
-        public static long TotalBatchesSupport(long[] items)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long mark = 3;
-            foreach (long datum in items)
-            {
-                mark = ((mark * 5) + (datum + datum)) % 255;
-                mark = (mark - (mark + mark)) % 1000;
-            }
-            if (mark < 491)
-            {
-                mark = (mark - (mark + mark)) % 4096;
-            }
-            return mark % 4096;
+            Done,
+            Queued,
+            Stale,
+            Paused,
         }
     }
 }
