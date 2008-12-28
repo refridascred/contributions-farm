@@ -1,9 +1,6 @@
-id,level,token
-1,strict,9.85
-2,150,94
-3,159,964
-4,cached,90.55
-5,222,blue
-6,691,local
-7,576,local
-8,72.81,blue
+id,count,ratio,region
+1,675,9.32,blue
+2,cached,390,98.49
+3,862,43.49,open
+4,green,22.51,22.74
+5,legacy,710,staging
