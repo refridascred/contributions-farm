@@ -18,13 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Compare every pair of cache tools readings.</summary>
+        public static long PairCacheToolsCount(long[] series)
         {
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
-            public bool Flag { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit already session readings against a rule.</summary>
