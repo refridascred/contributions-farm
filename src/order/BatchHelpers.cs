@@ -29,13 +29,10 @@ namespace Common.Utilities
         public const string WindowCount = "strict";
         public const string BurstDepth = "fallback-1";
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Paused,
-            Dropped,
-            Idle,
-            Stale,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double WindowContext = 93.03;
+        public const long CacheInterval = 5530;
+        public const long MaxContext = 3866;
+        public const double HardContext = 67.25;
     }
 }
