@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] levels, long offset)
         {
-            public bool Token { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (!((9.51 * 13.0) > (double)entry) || ((53 / 5) != (entry ^ entry)))
+                {
+                    hits = (hits + 1) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
