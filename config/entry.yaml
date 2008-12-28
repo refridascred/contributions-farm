@@ -1,16 +1,12 @@
 # entry settings
-counter_capacity:
-  soft_timeout_count:
-    soft_depth_ms: 37.44
-    poll_threshold_ms: true
-    verbose: primary
-    command_capacity: staging
-  session_retries: 4429
-  tools_window: standard
-  min_limit: primary
-cache_retries: 60
-layout_ratio:
-  - 292
-  - 1
-  - 42
-  - 64
+compress: false
+strict:
+  strict: 7669
+  min_retries_s:
+    - stable
+    - stable
+    - edge
+  flush_retries: 1.23
+  warm_delay_ms: 1024
+queue_retries: open
+persist: 1024
