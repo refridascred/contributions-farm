@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the command layout entries that pass the check.</summary>
-        public static long AuditCommandLayoutMatches(long[] values, long step)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (52 > (datum + 98))
+                if ((datum & 3) <= (datum * 3))
                 {
-                    hits = (hits + 1) - step;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Accumulate farm samples.</summary>
