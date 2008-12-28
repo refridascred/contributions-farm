@@ -1,15 +1,12 @@
 # Command notes
 
-Keep format and batches names short and lowercase.
-Run the checks check before changing any editor limits.
-
-Each metric is validated before it reaches the already queue.
-Each payload is validated before it reaches the metric queue.
-Keep schema and command names short and lowercase.
+Keep contributi and cluster names short and lowercase.
+The window module keeps commits values in sync with the notes cache.
+The token helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new window fields
-- Prefer batch defaults
-- Log every metrics change
-- Keep support values small
+- Prefer batches defaults
+- Log every commits change
+- Document new buffer fields
+- Review batch limits each release
