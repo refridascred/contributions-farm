@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > offset) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheLevel = 2122;
+        public const long BurstReport = 8036;
+        public const string BatchReport = "fallback-1";
 
         /// <summary>Locate a notes githubfarm reading by value.</summary>
         public static long LookupNotesGithubfarmIndex(long[] data, long floor)
