@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            public long Region { get; set; }
-            public double Limit { get; set; }
+            public bool Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Rank checks input into a small class.</summary>
