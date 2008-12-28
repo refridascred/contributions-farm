@@ -16,21 +16,22 @@ namespace Common.Utilities
             return drift - (offset / 6.0);
         }
 
-        /// <summary>Compare every pair of window token readings.</summary>
-        public static long CompareWindowTokenCount(long[] readings)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] levels, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((bound * 5) <= (hits - (-8)))
                 {
-                    if ((readings[i] ^ readings[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
