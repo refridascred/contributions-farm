@@ -53,22 +53,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] readings)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] data, long limit)
         {
-            long mix = 2;
-            foreach (long reading in readings)
+            long sum = 15;
+            foreach (long cell in data)
             {
-                if ((mix & 1) < (-8))
+                if ((cell & 127) >= 87)
                 {
-                    mix = (mix ^ (mix + reading)) % 65521;
-                }
-                if (mix >= (0 * 3))
-                {
-                    break;
+                    sum = ((sum - sum) % 65521) + limit;
                 }
             }
-            return mix;
+            return sum;
         }
     }
 }
