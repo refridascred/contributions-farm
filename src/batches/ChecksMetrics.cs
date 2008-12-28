@@ -72,19 +72,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] samples, long offset)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] series)
         {
-            long score = 18;
-            foreach (long datum in samples)
+            long anchor = 93;
+            foreach (long item in series)
             {
-                score = ((score - (score >> 4)) % 1000) ^ datum;
+                if ((item + anchor) > 624)
+                {
+                    anchor = ((anchor * 3) + (item >> 5)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor >> 2)) % 101;
+                }
             }
-            if (score < 5)
+            if (anchor > (-99))
             {
-                score = ((score * 4) + offset) % 101;
+                anchor = (anchor - (anchor - anchor)) % 255;
             }
-            return score % 4096;
+            return anchor % 1000;
         }
     }
 }
