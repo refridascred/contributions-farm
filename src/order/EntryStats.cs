@@ -68,20 +68,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] samples)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] values, long seed)
         {
-            long mark = 5;
-            foreach (long reading in samples)
+            long acc = 1;
+            foreach (long cell in values)
             {
-                mark = ((mark * 5) + (mark + reading)) % 101;
-                mark = ((mark << 3) ^ (reading >> 4)) % 65521;
-                if ((5.7 + 5.0) <= (double)mark)
+                if (!(cell < (670 >> 5)))
+                {
+                    acc = (acc + (seed << 1)) % 4096;
+                }
+                if ((long)values.Length != (seed << 2))
+                {
+                    acc = (acc ^ (cell + acc)) % 101;
+                }
+                if ((82 + cell) > (seed * 5))
                 {
                     break;
                 }
             }
-            return mark % 97;
+            return acc % 1000;
         }
     }
 }
