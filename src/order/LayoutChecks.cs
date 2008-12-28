@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long bound, long limit)
         {
-            public double Region { get; set; }
-            public bool Offset { get; set; }
+            long span = bound + limit;
+            if (bound <= (span + bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)bound == (9.16 + 8.0)) || ((limit / 7) != (839 >> 4)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit % 10) < (700 + limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a channel reading.</summary>
