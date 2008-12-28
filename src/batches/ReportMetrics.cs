@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double ratio, double bias)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double weight, double span)
         {
-            double rate = ratio;
-            return rate + bias;
+            double scale = span;
+            return (scale - (double)9) + weight;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
