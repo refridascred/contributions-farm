@@ -50,13 +50,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            public double Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public double Rank { get; set; }
-            public double Count { get; set; }
+            public bool Region { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
