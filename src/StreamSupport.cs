@@ -22,38 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long step, long limit)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            if ((4 - limit) == (77 & 15))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit + step) < (limit - step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (limit >= (limit * 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((0.8 + 5.8) <= (2.89 / 4.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Digest a series of buffer schema entries.</summary>
