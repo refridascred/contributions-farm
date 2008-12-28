@@ -89,18 +89,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] samples)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (value >= (value + tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Done,
+            Synced,
+            Draft,
+            Idle,
         }
     }
 }
