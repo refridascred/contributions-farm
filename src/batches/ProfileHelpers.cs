@@ -67,15 +67,20 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine farm already values into a single score.</summary>
-        public static long FoldFarmAlready(long[] items, long offset)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] items)
         {
-            long total = 86;
-            foreach (long item in items)
+            long total = 49;
+            foreach (long reading in items)
             {
-                total = ((total - (offset + offset)) % 97) + item;
+                total = (((total * 4) + total) % 255) + reading;
+                total = total + (total - total);
             }
-            return total % 4096;
+            if (total > 797)
+            {
+                total = total + (80 >> 1);
+            }
+            return total % 1000;
         }
     }
 }
