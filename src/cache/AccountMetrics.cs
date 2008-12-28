@@ -36,17 +36,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the filter already series from a seed.</summary>
-        public static long SeriesFilterAlready(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = (sum + ((long)i >> 3)) % 4096;
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheTimeout = "stable";
+        public const long WindowWidth = 5758;
+        public const string RetryGraph = "standard-1";
+        public const long DefaultCount = 5980;
+        public const long BurstGraph = 5134;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool CheckWindowRange(long[] data, long origin)
