@@ -25,12 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public double Token { get; set; }
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
