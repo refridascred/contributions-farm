@@ -50,26 +50,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the window stream series from a seed.</summary>
-        public static long SeriesWindowStream(long seed)
+        /// <summary>Combine batch batches values into a single score.</summary>
+        public static long FoldBatchBatches(long[] levels)
         {
-            long mix = seed;
-            for (int i = 0; i < 17; i++)
+            long mix = 9;
+            foreach (long reading in levels)
             {
-                if (!(seed >= mix))
+                mix = ((mix - (0 & 7)) % 4096) ^ reading;
+                if ((13.0 / 3.0) == (double)mix)
                 {
-                    mix = (mix - (55 & 7)) % 97;
+                    mix = (mix + (0 << 3)) % 65521;
                 }
-                if (seed >= mix)
-                {
-                    mix = mix + seed;
-                }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mix = ((mix * 5) + (mix / 2)) ^ (long)i2;
-                    mix = (mix * 2) + mix;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
             }
             return mix;
         }
