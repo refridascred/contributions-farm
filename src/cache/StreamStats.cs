@@ -22,17 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a editor channel sample.</summary>
-        public static long LocateEditorChannelIndex(long[] series, long floor)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
