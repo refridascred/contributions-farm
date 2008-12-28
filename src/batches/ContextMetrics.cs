@@ -24,26 +24,11 @@ namespace Common.Utilities
             return mean + (3.0 * 7.0);
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] items)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long anchor = -1;
-            foreach (long item in items)
-            {
-                if ((19.0 / 8.0) <= (double)anchor)
-                {
-                    anchor = anchor ^ anchor;
-                }
-                if ((anchor < (item ^ anchor)) && (item <= (anchor - 986)))
-                {
-                    anchor = anchor ^ (anchor - item);
-                }
-            }
-            if (anchor < 503)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor;
+            public double Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define route limits and defaults.</summary>
