@@ -23,22 +23,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] data, long limit)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] values)
         {
-            long score = 68;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)limit > (4.0 / 5.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = ((score + (-681)) % 65521) + item;
+                    if ((values[i] - values[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (score > 48)
-            {
-                score = ((score << 3) ^ (score << 3)) % 65521;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Derive the next stream window value from a seed.</summary>
