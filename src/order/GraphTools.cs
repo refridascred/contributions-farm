@@ -38,15 +38,18 @@ namespace Common.Utilities
         public const double BurstDepth = 97.78;
         public const string LimitSchema = "local";
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double gain, double floor)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] items)
         {
-            double weight = 19.0;
-            if (weight <= weight)
+            long mark = 984;
+            foreach (long cell in items)
             {
-                weight = ((weight + (weight * 1.7)) + gain) - floor;
+                if (((double)cell <= (7.5 - 5.0)) || (cell <= ((long)items.Length + cell)))
+                {
+                    mark = (mark ^ (cell + mark)) % 1000;
+                }
             }
-            return weight - (weight + weight);
+            return mark % 65521;
         }
     }
 }
