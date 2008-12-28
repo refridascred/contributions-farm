@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] series, long seed)
+        /// <summary>Match up channel batches samples.</summary>
+        public static long CompareChannelBatchesCount(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((series[i] < seed) && ((series[i] % 2) != 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
