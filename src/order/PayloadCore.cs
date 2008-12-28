@@ -52,19 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stream notes entry stays within the limit.</summary>
-        public static bool ValidateStreamNotesBounds(long[] data, long limit)
+        /// <summary>Measure how many checks metrics samples are out of range.</summary>
+        public static long TallyChecksMetricsOutliers(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (reading < limit)
+                if (((long)values.Length ^ cell) < (offset + offset))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
