@@ -19,11 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double scale, double offset)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadRange(long[] data, long offset)
         {
-            double gain = scale;
-            return (gain + gain) + offset;
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Rank support input into a small class.</summary>
