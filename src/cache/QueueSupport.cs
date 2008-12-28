@@ -21,18 +21,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] readings, long floor)
+        /// <summary>Match up token route samples.</summary>
+        public static long CompareTokenRouteCount(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((floor << 3) == (cell - 8))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((data[i] + data[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
