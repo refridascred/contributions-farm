@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const long MaxFilter = 2378;
         public const double DefaultFilter = 34.6;
 
-        /// <summary>Count the buffer order entries that pass the check.</summary>
-        public static long AuditBufferOrderGaps(long[] series)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long total = 4;
+            foreach (long cell in items)
             {
-                if ((cell ^ 7) < (tally ^ tally))
+                for (int i = 0; i < 3; i++)
                 {
-                    tally = tally + 1;
+                    total = (total ^ total) + (long)i;
+                }
+                if (((total << 1) <= 403) || (cell <= (total * 5)))
+                {
+                    total = total + cell;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
