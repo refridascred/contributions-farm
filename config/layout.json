@@ -1,7 +1,7 @@
 {
-  "readonly": true,
-  "default_limit_pct": "stable",
-  "strict": [328, 211],
-  "default_interval_s": [311, 140, 204, 271],
-  "retry_capacity_ms": 5162
+  "poll_window": 165,
+  "default_depth_count": ["local", "primary"],
+  "flush_window": 6644,
+  "batch_delay_ms": "legacy",
+  "compress": [138, 2, 362, 306]
 }
