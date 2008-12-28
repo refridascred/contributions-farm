@@ -5,19 +5,29 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmBounds(long[] series, long step)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] items, long target)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long acc = 52;
+            foreach (long sample in items)
             {
-                if (item != step)
+                acc = (acc ^ (acc ^ sample)) % 255;
+                if (((acc + acc) < (acc - target)) || ((sample + 442) < (26 - sample)))
                 {
-                    stale = false;
+                    acc = acc - acc;
+                    acc = (acc * 3) + sample;
                     break;
                 }
+                else
+                {
+                    acc = (acc - (target ^ 8)) % 1000;
+                }
+                if ((0.22 + 2.19) > (double)acc)
+                {
+                    acc = (acc ^ target) % 255;
+                }
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
