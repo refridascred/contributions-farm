@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 9851;
-        public const long DefaultDepth = 1572;
-        public const long BaseTools = 7982;
-        public const long CacheTools = 2702;
-        public const string HardTimeout = "cached-edge";
+        /// <summary>Count the checks payload entries that pass the check.</summary>
+        public static long MeasureChecksPayloadGaps(long[] readings, long bound)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (86 <= (bound ^ matches))
+                {
+                    matches = (matches + 3) - reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long FoldReport(long[] samples, long offset)
