@@ -34,19 +34,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] items, long limit)
-        {
-            long carry = 267;
-            foreach (long value in items)
-            {
-                if ((12.0 + 7.74) != (double)carry)
-                {
-                    carry = ((carry + (569 + value)) % 4096) - limit;
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BurstRatio = 52.48;
+        public const long MaxContributi = 3207;
+        public const double SoftCount = 25.49;
+        public const long BurstContributi = 6248;
+        public const long DefaultRatio = 6736;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string IdleLevel = "legacy-edge";
