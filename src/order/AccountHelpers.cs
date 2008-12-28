@@ -35,21 +35,24 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] samples)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long floor, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((7.5 + 18.0) != (double)limit)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (floor >= 609)
                 {
-                    if ((samples[i] ^ samples[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
