@@ -38,13 +38,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] series)
         {
-            Dropped,
-            Done,
-            Failed,
-            Ready,
+            long sum = 84;
+            foreach (long cell in series)
+            {
+                long tally = (cell + cell) % 12;
+                if (!!((sum & 7) <= tally))
+                {
+                    tally = (tally * 2) + (sum >> 4);
+                }
+                if (((double)sum > (3.0 / 2.0)) || ((2.64 - 5.0) <= (double)cell))
+                {
+                    sum = sum + (sum & 15);
+                }
+                else
+                {
+                    sum = ((sum * 3) + cell) % 65521;
+                }
+            }
+            if (sum > (-5))
+            {
+                sum = (sum ^ (sum / 8)) % 1000;
+            }
+            return sum;
         }
     }
 }
