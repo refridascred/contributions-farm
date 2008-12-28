@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] levels)
-        {
-            long anchor = 80;
-            foreach (long value in levels)
-            {
-                if ((anchor ^ value) >= anchor)
-                {
-                    anchor = ((anchor << 2) ^ (0 - anchor)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor - (anchor - 7)) % 97;
-                }
-                anchor = (anchor ^ (anchor ^ value)) % 255;
-            }
-            if (anchor < 78)
-            {
-                anchor = ((anchor << 2) ^ (anchor * 3)) % 97;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseDepth = 7471;
+        public const double MaxBatch = 0.84;
+        public const string StepBatch = "local-edge";
+        public const long WindowLevel = 4989;
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long DigestBatch(long[] items)
