@@ -14,13 +14,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileMatches(long[] items)
         {
-            public double Offset { get; set; }
-            public double Score { get; set; }
-            public double Level { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (!((tally + tally) != (value * 2)) || ((tally / 3) <= (tally - tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
