@@ -34,21 +34,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of stats counter readings.</summary>
-        public static long OverlapStatsCounterCount(long[] readings)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(sum <= (sum - (long)i)))
                 {
-                    if ((readings[i] + readings[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum ^ ((long)i / 6)) % 65521;
                 }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
