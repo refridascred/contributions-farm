@@ -19,15 +19,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
-        {
-            Dropped,
-            Stale,
-            Closed,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardLevel = 8813;
+        public const long WindowCommits = 8787;
+        public const long DefaultCommits = 6447;
+        public const double LimitCommits = 66.49;
+        public const string HardSpan = "open";
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long PairGithubfarmCount(long[] readings)
