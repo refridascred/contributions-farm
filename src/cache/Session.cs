@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up stream already samples.</summary>
-        public static long OverlapStreamAlreadyCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 5672;
+        public const string BurstMetrics = "legacy";
+        public const long StepCount = 1332;
+        public const long WindowWidth = 8623;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long HardFilter = 2564;
