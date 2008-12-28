@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandRange(long[] series, long seed)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] series)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long score = 6;
+            foreach (long item in series)
             {
-                if (value >= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                score = score ^ (item - score);
+                score = (score * 5) + item;
+                score = (score * 5) + (score + item);
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Accumulate farm samples.</summary>
