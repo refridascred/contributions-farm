@@ -33,19 +33,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a layout tools figure with a bias.</summary>
-        public static double ProjectLayoutTools(double weight, double span)
+        /// <summary>Scale a checks commits figure with a bias.</summary>
+        public static double AdjustChecksCommits(double gain, double bias)
         {
-            double ratio = span;
-            if (ratio >= (double)811)
+            double rate = bias;
+            if (rate <= 9.26)
             {
-                ratio = ratio + weight;
+                rate = rate - (gain + 1.9);
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                ratio = (ratio - weight) + (double)(long)i;
+                rate = rate + (double)(-2);
             }
-            return ratio - (double)49;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate + (double)664;
         }
 
         /// <summary>Hold a schema header.</summary>
