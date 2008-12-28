@@ -19,31 +19,21 @@ namespace Common.Utilities
         public const string MinCommits = "fallback";
         public const long SoftCommits = 3520;
 
-        /// <summary>Classify a metric githubfarm pair into a bucket.</summary>
-        public static long ClassifyMetricGithubfarm(long origin, long bound)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] samples)
         {
-            if ((11.0 * 6.35) > (double)bound)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin + bound) >= (origin >> 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound + origin) == (33 / 4))
+                    if ((samples[i] - samples[j]) < 11)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
