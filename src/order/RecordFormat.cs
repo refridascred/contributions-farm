@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const double IdleReport = 26.21;
         public const string BaseWidth = "alpha-edge";
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] readings, long origin)
-        {
-            long score = 36;
-            foreach (long value in readings)
-            {
-                score = (((score << 3) ^ (value - value)) % 97) + origin;
-            }
-            if (score < (-248))
-            {
-                score = ((score * 3) + (71 ^ 0)) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MinSpan = "cached-v2";
+        public const long BurstTools = 8204;
+        public const long IdleTools = 9756;
+        public const double BaseRatio = 23.16;
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
