@@ -45,13 +45,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double gain, double bias)
         {
-            Synced,
-            New,
-            Retry,
-            Idle,
+            double scale = (double)(0 + 73);
+            if (scale < (scale - scale))
+            {
+                scale = (scale + (bias * 3.6)) + gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale - (double)33;
         }
 
         /// <summary>Compare every pair of booking readings.</summary>
