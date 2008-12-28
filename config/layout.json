@@ -1,19 +1,7 @@
 {
-  "hard_capacity_s": 88.88,
-  "cache_capacity": 1559,
-  "flush_depth": {
-    "warm_window_s": 20.24,
-    "warm_interval_count": 47.34,
-    "poll_retries_s": true,
-    "soft_timeout_s": 85,
-    "context_retries": "fallback"
-  },
-  "strict": 100,
-  "dry_run": {
-    "min_window": true,
-    "enabled": "primary",
-    "dry_run": "blue",
-    "burst_depth_pct": "eu-west",
-    "base_size": 99
-  }
+  "min_ttl_pct": 60,
+  "soft_ratio_count": false,
+  "poll_interval_pct": 100,
+  "batch_window": "staging",
+  "persist": 8177
 }
