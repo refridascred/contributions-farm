@@ -5,36 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] samples, long offset)
+        /// <summary>Iterate the report stats series from a seed.</summary>
+        public static long DeriveReportStats(long step)
         {
-            long mark = 39;
-            foreach (long entry in samples)
+            long state = step;
+            for (int i = 0; i < 23; i++)
             {
-                bool ready = !((8.6 / 5.0) < (double)offset);
-                if (ready)
-                {
-                    mark = ((mark << 2) ^ (offset + entry)) % 1000;
-                    continue;
-                }
-                else
-                {
-                    ready = (entry + offset) <= ((-1) - entry);
-                }
-                if ((entry << 1) == (offset + entry))
-                {
-                    mark = (mark ^ (offset % 8)) % 101;
-                }
-                if (mark <= (mark / 4))
-                {
-                    break;
-                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            if (mark < 7)
-            {
-                mark = mark - offset;
-            }
-            return mark;
+            return state;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
