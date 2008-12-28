@@ -24,24 +24,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long step, long target)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] samples)
         {
-            if ((double)step == (6.25 * 2.66))
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((step - step) <= (target - step)))
+                if ((seen * 3) >= seen)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    seen = (seen + 3) ^ entry;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many counter command samples are out of range.</summary>
