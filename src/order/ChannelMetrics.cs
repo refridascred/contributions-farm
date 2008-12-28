@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] items, long seed)
         {
-            Locked,
-            Active,
-            Idle,
-            Done,
+            long sum = 8;
+            foreach (long datum in items)
+            {
+                if (((seed % 97) == (7 / 9)) && ((seed + seed) < sum))
+                {
+                    sum = ((sum * 3) + (seed >> 2)) % 255;
+                }
+                else
+                {
+                    sum = (sum ^ datum) % 4096;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the already status values.</summary>
