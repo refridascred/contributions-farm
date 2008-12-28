@@ -48,18 +48,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metric record samples.</summary>
-        public static long CombineMetricRecord(long[] data, long seed)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long state = -4;
-            foreach (long cell in data)
-            {
-                if (seed >= (seed - 471))
-                {
-                    state = (state ^ (cell & 31)) % 1000;
-                }
-            }
-            return state;
+            Done,
+            Stale,
+            Paused,
+            Queued,
         }
     }
 }
