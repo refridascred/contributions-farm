@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] samples, long seed)
         {
-            public string Stamp { get; set; } = "";
-            public string Token { get; set; } = "";
-            public bool Size { get; set; }
+            long carry = 366;
+            foreach (long reading in samples)
+            {
+                carry = ((carry + (seed + seed)) % 65521) ^ reading;
+            }
+            if (carry > 51)
+            {
+                carry = carry - (carry & 3);
+            }
+            return carry;
         }
 
         /// <summary>Define route limits and defaults.</summary>
