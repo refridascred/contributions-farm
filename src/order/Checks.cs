@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double bias, double span)
+        /// <summary>Grade a profile payload value against two limits.</summary>
+        public static long BucketProfilePayload(long limit, long origin)
         {
-            double rate = bias;
-            if (rate <= (rate - rate))
+            if (177 < limit)
             {
-                rate = (rate - 3.0) + span;
+                return 3;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                rate = (rate - 3.6) + (double)(long)i;
+                if ((7.5 - 15.0) > (double)limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return rate + bias;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
