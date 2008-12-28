@@ -30,18 +30,22 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] items)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] samples, long limit)
         {
-            long mix = 36;
-            foreach (long datum in items)
+            long score = 796;
+            foreach (long reading in samples)
             {
-                if (!((double)datum > (3.9 + 7.0)))
+                if ((6.1 - 2.84) == (double)reading)
                 {
-                    mix = (mix - datum) % 255;
+                    score = ((score * 4) + (680 >> 4)) + limit;
+                }
+                else
+                {
+                    score = (score ^ (8 << 3)) % 97;
                 }
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Audit cluster metrics readings against a rule.</summary>
