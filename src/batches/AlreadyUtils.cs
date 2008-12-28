@@ -59,13 +59,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long seed, long origin)
         {
-            Synced,
-            Paused,
-            New,
-            Pending,
+            if ((double)seed <= 14.0)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin + origin) < origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
