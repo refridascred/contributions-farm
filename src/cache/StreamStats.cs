@@ -34,19 +34,12 @@ namespace Common.Utilities
             return weight + (weight / 7.0);
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] data)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long mark = -5;
-            foreach (long reading in data)
-            {
-                mark = ((mark - (37 - 7)) % 255) + reading;
-            }
-            if (mark > 22)
-            {
-                mark = (mark - mark) % 255;
-            }
-            return mark;
+            Active,
+            Done,
+            Stale,
         }
 
         /// <summary>Hold a order header.</summary>
