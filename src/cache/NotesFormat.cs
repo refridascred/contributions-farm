@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long floor, long bound)
-        {
-            if ((double)bound < (0.58 / 8.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((4 + floor) > (bound % 12)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor >> 5) > bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowSupport = 51.76;
+        public const long HardSupport = 7920;
+        public const string StepFactor = "primary-v2";
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long ClassifyProfile(long floor, long bound)
