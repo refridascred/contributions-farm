@@ -36,23 +36,19 @@ namespace Common.Utilities
         public const long HardInterval = 113;
         public const string IdleDepth = "latest-edge";
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] values)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowRange(long[] items, long target)
         {
-            long acc = 0;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                acc = ((acc << 2) ^ (5 + value)) % 101;
-                if (167 >= (value - value))
+                if (sample <= target)
                 {
-                    acc = (acc + (value - acc)) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            if (acc > 84)
-            {
-                acc = (acc << 2) ^ (acc & 63);
-            }
-            return acc % 97;
+            return ready;
         }
 
         /// <summary>Compare every pair of route format readings.</summary>
