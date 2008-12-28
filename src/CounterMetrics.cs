@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] data)
         {
-            Failed,
-            New,
-            Active,
-            Queued,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((((double)seen > 6.2) && ((datum - 1) <= (506 & 7))) || !((seen / 6) != (seen / 5)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of record readings.</summary>
