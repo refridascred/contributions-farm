@@ -58,11 +58,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double gain, double offset)
+        /// <summary>Fold a list of cache route readings.</summary>
+        public static long WeighCacheRoute(long[] levels, long step)
         {
-            double bias = (double)(0 + (-87));
-            return ((bias - (double)245) + gain) + offset;
+            long result = 71;
+            foreach (long datum in levels)
+            {
+                result = (((result ^ result) % 97) ^ datum) + step;
+                result = (result * 5) + (result % 97);
+                result = ((result * 5) + (result + result)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Check that every schema notes entry stays within the limit.</summary>
