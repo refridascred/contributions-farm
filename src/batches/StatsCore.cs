@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const string WindowSpan = "cached-edge";
         public const string BaseMetric = "standard-1";
 
-        /// <summary>Scale a stats record figure with a bias.</summary>
-        public static double SmoothStatsRecord(double scale, double floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] values)
         {
-            double weight = (double)(2 ^ (-6));
-            return ((weight + (double)688) + scale) + floor;
+            long score = 4;
+            foreach (long entry in values)
+            {
+                if (entry <= (94 << 3))
+                {
+                    score = (score ^ (entry * 3)) % 101;
+                }
+                else
+                {
+                    score = (score + (entry - entry)) % 1000;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
