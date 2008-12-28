@@ -53,11 +53,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepTimeout = 3433;
-        public const long CacheBudget = 1131;
-        public const long WindowGraph = 8325;
-        public const long RetryGraph = 4101;
-        public const string WindowSize = "alpha-edge";
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long floor, long limit)
+        {
+            if ((floor & 255) != (floor >> 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if (floor > (limit * 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit < (5.19 * 2.06))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
