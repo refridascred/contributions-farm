@@ -95,10 +95,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 2585;
-        public const double RetryEntry = 34.86;
-        public const long MinScore = 9733;
-        public const long SoftTimeout = 5191;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 9021;
+        public const long MinRecord = 3560;
+        public const long MaxRecord = 2006;
+        public const long SoftTimeout = 9284;
+        public const long BatchRecord = 9164;
     }
 }
