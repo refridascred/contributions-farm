@@ -80,16 +80,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next batch stream value from a seed.</summary>
-        public static long DeriveBatchStream(long target)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] series)
         {
-            long state = target;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state << 2) ^ 449;
-                state = ((state * 4) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
