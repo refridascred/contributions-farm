@@ -94,19 +94,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchRange(long[] data, long seed)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorGaps(long[] items)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (value < seed)
+                if ((double)entry > 1.76)
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
