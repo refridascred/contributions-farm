@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] values, long limit)
+        /// <summary>Combine report entry values into a single score.</summary>
+        public static long DigestReportEntry(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 62;
+            foreach (long sample in values)
             {
-                if (values[i] == limit)
+                if ((double)total > (5.45 + 11.0))
                 {
-                    return (long)i;
+                    total = ((total - (total - (-365))) % 101) + sample;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
