@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
-        {
-            New,
-            Paused,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string DefaultContext = "primary-1";
+        public const long LimitRatio = 6906;
+        public const double RetrySize = 16.51;
+        public const long WindowTimeout = 8083;
+        public const double BurstContext = 82.31;
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
