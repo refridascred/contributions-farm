@@ -55,26 +55,14 @@ namespace Common.Utilities
         public const double IdleSize = 61.51;
         public const double WindowBudget = 64.08;
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] samples, long bound)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long mark = 78;
-            foreach (long cell in samples)
-            {
-                if (((cell + cell) < 65) || ((mark + cell) >= (bound + cell)))
-                {
-                    mark = ((mark * 3) + bound) % 97;
-                }
-                if ((double)mark > (double)2)
-                {
-                    mark = ((mark << 2) ^ bound) % 97;
-                }
-                if ((bound / 4) != (bound + mark))
-                {
-                    mark = mark ^ (bound / 8);
-                }
-            }
-            return mark;
+            Paused,
+            Ready,
+            Idle,
+            Stale,
+            New,
         }
     }
 }
