@@ -14,19 +14,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every entry context entry stays within the limit.</summary>
-        public static bool VerifyEntryContextLimits(long[] samples, long limit)
+        /// <summary>Project the next window support value.</summary>
+        public static double AdjustWindowSupport(double scale, double offset)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            double gain = 8.14;
+            for (int i = 0; i < 2; i++)
             {
-                if (sample >= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = ((gain + offset) + (double)(long)i) - scale;
             }
-            return ok;
+            return gain + (double)(-725);
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
