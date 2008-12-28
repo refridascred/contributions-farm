@@ -29,11 +29,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            public bool Owner { get; set; }
-            public long Level { get; set; }
+            Draft,
+            Queued,
+            Synced,
         }
 
         /// <summary>Accumulate account githubfarm samples.</summary>
