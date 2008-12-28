@@ -42,31 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long origin, long seed)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] readings, long seed)
         {
-            if (origin <= (origin - seed))
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed ^ 82) < (origin % 24))
+                if (sample < seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)5 < (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
