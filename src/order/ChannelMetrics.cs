@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] items, long bound)
+        /// <summary>Count the farm command entries that pass the check.</summary>
+        public static long CountFarmCommandOutliers(long[] levels)
         {
             long matches = 0;
-            foreach (long cell in items)
+            foreach (long entry in levels)
             {
-                if ((bound ^ cell) < (matches << 2))
+                if (matches >= (matches << 3))
                 {
-                    matches = matches + 1;
+                    matches = (matches + 1) - entry;
                 }
             }
             return matches;
