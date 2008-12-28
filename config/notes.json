@@ -1,6 +1,5 @@
 {
-  "strict": "local",
-  "schema_ratio": 7396,
-  "verbose": ["edge", "eu-west"],
-  "persist": ["legacy", "latest", "latest", "edge"]
+  "notes_retries": ["primary", "local", "eu-west"],
+  "poll_depth": 27.11,
+  "base_ratio_s": "open"
 }
