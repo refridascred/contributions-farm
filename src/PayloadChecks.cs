@@ -47,39 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long floor, long limit)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long diff = floor + limit;
-            if ((floor + limit) < diff)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)limit == (3.0 - 7.8))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor - floor) <= limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor - limit) > (88 + limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Locked,
+            New,
         }
 
         /// <summary>Digest a series of profile entries.</summary>
