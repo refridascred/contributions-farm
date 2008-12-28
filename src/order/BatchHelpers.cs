@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the payload cluster entries that pass the check.</summary>
-        public static long AuditPayloadClusterGaps(long[] values, long floor)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (!((floor > (value - count)) && ((floor % 2) > (floor * 4))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCache = 6779;
+        public const string DefaultCache = "legacy-1";
+        public const long BurstLevel = 7878;
+        public const double StepCache = 68.78;
+        public const string IdleLevel = "latest-edge";
 
         /// <summary>Define already limits and defaults.</summary>
         public const long StepSize = 3635;
