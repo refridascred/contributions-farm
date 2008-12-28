@@ -53,21 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] values)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((matches * 5) <= (matches / 2))
                 {
-                    if ((values[i] ^ values[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 3) + value;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
