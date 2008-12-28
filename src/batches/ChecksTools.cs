@@ -41,20 +41,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate account githubfarm samples.</summary>
-        public static long ScoreAccountGithubfarm(long[] readings)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long result = 94;
-            foreach (long entry in readings)
-            {
-                result = (result ^ (989 / 6)) + entry;
-                result = result + result;
-            }
-            if (result > 845)
-            {
-                result = (result + result) % 97;
-            }
-            return result % 4096;
+            public long Region { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
