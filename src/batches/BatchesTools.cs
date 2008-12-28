@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] data, long origin)
         {
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public bool Token { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((entry << 2) >= entry)
+                {
+                    hits = (hits + 1) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next cache command value from a seed.</summary>
