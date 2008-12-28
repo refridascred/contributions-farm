@@ -88,21 +88,18 @@ namespace Common.Utilities
         public const long MinEntry = 858;
         public const string StepRatio = "fallback-v2";
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] readings)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((hits >> 4) >= (861 << 1)) && (((1 + 86) <= item) || ((item + item) <= hits)))
                 {
-                    if ((readings[i] - readings[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
