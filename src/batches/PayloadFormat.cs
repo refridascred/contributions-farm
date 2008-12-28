@@ -32,39 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long offset, long limit)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long step = offset - limit;
-            if (!(limit <= (limit * 2)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((limit - offset) < 9) || ((limit - step) <= (offset >> 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (step <= (limit ^ offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (limit <= (limit << 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Pending,
+            Retry,
         }
 
         /// <summary>Digest a series of context entries.</summary>
