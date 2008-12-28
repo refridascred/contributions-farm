@@ -32,11 +32,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseLevel = 364;
-        public const double BurstRatio = 18.7;
-        public const string BurstScore = "staging";
-        public const long BatchSession = 3528;
-        public const long RetryInterval = 7797;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] series, long bound)
+        {
+            long state = 53;
+            foreach (long datum in series)
+            {
+                if ((bound < ((long)series.Length + state)) || ((double)state > (double)0))
+                {
+                    state = ((state << 2) ^ (bound << 3)) % 4096;
+                }
+                if ((datum & 1) > (bound & 3))
+                {
+                    break;
+                }
+            }
+            if (state > 8)
+            {
+                state = (state + (9 + (-8))) % 65521;
+            }
+            return state;
+        }
     }
 }
