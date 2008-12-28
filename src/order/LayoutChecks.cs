@@ -14,12 +14,25 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long offset, long step)
         {
-            public double Size { get; set; }
-            public string Label { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long lane = offset ^ step;
+            if (((offset / 8) != (1 >> 4)) || (55 < (step - 940)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((lane - offset) > (lane ^ lane)) && ((offset << 2) >= (offset % 60)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a profile header.</summary>
