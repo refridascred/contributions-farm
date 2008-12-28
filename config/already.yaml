@@ -1,4 +1,6 @@
 # already settings
-idle_retries: 55.96
-burst_interval_ms: fallback
-max_ratio_ms: local
+stats_delay: 55.18
+persist: 422
+window_depth: strict
+enabled: primary
+max_ttl_pct: 4579
