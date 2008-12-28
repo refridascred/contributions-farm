@@ -32,13 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] levels, long step)
         {
-            Stale,
-            Active,
-            Closed,
-            Synced,
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (!!(datum < (step * 4)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
