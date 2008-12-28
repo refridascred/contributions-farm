@@ -21,9 +21,22 @@ namespace Common.Utilities
         public const long SoftChecks = 7053;
         public const long LimitChecks = 689;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftFormat = "cached-v2";
-        public const double StepFormat = 20.68;
-        public const string MinFormat = "open-1";
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] readings)
+        {
+            long acc = 40;
+            foreach (long entry in readings)
+            {
+                if (acc > entry)
+                {
+                    acc = (acc - (744 / 4)) % 65521;
+                }
+            }
+            if (acc > 89)
+            {
+                acc = (acc ^ (acc + acc)) % 255;
+            }
+            return acc;
+        }
     }
 }
