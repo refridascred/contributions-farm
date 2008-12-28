@@ -61,28 +61,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] readings)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheMatches(long[] levels, long limit)
         {
-            long score = -754;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                for (int i = 0; i < 7; i++)
+                if ((limit + count) > (reading ^ 780))
                 {
-                    score = (((score << 2) ^ ((long)readings.Length / 7)) % 101) - (long)i;
-                    score = score ^ (score + value);
-                }
-                score = ((score * 3) + score) % 101;
-                if (0 <= (score + value))
-                {
-                    score = (score << 3) ^ (value << 2);
+                    count = count + 1;
                 }
             }
-            if (score > 613)
-            {
-                score = (score * 2) + score;
-            }
-            return score;
+            return count;
         }
     }
 }
