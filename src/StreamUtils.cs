@@ -22,12 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Check that every profile support entry stays within the limit.</summary>
+        public static bool CheckProfileSupportBounds(long[] readings, long seed)
         {
-            Closed,
-            Done,
-            Draft,
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
