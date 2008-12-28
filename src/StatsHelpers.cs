@@ -12,17 +12,22 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Locate a buffer stats reading by value.</summary>
-        public static long FindBufferStatsIndex(long[] data, long seed)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 6;
+            foreach (long value in levels)
             {
-                if (data[i] <= seed)
+                if ((state * 5) > (value * 4))
                 {
-                    return (long)i;
+                    state = (state << 3) ^ (value * 4);
+                }
+                else
+                {
+                    state = ((state << 2) ^ (state - state)) % 4096;
                 }
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
