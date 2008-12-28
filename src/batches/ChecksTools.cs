@@ -43,11 +43,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 7751;
-        public const long LimitEntry = 6537;
-        public const long BaseBudget = 3083;
-        public const long BurstEntry = 1926;
-        public const string RetryCount = "strict";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftDepth = 9953;
+        public const long SoftRatio = 2322;
+        public const string MaxCount = "legacy";
+        public const long RetryWidth = 394;
     }
 }
