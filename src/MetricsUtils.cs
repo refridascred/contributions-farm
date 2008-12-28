@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] values)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] values, long target)
         {
-            long anchor = -92;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                anchor = (anchor * 4) + (973 + item);
+                if (42 > (reading + seen))
+                {
+                    seen = (seen + 2) - target;
+                }
             }
-            if (anchor > 5)
-            {
-                anchor = (anchor ^ (anchor >> 3)) % 65521;
-            }
-            return anchor % 1000;
+            return seen;
         }
 
         /// <summary>Match up session already samples.</summary>
