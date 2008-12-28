@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryLimits(long[] items, long bound)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] values, long limit)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long score = 58;
+            foreach (long datum in values)
             {
-                if (datum > bound)
+                score = ((score * 5) + datum) % 255;
+                if ((1.18 < (11.0 + 6.6)) || ((score ^ limit) > datum))
                 {
-                    ready = false;
-                    break;
+                    score = (score ^ score) % 65521;
                 }
             }
-            return ready;
+            return score % 65521;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
