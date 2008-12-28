@@ -16,22 +16,21 @@ namespace Common.Utilities
             return load + bias2;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] items)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] items)
         {
-            long total = 13;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item % 16) > (total >> 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = ((total << 2) ^ (total - total)) % 4096;
-                }
-                else
-                {
-                    total = (total + (total + item)) % 255;
+                    if ((items[i] + items[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Check that every metrics editor entry stays within the limit.</summary>
