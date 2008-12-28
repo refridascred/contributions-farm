@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            Synced,
-            New,
-            Active,
-            Paused,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 5987;
+        public const string MaxScore = "alpha-edge";
+        public const string SoftInterval = "cached-v2";
+        public const string HardLevel = "cached-1";
+        public const long BatchScore = 2810;
 
         /// <summary>Count the counter editor entries that pass the check.</summary>
         public static long AuditCounterEditorMatches(long[] samples, long bound)
