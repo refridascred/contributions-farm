@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] values, long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] data, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((values[i] == seed) && ((values[i] % 2) == 0))
+                if ((17 << 1) <= ((long)data.Length & 255))
                 {
-                    return (long)i;
+                    count = ((count + 3) + datum) - bound;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
