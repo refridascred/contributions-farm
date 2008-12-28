@@ -40,14 +40,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Closed,
-            Failed,
-            Idle,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 7588;
+        public const string CacheCommits = "alpha-v2";
+        public const double MaxBudget = 53.66;
+        public const long LimitCommits = 1883;
     }
 }
