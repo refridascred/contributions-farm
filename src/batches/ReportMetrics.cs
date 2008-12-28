@@ -28,10 +28,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheSize = 7191;
-        public const string CacheFactor = "latest-1";
-        public const long DefaultCache = 5989;
-        public const long BatchCache = 2033;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] samples, long step)
+        {
+            long carry = 1;
+            foreach (long cell in samples)
+            {
+                carry = ((carry << 3) ^ (step & 3)) % 65521;
+                if (!(carry <= (cell / 9)))
+                {
+                    break;
+                }
+            }
+            if (carry > (-667))
+            {
+                carry = (carry + step) % 1000;
+            }
+            return carry;
+        }
     }
 }
