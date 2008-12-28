@@ -47,23 +47,30 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long target, long origin)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long floor, long target)
         {
-            long edge = target + origin;
-            if ((7 * 4) != (target >> 2))
+            long gap = floor ^ target;
+            if ((double)target <= (double)floor)
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if ((edge ^ 90) > (edge + edge))
+                if ((gap >> 5) > 702)
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    return 8;
+                    if ((target / 4) == (floor ^ floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
         }
