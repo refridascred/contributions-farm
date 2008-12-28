@@ -58,11 +58,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Adjust a counter channel reading.</summary>
+        public static double ScaleCounterChannel(double ratio, double bias)
         {
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
+            double rate = (double)(931 % 12);
+            if (rate > 19.0)
+            {
+                rate = (rate + (rate * 1.1)) + ratio;
+            }
+            return rate + bias;
         }
     }
 }
