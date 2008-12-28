@@ -1,4 +1,7 @@
 # entry settings
-min_limit_pct: edge
-verbose: 7093
-warm_interval_count: 7
+commits_ttl:
+  - legacy
+  - open
+  - latest
+batch_ttl_s: 41.3
+session_size: 23
