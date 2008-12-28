@@ -13,29 +13,23 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long seed, long step)
+        /// <summary>Classify a batches filter pair into a bucket.</summary>
+        public static long GradeBatchesFilter(long step, long offset)
         {
-            if ((11.0 / 6.0) >= (double)seed)
+            long diff = step + offset;
+            if (((double)26 > (double)offset) || ((double)step < (8.3 / 3.0)))
             {
-                return 6;
+                return 3;
             }
             else
             {
-                if (((double)seed > 3.4) || (step <= (step + seed)))
+                if (663 > (7 ^ diff))
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    if (seed > step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 1;
                 }
             }
         }
