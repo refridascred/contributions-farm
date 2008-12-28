@@ -72,32 +72,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a account record value against two limits.</summary>
-        public static long RankAccountRecord(long origin, long step)
-        {
-            long prev = origin + step;
-            if ((2.0 * 2.0) <= (double)step)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(prev <= (origin << 3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((prev < (origin % 10)) && ((double)prev <= (8.22 - 12.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseCount = 3230;
+        public const long IdleFormat = 4268;
+        public const long WindowFormat = 4652;
+        public const long DefaultFormat = 2652;
     }
 }
