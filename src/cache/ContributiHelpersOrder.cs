@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long bound, long offset)
+        /// <summary>Find the first profile notes entry that matches the target.</summary>
+        public static long LocateProfileNotesIndex(long[] readings, long origin)
         {
-            if (32 < bound)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset > (11.0 * 14.0))
+                if (readings[i] <= origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset == (8.1 - 6.59))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (offset > (offset / 6))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many token entry samples are out of range.</summary>
