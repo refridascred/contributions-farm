@@ -37,12 +37,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueOutliers(long[] levels, long seed)
         {
-            public string Count { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (seed > tally)
+                {
+                    tally = (tally + 1) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
