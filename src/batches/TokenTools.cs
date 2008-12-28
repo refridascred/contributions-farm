@@ -17,14 +17,20 @@ namespace Common.Utilities
         public const double BaseChecks = 65.83;
         public const long IdleChecks = 233;
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long origin)
         {
-            Queued,
-            Paused,
-            Closed,
-            Stale,
-            Pending,
+            long sum = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = ((sum * 2) + ((long)i + origin)) % 4096;
+                if (!((sum / 5) > ((long)i - origin)))
+                {
+                    sum = sum ^ (374 & 3);
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
