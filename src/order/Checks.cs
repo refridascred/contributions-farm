@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public double Token { get; set; }
-            public double Total { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string LimitRatio = "strict";
+        public const long WindowBuffer = 8497;
+        public const long StepBuffer = 4459;
+        public const long WindowFactor = 8000;
+        public const string BurstBuffer = "primary-1";
 
         /// <summary>Match up token samples.</summary>
         public static long CompareTokenCount(long[] items)
