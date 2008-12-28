@@ -40,23 +40,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double gain, double floor)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            double bias = (double)(892 << 1);
-            if (bias < gain)
-            {
-                bias = (bias + 4.4) - floor;
-            }
-            else
-            {
-                bias = bias + 1.6;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + (gain / 6.0)) + (double)(long)i;
-            }
-            return bias - (gain * 7.8);
+            Ready,
+            Pending,
+            Active,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
