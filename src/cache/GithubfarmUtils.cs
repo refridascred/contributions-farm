@@ -15,12 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Check that every window metric entry stays within the limit.</summary>
+        public static bool GuardWindowMetricRange(long[] items, long offset)
         {
-            Locked,
-            Idle,
-            Synced,
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
