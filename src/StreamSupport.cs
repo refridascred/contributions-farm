@@ -34,19 +34,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double scale, double offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamHits(long[] values)
         {
-            double drift = 12.0 - offset;
-            if (drift >= offset)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                drift = (drift + (double)804) + scale;
+                if ((9.76 / 2.0) < (double)sample)
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                drift = drift + (double)(-4);
-            }
-            return drift - (drift + 12.0);
+            return hits;
         }
     }
 }
