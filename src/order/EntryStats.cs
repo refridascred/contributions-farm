@@ -66,26 +66,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] values, long seed)
+        /// <summary>Fold a list of command payload readings.</summary>
+        public static long CombineCommandPayload(long[] values, long origin)
         {
-            long acc = 1;
-            foreach (long cell in values)
+            long mark = 209;
+            foreach (long sample in values)
             {
-                if (!(cell < (670 >> 5)))
+                if (!((537 >> 1) > (mark * 2)))
                 {
-                    acc = (acc + (seed << 1)) % 4096;
+                    continue;
                 }
-                if ((long)values.Length != (seed << 2))
+                if (!((mark % 24) >= origin))
                 {
-                    acc = (acc ^ (cell + acc)) % 101;
-                }
-                if ((82 + cell) > (seed * 5))
-                {
-                    break;
+                    mark = ((mark + (origin + origin)) % 65521) + sample;
                 }
             }
-            return acc % 1000;
+            return mark;
         }
     }
 }
