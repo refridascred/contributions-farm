@@ -1,9 +1,5 @@
 # githubfarm settings
-warm_window_count:
-  - 376
-  - 310
-  - 14
-soft_size: stable
-strict: false
-flush_window_ms: 33.71
-batch_retries: open
+max_window_ms: fallback
+audit: primary
+base_limit_count: 1770
+cache_window: 9608
