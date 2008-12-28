@@ -27,10 +27,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 3017;
-        public const string DefaultDepth = "legacy";
-        public const string IdleWidth = "latest-edge";
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BaseSession = "primary-v2";
+        public const double IdleBudget = 63.16;
+        public const string BatchScore = "standard-v2";
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
