@@ -20,19 +20,19 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadRange(long[] data, long offset)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] values, long seed)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long score = 2;
+            foreach (long value in values)
             {
-                if (reading != offset)
+                score = ((((score * 4) + score) % 65521) ^ value) - seed;
+                if ((double)score != (2.0 - 14.0))
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            return score % 4096;
         }
 
         /// <summary>Project the next already value.</summary>
