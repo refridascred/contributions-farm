@@ -61,10 +61,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowInterval = 220;
-        public const double BatchCount = 9.63;
-        public const double SoftSize = 59.49;
-        public const long MinTimeout = 7483;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] data, long floor)
+        {
+            long result = 406;
+            foreach (long entry in data)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    result = (result * 2) + (floor + (long)i);
+                }
+                result = (result - 693) % 97;
+                if (((result / 6) <= (entry + entry)) || ((entry * 3) >= floor))
+                {
+                    result = result - 518;
+                }
+            }
+            return result;
+        }
     }
 }
