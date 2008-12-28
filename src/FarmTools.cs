@@ -25,22 +25,11 @@ namespace Common.Utilities
         public const long BurstWindow = 7091;
         public const double RetryBudget = 73.97;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutHits(long[] data)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((long)data.Length > cell)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Limit { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
