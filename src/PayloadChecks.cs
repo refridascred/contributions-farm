@@ -18,13 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Locate a notes githubfarm reading by value.</summary>
+        public static long LookupNotesGithubfarmIndex(long[] data, long floor)
         {
-            Failed,
-            Paused,
-            Pending,
-            Retry,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= floor) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
