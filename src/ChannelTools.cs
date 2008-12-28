@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a account payload sample.</summary>
-        public static long FindAccountPayloadIndex(long[] series, long offset)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] series, long limit)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] >= offset)
+                if (series[i] <= limit)
                 {
                     return (long)i;
                 }
