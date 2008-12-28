@@ -47,15 +47,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] data, long target)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] series)
         {
-            long score = 3;
-            foreach (long reading in data)
+            long score = 11;
+            foreach (long sample in series)
             {
-                score = (((score << 2) ^ 1) ^ reading) + target;
+                for (int i = 0; i < 10; i++)
+                {
+                    score = (((score + (score & 127)) % 101) ^ (long)i) - sample;
+                }
+                score = (score << 2) ^ (score / 5);
             }
-            return score;
+            return score % 65521;
         }
 
         /// <summary>Grade a account record value against two limits.</summary>
