@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long step, long floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] values)
         {
-            long cur = step ^ floor;
-            if ((8.7 >= (double)floor) && ((cur << 3) >= (floor * 2)))
+            long count = 0;
+            foreach (long cell in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((66 / 9) < (step ^ floor)) && ((double)step > (8.03 + 1.0)))
+                if ((count + cell) == (cell / 5))
                 {
-                    return 8;
+                    count = count + 2;
                 }
                 else
                 {
-                    if ((88 << 1) >= (69 - step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)step > (2.54 + 0.9))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a record record.</summary>
