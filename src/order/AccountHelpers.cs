@@ -100,12 +100,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long bound)
         {
-            New,
-            Paused,
-            Draft,
+            long acc = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!((acc + acc) <= ((long)i + bound)))
+                {
+                    acc = acc ^ (acc & 31);
+                }
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
