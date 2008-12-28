@@ -21,24 +21,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long bound, long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] readings, long floor)
         {
-            if (((double)bound > (8.22 * 4.1)) || ((floor - (-3)) < (floor + floor)))
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((18.0 * 1.3) < (double)bound)
+                if ((floor << 3) == (cell - 8))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
