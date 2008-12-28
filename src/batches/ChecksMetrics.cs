@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseDepth = 7471;
-        public const double MaxBatch = 0.84;
-        public const string StepBatch = "local-edge";
-        public const long WindowLevel = 4989;
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long floor, long limit)
+        {
+            if ((floor >> 5) > (limit / 6))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)8 == (double)floor) && ((double)limit == (double)floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long DigestBatch(long[] items)
