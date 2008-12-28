@@ -103,18 +103,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] levels)
+        /// <summary>Measure how many checks already samples are out of range.</summary>
+        public static long AuditChecksAlreadyOutliers(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((hits & 15) == ((long)levels.Length + hits))
+                if ((count - count) < (count ^ 0))
                 {
-                    hits = (hits + 2) + value;
+                    count = (count + 1) - reading;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
