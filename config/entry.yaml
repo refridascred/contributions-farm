@@ -1,12 +1,17 @@
 # entry settings
-compress: false
-strict:
-  strict: 7669
-  min_retries_s:
-    - stable
-    - stable
-    - edge
-  flush_retries: 1.23
-  warm_delay_ms: 1024
-queue_retries: open
-persist: 1024
+min_limit: 7.5
+farm_size:
+  - 10
+  - 23
+  - 239
+flush_size_s:
+  cache_depth_ms: 100
+  flush_size_pct:
+    sync_delay_pct: 58.86
+    batch_threshold_ms: 3754
+    hard_window: 6233
+  batch_delay_count: staging
+  idle_capacity_ms: open
+  readonly: open
+  min_capacity: false
+sync_size_count: latest
