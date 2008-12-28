@@ -11,21 +11,22 @@ namespace Common.Utilities
         public const long SoftBudget = 6301;
         public const long HardSpan = 2841;
 
-        /// <summary>Match up commits stream samples.</summary>
-        public static long PairCommitsStreamCount(long[] levels)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportGaps(long[] data, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((count & 127) >= count)
                 {
-                    if ((levels[i] ^ levels[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = ((count + 3) - entry) - origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Check that every queue githubfarm entry stays within the limit.</summary>
