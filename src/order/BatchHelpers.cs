@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of already counter entries.</summary>
-        public static long TotalAlreadyCounter(long[] readings, long step)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsLimits(long[] samples, long floor)
         {
-            long anchor = 683;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                anchor = (((anchor << 3) ^ (anchor + step)) % 65521) - item;
-                anchor = ((anchor << 2) ^ (anchor + step)) % 97;
+                if (datum > floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (anchor < 6)
-            {
-                anchor = ((anchor * 4) + (step * 3)) % 4096;
-            }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
