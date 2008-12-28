@@ -52,31 +52,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long floor, long seed)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            if (17.0 < (double)floor)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed + floor) < (floor + seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((floor + floor) <= (seed % 64)) || ((seed + seed) > (floor << 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
         }
     }
 }
