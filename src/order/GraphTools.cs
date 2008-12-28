@@ -34,21 +34,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] series)
-        {
-            long state = -94;
-            foreach (long value in series)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    state = (state - (long)i) - value;
-                    state = ((state << 2) ^ (3 % 16)) % 97;
-                }
-                state = ((state * 4) + ((long)series.Length - 948)) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double RetrySchema = 70.42;
+        public const double BurstDepth = 97.78;
+        public const string LimitSchema = "local";
 
         /// <summary>Scale a filter figure with a bias.</summary>
         public static double ProjectFilter(double gain, double floor)
