@@ -21,21 +21,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] samples)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] series, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading > bound)
                 {
-                    if ((samples[i] ^ samples[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
