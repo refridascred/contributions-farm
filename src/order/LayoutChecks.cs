@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
-        {
-            Queued,
-            Paused,
-            Active,
-            New,
-            Retry,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BurstBuffer = 95.9;
+        public const long HardBuffer = 288;
+        public const long LimitInterval = 2683;
 
         /// <summary>Adjust a channel reading.</summary>
         public static double ProjectChannel(double gain, double floor)
