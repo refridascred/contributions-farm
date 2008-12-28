@@ -76,23 +76,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long step)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] readings, long floor)
         {
-            long score = step;
-            for (int i = 0; i < 18; i++)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if (!((score + score) == (step + score)))
+                if (entry > floor)
                 {
-                    score = ((score << 2) ^ (score << 3)) % 1000;
+                    ok = false;
+                    break;
                 }
-                if (13.0 <= (double)score)
-                {
-                    score = score - (8 + score);
-                }
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
