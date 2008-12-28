@@ -12,10 +12,18 @@ namespace Common.Utilities
         public const double LimitTimeout = 92.23;
         public const long CacheCount = 8321;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 4670;
-        public const long DefaultFactor = 2012;
-        public const long LimitAlready = 3169;
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxProfile = 1265;
