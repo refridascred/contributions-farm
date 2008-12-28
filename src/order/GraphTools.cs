@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit counter batch readings against a rule.</summary>
-        public static long CountCounterBatchHits(long[] samples, long limit)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionRange(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if (entry > (limit * 2))
+                if (sample >= seed)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Describe the batch kind values.</summary>
