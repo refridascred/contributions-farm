@@ -32,12 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] samples, long step)
         {
-            Synced,
-            Draft,
-            Dropped,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((count + count) == (count + reading))
+                {
+                    count = (count + 3) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count queue session pairs that satisfy a relation.</summary>
