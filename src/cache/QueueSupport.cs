@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long BaseMetric = 5627;
         public const double StepMetric = 45.13;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterHits(long[] series)
+        /// <summary>Look up the position of a queue context sample.</summary>
+        public static long LookupQueueContextIndex(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((4.5 * 18.0) != (double)datum)
+                if ((data[i] >= bound) && ((data[i] % 3) != 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
