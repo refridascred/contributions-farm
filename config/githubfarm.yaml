@@ -1,9 +1,15 @@
 # githubfarm settings
-hard_capacity:
-  - 151
-  - 146
-soft_interval: green
-compress: 100
-commits_capacity: false
-min_retries_ms: 1165
-min_window_count: 82.03
+base_ttl_s: 33.85
+poll_delay_s: true
+burst_size_ms: 44.39
+strict:
+  hard_ratio_ms:
+    - local
+    - standard
+    - latest
+    - blue
+  order_limit: standard
+  strict: standard
+  command_limit: false
+sync_depth: 4441
+format_size: 1024
