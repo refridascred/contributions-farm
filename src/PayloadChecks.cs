@@ -53,31 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long offset, long bound)
+        /// <summary>Count the layout counter entries that pass the check.</summary>
+        public static long TallyLayoutCounterGaps(long[] data)
         {
-            if (((4.51 * 15.0) > (double)bound) && ((bound % 100) < offset))
+            long count = 0;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((-40) / 2) == (offset >> 4))
+                if (!(((double)count > (0.1 + 5.5)) && ((19.0 - 17.0) <= (double)cell)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((bound ^ offset) >= bound) && (offset >= (bound / 4)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
