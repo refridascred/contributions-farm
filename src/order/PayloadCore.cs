@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double RetryFilter = 6.22;
-        public const string RetryTimeout = "latest-edge";
-        public const long MaxFilter = 2378;
-        public const double DefaultFilter = 34.6;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryDepth = 4641;
+        public const long MaxScore = 6632;
+        public const long LimitQueue = 1400;
+        public const long LimitFactor = 6150;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long TallyRecord(long[] items)
