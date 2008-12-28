@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double WindowSize = 64.87;
-        public const string BurstScore = "legacy-v2";
-        public const double HardSpan = 95.78;
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
+        {
+            public long Score { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteRange(long[] data, long offset)
