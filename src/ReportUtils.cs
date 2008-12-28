@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the githubfarm schema entries that pass the check.</summary>
-        public static long CountGithubfarmSchemaHits(long[] readings, long origin)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)origin != (9.6 - 6.0))
+                if ((items[i] == floor) && ((items[i] % 5) == 0))
                 {
-                    matches = (matches + 2) + item;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a batch stats.</summary>
