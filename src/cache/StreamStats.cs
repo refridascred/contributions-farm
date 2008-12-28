@@ -27,12 +27,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            Failed,
-            Queued,
-            Synced,
+            public long Count { get; set; }
+            public bool Ratio { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
