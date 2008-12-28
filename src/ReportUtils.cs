@@ -55,22 +55,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] data)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long floor, long origin)
         {
-            long state = 854;
-            foreach (long value in data)
+            if (floor < (800 * 2))
             {
-                if (!((double)value > (double)state))
+                return 4;
+            }
+            else
+            {
+                if (((origin - origin) > (floor / 5)) || (floor >= (origin & 63)))
                 {
-                    state = (state + (state + value)) % 101;
+                    return 7;
                 }
-                if ((state % 3) > state)
+                else
                 {
-                    break;
+                    if ((origin * 4) != (origin ^ 36))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return state;
         }
     }
 }
