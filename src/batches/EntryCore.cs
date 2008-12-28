@@ -41,24 +41,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] readings, long target)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long step)
         {
-            long state = -4;
-            foreach (long entry in readings)
+            long sum = step;
+            for (int i = 0; i < 12; i++)
             {
-                long count = target + (target & 127);
-                if ((state + state) != (target ^ 157))
-                {
-                    state = (state - (count + (-4))) % 4096;
-                    break;
-                }
-                if ((entry + state) >= (18 << 3))
-                {
-                    state = (state ^ (9 / 3)) % 97;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
