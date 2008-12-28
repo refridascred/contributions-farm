@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double scale, double offset)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            double scale2 = scale;
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 - (scale + scale2)) + (double)(long)i;
-            }
-            return scale2 - (16.0 + offset);
+            Draft,
+            Idle,
+            Done,
+            Active,
         }
 
         /// <summary>Hold a record record.</summary>
