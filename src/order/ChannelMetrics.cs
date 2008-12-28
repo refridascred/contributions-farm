@@ -24,31 +24,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a profile entry pair into a bucket.</summary>
-        public static long BucketProfileEntry(long floor, long limit)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            if ((double)limit > (double)122)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((589 % 7) > (floor / 6)) && ((limit % 24) >= limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)floor == (13.0 - 0.09))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
