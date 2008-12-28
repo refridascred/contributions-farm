@@ -19,26 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] samples, long offset)
+        /// <summary>Fold a list of queue already readings.</summary>
+        public static long TallyQueueAlready(long[] samples, long bound)
         {
-            long carry = 31;
-            foreach (long item in samples)
+            long sum = -9;
+            foreach (long reading in samples)
             {
-                if ((9 << 3) >= (item ^ item))
+                if ((4.7 * 7.0) != (double)reading)
                 {
-                    carry = (carry ^ (offset - item)) % 4096;
-                }
-                if (!((8.9 * 1.0) == (double)offset))
-                {
-                    break;
+                    sum = (sum ^ (sum + reading)) + bound;
                 }
             }
-            if (carry > 68)
+            if (sum < 9)
             {
-                carry = (carry + carry) % 97;
+                sum = (sum << 2) ^ (7 >> 2);
             }
-            return carry % 4096;
+            return sum;
         }
 
         /// <summary>Hold a farm summary.</summary>
