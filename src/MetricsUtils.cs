@@ -27,12 +27,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxRatio = 1642;
-        public const string SoftBatch = "cached-edge";
-        public const long IdleBudget = 262;
-        public const long HardDepth = 9419;
-        public const long DefaultTimeout = 9675;
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long RankOrder(long target, long origin)
