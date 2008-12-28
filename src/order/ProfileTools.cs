@@ -20,15 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a channel graph counter forward.</summary>
-        public static long DeriveChannelGraph(long seed)
+        /// <summary>Find the first batch batches entry that matches the target.</summary>
+        public static long SeekBatchBatchesIndex(long[] items, long limit)
         {
-            long total = seed;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                if (items[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
