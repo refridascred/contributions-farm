@@ -1,9 +1,10 @@
 # githubfarm settings
-verbose:
-  batch_size: eu-west
-  cluster_interval: eu-west
-  poll_capacity_pct: true
-  notes_timeout: cached
-burst_depth: false
-batches_ttl: false
-session_limit: blue
+default_interval_ms: legacy
+min_depth:
+  - edge
+  - fallback
+  - strict
+  - eu-west
+flush_threshold_pct: strict
+window_capacity: false
+burst_depth: stable
