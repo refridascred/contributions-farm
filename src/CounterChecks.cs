@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const string WindowRatio = "fallback-1";
         public const long CacheDepth = 9568;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] levels)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] readings)
         {
-            long anchor = 648;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (((anchor * 3) + anchor) % 101) - entry;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (anchor > 31)
-            {
-                anchor = (anchor ^ anchor) % 97;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
