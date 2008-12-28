@@ -52,32 +52,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long seed, long step)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] readings, long origin)
         {
-            long lane = seed ^ step;
-            if ((lane * 2) == (seed + lane))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)seed <= (double)step))
+                if (readings[i] <= origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step <= 28) || (seed >= (step + seed)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate layout command readings against a bound.</summary>
