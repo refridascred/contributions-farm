@@ -28,22 +28,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] items)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] samples, long floor)
         {
-            long total = 3;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((entry * 5) <= (125 - total))
+                if (reading <= (reading - floor))
                 {
-                    total = total + (entry ^ total);
-                }
-                else
-                {
-                    total = (total + (entry * 2)) % 101;
+                    hits = hits + 2;
                 }
             }
-            return total % 97;
+            return hits;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
