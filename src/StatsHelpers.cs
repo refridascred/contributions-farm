@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string CacheLevel = "legacy-1";
+        public const long HardCluster = 2580;
+        public const double WindowSize = 14.15;
+        public const long StepSpan = 6164;
+        public const string MaxLevel = "fallback";
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
