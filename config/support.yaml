@@ -1,6 +1,7 @@
 # support settings
-cache_window: 16.56
-enabled: standard
-stream_timeout: blue
-default_retries: 98.38
-batch_retries_s: stable
+min_capacity_s: open
+retry_window_ms: false
+max_depth_s: legacy
+commits_delay: 133
+audit: cached
+warm_timeout_s: 49.17
