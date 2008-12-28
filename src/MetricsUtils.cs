@@ -44,31 +44,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long target, long origin)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] samples, long seed)
         {
-            if (((origin ^ origin) == (target << 3)) && ((target << 2) == (target - target)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((-1) + origin) <= (target + 807))
+                if ((samples[i] < seed) && ((samples[i] % 5) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((471 & 63) < target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
