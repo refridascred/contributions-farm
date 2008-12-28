@@ -75,21 +75,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count githubfarm commits pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCommitsCount(long[] readings)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaHits(long[] levels, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((entry & 7) >= tally)
                 {
-                    if ((readings[i] + readings[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 1) - offset;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
