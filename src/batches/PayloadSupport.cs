@@ -34,31 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long offset, long offset2)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmMatches(long[] items)
         {
-            if ((offset < (offset2 % 8)) && ((offset2 / 5) <= (offset2 >> 4)))
+            long seen = 0;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (offset < offset2)
+                if ((entry >= (entry + seen)) && ((seen - entry) < ((long)items.Length & 31)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((offset + offset2) < 3) && ((double)offset2 > (double)offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
