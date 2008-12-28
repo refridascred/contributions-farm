@@ -33,10 +33,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double DefaultScore = 41.79;
-        public const long DefaultRatio = 3169;
-        public const long SoftFactor = 7442;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmBounds(long[] values, long limit)
+        {
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Rank batch buffer input into a small class.</summary>
         public static long GradeBatchBuffer(long bound, long limit)
