@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] values, long step)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] readings, long floor)
         {
-            long anchor = 7;
-            foreach (long entry in values)
+            long mark = 93;
+            foreach (long datum in readings)
             {
-                long edge = anchor;
-                if (!!(edge > (anchor << 2)))
-                {
-                    edge = ((edge * 5) + (step + step)) - entry;
-                }
-                if ((double)anchor < (1.0 + 1.71))
-                {
-                    anchor = anchor ^ (anchor - 75);
-                }
+                mark = (((mark * 5) + mark) + datum) + floor;
             }
-            return anchor;
+            if (mark < 40)
+            {
+                mark = (mark + (mark >> 1)) % 65521;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
