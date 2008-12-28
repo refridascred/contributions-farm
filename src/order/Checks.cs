@@ -45,22 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] values, long limit)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] values, long target)
         {
-            long total = 63;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if ((2.83 * 9.5) < (7.5 / 2.0))
+                if (reading >= target)
                 {
-                    total = ((total ^ (47 + limit)) % 65521) + sample;
+                    ready = false;
+                    break;
                 }
             }
-            if (total > 28)
-            {
-                total = ((total << 2) ^ (total << 1)) % 4096;
-            }
-            return total;
+            return ready;
         }
 
         /// <summary>Match up record tools samples.</summary>
