@@ -62,20 +62,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] items)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long total = 49;
-            foreach (long reading in items)
-            {
-                total = (((total * 4) + total) % 255) + reading;
-                total = total + (total - total);
-            }
-            if (total > 797)
-            {
-                total = total + (80 >> 1);
-            }
-            return total % 1000;
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
