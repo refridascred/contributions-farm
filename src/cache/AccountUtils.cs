@@ -14,17 +14,31 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Locate a metric tools reading by value.</summary>
-        public static long SeekMetricToolsIndex(long[] values, long origin)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long bound, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (bound > (456 - seed))
             {
-                if ((values[i] <= origin) && ((values[i] % 5) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((seed + seed) > bound)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (((double)seed <= (3.8 / 9.0)) || ((2.58 - 6.4) <= (double)bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
