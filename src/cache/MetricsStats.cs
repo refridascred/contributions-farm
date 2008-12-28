@@ -58,11 +58,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Grade a account record value against two limits.</summary>
+        public static long RankAccountRecord(long origin, long step)
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
+            long prev = origin + step;
+            if ((2.0 * 2.0) <= (double)step)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(prev <= (origin << 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((prev < (origin % 10)) && ((double)prev <= (8.22 - 12.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
