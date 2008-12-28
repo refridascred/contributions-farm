@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportHits(long[] levels)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long acc = 612;
+            foreach (long entry in levels)
             {
-                if ((15 ^ item) < (hits % 10))
+                if ((18.0 - 6.48) <= (double)entry)
                 {
-                    hits = hits + 2;
+                    acc = (acc ^ entry) % 65521;
+                }
+                if (((floor % 10) == (entry / 8)) || (floor < (floor & 127)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (acc < 350)
+            {
+                acc = (acc - floor) % 1000;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Digest a series of format entries.</summary>
