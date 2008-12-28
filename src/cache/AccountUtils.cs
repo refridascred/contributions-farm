@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] data, long seed)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] levels, long floor)
         {
-            long acc = -6;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                acc = ((acc ^ (seed >> 2)) % 1000) + cell;
+                if (datum <= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (acc < 55)
-            {
-                acc = (acc + seed) % 1000;
-            }
-            return acc;
+            return valid;
         }
 
         /// <summary>Describe the format state values.</summary>
