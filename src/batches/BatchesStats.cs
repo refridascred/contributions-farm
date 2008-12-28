@@ -29,12 +29,38 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long offset, long offset2)
         {
-            public bool Count { get; set; }
-            public double Mode { get; set; }
-            public long Total { get; set; }
+            if ((offset * 4) != (offset2 + offset2))
+            {
+                return 5;
+            }
+            else
+            {
+                if (offset > (offset2 * 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)offset > (8.6 - 1.67)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((offset - offset) >= offset2) && (offset2 < (offset + offset2)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
