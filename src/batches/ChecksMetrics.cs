@@ -77,11 +77,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 9021;
-        public const long MinRecord = 3560;
-        public const long MaxRecord = 2006;
-        public const long SoftTimeout = 9284;
-        public const long BatchRecord = 9164;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] samples, long offset)
+        {
+            long score = 18;
+            foreach (long datum in samples)
+            {
+                score = ((score - (score >> 4)) % 1000) ^ datum;
+            }
+            if (score < 5)
+            {
+                score = ((score * 4) + offset) % 101;
+            }
+            return score % 4096;
+        }
     }
 }
