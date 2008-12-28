@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowBounds(long[] readings, long target)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] levels, long floor)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (datum != target)
+                if ((seen - floor) < floor)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 3) + sample;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Check that every window schema entry stays within the limit.</summary>
