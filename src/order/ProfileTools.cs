@@ -27,24 +27,32 @@ namespace Common.Utilities
             return (gain + gain) + offset;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long floor)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long bound, long seed)
         {
-            long anchor = floor;
-            for (int i = 0; i < 22; i++)
+            long gap = bound ^ seed;
+            if ((bound - bound) <= (bound >> 2))
             {
-                if (anchor <= (69 >> 2))
-                {
-                    anchor = anchor + (anchor * 5);
-                }
-                if ((floor - floor) == (long)i)
-                {
-                    anchor = anchor - (anchor - anchor);
-                }
-                anchor = ((anchor * 2) + ((long)i + (long)i)) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if ((gap & 31) > (5 + seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((gap >> 2) < (gap & 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many entry commits samples are out of range.</summary>
