@@ -12,22 +12,17 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] values, long step)
+        /// <summary>Find the first tools session entry that matches the target.</summary>
+        public static long LocateToolsSessionIndex(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)count > (1.0 / 4.0)))
+                if (values[i] < seed)
                 {
-                    count = ((count + 2) + entry) - step;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
