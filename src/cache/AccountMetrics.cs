@@ -47,17 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a channel githubfarm reading by value.</summary>
-        public static long SeekChannelGithubfarmIndex(long[] levels, long bound)
+        /// <summary>Measure how many context metric samples are out of range.</summary>
+        public static long TallyContextMetricMatches(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (levels[i] <= bound)
+                if (((hits & 15) < value) || ((value & 63) > (hits % 10)))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count commits cluster pairs that satisfy a relation.</summary>
