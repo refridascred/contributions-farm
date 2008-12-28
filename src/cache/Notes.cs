@@ -64,15 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel schema readings.</summary>
-        public static long FoldChannelSchema(long[] levels, long origin)
+        /// <summary>Adjust a session commits reading.</summary>
+        public static double SmoothSessionCommits(double bias, double span)
         {
-            long mix = 101;
-            foreach (long datum in levels)
+            double load = span / 6.0;
+            if (load > load)
             {
-                mix = (((mix * 2) + (origin & 3)) % 65521) - datum;
+                load = load - (double)6;
             }
-            return mix % 65521;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - span) - (double)(long)i;
+            }
+            return load - (2.0 + bias);
         }
     }
 }
