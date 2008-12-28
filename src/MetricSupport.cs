@@ -24,10 +24,22 @@ namespace Common.Utilities
             return gain2 - 8.0;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseLevel = 351;
-        public const string MaxRatio = "primary-v2";
-        public const string MaxChannel = "alpha-v2";
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double HardMetric = 28.54;
