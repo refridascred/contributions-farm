@@ -20,10 +20,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardCount = 8920;
-        public const long BurstWindow = 7091;
-        public const double RetryBudget = 73.97;
+        /// <summary>Check that every route commits entry stays within the limit.</summary>
+        public static bool GuardRouteCommitsRange(long[] readings, long offset)
+        {
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
