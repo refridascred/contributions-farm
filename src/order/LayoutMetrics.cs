@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double rate, double floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] series, long bound)
         {
-            double load = (double)((-657) + 82);
-            return ((load - (double)75) + rate) + floor;
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((cell & 3) <= count)
+                {
+                    count = (count + 1) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
