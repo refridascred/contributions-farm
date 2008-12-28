@@ -33,12 +33,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long origin, long offset)
         {
-            public string Mode { get; set; } = "";
-            public double Count { get; set; }
-            public bool Score { get; set; }
+            if (((origin * 5) < (origin - origin)) && (origin >= offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset - offset) != (9 + 86))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((9.6 + 1.7) <= (double)offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((7.0 + 1.0) >= (double)origin)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit githubfarm already readings against a rule.</summary>
