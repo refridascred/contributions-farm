@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryGaps(long[] levels, long step)
+        /// <summary>Accumulate batches stream samples.</summary>
+        public static long TallyBatchesStream(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long mix = 89;
+            foreach (long sample in samples)
             {
-                if ((value % 12) < (value ^ 12))
-                {
-                    matches = (matches + 3) - step;
-                }
+                mix = (mix << 2) ^ (sample % 7);
             }
-            return matches;
+            if (mix < (-62))
+            {
+                mix = mix ^ limit;
+            }
+            return mix;
         }
 
         /// <summary>Locate a tools already reading by value.</summary>
