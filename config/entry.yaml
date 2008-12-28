@@ -1,18 +1,13 @@
 # entry settings
-readonly:
-  - edge
-  - staging
+stats_size: open
+hard_depth:
+  - 413
+  - 23
+burst_depth: 5498
+warm_window_count: 76.9
+account_interval: 100
+entry_retries:
+  - latest
+  - strict
   - stable
-min_window:
-  - 412
-  - 308
-  - 103
-  - 335
-retry_ttl_s:
   - green
-  - cached
-  - standard
-  - staging
-default_delay_pct: open
-notes_ratio: false
-burst_depth: 96.49
