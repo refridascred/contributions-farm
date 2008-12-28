@@ -1,6 +1,30 @@
 # entry settings
-already_interval: 6713
-filter_ttl: local
-entry_ratio: blue
-soft_ttl_pct: 23
-idle_retries: 9217
+compress: 27.76
+sync_capacity_ms: local
+filter_size: staging
+window_interval:
+  format_limit: cached
+  enabled:
+    strict:
+      - stable
+      - fallback
+      - standard
+      - edge
+    sync_depth_pct:
+      - open
+      - legacy
+      - green
+      - standard
+    commits_timeout: 250
+    retry_threshold_pct: blue
+  stream_capacity:
+    batch_capacity: eu-west
+    max_retries: 7254
+    command_size: strict
+    stats_ttl:
+      - 5
+      - 281
+    idle_retries_s: standard
+    payload_retries: primary
+  max_timeout_pct: 100
+  poll_delay_count: 1509
