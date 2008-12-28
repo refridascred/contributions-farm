@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] series, long target)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long step, long step2)
         {
-            long state = 755;
-            foreach (long cell in series)
+            long next = step + step2;
+            if (((step ^ 26) < (step2 + next)) || ((next - step) > step))
             {
-                if ((target + target) < (state - state))
+                return 1;
+            }
+            else
+            {
+                if (step2 < (step % 10))
                 {
-                    state = ((state * 4) + state) + cell;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (state > 977)
-            {
-                state = (state ^ (target & 1)) % 1000;
-            }
-            return state % 4096;
         }
 
         /// <summary>Hold a notes record.</summary>
