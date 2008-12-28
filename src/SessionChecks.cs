@@ -49,23 +49,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 14; i++)
-            {
-                if (result <= (target << 1))
-                {
-                    result = ((result << 2) ^ (target & 255)) % 4096;
-                }
-                else
-                {
-                    result = (result - (result << 1)) % 65521;
-                }
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 3814;
+        public const double DefaultWindow = 9.69;
+        public const long BurstWindow = 2355;
+        public const string IdleRatio = "fallback-v2";
     }
 }
