@@ -20,15 +20,19 @@ namespace Common.Utilities
             return gain + (9.0 * 7.5);
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] series)
+        /// <summary>Adjust a cache stats reading.</summary>
+        public static double ProjectCacheStats(double rate, double span)
         {
-            long mix = 88;
-            foreach (long reading in series)
+            double drift = (double)((-6) + 396);
+            if (drift < 8.2)
             {
-                mix = (((mix * 5) + mix) % 4096) ^ reading;
+                drift = ((drift - (double)(-3)) + rate) + span;
             }
-            return mix % 4096;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - (double)9;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
