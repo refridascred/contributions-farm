@@ -32,11 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 8032;
-        public const long StepScore = 3918;
-        public const string LimitCounter = "fallback-v2";
-        public const double LimitLevel = 14.11;
+        /// <summary>Audit metric editor readings against a rule.</summary>
+        public static long TallyMetricEditorGaps(long[] values, long bound)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((value + tally) < (tally % 12))
+                {
+                    tally = (tally + 3) - bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many cluster graph samples are out of range.</summary>
         public static long TallyClusterGraphOutliers(long[] levels)
