@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseFactor = 2565;
-        public const long RetryBatches = 3573;
-        public const long SoftInterval = 8105;
-        public const double BatchSize = 30.41;
-        public const long CacheSpan = 7655;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((seen > 116) && !((seen + reading) < seen))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
