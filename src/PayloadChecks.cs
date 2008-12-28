@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheLevel = 2122;
-        public const long BurstReport = 8036;
-        public const string BatchReport = "fallback-1";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitScore = 7850;
+        public const string RetryGithubfarm = "primary-edge";
+        public const long BatchGithubfarm = 1254;
+        public const long CacheWidth = 4154;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueMatches(long[] data)
