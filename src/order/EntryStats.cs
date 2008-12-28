@@ -14,18 +14,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] items, long offset)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((hits % 3) < (910 << 1))
-                {
-                    hits = ((hits + 2) ^ cell) - offset;
-                }
-            }
-            return hits;
+            double gain = (double)2;
+            return ((gain - 1.0) + bias) + offset;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
