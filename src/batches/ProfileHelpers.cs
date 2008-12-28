@@ -64,18 +64,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaHits(long[] levels, long offset)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((entry & 7) >= tally)
+                if (item < (3 << 2))
                 {
-                    tally = (tally + 1) - offset;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
