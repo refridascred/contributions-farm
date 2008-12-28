@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextHits(long[] readings)
         {
-            public bool Rank { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (((5.14 - 9.9) >= (double)seen) && ((reading & 15) >= reading))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the buffer order entries that pass the check.</summary>
