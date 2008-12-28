@@ -26,18 +26,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] items, long offset)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long score = 3;
-            foreach (long value in items)
-            {
-                if (99 < (value << 3))
-                {
-                    score = ((score * 4) + (offset * 2)) % 97;
-                }
-            }
-            return score;
+            public long Mode { get; set; }
+            public double Label { get; set; }
+            public long Total { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
