@@ -37,25 +37,10 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((((-53) / 2) <= ((long)i * 3)) && ((double)result != (5.04 / 5.0)))
-                {
-                    result = (result + (target - result)) % 101;
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    result = ((result - (target * 3)) % 255) ^ (long)i2;
-                    result = result - target;
-                }
-                result = (result - result) % 65521;
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheSize = 7191;
+        public const string CacheFactor = "latest-1";
+        public const long DefaultCache = 5989;
+        public const long BatchCache = 2033;
     }
 }
