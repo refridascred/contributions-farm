@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank githubfarm record input into a small class.</summary>
-        public static long ClassifyGithubfarmRecord(long origin, long seed)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long gap = origin - seed;
-            if ((double)origin != (8.9 * 2.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((1 << 2) < (seed - origin)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)gap > (5.5 - 4.38))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
+            public double Score { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
