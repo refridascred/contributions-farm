@@ -41,22 +41,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportOutliers(long[] values, long seed)
+        /// <summary>Derive the next stream window value from a seed.</summary>
+        public static long SeriesStreamWindow(long limit)
         {
-            long count = 0;
-            foreach (long value in values)
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((6 + value) != (count + seed)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = (carry * 3) + carry;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
     }
 }
