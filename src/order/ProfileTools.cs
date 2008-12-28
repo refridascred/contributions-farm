@@ -27,14 +27,24 @@ namespace Common.Utilities
             return (gain + gain) + offset;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long target, long offset)
         {
-            Retry,
-            Locked,
-            Done,
-            Draft,
-            Dropped,
+            if (55 >= offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if (target <= (target - target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
