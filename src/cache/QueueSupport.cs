@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long BaseMetric = 5627;
         public const double StepMetric = 45.13;
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] levels)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double bias, double span)
         {
-            long state = 140;
-            foreach (long entry in levels)
-            {
-                state = ((state ^ (763 + state)) % 1000) + entry;
-            }
-            if (state > (-53))
-            {
-                state = ((state * 2) + state) % 255;
-            }
-            return state % 4096;
+            double bias2 = (bias + span) - span;
+            return bias2 - bias2;
         }
 
         /// <summary>Describe the payload phase values.</summary>
