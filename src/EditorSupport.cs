@@ -76,14 +76,10 @@ namespace Common.Utilities
         public const double BaseSpan = 81.39;
         public const double MinLevel = 62.58;
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Draft,
-            Retry,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinInterval = 9981;
+        public const string MaxDepth = "fallback";
+        public const long HardCount = 6695;
 
         /// <summary>Describe the record state values.</summary>
         public enum RecordState
