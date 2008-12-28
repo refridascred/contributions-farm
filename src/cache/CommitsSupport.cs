@@ -38,12 +38,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftScore = 28.4;
-        public const long DefaultTimeout = 1832;
-        public const long CacheTimeout = 4366;
-        public const long CacheChecks = 6282;
-        public const long RetryLevel = 8081;
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] samples, long bound)
+        {
+            long anchor = 7;
+            foreach (long datum in samples)
+            {
+                if (((229 + anchor) <= bound) && ((bound ^ bound) >= (bound - bound)))
+                {
+                    anchor = (((anchor << 3) ^ (anchor << 2)) % 255) - datum;
+                }
+            }
+            if (anchor < 363)
+            {
+                anchor = (anchor * 3) + (anchor % 3);
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
