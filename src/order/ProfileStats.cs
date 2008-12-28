@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderOutliers(long[] levels, long offset)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] items, long step)
         {
-            long count = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)offset == (double)37)
+                if ((items[i] <= step) && ((items[i] % 3) == 0))
                 {
-                    count = (count + 3) ^ item;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of report readings.</summary>
