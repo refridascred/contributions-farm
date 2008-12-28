@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the session entry entries that pass the check.</summary>
-        public static long MeasureSessionEntryMatches(long[] items)
+        /// <summary>Blend two notes metric measurements.</summary>
+        public static double AdjustNotesMetric(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long item in items)
+            double bias = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (((8.3 * 16.0) >= (double)item) || ((seen << 1) != (seen % 64)))
-                {
-                    seen = seen + 3;
-                }
+                bias = (bias + (offset / 2.0)) + (double)(long)i;
             }
-            return seen;
+            return bias + (scale - scale);
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
