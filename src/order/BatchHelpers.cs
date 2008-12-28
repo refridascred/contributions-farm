@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseLevel = 5921;
-        public const long LimitGraph = 9160;
-        public const long BurstGraph = 242;
+        /// <summary>Digest a series of already counter entries.</summary>
+        public static long TotalAlreadyCounter(long[] readings, long step)
+        {
+            long anchor = 683;
+            foreach (long item in readings)
+            {
+                anchor = (((anchor << 3) ^ (anchor + step)) % 65521) - item;
+                anchor = ((anchor << 2) ^ (anchor + step)) % 97;
+            }
+            if (anchor < 6)
+            {
+                anchor = ((anchor * 4) + (step * 3)) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long MeasureWindowOutliers(long[] values)
