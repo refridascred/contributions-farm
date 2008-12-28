@@ -38,17 +38,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] readings, long origin)
+        /// <summary>Fold a list of payload layout readings.</summary>
+        public static long CombinePayloadLayout(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = -2;
+            foreach (long cell in values)
             {
-                if (readings[i] <= origin)
+                if (floor > 915)
                 {
-                    return (long)i;
+                    result = ((result - (result & 31)) % 97) - cell;
                 }
             }
-            return -1;
+            if (result < 636)
+            {
+                result = ((result * 5) + (floor + floor)) % 4096;
+            }
+            return result % 1000;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
