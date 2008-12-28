@@ -20,31 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a account layout value against two limits.</summary>
-        public static long ClassifyAccountLayout(long seed, long bound)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordLimits(long[] data, long step)
         {
-            if ((bound + 9) < bound)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (407 < (seed % 8))
+                if (reading != step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound / 6) >= (seed + seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Blend two schema measurements.</summary>
