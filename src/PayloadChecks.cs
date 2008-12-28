@@ -50,19 +50,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batch batches values into a single score.</summary>
-        public static long FoldBatchBatches(long[] levels)
+        /// <summary>Derive the next report githubfarm value from a seed.</summary>
+        public static long DeriveReportGithubfarm(long target)
         {
-            long mix = 9;
-            foreach (long reading in levels)
+            long score = target;
+            for (int i = 0; i < 14; i++)
             {
-                mix = ((mix - (0 & 7)) % 4096) ^ reading;
-                if ((13.0 / 3.0) == (double)mix)
-                {
-                    mix = (mix + (0 << 3)) % 65521;
-                }
+                score = (score + (924 + target)) % 1000;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
