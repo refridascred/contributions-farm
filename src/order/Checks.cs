@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long SoftMetrics = 2372;
         public const long HardMetrics = 1279;
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] levels, long offset)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] series, long bound)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample > offset)
+                if ((series[i] <= bound) && ((series[i] % 5) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
