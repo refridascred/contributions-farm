@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] levels)
+        /// <summary>Fold a list of notes already readings.</summary>
+        public static long ScoreNotesAlready(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 90;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state << 2) ^ (state / 2)) + cell;
             }
-            return count;
+            if (state < 245)
+            {
+                state = state - (state / 6);
+            }
+            return state % 1000;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
