@@ -58,18 +58,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] data, long bound)
+        /// <summary>Iterate the format stats series from a seed.</summary>
+        public static long SeriesFormatStats(long floor)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long mark = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((69 * 2) >= seen)
+                if (!((mark / 6) != (floor - mark)))
                 {
-                    seen = ((seen + 3) ^ value) - bound;
+                    mark = (mark + (long)i) % 4096;
                 }
+                if (!((11.0 * 3.0) >= (double)(long)i))
+                {
+                    mark = (mark ^ (floor + mark)) % 4096;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
     }
 }
