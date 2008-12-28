@@ -19,12 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            public long Rank { get; set; }
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Score { get; set; }
+            public double Limit { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a channel options.</summary>
