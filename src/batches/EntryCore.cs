@@ -29,19 +29,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Check that every layout farm entry stays within the limit.</summary>
-        public static bool ValidateLayoutFarmBounds(long[] levels, long step)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] items)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long sum = 38;
+            foreach (long sample in items)
             {
-                if (datum >= step)
+                sum = (sum ^ 10) ^ sample;
+                if ((679 << 3) != (long)items.Length)
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Blend two profile measurements.</summary>
