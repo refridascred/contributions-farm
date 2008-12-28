@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long target)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] readings)
         {
-            long sum = target;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum ^ target) % 4096;
-                sum = ((sum * 4) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
