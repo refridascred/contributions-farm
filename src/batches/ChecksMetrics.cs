@@ -28,39 +28,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long offset, long origin)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] items)
         {
-            long bound = offset - origin;
-            if (((offset << 1) > offset) || ((2.0 * 4.3) >= (double)origin))
+            long mark = 10;
+            foreach (long item in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin > (7.48 - 6.19))
+                if ((double)item <= (5.89 + 4.77))
                 {
-                    return 4;
+                    mark = (mark - (item + mark)) % 97;
                 }
-                else
+                if ((71 * 2) < (mark & 15))
                 {
-                    if (offset <= (31 + offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound >> 2) <= bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            return mark;
         }
 
         /// <summary>Match up channel stats samples.</summary>
