@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long origin)
+        /// <summary>Count the batches commits entries that pass the check.</summary>
+        public static long MeasureBatchesCommitsMatches(long[] readings, long limit)
         {
-            long score = origin;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((double)matches < (17.0 - 7.69))
                 {
-                    score = (score ^ (origin + origin)) - (long)i2;
+                    matches = ((matches + 1) + datum) - limit;
                 }
-                score = ((score * 5) + (16 % 7)) % 101;
-                score = (score - (score >> 4)) % 65521;
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
