@@ -79,11 +79,14 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double DefaultCounter = 26.83;
-        public const long CacheDepth = 7216;
-        public const long RetryScore = 2738;
-        public const long HardTimeout = 6210;
-        public const long LimitCounter = 4513;
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            Synced,
+            Retry,
+            Dropped,
+            Draft,
+            Locked,
+        }
     }
 }
