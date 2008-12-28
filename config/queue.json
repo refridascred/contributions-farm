@@ -1,14 +1,16 @@
 {
-  "persist": 72,
-  "verbose": "strict",
-  "entry_window": false,
-  "soft_threshold_pct": true,
-  "filter_ttl": {
-    "audit": "staging",
-    "max_ratio_s": 30,
-    "readonly": 32,
-    "soft_ratio_pct": [446, 479, 319],
-    "metrics_limit": 21.9
+  "idle_ratio_pct": "green",
+  "contributi_window": {
+    "counter_threshold": "edge",
+    "default_window": true,
+    "persist": "strict",
+    "retry_window_pct": true
   },
-  "warm_window_s": 76
+  "warm_ratio": true,
+  "editor_ratio": "eu-west",
+  "verbose": {
+    "soft_timeout_count": "standard",
+    "strict": 74.23,
+    "record_size": "stable"
+  }
 }
