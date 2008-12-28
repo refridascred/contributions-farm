@@ -28,11 +28,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double scale, double span)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            double bias = scale * 1.1;
-            return (bias + (double)(-75)) + span;
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define graph limits and defaults.</summary>
