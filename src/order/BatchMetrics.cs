@@ -72,11 +72,31 @@ namespace Common.Utilities
             return gain2 - (double)5;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long limit, long origin)
         {
-            public long Stamp { get; set; }
-            public double Size { get; set; }
+            if (((double)limit > 2.23) || (origin >= (origin * 4)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((1.0 + 8.0) <= (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((0 > (limit / 7)) && ((double)limit <= (1.47 + 11.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
