@@ -30,13 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
             Done,
-            Queued,
-            Stale,
-            Paused,
+            Active,
+            New,
+            Draft,
         }
     }
 }
