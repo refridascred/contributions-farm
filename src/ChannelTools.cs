@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long seed)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long mix = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            Failed,
+            Dropped,
+            Paused,
+            Locked,
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
