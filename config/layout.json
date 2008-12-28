@@ -1,6 +1,17 @@
 {
-  "warm_capacity_ms": "strict",
-  "burst_limit": 12.04,
-  "strict": 37.37,
-  "verbose": "eu-west"
+  "flush_threshold": 500,
+  "format_depth": 27.05,
+  "default_window_s": true,
+  "readonly": {
+    "idle_interval_pct": ["edge", "strict", "blue", "open"],
+    "max_size_pct": 9.35,
+    "base_interval": {
+      "metrics_window": 11,
+      "dry_run": "strict",
+      "profile_retries": "fallback",
+      "account_window": 250,
+      "enabled": 500
+    },
+    "hard_limit": "fallback"
+  }
 }
