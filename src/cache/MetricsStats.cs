@@ -35,16 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long bound)
+        /// <summary>Match up buffer support samples.</summary>
+        public static long MatchBufferSupportCount(long[] series)
         {
-            long mix = bound;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = mix + mix;
-                mix = ((mix * 4) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
