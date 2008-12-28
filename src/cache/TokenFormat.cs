@@ -26,14 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double gain, double bias)
         {
-            Dropped,
-            Pending,
-            Done,
-            New,
-            Queued,
+            double gain2 = bias;
+            if (gain2 >= 9.0)
+            {
+                gain2 = (gain2 - (10.0 + gain2)) + gain;
+            }
+            return gain2 - (8.02 / 9.0);
         }
     }
 }
