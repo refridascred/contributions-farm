@@ -17,10 +17,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinTimeout = 8884;
-        public const long BurstChannel = 3683;
-        public const string MinSpan = "stable-edge";
+        /// <summary>Rank stream commits input into a small class.</summary>
+        public static long BucketStreamCommits(long bound, long limit)
+        {
+            if (!((double)bound >= (1.5 + 0.46)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)bound < 4.26)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long BucketProfile(long bound, long origin)
