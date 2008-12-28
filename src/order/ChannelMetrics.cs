@@ -19,11 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next entry channel value.</summary>
-        public static double BlendEntryChannel(double bias, double span)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            double drift = span;
-            return (drift - drift) + bias;
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Classify a profile entry pair into a bucket.</summary>
