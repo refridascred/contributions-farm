@@ -1,8 +1,9 @@
 {
-  "min_depth": true,
-  "persist": "staging",
-  "warm_ratio_s": "local",
-  "max_ttl_s": "green",
-  "batches_ratio": 30,
-  "cache_delay_pct": "primary"
+  "soft_capacity_pct": "standard",
+  "max_delay_s": {
+    "batch_timeout": 95,
+    "readonly": 83,
+    "compress": 2
+  },
+  "batch_timeout_s": "cached"
 }
