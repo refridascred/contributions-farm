@@ -20,12 +20,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] values, long offset)
+        /// <summary>Locate a tools already reading by value.</summary>
+        public static long LookupToolsAlreadyIndex(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] == offset) && ((values[i] % 2) == 0))
+                if ((series[i] <= step) && ((series[i] % 3) == 0))
                 {
                     return (long)i;
                 }
