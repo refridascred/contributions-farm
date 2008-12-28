@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] items)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] readings, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 25;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((8.5 + 0.19) < (double)seed)
                 {
-                    if ((items[i] ^ items[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = ((sum << 3) ^ (entry - seed)) % 65521;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
