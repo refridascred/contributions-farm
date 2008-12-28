@@ -64,11 +64,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryFactor = 3476;
-        public const long BatchQueue = 6568;
-        public const long HardSize = 703;
-        public const double SoftQueue = 43.62;
-        public const double BatchDepth = 47.38;
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
+        {
+            public string Weight { get; set; } = "";
+            public double Score { get; set; }
+            public long Level { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
