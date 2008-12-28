@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const double IdleReport = 26.21;
         public const string BaseWidth = "alpha-edge";
 
-        /// <summary>Check that every account channel entry stays within the limit.</summary>
-        public static bool ValidateAccountChannelRange(long[] series, long seed)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] readings, long origin)
         {
-            bool found = true;
-            foreach (long value in series)
+            long score = 36;
+            foreach (long value in readings)
             {
-                if (value != seed)
-                {
-                    found = false;
-                    break;
-                }
+                score = (((score << 3) ^ (value - value)) % 97) + origin;
             }
-            return found;
+            if (score < (-248))
+            {
+                score = ((score * 3) + (71 ^ 0)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Describe the buffer class values.</summary>
