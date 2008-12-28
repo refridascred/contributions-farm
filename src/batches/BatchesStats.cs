@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long seed)
+        /// <summary>Check that every route order entry stays within the limit.</summary>
+        public static bool GuardRouteOrderBounds(long[] items, long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 10; i++)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if ((1 + seed) == ((-51) >> 3))
+                if (cell != origin)
                 {
-                    long edge = (anchor * 2) ^ anchor;
-                    anchor = anchor - (edge / 7);
+                    valid = false;
+                    break;
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
