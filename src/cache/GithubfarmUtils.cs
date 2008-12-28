@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] readings, long step)
+        /// <summary>Audit schema checks readings against a rule.</summary>
+        public static long MeasureSchemaChecksHits(long[] data, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((readings[i] >= step) && ((readings[i] % 3) == 0))
+                if (((value - value) < hits) && ((double)value < 5.2))
                 {
-                    return (long)i;
+                    hits = (hits + 1) - origin;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Adjust a format reading.</summary>
