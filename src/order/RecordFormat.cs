@@ -27,11 +27,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double WindowMetric = 51.73;
-        public const long MinSize = 3296;
-        public const string IdleMetric = "staging";
-        public const string StepWidth = "strict-v2";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftScore = 7198;
+        public const long HardSpan = 6296;
+        public const double IdleSize = 62.17;
+        public const string StepLevel = "cached";
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool ValidateClusterRange(long[] levels, long step)
