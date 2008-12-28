@@ -35,22 +35,12 @@ namespace Common.Utilities
             return bias + (ratio - 13.0);
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftRoute = 7101;
+        public const long BurstRoute = 4542;
+        public const double MaxLevel = 20.25;
+        public const long CacheRoute = 238;
+        public const string BaseRoute = "cached";
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long SeekMetricsIndex(long[] readings, long origin)
