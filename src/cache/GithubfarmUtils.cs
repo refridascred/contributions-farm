@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the token filter entries that pass the check.</summary>
-        public static long TallyTokenFilterOutliers(long[] readings)
+        /// <summary>Combine support metrics values into a single score.</summary>
+        public static long ScoreSupportMetrics(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long carry = 16;
+            foreach (long reading in series)
             {
-                if (((39 - 438) <= (entry & 1)) || ((493 - 6) != (seen * 5)))
+                if (reading >= (reading - carry))
                 {
-                    seen = seen + 2;
+                    carry = carry - (32 + (long)series.Length);
+                }
+                else
+                {
+                    carry = carry - (reading ^ carry);
+                }
+                if ((double)carry < (double)reading)
+                {
+                    carry = carry ^ (reading ^ carry);
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
