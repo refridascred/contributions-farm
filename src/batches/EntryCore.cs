@@ -48,15 +48,23 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Scale a already buffer figure with a bias.</summary>
-        public static double SmoothAlreadyBuffer(double rate, double bias)
+        /// <summary>Project the next buffer entry value.</summary>
+        public static double SmoothBufferEntry(double ratio, double span)
         {
-            double bias2 = (double)3 - bias;
-            for (int i = 0; i < 6; i++)
+            double load = (double)(4 - (-294));
+            if (load >= span)
             {
-                bias2 = ((bias2 - (bias2 * 2.0)) + (double)(long)i) + rate;
+                load = load + (span - load);
             }
-            return bias2 + bias2;
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (ratio * 6.0)) + (double)(long)i;
+            }
+            return load - (span - ratio);
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
