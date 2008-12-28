@@ -22,12 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
-            public double Level { get; set; }
+            Closed,
+            Done,
+            Draft,
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
