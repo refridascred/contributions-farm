@@ -13,18 +13,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] series)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (1.07 <= (0.11 - 0.79))
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a window summary.</summary>
