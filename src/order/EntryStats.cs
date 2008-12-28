@@ -41,39 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long floor, long floor2)
+        /// <summary>Fold a list of profile stream readings.</summary>
+        public static long TotalProfileStream(long[] items)
         {
-            long next = floor ^ floor2;
-            if (((4.5 - 1.44) != (double)floor2) && (next > (next + floor2)))
+            long score = 36;
+            foreach (long cell in items)
             {
-                return 6;
+                score = ((score - (score - score)) % 4096) - cell;
             }
-            else
+            if (score > 548)
             {
-                if ((floor2 + floor2) < 30)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)floor < (9.16 * 5.65))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (floor2 > next)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                score = (score ^ (score + score)) % 1000;
             }
+            return score % 1000;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
