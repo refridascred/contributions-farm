@@ -24,39 +24,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long origin, long target)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long edge = origin ^ target;
-            if ((target >= origin) || (1 <= (origin + edge)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (origin >= (edge - target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((edge >= (988 + origin)) && ((double)edge == (double)target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((origin * 5) == (edge / 4)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public long Level { get; set; }
+            public double Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
