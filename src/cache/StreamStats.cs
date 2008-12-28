@@ -28,22 +28,16 @@ namespace Common.Utilities
             return weight + (weight / 7.0);
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] items)
+        /// <summary>Roll a token window counter forward.</summary>
+        public static long SeriesTokenWindow(long step)
         {
-            long carry = 622;
-            foreach (long reading in items)
+            long anchor = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (((5.09 - 20.0) == (double)carry) && ((double)carry >= 16.0))
-                {
-                    carry = ((carry << 3) ^ reading) % 97;
-                }
+                anchor = (anchor - (step & 7)) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            if (carry < 882)
-            {
-                carry = ((carry << 2) ^ (carry % 100)) % 1000;
-            }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Hold a order header.</summary>
