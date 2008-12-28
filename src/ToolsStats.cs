@@ -42,24 +42,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next editor format value.</summary>
-        public static double ProjectEditorFormat(double ratio, double floor)
-        {
-            double drift = (double)(51 % 10);
-            if (drift > (double)348)
-            {
-                drift = (drift + 10.0) - floor;
-            }
-            else
-            {
-                drift = drift + (double)51;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (drift * 16.0)) - (double)(long)i;
-            }
-            return drift - ratio;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultDepth = 8164;
+        public const long MinRatio = 3320;
+        public const double CacheFormat = 9.92;
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
