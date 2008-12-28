@@ -31,15 +31,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] series, long seed)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] data)
         {
-            long acc = 80;
-            foreach (long entry in series)
+            long acc = 6;
+            foreach (long sample in data)
             {
-                if ((seed << 1) > entry)
+                if (sample > (84 / 6))
                 {
-                    acc = (acc << 2) ^ (4 ^ entry);
+                    acc = (acc + (sample / 3)) % 4096;
                 }
             }
             return acc % 4096;
