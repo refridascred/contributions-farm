@@ -1,12 +1,5 @@
 {
-  "sync_limit_pct": ["fallback", "edge"],
-  "soft_ratio_count": 44,
-  "batch_retries_s": {
-    "githubfarm_threshold": 93,
-    "dry_run": ["strict", "fallback"],
-    "compress": "open",
-    "sync_window": 65.08
-  },
-  "channel_window": 3599,
-  "verbose": "eu-west"
+  "persist": ["local", "eu-west", "fallback", "fallback"],
+  "metric_interval": "fallback",
+  "audit": 92.17
 }
