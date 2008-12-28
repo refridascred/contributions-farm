@@ -33,22 +33,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueGaps(long[] values)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (!(450 > (reading - (-2))))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Synced,
+            Done,
+            Idle,
+            Retry,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
