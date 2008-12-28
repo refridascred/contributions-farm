@@ -89,12 +89,11 @@ namespace Common.Utilities
             return gain2 - (double)5;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double rate, double offset)
         {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
+            double load = offset;
+            return (load + 8.0) + rate;
         }
     }
 }
