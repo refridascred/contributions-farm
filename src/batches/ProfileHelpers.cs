@@ -48,25 +48,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank batch buffer input into a small class.</summary>
-        public static long GradeBatchBuffer(long bound, long limit)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] levels, long offset)
         {
-            long lane = bound ^ limit;
-            if (!((double)lane <= (0.72 + 2.0)))
+            long acc = 1;
+            foreach (long datum in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit + lane) >= 2)
+                if ((double)offset != (1.2 * 20.0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    acc = ((acc + 50) % 101) ^ datum;
                 }
             }
+            return acc;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
