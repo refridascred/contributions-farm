@@ -10,26 +10,12 @@ namespace Common.Utilities
         public const long HardSupport = 7920;
         public const string StepFactor = "primary-v2";
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long floor, long bound)
-        {
-            long bound2 = floor + bound;
-            if (((8 % 10) >= (bound2 - bound)) || ((-904) >= (bound2 - bound2)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor + floor) != (floor << 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowTimeout = 2912;
+        public const double HardBatch = 34.77;
+        public const long BurstBatch = 3023;
+        public const long LimitFactor = 5454;
+        public const double BaseBatch = 61.72;
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool GuardOrderLimits(long[] items, long target)
