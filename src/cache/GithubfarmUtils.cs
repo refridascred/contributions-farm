@@ -32,17 +32,11 @@ namespace Common.Utilities
         public const long DefaultLayout = 9486;
         public const double DefaultRatio = 5.68;
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] values, long origin)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a token summary.</summary>
