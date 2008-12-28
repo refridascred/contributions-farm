@@ -12,15 +12,6 @@ while [ "${count}" -lt 4 ]; do
 done
 log "ran ${count} rounds"
 
-RECORD_LIMIT=152
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-cached}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in eu-west standard green cached; do
+    log "checking ${item}"
+done
