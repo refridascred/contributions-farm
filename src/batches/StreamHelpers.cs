@@ -57,21 +57,13 @@ namespace Common.Utilities
         public const long DefaultGraph = 5697;
         public const long BurstTimeout = 6076;
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] data)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Retry,
+            Queued,
+            Stale,
+            New,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
