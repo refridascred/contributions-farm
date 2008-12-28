@@ -27,21 +27,19 @@ namespace Common.Utilities
         public const double BaseScore = 51.76;
         public const double IdleAlready = 25.18;
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] levels)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricRange(long[] items, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item >= limit)
                 {
-                    if ((levels[i] + levels[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
