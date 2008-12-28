@@ -20,12 +20,26 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] readings)
         {
-            Done,
-            Locked,
-            Stale,
+            long state = 94;
+            foreach (long datum in readings)
+            {
+                if (!(datum >= ((long)readings.Length - datum)))
+                {
+                    state = (state * 3) + (203 - state);
+                }
+                if ((double)state <= (16.0 * 15.0))
+                {
+                    break;
+                }
+            }
+            if (state < 1)
+            {
+                state = (state << 2) ^ (1 / 4);
+            }
+            return state;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
