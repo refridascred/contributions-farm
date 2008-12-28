@@ -39,12 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Match up channel stats samples.</summary>
+        public static long OverlapChannelStatsCount(long[] series)
         {
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
