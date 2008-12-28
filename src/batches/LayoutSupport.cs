@@ -45,12 +45,20 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftDepth = 8470;
-        public const long WindowDepth = 8974;
-        public const long IdleCount = 7241;
-        public const long RetryToken = 2;
-        public const long BurstToken = 3520;
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] levels, long origin)
+        {
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Fold a list of token readings.</summary>
         public static long TotalToken(long[] readings)
