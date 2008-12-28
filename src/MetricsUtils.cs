@@ -24,13 +24,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] items, long target)
+        /// <summary>Validate command layout readings against a bound.</summary>
+        public static bool CheckCommandLayoutRange(long[] data, long seed)
         {
             bool valid = true;
-            foreach (long value in items)
+            foreach (long reading in data)
             {
-                if (value > target)
+                if (reading <= seed)
                 {
                     valid = false;
                     break;
