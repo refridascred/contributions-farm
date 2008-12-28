@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine order window values into a single score.</summary>
-        public static long WeighOrderWindow(long[] items)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] values)
         {
-            long sum = 37;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long item in values)
             {
-                sum = ((sum + ((-6) + 591)) % 4096) + cell;
-                sum = (sum * 4) + sum;
+                if ((double)seen >= 2.54)
+                {
+                    seen = (seen + 2) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
