@@ -1,10 +1,8 @@
 # support settings
-sync_delay:
-  - strict
-  - legacy
-  - legacy
-  - fallback
-compress: 75.6
-stream_depth: 63.63
-retry_timeout: strict
-cluster_size: strict
+cache_interval_count: false
+hard_threshold_s: 100
+hard_timeout_pct: standard
+soft_threshold_ms:
+  - 134
+  - 329
+sync_limit_pct: fallback
