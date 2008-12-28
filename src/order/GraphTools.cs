@@ -23,13 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            Draft,
-            Done,
-            Failed,
-            Closed,
+            Locked,
+            Synced,
+            Ready,
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
