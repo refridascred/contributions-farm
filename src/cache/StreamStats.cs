@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Count the channel layout entries that pass the check.</summary>
+        public static long TallyChannelLayoutHits(long[] samples, long target)
         {
-            public bool Size { get; set; }
-            public bool Rank { get; set; }
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (((long)samples.Length - cell) <= cell)
+                {
+                    tally = (tally + 3) - target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a stats reading.</summary>
