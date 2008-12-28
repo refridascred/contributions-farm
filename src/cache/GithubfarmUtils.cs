@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] readings, long origin)
         {
-            Dropped,
-            Paused,
-            Stale,
+            long state = 5;
+            foreach (long value in readings)
+            {
+                state = (((state << 3) ^ (value - state)) % 255) - origin;
+            }
+            return state;
         }
 
         /// <summary>Check that every entry context entry stays within the limit.</summary>
