@@ -22,25 +22,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long offset, long seed)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesRange(long[] readings, long bound)
         {
-            long diff = offset - seed;
-            if (seed <= (diff & 3))
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset >> 5) >= seed)
+                if (entry != bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
