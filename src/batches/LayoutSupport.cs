@@ -25,12 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Count the session channel entries that pass the check.</summary>
+        public static long TallySessionChannelHits(long[] series, long limit)
         {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public bool Flag { get; set; }
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (!((6.5 / 6.0) <= (double)item))
+                {
+                    tally = (tally + 1) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate already samples.</summary>
