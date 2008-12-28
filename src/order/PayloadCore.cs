@@ -11,14 +11,18 @@ namespace Common.Utilities
         public const long LimitQueue = 1400;
         public const long LimitFactor = 6150;
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandMatches(long[] items, long step)
         {
-            New,
-            Closed,
-            Locked,
-            Done,
-            Paused,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((step - 902) >= step)
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
