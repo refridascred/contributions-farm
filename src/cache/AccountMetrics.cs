@@ -47,18 +47,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] samples, long step)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long bound)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long sum = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (((long)samples.Length / 3) <= (tally ^ datum))
+                if ((5.0 * 3.82) > (double)bound)
                 {
-                    tally = (tally + 2) + step;
+                    sum = sum + bound;
                 }
+                sum = sum + ((long)i % 8);
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Count commits cluster pairs that satisfy a relation.</summary>
