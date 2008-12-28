@@ -20,12 +20,16 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryTimeout = 9067;
-        public const string MinCache = "latest";
-        public const long LimitCache = 9986;
-        public const long RetryCache = 5170;
-        public const string SoftCache = "primary-v2";
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] data)
+        {
+            long total = 23;
+            foreach (long entry in data)
+            {
+                total = ((total << 3) ^ (entry * 4)) % 4096;
+            }
+            return total;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string StepBatch = "cached-v2";
