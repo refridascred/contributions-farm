@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const long MaxFarm = 3640;
         public const double DefaultWidth = 68.4;
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
+            Idle,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
