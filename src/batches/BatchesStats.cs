@@ -46,22 +46,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] readings)
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] series)
         {
-            long mark = 60;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((mark - 5) <= (82 / 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
-                }
-                if (((double)value == (4.57 * 3.74)) || ((double)value <= 8.0))
-                {
-                    mark = mark + ((long)readings.Length % 64);
+                    if ((series[i] + series[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark % 97;
+            return hits;
         }
     }
 }
