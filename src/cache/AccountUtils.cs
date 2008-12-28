@@ -26,10 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 772;
-        public const double StepSpan = 92.27;
-        public const long BurstWidth = 7;
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
+        {
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BurstCommits = 7588;
