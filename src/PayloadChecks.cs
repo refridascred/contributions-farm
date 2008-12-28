@@ -67,10 +67,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BaseFactor = "legacy-v2";
-        public const double SoftBudget = 79.91;
-        public const long SoftContext = 9562;
-        public const double HardWidth = 22.46;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstWidth = 9155;
+        public const string MaxStats = "standard-edge";
+        public const string RetryStats = "latest-v2";
     }
 }
