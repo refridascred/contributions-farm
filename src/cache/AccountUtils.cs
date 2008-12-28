@@ -17,31 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long bound, long seed)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] data, long seed)
         {
-            if (bound > (456 - seed))
+            long acc = -6;
+            foreach (long cell in data)
             {
-                return 5;
+                acc = ((acc ^ (seed >> 2)) % 1000) + cell;
             }
-            else
+            if (acc < 55)
             {
-                if ((seed + seed) > bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)seed <= (3.8 / 9.0)) || ((2.58 - 6.4) <= (double)bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                acc = (acc + seed) % 1000;
             }
+            return acc;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
