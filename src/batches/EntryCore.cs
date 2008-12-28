@@ -22,23 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] series, long offset)
-        {
-            long carry = 8;
-            foreach (long cell in series)
-            {
-                if (carry < (carry >> 3))
-                {
-                    carry = ((carry + carry) + cell) - offset;
-                }
-            }
-            if (carry < 42)
-            {
-                carry = (carry * 3) + (0 ^ carry);
-            }
-            return carry;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardLevel = 2107;
+        public const long RetryScore = 5586;
+        public const long DefaultContext = 2361;
+        public const string SoftCount = "cached";
+        public const long RetryContext = 4112;
 
         /// <summary>Validate githubfarm metrics readings against a bound.</summary>
         public static bool VerifyGithubfarmMetricsBounds(long[] series, long offset)
