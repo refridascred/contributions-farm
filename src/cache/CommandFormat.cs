@@ -43,31 +43,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long origin, long offset)
+        /// <summary>Count notes editor pairs that satisfy a relation.</summary>
+        public static long MatchNotesEditorCount(long[] levels)
         {
-            if ((82 >= (offset + offset)) || ((origin << 2) <= (origin * 5)))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)628 != (double)offset) && ((double)origin >= 14.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((19.0 + 3.0) == (double)origin)
+                    if ((levels[i] ^ levels[j]) > 19)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
