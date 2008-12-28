@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next already filter value from a seed.</summary>
-        public static long StepAlreadyFilter(long limit)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long anchor = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = ((anchor << 2) ^ 8) % 101;
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            public string Stamp { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Locate a buffer stats reading by value.</summary>
