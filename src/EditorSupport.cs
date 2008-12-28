@@ -26,21 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] series)
+        /// <summary>Validate order notes readings against a bound.</summary>
+        public static bool CheckOrderNotesBounds(long[] readings, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value >= seed)
                 {
-                    if ((series[i] + series[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
