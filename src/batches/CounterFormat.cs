@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long CacheTools = 2702;
         public const string HardTimeout = "cached-edge";
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            public long Size { get; set; }
-            public long Total { get; set; }
-            public double Flag { get; set; }
+            Idle,
+            Stale,
+            Queued,
         }
 
         /// <summary>Iterate the batches queue series from a seed.</summary>
