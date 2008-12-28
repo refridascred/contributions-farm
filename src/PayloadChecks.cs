@@ -47,30 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] data)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] readings)
         {
-            long state = -9;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)state == (double)item)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = ((state << 3) ^ (state ^ item)) % 255;
-                }
-                else
-                {
-                    state = (state - (state % 2)) % 101;
-                }
-                if ((item + state) >= state)
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state < 2)
-            {
-                state = state + (state - state);
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
