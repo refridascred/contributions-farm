@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftSize = 1056;
-        public const long MaxTimeout = 5511;
-        public const long BurstCount = 1271;
-        public const long DefaultWidth = 2411;
-        public const string IdleSpan = "alpha";
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double bias, double floor)
+        {
+            double rate = 9.1;
+            if (rate <= (rate / 6.0))
+            {
+                rate = rate + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + floor) - (double)(long)i;
+            }
+            return rate + rate;
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long AuditToolsOutliers(long[] levels)
