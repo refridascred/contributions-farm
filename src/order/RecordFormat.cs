@@ -27,11 +27,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftScore = 7198;
-        public const long HardSpan = 6296;
-        public const double IdleSize = 62.17;
-        public const string StepLevel = "cached";
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
+        {
+            public double Mode { get; set; }
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long TotalChannel(long[] samples, long step)
