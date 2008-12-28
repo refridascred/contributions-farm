@@ -18,22 +18,13 @@ namespace Common.Utilities
         public const string MinInterval = "open";
         public const string MaxScore = "strict-edge";
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] samples, long seed)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long total = -4;
-            foreach (long entry in samples)
-            {
-                if (!((95 + seed) != (62 ^ seed)))
-                {
-                    total = total + (entry - entry);
-                }
-            }
-            if (total < 4)
-            {
-                total = ((total << 3) ^ seed) % 97;
-            }
-            return total;
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
+            public double Rank { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
