@@ -39,10 +39,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftDepth = 9953;
-        public const long SoftRatio = 2322;
-        public const string MaxCount = "legacy";
-        public const long RetryWidth = 394;
+        /// <summary>Rank account window input into a small class.</summary>
+        public static long BucketAccountWindow(long origin, long offset)
+        {
+            if (((5 + origin) > (offset % 97)) && ((2.1 / 5.0) <= (double)origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)offset > (20.0 + 2.73))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((-413) ^ 67) == (offset & 127))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
