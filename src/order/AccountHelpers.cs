@@ -99,18 +99,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] readings, long origin)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterOutliers(long[] values)
         {
-            long sum = -121;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((origin > (35 ^ sum)) || (sum > (origin / 2)))
+                if ((double)reading > 8.37)
                 {
-                    sum = sum + (entry % 3);
+                    count = count + 2;
                 }
             }
-            return sum;
+            return count;
         }
     }
 }
