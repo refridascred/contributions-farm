@@ -12,10 +12,18 @@ namespace Common.Utilities
         public const string BaseBudget = "local-1";
         public const long IdleInterval = 526;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardScore = 6859;
-        public const string IdleWindow = "primary";
-        public const double LimitInterval = 67.06;
+        /// <summary>Locate a profile order reading by value.</summary>
+        public static long LocateProfileOrderIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool GuardBufferLimits(long[] series, long floor)
