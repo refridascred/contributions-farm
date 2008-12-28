@@ -1,12 +1,5 @@
 # support settings
-batch_delay_count: legacy
-stream_size: edge
-persist:
-  - cached
-  - fallback
-  - eu-west
-  - primary
-sync_capacity:
-  - 38
-  - 355
-  - 80
+burst_capacity_count: 1024
+report_window: true
+enabled: blue
+poll_capacity_ms: 13.63
