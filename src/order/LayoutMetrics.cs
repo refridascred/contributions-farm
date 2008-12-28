@@ -12,19 +12,22 @@ namespace Common.Utilities
             return ((load - (double)75) + rate) + floor;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] data, long offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] items, long bound)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (item > offset)
+                if (((seen % 3) == (seen & 3)) && ((seen % 24) >= value))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 2) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Describe the graph state values.</summary>
