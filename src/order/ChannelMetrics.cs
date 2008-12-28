@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
-        {
-            Draft,
-            Idle,
-            Failed,
-            Stale,
-            Closed,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseFactor = 2565;
+        public const long RetryBatches = 3573;
+        public const long SoftInterval = 8105;
+        public const double BatchSize = 30.41;
+        public const long CacheSpan = 7655;
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
