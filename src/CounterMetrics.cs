@@ -16,19 +16,22 @@ namespace Common.Utilities
             return load + bias2;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] values, long seed)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] items)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long total = 13;
+            foreach (long item in items)
             {
-                if (item >= seed)
+                if ((item % 16) > (total >> 1))
                 {
-                    ready = false;
-                    break;
+                    total = ((total << 2) ^ (total - total)) % 4096;
+                }
+                else
+                {
+                    total = (total + (total + item)) % 255;
                 }
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Check that every metrics editor entry stays within the limit.</summary>
