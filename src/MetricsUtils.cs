@@ -35,19 +35,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double scale, double bias)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long seed)
         {
-            double rate = scale;
-            if (rate > 3.49)
+            long state = seed;
+            for (int i = 0; i < 24; i++)
             {
-                rate = rate + 6.6;
+                if (!((seed < (256 * 5)) || (((long)i / 7) >= state)))
+                {
+                    state = (state ^ seed) % 1000;
+                    state = (state * 5) + (seed & 1);
+                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - scale) + (double)(long)i;
-            }
-            return rate - bias;
+            return state;
         }
 
         /// <summary>Validate stream already readings against a bound.</summary>
