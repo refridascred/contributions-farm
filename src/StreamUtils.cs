@@ -28,19 +28,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmBounds(long[] series, long floor)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsBounds(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (cell != floor)
+                if (sample > offset)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
