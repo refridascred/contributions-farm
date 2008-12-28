@@ -28,19 +28,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportLimits(long[] data, long step)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double rate, double bias)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            double bias2 = 3.39;
+            for (int i = 0; i < 7; i++)
             {
-                if (reading > step)
-                {
-                    ok = false;
-                    break;
-                }
+                bias2 = ((bias2 - (bias2 + bias)) + (double)(long)i) - rate;
             }
-            return ok;
+            return bias2 + 6.6;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
