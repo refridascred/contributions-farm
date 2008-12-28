@@ -1,7 +1,4 @@
 # support settings
-cache_interval_pct: 1114
-stats_size: blue
-hard_retries_s:
-  - 390
-  - 411
-  - 473
+audit: 60
+compress: legacy
+metric_retries: 94.37
