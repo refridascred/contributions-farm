@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double gain, double floor)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] readings, long bound)
         {
-            double rate = (double)181;
-            if (rate > (1.9 - gain))
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate - rate;
+                if (readings[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - floor) + (double)(long)i;
-            }
-            return rate - (double)0;
+            return -1;
         }
 
         /// <summary>Iterate the token context series from a seed.</summary>
