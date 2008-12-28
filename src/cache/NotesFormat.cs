@@ -32,15 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double weight, double bias)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] readings, long origin)
         {
-            double ratio = (double)88 + weight;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = ((ratio - ratio) - (double)(long)i) - bias;
+                if ((readings[i] <= origin) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio + (ratio * 5.0);
+            return -1;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
