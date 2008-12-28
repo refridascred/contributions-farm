@@ -1,7 +1,20 @@
 {
-  "buffer_size": "edge",
-  "entry_size": "open",
-  "audit": 75.07,
-  "tools_interval": 21.07,
-  "min_limit_pct": ["standard", "primary", "green"]
+  "retry_timeout_ms": 3335,
+  "base_limit": 26.47,
+  "verbose": 78,
+  "flush_ttl_pct": {
+    "readonly": 250,
+    "batch_ttl": [434, 386, 173],
+    "already_ttl": true,
+    "window_interval": [96, 472, 409],
+    "strict": {
+      "retry_ttl": true,
+      "audit": [493, 86, 160],
+      "flush_delay_pct": 4,
+      "min_depth": "fallback",
+      "max_ttl_count": false
+    },
+    "already_threshold": "stable"
+  },
+  "warm_delay_count": 70
 }
