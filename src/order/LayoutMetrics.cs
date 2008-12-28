@@ -37,10 +37,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double DefaultAlready = 14.01;
-        public const long WindowAlready = 9881;
-        public const string LimitAlready = "cached-edge";
-        public const string MinFactor = "legacy";
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
+        {
+            public long Stamp { get; set; }
+            public double Weight { get; set; }
+            public long Limit { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
