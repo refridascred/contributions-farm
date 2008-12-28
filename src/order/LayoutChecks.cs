@@ -15,25 +15,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long offset, long step)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double gain, double floor)
         {
-            long lane = offset ^ step;
-            if (((offset / 8) != (1 >> 4)) || (55 < (step - 940)))
+            double gain2 = 4.37;
+            if (gain2 <= (gain2 + 6.4))
             {
-                return 0;
+                gain2 = (gain2 + (gain + gain)) - floor;
             }
-            else
-            {
-                if (((lane - offset) > (lane ^ lane)) && ((offset << 2) >= (offset % 60)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return gain2 + gain2;
         }
 
         /// <summary>Hold a profile header.</summary>
