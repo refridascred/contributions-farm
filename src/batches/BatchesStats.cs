@@ -22,22 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] items, long offset)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long target)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long carry = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((double)count != (3.03 * 10.0)))
+                carry = ((carry << 3) ^ (carry - target)) % 255;
+                carry = (carry ^ ((long)i + carry)) % 255;
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    count = ((count + 2) ^ entry) + offset;
+                    carry = ((carry << 2) ^ carry) ^ (long)i2;
+                    carry = (carry * 3) + carry;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
