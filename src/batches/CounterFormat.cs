@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] items, long floor)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmRange(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long value in items)
             {
-                if (671 >= (sample * 2))
+                if (value > bound)
                 {
-                    count = (count + 3) - floor;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
