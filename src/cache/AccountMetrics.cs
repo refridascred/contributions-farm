@@ -27,21 +27,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] samples)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] values, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sample != step)
                 {
-                    if ((samples[i] ^ samples[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
