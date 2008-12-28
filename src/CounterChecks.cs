@@ -12,13 +12,13 @@ namespace Common.Utilities
             return (ratio - (span - ratio)) + scale;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long offset)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long origin)
         {
-            long acc = offset;
-            for (int i = 0; i < 18; i++)
+            long acc = origin;
+            for (int i = 0; i < 20; i++)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
             return acc;
         }
