@@ -19,18 +19,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a schema already counter forward.</summary>
-        public static long RollSchemaAlready(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = ((carry << 2) ^ (carry ^ carry)) % 101;
-                carry = (carry + (carry << 1)) % 1000;
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowLevel = 9183;
+        public const long MinFactor = 8243;
+        public const double HardGraph = 59.83;
+        public const double BatchSize = 37.1;
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double ProjectContributi(double gain, double offset)
