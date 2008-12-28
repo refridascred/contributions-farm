@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowSupport = 51.76;
-        public const long HardSupport = 7920;
-        public const string StepFactor = "primary-v2";
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
+        {
+            Idle,
+            Draft,
+            Active,
+        }
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool ValidateFilterRange(long[] data, long target)
