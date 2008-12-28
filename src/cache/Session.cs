@@ -22,13 +22,16 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long limit)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-            public bool Token { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = carry ^ (limit + (long)i);
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Describe the editor state values.</summary>
