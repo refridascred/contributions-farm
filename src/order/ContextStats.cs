@@ -58,12 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
-        {
-            public double Size { get; set; }
-            public bool Level { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 7948;
+        public const long BatchToken = 5471;
+        public const long CacheToken = 6269;
+        public const double BaseToken = 18.92;
+        public const double IdleToken = 26.23;
     }
 }
