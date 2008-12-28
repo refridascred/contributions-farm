@@ -72,14 +72,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            Ready,
-            New,
-            Idle,
-            Queued,
-            Paused,
+            public string Weight { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
