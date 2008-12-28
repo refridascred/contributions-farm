@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] levels)
         {
-            public bool Ratio { get; set; }
-            public double Limit { get; set; }
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((15 ^ item) < (hits % 10))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
