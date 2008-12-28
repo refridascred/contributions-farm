@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const long BaseMetric = 5627;
         public const double StepMetric = 45.13;
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterHits(long[] series)
         {
-            New,
-            Dropped,
-            Ready,
-            Paused,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((4.5 * 18.0) != (double)datum)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up token route samples.</summary>
