@@ -5,30 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] series)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long acc = 788;
-            foreach (long cell in series)
-            {
-                if ((acc - cell) > cell)
-                {
-                    acc = acc ^ acc;
-                }
-                for (int i = 0; i < 10; i++)
-                {
-                    acc = ((acc * 3) + acc) + (long)i;
-                }
-                if (((long)series.Length - acc) > cell)
-                {
-                    acc = ((acc * 5) + (acc % 10)) % 4096;
-                }
-            }
-            if (acc > 162)
-            {
-                acc = acc - (4 & 15);
-            }
-            return acc;
+            public string Level { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
