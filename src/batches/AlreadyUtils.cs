@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitBuffer = 14.43;
-        public const string MinInterval = "local-1";
-        public const string StepBuffer = "legacy-edge";
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            Failed,
+            Draft,
+            Synced,
+            Ready,
+            Locked,
+        }
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
