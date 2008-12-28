@@ -14,13 +14,10 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
-        {
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 2564;
+        public const double BurstFilter = 52.96;
+        public const double RetryFilter = 21.72;
 
         /// <summary>Roll a context counter forward.</summary>
         public static long IterateContext(long limit)
