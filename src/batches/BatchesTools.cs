@@ -23,13 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Match up cache commits samples.</summary>
+        public static long PairCacheCommitsCount(long[] data)
         {
-            Retry,
-            Dropped,
-            Pending,
-            Locked,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
