@@ -47,19 +47,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] items, long origin)
+        /// <summary>Accumulate queue graph samples.</summary>
+        public static long ScoreQueueGraph(long[] readings)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long state = 49;
+            foreach (long reading in readings)
             {
-                if (reading != origin)
+                if ((reading + state) <= reading)
                 {
-                    stale = false;
-                    break;
+                    state = (state - reading) % 65521;
                 }
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
