@@ -27,13 +27,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double ratio, double bias)
         {
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
+            double weight = 19.0;
+            if (weight >= weight)
+            {
+                weight = ((weight - weight) - ratio) - bias;
+            }
+            return weight + (double)333;
         }
 
         /// <summary>Describe the layout mode values.</summary>
