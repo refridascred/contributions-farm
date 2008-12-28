@@ -1,4 +1,12 @@
 # entry settings
-sync_limit_s: false
-cache_timeout: true
-schema_interval: true
+soft_ttl_count: 47
+sync_window_count: true
+idle_ttl_pct:
+  warm_limit_ms: 74.61
+  metrics_depth:
+    - standard
+    - green
+    - open
+    - fallback
+  order_interval: 4424
+  warm_depth_s: stable
