@@ -24,22 +24,11 @@ namespace Common.Utilities
             return gain2 - 8.0;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 3199;
+        public const long StepToken = 8679;
+        public const double CacheToken = 36.4;
+        public const long RetryTimeout = 5207;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double HardMetric = 28.54;
