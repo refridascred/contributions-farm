@@ -1,11 +1,5 @@
 {
-  "buffer_timeout": {
-    "stats_depth": ["standard", "cached"],
-    "soft_timeout": "legacy",
-    "compress": "green",
-    "filter_timeout": true
-  },
-  "cache_window": ["local", "staging"],
-  "idle_ratio": 22,
-  "sync_limit_count": 4036
+  "warm_retries_ms": "cached",
+  "default_limit": 39.11,
+  "batches_size": 54.76
 }
