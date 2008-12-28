@@ -32,18 +32,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsMatches(long[] levels, long floor)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((floor - matches) != (matches ^ datum))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Paused,
+            Closed,
+            Ready,
+            Queued,
         }
     }
 }
