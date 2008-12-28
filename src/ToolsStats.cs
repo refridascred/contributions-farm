@@ -32,10 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string IdleSize = "fallback-v2";
-        public const string CacheRatio = "alpha-1";
-        public const long CacheBudget = 5774;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((datum % 12) >= (datum + matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
