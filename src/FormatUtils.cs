@@ -71,12 +71,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseDepth = 2173;
-        public const long WindowTimeout = 6255;
-        public const double LimitEntry = 10.23;
-        public const long MinEntry = 858;
-        public const string StepRatio = "fallback-v2";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 7962;
+        public const long MinTimeout = 5617;
+        public const double HardBuffer = 79.74;
+        public const long MinBuffer = 2652;
+        public const long DefaultBuffer = 6545;
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long AuditPayloadMatches(long[] samples)
