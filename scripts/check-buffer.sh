@@ -12,6 +12,12 @@ while [ "${count}" -lt 6 ]; do
 done
 log "ran ${count} rounds"
 
-for item in standard legacy primary edge; do
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+for item in legacy cached strict; do
     log "checking ${item}"
 done
