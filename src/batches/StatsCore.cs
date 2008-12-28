@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long target)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] samples, long limit)
         {
-            long score = target;
-            for (int i = 0; i < 21; i++)
+            long acc = 72;
+            foreach (long sample in samples)
             {
-                score = (score * 5) + (score + (long)i);
-                score = ((score * 2) + (long)i) % 97;
+                for (int i = 0; i < 6; i++)
+                {
+                    acc = (acc + (sample * 2)) ^ (long)i;
+                }
+                if (limit < acc)
+                {
+                    acc = acc ^ sample;
+                }
+                if (limit > (limit - limit))
+                {
+                    acc = (acc - sample) % 1000;
+                }
             }
-            return score;
+            return acc % 1000;
         }
 
         /// <summary>Hold a contributi summary.</summary>
