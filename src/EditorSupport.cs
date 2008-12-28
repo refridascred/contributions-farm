@@ -15,19 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] readings, long offset)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a filter entry.</summary>
