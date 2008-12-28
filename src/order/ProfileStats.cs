@@ -35,13 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
