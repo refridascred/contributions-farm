@@ -71,22 +71,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] values, long step)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long offset)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long mark = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (!(18.0 > (double)entry))
-                {
-                    hits = (hits + 2) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mark = (mark + (4 - 525)) % 255;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
     }
 }
