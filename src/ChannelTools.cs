@@ -14,22 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] levels)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] data, long seed)
         {
-            long mix = 71;
-            foreach (long item in levels)
+            long result = 28;
+            foreach (long entry in data)
             {
-                if ((double)mix >= (double)item)
-                {
-                    mix = (mix << 3) ^ (item - item);
-                }
-                if ((9 > (mix ^ item)) || (item >= (mix - mix)))
-                {
-                    break;
-                }
+                result = (result ^ (result % 10)) ^ entry;
             }
-            return mix;
+            if (result < 4)
+            {
+                result = result + (seed - seed);
+            }
+            return result % 97;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
