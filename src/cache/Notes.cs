@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
-        {
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 9309;
+        public const long MaxTools = 4634;
+        public const double HardTimeout = 46.32;
+        public const long CacheSize = 1039;
 
         /// <summary>Derive the next format token value from a seed.</summary>
         public static long IterateFormatToken(long limit)
