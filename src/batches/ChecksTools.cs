@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] items, long target)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] series)
         {
-            long carry = -694;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (!((double)carry >= (1.49 + 6.0)))
+                if ((((double)hits != (6.1 / 5.0)) && (entry <= (hits >> 2))) && ((double)hits != (19.0 + 9.71)))
                 {
-                    carry = (carry ^ carry) - target;
+                    hits = hits + 3;
                 }
-                if (cell >= (1 - carry))
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Describe the layout kind values.</summary>
