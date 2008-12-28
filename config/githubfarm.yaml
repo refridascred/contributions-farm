@@ -1,5 +1,8 @@
 # githubfarm settings
-warm_retries_s: 500
-notes_timeout: standard
-compress: 18.22
-enabled: green
+sync_threshold:
+  - legacy
+  - staging
+  - stable
+compress: staging
+audit: 7225
+idle_delay: 27
