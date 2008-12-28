@@ -51,19 +51,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate stream already readings against a bound.</summary>
-        public static bool GuardStreamAlreadyLimits(long[] values, long limit)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double ratio, double floor)
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double drift = (double)((-18) * 3);
+            return (drift + (floor / 7.0)) + ratio;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
