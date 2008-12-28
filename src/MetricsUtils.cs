@@ -24,19 +24,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Validate command layout readings against a bound.</summary>
-        public static bool CheckCommandLayoutRange(long[] data, long seed)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Total { get; set; }
+            public string Token { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
