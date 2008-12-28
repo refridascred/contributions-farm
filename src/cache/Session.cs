@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the context checks series from a seed.</summary>
-        public static long SeriesContextChecks(long target)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long carry = target;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = carry - ((long)i + 63);
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
