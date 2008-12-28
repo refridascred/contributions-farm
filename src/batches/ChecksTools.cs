@@ -23,12 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            Locked,
-            Dropped,
-            Draft,
+            Failed,
+            Synced,
+            Ready,
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
