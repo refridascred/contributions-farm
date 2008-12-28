@@ -39,11 +39,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            Active,
+            Closed,
+            Idle,
+            Queued,
         }
     }
 }
