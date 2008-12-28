@@ -1,13 +1,10 @@
 # entry settings
-min_threshold:
-  schema_capacity: 86
-  base_delay_pct: true
-  batches_retries: 74.65
-  metrics_limit: 24
-report_limit: 18.33
-hard_delay:
-  - 72
-  - 87
-verbose: 60
-batch_retries_count: 500
-entry_ratio: 3633
+commits_limit: legacy
+default_window: 48.85
+base_depth_ms:
+  - open
+  - eu-west
+  - latest
+  - standard
+poll_limit: false
+commits_threshold: false
