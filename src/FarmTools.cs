@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate editor report readings against a bound.</summary>
-        public static bool CheckEditorReportRange(long[] values, long bound)
+        /// <summary>Measure how many queue metrics samples are out of range.</summary>
+        public static long MeasureQueueMetricsGaps(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (entry >= bound)
+                if (!(target <= (datum - hits)))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Describe the cache level values.</summary>
