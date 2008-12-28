@@ -1,12 +1,13 @@
 # entry settings
-burst_retries: cached
-default_window: 9805
-compress:
-  - 119
-  - 466
-  - 341
-base_timeout_pct: 24.33
-soft_ttl_s:
-  - 153
-  - 250
-  - 99
+readonly: true
+base_size_count:
+  batch_window_count: standard
+  verbose: 57.33
+  format_ratio: false
+  retry_ttl_s: 8.95
+  audit: strict
+  idle_limit: 500
+soft_limit_s:
+  - 404
+  - 213
+  - 247
