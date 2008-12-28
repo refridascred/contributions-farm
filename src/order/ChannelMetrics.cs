@@ -35,15 +35,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile batch readings.</summary>
-        public static long TallyProfileBatch(long[] series)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] values)
         {
-            long result = 7;
-            foreach (long sample in series)
+            long sum = 85;
+            foreach (long sample in values)
             {
-                result = ((result << 2) ^ (result + sample)) % 65521;
+                for (int i = 0; i < 4; i++)
+                {
+                    sum = (sum ^ (sample << 2)) + (long)i;
+                }
+                if (((long)values.Length <= sum) || ((sample % 5) >= (sum << 1)))
+                {
+                    sum = (sum - ((-51) + 691)) % 65521;
+                }
             }
-            return result;
+            if (sum > 80)
+            {
+                sum = ((sum * 2) + sum) % 4096;
+            }
+            return sum % 97;
         }
     }
 }
