@@ -85,18 +85,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderMatches(long[] items)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long state = 98;
+            foreach (long entry in data)
             {
-                if ((18.0 - 13.0) != (double)tally)
-                {
-                    tally = (tally + 1) ^ reading;
-                }
+                state = (((state << 3) ^ (target >> 2)) % 1000) ^ entry;
             }
-            return tally;
+            if (state > (-5))
+            {
+                state = state + state;
+            }
+            return state;
         }
     }
 }
