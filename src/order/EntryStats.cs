@@ -49,20 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] samples)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long state = 312;
-            foreach (long reading in samples)
-            {
-                if (state <= (reading + reading))
-                {
-                    state = (state ^ (reading + reading)) % 101;
-                    state = (state + state) % 97;
-                }
-                state = state + state;
-            }
-            return state;
+            Retry,
+            Draft,
+            Closed,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
