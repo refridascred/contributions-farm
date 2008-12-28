@@ -1,6 +1,8 @@
 {
-  "queue_interval": ["standard", "latest", "standard"],
-  "sync_ttl_count": 68,
-  "soft_timeout": "edge",
-  "poll_ratio": 100
+  "max_ratio_ms": 3238,
+  "window_delay": "cached",
+  "soft_delay_ms": 1024,
+  "soft_ratio_count": "eu-west",
+  "contributi_threshold": true,
+  "order_timeout": false
 }
