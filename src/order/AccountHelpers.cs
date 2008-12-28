@@ -66,18 +66,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] samples)
+        /// <summary>Count the stats session entries that pass the check.</summary>
+        public static long AuditStatsSessionMatches(long[] values)
         {
-            long score = 225;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (((65 >> 4) <= (entry & 3)) || ((0 << 3) >= (entry / 7)))
+                if (((sample + sample) != (sample / 3)) && ((tally + tally) >= (tally ^ tally)))
                 {
-                    score = (score - entry) % 101;
+                    tally = tally + 1;
                 }
             }
-            return score;
+            return tally;
         }
     }
 }
