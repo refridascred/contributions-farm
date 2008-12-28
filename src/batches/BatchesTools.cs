@@ -22,11 +22,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long seed, long step)
         {
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
+            if ((seed >> 2) == (step + step))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((7.86 + 7.02) > (double)seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step != (12.0 * 0.32))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((1.57 / 2.0) != (double)seed)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the notes class values.</summary>
