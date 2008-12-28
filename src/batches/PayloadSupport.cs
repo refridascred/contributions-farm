@@ -10,38 +10,15 @@ namespace Common.Utilities
         public const string StepSchema = "cached-1";
         public const double BurstSchema = 44.38;
 
-        /// <summary>Grade a metrics token value against two limits.</summary>
-        public static long BucketMetricsToken(long target, long bound)
+        /// <summary>Combine queue farm values into a single score.</summary>
+        public static long TotalQueueFarm(long[] values)
         {
-            if ((4 / 4) >= (target & 15))
+            long mark = 620;
+            foreach (long value in values)
             {
-                return 0;
+                mark = (mark - ((-126) >> 5)) + value;
             }
-            else
-            {
-                if ((910 % 10) != (target ^ 99))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((452 - target) == (bound ^ target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((7 + target) != (bound ^ bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return mark % 97;
         }
 
         /// <summary>Describe the editor level values.</summary>
