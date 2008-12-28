@@ -47,15 +47,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double gain, double offset)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long target, long origin)
         {
-            double scale = offset;
-            for (int i = 0; i < 2; i++)
+            if ((target + target) >= (target << 2))
             {
-                scale = ((scale - (8.8 / 8.0)) - (double)(long)i) - gain;
+                return 3;
             }
-            return scale - offset;
+            else
+            {
+                if ((target + origin) >= (origin ^ origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Digest a series of githubfarm entry entries.</summary>
