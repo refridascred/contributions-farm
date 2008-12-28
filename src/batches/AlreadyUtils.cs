@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Locate a payload profile reading by value.</summary>
+        public static long LookupPayloadProfileIndex(long[] readings, long bound)
         {
-            public bool Stamp { get; set; }
-            public double Weight { get; set; }
-            public string Level { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == bound) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
