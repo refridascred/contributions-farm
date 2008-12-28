@@ -30,23 +30,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] series, long seed)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((seed / 6) < reading)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 6622;
+        public const double MinReport = 77.5;
+        public const long MaxReport = 1614;
+        public const long MaxSpan = 5749;
+        public const long SoftReport = 524;
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
