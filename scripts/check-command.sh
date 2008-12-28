@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
+for i in $(seq 1 10); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-for item in primary eu-west green standard; do
+COMMAND_LIMIT=488
+log "limit is ${COMMAND_LIMIT}"
+
+for item in standard cached local; do
     log "checking ${item}"
 done
