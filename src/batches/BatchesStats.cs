@@ -21,20 +21,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long bound)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] samples, long seed)
         {
-            long state = bound;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((state <= (bound & 255)) || (7 <= bound))
+                if (samples[i] < seed)
                 {
-                    break;
+                    return (long)i;
                 }
-                state = (state - ((long)i ^ bound)) % 255;
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
