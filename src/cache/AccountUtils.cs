@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] samples, long step)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] series)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (!((double)step < (2.1 / 4.0)))
+                if (((matches >> 1) > (matches * 5)) && ((double)matches < (double)(-31)))
                 {
-                    seen = (seen + 1) ^ item;
+                    matches = (matches + 2) + reading;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Accumulate route samples.</summary>
