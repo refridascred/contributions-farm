@@ -55,21 +55,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] data)
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] data, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 9;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((step - item) > (9 + mix)))
                 {
-                    if ((data[i] - data[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix - (item & 7)) % 97;
+                }
+                else
+                {
+                    mix = mix + (item + mix);
                 }
             }
-            return matches;
+            return mix % 65521;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
