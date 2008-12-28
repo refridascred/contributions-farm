@@ -62,18 +62,19 @@ namespace Common.Utilities
         public const long IdleCount = 604;
         public const long MinSpan = 6864;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportGaps(long[] readings)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportLimits(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if (!((datum > (datum + datum)) && ((double)count < (5.9 * 2.2))))
+                if (sample != floor)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
