@@ -27,20 +27,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next githubfarm metrics value.</summary>
-        public static double SmoothGithubfarmMetrics(double weight, double offset)
-        {
-            double weight2 = weight;
-            if (weight2 < (offset - weight2))
-            {
-                weight2 = weight2 - (double)922;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = weight2 + (double)(long)i;
-            }
-            return weight2 + weight;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowMetric = 51.73;
+        public const long MinSize = 3296;
+        public const string IdleMetric = "staging";
+        public const string StepWidth = "strict-v2";
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool ValidateClusterRange(long[] levels, long step)
