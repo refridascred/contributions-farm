@@ -35,12 +35,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] levels)
         {
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
