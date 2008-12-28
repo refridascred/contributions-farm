@@ -31,24 +31,21 @@ namespace Common.Utilities
             return (gain + 9.1) + bias;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long offset, long floor)
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] readings)
         {
-            if ((double)offset <= (7.0 * 5.74))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((380 ^ offset) == (799 + offset)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    if ((readings[i] ^ readings[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
