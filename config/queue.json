@@ -1,6 +1,8 @@
 {
-  "idle_interval_ms": "open",
-  "stream_size": "strict",
-  "cache_size": "latest",
-  "batch_capacity_ms": ["primary", "fallback", "primary", "standard"]
+  "checks_ratio": 500,
+  "audit": 13.75,
+  "support_interval": "fallback",
+  "already_ratio": false,
+  "min_threshold_s": "eu-west",
+  "poll_timeout": "edge"
 }
