@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every route order entry stays within the limit.</summary>
-        public static bool GuardRouteOrderBounds(long[] items, long origin)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] readings, long offset)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell != origin)
+                if ((readings[i] <= offset) && ((readings[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
