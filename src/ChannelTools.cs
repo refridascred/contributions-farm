@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] series)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long seed, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long gap = seed + bound;
+            if (((gap ^ bound) > ((-54) ^ bound)) || ((30 * 3) <= (gap - seed)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (seed > (gap & 63))
                 {
-                    if ((series[i] + series[j]) > 14)
+                    return 7;
+                }
+                else
+                {
+                    if (gap >= 35)
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
