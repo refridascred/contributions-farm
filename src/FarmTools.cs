@@ -20,38 +20,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long floor, long bound)
+        /// <summary>Iterate the context channel series from a seed.</summary>
+        public static long RollContextChannel(long floor)
         {
-            if ((floor % 16) > 743)
+            long total = floor;
+            for (int i = 0; i < 7; i++)
             {
-                return 0;
+                total = (total - (23 ^ 7)) % 97;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((576 << 1) == (floor << 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (bound < (bound / 6))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((3.37 * 8.0) == (double)floor) && ((floor / 6) > (floor + bound)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
