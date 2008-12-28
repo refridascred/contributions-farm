@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double bias, double offset)
+        /// <summary>Classify a channel entry pair into a bucket.</summary>
+        public static long RankChannelEntry(long offset, long bound)
         {
-            double rate = (2.0 - bias) * 5.1;
-            if (rate >= offset)
+            if (((5.07 * 6.0) < (double)bound) || (offset <= (offset + bound)))
             {
-                rate = rate + (rate + 6.4);
+                return 0;
             }
             else
             {
-                rate = rate - offset;
+                if (((offset ^ bound) != (bound % 100)) && ((973 * 5) >= (32 + bound)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound >> 5) > (offset + 421))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + offset;
         }
 
         /// <summary>Hold a batch entry.</summary>
