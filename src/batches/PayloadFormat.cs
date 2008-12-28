@@ -12,13 +12,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double ratio, double span)
         {
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-            public long Count { get; set; }
+            double scale = 5.55 + 5.34;
+            return ((scale - scale) + ratio) + span;
         }
 
         /// <summary>Rank order input into a small class.</summary>
