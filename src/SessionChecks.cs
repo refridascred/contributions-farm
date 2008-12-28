@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] levels)
+        /// <summary>Count the command layout entries that pass the check.</summary>
+        public static long AuditCommandLayoutMatches(long[] values, long step)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((15.0 - 5.0) > (double)count)
+                if (52 > (datum + 98))
                 {
-                    count = (count + 2) + cell;
+                    hits = (hits + 1) - step;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a format entry.</summary>
