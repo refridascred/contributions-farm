@@ -59,9 +59,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 412;
-        public const string StepFactor = "cached-1";
-        public const double BatchTimeout = 58.38;
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
+        {
+            Idle,
+            Locked,
+            Stale,
+        }
     }
 }
