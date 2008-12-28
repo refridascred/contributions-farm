@@ -65,17 +65,19 @@ namespace Common.Utilities
             return ((bias - (double)245) + gain) + offset;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] readings, long bound)
+        /// <summary>Check that every schema notes entry stays within the limit.</summary>
+        public static bool VerifySchemaNotesRange(long[] samples, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 2) == 0))
+                if (value < step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
