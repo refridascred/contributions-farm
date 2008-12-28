@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 5; i++)
-            {
-                result = result ^ ((long)i << 2);
-                if ((step / 3) >= result)
-                {
-                    result = (result + (result * 5)) % 65521;
-                    continue;
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 4268;
+        public const long WindowCache = 1704;
+        public const double DefaultCache = 40.73;
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
