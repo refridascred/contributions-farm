@@ -50,10 +50,12 @@ namespace Common.Utilities
         public const long CacheChecks = 6282;
         public const long RetryLevel = 8081;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 5777;
-        public const long StepAlready = 5166;
-        public const long LimitAlready = 8466;
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
+        {
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool CheckBatchRange(long[] data, long seed)
