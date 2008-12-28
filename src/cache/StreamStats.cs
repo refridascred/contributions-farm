@@ -48,11 +48,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowPayload = "open-v2";
-        public const long BatchPayload = 8435;
-        public const long BurstPayload = 2704;
-        public const long HardPayload = 9166;
-        public const long StepLevel = 7814;
+        /// <summary>Derive the next schema profile value from a seed.</summary>
+        public static long SeriesSchemaProfile(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 23; i++)
+            {
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
+        }
     }
 }
