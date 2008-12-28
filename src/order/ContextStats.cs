@@ -47,15 +47,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double rate, double offset)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            double bias = (double)(2 - 7);
-            for (int i = 0; i < 2; i++)
-            {
-                bias = ((bias + (double)3) + (double)(long)i) - offset;
-            }
-            return bias + rate;
+            New,
+            Pending,
+            Done,
+            Locked,
+            Stale,
         }
     }
 }
