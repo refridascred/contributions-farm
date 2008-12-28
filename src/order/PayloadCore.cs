@@ -13,39 +13,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long limit, long target)
+        /// <summary>Count the buffer order entries that pass the check.</summary>
+        public static long AuditBufferOrderGaps(long[] series)
         {
-            long gap = limit + target;
-            if ((gap + gap) > (gap - limit))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)target != (double)limit) || ((307 ^ limit) >= (23 + target)))
+                if ((cell ^ 7) < (tally ^ tally))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit <= (limit % 12)) || ((1.7 * 5.0) != (double)target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((gap + target) == (limit / 7))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
