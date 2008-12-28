@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double bias, double floor)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            double rate = 9.1;
-            if (rate <= (rate / 6.0))
-            {
-                rate = rate + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + floor) - (double)(long)i;
-            }
-            return rate + rate;
+            public bool Score { get; set; }
+            public double Ratio { get; set; }
+            public bool Weight { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Compare every pair of cache window readings.</summary>
