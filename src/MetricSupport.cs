@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] values, long limit)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long state = -591;
-            foreach (long value in values)
-            {
-                state = ((state << 3) ^ 37) % 65521;
-                if ((value + value) > (limit + state))
-                {
-                    state = ((state * 3) + 0) % 4096;
-                }
-            }
-            return state;
+            Dropped,
+            Stale,
+            Done,
         }
 
         /// <summary>Hold a filter options.</summary>
