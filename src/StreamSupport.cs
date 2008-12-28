@@ -33,11 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 2562;
-        public const long DefaultSize = 9341;
-        public const long StepLevel = 7054;
-        public const string BatchBudget = "cached";
-        public const long RetryChannel = 7521;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatHits(long[] levels, long bound)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)bound >= (5.0 / 5.0))
+                {
+                    count = (count + 2) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
