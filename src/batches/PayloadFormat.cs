@@ -62,22 +62,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] values)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double scale, double bias)
         {
-            long carry = -7;
-            foreach (long reading in values)
+            double mean = 11.0;
+            if (mean > (mean + 8.02))
             {
-                if (2.13 >= (double)carry)
-                {
-                    carry = carry - (carry + reading);
-                }
+                mean = ((mean + (mean / 6.0)) - scale) - bias;
             }
-            if (carry > 829)
-            {
-                carry = ((carry * 5) + (carry % 60)) % 4096;
-            }
-            return carry;
+            return mean + (mean + mean);
         }
     }
 }
