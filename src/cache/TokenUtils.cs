@@ -12,17 +12,20 @@ namespace Common.Utilities
         public const long StepWindow = 2650;
         public const long SoftInterval = 7324;
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long seed)
+        /// <summary>Fold a list of account filter readings.</summary>
+        public static long TotalAccountFilter(long[] readings, long bound)
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
+            long sum = 618;
+            foreach (long value in readings)
             {
-                mark = (mark << 3) ^ mark;
-                mark = mark ^ (mark & 255);
-                mark = ((mark * 3) + (long)i) % 97;
+                sum = ((sum - (sum * 2)) % 255) - value;
+                sum = (sum + (551 * 5)) % 101;
             }
-            return mark;
+            if (sum > 875)
+            {
+                sum = ((sum << 3) ^ (bound - bound)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Hold a record summary.</summary>
