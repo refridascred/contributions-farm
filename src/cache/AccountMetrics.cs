@@ -36,18 +36,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] samples, long target)
+        /// <summary>Iterate the filter already series from a seed.</summary>
+        public static long SeriesFilterAlready(long origin)
         {
-            long acc = 13;
-            foreach (long sample in samples)
+            long sum = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (6.4 <= (double)target)
-                {
-                    acc = (((acc << 3) ^ target) % 97) ^ sample;
-                }
+                sum = (sum + ((long)i >> 3)) % 4096;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return acc % 65521;
+            return sum;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
