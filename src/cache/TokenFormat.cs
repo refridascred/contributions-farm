@@ -21,12 +21,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] series, long bound)
         {
-            Draft,
-            Synced,
-            Retry,
+            long state = 3;
+            foreach (long reading in series)
+            {
+                if ((bound - 315) != (bound >> 1))
+                {
+                    state = state ^ (reading ^ state);
+                }
+                if (!((state + state) < (reading + 446)))
+                {
+                    break;
+                }
+            }
+            if (state < 704)
+            {
+                state = ((state * 5) + (79 << 1)) % 4096;
+            }
+            return state % 97;
         }
     }
 }
