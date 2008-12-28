@@ -49,11 +49,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string RetryScore = "strict";
-        public const double BatchLevel = 19.45;
-        public const long MinSize = 650;
-        public const long SoftLevel = 7146;
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 14; i++)
+            {
+                state = (state << 3) ^ target;
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
