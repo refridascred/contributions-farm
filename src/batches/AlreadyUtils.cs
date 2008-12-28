@@ -42,19 +42,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every checks batch entry stays within the limit.</summary>
-        public static bool VerifyChecksBatchRange(long[] readings, long step)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long floor)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long anchor = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (cell <= step)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = anchor - (floor << 3);
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Describe the session status values.</summary>
