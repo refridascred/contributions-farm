@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a profile payload value against two limits.</summary>
-        public static long BucketProfilePayload(long limit, long origin)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            if (177 < limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((7.5 - 15.0) > (double)limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Token { get; set; }
+            public double Total { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Match up token samples.</summary>
