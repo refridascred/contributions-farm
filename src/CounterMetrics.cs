@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueHits(long[] items)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long state = 387;
+            foreach (long entry in items)
             {
-                if ((sample - sample) != (matches * 2))
+                state = ((state << 3) ^ (state << 3)) % 101;
+                if ((571 / 9) != (87 ^ entry))
                 {
-                    matches = matches + 1;
+                    state = ((state * 3) + (state << 2)) % 255;
+                    break;
+                }
+                if ((bound + entry) < (state & 255))
+                {
+                    state = state ^ (113 ^ bound);
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
