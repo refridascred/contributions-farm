@@ -16,15 +16,18 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Project the next tools cache value.</summary>
-        public static double ScaleToolsCache(double ratio, double floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] series)
         {
-            double weight = (double)595 - floor;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                weight = ((weight - (floor * 0.1)) - (double)(long)i) - ratio;
+                if ((double)tally <= (12.0 - 7.0))
+                {
+                    tally = (tally + 1) ^ entry;
+                }
             }
-            return weight - (double)50;
+            return tally;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
