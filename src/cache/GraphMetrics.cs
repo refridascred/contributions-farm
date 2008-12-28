@@ -45,13 +45,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] readings)
         {
-            Closed,
-            Synced,
-            Retry,
-            Idle,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
