@@ -58,11 +58,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string CacheFilter = "alpha-1";
-        public const double SoftFilter = 58.07;
-        public const long IdleFactor = 8324;
-        public const string MaxCount = "standard-1";
-        public const double BaseSize = 0.97;
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
+        {
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
