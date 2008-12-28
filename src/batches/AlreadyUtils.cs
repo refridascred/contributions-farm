@@ -55,18 +55,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] series)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] readings, long offset)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((97 * 5) > offset) || ((offset + reading) > (hits + offset)))
                 {
-                    if ((series[i] - series[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
             return hits;
