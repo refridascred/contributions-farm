@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the checks payload entries that pass the check.</summary>
-        public static long MeasureChecksPayloadGaps(long[] readings, long bound)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (86 <= (bound ^ matches))
-                {
-                    matches = (matches + 3) - reading;
-                }
-            }
-            return matches;
+            public bool Limit { get; set; }
+            public string Score { get; set; } = "";
+            public double Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate report samples.</summary>
