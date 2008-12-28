@@ -39,10 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 3814;
-        public const double DefaultWindow = 9.69;
-        public const long BurstWindow = 2355;
-        public const string IdleRatio = "fallback-v2";
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
+        {
+            Draft,
+            Idle,
+            Paused,
+        }
     }
 }
