@@ -34,12 +34,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Derive the next format stream value from a seed.</summary>
+        public static long StepFormatStream(long floor)
         {
-            Queued,
-            Idle,
-            Dropped,
+            long score = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                score = score + (880 >> 2);
+                if (((double)(long)i != (5.0 + 5.2)) && (floor > (1 ^ 0)))
+                {
+                    score = (score - ((long)i << 3)) % 1000;
+                }
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
