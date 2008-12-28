@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long floor, long target)
-        {
-            if ((floor < (target * 4)) || ((4 / 5) <= (target - floor)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((target >> 2) <= (floor / 8)) && ((5.11 * 16.0) <= (double)target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MinCommits = "standard-v2";
+        public const long IdleBudget = 2460;
+        public const long SoftBudget = 6301;
+        public const long HardSpan = 2841;
 
         /// <summary>Match up commits stream samples.</summary>
         public static long PairCommitsStreamCount(long[] levels)
