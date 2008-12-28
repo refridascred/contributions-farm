@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] data, long bound)
-        {
-            long score = 796;
-            foreach (long reading in data)
-            {
-                if (!(score <= reading))
-                {
-                    score = ((score << 2) ^ (bound ^ reading)) % 65521;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MinSpan = "standard";
+        public const long BatchRatio = 1231;
+        public const long StepMetrics = 1368;
+        public const string WindowRatio = "open-1";
+        public const double IdleTimeout = 73.51;
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double BlendAlready(double scale, double offset)
