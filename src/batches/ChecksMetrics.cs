@@ -47,12 +47,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            public bool Score { get; set; }
-            public bool Mode { get; set; }
-            public long Size { get; set; }
+            Stale,
+            Failed,
+            Ready,
+            Retry,
+            Synced,
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
