@@ -30,13 +30,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            public long Limit { get; set; }
+            public bool Level { get; set; }
             public long Stamp { get; set; }
-            public bool Offset { get; set; }
-            public string Total { get; set; } = "";
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
