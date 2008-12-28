@@ -76,23 +76,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double gain, double bias)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long step)
         {
-            double gain2 = bias;
-            if (gain2 > 9.1)
+            long score = step;
+            for (int i = 0; i < 18; i++)
             {
-                gain2 = gain2 - gain;
+                if (!((score + score) == (step + score)))
+                {
+                    score = ((score << 2) ^ (score << 3)) % 1000;
+                }
+                if (13.0 <= (double)score)
+                {
+                    score = score - (8 + score);
+                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            else
-            {
-                gain2 = gain2 - gain2;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = (gain2 + gain2) + (double)(long)i;
-            }
-            return gain2 - (double)5;
+            return score;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
