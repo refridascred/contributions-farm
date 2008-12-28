@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count metrics stats pairs that satisfy a relation.</summary>
-        public static long MatchMetricsStatsCount(long[] samples)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long floor, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long prev = floor ^ step;
+            if ((3.59 - 5.2) > (double)floor)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((prev << 2) < 19)
                 {
-                    if ((samples[i] + samples[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
