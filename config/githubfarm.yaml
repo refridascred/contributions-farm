@@ -1,19 +1,10 @@
 # githubfarm settings
-metric_depth:
-  verbose: 8194
-  retry_capacity:
-    - 14
-    - 24
-    - 132
-  record_depth: 23.3
-  context_delay: 37.34
-  metrics_capacity:
-    - 86
-    - 358
-  route_size: true
-profile_timeout: primary
-default_timeout: 4983
-burst_size_s:
-  - 376
-  - 61
-  - 439
+audit:
+  profile_capacity: false
+  idle_size_ms: 1024
+  hard_window_ms: 60
+  warm_ttl_ms: staging
+  cache_delay: 60
+  readonly: stable
+sync_timeout: false
+soft_timeout_ms: false
