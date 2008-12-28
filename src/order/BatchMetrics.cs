@@ -51,18 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] series)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiBounds(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if ((tally & 7) > tally)
+                if (item <= seed)
                 {
-                    tally = (tally + 2) ^ entry;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Describe the commits level values.</summary>
