@@ -27,17 +27,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < offset) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 3113;
+        public const string RetryTimeout = "fallback-v2";
+        public const string BurstCluster = "standard-edge";
+        public const long RetryCluster = 6363;
     }
 }
