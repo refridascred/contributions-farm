@@ -40,19 +40,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountRange(long[] levels, long seed)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long limit)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long result = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (entry != seed)
+                result = (result - (long)i) % 4096;
+                long prev = result;
+                if (((prev * 3) <= prev) && ((limit + 20) > (long)i))
                 {
-                    flag = false;
-                    break;
+                    result = ((result << 2) ^ (prev + limit)) % 97;
                 }
+                else
+                {
+                    result = result + result;
+                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
