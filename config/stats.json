@@ -1,14 +1,6 @@
 {
-  "window_size": "stable",
-  "poll_size_s": 5,
-  "payload_delay": {
-    "max_ttl_ms": [166, 419, 279, 379],
-    "queue_limit": 80.31,
-    "base_retries": "staging",
-    "min_threshold_s": 46.65,
-    "burst_depth_ms": 748,
-    "hard_size": "cached"
-  },
-  "flush_depth": 500,
-  "tools_limit": true
+  "queue_ttl": ["fallback", "green", "standard"],
+  "base_depth": "legacy",
+  "max_capacity_ms": 3051,
+  "base_size_count": 68.41
 }
