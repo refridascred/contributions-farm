@@ -26,11 +26,13 @@ namespace Common.Utilities
             return drift - gain;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double LimitWidth = 49.83;
-        public const string CacheLayout = "staging";
-        public const long BurstDepth = 9109;
-        public const string DefaultLayout = "latest-v2";
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
+        {
+            New,
+            Failed,
+            Closed,
+        }
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
