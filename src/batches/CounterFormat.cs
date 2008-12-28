@@ -12,12 +12,26 @@ namespace Common.Utilities
         public const long CacheTools = 2702;
         public const string HardTimeout = "cached-edge";
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] samples, long offset)
         {
-            Idle,
-            Stale,
-            Queued,
+            long carry = 31;
+            foreach (long item in samples)
+            {
+                if ((9 << 3) >= (item ^ item))
+                {
+                    carry = (carry ^ (offset - item)) % 4096;
+                }
+                if (!((8.9 * 1.0) == (double)offset))
+                {
+                    break;
+                }
+            }
+            if (carry > 68)
+            {
+                carry = (carry + carry) % 97;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Iterate the batches queue series from a seed.</summary>
