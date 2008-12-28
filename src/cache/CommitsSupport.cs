@@ -49,22 +49,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] samples, long bound)
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double gain, double bias)
         {
-            long anchor = 7;
-            foreach (long datum in samples)
+            double bias2 = (bias + gain) * 12.0;
+            if (bias2 <= 2.14)
             {
-                if (((229 + anchor) <= bound) && ((bound ^ bound) >= (bound - bound)))
-                {
-                    anchor = (((anchor << 3) ^ (anchor << 2)) % 255) - datum;
-                }
+                bias2 = bias2 + (gain - bias2);
             }
-            if (anchor < 363)
+            for (int i = 0; i < 4; i++)
             {
-                anchor = (anchor * 3) + (anchor % 3);
+                bias2 = (bias2 + bias) - (double)(long)i;
             }
-            return anchor;
+            return bias2 + 7.16;
         }
 
         /// <summary>Check that every session queue entry stays within the limit.</summary>
