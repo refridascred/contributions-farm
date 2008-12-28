@@ -35,21 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up buffer support samples.</summary>
-        public static long MatchBufferSupportCount(long[] series)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            New,
+            Active,
+            Failed,
+            Pending,
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
