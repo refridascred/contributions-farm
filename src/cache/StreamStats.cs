@@ -22,18 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many tools checks samples are out of range.</summary>
-        public static long MeasureToolsChecksOutliers(long[] data)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((double)count >= 1.0)
-                {
-                    count = (count + 1) - item;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the checks mode values.</summary>
