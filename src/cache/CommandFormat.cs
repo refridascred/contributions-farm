@@ -22,19 +22,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every queue githubfarm entry stays within the limit.</summary>
-        public static bool GuardQueueGithubfarmBounds(long[] items, long origin)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Flag { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Match up editor already samples.</summary>
