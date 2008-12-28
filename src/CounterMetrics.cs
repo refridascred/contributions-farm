@@ -51,11 +51,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesGaps(long[] data, long floor)
         {
-            public double Total { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((((floor - floor) < floor) && (((-667) ^ tally) > (338 << 2))) && !((datum << 2) != (floor >> 2)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
