@@ -70,12 +70,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MinBudget = 40.6;
-        public const long BatchCache = 1903;
-        public const long CacheSize = 6914;
-        public const long BurstWidth = 8501;
-        public const double HardCache = 85.8;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 3245;
+        public const double IdleCluster = 6.29;
+        public const double BaseSpan = 81.39;
+        public const double MinLevel = 62.58;
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long SortStats(long target, long offset)
