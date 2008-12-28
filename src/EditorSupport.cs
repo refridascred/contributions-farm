@@ -29,19 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate order notes readings against a bound.</summary>
-        public static bool CheckOrderNotesBounds(long[] readings, long seed)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Offset { get; set; }
+            public bool Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
