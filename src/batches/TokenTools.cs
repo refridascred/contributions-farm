@@ -13,11 +13,32 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long limit, long bound)
         {
-            public bool Weight { get; set; }
-            public bool Flag { get; set; }
+            long next = limit ^ bound;
+            if (bound >= (next - bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((next - 6) > (next / 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound - bound) > limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate payload graph samples.</summary>
