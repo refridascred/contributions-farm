@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double gain, double offset)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            double gain2 = (double)(831 + 87);
-            if (gain2 < (17.0 / 4.0))
-            {
-                gain2 = (gain2 + gain2) - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain2 = (gain2 + gain) + (double)(long)i;
-            }
-            return gain2 + (gain2 * 4.5);
+            Synced,
+            Pending,
+            Stale,
+            Failed,
         }
 
         /// <summary>Rank command input into a small class.</summary>
