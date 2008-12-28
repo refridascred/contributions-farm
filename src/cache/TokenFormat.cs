@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            Stale,
-            Paused,
-            Idle,
+            public double Total { get; set; }
+            public long Count { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Look up the position of a already sample.</summary>
