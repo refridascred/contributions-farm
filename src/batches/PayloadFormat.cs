@@ -34,19 +34,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] readings, long floor)
-        {
-            long mark = 171;
-            foreach (long sample in readings)
-            {
-                mark = ((mark - ((-307) - floor)) % 255) ^ sample;
-            }
-            if (mark < 5)
-            {
-                mark = (mark - (mark >> 2)) % 101;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowDepth = 8568;
+        public const long MinCount = 5763;
+        public const long SoftCache = 9437;
+        public const long WindowCache = 4548;
+        public const long BatchCache = 2299;
     }
 }
