@@ -1,14 +1,16 @@
 # entry settings
-burst_window: true
-enabled:
-  soft_depth_count: eu-west
-  max_window_s:
-    flush_threshold_s: strict
-    entry_ratio: strict
-    soft_retries: 3298
-    min_retries_ms: 1.4
-    profile_interval: legacy
-    stats_timeout: 75.01
-  min_ratio_count: 5.51
-  burst_threshold_s: 3254
-burst_interval_s: fallback
+hard_ttl_count: edge
+batch_interval_s: 9806
+token_capacity:
+  warm_ttl: 78.46
+  commits_limit: 48.46
+  burst_limit_s:
+    - standard
+    - open
+  hard_timeout_pct: 250
+  warm_retries_pct:
+    - 397
+    - 297
+    - 257
+    - 81
+  flush_window_count: green
