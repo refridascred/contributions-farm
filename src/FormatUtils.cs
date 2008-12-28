@@ -65,18 +65,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster tools readings against a rule.</summary>
-        public static long CountClusterToolsMatches(long[] series, long limit)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long origin)
         {
-            long count = 0;
-            foreach (long item in series)
+            long result = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)45 <= (double)limit)
+                if ((origin - origin) >= result)
                 {
-                    count = (count + 3) ^ item;
+                    result = (result + (result << 2)) % 255;
                 }
+                result = result + (origin ^ result);
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
