@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueRange(long[] levels, long limit)
         {
-            public string Label { get; set; } = "";
-            public double Offset { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
