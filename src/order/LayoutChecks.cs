@@ -30,11 +30,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinStream = "latest-edge";
-        public const long BaseSpan = 9719;
-        public const long HardStream = 4046;
-        public const string SoftStream = "primary-edge";
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountBounds(long[] values, long step)
+        {
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string IdleLevel = "legacy-edge";
