@@ -26,22 +26,17 @@ namespace Common.Utilities
             return gain2 - 3.62;
         }
 
-        /// <summary>Count the metric githubfarm entries that pass the check.</summary>
-        public static long AuditMetricGithubfarmGaps(long[] levels)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading - 0) < (count * 3))
+                if (levels[i] < seed)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Find the first command session entry that matches the target.</summary>
