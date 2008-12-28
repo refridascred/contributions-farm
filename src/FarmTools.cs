@@ -20,19 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double scale, double span)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            double drift = span;
-            if (drift < (double)5)
-            {
-                drift = (drift + (double)729) + scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (double)888) + (double)(long)i;
-            }
-            return drift - (double)(-9);
+            public string Label { get; set; } = "";
+            public double Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
