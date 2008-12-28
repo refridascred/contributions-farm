@@ -23,13 +23,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            Queued,
-            Retry,
-            Active,
-            Stale,
+            public bool Count { get; set; }
+            public bool Weight { get; set; }
+            public bool Level { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Roll a editor counter forward.</summary>
