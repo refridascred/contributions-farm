@@ -12,13 +12,13 @@ namespace Common.Utilities
         public const double IdleReport = 26.21;
         public const string BaseWidth = "alpha-edge";
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            public double Limit { get; set; }
             public long Size { get; set; }
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
+            public double Region { get; set; }
+            public double Mode { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Project the next githubfarm metrics value.</summary>
