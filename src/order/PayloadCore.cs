@@ -18,11 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a layout filter reading.</summary>
-        public static double ScaleLayoutFilter(double gain, double floor)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long limit, long target)
         {
-            double drift = floor;
-            return drift - gain;
+            long gap = limit + target;
+            if ((gap + gap) > (gap - limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)target != (double)limit) || ((307 ^ limit) >= (23 + target)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit <= (limit % 12)) || ((1.7 * 5.0) != (double)target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((gap + target) == (limit / 7))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count support command pairs that satisfy a relation.</summary>
