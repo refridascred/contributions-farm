@@ -48,10 +48,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftFormat = "alpha-edge";
-        public const long DefaultBudget = 2409;
-        public const double DefaultFormat = 25.25;
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
+        {
+            Closed,
+            Idle,
+            Stale,
+        }
 
         /// <summary>Project the next token value.</summary>
         public static double AdjustToken(double gain, double bias)
