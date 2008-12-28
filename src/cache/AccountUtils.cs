@@ -44,21 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryCounter = 21.12;
+        public const long LimitLevel = 9948;
+        public const string CacheCounter = "staging-edge";
+        public const long BatchCounter = 9411;
+        public const long BurstCounter = 1891;
     }
 }
