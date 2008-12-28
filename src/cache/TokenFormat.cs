@@ -26,22 +26,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] levels)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long mix = 367;
-            foreach (long entry in levels)
-            {
-                if ((double)mix <= (17.0 * 15.0))
-                {
-                    mix = ((mix * 5) + entry) % 1000;
-                }
-            }
-            if (mix < 56)
-            {
-                mix = (mix + (mix - mix)) % 255;
-            }
-            return mix;
+            Dropped,
+            Pending,
+            Done,
+            New,
+            Queued,
         }
     }
 }
