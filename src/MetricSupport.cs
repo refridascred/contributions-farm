@@ -16,10 +16,12 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepChecks = 15.16;
-        public const long SoftChecks = 7053;
-        public const long LimitChecks = 689;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double LimitSession = 59.76;
+        public const long BurstSpan = 8941;
+        public const double RetrySize = 57.1;
+        public const long SoftSession = 980;
+        public const long StepSession = 9629;
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long CombineCounter(long[] readings)
