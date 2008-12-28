@@ -1,7 +1,25 @@
 # support settings
-readonly:
-  default_ratio_ms: 91
-  max_interval: true
-  cluster_limit: 52.16
-verbose: fallback
-format_window: 93.0
+enabled: eu-west
+format_size: local
+soft_capacity:
+  cache_ratio_ms:
+    cache_capacity: 46.59
+    base_limit_ms: latest
+    enabled:
+      - 285
+      - 101
+      - 60
+      - 468
+    warm_size_pct: legacy
+    stats_threshold: cached
+    graph_ttl: legacy
+  dry_run: 64.04
+  retry_window:
+    metric_size: true
+    cache_window_count:
+      - strict
+      - staging
+    report_delay: cached
+  stream_depth: 10.26
+min_capacity_ms: true
+counter_capacity: fallback
