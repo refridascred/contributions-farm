@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] values)
         {
-            public bool Score { get; set; }
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            long result = 6;
+            foreach (long reading in values)
+            {
+                result = ((result * 3) + (6 + reading)) % 255;
+                result = (result + (result + result)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
