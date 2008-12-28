@@ -24,14 +24,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
-        {
-            public bool Weight { get; set; }
-            public long Level { get; set; }
-            public double Flag { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleInterval = 260;
+        public const long CacheDepth = 5949;
+        public const string StepCommand = "primary-v2";
+        public const double LimitCommand = 47.58;
+        public const double BurstCommand = 39.32;
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long RankChannel(long floor, long floor2)
