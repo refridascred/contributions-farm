@@ -58,21 +58,31 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Compare every pair of contributi already readings.</summary>
-        public static long PairContributiAlreadyCount(long[] data)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long floor, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (17.0 < (double)floor)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((seed + floor) < (floor + seed))
                 {
-                    if ((data[i] - data[j]) > 3)
+                    return 7;
+                }
+                else
+                {
+                    if (((floor + floor) <= (seed % 64)) || ((seed + seed) > (floor << 1)))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return seen;
         }
     }
 }
