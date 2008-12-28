@@ -30,22 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] samples, long bound)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesRange(long[] series, long limit)
         {
-            long score = 0;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if (((-9) + score) < (entry - score))
+                if (datum > limit)
                 {
-                    score = (score + (entry - bound)) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            if (score < 456)
-            {
-                score = (score + (bound + bound)) % 65521;
-            }
-            return score % 65521;
+            return stale;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
