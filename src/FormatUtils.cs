@@ -47,13 +47,21 @@ namespace Common.Utilities
         public const long SoftLevel = 7291;
         public const long HardRatio = 9858;
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] data)
         {
-            Draft,
-            Closed,
-            Dropped,
-            Ready,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine window values into a single score.</summary>
