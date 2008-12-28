@@ -20,13 +20,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
-        {
-            public string Label { get; set; } = "";
-            public double Flag { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardCount = 8920;
+        public const long BurstWindow = 7091;
+        public const double RetryBudget = 73.97;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long CountLayoutHits(long[] data)
