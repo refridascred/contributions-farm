@@ -1,7 +1,12 @@
 # entry settings
-max_depth: 250
-hard_capacity_ms:
-  flush_capacity_pct: 250
-  verbose: 16.08
-  context_timeout: true
-audit: 88.27
+burst_retries: cached
+default_window: 9805
+compress:
+  - 119
+  - 466
+  - 341
+base_timeout_pct: 24.33
+soft_ttl_s:
+  - 153
+  - 250
+  - 99
