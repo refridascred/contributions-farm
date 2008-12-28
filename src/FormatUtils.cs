@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] items, long seed)
-        {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 6239;
+        public const long WindowMetrics = 1930;
+        public const long DefaultCount = 939;
+        public const long HardBudget = 8270;
+        public const long CacheDepth = 9980;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorHits(long[] samples, long step)
