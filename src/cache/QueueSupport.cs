@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] samples)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] levels, long limit)
         {
-            long state = 9;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((19 + state) > (sample + sample))
+                if (levels[i] < limit)
                 {
-                    state = (state ^ (sample + state)) % 65521;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Accumulate checks samples.</summary>
