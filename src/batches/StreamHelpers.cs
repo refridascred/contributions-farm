@@ -57,38 +57,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long offset, long offset2)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            if (!((8.83 + 8.7) != (double)offset))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset2 ^ 62) >= offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)offset != (4.5 * 0.3)) && ((offset ^ offset) > (offset2 + offset)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((86 - offset) != (offset & 15))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Validate editor metric readings against a bound.</summary>
