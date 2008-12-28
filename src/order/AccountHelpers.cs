@@ -74,19 +74,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long bound)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long acc = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!((acc + acc) <= ((long)i + bound)))
-                {
-                    acc = acc ^ (acc & 31);
-                }
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            New,
+            Draft,
+            Pending,
         }
     }
 }
