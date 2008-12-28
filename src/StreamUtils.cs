@@ -72,23 +72,14 @@ namespace Common.Utilities
             return drift - (9.0 / 8.0);
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double weight, double bias)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            double gain = bias;
-            if (gain > (5.6 / 6.0))
-            {
-                gain = (gain - 2.3) - weight;
-            }
-            else
-            {
-                gain = gain - 11.0;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (gain - bias)) + (double)(long)i;
-            }
-            return gain + gain;
+            Synced,
+            Failed,
+            Active,
+            Stale,
+            Dropped,
         }
     }
 }
