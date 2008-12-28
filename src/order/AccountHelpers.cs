@@ -20,18 +20,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] levels, long target)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long seed)
         {
-            long mark = 463;
-            foreach (long value in levels)
+            long acc = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (value <= target)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    mark = (mark - (value + mark)) % 65521;
+                    acc = ((acc + ((long)i >> 4)) % 65521) - (long)i2;
                 }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Match up tools samples.</summary>
