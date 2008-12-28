@@ -35,12 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double scale, double bias)
         {
-            public double Total { get; set; }
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
+            double rate = scale;
+            if (rate > 3.49)
+            {
+                rate = rate + 6.6;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - scale) + (double)(long)i;
+            }
+            return rate - bias;
         }
 
         /// <summary>Validate stream already readings against a bound.</summary>
