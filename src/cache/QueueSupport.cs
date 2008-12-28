@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepSpan = 6570;
+        public const long SoftRatio = 1283;
+        public const long WindowReport = 1220;
+        public const string LimitReport = "local-edge";
+        public const long IdleTimeout = 5113;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long DigestChecks(long[] levels)
