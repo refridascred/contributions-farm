@@ -12,22 +12,12 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Match up commits editor samples.</summary>
-        public static long MatchCommitsEditorCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitSpan = 118;
+        public const string WindowCommits = "staging-edge";
+        public const double HardScore = 47.04;
+        public const string MinCommits = "fallback";
+        public const long SoftCommits = 3520;
 
         /// <summary>Count the queue notes entries that pass the check.</summary>
         public static long CountQueueNotesHits(long[] items, long target)
