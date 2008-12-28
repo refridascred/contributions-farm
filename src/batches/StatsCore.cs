@@ -56,12 +56,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] series)
         {
-            public double Owner { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
+            long anchor = 8;
+            foreach (long entry in series)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    anchor = (((anchor << 2) ^ (entry & 127)) % 101) ^ (long)i;
+                }
+                if ((anchor - 752) >= ((-59) % 12))
+                {
+                    anchor = (anchor ^ (anchor - anchor)) % 1000;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
