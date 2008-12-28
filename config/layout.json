@@ -1,6 +1,8 @@
 {
-  "base_ratio": 43,
-  "account_capacity": [412, 6, 55],
-  "queue_timeout": ["local", "strict"],
-  "record_threshold": "primary"
+  "idle_threshold_s": "open",
+  "base_limit": 96.24,
+  "warm_size": true,
+  "stream_delay": "open",
+  "verbose": ["local", "primary"],
+  "burst_window": 61.98
 }
