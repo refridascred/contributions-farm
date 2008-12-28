@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] data)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] items, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (671 >= (sample * 2))
                 {
-                    if ((data[i] ^ data[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) - floor;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Accumulate report samples.</summary>
