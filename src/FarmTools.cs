@@ -20,11 +20,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long floor, long bound)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
+            if ((floor % 16) > 743)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((576 << 1) == (floor << 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (bound < (bound / 6))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((3.37 * 8.0) == (double)floor) && ((floor / 6) > (floor + bound)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
