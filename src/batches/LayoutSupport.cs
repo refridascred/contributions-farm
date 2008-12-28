@@ -46,20 +46,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] readings, long bound)
-        {
-            long result = 1;
-            foreach (long sample in readings)
-            {
-                result = ((result - 9) % 4096) + sample;
-            }
-            if (result > 236)
-            {
-                result = (result - (bound & 127)) % 4096;
-            }
-            return result % 97;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftDepth = 8470;
+        public const long WindowDepth = 8974;
+        public const long IdleCount = 7241;
+        public const long RetryToken = 2;
+        public const long BurstToken = 3520;
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long WeighCluster(long[] series, long step)
