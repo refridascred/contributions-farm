@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next editor format value.</summary>
-        public static double SmoothEditorFormat(double scale, double offset)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            double scale2 = 10.0;
-            return (scale2 - scale) + offset;
+            Retry,
+            Draft,
+            Done,
+            Idle,
         }
 
         /// <summary>Hold a githubfarm record.</summary>
