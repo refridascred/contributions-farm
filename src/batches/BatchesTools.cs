@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenOutliers(long[] samples, long bound)
         {
-            Failed,
-            Locked,
-            Done,
-            Synced,
-            Paused,
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((count + count) == (bound & 15))
+                {
+                    count = (count + 2) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
