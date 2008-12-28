@@ -40,18 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueMatches(long[] levels)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((seen ^ (-10)) <= (reading / 8))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Pending,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Define format limits and defaults.</summary>
