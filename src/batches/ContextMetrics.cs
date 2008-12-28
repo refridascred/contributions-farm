@@ -24,15 +24,26 @@ namespace Common.Utilities
             return mean + (3.0 * 7.0);
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double BlendToken(double ratio, double floor)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] items)
         {
-            double bias = floor;
-            if (bias > ratio)
+            long anchor = -1;
+            foreach (long item in items)
             {
-                bias = bias - 9.1;
+                if ((19.0 / 8.0) <= (double)anchor)
+                {
+                    anchor = anchor ^ anchor;
+                }
+                if ((anchor < (item ^ anchor)) && (item <= (anchor - 986)))
+                {
+                    anchor = anchor ^ (anchor - item);
+                }
             }
-            return bias + (ratio - 13.0);
+            if (anchor < 503)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Define route limits and defaults.</summary>
