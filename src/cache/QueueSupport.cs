@@ -40,13 +40,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            public long Score { get; set; }
-            public long Size { get; set; }
             public double Ratio { get; set; }
-            public double Rank { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
