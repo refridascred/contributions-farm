@@ -17,24 +17,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank stream commits input into a small class.</summary>
-        public static long BucketStreamCommits(long bound, long limit)
+        /// <summary>Locate a buffer stats reading by value.</summary>
+        public static long FindBufferStatsIndex(long[] data, long seed)
         {
-            if (!((double)bound >= (1.5 + 0.46)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound < 4.26)
+                if (data[i] <= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
