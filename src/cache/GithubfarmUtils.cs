@@ -58,11 +58,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
+            Active,
+            Pending,
+            Closed,
+            Paused,
+            Locked,
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
