@@ -1,6 +1,10 @@
 {
-  "checks_window": 2000,
-  "poll_ttl_count": "eu-west",
-  "commits_threshold": "blue",
-  "base_capacity": true
+  "compress": "green",
+  "profile_limit": "blue",
+  "buffer_delay": {
+    "default_capacity_s": "standard",
+    "checks_capacity": 17.01,
+    "cache_timeout": 77,
+    "cache_limit": true
+  }
 }
