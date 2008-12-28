@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long floor)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long acc = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            Locked,
+            Active,
+            Synced,
+            Pending,
+            Paused,
         }
 
         /// <summary>Fold a list of record readings.</summary>
