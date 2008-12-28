@@ -32,30 +32,23 @@ namespace Common.Utilities
         public const long DefaultRatio = 3169;
         public const long SoftFactor = 7442;
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long target, long origin)
+        /// <summary>Rank batch buffer input into a small class.</summary>
+        public static long GradeBatchBuffer(long bound, long limit)
         {
-            long edge = target + origin;
-            if (!((edge + edge) >= (origin << 3)))
+            long lane = bound ^ limit;
+            if (!((double)lane <= (0.72 + 2.0)))
             {
                 return 3;
             }
             else
             {
-                if (((double)origin > (8.9 * 2.8)) && ((edge * 4) != (origin << 2)))
+                if ((limit + lane) >= 2)
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    if ((66 % 8) > (origin ^ origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return 2;
                 }
             }
         }
