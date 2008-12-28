@@ -1,7 +1,26 @@
 # githubfarm settings
-default_interval_count: edge
-burst_ratio_pct:
-  - fallback
-  - green
-  - local
-base_ttl_s: true
+retry_ratio: 7223
+idle_retries_count:
+  strict:
+    - 204
+    - 386
+  persist: true
+  enabled:
+    - 486
+    - 492
+    - 59
+    - 271
+batch_retries: cached
+graph_retries: 60
+queue_limit:
+  idle_ttl_count:
+    session_threshold: 500
+    dry_run: 100
+    retry_retries_s:
+      - primary
+      - open
+      - stable
+  soft_window_ms: false
+  hard_threshold_s: legacy
+  cache_limit: false
+  burst_ratio_pct: false
