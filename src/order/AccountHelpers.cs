@@ -18,20 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate contributi payload samples.</summary>
-        public static long WeighContributiPayload(long[] samples)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] values, long bound)
         {
-            long result = 496;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = result ^ (item & 255);
-                result = (result - (result - result)) % 255;
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            if (result < 6)
-            {
-                result = (result * 5) + result;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a cache entry.</summary>
