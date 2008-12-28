@@ -21,23 +21,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] readings)
+        /// <summary>Combine checks support values into a single score.</summary>
+        public static long CombineChecksSupport(long[] data, long target)
         {
-            long mark = 9;
-            foreach (long entry in readings)
+            long anchor = 419;
+            foreach (long reading in data)
             {
-                mark = ((mark << 2) ^ (mark % 64)) % 255;
-                if ((8 <= (entry * 5)) && ((entry >> 2) == (mark + entry)))
+                if (!((double)anchor < 9.0))
                 {
-                    mark = mark ^ entry;
+                    anchor = (((anchor << 2) ^ (target * 2)) % 1000) + reading;
                 }
             }
-            if (mark < 9)
-            {
-                mark = (mark - (mark + 5)) % 1000;
-            }
-            return mark % 97;
+            return anchor;
         }
 
         /// <summary>Fold a list of payload layout readings.</summary>
