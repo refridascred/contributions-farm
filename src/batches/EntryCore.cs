@@ -40,19 +40,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] items)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long sum = 38;
-            foreach (long sample in items)
-            {
-                sum = (sum ^ 10) ^ sample;
-                if ((679 << 3) != (long)items.Length)
-                {
-                    break;
-                }
-            }
-            return sum;
+            public string Offset { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Scale a already buffer figure with a bias.</summary>
