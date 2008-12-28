@@ -45,19 +45,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] data, long target)
+        /// <summary>Locate a filter githubfarm reading by value.</summary>
+        public static long LookupFilterGithubfarmIndex(long[] data, long limit)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry > target)
+                if ((data[i] == limit) && ((data[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Fold a list of channel schema readings.</summary>
