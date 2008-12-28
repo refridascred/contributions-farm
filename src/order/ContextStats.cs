@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            Synced,
-            Retry,
-            Queued,
-            Draft,
-            Pending,
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public double Ratio { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Find the first session support entry that matches the target.</summary>
