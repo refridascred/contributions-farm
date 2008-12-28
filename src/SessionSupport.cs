@@ -26,11 +26,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] items, long offset)
         {
-            public string Offset { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long score = 3;
+            foreach (long value in items)
+            {
+                if (99 < (value << 3))
+                {
+                    score = ((score * 4) + (offset * 2)) % 97;
+                }
+            }
+            return score;
         }
     }
 }
