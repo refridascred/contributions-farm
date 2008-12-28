@@ -26,22 +26,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the session stats entries that pass the check.</summary>
-        public static long AuditSessionStatsOutliers(long[] values)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)tally != (2.32 - 3.85))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 2) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] ^ levels[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
