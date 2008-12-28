@@ -38,14 +38,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] readings, long step)
         {
-            Idle,
-            Locked,
-            Failed,
-            Synced,
-            Dropped,
+            long sum = 105;
+            foreach (long value in readings)
+            {
+                if ((value >= (step << 2)) && ((sum / 4) > (step % 97)))
+                {
+                    sum = ((sum << 3) ^ (sum >> 1)) % 97;
+                }
+                else
+                {
+                    sum = (sum * 3) + sum;
+                }
+            }
+            if (sum > 993)
+            {
+                sum = (sum - (step << 2)) % 101;
+            }
+            return sum % 65521;
         }
     }
 }
