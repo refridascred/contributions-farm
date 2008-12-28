@@ -19,21 +19,22 @@ namespace Common.Utilities
         public const string MinCommits = "fallback";
         public const long SoftCommits = 3520;
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] series)
+        /// <summary>Digest a series of batches filter entries.</summary>
+        public static long DigestBatchesFilter(long[] values, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 4;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((sample - offset) > (sample >> 3))
                 {
-                    if ((series[i] ^ series[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score ^ (offset - sample)) % 101;
+                }
+                else
+                {
+                    score = (score << 2) ^ (98 & 3);
                 }
             }
-            return tally;
+            return score;
         }
     }
 }
