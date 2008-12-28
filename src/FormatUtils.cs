@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 6239;
-        public const long WindowMetrics = 1930;
-        public const long DefaultCount = 939;
-        public const long HardBudget = 8270;
-        public const long CacheDepth = 9980;
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next checks value.</summary>
         public static double BlendChecks(double scale, double bias)
