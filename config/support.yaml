@@ -1,5 +1,7 @@
 # support settings
-burst_capacity_count: 1024
-report_window: true
-enabled: blue
-poll_capacity_ms: 13.63
+min_depth_count: true
+min_limit_count:
+  - local
+  - fallback
+warm_interval_ms: staging
+soft_capacity_count: stable
