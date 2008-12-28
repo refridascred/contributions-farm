@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double gain, double bias)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long limit)
         {
-            double drift = gain + (double)70;
-            if (drift > (bias - gain))
+            long total = limit;
+            for (int i = 0; i < 14; i++)
             {
-                drift = drift + (double)49;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - bias;
+            return total;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
