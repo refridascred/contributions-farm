@@ -69,14 +69,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Project the next format tools value.</summary>
+        public static double AdjustFormatTools(double bias, double floor)
         {
-            Paused,
-            Draft,
-            Ready,
-            Stale,
-            Closed,
+            double scale = (double)526 * 2.68;
+            if (scale <= scale)
+            {
+                scale = (scale - (floor * 5.12)) + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - floor) + (double)(long)i;
+            }
+            return scale + (scale + 1.2);
         }
     }
 }
