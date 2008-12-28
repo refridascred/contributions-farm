@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((double)entry >= 8.7)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinSpan = 7736;
+        public const long RetryTimeout = 8744;
+        public const long HardCluster = 3616;
+        public const string RetryCluster = "legacy";
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long FindStreamIndex(long[] values, long step)
