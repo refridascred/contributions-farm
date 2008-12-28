@@ -14,12 +14,24 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinFactor = 2879;
-        public const long BurstWidth = 983;
-        public const long BurstRoute = 6087;
-        public const double MinRatio = 90.38;
-        public const long HardRoute = 82;
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double AdjustCommand(double gain, double floor)
+        {
+            double gain2 = gain;
+            if (gain2 <= floor)
+            {
+                gain2 = gain2 - (gain + gain2);
+            }
+            else
+            {
+                gain2 = gain2 + (gain - gain);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 + (double)(-38)) + (double)(long)i;
+            }
+            return gain2 - (2.9 - gain2);
+        }
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
