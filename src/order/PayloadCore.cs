@@ -25,21 +25,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] items)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long target, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((target >> 2) <= (target % 5))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((limit >> 2) > (4 - target))
                 {
-                    if ((items[i] ^ items[j]) < 12)
+                    return 7;
+                }
+                else
+                {
+                    if (((limit / 9) > target) && ((limit >> 4) < limit))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every stream notes entry stays within the limit.</summary>
