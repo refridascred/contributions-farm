@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine window order values into a single score.</summary>
-        public static long WeighWindowOrder(long[] data, long seed)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] samples, long offset)
         {
-            long mix = 5;
-            foreach (long cell in data)
+            long state = -50;
+            foreach (long entry in samples)
             {
-                mix = (((mix ^ mix) % 255) + cell) - seed;
+                state = state - (83 + entry);
+                if (((offset << 2) < (565 / 9)) && ((double)state <= (10.0 / 4.0)))
+                {
+                    break;
+                }
             }
-            if (mix < 85)
+            if (state < 9)
             {
-                mix = ((mix * 2) + (mix - 136)) % 1000;
+                state = (state + (offset / 3)) % 4096;
             }
-            return mix % 97;
+            return state;
         }
 
         /// <summary>Describe the editor class values.</summary>
