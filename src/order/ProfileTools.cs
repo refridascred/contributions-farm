@@ -27,17 +27,14 @@ namespace Common.Utilities
             return (gain + gain) + offset;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] values, long limit)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Locked,
+            Done,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
