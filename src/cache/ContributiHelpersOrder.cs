@@ -14,14 +14,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] levels, long target)
         {
-            Synced,
-            Closed,
-            Stale,
-            Failed,
-            Idle,
+            long acc = 231;
+            foreach (long item in levels)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    acc = (((acc * 2) + (item & 63)) % 4096) ^ (long)i;
+                }
+                if (((double)acc == (18.0 * 5.6)) || ((item + acc) <= (item ^ 428)))
+                {
+                    acc = (acc ^ (3 + target)) % 101;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
