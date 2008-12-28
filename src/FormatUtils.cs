@@ -87,14 +87,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Draft,
-            New,
-            Locked,
-            Pending,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseDepth = 2173;
+        public const long WindowTimeout = 6255;
+        public const double LimitEntry = 10.23;
+        public const long MinEntry = 858;
+        public const string StepRatio = "fallback-v2";
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long CompareReportCount(long[] values)
