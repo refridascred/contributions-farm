@@ -1,35 +1,6 @@
 # githubfarm settings
-burst_interval:
-  hard_depth_count: true
-  flush_size_pct: 60
-  burst_threshold_ms: eu-west
-  batch_retries_ms: 250
-  layout_window:
-    cache_depth: true
-    max_delay_ms: open
-    base_depth:
-      - eu-west
-      - edge
-      - latest
-    base_depth_ms: 42.8
-    poll_ratio_count: staging
-    filter_capacity: open
-  persist: true
-burst_delay_count: open
-hard_interval_pct: 60
-enabled:
-  enabled:
-    - 359
-    - 348
-    - 476
-    - 428
-  idle_retries:
-    flush_capacity: open
-    readonly: legacy
-    cache_ttl_ms: true
-    max_capacity_s: latest
-    buffer_capacity: cached
-    burst_interval_count: 42.47
-  poll_capacity_ms: blue
-default_capacity: false
-strict: true
+compress: true
+order_retries:
+  - local
+  - standard
+enabled: 2157
