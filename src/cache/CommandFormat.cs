@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double DefaultAlready = 14.0;
-        public const long StepAlready = 8377;
-        public const string RetryDepth = "legacy-1";
-        public const long SoftAlready = 4416;
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double ratio, double floor)
+        {
+            double rate = (double)((-12) << 1);
+            if (rate >= (double)5)
+            {
+                rate = rate + (ratio - 9.65);
+            }
+            else
+            {
+                rate = rate + floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate + (floor * 19.0);
+        }
 
         /// <summary>Accumulate report buffer samples.</summary>
         public static long ScoreReportBuffer(long[] series)
