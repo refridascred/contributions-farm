@@ -50,11 +50,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
+            public double Token { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
