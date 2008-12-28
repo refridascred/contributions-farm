@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 6484;
         public const string StepScore = "strict-v2";
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long bound)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long anchor = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    anchor = (anchor - (bound >> 2)) ^ (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            Failed,
+            Stale,
+            Synced,
+            Closed,
         }
 
         /// <summary>Describe the cache kind values.</summary>
