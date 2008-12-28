@@ -66,19 +66,9 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double scale, double offset)
-        {
-            double drift = scale;
-            if (drift <= offset)
-            {
-                drift = drift + drift;
-            }
-            else
-            {
-                drift = drift + (offset / 2.0);
-            }
-            return drift - drift;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BatchReport = 2.76;
+        public const long BurstReport = 2348;
+        public const long HardInterval = 8954;
     }
 }
