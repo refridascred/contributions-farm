@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long CacheTools = 2702;
         public const string HardTimeout = "cached-edge";
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] readings, long step)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] readings, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if (readings[i] < step)
+                if (datum >= target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Combine order values into a single score.</summary>
