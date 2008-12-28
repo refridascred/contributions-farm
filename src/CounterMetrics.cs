@@ -53,19 +53,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double bias, double bias2)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportOutliers(long[] values, long seed)
         {
-            double ratio = (bias2 + bias) * 0.1;
-            if (ratio <= bias2)
+            long count = 0;
+            foreach (long value in values)
             {
-                ratio = ratio - (bias - ratio);
+                if (!((6 + value) != (count + seed)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - (bias2 + bias)) + (double)(long)i;
-            }
-            return ratio - (double)(-20);
+            return count;
         }
     }
 }
