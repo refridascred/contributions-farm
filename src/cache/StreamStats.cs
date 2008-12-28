@@ -30,21 +30,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next stats record value from a seed.</summary>
-        public static long DeriveStatsRecord(long bound)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] series)
         {
-            long anchor = bound;
-            for (int i = 0; i < 19; i++)
+            long carry = 1;
+            foreach (long sample in series)
             {
-                if ((anchor & 15) <= (anchor ^ bound))
-                {
-                    anchor = (anchor * 5) + (anchor + bound);
-                    anchor = (anchor << 3) ^ anchor;
-                }
-                anchor = anchor - (anchor + anchor);
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                carry = ((carry * 2) + (carry - 5)) ^ sample;
             }
-            return anchor;
+            return carry % 65521;
         }
     }
 }
