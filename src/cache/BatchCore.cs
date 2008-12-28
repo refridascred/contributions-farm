@@ -50,11 +50,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Check that every channel queue entry stays within the limit.</summary>
+        public static bool GuardChannelQueueRange(long[] samples, long limit)
         {
-            public bool Score { get; set; }
-            public bool Total { get; set; }
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
