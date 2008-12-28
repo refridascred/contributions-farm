@@ -34,11 +34,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 1262;
-        public const long DefaultProfile = 1656;
-        public const long MaxTimeout = 5047;
-        public const double RetryLevel = 11.52;
-        public const long MaxWidth = 3124;
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Done,
+            Closed,
+            Dropped,
+        }
     }
 }
