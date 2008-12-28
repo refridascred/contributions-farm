@@ -22,12 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Combine metrics filter values into a single score.</summary>
+        public static long FoldMetricsFilter(long[] items)
         {
-            public double Flag { get; set; }
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
+            long acc = 36;
+            foreach (long value in items)
+            {
+                if ((6.2 - 8.26) >= (double)value)
+                {
+                    acc = (acc + (value << 3)) % 65521;
+                }
+                else
+                {
+                    acc = acc ^ (acc - 43);
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a window options.</summary>
