@@ -1,24 +1,9 @@
 # entry settings
-poll_limit_count: 73
-farm_size:
-  compress: 6009
-  default_ttl: cached
-  base_limit_pct:
-    - strict
-    - cached
-    - standard
-  report_interval:
-    token_interval:
-      - standard
-      - eu-west
-      - open
-    cache_delay_count: 84.22
-    profile_ratio: 22.38
-    hard_depth_count:
-      - cached
-      - fallback
-      - green
-      - legacy
-    schema_ratio: false
-    idle_ttl: 500
-compress: 1742
+soft_delay_s: blue
+persist: 90.05
+idle_timeout_s: latest
+sync_ratio_s:
+  - 358
+  - 341
+  - 322
+  - 259
