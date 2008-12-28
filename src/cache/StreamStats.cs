@@ -46,16 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a payload cache counter forward.</summary>
-        public static long StepPayloadCache(long limit)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] series, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = acc ^ 9;
-                acc = ((acc * 2) + (long)i) % 97;
+                if (series[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
