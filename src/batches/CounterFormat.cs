@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportMatches(long[] values)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((seen + seen) > seen)
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Validate entry checks readings against a bound.</summary>
