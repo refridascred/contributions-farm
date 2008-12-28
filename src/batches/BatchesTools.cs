@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutHits(long[] levels, long floor)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (!(((double)floor != (2.0 - 5.68)) && ((floor + 954) < (tally - floor))))
-                {
-                    tally = (tally + 3) ^ cell;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Audit tools channel readings against a rule.</summary>
