@@ -5,39 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a graph batch pair into a bucket.</summary>
-        public static long SortGraphBatch(long bound, long origin)
+        /// <summary>Derive the next context graph value from a seed.</summary>
+        public static long IterateContextGraph(long floor)
         {
-            long next = bound ^ origin;
-            if ((double)next > (double)origin)
+            long acc = floor;
+            for (int i = 0; i < 9; i++)
             {
-                return 5;
+                acc = acc - (floor ^ acc);
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (19.0 > (double)next)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((5.0 + 9.0) < (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((next + next) >= (next & 1)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
