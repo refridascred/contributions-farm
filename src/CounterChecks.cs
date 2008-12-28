@@ -55,16 +55,21 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long floor)
+        /// <summary>Compare every pair of route format readings.</summary>
+        public static long PairRouteFormatCount(long[] levels)
         {
-            long total = floor;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total + (total >> 5)) % 255;
-                total = ((total * 5) + (long)i) % 65521;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
