@@ -48,11 +48,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 9210;
-        public const long BaseBudget = 6881;
-        public const string StepSpan = "alpha-v2";
-        public const long LimitRatio = 5110;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long step, long offset)
+        {
+            if (!(step < offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset / 9) > step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)offset == (5.5 / 8.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset & 3) == (step + step))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
