@@ -33,16 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long offset)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long score = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                score = (score + (score * 5)) % 255;
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            public string Count { get; set; } = "";
+            public bool Label { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define channel limits and defaults.</summary>
