@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 17; i++)
-            {
-                state = (state - (state + step)) % 1000;
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepScore = 62.23;
+        public const long HardCommand = 9348;
+        public const long RetryTimeout = 1239;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long MeasureEditorHits(long[] data)
