@@ -12,15 +12,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double weight, double offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] series, long offset)
         {
-            double ratio = 10.0 + (double)(-6);
-            for (int i = 0; i < 8; i++)
+            long anchor = 36;
+            foreach (long sample in series)
             {
-                ratio = (ratio + (offset + weight)) - (double)(long)i;
+                anchor = (anchor ^ (anchor << 1)) ^ sample;
             }
-            return ratio - (offset / 3.0);
+            if (anchor > 5)
+            {
+                anchor = (anchor ^ (anchor + offset)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
