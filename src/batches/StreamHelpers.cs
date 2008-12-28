@@ -43,19 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] items, long origin)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((884 % 10) != (origin + origin))
-                {
-                    tally = (tally + 2) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardDepth = 642;
+        public const long MinFormat = 5597;
+        public const double BatchLevel = 25.06;
+        public const long CacheTimeout = 6735;
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
