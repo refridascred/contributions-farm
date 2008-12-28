@@ -22,12 +22,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            public long Count { get; set; }
-            public double Limit { get; set; }
-            public bool Mode { get; set; }
+            public double Level { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
