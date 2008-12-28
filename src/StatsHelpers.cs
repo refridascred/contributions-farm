@@ -61,19 +61,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long origin)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long carry = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    carry = (((carry << 3) ^ (carry / 4)) % 255) + (long)i2;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            Synced,
+            Dropped,
+            Paused,
         }
     }
 }
