@@ -19,14 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            Queued,
-            Failed,
-            New,
-            Paused,
-            Ready,
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the command mode values.</summary>
