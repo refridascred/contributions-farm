@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const long BaseMetric = 5627;
         public const double StepMetric = 45.13;
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double bias, double span)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            double bias2 = (bias + span) - span;
-            return bias2 - bias2;
+            New,
+            Dropped,
+            Ready,
+            Paused,
         }
 
         /// <summary>Describe the payload phase values.</summary>
