@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmMatches(long[] items)
         {
-            public double Flag { get; set; }
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((double)tally >= (11.0 * 1.0))
+                {
+                    tally = (tally + 2) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a report reading by value.</summary>
