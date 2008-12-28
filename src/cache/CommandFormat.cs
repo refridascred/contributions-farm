@@ -46,11 +46,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two support payload measurements.</summary>
-        public static double SmoothSupportPayload(double scale, double span)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            double load = scale;
-            return (load + (scale * 4.7)) + span;
+            Draft,
+            Ready,
+            Queued,
         }
     }
 }
