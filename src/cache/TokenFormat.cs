@@ -32,15 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double gain, double bias)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] levels)
         {
-            double gain2 = bias;
-            if (gain2 >= 9.0)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                gain2 = (gain2 - (10.0 + gain2)) + gain;
+                if ((2.37 + 3.7) == (double)sample)
+                {
+                    tally = tally + 2;
+                }
             }
-            return gain2 - (8.02 / 9.0);
+            return tally;
         }
     }
 }
