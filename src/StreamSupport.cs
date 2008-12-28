@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] readings)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = -7;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mark = (((mark * 2) + (681 / 3)) % 4096) ^ reading;
+                if ((6.9 / 7.0) < (double)mark)
                 {
-                    if ((readings[i] + readings[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            if (mark > 60)
+            {
+                mark = (mark + (409 + mark)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
