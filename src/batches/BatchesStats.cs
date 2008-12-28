@@ -32,16 +32,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long limit)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long result = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                result = result - limit;
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            Draft,
+            Closed,
+            Active,
+            Queued,
+            Retry,
         }
 
         /// <summary>Match up commits samples.</summary>
