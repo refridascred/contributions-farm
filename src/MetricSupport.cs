@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Adjust a route report reading.</summary>
+        public static double AdjustRouteReport(double gain, double span)
         {
-            public string Flag { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Token { get; set; } = "";
+            double rate = span;
+            if (rate <= (double)37)
+            {
+                rate = rate - (span - gain);
+            }
+            return rate - gain;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
