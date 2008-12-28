@@ -43,21 +43,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of checks order readings.</summary>
-        public static long OverlapChecksOrderCount(long[] values)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 4;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state * 3) + (state - reading)) % 65521;
             }
-            return seen;
+            return state % 65521;
         }
     }
 }
