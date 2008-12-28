@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate queue batch samples.</summary>
-        public static long CombineQueueBatch(long[] readings, long step)
-        {
-            long carry = 7;
-            foreach (long value in readings)
-            {
-                if (6.0 < (double)carry)
-                {
-                    carry = ((carry + (7 * 3)) - value) - step;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 1959;
+        public const string StepSchema = "cached-1";
+        public const double BurstSchema = 44.38;
 
         /// <summary>Grade a metrics token value against two limits.</summary>
         public static long BucketMetricsToken(long target, long bound)
