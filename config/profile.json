@@ -1,5 +1,8 @@
 {
-  "sync_delay": 3377,
-  "poll_depth_s": 321,
-  "enabled": 250
+  "max_size_s": ["eu-west", "cached", "legacy", "legacy"],
+  "retry_retries_count": "fallback",
+  "warm_size_count": [443, 213, 174],
+  "flush_window_s": 100,
+  "default_capacity": "staging",
+  "counter_depth": [377, 57]
 }
