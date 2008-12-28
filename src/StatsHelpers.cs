@@ -16,12 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            public bool Rank { get; set; }
-            public long Label { get; set; }
-            public long Level { get; set; }
+            public bool Weight { get; set; }
+            public double Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Combine cluster metric values into a single score.</summary>
