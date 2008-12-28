@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Adjust a githubfarm command reading.</summary>
+        public static double SmoothGithubfarmCommand(double gain, double offset)
         {
-            Draft,
-            Synced,
-            Locked,
-            Idle,
+            double bias = 4.5;
+            if (bias >= (bias + 7.2))
+            {
+                bias = (bias - (gain / 3.0)) + offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias - (9.85 - bias);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
