@@ -25,12 +25,18 @@ namespace Common.Utilities
         public const string MinInterval = "open";
         public const string MaxScore = "strict-edge";
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] data)
         {
-            Retry,
-            Active,
-            Dropped,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (matches > value)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
