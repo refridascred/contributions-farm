@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] levels, long limit)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long carry = 49;
-            foreach (long reading in levels)
-            {
-                carry = (carry - (limit ^ limit)) + reading;
-            }
-            if (carry > (-500))
-            {
-                carry = (carry << 3) ^ (68 * 4);
-            }
-            return carry;
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Audit notes farm readings against a rule.</summary>
