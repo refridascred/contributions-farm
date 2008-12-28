@@ -32,23 +32,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] levels)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long origin)
         {
-            long mix = 0;
-            foreach (long entry in levels)
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
             {
-                mix = mix + (mix % 60);
-                if (!((double)mix > (5.7 / 7.0)))
-                {
-                    mix = (mix ^ (entry - entry)) % 4096;
-                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            if (mix < 766)
-            {
-                mix = (mix ^ mix) % 101;
-            }
-            return mix;
+            return anchor;
         }
     }
 }
