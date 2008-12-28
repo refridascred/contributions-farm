@@ -71,39 +71,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long bound, long seed)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double bias, double offset)
         {
-            long edge = bound - seed;
-            if (seed < (29 - 757))
+            double weight = (double)(926 & 63);
+            if (weight < offset)
             {
-                return 2;
+                weight = weight + (bias + 18.0);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((6.36 - 7.0) >= (double)seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((12 < bound) && ((25 + edge) <= (edge << 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (6 >= (seed + edge))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                weight = (weight + (double)3) + (double)(long)i;
             }
+            return weight + (weight + weight);
         }
     }
 }
