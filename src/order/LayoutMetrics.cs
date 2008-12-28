@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the batches commits entries that pass the check.</summary>
-        public static long MeasureBatchesCommitsMatches(long[] readings, long limit)
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)matches < (17.0 - 7.69))
-                {
-                    matches = ((matches + 1) + datum) - limit;
-                }
-            }
-            return matches;
+            double load = (double)((-657) + 82);
+            return ((load - (double)75) + rate) + floor;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
