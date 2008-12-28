@@ -28,11 +28,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 9020;
-        public const string HardStream = "local-edge";
-        public const long HardCount = 4119;
-        public const long IdleInterval = 9570;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((datum + seen) > seen)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long LimitSize = 3705;
