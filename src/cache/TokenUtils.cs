@@ -12,10 +12,18 @@ namespace Common.Utilities
         public const long StepWindow = 2650;
         public const long SoftInterval = 7324;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 3325;
-        public const string BurstCluster = "latest-edge";
-        public const long WindowCluster = 8218;
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = (mark << 3) ^ mark;
+                mark = mark ^ (mark & 255);
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a record summary.</summary>
         public sealed class RecordSummary
