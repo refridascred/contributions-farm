@@ -14,18 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] items)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long score = -640;
-            foreach (long reading in items)
-            {
-                if ((score - reading) == (778 - reading))
-                {
-                    score = ((score * 2) + (score / 7)) % 255;
-                }
-            }
-            return score % 4096;
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public string Token { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
