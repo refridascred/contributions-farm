@@ -11,21 +11,15 @@ namespace Common.Utilities
         public const string WindowRatio = "fallback-1";
         public const long CacheDepth = 9568;
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] readings)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
