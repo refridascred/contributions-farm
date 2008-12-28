@@ -12,12 +12,32 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long offset, long limit)
         {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            long span = offset + limit;
+            if ((limit + limit) != (3 & 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if (span >= (offset & 255))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)span >= 1.19)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up filter samples.</summary>
