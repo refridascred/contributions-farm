@@ -32,26 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] series, long bound)
-        {
-            long state = 53;
-            foreach (long datum in series)
-            {
-                if ((bound < ((long)series.Length + state)) || ((double)state > (double)0))
-                {
-                    state = ((state << 2) ^ (bound << 3)) % 4096;
-                }
-                if ((datum & 1) > (bound & 3))
-                {
-                    break;
-                }
-            }
-            if (state > 8)
-            {
-                state = (state + (9 + (-8))) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepLevel = 2674;
+        public const long BaseBatch = 6555;
+        public const long BatchCount = 3766;
+        public const string IdleLevel = "stable-1";
+        public const long RetryBudget = 5801;
     }
 }
