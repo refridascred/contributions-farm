@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] data, long step)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsOutliers(long[] values)
         {
-            long state = 665;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((state - entry) > (state & 63))
+                if (((sample - 95) > (hits - hits)) && !((hits + hits) != (sample ^ hits)))
                 {
-                    state = (state * 2) + (step * 5);
+                    hits = hits + 3;
                 }
-                if ((state ^ (-6)) > 398)
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            if (state > 79)
-            {
-                state = state - state;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the account kind values.</summary>
