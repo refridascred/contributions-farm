@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadHits(long[] levels, long target)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (39 > (hits * 5))
+                if ((bound & 31) <= matches)
                 {
-                    hits = ((hits + 2) + item) - target;
+                    matches = (matches + 1) + cell;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
