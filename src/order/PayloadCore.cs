@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long CacheTimeout = 5559;
         public const double CacheStream = 35.01;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] readings, long origin)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportRange(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if ((3 * 2) >= hits)
+                if (value < bound)
                 {
-                    hits = ((hits + 2) + reading) - origin;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Check that every graph payload entry stays within the limit.</summary>
