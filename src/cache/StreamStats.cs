@@ -36,39 +36,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long limit, long bound)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long prev = limit ^ bound;
-            if (!((bound >> 3) == (prev + bound)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (bound >= 67)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit > (59 >> 2)) || (limit < (prev - bound)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((limit / 4) < (bound - prev)) || ((5 & 31) > prev))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
     }
 }
