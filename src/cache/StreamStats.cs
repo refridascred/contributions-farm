@@ -42,14 +42,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] data, long step)
         {
-            Retry,
-            Draft,
-            Ready,
-            Active,
-            Stale,
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
