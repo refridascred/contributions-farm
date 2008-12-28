@@ -38,18 +38,13 @@ namespace Common.Utilities
             return weight + (double)333;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionGaps(long[] readings, long target)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (!((value * 5) == (target & 7)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
