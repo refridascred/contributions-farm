@@ -13,19 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every window metric entry stays within the limit.</summary>
-        public static bool GuardWindowMetricRange(long[] items, long offset)
+        /// <summary>Check that every entry context entry stays within the limit.</summary>
+        public static bool VerifyEntryContextLimits(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if (value < offset)
+                if (sample >= limit)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
