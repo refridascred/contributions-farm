@@ -13,17 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] values, long step)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= step) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Flag { get; set; }
+            public double Stamp { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Audit metric editor readings against a rule.</summary>
