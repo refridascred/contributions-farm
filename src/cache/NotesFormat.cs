@@ -12,15 +12,25 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Iterate the token context series from a seed.</summary>
-        public static long SeriesTokenContext(long floor)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long offset, long offset2)
         {
-            long result = floor;
-            for (int i = 0; i < 4; i++)
+            long offset3 = offset + offset2;
+            if ((33 + offset) > 420)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                return 3;
             }
-            return result;
+            else
+            {
+                if ((offset3 / 8) >= offset2)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
