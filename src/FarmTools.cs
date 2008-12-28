@@ -20,18 +20,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate account record samples.</summary>
-        public static long WeighAccountRecord(long[] values)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long limit)
         {
-            long mix = 664;
-            foreach (long datum in values)
+            long score = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((datum + 958) > (datum - mix))
-                {
-                    mix = (mix * 5) + (datum + mix);
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Locate a session reading by value.</summary>
