@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] series)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long target)
         {
-            long score = 6;
-            foreach (long item in series)
+            long acc = target;
+            for (int i = 0; i < 5; i++)
             {
-                score = score ^ (item - score);
-                score = (score * 5) + item;
-                score = (score * 5) + (score + item);
+                acc = (acc ^ acc) % 101;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
