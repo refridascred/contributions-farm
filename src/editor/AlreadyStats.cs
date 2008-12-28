@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Already stats helpers.</summary>
     public static class AlreadyStats
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
-        {
-            public double Owner { get; set; }
-            public double Token { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 2316;
+        public const long RetryChannel = 2457;
+        public const long StepChannel = 8738;
+        public const long DefaultChannel = 1647;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long IdleRatio = 7791;
