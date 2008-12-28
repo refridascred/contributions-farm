@@ -48,11 +48,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double bias, double offset)
-        {
-            double drift = 8.54 + (double)843;
-            return (drift + (drift + offset)) + bias;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double SoftScore = 59.73;
+        public const string DefaultTools = "standard-v2";
+        public const long BurstLevel = 6594;
+        public const long MinSpan = 3854;
+        public const string RetryTools = "local-edge";
     }
 }
