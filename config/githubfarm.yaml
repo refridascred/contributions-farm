@@ -1,14 +1,5 @@
 # githubfarm settings
-base_interval_s: 7882
-audit: 1023
-cache_threshold_ms:
-  burst_ttl_ms: 90
-  burst_ttl:
-    - 362
-    - 262
-    - 455
-    - 306
-  min_depth_count: true
-  stream_ttl: 1
-soft_limit_ms: fallback
-farm_ttl: 70.75
+checks_interval: 3541
+max_window_ms: 31
+batch_capacity: 3435
+account_ttl: 7551
