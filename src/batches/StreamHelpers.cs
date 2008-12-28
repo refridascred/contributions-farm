@@ -49,14 +49,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            Dropped,
-            Ready,
-            New,
-            Failed,
-            Locked,
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Match up metrics samples.</summary>
