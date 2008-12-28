@@ -1,7 +1,5 @@
 {
-  "min_ttl_pct": 60,
-  "soft_ratio_count": false,
-  "poll_interval_pct": 100,
-  "batch_window": "staging",
-  "persist": 8177
+  "retry_ttl_pct": [85, 422],
+  "soft_retries": ["green", "staging", "local", "blue"],
+  "poll_limit": "blue"
 }
