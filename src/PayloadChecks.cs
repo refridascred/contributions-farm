@@ -47,16 +47,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next cluster checks value.</summary>
-        public static double AdjustClusterChecks(double rate, double offset)
-        {
-            double gain = offset / 4.0;
-            for (int i = 0; i < 3; i++)
-            {
-                gain = ((gain + offset) + (double)(long)i) - rate;
-            }
-            return gain - (double)867;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BatchSchema = 98.02;
+        public const long MinSchema = 980;
+        public const double HardCount = 90.65;
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long TallySchemaGaps(long[] items, long step)
