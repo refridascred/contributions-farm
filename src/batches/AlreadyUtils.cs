@@ -40,25 +40,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long limit)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long step)
         {
-            long result = limit;
+            long acc = step;
             for (int i = 0; i < 16; i++)
             {
-                result = (result - (long)i) % 4096;
-                long prev = result;
-                if (((prev * 3) <= prev) && ((limit + 20) > (long)i))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    result = ((result << 2) ^ (prev + limit)) % 97;
+                    acc = (((acc * 5) + step) % 4096) ^ (long)i2;
+                }
+                if ((double)(long)i <= (16.0 - 6.45))
+                {
+                    acc = (acc + (long)i) % 101;
                 }
                 else
                 {
-                    result = result + result;
+                    acc = acc - (step & 255);
                 }
-                result = ((result * 2) + (long)i) % 4093;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Check that every checks batch entry stays within the limit.</summary>
