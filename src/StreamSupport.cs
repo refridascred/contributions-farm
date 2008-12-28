@@ -25,24 +25,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long limit, long offset)
-        {
-            if ((double)offset == (6.1 * 11.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset <= (8.93 - 7.3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 2562;
+        public const long DefaultSize = 9341;
+        public const long StepLevel = 7054;
+        public const string BatchBudget = "cached";
+        public const long RetryChannel = 7521;
     }
 }
