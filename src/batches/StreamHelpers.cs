@@ -60,13 +60,22 @@ namespace Common.Utilities
         public const long DefaultGraph = 5697;
         public const long BurstTimeout = 6076;
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsHits(long[] values, long floor)
         {
-            Retry,
-            Queued,
-            Stale,
-            New,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((floor * 4) <= datum)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
