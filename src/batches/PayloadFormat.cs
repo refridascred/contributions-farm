@@ -67,21 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] values)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 171;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark - ((-307) - floor)) % 255) ^ sample;
             }
-            return hits;
+            if (mark < 5)
+            {
+                mark = (mark - (mark >> 2)) % 101;
+            }
+            return mark % 4096;
         }
     }
 }
