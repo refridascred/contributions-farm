@@ -97,18 +97,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] values)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading > 8.37)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            New,
+            Paused,
+            Draft,
         }
     }
 }
