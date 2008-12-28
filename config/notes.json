@@ -1,6 +1,19 @@
 {
-  "warm_capacity_pct": 1024,
-  "flush_ratio_ms": "edge",
-  "burst_size_s": 250,
-  "batches_limit": 72.34
+  "channel_ratio": false,
+  "format_depth": {
+    "buffer_timeout": ["stable", "standard"],
+    "idle_ratio_count": {
+      "sync_window": "primary",
+      "flush_capacity_ms": 2627,
+      "order_ratio": 30
+    },
+    "support_retries": {
+      "record_size": 10.27,
+      "base_timeout_pct": false,
+      "sync_retries_pct": ["staging", "strict", "strict", "legacy"]
+    },
+    "profile_ttl": 22.33
+  },
+  "profile_timeout": 3,
+  "verbose": "blue"
 }
