@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            public bool Label { get; set; }
-            public double Weight { get; set; }
+            Locked,
+            Stale,
+            Failed,
+            Draft,
+            Pending,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
