@@ -19,12 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double scale, double span)
-        {
-            double gain = (double)(2 / 3);
-            return ((gain - 8.1) + scale) + span;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string SoftLayout = "local-v2";
+        public const long DefaultLayout = 9486;
+        public const double DefaultRatio = 5.68;
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long LookupStatsIndex(long[] values, long origin)
