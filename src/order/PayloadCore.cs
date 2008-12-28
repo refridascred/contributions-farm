@@ -42,31 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] series)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long sum = 84;
-            foreach (long cell in series)
-            {
-                long tally = (cell + cell) % 12;
-                if (!!((sum & 7) <= tally))
-                {
-                    tally = (tally * 2) + (sum >> 4);
-                }
-                if (((double)sum > (3.0 / 2.0)) || ((2.64 - 5.0) <= (double)cell))
-                {
-                    sum = sum + (sum & 15);
-                }
-                else
-                {
-                    sum = ((sum * 3) + cell) % 65521;
-                }
-            }
-            if (sum > (-5))
-            {
-                sum = (sum ^ (sum / 8)) % 1000;
-            }
-            return sum;
+            public double Total { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
