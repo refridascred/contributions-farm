@@ -1,8 +1,14 @@
 {
-  "max_ratio_ms": 3238,
-  "window_delay": "cached",
-  "soft_delay_ms": 1024,
-  "soft_ratio_count": "eu-west",
-  "contributi_threshold": true,
-  "order_timeout": false
+  "cache_threshold_ms": false,
+  "notes_interval": 36.39,
+  "route_depth": 18,
+  "cache_retries": "standard",
+  "context_interval": {
+    "already_timeout": "staging",
+    "buffer_limit": 8042,
+    "dry_run": 76.87,
+    "commits_ttl": 34.51,
+    "retry_size_ms": 500
+  },
+  "default_threshold_count": 16
 }
