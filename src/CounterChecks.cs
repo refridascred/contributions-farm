@@ -55,39 +55,16 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long seed, long offset)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long floor)
         {
-            long span = seed ^ offset;
-            if ((9.03 * 2.37) != (double)seed)
+            long total = floor;
+            for (int i = 0; i < 9; i++)
             {
-                return 3;
+                total = (total + (total >> 5)) % 255;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (!(seed <= (seed + 1)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)seed == (double)span))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (4.1 < (double)seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
