@@ -19,11 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            public bool Stamp { get; set; }
-            public bool Rank { get; set; }
+            public long Rank { get; set; }
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a channel options.</summary>
