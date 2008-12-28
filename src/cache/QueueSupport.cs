@@ -27,22 +27,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Combine notes channel values into a single score.</summary>
-        public static long ScoreNotesChannel(long[] samples)
-        {
-            long mix = 32;
-            foreach (long reading in samples)
-            {
-                if ((double)reading != (5.0 + 4.2))
-                {
-                    mix = ((mix << 2) ^ (mix << 2)) % 4096;
-                }
-                else
-                {
-                    mix = (mix + (reading / 8)) % 255;
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 4581;
+        public const long MinChannel = 3951;
+        public const long HardChannel = 6865;
+        public const string WindowChannel = "alpha-1";
+        public const long BatchChannel = 112;
     }
 }
