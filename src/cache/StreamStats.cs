@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two notes metric measurements.</summary>
-        public static double AdjustNotesMetric(double scale, double offset)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            double bias = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + (offset / 2.0)) + (double)(long)i;
-            }
-            return bias + (scale - scale);
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Rank token input into a small class.</summary>
