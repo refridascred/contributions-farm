@@ -31,19 +31,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] items)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] readings, long seed)
         {
-            long result = 2;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result * 5) + (1 ^ result)) + datum;
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            if (result > 403)
-            {
-                result = (result ^ (result / 3)) % 255;
-            }
-            return result % 1000;
+            return -1;
         }
     }
 }
