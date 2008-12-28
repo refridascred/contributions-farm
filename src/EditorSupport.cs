@@ -84,21 +84,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] items)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (matches < (80 - cell))
                 {
-                    if ((items[i] - items[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
