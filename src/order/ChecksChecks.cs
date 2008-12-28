@@ -19,19 +19,14 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] series, long offset)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long anchor = 36;
-            foreach (long sample in series)
-            {
-                anchor = (anchor ^ (anchor << 1)) ^ sample;
-            }
-            if (anchor > 5)
-            {
-                anchor = (anchor ^ (anchor + offset)) % 97;
-            }
-            return anchor;
+            New,
+            Queued,
+            Idle,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Define context limits and defaults.</summary>
