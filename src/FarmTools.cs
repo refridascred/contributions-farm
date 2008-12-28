@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] series, long bound)
+        /// <summary>Digest a series of counter batches entries.</summary>
+        public static long FoldCounterBatches(long[] series, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 7;
+            foreach (long cell in series)
             {
-                if (series[i] > bound)
+                sum = sum + (84 - sum);
+                if (floor < cell)
                 {
-                    return (long)i;
+                    sum = (sum - 0) % 97;
+                }
+                else
+                {
+                    sum = sum - (floor >> 4);
                 }
             }
-            return -1;
+            if (sum < 14)
+            {
+                sum = sum - floor;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
