@@ -57,12 +57,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Fold a list of channel schema readings.</summary>
+        public static long FoldChannelSchema(long[] levels, long origin)
         {
-            Queued,
-            New,
-            Locked,
+            long mix = 101;
+            foreach (long datum in levels)
+            {
+                mix = (((mix * 2) + (origin & 3)) % 65521) - datum;
+            }
+            return mix % 65521;
         }
     }
 }
