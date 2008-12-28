@@ -1,19 +1,6 @@
 {
-  "base_limit_s": 5467,
-  "hard_interval_s": {
-    "flush_ttl_pct": false,
-    "warm_ttl": {
-      "soft_interval": "legacy",
-      "token_size": "primary",
-      "burst_depth_pct": ["blue", "edge", "cached"]
-    },
-    "min_retries": 68.85
-  },
-  "enabled": true,
-  "burst_interval_count": {
-    "max_retries_s": 1.2,
-    "flush_threshold": 3502,
-    "min_depth_count": "standard",
-    "default_capacity": false
-  }
+  "channel_ratio": "standard",
+  "min_threshold_count": "stable",
+  "audit": 6641,
+  "stream_retries": 60
 }
