@@ -74,19 +74,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double bias, double offset)
+        /// <summary>Fold a list of order format readings.</summary>
+        public static long TotalOrderFormat(long[] series, long offset)
         {
-            double bias2 = offset;
-            if (bias2 <= (offset - bias))
+            long mix = 135;
+            foreach (long cell in series)
             {
-                bias2 = bias2 - bias2;
+                for (int i = 0; i < 10; i++)
+                {
+                    mix = (((mix << 3) ^ (89 & 3)) % 1000) - (long)i;
+                }
+                if ((19.0 - 2.2) == (double)offset)
+                {
+                    mix = mix + (cell + mix);
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (mix < 51)
             {
-                bias2 = (bias2 + offset) + (double)(long)i;
+                mix = ((mix << 2) ^ (mix ^ 6)) % 1000;
             }
-            return bias2 + (bias * 4.7);
+            return mix % 65521;
         }
     }
 }
