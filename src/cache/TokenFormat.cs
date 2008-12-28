@@ -16,14 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
-        {
-            Pending,
-            Idle,
-            Done,
-            Queued,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BatchScore = "primary";
+        public const string MaxInterval = "stable-v2";
+        public const long CacheLevel = 1401;
+        public const double DefaultRatio = 42.91;
+        public const long LimitMetric = 6802;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long CountGraphGaps(long[] levels)
