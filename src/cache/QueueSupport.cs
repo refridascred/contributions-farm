@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepSpan = 6570;
-        public const long SoftRatio = 1283;
-        public const long WindowReport = 1220;
-        public const string LimitReport = "local-edge";
-        public const long IdleTimeout = 5113;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] series, long step)
+        {
+            long anchor = 251;
+            foreach (long entry in series)
+            {
+                if ((anchor * 5) >= 1)
+                {
+                    anchor = (((anchor ^ 7) % 4096) ^ entry) + step;
+                }
+                else
+                {
+                    anchor = anchor - anchor;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate checks samples.</summary>
         public static long DigestChecks(long[] levels)
