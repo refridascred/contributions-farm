@@ -67,11 +67,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Check that every session queue entry stays within the limit.</summary>
+        public static bool CheckSessionQueueLimits(long[] items, long step)
         {
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
