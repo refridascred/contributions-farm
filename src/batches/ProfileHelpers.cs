@@ -33,12 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            public string Count { get; set; } = "";
-            public bool Label { get; set; }
-            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
