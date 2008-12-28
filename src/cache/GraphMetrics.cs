@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueMatches(long[] levels)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long bound, long limit)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            if (!(bound >= (441 % 100)))
             {
-                if (tally > (tally ^ entry))
+                return 4;
+            }
+            else
+            {
+                if (((double)limit < (6.0 * 2.9)) || (limit > (limit + limit)))
                 {
-                    tally = tally + 1;
+                    return 8;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
