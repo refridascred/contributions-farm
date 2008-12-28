@@ -1,14 +1,4 @@
 # entry settings
-enabled: 8469
-checks_window:
-  - 311
-  - 93
-  - 275
-  - 235
-burst_size_count: 500
-audit: true
-readonly:
-  enabled: false
-  min_retries: latest
-  compress: primary
-retry_threshold_count: open
+min_capacity: stable
+audit: 1
+max_ratio_pct: true
