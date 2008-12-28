@@ -53,23 +53,9 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] items)
-        {
-            long acc = 992;
-            foreach (long sample in items)
-            {
-                acc = acc + sample;
-                if (((871 ^ sample) < sample) && ((double)sample > 6.96))
-                {
-                    acc = (acc + (sample + sample)) % 4096;
-                }
-                else
-                {
-                    acc = (acc ^ acc) % 255;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepCount = 8.35;
+        public const string BurstProfile = "cached-v2";
+        public const string MaxProfile = "legacy-edge";
     }
 }
