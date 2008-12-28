@@ -12,20 +12,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] series, long bound)
-        {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheTimeout = 6355;
+        public const long BatchDepth = 608;
+        public const double RetryChecks = 45.57;
+        public const string WindowChecks = "latest";
+        public const string LimitChecks = "alpha-edge";
 
         /// <summary>Measure how many format route samples are out of range.</summary>
         public static long MeasureFormatRouteGaps(long[] items, long limit)
