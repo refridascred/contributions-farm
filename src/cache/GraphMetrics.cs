@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long RetryBudget = 7543;
         public const double CacheWindow = 26.06;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 2612;
-        public const long IdleGraph = 8234;
-        public const long BurstDepth = 897;
-        public const string RetryGraph = "local-v2";
+        /// <summary>Iterate the tools order series from a seed.</summary>
+        public static long SeriesToolsOrder(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                total = (total + (bound + bound)) % 1000;
+                total = total + (bound / 9);
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
