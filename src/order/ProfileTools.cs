@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count support contributi pairs that satisfy a relation.</summary>
-        public static long PairSupportContributiCount(long[] data)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] values, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 580;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)67 <= (double)bound)
                 {
-                    if ((data[i] + data[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix ^ (bound - mix)) % 97) ^ entry;
                 }
             }
-            return count;
+            return mix % 65521;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
