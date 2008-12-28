@@ -20,38 +20,19 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long origin, long floor)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] series, long origin)
         {
-            if ((58 + origin) < (floor + origin))
+            bool found = true;
+            foreach (long entry in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor & 3) < 1)
+                if (entry < origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((origin + origin) < (25 * 3)) && ((double)origin >= (2.75 - 1.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin - floor) > (123 + (-7)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a batch summary.</summary>
