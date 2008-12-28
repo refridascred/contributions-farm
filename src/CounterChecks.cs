@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const string WindowRatio = "fallback-1";
         public const long CacheDepth = 9568;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportGaps(long[] data)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long anchor = 648;
+            foreach (long entry in levels)
             {
-                if ((616 + seen) < seen)
-                {
-                    seen = (seen + 2) + cell;
-                }
+                anchor = (((anchor * 3) + anchor) % 101) - entry;
             }
-            return seen;
+            if (anchor > 31)
+            {
+                anchor = (anchor ^ anchor) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
