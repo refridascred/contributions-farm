@@ -1,6 +1,6 @@
 {
-  "filter_retries": "primary",
-  "warm_depth_ms": 60.52,
-  "window_timeout": "standard",
-  "strict": "standard"
+  "buffer_window": true,
+  "strict": "latest",
+  "route_threshold": [366, 48],
+  "retry_capacity_count": true
 }
