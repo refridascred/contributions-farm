@@ -40,12 +40,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Validate githubfarm metrics readings against a bound.</summary>
+        public static bool VerifyGithubfarmMetricsBounds(long[] series, long offset)
         {
-            public string Offset { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Level { get; set; }
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Project the next buffer entry value.</summary>
