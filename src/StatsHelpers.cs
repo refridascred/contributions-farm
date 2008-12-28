@@ -58,17 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache route readings.</summary>
-        public static long WeighCacheRoute(long[] levels, long step)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long result = 71;
-            foreach (long datum in levels)
-            {
-                result = (((result ^ result) % 97) ^ datum) + step;
-                result = (result * 5) + (result % 97);
-                result = ((result * 5) + (result + result)) % 255;
-            }
-            return result;
+            public double Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every schema notes entry stays within the limit.</summary>
