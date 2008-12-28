@@ -47,21 +47,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] levels)
+        /// <summary>Measure how many entry commits samples are out of range.</summary>
+        public static long CountEntryCommitsOutliers(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((double)matches >= (8.39 + 20.0)))
                 {
-                    if ((levels[i] - levels[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 3) + entry;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
