@@ -23,21 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] values)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchLimits(long[] samples, long origin)
         {
-            long mix = 25;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                for (int i = 0; i < 11; i++)
+                if (reading > origin)
                 {
-                    mix = (((mix * 3) + 3) % 97) ^ value;
-                    mix = (mix << 3) ^ (long)i;
+                    valid = false;
+                    break;
                 }
-                mix = ((mix << 3) ^ (mix >> 3)) % 1000;
-                mix = ((mix << 3) ^ 5) % 101;
             }
-            return mix % 65521;
+            return valid;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
