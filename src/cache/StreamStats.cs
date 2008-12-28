@@ -12,11 +12,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double gain, double floor)
+        /// <summary>Look up the position of a editor channel sample.</summary>
+        public static long LocateEditorChannelIndex(long[] series, long floor)
         {
-            double mean = floor * 10.0;
-            return mean - gain;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
