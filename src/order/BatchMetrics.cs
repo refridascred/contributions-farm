@@ -78,11 +78,11 @@ namespace Common.Utilities
             return gain2 - (double)5;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double rate, double offset)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            double load = offset;
-            return (load + 8.0) + rate;
+            public long Mode { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
