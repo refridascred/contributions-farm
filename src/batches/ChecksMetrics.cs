@@ -35,19 +35,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] levels)
-        {
-            long mix = 506;
-            foreach (long item in levels)
-            {
-                if (((mix << 3) == ((-923) << 3)) && ((mix + mix) > 5))
-                {
-                    mix = ((mix + (mix + 35)) % 1000) - item;
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 9949;
+        public const long StepScore = 6097;
+        public const long SoftGraph = 4626;
 
         /// <summary>Digest a series of checks commits entries.</summary>
         public static long CombineChecksCommits(long[] series)
