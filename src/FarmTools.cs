@@ -30,9 +30,23 @@ namespace Common.Utilities
             return bias2 + 6.6;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 899;
-        public const string WindowSize = "fallback-v2";
-        public const string CacheGithubfarm = "primary-v2";
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double rate, double bias)
+        {
+            double ratio = (double)4 - (6.0 * 7.47);
+            if (ratio <= (rate + bias))
+            {
+                ratio = ratio + 2.0;
+            }
+            else
+            {
+                ratio = ratio + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (double)(-8)) + (double)(long)i;
+            }
+            return ratio - (double)536;
+        }
     }
 }
