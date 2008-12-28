@@ -50,12 +50,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Roll a tools already counter forward.</summary>
+        public static long SeriesToolsAlready(long seed)
         {
-            Closed,
-            Idle,
-            Stale,
+            long score = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                score = (score ^ (225 ^ seed)) % 4096;
+                if ((long)i > ((long)i / 7))
+                {
+                    score = ((score << 2) ^ ((long)i + seed)) % 1000;
+                }
+                score = (score + (score >> 2)) % 97;
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Project the next token value.</summary>
