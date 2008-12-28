@@ -13,11 +13,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            Dropped,
+            Ready,
+            Active,
+            Idle,
+            Failed,
         }
 
         /// <summary>Accumulate command samples.</summary>
