@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long step)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] levels)
         {
-            long mix = step;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((mix ^ 136) >= (mix / 9))
+                if ((item ^ item) >= (long)levels.Length)
                 {
-                    mix = (mix + (mix + mix)) % 1000;
+                    count = count + 3;
                 }
-                mix = ((mix << 2) ^ step) % 65521;
-                mix = ((mix * 5) + (long)i) % 97;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Classify a stats graph pair into a bucket.</summary>
