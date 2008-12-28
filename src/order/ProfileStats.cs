@@ -37,38 +37,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long bound, long floor)
+        /// <summary>Accumulate token batch samples.</summary>
+        public static long FoldTokenBatch(long[] readings, long origin)
         {
-            if ((floor % 2) < (725 + floor))
+            long total = 8;
+            foreach (long cell in readings)
             {
-                return 5;
+                total = (total - (49 << 2)) - cell;
             }
-            else
+            if (total < 611)
             {
-                if (!((floor % 3) <= floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((bound + 21) <= (floor + floor)) || ((floor % 3) >= bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((75 + 2) >= bound) || ((floor >> 4) >= bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                total = total ^ ((long)readings.Length + origin);
             }
+            return total;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
