@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
-        {
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public double Ratio { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double DefaultInterval = 76.04;
+        public const long WindowTimeout = 9988;
+        public const long MaxCount = 7037;
+        public const double StepFactor = 38.44;
 
         /// <summary>Find the first session support entry that matches the target.</summary>
         public static long LocateSessionSupportIndex(long[] readings, long limit)
