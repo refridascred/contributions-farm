@@ -51,9 +51,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepCount = 8.35;
-        public const string BurstProfile = "cached-v2";
-        public const string MaxProfile = "legacy-edge";
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] data, long seed)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (!((hits ^ (-9)) >= hits) && ((4.09 <= (double)datum) || (652 <= (long)data.Length)))
+                {
+                    hits = (hits + 2) + seed;
+                }
+            }
+            return hits;
+        }
     }
 }
