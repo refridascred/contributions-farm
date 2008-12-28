@@ -53,18 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] series)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((matches * 5) <= (matches / 2))
-                {
-                    matches = (matches + 3) + value;
-                }
-            }
-            return matches;
+            Closed,
+            Ready,
+            Queued,
         }
     }
 }
