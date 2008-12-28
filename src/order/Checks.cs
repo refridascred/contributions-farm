@@ -61,19 +61,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next format tools value.</summary>
-        public static double AdjustFormatTools(double bias, double floor)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            double scale = (double)526 * 2.68;
-            if (scale <= scale)
-            {
-                scale = (scale - (floor * 5.12)) + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - floor) + (double)(long)i;
-            }
-            return scale + (scale + 1.2);
+            Draft,
+            Locked,
+            Failed,
         }
     }
 }
