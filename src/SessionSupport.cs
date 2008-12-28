@@ -27,24 +27,17 @@ namespace Common.Utilities
         public const long BaseAccount = 3323;
         public const string SoftAccount = "open-v2";
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long bound, long target)
+        /// <summary>Look up the position of a batch order sample.</summary>
+        public static long SeekBatchOrderIndex(long[] values, long seed)
         {
-            if (target >= 490)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((double)bound == (19.0 * 8.57)))
+                if ((values[i] > seed) && ((values[i] % 2) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
