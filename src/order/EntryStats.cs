@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            Ready,
             Dropped,
-            Done,
+            Failed,
             New,
+            Closed,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
