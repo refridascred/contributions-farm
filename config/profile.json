@@ -1,14 +1,5 @@
 {
-  "readonly": "staging",
-  "report_interval": 47.4,
-  "soft_window_s": {
-    "cache_ttl": "edge",
-    "readonly": true,
-    "sync_retries_s": 90.49,
-    "audit": 3401,
-    "poll_ttl_ms": true
-  },
-  "soft_ttl": "open",
-  "strict": [316, 432, 436, 485],
-  "idle_depth_s": 2156
+  "sync_delay": 3377,
+  "poll_depth_s": 321,
+  "enabled": 250
 }
