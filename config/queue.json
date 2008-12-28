@@ -1,7 +1,11 @@
 {
-  "format_depth": 17.33,
-  "verbose": "eu-west",
-  "flush_limit_pct": [454, 84, 461, 252],
-  "command_timeout": 2509,
-  "sync_delay_pct": "fallback"
+  "audit": 77.76,
+  "farm_depth": 12.82,
+  "checks_limit": {
+    "record_timeout": 9.99,
+    "retry_limit": 60,
+    "channel_capacity": 18.28
+  },
+  "verbose": 2152,
+  "editor_timeout": 3405
 }
