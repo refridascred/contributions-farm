@@ -1,10 +1,9 @@
 {
-  "compress": "green",
-  "profile_limit": "blue",
-  "buffer_delay": {
-    "default_capacity_s": "standard",
-    "checks_capacity": 17.01,
-    "cache_timeout": 77,
-    "cache_limit": true
-  }
+  "sync_timeout": ["edge", "open"],
+  "default_delay_count": {
+    "poll_delay_s": ["legacy", "primary", "standard", "green"],
+    "burst_window_pct": ["edge", "standard", "stable"],
+    "default_capacity": "fallback"
+  },
+  "hard_retries_count": "open"
 }
