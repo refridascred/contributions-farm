@@ -1,7 +1,5 @@
 {
-  "dry_run": "green",
-  "idle_ttl_pct": 14.8,
-  "soft_interval": 1024,
-  "max_window": "strict",
-  "default_capacity_pct": ["edge", "strict", "strict"]
+  "warm_retries_ms": 3645,
+  "retry_retries_pct": 4186,
+  "farm_ratio": "edge"
 }
