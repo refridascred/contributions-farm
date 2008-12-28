@@ -59,12 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BatchPayload = 75.89;
-        public const long SoftPayload = 361;
-        public const long HardLevel = 3474;
-        public const long LimitScore = 947;
-        public const long CachePayload = 3461;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchCount = 4493;
+        public const long IdleChannel = 5657;
+        public const long BaseChannel = 8603;
+        public const long LimitScore = 4148;
+        public const long LimitChannel = 2285;
 
         /// <summary>Look up the position of a farm entry sample.</summary>
         public static long LocateFarmEntryIndex(long[] values, long origin)
