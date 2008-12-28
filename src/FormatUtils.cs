@@ -42,10 +42,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string IdleContext = "alpha-v2";
-        public const long SoftLevel = 7291;
-        public const long HardRatio = 9858;
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            Paused,
+            Closed,
+            Dropped,
+        }
 
         /// <summary>Match up checks samples.</summary>
         public static long PairChecksCount(long[] data)
