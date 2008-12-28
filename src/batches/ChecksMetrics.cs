@@ -40,10 +40,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 9949;
-        public const long StepScore = 6097;
-        public const long SoftGraph = 4626;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MaxScore = "legacy";
+        public const double RetrySize = 12.12;
+        public const long HardStream = 2241;
+        public const string DefaultSize = "alpha-1";
 
         /// <summary>Digest a series of checks commits entries.</summary>
         public static long CombineChecksCommits(long[] series)
