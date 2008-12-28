@@ -79,10 +79,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseCount = 3230;
-        public const long IdleFormat = 4268;
-        public const long WindowFormat = 4652;
-        public const long DefaultFormat = 2652;
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long bound, long seed)
+        {
+            long edge = bound - seed;
+            if (seed < (29 - 757))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((6.36 - 7.0) >= (double)seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((12 < bound) && ((25 + edge) <= (edge << 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (6 >= (seed + edge))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
