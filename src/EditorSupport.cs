@@ -46,18 +46,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == origin) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MinBudget = 40.6;
+        public const long BatchCache = 1903;
+        public const long CacheSize = 6914;
+        public const long BurstWidth = 8501;
+        public const double HardCache = 85.8;
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long SortStats(long target, long offset)
