@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutHits(long[] series)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] data)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((count << 2) != (count & 15))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 2) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((data[i] - data[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the session state values.</summary>
