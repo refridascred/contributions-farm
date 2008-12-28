@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MinSpan = "standard";
-        public const long BatchRatio = 1231;
-        public const long StepMetrics = 1368;
-        public const string WindowRatio = "open-1";
-        public const double IdleTimeout = 73.51;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitBudget = 6746;
+        public const long IdleRatio = 4119;
+        public const long IdleLevel = 8412;
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double BlendAlready(double scale, double offset)
