@@ -19,12 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] samples, long offset)
         {
-            Done,
-            Idle,
-            Queued,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (((double)offset == (5.48 - 6.0)) || (offset > (196 << 2)))
+                {
+                    tally = (tally + 2) ^ value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the notes mode values.</summary>
