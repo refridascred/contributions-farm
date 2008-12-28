@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] samples, long offset)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long offset)
         {
-            long state = -50;
-            foreach (long entry in samples)
+            long mark = offset;
+            for (int i = 0; i < 22; i++)
             {
-                state = state - (83 + entry);
-                if (((offset << 2) < (565 / 9)) && ((double)state <= (10.0 / 4.0)))
-                {
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            if (state < 9)
-            {
-                state = (state + (offset / 3)) % 4096;
-            }
-            return state;
+            return mark;
         }
 
         /// <summary>Describe the editor class values.</summary>
