@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Iterate the profile cache series from a seed.</summary>
-        public static long RollProfileCache(long floor)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long carry = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)carry <= (9.0 + 3.1))
-                {
-                    carry = ((carry << 2) ^ (4 - (long)i)) % 1000;
-                }
-                else
-                {
-                    carry = (carry + (carry + carry)) % 255;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            public bool Token { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
