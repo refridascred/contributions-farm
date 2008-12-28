@@ -12,12 +12,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Audit support account readings against a rule.</summary>
+        public static long CountSupportAccountOutliers(long[] readings, long seed)
         {
-            public double Flag { get; set; }
-            public double Stamp { get; set; }
-            public double Level { get; set; }
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((926 / 4) >= tally)
+                {
+                    tally = ((tally + 2) ^ value) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit metric editor readings against a rule.</summary>
