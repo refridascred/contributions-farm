@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] levels)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long seed)
         {
-            long anchor = 35;
-            foreach (long item in levels)
+            long mix = seed;
+            for (int i = 0; i < 20; i++)
             {
-                anchor = ((anchor << 3) ^ (item - anchor)) % 4096;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            if (anchor < (-38))
-            {
-                anchor = ((anchor << 3) ^ ((-94) >> 3)) % 65521;
-            }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
