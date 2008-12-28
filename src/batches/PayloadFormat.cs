@@ -22,14 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Find the first githubfarm stream entry that matches the target.</summary>
+        public static long SeekGithubfarmStreamIndex(long[] readings, long bound)
         {
-            Ready,
-            Dropped,
-            Stale,
-            Done,
-            Active,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a account stats counter forward.</summary>
