@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter editor entries that pass the check.</summary>
-        public static long AuditCounterEditorMatches(long[] samples, long bound)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double scale, double span)
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (((long)samples.Length << 2) >= value)
-                {
-                    tally = (tally + 3) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double gain = (double)(2 / 3);
+            return ((gain - 8.1) + scale) + span;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
