@@ -14,18 +14,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MinContributi = "standard";
+        public const long SoftContributi = 8898;
+        public const double CacheCount = 60.24;
+        public const double HardContributi = 22.24;
 
         /// <summary>Count the cache record entries that pass the check.</summary>
         public static long AuditCacheRecordOutliers(long[] series, long origin)
