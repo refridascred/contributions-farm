@@ -1,6 +1,8 @@
 {
-  "warm_interval_count": "blue",
-  "burst_delay": 1318,
-  "burst_capacity_s": 500,
-  "cache_depth_ms": ["edge", "primary"]
+  "warm_capacity": 62.14,
+  "persist": 11,
+  "flush_size_s": "stable",
+  "record_timeout": "staging",
+  "idle_timeout": "stable",
+  "verbose": 79.51
 }
