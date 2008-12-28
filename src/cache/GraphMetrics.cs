@@ -53,9 +53,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitSize = 3705;
-        public const long BurstFactor = 6921;
-        public const long RetryScore = 7335;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleDepth = 7138;
+        public const double SoftSpan = 4.34;
+        public const long BatchInterval = 5031;
+        public const long CacheWidth = 7211;
     }
 }
