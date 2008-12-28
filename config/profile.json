@@ -1,7 +1,5 @@
 {
-  "commits_ttl": true,
-  "already_timeout": "legacy",
-  "enabled": 42.32,
-  "poll_ratio_s": 5.14,
-  "flush_capacity": "strict"
+  "persist": 30,
+  "checks_capacity": 1024,
+  "checks_delay": "stable"
 }
