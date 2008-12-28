@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double weight, double bias)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            double mean = (bias / 4.0) * 5.86;
-            return (mean + mean) + weight;
+            Locked,
+            Closed,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
