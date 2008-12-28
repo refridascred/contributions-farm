@@ -28,23 +28,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] samples, long step)
+        /// <summary>Count the queue notes entries that pass the check.</summary>
+        public static long CountQueueNotesHits(long[] items, long target)
         {
-            long carry = 1;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long item in items)
             {
-                carry = ((carry << 3) ^ (step & 3)) % 65521;
-                if (!(carry <= (cell / 9)))
+                if ((((target / 3) < (tally << 1)) && ((tally + item) >= 63)) && !(target < tally))
                 {
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (carry > (-667))
-            {
-                carry = (carry + step) % 1000;
-            }
-            return carry;
+            return tally;
         }
     }
 }
