@@ -1,7 +1,19 @@
 {
-  "window_size": 48.62,
-  "flush_interval_ms": "strict",
-  "metric_window": 1024,
-  "base_ratio": 66,
-  "editor_window": [22, 340, 209]
+  "support_limit": 35.08,
+  "filter_delay": "strict",
+  "report_window": 8547,
+  "warm_capacity": {
+    "graph_limit": "blue",
+    "base_interval_count": 68,
+    "burst_timeout_count": 100,
+    "order_ttl": 99,
+    "audit": {
+      "idle_interval_ms": [445, 419, 70],
+      "max_limit_s": "standard",
+      "hard_retries_pct": true,
+      "token_retries": 35.04,
+      "verbose": false
+    },
+    "poll_threshold_pct": "primary"
+  }
 }
