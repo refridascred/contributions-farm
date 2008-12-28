@@ -20,10 +20,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double DefaultSize = 70.05;
-        public const double MaxRoute = 46.89;
-        public const string MinScore = "staging-v2";
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            Stale,
+            Active,
+            Closed,
+            Synced,
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double BatchCluster = 76.29;
