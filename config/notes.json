@@ -1,6 +1,8 @@
 {
-  "min_threshold": 56.7,
-  "base_size": 2210,
-  "sync_ttl_count": 58.0,
-  "audit": true
+  "verbose": 1468,
+  "report_interval": "local",
+  "compress": "latest",
+  "session_threshold": "strict",
+  "metrics_ratio": "blue",
+  "warm_depth": 18.69
 }
