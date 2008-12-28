@@ -24,11 +24,22 @@ namespace Common.Utilities
             return gain2 - 8.0;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 3199;
-        public const long StepToken = 8679;
-        public const double CacheToken = 36.4;
-        public const long RetryTimeout = 5207;
+        /// <summary>Compare every pair of window token readings.</summary>
+        public static long CompareWindowTokenCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double HardMetric = 28.54;
