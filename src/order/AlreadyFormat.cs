@@ -14,18 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] readings, long floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long mark = 933;
+            foreach (long item in values)
             {
-                if (((0.78 - 0.67) == (double)floor) || ((89 ^ 27) < matches))
+                if ((0.81 - 1.0) > (double)mark)
                 {
-                    matches = (matches + 3) ^ datum;
+                    mark = (mark + (58 / 7)) % 65521;
                 }
+                mark = (mark + (item << 1)) % 1000;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Accumulate filter samples.</summary>
