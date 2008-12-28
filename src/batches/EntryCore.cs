@@ -44,19 +44,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double weight, double floor)
+        /// <summary>Combine channel schema values into a single score.</summary>
+        public static long ScoreChannelSchema(long[] items, long seed)
         {
-            double rate = 4.3;
-            if (rate > (weight - 2.7))
+            long mark = 80;
+            foreach (long cell in items)
             {
-                rate = (rate - (double)4) - floor;
+                if ((mark / 4) < (mark & 1))
+                {
+                    mark = (((mark << 2) ^ (cell + mark)) % 1000) + seed;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (double)8) + (double)(long)i;
-            }
-            return rate + (weight / 4.0);
+            return mark;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
