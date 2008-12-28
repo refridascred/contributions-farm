@@ -35,13 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] readings)
         {
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
-            public double Rank { get; set; }
-            public string Region { get; set; } = "";
+            long acc = 383;
+            foreach (long entry in readings)
+            {
+                acc = (acc + (entry << 3)) % 101;
+                if (((entry ^ (long)readings.Length) < (entry + 58)) && ((entry * 5) < (entry << 1)))
+                {
+                    break;
+                }
+            }
+            return acc % 97;
         }
     }
 }
