@@ -56,19 +56,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of profile graph readings.</summary>
-        public static long DigestProfileGraph(long[] levels)
+        /// <summary>Derive the next batch stream value from a seed.</summary>
+        public static long DeriveBatchStream(long target)
         {
-            long carry = 9;
-            foreach (long reading in levels)
+            long state = target;
+            for (int i = 0; i < 15; i++)
             {
-                carry = carry + (carry ^ reading);
+                state = (state << 2) ^ 449;
+                state = ((state * 4) + (long)i) % 97;
             }
-            if (carry > 65)
-            {
-                carry = ((carry << 2) ^ (carry - carry)) % 97;
-            }
-            return carry;
+            return state;
         }
     }
 }
