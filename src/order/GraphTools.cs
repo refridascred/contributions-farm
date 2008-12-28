@@ -33,23 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a checks commits figure with a bias.</summary>
-        public static double AdjustChecksCommits(double gain, double bias)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] series, long step)
         {
-            double rate = bias;
-            if (rate <= 9.26)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                rate = rate - (gain + 1.9);
+                if (entry < step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + (double)(-2);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate + (double)664;
+            return flag;
         }
 
         /// <summary>Hold a schema header.</summary>
