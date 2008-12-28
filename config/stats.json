@@ -1,5 +1,5 @@
 {
-  "persist": ["local", "eu-west", "fallback", "fallback"],
-  "metric_interval": "fallback",
-  "audit": 92.17
+  "idle_capacity": "blue",
+  "max_retries_count": "edge",
+  "sync_threshold_ms": ["legacy", "primary"]
 }
