@@ -59,18 +59,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] series, long floor)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long offset, long bound)
         {
-            long sum = 4;
-            foreach (long cell in series)
+            if (((4.51 * 15.0) > (double)bound) && ((bound % 100) < offset))
             {
-                if ((7.7 / 5.0) == (double)sum)
+                return 5;
+            }
+            else
+            {
+                if (((-40) / 2) == (offset >> 4))
                 {
-                    sum = (((sum + sum) % 97) ^ cell) - floor;
+                    return 0;
+                }
+                else
+                {
+                    if (((bound ^ offset) >= bound) && (offset >= (bound / 4)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Hold a layout entry.</summary>
