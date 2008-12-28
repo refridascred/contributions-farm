@@ -33,10 +33,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 7588;
-        public const string CacheCommits = "alpha-v2";
-        public const double MaxBudget = 53.66;
-        public const long LimitCommits = 1883;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] series, long seed)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((cell * 5) <= matches)
+                {
+                    matches = (matches + 2) + seed;
+                }
+            }
+            return matches;
+        }
     }
 }
