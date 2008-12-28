@@ -40,20 +40,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] series)
-        {
-            long total = 50;
-            foreach (long item in series)
-            {
-                total = (total + 93) + item;
-            }
-            if (total > 1)
-            {
-                total = (total << 3) ^ (total - total);
-            }
-            return total % 65521;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstDepth = 678;
+        public const long WindowCount = 3705;
+        public const long BaseContributi = 9717;
+        public const long DefaultContributi = 4690;
+        public const double BurstContributi = 72.3;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long WindowInterval = 220;
