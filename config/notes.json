@@ -1,16 +1,5 @@
 {
-  "default_depth_ms": {
-    "hard_limit_pct": ["edge", "legacy", "standard", "standard"],
-    "entry_capacity": {
-      "channel_threshold": ["strict", "staging", "edge"],
-      "cluster_timeout": ["staging", "strict", "standard", "legacy"],
-      "warm_delay_count": "stable"
-    },
-    "strict": "edge"
-  },
-  "base_retries_count": [443, 496, 104, 279],
-  "max_ratio_pct": 30,
-  "retry_delay_ms": 500,
-  "max_ttl_pct": 25,
-  "route_delay": 48.75
+  "batch_timeout": false,
+  "compress": 250,
+  "poll_capacity": "green"
 }
