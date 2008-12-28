@@ -67,19 +67,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate editor metric readings against a bound.</summary>
-        public static bool VerifyEditorMetricRange(long[] items, long step)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading != step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] + samples[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Check that every profile editor entry stays within the limit.</summary>
