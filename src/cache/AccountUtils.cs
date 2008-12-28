@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] series)
+        /// <summary>Count metrics stats pairs that satisfy a relation.</summary>
+        public static long MatchMetricsStatsCount(long[] samples)
         {
             long matches = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((matches >> 1) > (matches * 5)) && ((double)matches < (double)(-31)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 2) + reading;
+                    if ((samples[i] + samples[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
