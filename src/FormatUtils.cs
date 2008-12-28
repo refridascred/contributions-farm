@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long step, long bound)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] items, long seed)
         {
-            if (((6.0 - 18.0) == (double)step) || (bound >= (bound / 8)))
+            bool valid = true;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((11.0 - 4.4) < (double)step)
+                if (sample > seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)step < (8.24 + 9.22))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
