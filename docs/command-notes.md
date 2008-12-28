@@ -1,10 +1,13 @@
 # Command notes
 
-The profile helpers are pure functions, so they are safe to call from any thread.
-Run the editor check before changing any metrics limits.
+Run the notes check before changing any channel limits.
+The stats report groups every format by counter.
+
+Defaults for channel live in the config folder and can be overridden per environment.
+Run the tools check before changing any metric limits.
 
 ## Guidelines
 
-- Prefer format defaults
-- Log every stream change
-- Document new session fields
+- Review order limits each release
+- Validate metric input early
+- Document new token fields
