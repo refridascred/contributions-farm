@@ -42,17 +42,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a format cache reading by value.</summary>
-        public static long LocateFormatCacheIndex(long[] samples, long bound)
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double bias, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > bound) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = 8.54 + (double)843;
+            return (drift + (drift + offset)) + bias;
         }
     }
 }
