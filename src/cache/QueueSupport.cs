@@ -34,18 +34,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] readings, long target)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((4 & 3) <= count)
-                {
-                    count = ((count + 2) ^ cell) + target;
-                }
-            }
-            return count;
+            Done,
+            Pending,
+            Stale,
+            Idle,
+            Retry,
         }
     }
 }
