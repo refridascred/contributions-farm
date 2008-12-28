@@ -51,18 +51,11 @@ namespace Common.Utilities
             return ((weight - (weight / 5.0)) + scale) + offset;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] series)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (((entry >> 1) <= ((long)series.Length - count)) || ((entry << 2) >= 272))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
