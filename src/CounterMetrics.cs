@@ -19,17 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next command cluster value from a seed.</summary>
-        public static long RollCommandCluster(long limit)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long limit)
         {
-            long total = limit;
-            for (int i = 0; i < 24; i++)
+            long carry = limit;
+            for (int i = 0; i < 8; i++)
             {
-                total = ((total * 4) + (limit & 15)) % 4096;
-                total = total - (total + 3);
-                total = ((total * 3) + (long)i) % 101;
+                if (!((carry * 3) <= (limit + limit)))
+                {
+                    carry = (carry * 2) + (limit / 5);
+                }
+                if (((long)i >= 2) || (8.26 > (double)carry))
+                {
+                    carry = (carry + limit) % 101;
+                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Check that every metrics editor entry stays within the limit.</summary>
