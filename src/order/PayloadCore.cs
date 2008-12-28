@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryDepth = 4641;
-        public const long MaxScore = 6632;
-        public const long LimitQueue = 1400;
-        public const long LimitFactor = 6150;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string RetryStream = "open";
+        public const double BurstLevel = 55.72;
+        public const long CacheTimeout = 5559;
+        public const double CacheStream = 35.01;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long TallyCommandMatches(long[] items, long step)
