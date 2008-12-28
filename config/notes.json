@@ -1,8 +1,6 @@
 {
-  "verbose": "fallback",
-  "command_retries": 2.1,
-  "min_window": false,
-  "dry_run": [193, 182, 42],
-  "min_limit_pct": "latest",
-  "soft_capacity": 9.33
+  "queue_interval": ["standard", "latest", "standard"],
+  "sync_ttl_count": 68,
+  "soft_timeout": "edge",
+  "poll_ratio": 100
 }
