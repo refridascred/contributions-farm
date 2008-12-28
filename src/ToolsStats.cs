@@ -68,10 +68,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultDepth = 8164;
-        public const long MinRatio = 3320;
-        public const double CacheFormat = 9.92;
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < floor) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
