@@ -13,17 +13,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long floor)
+        /// <summary>Classify a stats graph pair into a bucket.</summary>
+        public static long GradeStatsGraph(long seed, long target)
         {
-            long total = floor;
-            for (int i = 0; i < 14; i++)
+            long prev = seed + target;
+            if ((seed <= (178 >> 3)) || (prev > (target << 3)))
             {
-                total = (total + (total - total)) % 4096;
-                total = (total ^ floor) % 255;
-                total = ((total * 2) + (long)i) % 65521;
+                return 3;
             }
-            return total;
+            else
+            {
+                if ((seed << 3) <= 31)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target + 889) > (target + seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank route input into a small class.</summary>
