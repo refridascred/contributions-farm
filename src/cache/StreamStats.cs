@@ -13,21 +13,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] levels)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double gain, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double weight = offset;
+            if (weight < (double)508)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = (weight - (double)40) + gain;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - offset) - (double)(long)i;
+            }
+            return weight + (weight / 7.0);
         }
 
         /// <summary>Hold a order stats.</summary>
