@@ -40,19 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double bias, double bias2)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] values)
         {
-            double ratio = bias2 + (double)76;
-            if (ratio > (8.03 / 6.0))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ratio - (double)104;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - bias) + (double)(long)i;
-            }
-            return ratio + 20.0;
+            return matches;
         }
     }
 }
