@@ -33,11 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] data, long origin)
         {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
