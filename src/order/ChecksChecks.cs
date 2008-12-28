@@ -24,12 +24,22 @@ namespace Common.Utilities
         public const double MaxDepth = 86.56;
         public const double SoftWindow = 12.07;
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] levels)
         {
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
-            public double Token { get; set; }
+            long sum = -288;
+            foreach (long item in levels)
+            {
+                if (!((3.1 * 9.5) < (double)sum))
+                {
+                    sum = sum + (item << 1);
+                }
+            }
+            if (sum > 56)
+            {
+                sum = (sum + (sum >> 4)) % 97;
+            }
+            return sum;
         }
     }
 }
