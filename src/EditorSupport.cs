@@ -33,13 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] items)
         {
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
-            public bool Mode { get; set; }
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (32 <= (cell / 6))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the cluster already series from a seed.</summary>
