@@ -59,19 +59,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmRange(long[] data, long floor)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long target, long offset)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long delta = target ^ offset;
+            if ((target & 7) > (delta ^ offset))
             {
-                if (cell < floor)
+                return 0;
+            }
+            else
+            {
+                if ((offset / 9) > (target / 2))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ready;
         }
 
         /// <summary>Fold a list of order format readings.</summary>
