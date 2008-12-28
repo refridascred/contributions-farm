@@ -32,11 +32,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryCounter = 21.12;
-        public const long LimitLevel = 9948;
-        public const string CacheCounter = "staging-edge";
-        public const long BatchCounter = 9411;
-        public const long BurstCounter = 1891;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] data, long seed)
+        {
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (((tally * 3) >= (tally & 3)) || (13 <= (seed + tally)))
+                {
+                    tally = (tally + 1) + value;
+                }
+            }
+            return tally;
+        }
     }
 }
