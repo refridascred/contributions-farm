@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitSpan = 6078;
-        public const double CacheSize = 47.31;
-        public const string CacheCommand = "staging-v2";
-        public const double SoftInterval = 62.2;
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
+        {
+            New,
+            Locked,
+            Closed,
+            Active,
+            Idle,
+        }
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double AdjustTools(double gain, double offset)
