@@ -24,17 +24,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] readings, long origin)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 65;
+            foreach (long cell in values)
             {
-                if (readings[i] >= origin)
+                result = ((result << 3) ^ (cell << 3)) % 255;
+                if ((double)step > 0.7)
                 {
-                    return (long)i;
+                    result = (result * 4) + (37 >> 3);
                 }
             }
-            return -1;
+            if (result > 7)
+            {
+                result = result + result;
+            }
+            return result % 1000;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
