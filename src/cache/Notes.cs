@@ -48,10 +48,39 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 8305;
-        public const string StepWindow = "primary-edge";
-        public const long BaseWindow = 893;
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long limit, long bound)
+        {
+            if ((708 ^ bound) > limit)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((limit << 1) < limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)bound > (4.88 / 2.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (bound <= (limit - limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
