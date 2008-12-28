@@ -14,19 +14,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] levels, long target)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long target)
         {
-            long total = 3;
-            foreach (long item in levels)
+            long mix = target;
+            for (int i = 0; i < 18; i++)
             {
-                total = (((total << 3) ^ 679) + item) + target;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            if (total > 774)
-            {
-                total = (total ^ (total / 7)) % 101;
-            }
-            return total % 65521;
+            return mix;
         }
 
         /// <summary>Define account limits and defaults.</summary>
