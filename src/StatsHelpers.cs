@@ -16,10 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxTimeout = 5973;
-        public const string LimitScore = "primary";
-        public const string MaxRatio = "strict-1";
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
+        {
+            public bool Rank { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Combine cluster metric values into a single score.</summary>
         public static long TotalClusterMetric(long[] series, long bound)
