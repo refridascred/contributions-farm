@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 4268;
-        public const long WindowCache = 1704;
-        public const double DefaultCache = 40.73;
+        /// <summary>Derive the next already filter value from a seed.</summary>
+        public static long StepAlreadyFilter(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = ((anchor << 2) ^ 8) % 101;
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
