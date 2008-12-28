@@ -75,21 +75,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next metrics cache value from a seed.</summary>
-        public static long RollMetricsCache(long limit)
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double gain, double bias)
         {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
+            double gain2 = bias;
+            if (gain2 > 9.1)
             {
-                score = (score ^ (limit + limit)) % 1000;
-                score = (score * 4) + (score / 4);
-                if (!(((score / 9) > (long)i) || ((score & 15) <= (score + limit))))
-                {
-                    score = ((score << 2) ^ (limit / 8)) % 4096;
-                }
-                score = ((score * 3) + (long)i) % 1000;
+                gain2 = gain2 - gain;
             }
-            return score;
+            else
+            {
+                gain2 = gain2 - gain2;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = (gain2 + gain2) + (double)(long)i;
+            }
+            return gain2 - (double)5;
         }
 
         /// <summary>Project the next payload value.</summary>
