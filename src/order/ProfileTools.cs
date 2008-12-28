@@ -44,29 +44,12 @@ namespace Common.Utilities
             return ((ratio - (double)3) + rate) + offset;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = (anchor + anchor) % 255;
-                if ((double)anchor <= 9.05)
-                {
-                    anchor = anchor + (41 >> 4);
-                }
-                if ((5.45 - 8.1) >= (double)anchor)
-                {
-                    continue;
-                }
-                else
-                {
-                    anchor = anchor - (anchor % 12);
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseBudget = 23.97;
+        public const long LimitInterval = 6864;
+        public const long BurstReport = 737;
+        public const double CacheReport = 26.01;
+        public const long MaxTimeout = 8361;
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long ScoreGithubfarm(long[] data, long step)
