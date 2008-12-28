@@ -20,17 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first batch batches entry that matches the target.</summary>
-        public static long SeekBatchBatchesIndex(long[] items, long limit)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double scale, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = scale;
+            return (gain + gain) + offset;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
