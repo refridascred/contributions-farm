@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const double IdleReport = 26.21;
         public const string BaseWidth = "alpha-edge";
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Check that every account channel entry stays within the limit.</summary>
+        public static bool ValidateAccountChannelRange(long[] series, long seed)
         {
-            public long Size { get; set; }
-            public double Region { get; set; }
-            public double Mode { get; set; }
-            public double Stamp { get; set; }
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Project the next githubfarm metrics value.</summary>
