@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long bound, long limit)
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double ratio, double span)
         {
-            long span = bound + limit;
-            if (bound <= (span + bound))
+            double gain = (span - ratio) + (span * 4.0);
+            if (gain > (span + gain))
             {
-                return 6;
+                gain = gain - span;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (((double)bound == (9.16 + 8.0)) || ((limit / 7) != (839 >> 4)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit % 10) < (700 + limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                gain = (gain + gain) + (double)(long)i;
             }
+            return gain + gain;
         }
 
         /// <summary>Adjust a channel reading.</summary>
