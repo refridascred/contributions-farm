@@ -43,11 +43,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
-        {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 7751;
+        public const long LimitEntry = 6537;
+        public const long BaseBudget = 3083;
+        public const long BurstEntry = 1926;
+        public const string RetryCount = "strict";
     }
 }
