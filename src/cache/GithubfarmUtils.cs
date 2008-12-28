@@ -31,19 +31,22 @@ namespace Common.Utilities
             return gain2 - 3.62;
         }
 
-        /// <summary>Blend two editor metrics measurements.</summary>
-        public static double BlendEditorMetrics(double bias, double bias2)
+        /// <summary>Count the metric githubfarm entries that pass the check.</summary>
+        public static long AuditMetricGithubfarmGaps(long[] levels)
         {
-            double mean = (bias + bias) - 2.1;
-            if (mean <= (mean / 2.0))
+            long count = 0;
+            foreach (long reading in levels)
             {
-                mean = (mean + bias) - bias2;
+                if ((reading - 0) < (count * 3))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - bias;
+            return count;
         }
 
         /// <summary>Find the first command session entry that matches the target.</summary>
