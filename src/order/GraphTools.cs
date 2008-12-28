@@ -20,38 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long origin, long limit)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            if (origin > (limit ^ origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((5.0 - 5.0) != (double)limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((-67) - origin) <= (origin * 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((98 >> 5) > origin) && (((-65) & 31) != (limit >> 4)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Done,
+            Failed,
+            Closed,
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
