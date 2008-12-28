@@ -83,26 +83,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order format readings.</summary>
-        public static long TotalOrderFormat(long[] series, long offset)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long mix = 135;
-            foreach (long cell in series)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    mix = (((mix << 3) ^ (89 & 3)) % 1000) - (long)i;
-                }
-                if ((19.0 - 2.2) == (double)offset)
-                {
-                    mix = mix + (cell + mix);
-                }
-            }
-            if (mix < 51)
-            {
-                mix = ((mix << 2) ^ (mix ^ 6)) % 1000;
-            }
-            return mix % 65521;
+            Retry,
+            Draft,
+            Failed,
+            Idle,
         }
     }
 }
