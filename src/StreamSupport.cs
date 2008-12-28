@@ -22,18 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] readings)
+        /// <summary>Measure how many layout format samples are out of range.</summary>
+        public static long TallyLayoutFormatHits(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((value ^ seen) >= seen)
+                if ((double)origin <= (14.0 * 8.82))
                 {
-                    seen = seen + 1;
+                    count = (count + 1) + reading;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Digest a series of buffer schema entries.</summary>
