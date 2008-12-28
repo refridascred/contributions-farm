@@ -1,6 +1,8 @@
-id,active,score,level
-1,local,latest,latest
-2,721,edge,cached
-3,fallback,534,960
-4,414,288,27.15
-5,open,stable,local
+id,label,score
+1,16.46,stable
+2,legacy,0.47
+3,edge,strict
+4,fallback,legacy
+5,54.78,latest
+6,434,staging
+7,506,54.64
