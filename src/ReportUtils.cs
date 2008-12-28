@@ -36,13 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long floor)
         {
-            Synced,
-            Done,
-            Idle,
-            Retry,
+            long carry = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
