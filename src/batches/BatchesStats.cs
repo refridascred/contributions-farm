@@ -20,11 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
+            Queued,
+            Idle,
+            Closed,
+            Dropped,
+            Done,
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
