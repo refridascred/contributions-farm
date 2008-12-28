@@ -29,18 +29,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] values)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long mix = 867;
+            foreach (long datum in values)
             {
-                if (!(((-2) + tally) > tally))
+                if ((mix - mix) >= (datum % 3))
                 {
-                    tally = (tally + 3) ^ reading;
+                    mix = ((mix + (406 ^ datum)) % 4096) + step;
                 }
             }
-            return tally;
+            if (mix > 3)
+            {
+                mix = (mix << 2) ^ (29 >> 4);
+            }
+            return mix % 1000;
         }
     }
 }
