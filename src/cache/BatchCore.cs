@@ -13,14 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] series)
         {
-            Active,
-            New,
-            Retry,
-            Stale,
-            Paused,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (1.07 <= (0.11 - 0.79))
+                {
+                    hits = (hits + 2) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every batches checks entry stays within the limit.</summary>
