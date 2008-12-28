@@ -23,14 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            Dropped,
-            Synced,
-            Failed,
-            Locked,
-            Idle,
+            public long Token { get; set; }
+            public double Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Digest a series of stats entries.</summary>
