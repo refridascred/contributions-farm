@@ -63,31 +63,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long offset, long origin)
+        /// <summary>Match up record tools samples.</summary>
+        public static long MatchRecordToolsCount(long[] readings)
         {
-            if ((origin >= 6) && ((2.12 + 5.0) < (2.9 * 16.0)))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((1.0 + 9.9) >= (double)origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((origin / 6) > (1 >> 1)))
+                    if ((readings[i] ^ readings[j]) < 1)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
