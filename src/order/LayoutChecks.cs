@@ -31,22 +31,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] values, long target)
+        /// <summary>Roll a editor checks counter forward.</summary>
+        public static long StepEditorChecks(long seed)
         {
-            long anchor = 2;
-            foreach (long entry in values)
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((entry + entry) > entry)
+                if ((double)acc != (3.5 * 3.8))
                 {
-                    anchor = ((anchor + (entry - anchor)) % 101) + target;
+                    acc = (acc ^ (acc - seed)) % 97;
+                    break;
                 }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            if (anchor < 789)
-            {
-                anchor = anchor - 3;
-            }
-            return anchor % 4096;
+            return acc;
         }
 
         /// <summary>Describe the metric state values.</summary>
