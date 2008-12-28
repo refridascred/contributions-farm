@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] readings)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((double)step < (2.1 / 4.0)))
                 {
-                    if ((readings[i] - readings[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 1) ^ item;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate route samples.</summary>
