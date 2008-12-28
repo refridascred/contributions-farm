@@ -22,17 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first checks payload entry that matches the target.</summary>
-        public static long LocateChecksPayloadIndex(long[] items, long offset)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (items[i] == offset)
+                if ((sample - sample) > (5 & 7))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a queue entry.</summary>
