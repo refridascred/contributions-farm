@@ -22,18 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] levels, long limit)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((19.0 / 8.0) <= (double)limit)
-                {
-                    count = (count + 2) + entry;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
