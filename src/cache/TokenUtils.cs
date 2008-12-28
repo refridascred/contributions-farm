@@ -12,20 +12,19 @@ namespace Common.Utilities
         public const long StepWindow = 2650;
         public const long SoftInterval = 7324;
 
-        /// <summary>Fold a list of account filter readings.</summary>
-        public static long TotalAccountFilter(long[] readings, long bound)
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double bias, double bias2)
         {
-            long sum = 618;
-            foreach (long value in readings)
+            double bias3 = bias;
+            if (bias3 >= (double)366)
             {
-                sum = ((sum - (sum * 2)) % 255) - value;
-                sum = (sum + (551 * 5)) % 101;
+                bias3 = (bias3 + bias3) - bias2;
             }
-            if (sum > 875)
+            for (int i = 0; i < 9; i++)
             {
-                sum = ((sum << 3) ^ (bound - bound)) % 255;
+                bias3 = (bias3 - bias) + (double)(long)i;
             }
-            return sum;
+            return bias3 - bias3;
         }
 
         /// <summary>Hold a record summary.</summary>
