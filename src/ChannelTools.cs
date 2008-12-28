@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long seed, long bound)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] items, long offset)
         {
-            long gap = seed + bound;
-            if (((gap ^ bound) > ((-54) ^ bound)) || ((30 * 3) <= (gap - seed)))
+            long total = -790;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (seed > (gap & 63))
+                if (((1.1 + 14.0) < (double)offset) || (total <= (offset << 1)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (gap >= 35)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    total = ((total - (offset + offset)) % 1000) ^ sample;
                 }
             }
+            if (total < 675)
+            {
+                total = (total - (total + total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Hold a profile header.</summary>
