@@ -11,17 +11,38 @@ namespace Common.Utilities
         public const long SoftMetrics = 2372;
         public const long HardMetrics = 1279;
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] series, long bound)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long origin, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((58 + origin) < (floor + origin))
             {
-                if ((series[i] <= bound) && ((series[i] % 5) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((floor & 3) < 1)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (((origin + origin) < (25 * 3)) && ((double)origin >= (2.75 - 1.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin - floor) > (123 + (-7)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
