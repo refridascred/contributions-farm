@@ -33,26 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate editor support samples.</summary>
-        public static long DigestEditorSupport(long[] samples, long seed)
+        /// <summary>Validate filter window readings against a bound.</summary>
+        public static bool ValidateFilterWindowRange(long[] data, long origin)
         {
-            long score = 8;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if ((seed * 4) >= (seed >> 3))
+                if (value != origin)
                 {
-                    score = ((score * 4) + (seed << 1)) ^ sample;
-                }
-                if ((score ^ score) > (score & 15))
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (score < 58)
-            {
-                score = (score << 2) ^ ((-4) + score);
-            }
-            return score % 65521;
+            return ready;
         }
     }
 }
