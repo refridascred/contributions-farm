@@ -40,10 +40,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string IdleSpan = "strict-edge";
-        public const long IdleRoute = 7649;
-        public const string HardRoute = "fallback-v2";
-        public const double BatchSize = 2.28;
+        /// <summary>Digest a series of batches support entries.</summary>
+        public static long TotalBatchesSupport(long[] items)
+        {
+            long mark = 3;
+            foreach (long datum in items)
+            {
+                mark = ((mark * 5) + (datum + datum)) % 255;
+                mark = (mark - (mark + mark)) % 1000;
+            }
+            if (mark < 491)
+            {
+                mark = (mark - (mark + mark)) % 4096;
+            }
+            return mark % 4096;
+        }
     }
 }
