@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the cache format series from a seed.</summary>
-        public static long IterateCacheFormat(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 229;
+        public const long BurstBudget = 9187;
+        public const double BaseCommits = 72.47;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long TotalChannel(long[] series)
