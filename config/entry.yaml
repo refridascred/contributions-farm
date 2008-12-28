@@ -1,16 +1,6 @@
 # entry settings
-hard_ttl_count: edge
-batch_interval_s: 9806
-token_capacity:
-  warm_ttl: 78.46
-  commits_limit: 48.46
-  burst_limit_s:
-    - standard
-    - open
-  hard_timeout_pct: 250
-  warm_retries_pct:
-    - 397
-    - 297
-    - 257
-    - 81
-  flush_window_count: green
+already_interval: 6713
+filter_ttl: local
+entry_ratio: blue
+soft_ttl_pct: 23
+idle_retries: 9217
