@@ -29,17 +29,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] series, long offset)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double scale, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale2 = (double)(655 * 3);
+            if (scale2 <= scale)
             {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
+                scale2 = (scale2 + (double)(-163)) - bias;
             }
-            return -1;
+            return scale2 - (6.16 + scale2);
         }
 
         /// <summary>Define schema limits and defaults.</summary>
