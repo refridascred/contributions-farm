@@ -33,13 +33,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long offset, long seed)
         {
-            public double Mode { get; set; }
-            public bool Flag { get; set; }
-            public bool Weight { get; set; }
-            public long Count { get; set; }
+            long diff = offset - seed;
+            if (seed <= (diff & 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset >> 5) >= seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
