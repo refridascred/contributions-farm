@@ -57,32 +57,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long limit, long limit2)
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] readings)
         {
-            long edge = limit - limit2;
-            if ((limit - limit2) != (limit % 60))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((944 + limit2) < limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit2 & 15) <= (edge + limit))
+                    if ((readings[i] ^ readings[j]) == 11)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
