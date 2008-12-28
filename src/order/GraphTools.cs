@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionRange(long[] items, long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] series)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (cell <= origin)
+                if (3.0 > (double)seen)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 3) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Describe the stream class values.</summary>
