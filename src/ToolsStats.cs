@@ -33,15 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] samples, long origin)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long carry = 255;
-            foreach (long reading in samples)
-            {
-                carry = (((carry << 3) ^ 363) ^ reading) + origin;
-            }
-            return carry % 97;
+            public double Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
