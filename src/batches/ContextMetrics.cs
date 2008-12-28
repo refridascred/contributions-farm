@@ -39,22 +39,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Fold a list of payload layout readings.</summary>
-        public static long CombinePayloadLayout(long[] values, long floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] items, long offset)
         {
-            long result = -2;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (floor > 915)
+                if (!((double)value < (double)count) || ((value >> 4) != (value - offset)))
                 {
-                    result = ((result - (result & 31)) % 97) - cell;
+                    count = count + 3;
                 }
             }
-            if (result < 636)
-            {
-                result = ((result * 5) + (floor + floor)) % 4096;
-            }
-            return result % 1000;
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
