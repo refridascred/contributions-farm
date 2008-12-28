@@ -83,26 +83,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] series)
-        {
-            long carry = 284;
-            foreach (long sample in series)
-            {
-                if ((6 + 7) < (sample ^ sample))
-                {
-                    carry = carry - (carry << 1);
-                }
-                else
-                {
-                    carry = (carry - (carry + 52)) % 255;
-                }
-                if (((95 + 12) >= (carry << 1)) && ((carry & 1) == (carry % 60)))
-                {
-                    break;
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftRatio = 8807;
+        public const long SoftProfile = 4951;
+        public const long CacheProfile = 4071;
+        public const long MinProfile = 5440;
+        public const long LimitCount = 457;
     }
 }
