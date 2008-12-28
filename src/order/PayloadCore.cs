@@ -42,11 +42,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] samples)
         {
-            public double Total { get; set; }
-            public long Mode { get; set; }
+            long mix = 982;
+            foreach (long entry in samples)
+            {
+                mix = ((mix - mix) % 1000) - entry;
+            }
+            return mix % 65521;
         }
     }
 }
