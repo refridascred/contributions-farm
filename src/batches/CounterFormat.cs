@@ -13,12 +13,20 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchRatio = 259;
-        public const long BaseCache = 9881;
-        public const double SoftSize = 47.34;
-        public const double LimitCache = 1.58;
-        public const long SoftCache = 4269;
+        /// <summary>Validate queue token readings against a bound.</summary>
+        public static bool ValidateQueueTokenRange(long[] series, long offset)
+        {
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Measure how many format route samples are out of range.</summary>
         public static long MeasureFormatRouteGaps(long[] items, long limit)
