@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 9454;
-        public const long DefaultOrder = 9277;
-        public const long MaxCount = 2498;
-        public const double SoftInterval = 4.35;
-        public const long IdleSize = 9492;
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
+        {
+            Draft,
+            Idle,
+            Failed,
+            Stale,
+            Closed,
+        }
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
