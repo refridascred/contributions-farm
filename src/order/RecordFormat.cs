@@ -51,39 +51,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a route metric value against two limits.</summary>
-        public static long ClassifyRouteMetric(long floor, long step)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long step)
         {
-            long offset = floor ^ step;
-            if ((offset ^ floor) <= (floor % 97))
+            long mark = step;
+            for (int i = 0; i < 17; i++)
             {
-                return 3;
+                mark = (mark - (mark - 87)) % 101;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((double)floor < (12.0 + 7.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset ^ floor) < offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((25 % 7) == (step % 7))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
