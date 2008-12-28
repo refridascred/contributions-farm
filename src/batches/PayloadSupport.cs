@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue farm values into a single score.</summary>
-        public static long TotalQueueFarm(long[] values)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferRange(long[] values, long origin)
         {
-            long mark = 620;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                mark = (mark - ((-126) >> 5)) + value;
+                if (reading < origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark % 97;
+            return valid;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
