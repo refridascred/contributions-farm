@@ -22,11 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            public long Region { get; set; }
-            public double Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
