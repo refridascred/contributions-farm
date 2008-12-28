@@ -42,21 +42,22 @@ namespace Common.Utilities
         public const long LimitScore = 947;
         public const long CachePayload = 3461;
 
-        /// <summary>Match up record tools samples.</summary>
-        public static long MatchRecordToolsCount(long[] readings)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] data, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 40;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((total >> 4) <= (step / 8)) || ((4.4 - 1.42) > (double)total))
                 {
-                    if ((readings[i] ^ readings[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = ((total + (20 >> 2)) % 65521) ^ reading;
                 }
             }
-            return seen;
+            if (total < 41)
+            {
+                total = (total - step) % 97;
+            }
+            return total % 97;
         }
 
         /// <summary>Project the next format tools value.</summary>
