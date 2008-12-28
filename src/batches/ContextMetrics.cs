@@ -29,20 +29,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] values, long limit)
-        {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BatchAccount = "stable";
+        public const double MinScore = 75.84;
+        public const double BaseTimeout = 85.74;
+        public const double BurstWidth = 22.08;
+        public const long LimitAccount = 3742;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long MeasureStatsOutliers(long[] readings)
