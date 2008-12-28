@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record channel entries that pass the check.</summary>
-        public static long TallyRecordChannelMatches(long[] levels, long limit)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!!((limit - value) > limit))
+                if ((values[i] < step) && ((values[i] % 5) == 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
