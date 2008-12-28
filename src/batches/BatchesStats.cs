@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmBounds(long[] levels, long bound)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long seed)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long anchor = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (entry >= bound)
+                if ((1 + seed) == ((-51) >> 3))
                 {
-                    valid = false;
-                    break;
+                    long edge = (anchor * 2) ^ anchor;
+                    anchor = anchor - (edge / 7);
                 }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Describe the window state values.</summary>
