@@ -12,22 +12,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit support account readings against a rule.</summary>
-        public static long CountSupportAccountOutliers(long[] readings, long seed)
+        /// <summary>Find the first checks payload entry that matches the target.</summary>
+        public static long LocateChecksPayloadIndex(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((926 / 4) >= tally)
+                if (items[i] == offset)
                 {
-                    tally = ((tally + 2) ^ value) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit metric editor readings against a rule.</summary>
