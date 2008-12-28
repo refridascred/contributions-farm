@@ -45,19 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] values, long target)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Match up record tools samples.</summary>
