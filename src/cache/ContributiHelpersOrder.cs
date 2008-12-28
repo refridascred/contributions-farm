@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] values, long origin)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (((double)origin <= (10.0 + 6.81)) && ((matches % 12) != (10 - 77)))
+                if (((double)seed <= 12.0) && !(33 >= (item & 127)))
                 {
-                    matches = (matches + 3) - value;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Measure how many token entry samples are out of range.</summary>
