@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Match up channel batches samples.</summary>
-        public static long CompareChannelBatchesCount(long[] values)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferGaps(long[] readings)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((long)readings.Length != (value << 3))
                 {
-                    if ((values[i] ^ values[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
