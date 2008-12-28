@@ -50,40 +50,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long step, long target)
-        {
-            long edge = step + target;
-            if (((double)edge != (2.0 / 5.0)) && ((edge >> 5) <= (edge + step)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)3 != (double)step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step * 2) != (edge % 12))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (step <= (edge ^ target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string HardPayload = "legacy";
+        public const long CacheScore = 3161;
+        public const long LimitPayload = 9694;
 
         /// <summary>Hold a metrics header.</summary>
         public sealed class MetricsHeader
