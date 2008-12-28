@@ -47,15 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double scale, double bias)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double rate, double bias)
         {
-            double scale2 = (double)(655 * 3);
-            if (scale2 <= scale)
+            double scale = bias - (rate + rate);
+            if (scale <= 6.9)
             {
-                scale2 = (scale2 + (double)(-163)) - bias;
+                scale = scale + bias;
             }
-            return scale2 - (6.16 + scale2);
+            else
+            {
+                scale = scale + rate;
+            }
+            return scale - (double)(-13);
         }
 
         /// <summary>Define schema limits and defaults.</summary>
