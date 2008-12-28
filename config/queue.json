@@ -1,7 +1,7 @@
 {
-  "metrics_depth": 36.6,
-  "max_retries": false,
-  "warm_size_ms": 37.79,
-  "record_size": 34,
-  "retry_ttl_pct": 2027
+  "retry_timeout_ms": "green",
+  "persist": "open",
+  "warm_delay_s": 68.91,
+  "burst_depth": 62.75,
+  "default_ratio": 86.9
 }
