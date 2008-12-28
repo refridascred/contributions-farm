@@ -1,22 +1,13 @@
 # entry settings
-route_size: primary
-idle_threshold: 65.16
-report_threshold:
-  batches_size: standard
-  record_depth:
-    retry_retries: 60
-    base_limit_ms: cached
-    retry_capacity_s: true
-    sync_depth:
-      - blue
-      - edge
-      - staging
-      - legacy
-    poll_capacity_ms: 43
-  tools_window: green
-  context_window: 1417
-cache_size_ms:
-  - stable
-  - green
-  - staging
-  - staging
+min_threshold:
+  schema_capacity: 86
+  base_delay_pct: true
+  batches_retries: 74.65
+  metrics_limit: 24
+report_limit: 18.33
+hard_delay:
+  - 72
+  - 87
+verbose: 60
+batch_retries_count: 500
+entry_ratio: 3633
