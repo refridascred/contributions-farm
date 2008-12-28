@@ -26,13 +26,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] data, long floor)
         {
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Derive the next token githubfarm value from a seed.</summary>
