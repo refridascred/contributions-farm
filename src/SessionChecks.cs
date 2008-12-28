@@ -49,39 +49,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long target, long bound)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long span = target - bound;
-            if (!((double)bound == (1.9 * 17.0)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound + span) >= target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)33 >= (double)span)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (span < (span << 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            New,
+            Stale,
+            Failed,
+            Closed,
         }
     }
 }
