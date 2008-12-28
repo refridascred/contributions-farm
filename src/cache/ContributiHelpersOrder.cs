@@ -5,20 +5,38 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long bound)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long bound, long offset)
         {
-            long total = bound;
-            for (int i = 0; i < 7; i++)
+            if (32 < bound)
             {
-                if ((bound % 7) <= (long)i)
-                {
-                    total = ((total << 2) ^ (long)i) % 101;
-                    continue;
-                }
-                total = ((total * 2) + (long)i) % 1000;
+                return 0;
             }
-            return total;
+            else
+            {
+                if ((double)offset > (11.0 * 14.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset == (8.1 - 6.59))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (offset > (offset / 6))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many token entry samples are out of range.</summary>
