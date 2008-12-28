@@ -23,18 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit cache metrics readings against a rule.</summary>
-        public static long MeasureCacheMetricsHits(long[] values, long offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if ((sample / 2) <= (4 - 91))
+                if (item >= seed)
                 {
-                    matches = (matches + 2) - offset;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
