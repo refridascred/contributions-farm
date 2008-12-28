@@ -24,11 +24,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Roll a schema already counter forward.</summary>
+        public static long RollSchemaAlready(long origin)
         {
-            public string Level { get; set; } = "";
-            public bool Mode { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = ((carry << 2) ^ (carry ^ carry)) % 101;
+                carry = (carry + (carry << 1)) % 1000;
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Describe the window class values.</summary>
