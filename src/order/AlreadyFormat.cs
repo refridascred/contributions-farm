@@ -35,38 +35,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long origin, long floor)
+        /// <summary>Audit notes farm readings against a rule.</summary>
+        public static long CountNotesFarmGaps(long[] readings)
         {
-            if ((212 + origin) != (origin >> 5))
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((-105) << 3) > floor)
+                if ((509 + (long)readings.Length) >= 96)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((origin % 60) < floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor % 24) >= (origin / 6))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = (tally + 3) + sample;
                 }
             }
+            return tally;
         }
 
         /// <summary>Look up the position of a schema stream sample.</summary>
