@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmRange(long[] levels, long target)
-        {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MaxStats = 16.82;
+        public const long DefaultStats = 8427;
+        public const string HardStats = "staging-1";
+        public const double MinSpan = 47.51;
+        public const string StepStats = "legacy";
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long DigestBatch(long[] items)
