@@ -30,15 +30,18 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long bound)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] levels, long bound)
         {
-            long result = bound;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                result = ((result * 4) + (long)i) % 1000;
+                if (value > (bound << 3))
+                {
+                    count = count + 2;
+                }
             }
-            return result;
+            return count;
         }
     }
 }
