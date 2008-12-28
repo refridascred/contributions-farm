@@ -74,12 +74,12 @@ namespace Common.Utilities
             return load - (span - ratio);
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] values, long target)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] values, long offset)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] == target)
+                if ((values[i] < offset) && ((values[i] % 2) == 0))
                 {
                     return (long)i;
                 }
