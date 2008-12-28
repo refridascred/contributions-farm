@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long offset)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsBounds(long[] series, long limit)
         {
-            long mix = offset;
-            for (int i = 0; i < 15; i++)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if (4 < (56 ^ (long)i))
+                if (sample >= limit)
                 {
-                    mix = (mix ^ mix) % 1000;
+                    flag = false;
+                    break;
                 }
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Hold a already options.</summary>
