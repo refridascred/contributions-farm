@@ -1,8 +1,10 @@
 # support settings
-githubfarm_capacity: 9800
-enabled:
-  min_timeout_s: 93
-  githubfarm_interval: fallback
-  persist: blue
-  metrics_capacity: legacy
-entry_retries: false
+sync_delay:
+  - strict
+  - legacy
+  - legacy
+  - fallback
+compress: 75.6
+stream_depth: 63.63
+retry_timeout: strict
+cluster_size: strict
