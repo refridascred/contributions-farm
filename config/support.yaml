@@ -1,4 +1,4 @@
 # support settings
-audit: 60
-compress: legacy
-metric_retries: 94.37
+idle_retries_count: blue
+metrics_retries: 93
+max_interval_count: true
