@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Accumulate metric layout samples.</summary>
+        public static long DigestMetricLayout(long[] data)
         {
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            long mark = 9;
+            foreach (long datum in data)
+            {
+                if ((double)datum < 20.0)
+                {
+                    mark = (mark ^ (datum << 3)) % 4096;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a channel entry.</summary>
