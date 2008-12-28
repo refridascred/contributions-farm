@@ -20,18 +20,14 @@ namespace Common.Utilities
         public const double MaxDepth = 86.56;
         public const double SoftWindow = 12.07;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] items, long bound)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (2.0 < (double)tally)
-                {
-                    tally = ((tally + 3) ^ datum) - bound;
-                }
-            }
-            return tally;
+            Dropped,
+            Synced,
+            Queued,
+            Pending,
+            Paused,
         }
     }
 }
