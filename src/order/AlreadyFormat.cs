@@ -27,26 +27,21 @@ namespace Common.Utilities
         public const double BaseScore = 51.76;
         public const double IdleAlready = 25.18;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] levels, long step)
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] levels)
         {
-            long sum = 41;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = ((((sum * 5) + step) % 255) + (long)i) + item;
-                }
-                if ((step - sum) < sum)
-                {
-                    sum = ((sum << 2) ^ sum) % 1000;
-                }
-                else
-                {
-                    sum = sum - (40 * 4);
+                    if ((levels[i] + levels[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum % 1000;
+            return count;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
