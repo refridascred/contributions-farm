@@ -23,17 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long target)
+        /// <summary>Validate entry checks readings against a bound.</summary>
+        public static bool CheckEntryChecksRange(long[] samples, long limit)
         {
-            long state = target;
-            for (int i = 0; i < 16; i++)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                long count = (long)i - (40 + (-5));
-                state = (state * 2) + (target ^ count);
-                state = ((state * 3) + (long)i) % 97;
+                if (reading <= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Measure how many format route samples are out of range.</summary>
