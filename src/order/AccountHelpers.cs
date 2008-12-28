@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string RetryLevel = "strict-edge";
-        public const double MaxDepth = 25.3;
-        public const string BasePayload = "fallback-edge";
-        public const long BurstPayload = 1496;
+        /// <summary>Look up the position of a tools route sample.</summary>
+        public static long SeekToolsRouteIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
