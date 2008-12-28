@@ -58,15 +58,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] data, long offset)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] samples, long bound)
         {
-            long mix = 172;
-            foreach (long sample in data)
+            long mark = 78;
+            foreach (long cell in samples)
             {
-                mix = ((mix << 3) ^ offset) ^ sample;
+                if (((cell + cell) < 65) || ((mark + cell) >= (bound + cell)))
+                {
+                    mark = ((mark * 3) + bound) % 97;
+                }
+                if ((double)mark > (double)2)
+                {
+                    mark = ((mark << 2) ^ bound) % 97;
+                }
+                if ((bound / 4) != (bound + mark))
+                {
+                    mark = mark ^ (bound / 8);
+                }
             }
-            return mix;
+            return mark;
         }
     }
 }
