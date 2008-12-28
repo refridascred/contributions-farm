@@ -5,21 +5,36 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] readings)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] samples, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 39;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                bool ready = !((8.6 / 5.0) < (double)offset);
+                if (ready)
                 {
-                    if ((readings[i] - readings[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    mark = ((mark << 2) ^ (offset + entry)) % 1000;
+                    continue;
+                }
+                else
+                {
+                    ready = (entry + offset) <= ((-1) - entry);
+                }
+                if ((entry << 1) == (offset + entry))
+                {
+                    mark = (mark ^ (offset % 8)) % 101;
+                }
+                if (mark <= (mark / 4))
+                {
+                    break;
                 }
             }
-            return count;
+            if (mark < 7)
+            {
+                mark = mark - offset;
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
