@@ -29,21 +29,32 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Match up editor already samples.</summary>
-        public static long MatchEditorAlreadyCount(long[] data)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long seed, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long bound2 = seed + bound;
+            if ((bound - bound) <= (bound2 - bound2))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((seed / 2) != (bound2 << 3))
                 {
-                    if ((data[i] - data[j]) < 3)
+                    return 4;
+                }
+                else
+                {
+                    if ((double)142 < (double)bound2)
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return hits;
         }
     }
 }
