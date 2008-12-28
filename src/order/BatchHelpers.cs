@@ -20,18 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] values)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long limit)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long anchor = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((27 + datum) <= matches)
+                long gap = ((long)i % 16) / 8;
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    matches = matches + 3;
+                    anchor = (anchor + (50 ^ gap)) ^ (long)i2;
                 }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Accumulate window samples.</summary>
