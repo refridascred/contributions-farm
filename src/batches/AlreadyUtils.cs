@@ -47,21 +47,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] series)
+        /// <summary>Scale a profile tools figure with a bias.</summary>
+        public static double SmoothProfileTools(double scale, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double weight = (4.2 / 6.0) / 9.0;
+            return ((weight - (weight / 5.0)) + scale) + offset;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
