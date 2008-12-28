@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            Active,
-            Failed,
-            Dropped,
             Ready,
+            Dropped,
+            Done,
             New,
         }
 
