@@ -12,19 +12,17 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] levels, long origin)
+        /// <summary>Find the first context metrics entry that matches the target.</summary>
+        public static long SeekContextMetricsIndex(long[] values, long floor)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell >= origin)
+                if (values[i] > floor)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
