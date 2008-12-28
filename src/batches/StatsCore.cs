@@ -77,22 +77,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] series)
+        /// <summary>Project the next cache notes value.</summary>
+        public static double ProjectCacheNotes(double bias, double span)
         {
-            long anchor = 8;
-            foreach (long entry in series)
+            double gain = span;
+            if (gain <= bias)
             {
-                for (int i = 0; i < 9; i++)
-                {
-                    anchor = (((anchor << 2) ^ (entry & 127)) % 101) ^ (long)i;
-                }
-                if ((anchor - 752) >= ((-59) % 12))
-                {
-                    anchor = (anchor ^ (anchor - anchor)) % 1000;
-                }
+                gain = gain + span;
             }
-            return anchor % 97;
+            return gain + (span - bias);
         }
 
         /// <summary>Digest a series of editor entries.</summary>
