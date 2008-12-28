@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit schema checks readings against a rule.</summary>
-        public static long MeasureSchemaChecksHits(long[] data, long origin)
+        /// <summary>Count the token filter entries that pass the check.</summary>
+        public static long TallyTokenFilterOutliers(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (((value - value) < hits) && ((double)value < 5.2))
+                if (((39 - 438) <= (entry & 1)) || ((493 - 6) != (seen * 5)))
                 {
-                    hits = (hits + 1) - origin;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
