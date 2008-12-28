@@ -23,12 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardSpan = "open";
-        public const long WindowLayout = 1270;
-        public const double LimitBudget = 66.49;
-        public const long MinLayout = 5075;
-        public const string BatchWidth = "primary";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheSchema = 65.84;
+        public const double BaseDepth = 43.55;
+        public const string RetrySchema = "staging-v2";
+        public const long CacheSize = 3748;
+        public const long StepSchema = 7977;
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long GradeCommits(long bound, long seed)
