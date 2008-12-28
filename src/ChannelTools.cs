@@ -22,12 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
-        {
-            public long Size { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepDepth = "cached-v2";
+        public const long BasePayload = 3459;
+        public const long LimitInterval = 3403;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long TallyStats(long[] values, long step)
