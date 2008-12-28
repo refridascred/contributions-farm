@@ -37,14 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Pending,
-            Done,
-            New,
-            Failed,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string StepBatch = "cached-v2";
+        public const long BurstBatch = 2006;
+        public const double HardBatch = 98.12;
+        public const long DefaultBatch = 8262;
 
         /// <summary>Define report limits and defaults.</summary>
         public const double BaseBudget = 23.97;
