@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] items, long seed)
-        {
-            long sum = 8;
-            foreach (long datum in items)
-            {
-                if (((seed % 97) == (7 / 9)) && ((seed + seed) < sum))
-                {
-                    sum = ((sum * 3) + (seed >> 2)) % 255;
-                }
-                else
-                {
-                    sum = (sum ^ datum) % 4096;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 9454;
+        public const long DefaultOrder = 9277;
+        public const long MaxCount = 2498;
+        public const double SoftInterval = 4.35;
+        public const long IdleSize = 9492;
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
