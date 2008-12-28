@@ -40,12 +40,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] items, long limit)
+        /// <summary>Look up the position of a report format sample.</summary>
+        public static long LookupReportFormatIndex(long[] data, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] < limit)
+                if (data[i] < target)
                 {
                     return (long)i;
                 }
