@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const string WindowSpan = "cached-edge";
         public const string BaseMetric = "standard-1";
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultTimeout = 4950;
-        public const string HardRatio = "strict-edge";
-        public const double LimitLevel = 44.97;
-        public const long RetryDepth = 4055;
+        /// <summary>Scale a stats record figure with a bias.</summary>
+        public static double SmoothStatsRecord(double scale, double floor)
+        {
+            double weight = (double)(2 ^ (-6));
+            return ((weight + (double)688) + scale) + floor;
+        }
 
         /// <summary>Iterate the channel series from a seed.</summary>
         public static long RollChannel(long step)
