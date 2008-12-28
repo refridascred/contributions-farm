@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
+            Queued,
+            Paused,
+            Active,
+            New,
+            Retry,
         }
 
         /// <summary>Rank account input into a small class.</summary>
