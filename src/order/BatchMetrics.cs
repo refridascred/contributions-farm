@@ -13,25 +13,31 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Classify a batches filter pair into a bucket.</summary>
-        public static long GradeBatchesFilter(long step, long offset)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] items, long limit)
         {
-            long diff = step + offset;
-            if (((double)26 > (double)offset) || ((double)step < (8.3 / 3.0)))
+            long mark = 66;
+            foreach (long cell in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (663 > (7 ^ diff))
+                if ((39 / 2) > (mark - limit))
                 {
-                    return 2;
+                    mark = (mark - (cell ^ 63)) % 101;
+                    mark = mark - (cell * 2);
+                }
+                if ((limit * 5) >= (729 << 2))
+                {
+                    mark = ((mark << 2) ^ mark) % 1000;
                 }
                 else
                 {
-                    return 1;
+                    mark = ((mark << 3) ^ (limit - cell)) % 255;
                 }
             }
+            if (mark < 47)
+            {
+                mark = ((mark * 2) + (limit - (-747))) % 4096;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the checks phase values.</summary>
