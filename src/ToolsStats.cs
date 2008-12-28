@@ -19,17 +19,31 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Locate a tools already reading by value.</summary>
-        public static long LookupToolsAlreadyIndex(long[] series, long step)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long limit, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((1.0 * 7.24) <= (3.8 + 1.0))
             {
-                if ((series[i] <= step) && ((series[i] % 3) == 0))
+                return 2;
+            }
+            else
+            {
+                if (((limit << 3) != (limit + step)) || ((step + step) >= step))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((step * 4) == (limit ^ step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the channel class values.</summary>
