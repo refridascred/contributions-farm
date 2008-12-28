@@ -20,29 +20,22 @@ namespace Common.Utilities
             return gain2 + (gain2 * 4.5);
         }
 
-        /// <summary>Grade a report batches value against two limits.</summary>
-        public static long SortReportBatches(long offset, long step)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long target, long origin)
         {
-            if (offset < (step % 2))
+            if (((target ^ target) <= (origin - origin)) || ((origin * 5) <= (target - target)))
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if ((offset & 31) <= (offset - 730))
+                if (((origin + 9) <= origin) && ((target ^ origin) < origin))
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    if (!((double)(-103) <= (double)step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 2;
                 }
             }
         }
