@@ -1,6 +1,23 @@
 # entry settings
-checks_retries:
-  - 81
-  - 367
-batch_ratio_s: 8360
-warm_retries_ms: latest
+verbose: green
+warm_delay_s: local
+default_window_pct:
+  soft_limit_count: blue
+  enabled: 90.07
+  poll_ttl_count: blue
+  hard_ratio_ms:
+    window_capacity: local
+    min_depth: fallback
+    base_ratio_count: latest
+    batch_ttl: standard
+    persist:
+      - staging
+      - standard
+      - local
+      - edge
+  base_capacity_s: legacy
+burst_limit_count:
+  - open
+  - cached
+  - fallback
+  - blue
