@@ -61,18 +61,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] readings, long offset)
+        /// <summary>Check that every checks batch entry stays within the limit.</summary>
+        public static bool VerifyChecksBatchRange(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (((97 * 5) > offset) || ((offset + reading) > (hits + offset)))
+                if (cell <= step)
                 {
-                    hits = hits + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Describe the channel state values.</summary>
