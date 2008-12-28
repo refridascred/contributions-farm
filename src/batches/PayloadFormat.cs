@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferGaps(long[] readings)
+        /// <summary>Roll a stream buffer counter forward.</summary>
+        public static long IterateStreamBuffer(long bound)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long result = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((long)readings.Length != (value << 3))
-                {
-                    hits = hits + 2;
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Find the first githubfarm stream entry that matches the target.</summary>
