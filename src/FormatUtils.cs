@@ -78,18 +78,21 @@ namespace Common.Utilities
         public const long MinBuffer = 2652;
         public const long DefaultBuffer = 6545;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] samples)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] values)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((hits >> 4) >= (861 << 1)) && (((1 + 86) <= item) || ((item + item) <= hits)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((values[i] ^ values[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
