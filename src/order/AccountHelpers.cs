@@ -72,12 +72,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
-        {
-            New,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double DefaultCounter = 26.83;
+        public const long CacheDepth = 7216;
+        public const long RetryScore = 2738;
+        public const long HardTimeout = 6210;
+        public const long LimitCounter = 4513;
     }
 }
