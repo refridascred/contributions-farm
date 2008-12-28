@@ -31,12 +31,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long floor)
         {
-            Ready,
-            Failed,
-            Locked,
+            long anchor = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                if (anchor <= (69 >> 2))
+                {
+                    anchor = anchor + (anchor * 5);
+                }
+                if ((floor - floor) == (long)i)
+                {
+                    anchor = anchor - (anchor - anchor);
+                }
+                anchor = ((anchor * 2) + ((long)i + (long)i)) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
