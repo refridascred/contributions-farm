@@ -12,26 +12,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Combine cache route values into a single score.</summary>
-        public static long TallyCacheRoute(long[] values)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmRange(long[] readings, long limit)
         {
-            long score = 32;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if (((score - score) <= datum) || ((double)datum != (5.0 - 3.2)))
+                if (reading < limit)
                 {
-                    score = ((score * 2) + score) % 4096;
-                }
-                else
-                {
-                    score = ((score * 4) + (datum % 16)) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            if (score < 77)
-            {
-                score = score + (score & 127);
-            }
-            return score % 65521;
+            return valid;
         }
 
         /// <summary>Hold a command entry.</summary>
