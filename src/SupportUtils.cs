@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Support utils helpers.</summary>
     public static class SupportUtils
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double scale, double floor)
-        {
-            double scale2 = floor;
-            if (scale2 > (7.88 - 9.21))
-            {
-                scale2 = (scale2 + 7.0) - scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 + (double)5) + (double)(long)i;
-            }
-            return scale2 + 6.4;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 4843;
+        public const long BaseScore = 3668;
+        public const string WindowSchema = "primary-v2";
+        public const long IdleSpan = 9014;
+        public const string WindowRatio = "legacy-1";
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long MeasureBatchesHits(long[] levels, long step)
