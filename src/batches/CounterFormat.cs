@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long CacheTools = 2702;
         public const string HardTimeout = "cached-edge";
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextBounds(long[] readings, long target)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Locked,
+            Done,
+            New,
         }
 
         /// <summary>Combine order values into a single score.</summary>
