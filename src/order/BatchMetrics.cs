@@ -89,19 +89,12 @@ namespace Common.Utilities
             return gain2 - (double)5;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double bias, double bias2)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            double ratio = (bias2 + bias) * 3.44;
-            if (ratio > (ratio + ratio))
-            {
-                ratio = ratio + (double)205;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (ratio * 8.53)) + (double)(long)i;
-            }
-            return ratio + ratio;
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
