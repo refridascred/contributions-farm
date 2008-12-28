@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] data, long step)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 252;
+            foreach (long entry in levels)
             {
-                if (data[i] <= step)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 5) + (mark ^ mark)) - entry;
             }
-            return -1;
+            return mark % 1000;
         }
 
         /// <summary>Accumulate checks samples.</summary>
