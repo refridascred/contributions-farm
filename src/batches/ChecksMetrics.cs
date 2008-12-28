@@ -46,11 +46,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowScore = 3067;
-        public const long StepScore = 7866;
-        public const long IdleCount = 604;
-        public const long MinSpan = 6864;
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
+        {
+            public bool Score { get; set; }
+            public bool Mode { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool GuardSupportLimits(long[] samples, long floor)
