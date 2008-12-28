@@ -35,10 +35,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 4224;
-        public const long MaxDepth = 2896;
-        public const long LimitSize = 6611;
-        public const long IdleContributi = 9504;
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
+        {
+            public bool Limit { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
