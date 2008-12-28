@@ -28,12 +28,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
-        {
-            public long Weight { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string SoftTimeout = "cached-1";
+        public const long IdleScore = 4187;
+        public const string StepRoute = "staging-1";
+        public const long LimitRoute = 1175;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long MeasureFormatGaps(long[] items)
