@@ -30,21 +30,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up channel stats samples.</summary>
-        public static long OverlapChannelStatsCount(long[] series)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 506;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((mix << 3) == ((-923) << 3)) && ((mix + mix) > 5))
                 {
-                    if ((series[i] ^ series[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix + (mix + 35)) % 1000) - item;
                 }
             }
-            return count;
+            return mix % 4096;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
