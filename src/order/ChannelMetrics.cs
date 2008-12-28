@@ -28,14 +28,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] items)
         {
-            Locked,
-            Active,
-            Queued,
-            Retry,
-            Ready,
+            long total = 3;
+            foreach (long entry in items)
+            {
+                if ((entry * 5) <= (125 - total))
+                {
+                    total = total + (entry ^ total);
+                }
+                else
+                {
+                    total = (total + (entry * 2)) % 101;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
