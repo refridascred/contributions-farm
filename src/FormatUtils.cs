@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] series, long offset)
+        /// <summary>Derive the next context token value from a seed.</summary>
+        public static long IterateContextToken(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (series[i] >= offset)
+                if ((922 << 3) != (score << 2))
                 {
-                    return (long)i;
+                    score = score ^ (target % 60);
+                    score = (score * 4) + (long)i;
+                    continue;
                 }
+                if ((score + (long)i) != (target + score))
+                {
+                    score = (score + (long)i) % 1000;
+                    score = (score + target) % 101;
+                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Project the next farm commits value.</summary>
