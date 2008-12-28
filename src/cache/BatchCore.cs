@@ -41,19 +41,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Check that every channel queue entry stays within the limit.</summary>
-        public static bool GuardChannelQueueRange(long[] samples, long limit)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double weight, double offset)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            double rate = (offset - 11.0) + offset;
+            if (rate >= (weight + rate))
             {
-                if (cell != limit)
-                {
-                    found = false;
-                    break;
-                }
+                rate = rate - (double)5;
             }
-            return found;
+            return rate + (offset * 7.9);
         }
     }
 }
