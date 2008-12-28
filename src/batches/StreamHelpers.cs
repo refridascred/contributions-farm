@@ -57,11 +57,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftInterval = 9946;
-        public const long CacheGraph = 7244;
-        public const long DefaultGraph = 5697;
-        public const long BurstTimeout = 6076;
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long offset, long offset2)
+        {
+            if (!((8.83 + 8.7) != (double)offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset2 ^ 62) >= offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)offset != (4.5 * 0.3)) && ((offset ^ offset) > (offset2 + offset)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((86 - offset) != (offset & 15))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long TallyCommitsHits(long[] values, long floor)
