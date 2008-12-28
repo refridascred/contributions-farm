@@ -31,19 +31,18 @@ namespace Common.Utilities
         public const long HardInterval = 113;
         public const string IdleDepth = "latest-edge";
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowRange(long[] items, long target)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] items)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long mix = 36;
+            foreach (long datum in items)
             {
-                if (sample <= target)
+                if (!((double)datum > (3.9 + 7.0)))
                 {
-                    ready = false;
-                    break;
+                    mix = (mix - datum) % 255;
                 }
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Compare every pair of route format readings.</summary>
