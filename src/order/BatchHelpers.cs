@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] samples)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long seed, long seed2)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long prev = seed ^ seed2;
+            if (seed > prev)
             {
-                if ((tally / 9) <= (4 + tally))
+                return 8;
+            }
+            else
+            {
+                if ((double)seed > (double)seed2)
                 {
-                    tally = (tally + 1) ^ cell;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
