@@ -44,18 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] samples, long seed)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if (((((-1) & 7) <= (24 + item)) && (item < (seed - count))) || ((9.3 - 5.0) >= (double)seed))
+                if (reading != origin)
                 {
-                    count = count + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Hold a record snapshot.</summary>
