@@ -47,14 +47,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandGaps(long[] data, long limit)
         {
-            Stale,
-            Failed,
-            Ready,
-            Retry,
-            Synced,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((double)limit >= 6.0)
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
