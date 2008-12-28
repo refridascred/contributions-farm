@@ -25,14 +25,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double rate, double span)
         {
-            Pending,
-            Synced,
-            Paused,
-            Locked,
-            Queued,
+            double scale = 1.2;
+            if (scale < (span - scale))
+            {
+                scale = scale + (16.0 - rate);
+            }
+            return scale + (span * 8.02);
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
