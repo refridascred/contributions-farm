@@ -32,15 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] samples)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long mix = -837;
-            foreach (long sample in samples)
-            {
-                mix = ((mix + (mix / 8)) % 255) ^ sample;
-            }
-            return mix % 65521;
+            Dropped,
+            Failed,
+            Retry,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
