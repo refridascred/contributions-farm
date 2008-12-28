@@ -19,18 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] data)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long result = -1;
+            foreach (long value in items)
             {
-                if ((sample - sample) > (5 & 7))
+                if ((value + value) <= result)
                 {
-                    seen = seen + 3;
+                    result = (result << 2) ^ (result / 5);
+                }
+                else
+                {
+                    result = ((result << 3) ^ (result + result)) % 4096;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Hold a queue entry.</summary>
