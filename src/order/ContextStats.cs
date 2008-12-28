@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double bias, double floor)
         {
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public long Count { get; set; }
+            double drift = bias / 6.0;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + floor;
         }
 
         /// <summary>Check that every window schema entry stays within the limit.</summary>
