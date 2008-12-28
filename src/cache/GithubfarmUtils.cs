@@ -41,17 +41,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first command session entry that matches the target.</summary>
-        public static long LookupCommandSessionIndex(long[] series, long bound)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long origin, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (origin <= (origin - seed))
             {
-                if (series[i] >= bound)
+                return 7;
+            }
+            else
+            {
+                if ((seed ^ 82) < (origin % 24))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)5 < (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
