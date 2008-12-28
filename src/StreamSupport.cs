@@ -34,22 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] levels, long bound)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double scale, double offset)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            double drift = 12.0 - offset;
+            if (drift >= offset)
             {
-                if ((double)bound >= (5.0 / 5.0))
-                {
-                    count = (count + 2) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                drift = (drift + (double)804) + scale;
             }
-            return count;
+            else
+            {
+                drift = drift + (double)(-4);
+            }
+            return drift - (drift + 12.0);
         }
     }
 }
