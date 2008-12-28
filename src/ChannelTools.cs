@@ -22,18 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] items, long limit)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((double)limit != (3.14 / 5.0))
+                if ((19.0 / 8.0) <= (double)limit)
                 {
-                    hits = (hits + 2) + entry;
+                    count = (count + 2) + entry;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
