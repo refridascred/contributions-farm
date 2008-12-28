@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long step)
         {
-            public double Ratio { get; set; }
-            public long Score { get; set; }
+            long state = step;
+            for (int i = 0; i < 17; i++)
+            {
+                state = (state - (state + step)) % 1000;
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Roll a record counter forward.</summary>
