@@ -20,17 +20,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] items, long offset)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double bias, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain = bias;
+            if (gain < bias)
             {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
+                gain = (gain - (0.24 - bias)) - offset;
             }
-            return -1;
+            return gain + gain;
         }
     }
 }
