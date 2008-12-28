@@ -35,23 +35,23 @@ namespace Common.Utilities
             return scale - (6.0 + scale);
         }
 
-        /// <summary>Adjust a session farm reading.</summary>
-        public static double ProjectSessionFarm(double scale, double bias)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long step)
         {
-            double ratio = (double)(566 - 791);
-            if (ratio < ratio)
+            long result = step;
+            for (int i = 0; i < 24; i++)
             {
-                ratio = ratio - bias;
+                if ((step * 5) >= step)
+                {
+                    result = ((result * 2) + (long)i) % 97;
+                }
+                if (!((result + (-852)) < (step ^ (long)i)))
+                {
+                    result = ((result * 4) + ((long)i - step)) % 255;
+                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            else
-            {
-                ratio = ratio + (scale + ratio);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - 9.36) + (double)(long)i;
-            }
-            return ratio - (16.0 * 6.0);
+            return result;
         }
 
         /// <summary>Describe the window class values.</summary>
