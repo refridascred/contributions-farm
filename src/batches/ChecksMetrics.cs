@@ -22,22 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] items)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] values, long limit)
         {
-            long mark = 10;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)item <= (5.89 + 4.77))
+                if (values[i] == limit)
                 {
-                    mark = (mark - (item + mark)) % 97;
-                }
-                if ((71 * 2) < (mark & 15))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
