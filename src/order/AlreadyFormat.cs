@@ -27,19 +27,17 @@ namespace Common.Utilities
         public const double BaseScore = 51.76;
         public const double IdleAlready = 25.18;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] samples, long seed)
+        /// <summary>Find the first metric checks entry that matches the target.</summary>
+        public static long LocateMetricChecksIndex(long[] samples, long bound)
         {
-            long mix = 83;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (mix < (seed * 2))
+                if (samples[i] > bound)
                 {
-                    mix = (((mix * 5) + (seed / 5)) % 101) + reading;
+                    return (long)i;
                 }
-                mix = mix ^ (mix + seed);
             }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
