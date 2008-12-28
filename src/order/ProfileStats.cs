@@ -36,19 +36,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate token batch samples.</summary>
-        public static long FoldTokenBatch(long[] readings, long origin)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] series, long offset)
         {
-            long total = 8;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total - (49 << 2)) - cell;
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            if (total < 611)
-            {
-                total = total ^ ((long)readings.Length + origin);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
