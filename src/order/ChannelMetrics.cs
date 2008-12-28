@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank context cluster input into a small class.</summary>
-        public static long BucketContextCluster(long step, long seed)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] items, long bound)
         {
-            if (seed > (step ^ 637))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed & 31) < (step << 3))
+                if ((bound ^ cell) < (matches << 2))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((seed - 293) <= (step ^ step)) && ((double)seed >= 2.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (step <= (step ^ 42))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Project the next entry channel value.</summary>
