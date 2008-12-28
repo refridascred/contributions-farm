@@ -20,17 +20,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] values, long bound)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long origin, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (origin > (limit ^ origin))
             {
-                if ((values[i] < bound) && ((values[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((5.0 - 5.0) != (double)limit)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((-67) - origin) <= (origin * 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((98 >> 5) > origin) && (((-65) & 31) != (limit >> 4)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
