@@ -14,22 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] data)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (count > (count / 9))
-                {
-                    count = (count + 2) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the cache class values.</summary>
