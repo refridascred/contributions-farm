@@ -18,18 +18,14 @@ namespace Common.Utilities
         public const long BurstDepth = 897;
         public const string RetryGraph = "local-v2";
 
-        /// <summary>Accumulate buffer batch samples.</summary>
-        public static long FoldBufferBatch(long[] data, long target)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long acc = 145;
-            foreach (long entry in data)
-            {
-                if (((target & 15) < entry) || ((target + 18) < target))
-                {
-                    acc = (acc - (target >> 5)) % 65521;
-                }
-            }
-            return acc % 4096;
+            Pending,
+            Synced,
+            Paused,
+            Locked,
+            Queued,
         }
 
         /// <summary>Audit record readings against a rule.</summary>
