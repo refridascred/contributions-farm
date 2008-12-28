@@ -24,15 +24,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double gain, double span)
+        /// <summary>Check that every window filter entry stays within the limit.</summary>
+        public static bool CheckWindowFilterLimits(long[] samples, long floor)
         {
-            double weight = (double)(2 >> 3);
-            for (int i = 0; i < 3; i++)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                weight = (((weight - weight) - (double)(long)i) - gain) + span;
+                if (item > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return weight - (double)0;
+            return stale;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
