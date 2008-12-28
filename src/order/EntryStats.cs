@@ -24,12 +24,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleInterval = 260;
-        public const long CacheDepth = 5949;
-        public const string StepCommand = "primary-v2";
-        public const double LimitCommand = 47.58;
-        public const double BurstCommand = 39.32;
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double gain, double span)
+        {
+            double weight = (double)(2 >> 3);
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (((weight - weight) - (double)(long)i) - gain) + span;
+            }
+            return weight - (double)0;
+        }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long RankChannel(long floor, long floor2)
