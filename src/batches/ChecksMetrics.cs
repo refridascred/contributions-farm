@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MaxStats = 16.82;
-        public const long DefaultStats = 8427;
-        public const string HardStats = "staging-1";
-        public const double MinSpan = 47.51;
-        public const string StepStats = "legacy";
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = (sum - ((long)i - (long)i)) % 1000;
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long DigestBatch(long[] items)
