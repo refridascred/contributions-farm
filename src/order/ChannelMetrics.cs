@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long floor)
+        /// <summary>Rank context cluster input into a small class.</summary>
+        public static long BucketContextCluster(long step, long seed)
         {
-            long state = floor;
-            for (int i = 0; i < 4; i++)
+            if (seed > (step ^ 637))
             {
-                state = state ^ (state / 7);
-                state = ((state << 2) ^ (long)i) % 255;
-                state = ((state * 5) + (long)i) % 65521;
+                return 8;
             }
-            return state;
+            else
+            {
+                if ((seed & 31) < (step << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((seed - 293) <= (step ^ step)) && ((double)seed >= 2.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (step <= (step ^ 42))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next entry channel value.</summary>
