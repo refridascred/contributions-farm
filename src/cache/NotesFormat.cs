@@ -31,13 +31,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
-        {
-            public string Limit { get; set; } = "";
-            public bool Score { get; set; }
-            public string Mode { get; set; } = "";
-            public double Owner { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 216;
+        public const long IdleStream = 2035;
+        public const double SoftFactor = 14.35;
+        public const long BaseStream = 547;
+        public const long RetryStream = 5131;
     }
 }
