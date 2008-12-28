@@ -16,12 +16,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BatchScore = "primary";
-        public const string MaxInterval = "stable-v2";
-        public const long CacheLevel = 1401;
-        public const double DefaultRatio = 42.91;
-        public const long LimitMetric = 6802;
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long floor, long seed)
+        {
+            if (((floor & 63) <= (floor + floor)) || ((floor >> 3) == (seed + floor)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (165 < (seed << 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)seed != (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
