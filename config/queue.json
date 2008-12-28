@@ -1,7 +1,16 @@
 {
-  "persist": "primary",
-  "soft_size_pct": 4385,
-  "compress": true,
-  "sync_depth_pct": "local",
-  "default_capacity": true
+  "enabled": {
+    "hard_timeout": {
+      "burst_ratio_ms": false,
+      "strict": "fallback",
+      "min_capacity": "green"
+    },
+    "support_interval": true,
+    "burst_retries_s": "primary",
+    "burst_depth_ms": 7978,
+    "hard_ttl": false,
+    "hard_limit_s": "open"
+  },
+  "base_size_ms": ["open", "fallback", "standard", "edge"],
+  "persist": [384, 135, 448]
 }
