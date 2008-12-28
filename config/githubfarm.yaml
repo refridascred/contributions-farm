@@ -1,5 +1,7 @@
 # githubfarm settings
-entry_limit: false
-persist: 31.79
-batch_threshold: legacy
-max_window_pct: standard
+readonly: 14
+idle_timeout_ms: 33.79
+already_delay: staging
+batch_depth: 3246
+flush_interval_count: primary
+enabled: strict
