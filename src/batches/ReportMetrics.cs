@@ -19,11 +19,31 @@ namespace Common.Utilities
         public const string MinCommits = "fallback";
         public const long SoftCommits = 3520;
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Classify a metric githubfarm pair into a bucket.</summary>
+        public static long ClassifyMetricGithubfarm(long origin, long bound)
         {
-            public bool Label { get; set; }
-            public double Token { get; set; }
+            if ((11.0 * 6.35) > (double)bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin + bound) >= (origin >> 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound + origin) == (33 / 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
