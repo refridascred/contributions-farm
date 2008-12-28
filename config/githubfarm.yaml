@@ -1,22 +1,4 @@
 # githubfarm settings
-base_depth:
-  batch_depth: 12
-  hard_depth_pct:
-    max_delay_ms: green
-    hard_timeout:
-      - local
-      - open
-    readonly: false
-    max_capacity_ms: 48.07
-  soft_size_count: 28.54
-  batch_window_count: blue
-  payload_threshold:
-    - 387
-    - 293
-    - 332
-channel_threshold: blue
-channel_depth: false
-dry_run:
-  - 68
-  - 349
-readonly: local
+command_limit: 83.09
+strict: blue
+session_retries: staging
