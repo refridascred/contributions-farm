@@ -30,19 +30,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountBounds(long[] values, long step)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define schema limits and defaults.</summary>
