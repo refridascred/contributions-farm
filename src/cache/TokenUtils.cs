@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const long StepWindow = 2650;
         public const long SoftInterval = 7324;
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double bias, double bias2)
-        {
-            double bias3 = bias;
-            if (bias3 >= (double)366)
-            {
-                bias3 = (bias3 + bias3) - bias2;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias3 = (bias3 - bias) + (double)(long)i;
-            }
-            return bias3 - bias3;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepInterval = "open-edge";
+        public const long WindowRatio = 4139;
+        public const long SoftRatio = 8160;
+        public const long MinSession = 969;
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long SeriesQueue(long floor)
