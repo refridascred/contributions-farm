@@ -46,21 +46,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((origin - origin) >= result)
-                {
-                    result = (result + (result << 2)) % 255;
-                }
-                result = result + (origin ^ result);
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string IdleContext = "alpha-v2";
+        public const long SoftLevel = 7291;
+        public const long HardRatio = 9858;
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
