@@ -49,13 +49,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Audit record route readings against a rule.</summary>
+        public static long MeasureRecordRouteOutliers(long[] samples, long limit)
         {
-            Retry,
-            Dropped,
-            Synced,
-            Paused,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((hits - (-944)) > (limit << 3))
+                {
+                    hits = (hits + 2) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
