@@ -42,16 +42,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long floor)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] series)
         {
-            long anchor = floor;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = anchor - (floor << 3);
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the session status values.</summary>
