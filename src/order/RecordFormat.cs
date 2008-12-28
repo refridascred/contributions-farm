@@ -33,17 +33,27 @@ namespace Common.Utilities
         public const double IdleSize = 62.17;
         public const string StepLevel = "cached";
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] levels, long offset)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] samples, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 190;
+            foreach (long sample in samples)
             {
-                if (levels[i] == offset)
+                carry = ((carry * 4) + (850 / 9)) % 255;
+                if (!((step >> 3) > step))
                 {
-                    return (long)i;
+                    carry = (carry - (carry % 5)) % 97;
+                }
+                else
+                {
+                    carry = (carry ^ (906 - sample)) % 97;
                 }
             }
-            return -1;
+            if (carry < (-941))
+            {
+                carry = ((carry << 2) ^ step) % 65521;
+            }
+            return carry % 97;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
