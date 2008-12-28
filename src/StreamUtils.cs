@@ -20,18 +20,12 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] levels)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (1 < value)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Pending,
+            Failed,
+            Idle,
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
