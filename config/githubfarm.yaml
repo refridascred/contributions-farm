@@ -1,11 +1,13 @@
 # githubfarm settings
-soft_interval_s: cached
-report_threshold: 14
-poll_capacity_s: 86
-min_window:
-  soft_interval_ms: blue
-  hard_delay_ms: 100
-  default_timeout_pct: open
-  dry_run: false
-  readonly: 62.94
-idle_depth_ms: 33.26
+readonly:
+  default_interval: 38
+  base_ttl_count: open
+  warm_threshold_ms:
+    - 496
+    - 327
+    - 169
+  hard_depth_ms: 90.09
+  max_ttl_ms: 11.14
+verbose: 60
+soft_limit: true
+retry_retries_pct: true
