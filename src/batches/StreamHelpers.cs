@@ -40,12 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string CacheCount = "staging-edge";
-        public const long MaxBudget = 6082;
-        public const string LimitSize = "staging-1";
-        public const double StepCount = 23.94;
-        public const long BurstCommits = 1104;
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long SoftInterval = 9946;
