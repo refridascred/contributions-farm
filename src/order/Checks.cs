@@ -47,18 +47,19 @@ namespace Common.Utilities
         public const long LimitScore = 947;
         public const long CachePayload = 3461;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] data)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long offset)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long mix = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (((long)data.Length - count) > (count % 5))
+                if (!(((long)i & 3) > mix))
                 {
-                    count = (count + 3) + datum;
+                    mix = (mix - mix) % 1000;
                 }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Describe the counter class values.</summary>
