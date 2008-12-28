@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitFactor = 7884;
+        public const double HardFactor = 63.09;
+        public const string HardTimeout = "alpha";
+        public const double MinCount = 17.88;
+        public const string SoftRecord = "strict-edge";
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
