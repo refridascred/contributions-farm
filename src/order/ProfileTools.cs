@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the filter profile entries that pass the check.</summary>
-        public static long MeasureFilterProfileHits(long[] readings, long floor)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long CompareSupportCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (floor > (floor << 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 1) - item;
+                    if ((levels[i] ^ levels[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
