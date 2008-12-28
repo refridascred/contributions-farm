@@ -34,16 +34,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long seed)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] levels)
         {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = result ^ (result - seed);
-                result = ((result * 4) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
     }
 }
