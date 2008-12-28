@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate metric layout samples.</summary>
-        public static long DigestMetricLayout(long[] data)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] levels, long step)
         {
-            long mark = 9;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)datum < 20.0)
+                if ((levels[i] == step) && ((levels[i] % 5) == 0))
                 {
-                    mark = (mark ^ (datum << 3)) % 4096;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
