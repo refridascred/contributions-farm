@@ -19,17 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] values, long limit)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 617;
+            foreach (long value in items)
             {
-                if ((values[i] < limit) && ((values[i] % 5) != 0))
+                if (value >= (result * 5))
                 {
-                    return (long)i;
+                    result = result ^ (5 + 526);
                 }
             }
-            return -1;
+            if (result < 3)
+            {
+                result = (result + (result + result)) % 4096;
+            }
+            return result % 1000;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
