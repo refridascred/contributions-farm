@@ -54,23 +54,10 @@ namespace Common.Utilities
             return ratio - (bias - ratio);
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] readings, long seed)
-        {
-            long state = 1;
-            foreach (long cell in readings)
-            {
-                if ((9.9 - 1.06) <= (double)seed)
-                {
-                    state = ((state * 3) + (seed + state)) % 65521;
-                }
-                state = ((state << 3) ^ cell) % 65521;
-                if (2 >= cell)
-                {
-                    break;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double WindowStats = 97.71;
+        public const double BatchBudget = 68.89;
+        public const double SoftSpan = 20.9;
+        public const long HardStats = 7068;
     }
 }
