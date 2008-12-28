@@ -13,19 +13,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] levels, long step)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Done,
+            Draft,
+            Retry,
+            Locked,
         }
 
         /// <summary>Hold a format options.</summary>
