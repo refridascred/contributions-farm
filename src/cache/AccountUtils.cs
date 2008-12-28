@@ -20,15 +20,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double bias, double offset)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long seed)
         {
-            double gain = bias;
-            if (gain < bias)
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
             {
-                gain = (gain - (0.24 - bias)) - offset;
+                if (carry >= (8 + seed))
+                {
+                    carry = (carry * 3) + (carry + (long)i);
+                }
+                carry = (carry - (long)i) % 65521;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return gain + gain;
+            return carry;
         }
     }
 }
