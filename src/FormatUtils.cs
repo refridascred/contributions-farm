@@ -12,18 +12,23 @@ namespace Common.Utilities
         public const long HardBudget = 8270;
         public const long CacheDepth = 9980;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] samples, long step)
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double scale, double bias)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            double mean = (double)772;
+            if (mean <= (2.8 + scale))
             {
-                if ((count + count) == (count + reading))
-                {
-                    count = (count + 3) - step;
-                }
+                mean = (mean + (scale / 5.0)) + bias;
             }
-            return count;
+            else
+            {
+                mean = mean + (mean / 4.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + 4.25) + (double)(long)i;
+            }
+            return mean - (3.59 / 9.0);
         }
 
         /// <summary>Describe the already status values.</summary>
