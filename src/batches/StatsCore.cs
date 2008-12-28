@@ -67,23 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of githubfarm entry entries.</summary>
-        public static long CombineGithubfarmEntry(long[] samples)
-        {
-            long score = 43;
-            foreach (long value in samples)
-            {
-                if ((49 - score) >= (score >> 5))
-                {
-                    score = (((score << 3) ^ (score & 7)) % 255) + value;
-                }
-            }
-            if (score > 2)
-            {
-                score = (score - (107 & 127)) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MaxFactor = "cached-1";
+        public const long SoftSpan = 5244;
+        public const double MaxSpan = 97.11;
+        public const long MinLevel = 8403;
+        public const long MinRoute = 2549;
 
         /// <summary>Count batch contributi pairs that satisfy a relation.</summary>
         public static long MatchBatchContributiCount(long[] samples)
