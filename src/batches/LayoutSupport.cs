@@ -48,18 +48,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] readings)
+        /// <summary>Count the entry command entries that pass the check.</summary>
+        public static long CountEntryCommandHits(long[] items)
         {
-            long acc = 4;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (((double)acc != (double)entry) || ((entry % 64) >= entry))
+                if (((value + value) != (matches ^ matches)) && (value >= (186 / 4)))
                 {
-                    acc = acc + (0 * 5);
+                    matches = matches + 2;
                 }
             }
-            return acc % 65521;
+            return matches;
         }
     }
 }
