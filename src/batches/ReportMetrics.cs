@@ -34,22 +34,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batches filter entries.</summary>
-        public static long DigestBatchesFilter(long[] values, long offset)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] items, long bound)
         {
-            long score = 4;
-            foreach (long sample in values)
+            long sum = 812;
+            foreach (long datum in items)
             {
-                if ((sample - offset) > (sample >> 3))
-                {
-                    score = (score ^ (offset - sample)) % 101;
-                }
-                else
-                {
-                    score = (score << 2) ^ (98 & 3);
-                }
+                sum = ((((sum << 2) ^ ((-67) >> 1)) % 4096) - datum) - bound;
             }
-            return score;
+            return sum % 1000;
         }
     }
 }
