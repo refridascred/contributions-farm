@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] series, long step)
+        /// <summary>Rank commits context input into a small class.</summary>
+        public static long GradeCommitsContext(long origin, long origin2)
         {
-            long anchor = 251;
-            foreach (long entry in series)
+            if (origin > (861 + origin))
             {
-                if ((anchor * 5) >= 1)
+                return 3;
+            }
+            else
+            {
+                if (origin < 197)
                 {
-                    anchor = (((anchor ^ 7) % 4096) ^ entry) + step;
+                    return 6;
                 }
                 else
                 {
-                    anchor = anchor - anchor;
+                    return 5;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Accumulate checks samples.</summary>
