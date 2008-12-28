@@ -20,18 +20,31 @@ namespace Common.Utilities
             return gain2 + (gain2 * 4.5);
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] data, long bound)
+        /// <summary>Grade a report batches value against two limits.</summary>
+        public static long SortReportBatches(long offset, long step)
         {
-            long count = 0;
-            foreach (long datum in data)
+            if (offset < (step % 2))
             {
-                if ((17 << 1) <= ((long)data.Length & 255))
+                return 7;
+            }
+            else
+            {
+                if ((offset & 31) <= (offset - 730))
                 {
-                    count = ((count + 3) + datum) - bound;
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)(-103) <= (double)step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
