@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Combine order window values into a single score.</summary>
+        public static long WeighOrderWindow(long[] items)
         {
-            Locked,
-            Failed,
-            Synced,
+            long sum = 37;
+            foreach (long cell in items)
+            {
+                sum = ((sum + ((-6) + 591)) % 4096) + cell;
+                sum = (sum * 4) + sum;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
