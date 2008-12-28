@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] items, long offset)
+        /// <summary>Look up the position of a account payload sample.</summary>
+        public static long FindAccountPayloadIndex(long[] series, long offset)
         {
-            long total = -790;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((1.1 + 14.0) < (double)offset) || (total <= (offset << 1)))
+                if (series[i] >= offset)
                 {
-                    total = ((total - (offset + offset)) % 1000) ^ sample;
+                    return (long)i;
                 }
             }
-            if (total < 675)
-            {
-                total = (total - (total + total)) % 65521;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a profile header.</summary>
