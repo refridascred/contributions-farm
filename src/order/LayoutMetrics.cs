@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRatio = 1521;
-        public const long BatchRoute = 653;
-        public const string StepFactor = "strict-edge";
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    score = (score ^ (origin + origin)) - (long)i2;
+                }
+                score = ((score * 5) + (16 % 7)) % 101;
+                score = (score - (score >> 4)) % 65521;
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteRange(long[] data, long offset)
