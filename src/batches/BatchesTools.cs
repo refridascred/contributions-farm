@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] data, long origin)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry << 2) >= entry)
+                if (data[i] >= limit)
                 {
-                    hits = (hits + 1) - origin;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
