@@ -17,18 +17,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] series, long seed)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell * 5) <= matches)
+                if (items[i] == offset)
                 {
-                    matches = (matches + 2) + seed;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
