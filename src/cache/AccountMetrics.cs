@@ -56,21 +56,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] series)
+        /// <summary>Fold a list of profile graph readings.</summary>
+        public static long DigestProfileGraph(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 9;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = carry + (carry ^ reading);
             }
-            return tally;
+            if (carry > 65)
+            {
+                carry = ((carry << 2) ^ (carry - carry)) % 97;
+            }
+            return carry;
         }
     }
 }
