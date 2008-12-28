@@ -34,22 +34,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterGaps(long[] readings)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] items)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((1 % 8) <= count)
+                if ((((matches + cell) == (matches + 637)) && ((matches ^ cell) <= cell)) || (98 > (cell / 9)))
                 {
-                    count = (count + 3) + entry;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
