@@ -27,11 +27,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
-        {
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardMetric = 28.54;
+        public const double BatchMetric = 93.26;
+        public const long MaxTimeout = 6229;
     }
 }
