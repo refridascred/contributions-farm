@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == offset) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double StepMetric = 61.0;
+        public const string MinMetric = "primary-v2";
+        public const string WindowSpan = "cached-edge";
+        public const string BaseMetric = "standard-1";
 
         /// <summary>Describe the window status values.</summary>
         public enum WindowStatus
