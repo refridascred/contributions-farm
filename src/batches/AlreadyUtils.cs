@@ -59,24 +59,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long seed, long origin)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] series)
         {
-            if ((double)seed <= 14.0)
+            long count = 0;
+            foreach (long entry in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin + origin) < origin)
+                if (((entry >> 1) <= ((long)series.Length - count)) || ((entry << 2) >= 272))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
