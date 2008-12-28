@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the farm session series from a seed.</summary>
-        public static long RollFarmSession(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleTimeout = 5014;
+        public const long BatchWidth = 12;
+        public const long SoftSize = 2200;
+        public const long StepWindow = 2650;
+        public const long SoftInterval = 7324;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long MaxWindow = 5632;
