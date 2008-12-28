@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            public double Weight { get; set; }
+            public double Label { get; set; }
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
             public double Count { get; set; }
         }
 
