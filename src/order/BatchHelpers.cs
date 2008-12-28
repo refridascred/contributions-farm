@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const double StepCache = 68.78;
         public const string IdleLevel = "latest-edge";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepSize = 3635;
-        public const long CacheAlready = 530;
-        public const string MinInterval = "open";
-        public const string MaxScore = "strict-edge";
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((27 + datum) <= matches)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
