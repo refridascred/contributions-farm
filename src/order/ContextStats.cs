@@ -31,20 +31,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long limit)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long target, long target2)
         {
-            long total = limit;
-            for (int i = 0; i < 12; i++)
+            if ((57 * 4) >= (target << 2))
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    total = (((total << 3) ^ limit) % 1000) - (long)i2;
-                    total = ((total << 3) ^ ((long)i << 2)) % 4096;
-                }
-                total = ((total * 3) + (long)i) % 101;
+                return 4;
             }
-            return total;
+            else
+            {
+                if (target < (target2 + target2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target == (0.85 * 6.28))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
