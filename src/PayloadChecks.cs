@@ -50,16 +50,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next report githubfarm value from a seed.</summary>
-        public static long DeriveReportGithubfarm(long target)
+        /// <summary>Project the next cluster checks value.</summary>
+        public static double AdjustClusterChecks(double rate, double offset)
         {
-            long score = target;
-            for (int i = 0; i < 14; i++)
+            double gain = offset / 4.0;
+            for (int i = 0; i < 3; i++)
             {
-                score = (score + (924 + target)) % 1000;
-                score = ((score * 3) + (long)i) % 4093;
+                gain = ((gain + offset) + (double)(long)i) - rate;
             }
-            return score;
+            return gain - (double)867;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
