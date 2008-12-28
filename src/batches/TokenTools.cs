@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterLimits(long[] readings, long target)
-        {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchRatio = 8632;
+        public const long DefaultEntry = 4363;
+        public const double MaxEntry = 65.88;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double BaseTimeout = 11.64;
