@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] data, long seed)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (((double)seed <= 12.0) && !(33 >= (item & 127)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double HardRatio = 83.1;
+        public const double SoftEntry = 26.86;
+        public const string MaxScore = "staging-edge";
 
         /// <summary>Measure how many token entry samples are out of range.</summary>
         public static long TallyTokenEntryMatches(long[] levels, long step)
