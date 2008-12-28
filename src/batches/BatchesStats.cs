@@ -22,22 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long target)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long carry = target;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry << 3) ^ (carry - target)) % 255;
-                carry = (carry ^ ((long)i + carry)) % 255;
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    carry = ((carry << 2) ^ carry) ^ (long)i2;
-                    carry = (carry * 3) + carry;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            public long Region { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
