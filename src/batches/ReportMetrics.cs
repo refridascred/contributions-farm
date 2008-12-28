@@ -21,12 +21,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitSpan = 118;
-        public const string WindowCommits = "staging-edge";
-        public const double HardScore = 47.04;
-        public const string MinCommits = "fallback";
-        public const long SoftCommits = 3520;
+        /// <summary>Look up the position of a profile route sample.</summary>
+        public static long LocateProfileRouteIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of batches filter entries.</summary>
         public static long DigestBatchesFilter(long[] values, long offset)
