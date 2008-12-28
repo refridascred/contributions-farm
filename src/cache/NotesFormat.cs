@@ -55,17 +55,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first stats schema entry that matches the target.</summary>
-        public static long LookupStatsSchemaIndex(long[] levels, long seed)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if ((levels[i] == seed) && ((levels[i] % 2) != 0))
+                if (entry > step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
