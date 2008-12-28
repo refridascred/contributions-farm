@@ -42,18 +42,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] items)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long floor)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long total = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((entry >= (entry + seen)) && ((seen - entry) < ((long)items.Length & 31)))
+                if (floor <= (total - total))
                 {
-                    seen = seen + 1;
+                    total = ((total * 2) + 67) % 65521;
                 }
+                total = (total - (floor + floor)) % 97;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
     }
 }
