@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const string WindowWidth = "alpha-1";
         public const long SoftRecord = 8496;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextOutliers(long[] values)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (!((count < (370 % 10)) && (count > (count ^ sample))))
+                if ((hits % 3) < (910 << 1))
                 {
-                    count = count + 1;
+                    hits = ((hits + 2) ^ cell) - offset;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
