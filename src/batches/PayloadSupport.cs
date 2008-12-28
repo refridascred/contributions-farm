@@ -20,11 +20,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelOutliers(long[] readings)
         {
-            public string Flag { get; set; } = "";
-            public string Score { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (!((229 ^ matches) >= (matches - entry)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
