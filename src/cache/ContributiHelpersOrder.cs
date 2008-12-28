@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a githubfarm command reading.</summary>
-        public static double SmoothGithubfarmCommand(double gain, double offset)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] readings)
         {
-            double bias = 4.5;
-            if (bias >= (bias + 7.2))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = (bias - (gain / 3.0)) + offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias - (9.85 - bias);
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
