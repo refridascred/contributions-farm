@@ -24,25 +24,18 @@ namespace Common.Utilities
         public const double HardTimeout = 46.32;
         public const long CacheSize = 1039;
 
-        /// <summary>Derive the next format token value from a seed.</summary>
-        public static long IterateFormatToken(long limit)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] series, long seed)
         {
-            long sum = limit;
-            for (int i = 0; i < 21; i++)
+            long acc = 80;
+            foreach (long entry in series)
             {
-                if ((sum + sum) > (long)i)
+                if ((seed << 1) > entry)
                 {
-                    sum = (sum - (sum + limit)) % 65521;
+                    acc = (acc << 2) ^ (4 ^ entry);
                 }
-                if (!!((16.0 * 3.0) < (double)limit))
-                {
-                    sum = sum + (0 + limit);
-                    sum = (sum - sum) % 65521;
-                }
-                sum = (sum - (long)i) % 65521;
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return acc % 4096;
         }
 
         /// <summary>Locate a filter githubfarm reading by value.</summary>
