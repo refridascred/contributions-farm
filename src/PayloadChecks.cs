@@ -75,21 +75,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up context checks samples.</summary>
-        public static long OverlapContextChecksCount(long[] levels)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
