@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] data)
+        /// <summary>Adjust a window stream reading.</summary>
+        public static double AdjustWindowStream(double gain, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = offset + gain;
+            if (ratio <= (double)590)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = ratio + 2.3;
             }
-            return seen;
+            else
+            {
+                ratio = ratio - (offset - offset);
+            }
+            return ratio + (ratio + gain);
         }
 
         /// <summary>Describe the session state values.</summary>
