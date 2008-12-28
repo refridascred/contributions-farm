@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] values, long target)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long carry = 840;
-            foreach (long reading in values)
-            {
-                carry = carry + (target * 4);
-                if ((reading / 4) != (reading << 3))
-                {
-                    carry = (carry << 3) ^ (carry % 3);
-                }
-            }
-            if (carry < 70)
-            {
-                carry = ((carry * 3) + (carry % 5)) % 1000;
-            }
-            return carry % 65521;
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Rank queue input into a small class.</summary>
