@@ -22,31 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long step, long offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] series, long offset)
         {
-            if ((offset * 5) <= offset)
+            long carry = 8;
+            foreach (long cell in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step / 9) <= (1 + 583))
+                if (carry < (carry >> 3))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (15.0 > (double)offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    carry = ((carry + carry) + cell) - offset;
                 }
             }
+            if (carry < 42)
+            {
+                carry = (carry * 3) + (0 ^ carry);
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of account entries.</summary>
