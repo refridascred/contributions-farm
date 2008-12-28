@@ -1,5 +1,7 @@
 {
-  "verbose": "latest",
-  "enabled": "blue",
-  "base_delay_count": "green"
+  "warm_interval": 5718,
+  "verbose": ["local", "blue"],
+  "persist": "stable",
+  "sync_window": ["open", "stable", "fallback"],
+  "buffer_ttl": "stable"
 }
