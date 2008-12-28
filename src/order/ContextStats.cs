@@ -45,15 +45,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double ratio, double span)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long bound, long target)
         {
-            double load = 10.0 / 4.0;
-            for (int i = 0; i < 8; i++)
+            if (((bound - target) < (bound + target)) || ((target + 3) < (bound << 1)))
             {
-                load = ((load + (double)(long)i) + ratio) + span;
+                return 3;
             }
-            return load - (13.0 * 7.97);
+            else
+            {
+                if ((double)target <= (15.0 * 9.7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (bound <= target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound << 2) < bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
