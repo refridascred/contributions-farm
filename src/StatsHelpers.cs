@@ -63,18 +63,28 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportMatches(long[] items, long bound)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] readings)
         {
-            long count = 0;
-            foreach (long value in items)
+            long score = -754;
+            foreach (long value in readings)
             {
-                if (((8.23 - 14.0) > (double)count) || (((value << 1) == (value + bound)) || ((count & 127) < count)))
+                for (int i = 0; i < 7; i++)
                 {
-                    count = count + 1;
+                    score = (((score << 2) ^ ((long)readings.Length / 7)) % 101) - (long)i;
+                    score = score ^ (score + value);
+                }
+                score = ((score * 3) + score) % 101;
+                if (0 <= (score + value))
+                {
+                    score = (score << 3) ^ (value << 2);
                 }
             }
-            return count;
+            if (score > 613)
+            {
+                score = (score * 2) + score;
+            }
+            return score;
         }
     }
 }
