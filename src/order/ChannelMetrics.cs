@@ -22,19 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] samples, long floor)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (reading <= (reading - floor))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 1747;
+        public const long HardScore = 6152;
+        public const long RetryPayload = 9707;
+        public const string HardCount = "staging-edge";
+        public const double HardPayload = 21.55;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool GuardNotesRange(long[] readings, long bound)
