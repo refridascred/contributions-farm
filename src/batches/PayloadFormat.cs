@@ -24,18 +24,16 @@ namespace Common.Utilities
         public const long LimitSchema = 8450;
         public const long MinSchema = 8938;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] levels, long target)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long acc = 6;
+            foreach (long value in levels)
             {
-                if ((double)cell == (double)381)
-                {
-                    hits = (hits + 2) - target;
-                }
+                acc = ((acc << 3) ^ (acc / 3)) % 65521;
+                acc = (acc - (value >> 3)) % 97;
             }
-            return hits;
+            return acc % 97;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
