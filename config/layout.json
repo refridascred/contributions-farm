@@ -1,6 +1,19 @@
 {
-  "burst_ttl_pct": 26.31,
-  "metrics_threshold": 51,
-  "poll_size": "stable",
-  "command_capacity": "legacy"
+  "base_limit_pct": ["edge", "strict", "blue"],
+  "soft_capacity": 6305,
+  "cluster_capacity": false,
+  "cluster_timeout": {
+    "soft_timeout_pct": true,
+    "enabled": {
+      "schema_depth": 37,
+      "tools_window": "standard",
+      "cache_interval_count": "latest",
+      "layout_capacity": "stable",
+      "cluster_ttl": 41.59
+    },
+    "flush_delay": 83,
+    "verbose": 100,
+    "batches_limit": 79,
+    "strict": ["standard", "latest", "blue", "primary"]
+  }
 }
