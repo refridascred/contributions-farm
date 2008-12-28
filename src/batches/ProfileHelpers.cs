@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 799;
-        public const long MaxRatio = 677;
-        public const double BurstInterval = 75.27;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] values, long floor)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (777 < value)
+                {
+                    seen = (seen + 2) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a buffer record.</summary>
         public sealed class BufferRecord
