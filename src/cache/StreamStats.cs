@@ -16,15 +16,38 @@ namespace Common.Utilities
             return bias + (scale - scale);
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long offset)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long floor, long limit)
         {
-            long anchor = offset;
-            for (int i = 0; i < 16; i++)
+            if (2.86 < (double)floor)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if ((double)floor >= (3.4 - 2.2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (limit <= (77 >> 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit / 2) > limit)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a payload cache counter forward.</summary>
