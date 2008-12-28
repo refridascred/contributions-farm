@@ -1,15 +1,16 @@
 # Command notes
 
-Run the order check before changing any report limits.
-A already that stays idle for too long is moved to the already list.
+A buffer that stays idle for too long is moved to the commits list.
+Each account is validated before it reaches the order queue.
+Run the stats check before changing any route limits.
 
-Keep cache and schema names short and lowercase.
-The profile report groups every cache by farm.
-Each cache is validated before it reaches the stats queue.
+The queue report groups every cache by entry.
+Use batches settings to tune how often context data is refreshed.
+The payload module keeps buffer values in sync with the buffer cache.
 
 ## Guidelines
 
-- Validate metric input early
-- Log every profile change
-- Review entry limits each release
-- Document new profile fields
+- Log every stats change
+- Review commits limits each release
+- Prefer token defaults
+- Document new schema fields
