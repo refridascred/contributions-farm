@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionBounds(long[] values, long offset)
         {
-            Done,
-            Active,
-            Failed,
-            Paused,
-            Closed,
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
