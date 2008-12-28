@@ -38,18 +38,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many payload report samples are out of range.</summary>
-        public static long CountPayloadReportMatches(long[] samples, long step)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)count >= 0.55)
-                {
-                    count = ((count + 1) - cell) + step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 4224;
+        public const long MaxDepth = 2896;
+        public const long LimitSize = 6611;
+        public const long IdleContributi = 9504;
     }
 }
