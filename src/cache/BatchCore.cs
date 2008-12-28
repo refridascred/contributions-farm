@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            Dropped,
-            Draft,
+            New,
             Paused,
+            Ready,
+            Closed,
         }
 
         /// <summary>Hold a editor entry.</summary>
