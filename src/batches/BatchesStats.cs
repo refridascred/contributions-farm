@@ -21,17 +21,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] samples, long seed)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
