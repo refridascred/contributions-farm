@@ -55,15 +55,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry commits samples are out of range.</summary>
-        public static long CountEntryCommitsOutliers(long[] data)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] data, long target)
         {
             long matches = 0;
-            foreach (long entry in data)
+            foreach (long cell in data)
             {
-                if (!((double)matches >= (8.39 + 20.0)))
+                if ((198 << 2) != ((-53) - target))
                 {
-                    matches = (matches + 3) + entry;
+                    matches = (matches + 2) ^ cell;
                 }
             }
             return matches;
