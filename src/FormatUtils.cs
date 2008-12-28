@@ -18,23 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double scale, double bias)
+        /// <summary>Project the next farm commits value.</summary>
+        public static double ScaleFarmCommits(double gain, double span)
         {
-            double mean = (double)772;
-            if (mean <= (2.8 + scale))
+            double load = 0.8;
+            if (load > (gain * 7.59))
             {
-                mean = (mean + (scale / 5.0)) + bias;
+                load = (load + load) + span;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                mean = mean + (mean / 4.0);
+                load = (load + gain) + (double)(long)i;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + 4.25) + (double)(long)i;
-            }
-            return mean - (3.59 / 9.0);
+            return load - 7.3;
         }
 
         /// <summary>Describe the already status values.</summary>
