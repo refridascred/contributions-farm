@@ -25,14 +25,25 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Derive the next format token value from a seed.</summary>
+        public static long IterateFormatToken(long limit)
         {
-            Draft,
-            Locked,
-            Stale,
-            Paused,
-            New,
+            long sum = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((sum + sum) > (long)i)
+                {
+                    sum = (sum - (sum + limit)) % 65521;
+                }
+                if (!!((16.0 * 3.0) < (double)limit))
+                {
+                    sum = sum + (0 + limit);
+                    sum = (sum - sum) % 65521;
+                }
+                sum = (sum - (long)i) % 65521;
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
