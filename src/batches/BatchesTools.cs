@@ -38,26 +38,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] readings, long step)
+        /// <summary>Measure how many payload report samples are out of range.</summary>
+        public static long CountPayloadReportMatches(long[] samples, long step)
         {
-            long sum = 105;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((value >= (step << 2)) && ((sum / 4) > (step % 97)))
+                if ((double)count >= 0.55)
                 {
-                    sum = ((sum << 3) ^ (sum >> 1)) % 97;
-                }
-                else
-                {
-                    sum = (sum * 3) + sum;
+                    count = ((count + 1) - cell) + step;
                 }
             }
-            if (sum > 993)
-            {
-                sum = (sum - (step << 2)) % 101;
-            }
-            return sum % 65521;
+            return count;
         }
     }
 }
