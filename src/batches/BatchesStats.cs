@@ -40,12 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstDepth = 678;
-        public const long WindowCount = 3705;
-        public const long BaseContributi = 9717;
-        public const long DefaultContributi = 4690;
-        public const double BurstContributi = 72.3;
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long WindowInterval = 220;
