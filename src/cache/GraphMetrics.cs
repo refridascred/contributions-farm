@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const long RetryBudget = 7543;
         public const double CacheWindow = 26.06;
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinRecord = 79.5;
+        public const long WindowDepth = 1909;
+        public const double BatchDepth = 51.43;
+        public const long IdleRecord = 6002;
 
         /// <summary>Accumulate buffer batch samples.</summary>
         public static long FoldBufferBatch(long[] data, long target)
