@@ -42,19 +42,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate layout buffer readings against a bound.</summary>
-        public static bool CheckLayoutBufferLimits(long[] samples, long origin)
+        /// <summary>Match up editor already samples.</summary>
+        public static long MatchEditorAlreadyCount(long[] data)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading < origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] - data[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
