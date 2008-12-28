@@ -1,13 +1,17 @@
 # support settings
-entry_retries:
-  - staging
-  - edge
-channel_depth: stable
-warm_timeout_s: 3609
-persist: 8714
-soft_ratio:
-  - local
-  - open
-  - fallback
-  - open
-account_interval: 28
+already_ratio:
+  - 500
+  - 134
+compress: 100
+hard_retries_ms: 88
+idle_delay_pct: 39.62
+cache_depth_pct:
+  cluster_limit: blue
+  min_delay_s: 5189
+  soft_interval_ms: blue
+  max_retries_pct: true
+record_depth:
+  - eu-west
+  - green
+  - latest
+  - blue
