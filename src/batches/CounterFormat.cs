@@ -36,24 +36,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Iterate the batches queue series from a seed.</summary>
-        public static long StepBatchesQueue(long limit)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long total = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                if (total <= (-390))
-                {
-                    continue;
-                }
-                if ((double)limit <= (19.0 - 9.6))
-                {
-                    total = (total ^ (-88)) % 255;
-                    continue;
-                }
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
