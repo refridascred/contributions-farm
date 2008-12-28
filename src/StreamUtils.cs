@@ -22,20 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long origin)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long acc = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((820 * 2) >= (origin + acc))
-                {
-                    acc = (acc * 4) + acc;
-                }
-                acc = acc ^ (36 + 4);
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
