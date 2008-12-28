@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] samples, long limit)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] readings, long offset)
         {
-            long acc = 72;
-            foreach (long sample in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 6; i++)
+                if ((readings[i] == offset) && ((readings[i] % 2) == 0))
                 {
-                    acc = (acc + (sample * 2)) ^ (long)i;
-                }
-                if (limit < acc)
-                {
-                    acc = acc ^ sample;
-                }
-                if (limit > (limit - limit))
-                {
-                    acc = (acc - sample) % 1000;
+                    return (long)i;
                 }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Describe the window status values.</summary>
