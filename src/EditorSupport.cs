@@ -5,14 +5,28 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long target)
         {
-            Locked,
-            Stale,
-            Failed,
-            Draft,
-            Pending,
+            long anchor = target;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((4.7 * 16.0) < (double)(long)i)
+                {
+                    anchor = anchor - (target - 4);
+                }
+                else
+                {
+                    anchor = (anchor - anchor) % 255;
+                }
+                if ((anchor & 1) < (target >> 1))
+                {
+                    anchor = (anchor - (anchor + (long)i)) % 1000;
+                    anchor = (anchor + anchor) % 4096;
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a report summary.</summary>
