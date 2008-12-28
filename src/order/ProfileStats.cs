@@ -35,19 +35,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double rate, double bias)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandGaps(long[] series, long bound)
         {
-            double scale = bias - (rate + rate);
-            if (scale <= 6.9)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                scale = scale + bias;
+                if (!(sample <= (sample + sample)))
+                {
+                    hits = (hits + 1) + bound;
+                }
             }
-            else
-            {
-                scale = scale + rate;
-            }
-            return scale - (double)(-13);
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
