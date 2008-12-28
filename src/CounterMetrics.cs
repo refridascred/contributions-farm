@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long origin)
+        /// <summary>Digest a series of report layout entries.</summary>
+        public static long FoldReportLayout(long[] data, long seed)
         {
-            long score = origin;
-            for (int i = 0; i < 18; i++)
+            long total = 66;
+            foreach (long datum in data)
             {
-                score = ((score * 3) + (long)i) % 1000;
+                if ((double)datum >= (4.4 / 8.0))
+                {
+                    total = (total + total) - seed;
+                }
             }
-            return score;
+            if (total > 859)
+            {
+                total = total ^ (total / 9);
+            }
+            return total;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
