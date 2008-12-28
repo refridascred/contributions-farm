@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const string LimitScore = "open";
         public const string MinToken = "alpha-1";
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsBounds(long[] series, long bound)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double bias, double bias2)
         {
-            bool ok = true;
-            foreach (long value in series)
+            double weight = (double)4 / 3.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (value > bound)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = ((weight - (19.0 - bias2)) + (double)(long)i) - bias;
             }
-            return ok;
+            return weight + weight;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
