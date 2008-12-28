@@ -1,6 +1,8 @@
 {
-  "max_retries_pct": false,
-  "layout_window": 94,
-  "hard_window_ms": 87.08,
-  "audit": 500
+  "verbose": "open",
+  "audit": ["edge", "eu-west", "stable"],
+  "max_retries_ms": 8224,
+  "max_retries": [196, 151],
+  "base_ttl": 5617,
+  "cache_size_s": 55.7
 }
