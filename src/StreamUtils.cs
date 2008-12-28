@@ -33,10 +33,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 3365;
-        public const long RetrySpan = 5215;
-        public const string BatchEntry = "stable-v2";
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!((double)(-9) > (double)8))
+                {
+                    mark = mark ^ (target - target);
+                }
+                if ((0.41 - 18.0) <= (double)(long)i)
+                {
+                    break;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
