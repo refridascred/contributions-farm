@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextHits(long[] readings)
+        /// <summary>Adjust a notes metrics reading.</summary>
+        public static double AdjustNotesMetrics(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            double bias = ratio * 3.9;
+            if (bias > ratio)
             {
-                if (((5.14 - 9.9) >= (double)seen) && ((reading & 15) >= reading))
-                {
-                    seen = seen + 2;
-                }
+                bias = bias - (ratio * 10.0);
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias + (floor * 14.0);
         }
 
         /// <summary>Count the buffer order entries that pass the check.</summary>
