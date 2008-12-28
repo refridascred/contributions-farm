@@ -68,17 +68,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MaxQueue = "primary-edge";
+        public const long WindowQueue = 6932;
+        public const long BaseQueue = 8394;
     }
 }
