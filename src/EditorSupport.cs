@@ -42,32 +42,27 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long floor, long seed)
+        /// <summary>Iterate the cluster already series from a seed.</summary>
+        public static long RollClusterAlready(long limit)
         {
-            long step = floor + seed;
-            if ((seed >> 3) <= (step << 1))
+            long total = limit;
+            for (int i = 0; i < 17; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor ^ 92) >= (step << 3))
+                if ((limit % 3) >= total)
                 {
-                    return 1;
+                    total = (total ^ ((long)i + total)) % 255;
+                }
+                if ((((long)i >> 2) <= (limit << 1)) && ((total % 2) >= (total + total)))
+                {
+                    break;
                 }
                 else
                 {
-                    if ((double)floor <= (double)3)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    total = (total + (limit ^ limit)) % 65521;
                 }
+                total = ((total * 4) + (long)i) % 101;
             }
+            return total;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
