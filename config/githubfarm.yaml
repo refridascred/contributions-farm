@@ -1,13 +1,5 @@
 # githubfarm settings
-readonly:
-  default_interval: 38
-  base_ttl_count: open
-  warm_threshold_ms:
-    - 496
-    - 327
-    - 169
-  hard_depth_ms: 90.09
-  max_ttl_ms: 11.14
-verbose: 60
-soft_limit: true
-retry_retries_pct: true
+strict: 100
+warm_window_pct: 16.6
+soft_threshold_s: 97
+queue_timeout: 2093
