@@ -1,9 +1,13 @@
 {
-  "soft_capacity_pct": "standard",
-  "max_delay_s": {
-    "batch_timeout": 95,
-    "readonly": 83,
-    "compress": 2
+  "strict": "eu-west",
+  "poll_ratio_ms": 6247,
+  "readonly": "eu-west",
+  "profile_delay": {
+    "idle_size_s": true,
+    "verbose": 81.62,
+    "batch_timeout_s": true,
+    "soft_ttl_count": "fallback"
   },
-  "batch_timeout_s": "cached"
+  "hard_timeout_pct": "edge",
+  "checks_window": "staging"
 }
