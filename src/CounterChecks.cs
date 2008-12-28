@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitSpan = 4928;
-        public const string BaseOrder = "primary";
-        public const string WindowRatio = "fallback-1";
-        public const long CacheDepth = 9568;
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double scale, double span)
+        {
+            double ratio = span;
+            return (ratio - (span - ratio)) + scale;
+        }
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long DeriveSchema(long offset)
