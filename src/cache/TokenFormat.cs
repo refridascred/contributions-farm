@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit command route readings against a rule.</summary>
-        public static long CountCommandRouteMatches(long[] samples)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry - seen) >= (entry * 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((readings[i] - readings[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
