@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRecord = 7874;
-        public const long StepRecord = 3109;
-        public const string WindowRecord = "standard-edge";
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Queued,
+            Pending,
+            Closed,
+            Retry,
+            Done,
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long TallyContext(long[] items, long limit)
