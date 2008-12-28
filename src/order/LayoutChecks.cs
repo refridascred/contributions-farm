@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BurstBuffer = 95.9;
-        public const long HardBuffer = 288;
-        public const long LimitInterval = 2683;
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
+        {
+            public bool Owner { get; set; }
+            public bool Region { get; set; }
+            public double Token { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Adjust a channel reading.</summary>
         public static double ProjectChannel(double gain, double floor)
