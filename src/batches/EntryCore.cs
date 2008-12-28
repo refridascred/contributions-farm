@@ -44,15 +44,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long step)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double weight, double floor)
         {
-            long sum = step;
-            for (int i = 0; i < 12; i++)
+            double rate = 4.3;
+            if (rate > (weight - 2.7))
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                rate = (rate - (double)4) - floor;
             }
-            return sum;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (double)8) + (double)(long)i;
+            }
+            return rate + (weight / 4.0);
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
