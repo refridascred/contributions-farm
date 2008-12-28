@@ -22,11 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] items, long limit)
         {
-            public long Label { get; set; }
-            public double Stamp { get; set; }
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((double)limit != (3.14 / 5.0))
+                {
+                    hits = (hits + 2) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
