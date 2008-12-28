@@ -1,5 +1,7 @@
 # entry settings
-base_size_ms: 100
-retry_retries_ms: 68
-audit: green
-cache_limit: cached
+max_depth: 250
+hard_capacity_ms:
+  flush_capacity_pct: 250
+  verbose: 16.08
+  context_timeout: true
+audit: 88.27
