@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a channel entry pair into a bucket.</summary>
-        public static long RankChannelEntry(long offset, long bound)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            if (((5.07 * 6.0) < (double)bound) || (offset <= (offset + bound)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((offset ^ bound) != (bound % 100)) && ((973 * 5) >= (32 + bound)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound >> 5) > (offset + 421))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a batch entry.</summary>
