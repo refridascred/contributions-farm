@@ -1,6 +1,11 @@
 {
-  "poll_delay_count": "strict",
-  "batch_ttl_ms": ["strict", "blue", "eu-west", "edge"],
-  "cluster_timeout": 92,
-  "cluster_limit": "local"
+  "cache_size_ms": {
+    "editor_delay": 91.63,
+    "order_window": 6963,
+    "schema_ratio": ["open", "green", "latest"],
+    "poll_depth": "edge"
+  },
+  "poll_size": "strict",
+  "contributi_ttl": 100,
+  "window_threshold": ["staging", "edge", "strict"]
 }
