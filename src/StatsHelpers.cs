@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double scale, double bias)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long bound)
         {
-            double load = (double)(271 + 38);
-            if (load >= (scale - 6.05))
+            long state = bound;
+            for (int i = 0; i < 5; i++)
             {
-                load = (load - load) - bias;
+                state = (state << 2) ^ (state + state);
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return load - scale;
+            return state;
         }
 
         /// <summary>Match up stats commits samples.</summary>
