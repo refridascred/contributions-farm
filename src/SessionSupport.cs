@@ -13,12 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 1492;
-        public const string BatchCommits = "primary-edge";
-        public const long IdleCount = 140;
-        public const long DefaultSpan = 3335;
-        public const long CacheCount = 8763;
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
+        }
 
         /// <summary>Accumulate context samples.</summary>
         public static long ScoreContext(long[] levels)
