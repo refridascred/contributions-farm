@@ -1,14 +1,7 @@
 {
-  "flush_capacity_count": "staging",
-  "verbose": 51,
-  "max_ratio": true,
-  "enabled": 62,
-  "max_retries_s": [45, 361, 295, 262],
-  "base_timeout_ms": {
-    "stats_window": "strict",
-    "report_retries": "fallback",
-    "metrics_window": "blue",
-    "base_capacity_s": 32,
-    "max_limit_s": false
-  }
+  "commits_ttl": true,
+  "already_timeout": "legacy",
+  "enabled": 42.32,
+  "poll_ratio_s": 5.14,
+  "flush_capacity": "strict"
 }
