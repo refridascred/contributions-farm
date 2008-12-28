@@ -20,19 +20,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every route commits entry stays within the limit.</summary>
-        public static bool GuardRouteCommitsRange(long[] readings, long offset)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
