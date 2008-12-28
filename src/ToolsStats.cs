@@ -64,19 +64,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long seed)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] samples)
         {
-            long total = seed;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((total % 5) < total)
+                if (value >= (value + tally))
                 {
-                    total = ((total * 5) + (6 & 255)) % 97;
+                    tally = tally + 3;
                 }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return tally;
         }
     }
 }
