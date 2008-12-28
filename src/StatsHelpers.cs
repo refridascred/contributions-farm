@@ -30,11 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBudget = 5455;
-        public const long BurstLevel = 6617;
-        public const long BaseBuffer = 3535;
-        public const long IdleBuffer = 570;
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of cache route readings.</summary>
         public static long WeighCacheRoute(long[] levels, long step)
