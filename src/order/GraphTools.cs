@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] values, long target)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] values, long bound)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] <= target)
+                if ((values[i] < bound) && ((values[i] % 3) == 0))
                 {
                     return (long)i;
                 }
