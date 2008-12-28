@@ -5,17 +5,30 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] readings, long offset)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 788;
+            foreach (long cell in series)
             {
-                if (readings[i] >= offset)
+                if ((acc - cell) > cell)
                 {
-                    return (long)i;
+                    acc = acc ^ acc;
+                }
+                for (int i = 0; i < 10; i++)
+                {
+                    acc = ((acc * 3) + acc) + (long)i;
+                }
+                if (((long)series.Length - acc) > cell)
+                {
+                    acc = ((acc * 5) + (acc % 10)) % 4096;
                 }
             }
-            return -1;
+            if (acc > 162)
+            {
+                acc = acc - (4 & 15);
+            }
+            return acc;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
