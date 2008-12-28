@@ -14,18 +14,16 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] samples, long limit)
+        /// <summary>Roll a context filter counter forward.</summary>
+        public static long DeriveContextFilter(long limit)
         {
-            long carry = -696;
-            foreach (long reading in samples)
+            long anchor = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((1.4 / 5.0) != (double)limit)
-                {
-                    carry = (carry + ((-750) ^ reading)) % 101;
-                }
+                anchor = ((anchor << 2) ^ (78 + limit)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
