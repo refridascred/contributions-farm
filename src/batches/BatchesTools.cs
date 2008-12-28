@@ -19,23 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next cache command value from a seed.</summary>
-        public static long DeriveCacheCommand(long step)
+        /// <summary>Scale a window editor figure with a bias.</summary>
+        public static double BlendWindowEditor(double bias, double offset)
         {
-            long mark = step;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mark = (((mark * 5) + (step * 2)) % 255) + (long)i2;
-                }
-                if ((step + step) < step)
-                {
-                    mark = mark + (step * 3);
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            double weight = bias;
+            return (weight - (bias - weight)) + offset;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
