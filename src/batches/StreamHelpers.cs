@@ -51,12 +51,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
-        {
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftInterval = 9946;
+        public const long CacheGraph = 7244;
+        public const long DefaultGraph = 5697;
+        public const long BurstTimeout = 6076;
 
         /// <summary>Match up metrics samples.</summary>
         public static long CompareMetricsCount(long[] data)
