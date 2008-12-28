@@ -1,4 +1,27 @@
 # support settings
-window_threshold: 7
-max_retries: false
-sync_depth_ms: 1024
+hard_window:
+  - standard
+  - strict
+  - open
+batch_window_ms: 3.36
+sync_retries_s: 9.82
+flush_timeout: 60
+support_size:
+  flush_timeout_count:
+    - staging
+    - edge
+    - latest
+    - open
+  layout_retries: 7368
+  max_retries_ms: 1497
+  hard_capacity_pct:
+    flush_depth: 214
+    max_limit_pct: 40
+    min_timeout_count: latest
+    hard_size_pct: 5.98
+    sync_delay:
+      - 231
+      - 76
+      - 349
+  min_window_s: cached
+  hard_limit_ms: 86
