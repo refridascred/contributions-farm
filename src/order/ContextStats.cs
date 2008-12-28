@@ -13,21 +13,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] readings)
+        /// <summary>Check that every window schema entry stays within the limit.</summary>
+        public static bool GuardWindowSchemaLimits(long[] samples, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item < bound)
                 {
-                    if ((readings[i] + readings[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
