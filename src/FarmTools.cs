@@ -20,19 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double weight, double span)
+        /// <summary>Measure how many order graph samples are out of range.</summary>
+        public static long CountOrderGraphGaps(long[] samples)
         {
-            double mean = (double)(7 + (-41));
-            if (mean < (weight - mean))
+            long count = 0;
+            foreach (long sample in samples)
             {
-                mean = mean - (span * 20.0);
+                if ((count - count) != (sample << 2))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                mean = mean - (mean * 6.0);
-            }
-            return mean - (weight + span);
+            return count;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
