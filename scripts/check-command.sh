@@ -12,9 +12,12 @@ while [ "${count}" -lt 9 ]; do
 done
 log "ran ${count} rounds"
 
-COMMAND_LIMIT=316
-log "limit is ${COMMAND_LIMIT}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
 
-for item in blue eu-west legacy; do
+for item in eu-west cached legacy primary; do
     log "checking ${item}"
 done
