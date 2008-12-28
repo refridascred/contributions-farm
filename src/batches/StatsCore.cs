@@ -64,23 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double weight, double floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] values)
         {
-            double gain = (weight / 3.0) / 2.0;
-            if (gain > (gain / 3.0))
+            long count = 0;
+            foreach (long sample in values)
             {
-                gain = gain + (3.0 + gain);
+                if ((count + 486) <= count)
+                {
+                    count = (count + 3) + sample;
+                }
             }
-            else
-            {
-                gain = gain + (floor * 3.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (gain - floor)) + (double)(long)i;
-            }
-            return gain + gain;
+            return count;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
