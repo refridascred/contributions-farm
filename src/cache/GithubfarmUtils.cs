@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long limit)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double ratio, double bias)
         {
-            long total = limit;
-            for (int i = 0; i < 4; i++)
+            double scale = ratio * 4.9;
+            if (scale > (ratio + ratio))
             {
-                total = ((total * 4) + (long)i) % 1000;
+                scale = (scale + 3.9) + bias;
             }
-            return total;
+            else
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale + 8.2;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
