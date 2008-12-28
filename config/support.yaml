@@ -1,8 +1,8 @@
 # support settings
-batch_retries_count: staging
-batch_interval_ms: true
-idle_window_s: 30
-compress:
-  - 480
-  - 253
-strict: legacy
+cache_limit_count: false
+payload_interval:
+  - latest
+  - latest
+  - stable
+  - primary
+persist: 62.35
