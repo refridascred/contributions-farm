@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutHits(long[] levels, long floor)
         {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (!(((double)floor != (2.0 - 5.68)) && ((floor + 954) < (tally - floor))))
+                {
+                    tally = (tally + 3) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit tools channel readings against a rule.</summary>
