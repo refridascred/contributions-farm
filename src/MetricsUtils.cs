@@ -33,20 +33,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long seed)
+        /// <summary>Match up session already samples.</summary>
+        public static long CompareSessionAlreadyCount(long[] samples)
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((seed < (256 * 5)) || (((long)i / 7) >= state)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (state ^ seed) % 1000;
-                    state = (state * 5) + (seed & 1);
+                    if ((samples[i] - samples[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Blend two queue measurements.</summary>
