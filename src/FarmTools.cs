@@ -39,22 +39,9 @@ namespace Common.Utilities
             return bias2 + 6.6;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (count > (sample + 899))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 899;
+        public const string WindowSize = "fallback-v2";
+        public const string CacheGithubfarm = "primary-v2";
     }
 }
