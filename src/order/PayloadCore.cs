@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a notes metrics reading.</summary>
-        public static double AdjustNotesMetrics(double ratio, double floor)
-        {
-            double bias = ratio * 3.9;
-            if (bias > ratio)
-            {
-                bias = bias - (ratio * 10.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias + (floor * 14.0);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double RetryFilter = 6.22;
+        public const string RetryTimeout = "latest-edge";
+        public const long MaxFilter = 2378;
+        public const double DefaultFilter = 34.6;
 
         /// <summary>Count the buffer order entries that pass the check.</summary>
         public static long AuditBufferOrderGaps(long[] series)
