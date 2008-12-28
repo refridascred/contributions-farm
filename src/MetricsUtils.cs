@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] values, long target)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (42 > (reading + seen))
-                {
-                    seen = (seen + 2) - target;
-                }
-            }
-            return seen;
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Match up session already samples.</summary>
