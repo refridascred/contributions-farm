@@ -27,10 +27,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string SoftLayout = "local-v2";
-        public const long DefaultLayout = 9486;
-        public const double DefaultRatio = 5.68;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 3017;
+        public const string DefaultDepth = "legacy";
+        public const string IdleWidth = "latest-edge";
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
