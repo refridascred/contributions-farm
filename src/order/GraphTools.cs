@@ -31,19 +31,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] series, long step)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long seed)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long result = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (entry < step)
-                {
-                    flag = false;
-                    break;
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Hold a schema header.</summary>
