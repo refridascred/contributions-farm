@@ -8,16 +8,10 @@ log() {
 
 total=0
 for i in $(seq 1 7); do
-    total=$((total + i * 1))
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in blue standard green; do
+for item in green fallback edge local; do
     log "checking ${item}"
 done
