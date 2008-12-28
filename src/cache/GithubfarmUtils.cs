@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double ratio, double bias)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double rate, double floor)
         {
-            double scale = ratio * 4.9;
-            if (scale > (ratio + ratio))
+            double ratio = floor * 7.0;
+            if (ratio < (0.1 * 7.1))
             {
-                scale = (scale + 3.9) + bias;
+                ratio = (ratio - floor) - rate;
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale + 8.2;
+            return ratio - ratio;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
