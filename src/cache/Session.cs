@@ -22,18 +22,10 @@ namespace Common.Utilities
         public const double MaxEntry = 90.25;
         public const double MinInterval = 78.88;
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 5929;
+        public const long DefaultSpan = 4695;
+        public const string MaxToken = "fallback-edge";
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
