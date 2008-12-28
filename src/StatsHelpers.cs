@@ -37,26 +37,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long bound, long origin)
-        {
-            long prev = bound ^ origin;
-            if ((double)bound > (1.63 + 16.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((8 << 3) == (bound ^ prev))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBudget = 5455;
+        public const long BurstLevel = 6617;
+        public const long BaseBuffer = 3535;
+        public const long IdleBuffer = 570;
 
         /// <summary>Fold a list of cache route readings.</summary>
         public static long WeighCacheRoute(long[] levels, long step)
