@@ -49,22 +49,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] samples)
+        /// <summary>Combine stats commits values into a single score.</summary>
+        public static long ScoreStatsCommits(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long sum = 431;
+            foreach (long value in series)
             {
-                if (!((4.0 - 4.7) >= (double)tally))
+                if ((double)value >= (double)sum)
                 {
-                    tally = (tally + 3) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    sum = (sum ^ (value & 7)) % 255;
                 }
             }
-            return tally;
+            if (sum > 32)
+            {
+                sum = ((sum * 2) + (296 + sum)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Describe the counter mode values.</summary>
