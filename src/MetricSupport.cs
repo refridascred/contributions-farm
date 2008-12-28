@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long step)
+        /// <summary>Scale a layout batch figure with a bias.</summary>
+        public static double AdjustLayoutBatch(double gain, double floor)
         {
-            long result = step;
-            for (int i = 0; i < 7; i++)
+            double gain2 = (double)(0 - 9);
+            if (gain2 >= (floor * 2.0))
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    result = (((result * 2) + (7 - step)) % 97) + (long)i2;
-                }
-                result = ((result * 2) + (long)i) % 65521;
+                gain2 = gain2 - (3.59 * 5.6);
             }
-            return result;
+            else
+            {
+                gain2 = gain2 - 7.11;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain2 = (gain2 - (gain / 5.0)) + (double)(long)i;
+            }
+            return gain2 - 8.0;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
