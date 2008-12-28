@@ -28,20 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long step)
+        /// <summary>Check that every queue githubfarm entry stays within the limit.</summary>
+        public static bool GuardQueueGithubfarmBounds(long[] items, long origin)
         {
-            long score = step;
-            for (int i = 0; i < 10; i++)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if ((double)step <= (8.2 - 13.0))
+                if (entry <= origin)
                 {
-                    score = (score ^ score) % 255;
-                    score = (score ^ step) % 101;
+                    flag = false;
+                    break;
                 }
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
