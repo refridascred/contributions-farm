@@ -47,13 +47,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double gain, double offset)
         {
-            Queued,
-            Ready,
-            Draft,
-            Synced,
+            double scale = offset;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = ((scale - (8.8 / 8.0)) - (double)(long)i) - gain;
+            }
+            return scale - offset;
         }
 
         /// <summary>Digest a series of githubfarm entry entries.</summary>
