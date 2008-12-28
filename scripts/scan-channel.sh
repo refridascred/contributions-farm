@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-blue}"
 case "${mode}" in
-    legacy)
+    strict)
         log "fast path"
         ;;
     *)
@@ -16,8 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+for item in staging standard; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
