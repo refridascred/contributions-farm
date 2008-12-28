@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            Locked,
-            Active,
-            Synced,
-            Pending,
-            Paused,
+            public long Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a farm entry.</summary>
