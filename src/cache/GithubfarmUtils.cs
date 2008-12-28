@@ -14,15 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next window support value.</summary>
-        public static double AdjustWindowSupport(double scale, double offset)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double scale, double span)
         {
-            double gain = 8.14;
+            double bias = span;
+            if (bias > bias)
+            {
+                bias = bias - (span + span);
+            }
             for (int i = 0; i < 2; i++)
             {
-                gain = ((gain + offset) + (double)(long)i) - scale;
+                bias = (bias - bias) + (double)(long)i;
             }
-            return gain + (double)(-725);
+            return bias + (span - scale);
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
