@@ -1,7 +1,15 @@
 {
-  "cache_size": false,
-  "idle_delay_pct": true,
-  "min_size_pct": "latest",
-  "enabled": ["staging", "staging"],
-  "dry_run": "latest"
+  "warm_timeout": "strict",
+  "schema_capacity": true,
+  "warm_delay_pct": "open",
+  "warm_depth_ms": {
+    "dry_run": 31.23,
+    "min_ttl_pct": {
+      "persist": [224, 361, 479],
+      "audit": 3597,
+      "min_limit_count": 79.32,
+      "burst_window": "strict"
+    },
+    "account_size": "cached"
+  }
 }
