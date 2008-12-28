@@ -23,26 +23,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] readings, long floor)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long seed, long offset)
         {
-            long sum = 657;
-            foreach (long entry in readings)
+            if (!((offset - offset) > (seed >> 1)))
             {
-                if ((double)entry > (6.73 * 5.1))
+                return 5;
+            }
+            else
+            {
+                if (offset > (offset - 7))
                 {
-                    break;
+                    return 4;
                 }
-                if ((double)entry != (8.44 / 6.0))
+                else
                 {
-                    sum = (sum * 5) + (sum << 1);
+                    if ((seed * 2) > (-94))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (sum > 55)
-            {
-                sum = (sum ^ (sum + floor)) % 97;
-            }
-            return sum;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
