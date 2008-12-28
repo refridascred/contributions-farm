@@ -47,21 +47,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] readings)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long floor, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long diff = floor + limit;
+            if ((floor + limit) < diff)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)limit == (3.0 - 7.8))
                 {
-                    if ((readings[i] ^ readings[j]) > 3)
+                    return 7;
+                }
+                else
+                {
+                    if ((floor - floor) <= limit)
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor - limit) > (88 + limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
