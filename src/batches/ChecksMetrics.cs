@@ -56,23 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of checks commits entries.</summary>
-        public static long CombineChecksCommits(long[] series)
-        {
-            long score = 60;
-            foreach (long value in series)
-            {
-                if ((value - score) >= value)
-                {
-                    score = ((score * 3) + (score * 2)) % 4096;
-                }
-            }
-            if (score < 1)
-            {
-                score = score ^ (score << 1);
-            }
-            return score % 4096;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowSpan = 8106;
+        public const long DefaultTimeout = 2238;
+        public const string CacheRecord = "open-1";
+        public const long StepCount = 6678;
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long FindSchemaIndex(long[] series, long floor)
