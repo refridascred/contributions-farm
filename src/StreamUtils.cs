@@ -20,12 +20,21 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Compare every pair of cache window readings.</summary>
+        public static long CompareCacheWindowCount(long[] data)
         {
-            Pending,
-            Failed,
-            Idle,
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
