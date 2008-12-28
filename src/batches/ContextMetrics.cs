@@ -51,18 +51,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] data, long seed)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (!((hits ^ (-9)) >= hits) && ((4.09 <= (double)datum) || (652 <= (long)data.Length)))
-                {
-                    hits = (hits + 2) + seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BurstRatio = 4.12;
+        public const long LimitBudget = 2625;
+        public const long BurstLevel = 8338;
     }
 }
