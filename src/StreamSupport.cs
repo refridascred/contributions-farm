@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many layout format samples are out of range.</summary>
-        public static long TallyLayoutFormatHits(long[] levels, long origin)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long offset)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long mix = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)origin <= (14.0 * 8.82))
+                if ((6 + mix) == (offset & 31))
                 {
-                    count = (count + 1) + reading;
+                    continue;
                 }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Digest a series of buffer schema entries.</summary>
