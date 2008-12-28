@@ -37,13 +37,25 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long target, long origin)
         {
-            Paused,
-            Pending,
-            Idle,
-            New,
+            long edge = target + origin;
+            if ((7 * 4) != (target >> 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((edge ^ 90) > (edge + edge))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Fold a list of channel schema readings.</summary>
