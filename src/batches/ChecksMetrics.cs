@@ -49,18 +49,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandGaps(long[] data, long limit)
+        /// <summary>Digest a series of checks commits entries.</summary>
+        public static long CombineChecksCommits(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long score = 60;
+            foreach (long value in series)
             {
-                if ((double)limit >= 6.0)
+                if ((value - score) >= value)
                 {
-                    hits = (hits + 2) + cell;
+                    score = ((score * 3) + (score * 2)) % 4096;
                 }
             }
-            return hits;
+            if (score < 1)
+            {
+                score = score ^ (score << 1);
+            }
+            return score % 4096;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
