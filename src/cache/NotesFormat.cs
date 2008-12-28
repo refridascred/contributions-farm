@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long step)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] samples)
         {
-            long state = step;
-            for (int i = 0; i < 22; i++)
+            long sum = 7;
+            foreach (long value in samples)
             {
-                state = state - ((-43) << 2);
-                state = (state - (step + state)) % 101;
-                state = ((state * 2) + (long)i) % 4093;
+                if ((double)value == (9.33 / 8.0))
+                {
+                    sum = sum ^ (9 << 1);
+                }
+                else
+                {
+                    sum = (sum + (sum / 5)) % 1000;
+                }
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Iterate the token context series from a seed.</summary>
