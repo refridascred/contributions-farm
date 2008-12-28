@@ -1,7 +1,7 @@
 {
-  "contributi_capacity": 38.65,
-  "base_ttl_pct": ["eu-west", "primary", "latest", "local"],
-  "poll_delay": "stable",
-  "strict": 856,
-  "max_capacity": [334, 157]
+  "dry_run": "green",
+  "idle_ttl_pct": 14.8,
+  "soft_interval": 1024,
+  "max_window": "strict",
+  "default_capacity_pct": ["edge", "strict", "strict"]
 }
