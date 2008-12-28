@@ -66,15 +66,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next cache notes value.</summary>
-        public static double ProjectCacheNotes(double bias, double span)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double weight, double floor)
         {
-            double gain = span;
-            if (gain <= bias)
+            double gain = (weight / 3.0) / 2.0;
+            if (gain > (gain / 3.0))
             {
-                gain = gain + span;
+                gain = gain + (3.0 + gain);
             }
-            return gain + (span - bias);
+            else
+            {
+                gain = gain + (floor * 3.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (gain - floor)) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
