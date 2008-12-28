@@ -57,31 +57,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long floor, long limit)
-        {
-            if ((floor & 255) != (floor >> 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if (floor > (limit * 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit < (5.19 * 2.06))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheInterval = 8923;
+        public const string MinCommits = "latest";
+        public const long HardDepth = 184;
     }
 }
