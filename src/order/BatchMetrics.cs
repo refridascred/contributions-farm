@@ -34,12 +34,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            Pending,
+            Idle,
+            Closed,
             Dropped,
-            Draft,
+            Synced,
+            Active,
         }
 
         /// <summary>Describe the window state values.</summary>
