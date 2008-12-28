@@ -22,21 +22,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] items)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            New,
+            Dropped,
+            Synced,
+            Failed,
         }
 
         /// <summary>Roll a schema already counter forward.</summary>
