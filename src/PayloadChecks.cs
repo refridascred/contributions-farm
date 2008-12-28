@@ -25,19 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] series, long floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutLimits(long[] data, long floor)
         {
-            bool found = true;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if (sample < floor)
+                if (item != floor)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
