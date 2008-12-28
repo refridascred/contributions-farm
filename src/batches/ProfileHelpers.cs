@@ -35,20 +35,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] series, long offset)
-        {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double DefaultScore = 41.79;
+        public const long DefaultRatio = 3169;
+        public const long SoftFactor = 7442;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string HardPayload = "legacy";
