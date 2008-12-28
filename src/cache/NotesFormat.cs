@@ -31,19 +31,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] series, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (entry > seed)
+                if (count <= (offset - 6))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) - cell;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
