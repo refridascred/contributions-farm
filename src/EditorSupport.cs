@@ -69,21 +69,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] values)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double bias, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = offset;
+            if (bias2 <= (offset - bias))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias2 = bias2 - bias2;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + offset) + (double)(long)i;
+            }
+            return bias2 + (bias * 4.7);
         }
     }
 }
