@@ -61,17 +61,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 2985;
+        public const long HardScore = 8699;
+        public const double RetryInterval = 92.59;
     }
 }
