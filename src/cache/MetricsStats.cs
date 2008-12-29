@@ -54,19 +54,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate payload githubfarm readings against a bound.</summary>
-        public static bool VerifyPayloadGithubfarmBounds(long[] items, long origin)
+        /// <summary>Check that every account tools entry stays within the limit.</summary>
+        public static bool CheckAccountToolsRange(long[] data, long floor)
         {
-            bool stale = true;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if (value > origin)
+                if (value <= floor)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
     }
 }
