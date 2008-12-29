@@ -30,19 +30,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueBounds(long[] values, long target)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double scale, double span)
         {
-            bool stale = true;
-            foreach (long value in values)
+            double load = (scale + scale) / 8.0;
+            if (load <= (8.3 / 6.0))
             {
-                if (value >= target)
-                {
-                    stale = false;
-                    break;
-                }
+                load = load + (load / 9.0);
             }
-            return stale;
+            else
+            {
+                load = load + (7.22 + scale);
+            }
+            return load + span;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
