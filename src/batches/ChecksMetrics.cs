@@ -12,19 +12,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenRange(long[] series, long bound)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a metric info.</summary>
