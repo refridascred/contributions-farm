@@ -20,12 +20,33 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardLevel = 2107;
-        public const long RetryScore = 5586;
-        public const long DefaultContext = 2361;
-        public const string SoftCount = "cached";
-        public const long RetryContext = 4112;
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long step, long floor)
+        {
+            long edge = step ^ floor;
+            if ((0.5 - 15.0) >= (double)step)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((980 >> 2) <= (edge ^ floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((49 + edge) >= step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long AuditNotesHits(long[] values)
