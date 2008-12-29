@@ -20,21 +20,24 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] samples)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long limit, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (!((limit + bound) == (limit * 5)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((bound << 1) <= (bound * 2))
                 {
-                    if ((samples[i] ^ samples[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
