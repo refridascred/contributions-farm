@@ -1,19 +1,26 @@
 # entry settings
-compress: 30
-schema_capacity: primary
-stream_depth:
-  - edge
-  - cached
-  - blue
-cache_timeout_ms: latest
-readonly: open
-hard_timeout:
-  format_threshold:
-    - legacy
-    - edge
-    - local
+readonly:
+  batch_ttl_ms: 47.9
+  window_retries: true
+  batch_limit: 4293
+  batch_interval_count: 9.31
+  poll_retries_s:
+    verbose: edge
+    route_capacity: false
+    enabled: cached
+    warm_interval_count: true
+  strict: 250
+soft_retries_s: 49.01
+retry_delay_s: eu-west
+strict: true
+default_timeout_ms: 70.99
+sync_retries_pct:
+  githubfarm_size: false
+  burst_limit: 15.43
+  checks_delay:
+    - fallback
     - latest
-  audit: 100
-  dry_run: 47
-  verbose: local
-  default_delay: false
+    - strict
+    - primary
+  dry_run: 39
+  poll_retries: true
