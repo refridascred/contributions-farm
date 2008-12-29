@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public bool Count { get; set; }
-            public double Weight { get; set; }
+            Closed,
+            Active,
+            Paused,
+            Ready,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
