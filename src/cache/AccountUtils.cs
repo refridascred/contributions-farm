@@ -19,18 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmHits(long[] levels, long floor)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long mark = 903;
+            foreach (long datum in series)
             {
-                if (!(((floor + 6) == (hits >> 1)) || ((double)item <= 2.0)))
+                if ((datum & 31) != (datum % 12))
                 {
-                    hits = hits + 1;
+                    mark = ((mark ^ (datum >> 1)) % 1000) - bound;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Rank session input into a small class.</summary>
