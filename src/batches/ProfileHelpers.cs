@@ -26,19 +26,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long bound)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long acc = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((1.89 - 4.2) >= (double)bound)
-                {
-                    acc = (acc ^ 236) % 1000;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            New,
+            Locked,
+            Done,
+            Synced,
+            Paused,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
