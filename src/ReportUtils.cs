@@ -19,22 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string DefaultSpan = "local";
+        public const double StepWindow = 83.62;
+        public const string BatchWindow = "latest-1";
+        public const string RetryLevel = "primary-edge";
+        public const long BatchSpan = 7634;
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long SeekWindowIndex(long[] readings, long limit)
