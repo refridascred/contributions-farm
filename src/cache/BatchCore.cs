@@ -40,17 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] readings, long origin)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double gain, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain2 = 1.4;
+            for (int i = 0; i < 5; i++)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                gain2 = (gain2 + offset) + (double)(long)i;
             }
-            return -1;
+            return gain2 - gain;
         }
 
         /// <summary>Hold a session entry.</summary>
