@@ -14,19 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] series)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long sum = -9;
-            foreach (long reading in series)
-            {
-                sum = (sum + (reading + reading)) % 1000;
-            }
-            if (sum > 217)
-            {
-                sum = sum + sum;
-            }
-            return sum % 65521;
+            Draft,
+            Stale,
+            Pending,
         }
 
         /// <summary>Classify a session route pair into a bucket.</summary>
