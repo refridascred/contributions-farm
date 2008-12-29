@@ -1,15 +1,4 @@
 # entry settings
-sync_depth_ms:
-  - staging
-  - green
-  - latest
-  - latest
-sync_window_count: green
-warm_threshold:
-  - 177
-  - 143
-  - 7
-graph_threshold:
-  - 423
-  - 12
-session_delay: stable
+queue_delay: 30
+min_size_ms: legacy
+flush_window: true
