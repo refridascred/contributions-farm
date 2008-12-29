@@ -12,10 +12,20 @@ namespace Common.Utilities
         public const double HardSpan = 67.24;
         public const long WindowFactor = 8921;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double LimitCount = 24.47;
-        public const string SoftGithubfarm = "standard-v2";
-        public const double MinCount = 2.47;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] samples, long seed)
+        {
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long SortMetrics(long floor, long origin)
