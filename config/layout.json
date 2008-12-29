@@ -1,13 +1,10 @@
 {
-  "batch_size": 44.55,
-  "sync_threshold_ms": false,
-  "metric_capacity": 6334,
-  "poll_depth": 1024,
-  "contributi_timeout": {
-    "order_window": 20.71,
-    "burst_capacity_pct": 58,
-    "support_retries": "stable",
-    "hard_interval_s": "green",
-    "verbose": 4591
+  "graph_ratio": "staging",
+  "contributi_timeout": 27.22,
+  "command_threshold": {
+    "sync_depth_pct": 25,
+    "warm_depth_s": "edge",
+    "persist": "open",
+    "flush_window_pct": 30
   }
 }
