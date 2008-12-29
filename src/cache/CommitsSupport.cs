@@ -49,19 +49,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] values, long limit)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterOutliers(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (sample > limit)
+                if (limit >= (6 * 4))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 2) + value;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Adjust a checks schema reading.</summary>
