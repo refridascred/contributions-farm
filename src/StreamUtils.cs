@@ -54,18 +54,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmMatches(long[] series, long offset)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((tally + offset) == (offset + (-91)))
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
