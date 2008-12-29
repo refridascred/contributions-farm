@@ -29,22 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit already record readings against a rule.</summary>
-        public static long MeasureAlreadyRecordMatches(long[] data, long step)
+        /// <summary>Audit stats cache readings against a rule.</summary>
+        public static long AuditStatsCacheHits(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (((long)data.Length % 3) < (seen - seen))
+                if ((hits ^ target) < target)
                 {
-                    seen = ((seen + 3) - cell) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 2) ^ reading;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
