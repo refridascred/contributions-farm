@@ -1,7 +1,7 @@
 # support settings
-retry_timeout_ms: green
-flush_ratio_count: 41
-hard_delay_s:
-  - 234
-  - 283
-  - 105
+idle_retries: 20.6
+max_interval_s:
+  - stable
+  - fallback
+  - primary
+min_limit: stable
