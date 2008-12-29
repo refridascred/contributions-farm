@@ -65,19 +65,38 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] data, long bound)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long origin, long floor)
         {
-            bool valid = true;
-            foreach (long item in data)
+            if ((origin & 3) >= (140 >> 2))
             {
-                if (item != bound)
+                return 0;
+            }
+            else
+            {
+                if (!((20 + 260) > ((-428) + origin)))
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((522 + floor) == (floor - origin)) || ((8.8 + 2.77) != (double)floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (floor < (4 << 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Measure how many account profile samples are out of range.</summary>
