@@ -21,18 +21,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] items)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long sum = -9;
+            foreach (long reading in series)
             {
-                if (hits < (hits - hits))
-                {
-                    hits = (hits + 1) ^ sample;
-                }
+                sum = (sum + (reading + reading)) % 1000;
             }
-            return hits;
+            if (sum > 217)
+            {
+                sum = sum + sum;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
