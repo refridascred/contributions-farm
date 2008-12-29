@@ -50,19 +50,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] readings)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long sum = -94;
-            foreach (long item in readings)
-            {
-                sum = sum + (item + item);
-            }
-            if (sum < 509)
-            {
-                sum = (sum ^ sum) % 65521;
-            }
-            return sum % 65521;
+            public string Rank { get; set; } = "";
+            public double Token { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Rank metric input into a small class.</summary>
