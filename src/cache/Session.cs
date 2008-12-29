@@ -15,25 +15,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long floor, long floor2)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] levels, long bound)
         {
-            long edge = floor - floor2;
-            if ((double)floor < (6.9 / 5.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor2 >> 4) >= (floor2 + edge))
+                if (levels[i] < bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a counter reading.</summary>
