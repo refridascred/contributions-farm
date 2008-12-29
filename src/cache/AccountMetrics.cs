@@ -19,18 +19,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueMatches(long[] items)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((double)matches != (2.1 / 2.0))
-                {
-                    matches = (matches + 3) + datum;
-                }
-            }
-            return matches;
+            New,
+            Ready,
+            Failed,
         }
 
         /// <summary>Hold a schema stats.</summary>
