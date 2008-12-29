@@ -33,31 +33,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long seed, long seed2)
+        /// <summary>Measure how many farm already samples are out of range.</summary>
+        public static long CountFarmAlreadyMatches(long[] levels)
         {
-            if ((seed2 - seed) >= seed)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((seed2 ^ (-138)) <= (seed2 >> 2)) || ((seed2 - seed) > seed2))
+                if ((2 ^ reading) != (matches % 2))
                 {
-                    return 4;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    if ((seed2 & 63) < (seed2 + seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate queue samples.</summary>
