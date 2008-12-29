@@ -40,14 +40,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
-        {
-            Dropped,
-            Idle,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowLevel = 7787;
+        public const long IdleCount = 5197;
+        public const long IdleGithubfarm = 5106;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long FoldPayload(long[] samples, long origin)
