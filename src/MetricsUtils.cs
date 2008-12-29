@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long target)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] data, long floor)
         {
-            long state = target;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                state = ((state << 3) ^ ((-499) + target)) % 255;
-                state = (state - ((long)i << 2)) % 1000;
-                state = ((state * 2) + (long)i) % 101;
+                if (datum != floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
