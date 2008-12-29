@@ -23,10 +23,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseRatio = 6563;
-        public const double HardRatio = 80.31;
-        public const long CacheSession = 8591;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 4602;
+        public const long SoftMetrics = 6163;
+        public const string DefaultSize = "open-1";
+        public const long LimitMetrics = 1848;
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
