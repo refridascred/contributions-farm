@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandGaps(long[] items)
         {
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (!((6 / 6) == (long)items.Length))
+                {
+                    matches = (matches + 3) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
