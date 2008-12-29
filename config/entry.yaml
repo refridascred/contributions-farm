@@ -1,4 +1,5 @@
 # entry settings
-hard_size_s: 100
-schema_timeout: 67.73
-soft_limit_s: true
+tools_limit: false
+max_capacity_ms: legacy
+burst_size_count: true
+min_delay_s: open
