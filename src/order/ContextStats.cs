@@ -32,20 +32,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the buffer graph series from a seed.</summary>
-        public static long IterateBufferGraph(long step)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long seed, long seed2)
         {
-            long sum = step;
-            for (int i = 0; i < 20; i++)
+            if ((seed2 - seed) >= seed)
             {
-                if (!((double)(long)i <= (18.0 / 5.0)))
-                {
-                    sum = (sum - (long)i) % 4096;
-                }
-                sum = ((sum << 2) ^ ((long)i / 9)) % 97;
-                sum = ((sum * 5) + (long)i) % 4093;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if (((seed2 ^ (-138)) <= (seed2 >> 2)) || ((seed2 - seed) > seed2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed2 & 63) < (seed2 + seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
