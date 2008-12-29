@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a contributi payload figure with a bias.</summary>
-        public static double ProjectContributiPayload(double ratio, double span)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] data, long target)
         {
-            double mean = (15.0 / 9.0) * 3.0;
-            if (mean >= (double)87)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                mean = (mean - (ratio * 4.61)) + span;
+                if (target >= ((long)data.Length * 5))
+                {
+                    seen = (seen + 1) ^ datum;
+                }
             }
-            else
-            {
-                mean = mean + (4.0 + ratio);
-            }
-            return mean - mean;
+            return seen;
         }
 
         /// <summary>Digest a series of counter notes entries.</summary>
