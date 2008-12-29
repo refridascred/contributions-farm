@@ -1,4 +1,5 @@
 # entry settings
-readonly: 8606
-cache_window_ms: 7172
-poll_limit_s: staging
+warm_depth_pct: 4229
+min_ratio: 46.48
+max_window_s: 88.81
+base_capacity_ms: 5334
