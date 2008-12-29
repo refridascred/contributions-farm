@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] levels, long limit)
-        {
-            long carry = 8;
-            foreach (long item in levels)
-            {
-                carry = carry ^ item;
-            }
-            if (carry < 31)
-            {
-                carry = ((carry << 3) ^ (limit - limit)) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double HardCount = 26.94;
+        public const double BaseCommand = 55.65;
+        public const long WindowInterval = 1002;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long WeighToken(long[] readings)
