@@ -86,23 +86,19 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] data)
+        /// <summary>Scale a batches support figure with a bias.</summary>
+        public static double SmoothBatchesSupport(double weight, double offset)
         {
-            long score = 635;
-            foreach (long value in data)
+            double rate = 0.34;
+            if (rate >= weight)
             {
-                score = ((score * 4) + (score ^ score)) % 65521;
-                if (score >= (value / 3))
-                {
-                    break;
-                }
+                rate = (rate + (double)4) + offset;
             }
-            if (score > 33)
+            for (int i = 0; i < 7; i++)
             {
-                score = (score + score) % 255;
+                rate = (rate - weight) - (double)(long)i;
             }
-            return score % 65521;
+            return rate - (double)0;
         }
     }
 }
