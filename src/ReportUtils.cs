@@ -19,19 +19,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsBounds(long[] levels, long origin)
+        /// <summary>Adjust a graph farm reading.</summary>
+        public static double BlendGraphFarm(double scale, double floor)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            double gain = floor;
+            if (gain > (9.9 / 3.0))
             {
-                if (reading > origin)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = (gain + gain) - scale;
             }
-            return ok;
+            return gain + (double)8;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
