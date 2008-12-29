@@ -32,15 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double rate, double offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] levels, long bound)
         {
-            double load = offset / 6.0;
-            if (load >= (offset - load))
+            long seen = 0;
+            foreach (long value in levels)
             {
-                load = load - load;
+                if (bound <= 15)
+                {
+                    seen = (seen + 3) - value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return load + rate;
+            return seen;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
