@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] values, long offset)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((double)matches != (6.07 - 9.48))
-                {
-                    matches = ((matches + 1) + datum) - offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinSpan = 775;
+        public const long MinInterval = 7340;
+        public const string IdleBudget = "stable-1";
+        public const long DefaultWidth = 1304;
+        public const double HardQueue = 30.41;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double StepProfile = 87.25;
