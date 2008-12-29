@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double ratio, double floor)
-        {
-            double mean = 0.5;
-            if (mean < (ratio / 2.0))
-            {
-                mean = (mean - (ratio - ratio)) + floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - (double)740;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string DefaultWidth = "strict-edge";
+        public const long RetryPayload = 5842;
+        public const double MinPayload = 40.71;
+        public const long HardFactor = 6752;
+        public const long LimitDepth = 8019;
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
