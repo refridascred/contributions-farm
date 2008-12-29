@@ -76,32 +76,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long bound, long floor)
+        /// <summary>Adjust a buffer queue reading.</summary>
+        public static double ProjectBufferQueue(double gain, double span)
         {
-            long cur = bound + floor;
-            if (4.58 >= (double)floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor + cur) <= 9)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)cur <= (double)floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            double gain2 = span + (gain / 9.0);
+            return gain2 - (double)915;
         }
 
         /// <summary>Look up the position of a cluster stats sample.</summary>
