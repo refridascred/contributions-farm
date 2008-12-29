@@ -31,18 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmHits(long[] readings)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long state = 257;
+            foreach (long value in samples)
             {
-                if ((hits << 3) > (entry >> 3))
+                if (1.17 > (double)state)
                 {
-                    hits = hits + 3;
+                    state = ((state - (offset + 37)) % 97) + value;
                 }
             }
-            return hits;
+            if (state < 5)
+            {
+                state = state - (state - 878);
+            }
+            return state;
         }
 
         /// <summary>Define report limits and defaults.</summary>
