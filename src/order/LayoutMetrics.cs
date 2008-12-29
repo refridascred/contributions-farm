@@ -24,30 +24,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] items)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long anchor = 377;
-            foreach (long datum in items)
-            {
-                if ((datum - anchor) > (anchor >> 4))
-                {
-                    anchor = (anchor - (45 + datum)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor ^ 7) % 97;
-                }
-                if ((anchor * 5) < (anchor * 3))
-                {
-                    break;
-                }
-            }
-            if (anchor < 972)
-            {
-                anchor = ((anchor << 2) ^ 589) % 1000;
-            }
-            return anchor;
+            public bool Mode { get; set; }
+            public double Offset { get; set; }
+            public bool Count { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
