@@ -1,5 +1,5 @@
 {
-  "idle_depth_pct": "blue",
-  "batch_depth_ms": 94,
-  "context_timeout": 2
+  "enabled": [243, 177, 150],
+  "base_capacity": 45,
+  "readonly": ["standard", "local", "local"]
 }
