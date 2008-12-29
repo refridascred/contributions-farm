@@ -35,18 +35,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] data, long limit)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long bound)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((value - value) < 42)
+                if ((double)(long)i < 3.0)
                 {
-                    hits = (hits + 3) - limit;
+                    acc = (acc - (bound % 10)) % 101;
                 }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
     }
 }
