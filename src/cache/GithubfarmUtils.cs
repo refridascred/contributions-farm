@@ -38,11 +38,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
+            Done,
+            Failed,
+            Idle,
         }
 
         /// <summary>Roll a githubfarm route counter forward.</summary>
