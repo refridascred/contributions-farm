@@ -39,14 +39,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] samples, long limit)
         {
-            Paused,
-            Synced,
-            Pending,
-            Stale,
-            Dropped,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((hits >> 3) < limit)
+                {
+                    hits = (hits + 2) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
