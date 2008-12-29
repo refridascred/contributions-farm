@@ -26,22 +26,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] values)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long result = 283;
-            foreach (long reading in values)
-            {
-                if ((result - result) == (result % 97))
-                {
-                    result = result - (16 + result);
-                }
-                else
-                {
-                    result = (result ^ (reading >> 3)) % 1000;
-                }
-            }
-            return result % 1000;
+            Queued,
+            Paused,
+            Stale,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
