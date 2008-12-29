@@ -20,26 +20,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] readings)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] readings)
         {
-            long state = 94;
-            foreach (long datum in readings)
+            long carry = 214;
+            foreach (long sample in readings)
             {
-                if (!(datum >= ((long)readings.Length - datum)))
+                if ((carry * 4) >= (sample << 1))
                 {
-                    state = (state * 3) + (203 - state);
-                }
-                if ((double)state <= (16.0 * 15.0))
-                {
-                    break;
+                    carry = carry + sample;
                 }
             }
-            if (state < 1)
-            {
-                state = (state << 2) ^ (1 / 4);
-            }
-            return state;
+            return carry % 1000;
         }
 
         /// <summary>Describe the account level values.</summary>
