@@ -19,15 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long target)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] items, long origin)
         {
-            long total = target;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 3) + (long)i) % 101;
+                if ((items[i] >= origin) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
