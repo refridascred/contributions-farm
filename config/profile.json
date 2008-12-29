@@ -1,8 +1,17 @@
 {
-  "record_ratio": "fallback",
-  "cache_delay_ms": "edge",
-  "batch_depth_s": [212, 384, 408, 87],
-  "account_retries": false,
-  "counter_timeout": true,
-  "editor_limit": ["eu-west", "open"]
+  "flush_ratio": 1024,
+  "cache_retries_ms": {
+    "window_limit": "fallback",
+    "queue_timeout": "edge",
+    "retry_limit": "local",
+    "context_window": true,
+    "min_threshold_count": {
+      "command_delay": "legacy",
+      "already_capacity": true,
+      "retry_timeout_ms": false
+    }
+  },
+  "account_capacity": "open",
+  "poll_limit_s": false,
+  "base_ttl_pct": [345, 300, 422, 155]
 }
