@@ -37,13 +37,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public string Rank { get; set; } = "";
-            public double Label { get; set; }
-            public long Size { get; set; }
-            public bool Level { get; set; }
+            Active,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Describe the context state values.</summary>
