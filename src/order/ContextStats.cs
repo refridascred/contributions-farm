@@ -18,16 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long offset)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] readings)
         {
-            long total = offset;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                total = ((total << 2) ^ (13 - 23)) % 65521;
-                total = ((total * 3) + (long)i) % 1000;
+                if ((4 + 32) <= entry)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Measure how many farm already samples are out of range.</summary>
