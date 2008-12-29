@@ -19,21 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] data)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double bias, double span)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = (double)(459 / 8);
+            if (mean < bias)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = (mean + (mean + mean)) + span;
             }
-            return count;
+            else
+            {
+                mean = mean - (double)18;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (bias * 6.26)) + (double)(long)i;
+            }
+            return mean - bias;
         }
 
         /// <summary>Hold a profile info.</summary>
