@@ -1,5 +1,8 @@
 {
-  "min_limit_s": "local",
-  "hard_size": 33.67,
-  "sync_ttl": 26.71
+  "base_capacity_ms": ["staging", "legacy", "staging"],
+  "poll_depth": 100,
+  "hard_timeout_count": true,
+  "payload_timeout": 23,
+  "readonly": 22.67,
+  "idle_ttl_ms": 20.39
 }
