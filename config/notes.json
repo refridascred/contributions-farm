@@ -1,5 +1,12 @@
 {
-  "cache_ttl": "stable",
-  "poll_capacity": 20.2,
-  "warm_threshold_s": 1024
+  "verbose": {
+    "compress": 53.26,
+    "poll_limit_pct": false,
+    "layout_window": 4142,
+    "enabled": 1162
+  },
+  "record_interval": 41,
+  "dry_run": 77.31,
+  "base_size_count": 25.33,
+  "warm_capacity": 3509
 }
