@@ -37,12 +37,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            Failed,
-            Stale,
-            Closed,
+            Draft,
+            Locked,
+            Ready,
         }
     }
 }
