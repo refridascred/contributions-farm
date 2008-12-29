@@ -1,7 +1,5 @@
 {
-  "audit": ["standard", "staging"],
-  "retry_threshold_count": 4166,
-  "poll_size_s": "stable",
-  "record_threshold": 1024,
-  "flush_retries_count": ["strict", "primary", "fallback", "green"]
+  "audit": 60,
+  "flush_retries_count": 5553,
+  "max_depth": 61.95
 }
