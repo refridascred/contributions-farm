@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Fold a list of support githubfarm readings.</summary>
+        public static long TotalSupportGithubfarm(long[] items, long offset)
         {
-            public string Level { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Offset { get; set; }
-            public double Total { get; set; }
+            long anchor = 91;
+            foreach (long entry in items)
+            {
+                anchor = ((anchor + (offset + anchor)) % 97) - entry;
+            }
+            if (anchor < 6)
+            {
+                anchor = (anchor + (anchor >> 4)) % 255;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Compare every pair of layout counter readings.</summary>
