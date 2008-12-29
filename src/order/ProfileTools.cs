@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] data, long limit)
         {
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
-            public double Offset { get; set; }
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((-36) < (item * 3))
+                {
+                    seen = (seen + 1) + limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
