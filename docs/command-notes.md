@@ -1,10 +1,14 @@
 # Command notes
 
-Keep metrics and notes names short and lowercase.
-The support report groups every metrics by schema.
+A stats that stays idle for too long is moved to the context list.
+Each editor is validated before it reaches the stats queue.
+When a schema fails, the order handler retries a few times before giving up.
+
+Each token is validated before it reaches the buffer queue.
+Keep record and profile names short and lowercase.
 
 ## Guidelines
 
-- Keep notes values small
-- Document new notes fields
-- Log every farm change
+- Review metrics limits each release
+- Prefer stats defaults
+- Document new schema fields
