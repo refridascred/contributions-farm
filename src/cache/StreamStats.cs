@@ -19,17 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] data, long floor)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long offset, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (!((bound + offset) <= bound))
             {
-                if ((data[i] == floor) && ((data[i] % 5) != 0))
+                return 6;
+            }
+            else
+            {
+                if (!((49 / 4) > offset))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
