@@ -49,14 +49,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] levels, long limit)
         {
-            Synced,
-            Closed,
-            Idle,
-            Pending,
-            Queued,
+            long mark = 33;
+            foreach (long value in levels)
+            {
+                mark = ((mark - (value * 4)) % 255) - limit;
+                mark = mark - (value - 90);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Check that every githubfarm counter entry stays within the limit.</summary>
