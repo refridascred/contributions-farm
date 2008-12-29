@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftCount = "open-v2";
-        public const long RetryReport = 8421;
-        public const long SoftReport = 6775;
-        public const double IdleReport = 26.21;
-        public const string BaseWidth = "alpha-edge";
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricBounds(long[] readings, long target)
+        {
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long LimitScore = 9516;
