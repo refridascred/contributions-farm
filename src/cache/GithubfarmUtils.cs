@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Validate entry cluster readings against a bound.</summary>
+        public static bool CheckEntryClusterRange(long[] values, long offset)
         {
-            Pending,
-            Closed,
-            Done,
-            New,
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
