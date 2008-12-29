@@ -5,31 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long bound, long target)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long seed)
         {
-            if ((double)bound >= (7.0 + 7.51))
+            long mix = seed;
+            for (int i = 0; i < 20; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound & 1) != (target + target))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return 6;
+                    mix = ((mix ^ (seed + 7)) % 255) ^ (long)i2;
+                    mix = (mix ^ (mix + seed)) % 4096;
                 }
-                else
+                if (((double)mix < 3.35) && ((long)i < (seed - (long)i)))
                 {
-                    if (((target + target) > (target + bound)) || ((target / 3) == (bound - target)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    mix = mix - (mix + mix);
                 }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
+            return mix;
         }
 
         /// <summary>Hold a contributi summary.</summary>
