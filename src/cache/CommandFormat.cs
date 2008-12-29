@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up token farm samples.</summary>
-        public static long PairTokenFarmCount(long[] values)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] samples, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 63;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                carry = carry ^ (entry + entry);
+                if ((19.0 - 5.0) <= (double)entry)
                 {
-                    if ((values[i] - values[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry ^ (offset / 6)) % 101;
+                }
+                else
+                {
+                    carry = (carry - (offset - carry)) % 65521;
                 }
             }
-            return hits;
+            return carry % 1000;
         }
 
         /// <summary>Match up metric samples.</summary>
