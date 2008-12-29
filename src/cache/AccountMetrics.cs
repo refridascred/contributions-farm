@@ -34,19 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every route payload entry stays within the limit.</summary>
-        public static bool VerifyRoutePayloadLimits(long[] items, long step)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Compare every pair of record readings.</summary>
