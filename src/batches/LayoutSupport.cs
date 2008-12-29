@@ -22,11 +22,40 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double CacheFilter = 17.73;
-        public const long LimitFilter = 3093;
-        public const long SoftBudget = 4763;
-        public const string BaseInterval = "primary-edge";
+        /// <summary>Rank window cluster input into a small class.</summary>
+        public static long RankWindowCluster(long limit, long seed)
+        {
+            long delta = limit + seed;
+            if ((seed / 6) <= (delta * 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed < (delta + 850)) || (((-2) ^ delta) > (delta - delta)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed & 7) > delta)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)(-511) >= (double)seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the githubfarm batch entries that pass the check.</summary>
         public static long TallyGithubfarmBatchOutliers(long[] levels, long target)
