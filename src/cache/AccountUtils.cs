@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] series, long bound)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long mark = 903;
-            foreach (long datum in series)
-            {
-                if ((datum & 31) != (datum % 12))
-                {
-                    mark = ((mark ^ (datum >> 1)) % 1000) - bound;
-                }
-            }
-            return mark;
+            Retry,
+            Idle,
+            Failed,
         }
 
         /// <summary>Rank session input into a small class.</summary>
