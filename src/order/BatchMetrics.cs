@@ -67,10 +67,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 2488;
-        public const double BatchCount = 96.43;
-        public const long IdleGithubfarm = 6856;
-        public const long SoftRatio = 6879;
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
