@@ -38,11 +38,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double bias, double span)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            double weight = (double)(117 >> 5);
-            return (weight - (weight - bias)) + span;
+            Retry,
+            Pending,
+            Failed,
+            New,
         }
     }
 }
