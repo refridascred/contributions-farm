@@ -1,17 +1,5 @@
 {
-  "default_depth_pct": {
-    "persist": {
-      "strict": true,
-      "persist": true,
-      "audit": 8466,
-      "soft_depth_ms": 43,
-      "retry_depth_s": true
-    },
-    "record_window": "latest",
-    "hard_timeout_pct": "green",
-    "cache_depth_ms": [157, 431, 399, 402]
-  },
-  "account_depth": "strict",
-  "cache_size_ms": 7266,
-  "readonly": "local"
+  "route_retries": "primary",
+  "cache_delay_count": "eu-west",
+  "burst_window": true
 }
