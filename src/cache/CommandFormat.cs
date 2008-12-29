@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinBudget = 1489;
-        public const long SoftTimeout = 3324;
-        public const long WindowFormat = 9904;
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long floor, long origin)
+        {
+            long next = floor ^ origin;
+            if ((5.5 + 8.1) < (double)next)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((4.06 - 6.81) >= (double)next)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Match up metric samples.</summary>
         public static long MatchMetricCount(long[] readings)
