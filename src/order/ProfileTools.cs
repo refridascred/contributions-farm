@@ -30,18 +30,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileOutliers(long[] series)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (hits >= entry)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
