@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long target, long offset)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double gain, double bias)
         {
-            if ((double)target >= (7.0 / 3.0))
+            double scale = gain;
+            if (scale < (gain * 1.0))
             {
-                return 8;
+                scale = scale - (bias + bias);
             }
             else
             {
-                if ((target & 3) > offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
+                scale = scale - scale;
             }
+            return scale + (scale / 8.0);
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
