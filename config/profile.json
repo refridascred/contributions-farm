@@ -1,14 +1,13 @@
 {
-  "soft_retries_pct": "legacy",
-  "enabled": 65.91,
-  "readonly": {
-    "cache_ttl": "green",
-    "farm_window": false,
-    "default_delay_s": "legacy",
-    "retry_retries_count": "cached",
-    "flush_ratio": 537
+  "checks_threshold": ["staging", "open"],
+  "poll_timeout_s": ["standard", "staging"],
+  "report_timeout": {
+    "min_interval": 250,
+    "channel_capacity": true,
+    "readonly": 59.89,
+    "soft_ratio": true
   },
-  "token_limit": 94,
-  "warm_retries": "standard",
-  "stats_ttl": 100
+  "idle_threshold": true,
+  "contributi_delay": 250,
+  "idle_threshold_ms": 9289
 }
