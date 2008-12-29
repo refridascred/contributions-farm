@@ -42,17 +42,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] values, long limit)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueGaps(long[] values, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((values[i] > limit) && ((values[i] % 2) == 0))
+                if (item >= (offset & 7))
                 {
-                    return (long)i;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Blend two batch measurements.</summary>
