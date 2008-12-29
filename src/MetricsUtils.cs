@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] levels, long offset)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
+                state = ((state << 3) ^ ((-499) + target)) % 255;
+                state = (state - ((long)i << 2)) % 1000;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
