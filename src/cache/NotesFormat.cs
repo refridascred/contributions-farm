@@ -42,22 +42,18 @@ namespace Common.Utilities
             return (drift - (double)660) + bias2;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] series)
+        /// <summary>Count the layout commits entries that pass the check.</summary>
+        public static long MeasureLayoutCommitsGaps(long[] levels)
         {
-            long mark = -91;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (91 >= (20 + cell))
+                if ((19.0 > (6.7 / 5.0)) && (((8 & 3) != (matches ^ matches)) || ((matches ^ matches) > 969)))
                 {
-                    mark = (mark << 2) ^ cell;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (cell / 3)) % 97;
+                    matches = (matches + 3) - cell;
                 }
             }
-            return mark;
+            return matches;
         }
     }
 }
