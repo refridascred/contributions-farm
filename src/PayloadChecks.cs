@@ -82,9 +82,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstWidth = 9155;
-        public const string MaxStats = "standard-edge";
-        public const string RetryStats = "latest-v2";
+        /// <summary>Match up account buffer samples.</summary>
+        public static long CompareAccountBufferCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
