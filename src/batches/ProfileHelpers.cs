@@ -59,11 +59,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double rate, double offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] series, long limit)
         {
-            double gain = rate;
-            return (gain - (double)2) + offset;
+            long acc = 666;
+            foreach (long datum in series)
+            {
+                acc = (acc - datum) - limit;
+            }
+            return acc;
         }
     }
 }
