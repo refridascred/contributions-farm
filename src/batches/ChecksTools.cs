@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const double StepRatio = 6.88;
         public const long LimitGraph = 5095;
 
-        /// <summary>Compare every pair of command already readings.</summary>
-        public static long MatchCommandAlreadyCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BurstPayload = "standard";
+        public const double DefaultScore = 76.35;
+        public const long DefaultSpan = 9507;
+        public const long RetryPayload = 4760;
+        public const string BatchSpan = "cached";
 
         /// <summary>Combine session values into a single score.</summary>
         public static long ScoreSession(long[] data, long limit)
