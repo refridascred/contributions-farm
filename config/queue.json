@@ -1,5 +1,6 @@
 {
-  "max_depth_pct": 5729,
-  "cache_window_ms": 756,
-  "sync_interval_s": 500
+  "burst_delay_ms": "legacy",
+  "dry_run": [271, 37, 61],
+  "hard_timeout_count": "local",
+  "batch_window_pct": 81.34
 }
