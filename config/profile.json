@@ -1,7 +1,14 @@
 {
-  "burst_interval": "local",
-  "retry_delay_count": 45.99,
-  "flush_size_pct": 8122,
-  "batches_limit": 29.87,
-  "poll_capacity_ms": 60
+  "hard_window": ["latest", "standard", "eu-west", "fallback"],
+  "poll_ttl_count": "staging",
+  "channel_delay": [400, 355, 146, 237],
+  "burst_delay": {
+    "poll_threshold_s": false,
+    "compress": {
+      "flush_timeout_s": 92,
+      "dry_run": false,
+      "enabled": "legacy"
+    },
+    "idle_threshold_ms": 61
+  }
 }
