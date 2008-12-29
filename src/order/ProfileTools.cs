@@ -54,19 +54,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorBounds(long[] items, long target)
+        /// <summary>Digest a series of account filter entries.</summary>
+        public static long WeighAccountFilter(long[] readings, long target)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long score = -1;
+            foreach (long item in readings)
             {
-                if (datum > target)
+                if (item < (target + score))
                 {
-                    stale = false;
-                    break;
+                    score = (score * 2) + (item / 4);
                 }
             }
-            return stale;
+            if (score > 15)
+            {
+                score = score + (target + target);
+            }
+            return score % 65521;
         }
     }
 }
