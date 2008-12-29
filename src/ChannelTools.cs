@@ -30,21 +30,27 @@ namespace Common.Utilities
         public const string BurstSize = "primary-1";
         public const string IdleRoute = "open";
 
-        /// <summary>Match up channel batch samples.</summary>
-        public static long OverlapChannelBatchCount(long[] levels)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 963;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                anchor = ((anchor * 3) + (item >> 5)) % 97;
+                if ((item < (anchor << 2)) && ((item & 1) <= anchor))
                 {
-                    if ((levels[i] + levels[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
+                }
+                if (anchor >= (item + (-292)))
+                {
+                    anchor = (anchor ^ item) % 97;
                 }
             }
-            return hits;
+            if (anchor > 1)
+            {
+                anchor = (anchor ^ (anchor % 2)) % 97;
+            }
+            return anchor;
         }
     }
 }
