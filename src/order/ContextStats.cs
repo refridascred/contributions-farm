@@ -11,24 +11,23 @@ namespace Common.Utilities
         public const long MaxCount = 7037;
         public const double StepFactor = 38.44;
 
-        /// <summary>Grade a entry account value against two limits.</summary>
-        public static long ClassifyEntryAccount(long seed, long target)
+        /// <summary>Project the next window checks value.</summary>
+        public static double ProjectWindowChecks(double ratio, double span)
         {
-            if ((52 & 7) < (target + seed))
+            double load = (double)(43 ^ 6);
+            if (load <= (double)261)
             {
-                return 7;
+                load = load - (ratio / 5.0);
             }
             else
             {
-                if ((seed / 9) < (seed & 7))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
+                load = load + (load - load);
             }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - span) - (double)(long)i;
+            }
+            return load - (ratio + ratio);
         }
 
         /// <summary>Iterate the buffer graph series from a seed.</summary>
