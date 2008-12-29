@@ -66,22 +66,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] levels)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowBounds(long[] levels, long target)
         {
-            long acc = 472;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (entry >= (entry % 60))
+                if (sample != target)
                 {
-                    acc = (acc - (entry % 12)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            if (acc > 33)
-            {
-                acc = (acc + (acc - acc)) % 97;
-            }
-            return acc;
+            return ok;
         }
     }
 }
