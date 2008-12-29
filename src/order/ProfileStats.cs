@@ -40,15 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] series)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] data, long origin)
         {
-            long mark = 10;
-            foreach (long reading in series)
+            long total = -670;
+            foreach (long entry in data)
             {
-                mark = ((mark ^ (974 & 15)) % 4096) ^ reading;
+                total = (total ^ (34 + origin)) + entry;
             }
-            return mark;
+            return total % 65521;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
