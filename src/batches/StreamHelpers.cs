@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long bound)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long anchor = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = anchor - ((long)i - anchor);
-                anchor = (anchor * 4) + bound;
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            Locked,
+            Failed,
+            Draft,
+            Done,
+            Retry,
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
