@@ -20,15 +20,23 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double gain, double floor)
+        /// <summary>Project the next githubfarm record value.</summary>
+        public static double ScaleGithubfarmRecord(double bias, double offset)
         {
-            double gain2 = 4.37;
-            if (gain2 <= (gain2 + 6.4))
+            double bias2 = (double)(84 % 7);
+            if (bias2 <= bias2)
             {
-                gain2 = (gain2 + (gain + gain)) - floor;
+                bias2 = ((bias2 + (double)16) - bias) + offset;
             }
-            return gain2 + gain2;
+            else
+            {
+                bias2 = bias2 + (bias2 * 3.09);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 + bias2) - (double)(long)i;
+            }
+            return bias2 - (double)58;
         }
 
         /// <summary>Accumulate metric samples.</summary>
