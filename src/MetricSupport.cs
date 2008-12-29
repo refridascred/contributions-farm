@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] values, long seed)
         {
-            Pending,
-            New,
-            Dropped,
-            Synced,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit command checks readings against a rule.</summary>
