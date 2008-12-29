@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] values)
         {
-            long total = offset;
-            for (int i = 0; i < 4; i++)
+            long anchor = 336;
+            foreach (long datum in values)
             {
-                if ((9.2 / 4.0) == (double)offset)
+                if (datum >= (datum - datum))
                 {
-                    total = total ^ (offset - (long)i);
+                    anchor = (anchor * 3) + (anchor >> 5);
                 }
-                else
-                {
-                    total = (total * 3) + offset;
-                }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            if (anchor < 11)
+            {
+                anchor = (anchor * 4) + (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Hold a support header.</summary>
