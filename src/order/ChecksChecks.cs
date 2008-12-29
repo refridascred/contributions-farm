@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] series, long bound)
         {
-            Stale,
-            Pending,
-            Queued,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((matches + matches) < bound)
+                {
+                    matches = (matches + 1) - sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
