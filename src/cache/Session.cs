@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next stream stats value.</summary>
-        public static double ScaleStreamStats(double rate, double bias)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double gain, double floor)
         {
-            double mean = bias / 8.0;
-            if (mean > 8.44)
+            double load = (double)(801 >> 2);
+            if (load > (floor - gain))
             {
-                mean = mean - (rate / 3.0);
+                load = load + (gain + load);
             }
-            return mean + (mean + bias);
+            return load - (load * 1.0);
         }
 
         /// <summary>Hold a record header.</summary>
