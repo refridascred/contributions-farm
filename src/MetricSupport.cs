@@ -25,17 +25,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first route metric entry that matches the target.</summary>
-        public static long LocateRouteMetricIndex(long[] levels, long target)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] samples, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = -460;
+            foreach (long datum in samples)
             {
-                if ((levels[i] >= target) && ((levels[i] % 2) == 0))
+                if ((29 & 31) <= (470 + datum))
                 {
-                    return (long)i;
+                    sum = sum + (bound / 3);
                 }
             }
-            return -1;
+            return sum % 65521;
         }
     }
 }
