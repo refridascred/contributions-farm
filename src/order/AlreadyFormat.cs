@@ -28,14 +28,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            Idle,
-            Closed,
-            Retry,
-            Dropped,
-            Active,
+            Paused,
+            Failed,
+            Done,
+            Draft,
+            Queued,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
