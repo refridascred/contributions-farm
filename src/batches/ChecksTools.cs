@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((tally % 100) != (sample % 7))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleSize = 6721;
+        public const long DefaultTools = 5690;
+        public const long RetrySize = 637;
+        public const long LimitTools = 3034;
+        public const string HardFactor = "standard-1";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double CacheSchema = 65.84;
