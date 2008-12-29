@@ -11,38 +11,15 @@ namespace Common.Utilities
         public const long SoftMetrics = 2031;
         public const long WindowMetrics = 5311;
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long seed, long bound)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long seed)
         {
-            if (!((820 + bound) >= bound))
+            long carry = seed;
+            for (int i = 0; i < 11; i++)
             {
-                return 7;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (seed > (bound + seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed / 9) == (bound + seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((247 + 85) < bound) || ((double)bound == (7.7 + 0.2)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
