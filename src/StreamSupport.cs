@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate graph support samples.</summary>
-        public static long FoldGraphSupport(long[] values)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long floor, long bound)
         {
-            long mark = 344;
-            foreach (long sample in values)
+            if (floor <= (bound / 4))
             {
-                mark = (mark * 3) + 4;
-                if ((sample + 59) != (mark + 7))
+                return 6;
+            }
+            else
+            {
+                if ((floor >> 5) != (bound - floor))
                 {
-                    mark = ((mark << 2) ^ (mark & 255)) % 97;
+                    return 4;
                 }
                 else
                 {
-                    mark = (mark ^ (mark - 0)) % 97;
+                    if ((floor ^ floor) > (bound + floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return mark % 65521;
         }
 
         /// <summary>Project the next batch value.</summary>
