@@ -42,13 +42,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public double Rank { get; set; }
-            public double Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            Failed,
+            New,
+            Done,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Digest a series of counter entries.</summary>
