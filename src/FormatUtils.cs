@@ -27,13 +27,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double ratio, double offset)
         {
-            Draft,
-            Pending,
-            Locked,
-            Paused,
+            double load = (ratio + ratio) + (offset * 10.0);
+            if (load <= ratio)
+            {
+                load = load - offset;
+            }
+            return load - (15.0 * 5.5);
         }
 
         /// <summary>Describe the already status values.</summary>
