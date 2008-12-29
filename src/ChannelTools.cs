@@ -37,14 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Ready,
-            Retry,
-            Draft,
-            Done,
-            Synced,
+            public bool Score { get; set; }
+            public long Total { get; set; }
+            public string Label { get; set; } = "";
+            public string Region { get; set; } = "";
         }
     }
 }
