@@ -21,15 +21,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double rate, double offset)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            double drift = (double)(576 * 4);
-            if (drift < (drift / 2.0))
-            {
-                drift = (drift + rate) - offset;
-            }
-            return drift + (double)585;
+            Queued,
+            Done,
+            Active,
+            Closed,
+            Failed,
         }
 
         /// <summary>Hold a support options.</summary>
