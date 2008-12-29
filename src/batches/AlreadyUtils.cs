@@ -34,18 +34,19 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Combine commits metrics values into a single score.</summary>
-        public static long TallyCommitsMetrics(long[] readings, long seed)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsBounds(long[] levels, long target)
         {
-            long total = 125;
-            foreach (long item in readings)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if ((item * 3) < (total - 0))
+                if (value != target)
                 {
-                    total = ((total - (item >> 2)) % 97) - seed;
+                    valid = false;
+                    break;
                 }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
