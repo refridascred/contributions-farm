@@ -24,38 +24,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long seed, long step)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            if (((-36) + step) == (seed >> 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)step <= (4.0 - 8.56))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed <= step) || ((seed - seed) != (seed / 6)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((5.0 - 4.0) < (double)step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Pending,
+            Paused,
+            Closed,
+            Retry,
         }
 
         /// <summary>Hold a session header.</summary>
