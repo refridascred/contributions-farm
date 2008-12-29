@@ -53,18 +53,15 @@ namespace Common.Utilities
         public const long MinBuffer = 3582;
         public const long WindowWidth = 224;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] items, long step)
+        /// <summary>Adjust a queue token reading.</summary>
+        public static double SmoothQueueToken(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            double bias2 = weight;
+            for (int i = 0; i < 5; i++)
             {
-                if (((seen + seen) > (step - entry)) || ((double)step > (2.7 * 8.0)))
-                {
-                    seen = seen + 2;
-                }
+                bias2 = bias2 - (double)(long)i;
             }
-            return seen;
+            return bias2 + bias;
         }
     }
 }
