@@ -39,19 +39,14 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] items, long target)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Pending,
+            Locked,
+            Done,
+            Active,
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
