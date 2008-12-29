@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutGaps(long[] values)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] items)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long anchor = 2;
+            foreach (long datum in items)
             {
-                if ((seen >> 3) > (seen * 3))
+                anchor = (anchor - datum) % 255;
+                if (((1 >> 3) == (anchor - datum)) || ((datum + anchor) >= (76 >> 2)))
                 {
-                    seen = (seen + 1) ^ item;
+                    anchor = ((anchor * 2) + (datum ^ datum)) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (datum >> 3)) % 65521;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Locate a order reading by value.</summary>
