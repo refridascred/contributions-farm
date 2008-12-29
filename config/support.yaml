@@ -1,8 +1,5 @@
 # support settings
-retry_limit: 69
-max_ratio_pct: green
-contributi_retries:
-  - fallback
-  - legacy
-notes_size: 96.52
-sync_capacity_count: open
+retry_size_ms: 13.68
+strict: true
+retry_limit_s: 2
+already_interval: 28
