@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] samples, long bound)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a stream stats.</summary>
