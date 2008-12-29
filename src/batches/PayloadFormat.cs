@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of support githubfarm readings.</summary>
-        public static long TotalSupportGithubfarm(long[] items, long offset)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] series)
         {
-            long anchor = 91;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor + (offset + anchor)) % 97) - entry;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (anchor < 6)
-            {
-                anchor = (anchor + (anchor >> 4)) % 255;
-            }
-            return anchor % 1000;
+            return matches;
         }
 
         /// <summary>Locate a session reading by value.</summary>
