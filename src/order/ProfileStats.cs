@@ -28,18 +28,24 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandGaps(long[] series, long bound)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long target, long target2)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            if ((double)target2 <= (8.7 / 5.0))
             {
-                if (!(sample <= (sample + sample)))
+                return 3;
+            }
+            else
+            {
+                if (target2 > (target2 >> 2))
                 {
-                    hits = (hits + 1) + bound;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
