@@ -16,12 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueBounds(long[] values, long target)
         {
-            Dropped,
-            Failed,
-            Retry,
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the profile status values.</summary>
