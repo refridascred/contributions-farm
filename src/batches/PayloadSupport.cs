@@ -5,31 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long step, long seed)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] data, long floor)
         {
-            if ((double)371 == (double)step)
+            long total = 8;
+            foreach (long cell in data)
             {
-                return 0;
+                total = ((total ^ (-1)) % 4096) ^ cell;
+                total = total ^ floor;
             }
-            else
+            if (total < 11)
             {
-                if ((779 + seed) > seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step - (-31)) != (878 / 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                total = (total << 3) ^ (floor + floor);
             }
+            return total;
         }
 
         /// <summary>Hold a batches record.</summary>
