@@ -27,17 +27,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] items, long target)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((items[i] <= target) && ((items[i] % 5) == 0))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return (long)i;
+                    sum = sum ^ ((long)i2 % 64);
                 }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Look up the position of a schema format sample.</summary>
