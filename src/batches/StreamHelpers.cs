@@ -53,12 +53,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string CacheBudget = "stable-v2";
-        public const long MinEntry = 5153;
-        public const long LimitLevel = 4810;
-        public const long BatchEntry = 5759;
-        public const long BaseEntry = 4485;
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            Active,
+            Draft,
+            Stale,
+            New,
+        }
 
         /// <summary>Accumulate cluster entry samples.</summary>
         public static long DigestClusterEntry(long[] items, long limit)
