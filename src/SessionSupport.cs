@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            Draft,
-            Closed,
-            Ready,
-            Failed,
+            public double Level { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Scale a checks tools figure with a bias.</summary>
