@@ -50,11 +50,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double ratio, double floor)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] levels, long limit)
         {
-            double drift = (double)((-18) * 3);
-            return (drift + (floor / 7.0)) + ratio;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= limit) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
