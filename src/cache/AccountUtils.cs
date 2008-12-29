@@ -13,12 +13,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long step, long origin)
         {
-            Retry,
-            Idle,
-            Failed,
+            long gap = step + origin;
+            if ((gap >> 4) == (gap << 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if (step < (step - gap))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the farm mode values.</summary>
