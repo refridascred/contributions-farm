@@ -46,22 +46,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] readings, long step)
+        /// <summary>Accumulate metrics buffer samples.</summary>
+        public static long FoldMetricsBuffer(long[] samples, long limit)
         {
-            long state = 7;
-            foreach (long entry in readings)
+            long anchor = 78;
+            foreach (long reading in samples)
             {
-                if ((step + entry) <= step)
+                anchor = ((anchor << 3) ^ (reading + limit)) % 97;
+                if ((884 << 1) > (anchor >> 1))
                 {
-                    state = ((state * 4) + ((long)readings.Length - step)) % 65521;
+                    break;
                 }
             }
-            if (state > 4)
+            if (anchor < 7)
             {
-                state = (state + (state << 3)) % 255;
+                anchor = (anchor << 2) ^ anchor;
             }
-            return state;
+            return anchor % 97;
         }
     }
 }
