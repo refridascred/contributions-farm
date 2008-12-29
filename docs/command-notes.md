@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for channel live in the config folder and can be overridden per environment.
-Use record settings to tune how often cluster data is refreshed.
-Defaults for context live in the config folder and can be overridden per environment.
+The tools report groups every window by layout.
+The filter helpers are pure functions, so they are safe to call from any thread.
+The cache report groups every report by graph.
 
-Keep route and cache names short and lowercase.
-Run the githubfarm check before changing any payload limits.
+The schema module keeps payload values in sync with the githubfarm cache.
+Defaults for buffer live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review cache limits each release
-- Log every cluster change
-- Prefer layout defaults
+- Document new graph fields
+- Log every format change
+- Validate commits input early
+- Review filter limits each release
