@@ -44,13 +44,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 1527;
+        public const long BurstWidth = 8367;
+        public const double BatchInterval = 6.86;
+        public const long LimitSpan = 6001;
+        public const long SoftScore = 9816;
     }
 }
