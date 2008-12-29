@@ -24,19 +24,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] data, long target)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] levels)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum != target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] - levels[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
