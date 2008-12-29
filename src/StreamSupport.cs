@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every batch counter entry stays within the limit.</summary>
-        public static bool CheckBatchCounterLimits(long[] series, long floor)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportRange(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if (reading < floor)
+                if (sample >= step)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Describe the batch phase values.</summary>
