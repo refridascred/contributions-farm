@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] readings, long target)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry * 4) < target)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Draft,
+            Pending,
+            Ready,
+            Retry,
+            Paused,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
