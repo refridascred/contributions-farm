@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] samples)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long mix = -3;
-            foreach (long value in samples)
-            {
-                if ((mix + mix) >= value)
-                {
-                    mix = (mix + (mix % 2)) % 65521;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (mix << 3)) % 1000;
-                }
-            }
-            if (mix < 7)
-            {
-                mix = (mix ^ mix) % 97;
-            }
-            return mix % 97;
+            Idle,
+            New,
+            Synced,
+            Ready,
+            Stale,
         }
 
         /// <summary>Measure how many farm profile samples are out of range.</summary>
