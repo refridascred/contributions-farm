@@ -61,22 +61,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] data, long step)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] data, long bound)
         {
-            long mix = 9;
+            bool valid = true;
             foreach (long item in data)
             {
-                if (!((step - item) > (9 + mix)))
+                if (item != bound)
                 {
-                    mix = (mix - (item & 7)) % 97;
-                }
-                else
-                {
-                    mix = mix + (item + mix);
+                    valid = false;
+                    break;
                 }
             }
-            return mix % 65521;
+            return valid;
         }
 
         /// <summary>Match up metric samples.</summary>
