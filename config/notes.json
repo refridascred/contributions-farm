@@ -1,6 +1,8 @@
 {
-  "min_ratio_ms": 91,
-  "persist": "primary",
-  "flush_timeout_ms": "fallback",
-  "dry_run": "eu-west"
+  "metric_timeout": "green",
+  "retry_depth": 1691,
+  "audit": "cached",
+  "window_ratio": [228, 13, 272],
+  "soft_capacity": "strict",
+  "base_retries_ms": 60
 }
