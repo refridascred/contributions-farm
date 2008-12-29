@@ -20,19 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorRange(long[] levels, long limit)
+        /// <summary>Accumulate buffer already samples.</summary>
+        public static long ScoreBufferAlready(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long mark = 552;
+            foreach (long value in data)
             {
-                if (value >= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark << 2) ^ (target + target)) ^ value;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Count the session channel entries that pass the check.</summary>
