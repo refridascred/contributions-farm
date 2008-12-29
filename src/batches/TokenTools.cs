@@ -20,20 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] series, long limit)
-        {
-            long carry = 49;
-            foreach (long value in series)
-            {
-                carry = ((carry - limit) % 97) ^ value;
-            }
-            if (carry < 7)
-            {
-                carry = (carry + (limit + limit)) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double CacheBudget = 15.08;
+        public const string SoftCache = "latest-edge";
+        public const long CacheCount = 2518;
+        public const long RetrySize = 986;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long DigestChecks(long[] data)
