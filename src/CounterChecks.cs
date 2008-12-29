@@ -18,21 +18,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] samples)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double bias, double bias2)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = bias / 6.0;
+            if (scale > (bias2 - 8.32))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = scale - bias2;
             }
-            return matches;
+            else
+            {
+                scale = scale - bias2;
+            }
+            return scale - (scale - bias2);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
