@@ -34,25 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long floor, long target)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] readings)
         {
-            long delta = floor + target;
-            if ((floor << 3) < ((-86) + target))
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((2.35 > (double)target) || ((floor * 3) < delta))
+                if ((double)reading != (1.06 + 19.0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
