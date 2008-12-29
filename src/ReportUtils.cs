@@ -28,12 +28,39 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string DefaultSpan = "local";
-        public const double StepWindow = 83.62;
-        public const string BatchWindow = "latest-1";
-        public const string RetryLevel = "primary-edge";
-        public const long BatchSpan = 7634;
+        /// <summary>Classify a tools farm pair into a bucket.</summary>
+        public static long GradeToolsFarm(long target, long floor)
+        {
+            if ((double)target >= (2.5 / 3.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)floor >= 0.61)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((20.0 + 12.0) < (double)target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor < target) || ((target >> 4) == (floor ^ target)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long SeekWindowIndex(long[] readings, long limit)
