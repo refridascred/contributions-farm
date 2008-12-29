@@ -26,13 +26,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Validate graph batch readings against a bound.</summary>
+        public static bool VerifyGraphBatchLimits(long[] levels, long floor)
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
