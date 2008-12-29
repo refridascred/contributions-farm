@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] data, long step)
+        /// <summary>Check that every record graph entry stays within the limit.</summary>
+        public static bool VerifyRecordGraphLimits(long[] items, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if ((data[i] < step) && ((data[i] % 2) != 0))
+                if (datum < origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
