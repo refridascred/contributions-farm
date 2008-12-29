@@ -86,10 +86,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BaseSpan = 85.68;
-        public const string BaseAccount = "open-v2";
-        public const long BatchFactor = 6776;
-        public const long BatchAccount = 7745;
+        /// <summary>Measure how many account profile samples are out of range.</summary>
+        public static long TallyAccountProfileOutliers(long[] samples, long origin)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (reading >= (count % 100))
+                {
+                    count = (count + 2) + origin;
+                }
+            }
+            return count;
+        }
     }
 }
