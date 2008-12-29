@@ -1,17 +1,6 @@
 {
-  "cache_timeout_pct": "cached",
-  "poll_delay_pct": {
-    "idle_retries": 34.46,
-    "compress": 60,
-    "max_capacity_s": {
-      "editor_timeout": true,
-      "base_timeout_ms": 4523,
-      "persist": 16.25
-    },
-    "warm_interval_count": "local",
-    "idle_window": "standard",
-    "readonly": ["open", "blue", "stable"]
-  },
-  "stats_limit": 1652,
-  "layout_retries": 8099
+  "order_ratio": true,
+  "graph_retries": 6,
+  "readonly": [456, 498, 370, 432],
+  "persist": "eu-west"
 }
