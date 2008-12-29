@@ -1,5 +1,23 @@
 {
-  "contributi_limit": 27.25,
-  "strict": "green",
-  "base_size_count": "cached"
+  "tools_timeout": {
+    "idle_size_pct": "local",
+    "warm_depth": 36.51,
+    "readonly": 100,
+    "hard_depth_pct": 95.18,
+    "base_interval": "eu-west",
+    "dry_run": {
+      "cache_ratio_s": "staging",
+      "idle_ratio_ms": 23,
+      "idle_retries": 74.41,
+      "burst_retries_pct": false,
+      "retry_retries_pct": 500,
+      "batch_limit_s": 29.7
+    }
+  },
+  "layout_depth": {
+    "cache_timeout": false,
+    "schema_threshold": 64.65,
+    "burst_timeout_ms": 50.45
+  },
+  "min_timeout_pct": true
 }
