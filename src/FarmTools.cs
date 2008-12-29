@@ -40,18 +40,20 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Measure how many profile contributi samples are out of range.</summary>
-        public static long TallyProfileContributiHits(long[] levels)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long limit)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long state = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((tally + tally) <= reading)
+                if ((limit - 109) <= (long)i)
                 {
-                    tally = tally + 2;
+                    state = (state << 3) ^ (state >> 4);
                 }
+                state = state ^ state;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
     }
 }
