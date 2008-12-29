@@ -1,34 +1,10 @@
 # support settings
-poll_size:
-  verbose:
-    - local
-    - standard
-  format_window: green
-  flush_size: 22.13
-  record_ratio: cached
-  warm_window: blue
-hard_size_s:
-  - green
-  - stable
-  - blue
-audit: 1654
-report_timeout:
+base_size_s: 30
+route_threshold: 100
+buffer_limit: edge
+graph_capacity: stable
+retry_retries:
   - cached
   - edge
-  - fallback
-  - edge
-session_delay: 2.49
-default_threshold:
-  batch_interval: staging
-  strict: 21.56
-  enabled: 50.74
-  warm_limit_pct:
-    persist: true
-    audit: latest
-    dry_run: 71
-    notes_timeout: strict
-    soft_ratio_s:
-      - blue
-      - strict
-      - eu-west
-    cache_delay_pct: 63
+  - open
+cache_threshold: 3170
