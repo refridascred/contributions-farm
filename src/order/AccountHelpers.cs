@@ -66,22 +66,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Fold a list of layout tools readings.</summary>
-        public static long FoldLayoutTools(long[] samples, long limit)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long target)
         {
-            long total = 5;
-            foreach (long reading in samples)
+            long result = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((3 - reading) == (reading + reading))
-                {
-                    total = (total ^ limit) % 4096;
-                }
-                else
-                {
-                    total = (total ^ (total / 3)) % 255;
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return total % 1000;
+            return result;
         }
 
         /// <summary>Project the next layout value.</summary>
