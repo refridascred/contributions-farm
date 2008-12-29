@@ -23,18 +23,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] series, long offset)
+        /// <summary>Accumulate format farm samples.</summary>
+        public static long TallyFormatFarm(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long mark = 323;
+            foreach (long cell in readings)
             {
-                if ((double)matches <= (0.54 - 9.7))
+                if ((mark - cell) > 85)
                 {
-                    matches = ((matches + 3) + item) - offset;
+                    mark = (mark ^ (cell % 60)) % 255;
+                }
+                if (11.0 <= (double)cell)
+                {
+                    break;
                 }
             }
-            return matches;
+            if (mark > 77)
+            {
+                mark = mark + (mark ^ mark);
+            }
+            return mark;
         }
 
         /// <summary>Count the editor counter entries that pass the check.</summary>
