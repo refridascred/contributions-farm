@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
-        {
-            Stale,
-            Active,
-            New,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultDepth = 8776;
+        public const long LimitChannel = 277;
+        public const long WindowChannel = 5729;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long CombineQueue(long[] readings)
