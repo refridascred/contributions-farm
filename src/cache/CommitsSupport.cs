@@ -24,23 +24,10 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading % 60) > (reading - reading))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepFactor = 7149;
+        public const long BurstPayload = 7213;
+        public const long HardFactor = 8011;
 
         /// <summary>Accumulate record samples.</summary>
         public static long TallyRecord(long[] items)
