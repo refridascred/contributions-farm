@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Queued,
-            Retry,
-            Active,
-            Failed,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinWidth = 47.96;
+        public const double DefaultLevel = 64.23;
+        public const long BurstRatio = 1790;
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long RankOrder(long target, long offset)
