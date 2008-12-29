@@ -13,19 +13,26 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long limit)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] series)
         {
-            long carry = limit;
-            for (int i = 0; i < 11; i++)
+            long total = 963;
+            foreach (long datum in series)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((0 ^ total) < (total - 50))
                 {
-                    carry = (((carry << 3) ^ limit) % 255) ^ (long)i2;
+                    total = ((total ^ (total / 2)) % 4096) ^ datum;
                 }
-                carry = ((carry * 3) + (long)i) % 101;
+                if ((total & 63) <= (total & 15))
+                {
+                    break;
+                }
             }
-            return carry;
+            if (total > 730)
+            {
+                total = (total - (total - 12)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Describe the notes phase values.</summary>
