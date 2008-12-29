@@ -38,19 +38,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] items, long origin)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long limit)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long state = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (datum <= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Accumulate record samples.</summary>
