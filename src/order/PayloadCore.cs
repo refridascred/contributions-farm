@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metrics layout entry stays within the limit.</summary>
-        public static bool VerifyMetricsLayoutRange(long[] items, long offset)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Synced,
+            Pending,
+            Failed,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
