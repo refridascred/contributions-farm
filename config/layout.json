@@ -1,7 +1,6 @@
 {
-  "poll_timeout_ms": false,
-  "cache_depth_count": 12,
-  "max_timeout_count": 32,
-  "idle_capacity": "standard",
-  "soft_capacity_s": true
+  "readonly": 4642,
+  "min_capacity_count": [225, 44, 40, 317],
+  "max_retries": 46.29,
+  "max_window": "open"
 }
