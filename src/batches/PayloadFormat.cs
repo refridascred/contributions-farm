@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const string BaseSpan = "strict-v2";
         public const long DefaultDepth = 1028;
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double weight, double bias)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long target)
         {
-            double ratio = (double)(7 / 2);
-            if (ratio >= bias)
+            long result = target;
+            for (int i = 0; i < 17; i++)
             {
-                ratio = ratio + (2.0 * 6.0);
+                result = ((result * 4) + (long)i) % 101;
             }
-            return ratio + weight;
+            return result;
         }
 
         /// <summary>Audit checks entry readings against a rule.</summary>
