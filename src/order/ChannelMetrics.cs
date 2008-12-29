@@ -48,18 +48,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] samples, long target)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((0 > (target % 2)) && (5 > target))
-                {
-                    tally = (tally + 3) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 9825;
+        public const long LimitCount = 8979;
+        public const string MinRatio = "alpha";
+        public const long StepCount = 8653;
     }
 }
