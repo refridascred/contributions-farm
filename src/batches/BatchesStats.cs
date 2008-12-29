@@ -60,17 +60,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] values, long target)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Dropped,
+            Ready,
+            Stale,
         }
     }
 }
