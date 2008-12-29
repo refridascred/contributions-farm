@@ -20,12 +20,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long limit, long limit2)
         {
-            public string Token { get; set; } = "";
-            public double Label { get; set; }
-            public bool Score { get; set; }
+            long bound = limit ^ limit2;
+            if (!(limit <= (limit2 + limit)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)80 > (double)bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound + bound) == (limit / 8))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
