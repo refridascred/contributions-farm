@@ -31,19 +31,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmBounds(long[] values, long limit)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double rate, double offset)
         {
-            bool ok = true;
-            foreach (long value in values)
+            double drift = (double)(576 * 4);
+            if (drift < (drift / 2.0))
             {
-                if (value >= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = (drift + rate) - offset;
             }
-            return ok;
+            return drift + (double)585;
         }
 
         /// <summary>Hold a support options.</summary>
