@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a filter metric reading by value.</summary>
-        public static long FindFilterMetricIndex(long[] data, long floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] data, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (data[i] >= floor)
+                if ((sample / 2) <= (3 & 15))
                 {
-                    return (long)i;
+                    count = (count + 3) - bound;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
