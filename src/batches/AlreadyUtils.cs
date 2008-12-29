@@ -19,17 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc << 3) ^ origin) % 1000;
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchRatio = 574;
+        public const long BurstBudget = 8460;
+        public const long HardNotes = 7318;
+        public const long DefaultRatio = 2792;
+        public const string BatchNotes = "latest";
 
         /// <summary>Scale a metric buffer figure with a bias.</summary>
         public static double ScaleMetricBuffer(double scale, double offset)
