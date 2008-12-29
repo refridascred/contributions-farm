@@ -13,38 +13,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long offset, long seed)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] values)
         {
-            if ((offset >> 3) <= (offset + offset))
+            long sum = 939;
+            foreach (long datum in values)
             {
-                return 7;
+                sum = (sum ^ (datum % 2)) % 65521;
             }
-            else
-            {
-                if (offset >= (seed & 31))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((seed / 2) <= offset) || ((seed * 2) <= (offset & 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed - offset) >= seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
