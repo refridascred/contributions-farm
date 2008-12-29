@@ -42,17 +42,12 @@ namespace Common.Utilities
         public const long LimitScore = 4148;
         public const long LimitChannel = 2285;
 
-        /// <summary>Look up the position of a farm entry sample.</summary>
-        public static long LocateFarmEntryIndex(long[] values, long origin)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= origin) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the counter class values.</summary>
