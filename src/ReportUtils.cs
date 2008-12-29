@@ -47,23 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] samples, long floor)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long offset)
         {
-            long carry = -644;
-            foreach (long cell in samples)
+            long mark = offset;
+            for (int i = 0; i < 14; i++)
             {
-                carry = (carry * 5) + cell;
-                if (((cell & 31) > carry) || ((carry ^ cell) == (carry - cell)))
+                if ((double)5 != (double)offset)
                 {
-                    carry = carry - cell;
+                    mark = ((mark << 2) ^ (mark << 3)) % 255;
                 }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            if (carry < 899)
-            {
-                carry = carry - (floor - carry);
-            }
-            return carry;
+            return mark;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
