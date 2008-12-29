@@ -42,19 +42,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every account tools entry stays within the limit.</summary>
-        public static bool CheckAccountToolsRange(long[] data, long floor)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double bias, double floor)
         {
-            bool valid = true;
-            foreach (long value in data)
+            double gain = (floor + bias) / 5.0;
+            if (gain < (gain - gain))
             {
-                if (value <= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = gain + (double)797;
             }
-            return valid;
+            return gain - (double)52;
         }
     }
 }
