@@ -38,13 +38,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] series, long seed)
         {
-            Retry,
-            Pending,
-            Failed,
-            New,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((double)hits < 2.8)
+                {
+                    hits = ((hits + 1) + value) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
