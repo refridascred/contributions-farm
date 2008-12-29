@@ -1,6 +1,17 @@
 {
-  "order_ratio": true,
-  "graph_retries": 6,
-  "readonly": [456, 498, 370, 432],
-  "persist": "eu-west"
+  "poll_limit": {
+    "retry_interval": "blue",
+    "report_retries": {
+      "base_window": [481, 147],
+      "window_delay": "standard",
+      "hard_ttl_count": 500,
+      "enabled": true
+    },
+    "stream_depth": true,
+    "max_depth_ms": 4824,
+    "batch_depth": 66.96,
+    "hard_depth_pct": 2193
+  },
+  "burst_window": "latest",
+  "dry_run": 35
 }
