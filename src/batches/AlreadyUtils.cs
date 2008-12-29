@@ -54,11 +54,11 @@ namespace Common.Utilities
         public const long MinBuffer = 3582;
         public const long WindowWidth = 224;
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            public long Score { get; set; }
-            public double Weight { get; set; }
+            public double Level { get; set; }
+            public long Label { get; set; }
         }
     }
 }
