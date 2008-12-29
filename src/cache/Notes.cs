@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Compare every pair of profile window readings.</summary>
-        public static long PairProfileWindowCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double StepToken = 11.11;
+        public const long WindowToken = 9037;
+        public const long WindowCount = 7557;
 
         /// <summary>Fold a list of report already readings.</summary>
         public static long TotalReportAlready(long[] data)
