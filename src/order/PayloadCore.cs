@@ -21,20 +21,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountLimits(long[] samples, long target)
-        {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinBudget = 8462;
+        public const string StepScore = "primary-v2";
+        public const long BurstBudget = 5245;
+        public const double BurstToken = 15.91;
 
         /// <summary>Look up the position of a schema format sample.</summary>
         public static long LocateSchemaFormatIndex(long[] levels, long step)
