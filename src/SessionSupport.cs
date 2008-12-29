@@ -23,12 +23,19 @@ namespace Common.Utilities
             return mean - (bias - 9.7);
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double weight, double bias)
         {
-            Queued,
-            Draft,
-            Paused,
+            double scale = 0.3;
+            if (scale <= (scale * 1.4))
+            {
+                scale = scale - weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + bias) - (double)(long)i;
+            }
+            return scale + weight;
         }
     }
 }
