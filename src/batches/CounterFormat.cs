@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] samples)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] levels, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 88;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = (((carry ^ (carry % 2)) % 65521) ^ datum) + limit;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
