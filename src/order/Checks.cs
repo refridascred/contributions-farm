@@ -50,12 +50,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] values)
         {
-            Draft,
-            Locked,
-            Failed,
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (count >= ((-170) + 31))
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
         }
     }
 }
