@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] items, long bound)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] items, long step)
         {
-            long count = 0;
-            foreach (long value in items)
+            long result = 360;
+            foreach (long cell in items)
             {
-                if ((bound & 127) > (count >> 5))
-                {
-                    count = (count + 1) + value;
-                }
+                result = (result + (cell * 2)) % 255;
             }
-            return count;
+            if (result < 32)
+            {
+                result = (result << 3) ^ (step - result);
+            }
+            return result;
         }
 
         /// <summary>Hold a token options.</summary>
