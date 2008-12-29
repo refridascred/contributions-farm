@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metrics stats entries that pass the check.</summary>
-        public static long MeasureMetricsStatsMatches(long[] data, long bound)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((datum + datum) <= 93)
+                if ((double)datum <= (4.4 / 2.0))
                 {
-                    tally = (tally + 1) - bound;
+                    hits = (hits + 3) - seed;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Rank token input into a small class.</summary>
