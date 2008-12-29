@@ -30,27 +30,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a githubfarm route counter forward.</summary>
-        public static long SeriesGithubfarmRoute(long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] data, long offset)
         {
-            long score = seed;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((reading + reading) == (25 ^ reading))
                 {
-                    score = ((score * 4) + (score >> 2)) + (long)i2;
+                    seen = (seen + 1) + offset;
                 }
-                if ((7.1 - 3.4) > (double)score)
+                else
                 {
-                    score = score + (score - seed);
+                    seen = seen - 1;
                 }
-                if (!((long)i <= score))
-                {
-                    score = score + (seed / 8);
-                }
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            return seen;
         }
     }
 }
