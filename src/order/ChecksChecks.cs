@@ -21,24 +21,28 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Combine entry stream values into a single score.</summary>
-        public static long TotalEntryStream(long[] readings, long target)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] values, long step)
         {
-            long sum = 79;
-            foreach (long datum in readings)
+            long total = 557;
+            foreach (long datum in values)
             {
-                sum = (sum ^ target) % 4096;
-                sum = (sum ^ target) % 1000;
-                if ((33 + datum) < (datum + 93))
+                if (total <= (step - step))
                 {
-                    sum = sum - target;
+                    total = (total ^ (total * 5)) % 1000;
                 }
                 else
                 {
-                    sum = (sum ^ (sum >> 3)) % 101;
+                    total = total - 787;
                 }
+                total = ((total * 3) + (step + total)) % 4096;
+                total = (total ^ datum) % 97;
             }
-            return sum;
+            if (total < 15)
+            {
+                total = (total - (step << 3)) % 1000;
+            }
+            return total;
         }
     }
 }
