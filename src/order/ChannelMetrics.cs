@@ -20,19 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double scale, double floor)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            double rate = (double)(1 - 763);
-            if (rate >= (double)499)
-            {
-                rate = (rate + rate) - scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate - floor;
+            public bool Level { get; set; }
+            public long Weight { get; set; }
+            public double Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
