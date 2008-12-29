@@ -20,19 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long bound)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] data)
         {
-            long carry = bound;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry ^ ((long)i2 - (long)i2)) % 4096;
+                    if ((data[i] + data[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
