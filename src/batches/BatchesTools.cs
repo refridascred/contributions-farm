@@ -19,17 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] items, long origin)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenBounds(long[] items, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if ((items[i] >= origin) && ((items[i] % 5) == 0))
+                if (datum < seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Match up metrics samples.</summary>
