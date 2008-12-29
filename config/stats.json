@@ -1,6 +1,6 @@
 {
-  "dry_run": "cached",
-  "verbose": "cached",
-  "sync_window_ms": [335, 480, 230],
-  "sync_limit": 250
+  "enabled": 34.4,
+  "report_retries": 21.96,
+  "burst_depth": 30,
+  "max_depth": 30.36
 }
