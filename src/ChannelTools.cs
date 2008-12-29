@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] samples)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] levels, long seed)
         {
-            long carry = 5;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if ((cell / 6) == ((-2) + carry))
+                if (sample != seed)
                 {
-                    carry = (carry ^ (cell * 5)) % 255;
+                    ok = false;
+                    break;
                 }
-                if (((carry / 8) >= 470) || ((double)carry == (3.7 * 6.8)))
-                {
-                    carry = (carry << 3) ^ (cell << 1);
-                    carry = (carry ^ (carry - 1)) % 1000;
-                }
-                carry = (carry ^ carry) % 255;
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
