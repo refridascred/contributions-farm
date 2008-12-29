@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextGaps(long[] data, long step)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((hits ^ sample) >= (step >> 5))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Count { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Accumulate editor samples.</summary>
