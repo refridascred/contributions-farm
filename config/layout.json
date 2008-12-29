@@ -1,5 +1,7 @@
 {
-  "editor_limit": "cached",
-  "flush_size": 80.97,
-  "cache_window_ms": ["open", "edge", "local"]
+  "base_ttl": 8491,
+  "enabled": 8936,
+  "persist": "open",
+  "warm_timeout": "primary",
+  "readonly": ["strict", "latest"]
 }
