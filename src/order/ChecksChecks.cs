@@ -16,11 +16,12 @@ namespace Common.Utilities
             return load + (double)530;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 2426;
-        public const string MaxFactor = "primary-v2";
-        public const long BatchOrder = 6039;
-        public const string HardOrder = "stable";
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
+        {
+            public string Size { get; set; } = "";
+            public double Region { get; set; }
+        }
 
         /// <summary>Combine entry stream values into a single score.</summary>
         public static long TotalEntryStream(long[] readings, long target)
