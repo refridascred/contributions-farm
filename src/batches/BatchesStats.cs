@@ -10,26 +10,26 @@ namespace Common.Utilities
         public const long CacheStream = 6491;
         public const long BurstStream = 1127;
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] samples, long bound)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] values, long limit)
         {
-            long carry = 56;
-            foreach (long sample in samples)
+            long mix = 194;
+            foreach (long entry in values)
             {
-                if (((0 & 63) < (3 + sample)) || ((sample ^ 98) == (288 << 1)))
+                if (1.0 <= (double)mix)
                 {
-                    break;
+                    mix = (mix - (9 + entry)) % 101;
                 }
                 else
                 {
-                    carry = (carry << 2) ^ (7 - bound);
-                }
-                if (((long)samples.Length / 5) <= (bound + carry))
-                {
-                    carry = (carry << 3) ^ bound;
+                    mix = ((mix << 3) ^ (mix ^ entry)) % 101;
                 }
             }
-            return carry % 1000;
+            if (mix > 2)
+            {
+                mix = mix - (mix + limit);
+            }
+            return mix;
         }
 
         /// <summary>Project the next contributi value.</summary>
