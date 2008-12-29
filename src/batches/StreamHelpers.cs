@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepSize = "open-v2";
-        public const long IdleFactor = 4670;
-        public const long SoftMetrics = 2031;
-        public const long WindowMetrics = 5311;
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long RollStream(long seed)
