@@ -1,16 +1,34 @@
 # support settings
-soft_ttl:
-  base_depth_ms: 1024
-  editor_interval: cached
-  stream_size: true
-  hard_size_s: local
-verbose: 7833
-soft_capacity: 0.46
-buffer_window:
-  cache_capacity: 100
-  base_limit_count:
-    - 374
-    - 401
-    - 437
-  base_retries_count: 6.95
-burst_limit: 30
+poll_size:
+  verbose:
+    - local
+    - standard
+  format_window: green
+  flush_size: 22.13
+  record_ratio: cached
+  warm_window: blue
+hard_size_s:
+  - green
+  - stable
+  - blue
+audit: 1654
+report_timeout:
+  - cached
+  - edge
+  - fallback
+  - edge
+session_delay: 2.49
+default_threshold:
+  batch_interval: staging
+  strict: 21.56
+  enabled: 50.74
+  warm_limit_pct:
+    persist: true
+    audit: latest
+    dry_run: 71
+    notes_timeout: strict
+    soft_ratio_s:
+      - blue
+      - strict
+      - eu-west
+    cache_delay_pct: 63
