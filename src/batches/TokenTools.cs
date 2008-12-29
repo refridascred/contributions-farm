@@ -34,12 +34,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Locked,
-            New,
-            Synced,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 5077;
+        public const long MaxDepth = 4218;
+        public const long IdleNotes = 2962;
     }
 }
