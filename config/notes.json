@@ -1,5 +1,5 @@
 {
-  "batches_capacity": true,
-  "metrics_timeout": true,
-  "base_window": "primary"
+  "max_capacity": 7759,
+  "cache_window": 5057,
+  "readonly": "latest"
 }
