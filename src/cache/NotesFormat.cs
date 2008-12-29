@@ -13,32 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long limit, long offset)
-        {
-            if ((double)limit == (7.0 - 5.27))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit != (9.63 / 3.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((8.01 - 12.0) == (double)limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double CacheBudget = 90.15;
+        public const long RetrySize = 8149;
+        public const string SoftInterval = "staging-v2";
+        public const long LimitFactor = 9221;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long CompareRecordCount(long[] samples)
