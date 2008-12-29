@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
-            public double Label { get; set; }
-            public string Region { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Validate schema metric readings against a bound.</summary>
