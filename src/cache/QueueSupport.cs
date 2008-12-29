@@ -20,19 +20,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] data, long floor)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Ready,
+            Draft,
         }
 
         /// <summary>Look up the position of a profile metric sample.</summary>
