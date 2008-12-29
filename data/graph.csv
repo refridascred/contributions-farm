@@ -1,6 +1,9 @@
-id,token,score
-1,893,682
-2,green,778
-3,24.18,blue
-4,96.62,307
-5,46.44,open
+id,active,count
+1,cached,266
+2,latest,stable
+3,57.6,366
+4,stable,154
+5,94.24,942
+6,731,516
+7,67.41,744
+8,staging,714
