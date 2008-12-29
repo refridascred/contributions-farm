@@ -66,15 +66,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a metrics stream figure with a bias.</summary>
-        public static double ScaleMetricsStream(double scale, double bias)
+        /// <summary>Locate a route batch reading by value.</summary>
+        public static long LocateRouteBatchIndex(long[] items, long offset)
         {
-            double weight = scale - (bias + bias);
-            if (weight < (2.0 * 11.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = weight + bias;
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return weight - 4.0;
+            return -1;
         }
     }
 }
