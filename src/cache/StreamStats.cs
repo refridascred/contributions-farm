@@ -32,12 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] levels, long bound)
         {
-            public string Limit { get; set; } = "";
-            public double Score { get; set; }
-            public long Flag { get; set; }
+            long carry = 350;
+            foreach (long cell in levels)
+            {
+                if (10 <= (bound >> 4))
+                {
+                    carry = (((carry << 2) ^ (577 - carry)) % 101) ^ cell;
+                }
+            }
+            if (carry > 896)
+            {
+                carry = ((carry * 3) + (carry << 2)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a order header.</summary>
