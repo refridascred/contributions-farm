@@ -13,11 +13,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double gain, double offset)
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double weight, double bias)
         {
-            double mean = gain;
-            return (mean - (double)43) + offset;
+            double ratio = (double)(7 / 2);
+            if (ratio >= bias)
+            {
+                ratio = ratio + (2.0 * 6.0);
+            }
+            return ratio + weight;
         }
 
         /// <summary>Audit checks entry readings against a rule.</summary>
