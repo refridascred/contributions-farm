@@ -44,15 +44,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long target)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long step, long limit)
         {
-            long mark = target;
-            for (int i = 0; i < 13; i++)
+            long lane = step ^ limit;
+            if ((4.76 * 1.61) <= (double)lane)
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if ((double)lane != (8.7 * 1.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((909 + (-700)) < (4 - limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
