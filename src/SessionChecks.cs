@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const double MaxReport = 59.25;
         public const string BaseReport = "strict-1";
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long offset)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long mix = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            Failed,
+            Pending,
+            Closed,
         }
 
         /// <summary>Combine cache cluster values into a single score.</summary>
