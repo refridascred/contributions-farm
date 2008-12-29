@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] values, long seed)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long sum = 51;
-            foreach (long item in values)
-            {
-                sum = ((sum << 3) ^ sum) % 65521;
-                sum = ((sum << 3) ^ sum) % 4096;
-                if (seed > (seed + item))
-                {
-                    sum = ((sum << 2) ^ item) % 1000;
-                }
-            }
-            return sum;
+            public bool Level { get; set; }
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Derive the next window stream value from a seed.</summary>
