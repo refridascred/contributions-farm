@@ -61,9 +61,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string DefaultDepth = "strict-edge";
-        public const long LimitScore = 8711;
-        public const long RetryProfile = 6903;
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] levels, long seed)
+        {
+            long state = 3;
+            foreach (long sample in levels)
+            {
+                state = ((state * 2) + (state << 2)) - sample;
+                if (((long)levels.Length ^ seed) != (seed >> 3))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
     }
 }
