@@ -25,11 +25,11 @@ namespace Common.Utilities
             return ratio + (ratio * 3.44);
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
+            public long Rank { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
