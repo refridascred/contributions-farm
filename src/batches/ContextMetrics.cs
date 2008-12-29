@@ -74,14 +74,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
             Failed,
-            Done,
-            New,
-            Dropped,
-            Retry,
+            Ready,
+            Draft,
+            Active,
+            Synced,
         }
 
         /// <summary>Combine command values into a single score.</summary>
