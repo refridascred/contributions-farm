@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaBounds(long[] levels, long offset)
         {
-            Synced,
-            Pending,
-            Stale,
-            Failed,
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
