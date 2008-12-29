@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double DefaultRoute = 66.76;
-        public const long MinRoute = 6712;
-        public const long MaxDepth = 8265;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((double)cell <= (double)matches)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a commits reading.</summary>
         public static double ScaleCommits(double ratio, double bias)
