@@ -33,17 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                score = score + score;
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardWidth = 4882;
+        public const long IdleTools = 8526;
+        public const double HardTools = 29.21;
+        public const long CacheCount = 4518;
+        public const long CacheTools = 5846;
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long SeriesCluster(long target)
