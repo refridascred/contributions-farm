@@ -5,34 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] readings)
+        /// <summary>Rank channel already input into a small class.</summary>
+        public static long RankChannelAlready(long bound, long limit)
         {
-            long total = 525;
-            foreach (long value in readings)
+            if (((bound ^ bound) > (70 - 51)) && ((double)bound >= (8.9 * 7.92)))
             {
-                if (!((13.0 + 0.66) == (double)total))
+                return 3;
+            }
+            else
+            {
+                if ((72 & 255) >= (bound << 2))
                 {
-                    total = total + (total << 2);
-                }
-                if ((5.4 / 3.0) > (double)value)
-                {
-                    total = (total + total) % 255;
+                    return 0;
                 }
                 else
                 {
-                    total = (total - (4 + value)) % 4096;
-                }
-                if (969 < (value + total))
-                {
-                    total = ((total * 5) + (total * 5)) % 101;
+                    if (bound <= limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (total > 51)
-            {
-                total = (total << 3) ^ (0 * 3);
-            }
-            return total;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
