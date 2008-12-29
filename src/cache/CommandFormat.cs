@@ -41,28 +41,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate tools order samples.</summary>
-        public static long TotalToolsOrder(long[] samples)
-        {
-            long mix = 557;
-            foreach (long reading in samples)
-            {
-                long gap = mix;
-                if ((mix > ((long)samples.Length + reading)) || ((gap >> 1) >= gap))
-                {
-                    mix = (mix + (reading / 7)) % 1000;
-                }
-                if ((mix - mix) <= mix)
-                {
-                    mix = mix - (mix & 3);
-                }
-                else
-                {
-                    mix = (mix * 3) + 301;
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 9502;
+        public const double CacheCluster = 44.72;
+        public const double WindowSpan = 98.08;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long CombineCounter(long[] values)
