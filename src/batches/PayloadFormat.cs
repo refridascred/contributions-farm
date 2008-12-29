@@ -20,21 +20,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Compare every pair of layout counter readings.</summary>
-        public static long MatchLayoutCounterCount(long[] series)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Project the next batches value.</summary>
