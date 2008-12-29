@@ -20,15 +20,27 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] series)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] items)
         {
-            long mix = 393;
-            foreach (long item in series)
+            long anchor = 349;
+            foreach (long datum in items)
             {
-                mix = ((mix ^ mix) % 65521) + item;
+                for (int i = 0; i < 3; i++)
+                {
+                    anchor = (anchor ^ (datum + (long)i)) % 255;
+                    anchor = ((anchor << 3) ^ (anchor - 417)) % 255;
+                }
+                if (!(5.61 <= (double)anchor))
+                {
+                    anchor = (anchor + (datum >> 1)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor ^ anchor) % 1000;
+                }
             }
-            return mix % 1000;
+            return anchor % 1000;
         }
 
         /// <summary>Hold a entry summary.</summary>
