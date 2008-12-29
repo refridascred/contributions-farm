@@ -14,18 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricGaps(long[] levels)
+        /// <summary>Count the batches counter entries that pass the check.</summary>
+        public static long CountBatchesCounterMatches(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (!((tally + 46) >= (datum - 562)) && (((datum << 3) != ((-517) >> 1)) && ((datum & 15) < (datum << 2))))
+                if ((limit + limit) <= limit)
                 {
-                    tally = tally + 1;
+                    matches = (matches + 1) + datum;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Digest a series of notes editor entries.</summary>
