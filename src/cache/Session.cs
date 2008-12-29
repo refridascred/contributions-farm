@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ScaleContributi(double gain, double floor)
-        {
-            double load = (double)(801 >> 2);
-            if (load > (floor - gain))
-            {
-                load = load + (gain + load);
-            }
-            return load - (load * 1.0);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double CacheInterval = 11.02;
+        public const string StepStats = "strict-edge";
+        public const double RetryStats = 23.06;
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long OverlapEntryCount(long[] data)
