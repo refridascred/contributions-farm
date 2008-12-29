@@ -28,13 +28,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryLimits(long[] values, long floor)
         {
-            public string Limit { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
-            public double Label { get; set; }
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
