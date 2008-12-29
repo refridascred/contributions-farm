@@ -56,12 +56,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] series, long floor)
         {
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
+            long score = 779;
+            foreach (long item in series)
+            {
+                score = (score ^ floor) + item;
+            }
+            return score % 65521;
         }
     }
 }
