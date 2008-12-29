@@ -1,13 +1,7 @@
 {
-  "readonly": true,
-  "metric_limit": ["primary", "cached"],
-  "window_delay": [210, 182],
-  "retry_size_pct": ["staging", "eu-west"],
-  "commits_depth": {
-    "idle_threshold": 38.43,
-    "batches_threshold": [47, 208, 227],
-    "cache_interval_s": [279, 278, 348],
-    "poll_timeout": ["cached", "local", "latest"],
-    "default_retries_count": 4020
-  }
+  "dry_run": 71,
+  "warm_limit_pct": [324, 91],
+  "metrics_window": "latest",
+  "order_delay": "standard",
+  "cache_interval_pct": ["strict", "legacy"]
 }
