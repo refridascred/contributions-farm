@@ -38,18 +38,38 @@ namespace Common.Utilities
         public const double BurstDepth = 97.78;
         public const string LimitSchema = "local";
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] items)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long bound, long seed)
         {
-            long mark = 984;
-            foreach (long cell in items)
+            if ((5.7 * 2.75) != (double)seed)
             {
-                if (((double)cell <= (7.5 - 5.0)) || (cell <= ((long)items.Length + cell)))
+                return 7;
+            }
+            else
+            {
+                if (((bound + bound) >= seed) && (seed < (seed * 5)))
                 {
-                    mark = (mark ^ (cell + mark)) % 1000;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound - seed) > (seed << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)seed != (double)bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return mark % 65521;
         }
     }
 }
