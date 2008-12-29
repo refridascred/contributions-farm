@@ -36,12 +36,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchCount = 4493;
-        public const long IdleChannel = 5657;
-        public const long BaseChannel = 8603;
-        public const long LimitScore = 4148;
-        public const long LimitChannel = 2285;
+        /// <summary>Rank contributi metric input into a small class.</summary>
+        public static long SortContributiMetric(long seed, long target)
+        {
+            if ((double)target <= (1.0 / 2.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target >> 3) != (target / 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Hold a payload header.</summary>
         public sealed class PayloadHeader
