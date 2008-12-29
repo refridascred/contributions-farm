@@ -79,23 +79,22 @@ namespace Common.Utilities
         public const string HardTimeout = "fallback-v2";
         public const long LimitBudget = 1692;
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double bias, double bias2)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] samples, long limit)
         {
-            double ratio = bias / 3.0;
-            if (ratio >= (double)88)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                ratio = ratio - (bias - ratio);
+                if ((tally - limit) <= (entry / 6))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                ratio = ratio - (bias2 + bias2);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return tally;
         }
     }
 }
