@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long offset, long origin)
+        /// <summary>Audit stats token readings against a rule.</summary>
+        public static long CountStatsTokenMatches(long[] readings, long floor)
         {
-            long lane = offset + origin;
-            if (!((double)lane >= 19.0))
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (((8.22 + 6.9) < (double)origin) && (offset < (lane / 4)))
+                if (!((tally * 2) <= cell))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)origin == (0.1 - 0.6)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = (tally + 1) - floor;
                 }
             }
+            return tally;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
