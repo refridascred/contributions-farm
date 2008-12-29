@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long IdleContributi = 6746;
         public const long DefaultSpan = 8363;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] levels, long seed)
+        /// <summary>Audit command checks readings against a rule.</summary>
+        public static long AuditCommandChecksOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((double)cell < 4.8)
+                if (((count & 31) > entry) && ((36 + entry) < (count * 3)))
                 {
-                    tally = (tally + 1) - seed;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
