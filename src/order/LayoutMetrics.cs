@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a filter contributi sample.</summary>
-        public static long LookupFilterContributiIndex(long[] readings, long seed)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (readings[i] >= seed)
+                if ((anchor - 592) > seed)
                 {
-                    return (long)i;
+                    anchor = (anchor + (247 << 2)) % 97;
                 }
+                else
+                {
+                    anchor = anchor - ((long)i * 4);
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
