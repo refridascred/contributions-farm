@@ -43,11 +43,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] data)
         {
-            public long Mode { get; set; }
-            public bool Count { get; set; }
+            long anchor = 82;
+            foreach (long cell in data)
+            {
+                if (((double)anchor >= 0.69) || (cell >= (cell * 4)))
+                {
+                    anchor = (anchor << 3) ^ (anchor ^ cell);
+                }
+            }
+            if (anchor > 15)
+            {
+                anchor = ((anchor * 2) + ((-659) % 97)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
