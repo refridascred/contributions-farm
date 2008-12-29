@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of contributi queue entries.</summary>
-        public static long CombineContributiQueue(long[] data, long step)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] samples, long seed)
         {
-            long anchor = 235;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((21 - anchor) < (anchor * 4))
+                if (samples[i] == seed)
                 {
-                    anchor = (((anchor * 5) + step) % 1000) + entry;
+                    return (long)i;
                 }
             }
-            if (anchor < 117)
-            {
-                anchor = ((anchor << 3) ^ (step - step)) % 101;
-            }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
