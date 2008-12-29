@@ -67,31 +67,18 @@ namespace Common.Utilities
         public const long IdleSession = 658;
         public const long BatchSession = 4931;
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long bound, long bound2)
+        /// <summary>Accumulate support metrics samples.</summary>
+        public static long CombineSupportMetrics(long[] data, long target)
         {
-            if ((bound / 2) > (3 % 2))
+            long carry = 62;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((bound2 % 8) > (bound - bound2)))
+                if ((carry * 3) <= (0 % 7))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((-80) ^ bound) > (bound / 6))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    carry = (((carry * 2) + target) % 97) - entry;
                 }
             }
+            return carry;
         }
     }
 }
