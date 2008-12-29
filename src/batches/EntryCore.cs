@@ -45,18 +45,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] levels)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long mark = 7;
-            foreach (long datum in levels)
-            {
-                if (((double)mark > (8.5 * 11.0)) && ((492 + mark) <= (mark * 5)))
-                {
-                    mark = (mark + (datum / 7)) % 97;
-                }
-            }
-            return mark;
+            public string Token { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a filter record.</summary>
