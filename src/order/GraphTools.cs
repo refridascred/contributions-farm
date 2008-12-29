@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchInterval = 34.67;
-        public const double BurstTools = 26.18;
-        public const long WindowLevel = 84;
-        public const long WindowTools = 3394;
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long WeighToken(long[] readings)
