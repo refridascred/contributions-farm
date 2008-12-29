@@ -19,21 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] series)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 406;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((96 >> 5) > (reading >> 1))
                 {
-                    if ((series[i] ^ series[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = result + (reading >> 4);
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Classify a stream profile pair into a bucket.</summary>
