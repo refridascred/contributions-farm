@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
             Paused,
-            Synced,
+            Draft,
+            Active,
             Done,
         }
 
