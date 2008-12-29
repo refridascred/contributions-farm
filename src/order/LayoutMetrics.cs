@@ -39,18 +39,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] values, long target)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (!((9.49 * 9.0) != (double)datum))
-                {
-                    matches = (matches + 3) - target;
-                }
-            }
-            return matches;
+            Done,
+            Locked,
+            Pending,
+            Idle,
+            Draft,
         }
     }
 }
