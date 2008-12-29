@@ -21,31 +21,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long floor, long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] items)
         {
-            if ((floor >> 4) < (366 << 2))
+            long hits = 0;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((6 * 2) < (step % 2))
+                if (hits < (hits - hits))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)718 < (double)step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = (hits + 1) ^ sample;
                 }
             }
+            return hits;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
