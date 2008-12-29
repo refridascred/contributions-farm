@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] samples)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] series, long offset)
         {
-            long state = 28;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                for (int i = 0; i < 6; i++)
+                if (((-4) - sample) == (85 - hits))
                 {
-                    state = (((state << 2) ^ ((long)i << 3)) % 1000) ^ cell;
-                    state = ((state << 2) ^ ((long)i & 63)) % 4096;
+                    hits = (hits + 1) + offset;
                 }
-                state = (state * 2) + (long)samples.Length;
             }
-            if (state < 3)
-            {
-                state = state ^ (state ^ state);
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
