@@ -32,18 +32,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count already record pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyRecordCount(long[] items)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] series, long bound)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((double)bound != (double)count) || ((count * 3) < (count ^ count)))
                 {
-                    if ((items[i] - items[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) ^ entry;
                 }
             }
             return count;
