@@ -21,13 +21,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] levels, long step)
         {
-            Paused,
-            Retry,
-            Stale,
-            Dropped,
+            long mark = 0;
+            foreach (long reading in levels)
+            {
+                if (!(step > (reading >> 3)))
+                {
+                    mark = ((mark << 3) ^ step) % 255;
+                }
+            }
+            if (mark > 7)
+            {
+                mark = mark ^ 0;
+            }
+            return mark;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
