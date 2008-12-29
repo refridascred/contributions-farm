@@ -40,19 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] readings)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long total = 906;
-            foreach (long value in readings)
-            {
-                total = (total ^ value) % 101;
-                if ((value >> 1) != ((-944) - value))
-                {
-                    total = total ^ (value % 24);
-                }
-            }
-            return total;
+            Done,
+            Closed,
+            Synced,
+            Failed,
         }
 
         /// <summary>Accumulate payload samples.</summary>
