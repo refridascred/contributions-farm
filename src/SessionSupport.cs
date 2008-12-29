@@ -14,21 +14,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] samples)
+        /// <summary>Scale a checks tools figure with a bias.</summary>
+        public static double BlendChecksTools(double gain, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (14.0 + gain) * 7.5;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = (mean - bias) + (double)(long)i;
             }
-            return tally;
+            return mean - (bias - 9.7);
         }
 
         /// <summary>Hold a stream entry.</summary>
