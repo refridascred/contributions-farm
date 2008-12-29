@@ -71,15 +71,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double bias, double span)
+        /// <summary>Match up record window samples.</summary>
+        public static long PairRecordWindowCount(long[] readings)
         {
-            double load = span;
-            if (load > (double)341)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (load + load) - bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return load + (2.31 * 13.0);
+            return seen;
         }
     }
 }
