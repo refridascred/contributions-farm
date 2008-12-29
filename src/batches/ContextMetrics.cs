@@ -48,17 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first githubfarm report entry that matches the target.</summary>
-        public static long LocateGithubfarmReportIndex(long[] readings, long limit)
+        /// <summary>Audit githubfarm entry readings against a rule.</summary>
+        public static long TallyGithubfarmEntryOutliers(long[] series, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 3) != 0))
+                if (!(((tally - offset) < offset) || ((8.9 - 8.5) != (double)tally)))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the counter state values.</summary>
