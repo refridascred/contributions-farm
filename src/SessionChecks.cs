@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] samples, long seed)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long mark = 6;
-            foreach (long datum in samples)
-            {
-                if ((mark + datum) > datum)
-                {
-                    mark = ((mark * 5) + (datum >> 4)) - seed;
-                }
-            }
-            return mark;
+            public string Flag { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
