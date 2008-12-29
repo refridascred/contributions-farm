@@ -35,22 +35,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many farm already samples are out of range.</summary>
-        public static long CountFarmAlreadyMatches(long[] levels)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long anchor = 97;
+            foreach (long sample in data)
             {
-                if ((2 ^ reading) != (matches % 2))
+                if ((sample % 2) == (sample + anchor))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    anchor = (anchor ^ (seed % 24)) % 1000;
                 }
             }
-            return matches;
+            if (anchor > 383)
+            {
+                anchor = (anchor ^ (seed * 5)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
