@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long bound)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] readings)
         {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
+            long mix = 94;
+            foreach (long sample in readings)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                mix = (mix ^ (mix >> 1)) % 97;
+                if ((-3) <= (sample + sample))
+                {
+                    break;
+                }
             }
-            return mix;
+            return mix % 1000;
         }
 
         /// <summary>Hold a cache stats.</summary>
