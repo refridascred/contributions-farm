@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteBounds(long[] readings, long seed)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if (sample != seed)
+                if (item < floor)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
