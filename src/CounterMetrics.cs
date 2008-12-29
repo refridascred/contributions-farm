@@ -41,19 +41,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double bias, double floor)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            double weight = floor * 7.48;
-            if (weight < bias)
-            {
-                weight = weight - 8.11;
-            }
-            else
-            {
-                weight = weight - 0.49;
-            }
-            return weight + (floor - 6.8);
+            public double Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
+            public long Size { get; set; }
         }
     }
 }
