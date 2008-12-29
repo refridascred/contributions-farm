@@ -36,19 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] values, long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (sample < seed)
+                if ((floor << 3) < floor)
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 2) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Hold a context entry.</summary>
