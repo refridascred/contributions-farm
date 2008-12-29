@@ -1,10 +1,7 @@
 {
-  "graph_ratio": "staging",
-  "contributi_timeout": 27.22,
-  "command_threshold": {
-    "sync_depth_pct": 25,
-    "warm_depth_s": "edge",
-    "persist": "open",
-    "flush_window_pct": 30
-  }
+  "retry_interval_count": "strict",
+  "poll_window_ms": 30.71,
+  "idle_capacity_pct": 51,
+  "order_limit": false,
+  "min_depth_ms": "green"
 }
