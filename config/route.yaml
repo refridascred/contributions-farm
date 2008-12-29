@@ -1,38 +1,4 @@
 # route settings
-audit:
-  strict:
-    - 208
-    - 295
-    - 396
-    - 302
-  soft_depth: 44.88
-  warm_size_s:
-    cache_capacity: 31.81
-    batch_limit_ms: true
-    burst_capacity_count: 500
-  buffer_window:
-    - 267
-    - 155
-    - 347
-    - 121
-  order_timeout:
-    max_window: false
-    idle_size_count: 8039
-    session_interval:
-      - 7
-      - 494
-      - 135
-      - 264
-    enabled: primary
-    min_depth: 95.76
-account_capacity:
-  hard_threshold_s: green
-  idle_ratio_s: 30
-  retry_window_pct: 2511
-  base_timeout_pct: 80.59
-  booking_ttl: 500
-  warm_capacity: false
-compress: latest
-burst_depth: true
-max_timeout_count: true
-readonly: 88.62
+retry_threshold_ms: 100
+batch_ttl: 100
+support_interval: 66
