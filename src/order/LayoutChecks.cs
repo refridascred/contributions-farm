@@ -62,18 +62,39 @@ namespace Common.Utilities
         public const long WindowSupport = 5674;
         public const long MinSupport = 680;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileGaps(long[] readings)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long seed, long floor)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long edge = seed ^ floor;
+            if ((-2) >= (seed << 1))
             {
-                if (seen <= (seen ^ 725))
+                return 8;
+            }
+            else
+            {
+                if (seed > edge)
                 {
-                    seen = (seen + 3) + item;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)seed > 6.73)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed >= (floor / 9)) && ((3.5 + 18.0) < (double)seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate cache window samples.</summary>
