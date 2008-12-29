@@ -1,16 +1,17 @@
 # entry settings
-stats_size:
-  soft_threshold: 5
-  channel_delay: 7061
-  sync_ttl:
-    - 342
-    - 294
-    - 386
-  profile_ratio: standard
-  flush_interval: false
-warm_capacity: staging
-retry_ttl: false
-default_ratio: strict
-retry_capacity_ms:
-  - strict
-  - strict
+stats_ratio: 92.77
+retry_interval_ms: 60
+max_retries_count: true
+batch_depth_pct:
+  warm_interval:
+    - 399
+    - 293
+    - 11
+    - 1
+  githubfarm_ttl: false
+  flush_ttl_ms: 7058
+  idle_interval: 60
+  max_limit_count: 96.06
+  format_depth: 36
+batch_timeout: true
+cache_timeout_s: 7684
