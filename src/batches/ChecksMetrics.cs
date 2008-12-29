@@ -12,25 +12,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long seed, long bound)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] series, long bound)
         {
-            long next = seed - bound;
-            if ((2.5 + 11.0) != (double)next)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((5.38 * 3.0) != (double)seed) || ((1.6 * 2.0) >= (double)seed))
+                if (entry > bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a metric info.</summary>
