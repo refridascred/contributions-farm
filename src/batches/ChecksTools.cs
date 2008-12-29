@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((((double)hits != (6.1 / 5.0)) && (entry <= (hits >> 2))) && ((double)hits != (19.0 + 9.71)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardLevel = 7247;
+        public const long RetryCommand = 1544;
+        public const double WindowRatio = 13.17;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double CacheSchema = 65.84;
