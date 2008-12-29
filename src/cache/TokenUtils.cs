@@ -20,19 +20,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((double)item < (12.0 - 8.4))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double SoftSpan = 31.69;
+        public const long LimitCache = 6058;
+        public const double SoftCache = 96.92;
+        public const double IdleLevel = 12.56;
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long AuditNotesHits(long[] levels, long floor)
