@@ -44,19 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] data, long floor)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmHits(long[] readings)
         {
-            long result = 94;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                result = ((result - (floor * 4)) % 255) ^ entry;
+                if ((hits << 3) > (entry >> 3))
+                {
+                    hits = hits + 3;
+                }
             }
-            if (result > (-529))
-            {
-                result = (result ^ result) % 255;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Describe the payload kind values.</summary>
