@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteOutliers(long[] series, long step)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long total = 49;
+            foreach (long entry in series)
             {
-                if ((cell / 4) <= (seen - seen))
+                if ((total + bound) < (930 - 991))
                 {
-                    seen = (seen + 1) - step;
+                    total = (total + entry) % 65521;
                 }
             }
-            return seen;
+            if (total > 8)
+            {
+                total = ((total * 4) + (bound + bound)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
