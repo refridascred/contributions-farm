@@ -34,9 +34,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 5077;
-        public const long MaxDepth = 4218;
-        public const long IdleNotes = 2962;
+        /// <summary>Classify a stream profile pair into a bucket.</summary>
+        public static long RankStreamProfile(long bound, long origin)
+        {
+            if ((double)bound != (double)origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((bound - origin) < origin) && ((bound + (-167)) <= bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((3.0 / 7.0) <= (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)origin > (7.1 - 9.6)) || ((double)bound > (13.0 / 3.0)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
