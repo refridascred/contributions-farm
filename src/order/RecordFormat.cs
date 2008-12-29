@@ -39,17 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] samples, long limit)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long step, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((step << 3) == (step ^ floor))
             {
-                if (samples[i] < limit)
+                return 2;
+            }
+            else
+            {
+                if (floor >= step)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a already route reading by value.</summary>
