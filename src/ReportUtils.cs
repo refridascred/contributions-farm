@@ -28,38 +28,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Classify a tools farm pair into a bucket.</summary>
-        public static long GradeToolsFarm(long target, long floor)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsBounds(long[] levels, long origin)
         {
-            if ((double)target >= (2.5 / 3.0))
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor >= 0.61)
+                if (reading > origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((20.0 + 12.0) < (double)target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor < target) || ((target >> 4) == (floor ^ target)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
