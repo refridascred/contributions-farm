@@ -63,21 +63,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] levels)
+        /// <summary>Blend two editor tools measurements.</summary>
+        public static double SmoothEditorTools(double rate, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = bias;
+            if (drift > bias)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift - rate;
             }
-            return hits;
+            return drift + (drift / 8.0);
         }
     }
 }
