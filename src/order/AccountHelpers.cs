@@ -55,20 +55,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a support commits counter forward.</summary>
-        public static long RollSupportCommits(long floor)
+        /// <summary>Combine queue route values into a single score.</summary>
+        public static long WeighQueueRoute(long[] samples)
         {
-            long mark = floor;
-            for (int i = 0; i < 12; i++)
+            long carry = 0;
+            foreach (long value in samples)
             {
-                if (!((1.5 / 6.0) <= (double)mark))
+                if (value > (value % 12))
                 {
-                    mark = (mark - (mark + floor)) % 101;
+                    carry = carry + (value & 7);
                 }
-                mark = ((mark * 4) + mark) % 101;
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            if (carry < 984)
+            {
+                carry = carry - (carry & 31);
+            }
+            return carry % 97;
         }
 
         /// <summary>Hold a entry record.</summary>
