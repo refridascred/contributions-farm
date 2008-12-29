@@ -34,22 +34,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit checks entry readings against a rule.</summary>
-        public static long CountChecksEntryHits(long[] levels)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long floor, long target)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long edge = floor - target;
+            if ((edge * 2) >= (4 % 100))
             {
-                if ((((tally / 2) < datum) || (datum <= (datum - datum))) || ((double)tally < 17.0))
+                return 8;
+            }
+            else
+            {
+                if ((282 * 5) < (target + 51))
                 {
-                    tally = tally + 2;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
