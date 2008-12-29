@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BurstRatio = "open-edge";
-        public const long DefaultLevel = 9606;
-        public const long DefaultSupport = 8671;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowReport = 7216;
+        public const double RetryReport = 63.64;
+        public const double MinDepth = 5.63;
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool GuardTokenBounds(long[] items, long seed)
