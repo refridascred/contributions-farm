@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowInterval = 9947;
-        public const long WindowTimeout = 2765;
-        public const long BatchSize = 9912;
-        public const string DefaultOrder = "cached-v2";
-        public const string BatchOrder = "latest-1";
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long CountStatsHits(long[] data)
