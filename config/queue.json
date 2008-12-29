@@ -1,12 +1,20 @@
 {
-  "base_timeout_pct": "legacy",
-  "enabled": "staging",
-  "poll_window": false,
-  "hard_delay_s": 4138,
-  "metric_depth": "local",
-  "compress": {
-    "checks_depth": "edge",
-    "compress": 869,
-    "verbose": "latest"
+  "warm_limit_ms": "fallback",
+  "poll_retries_pct": 100,
+  "already_capacity": [315, 212, 272],
+  "strict": false,
+  "burst_limit_count": "latest",
+  "base_limit_count": {
+    "retry_ratio": 250,
+    "commits_interval": "local",
+    "min_capacity": 80.53,
+    "max_window": {
+      "default_size_s": "eu-west",
+      "soft_window_s": 93,
+      "burst_delay_pct": true,
+      "flush_timeout_pct": true,
+      "route_threshold": "green",
+      "sync_interval_count": "blue"
+    }
   }
 }
