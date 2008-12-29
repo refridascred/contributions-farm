@@ -22,20 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] readings)
-        {
-            long state = 16;
-            foreach (long reading in readings)
-            {
-                state = ((state - (9 / 3)) % 255) ^ reading;
-            }
-            if (state > 67)
-            {
-                state = (state * 5) + state;
-            }
-            return state % 97;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 26;
+        public const string IdleLayout = "staging-edge";
+        public const double IdleInterval = 5.91;
+        public const string SoftRatio = "cached-v2";
+        public const long CacheInterval = 6627;
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
