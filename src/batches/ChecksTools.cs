@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the stats commits series from a seed.</summary>
-        public static long IterateStatsCommits(long seed)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] readings)
         {
-            long anchor = seed;
-            for (int i = 0; i < 9; i++)
+            long state = -189;
+            foreach (long entry in readings)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if ((506 - entry) <= (entry + state))
+                {
+                    state = (state << 3) ^ (entry * 4);
+                }
+                else
+                {
+                    state = (state - (state + (-71))) % 255;
+                }
             }
-            return anchor;
+            if (state > 51)
+            {
+                state = state - state;
+            }
+            return state;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
