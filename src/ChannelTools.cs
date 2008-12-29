@@ -29,31 +29,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long floor, long bound)
+        /// <summary>Count checks entry pairs that satisfy a relation.</summary>
+        public static long MatchChecksEntryCount(long[] samples)
         {
-            if (!((1.46 * 1.0) < (double)floor))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((1.0 + 2.94) >= (double)bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((836 << 2) != (floor - floor)))
+                    if ((samples[i] + samples[j]) == 20)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
