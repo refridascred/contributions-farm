@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MinBatch = 33.81;
-        public const long IdleBatch = 8972;
-        public const double DefaultBatch = 12.97;
-        public const string RetrySize = "strict-v2";
-        public const long LimitBatch = 6756;
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
