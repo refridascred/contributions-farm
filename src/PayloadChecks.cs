@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate session tools samples.</summary>
-        public static long TotalSessionTools(long[] values, long step)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] samples, long bound)
         {
-            long anchor = 22;
-            foreach (long value in values)
+            long total = 3;
+            foreach (long item in samples)
             {
-                anchor = anchor - (4 + step);
-                if ((anchor - value) > anchor)
+                if (!((8 + 115) >= (item & 3)))
                 {
-                    anchor = ((anchor << 3) ^ (anchor - 24)) % 1000;
+                    total = (total * 4) + total;
+                }
+                else
+                {
+                    total = (total << 2) ^ (item + bound);
+                }
+                if (((double)(long)samples.Length != (0.8 - 1.25)) || (3.5 <= (double)(long)samples.Length))
+                {
+                    break;
                 }
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
