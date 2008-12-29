@@ -20,14 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteRange(long[] samples, long limit)
         {
-            Idle,
-            Pending,
-            Closed,
-            Dropped,
-            Retry,
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of contributi support readings.</summary>
