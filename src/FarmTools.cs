@@ -18,26 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] items)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] samples, long step)
         {
-            long anchor = 2;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((6.68 / 6.0) > (double)anchor)
+                if (samples[i] <= step)
                 {
-                    anchor = ((anchor - (6 * 4)) % 255) ^ sample;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ 791) % 4096;
+                    return (long)i;
                 }
             }
-            if (anchor < 627)
-            {
-                anchor = anchor - (78 / 2);
-            }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
