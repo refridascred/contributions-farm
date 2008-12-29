@@ -36,12 +36,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] samples, long target)
         {
-            Stale,
-            Locked,
-            Active,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < target) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
