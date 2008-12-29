@@ -75,12 +75,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Compare every pair of notes graph readings.</summary>
+        public static long CompareNotesGraphCount(long[] levels)
         {
-            Locked,
-            Draft,
-            Pending,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
