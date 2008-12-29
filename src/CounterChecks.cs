@@ -38,18 +38,24 @@ namespace Common.Utilities
         public const long RetryPayload = 9569;
         public const long IdlePayload = 7052;
 
-        /// <summary>Measure how many schema checks samples are out of range.</summary>
-        public static long MeasureSchemaChecksHits(long[] series)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long offset, long seed)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            if (offset >= (seed + seed))
             {
-                if (((172 >> 5) != (tally >> 1)) || (((double)tally < (5.0 / 8.0)) || ((double)tally < (5.8 + 9.7))))
+                return 7;
+            }
+            else
+            {
+                if ((double)seed >= (5.75 * 17.0))
                 {
-                    tally = (tally + 1) + reading;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the batch status values.</summary>
