@@ -41,23 +41,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] samples, long floor)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((double)tally > (4.6 * 14.0))
-                {
-                    tally = ((tally + 2) ^ value) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstCount = 249;
+        public const long MinTimeout = 246;
+        public const long BurstFormat = 8325;
 
         /// <summary>Scale a batches figure with a bias.</summary>
         public static double ProjectBatches(double rate, double span)
