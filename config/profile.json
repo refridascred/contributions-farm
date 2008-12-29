@@ -1,7 +1,12 @@
 {
-  "commits_depth": 2.67,
-  "channel_window": ["latest", "latest"],
-  "audit": 28.55,
-  "profile_capacity": 74,
-  "verbose": 250
+  "cache_delay_pct": false,
+  "account_size": 100,
+  "persist": "cached",
+  "warm_capacity_pct": {
+    "min_limit_pct": 500,
+    "burst_delay_s": "strict",
+    "hard_delay_pct": "edge",
+    "enabled": 5468
+  },
+  "already_window": "fallback"
 }
