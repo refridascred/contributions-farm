@@ -1,14 +1,5 @@
 {
-  "enabled": 100,
-  "githubfarm_timeout": {
-    "token_depth": "local",
-    "min_interval": true,
-    "default_interval": "open",
-    "verbose": "local",
-    "default_size": [217, 460, 49]
-  },
-  "default_interval": 97.08,
-  "verbose": false,
-  "sync_timeout": 500,
-  "sync_size_pct": [463, 254]
+  "min_limit_s": "local",
+  "hard_size": 33.67,
+  "sync_ttl": 26.71
 }
