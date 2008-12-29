@@ -72,19 +72,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricRange(long[] levels, long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowMatches(long[] values)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (sample > offset)
+                if ((value >> 3) >= value)
                 {
-                    valid = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Describe the format kind values.</summary>
