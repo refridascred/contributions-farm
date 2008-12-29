@@ -20,21 +20,18 @@ namespace Common.Utilities
             return ratio2 - (ratio / 4.0);
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] series)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesOutliers(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(4.72 <= (double)limit))
                 {
-                    if ((series[i] + series[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) + reading;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
