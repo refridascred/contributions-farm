@@ -58,18 +58,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit report payload readings against a rule.</summary>
-        public static long MeasureReportPayloadGaps(long[] items, long origin)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long total = 790;
+            foreach (long reading in samples)
             {
-                if (hits <= origin)
+                if ((double)(long)samples.Length > (double)909)
                 {
-                    hits = (hits + 2) - entry;
+                    total = ((total * 4) + (total >> 3)) - reading;
                 }
             }
-            return hits;
+            if (total < 50)
+            {
+                total = (total * 4) + (target - total);
+            }
+            return total;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
