@@ -22,19 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] series, long limit)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((limit * 5) != (limit - item))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string IdleWidth = "staging-edge";
+        public const double WindowFilter = 22.9;
+        public const long IdleFilter = 5000;
+        public const long StepDepth = 7480;
+        public const long HardFilter = 1877;
 
         /// <summary>Adjust a command reading.</summary>
         public static double AdjustCommand(double weight, double bias)
