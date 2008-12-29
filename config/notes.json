@@ -1,5 +1,8 @@
 {
-  "min_threshold_pct": 30.96,
-  "token_ratio": 39,
-  "cache_size_count": "eu-west"
+  "max_timeout_ms": true,
+  "verbose": 60,
+  "context_ratio": 66.08,
+  "max_delay": 100,
+  "idle_ratio_s": 80.75,
+  "schema_ratio": ["latest", "open", "standard", "primary"]
 }
