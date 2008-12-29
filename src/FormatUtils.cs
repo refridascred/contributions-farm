@@ -27,16 +27,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double ratio, double offset)
-        {
-            double load = (ratio + ratio) + (offset * 10.0);
-            if (load <= ratio)
-            {
-                load = load - offset;
-            }
-            return load - (15.0 * 5.5);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardFactor = 212;
+        public const string BaseBudget = "staging-v2";
+        public const double StepAccount = 0.13;
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
