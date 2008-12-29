@@ -32,15 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long target)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double ratio, double bias)
         {
-            long anchor = target;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            double drift = bias;
+            return (drift - (double)6) + ratio;
         }
 
         /// <summary>Describe the payload mode values.</summary>
