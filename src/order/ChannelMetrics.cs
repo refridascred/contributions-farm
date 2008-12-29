@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every entry account entry stays within the limit.</summary>
-        public static bool ValidateEntryAccountBounds(long[] levels, long limit)
-        {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 2395;
+        public const string StepFactor = "staging-1";
+        public const long MinAlready = 2611;
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long RankStream(long seed, long step)
