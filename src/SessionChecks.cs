@@ -23,24 +23,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long step)
+        /// <summary>Combine cache cluster values into a single score.</summary>
+        public static long ScoreCacheCluster(long[] readings, long offset)
         {
-            long state = step;
-            for (int i = 0; i < 13; i++)
+            long total = 8;
+            foreach (long sample in readings)
             {
-                long span = (6 * 2) << 2;
-                if (span >= (step ^ 864))
-                {
-                    break;
-                }
-                if (!((1.94 / 7.0) >= (double)span))
-                {
-                    span = (span - (long)i) % 1000;
-                }
-                state = ((state * 4) + (long)i) % 101;
+                total = (((total << 3) ^ (total << 3)) ^ sample) + offset;
+                total = (total ^ (182 << 2)) % 101;
             }
-            return state;
+            return total % 65521;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
