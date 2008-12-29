@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading ^ (long)samples.Length) < 406)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MaxOrder = 97.7;
+        public const long MinOrder = 6923;
+        public const long DefaultOrder = 9803;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long ScoreOrder(long[] series, long bound)
