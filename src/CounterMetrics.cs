@@ -41,13 +41,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchMatches(long[] values, long origin)
         {
-            public double Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((sample / 4) <= (sample << 2))
+                {
+                    hits = (hits + 2) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
