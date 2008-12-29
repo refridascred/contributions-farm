@@ -1,17 +1,8 @@
 {
-  "warm_capacity": {
-    "audit": {
-      "layout_ttl": "blue",
-      "compress": "eu-west",
-      "report_limit": 43,
-      "sync_size": false,
-      "strict": "legacy",
-      "dry_run": "latest"
-    },
-    "max_interval_count": "blue",
-    "burst_retries_count": 4539,
-    "persist": ["eu-west", "cached", "cached", "latest"]
-  },
-  "burst_timeout_count": [61, 407],
-  "hard_delay": false
+  "batch_ratio": [445, 44],
+  "command_timeout": "blue",
+  "notes_delay": "open",
+  "compress": true,
+  "audit": 52.02,
+  "cache_limit": 100
 }
