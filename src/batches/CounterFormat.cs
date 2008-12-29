@@ -25,12 +25,13 @@ namespace Common.Utilities
         public const long SoftStream = 6792;
         public const long StepStream = 2798;
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            public bool Token { get; set; }
-            public bool Level { get; set; }
-            public long Rank { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
