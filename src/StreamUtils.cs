@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Adjust a window checks reading.</summary>
-        public static double ProjectWindowChecks(double bias, double bias2)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            double gain = (double)8;
-            for (int i = 0; i < 2; i++)
-            {
-                gain = ((gain + (bias / 8.0)) - (double)(long)i) - bias2;
-            }
-            return gain - bias;
+            Draft,
+            New,
+            Synced,
+            Closed,
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
