@@ -36,15 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long floor)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] values)
         {
-            long carry = floor;
-            for (int i = 0; i < 9; i++)
+            long state = 0;
+            foreach (long cell in values)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                if (6.66 >= (double)cell)
+                {
+                    state = ((state << 3) ^ cell) % 4096;
+                }
             }
-            return carry;
+            return state % 65521;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
