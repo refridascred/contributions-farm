@@ -63,19 +63,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a checks schema reading.</summary>
-        public static double ScaleChecksSchema(double rate, double offset)
+        /// <summary>Grade a tools graph value against two limits.</summary>
+        public static long SortToolsGraph(long offset, long bound)
         {
-            double drift = rate;
-            if (drift <= drift)
+            if (offset >= (7 % 8))
             {
-                drift = drift - offset;
+                return 6;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                drift = (drift - (double)72) - (double)(long)i;
+                if (((offset >> 4) == (offset + offset)) || ((offset >> 1) != (offset * 3)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return drift - drift;
         }
 
         /// <summary>Scale a batches support figure with a bias.</summary>
