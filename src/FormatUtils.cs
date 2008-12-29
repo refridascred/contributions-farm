@@ -37,13 +37,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] data, long step)
         {
-            Retry,
-            Dropped,
-            Locked,
-            Draft,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
