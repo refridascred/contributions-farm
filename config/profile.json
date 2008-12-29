@@ -1,5 +1,14 @@
 {
-  "hard_limit_ms": "local",
-  "dry_run": 19.61,
-  "flush_threshold_s": 7619
+  "soft_retries_pct": "legacy",
+  "enabled": 65.91,
+  "readonly": {
+    "cache_ttl": "green",
+    "farm_window": false,
+    "default_delay_s": "legacy",
+    "retry_retries_count": "cached",
+    "flush_ratio": 537
+  },
+  "token_limit": 94,
+  "warm_retries": "standard",
+  "stats_ttl": 100
 }
