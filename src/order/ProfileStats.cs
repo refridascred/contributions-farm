@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            Active,
-            Stale,
-            Closed,
+            Dropped,
+            Done,
+            New,
         }
 
         /// <summary>Hold a counter snapshot.</summary>
