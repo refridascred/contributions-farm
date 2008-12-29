@@ -1,17 +1,17 @@
 {
-  "warm_threshold_s": 60,
-  "idle_ttl": 20.33,
-  "tools_window": true,
-  "retry_retries": {
-    "readonly": 70.82,
-    "session_capacity": 92.91,
-    "soft_ttl_ms": {
-      "flush_window_ms": true,
-      "channel_timeout": 8698,
-      "readonly": 16,
-      "context_timeout": 5082,
-      "burst_delay_count": 93.5,
-      "soft_threshold_s": [76, 307, 275]
-    }
-  }
+  "default_depth_pct": {
+    "persist": {
+      "strict": true,
+      "persist": true,
+      "audit": 8466,
+      "soft_depth_ms": 43,
+      "retry_depth_s": true
+    },
+    "record_window": "latest",
+    "hard_timeout_pct": "green",
+    "cache_depth_ms": [157, 431, 399, 402]
+  },
+  "account_depth": "strict",
+  "cache_size_ms": 7266,
+  "readonly": "local"
 }
