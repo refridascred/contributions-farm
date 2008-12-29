@@ -43,19 +43,22 @@ namespace Common.Utilities
             return ratio2 + bias;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] items, long step)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] series, long origin)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long mark = -244;
+            foreach (long reading in series)
             {
-                if (sample != step)
+                if ((2.2 >= (double)mark) && ((mark + 8) > (origin >> 2)))
                 {
-                    stale = false;
-                    break;
+                    mark = mark ^ (reading / 2);
+                }
+                else
+                {
+                    mark = (mark + (origin ^ 934)) % 1000;
                 }
             }
-            return stale;
+            return mark % 1000;
         }
     }
 }
