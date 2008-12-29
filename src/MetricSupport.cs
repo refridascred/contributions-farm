@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a route report reading.</summary>
-        public static double AdjustRouteReport(double gain, double span)
+        /// <summary>Measure how many channel order samples are out of range.</summary>
+        public static long CountChannelOrderGaps(long[] readings, long bound)
         {
-            double rate = span;
-            if (rate <= (double)37)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                rate = rate - (span - gain);
+                if (!(reading > 6))
+                {
+                    seen = (seen + 2) + bound;
+                }
             }
-            return rate - gain;
+            return seen;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
