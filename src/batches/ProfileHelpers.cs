@@ -63,21 +63,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of layout graph readings.</summary>
-        public static long OverlapLayoutGraphCount(long[] readings)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double gain, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias = (gain / 3.0) * 2.79;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias = ((bias - gain) + (double)(long)i) - span;
             }
-            return matches;
+            return bias - bias;
         }
     }
 }
