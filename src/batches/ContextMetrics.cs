@@ -20,35 +20,29 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long limit, long limit2)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long seed, long bound)
         {
-            if ((limit <= (limit2 + limit2)) || ((5.1 - 8.0) <= (double)limit))
+            long lane = seed - bound;
+            if ((lane / 8) < seed)
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if (limit2 < (5 + 345))
+                if ((54 + bound) == (84 + lane))
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
-                    if (limit2 <= (limit + limit2))
+                    if (bound > (bound & 255))
                     {
-                        return 3;
+                        return 5;
                     }
                     else
                     {
-                        if ((7.8 + 6.0) < (double)limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 4;
                     }
                 }
             }
