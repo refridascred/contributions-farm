@@ -61,19 +61,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksBounds(long[] series, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] items, long origin)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (entry >= floor)
+                if (45 > (seen + cell))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) - origin;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Blend two commits measurements.</summary>
