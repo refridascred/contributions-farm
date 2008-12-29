@@ -1,8 +1,8 @@
-id,owner,rank,ratio,weight
-1,244,375,656,994
-2,561,626,526,94.93
-3,421,8,431,121
-4,primary,162,72.2,82.5
-5,stable,993,175,39.94
-6,203,6.32,legacy,50.4
-7,eu-west,open,82.33,564
+id,state,score,label,rank
+1,222,215,719,local
+2,258,845,811,635
+3,34.12,37.02,91.11,68.67
+4,89.02,236,788,eu-west
+5,strict,legacy,117,29.64
+6,71.48,latest,green,318
+7,158,legacy,604,green
