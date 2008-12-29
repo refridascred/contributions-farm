@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Count the batches cluster entries that pass the check.</summary>
+        public static long CountBatchesClusterMatches(long[] readings, long offset)
         {
-            Idle,
-            Closed,
-            Done,
-            Synced,
-            Pending,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading <= (reading - matches)) || ((matches % 100) == (offset / 2)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
