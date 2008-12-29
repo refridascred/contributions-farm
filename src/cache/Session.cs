@@ -50,12 +50,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] items)
         {
-            public double Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long total = 15;
+            foreach (long entry in items)
+            {
+                if ((double)entry < (double)total)
+                {
+                    total = ((total * 5) + (total << 2)) % 4096;
+                }
+            }
+            if (total > (-63))
+            {
+                total = total - (total & 127);
+            }
+            return total % 1000;
         }
     }
 }
