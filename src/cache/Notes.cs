@@ -36,13 +36,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long limit, long limit2)
         {
-            Active,
-            Closed,
-            Failed,
-            Synced,
+            long prev = limit ^ limit2;
+            if (((3 & 255) > (prev >> 4)) && ((double)limit >= 5.3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((477 < limit) && (limit <= (limit + limit)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
