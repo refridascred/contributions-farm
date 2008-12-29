@@ -73,11 +73,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardBudget = 1808;
-        public const long WindowDepth = 6331;
-        public const string HardTimeout = "fallback-v2";
-        public const long LimitBudget = 1692;
+        /// <summary>Grade a order commits value against two limits.</summary>
+        public static long GradeOrderCommits(long floor, long floor2)
+        {
+            if (((floor << 2) == (floor << 1)) && (floor2 < 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor2 << 2) >= (floor2 & 15))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long CountBatchesGaps(long[] samples, long limit)
