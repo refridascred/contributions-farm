@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 6608;
-        public const long BatchSize = 5406;
-        public const long IdleTools = 1670;
-        public const long CacheWidth = 6036;
-        public const string WindowTools = "fallback-1";
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] levels, long bound)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (((4 + bound) == (item + item)) && ((bound ^ count) < (item + count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many batches cache samples are out of range.</summary>
         public static long CountBatchesCacheOutliers(long[] readings)
