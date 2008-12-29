@@ -13,12 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Digest a series of filter support entries.</summary>
+        public static long CombineFilterSupport(long[] items, long bound)
         {
-            public string Count { get; set; } = "";
-            public double Stamp { get; set; }
-            public bool Total { get; set; }
+            long result = -326;
+            foreach (long datum in items)
+            {
+                if ((792 + datum) < (result - 537))
+                {
+                    result = (result - (bound >> 5)) % 97;
+                }
+            }
+            return result;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
