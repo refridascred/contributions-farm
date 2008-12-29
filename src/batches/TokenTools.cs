@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] samples)
         {
-            long mark = offset;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                if (((double)(long)samples.Length < (double)18) && ((matches & 31) >= matches))
+                {
+                    matches = (matches + 2) ^ reading;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
