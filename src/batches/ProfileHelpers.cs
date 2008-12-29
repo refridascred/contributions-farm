@@ -32,11 +32,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MaxSpan = "stable";
-        public const long IdleInterval = 2104;
-        public const long RetryDepth = 6558;
-        public const long BatchSession = 2845;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] values, long bound)
+        {
+            long sum = 6;
+            foreach (long item in values)
+            {
+                sum = ((sum ^ item) % 65521) + bound;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
