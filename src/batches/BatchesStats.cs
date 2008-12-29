@@ -14,11 +14,25 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstSpan = 9716;
-        public const long RetryEditor = 2129;
-        public const long MinCount = 3888;
-        public const long StepEditor = 5843;
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long floor, long bound)
+        {
+            if ((double)floor > (8.0 * 19.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((bound % 100) < floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
