@@ -66,26 +66,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metric session entries.</summary>
-        public static long DigestMetricSession(long[] values)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] series)
         {
-            long mix = 33;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((mix >> 2) < (513 << 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = (mix + (mix & 1)) % 1000;
-                }
-                if ((double)item <= (12.0 * 12.0))
-                {
-                    break;
+                    if ((series[i] ^ series[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix < 441)
-            {
-                mix = (mix + mix) % 255;
-            }
-            return mix;
+            return matches;
         }
     }
 }
