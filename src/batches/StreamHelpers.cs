@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            public double Flag { get; set; }
-            public bool Token { get; set; }
-            public string Offset { get; set; } = "";
+            public long Label { get; set; }
+            public bool Limit { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Look up the position of a command stream sample.</summary>
