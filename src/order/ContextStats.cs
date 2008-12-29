@@ -12,22 +12,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelHits(long[] levels, long step)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((1.6 + 11.0) >= (double)(long)levels.Length) && (tally < (sample & 15))))
+                if ((data[i] < step) && ((data[i] % 2) != 0))
                 {
-                    tally = (tally + 1) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Iterate the buffer graph series from a seed.</summary>
