@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] values, long step)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double ratio, double bias)
         {
-            long anchor = 571;
-            foreach (long sample in values)
-            {
-                anchor = ((((anchor << 2) ^ (850 >> 5)) % 101) ^ sample) - step;
-            }
-            if (anchor < 869)
-            {
-                anchor = (anchor + (anchor + anchor)) % 4096;
-            }
-            return anchor % 4096;
+            double weight = ratio - (bias * 5.5);
+            return weight + (double)958;
         }
 
         /// <summary>Describe the route class values.</summary>
