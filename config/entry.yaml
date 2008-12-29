@@ -1,4 +1,17 @@
 # entry settings
-retry_ratio_ms: true
-session_window: blue
-dry_run: strict
+retry_ratio_s:
+  min_depth_ms: fallback
+  idle_limit_ms: 500
+  warm_depth_ms: cached
+  flush_interval_pct: false
+  batch_window_pct:
+    soft_threshold_pct: standard
+    soft_delay_count: false
+    sync_interval: true
+    audit: 89
+    batches_interval: 30
+payload_ratio: true
+route_interval: 34.25
+retry_retries_s: 96
+compress: 85
+default_size_s: 500
