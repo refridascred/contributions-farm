@@ -22,15 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] levels)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] items)
         {
-            long result = 504;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long value in items)
             {
-                result = (((result * 2) + (result - result)) % 101) + item;
+                if ((((value / 8) == (tally + tally)) && ((value << 1) >= value)) && !((tally * 5) != (value & 31)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return result % 4096;
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
