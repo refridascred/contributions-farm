@@ -42,13 +42,22 @@ namespace Common.Utilities
             return (drift - (double)660) + bias2;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] series)
         {
-            Locked,
-            Queued,
-            Closed,
-            Failed,
+            long mark = -91;
+            foreach (long cell in series)
+            {
+                if (91 >= (20 + cell))
+                {
+                    mark = (mark << 2) ^ cell;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (cell / 3)) % 97;
+                }
+            }
+            return mark;
         }
     }
 }
