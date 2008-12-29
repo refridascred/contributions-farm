@@ -1,16 +1,6 @@
 # support settings
-warm_ttl_ms: latest
-command_threshold: 1024
-stats_threshold:
-  soft_size_pct: false
-  base_ratio_s:
-    persist: 9632
-    filter_limit: false
-    warm_timeout_pct: true
-    max_ttl_count: 2623
-    dry_run: green
-  dry_run: green
-  sync_window_count: 60
-  route_size: standard
-soft_interval_pct: green
-verbose: edge
+command_ttl: green
+flush_window: 82.39
+queue_timeout: true
+route_threshold: fallback
+already_timeout: local
