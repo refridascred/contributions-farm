@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy fallback stable green; do
+for item in green legacy latest fallback; do
     log "checking ${item}"
 done
 
@@ -16,8 +16,5 @@ while [ "${count}" -lt 3 ]; do
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
+RECORD_LIMIT=186
+log "limit is ${RECORD_LIMIT}"
