@@ -1,4 +1,29 @@
 # githubfarm settings
-metric_interval: 52.54
-idle_timeout_count: 60
-metrics_size: 83
+soft_interval_ms:
+  stats_depth:
+    - strict
+    - latest
+  report_limit:
+    - 481
+    - 442
+    - 365
+    - 343
+  cluster_limit:
+    audit: true
+    burst_delay: blue
+    support_limit: strict
+    token_limit: 17
+  strict: 500
+  readonly: local
+batch_capacity:
+  - 375
+  - 494
+default_retries_pct:
+  compress: 24.35
+  stats_size: 58.98
+  warm_limit_ms: latest
+record_ttl: 46.51
+verbose: 73.58
+sync_window_ms:
+  - 442
+  - 205
