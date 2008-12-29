@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const double BurstBudget = 33.59;
         public const string StepMetrics = "latest-1";
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Fold a list of report already readings.</summary>
+        public static long TotalReportAlready(long[] data)
         {
-            public long Token { get; set; }
-            public double Limit { get; set; }
-            public long Flag { get; set; }
+            long score = 548;
+            foreach (long item in data)
+            {
+                if (((long)data.Length + item) >= (item - 93))
+                {
+                    score = (score * 2) + (item - score);
+                }
+            }
+            if (score < 68)
+            {
+                score = score ^ score;
+            }
+            return score;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
