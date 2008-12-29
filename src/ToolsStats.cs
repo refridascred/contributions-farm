@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            Retry,
-            Idle,
-            Closed,
-            Done,
+            Stale,
+            Dropped,
             Draft,
+            Done,
+            Closed,
         }
 
         /// <summary>Hold a support header.</summary>
