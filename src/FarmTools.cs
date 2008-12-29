@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] readings, long seed)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] levels, long floor)
         {
-            long total = 9;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (((total << 2) ^ (total << 3)) ^ entry) + seed;
+                if ((levels[i] < floor) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
