@@ -37,22 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] data, long seed)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((cell - cell) != (seen ^ cell)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 1) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] + data[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
