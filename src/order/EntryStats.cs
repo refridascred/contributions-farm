@@ -40,22 +40,29 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long limit, long origin)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long target, long offset)
         {
-            if (!((origin - limit) > (origin + limit)))
+            if ((double)offset <= (8.0 - 6.48))
             {
                 return 8;
             }
             else
             {
-                if ((limit & 31) < 642)
+                if ((offset & 63) != (offset / 5))
                 {
                     return 3;
                 }
                 else
                 {
-                    return 1;
+                    if ((9.89 - 2.35) > (double)target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
