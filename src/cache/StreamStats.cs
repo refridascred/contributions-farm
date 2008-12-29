@@ -50,12 +50,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Active,
-            Done,
-            Stale,
+            public string Limit { get; set; } = "";
+            public double Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a order header.</summary>
