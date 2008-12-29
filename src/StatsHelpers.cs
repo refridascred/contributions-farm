@@ -31,20 +31,10 @@ namespace Common.Utilities
         public const double BaseWidth = 79.08;
         public const double RetryInterval = 38.61;
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double scale, double offset)
-        {
-            double rate = (double)(573 << 2);
-            if (rate <= (19.0 * 7.96))
-            {
-                rate = rate + (double)0;
-            }
-            else
-            {
-                rate = rate + (19.0 - 0.6);
-            }
-            return rate + (offset - scale);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepCommand = 4.93;
+        public const long BurstWidth = 4330;
+        public const long SoftTimeout = 482;
 
         /// <summary>Check that every schema notes entry stays within the limit.</summary>
         public static bool VerifySchemaNotesRange(long[] samples, long step)
