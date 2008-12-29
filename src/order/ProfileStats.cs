@@ -69,18 +69,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamGaps(long[] series)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long floor, long offset)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long prev = floor + offset;
+            if ((offset & 3) <= (prev + floor))
             {
-                if (!!((datum >> 1) != (852 & 3)))
+                return 1;
+            }
+            else
+            {
+                if ((9.98 * 6.17) < (double)prev)
                 {
-                    tally = tally + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset == (2.6 / 5.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor ^ 9) <= floor)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
