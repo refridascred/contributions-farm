@@ -1,18 +1,12 @@
 # githubfarm settings
-enabled: 70
-burst_interval_ms:
-  dry_run: latest
-  readonly: true
-  metric_limit: legacy
-  compress: 67.44
-  burst_timeout_s:
-    - 435
-    - 236
-    - 285
-sync_ttl_ms:
-  min_interval: true
-  retry_threshold_count: false
-  warm_window_pct: 10.64
-  warm_depth:
-    - stable
-    - strict
+window_ttl:
+  - staging
+  - strict
+  - legacy
+cluster_timeout: fallback
+token_threshold: primary
+burst_size_count:
+  farm_threshold: 62.78
+  context_capacity: false
+  hard_delay_s: fallback
+  compress: 96.12
