@@ -31,17 +31,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < target) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BaseRoute = "strict-1";
+        public const long BurstRoute = 7307;
+        public const long HardBudget = 4016;
+        public const long CacheSize = 9446;
     }
 }
