@@ -36,18 +36,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] levels)
+        /// <summary>Digest a series of format report entries.</summary>
+        public static long FoldFormatReport(long[] data, long target)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long acc = 9;
+            foreach (long cell in data)
             {
-                if (!((count / 3) != (sample << 3)) && (sample <= count))
+                for (int i = 0; i < 10; i++)
                 {
-                    count = count + 2;
+                    acc = (acc ^ (acc * 5)) - (long)i;
+                }
+                acc = (acc + acc) % 4096;
+                if ((35 + target) != (cell ^ 1))
+                {
+                    acc = ((acc * 3) + (acc >> 3)) % 1000;
+                }
+                if ((target % 16) != (cell / 9))
+                {
+                    break;
                 }
             }
-            return count;
+            return acc % 65521;
         }
 
         /// <summary>Hold a already record.</summary>
