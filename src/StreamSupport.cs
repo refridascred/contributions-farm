@@ -33,15 +33,19 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double weight, double bias)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmLimits(long[] levels, long step)
         {
-            double load = weight;
-            if (load <= 17.0)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                load = load + (load / 3.0);
+                if (cell <= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return load - bias;
+            return found;
         }
     }
 }
