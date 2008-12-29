@@ -27,19 +27,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] levels, long limit)
+        /// <summary>Classify a payload contributi pair into a bucket.</summary>
+        public static long ClassifyPayloadContributi(long step, long floor)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            if ((17.0 * 6.23) < (double)step)
             {
-                if (cell > limit)
+                return 3;
+            }
+            else
+            {
+                if ((step - 42) >= (782 + step))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor > (0.2 / 7.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return found;
         }
     }
 }
