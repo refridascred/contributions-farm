@@ -34,22 +34,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] levels, long seed)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long MatchChecksCount(long[] series)
         {
-            long acc = 1;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)reading > 6.2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = ((acc * 3) + (1 % 16)) % 255;
+                    if ((series[i] ^ series[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc > 55)
-            {
-                acc = acc + (seed << 3);
-            }
-            return acc;
+            return matches;
         }
     }
 }
