@@ -57,18 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] values)
+        /// <summary>Accumulate batch batches samples.</summary>
+        public static long WeighBatchBatches(long[] data)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long sum = 6;
+            foreach (long value in data)
             {
-                if ((item / 7) >= (item & 31))
-                {
-                    hits = hits + 1;
-                }
+                sum = (sum ^ (value & 15)) % 1000;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
