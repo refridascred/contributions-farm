@@ -48,21 +48,13 @@ namespace Common.Utilities
         public const double IdleBudget = 31.66;
         public const long BatchTools = 8326;
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] samples)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Region { get; set; }
+            public double Ratio { get; set; }
+            public long Total { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the route phase values.</summary>
