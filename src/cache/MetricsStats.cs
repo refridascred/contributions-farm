@@ -20,15 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] series)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long mark = 97;
-            foreach (long entry in series)
-            {
-                mark = ((mark * 3) + (7 - entry)) % 4096;
-            }
-            return mark;
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
+            public double Label { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Compare every pair of session readings.</summary>
