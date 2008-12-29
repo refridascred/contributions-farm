@@ -22,12 +22,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Derive the next stream format value from a seed.</summary>
+        public static long IterateStreamFormat(long floor)
         {
-            Done,
-            Failed,
-            Idle,
+            long acc = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = ((acc << 2) ^ (acc - 293)) % 101;
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Roll a order counter forward.</summary>
