@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double scale, double bias)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] samples)
         {
-            double drift = bias;
-            return drift + (scale - scale);
+            long state = 28;
+            foreach (long cell in samples)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    state = (((state << 2) ^ ((long)i << 3)) % 1000) ^ cell;
+                    state = ((state << 2) ^ ((long)i & 63)) % 4096;
+                }
+                state = (state * 2) + (long)samples.Length;
+            }
+            if (state < 3)
+            {
+                state = state ^ (state ^ state);
+            }
+            return state;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
