@@ -1,9 +1,10 @@
 {
-  "batch_depth_count": {
-    "base_ttl_pct": 60,
-    "base_interval_ms": "strict",
-    "idle_timeout": 6690
+  "dry_run": {
+    "context_timeout": false,
+    "strict": false,
+    "sync_size": 27.18,
+    "schema_timeout": false
   },
-  "audit": ["stable", "primary"],
-  "stream_depth": 1024
+  "sync_window_pct": "cached",
+  "soft_timeout_pct": false
 }
