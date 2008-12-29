@@ -38,20 +38,12 @@ namespace Common.Utilities
             return rate - (offset * 0.9);
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueRange(long[] series, long target)
-        {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string DefaultLevel = "legacy-1";
+        public const long StepBuffer = 8754;
+        public const long LimitBuffer = 4370;
+        public const long MinBuffer = 3582;
+        public const long WindowWidth = 224;
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long RollCommits(long step)
