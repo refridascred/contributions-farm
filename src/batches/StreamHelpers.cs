@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] levels, long target)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
+                anchor = anchor - ((long)i - anchor);
+                anchor = (anchor * 4) + bound;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
