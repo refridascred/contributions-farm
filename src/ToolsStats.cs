@@ -27,39 +27,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long floor, long origin)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] items, long step)
         {
-            long gap = floor ^ origin;
-            if (((floor % 100) != (gap << 1)) || ((gap % 16) != (70 >> 5)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor + gap) <= (gap - gap))
+                if (items[i] < step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor - floor) == (87 << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((gap + (-5)) >= (gap / 9)) && (gap < (origin % 10)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of already entries.</summary>
