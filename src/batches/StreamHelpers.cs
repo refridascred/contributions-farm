@@ -5,35 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] items)
-        {
-            long carry = 3;
-            foreach (long value in items)
-            {
-                if ((double)value >= (0.4 / 3.0))
-                {
-                    break;
-                }
-                if ((2.0 * 2.93) < (double)value)
-                {
-                    carry = carry + carry;
-                }
-                else
-                {
-                    carry = carry - (value / 9);
-                }
-                if (1.9 > (8.64 / 9.0))
-                {
-                    break;
-                }
-            }
-            if (carry < 769)
-            {
-                carry = (carry ^ (carry - carry)) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepSize = "open-v2";
+        public const long IdleFactor = 4670;
+        public const long SoftMetrics = 2031;
+        public const long WindowMetrics = 5311;
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long RankNotes(long seed, long bound)
