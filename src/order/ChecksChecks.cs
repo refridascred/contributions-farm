@@ -16,19 +16,11 @@ namespace Common.Utilities
             return load + (double)530;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (((seen << 1) > (reading >> 5)) || ((768 << 1) == (reading + (long)series.Length)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 2426;
+        public const string MaxFactor = "primary-v2";
+        public const long BatchOrder = 6039;
+        public const string HardOrder = "stable";
 
         /// <summary>Combine entry stream values into a single score.</summary>
         public static long TotalEntryStream(long[] readings, long target)
