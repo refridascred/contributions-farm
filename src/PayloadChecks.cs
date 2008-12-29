@@ -30,21 +30,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] items)
+        /// <summary>Fold a list of contributi support readings.</summary>
+        public static long TotalContributiSupport(long[] values, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 2;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = ((((anchor * 5) + (anchor & 127)) % 65521) - sample) + limit;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
