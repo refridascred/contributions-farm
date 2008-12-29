@@ -19,19 +19,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] items)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((((value / 8) == (tally + tally)) && ((value << 1) >= value)) && !((tally * 5) != (value & 31)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinCount = 96.56;
+        public const long IdleStream = 8749;
+        public const long SoftStream = 6792;
+        public const long StepStream = 2798;
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
