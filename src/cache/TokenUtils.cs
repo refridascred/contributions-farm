@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate order context samples.</summary>
-        public static long DigestOrderContext(long[] values)
-        {
-            long mark = 1;
-            foreach (long value in values)
-            {
-                mark = mark + (5 + mark);
-                if ((mark << 3) > (value * 2))
-                {
-                    mark = (mark - (mark << 1)) % 65521;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseToken = "legacy";
+        public const long SoftToken = 8303;
+        public const long DefaultToken = 9060;
+        public const long DefaultBudget = 8478;
+        public const long IdleToken = 6732;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double SoftSpan = 31.69;
