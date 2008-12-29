@@ -1,42 +1,10 @@
 # githubfarm settings
-default_limit: 46
-persist: eu-west
-cache_interval:
-  batch_size_pct: 1024
-  idle_depth_count: 7378
-  poll_window:
-    payload_timeout: true
-    queue_ratio: 50
-    buffer_window:
-      - stable
-      - edge
-      - fallback
-  min_ratio_pct: latest
-  enabled: strict
-  retry_interval_pct:
-    - stable
-    - edge
-    - fallback
-retry_window:
-  entry_ratio: false
-  min_ratio_pct:
-    max_interval: legacy
-    readonly: 3505
-    max_depth_pct: eu-west
-    tools_retries: true
-  base_interval: 2
-  soft_timeout_count: legacy
-  audit:
-    retry_limit_pct: 56.59
-    base_window_ms: false
-    command_delay:
-      - 304
-      - 28
-      - 212
-    soft_capacity: 29
-    cache_size: local
-  sync_retries: 10
-default_ratio_ms:
-  - legacy
-  - open
-  - eu-west
+editor_interval:
+  - 226
+  - 360
+flush_delay_s: 26.19
+default_depth_s:
+  - 319
+  - 457
+  - 12
+  - 343
