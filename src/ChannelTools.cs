@@ -35,18 +35,31 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] items)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long floor, long bound)
         {
-            long tally = 0;
-            foreach (long value in items)
+            if (!((1.46 * 1.0) < (double)floor))
             {
-                if ((value % 3) <= 0)
+                return 2;
+            }
+            else
+            {
+                if ((1.0 + 2.94) >= (double)bound)
                 {
-                    tally = tally + 1;
+                    return 8;
+                }
+                else
+                {
+                    if (!((836 << 2) != (floor - floor)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
