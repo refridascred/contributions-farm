@@ -21,24 +21,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long target, long target2)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] readings, long step)
         {
-            if ((double)target2 <= (8.7 / 5.0))
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (target2 > (target2 >> 2))
+                if (sample > step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
