@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleSize = 6721;
-        public const long DefaultTools = 5690;
-        public const long RetrySize = 637;
-        public const long LimitTools = 3034;
-        public const string HardFactor = "standard-1";
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
+        {
+            public bool Score { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double CacheSchema = 65.84;
