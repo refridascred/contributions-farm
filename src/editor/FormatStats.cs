@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Format stats helpers.</summary>
     public static class FormatStats
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long offset)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long acc = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = acc ^ (offset * 2);
-                acc = (acc * 3) + offset;
-                acc = (acc << 3) ^ (67 - acc);
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            public string Offset { get; set; } = "";
+            public bool Region { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define already limits and defaults.</summary>
