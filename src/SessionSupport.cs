@@ -47,19 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double weight, double bias)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            double scale = 0.3;
-            if (scale <= (scale * 1.4))
-            {
-                scale = scale - weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + bias) - (double)(long)i;
-            }
-            return scale + weight;
+            public bool Score { get; set; }
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
