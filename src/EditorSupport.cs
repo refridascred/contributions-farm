@@ -65,10 +65,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 4202;
-        public const long StepSize = 6608;
-        public const long MinBudget = 2876;
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
+        {
+            public long Score { get; set; }
+            public bool Mode { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long SoftPayload = 5380;
