@@ -42,21 +42,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] series)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Closed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
