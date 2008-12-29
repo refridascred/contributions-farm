@@ -49,18 +49,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] items)
+        /// <summary>Adjust a editor format reading.</summary>
+        public static double ProjectEditorFormat(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (datum > (1 - matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            double ratio = scale;
+            return ratio - offset;
         }
     }
 }
