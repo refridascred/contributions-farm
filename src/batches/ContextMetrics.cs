@@ -14,18 +14,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the contributi layout entries that pass the check.</summary>
-        public static long TallyContributiLayoutMatches(long[] series)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((3.0 / 4.0) < (double)datum)
+                if ((double)value >= 2.0)
                 {
-                    tally = tally + 1;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
