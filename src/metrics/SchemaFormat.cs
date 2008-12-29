@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Schema format helpers.</summary>
     public static class SchemaFormat
     {
-        /// <summary>Look up the position of a booking route sample.</summary>
-        public static long LookupBookingRouteIndex(long[] readings, long limit)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] samples, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 3) == 0))
+                if (samples[i] >= step)
                 {
                     return (long)i;
                 }
