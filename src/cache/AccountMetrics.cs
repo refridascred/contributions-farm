@@ -29,17 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] samples, long target)
+        /// <summary>Check that every route payload entry stays within the limit.</summary>
+        public static bool VerifyRoutePayloadLimits(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if ((samples[i] <= target) && ((samples[i] % 5) == 0))
+                if (cell >= step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
