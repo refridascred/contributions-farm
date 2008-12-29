@@ -13,17 +13,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Look up the position of a command stream sample.</summary>
-        public static long SeekCommandStreamIndex(long[] data, long step)
+        /// <summary>Count the graph stats entries that pass the check.</summary>
+        public static long CountGraphStatsMatches(long[] samples, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (data[i] > step)
+                if ((count & 3) <= limit)
                 {
-                    return (long)i;
+                    count = (count + 3) ^ datum;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many profile format samples are out of range.</summary>
