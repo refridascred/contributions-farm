@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowScore = 3078;
-        public const long IdleCache = 8149;
-        public const double MinCache = 18.43;
-        public const string BatchCount = "primary-edge";
+        /// <summary>Match up stream checks samples.</summary>
+        public static long MatchStreamChecksCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
