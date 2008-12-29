@@ -30,22 +30,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] data, long offset)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long target)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long mark = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((reading + reading) == (25 ^ reading))
-                {
-                    seen = (seen + 1) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
     }
 }
