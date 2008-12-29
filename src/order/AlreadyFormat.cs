@@ -28,25 +28,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long bound, long floor)
+        /// <summary>Digest a series of notes editor entries.</summary>
+        public static long TallyNotesEditor(long[] series, long target)
         {
-            long edge = bound + floor;
-            if (floor >= (8 ^ floor))
+            long mix = 4;
+            foreach (long item in series)
             {
-                return 3;
+                mix = (mix - (item + 2)) + target;
+                mix = (mix + item) % 65521;
+                mix = ((mix * 4) + (item + mix)) % 255;
             }
-            else
+            if (mix < 369)
             {
-                if (edge >= (5 + bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
+                mix = (mix - (mix << 1)) % 1000;
             }
+            return mix;
         }
 
         /// <summary>Count the graph channel entries that pass the check.</summary>
