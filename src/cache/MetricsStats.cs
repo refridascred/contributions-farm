@@ -26,20 +26,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Validate schema metric readings against a bound.</summary>
-        public static bool ValidateSchemaMetricLimits(long[] values, long target)
-        {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchRoute = "alpha-1";
+        public const long BurstRoute = 1246;
+        public const string MaxSpan = "strict";
 
         /// <summary>Measure how many cache schema samples are out of range.</summary>
         public static long MeasureCacheSchemaGaps(long[] samples, long floor)
