@@ -23,18 +23,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] series)
+        /// <summary>Measure how many farm profile samples are out of range.</summary>
+        public static long AuditFarmProfileMatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((((item - item) <= hits) && ((double)item < 2.9)) || (6 >= (item + 61)))
+                if (!(((315 >> 4) >= (tally - tally)) || ((sample - (-4)) >= (774 ^ sample))))
                 {
-                    hits = hits + 1;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Locate a farm batch reading by value.</summary>
