@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many checks context samples are out of range.</summary>
-        public static long TallyChecksContextMatches(long[] data)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((datum * 3) >= count)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Paused,
+            Synced,
+            Done,
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
