@@ -67,13 +67,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long limit, long step)
         {
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
-            public bool Level { get; set; }
-            public bool Ratio { get; set; }
+            if ((3.0 - 8.0) == (double)limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit < (limit >> 3)) || ((0 / 4) > (step / 4)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit + limit) < (limit * 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((0.4 / 5.0) >= (double)limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
