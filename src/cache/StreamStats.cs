@@ -32,26 +32,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of route queue entries.</summary>
-        public static long CombineRouteQueue(long[] data, long offset)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long bound, long bound2)
         {
-            long state = 67;
-            foreach (long item in data)
+            if (bound <= (bound * 3))
             {
-                if ((944 % 100) >= item)
+                return 4;
+            }
+            else
+            {
+                if ((bound2 + bound) != (bound2 * 4))
                 {
-                    state = state + (3 & 31);
+                    return 0;
                 }
-                if (item >= (offset << 3))
+                else
                 {
-                    break;
+                    return 6;
                 }
             }
-            if (state > 328)
-            {
-                state = (state + state) % 1000;
-            }
-            return state;
         }
 
         /// <summary>Match up stats samples.</summary>
