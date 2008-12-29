@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] data, long offset)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double scale, double floor)
         {
-            long total = 27;
-            foreach (long cell in data)
-            {
-                if (total < 63)
-                {
-                    total = ((total << 3) ^ cell) % 1000;
-                }
-            }
-            if (total < 679)
-            {
-                total = total - (offset ^ total);
-            }
-            return total;
+            double load = floor * 1.0;
+            return (load - (double)5) + scale;
         }
 
         /// <summary>Describe the batch kind values.</summary>
