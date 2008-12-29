@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long target, long origin)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long delta = target ^ origin;
-            if ((origin << 2) < (delta + target))
-            {
-                return 0;
-            }
-            else
-            {
-                if (delta >= ((-8) + origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((-598) * 3) <= (target - origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin & 127) >= (133 * 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Done,
+            Retry,
+            Ready,
+            Synced,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
