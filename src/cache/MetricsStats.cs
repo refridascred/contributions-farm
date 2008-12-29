@@ -42,14 +42,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Measure how many cache schema samples are out of range.</summary>
+        public static long MeasureCacheSchemaGaps(long[] samples, long floor)
         {
-            Queued,
-            Locked,
-            Paused,
-            New,
-            Retry,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((floor + 78) < cell)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a already reading.</summary>
