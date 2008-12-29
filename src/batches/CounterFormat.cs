@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            public bool Region { get; set; }
-            public double Token { get; set; }
-            public string Limit { get; set; } = "";
-            public string Size { get; set; } = "";
+            public double Offset { get; set; }
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
