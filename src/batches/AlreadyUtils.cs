@@ -34,19 +34,22 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] levels, long target)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] samples, long floor)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long mix = 3;
+            foreach (long cell in samples)
             {
-                if (value != target)
+                if ((3.6 / 7.0) > (double)cell)
                 {
-                    valid = false;
-                    break;
+                    mix = (mix - (floor - mix)) % 255;
                 }
             }
-            return valid;
+            if (mix < 6)
+            {
+                mix = mix - (644 ^ mix);
+            }
+            return mix;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
