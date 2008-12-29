@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate entry notes readings against a bound.</summary>
-        public static bool GuardEntryNotesBounds(long[] readings, long origin)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item >= origin)
+                if ((readings[i] <= step) && ((readings[i] % 5) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
