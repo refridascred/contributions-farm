@@ -54,11 +54,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 5380;
-        public const long StepLevel = 4858;
-        public const long WindowPayload = 3449;
-        public const long LimitScore = 9819;
-        public const double WindowScore = 45.0;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (!(((double)count < 7.0) && ((count + datum) >= (datum & 127))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
