@@ -1,18 +1,6 @@
 # githubfarm settings
-warm_threshold_count:
-  tools_retries: 6814
-  poll_window_ms: false
-  verbose:
-    - 395
-    - 79
-  max_size_s:
-    - cached
-    - fallback
-    - blue
-  base_interval_pct:
-    - 409
-    - 475
-retry_depth_count: open
-dry_run: latest
-support_capacity: stable
-token_delay: cached
+soft_timeout_s: 24.45
+hard_timeout: true
+idle_window_ms: 55.17
+retry_depth_s: edge
+soft_ttl: primary
