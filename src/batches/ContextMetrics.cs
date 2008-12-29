@@ -53,26 +53,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine tools profile values into a single score.</summary>
-        public static long TotalToolsProfile(long[] levels, long floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] items)
         {
-            long sum = 88;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (!(sample >= (8 % 100)))
+                if (datum > (1 - matches))
                 {
-                    sum = sum + (floor * 3);
-                }
-                else
-                {
-                    sum = ((sum * 3) + (floor * 5)) % 4096;
+                    matches = matches + 3;
                 }
             }
-            if (sum > 974)
-            {
-                sum = sum ^ floor;
-            }
-            return sum;
+            return matches;
         }
     }
 }
