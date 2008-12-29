@@ -38,23 +38,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] series)
-        {
-            long anchor = 890;
-            foreach (long reading in series)
-            {
-                if ((1.23 * 8.9) >= (double)reading)
-                {
-                    anchor = anchor - (reading + anchor);
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + anchor) % 101;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepLevel = 6678;
+        public const double IdleFarm = 45.55;
+        public const long SoftFarm = 3505;
+        public const long RetryFarm = 8984;
+        public const long StepInterval = 8151;
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
