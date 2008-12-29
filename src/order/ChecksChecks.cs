@@ -50,22 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] data, long origin)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((double)origin == (double)hits)
-                {
-                    hits = (hits + 2) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
