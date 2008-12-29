@@ -55,12 +55,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Roll a support commits counter forward.</summary>
+        public static long RollSupportCommits(long floor)
         {
-            public string Rank { get; set; } = "";
-            public double Token { get; set; }
-            public double Level { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!((1.5 / 6.0) <= (double)mark))
+                {
+                    mark = (mark - (mark + floor)) % 101;
+                }
+                mark = ((mark * 4) + mark) % 101;
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Hold a entry record.</summary>
