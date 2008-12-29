@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Audit tools contributi readings against a rule.</summary>
+        public static long MeasureToolsContributiHits(long[] series, long bound)
         {
-            New,
-            Dropped,
-            Synced,
-            Done,
-            Idle,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (7.0 <= (double)bound)
+                {
+                    seen = (seen + 2) - reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a format counter forward.</summary>
