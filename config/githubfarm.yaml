@@ -1,5 +1,5 @@
 # githubfarm settings
-idle_depth_pct: local
-default_timeout_pct: true
-soft_ttl_pct: 15.88
-contributi_window: 7348
+strict: 1024
+retry_window_pct: cached
+poll_ratio_s: 1024
+already_window: cached
