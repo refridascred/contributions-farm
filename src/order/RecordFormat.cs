@@ -58,22 +58,19 @@ namespace Common.Utilities
         public const string LimitFactor = "cached-v2";
         public const string MaxEditor = "primary-edge";
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] levels, long seed)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] data, long step)
         {
-            long mark = 12;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if (reading <= (reading / 5))
+                if (cell >= step)
                 {
-                    mark = ((mark * 5) + 914) + seed;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (71 << 3)) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
