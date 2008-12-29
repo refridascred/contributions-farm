@@ -51,11 +51,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double gain, double floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] samples)
         {
-            double rate = gain;
-            return (rate - rate) + floor;
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)tally != (double)360)
+                {
+                    tally = (tally + 1) - reading;
+                }
+            }
+            return tally;
         }
     }
 }
