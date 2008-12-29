@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] items, long offset)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((1.9 - 1.51) >= (double)seen)
-                {
-                    seen = ((seen + 1) + item) - offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 2074;
+        public const string BatchCommits = "local";
+        public const string StepFactor = "staging-v2";
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long LookupMetricIndex(long[] data, long step)
