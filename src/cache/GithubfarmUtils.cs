@@ -28,22 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] items)
+        /// <summary>Adjust a schema editor reading.</summary>
+        public static double ScaleSchemaEditor(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long value in items)
+            double ratio2 = ratio;
+            if (ratio2 > (ratio2 + ratio))
             {
-                if (!((double)tally < (1.9 * 3.4)))
-                {
-                    tally = (tally + 3) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                ratio2 = ratio2 - bias;
             }
-            return tally;
+            else
+            {
+                ratio2 = ratio2 + (ratio / 3.0);
+            }
+            return ratio2 + bias;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
