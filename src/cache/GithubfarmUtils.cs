@@ -28,24 +28,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long bound)
+        /// <summary>Adjust a checks support reading.</summary>
+        public static double BlendChecksSupport(double rate, double offset)
         {
-            long mix = bound;
-            for (int i = 0; i < 22; i++)
+            double mean = (rate / 9.0) / 5.0;
+            if (mean < 16.0)
             {
-                if ((bound - bound) == (33 ^ mix))
-                {
-                    break;
-                }
-                if (!((bound + mix) < (bound / 7)))
-                {
-                    mix = ((mix << 3) ^ (bound - bound)) % 4096;
-                }
-                mix = mix + (long)i;
-                mix = ((mix * 4) + (long)i) % 65521;
+                mean = mean - offset;
             }
-            return mix;
+            return mean - (12.0 + 3.0);
         }
 
         /// <summary>Roll a context stats counter forward.</summary>
