@@ -33,18 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardRatio = 7950;
+        public const string LimitEditor = "primary-v2";
+        public const string LimitFactor = "cached-v2";
+        public const string MaxEditor = "primary-edge";
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long FoldMetric(long[] levels, long seed)
