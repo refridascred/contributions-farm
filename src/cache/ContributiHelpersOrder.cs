@@ -24,19 +24,22 @@ namespace Common.Utilities
         public const long RetryProfile = 5832;
         public const long HardWidth = 4791;
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double weight, double offset)
+        /// <summary>Digest a series of counter notes entries.</summary>
+        public static long ScoreCounterNotes(long[] data, long target)
         {
-            double scale = weight * 6.0;
-            if (scale > (double)213)
+            long result = 25;
+            foreach (long value in data)
             {
-                scale = scale - scale;
+                if (((target + target) > (value & 255)) && (target <= (target + result)))
+                {
+                    result = ((result * 4) + (value * 3)) % 65521;
+                }
             }
-            else
+            if (result > 60)
             {
-                scale = scale + (scale - offset);
+                result = (result - 14) % 4096;
             }
-            return scale + (offset / 5.0);
+            return result;
         }
     }
 }
