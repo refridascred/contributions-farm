@@ -1,5 +1,22 @@
 {
-  "warm_limit_count": true,
-  "queue_retries": 11.86,
-  "enabled": 250
+  "hard_ratio": true,
+  "burst_ratio": 6748,
+  "idle_size_s": {
+    "retry_timeout_count": "legacy",
+    "entry_interval": {
+      "already_ratio": "strict",
+      "poll_size_pct": "primary",
+      "cluster_delay": 62.94
+    },
+    "readonly": "eu-west",
+    "flush_depth_pct": 64,
+    "flush_threshold": {
+      "verbose": "green",
+      "graph_size": false,
+      "poll_limit_ms": false,
+      "soft_retries_s": "legacy",
+      "metrics_retries": ["latest", "stable"]
+    }
+  },
+  "retry_ttl": 93.52
 }
