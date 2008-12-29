@@ -1,5 +1,21 @@
 {
-  "idle_limit_count": [321, 92, 427, 445],
-  "cache_ttl_pct": 1024,
-  "context_threshold": 69.35
+  "batch_delay": "standard",
+  "poll_retries_count": {
+    "enabled": 44.65,
+    "retry_limit_ms": "staging",
+    "poll_ratio_count": {
+      "counter_threshold": 96.93,
+      "idle_capacity_ms": "latest",
+      "readonly": [116, 174],
+      "sync_timeout_pct": 93.37,
+      "channel_size": [204, 366]
+    },
+    "base_window": 60.36,
+    "notes_ttl": false,
+    "hard_ttl_pct": "blue"
+  },
+  "compress": 54.97,
+  "token_retries": "latest",
+  "batch_capacity_s": "local",
+  "sync_threshold": 96
 }
