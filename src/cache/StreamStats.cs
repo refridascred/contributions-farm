@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] data)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((seen / 4) <= (cell ^ seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public long Flag { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
