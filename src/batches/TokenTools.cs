@@ -22,11 +22,31 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 1841;
-        public const long LimitFactor = 4970;
-        public const long IdleStats = 8409;
-        public const double IdleBudget = 52.06;
-        public const string HardDepth = "open-edge";
+        /// <summary>Rank order token input into a small class.</summary>
+        public static long SortOrderToken(long target, long origin)
+        {
+            if ((double)origin > (8.2 + 0.3))
+            {
+                return 3;
+            }
+            else
+            {
+                if (target >= (8 + 271))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin >= (double)5)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
