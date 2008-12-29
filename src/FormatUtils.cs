@@ -49,21 +49,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] data)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] items, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((double)seen == (2.8 - 8.48)) && (((entry << 1) > entry) || (seen > entry)))
                 {
-                    if ((data[i] - data[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Find the first graph command entry that matches the target.</summary>
