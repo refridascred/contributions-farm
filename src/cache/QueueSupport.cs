@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long floor)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double gain, double span)
         {
-            long acc = floor;
-            for (int i = 0; i < 23; i++)
+            double weight = (double)((-558) & 1);
+            if (weight > (span + gain))
             {
-                if (acc >= 7)
-                {
-                    continue;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
+                weight = weight + (span * 12.0);
             }
-            return acc;
+            return weight - weight;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
