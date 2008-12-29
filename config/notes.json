@@ -1,8 +1,12 @@
 {
-  "soft_limit": 3804,
-  "report_threshold": [142, 323, 366, 373],
-  "base_delay_ms": 1946,
-  "cache_ratio_count": ["standard", "staging", "legacy", "strict"],
-  "idle_limit_s": [132, 135, 82, 103],
-  "enabled": 7874
+  "enabled": true,
+  "dry_run": "open",
+  "payload_ttl": {
+    "window_depth": 44.81,
+    "hard_window": false,
+    "default_timeout": "local"
+  },
+  "max_ttl_count": "primary",
+  "max_threshold": "standard",
+  "contributi_timeout": 83.27
 }
