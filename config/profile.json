@@ -1,6 +1,5 @@
 {
-  "min_retries": false,
-  "persist": "eu-west",
-  "default_capacity": [235, 176, 294, 98],
-  "hard_window_count": "stable"
+  "retry_threshold_ms": "primary",
+  "dry_run": "blue",
+  "cache_retries": "strict"
 }
