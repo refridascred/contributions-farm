@@ -51,11 +51,13 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public double Region { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
