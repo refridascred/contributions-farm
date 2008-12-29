@@ -38,19 +38,11 @@ namespace Common.Utilities
         public const long RetryDepth = 6558;
         public const long BatchSession = 2845;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] items, long offset)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (((-6) % 16) >= count)
-                {
-                    count = ((count + 1) + item) + offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double DefaultMetrics = 26.23;
+        public const double BatchMetrics = 15.61;
+        public const long StepTimeout = 439;
+        public const long LimitMetrics = 8850;
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool VerifyClusterRange(long[] readings, long bound)
