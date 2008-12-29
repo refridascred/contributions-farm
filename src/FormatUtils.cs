@@ -49,11 +49,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double RetrySchema = 28.86;
-        public const string BurstSchema = "fallback-edge";
-        public const double CacheScore = 16.5;
-        public const long BatchSchema = 6780;
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
