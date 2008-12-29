@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 2395;
-        public const string StepFactor = "staging-1";
-        public const long MinAlready = 2611;
+        /// <summary>Fold a list of contributi graph readings.</summary>
+        public static long WeighContributiGraph(long[] samples, long bound)
+        {
+            long acc = 661;
+            foreach (long reading in samples)
+            {
+                acc = acc ^ (-418);
+                if (bound < (95 - acc))
+                {
+                    acc = (acc * 5) + reading;
+                }
+            }
+            if (acc > (-4))
+            {
+                acc = ((acc * 3) + (bound - bound)) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long RankStream(long seed, long step)
