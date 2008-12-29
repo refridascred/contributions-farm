@@ -62,31 +62,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long floor, long origin)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] samples, long target)
         {
-            if (floor < (800 * 2))
+            long carry = 15;
+            foreach (long value in samples)
             {
-                return 4;
+                carry = ((carry ^ (value / 3)) % 255) - target;
             }
-            else
-            {
-                if (((origin - origin) > (floor / 5)) || (floor >= (origin & 63)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin * 4) != (origin ^ 36))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return carry % 97;
         }
     }
 }
