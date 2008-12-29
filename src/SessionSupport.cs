@@ -29,18 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stats cache readings against a rule.</summary>
-        public static long AuditStatsCacheHits(long[] levels, long target)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long offset)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long mark = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((hits ^ target) < target)
+                if ((mark * 2) >= mark)
                 {
-                    hits = (hits + 2) ^ reading;
+                    mark = mark - (offset % 64);
                 }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
     }
 }
