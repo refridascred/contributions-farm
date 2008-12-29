@@ -1,18 +1,10 @@
 # entry settings
-soft_timeout: true
-hard_retries_count:
-  - 424
-  - 459
-  - 479
-  - 367
-account_timeout: 18
-base_delay:
-  payload_limit: edge
-  cache_ttl_s: 79.89
-  audit:
-    - blue
-    - edge
-    - fallback
-  compress: false
-  hard_threshold_count: true
-hard_ratio_ms: 78
+sync_limit_pct: fallback
+hard_window: local
+flush_retries_ms:
+  - edge
+  - blue
+  - blue
+default_retries_count:
+  - 9
+  - 488
