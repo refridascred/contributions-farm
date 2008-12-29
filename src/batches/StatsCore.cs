@@ -77,18 +77,38 @@ namespace Common.Utilities
         public const double CacheContributi = 65.77;
         public const long LimitContributi = 8660;
 
-        /// <summary>Measure how many commits tools samples are out of range.</summary>
-        public static long MeasureCommitsToolsMatches(long[] data, long seed)
+        /// <summary>Classify a githubfarm layout pair into a bucket.</summary>
+        public static long GradeGithubfarmLayout(long origin, long target)
         {
-            long count = 0;
-            foreach (long reading in data)
+            if ((1 % 3) <= target)
             {
-                if (seed < (count + reading))
+                return 8;
+            }
+            else
+            {
+                if ((target / 4) < (631 + target))
                 {
-                    count = count + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((5.0 / 3.0) > (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin << 2) != (origin + origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
