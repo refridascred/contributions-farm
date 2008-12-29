@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadGaps(long[] levels)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] readings)
         {
             long hits = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell >> 5) < (cell << 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((readings[i] - readings[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
