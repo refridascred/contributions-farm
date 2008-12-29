@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a buffer batches figure with a bias.</summary>
-        public static double ProjectBufferBatches(double ratio, double offset)
-        {
-            double scale = (double)633 - (offset - 5.4);
-            return scale + ratio;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchTimeout = 8812;
+        public const double RetryRatio = 24.07;
+        public const long HardFactor = 612;
+        public const string SoftToken = "local";
+        public const double BatchScore = 17.47;
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long LookupFilterIndex(long[] readings, long offset)
