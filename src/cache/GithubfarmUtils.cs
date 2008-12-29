@@ -50,22 +50,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] series, long origin)
-        {
-            long mark = -244;
-            foreach (long reading in series)
-            {
-                if ((2.2 >= (double)mark) && ((mark + 8) > (origin >> 2)))
-                {
-                    mark = mark ^ (reading / 2);
-                }
-                else
-                {
-                    mark = (mark + (origin ^ 934)) % 1000;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryInterval = 20;
+        public const long SoftCount = 3672;
+        public const double IdleRatio = 39.08;
+        public const long BatchToken = 5898;
+        public const double SoftWidth = 34.13;
     }
 }
