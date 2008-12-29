@@ -39,38 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long target, long limit)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelGaps(long[] samples)
         {
-            if ((target * 5) <= 92)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (target <= (74 + limit))
+                if (!(tally >= 258) || ((tally * 5) == (tally + value)))
                 {
-                    return 3;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if ((target + limit) >= (limit * 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((target >> 4) <= limit) || ((0.56 / 4.0) > (double)limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
