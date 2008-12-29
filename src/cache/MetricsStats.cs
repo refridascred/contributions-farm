@@ -23,23 +23,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the notes command entries that pass the check.</summary>
-        public static long AuditNotesCommandOutliers(long[] items, long origin)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (!(count >= origin))
-                {
-                    count = (count + 2) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MinMetric = 59.35;
+        public const string SoftTimeout = "primary";
+        public const long BatchMetric = 6969;
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long MatchSessionCount(long[] series)
