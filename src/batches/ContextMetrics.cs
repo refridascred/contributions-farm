@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheScore = 4189;
-        public const double BurstStream = 10.04;
-        public const long SoftStream = 1396;
-        public const long BatchRatio = 35;
-        public const double LimitTimeout = 27.77;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsBounds(long[] levels, long limit)
+        {
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long SortFilter(long limit, long limit2)
