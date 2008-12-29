@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double scale, double floor)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            double load = floor * 1.0;
-            return (load - (double)5) + scale;
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the batch kind values.</summary>
