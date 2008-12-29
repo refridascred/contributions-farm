@@ -1,11 +1,6 @@
 {
-  "cache_interval_count": {
-    "max_interval_s": "blue",
-    "soft_capacity_count": "local",
-    "schema_capacity": 30,
-    "enabled": "staging"
-  },
-  "batch_ratio": "primary",
-  "poll_ttl_pct": "open",
-  "metrics_threshold": false
+  "poll_ttl_ms": "stable",
+  "strict": true,
+  "cache_ratio_pct": [498, 36, 440, 365],
+  "compress": 94
 }
