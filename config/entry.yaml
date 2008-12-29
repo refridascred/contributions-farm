@@ -1,8 +1,27 @@
 # entry settings
-report_ttl:
-  - 437
-  - 113
-hard_retries_pct: 5
-retry_size: true
-payload_limit: false
-poll_limit_s: latest
+queue_timeout: strict
+account_ratio:
+  poll_timeout_pct: 30
+  soft_timeout:
+    enabled: 78.77
+    support_interval:
+      - fallback
+      - staging
+      - staging
+      - open
+    base_retries_ms:
+      - 438
+      - 458
+      - 281
+      - 144
+    default_ttl: 54.81
+    persist: 5186
+  min_interval_s: eu-west
+  min_delay_ms: cached
+  compress: true
+soft_threshold_pct: 250
+session_ttl:
+  - open
+  - local
+min_window_ms: 29
+verbose: eu-west
