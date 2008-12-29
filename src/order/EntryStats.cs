@@ -13,38 +13,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long floor, long origin)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] series)
         {
-            if ((796 - floor) <= (origin & 255))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin >= 8) && ((6 % 3) > (floor + floor)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin - floor) != (floor * 5))
+                    if ((series[i] ^ series[j]) != 3)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)floor < (1.9 * 1.3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every farm batches entry stays within the limit.</summary>
