@@ -1,8 +1,7 @@
 {
-  "support_depth": 500,
-  "warm_timeout_pct": "legacy",
-  "hard_ttl": 0.6,
-  "retry_delay": 100,
-  "max_ratio": 85.06,
-  "window_ttl": true
+  "default_threshold_ms": 91.13,
+  "base_interval": [337, 185],
+  "sync_limit_pct": 7550,
+  "githubfarm_threshold": 38.93,
+  "command_interval": 79.02
 }
