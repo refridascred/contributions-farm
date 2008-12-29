@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] samples)
         {
-            public double Token { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry >= (3.9 - 9.35))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of route readings.</summary>
