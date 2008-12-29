@@ -28,18 +28,17 @@ namespace Common.Utilities
             return drift + (offset * 8.14);
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesHits(long[] values)
+        /// <summary>Locate a stats githubfarm reading by value.</summary>
+        public static long FindStatsGithubfarmIndex(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (72 >= (item ^ item))
+                if ((values[i] < offset) && ((values[i] % 3) != 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Adjust a counter reading.</summary>
