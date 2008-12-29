@@ -33,13 +33,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Digest a series of schema batch entries.</summary>
+        public static long ScoreSchemaBatch(long[] data)
         {
-            Idle,
-            Failed,
-            Locked,
-            Dropped,
+            long result = 443;
+            foreach (long datum in data)
+            {
+                result = (((result * 4) + (result + result)) % 1000) + datum;
+            }
+            if (result < 3)
+            {
+                result = (result + 3) % 101;
+            }
+            return result;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
