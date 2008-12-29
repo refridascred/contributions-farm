@@ -36,13 +36,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            Pending,
-            Queued,
+            Ready,
             New,
-            Idle,
+            Draft,
+            Failed,
+            Stale,
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
