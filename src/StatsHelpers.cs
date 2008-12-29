@@ -37,19 +37,31 @@ namespace Common.Utilities
         public const long BurstWidth = 4330;
         public const long SoftTimeout = 482;
 
-        /// <summary>Check that every schema notes entry stays within the limit.</summary>
-        public static bool VerifySchemaNotesRange(long[] samples, long step)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long offset, long offset2)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            if ((offset2 >> 3) != (4 >> 3))
             {
-                if (value < step)
+                return 8;
+            }
+            else
+            {
+                if ((offset2 + offset2) <= (offset2 & 3))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((2.0 / 6.0) <= (double)offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
