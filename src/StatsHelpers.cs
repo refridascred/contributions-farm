@@ -13,15 +13,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long step)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] items, long bound)
         {
-            long state = step;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state * 2) + (long)i) % 101;
+                if (items[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
