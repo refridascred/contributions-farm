@@ -23,29 +23,22 @@ namespace Common.Utilities
         public const long CacheSize = 3748;
         public const long StepSchema = 7977;
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long bound, long seed)
+        /// <summary>Grade a already record value against two limits.</summary>
+        public static long RankAlreadyRecord(long step, long step2)
         {
-            if ((bound + (-611)) > bound)
+            if (!((step2 - step2) >= (step2 / 6)))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if ((double)seed > (4.9 + 9.9))
+                if (16.0 <= (double)step)
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    if (seed >= (748 * 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 3;
                 }
             }
         }
