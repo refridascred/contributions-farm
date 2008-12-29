@@ -1,7 +1,8 @@
 {
-  "entry_ratio": "standard",
-  "soft_ttl": true,
-  "stats_timeout": ["blue", "staging", "standard"],
-  "strict": true,
-  "cache_ttl": "stable"
+  "retry_depth": 32.65,
+  "hard_size": [360, 368, 291, 314],
+  "record_delay": 80.15,
+  "max_limit": "legacy",
+  "base_capacity": 500,
+  "verbose": "stable"
 }
