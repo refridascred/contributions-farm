@@ -29,19 +29,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportRange(long[] values, long bound)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long seed, long offset)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long cur = seed ^ offset;
+            if ((double)seed < (double)139)
             {
-                if (reading <= bound)
+                return 7;
+            }
+            else
+            {
+                if (((offset & 31) <= seed) || (759 >= (offset >> 5)))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((seed < (4 << 3)) || ((96 + cur) >= (cur % 64)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
