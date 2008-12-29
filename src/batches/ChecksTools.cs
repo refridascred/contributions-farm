@@ -19,20 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long step)
+        /// <summary>Compare every pair of command already readings.</summary>
+        public static long MatchCommandAlreadyCount(long[] levels)
         {
-            long result = step;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result * 5) + (step - result);
-                if ((result - result) < ((long)i + (long)i))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = ((result << 2) ^ (step % 100)) % 255;
+                    if ((levels[i] - levels[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Grade a already record value against two limits.</summary>
