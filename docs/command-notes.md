@@ -1,14 +1,11 @@
 # Command notes
 
-The batches helpers are pure functions, so they are safe to call from any thread.
-The batches report groups every farm by record.
-
-Keep cluster and already names short and lowercase.
-A stats that stays idle for too long is moved to the layout list.
-Run the order check before changing any stats limits.
+Keep notes and entry names short and lowercase.
+Each queue is validated before it reaches the batch queue.
 
 ## Guidelines
 
-- Prefer already defaults
-- Validate queue input early
-- Log every filter change
+- Document new batch fields
+- Review context limits each release
+- Validate report input early
+- Prefer stream defaults
