@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Done,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheInterval = "staging-v2";
+        public const long CacheStream = 6491;
+        public const long BurstStream = 1127;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long WeighStream(long[] samples, long bound)
