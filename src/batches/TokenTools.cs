@@ -25,12 +25,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportLimits(long[] levels, long target)
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public long Offset { get; set; }
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
