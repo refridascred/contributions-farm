@@ -25,18 +25,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first farm contributi entry that matches the target.</summary>
-        public static long LocateFarmContributiIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= seed) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BaseBudget = 90.63;
+        public const long DefaultSize = 8840;
+        public const long BaseAlready = 3613;
+        public const long DefaultDepth = 1228;
+        public const long MinAlready = 7697;
 
         /// <summary>Locate a queue buffer reading by value.</summary>
         public static long FindQueueBufferIndex(long[] data, long origin)
