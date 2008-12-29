@@ -24,13 +24,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] series, long origin)
         {
-            public long Level { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
+            long state = 925;
+            foreach (long datum in series)
+            {
+                if (!(state <= (long)series.Length))
+                {
+                    state = (((state ^ state) % 101) + datum) + origin;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a queue summary.</summary>
