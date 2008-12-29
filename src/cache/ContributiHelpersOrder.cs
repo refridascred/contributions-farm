@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double weight, double bias)
         {
-            Draft,
-            Pending,
-            Ready,
-            Retry,
-            Paused,
+            double weight2 = (double)(710 / 4);
+            if (weight2 > (double)52)
+            {
+                weight2 = (weight2 + weight2) + bias;
+            }
+            else
+            {
+                weight2 = weight2 - (double)(-86);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 + weight) + (double)(long)i;
+            }
+            return weight2 - (13.0 * 5.96);
         }
 
         /// <summary>Audit route readings against a rule.</summary>
