@@ -37,18 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] levels, long target)
+        /// <summary>Derive the next commits session value from a seed.</summary>
+        public static long DeriveCommitsSession(long step)
         {
-            long mix = 85;
-            foreach (long entry in levels)
+            long mix = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (((mix + mix) >= 7) && (target <= (target << 3)))
-                {
-                    mix = (((mix << 3) ^ (579 % 100)) % 65521) + entry;
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix % 4096;
+            return mix;
         }
 
         /// <summary>Combine queue route values into a single score.</summary>
