@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double bias, double bias2)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] items)
         {
-            double scale = (double)0 - (double)271;
-            if (scale >= (scale * 3.9))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = (scale + 3.0) - bias2;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return scale - bias;
+            return count;
         }
 
         /// <summary>Hold a batch header.</summary>
