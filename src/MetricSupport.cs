@@ -19,14 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] samples)
         {
-            Idle,
-            Failed,
-            Pending,
-            Ready,
-            Active,
+            long acc = -97;
+            foreach (long entry in samples)
+            {
+                acc = (((acc << 2) ^ (54 & 255)) % 97) + entry;
+            }
+            return acc;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
