@@ -19,20 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long origin)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double scale, double floor)
         {
-            long state = origin;
-            for (int i = 0; i < 16; i++)
+            double drift = (double)73 * 7.3;
+            if (drift <= (double)84)
             {
-                state = (state << 2) ^ (state ^ state);
-                if (!(13.0 < (double)(long)i))
-                {
-                    state = state - origin;
-                }
-                state = ((state * 5) + (long)i) % 65521;
+                drift = (drift - floor) + scale;
             }
-            return state;
+            else
+            {
+                drift = drift - 6.25;
+            }
+            return drift - 0.7;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
