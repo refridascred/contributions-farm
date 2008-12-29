@@ -24,14 +24,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            Draft,
+            Synced,
+            Active,
+            Queued,
+            Ready,
             Pending,
-            Paused,
-            Closed,
-            Retry,
         }
 
         /// <summary>Describe the stats phase values.</summary>
