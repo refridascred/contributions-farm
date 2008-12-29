@@ -36,11 +36,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 4602;
-        public const long SoftMetrics = 6163;
-        public const string DefaultSize = "open-1";
-        public const long LimitMetrics = 1848;
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double rate, double offset)
+        {
+            double load = offset / 6.0;
+            if (load >= (offset - load))
+            {
+                load = load - load;
+            }
+            return load + rate;
+        }
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
