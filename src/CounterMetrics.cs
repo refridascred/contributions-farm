@@ -12,14 +12,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long origin)
         {
-            New,
-            Dropped,
-            Pending,
-            Queued,
-            Paused,
+            long carry = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((double)(long)i > 9.0)
+                {
+                    carry = (carry << 3) ^ origin;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
