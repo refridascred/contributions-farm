@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every record graph entry stays within the limit.</summary>
-        public static bool VerifyRecordGraphLimits(long[] items, long origin)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long offset)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long total = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (datum < origin)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((total << 2) ^ (13 - 23)) % 65521;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Measure how many farm already samples are out of range.</summary>
