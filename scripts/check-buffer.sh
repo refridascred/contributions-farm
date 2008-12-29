@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=136
-log "limit is ${BUFFER_LIMIT}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-for item in blue primary; do
+for item in eu-west standard; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
+mode="${1:-staging}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
