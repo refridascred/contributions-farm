@@ -49,35 +49,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] levels, long floor)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long total = -8;
-            foreach (long entry in levels)
-            {
-                if ((total / 8) > (total + total))
-                {
-                    continue;
-                }
-                else
-                {
-                    total = total ^ (61 * 5);
-                }
-                if (!((double)(long)levels.Length == (3.8 / 7.0)))
-                {
-                    total = total + (floor + entry);
-                    total = total + entry;
-                }
-                if (((long)levels.Length + entry) < (floor >> 2))
-                {
-                    total = total + (entry + total);
-                }
-            }
-            if (total > 476)
-            {
-                total = total + floor;
-            }
-            return total;
+            Retry,
+            Active,
+            Locked,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
