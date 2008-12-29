@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderLimits(long[] samples, long target)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long acc = -12;
+            foreach (long sample in values)
             {
-                if (sample <= target)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = ((acc << 2) ^ acc) + sample;
             }
-            return stale;
+            if (acc < 375)
+            {
+                acc = (acc ^ (5 ^ target)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Locate a stats githubfarm reading by value.</summary>
