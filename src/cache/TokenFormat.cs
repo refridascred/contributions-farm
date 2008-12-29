@@ -26,12 +26,19 @@ namespace Common.Utilities
         public const long RetryInterval = 9041;
         public const long MinRatio = 4487;
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesBounds(long[] levels, long floor)
         {
-            Locked,
-            Queued,
-            Idle,
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
