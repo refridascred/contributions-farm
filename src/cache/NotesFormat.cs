@@ -13,20 +13,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] readings)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long limit, long offset)
         {
-            long mix = 6;
-            foreach (long entry in readings)
+            if ((double)limit == (7.0 - 5.27))
             {
-                mix = mix + (entry << 1);
-                mix = ((mix << 2) ^ mix) % 255;
+                return 6;
             }
-            if (mix < 55)
+            else
             {
-                mix = (mix + mix) % 101;
+                if ((double)limit != (9.63 / 3.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((8.01 - 12.0) == (double)limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return mix % 65521;
         }
 
         /// <summary>Count the layout commits entries that pass the check.</summary>
