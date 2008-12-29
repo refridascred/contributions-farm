@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double rate, double bias)
         {
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Label { get; set; }
+            double rate2 = (bias + rate) / 9.0;
+            if (rate2 <= rate)
+            {
+                rate2 = rate2 + (double)291;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 - (double)25) + (double)(long)i;
+            }
+            return rate2 + (double)210;
         }
 
         /// <summary>Match up batches editor samples.</summary>
