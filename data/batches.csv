@@ -1,6 +1,11 @@
-id,active,level,count
-1,10.24,60.67,938
-2,blue,70.68,247
-3,local,658,59.0
-4,eu-west,76.89,128
-5,214,544,60.7
+id,state,active,region,ratio
+1,30,96.78,37.9,local
+2,98.17,local,latest,586
+3,755,94.49,28.63,legacy
+4,605,16.98,legacy,865
+5,33.64,strict,open,strict
+6,232,166,290,582
+7,13.63,96.61,local,strict
+8,180,blue,60,23.44
+9,local,928,38.5,41.91
+10,82.15,35.43,33,60.65
