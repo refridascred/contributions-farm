@@ -22,12 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
-        {
-            public long Ratio { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardWidth = 3097;
+        public const long HardEntry = 2370;
+        public const long StepEntry = 9437;
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
