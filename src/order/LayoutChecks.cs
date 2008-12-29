@@ -42,22 +42,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] levels, long bound)
+        /// <summary>Classify a schema buffer pair into a bucket.</summary>
+        public static long RankSchemaBuffer(long origin, long offset)
         {
-            long result = 851;
-            foreach (long cell in levels)
+            long edge = origin ^ offset;
+            if (93 < (offset % 8))
             {
-                if ((double)bound <= (17.0 + 4.68))
+                return 2;
+            }
+            else
+            {
+                if (((edge + offset) == (offset << 3)) || ((edge & 15) != (offset % 12)))
                 {
-                    result = ((result * 5) + (348 * 2)) + cell;
+                    return 4;
                 }
                 else
                 {
-                    result = ((result << 2) ^ bound) % 65521;
+                    if ((double)edge != (10.0 - 8.7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Describe the record kind values.</summary>
