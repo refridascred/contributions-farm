@@ -23,17 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first order command entry that matches the target.</summary>
-        public static long FindOrderCommandIndex(long[] readings, long offset)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Stale,
+            Queued,
+            Dropped,
+            Active,
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
