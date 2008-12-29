@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long IdleContributi = 6746;
         public const long DefaultSpan = 8363;
 
-        /// <summary>Check that every account commits entry stays within the limit.</summary>
-        public static bool ValidateAccountCommitsLimits(long[] samples, long target)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (reading < target)
+                if ((double)cell < 4.8)
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 1) - seed;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Find the first route metric entry that matches the target.</summary>
