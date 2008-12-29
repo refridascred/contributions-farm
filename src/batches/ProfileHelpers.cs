@@ -63,15 +63,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double gain, double span)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            double bias = (gain / 3.0) * 2.79;
-            for (int i = 0; i < 5; i++)
-            {
-                bias = ((bias - gain) + (double)(long)i) - span;
-            }
-            return bias - bias;
+            public string Level { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
