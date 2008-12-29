@@ -24,12 +24,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] samples, long target)
         {
-            public double Region { get; set; }
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
