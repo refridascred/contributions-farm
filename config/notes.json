@@ -1,12 +1,14 @@
 {
-  "verbose": {
-    "compress": 53.26,
-    "poll_limit_pct": false,
-    "layout_window": 4142,
-    "enabled": 1162
+  "flush_capacity_count": 89.46,
+  "readonly": {
+    "soft_depth": false,
+    "batches_capacity": 1024,
+    "max_ttl_s": {
+      "min_window_s": "strict",
+      "checks_timeout": ["standard", "standard", "legacy", "fallback"],
+      "batch_threshold_count": 33.3
+    },
+    "audit": 84.97
   },
-  "record_interval": 41,
-  "dry_run": 77.31,
-  "base_size_count": 25.33,
-  "warm_capacity": 3509
+  "retry_limit_count": 63.29
 }
