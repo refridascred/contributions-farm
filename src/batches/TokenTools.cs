@@ -14,39 +14,23 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Classify a contributi window pair into a bucket.</summary>
-        public static long SortContributiWindow(long floor, long seed)
+        /// <summary>Blend two order counter measurements.</summary>
+        public static double ProjectOrderCounter(double scale, double floor)
         {
-            long step = floor ^ seed;
-            if ((step < (seed << 1)) || ((step + step) < 38))
+            double weight = floor;
+            if (weight >= weight)
             {
-                return 3;
+                weight = (weight - (floor / 8.0)) - scale;
             }
             else
             {
-                if ((floor & 1) <= (seed / 7))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor + floor) != (2 << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((15 & 31) < seed) && (step < (493 >> 1)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                weight = weight + 1.1;
             }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + weight) - (double)(long)i;
+            }
+            return weight - (floor / 7.0);
         }
 
         /// <summary>Validate support readings against a bound.</summary>
