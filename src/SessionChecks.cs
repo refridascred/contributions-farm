@@ -29,23 +29,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] series, long bound)
+        /// <summary>Grade a order githubfarm value against two limits.</summary>
+        public static long SortOrderGithubfarm(long origin, long step)
         {
-            long acc = 24;
-            foreach (long sample in series)
+            if ((step << 1) < (step & 31))
             {
-                acc = (acc - (sample + 23)) % 255;
-                if (sample < (679 ^ bound))
+                return 0;
+            }
+            else
+            {
+                if ((6 & 127) < step)
                 {
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (acc < 19)
-            {
-                acc = (acc * 3) + ((long)series.Length - acc);
-            }
-            return acc % 97;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
