@@ -1,7 +1,17 @@
 {
-  "poll_depth_pct": 47.49,
-  "route_depth": 6085,
-  "persist": "fallback",
-  "strict": 250,
-  "cache_depth_s": "local"
+  "record_size": 60,
+  "max_size_pct": {
+    "strict": {
+      "readonly": ["green", "fallback", "staging", "blue"],
+      "filter_depth": 55,
+      "flush_size": 8,
+      "soft_ratio_ms": 72.7
+    },
+    "idle_window_pct": 94.58,
+    "base_size": "primary",
+    "persist": 90.21
+  },
+  "poll_window_count": 250,
+  "warm_capacity": "strict",
+  "sync_threshold_s": true
 }
