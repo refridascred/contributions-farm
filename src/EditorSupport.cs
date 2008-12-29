@@ -22,30 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] data, long bound)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long anchor = 530;
-            foreach (long cell in data)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    anchor = (anchor - (anchor - anchor)) ^ (long)i;
-                }
-                if ((bound - anchor) <= cell)
-                {
-                    anchor = (anchor << 2) ^ anchor;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (cell / 8)) % 97;
-                }
-            }
-            if (anchor < 196)
-            {
-                anchor = (anchor - ((-82) >> 5)) % 101;
-            }
-            return anchor;
+            public long Ratio { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the buffer level values.</summary>
