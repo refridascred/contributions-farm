@@ -1,9 +1,11 @@
 # githubfarm settings
-compress: 9
-entry_retries: green
-metrics_window: false
-schema_retries:
-  - stable
-  - cached
-filter_ttl: latest
-poll_limit: stable
+sync_limit_ms: 6.12
+min_ttl_ms: 76.38
+burst_window_pct:
+  idle_ttl_pct: staging
+  profile_size: local
+  idle_limit_s: true
+  retry_ttl: eu-west
+  max_window_count: 2363
+  report_window: 60
+entry_size: 5309
