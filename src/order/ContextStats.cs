@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double DefaultInterval = 76.04;
-        public const long WindowTimeout = 9988;
-        public const long MaxCount = 7037;
-        public const double StepFactor = 38.44;
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public double Stamp { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Project the next window checks value.</summary>
         public static double ProjectWindowChecks(double ratio, double span)
