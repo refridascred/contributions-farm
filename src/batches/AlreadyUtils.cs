@@ -43,12 +43,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 5221;
-        public const double BurstBuffer = 29.94;
-        public const string HardFactor = "cached-v2";
-        public const long DefaultBuffer = 866;
-        public const long DefaultScore = 1475;
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!((long)i > acc))
+                {
+                    acc = (acc + (acc ^ 12)) % 97;
+                    continue;
+                }
+                acc = (acc + ((long)i >> 5)) % 1000;
+                acc = (acc + (acc ^ offset)) % 97;
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Adjust a queue token reading.</summary>
         public static double SmoothQueueToken(double weight, double bias)
