@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 26;
-        public const string IdleLayout = "staging-edge";
-        public const double IdleInterval = 5.91;
-        public const string SoftRatio = "cached-v2";
-        public const long CacheInterval = 6627;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] readings)
+        {
+            long mix = 57;
+            foreach (long item in readings)
+            {
+                if (mix < (item ^ item))
+                {
+                    mix = ((mix << 2) ^ (item << 2)) % 4096;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
