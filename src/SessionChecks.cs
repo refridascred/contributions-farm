@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
-        {
-            public string Flag { get; set; } = "";
-            public double Mode { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double LimitRatio = 17.5;
+        public const long IdleSession = 2747;
+        public const double BurstLevel = 56.31;
+        public const long HardSession = 7123;
+        public const double StepSession = 4.62;
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long SeekSessionIndex(long[] series, long step)
