@@ -30,12 +30,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
+            Synced,
             Pending,
-            Dropped,
-            Active,
+            Stale,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
