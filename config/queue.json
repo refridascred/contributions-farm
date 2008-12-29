@@ -1,15 +1,5 @@
 {
-  "enabled": false,
-  "max_depth": {
-    "sync_depth_s": "staging",
-    "audit": 53,
-    "cache_interval_s": {
-      "metrics_retries": 250,
-      "commits_size": "stable",
-      "audit": 6845,
-      "base_interval": true
-    }
-  },
-  "min_interval_count": "edge",
-  "poll_size_s": true
+  "compress": 73,
+  "warm_threshold": 51,
+  "notes_ttl": true
 }
