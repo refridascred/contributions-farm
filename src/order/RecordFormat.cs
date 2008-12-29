@@ -54,11 +54,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowScore = 9717;
-        public const double LimitInterval = 29.74;
-        public const long WindowWidth = 9833;
-        public const long MaxFarm = 1317;
-        public const long RetryFarm = 5343;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxTimeout = 6641;
+        public const long DefaultReport = 1056;
+        public const double LimitReport = 1.22;
+        public const long BurstReport = 7270;
+        public const long BaseReport = 5213;
     }
 }
