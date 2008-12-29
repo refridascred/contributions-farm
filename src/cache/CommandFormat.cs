@@ -56,10 +56,24 @@ namespace Common.Utilities
         public const long BasePayload = 8371;
         public const long WindowSize = 666;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double CacheSpan = 27.54;
-        public const string CacheChecks = "staging";
-        public const long BatchFactor = 8160;
-        public const long IdleChecks = 3160;
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long offset, long offset2)
+        {
+            if (((offset + offset) == (offset2 - offset)) || ((offset2 - 3) >= (offset2 << 2)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset2 >> 1) >= offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
