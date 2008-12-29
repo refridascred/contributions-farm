@@ -30,11 +30,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] levels)
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            long anchor = 686;
+            foreach (long sample in levels)
+            {
+                if (!(sample < (anchor + sample)))
+                {
+                    anchor = (anchor << 3) ^ (anchor * 5);
+                }
+                if ((sample / 8) <= (anchor << 1))
+                {
+                    anchor = (anchor ^ anchor) % 255;
+                }
+            }
+            if (anchor > 9)
+            {
+                anchor = anchor + (anchor * 3);
+            }
+            return anchor;
         }
 
         /// <summary>Define report limits and defaults.</summary>
