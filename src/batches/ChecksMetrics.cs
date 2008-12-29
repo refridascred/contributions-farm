@@ -24,19 +24,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutRange(long[] samples, long limit)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmHits(long[] series, long limit)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (entry >= limit)
+                if ((double)limit > (1.6 / 8.0))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 3) ^ sample;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
