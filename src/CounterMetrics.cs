@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] samples)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 4;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sum <= (entry & 1))
                 {
-                    if ((samples[i] - samples[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = sum + sum;
+                }
+                if ((double)sum < (double)entry)
+                {
+                    break;
                 }
             }
-            return hits;
+            if (sum < 0)
+            {
+                sum = ((sum * 2) + sum) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
