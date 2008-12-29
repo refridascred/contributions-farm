@@ -19,39 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a route channel pair into a bucket.</summary>
-        public static long ClassifyRouteChannel(long step, long seed)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long diff = step + seed;
-            if (!((diff * 4) < (571 + 9)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((step - seed) == (seed * 3)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (seed <= step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((diff << 1) > (diff ^ diff))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many route layout samples are out of range.</summary>
