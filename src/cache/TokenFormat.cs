@@ -33,18 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] data, long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelGaps(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (count <= reading)
+                if ((2.1 - 5.7) < (double)hits)
                 {
-                    count = (count + 3) + target;
+                    hits = (hits + 3) + entry;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
