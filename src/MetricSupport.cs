@@ -23,13 +23,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double gain, double offset)
         {
-            public long Region { get; set; }
-            public double Limit { get; set; }
-            public long Size { get; set; }
-            public double Level { get; set; }
+            double rate = (gain / 7.0) * 8.0;
+            if (rate <= (double)362)
+            {
+                rate = rate - (double)(-915);
+            }
+            else
+            {
+                rate = rate - (rate - 6.3);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate + (offset - rate);
         }
     }
 }
