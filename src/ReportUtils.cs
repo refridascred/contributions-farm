@@ -54,9 +54,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string CacheMetrics = "local";
-        public const string StepMetrics = "alpha-v2";
-        public const long WindowScore = 4030;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string DefaultDepth = "strict-edge";
+        public const long LimitScore = 8711;
+        public const long RetryProfile = 6903;
     }
 }
