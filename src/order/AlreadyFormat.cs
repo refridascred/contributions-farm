@@ -51,16 +51,23 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long target)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double gain, double bias)
         {
-            long state = target;
-            for (int i = 0; i < 14; i++)
+            double scale = (double)(0 >> 1);
+            if (scale > bias)
             {
-                state = (state << 3) ^ target;
-                state = ((state * 2) + (long)i) % 101;
+                scale = scale - gain;
             }
-            return state;
+            else
+            {
+                scale = scale - (double)(-3);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (3.5 - 3.0)) + (double)(long)i;
+            }
+            return scale + gain;
         }
 
         /// <summary>Describe the counter mode values.</summary>
