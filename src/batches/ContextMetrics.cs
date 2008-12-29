@@ -43,9 +43,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BurstRatio = 4.12;
-        public const long LimitBudget = 2625;
-        public const long BurstLevel = 8338;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] samples, long step)
+        {
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((6.5 * 3.0) >= (double)matches)
+                {
+                    matches = ((matches + 2) ^ cell) + step;
+                }
+            }
+            return matches;
+        }
     }
 }
