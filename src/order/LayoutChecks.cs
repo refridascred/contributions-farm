@@ -32,32 +32,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a schema buffer pair into a bucket.</summary>
-        public static long RankSchemaBuffer(long origin, long offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] levels)
         {
-            long edge = origin ^ offset;
-            if (93 < (offset % 8))
+            long result = 57;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((edge + offset) == (offset << 3)) || ((edge & 15) != (offset % 12)))
+                result = ((result << 3) ^ (reading * 2)) % 97;
+                if (reading > (long)levels.Length)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)edge != (10.0 - 8.7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    break;
                 }
             }
+            return result % 97;
         }
 
         /// <summary>Describe the record kind values.</summary>
