@@ -63,23 +63,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] items, long target)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (((double)seen == (2.8 - 8.48)) && (((entry << 1) > entry) || (seen > entry)))
-                {
-                    seen = (seen + 3) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double RetrySchema = 28.86;
+        public const string BurstSchema = "fallback-edge";
+        public const double CacheScore = 16.5;
+        public const long BatchSchema = 6780;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long CombineCounter(long[] readings, long seed)
