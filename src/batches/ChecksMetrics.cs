@@ -50,19 +50,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] items, long origin)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Dropped,
+            Synced,
+            Closed,
         }
     }
 }
