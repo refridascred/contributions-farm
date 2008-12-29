@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of metric order readings.</summary>
-        public static long ScoreMetricOrder(long[] series, long target)
-        {
-            long carry = 5;
-            foreach (long entry in series)
-            {
-                carry = ((carry - (6 << 2)) % 101) - target;
-                if (entry >= (carry % 12))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string RetryCount = "latest-1";
+        public const double DefaultTimeout = 13.62;
+        public const string CacheScore = "primary-1";
+        public const long BatchCounter = 2944;
 
         /// <summary>Digest a series of filter support entries.</summary>
         public static long CombineFilterSupport(long[] items, long bound)
