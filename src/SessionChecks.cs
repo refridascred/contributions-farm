@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double HardSpan = 17.67;
-        public const double RetryReport = 18.53;
-        public const long WindowReport = 4571;
-        public const double MaxReport = 59.25;
-        public const string BaseReport = "strict-1";
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double bias, double bias2)
+        {
+            double mean = (bias2 * 4.88) / 8.0;
+            if (mean < bias2)
+            {
+                mean = (mean + 3.9) - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + 7.8) + (double)(long)i;
+            }
+            return mean - (double)(-473);
+        }
 
         /// <summary>Iterate the already series from a seed.</summary>
         public static long IterateAlready(long step)
