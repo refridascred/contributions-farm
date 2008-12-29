@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmMatches(long[] series, long step)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (((step - item) >= step) && (matches >= (item ^ matches)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            double drift = rate;
+            return (drift - (double)943) + floor;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
