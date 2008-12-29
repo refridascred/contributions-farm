@@ -19,18 +19,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] data)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportRange(long[] values, long bound)
         {
-            long acc = 6;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if (sample > (84 / 6))
+                if (reading <= bound)
                 {
-                    acc = (acc + (sample / 3)) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            return acc % 4096;
+            return ok;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
