@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long IdleRatio = 4119;
         public const long IdleLevel = 8412;
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double scale, double offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] series)
         {
-            double gain = 3.0;
-            if (gain >= scale)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                gain = (gain - 1.0) - offset;
+                if (((seen << 1) > (reading >> 5)) || ((768 << 1) == (reading + (long)series.Length)))
+                {
+                    seen = seen + 2;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (scale / 4.0)) + (double)(long)i;
-            }
-            return gain + (scale + gain);
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
