@@ -67,12 +67,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long target)
         {
-            Draft,
-            Queued,
-            Pending,
+            long state = target;
+            for (int i = 0; i < 17; i++)
+            {
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
