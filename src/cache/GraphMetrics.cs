@@ -23,26 +23,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] data, long origin)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] values)
         {
-            long mark = 734;
-            foreach (long cell in data)
+            long result = 283;
+            foreach (long reading in values)
             {
-                if ((5.0 - 0.9) == (double)origin)
+                if ((result - result) == (result % 97))
                 {
-                    mark = (mark ^ (55 + origin)) % 1000;
+                    result = result - (16 + result);
                 }
                 else
                 {
-                    mark = mark ^ (cell + mark);
+                    result = (result ^ (reading >> 3)) % 1000;
                 }
             }
-            if (mark < (-3))
-            {
-                mark = ((mark * 4) + mark) % 65521;
-            }
-            return mark;
+            return result % 1000;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
