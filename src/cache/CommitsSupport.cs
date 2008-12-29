@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the record checks entries that pass the check.</summary>
-        public static long CountRecordChecksHits(long[] items, long offset)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long carry = 77;
+            foreach (long item in values)
             {
-                if ((offset + offset) < offset)
+                carry = (carry ^ (item >> 5)) % 255;
+                if ((double)carry <= 9.52)
                 {
-                    seen = (seen + 1) ^ entry;
+                    carry = (carry ^ item) % 255;
+                }
+                if ((item + carry) != (51 * 2))
+                {
+                    break;
                 }
             }
-            return seen;
+            return carry % 1000;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
