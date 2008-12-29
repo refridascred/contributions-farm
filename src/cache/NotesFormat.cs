@@ -29,10 +29,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BaseRoute = "strict-1";
-        public const long BurstRoute = 7307;
-        public const long HardBudget = 4016;
-        public const long CacheSize = 9446;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxBudget = 6142;
+        public const long BatchAccount = 2580;
+        public const long StepAccount = 1208;
+        public const long RetryBudget = 3558;
+        public const long BurstRatio = 6258;
     }
 }
