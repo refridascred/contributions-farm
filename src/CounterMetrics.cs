@@ -12,18 +12,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] levels)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long mix = 4;
-            foreach (long cell in levels)
-            {
-                if ((cell - 9) <= (772 - cell))
-                {
-                    mix = mix + (mix << 3);
-                }
-            }
-            return mix % 1000;
+            Paused,
+            Queued,
+            Retry,
+            Failed,
+            Idle,
         }
 
         /// <summary>Validate record readings against a bound.</summary>
