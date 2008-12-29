@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] levels, long limit)
-        {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 5338;
+        public const long DefaultSchema = 9420;
+        public const double LimitSchema = 30.3;
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
