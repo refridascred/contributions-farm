@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double StepDepth = 77.72;
-        public const string CacheWidth = "standard-edge";
-        public const long LimitChannel = 6976;
-        public const long MaxChannel = 2004;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] levels, long limit)
+        {
+            long carry = 8;
+            foreach (long item in levels)
+            {
+                carry = carry ^ item;
+            }
+            if (carry < 31)
+            {
+                carry = ((carry << 3) ^ (limit - limit)) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long PairCacheCount(long[] samples)
