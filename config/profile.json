@@ -1,5 +1,8 @@
 {
-  "payload_window": "cached",
-  "audit": 32,
-  "warm_ttl": [67, 129]
+  "record_ratio": "fallback",
+  "cache_delay_ms": "edge",
+  "batch_depth_s": [212, 384, 408, 87],
+  "account_retries": false,
+  "counter_timeout": true,
+  "editor_limit": ["eu-west", "open"]
 }
