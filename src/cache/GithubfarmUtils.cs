@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] values)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileOutliers(long[] levels, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(((tally - cell) <= tally) && ((cell - (long)levels.Length) == (tally + 153))))
                 {
-                    if ((values[i] ^ values[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 2) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
