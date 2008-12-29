@@ -1,5 +1,11 @@
 # entry settings
-warm_depth_pct: 4229
-min_ratio: 46.48
-max_window_s: 88.81
-base_capacity_ms: 5334
+default_window_count: 250
+schema_depth:
+  enabled: fallback
+  compress: 19
+  readonly: 917
+  payload_interval: 100
+  schema_ratio: standard
+persist: false
+retry_size: 9614
+warm_capacity_pct: 44
