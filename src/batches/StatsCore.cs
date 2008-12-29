@@ -62,14 +62,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            Dropped,
+            Synced,
             Closed,
+            Idle,
             Pending,
             Queued,
-            Idle,
         }
 
         /// <summary>Hold a schema info.</summary>
