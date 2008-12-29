@@ -24,13 +24,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Find the first githubfarm report entry that matches the target.</summary>
+        public static long LocateGithubfarmReportIndex(long[] readings, long limit)
         {
-            Paused,
-            Ready,
-            Synced,
-            Queued,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= limit) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the counter state values.</summary>
