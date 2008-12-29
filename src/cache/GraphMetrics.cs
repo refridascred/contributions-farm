@@ -26,23 +26,23 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long origin)
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double weight, double span)
         {
-            long mark = origin;
-            for (int i = 0; i < 6; i++)
+            double mean = (double)(0 + 11);
+            if (mean < (double)726)
             {
-                if ((2 + mark) != (mark ^ origin))
-                {
-                    mark = (mark * 4) + mark;
-                }
-                else
-                {
-                    mark = (mark - origin) % 101;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
+                mean = mean - 2.0;
             }
-            return mark;
+            else
+            {
+                mean = mean - (span - mean);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - weight) + (double)(long)i;
+            }
+            return mean - weight;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
