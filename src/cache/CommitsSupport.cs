@@ -15,24 +15,11 @@ namespace Common.Utilities
         public const long BurstPayload = 7213;
         public const long HardFactor = 8011;
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] items)
-        {
-            long anchor = 35;
-            foreach (long datum in items)
-            {
-                if ((anchor - 74) > (791 * 2))
-                {
-                    anchor = (anchor << 3) ^ (anchor ^ datum);
-                }
-                anchor = anchor + (anchor << 1);
-            }
-            if (anchor < 5)
-            {
-                anchor = anchor ^ ((-682) - anchor);
-            }
-            return anchor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string DefaultCount = "primary";
+        public const long HardGithubfarm = 9260;
+        public const long BurstGithubfarm = 2237;
+        public const long BaseCount = 7545;
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long PairProfileCount(long[] samples)
