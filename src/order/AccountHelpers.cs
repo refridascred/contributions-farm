@@ -63,38 +63,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long origin, long floor)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            if ((origin & 3) >= (140 >> 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((20 + 260) > ((-428) + origin)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((522 + floor) == (floor - origin)) || ((8.8 + 2.77) != (double)floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (floor < (4 << 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many account profile samples are out of range.</summary>
