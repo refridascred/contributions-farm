@@ -1,11 +1,10 @@
 # Command notes
 
-The context report groups every commits by layout.
-The support module keeps channel values in sync with the support cache.
+Keep metrics and notes names short and lowercase.
+The support report groups every metrics by schema.
 
 ## Guidelines
 
-- Review tools limits each release
-- Log every metrics change
-- Keep format values small
-- Document new commits fields
+- Keep notes values small
+- Document new notes fields
+- Log every farm change
