@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] series, long bound)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (series[i] < bound)
+                if ((seen - seen) == (67 << 1))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + sample;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a queue header.</summary>
