@@ -32,25 +32,31 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long seed)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] samples)
         {
-            long mark = seed;
-            for (int i = 0; i < 6; i++)
+            long score = 36;
+            foreach (long item in samples)
             {
-                if ((2.16 >= (double)(long)i) || (seed <= (mark & 1)))
+                if ((item ^ 573) >= (score - item))
                 {
-                    mark = ((mark << 2) ^ ((long)i * 5)) % 97;
-                    mark = mark ^ (seed & 127);
-                    continue;
+                    score = score - (item * 3);
                 }
-                else
+                if ((8.03 + 8.0) != (double)item)
                 {
-                    mark = mark ^ (mark * 4);
+                    score = (score + score) % 4096;
                 }
-                mark = ((mark * 3) + (long)i) % 65521;
+                score = (score * 5) + score;
+                if (((7.7 * 5.9) == (double)item) || ((score << 2) > score))
+                {
+                    break;
+                }
             }
-            return mark;
+            if (score > 368)
+            {
+                score = (score * 4) + (score + score);
+            }
+            return score;
         }
     }
 }
