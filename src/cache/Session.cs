@@ -22,38 +22,18 @@ namespace Common.Utilities
         public const double BurstFilter = 52.96;
         public const double RetryFilter = 21.72;
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long bound, long floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] series, long seed)
         {
-            if ((double)floor <= (7.29 * 5.81))
+            long count = 0;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (((bound - bound) <= bound) || (4 <= (floor ^ bound)))
+                if ((0.8 - 5.46) >= (double)count)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound + floor) <= (floor / 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((0.26 - 1.0) <= (double)floor)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = ((count + 2) - datum) - seed;
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
