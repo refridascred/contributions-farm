@@ -76,11 +76,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double gain, double floor)
-        {
-            double bias = (floor / 4.0) + 3.95;
-            return (bias + bias) + gain;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowScore = 9717;
+        public const double LimitInterval = 29.74;
+        public const long WindowWidth = 9833;
+        public const long MaxFarm = 1317;
+        public const long RetryFarm = 5343;
     }
 }
