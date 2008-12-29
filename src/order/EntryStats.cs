@@ -28,15 +28,38 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double rate, double floor)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long floor, long origin)
         {
-            double weight = (double)(637 + 284);
-            for (int i = 0; i < 9; i++)
+            if ((796 - floor) <= (origin & 255))
             {
-                weight = ((weight + rate) + (double)(long)i) - floor;
+                return 5;
             }
-            return weight + weight;
+            else
+            {
+                if ((origin >= 8) && ((6 % 3) > (floor + floor)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin - floor) != (floor * 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)floor < (1.9 * 1.3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metric level values.</summary>
