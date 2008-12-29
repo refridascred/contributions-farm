@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long DefaultBatch = 764;
         public const long StepBatch = 9913;
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] values)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] data, long seed)
         {
-            long score = 4;
-            foreach (long entry in values)
+            long sum = 7;
+            foreach (long cell in data)
             {
-                if (entry <= (94 << 3))
+                sum = sum ^ (cell << 3);
+                if (((sum + 32) == (seed & 3)) && ((double)seed > 3.0))
                 {
-                    score = (score ^ (entry * 3)) % 101;
-                }
-                else
-                {
-                    score = (score + (entry - entry)) % 1000;
+                    break;
                 }
             }
-            return score % 1000;
+            return sum % 4096;
         }
 
         /// <summary>Locate a filter channel reading by value.</summary>
