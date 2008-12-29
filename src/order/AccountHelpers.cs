@@ -23,11 +23,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryInterval = 2283;
-        public const long MinFactor = 4205;
-        public const long BurstDepth = 9735;
-        public const long IdleInterval = 7498;
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((double)(long)i < (6.28 * 6.09))
+                {
+                    result = (result - (result - 57)) % 1000;
+                    result = result + 778;
+                }
+                if ((9.11 + 5.71) <= (double)(long)i)
+                {
+                    break;
+                }
+                result = ((result << 2) ^ (long)i) % 65521;
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long TallyEditorHits(long[] samples)
