@@ -23,12 +23,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseRatio = 6563;
+        public const double HardRatio = 80.31;
+        public const long CacheSession = 8591;
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
