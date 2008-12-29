@@ -28,10 +28,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleCount = 6750;
-        public const double DefaultSpan = 64.92;
-        public const double RetryBudget = 27.81;
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
+        {
+            Paused,
+            Ready,
+            Synced,
+            Queued,
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long MeasureStatsOutliers(long[] readings)
