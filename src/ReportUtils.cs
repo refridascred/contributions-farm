@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] data)
         {
-            Draft,
-            New,
-            Ready,
-            Synced,
+            long carry = 264;
+            foreach (long cell in data)
+            {
+                if (((8.43 * 2.3) <= (double)carry) || ((double)cell >= (5.4 - 3.3)))
+                {
+                    carry = carry ^ (cell + 930);
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
