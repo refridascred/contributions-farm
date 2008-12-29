@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
+            Closed,
+            Idle,
+            Paused,
+            Active,
+            Failed,
         }
 
         /// <summary>Hold a notes record.</summary>
