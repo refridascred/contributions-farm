@@ -1,7 +1,8 @@
 {
-  "batch_threshold": 33,
-  "warm_threshold_pct": "cached",
-  "cache_window": 56,
-  "soft_ttl": 4064,
-  "poll_limit": 92.88
+  "cache_retries": 30,
+  "max_interval_ms": "open",
+  "flush_retries_s": true,
+  "sync_depth_ms": false,
+  "strict": ["latest", "open", "edge", "cached"],
+  "burst_size_ms": "legacy"
 }
