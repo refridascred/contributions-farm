@@ -30,26 +30,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] levels)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueBounds(long[] values, long target)
         {
-            long anchor = 686;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (!(sample < (anchor + sample)))
+                if (value >= target)
                 {
-                    anchor = (anchor << 3) ^ (anchor * 5);
-                }
-                if ((sample / 8) <= (anchor << 1))
-                {
-                    anchor = (anchor ^ anchor) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            if (anchor > 9)
-            {
-                anchor = anchor + (anchor * 3);
-            }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Hold a route snapshot.</summary>
