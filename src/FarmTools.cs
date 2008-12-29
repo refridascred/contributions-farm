@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a payload notes figure with a bias.</summary>
-        public static double ScalePayloadNotes(double rate, double span)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] readings, long seed)
         {
-            double mean = rate;
-            if (mean < (span + span))
+            long total = 9;
+            foreach (long entry in readings)
             {
-                mean = mean + rate;
+                total = (((total << 2) ^ (total << 3)) ^ entry) + seed;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - rate) - (double)(long)i;
-            }
-            return mean + mean;
+            return total;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
