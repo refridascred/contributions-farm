@@ -1,7 +1,22 @@
 {
-  "token_size": 58.32,
-  "sync_interval_count": "edge",
-  "max_capacity_s": "standard",
-  "sync_ttl_count": "eu-west",
-  "max_window_ms": "standard"
+  "strict": {
+    "flush_retries": false,
+    "enabled": {
+      "burst_ttl_s": "strict",
+      "sync_depth_pct": [331, 420, 491],
+      "strict": 76.8
+    },
+    "min_retries": 13.23,
+    "tools_size": {
+      "metric_interval": 49,
+      "soft_ratio": "green",
+      "poll_delay_ms": false,
+      "burst_interval_pct": 2210,
+      "soft_size_s": "legacy"
+    },
+    "compress": 100
+  },
+  "hard_ratio_ms": 69.63,
+  "audit": "fallback",
+  "filter_threshold": "cached"
 }
