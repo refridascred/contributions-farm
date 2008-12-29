@@ -1,11 +1,9 @@
 {
-  "soft_size_count": 100,
-  "verbose": "legacy",
-  "base_ratio_count": {
-    "idle_threshold_count": 60,
-    "account_capacity": "blue",
-    "payload_size": 25.5,
-    "sync_ratio_ms": [401, 243, 193, 347]
+  "report_ttl": 6768,
+  "report_delay": {
+    "sync_timeout": "standard",
+    "context_size": 98,
+    "sync_ttl": "open"
   },
-  "sync_capacity_s": "standard"
+  "stats_delay": 6738
 }
