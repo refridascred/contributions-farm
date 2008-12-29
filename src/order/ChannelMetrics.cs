@@ -22,18 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] values)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long score = 1;
-            foreach (long datum in values)
-            {
-                if ((datum < (datum + score)) && ((double)datum < (2.1 / 4.0)))
-                {
-                    score = ((score * 4) + (score + datum)) % 65521;
-                }
-            }
-            return score;
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public bool Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
