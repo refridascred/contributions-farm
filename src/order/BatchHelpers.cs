@@ -27,19 +27,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] readings)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] data, long limit)
         {
-            long acc = 383;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long value in data)
             {
-                acc = (acc + (entry << 3)) % 101;
-                if (((entry ^ (long)readings.Length) < (entry + 58)) && ((entry * 5) < (entry << 1)))
+                if ((value - value) < 42)
                 {
-                    break;
+                    hits = (hits + 3) - limit;
                 }
             }
-            return acc % 97;
+            return hits;
         }
     }
 }
