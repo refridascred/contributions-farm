@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            Done,
-            Ready,
-            Idle,
-            Stale,
+            public double Flag { get; set; }
+            public bool Label { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a layout header.</summary>
