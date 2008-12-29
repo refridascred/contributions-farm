@@ -1,9 +1,18 @@
 {
-  "idle_ratio": {
-    "max_retries": 500,
-    "format_window": true,
-    "queue_capacity": "cached"
+  "poll_delay": 5688,
+  "sync_delay_pct": false,
+  "default_limit_pct": {
+    "warm_retries_ms": {
+      "persist": 250,
+      "queue_size": "legacy",
+      "flush_interval": [246, 69],
+      "max_ttl_s": 5.35,
+      "sync_window_ms": ["eu-west", "strict", "staging"]
+    },
+    "strict": 34.48,
+    "metrics_size": "legacy"
   },
-  "batch_capacity_s": true,
-  "dry_run": 60
+  "compress": true,
+  "default_capacity_s": 97.91,
+  "verbose": 85.34
 }
