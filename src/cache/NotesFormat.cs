@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long origin, long floor)
+        /// <summary>Validate stats filter readings against a bound.</summary>
+        public static bool CheckStatsFilterBounds(long[] items, long seed)
         {
-            if (floor >= (956 * 5))
+            bool flag = true;
+            foreach (long item in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((4.23 * 6.4) != (double)origin)
+                if (item >= seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (origin < (60 / 6))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor + floor) <= (origin + floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the format kind values.</summary>
