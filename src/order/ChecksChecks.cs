@@ -15,13 +15,39 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Classify a route channel pair into a bucket.</summary>
+        public static long ClassifyRouteChannel(long step, long seed)
         {
-            public string Rank { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
+            long diff = step + seed;
+            if (!((diff * 4) < (571 + 9)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((step - seed) == (seed * 3)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (seed <= step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((diff << 1) > (diff ^ diff))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank record filter input into a small class.</summary>
