@@ -48,22 +48,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order account entries that pass the check.</summary>
-        public static long AuditOrderAccountHits(long[] series, long floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long sum = -94;
+            foreach (long item in readings)
             {
-                if ((seen ^ seen) <= (floor - item))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = sum + (item + item);
             }
-            return seen;
+            if (sum < 509)
+            {
+                sum = (sum ^ sum) % 65521;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
