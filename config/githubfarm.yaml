@@ -1,36 +1,26 @@
 # githubfarm settings
-batch_threshold_ms:
-  flush_timeout_s: 13
-  persist: 94
-  commits_depth: green
-  format_retries: strict
-  batch_retries_ms: blue
-readonly: 1024
-format_ratio: standard
-commits_delay:
-  strict:
-    - 438
-    - 494
-    - 282
-    - 47
-  idle_retries_s: 84.7
-  poll_size: false
-  farm_window:
-    session_delay:
-      - 376
-      - 365
-      - 327
-    retry_capacity_pct:
-      - green
-      - legacy
-    base_ttl_ms: standard
-    soft_ratio_ms: true
-    sync_threshold: 77
-  min_timeout_ms:
-    - eu-west
-    - edge
-    - cached
-    - legacy
-  metrics_window:
-    - 485
-    - 184
+enabled:
+  cache_ratio: 4267
+  audit:
+    persist: 1.87
+    dry_run: 30
+    report_limit: legacy
+    hard_size_count:
+      - open
+      - fallback
+  strict: 8795
+  warm_ratio_pct:
+    - 75
+    - 91
+min_window_s: 250
+record_timeout:
+  verbose: stable
+  retry_retries_pct:
+    - blue
+    - fallback
+    - local
+  default_ttl_s: 11.32
+command_timeout:
+  warm_ttl_pct: local
+  hard_delay_pct: edge
+  base_timeout_count: false
