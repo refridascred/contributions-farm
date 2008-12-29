@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next batch route value from a seed.</summary>
-        public static long SeriesBatchRoute(long bound)
+        /// <summary>Accumulate route layout samples.</summary>
+        public static long CombineRouteLayout(long[] samples, long step)
         {
-            long acc = bound;
-            for (int i = 0; i < 14; i++)
+            long total = 8;
+            foreach (long datum in samples)
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                if ((7.12 * 6.1) <= (double)datum)
+                {
+                    total = (total * 4) + (step + 88);
+                }
+                if ((datum + total) <= (step + datum))
+                {
+                    total = (total << 3) ^ step;
+                }
+                if ((step >> 3) < (datum + total))
+                {
+                    break;
+                }
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
