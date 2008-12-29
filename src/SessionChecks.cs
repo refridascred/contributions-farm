@@ -39,10 +39,14 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double DefaultWidth = 66.6;
-        public const long CacheBudget = 3087;
-        public const long IdleStats = 325;
-        public const long LimitStats = 1091;
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
+        {
+            Paused,
+            Synced,
+            Pending,
+            Stale,
+            Dropped,
+        }
     }
 }
