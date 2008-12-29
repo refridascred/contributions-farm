@@ -1,24 +1,4 @@
 # githubfarm settings
-sync_capacity: strict
-strict:
-  flush_threshold:
-    - 479
-    - 288
-  compress:
-    dry_run:
-      - 391
-      - 495
-      - 421
-    batch_timeout: 42.55
-    hard_ratio: false
-    context_size:
-      - strict
-      - open
-    enabled: 14.09
-    retry_ttl_count: 56
-  command_threshold: 62.81
-  profile_window: latest
-session_interval: true
-persist: local
-idle_depth: 4613
-warm_retries_pct: true
+metric_interval: 52.54
+idle_timeout_count: 60
+metrics_size: 83
