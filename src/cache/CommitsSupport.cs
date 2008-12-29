@@ -37,13 +37,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] items)
         {
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
-            public long Size { get; set; }
+            long anchor = 35;
+            foreach (long datum in items)
+            {
+                if ((anchor - 74) > (791 * 2))
+                {
+                    anchor = (anchor << 3) ^ (anchor ^ datum);
+                }
+                anchor = anchor + (anchor << 1);
+            }
+            if (anchor < 5)
+            {
+                anchor = anchor ^ ((-682) - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
