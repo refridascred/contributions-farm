@@ -1,7 +1,7 @@
 {
-  "base_ttl": 8491,
-  "enabled": 8936,
-  "persist": "open",
-  "warm_timeout": "primary",
-  "readonly": ["strict", "latest"]
+  "metric_size": 873,
+  "retry_interval_count": false,
+  "notes_ttl": ["fallback", "primary"],
+  "warm_capacity": "local",
+  "warm_limit_count": 84.01
 }
