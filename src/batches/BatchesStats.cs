@@ -35,15 +35,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long limit)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] samples, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 10; i++)
+            long carry = 56;
+            foreach (long sample in samples)
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if (((0 & 63) < (3 + sample)) || ((sample ^ 98) == (288 << 1)))
+                {
+                    break;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (7 - bound);
+                }
+                if (((long)samples.Length / 5) <= (bound + carry))
+                {
+                    carry = (carry << 3) ^ bound;
+                }
             }
-            return anchor;
+            return carry % 1000;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
