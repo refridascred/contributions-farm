@@ -24,22 +24,21 @@ namespace Common.Utilities
         public const long SoftNotes = 570;
         public const long BatchNotes = 5903;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] series, long seed)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] items)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)hits < 2.8)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = ((hits + 1) + value) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] - items[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
