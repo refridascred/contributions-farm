@@ -45,17 +45,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] values, long step)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 377;
+            foreach (long datum in items)
             {
-                if ((values[i] >= step) && ((values[i] % 2) == 0))
+                if ((datum - anchor) > (anchor >> 4))
                 {
-                    return (long)i;
+                    anchor = (anchor - (45 + datum)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor ^ 7) % 97;
+                }
+                if ((anchor * 5) < (anchor * 3))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (anchor < 972)
+            {
+                anchor = ((anchor << 2) ^ 589) % 1000;
+            }
+            return anchor;
         }
     }
 }
