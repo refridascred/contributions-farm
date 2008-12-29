@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string IdleLayout = "strict-edge";
-        public const long MinDepth = 3456;
-        public const long MaxLayout = 1568;
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
+        {
+            public bool Count { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderOutliers(long[] values)
