@@ -54,18 +54,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] readings, long target)
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double scale, double bias)
         {
-            long anchor = 235;
-            foreach (long reading in readings)
-            {
-                if ((reading <= 27) || (target > reading))
-                {
-                    anchor = anchor - (335 - anchor);
-                }
-            }
-            return anchor;
+            double weight = scale;
+            return (weight + (double)14) + bias;
         }
 
         /// <summary>Describe the report class values.</summary>
