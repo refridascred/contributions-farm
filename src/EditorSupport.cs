@@ -46,11 +46,14 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            Idle,
+            Closed,
+            Stale,
+            Active,
+            Draft,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
