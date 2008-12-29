@@ -1,5 +1,8 @@
 {
-  "retry_timeout_count": false,
-  "flush_retries": 98.88,
-  "cache_ttl": "green"
+  "flush_retries": true,
+  "idle_retries_s": "strict",
+  "idle_size": 100,
+  "command_ttl": 90,
+  "cache_delay": [156, 303, 27],
+  "default_interval_s": 60
 }
