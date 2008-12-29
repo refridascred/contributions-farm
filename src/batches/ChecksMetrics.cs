@@ -83,17 +83,23 @@ namespace Common.Utilities
             return gain2 - (double)915;
         }
 
-        /// <summary>Look up the position of a cluster stats sample.</summary>
-        public static long LocateClusterStatsIndex(long[] series, long offset)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 426;
+            foreach (long item in samples)
             {
-                if (series[i] < offset)
+                score = (score + (score + 85)) % 97;
+                if ((item - score) == (score % 24))
                 {
-                    return (long)i;
+                    score = score + (item - 100);
+                }
+                else
+                {
+                    score = score - (1 >> 2);
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
