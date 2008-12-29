@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] levels, long limit)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long sum = 5;
-            foreach (long reading in levels)
-            {
-                if ((double)reading != (double)sum)
-                {
-                    long delta = 804 / 9;
-                    sum = ((sum - (1 + delta)) % 1000) + limit;
-                }
-                if ((8.44 + 3.21) == (double)reading)
-                {
-                    sum = (sum + reading) % 97;
-                }
-            }
-            return sum;
+            Locked,
+            New,
+            Closed,
+            Retry,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
