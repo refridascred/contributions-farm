@@ -21,14 +21,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long floor, long step)
         {
-            Failed,
-            Pending,
-            Ready,
-            Retry,
-            Closed,
+            if ((floor >> 4) < (366 << 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((6 * 2) < (step % 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)718 < (double)step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
