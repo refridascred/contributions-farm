@@ -1,9 +1,6 @@
-id,active,count
-1,cached,266
-2,latest,stable
-3,57.6,366
-4,stable,154
-5,94.24,942
-6,731,516
-7,67.41,744
-8,staging,714
+id,count,state
+1,edge,91
+2,23.77,7.29
+3,643,597
+4,22.47,local
+5,20.47,4.46
