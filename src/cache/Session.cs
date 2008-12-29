@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BatchAccount = 81.35;
-        public const long CacheTimeout = 3358;
-        public const double StepSpan = 1.32;
-        public const long CacheInterval = 4780;
-        public const string MaxAccount = "stable-edge";
+        /// <summary>Project the next stream stats value.</summary>
+        public static double ScaleStreamStats(double rate, double bias)
+        {
+            double mean = bias / 8.0;
+            if (mean > 8.44)
+            {
+                mean = mean - (rate / 3.0);
+            }
+            return mean + (mean + bias);
+        }
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
