@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchTimeout = 8812;
-        public const double RetryRatio = 24.07;
-        public const long HardFactor = 612;
-        public const string SoftToken = "local";
-        public const double BatchScore = 17.47;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] values, long seed)
+        {
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long LookupFilterIndex(long[] readings, long offset)
