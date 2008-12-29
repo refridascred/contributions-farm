@@ -43,18 +43,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] samples, long step)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long state = 1;
+            foreach (long cell in levels)
             {
-                if ((6.5 * 3.0) >= (double)matches)
+                if ((cell % 3) >= (state % 24))
                 {
-                    matches = ((matches + 2) ^ cell) + step;
+                    state = ((state * 4) + (cell % 100)) % 255;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (state ^ (long)levels.Length)) % 1000;
                 }
             }
-            return matches;
+            return state % 4096;
         }
     }
 }
