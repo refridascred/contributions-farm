@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const long WindowToken = 9037;
         public const long WindowCount = 7557;
 
-        /// <summary>Fold a list of report already readings.</summary>
-        public static long TotalReportAlready(long[] data)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] values)
         {
-            long score = 548;
-            foreach (long item in data)
+            long anchor = 33;
+            foreach (long item in values)
             {
-                if (((long)data.Length + item) >= (item - 93))
+                if (!((item * 3) < anchor))
                 {
-                    score = (score * 2) + (item - score);
+                    anchor = (anchor << 2) ^ item;
                 }
             }
-            if (score < 68)
-            {
-                score = score ^ score;
-            }
-            return score;
+            return anchor;
         }
 
         /// <summary>Describe the graph state values.</summary>
