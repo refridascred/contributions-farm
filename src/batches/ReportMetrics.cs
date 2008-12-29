@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterBounds(long[] readings, long origin)
         {
-            public bool Level { get; set; }
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Derive the next window stream value from a seed.</summary>
