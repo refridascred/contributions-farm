@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MaxOrder = 97.7;
-        public const long MinOrder = 6923;
-        public const long DefaultOrder = 9803;
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > floor) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long ScoreOrder(long[] series, long bound)
