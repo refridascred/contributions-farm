@@ -19,22 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batch report entries that pass the check.</summary>
-        public static long MeasureBatchReportMatches(long[] series, long step)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((cell + cell) > (738 - tally))
-                {
-                    tally = (tally + 1) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Derive the next commits session value from a seed.</summary>
