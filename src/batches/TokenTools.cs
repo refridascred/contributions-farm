@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] samples)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteBounds(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if (((double)(long)samples.Length < (double)18) && ((matches & 31) >= matches))
+                if (sample != seed)
                 {
-                    matches = (matches + 2) ^ reading;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Digest a series of command entries.</summary>
