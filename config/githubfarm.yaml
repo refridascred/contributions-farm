@@ -1,6 +1,13 @@
 # githubfarm settings
-base_delay_s: fallback
-flush_window_ms: 100
-retry_retries_s: true
-soft_limit_count: 65
-metric_retries: 49.59
+flush_window_pct: 30
+checks_size: 38.04
+persist:
+  base_window_pct: 1024
+  batch_size_ms:
+    - staging
+    - staging
+    - legacy
+  report_delay: 2612
+  entry_depth: 90
+verbose: standard
+burst_window: 4169
