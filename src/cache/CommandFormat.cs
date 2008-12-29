@@ -41,12 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public string Token { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Size { get; set; }
+            Synced,
+            Idle,
+            Failed,
         }
 
         /// <summary>Digest a series of counter entries.</summary>
