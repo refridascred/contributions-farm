@@ -22,17 +22,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] samples, long limit)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] readings, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 5) == 0))
+                if ((73 + datum) >= (step * 2))
                 {
-                    return (long)i;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
