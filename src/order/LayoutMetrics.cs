@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] samples)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] series)
         {
-            long sum = 42;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value >= (value << 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = (sum + (value << 2)) % 1000;
+                    if ((series[i] ^ series[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    sum = sum ^ (value << 1);
-                }
-                sum = (sum * 3) + (1 * 4);
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
