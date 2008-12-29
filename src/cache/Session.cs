@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double CacheInterval = 11.02;
-        public const string StepStats = "strict-edge";
-        public const double RetryStats = 23.06;
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
+        {
+            Done,
+            Queued,
+            Draft,
+            Locked,
+            Pending,
+        }
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long LookupLayoutIndex(long[] levels, long origin)
