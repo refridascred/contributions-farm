@@ -28,13 +28,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] items, long seed)
         {
-            public double Region { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            long result = 67;
+            foreach (long datum in items)
+            {
+                if (result >= datum)
+                {
+                    result = (result - result) % 255;
+                }
+                result = (result + 5) % 1000;
+                result = (result << 2) ^ (seed + seed);
+            }
+            return result;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
