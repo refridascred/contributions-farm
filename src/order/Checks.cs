@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first profile command entry that matches the target.</summary>
-        public static long FindProfileCommandIndex(long[] samples, long origin)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= origin) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Retry,
+            Dropped,
+            Active,
+            Ready,
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
