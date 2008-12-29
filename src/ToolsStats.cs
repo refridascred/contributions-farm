@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const double HardSpan = 67.24;
         public const long WindowFactor = 8921;
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double BlendRoute(double weight, double span)
+        /// <summary>Compare every pair of profile account readings.</summary>
+        public static long CompareProfileAccountCount(long[] series)
         {
-            double scale = weight;
-            if (scale >= (double)4)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale - span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale - weight;
-            }
-            return scale + (span - scale);
+            return seen;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
