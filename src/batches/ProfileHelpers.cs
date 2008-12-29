@@ -38,11 +38,13 @@ namespace Common.Utilities
         public const long RetryDepth = 6558;
         public const long BatchSession = 2845;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double DefaultMetrics = 26.23;
-        public const double BatchMetrics = 15.61;
-        public const long StepTimeout = 439;
-        public const long LimitMetrics = 8850;
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
+        {
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool VerifyClusterRange(long[] readings, long bound)
