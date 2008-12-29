@@ -34,21 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] series)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorHits(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((value + value) > (seen % 16))
                 {
-                    if ((series[i] ^ series[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the order account entries that pass the check.</summary>
