@@ -78,25 +78,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a tools graph value against two limits.</summary>
-        public static long SortToolsGraph(long offset, long bound)
-        {
-            if (offset >= (7 % 8))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((offset >> 4) == (offset + offset)) || ((offset >> 1) != (offset * 3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultScore = 71.33;
+        public const long IdleCount = 8659;
+        public const string CacheSupport = "primary";
 
         /// <summary>Scale a batches support figure with a bias.</summary>
         public static double SmoothBatchesSupport(double weight, double offset)
