@@ -1,5 +1,6 @@
 {
-  "max_capacity": 7759,
-  "cache_window": 5057,
-  "readonly": "latest"
+  "idle_size_pct": false,
+  "batches_retries": 66.96,
+  "sync_interval_ms": true,
+  "flush_retries": true
 }
