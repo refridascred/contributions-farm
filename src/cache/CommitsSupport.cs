@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] levels, long floor)
+        /// <summary>Count buffer commits pairs that satisfy a relation.</summary>
+        public static long MatchBufferCommitsCount(long[] levels)
         {
-            long acc = 612;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((18.0 - 6.48) <= (double)entry)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (acc ^ entry) % 65521;
-                }
-                if (((floor % 10) == (entry / 8)) || (floor < (floor & 127)))
-                {
-                    break;
+                    if ((levels[i] ^ levels[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc < 350)
-            {
-                acc = (acc - floor) % 1000;
-            }
-            return acc % 1000;
+            return tally;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
