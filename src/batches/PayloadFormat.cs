@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Retry,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double HardGithubfarm = 34.22;
+        public const double RetryGithubfarm = 39.76;
+        public const string BaseSpan = "strict-v2";
+        public const long DefaultDepth = 1028;
 
         /// <summary>Blend two window measurements.</summary>
         public static double BlendWindow(double weight, double bias)
