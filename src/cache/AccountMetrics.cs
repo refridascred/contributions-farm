@@ -20,17 +20,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] data, long limit)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 5;
+            foreach (long sample in items)
             {
-                if (data[i] < limit)
-                {
-                    return (long)i;
-                }
+                score = (score ^ (9 / 5)) + sample;
             }
-            return -1;
+            if (score > (-14))
+            {
+                score = score ^ (score << 1);
+            }
+            return score;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
