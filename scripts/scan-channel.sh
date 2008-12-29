@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary staging strict; do
+CHANNEL_LIMIT=107
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-eu-west}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in primary strict; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=78
-log "limit is ${CHANNEL_LIMIT}"
