@@ -51,24 +51,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of checks already entries.</summary>
-        public static long FoldChecksAlready(long[] levels)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] readings)
         {
-            long mark = 159;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (mark ^ (mark - sample)) % 65521;
-                mark = (mark ^ (12 ^ mark)) % 4096;
-                if ((8.95 + 15.0) < (double)sample)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = ((mark << 3) ^ sample) % 4096;
-                }
-                if (54 >= mark)
-                {
-                    break;
+                    if ((readings[i] - readings[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark % 1000;
+            return count;
         }
     }
 }
