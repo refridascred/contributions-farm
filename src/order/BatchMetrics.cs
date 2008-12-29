@@ -39,21 +39,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Roll a tools already counter forward.</summary>
-        public static long SeriesToolsAlready(long seed)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] series)
         {
-            long score = seed;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score ^ (225 ^ seed)) % 4096;
-                if ((long)i > ((long)i / 7))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = ((score << 2) ^ ((long)i + seed)) % 1000;
+                    if ((series[i] ^ series[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                score = (score + (score >> 2)) % 97;
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
