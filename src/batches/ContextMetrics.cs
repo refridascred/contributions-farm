@@ -20,12 +20,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string WindowSpan = "local-1";
-        public const long WindowSupport = 1198;
-        public const long DefaultBudget = 8010;
-        public const long BatchRatio = 7098;
-        public const double BurstSupport = 41.71;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] data)
+        {
+            long carry = 90;
+            foreach (long sample in data)
+            {
+                if (((double)carry > (3.8 * 4.88)) && ((6 + carry) >= (sample + sample)))
+                {
+                    carry = ((carry << 3) ^ sample) % 4096;
+                }
+            }
+            if (carry > 169)
+            {
+                carry = ((carry * 5) + (long)data.Length) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long ClassifyPayload(long limit, long offset)
