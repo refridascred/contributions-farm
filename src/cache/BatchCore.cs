@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowInterval = 57.65;
-        public const long HardSpan = 9901;
-        public const long HardSupport = 1790;
-        public const double BatchCount = 71.37;
-        public const long BatchSupport = 4523;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] samples, long limit)
+        {
+            long acc = -744;
+            foreach (long item in samples)
+            {
+                acc = ((acc << 3) ^ (acc + limit)) + item;
+            }
+            if (acc > 36)
+            {
+                acc = ((acc * 4) + (limit << 3)) % 255;
+            }
+            return acc;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long CountStreamOutliers(long[] samples)
