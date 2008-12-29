@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            public long Mode { get; set; }
-            public double Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Fold a list of order readings.</summary>
