@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long target, long offset)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] data, long limit)
         {
-            if (((offset - 38) == (offset + offset)) || ((double)offset == (1.2 + 0.1)))
+            long sum = 9;
+            foreach (long datum in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (offset >= (target * 5))
+                for (int i = 0; i < 2; i++)
                 {
-                    return 7;
+                    sum = ((((sum << 2) ^ ((long)i + sum)) % 4096) ^ datum) - limit;
                 }
-                else
+                if ((sum ^ 167) <= 91)
                 {
-                    return 2;
+                    sum = ((sum << 2) ^ (sum & 63)) % 65521;
                 }
             }
+            return sum % 97;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
