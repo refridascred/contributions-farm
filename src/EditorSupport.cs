@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long origin, long bound)
+        /// <summary>Adjust a stream checks reading.</summary>
+        public static double SmoothStreamChecks(double gain, double span)
         {
-            long gap = origin - bound;
-            if ((6 * 5) < (origin - 9))
+            double gain2 = (span + 14.0) + gain;
+            if (gain2 >= (double)489)
             {
-                return 1;
+                gain2 = gain2 - gain;
             }
             else
             {
-                if (!(9 >= (origin / 2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((gap >> 4) <= bound) || (3 > origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                gain2 = gain2 - gain;
             }
+            return gain2 + (gain * 5.8);
         }
 
         /// <summary>Describe the filter mode values.</summary>
