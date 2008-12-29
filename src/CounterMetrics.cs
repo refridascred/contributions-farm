@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the metrics state values.</summary>
