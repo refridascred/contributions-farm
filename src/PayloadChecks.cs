@@ -53,18 +53,27 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] items, long origin)
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long mix = 7;
+            foreach (long item in series)
             {
-                if (45 > (seen + cell))
+                mix = mix - ((-65) + mix);
+                if ((0 + item) != (mix ^ (-64)))
                 {
-                    seen = (seen + 1) - origin;
+                    mix = (mix * 3) + (mix * 4);
+                }
+                else
+                {
+                    mix = mix - (item + item);
                 }
             }
-            return seen;
+            if (mix < 3)
+            {
+                mix = (mix - (mix & 15)) % 101;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Blend two commits measurements.</summary>
