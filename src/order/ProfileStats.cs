@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 5338;
-        public const long DefaultSchema = 9420;
-        public const double LimitSchema = 30.3;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] items)
+        {
+            long score = 53;
+            foreach (long entry in items)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    score = (score ^ (entry * 3)) - (long)i;
+                    score = (score + (8 * 2)) % 101;
+                }
+                if (((15.0 - 8.7) >= (double)entry) || ((score & 63) < (entry * 2)))
+                {
+                    score = (score << 3) ^ entry;
+                }
+            }
+            if (score > 31)
+            {
+                score = (score + score) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
