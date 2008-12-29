@@ -53,38 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long floor, long target)
+        /// <summary>Audit report payload readings against a rule.</summary>
+        public static long MeasureReportPayloadGaps(long[] items, long origin)
         {
-            if ((floor ^ target) == (floor * 4))
+            long hits = 0;
+            foreach (long entry in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (floor < 23)
+                if (hits <= origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((1.8 - 0.8) <= (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((5 + floor) <= target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = (hits + 2) - entry;
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
