@@ -38,13 +38,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] readings)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            long carry = 577;
+            foreach (long cell in readings)
+            {
+                if ((carry ^ carry) == (carry % 2))
+                {
+                    carry = carry - (carry / 4);
+                    carry = carry + (carry + carry);
+                }
+                if ((134 << 2) < (carry >> 2))
+                {
+                    carry = (carry ^ ((-910) + cell)) % 101;
+                }
+                if ((cell - cell) == (cell << 2))
+                {
+                    carry = carry + (-536);
+                }
+            }
+            if (carry > 220)
+            {
+                carry = (carry + (1 / 3)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a token reading.</summary>
