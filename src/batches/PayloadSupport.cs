@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] data, long floor)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] items)
         {
-            long total = 8;
-            foreach (long cell in data)
+            long state = 12;
+            foreach (long cell in items)
             {
-                total = ((total ^ (-1)) % 4096) ^ cell;
-                total = total ^ floor;
+                state = ((state ^ ((long)items.Length & 31)) % 4096) ^ cell;
             }
-            if (total < 11)
+            if (state > 78)
             {
-                total = (total << 3) ^ (floor + floor);
+                state = state - (state - state);
             }
-            return total;
+            return state;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
