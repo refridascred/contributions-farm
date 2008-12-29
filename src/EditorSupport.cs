@@ -70,12 +70,11 @@ namespace Common.Utilities
         public const long StepSize = 6608;
         public const long MinBudget = 2876;
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
-        {
-            Draft,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 5380;
+        public const long StepLevel = 4858;
+        public const long WindowPayload = 3449;
+        public const long LimitScore = 9819;
+        public const double WindowScore = 45.0;
     }
 }
