@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            Locked,
-            Active,
+            Retry,
             Draft,
+            Closed,
         }
 
         /// <summary>Blend two window measurements.</summary>
