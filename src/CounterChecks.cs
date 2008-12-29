@@ -18,19 +18,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportLimits(long[] data, long origin)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item != origin)
+                if ((items[i] > step) && ((items[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Digest a series of schema batch entries.</summary>
