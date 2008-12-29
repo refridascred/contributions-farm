@@ -1,6 +1,10 @@
-id,weight,label,score,state
-1,primary,cached,251,open
-2,blue,424,fallback,standard
-3,42.91,116,green,994
-4,789,fallback,69.05,strict
-5,63.97,standard,803,66
+id,weight,active
+1,51.98,254
+2,223,8.95
+3,45.17,898
+4,standard,standard
+5,459,50.2
+6,standard,23.22
+7,staging,open
+8,409,48.99
+9,79.59,standard
