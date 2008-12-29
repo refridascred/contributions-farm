@@ -60,26 +60,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] readings)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] data, long origin)
         {
-            long sum = 26;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sum * 2) > (sum * 3))
+                if (data[i] < origin)
                 {
-                    sum = (((sum << 3) ^ (sum + sum)) % 97) - reading;
-                }
-                else
-                {
-                    sum = (sum - (2 ^ sum)) % 97;
+                    return (long)i;
                 }
             }
-            if (sum < 731)
-            {
-                sum = ((sum * 4) + (sum - sum)) % 255;
-            }
-            return sum % 97;
+            return -1;
         }
     }
 }
