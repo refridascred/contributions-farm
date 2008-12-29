@@ -40,12 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] readings, long target)
         {
-            Synced,
-            Pending,
-            Stale,
+            long anchor = 235;
+            foreach (long reading in readings)
+            {
+                if ((reading <= 27) || (target > reading))
+                {
+                    anchor = anchor - (335 - anchor);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
