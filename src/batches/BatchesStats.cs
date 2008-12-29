@@ -14,40 +14,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long offset, long limit)
-        {
-            long bound = offset + limit;
-            if (((bound + offset) <= (offset - limit)) || ((limit >> 5) != (bound + bound)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((limit + bound) <= (limit << 1)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound + limit) > offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((offset & 1) > (offset & 127)) || (offset < (bound & 255)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstSpan = 9716;
+        public const long RetryEditor = 2129;
+        public const long MinCount = 3888;
+        public const long StepEditor = 5843;
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
