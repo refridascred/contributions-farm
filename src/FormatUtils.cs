@@ -41,12 +41,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            Paused,
-            Closed,
-            Dropped,
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
