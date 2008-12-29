@@ -1,14 +1,12 @@
 # Batch notes
 
-When a route fails, the batch handler retries a few times before giving up.
-Use batch settings to tune how often commits data is refreshed.
-
-When a layout fails, the cache handler retries a few times before giving up.
-Each metric is validated before it reaches the channel queue.
+Keep queue and booking names short and lowercase.
+Run the schema check before changing any token limits.
+Keep schema and layout names short and lowercase.
 
 ## Guidelines
 
-- Review route limits each release
-- Prefer report defaults
-- Keep entry values small
-- Validate filter input early
+- Document new record fields
+- Prefer batch defaults
+- Validate buffer input early
+- Keep contributi values small
