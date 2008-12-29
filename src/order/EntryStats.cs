@@ -60,12 +60,31 @@ namespace Common.Utilities
         public const long IdleSession = 658;
         public const long BatchSession = 4931;
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long bound, long bound2)
         {
-            Dropped,
-            Ready,
-            Synced,
+            if ((bound / 2) > (3 % 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((bound2 % 8) > (bound - bound2)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((-80) ^ bound) > (bound / 6))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
