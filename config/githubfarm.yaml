@@ -1,4 +1,14 @@
 # githubfarm settings
-flush_ratio: fallback
-hard_capacity: 500
-retry_limit_s: 60.52
+min_threshold_s: legacy
+compress: 62.65
+default_size_count: primary
+batch_limit_s:
+  compress:
+    - 177
+    - 314
+  enabled: 8934
+  readonly: standard
+flush_ratio_pct:
+  - 343
+  - 347
+editor_ratio: 7959
