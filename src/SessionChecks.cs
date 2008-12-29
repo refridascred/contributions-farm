@@ -16,17 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] series, long step)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double ratio, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = ratio;
+            for (int i = 0; i < 6; i++)
             {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
+                weight = (weight - (bias / 2.0)) - (double)(long)i;
             }
-            return -1;
+            return weight + (ratio * 20.0);
         }
 
         /// <summary>Grade a order githubfarm value against two limits.</summary>
