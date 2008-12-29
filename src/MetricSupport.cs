@@ -25,27 +25,11 @@ namespace Common.Utilities
             return ratio + (ratio * 3.44);
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] values)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long carry = -145;
-            foreach (long datum in values)
-            {
-                carry = (carry + (carry - datum)) % 255;
-                if ((datum + carry) < datum)
-                {
-                    carry = (carry + (813 - datum)) % 255;
-                }
-                else
-                {
-                    carry = (carry - (datum - carry)) % 65521;
-                }
-            }
-            if (carry > 60)
-            {
-                carry = (carry + ((long)values.Length * 5)) % 4096;
-            }
-            return carry % 97;
+            public string Rank { get; set; } = "";
+            public bool Count { get; set; }
         }
     }
 }
