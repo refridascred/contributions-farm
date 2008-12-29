@@ -5,19 +5,34 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterRange(long[] levels, long bound)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] readings)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long total = 525;
+            foreach (long value in readings)
             {
-                if (sample <= bound)
+                if (!((13.0 + 0.66) == (double)total))
                 {
-                    flag = false;
-                    break;
+                    total = total + (total << 2);
+                }
+                if ((5.4 / 3.0) > (double)value)
+                {
+                    total = (total + total) % 255;
+                }
+                else
+                {
+                    total = (total - (4 + value)) % 4096;
+                }
+                if (969 < (value + total))
+                {
+                    total = ((total * 5) + (total * 5)) % 101;
                 }
             }
-            return flag;
+            if (total > 51)
+            {
+                total = (total << 3) ^ (0 * 3);
+            }
+            return total;
         }
 
         /// <summary>Hold a account stats.</summary>
