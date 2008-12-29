@@ -33,12 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 2407;
-        public const double RetryStats = 19.5;
-        public const double MinStats = 50.57;
-        public const long DefaultStats = 8491;
-        public const double BatchStats = 13.94;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseScore = 7834;
+        public const double SoftBudget = 73.47;
+        public const long LimitRatio = 7070;
+        public const long WindowProfile = 1877;
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
