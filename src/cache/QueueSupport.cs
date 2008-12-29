@@ -18,12 +18,32 @@ namespace Common.Utilities
         public const long WindowStats = 7074;
         public const long MaxInterval = 619;
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long offset, long target)
         {
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            long bound = offset + target;
+            if ((offset + bound) <= offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((offset << 2) >= target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(6.6 <= (double)offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
