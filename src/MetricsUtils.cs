@@ -20,13 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] samples)
         {
-            public long Count { get; set; }
-            public double Level { get; set; }
-            public double Limit { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (((reading - tally) <= tally) || (reading > tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
