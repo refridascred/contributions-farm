@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MaxGraph = 3.9;
-        public const double MinWidth = 46.36;
-        public const long BaseFactor = 3223;
-        public const double StepRatio = 6.88;
-        public const long LimitGraph = 5095;
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long PairFormatCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string BurstPayload = "standard";
