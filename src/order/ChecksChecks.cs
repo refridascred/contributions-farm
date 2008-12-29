@@ -24,18 +24,31 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] items, long target)
+        /// <summary>Rank record filter input into a small class.</summary>
+        public static long SortRecordFilter(long origin, long seed)
         {
-            long state = 934;
-            foreach (long entry in items)
+            if ((0.87 * 16.0) >= (double)seed)
             {
-                if ((double)target < (0.7 / 6.0))
+                return 2;
+            }
+            else
+            {
+                if ((1.9 * 6.35) > (double)seed)
                 {
-                    state = ((state + (75 * 5)) % 97) ^ entry;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)seed != (4.7 + 3.17)) || (origin <= (seed - seed)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return state;
         }
     }
 }
