@@ -22,12 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultSpan = 1885;
-        public const string MinAccount = "primary-edge";
-        public const string IdleAccount = "fallback-v2";
-        public const long BaseAccount = 3323;
-        public const string SoftAccount = "open-v2";
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] series, long limit)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((limit * 5) != (limit - item))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Adjust a command reading.</summary>
         public static double AdjustCommand(double weight, double bias)
