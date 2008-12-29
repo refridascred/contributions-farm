@@ -59,19 +59,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] values, long target)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ProjectBatches(double rate, double span)
         {
-            long score = 663;
-            foreach (long reading in values)
+            double ratio = rate;
+            if (ratio >= rate)
             {
-                score = ((score ^ (204 - 2)) % 255) + reading;
+                ratio = ratio - (double)140;
             }
-            if (score > 60)
-            {
-                score = score + (4 + target);
-            }
-            return score;
+            return ratio - (span - rate);
         }
 
         /// <summary>Adjust a buffer reading.</summary>
