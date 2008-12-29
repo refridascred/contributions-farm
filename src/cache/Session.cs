@@ -52,22 +52,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] items)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] samples, long limit)
         {
-            long total = 15;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)entry < (double)total)
+                if (samples[i] >= limit)
                 {
-                    total = ((total * 5) + (total << 2)) % 4096;
+                    return (long)i;
                 }
             }
-            if (total > (-63))
-            {
-                total = total - (total & 127);
-            }
-            return total % 1000;
+            return -1;
         }
     }
 }
