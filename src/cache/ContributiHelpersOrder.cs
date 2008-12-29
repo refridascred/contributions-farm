@@ -19,14 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Active,
-            Queued,
-            New,
-            Draft,
-            Retry,
+            public bool Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
