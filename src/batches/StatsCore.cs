@@ -41,15 +41,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
-        {
-            Stale,
-            Idle,
-            Done,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 6403;
+        public const double WindowLevel = 79.33;
+        public const long BurstSpan = 5160;
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long LocateQueueIndex(long[] samples, long offset)
