@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstScore = 4010;
-        public const long WindowSize = 9538;
-        public const double DefaultInterval = 34.5;
-        public const long WindowReport = 7384;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxLayout = 55.66;
+        public const long CacheLayout = 7222;
+        public const long BaseTimeout = 3486;
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long DeriveFilter(long origin)
