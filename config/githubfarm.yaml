@@ -1,29 +1,20 @@
 # githubfarm settings
-record_ttl:
-  profile_window: latest
-  warm_retries_pct: false
-  flush_retries_s:
-    flush_depth:
-      - 297
-      - 365
-      - 459
-    checks_retries:
-      - 469
-      - 487
-    audit:
-      - 236
-      - 127
-      - 150
-      - 463
-    default_threshold: 250
-  flush_depth_ms:
-    sync_window_ms: 250
-    warm_timeout_count: 22
-    warm_retries_count: open
-    retry_depth: stable
-  soft_depth_s: strict
-default_limit: fallback
-idle_ratio_ms: false
-persist: 30
-base_threshold_s: true
-burst_delay_pct: true
+compress:
+  - open
+  - cached
+  - standard
+  - edge
+readonly:
+  min_size_count: 1202
+  githubfarm_retries: 64.62
+  commits_depth:
+    - 162
+    - 160
+    - 482
+  account_delay:
+    - green
+    - open
+    - fallback
+    - fallback
+token_size: primary
+burst_interval_s: cached
