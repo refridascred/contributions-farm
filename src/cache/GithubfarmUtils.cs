@@ -34,20 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long bound)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBounds(long[] values, long seed)
         {
-            long mix = bound;
-            for (int i = 0; i < 24; i++)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (sample < seed)
                 {
-                    mix = ((mix + (bound - bound)) % 101) ^ (long)i2;
-                    mix = (mix - (mix / 2)) % 4096;
+                    ok = false;
+                    break;
                 }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Define token limits and defaults.</summary>
