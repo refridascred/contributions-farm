@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double gain, double floor)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] values)
         {
-            double weight = floor;
-            if (weight < (gain * 2.7))
+            long acc = 71;
+            foreach (long datum in values)
             {
-                weight = weight + (double)6;
+                acc = (acc - (137 ^ datum)) % 255;
             }
-            return weight - (floor - 12.0);
+            return acc;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
