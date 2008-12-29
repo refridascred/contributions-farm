@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionGaps(long[] data, long limit)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((-36) < (item * 3))
-                {
-                    seen = (seen + 1) + limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 6139;
+        public const long RetryLevel = 2285;
+        public const string LimitGithubfarm = "latest-1";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long MaxLevel = 5451;
