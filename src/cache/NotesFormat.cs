@@ -35,17 +35,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a commits graph sample.</summary>
-        public static long LocateCommitsGraphIndex(long[] series, long floor)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == floor) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Failed,
+            Draft,
+            Done,
+            Stale,
         }
 
         /// <summary>Count the layout commits entries that pass the check.</summary>
