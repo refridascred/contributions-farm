@@ -36,22 +36,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] samples, long floor)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((floor << 3) < floor)
-                {
-                    seen = (seen + 2) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Synced,
+            Stale,
+            Queued,
+            Idle,
+            Failed,
         }
 
         /// <summary>Hold a context entry.</summary>
