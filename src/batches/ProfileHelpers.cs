@@ -26,15 +26,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
-        {
-            New,
-            Locked,
-            Done,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MaxSpan = "stable";
+        public const long IdleInterval = 2104;
+        public const long RetryDepth = 6558;
+        public const long BatchSession = 2845;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportHits(long[] items, long offset)
