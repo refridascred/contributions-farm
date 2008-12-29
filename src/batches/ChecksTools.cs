@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Iterate the stats commits series from a seed.</summary>
+        public static long IterateStatsCommits(long seed)
         {
-            public bool Score { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
+            long anchor = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
