@@ -31,17 +31,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a token checks reading by value.</summary>
-        public static long LocateTokenChecksIndex(long[] series, long seed)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long floor, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((bound * 2) >= 152)
             {
-                if ((series[i] == seed) && ((series[i] % 5) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((30 + floor) >= (floor + bound))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
     }
 }
