@@ -14,15 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long target)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterMatches(long[] readings, long step)
         {
-            long mix = target;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                if (((double)seen < (6.95 / 3.0)) && ((double)cell < (3.18 * 3.58)))
+                {
+                    seen = (seen + 2) + step;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
