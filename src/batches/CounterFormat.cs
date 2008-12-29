@@ -13,18 +13,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] values, long step)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long limit)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long carry = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (((double)hits >= (double)(long)values.Length) || ((hits & 255) != (datum << 3)))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    hits = (hits + 3) + step;
+                    carry = (((carry << 3) ^ limit) % 255) ^ (long)i2;
                 }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Describe the notes mode values.</summary>
