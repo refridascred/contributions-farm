@@ -1,27 +1,4 @@
 # entry settings
-queue_timeout: strict
-account_ratio:
-  poll_timeout_pct: 30
-  soft_timeout:
-    enabled: 78.77
-    support_interval:
-      - fallback
-      - staging
-      - staging
-      - open
-    base_retries_ms:
-      - 438
-      - 458
-      - 281
-      - 144
-    default_ttl: 54.81
-    persist: 5186
-  min_interval_s: eu-west
-  min_delay_ms: cached
-  compress: true
-soft_threshold_pct: 250
-session_ttl:
-  - open
-  - local
-min_window_ms: 29
-verbose: eu-west
+hard_size_s: 100
+schema_timeout: 67.73
+soft_limit_s: true
