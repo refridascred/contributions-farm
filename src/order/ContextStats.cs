@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] items, long offset)
         {
-            public double Stamp { get; set; }
-            public bool Token { get; set; }
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((1.9 - 1.51) >= (double)seen)
+                {
+                    seen = ((seen + 1) + item) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
