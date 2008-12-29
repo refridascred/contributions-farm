@@ -14,12 +14,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string IdleWidth = "staging-edge";
-        public const double WindowFilter = 22.9;
-        public const long IdleFilter = 5000;
-        public const long StepDepth = 7480;
-        public const long HardFilter = 1877;
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
