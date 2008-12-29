@@ -23,15 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long target)
+        /// <summary>Count the metrics stats entries that pass the check.</summary>
+        public static long MeasureMetricsStatsMatches(long[] data, long bound)
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                result = ((result * 4) + (long)i) % 101;
+                if ((datum + datum) <= 93)
+                {
+                    tally = (tally + 1) - bound;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Rank token input into a small class.</summary>
