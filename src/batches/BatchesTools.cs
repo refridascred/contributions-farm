@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long MaxChannel = 5288;
         public const long SoftLevel = 7373;
 
-        /// <summary>Adjust a buffer entry reading.</summary>
-        public static double SmoothBufferEntry(double ratio, double offset)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterLimits(long[] series, long step)
         {
-            double scale = offset + (offset - offset);
-            if (scale > ratio)
+            bool valid = true;
+            foreach (long item in series)
             {
-                scale = scale + 1.9;
+                if (item > step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (double)(-67)) + (double)(long)i;
-            }
-            return scale + 8.9;
+            return valid;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
