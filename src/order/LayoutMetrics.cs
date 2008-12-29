@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the batches cluster entries that pass the check.</summary>
-        public static long CountBatchesClusterMatches(long[] readings, long offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((reading <= (reading - matches)) || ((matches % 100) == (offset / 2)))
+                if ((2 >> 3) >= (entry + seen))
                 {
-                    matches = matches + 1;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
