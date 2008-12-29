@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmHits(long[] levels, long floor)
         {
-            Idle,
-            Dropped,
-            Retry,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (!(((floor + 6) == (hits >> 1)) || ((double)item <= 2.0)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank session input into a small class.</summary>
