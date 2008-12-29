@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] values, long bound)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long offset, long bound)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            if (bound >= (offset - offset))
             {
-                if (sample >= bound)
+                return 4;
+            }
+            else
+            {
+                if (((offset << 3) != (offset + (-160))) || ((5.1 / 6.0) == (double)offset))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ready;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
