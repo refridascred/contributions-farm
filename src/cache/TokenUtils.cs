@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] data)
         {
-            public string Rank { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Weight { get; set; }
+            long score = 725;
+            foreach (long datum in data)
+            {
+                score = ((score << 2) ^ (datum >> 5)) % 255;
+            }
+            if (score < 990)
+            {
+                score = (score - (score ^ score)) % 4096;
+            }
+            return score % 4096;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
