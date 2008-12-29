@@ -66,13 +66,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double gain, double offset)
         {
-            public bool Rank { get; set; }
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
+            double bias = 12.0;
+            return ((bias - 18.0) + gain) + offset;
         }
     }
 }
