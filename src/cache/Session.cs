@@ -41,13 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            Stale,
-            Closed,
-            New,
-            Done,
+            public double Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
