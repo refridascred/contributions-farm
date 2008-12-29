@@ -1,7 +1,14 @@
 {
-  "hard_size_count": 51,
-  "burst_ratio": 13.92,
-  "idle_capacity_s": true,
-  "base_depth_ms": 4676,
-  "enabled": "green"
+  "idle_ttl": [155, 238, 391],
+  "enabled": {
+    "audit": "eu-west",
+    "sync_delay": "eu-west",
+    "poll_timeout": "blue",
+    "filter_size": ["cached", "open"],
+    "warm_capacity_s": 76.01,
+    "warm_delay_pct": "legacy"
+  },
+  "readonly": 89,
+  "flush_window_pct": 9,
+  "compress": [103, 104, 261, 165]
 }
