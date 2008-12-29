@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Fold a list of metric order readings.</summary>
+        public static long ScoreMetricOrder(long[] series, long target)
         {
-            Draft,
-            Pending,
-            Done,
-            Retry,
+            long carry = 5;
+            foreach (long entry in series)
+            {
+                carry = ((carry - (6 << 2)) % 101) - target;
+                if (entry >= (carry % 12))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of filter support entries.</summary>
