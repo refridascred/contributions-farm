@@ -36,22 +36,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] readings)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long target)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long total = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (((datum % 16) <= matches) || ((double)datum < (2.6 / 5.0)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Define session limits and defaults.</summary>
