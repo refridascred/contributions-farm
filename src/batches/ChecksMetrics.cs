@@ -44,19 +44,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] values, long step)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Idle,
+            Stale,
+            Draft,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
