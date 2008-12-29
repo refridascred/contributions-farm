@@ -68,20 +68,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long step)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long state = step;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((state & 7) < state)
-                {
-                    state = (state - (step + step)) % 1000;
-                    state = (state * 4) + (long)i;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            Retry,
+            Stale,
+            Locked,
         }
     }
 }
