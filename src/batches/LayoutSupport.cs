@@ -25,18 +25,15 @@ namespace Common.Utilities
         public const long SoftBudget = 4763;
         public const string BaseInterval = "primary-edge";
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] series)
+        /// <summary>Count the githubfarm batch entries that pass the check.</summary>
+        public static long TallyGithubfarmBatchOutliers(long[] levels, long target)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((sample + sample) > (target >> 1))
                 {
-                    if ((series[i] - series[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
             return tally;
