@@ -27,10 +27,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardFactor = 212;
-        public const string BaseBudget = "staging-v2";
-        public const double StepAccount = 0.13;
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
+        {
+            Draft,
+            Done,
+            Pending,
+            Queued,
+            Active,
+        }
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
