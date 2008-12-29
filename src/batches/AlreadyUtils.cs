@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string LimitFarm = "fallback-edge";
-        public const string WindowFactor = "fallback-1";
-        public const long MinFactor = 2856;
-        public const string LimitFactor = "local-edge";
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            New,
+            Dropped,
+            Synced,
+            Done,
+            Idle,
+        }
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool GuardGraphLimits(long[] samples, long step)
