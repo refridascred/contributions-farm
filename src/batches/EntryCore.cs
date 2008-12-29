@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxTimeout = 9241;
-        public const string MinToken = "primary-1";
-        public const string SoftToken = "local";
-        public const string RetryToken = "local-1";
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
+        {
+            public double Token { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Blend two format measurements.</summary>
         public static double AdjustFormat(double bias, double offset)
