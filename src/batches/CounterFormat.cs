@@ -42,22 +42,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account session entries that pass the check.</summary>
-        public static long MeasureAccountSessionOutliers(long[] levels)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (((30 - (long)levels.Length) > (entry / 8)) || ((entry + entry) <= (entry * 2)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Draft,
+            New,
+            Stale,
+            Synced,
+            Dropped,
         }
     }
 }
