@@ -40,10 +40,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowLevel = 7787;
-        public const long IdleCount = 5197;
-        public const long IdleGithubfarm = 5106;
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
+        {
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long WindowGithubfarm = 3766;
