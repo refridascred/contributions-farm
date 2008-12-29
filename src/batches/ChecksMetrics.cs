@@ -44,13 +44,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] levels)
         {
-            Dropped,
-            Idle,
-            Stale,
-            Draft,
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
