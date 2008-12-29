@@ -1,13 +1,17 @@
 # support settings
-support_ttl:
-  verbose: strict
-  poll_ttl_s:
-    - 329
-    - 309
-    - 15
-  min_interval_ms: 17.67
-  dry_run: 3221
-  retry_interval: 54
-default_window: blue
-support_window: 60
-farm_threshold: true
+sync_ttl_count: false
+strict: 60
+warm_depth_pct:
+  - 116
+  - 392
+support_capacity:
+  command_limit: standard
+  strict: 60
+  poll_window_ms: green
+  retry_delay_count: 32
+flush_ttl_s:
+  - fallback
+  - primary
+  - eu-west
+  - latest
+persist: 1077
