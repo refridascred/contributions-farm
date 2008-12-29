@@ -66,38 +66,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a githubfarm layout pair into a bucket.</summary>
-        public static long GradeGithubfarmLayout(long origin, long target)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            if ((1 % 3) <= target)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target / 4) < (631 + target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((5.0 / 3.0) > (double)origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin << 2) != (origin + origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Ready,
+            Pending,
+            Done,
         }
     }
 }
