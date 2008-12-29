@@ -45,12 +45,21 @@ namespace Common.Utilities
         public const long RetryFarm = 8984;
         public const long StepInterval = 8151;
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Match up filter format samples.</summary>
+        public static long OverlapFilterFormatCount(long[] items)
         {
-            Closed,
-            Ready,
-            Queued,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
