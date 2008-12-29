@@ -55,13 +55,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            Ready,
-            Pending,
-            Active,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 6912;
+        public const string RetryInterval = "primary-v2";
+        public const long DefaultSupport = 3518;
+        public const long WindowSupport = 5674;
+        public const long MinSupport = 680;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long CountProfileGaps(long[] readings)
