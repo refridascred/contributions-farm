@@ -33,14 +33,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportMatches(long[] values, long target)
         {
-            Locked,
-            New,
-            Queued,
-            Active,
-            Ready,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((((double)matches <= (double)sample) || ((target / 2) <= (matches & 127))) && ((double)(long)values.Length >= (1.2 / 9.0)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a schema format sample.</summary>
