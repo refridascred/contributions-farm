@@ -35,13 +35,18 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] readings)
         {
-            Draft,
-            Active,
-            Dropped,
-            New,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (seen >= (cell % 3))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
