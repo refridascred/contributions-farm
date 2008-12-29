@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double DefaultSize = 68.15;
-        public const long DefaultQueue = 5042;
-        public const long DefaultFactor = 2866;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] samples, long seed)
+        {
+            long carry = -192;
+            foreach (long item in samples)
+            {
+                if ((item - 11) >= (item ^ seed))
+                {
+                    carry = carry + (seed * 2);
+                    carry = ((carry << 3) ^ (seed * 5)) % 65521;
+                }
+                if (((item ^ seed) > (carry + seed)) || ((seed + seed) < 572))
+                {
+                    carry = (carry - item) % 255;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Grade a contributi token value against two limits.</summary>
         public static long RankContributiToken(long offset, long seed)
