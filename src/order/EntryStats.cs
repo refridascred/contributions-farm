@@ -74,21 +74,11 @@ namespace Common.Utilities
         public const long StepDepth = 1574;
         public const double MaxCount = 96.05;
 
-        /// <summary>Roll a batch tools counter forward.</summary>
-        public static long IterateBatchTools(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                bool valid = ((69 * 3) >= sum) && ((long)i > 0);
-                if (!valid)
-                {
-                    valid = (35 + sum) <= (origin + 5);
-                    valid = (origin % 60) != (origin + origin);
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 2308;
+        public const double StepEntry = 16.55;
+        public const double MinEntry = 59.72;
+        public const double RetryWidth = 86.41;
+        public const long BaseEntry = 3382;
     }
 }
