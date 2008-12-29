@@ -47,18 +47,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the profile report entries that pass the check.</summary>
-        public static long TallyProfileReportOutliers(long[] items, long offset)
+        /// <summary>Audit format context readings against a rule.</summary>
+        public static long AuditFormatContextMatches(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (((double)hits < (4.75 - 7.6)) || !(offset > (offset - offset)))
+                if ((step + reading) < tally)
                 {
-                    hits = (hits + 2) - sample;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
