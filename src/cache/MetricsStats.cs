@@ -41,10 +41,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstCount = 249;
-        public const long MinTimeout = 246;
-        public const long BurstFormat = 8325;
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
