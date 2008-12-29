@@ -34,31 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a payload contributi pair into a bucket.</summary>
-        public static long ClassifyPayloadContributi(long step, long floor)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] levels, long floor)
         {
-            if ((17.0 * 6.23) < (double)step)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step - 42) >= (782 + step))
+                if (!((502 >> 2) < (floor ^ count)) || (((count + floor) >= (1 + floor)) || ((730 % 7) < count)))
                 {
-                    return 4;
+                    count = (count + 3) + cell;
                 }
                 else
                 {
-                    if ((double)floor > (0.2 / 7.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
