@@ -45,22 +45,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate command batches samples.</summary>
-        public static long TallyCommandBatches(long[] samples)
-        {
-            long state = 881;
-            foreach (long cell in samples)
-            {
-                if ((double)state < 13.0)
-                {
-                    state = (state - (cell / 4)) % 101;
-                }
-            }
-            if (state < 41)
-            {
-                state = ((state << 2) ^ (777 + state)) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double HardSession = 8.26;
+        public const long CacheSession = 845;
+        public const long WindowSession = 8315;
+        public const string IdleSession = "primary-1";
     }
 }
