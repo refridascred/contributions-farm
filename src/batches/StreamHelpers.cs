@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] items)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
