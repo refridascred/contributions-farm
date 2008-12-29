@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchSpan = "legacy-edge";
-        public const long BurstDepth = 3320;
-        public const double WindowSize = 85.38;
-        public const double IdleChecks = 15.28;
-        public const double RetryChecks = 29.82;
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
+        {
+            Failed,
+            Closed,
+            Locked,
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long TotalSession(long[] samples, long step)
