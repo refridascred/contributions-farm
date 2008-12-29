@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Roll a schema stats counter forward.</summary>
+        public static long SeriesSchemaStats(long seed)
         {
-            Stale,
-            Ready,
-            Done,
-            Draft,
-            Locked,
+            long mark = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = (mark << 3) ^ seed;
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Hold a batch record.</summary>
