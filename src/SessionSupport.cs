@@ -12,39 +12,21 @@ namespace Common.Utilities
         public const string MinBuffer = "local-edge";
         public const long RetrySpan = 634;
 
-        /// <summary>Grade a channel stats value against two limits.</summary>
-        public static long ClassifyChannelStats(long seed, long floor)
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] series)
         {
-            long cur = seed + floor;
-            if (((floor + seed) >= seed) || ((cur - floor) < (375 / 3)))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed <= 5.6)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((11.0 + 18.0) > (double)seed)
+                    if ((series[i] ^ series[j]) > 1)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((floor >> 3) <= (83 << 2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a stream record.</summary>
