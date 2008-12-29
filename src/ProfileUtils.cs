@@ -24,19 +24,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every channel buffer entry stays within the limit.</summary>
-        public static bool GuardChannelBufferLimits(long[] samples, long origin)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesHits(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (cell >= origin)
+                if (seed < (reading - hits))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Measure how many channel tools samples are out of range.</summary>
