@@ -16,22 +16,11 @@ namespace Common.Utilities
         public const long MaxWidth = 8503;
         public const long BurstCounter = 4422;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] data)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((matches & 7) > value)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
