@@ -70,15 +70,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] levels, long seed)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] levels, long limit)
         {
-            long carry = 521;
-            foreach (long entry in levels)
+            long acc = 64;
+            foreach (long value in levels)
             {
-                carry = (((carry << 2) ^ (54 ^ carry)) ^ entry) - seed;
+                if (((double)value >= (18.0 + 2.12)) || (limit > value))
+                {
+                    acc = (acc * 4) + (acc + limit);
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (acc >> 1);
+                }
             }
-            return carry;
+            return acc % 4096;
         }
     }
 }
