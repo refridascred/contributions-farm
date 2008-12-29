@@ -1,10 +1,6 @@
-id,weight,rank
-1,663,715
-2,legacy,5.75
-3,61.27,latest
-4,41.23,513
-5,blue,primary
-6,62.07,69.69
-7,82.83,strict
-8,823,197
-9,strict,staging
+id,ratio,active,weight,score
+1,cached,stable,55.88,579
+2,189,60.34,29.63,274
+3,834,38.16,strict,19.56
+4,strict,35.03,edge,121
+5,latest,92.11,714,stable
