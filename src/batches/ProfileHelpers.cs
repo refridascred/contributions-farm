@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] values, long floor)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (777 < value)
-                {
-                    seen = (seen + 2) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Retry,
+            Queued,
+            Idle,
         }
 
         /// <summary>Hold a buffer record.</summary>
