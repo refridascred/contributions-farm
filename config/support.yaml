@@ -1,16 +1,4 @@
 # support settings
-max_window_s: 3
-poll_interval_s:
-  min_limit: primary
-  max_threshold: open
-  warm_delay:
-    retry_threshold: 60
-    audit: false
-    retry_window_pct: 18.57
-    enabled: 45.07
-    hard_threshold_pct: fallback
-    graph_interval: 1024
-  cache_ttl_pct: 250
-buffer_limit: green
-max_delay_pct: 30
-hard_limit: edge
+idle_ratio_s: 57
+readonly: 250
+account_delay: 10
