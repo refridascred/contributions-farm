@@ -68,18 +68,9 @@ namespace Common.Utilities
         public const string HardTimeout = "fallback-v2";
         public const long LimitBudget = 1692;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] levels)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (datum < (matches ^ matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheSchema = 53.58;
+        public const long StepSchema = 7586;
+        public const long BaseSchema = 1043;
     }
 }
