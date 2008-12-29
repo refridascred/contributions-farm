@@ -22,26 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] series)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] levels)
         {
-            long total = 963;
-            foreach (long datum in series)
+            long result = 504;
+            foreach (long item in levels)
             {
-                if ((0 ^ total) < (total - 50))
-                {
-                    total = ((total ^ (total / 2)) % 4096) ^ datum;
-                }
-                if ((total & 63) <= (total & 15))
-                {
-                    break;
-                }
+                result = (((result * 2) + (result - result)) % 101) + item;
             }
-            if (total > 730)
-            {
-                total = (total - (total - 12)) % 1000;
-            }
-            return total;
+            return result % 4096;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
