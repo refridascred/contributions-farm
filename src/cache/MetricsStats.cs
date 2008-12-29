@@ -25,10 +25,20 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstCount = 522;
-        public const double WindowBudget = 95.13;
-        public const double WindowSpan = 16.17;
+        /// <summary>Validate schema metric readings against a bound.</summary>
+        public static bool ValidateSchemaMetricLimits(long[] values, long target)
+        {
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long SeekCacheIndex(long[] levels, long floor)
