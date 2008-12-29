@@ -49,16 +49,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] levels, long limit)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] values)
         {
-            long mark = 33;
-            foreach (long value in levels)
+            long mix = 520;
+            foreach (long cell in values)
             {
-                mark = ((mark - (value * 4)) % 255) - limit;
-                mark = mark - (value - 90);
+                if ((1.63 * 1.5) >= (double)mix)
+                {
+                    mix = ((mix << 2) ^ 55) % 101;
+                    break;
+                }
+                mix = mix - (cell & 63);
             }
-            return mark % 65521;
+            return mix % 4096;
         }
 
         /// <summary>Check that every githubfarm counter entry stays within the limit.</summary>
