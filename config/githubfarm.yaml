@@ -1,6 +1,8 @@
 # githubfarm settings
-compress: edge
-audit:
-  - edge
-  - edge
-default_timeout: 95
+cache_interval: legacy
+strict: 1024
+warm_delay_ms:
+  - stable
+  - strict
+entry_ttl: 60
+base_retries_count: stable
