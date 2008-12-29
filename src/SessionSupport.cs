@@ -29,13 +29,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Audit already record readings against a rule.</summary>
+        public static long MeasureAlreadyRecordMatches(long[] data, long step)
         {
-            public bool Score { get; set; }
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
-            public string Size { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (((long)data.Length % 3) < (seen - seen))
+                {
+                    seen = ((seen + 3) - cell) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
