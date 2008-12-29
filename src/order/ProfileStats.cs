@@ -40,11 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowSize = 9458;
-        public const long IdleToken = 9431;
-        public const long BaseTimeout = 7156;
-        public const double MinLevel = 48.32;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] series)
+        {
+            long mark = 10;
+            foreach (long reading in series)
+            {
+                mark = ((mark ^ (974 & 15)) % 4096) ^ reading;
+            }
+            return mark;
+        }
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long DigestGraph(long[] levels, long step)
