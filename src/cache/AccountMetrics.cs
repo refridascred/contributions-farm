@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] levels)
         {
-            public string Stamp { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
+            long mark = 6;
+            foreach (long sample in levels)
+            {
+                mark = ((mark << 2) ^ (mark / 8)) + sample;
+                if ((mark ^ mark) < 26)
+                {
+                    break;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the entry phase values.</summary>
