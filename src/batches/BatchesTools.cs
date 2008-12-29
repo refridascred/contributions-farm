@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
-        {
-            public string Mode { get; set; } = "";
-            public bool Size { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 9544;
+        public const long HardCount = 8243;
+        public const long MaxChannel = 5288;
+        public const long SoftLevel = 7373;
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
