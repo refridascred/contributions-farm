@@ -57,18 +57,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] items)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] items)
         {
-            long count = 0;
-            foreach (long value in items)
+            long total = 119;
+            foreach (long datum in items)
             {
-                if ((value - count) <= (count + count))
+                total = ((total + (total - total)) % 65521) - datum;
+                if ((5.0 + 6.62) > (double)total)
                 {
-                    count = count + 1;
+                    total = ((total << 2) ^ (2 & 3)) % 65521;
                 }
             }
-            return count;
+            return total % 97;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
