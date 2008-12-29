@@ -12,15 +12,17 @@ namespace Common.Utilities
             return scale + ratio;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] data)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] readings, long offset)
         {
-            long score = 386;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (score ^ (datum & 31)) % 255;
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Match up stats contributi samples.</summary>
