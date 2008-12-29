@@ -93,28 +93,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cache window samples.</summary>
-        public static long FoldCacheWindow(long[] samples, long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] values)
         {
-            long acc = 158;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (!(0 >= ((-3) + floor)))
+                if ((sample - hits) > hits)
                 {
-                    acc = ((acc * 5) + (floor >> 4)) % 65521;
-                    acc = acc + (754 << 3);
-                    continue;
+                    hits = hits + 2;
                 }
-                if ((93 + reading) != (floor * 3))
+                else
                 {
-                    acc = (acc ^ (floor - floor)) % 97;
-                }
-                if ((acc + acc) < (reading / 4))
-                {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return acc;
+            return hits;
         }
     }
 }
