@@ -41,12 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] samples, long step)
         {
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Token { get; set; }
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Adjust a editor format reading.</summary>
