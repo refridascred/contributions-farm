@@ -1,14 +1,15 @@
 # entry settings
-batch_interval_pct: 1917
-persist:
-  - standard
-  - strict
-  - eu-west
-retry_ratio_count: 5940
-base_window:
+sync_depth_ms:
   - staging
   - green
-  - edge
-  - primary
-payload_delay: fallback
-context_size: standard
+  - latest
+  - latest
+sync_window_count: green
+warm_threshold:
+  - 177
+  - 143
+  - 7
+graph_threshold:
+  - 423
+  - 12
+session_delay: stable
