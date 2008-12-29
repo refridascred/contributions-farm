@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            Ready,
-            Locked,
-            Draft,
+            Paused,
+            Pending,
             Queued,
-            Stale,
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
