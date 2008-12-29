@@ -36,12 +36,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public bool Stamp { get; set; }
-            public long Label { get; set; }
-            public long Region { get; set; }
+            Pending,
+            Dropped,
+            Closed,
+            Paused,
         }
     }
 }
