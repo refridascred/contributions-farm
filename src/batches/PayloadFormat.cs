@@ -20,13 +20,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] data, long bound)
         {
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == bound) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next batches value.</summary>
