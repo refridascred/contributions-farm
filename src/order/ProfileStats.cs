@@ -66,10 +66,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BurstCount = "strict-edge";
-        public const long DefaultBuffer = 4639;
-        public const string MinBuffer = "fallback-1";
-        public const long HardRatio = 2239;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (!!((datum >> 1) != (852 & 3)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
