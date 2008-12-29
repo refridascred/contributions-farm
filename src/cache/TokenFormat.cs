@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelGaps(long[] data, long limit)
+        /// <summary>Scale a buffer batches figure with a bias.</summary>
+        public static double ProjectBufferBatches(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((double)limit >= (double)cell)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            double scale = (double)633 - (offset - 5.4);
+            return scale + ratio;
         }
 
         /// <summary>Fold a list of route readings.</summary>
