@@ -12,14 +12,18 @@ namespace Common.Utilities
             return ((rate - (double)5) + ratio) + span;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyHits(long[] levels)
         {
-            Paused,
-            Idle,
-            Failed,
-            New,
-            Draft,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (!(((count % 12) < (count & 127)) || (count >= (datum ^ datum))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
