@@ -51,19 +51,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] data, long offset)
-        {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 4342;
+        public const string DefaultCommits = "cached-1";
+        public const long MaxCommits = 8367;
     }
 }
