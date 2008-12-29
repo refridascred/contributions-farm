@@ -25,12 +25,33 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BaseBudget = 90.63;
-        public const long DefaultSize = 8840;
-        public const long BaseAlready = 3613;
-        public const long DefaultDepth = 1228;
-        public const long MinAlready = 7697;
+        /// <summary>Grade a layout order value against two limits.</summary>
+        public static long GradeLayoutOrder(long limit, long limit2)
+        {
+            long diff = limit + limit2;
+            if (limit2 >= (limit & 127))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit2 + 938) >= (diff % 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((diff < (limit << 1)) && (diff <= (limit2 / 8)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long SortEditor(long limit, long floor)
