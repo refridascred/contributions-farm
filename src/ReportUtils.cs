@@ -34,18 +34,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchBudget = 7526;
+        public const long WindowBatch = 4041;
+        public const long DefaultBatch = 3935;
+        public const double CacheCount = 24.44;
+        public const long RetrySize = 4184;
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long RollQueue(long offset)
