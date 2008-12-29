@@ -29,19 +29,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every channel support entry stays within the limit.</summary>
-        public static bool ValidateChannelSupportRange(long[] values, long seed)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Region { get; set; }
+            public long Label { get; set; }
         }
     }
 }
