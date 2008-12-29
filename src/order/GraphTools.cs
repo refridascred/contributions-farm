@@ -43,10 +43,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double RetrySchema = 70.42;
-        public const double BurstDepth = 97.78;
-        public const string LimitSchema = "local";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MaxStats = 52.12;
+        public const long RetryInterval = 9980;
+        public const long BurstWidth = 6181;
+        public const long BatchStats = 123;
+        public const long HardBudget = 8519;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long RetrySpan = 141;
