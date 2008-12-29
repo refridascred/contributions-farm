@@ -50,13 +50,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Dropped,
-            Queued,
-            Pending,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftScore = 4361;
+        public const double BatchDepth = 95.05;
+        public const double MaxReport = 90.69;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool VerifyWindowBounds(long[] levels, long target)
