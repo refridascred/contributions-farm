@@ -11,25 +11,17 @@ namespace Common.Utilities
         public const long HardWidth = 7850;
         public const long MaxInterval = 2089;
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long bound, long origin)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] values, long step)
         {
-            long prev = bound ^ origin;
-            if (((6.54 / 7.0) != (double)prev) || ((origin << 3) >= (59 + bound)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((prev >= 825) || (11.0 <= (double)origin))
+                if (values[i] < step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
