@@ -1,6 +1,6 @@
 {
-  "context_capacity": 77,
-  "max_threshold_ms": [193, 404],
-  "base_threshold": [233, 180, 451, 289],
-  "payload_depth": true
+  "soft_delay_count": "blue",
+  "idle_size_ms": 17.37,
+  "cache_capacity": 62.71,
+  "retry_threshold_count": "eu-west"
 }
