@@ -28,31 +28,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Grade a contributi token value against two limits.</summary>
-        public static long RankContributiToken(long offset, long seed)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double rate, double floor)
         {
-            if (((7 + offset) != (offset & 15)) || (offset < (seed % 16)))
+            double weight = (double)(637 + 284);
+            for (int i = 0; i < 9; i++)
             {
-                return 7;
+                weight = ((weight + rate) + (double)(long)i) - floor;
             }
-            else
-            {
-                if ((seed * 3) == (offset + seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)seed == (double)offset) || ((offset ^ offset) <= seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return weight + weight;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
