@@ -12,23 +12,22 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Project the next window checks value.</summary>
-        public static double ProjectWindowChecks(double ratio, double span)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelHits(long[] levels, long step)
         {
-            double load = (double)(43 ^ 6);
-            if (load <= (double)261)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                load = load - (ratio / 5.0);
+                if (!(((1.6 + 11.0) >= (double)(long)levels.Length) && (tally < (sample & 15))))
+                {
+                    tally = (tally + 1) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                load = load + (load - load);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - span) - (double)(long)i;
-            }
-            return load - (ratio + ratio);
+            return tally;
         }
 
         /// <summary>Iterate the buffer graph series from a seed.</summary>
