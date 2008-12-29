@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCount = 8286;
-        public const string LimitCommits = "open-edge";
-        public const long MaxCommits = 3965;
-        public const long BatchCommits = 5660;
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
