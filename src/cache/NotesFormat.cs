@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string RetryCount = "latest-1";
-        public const double DefaultTimeout = 13.62;
-        public const string CacheScore = "primary-1";
-        public const long BatchCounter = 2944;
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Synced,
+            Active,
+            Paused,
+        }
 
         /// <summary>Digest a series of filter support entries.</summary>
         public static long CombineFilterSupport(long[] items, long bound)
