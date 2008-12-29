@@ -72,12 +72,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Check that every githubfarm counter entry stays within the limit.</summary>
+        public static bool GuardGithubfarmCounterLimits(long[] readings, long bound)
         {
-            public long Label { get; set; }
-            public bool Limit { get; set; }
-            public string Token { get; set; } = "";
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Classify a githubfarm layout pair into a bucket.</summary>
