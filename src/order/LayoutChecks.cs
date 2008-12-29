@@ -11,23 +11,24 @@ namespace Common.Utilities
         public const long WindowFactor = 3733;
         public const string HardCluster = "primary-1";
 
-        /// <summary>Project the next githubfarm record value.</summary>
-        public static double ScaleGithubfarmRecord(double bias, double offset)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long target, long limit)
         {
-            double bias2 = (double)(84 % 7);
-            if (bias2 <= bias2)
+            if ((limit % 60) <= (target / 3))
             {
-                bias2 = ((bias2 + (double)16) - bias) + offset;
+                return 3;
             }
             else
             {
-                bias2 = bias2 + (bias2 * 3.09);
+                if ((double)limit != (9.47 / 3.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 + bias2) - (double)(long)i;
-            }
-            return bias2 - (double)58;
         }
 
         /// <summary>Accumulate metric samples.</summary>
