@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double ratio, double span)
         {
-            Locked,
-            New,
-            Closed,
-            Retry,
+            double rate = (double)0 / 6.0;
+            return ((rate - (double)5) + ratio) + span;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
