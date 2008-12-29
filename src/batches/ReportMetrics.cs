@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 7268;
-        public const long CacheQueue = 879;
-        public const double StepQueue = 30.88;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] readings)
+        {
+            long state = 531;
+            foreach (long value in readings)
+            {
+                state = (((state * 2) + (state % 2)) % 255) ^ value;
+            }
+            if (state < 832)
+            {
+                state = state ^ (state + (long)readings.Length);
+            }
+            return state % 4096;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BurstBatches = 3311;
