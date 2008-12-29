@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long step)
         {
-            public bool Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
+            long total = step;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((1 & 15) < (step * 2))
+                {
+                    total = (total - (total << 3)) % 101;
+                }
+                else
+                {
+                    long bound = ((long)i ^ step) % 10;
+                    total = total ^ (bound + bound);
+                }
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
