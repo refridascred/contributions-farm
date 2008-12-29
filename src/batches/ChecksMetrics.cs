@@ -22,14 +22,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] series)
         {
-            Locked,
-            Done,
-            Ready,
-            Closed,
-            Dropped,
+            long sum = 111;
+            foreach (long entry in series)
+            {
+                if (!((7 & 63) < (entry ^ sum)))
+                {
+                    sum = (sum + sum) % 255;
+                }
+                if (sum > (17 + entry))
+                {
+                    sum = (sum + entry) % 1000;
+                }
+                else
+                {
+                    sum = (sum * 3) + (sum + 762);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
