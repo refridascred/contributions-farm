@@ -1,8 +1,6 @@
 {
-  "retry_depth": 32.65,
-  "hard_size": [360, 368, 291, 314],
-  "record_delay": 80.15,
-  "max_limit": "legacy",
-  "base_capacity": 500,
-  "verbose": "stable"
+  "base_timeout_s": 67,
+  "window_capacity": true,
+  "verbose": 1024,
+  "account_interval": 3569
 }
