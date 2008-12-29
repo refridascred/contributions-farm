@@ -33,19 +33,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of schema batch entries.</summary>
-        public static long ScoreSchemaBatch(long[] data)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long result = 443;
-            foreach (long datum in data)
-            {
-                result = (((result * 4) + (result + result)) % 1000) + datum;
-            }
-            if (result < 3)
-            {
-                result = (result + 3) % 101;
-            }
-            return result;
+            Idle,
+            Retry,
+            Locked,
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
