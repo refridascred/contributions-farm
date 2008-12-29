@@ -22,32 +22,19 @@ namespace Common.Utilities
         public const long WindowStats = 7074;
         public const long MaxInterval = 619;
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long offset, long target)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] readings, long limit)
         {
-            long bound = offset + target;
-            if ((offset + bound) <= offset)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((offset << 2) >= target))
+                if (entry > limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!(6.6 <= (double)offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
