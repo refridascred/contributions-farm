@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmRange(long[] items, long floor)
+        /// <summary>Grade a order queue value against two limits.</summary>
+        public static long RankOrderQueue(long origin, long target)
         {
-            bool found = true;
-            foreach (long reading in items)
+            if (target <= origin)
             {
-                if (reading > floor)
+                return 5;
+            }
+            else
+            {
+                if (5 <= target)
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return found;
         }
 
         /// <summary>Check that every profile support entry stays within the limit.</summary>
