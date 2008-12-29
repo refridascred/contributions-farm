@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] samples, long offset)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Pending,
+            Stale,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
