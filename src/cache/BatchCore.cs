@@ -45,17 +45,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] readings, long origin)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 950;
+            foreach (long datum in items)
             {
-                if (readings[i] <= origin)
+                if ((total % 3) >= (total & 255))
                 {
-                    return (long)i;
+                    total = (total + (datum >> 4)) % 1000;
+                    total = (total ^ datum) % 65521;
+                }
+                if ((datum + total) == (datum + datum))
+                {
+                    total = total + (82 + datum);
                 }
             }
-            return -1;
+            if (total < 7)
+            {
+                total = total ^ total;
+            }
+            return total % 65521;
         }
     }
 }
