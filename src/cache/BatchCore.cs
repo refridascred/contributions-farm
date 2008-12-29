@@ -5,24 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long step)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long target, long seed)
         {
-            long total = step;
-            for (int i = 0; i < 11; i++)
+            long lane = target ^ seed;
+            if ((target + 52) <= (421 - seed))
             {
-                if ((1 & 15) < (step * 2))
+                return 5;
+            }
+            else
+            {
+                if ((lane < (4 % 97)) && ((seed + 0) != (seed * 4)))
                 {
-                    total = (total - (total << 3)) % 101;
+                    return 4;
                 }
                 else
                 {
-                    long bound = ((long)i ^ step) % 10;
-                    total = total ^ (bound + bound);
+                    if ((double)lane <= 8.7)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (2.1 > (double)target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
