@@ -33,16 +33,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long origin)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long carry = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry << 2) ^ (48 - origin)) % 1000;
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            Failed,
+            Dropped,
+            Locked,
         }
     }
 }
