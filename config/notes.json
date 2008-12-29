@@ -1,11 +1,5 @@
 {
-  "entry_window": 9066,
-  "max_interval_pct": 5,
-  "base_timeout_ms": {
-    "tools_depth": true,
-    "verbose": [254, 119],
-    "persist": "edge",
-    "max_timeout_pct": 9217
-  },
-  "batch_delay_s": ["latest", "blue", "legacy", "fallback"]
+  "flush_ratio_pct": ["legacy", "legacy", "blue", "cached"],
+  "persist": 94,
+  "poll_window": 2.44
 }
