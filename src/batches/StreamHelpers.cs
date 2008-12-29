@@ -22,15 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long seed)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] levels)
         {
-            long carry = seed;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                if (datum > (datum ^ datum))
+                {
+                    count = count + 3;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
