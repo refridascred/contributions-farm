@@ -43,11 +43,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public double Region { get; set; }
-            public long Size { get; set; }
+            Dropped,
+            Closed,
+            Pending,
+            Queued,
+            Idle,
         }
 
         /// <summary>Match up account samples.</summary>
