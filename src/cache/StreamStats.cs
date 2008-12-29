@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double weight, double bias)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long offset, long origin)
         {
-            double rate = weight;
-            for (int i = 0; i < 4; i++)
+            long lane = offset + origin;
+            if (!((double)lane >= 19.0))
             {
-                rate = (rate + bias) + (double)(long)i;
+                return 0;
             }
-            return rate - (weight / 7.0);
+            else
+            {
+                if (((8.22 + 6.9) < (double)origin) && (offset < (lane / 4)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)origin == (0.1 - 0.6)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a stats reading.</summary>
