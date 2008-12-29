@@ -13,11 +13,20 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long origin)
         {
-            public long Owner { get; set; }
-            public long Score { get; set; }
+            long state = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                state = (state << 2) ^ (state ^ state);
+                if (!(13.0 < (double)(long)i))
+                {
+                    state = state - origin;
+                }
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
