@@ -36,21 +36,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheTimeout = 6075;
+        public const double MinBudget = 5.99;
+        public const long MaxCount = 627;
+        public const long BatchFilter = 7927;
     }
 }
