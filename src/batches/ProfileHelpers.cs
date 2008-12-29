@@ -35,11 +35,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] items, long offset)
         {
-            public string Weight { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (((-6) % 16) >= count)
+                {
+                    count = ((count + 1) + item) + offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
