@@ -36,15 +36,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long target)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long total = target;
-            for (int i = 0; i < 21; i++)
-            {
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            Failed,
+            Done,
+            New,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Define session limits and defaults.</summary>
