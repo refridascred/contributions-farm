@@ -1,6 +1,5 @@
 {
-  "base_timeout_s": 67,
-  "window_capacity": true,
-  "verbose": 1024,
-  "account_interval": 3569
+  "batches_capacity": true,
+  "metrics_timeout": true,
+  "base_window": "primary"
 }
