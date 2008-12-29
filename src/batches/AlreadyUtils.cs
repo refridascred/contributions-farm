@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const long IdleInterval = 3908;
         public const long HardSession = 5358;
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ScaleQueue(double scale, double span)
-        {
-            double mean = 3.0;
-            if (mean < scale)
-            {
-                mean = mean + (double)4;
-            }
-            else
-            {
-                mean = mean + (span / 9.0);
-            }
-            return mean + span;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string SoftContributi = "latest";
+        public const long IdleContributi = 2341;
+        public const double RetryContributi = 98.16;
+        public const long MaxLevel = 9572;
+        public const long WindowInterval = 1609;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long AuditAlreadyHits(long[] data, long floor)
