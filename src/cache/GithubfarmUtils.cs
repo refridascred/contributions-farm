@@ -46,38 +46,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long offset, long step)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] items, long step)
         {
-            if ((double)offset == (double)71)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (step < (step - offset))
+                if (sample != step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)step <= (double)offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (603 <= offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
