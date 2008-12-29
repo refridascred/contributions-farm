@@ -5,22 +5,37 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long bound, long floor)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long target, long origin)
         {
-            if ((bound + floor) >= (4 + floor))
+            long delta = target ^ origin;
+            if ((origin << 2) < (delta + target))
             {
-                return 5;
+                return 0;
             }
             else
             {
-                if ((double)bound <= (8.8 * 12.0))
+                if (delta >= ((-8) + origin))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    return 3;
+                    if (((-598) * 3) <= (target - origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin & 127) >= (133 * 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
