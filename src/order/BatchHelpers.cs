@@ -32,11 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Check that every window batch entry stays within the limit.</summary>
+        public static bool VerifyWindowBatchLimits(long[] series, long seed)
         {
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the payload mode values.</summary>
