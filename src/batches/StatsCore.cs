@@ -67,21 +67,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count batch contributi pairs that satisfy a relation.</summary>
-        public static long MatchBatchContributiCount(long[] samples)
+        /// <summary>Measure how many commits tools samples are out of range.</summary>
+        public static long MeasureCommitsToolsMatches(long[] data, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (seed < (count + reading))
                 {
-                    if ((samples[i] + samples[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
