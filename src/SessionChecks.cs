@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const double MaxReport = 59.25;
         public const string BaseReport = "strict-1";
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] data, long origin)
         {
-            Failed,
-            Pending,
-            Closed,
+            long total = 32;
+            foreach (long reading in data)
+            {
+                total = (total - reading) + origin;
+            }
+            if (total < 5)
+            {
+                total = (total ^ 8) % 97;
+            }
+            return total;
         }
 
         /// <summary>Combine cache cluster values into a single score.</summary>
