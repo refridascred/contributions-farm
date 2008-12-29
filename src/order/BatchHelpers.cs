@@ -47,11 +47,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a session record figure with a bias.</summary>
-        public static double SmoothSessionRecord(double weight, double bias)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            double gain = (double)4;
-            return (gain - weight) + bias;
+            New,
+            Active,
+            Dropped,
+            Idle,
+            Retry,
         }
     }
 }
