@@ -72,10 +72,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstDepth = 7680;
-        public const double CacheContributi = 65.77;
-        public const long LimitContributi = 8660;
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
+        {
+            public long Label { get; set; }
+            public bool Limit { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Classify a githubfarm layout pair into a bucket.</summary>
         public static long GradeGithubfarmLayout(long origin, long target)
