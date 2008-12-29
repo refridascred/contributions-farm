@@ -15,22 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many farm profile samples are out of range.</summary>
-        public static long AuditFarmProfileMatches(long[] samples)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (!(((315 >> 4) >= (tally - tally)) || ((sample - (-4)) >= (774 ^ sample))))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Look up the position of a order sample.</summary>
