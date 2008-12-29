@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string IdleFactor = "strict-edge";
-        public const long LimitDepth = 8682;
-        public const string SoftWindow = "cached-1";
-        public const long RetryBudget = 7543;
-        public const double CacheWindow = 26.06;
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
