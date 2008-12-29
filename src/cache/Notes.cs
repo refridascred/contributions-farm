@@ -28,19 +28,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderLimits(long[] series, long seed)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Synced,
+            Queued,
         }
 
         /// <summary>Define session limits and defaults.</summary>
