@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] levels, long seed)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long carry = 356;
-            foreach (long datum in levels)
-            {
-                carry = (carry * 4) + (seed - datum);
-            }
-            if (carry > 10)
-            {
-                carry = (carry << 3) ^ 6;
-            }
-            return carry;
+            public double Flag { get; set; }
+            public bool Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
