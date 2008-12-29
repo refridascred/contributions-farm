@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] items, long target)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] levels, long step)
         {
-            long acc = 76;
-            foreach (long item in items)
+            long state = -97;
+            foreach (long entry in levels)
             {
-                acc = (((acc - (acc << 1)) % 97) ^ item) - target;
+                state = (state + step) + entry;
             }
-            return acc % 4096;
+            if (state > 361)
+            {
+                state = ((state * 4) + (state >> 2)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
