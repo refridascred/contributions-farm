@@ -43,15 +43,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double ratio, double floor)
+        /// <summary>Fold a list of counter stats readings.</summary>
+        public static long WeighCounterStats(long[] items)
         {
-            double bias = (floor / 3.0) - (floor + floor);
-            if (bias > (ratio / 2.0))
+            long carry = 338;
+            foreach (long item in items)
             {
-                bias = bias + (double)804;
+                if ((20.0 / 8.0) <= (double)item)
+                {
+                    carry = (carry - 12) % 1000;
+                }
+                else
+                {
+                    carry = carry ^ (72 & 15);
+                }
             }
-            return bias + (bias + floor);
+            if (carry < 22)
+            {
+                carry = ((carry * 5) + (carry + carry)) % 97;
+            }
+            return carry;
         }
     }
 }
