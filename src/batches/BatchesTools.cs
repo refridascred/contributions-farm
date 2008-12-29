@@ -19,19 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] series, long step)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Total { get; set; }
+            public bool Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
