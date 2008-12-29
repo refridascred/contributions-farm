@@ -40,18 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout commits entries that pass the check.</summary>
-        public static long MeasureLayoutCommitsGaps(long[] levels)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((19.0 > (6.7 / 5.0)) && (((8 & 3) != (matches ^ matches)) || ((matches ^ matches) > 969)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 3) - cell;
+                    if ((samples[i] - samples[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
