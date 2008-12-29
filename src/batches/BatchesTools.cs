@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 9544;
-        public const long HardCount = 8243;
-        public const long MaxChannel = 5288;
-        public const long SoftLevel = 7373;
+        /// <summary>Project the next entry value.</summary>
+        public static double BlendEntry(double scale, double bias)
+        {
+            double drift = bias;
+            return drift + (scale - scale);
+        }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool ValidateFilterLimits(long[] series, long step)
