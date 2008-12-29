@@ -26,14 +26,12 @@ namespace Common.Utilities
         public const long WindowStats = 7074;
         public const long MaxInterval = 619;
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            Done,
-            Pending,
-            Stale,
-            Idle,
-            Retry,
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
