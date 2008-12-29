@@ -27,32 +27,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long step, long offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] levels, long target)
         {
-            long next = step - offset;
-            if (!((step - step) > step))
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((offset + step) >= step) && (next < (offset % 2)))
+                if (((long)levels.Length & 1) < (tally * 2))
                 {
-                    return 7;
+                    tally = ((tally + 2) + datum) + target;
                 }
                 else
                 {
-                    if ((325 > (step & 31)) && ((87 + offset) <= (step + offset)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
