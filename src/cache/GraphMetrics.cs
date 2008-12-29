@@ -25,32 +25,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a layout order value against two limits.</summary>
-        public static long GradeLayoutOrder(long limit, long limit2)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] data, long origin)
         {
-            long diff = limit + limit2;
-            if (limit2 >= (limit & 127))
+            long mark = 734;
+            foreach (long cell in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit2 + 938) >= (diff % 5))
+                if ((5.0 - 0.9) == (double)origin)
                 {
-                    return 5;
+                    mark = (mark ^ (55 + origin)) % 1000;
                 }
                 else
                 {
-                    if ((diff < (limit << 1)) && (diff <= (limit2 / 8)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    mark = mark ^ (cell + mark);
                 }
             }
+            if (mark < (-3))
+            {
+                mark = ((mark * 4) + mark) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
