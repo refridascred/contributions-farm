@@ -63,15 +63,21 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Scale a counter editor figure with a bias.</summary>
-        public static double BlendCounterEditor(double scale, double offset)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] levels)
         {
-            double ratio = 2.81;
-            if (ratio >= offset)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio + scale;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return ratio + (ratio - scale);
+            return hits;
         }
     }
 }
