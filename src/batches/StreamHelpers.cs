@@ -45,11 +45,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardDepth = 642;
-        public const long MinFormat = 5597;
-        public const double BatchLevel = 25.06;
-        public const long CacheTimeout = 6735;
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
+        {
+            public double Weight { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
