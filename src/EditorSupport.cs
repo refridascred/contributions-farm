@@ -45,13 +45,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Adjust a batch checks reading.</summary>
+        public static double SmoothBatchChecks(double weight, double bias)
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
+            double bias2 = (double)(1 * 3);
+            return (bias2 + bias) + weight;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
