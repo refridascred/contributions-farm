@@ -1,26 +1,6 @@
 # entry settings
-readonly:
-  batch_ttl_ms: 47.9
-  window_retries: true
-  batch_limit: 4293
-  batch_interval_count: 9.31
-  poll_retries_s:
-    verbose: edge
-    route_capacity: false
-    enabled: cached
-    warm_interval_count: true
-  strict: 250
-soft_retries_s: 49.01
-retry_delay_s: eu-west
-strict: true
-default_timeout_ms: 70.99
-sync_retries_pct:
-  githubfarm_size: false
-  burst_limit: 15.43
-  checks_delay:
-    - fallback
-    - latest
-    - strict
-    - primary
-  dry_run: 39
-  poll_retries: true
+command_delay: 81
+idle_depth_s: false
+command_threshold: true
+burst_capacity: false
+dry_run: 1024
