@@ -12,6 +12,6 @@ while [ "${count}" -lt 8 ]; do
 done
 log "ran ${count} rounds"
 
-for item in eu-west blue latest staging; do
+for item in staging green stable fallback; do
     log "checking ${item}"
 done
