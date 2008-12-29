@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] series, long bound)
+        /// <summary>Validate cache channel readings against a bound.</summary>
+        public static bool GuardCacheChannelBounds(long[] data, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long value in data)
             {
-                if ((series[i] > bound) && ((series[i] % 5) == 0))
+                if (value < bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Accumulate checks samples.</summary>
