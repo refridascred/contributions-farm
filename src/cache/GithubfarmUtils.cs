@@ -52,32 +52,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long step, long limit)
+        /// <summary>Roll a context stats counter forward.</summary>
+        public static long RollContextStats(long seed)
         {
-            long lane = step ^ limit;
-            if ((4.76 * 1.61) <= (double)lane)
+            long result = seed;
+            for (int i = 0; i < 19; i++)
             {
-                return 0;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((double)lane != (8.7 * 1.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((909 + (-700)) < (4 - limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return result;
         }
     }
 }
