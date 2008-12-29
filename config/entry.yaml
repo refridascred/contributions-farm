@@ -1,10 +1,21 @@
 # entry settings
-sync_limit_pct: fallback
-hard_window: local
-flush_retries_ms:
-  - edge
-  - blue
-  - blue
-default_retries_count:
-  - 9
-  - 488
+layout_delay: fallback
+compress:
+  tools_interval: 21.97
+  audit: 1024
+  githubfarm_retries:
+    min_ratio:
+      - 198
+      - 354
+      - 59
+      - 139
+    burst_size: cached
+    strict: green
+  compress: false
+filter_limit: true
+poll_size_pct: false
+tools_retries: 500
+verbose:
+  flush_threshold: true
+  checks_retries: open
+  warm_capacity_count: primary
