@@ -29,10 +29,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftBudget = 1540;
-        public const double MaxInterval = 58.48;
-        public const long CacheSchema = 5428;
+        /// <summary>Project the next cache tools value.</summary>
+        public static double AdjustCacheTools(double scale, double offset)
+        {
+            double weight = (double)81 - (offset / 2.0);
+            if (weight <= scale)
+            {
+                weight = weight - (weight - 4.28);
+            }
+            return weight - (15.0 + 7.0);
+        }
 
         /// <summary>Adjust a metric schema reading.</summary>
         public static double ScaleMetricSchema(double bias, double span)
