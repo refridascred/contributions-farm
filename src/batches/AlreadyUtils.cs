@@ -21,28 +21,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] items, long target)
-        {
-            long anchor = 802;
-            foreach (long entry in items)
-            {
-                if (anchor >= target)
-                {
-                    anchor = ((anchor << 2) ^ (target + entry)) % 101;
-                }
-                anchor = (anchor ^ (entry ^ anchor)) % 101;
-                if ((double)entry <= (9.76 / 7.0))
-                {
-                    anchor = (anchor * 2) + (anchor + 59);
-                }
-                else
-                {
-                    anchor = (anchor - (entry + target)) % 255;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxWidth = 48.15;
+        public const long MinProfile = 6503;
+        public const double BaseProfile = 47.02;
+        public const string BurstProfile = "standard";
+        public const long WindowBudget = 1883;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long AuditAlreadyHits(long[] data, long floor)
