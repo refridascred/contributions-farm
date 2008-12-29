@@ -52,12 +52,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseBudget = 23.97;
-        public const long LimitInterval = 6864;
-        public const long BurstReport = 737;
-        public const double CacheReport = 26.01;
-        public const long MaxTimeout = 8361;
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
+        {
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
