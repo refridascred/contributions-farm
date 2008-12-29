@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double LimitRatio = 17.5;
-        public const long IdleSession = 2747;
-        public const double BurstLevel = 56.31;
-        public const long HardSession = 7123;
-        public const double StepSession = 4.62;
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double gain, double floor)
+        {
+            double weight = floor;
+            if (weight < (gain * 2.7))
+            {
+                weight = weight + (double)6;
+            }
+            return weight - (floor - 12.0);
+        }
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long SeekSessionIndex(long[] series, long step)
