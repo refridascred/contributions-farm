@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Adjust a window stream reading.</summary>
-        public static double AdjustWindowStream(double gain, double offset)
+        /// <summary>Digest a series of layout cache entries.</summary>
+        public static long TotalLayoutCache(long[] items)
         {
-            double ratio = offset + gain;
-            if (ratio <= (double)590)
+            long sum = 58;
+            foreach (long sample in items)
             {
-                ratio = ratio + 2.3;
+                sum = ((sum - (sum * 4)) % 101) + sample;
             }
-            else
-            {
-                ratio = ratio - (offset - offset);
-            }
-            return ratio + (ratio + gain);
+            return sum;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
