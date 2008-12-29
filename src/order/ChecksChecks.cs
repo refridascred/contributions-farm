@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine githubfarm commits values into a single score.</summary>
-        public static long FoldGithubfarmCommits(long[] data)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long mark = -6;
-            foreach (long item in data)
-            {
-                if (mark >= (item * 2))
-                {
-                    mark = (mark ^ ((-427) % 60)) % 97;
-                }
-            }
-            return mark;
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a record record.</summary>
