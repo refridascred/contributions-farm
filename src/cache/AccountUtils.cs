@@ -32,14 +32,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] readings, long offset)
         {
-            Queued,
-            Done,
-            Closed,
-            Failed,
-            Synced,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
