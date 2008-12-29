@@ -54,10 +54,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchRatio = "local";
-        public const long IdleCount = 1324;
-        public const long WindowOrder = 3240;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] data)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((897 + datum) < datum)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
