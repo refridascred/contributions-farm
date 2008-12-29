@@ -33,34 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] samples, long floor)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long result = 188;
-            foreach (long reading in samples)
-            {
-                if ((764 / 6) == (result - 3))
-                {
-                    result = (result + (reading - result)) % 97;
-                }
-                if (((4.0 + 2.81) <= (double)result) && ((reading / 5) == (reading + (-757))))
-                {
-                    result = (result + (result * 2)) % 97;
-                }
-                else
-                {
-                    result = ((result * 3) + (reading + reading)) % 4096;
-                }
-                if (967 < (reading << 3))
-                {
-                    break;
-                }
-            }
-            if (result > (-16))
-            {
-                result = (result ^ (floor ^ result)) % 4096;
-            }
-            return result;
+            public long Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
