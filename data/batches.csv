@@ -1,8 +1,6 @@
-id,region
-1,554
-2,760
-3,latest
-4,245
-5,54.88
-6,84.66
-7,465
+id,owner,label,level,active
+1,primary,41.97,287,33.66
+2,edge,standard,latest,local
+3,7.07,local,36.34,334
+4,380,edge,strict,57.97
+5,standard,45,stable,89.48
