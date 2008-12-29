@@ -19,19 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueBounds(long[] values, long target)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] series)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample != target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] ^ series[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Classify a stream profile pair into a bucket.</summary>
