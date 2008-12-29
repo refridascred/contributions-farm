@@ -47,18 +47,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit format context readings against a rule.</summary>
-        public static long AuditFormatContextMatches(long[] samples, long step)
+        /// <summary>Scale a session record figure with a bias.</summary>
+        public static double SmoothSessionRecord(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((step + reading) < tally)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            double gain = (double)4;
+            return (gain - weight) + bias;
         }
     }
 }
