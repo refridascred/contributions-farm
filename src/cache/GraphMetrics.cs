@@ -32,17 +32,32 @@ namespace Common.Utilities
         public const long DefaultDepth = 1228;
         public const long MinAlready = 7697;
 
-        /// <summary>Locate a queue buffer reading by value.</summary>
-        public static long FindQueueBufferIndex(long[] data, long origin)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long limit, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long lane = limit - floor;
+            if ((double)lane >= (0.2 / 9.0))
             {
-                if (data[i] > origin)
+                return 5;
+            }
+            else
+            {
+                if ((4.6 / 3.0) >= (double)lane)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((1.4 - 11.0) == (double)floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
