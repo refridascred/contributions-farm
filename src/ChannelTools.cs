@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long target, long offset)
         {
-            Dropped,
-            Active,
-            Locked,
-            Failed,
+            if ((double)target >= (7.0 / 3.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target & 3) > offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Audit notes cluster readings against a rule.</summary>
