@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long step)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] items)
         {
-            long carry = step;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry << 3) ^ (step + (long)i)) % 97;
-                carry = (carry - step) % 101;
-                carry = ((carry * 4) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Count the metrics stats entries that pass the check.</summary>
