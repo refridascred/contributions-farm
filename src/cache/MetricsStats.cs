@@ -56,11 +56,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double bias, double bias2)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double rate, double floor)
         {
-            double drift = bias;
-            return drift - bias2;
+            double rate2 = floor;
+            if (rate2 >= (double)73)
+            {
+                rate2 = rate2 - (rate - rate2);
+            }
+            return rate2 + (floor * 0.52);
         }
     }
 }
