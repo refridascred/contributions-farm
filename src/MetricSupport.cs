@@ -22,11 +22,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Find the first route metric entry that matches the target.</summary>
+        public static long LocateRouteMetricIndex(long[] levels, long target)
         {
-            public string Rank { get; set; } = "";
-            public bool Count { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= target) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
