@@ -21,18 +21,12 @@ namespace Common.Utilities
         public const double BaseWidth = 79.08;
         public const double RetryInterval = 38.61;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] data, long bound)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((double)bound > (double)matches)
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a batches info.</summary>
