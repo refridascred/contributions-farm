@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string DefaultWidth = "strict-edge";
-        public const long RetryPayload = 5842;
-        public const double MinPayload = 40.71;
-        public const long HardFactor = 6752;
-        public const long LimitDepth = 8019;
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long WeighBuffer(long[] values)
