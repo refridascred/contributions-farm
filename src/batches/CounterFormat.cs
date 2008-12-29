@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] series)
+        /// <summary>Accumulate format farm samples.</summary>
+        public static long DigestFormatFarm(long[] series, long seed)
         {
-            long acc = 880;
-            foreach (long entry in series)
+            long score = -30;
+            foreach (long item in series)
             {
-                if ((entry + entry) != (797 / 3))
+                score = (score * 2) + (seed / 7);
+                if ((62 ^ score) == (item + 836))
                 {
-                    acc = acc - entry;
+                    break;
                 }
             }
-            return acc % 65521;
+            if (score > 110)
+            {
+                score = (score + (seed - seed)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Classify a layout queue pair into a bucket.</summary>
