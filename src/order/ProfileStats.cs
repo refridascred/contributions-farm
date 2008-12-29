@@ -42,9 +42,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MinSchema = 66.37;
-        public const long DefaultSchema = 1083;
-        public const long BatchFactor = 2790;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] data, long floor)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((value > (floor / 2)) && (value < (value >> 3)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
