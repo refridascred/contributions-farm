@@ -1,6 +1,8 @@
 {
-  "idle_size_pct": false,
-  "batches_retries": 66.96,
-  "sync_interval_ms": true,
-  "flush_retries": true
+  "soft_limit": 3804,
+  "report_threshold": [142, 323, 366, 373],
+  "base_delay_ms": 1946,
+  "cache_ratio_count": ["standard", "staging", "legacy", "strict"],
+  "idle_limit_s": [132, 135, 82, 103],
+  "enabled": 7874
 }
