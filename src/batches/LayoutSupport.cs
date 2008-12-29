@@ -52,19 +52,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamLimits(long[] readings, long target)
+        /// <summary>Validate githubfarm account readings against a bound.</summary>
+        public static bool VerifyGithubfarmAccountBounds(long[] samples, long origin)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if (reading < target)
+                if (cell > origin)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Describe the batch class values.</summary>
