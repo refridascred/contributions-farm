@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardWidth = "latest-edge";
-        public const double CacheDepth = 14.51;
-        public const string WindowScore = "latest-v2";
-        public const long MaxFarm = 3640;
-        public const double DefaultWidth = 68.4;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((hits << 2) <= (datum - hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
