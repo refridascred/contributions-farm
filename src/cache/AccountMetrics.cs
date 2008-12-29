@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] items)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long mark = 56;
-            foreach (long item in items)
-            {
-                if (2.0 < (2.2 / 2.0))
-                {
-                    mark = ((mark * 4) + (mark / 3)) + item;
-                }
-            }
-            return mark;
+            public string Stamp { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the entry phase values.</summary>
