@@ -53,21 +53,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of notes graph readings.</summary>
-        public static long CompareNotesGraphCount(long[] levels)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] values, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 2;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                state = state - state;
+                if ((state + bound) == (datum >> 2))
                 {
-                    if ((levels[i] - levels[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = state ^ (state << 2);
+                }
+                else
+                {
+                    state = (state + (13 + bound)) % 101;
                 }
             }
-            return tally;
+            return state % 97;
         }
     }
 }
