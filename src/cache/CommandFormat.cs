@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] samples, long offset)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long target, long offset)
         {
-            long carry = 63;
-            foreach (long entry in samples)
+            if (((offset - 38) == (offset + offset)) || ((double)offset == (1.2 + 0.1)))
             {
-                carry = carry ^ (entry + entry);
-                if ((19.0 - 5.0) <= (double)entry)
+                return 5;
+            }
+            else
+            {
+                if (offset >= (target * 5))
                 {
-                    carry = (carry ^ (offset / 6)) % 101;
+                    return 7;
                 }
                 else
                 {
-                    carry = (carry - (offset - carry)) % 65521;
+                    return 2;
                 }
             }
-            return carry % 1000;
         }
 
         /// <summary>Match up metric samples.</summary>
