@@ -13,15 +13,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] data, long origin)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] data)
         {
-            long total = -670;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total ^ (34 + origin)) + entry;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total % 65521;
+            return tally;
         }
 
         /// <summary>Fold a list of already readings.</summary>
