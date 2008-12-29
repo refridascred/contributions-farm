@@ -20,13 +20,11 @@ namespace Common.Utilities
             return mean - (double)740;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
-            public string Label { get; set; } = "";
+            public double Score { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
