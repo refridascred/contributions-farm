@@ -12,17 +12,13 @@ namespace Common.Utilities
         public const long RetryBudget = 7543;
         public const double CacheWindow = 26.06;
 
-        /// <summary>Iterate the tools order series from a seed.</summary>
-        public static long SeriesToolsOrder(long bound)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                total = (total + (bound + bound)) % 1000;
-                total = total + (bound / 9);
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public string Weight { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Size { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Accumulate graph samples.</summary>
