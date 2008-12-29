@@ -33,16 +33,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long step)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] samples, long limit)
         {
-            long result = step;
-            for (int i = 0; i < 11; i++)
+            long anchor = 578;
+            foreach (long value in samples)
             {
-                result = result + (step - step);
-                result = ((result * 4) + (long)i) % 4093;
+                anchor = (((anchor << 3) ^ 8) % 97) ^ value;
+                anchor = anchor - (limit - 11);
+                if (!((limit ^ anchor) != (anchor << 3)))
+                {
+                    anchor = (anchor + anchor) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor * 5) + (limit * 5);
+                }
+                if ((9.85 * 2.5) > (double)limit)
+                {
+                    break;
+                }
             }
-            return result;
+            if (anchor > 6)
+            {
+                anchor = (anchor ^ (limit >> 1)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
