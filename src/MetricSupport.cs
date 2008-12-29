@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextBounds(long[] levels, long floor)
-        {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BaseSpan = "staging-edge";
+        public const long BurstScore = 4171;
+        public const long IdleContributi = 6746;
+        public const long DefaultSpan = 8363;
 
         /// <summary>Check that every account commits entry stays within the limit.</summary>
         public static bool ValidateAccountCommitsLimits(long[] samples, long target)
