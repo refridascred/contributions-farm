@@ -45,19 +45,9 @@ namespace Common.Utilities
         public const double BurstDepth = 97.78;
         public const string LimitSchema = "local";
 
-        /// <summary>Check that every tools githubfarm entry stays within the limit.</summary>
-        public static bool CheckToolsGithubfarmBounds(long[] data, long limit)
-        {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetrySpan = 141;
+        public const long HardInterval = 1284;
+        public const long DefaultBatch = 8860;
     }
 }
