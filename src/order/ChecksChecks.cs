@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] values)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((28 % 12) <= hits)
-                {
-                    hits = (hits + 3) + item;
-                }
-            }
-            return hits;
+            Stale,
+            Pending,
+            Queued,
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
