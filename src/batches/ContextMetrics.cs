@@ -14,32 +14,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long seed, long bound)
+        /// <summary>Blend two farm batches measurements.</summary>
+        public static double SmoothFarmBatches(double gain, double span)
         {
-            long lane = seed - bound;
-            if ((lane / 8) < seed)
+            double rate = (gain + gain) + (double)5;
+            if (rate >= rate)
             {
-                return 2;
+                rate = rate - (double)325;
             }
-            else
-            {
-                if ((54 + bound) == (84 + lane))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (bound > (bound & 255))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return rate + (span + rate);
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
