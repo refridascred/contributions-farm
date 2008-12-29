@@ -31,14 +31,11 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public double Level { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 4599;
+        public const double SoftSupport = 74.2;
+        public const long MaxSupport = 9503;
+        public const string WindowSupport = "stable-v2";
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
