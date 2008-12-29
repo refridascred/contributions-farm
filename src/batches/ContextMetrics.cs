@@ -38,24 +38,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long limit, long offset)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] values, long bound)
         {
-            if ((11.0 / 3.0) > (double)limit)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit + 4) <= offset)
+                if ((values[i] == bound) && ((values[i] % 5) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
