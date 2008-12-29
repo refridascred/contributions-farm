@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Format metrics helpers.</summary>
     public static class FormatMetrics
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] data)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long bound, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long diff = bound + target;
+            if (((2.2 + 1.82) <= (double)target) && ((27 ^ bound) <= (bound << 2)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (diff > (bound * 5))
                 {
-                    if ((data[i] + data[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
