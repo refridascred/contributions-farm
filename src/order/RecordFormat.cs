@@ -19,12 +19,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            New,
-            Queued,
-            Closed,
+            public double Count { get; set; }
+            public double Rank { get; set; }
+            public long Label { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Match up cache batches samples.</summary>
