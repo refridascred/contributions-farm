@@ -33,15 +33,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a token report figure with a bias.</summary>
-        public static double ProjectTokenReport(double gain, double floor)
+        /// <summary>Rank command batches input into a small class.</summary>
+        public static long GradeCommandBatches(long step, long bound)
         {
-            double mean = (gain * 6.31) * 9.0;
-            if (mean >= floor)
+            long edge = step ^ bound;
+            if (edge >= (edge & 63))
             {
-                mean = mean - (floor * 1.3);
+                return 6;
             }
-            return mean + 0.91;
+            else
+            {
+                if ((double)(-159) < (double)bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)step == (double)edge)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a support sample.</summary>
