@@ -25,10 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 869;
-        public const string BurstSize = "primary-1";
-        public const string IdleRoute = "open";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 5351;
+        public const long CacheAccount = 4124;
+        public const long SoftLevel = 9101;
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
