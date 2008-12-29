@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] values, long floor)
-        {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 3393;
+        public const long IdleCount = 6885;
+        public const string BatchCount = "latest-edge";
+        public const long StepEditor = 9207;
+        public const double MaxEditor = 17.38;
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long IterateChecks(long limit)
