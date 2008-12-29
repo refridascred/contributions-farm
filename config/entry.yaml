@@ -1,5 +1,20 @@
 # entry settings
-readonly: false
-filter_window: 48
-route_delay: 42.5
-burst_threshold_ms: 60
+already_threshold: 98.53
+sync_window:
+  verbose: edge
+  warm_depth_pct:
+    - 287
+    - 466
+    - 274
+  default_retries_ms: edge
+  poll_retries_count: true
+  enabled: 77.56
+  idle_interval: 84
+default_retries_s: 71.52
+retry_timeout_s: cached
+poll_depth_pct:
+  buffer_delay: false
+  idle_threshold: 31
+  report_limit: 64.28
+  burst_limit_count: 500
+  retry_window_s: 77
