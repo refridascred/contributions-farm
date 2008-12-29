@@ -19,13 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            Draft,
-            Active,
             Dropped,
-            Stale,
+            Idle,
+            Active,
+            Synced,
+            Ready,
         }
 
         /// <summary>Describe the graph mode values.</summary>
