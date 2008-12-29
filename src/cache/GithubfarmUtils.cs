@@ -46,11 +46,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] readings)
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            long sum = 26;
+            foreach (long reading in readings)
+            {
+                if ((sum * 2) > (sum * 3))
+                {
+                    sum = (((sum << 3) ^ (sum + sum)) % 97) - reading;
+                }
+                else
+                {
+                    sum = (sum - (2 ^ sum)) % 97;
+                }
+            }
+            if (sum < 731)
+            {
+                sum = ((sum * 4) + (sum - sum)) % 255;
+            }
+            return sum % 97;
         }
     }
 }
