@@ -43,18 +43,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] readings)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if ((double)reading != (1.06 + 19.0))
+                if (value > bound)
                 {
-                    seen = seen + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
