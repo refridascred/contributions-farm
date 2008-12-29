@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next channel notes value.</summary>
-        public static double AdjustChannelNotes(double gain, double offset)
+        /// <summary>Validate entry notes readings against a bound.</summary>
+        public static bool GuardEntryNotesBounds(long[] readings, long origin)
         {
-            double mean = (offset + gain) - offset;
-            if (mean > mean)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                mean = mean + (double)815;
+                if (item >= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + mean) - (double)(long)i;
-            }
-            return mean - mean;
+            return ready;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
