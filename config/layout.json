@@ -1,6 +1,15 @@
 {
-  "dry_run": false,
-  "hard_limit": 52.69,
-  "verbose": "green",
-  "burst_ratio_ms": 72.99
+  "retry_depth": 250,
+  "persist": 34.51,
+  "dry_run": 29,
+  "min_threshold_pct": "primary",
+  "burst_threshold_ms": false,
+  "base_ttl": {
+    "default_size": "stable",
+    "retry_timeout_s": 22,
+    "strict": 30,
+    "audit": false,
+    "warm_delay_pct": 49.13,
+    "default_ttl": "latest"
+  }
 }
