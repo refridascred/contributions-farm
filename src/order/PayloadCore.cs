@@ -32,18 +32,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportMatches(long[] values, long target)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((((double)matches <= (double)sample) || ((target / 2) <= (matches & 127))) && ((double)(long)values.Length >= (1.2 / 9.0)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Look up the position of a schema format sample.</summary>
