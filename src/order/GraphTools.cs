@@ -27,17 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] items, long offset)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountLimits(long[] samples, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if ((items[i] < offset) && ((items[i] % 3) == 0))
+                if (item > offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
