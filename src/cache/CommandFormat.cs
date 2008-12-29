@@ -45,19 +45,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Validate batch githubfarm readings against a bound.</summary>
-        public static bool ValidateBatchGithubfarmRange(long[] samples, long origin)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double gain, double floor)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            double bias = gain;
+            if (bias < 8.06)
             {
-                if (reading > origin)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = bias - (bias + floor);
             }
-            return ok;
+            return bias + gain;
         }
     }
 }
