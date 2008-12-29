@@ -20,15 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long bound)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
