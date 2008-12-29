@@ -27,17 +27,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] readings, long limit)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == limit) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the notes mode values.</summary>
