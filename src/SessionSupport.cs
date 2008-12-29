@@ -12,21 +12,15 @@ namespace Common.Utilities
         public const string MinBuffer = "local-edge";
         public const long RetrySpan = 634;
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] series)
+        /// <summary>Project the next buffer support value.</summary>
+        public static double ProjectBufferSupport(double bias, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias2 = bias + (bias * 7.0);
+            if (bias2 >= (double)212)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias2 = (bias2 - (bias2 * 1.89)) + span;
             }
-            return seen;
+            return bias2 - bias;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
