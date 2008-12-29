@@ -24,11 +24,15 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 6546;
-        public const long IdleBatches = 7921;
-        public const long BaseSize = 6278;
-        public const long StepBudget = 4143;
-        public const string HardWidth = "open-v2";
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double weight, double bias)
+        {
+            double load = weight;
+            if (load <= 17.0)
+            {
+                load = load + (load / 3.0);
+            }
+            return load - bias;
+        }
     }
 }
