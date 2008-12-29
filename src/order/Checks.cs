@@ -66,23 +66,17 @@ namespace Common.Utilities
             return ratio - (11.0 / 8.0);
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double weight, double floor)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] data, long seed)
         {
-            double gain = (double)4 / 4.0;
-            if (gain < 5.0)
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = (gain - (gain - weight)) + floor;
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (weight * 9.0)) + (double)(long)i;
-            }
-            return gain - (gain / 7.0);
+            return -1;
         }
     }
 }
