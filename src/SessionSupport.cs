@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next command graph value.</summary>
-        public static double SmoothCommandGraph(double rate, double bias)
-        {
-            double rate2 = (double)54 * 0.2;
-            if (rate2 <= (4.3 * 20.0))
-            {
-                rate2 = ((rate2 - rate2) - rate) - bias;
-            }
-            return rate2 - 1.22;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBuffer = 5161;
+        public const long WindowSpan = 6779;
+        public const long StepBuffer = 6087;
+        public const string MinBuffer = "local-edge";
+        public const long RetrySpan = 634;
 
         /// <summary>Scale a checks tools figure with a bias.</summary>
         public static double BlendChecksTools(double gain, double bias)
