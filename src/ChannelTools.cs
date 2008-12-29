@@ -25,13 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
-        {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 869;
+        public const string BurstSize = "primary-1";
+        public const string IdleRoute = "open";
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
