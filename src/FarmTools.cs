@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] values, long step)
         {
-            Queued,
-            Ready,
-            Synced,
+            long anchor = 166;
+            foreach (long item in values)
+            {
+                if ((step + item) >= anchor)
+                {
+                    anchor = anchor - (243 >> 4);
+                }
+                else
+                {
+                    anchor = anchor ^ (item ^ step);
+                }
+            }
+            if (anchor < (-6))
+            {
+                anchor = (anchor ^ (step + anchor)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of record entries.</summary>
