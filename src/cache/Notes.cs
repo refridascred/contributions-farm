@@ -36,12 +36,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 3136;
-        public const long WindowSession = 2826;
-        public const long BatchSpan = 6751;
-        public const long MaxRatio = 5874;
-        public const long IdleDepth = 6326;
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
+        {
+            Active,
+            Closed,
+            Failed,
+            Synced,
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long SoftCommits = 4342;
