@@ -18,19 +18,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double bias, double bias2)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] data, long origin)
         {
-            double scale = bias / 6.0;
-            if (scale > (bias2 - 8.32))
+            bool valid = true;
+            foreach (long item in data)
             {
-                scale = scale - bias2;
+                if (item != origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - bias2;
-            }
-            return scale - (scale - bias2);
+            return valid;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
