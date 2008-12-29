@@ -45,9 +45,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryDepth = 1700;
-        public const long BatchFilter = 6424;
-        public const long WindowCount = 1155;
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                state = (state - 968) % 97;
+                state = (state + (limit - (long)i)) % 1000;
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
+        }
     }
 }
