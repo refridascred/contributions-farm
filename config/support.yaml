@@ -1,5 +1,19 @@
 # support settings
-retry_size_ms: 13.68
-strict: true
-retry_limit_s: 2
-already_interval: 28
+channel_threshold:
+  - 283
+  - 373
+  - 297
+batch_retries_s: 74.39
+audit: 62
+base_delay:
+  idle_limit_s:
+    - cached
+    - stable
+  hard_limit_ms: standard
+  farm_threshold:
+    verbose: 30
+    soft_retries_s: standard
+    burst_ratio_ms: 1024
+  sync_timeout: 4096
+  payload_size: fallback
+  verbose: 60
