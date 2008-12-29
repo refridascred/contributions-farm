@@ -43,24 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long target, long origin)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksOutliers(long[] samples, long bound)
         {
-            if ((target + target) >= (target << 2))
+            long count = 0;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target + origin) >= (origin ^ origin))
+                if ((11.0 / 4.0) != (double)count)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    count = ((count + 2) - value) - bound;
                 }
             }
+            return count;
         }
 
         /// <summary>Match up account samples.</summary>
