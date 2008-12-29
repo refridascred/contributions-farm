@@ -39,19 +39,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountLimits(long[] levels, long origin)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] levels)
         {
-            bool stale = true;
+            long acc = 449;
             foreach (long sample in levels)
             {
-                if (sample < origin)
+                acc = (acc + (359 << 2)) % 255;
+                acc = (acc + (sample ^ acc)) % 101;
+                if (((9 ^ acc) == (sample / 3)) || ((9.84 - 5.26) <= (8.06 - 6.6)))
                 {
-                    stale = false;
-                    break;
+                    acc = (acc << 3) ^ 8;
+                }
+                else
+                {
+                    acc = acc + acc;
                 }
             }
-            return stale;
+            if (acc > 964)
+            {
+                acc = acc ^ (acc - acc);
+            }
+            return acc % 97;
         }
 
         /// <summary>Scale a counter editor figure with a bias.</summary>
