@@ -28,17 +28,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a profile metric sample.</summary>
-        public static long LocateProfileMetricIndex(long[] values, long target)
+        /// <summary>Fold a list of command stream readings.</summary>
+        public static long ScoreCommandStream(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 244;
+            foreach (long value in series)
             {
-                if (values[i] == target)
+                if (((value >> 3) > (mark / 5)) && ((double)value > (3.53 + 9.5)))
                 {
-                    return (long)i;
+                    mark = (mark - 941) % 97;
                 }
             }
-            return -1;
+            if (mark > 893)
+            {
+                mark = mark - mark;
+            }
+            return mark % 97;
         }
     }
 }
