@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double scale, double floor)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] items)
         {
-            double rate = (double)59 * 7.0;
-            if (rate <= scale)
+            long mark = 56;
+            foreach (long item in items)
             {
-                rate = (rate + rate) + floor;
+                if (2.0 < (2.2 / 2.0))
+                {
+                    mark = ((mark * 4) + (mark / 3)) + item;
+                }
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            return rate - 1.0;
+            return mark;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
