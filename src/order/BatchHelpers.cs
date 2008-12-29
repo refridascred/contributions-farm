@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long MinSchema = 9192;
         public const long LimitDepth = 390;
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileLimits(long[] values, long floor)
         {
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
-            public bool Count { get; set; }
-            public string Rank { get; set; } = "";
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate window samples.</summary>
