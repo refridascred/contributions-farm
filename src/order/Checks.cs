@@ -58,9 +58,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 2985;
-        public const long HardScore = 8699;
-        public const double RetryInterval = 92.59;
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
