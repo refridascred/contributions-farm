@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double ratio, double offset)
         {
-            Done,
-            Queued,
-            Draft,
-            Locked,
-            Pending,
+            double ratio2 = (5.6 - ratio) - (offset / 4.0);
+            if (ratio2 <= (offset + ratio))
+            {
+                ratio2 = ratio2 + 5.4;
+            }
+            else
+            {
+                ratio2 = ratio2 + (double)(-718);
+            }
+            return ratio2 - (ratio / 4.0);
         }
 
         /// <summary>Match up stats samples.</summary>
