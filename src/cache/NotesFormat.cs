@@ -21,21 +21,22 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] samples)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] values, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((12.0 - 6.0) > (double)tally) || ((9.5 * 2.5) > (double)step))
                 {
-                    if ((samples[i] - samples[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
