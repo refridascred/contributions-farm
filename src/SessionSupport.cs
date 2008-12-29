@@ -23,13 +23,12 @@ namespace Common.Utilities
             return mean - (bias - 9.7);
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
+            Queued,
+            Draft,
+            Paused,
         }
     }
 }
