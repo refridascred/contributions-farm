@@ -22,23 +22,20 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double weight, double span)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] samples)
         {
-            double mean = (double)(0 + 11);
-            if (mean < (double)726)
+            long anchor = 55;
+            foreach (long entry in samples)
             {
-                mean = mean - 2.0;
+                if ((double)entry < (8.84 / 5.0))
+                {
+                    anchor = anchor + (entry - entry);
+                    continue;
+                }
+                anchor = (anchor + (entry + anchor)) % 4096;
             }
-            else
-            {
-                mean = mean - (span - mean);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - weight) + (double)(long)i;
-            }
-            return mean - weight;
+            return anchor;
         }
 
         /// <summary>Hold a batches header.</summary>
