@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitRatio = 7872;
-        public const long RetryRatio = 9497;
-        public const long MinDepth = 705;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double StepDepth = 77.72;
+        public const string CacheWidth = "standard-edge";
+        public const long LimitChannel = 6976;
+        public const long MaxChannel = 2004;
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long PairCacheCount(long[] samples)
