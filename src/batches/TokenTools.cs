@@ -17,14 +17,11 @@ namespace Common.Utilities
         public const long IdleBatches = 5664;
         public const double BaseBatches = 1.88;
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Draft,
-            Synced,
-            Retry,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 1841;
+        public const long LimitFactor = 4970;
+        public const long IdleStats = 8409;
+        public const double IdleBudget = 52.06;
+        public const string HardDepth = "open-edge";
     }
 }
