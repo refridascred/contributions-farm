@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const double MaxReport = 59.25;
         public const string BaseReport = "strict-1";
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] data, long origin)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long step)
         {
-            long total = 32;
-            foreach (long reading in data)
+            long sum = step;
+            for (int i = 0; i < 20; i++)
             {
-                total = (total - reading) + origin;
+                if (!((2.1 / 6.0) == (double)sum))
+                {
+                    break;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            if (total < 5)
-            {
-                total = (total ^ 8) % 97;
-            }
-            return total;
+            return sum;
         }
 
         /// <summary>Combine cache cluster values into a single score.</summary>
