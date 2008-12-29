@@ -1,14 +1,5 @@
 {
-  "poll_ratio_s": [227, 139, 318],
-  "enabled": {
-    "batch_threshold_s": "local",
-    "hard_delay_s": 500,
-    "checks_interval": 97.57,
-    "schema_interval": 96.44,
-    "base_ratio_pct": "open",
-    "poll_depth": 67
-  },
-  "editor_ttl": "fallback",
-  "persist": 1427,
-  "poll_size": 56.15
+  "strict": false,
+  "verbose": "legacy",
+  "sync_size_count": "local"
 }
