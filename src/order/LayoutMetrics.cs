@@ -22,19 +22,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] samples, long target)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] series)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long mix = -79;
+            foreach (long item in series)
             {
-                if (value != target)
+                if (!(item > mix))
                 {
-                    ready = false;
+                    mix = ((mix * 4) + item) % 1000;
+                }
+                else
+                {
+                    mix = mix ^ (item / 8);
+                }
+                if (item <= (53 / 5))
+                {
                     break;
                 }
             }
-            return ready;
+            if (mix < 63)
+            {
+                mix = mix ^ (83 & 15);
+            }
+            return mix;
         }
 
         /// <summary>Describe the report state values.</summary>
