@@ -32,12 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            Done,
-            Idle,
-            Synced,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowFactor = 4607;
+        public const long BatchChannel = 906;
+        public const long MinFactor = 2405;
+        public const double DefaultChannel = 94.93;
+        public const long MaxChannel = 8834;
     }
 }
