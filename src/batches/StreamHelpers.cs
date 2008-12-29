@@ -52,12 +52,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Draft,
-            Stale,
-            Paused,
+            public long Mode { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Compare every pair of record readings.</summary>
