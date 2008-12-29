@@ -26,22 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] levels, long bound)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountLimits(long[] levels, long origin)
         {
-            long carry = 350;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if (10 <= (bound >> 4))
+                if (sample < origin)
                 {
-                    carry = (((carry << 2) ^ (577 - carry)) % 101) ^ cell;
+                    stale = false;
+                    break;
                 }
             }
-            if (carry > 896)
-            {
-                carry = ((carry * 3) + (carry << 2)) % 1000;
-            }
-            return carry;
+            return stale;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
