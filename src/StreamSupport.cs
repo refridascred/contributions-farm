@@ -24,13 +24,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double weight, double offset)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
-            public bool Flag { get; set; }
+            double bias = weight;
+            if (bias >= bias)
+            {
+                bias = (bias - (double)410) - offset;
+            }
+            return bias - weight;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
