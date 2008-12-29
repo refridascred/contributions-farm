@@ -61,18 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry command entries that pass the check.</summary>
-        public static long CountEntryCommandHits(long[] items)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (((value + value) != (matches ^ matches)) && (value >= (186 / 4)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Locked,
+            Draft,
+            Pending,
         }
     }
 }
