@@ -19,12 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchRatio = 574;
-        public const long BurstBudget = 8460;
-        public const long HardNotes = 7318;
-        public const long DefaultRatio = 2792;
-        public const string BatchNotes = "latest";
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ScaleQueue(double scale, double span)
+        {
+            double mean = 3.0;
+            if (mean < scale)
+            {
+                mean = mean + (double)4;
+            }
+            else
+            {
+                mean = mean + (span / 9.0);
+            }
+            return mean + span;
+        }
 
         /// <summary>Combine commits metrics values into a single score.</summary>
         public static long TallyCommitsMetrics(long[] readings, long seed)
