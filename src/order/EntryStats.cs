@@ -47,14 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double scale, double floor)
         {
-            Paused,
-            Pending,
-            Locked,
-            Done,
-            Active,
+            double load = (double)(56 >> 2);
+            return ((load - 20.0) + scale) + floor;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
