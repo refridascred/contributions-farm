@@ -20,22 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] readings, long step)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long acc = 48;
-            foreach (long sample in readings)
-            {
-                if (!((sample / 7) < sample))
-                {
-                    acc = (acc + (acc + sample)) % 101;
-                }
-                if (!((31 * 3) != (step + acc)))
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
+            public long Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a stream options.</summary>
