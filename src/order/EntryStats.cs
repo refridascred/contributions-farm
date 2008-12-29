@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of queue record readings.</summary>
-        public static long FoldQueueRecord(long[] items)
-        {
-            long state = 932;
-            foreach (long reading in items)
-            {
-                state = ((state * 2) + reading) % 4096;
-            }
-            if (state > 47)
-            {
-                state = ((state << 2) ^ (state >> 4)) % 4096;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double DefaultSize = 68.15;
+        public const long DefaultQueue = 5042;
+        public const long DefaultFactor = 2866;
 
         /// <summary>Grade a contributi token value against two limits.</summary>
         public static long RankContributiToken(long offset, long seed)
