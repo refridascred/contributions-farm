@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] data)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long carry = 884;
-            foreach (long sample in data)
-            {
-                carry = (carry * 3) + sample;
-                if ((sample & 255) != (60 + carry))
-                {
-                    break;
-                }
-            }
-            if (carry > 131)
-            {
-                carry = (carry * 2) + (carry << 3);
-            }
-            return carry % 97;
+            Draft,
+            Pending,
+            Done,
+            Retry,
         }
 
         /// <summary>Digest a series of filter support entries.</summary>
