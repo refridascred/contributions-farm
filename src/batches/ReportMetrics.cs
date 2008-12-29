@@ -21,18 +21,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a profile route sample.</summary>
-        public static long LocateProfileRouteIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 4393;
+        public const long MaxWidth = 4853;
+        public const long MinRatio = 1824;
+        public const long MaxSession = 6014;
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
