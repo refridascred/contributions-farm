@@ -26,20 +26,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate graph batch readings against a bound.</summary>
-        public static bool VerifyGraphBatchLimits(long[] levels, long floor)
-        {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitDepth = 8496;
+        public const double BatchPayload = 86.64;
+        public const long SoftPayload = 5652;
+        public const long BasePayload = 8371;
+        public const long WindowSize = 666;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double CacheSpan = 27.54;
