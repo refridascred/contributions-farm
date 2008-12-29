@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long bound)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 13; i++)
+            long acc = floor;
+            for (int i = 0; i < 23; i++)
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                if (acc >= 7)
+                {
+                    continue;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
