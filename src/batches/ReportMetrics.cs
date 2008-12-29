@@ -12,10 +12,14 @@ namespace Common.Utilities
         public const long HardSize = 3028;
         public const long IdleInterval = 373;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string StepBuffer = "staging-v2";
-        public const long LimitSize = 3894;
-        public const string BurstCount = "alpha-1";
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
+        {
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool VerifyFilterLimits(long[] series, long floor)
