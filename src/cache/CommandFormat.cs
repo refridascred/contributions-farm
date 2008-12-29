@@ -52,23 +52,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] values)
+        /// <summary>Validate batch githubfarm readings against a bound.</summary>
+        public static bool ValidateBatchGithubfarmRange(long[] samples, long origin)
         {
-            long total = 8;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                total = total ^ (-9);
-                if (!((total >> 3) >= (sample ^ 1)))
+                if (reading > origin)
                 {
-                    total = (total + total) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            if (total > (-50))
-            {
-                total = total + (total + total);
-            }
-            return total % 1000;
+            return ok;
         }
     }
 }
