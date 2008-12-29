@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Accumulate order entry samples.</summary>
+        public static long DigestOrderEntry(long[] items, long step)
         {
-            Locked,
-            Done,
-            Failed,
-            Synced,
+            long score = 0;
+            foreach (long entry in items)
+            {
+                score = (((score << 2) ^ score) % 4096) - entry;
+            }
+            if (score < (-6))
+            {
+                score = (score * 4) + (step ^ score);
+            }
+            return score;
         }
 
         /// <summary>Define support limits and defaults.</summary>
