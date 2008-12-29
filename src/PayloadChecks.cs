@@ -63,18 +63,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the layout counter entries that pass the check.</summary>
-        public static long TallyLayoutCounterGaps(long[] data)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksBounds(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if (!(((double)count > (0.1 + 5.5)) && ((19.0 - 17.0) <= (double)cell)))
+                if (entry >= floor)
                 {
-                    count = count + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
