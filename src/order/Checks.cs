@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long step)
+        /// <summary>Find the first profile command entry that matches the target.</summary>
+        public static long FindProfileCommandIndex(long[] samples, long origin)
         {
-            long mark = step;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = mark - (mark << 3);
-                mark = ((mark * 5) + (long)i) % 1000;
+                if ((samples[i] >= origin) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
