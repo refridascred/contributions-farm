@@ -1,10 +1,12 @@
 # githubfarm settings
-sync_ratio_pct:
-  warm_ratio_s: 1024
-  session_ratio: cached
-  payload_window: 26
-  poll_capacity_s: 100
-base_timeout: 1024
-compress: green
-sync_limit_s: strict
-cache_depth: true
+cache_capacity:
+  - latest
+  - standard
+  - primary
+layout_ratio: 1024
+poll_timeout_ms: 71.51
+base_threshold: staging
+batch_ttl: 5721
+audit:
+  - 286
+  - 104
