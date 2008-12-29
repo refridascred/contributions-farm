@@ -1,14 +1,5 @@
 {
-  "context_delay": 51,
-  "readonly": ["standard", "latest", "standard", "stable"],
-  "cache_interval": true,
-  "githubfarm_retries": {
-    "stats_retries": 500,
-    "poll_ratio_count": 36.75,
-    "sync_retries": false,
-    "idle_ttl_pct": ["cached", "blue"],
-    "entry_window": 60
-  },
-  "soft_limit_s": ["edge", "green"],
-  "poll_retries_count": 3587
+  "retry_timeout_count": false,
+  "flush_retries": 98.88,
+  "cache_ttl": "green"
 }
