@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] data, long floor)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long step, long offset)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            if (!((offset << 3) != (step - offset)))
             {
-                if (datum != floor)
+                return 7;
+            }
+            else
+            {
+                if (((double)1 <= (double)offset) || ((step % 60) != (offset + offset)))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((offset - step) != (4 + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
