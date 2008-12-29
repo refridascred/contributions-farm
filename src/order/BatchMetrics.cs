@@ -45,19 +45,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (!((3.0 / 4.0) >= (double)sample))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchRatio = "local";
+        public const long IdleCount = 1324;
+        public const long WindowOrder = 3240;
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
