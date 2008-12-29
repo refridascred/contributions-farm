@@ -21,18 +21,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] data)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((364 << 2) > (seen & 63))
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a queue summary.</summary>
