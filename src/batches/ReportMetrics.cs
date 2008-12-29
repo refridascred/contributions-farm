@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] series, long seed)
-        {
-            long anchor = 83;
-            foreach (long reading in series)
-            {
-                anchor = ((((anchor << 2) ^ (5 + 49)) % 1000) + reading) + seed;
-            }
-            return anchor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BatchSpan = "legacy-edge";
+        public const long BurstDepth = 3320;
+        public const double WindowSize = 85.38;
+        public const double IdleChecks = 15.28;
+        public const double RetryChecks = 29.82;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long TotalSession(long[] samples, long step)
