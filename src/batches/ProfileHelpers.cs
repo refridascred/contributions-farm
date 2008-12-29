@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Digest a series of format session entries.</summary>
+        public static long DigestFormatSession(long[] series, long floor)
         {
-            Retry,
-            Queued,
-            Idle,
+            long sum = 17;
+            foreach (long value in series)
+            {
+                if (floor <= (floor >> 1))
+                {
+                    sum = ((sum + (200 >> 4)) % 101) + value;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a buffer record.</summary>
