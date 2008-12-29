@@ -29,29 +29,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long seed, long target)
+        /// <summary>Classify a session route pair into a bucket.</summary>
+        public static long GradeSessionRoute(long floor, long offset)
         {
-            if ((513 & 7) > (seed % 5))
+            if ((offset >> 1) <= (offset - offset))
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if ((double)target <= 5.7)
+                if (!((13.0 * 3.96) >= (double)offset))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if ((double)target == (6.4 / 2.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 1;
                 }
             }
         }
