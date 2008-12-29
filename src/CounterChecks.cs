@@ -33,10 +33,19 @@ namespace Common.Utilities
             return scale - (scale - bias2);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MaxCount = 20.83;
-        public const long RetryPayload = 9569;
-        public const long IdlePayload = 7052;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] levels, long target)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (!((datum < (datum << 1)) && (seen > (target ^ datum))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long GradeChannel(long offset, long seed)
