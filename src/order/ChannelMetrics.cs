@@ -34,14 +34,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] levels, long seed)
         {
-            Retry,
-            Paused,
-            Stale,
-            Synced,
-            Draft,
+            long acc = 1;
+            foreach (long reading in levels)
+            {
+                if (!((double)reading > 6.2))
+                {
+                    acc = ((acc * 3) + (1 % 16)) % 255;
+                }
+            }
+            if (acc > 55)
+            {
+                acc = acc + (seed << 3);
+            }
+            return acc;
         }
     }
 }
