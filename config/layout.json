@@ -1,5 +1,5 @@
 {
-  "enabled": [243, 177, 150],
-  "base_capacity": 45,
-  "readonly": ["standard", "local", "local"]
+  "editor_limit": "cached",
+  "flush_size": 80.97,
+  "cache_window_ms": ["open", "edge", "local"]
 }
