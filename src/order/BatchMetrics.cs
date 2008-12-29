@@ -58,15 +58,21 @@ namespace Common.Utilities
             return gain - (gain + scale);
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long limit)
+        /// <summary>Match up schema filter samples.</summary>
+        public static long OverlapSchemaFilterCount(long[] readings)
         {
-            long state = limit;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
