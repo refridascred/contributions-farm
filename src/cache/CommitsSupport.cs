@@ -40,13 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            Done,
+            Dropped,
+            Idle,
             Closed,
-            Synced,
-            Failed,
+            Queued,
         }
 
         /// <summary>Accumulate payload samples.</summary>
