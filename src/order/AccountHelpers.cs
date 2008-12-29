@@ -23,23 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] readings, long seed)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (item > (item << 1))
-                {
-                    hits = (hits + 2) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryInterval = 2283;
+        public const long MinFactor = 4205;
+        public const long BurstDepth = 9735;
+        public const long IdleInterval = 7498;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long TallyEditorHits(long[] samples)
