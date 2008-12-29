@@ -24,13 +24,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Locate a filter channel reading by value.</summary>
+        public static long SeekFilterChannelIndex(long[] series, long limit)
         {
-            New,
-            Active,
-            Idle,
-            Synced,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == limit) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
