@@ -30,18 +30,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] data, long floor)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long floor, long floor2)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long cur = floor ^ floor2;
+            if (((floor2 * 4) < (195 * 2)) || (floor2 <= (cur ^ 9)))
             {
-                if ((value > (floor / 2)) && (value < (value >> 3)))
+                return 7;
+            }
+            else
+            {
+                if ((floor2 <= (floor % 10)) && ((double)(-4) > (double)floor2))
                 {
-                    matches = matches + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((floor - cur) >= ((-9) >> 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
