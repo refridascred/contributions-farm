@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] readings)
         {
-            Paused,
-            Retry,
-            Dropped,
-            Active,
-            Ready,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((value - matches) < matches)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
