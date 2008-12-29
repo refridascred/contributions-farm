@@ -14,12 +14,16 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftLevel = 3253;
-        public const double MaxSpan = 89.93;
-        public const string BatchCount = "latest-edge";
-        public const string WindowGithubfarm = "cached-1";
-        public const long RetryInterval = 6421;
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double gain, double offset)
+        {
+            double ratio = gain * 1.22;
+            if (ratio < gain)
+            {
+                ratio = ratio - (gain + offset);
+            }
+            return ratio + (ratio * 3.44);
+        }
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
