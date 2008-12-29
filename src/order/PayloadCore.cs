@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] readings)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long mix = 94;
-            foreach (long sample in readings)
-            {
-                mix = (mix ^ (mix >> 1)) % 97;
-                if ((-3) <= (sample + sample))
-                {
-                    break;
-                }
-            }
-            return mix % 1000;
+            Closed,
+            Stale,
+            Pending,
         }
 
         /// <summary>Hold a cache stats.</summary>
