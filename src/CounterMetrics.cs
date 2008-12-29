@@ -42,18 +42,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the entry cache entries that pass the check.</summary>
-        public static long TallyEntryCacheMatches(long[] samples, long bound)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((bound - bound) > (seen * 4))
-                {
-                    seen = (seen + 3) ^ cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BaseDepth = "staging-v2";
+        public const string RetryRatio = "primary-1";
+        public const long BurstProfile = 5897;
+        public const long SoftBudget = 758;
+        public const long SoftProfile = 1161;
     }
 }
