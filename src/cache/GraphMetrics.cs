@@ -60,15 +60,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double bias, double offset)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            double load = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                load = ((load + load) + (double)(long)i) + bias;
-            }
-            return load + offset;
+            public bool Mode { get; set; }
+            public double Owner { get; set; }
+            public long Level { get; set; }
         }
     }
 }
