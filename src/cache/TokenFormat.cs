@@ -30,19 +30,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesBounds(long[] levels, long floor)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long origin, long limit)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            if ((0.5 + 2.5) != (double)origin)
             {
-                if (datum != floor)
+                return 5;
+            }
+            else
+            {
+                if (!((double)limit >= (16.0 / 5.0)))
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ok;
         }
     }
 }
