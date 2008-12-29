@@ -38,13 +38,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            Failed,
-            Retry,
-            New,
-            Done,
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a notes snapshot.</summary>
