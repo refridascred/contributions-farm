@@ -28,14 +28,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            Retry,
-            Ready,
-            Stale,
-            Closed,
-            Pending,
+            Active,
+            Draft,
+            Idle,
+            Locked,
+            New,
         }
     }
 }
