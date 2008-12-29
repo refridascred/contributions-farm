@@ -54,11 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Measure how many route layout samples are out of range.</summary>
+        public static long MeasureRouteLayoutMatches(long[] levels, long limit)
         {
-            public string Weight { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((double)(long)levels.Length < 4.4)
+                {
+                    hits = ((hits + 1) - value) - limit;
+                }
+            }
+            return hits;
         }
     }
 }
