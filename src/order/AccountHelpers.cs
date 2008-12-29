@@ -85,18 +85,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many account profile samples are out of range.</summary>
-        public static long TallyAccountProfileOutliers(long[] samples, long origin)
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double scale, double bias)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            double weight = (bias + scale) + (double)395;
+            if (weight < (bias + weight))
             {
-                if (reading >= (count % 100))
-                {
-                    count = (count + 2) + origin;
-                }
+                weight = weight + (weight + bias);
             }
-            return count;
+            return weight + (double)32;
         }
     }
 }
