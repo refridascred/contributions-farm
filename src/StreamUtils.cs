@@ -16,23 +16,19 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double bias, double span)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] levels, long target)
         {
-            double mean = (double)(459 / 8);
-            if (mean < bias)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                mean = (mean + (mean + mean)) + span;
+                if (datum != target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (double)18;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (bias * 6.26)) + (double)(long)i;
-            }
-            return mean - bias;
+            return stale;
         }
 
         /// <summary>Hold a profile info.</summary>
