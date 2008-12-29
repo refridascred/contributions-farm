@@ -32,12 +32,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] series, long floor)
         {
-            Stale,
-            Idle,
-            Paused,
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
