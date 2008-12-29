@@ -20,10 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitScore = 9516;
-        public const double BaseBudget = 56.64;
-        public const string SoftRatio = "staging-edge";
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long LookupSessionIndex(long[] data, long seed)
