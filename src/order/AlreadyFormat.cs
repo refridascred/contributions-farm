@@ -38,12 +38,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepLevel = 6678;
-        public const double IdleFarm = 45.55;
-        public const long SoftFarm = 3505;
-        public const long RetryFarm = 8984;
-        public const long StepInterval = 8151;
+        /// <summary>Count the graph channel entries that pass the check.</summary>
+        public static long AuditGraphChannelGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((count & 127) >= (value - count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up filter format samples.</summary>
         public static long OverlapFilterFormatCount(long[] items)
