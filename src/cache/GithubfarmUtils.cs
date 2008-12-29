@@ -46,15 +46,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a context stats counter forward.</summary>
-        public static long RollContextStats(long seed)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long offset, long step)
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
+            if ((double)offset == (double)71)
             {
-                result = ((result * 4) + (long)i) % 1000;
+                return 6;
             }
-            return result;
+            else
+            {
+                if (step < (step - offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)step <= (double)offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (603 <= offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
