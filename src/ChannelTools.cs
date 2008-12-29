@@ -43,21 +43,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count checks entry pairs that satisfy a relation.</summary>
-        public static long MatchChecksEntryCount(long[] samples)
+        /// <summary>Accumulate farm queue samples.</summary>
+        public static long CombineFarmQueue(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 97;
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((2.81 / 6.0) < (double)result) && (((long)items.Length % 8) <= (result / 7)))
                 {
-                    if ((samples[i] + samples[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = result + (value + 6);
                 }
             }
-            return tally;
+            return result % 1000;
         }
     }
 }
