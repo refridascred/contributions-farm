@@ -33,18 +33,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] readings)
+        /// <summary>Scale a token report figure with a bias.</summary>
+        public static double ProjectTokenReport(double gain, double floor)
         {
-            long result = 35;
-            foreach (long cell in readings)
+            double mean = (gain * 6.31) * 9.0;
+            if (mean >= floor)
             {
-                if ((result - 64) > (result >> 1))
-                {
-                    result = (result - 7) - cell;
-                }
+                mean = mean - (floor * 1.3);
             }
-            return result;
+            return mean + 0.91;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
