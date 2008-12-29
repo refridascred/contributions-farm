@@ -1,7 +1,6 @@
 {
-  "warm_interval_s": 5780,
-  "hard_capacity_ms": "latest",
-  "cache_limit_s": false,
-  "tools_timeout": [103, 442, 165, 302],
-  "sync_interval": 29.95
+  "dry_run": "cached",
+  "verbose": "cached",
+  "sync_window_ms": [335, 480, 230],
+  "sync_limit": 250
 }
