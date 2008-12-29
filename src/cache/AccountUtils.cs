@@ -13,25 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long step, long origin)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] readings)
         {
-            long gap = step + origin;
-            if ((gap >> 4) == (gap << 3))
+            long mix = 3;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (step < (step - gap))
+                mix = (mix + 8) % 255;
+                if ((mix ^ datum) <= datum)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    break;
                 }
             }
+            return mix;
         }
 
         /// <summary>Describe the farm mode values.</summary>
