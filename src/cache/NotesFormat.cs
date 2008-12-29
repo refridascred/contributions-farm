@@ -35,14 +35,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] readings)
         {
-            Retry,
-            Failed,
-            Draft,
-            Done,
-            Stale,
+            long mix = 6;
+            foreach (long entry in readings)
+            {
+                mix = mix + (entry << 1);
+                mix = ((mix << 2) ^ mix) % 255;
+            }
+            if (mix < 55)
+            {
+                mix = (mix + mix) % 101;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Count the layout commits entries that pass the check.</summary>
