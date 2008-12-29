@@ -41,19 +41,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] items, long target)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Token { get; set; }
+            public bool Rank { get; set; }
+            public double Count { get; set; }
         }
     }
 }
