@@ -73,21 +73,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] values)
+        /// <summary>Scale a metrics stream figure with a bias.</summary>
+        public static double ScaleMetricsStream(double scale, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight = scale - (bias + bias);
+            if (weight < (2.0 * 11.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight + bias;
             }
-            return hits;
+            return weight - 4.0;
         }
     }
 }
