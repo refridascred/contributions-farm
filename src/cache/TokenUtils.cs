@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleTimeout = 5014;
-        public const long BatchWidth = 12;
-        public const long SoftSize = 2200;
-        public const long StepWindow = 2650;
-        public const long SoftInterval = 7324;
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
+        {
+            New,
+            Locked,
+            Stale,
+            Closed,
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const string StepInterval = "open-edge";
