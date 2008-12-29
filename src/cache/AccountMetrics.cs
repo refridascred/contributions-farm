@@ -57,21 +57,24 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] samples)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long limit, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (!(86 >= (offset % 97)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((limit + 2) > offset)
                 {
-                    if ((samples[i] + samples[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
