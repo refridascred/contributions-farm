@@ -1,8 +1,6 @@
 {
-  "compress": 250,
-  "base_interval_s": "primary",
-  "base_window_count": "fallback",
-  "poll_window": ["latest", "open", "legacy"],
-  "batch_limit_ms": 8583,
-  "sync_retries_ms": 58.43
+  "flush_interval_count": "staging",
+  "min_delay": "blue",
+  "default_retries": 1024,
+  "flush_capacity_pct": 89
 }
