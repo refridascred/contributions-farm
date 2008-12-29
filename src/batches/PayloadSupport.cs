@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] items)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long bound, long floor)
         {
-            long state = 12;
-            foreach (long cell in items)
+            if ((bound + floor) >= (4 + floor))
             {
-                state = ((state ^ ((long)items.Length & 31)) % 4096) ^ cell;
+                return 5;
             }
-            if (state > 78)
+            else
             {
-                state = state - (state - state);
+                if ((double)bound <= (8.8 * 12.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return state;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
