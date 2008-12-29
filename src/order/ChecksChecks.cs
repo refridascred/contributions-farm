@@ -50,31 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank record filter input into a small class.</summary>
-        public static long SortRecordFilter(long origin, long seed)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] data, long origin)
         {
-            if ((0.87 * 16.0) >= (double)seed)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((1.9 * 6.35) > (double)seed)
+                if ((double)origin == (double)hits)
                 {
-                    return 0;
+                    hits = (hits + 2) ^ entry;
                 }
                 else
                 {
-                    if (((double)seed != (4.7 + 3.17)) || (origin <= (seed - seed)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
