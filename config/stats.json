@@ -1,7 +1,17 @@
 {
-  "default_threshold_ms": 91.13,
-  "base_interval": [337, 185],
-  "sync_limit_pct": 7550,
-  "githubfarm_threshold": 38.93,
-  "command_interval": 79.02
+  "warm_capacity": {
+    "audit": {
+      "layout_ttl": "blue",
+      "compress": "eu-west",
+      "report_limit": 43,
+      "sync_size": false,
+      "strict": "legacy",
+      "dry_run": "latest"
+    },
+    "max_interval_count": "blue",
+    "burst_retries_count": 4539,
+    "persist": ["eu-west", "cached", "cached", "latest"]
+  },
+  "burst_timeout_count": [61, 407],
+  "hard_delay": false
 }
