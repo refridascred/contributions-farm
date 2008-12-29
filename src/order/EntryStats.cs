@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long limit, long seed)
+        /// <summary>Fold a list of queue record readings.</summary>
+        public static long FoldQueueRecord(long[] items)
         {
-            if (15.0 > (double)seed)
+            long state = 932;
+            foreach (long reading in items)
             {
-                return 3;
+                state = ((state * 2) + reading) % 4096;
             }
-            else
+            if (state > 47)
             {
-                if ((seed << 2) < (seed * 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
+                state = ((state << 2) ^ (state >> 4)) % 4096;
             }
+            return state % 4096;
         }
 
         /// <summary>Accumulate format samples.</summary>
