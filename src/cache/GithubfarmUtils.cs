@@ -23,32 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long seed, long origin)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] samples)
         {
-            long next = seed + origin;
-            if (((49 + seed) >= next) || ((double)next > (4.0 - 18.0)))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)next > (17.0 - 2.9)) && ((origin ^ origin) <= next))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin <= (double)569)
+                    if ((samples[i] ^ samples[j]) == 0)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
