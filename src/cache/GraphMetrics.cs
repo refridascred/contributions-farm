@@ -42,22 +42,32 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueGaps(long[] values, long offset)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long seed, long target)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long step = seed ^ target;
+            if ((double)target < 7.2)
             {
-                if (item >= (offset & 7))
+                return 3;
+            }
+            else
+            {
+                if (((double)seed == (1.0 - 8.79)) || ((double)target >= (0.5 + 2.28)))
                 {
-                    tally = tally + 3;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((double)step >= (3.59 / 8.0)) && ((target - step) != (step >> 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
