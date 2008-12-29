@@ -43,19 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] readings, long limit)
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double ratio, double floor)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            double bias = (floor / 3.0) - (floor + floor);
+            if (bias > (ratio / 2.0))
             {
-                if (entry > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = bias + (double)804;
             }
-            return flag;
+            return bias + (bias + floor);
         }
     }
 }
