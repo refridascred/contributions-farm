@@ -54,19 +54,11 @@ namespace Common.Utilities
             return ((load - 20.0) + scale) + floor;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((value >> 3) >= value)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 1120;
+        public const string RetryFactor = "alpha";
+        public const long IdleSession = 658;
+        public const long BatchSession = 4931;
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
