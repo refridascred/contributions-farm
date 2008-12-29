@@ -47,21 +47,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] values)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 51;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = (state - (state + (long)items.Length)) ^ cell;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Check that every profile editor entry stays within the limit.</summary>
