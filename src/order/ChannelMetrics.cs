@@ -20,19 +20,13 @@ namespace Common.Utilities
             return mean - (double)740;
         }
 
-        /// <summary>Fold a list of context metrics readings.</summary>
-        public static long TallyContextMetrics(long[] items)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long carry = 155;
-            foreach (long reading in items)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    carry = (((carry - (carry / 2)) % 101) + (long)i) - reading;
-                }
-                carry = (carry - (75 >> 3)) % 1000;
-            }
-            return carry % 97;
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
