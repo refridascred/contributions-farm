@@ -14,11 +14,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 3352;
-        public const long CacheBatches = 5047;
-        public const long IdleBatches = 5664;
-        public const double BaseBatches = 1.88;
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long SoftStats = 1841;
