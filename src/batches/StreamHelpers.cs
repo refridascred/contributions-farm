@@ -44,12 +44,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            Retry,
-            Active,
-            Locked,
+            Dropped,
+            Queued,
+            Synced,
+            New,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
