@@ -40,13 +40,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] items, long offset)
         {
-            Dropped,
-            Synced,
-            Failed,
-            Locked,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
