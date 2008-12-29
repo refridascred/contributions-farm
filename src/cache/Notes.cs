@@ -43,13 +43,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            Queued,
-            Done,
-            New,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 3136;
+        public const long WindowSession = 2826;
+        public const long BatchSpan = 6751;
+        public const long MaxRatio = 5874;
+        public const long IdleDepth = 6326;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long SoftCommits = 4342;
