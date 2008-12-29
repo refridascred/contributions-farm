@@ -24,19 +24,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] series, long origin)
-        {
-            long state = 925;
-            foreach (long datum in series)
-            {
-                if (!(state <= (long)series.Length))
-                {
-                    state = (((state ^ state) % 101) + datum) + origin;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitLevel = 5219;
+        public const double LimitMetrics = 76.31;
+        public const long CacheBudget = 8605;
+        public const double RetryMetrics = 60.12;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long ScoreLayout(long[] readings)
