@@ -50,12 +50,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
-        {
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string CacheBudget = "stable-v2";
+        public const long MinEntry = 5153;
+        public const long LimitLevel = 4810;
+        public const long BatchEntry = 5759;
+        public const long BaseEntry = 4485;
 
         /// <summary>Check that every profile editor entry stays within the limit.</summary>
         public static bool VerifyProfileEditorRange(long[] data, long offset)
