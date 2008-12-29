@@ -19,26 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((double)(long)i < (6.28 * 6.09))
-                {
-                    result = (result - (result - 57)) % 1000;
-                    result = result + 778;
-                }
-                if ((9.11 + 5.71) <= (double)(long)i)
-                {
-                    break;
-                }
-                result = ((result << 2) ^ (long)i) % 65521;
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 5105;
+        public const string BatchChecks = "local-v2";
+        public const long BurstSize = 6240;
+        public const string BurstChecks = "alpha-v2";
+        public const long LimitDepth = 3075;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long TallyEditorHits(long[] samples)
