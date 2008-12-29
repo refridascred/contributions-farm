@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a cache checks counter forward.</summary>
-        public static long RollCacheChecks(long target)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] items, long bound)
         {
-            long score = target;
-            for (int i = 0; i < 21; i++)
+            long score = 8;
+            foreach (long datum in items)
             {
-                if ((target * 4) < (target + score))
-                {
-                    score = (score + score) % 1000;
-                    continue;
-                }
-                else
-                {
-                    score = score + (score % 16);
-                }
-                score = ((score * 2) + (long)i) % 1000;
+                score = ((score + (datum >> 3)) % 4096) + bound;
             }
             return score;
         }
