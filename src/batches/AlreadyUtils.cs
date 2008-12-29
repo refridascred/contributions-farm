@@ -10,12 +10,28 @@ namespace Common.Utilities
         public const long IdleInterval = 3908;
         public const long HardSession = 5358;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string SoftContributi = "latest";
-        public const long IdleContributi = 2341;
-        public const double RetryContributi = 98.16;
-        public const long MaxLevel = 9572;
-        public const long WindowInterval = 1609;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] items, long target)
+        {
+            long anchor = 802;
+            foreach (long entry in items)
+            {
+                if (anchor >= target)
+                {
+                    anchor = ((anchor << 2) ^ (target + entry)) % 101;
+                }
+                anchor = (anchor ^ (entry ^ anchor)) % 101;
+                if ((double)entry <= (9.76 / 7.0))
+                {
+                    anchor = (anchor * 2) + (anchor + 59);
+                }
+                else
+                {
+                    anchor = (anchor - (entry + target)) % 255;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long AuditAlreadyHits(long[] data, long floor)
