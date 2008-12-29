@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of format session entries.</summary>
-        public static long DigestFormatSession(long[] series, long floor)
+        /// <summary>Iterate the notes layout series from a seed.</summary>
+        public static long IterateNotesLayout(long bound)
         {
-            long sum = 17;
-            foreach (long value in series)
+            long total = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (floor <= (floor >> 1))
-                {
-                    sum = ((sum + (200 >> 4)) % 101) + value;
-                }
+                total = (total * 3) + 564;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return sum % 97;
+            return total;
         }
 
         /// <summary>Hold a buffer record.</summary>
