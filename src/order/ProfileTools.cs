@@ -42,22 +42,9 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] levels, long step)
-        {
-            long mark = 6;
-            foreach (long sample in levels)
-            {
-                if ((sample - mark) <= (sample + mark))
-                {
-                    mark = ((mark << 3) ^ ((-1) % 5)) % 101;
-                }
-                if ((mark % 64) <= (step + step))
-                {
-                    break;
-                }
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double CacheCluster = 13.86;
+        public const double BaseCluster = 25.68;
+        public const string MaxScore = "strict";
     }
 }
