@@ -14,13 +14,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] values, long step)
         {
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (((double)hits >= (double)(long)values.Length) || ((hits & 255) != (datum << 3)))
+                {
+                    hits = (hits + 3) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the notes mode values.</summary>
