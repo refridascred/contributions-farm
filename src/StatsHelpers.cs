@@ -21,13 +21,12 @@ namespace Common.Utilities
         public const double BaseWidth = 79.08;
         public const double RetryInterval = 38.61;
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string RetryEntry = "stable-edge";
+        public const long DefaultBudget = 7222;
+        public const long BatchEntry = 2445;
+        public const string BaseEntry = "primary";
+        public const long BaseSpan = 1779;
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
