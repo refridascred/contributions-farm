@@ -18,17 +18,12 @@ namespace Common.Utilities
         public const long SoftRatio = 8160;
         public const long MinSession = 969;
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long floor)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = mark - (long)i;
-                mark = mark - (floor % 16);
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            Locked,
+            Failed,
+            Active,
         }
     }
 }
