@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MinOrder = 27.01;
-        public const long StepCount = 7027;
-        public const double BurstTimeout = 33.16;
-        public const long MinTimeout = 770;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] data, long seed)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((seed - 778) >= (seed * 2))
+                {
+                    matches = (matches + 3) - sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long SoftBatches = 3352;
