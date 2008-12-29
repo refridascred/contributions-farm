@@ -35,31 +35,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] samples)
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] data)
         {
-            long score = 36;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item ^ 573) >= (score - item))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = score - (item * 3);
-                }
-                if ((8.03 + 8.0) != (double)item)
-                {
-                    score = (score + score) % 4096;
-                }
-                score = (score * 5) + score;
-                if (((7.7 * 5.9) == (double)item) || ((score << 2) > score))
-                {
-                    break;
+                    if ((data[i] + data[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (score > 368)
-            {
-                score = (score * 4) + (score + score);
-            }
-            return score;
+            return matches;
         }
     }
 }
