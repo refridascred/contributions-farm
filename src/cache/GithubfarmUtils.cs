@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 5762;
-        public const double IdleWidth = 74.66;
-        public const long WindowProfile = 2164;
-        public const long BurstProfile = 7877;
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            Pending,
+            Closed,
+            Done,
+            New,
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricMatches(long[] values)
