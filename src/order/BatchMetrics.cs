@@ -78,17 +78,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleWidth = 7875;
+        public const double DefaultBuffer = 89.57;
+        public const string MaxDepth = "open-1";
+        public const long BatchBuffer = 3838;
+        public const string LimitSpan = "cached";
     }
 }
