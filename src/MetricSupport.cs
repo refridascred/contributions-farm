@@ -14,15 +14,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double gain, double offset)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            double ratio = gain * 1.22;
-            if (ratio < gain)
-            {
-                ratio = ratio - (gain + offset);
-            }
-            return ratio + (ratio * 3.44);
+            public double Level { get; set; }
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a already header.</summary>
