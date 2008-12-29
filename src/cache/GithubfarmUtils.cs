@@ -27,12 +27,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Roll a session command counter forward.</summary>
+        public static long DeriveSessionCommand(long bound)
         {
-            public long Count { get; set; }
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a tools entry.</summary>
