@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            Paused,
-            Pending,
-            Stale,
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
