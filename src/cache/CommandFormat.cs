@@ -22,19 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] levels)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long bound, long origin)
         {
-            long total = 63;
-            foreach (long datum in levels)
+            if ((origin % 5) >= (912 - 23))
             {
-                total = (total * 2) + (datum - 467);
-                if (8 < (total ^ datum))
+                return 8;
+            }
+            else
+            {
+                if (bound < origin)
                 {
-                    total = ((total << 2) ^ datum) % 97;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return total;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
