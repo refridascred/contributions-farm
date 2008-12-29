@@ -37,32 +37,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long floor, long seed)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long step = floor ^ seed;
-            if (floor <= seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((floor >> 3) == (step + step)) && ((step - floor) >= (step + step)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((5.21 / 9.0) > (double)floor) && ((seed + 1) == (floor & 3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Pending,
+            Queued,
+            New,
+            Idle,
         }
 
         /// <summary>Hold a record summary.</summary>
