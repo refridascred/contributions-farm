@@ -33,15 +33,19 @@ namespace Common.Utilities
             return rate - (offset * 0.9);
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long bound)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueRange(long[] series, long target)
         {
-            long sum = bound;
-            for (int i = 0; i < 10; i++)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                if (sample >= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
