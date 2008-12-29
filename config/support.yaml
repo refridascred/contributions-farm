@@ -1,8 +1,9 @@
 # support settings
-readonly:
-  - latest
-  - legacy
+default_retries_count:
+  - edge
   - eu-west
-  - primary
-command_window: 74
-max_size: 6
+  - latest
+  - local
+dry_run: true
+default_capacity_count: 5.75
+burst_ratio: 60
