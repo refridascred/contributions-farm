@@ -1,5 +1,5 @@
 {
-  "audit": "standard",
-  "retry_depth_pct": "cached",
-  "strict": 100
+  "order_interval": "eu-west",
+  "stream_window": "legacy",
+  "filter_timeout": true
 }
