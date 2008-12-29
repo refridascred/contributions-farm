@@ -57,19 +57,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] levels, long bound)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] samples)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long mark = 24;
+            foreach (long datum in samples)
             {
-                if (item <= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = (((mark << 3) ^ ((-3) * 3)) % 4096) ^ datum;
             }
-            return ready;
+            return mark % 65521;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
