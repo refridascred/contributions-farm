@@ -33,19 +33,22 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] items)
+        /// <summary>Count the editor counter entries that pass the check.</summary>
+        public static long MeasureEditorCounterGaps(long[] samples, long bound)
         {
-            long mix = -399;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                mix = (mix + (62 % 60)) ^ value;
+                if ((421 - count) <= (bound / 7))
+                {
+                    count = (count + 3) - sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (mix < (-9))
-            {
-                mix = mix + (mix / 8);
-            }
-            return mix;
+            return count;
         }
     }
 }
