@@ -32,19 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every window batch entry stays within the limit.</summary>
-        public static bool VerifyWindowBatchLimits(long[] series, long seed)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long target)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long anchor = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (datum < seed)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Describe the payload mode values.</summary>
