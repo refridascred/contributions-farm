@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
-        {
-            Done,
-            Idle,
-            Queued,
-            Closed,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftTimeout = 6355;
+        public const string CacheProfile = "alpha-v2";
+        public const long LimitProfile = 6239;
 
         /// <summary>Hold a support header.</summary>
         public sealed class SupportHeader
