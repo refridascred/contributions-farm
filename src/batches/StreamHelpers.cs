@@ -13,18 +13,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count the graph stats entries that pass the check.</summary>
-        public static long CountGraphStatsMatches(long[] samples, long limit)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if ((count & 3) <= limit)
+                if (sample != bound)
                 {
-                    count = (count + 3) ^ datum;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Measure how many profile format samples are out of range.</summary>
