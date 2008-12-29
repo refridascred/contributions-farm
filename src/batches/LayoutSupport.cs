@@ -23,19 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadBounds(long[] data, long floor)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorRange(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if (sample < floor)
+                if (value >= limit)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Count the session channel entries that pass the check.</summary>
