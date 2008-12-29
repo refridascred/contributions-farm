@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] samples)
+        /// <summary>Digest a series of route record entries.</summary>
+        public static long WeighRouteRecord(long[] series, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = -57;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((6 * 4) == (12 - reading)))
                 {
-                    if ((samples[i] + samples[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (((sum << 2) ^ (-704)) % 255) + floor;
+                }
+                else
+                {
+                    sum = ((sum * 5) + (reading * 2)) % 4096;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
