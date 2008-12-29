@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] values, long offset)
         {
-            public double Flag { get; set; }
-            public bool Label { get; set; }
-            public bool Offset { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((double)matches != (6.07 - 9.48))
+                {
+                    matches = ((matches + 1) + datum) - offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
