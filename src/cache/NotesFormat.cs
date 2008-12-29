@@ -22,18 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of filter support entries.</summary>
-        public static long CombineFilterSupport(long[] items, long bound)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long result = -326;
-            foreach (long datum in items)
-            {
-                if ((792 + datum) < (result - 537))
-                {
-                    result = (result - (bound >> 5)) % 97;
-                }
-            }
-            return result;
+            Failed,
+            Pending,
+            New,
+            Draft,
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
