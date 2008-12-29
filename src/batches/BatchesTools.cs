@@ -30,11 +30,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] readings)
         {
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (((matches - cell) <= matches) && ((cell % 100) >= 12))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
