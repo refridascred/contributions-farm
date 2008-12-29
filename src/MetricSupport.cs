@@ -18,15 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double gain, double span)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            double gain2 = (gain * 3.66) + (3.6 / 7.0);
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = (gain2 + gain2) + (double)(long)i;
-            }
-            return gain2 + span;
+            Idle,
+            Failed,
+            Pending,
+            Ready,
+            Active,
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
