@@ -60,12 +60,22 @@ namespace Common.Utilities
             return ((load - 20.0) + scale) + floor;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftFilter = 62.34;
-        public const long MinScore = 3177;
-        public const long MaxInterval = 9593;
-        public const double StepFilter = 17.65;
-        public const double IdleCount = 36.25;
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate support metrics samples.</summary>
         public static long CombineSupportMetrics(long[] data, long target)
