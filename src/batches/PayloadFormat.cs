@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] items, long bound)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] readings, long limit)
         {
-            long score = 8;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                score = ((score + (datum >> 3)) % 4096) + bound;
+                if (item != limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Adjust a queue reading.</summary>
