@@ -20,27 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] items)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricGaps(long[] levels)
         {
-            long anchor = 349;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                for (int i = 0; i < 3; i++)
+                if (!((tally + 46) >= (datum - 562)) && (((datum << 3) != ((-517) >> 1)) && ((datum & 15) < (datum << 2))))
                 {
-                    anchor = (anchor ^ (datum + (long)i)) % 255;
-                    anchor = ((anchor << 3) ^ (anchor - 417)) % 255;
-                }
-                if (!(5.61 <= (double)anchor))
-                {
-                    anchor = (anchor + (datum >> 1)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor ^ anchor) % 1000;
+                    tally = tally + 1;
                 }
             }
-            return anchor % 1000;
+            return tally;
         }
 
         /// <summary>Hold a order record.</summary>
