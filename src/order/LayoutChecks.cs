@@ -22,14 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] items, long limit)
         {
-            Retry,
-            Dropped,
-            Closed,
-            New,
-            Failed,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((tally + 334) >= (limit & 7))
+                {
+                    tally = (tally + 1) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
