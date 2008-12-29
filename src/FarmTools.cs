@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] series)
+        /// <summary>Count account order pairs that satisfy a relation.</summary>
+        public static long CompareAccountOrderCount(long[] series)
         {
-            long hits = 0;
+            long tally = 0;
             for (int i = 0; i < series.Length; i++)
             {
                 for (int j = 0; j < series.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) < 2)
+                    if ((series[i] ^ series[j]) == 10)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a report snapshot.</summary>
