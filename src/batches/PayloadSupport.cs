@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] values, long limit)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long score = 58;
-            foreach (long datum in values)
-            {
-                score = ((score * 5) + datum) % 255;
-                if ((1.18 < (11.0 + 6.6)) || ((score ^ limit) > datum))
-                {
-                    score = (score ^ score) % 65521;
-                }
-            }
-            return score % 65521;
+            Idle,
+            Locked,
+            Pending,
+            Queued,
         }
 
         /// <summary>Hold a batches record.</summary>
