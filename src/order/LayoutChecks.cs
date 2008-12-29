@@ -22,24 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long target, long limit)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            if ((limit % 60) <= (target / 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit != (9.47 / 3.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Retry,
+            Dropped,
+            Closed,
+            New,
+            Failed,
         }
 
         /// <summary>Classify a schema buffer pair into a bucket.</summary>
