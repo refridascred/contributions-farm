@@ -12,12 +12,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] levels)
         {
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public long Rank { get; set; }
+            long mix = 4;
+            foreach (long cell in levels)
+            {
+                if ((cell - 9) <= (772 - cell))
+                {
+                    mix = mix + (mix << 3);
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
