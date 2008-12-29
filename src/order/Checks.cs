@@ -58,22 +58,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] samples, long target)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long total = 790;
-            foreach (long reading in samples)
-            {
-                if ((double)(long)samples.Length > (double)909)
-                {
-                    total = ((total * 4) + (total >> 3)) - reading;
-                }
-            }
-            if (total < 50)
-            {
-                total = (total * 4) + (target - total);
-            }
-            return total;
+            public bool Offset { get; set; }
+            public double Size { get; set; }
+            public long Limit { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
