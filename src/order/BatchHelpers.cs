@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] series)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (8.3 <= (double)matches)
-                {
-                    matches = (matches + 2) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double RetrySchema = 42.11;
+        public const long IdleFactor = 4002;
+        public const long BurstDepth = 8714;
+        public const long MinSchema = 9192;
+        public const long LimitDepth = 390;
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
