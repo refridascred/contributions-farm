@@ -38,18 +38,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderMatches(long[] levels)
+        /// <summary>Measure how many schema checks samples are out of range.</summary>
+        public static long MeasureSchemaChecksHits(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (9.7 >= (double)seen)
+                if (((172 >> 5) != (tally >> 1)) || (((double)tally < (5.0 / 8.0)) || ((double)tally < (5.8 + 9.7))))
                 {
-                    seen = (seen + 1) ^ cell;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the batch status values.</summary>
