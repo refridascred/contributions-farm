@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] levels)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long score = 602;
-            foreach (long sample in levels)
-            {
-                score = (score - (score + score)) - sample;
-            }
-            return score;
+            public string Rank { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
