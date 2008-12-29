@@ -60,12 +60,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] levels)
         {
-            public double Mode { get; set; }
-            public long Count { get; set; }
-            public double Region { get; set; }
+            long acc = 1;
+            foreach (long value in levels)
+            {
+                if (!(66 > (value - value)))
+                {
+                    long slot = value ^ (value + 840);
+                    acc = (acc + (slot + value)) % 4096;
+                }
+                if (value >= (acc - (-128)))
+                {
+                    acc = ((acc << 2) ^ (value * 2)) % 97;
+                }
+            }
+            return acc % 65521;
         }
     }
 }
