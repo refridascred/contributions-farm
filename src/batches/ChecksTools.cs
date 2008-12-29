@@ -54,31 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long bound, long bound2)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] items)
         {
-            if ((bound * 2) >= (bound2 << 3))
+            long state = 86;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound2 > bound) || (bound <= (bound2 + (-11))))
+                if ((state ^ value) > (state / 8))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (bound2 <= (bound2 >> 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    state = ((state << 3) ^ (state & 15)) % 97;
                 }
             }
+            return state;
         }
     }
 }
