@@ -53,19 +53,18 @@ namespace Common.Utilities
         public const long MinBuffer = 3582;
         public const long WindowWidth = 224;
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] data, long floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (entry < floor)
+                if ((328 - count) > target)
                 {
-                    found = false;
-                    break;
+                    count = (count + 3) ^ entry;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
