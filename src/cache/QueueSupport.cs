@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long bound)
         {
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
+            long sum = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
