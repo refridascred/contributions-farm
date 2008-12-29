@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] levels, long offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenOutliers(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((404 <= item) && ((item + seen) == (offset / 4)))
+                if ((double)count >= (7.65 * 0.2))
                 {
-                    seen = seen + 1;
+                    count = ((count + 2) ^ value) + offset;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
