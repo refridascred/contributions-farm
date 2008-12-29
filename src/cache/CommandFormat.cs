@@ -35,22 +35,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] levels, long bound)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (((603 + item) <= (bound & 127)) || ((2 + item) < bound))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double CacheSpan = 27.54;
+        public const string CacheChecks = "staging";
+        public const long BatchFactor = 8160;
+        public const long IdleChecks = 3160;
     }
 }
