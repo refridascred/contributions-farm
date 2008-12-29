@@ -13,30 +13,23 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] readings)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double gain, double floor)
         {
-            long anchor = 5;
-            foreach (long sample in readings)
+            double rate = (double)(1 * 4);
+            if (rate >= (rate * 3.0))
             {
-                if (2 > (sample ^ 2))
-                {
-                    anchor = ((anchor * 4) + sample) % 1000;
-                }
-                for (int i = 0; i < 11; i++)
-                {
-                    anchor = (anchor - 239) + (long)i;
-                }
-                if ((6.8 * 9.0) <= (double)anchor)
-                {
-                    anchor = (anchor << 3) ^ (anchor + anchor);
-                }
+                rate = (rate + floor) - gain;
             }
-            if (anchor > 1)
+            else
             {
-                anchor = anchor + (330 / 8);
+                rate = rate + rate;
             }
-            return anchor % 97;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - floor) + (double)(long)i;
+            }
+            return rate - (double)842;
         }
 
         /// <summary>Describe the record kind values.</summary>
