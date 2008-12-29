@@ -35,18 +35,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] levels, long origin)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long limit)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long anchor = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (9 < (origin + 915))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
