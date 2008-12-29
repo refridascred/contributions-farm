@@ -43,21 +43,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] data)
+        /// <summary>Roll a format queue counter forward.</summary>
+        public static long RollFormatQueue(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
     }
 }
