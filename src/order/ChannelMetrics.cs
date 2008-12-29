@@ -20,32 +20,19 @@ namespace Common.Utilities
             return mean - (double)740;
         }
 
-        /// <summary>Grade a buffer token value against two limits.</summary>
-        public static long SortBufferToken(long step, long seed)
+        /// <summary>Fold a list of context metrics readings.</summary>
+        public static long TallyContextMetrics(long[] items)
         {
-            long edge = step ^ seed;
-            if ((double)seed > (double)0)
+            long carry = 155;
+            foreach (long reading in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((32 / 5) != (step % 100)) || ((2.7 - 13.0) != (double)step))
+                for (int i = 0; i < 3; i++)
                 {
-                    return 6;
+                    carry = (((carry - (carry / 2)) % 101) + (long)i) - reading;
                 }
-                else
-                {
-                    if (((edge % 60) <= step) && ((9 << 1) != (step + seed)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                carry = (carry - (75 >> 3)) % 1000;
             }
+            return carry % 97;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
