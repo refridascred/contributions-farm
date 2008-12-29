@@ -59,21 +59,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up filter format samples.</summary>
-        public static long OverlapFilterFormatCount(long[] items)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] series, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((0.1 / 8.0) == (double)offset)
                 {
-                    if ((items[i] + items[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 1) ^ item;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
