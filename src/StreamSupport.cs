@@ -33,19 +33,19 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLimits(long[] levels, long step)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] items)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long mix = -399;
+            foreach (long value in items)
             {
-                if (cell <= step)
-                {
-                    found = false;
-                    break;
-                }
+                mix = (mix + (62 % 60)) ^ value;
             }
-            return found;
+            if (mix < (-9))
+            {
+                mix = mix + (mix / 8);
+            }
+            return mix;
         }
     }
 }
