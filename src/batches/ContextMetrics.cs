@@ -14,15 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two farm batches measurements.</summary>
-        public static double SmoothFarmBatches(double gain, double span)
+        /// <summary>Count the contributi layout entries that pass the check.</summary>
+        public static long TallyContributiLayoutMatches(long[] series)
         {
-            double rate = (gain + gain) + (double)5;
-            if (rate >= rate)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                rate = rate - (double)325;
+                if ((3.0 / 4.0) < (double)datum)
+                {
+                    tally = tally + 1;
+                }
             }
-            return rate + (span + rate);
+            return tally;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
