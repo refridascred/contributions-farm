@@ -19,17 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] levels, long seed)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 49;
+            foreach (long value in series)
             {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
+                carry = ((carry - limit) % 97) ^ value;
             }
-            return -1;
+            if (carry < 7)
+            {
+                carry = (carry + (limit + limit)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate checks samples.</summary>
