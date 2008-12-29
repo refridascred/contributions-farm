@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] values)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long anchor = 336;
-            foreach (long datum in values)
-            {
-                if (datum >= (datum - datum))
-                {
-                    anchor = (anchor * 3) + (anchor >> 5);
-                }
-            }
-            if (anchor < 11)
-            {
-                anchor = (anchor * 4) + (anchor + anchor);
-            }
-            return anchor;
+            Retry,
+            Idle,
+            Closed,
+            Done,
+            Draft,
         }
 
         /// <summary>Hold a support header.</summary>
