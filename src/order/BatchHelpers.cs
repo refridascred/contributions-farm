@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterGaps(long[] series)
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (8.3 <= (double)matches)
+                {
+                    matches = (matches + 2) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a token counter forward.</summary>
