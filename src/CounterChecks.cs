@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenLimits(long[] samples, long target)
-        {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstScore = 4010;
+        public const long WindowSize = 9538;
+        public const double DefaultInterval = 34.5;
+        public const long WindowReport = 7384;
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long DeriveFilter(long origin)
