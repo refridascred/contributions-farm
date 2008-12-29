@@ -48,21 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] values)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] data, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading >= offset)
                 {
-                    if ((values[i] + values[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
