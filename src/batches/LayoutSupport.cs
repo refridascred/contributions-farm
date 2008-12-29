@@ -30,25 +30,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long target, long origin)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] series)
         {
-            long edge = target + origin;
-            if (((334 ^ edge) > edge) && ((7.51 * 18.0) >= (double)edge))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((5.2 / 7.0) == (double)target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    if ((series[i] - series[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the layout level values.</summary>
