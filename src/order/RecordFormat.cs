@@ -69,11 +69,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxTimeout = 6641;
-        public const long DefaultReport = 1056;
-        public const double LimitReport = 1.22;
-        public const long BurstReport = 7270;
-        public const long BaseReport = 5213;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (value >= (90 << 1))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
