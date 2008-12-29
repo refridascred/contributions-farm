@@ -51,14 +51,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long offset, long offset2)
         {
-            Synced,
-            Stale,
-            Queued,
-            Idle,
-            Failed,
+            if ((offset2 + offset) >= (offset2 / 9))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((79 > offset) || ((offset2 - offset) == (offset2 / 4)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
