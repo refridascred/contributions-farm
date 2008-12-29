@@ -1,6 +1,11 @@
 {
-  "route_depth": 60,
-  "max_ratio_s": 5481,
-  "warm_delay_count": false,
-  "burst_delay": "staging"
+  "readonly": true,
+  "default_retries_count": "stable",
+  "batches_retries": 33,
+  "filter_ratio": 52.53,
+  "soft_delay": {
+    "layout_capacity": 92.19,
+    "cache_timeout": 0.11,
+    "session_retries": [422, 341]
+  }
 }
