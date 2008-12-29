@@ -28,20 +28,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] items, long seed)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long result = 67;
-            foreach (long datum in items)
-            {
-                if (result >= datum)
-                {
-                    result = (result - result) % 255;
-                }
-                result = (result + 5) % 1000;
-                result = (result << 2) ^ (seed + seed);
-            }
-            return result;
+            public string Weight { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Locate a counter reading by value.</summary>
