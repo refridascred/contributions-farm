@@ -24,25 +24,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a layout queue pair into a bucket.</summary>
-        public static long SortLayoutQueue(long origin, long limit)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] levels)
         {
-            long prev = origin + limit;
-            if ((limit / 4) >= prev)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((prev - 2) <= limit))
+                if (cell >= matches)
                 {
-                    return 8;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    return 3;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Rank cache queue input into a small class.</summary>
