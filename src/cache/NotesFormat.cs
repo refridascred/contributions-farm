@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheHits(long[] levels)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long origin, long floor)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            if (floor >= (956 * 5))
             {
-                if ((double)tally >= (6.6 + 19.0))
+                return 3;
+            }
+            else
+            {
+                if ((4.23 * 6.4) != (double)origin)
                 {
-                    tally = (tally + 2) + value;
+                    return 8;
+                }
+                else
+                {
+                    if (origin < (60 / 6))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor + floor) <= (origin + floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the format kind values.</summary>
