@@ -28,11 +28,39 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Classify a already stream pair into a bucket.</summary>
+        public static long GradeAlreadyStream(long target, long limit)
         {
-            public double Rank { get; set; }
-            public bool Level { get; set; }
+            long edge = target ^ limit;
+            if (((30 + 3) > edge) && (limit > (limit + target)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((edge - 88) < (limit << 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit == (7.3 / 7.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((51 - edge) >= (860 + limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
