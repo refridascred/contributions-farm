@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long target)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] data)
         {
-            long score = target;
-            for (int i = 0; i < 12; i++)
+            long sum = 37;
+            foreach (long entry in data)
             {
-                score = ((score * 3) + (long)i) % 97;
+                sum = ((sum - ((-6) + sum)) % 101) - entry;
             }
-            return score;
+            if (sum < 80)
+            {
+                sum = (sum ^ sum) % 4096;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define context limits and defaults.</summary>
