@@ -51,10 +51,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double DefaultScore = 71.33;
-        public const long IdleCount = 8659;
-        public const string CacheSupport = "primary";
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] readings, long target)
+        {
+            long sum = 8;
+            foreach (long reading in readings)
+            {
+                if ((double)reading >= (double)target)
+                {
+                    sum = sum + (sum - reading);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Scale a batches support figure with a bias.</summary>
         public static double SmoothBatchesSupport(double weight, double offset)
