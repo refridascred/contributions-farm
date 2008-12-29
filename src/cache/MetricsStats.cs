@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] samples, long target)
         {
-            public long Owner { get; set; }
-            public bool Size { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((54 >= (tally * 4)) && ((12 ^ target) <= tally))
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
