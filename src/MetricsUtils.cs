@@ -33,21 +33,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up session already samples.</summary>
-        public static long CompareSessionAlreadyCount(long[] samples)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 35;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((result - 64) > (result >> 1))
                 {
-                    if ((samples[i] - samples[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result - 7) - cell;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
