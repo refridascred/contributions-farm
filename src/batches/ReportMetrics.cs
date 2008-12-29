@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterBounds(long[] readings, long origin)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Active,
+            Pending,
+            Locked,
         }
 
         /// <summary>Derive the next window stream value from a seed.</summary>
