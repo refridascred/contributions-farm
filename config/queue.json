@@ -1,7 +1,7 @@
 {
-  "verbose": ["local", "eu-west", "open", "legacy"],
-  "base_size": "staging",
-  "payload_retries": 3553,
-  "format_limit": false,
-  "format_depth": [406, 394, 446]
+  "min_depth": false,
+  "audit": "eu-west",
+  "poll_retries_s": "blue",
+  "soft_retries_pct": [170, 246, 275],
+  "idle_ttl": [271, 468, 141, 326]
 }
