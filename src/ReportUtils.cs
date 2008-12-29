@@ -20,21 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] series)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    if ((series[i] ^ series[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry ^ ((long)i2 - (long)i2)) % 4096;
                 }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
