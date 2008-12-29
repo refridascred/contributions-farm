@@ -77,19 +77,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] items, long limit)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Limit { get; set; }
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
