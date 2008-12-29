@@ -28,22 +28,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many profile format samples are out of range.</summary>
-        public static long MeasureProfileFormatGaps(long[] readings, long floor)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((floor + cell) == (cell * 5))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            Stale,
+            Active,
+            Idle,
+            Paused,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
