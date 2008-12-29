@@ -1,16 +1,16 @@
 # githubfarm settings
-tools_threshold:
-  counter_threshold: false
-  min_retries_ms: 1886
-  hard_capacity:
-    - 162
-    - 98
-    - 105
-    - 347
-  strict: true
-  channel_ttl: 84.16
-poll_timeout_ms: 56.78
-batch_ratio: true
-min_depth_pct: true
-verbose: 250
-hard_size_count: 53
+min_interval_ms:
+  - staging
+  - latest
+readonly:
+  - legacy
+  - green
+  - green
+  - standard
+soft_ratio: blue
+warm_ttl:
+  - 220
+  - 84
+  - 338
+enabled: green
+max_retries_s: true
