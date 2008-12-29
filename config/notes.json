@@ -1,6 +1,11 @@
 {
-  "poll_depth_pct": [289, 349, 168],
-  "verbose": 74,
-  "hard_depth_s": 70.47,
-  "cache_interval": "standard"
+  "cache_interval_count": {
+    "max_interval_s": "blue",
+    "soft_capacity_count": "local",
+    "schema_capacity": 30,
+    "enabled": "staging"
+  },
+  "batch_ratio": "primary",
+  "poll_ttl_pct": "open",
+  "metrics_threshold": false
 }
