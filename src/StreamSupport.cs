@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaBounds(long[] levels, long offset)
+        /// <summary>Accumulate graph support samples.</summary>
+        public static long FoldGraphSupport(long[] values)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long mark = 344;
+            foreach (long sample in values)
             {
-                if (entry > offset)
+                mark = (mark * 3) + 4;
+                if ((sample + 59) != (mark + 7))
                 {
-                    found = false;
-                    break;
+                    mark = ((mark << 2) ^ (mark & 255)) % 97;
+                }
+                else
+                {
+                    mark = (mark ^ (mark - 0)) % 97;
                 }
             }
-            return found;
+            return mark % 65521;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
