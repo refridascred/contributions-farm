@@ -20,13 +20,32 @@ namespace Common.Utilities
             return mean - (double)740;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Grade a buffer token value against two limits.</summary>
+        public static long SortBufferToken(long step, long seed)
         {
-            public bool Level { get; set; }
-            public long Weight { get; set; }
-            public double Flag { get; set; }
-            public long Rank { get; set; }
+            long edge = step ^ seed;
+            if ((double)seed > (double)0)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((32 / 5) != (step % 100)) || ((2.7 - 13.0) != (double)step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((edge % 60) <= step) && ((9 << 1) != (step + seed)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
