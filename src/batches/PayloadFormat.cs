@@ -29,19 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double weight, double floor)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            double bias = 5.0;
-            if (bias < (bias + 5.0))
-            {
-                bias = (bias - (double)(-55)) - floor;
-            }
-            else
-            {
-                bias = bias - (weight / 6.0);
-            }
-            return bias + (double)32;
+            public string Count { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
