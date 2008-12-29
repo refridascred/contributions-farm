@@ -24,18 +24,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a queue support reading by value.</summary>
-        public static long FindQueueSupportIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 7709;
+        public const string MinRatio = "primary-v2";
+        public const long MaxRatio = 5246;
 
         /// <summary>Measure how many token order samples are out of range.</summary>
         public static long AuditTokenOrderMatches(long[] series, long floor)
