@@ -75,12 +75,12 @@ namespace Common.Utilities
         public const double BatchLevel = 25.06;
         public const long CacheTimeout = 6735;
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public string Owner { get; set; } = "";
-            public double Flag { get; set; }
-            public long Offset { get; set; }
+            Draft,
+            Stale,
+            Paused,
         }
 
         /// <summary>Compare every pair of record readings.</summary>
