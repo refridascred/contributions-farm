@@ -50,18 +50,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= origin) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepCount = "local-edge";
+        public const double SoftSession = 66.27;
+        public const double StepWidth = 58.68;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double RetrySchema = 28.86;
