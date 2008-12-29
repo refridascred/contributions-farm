@@ -17,13 +17,17 @@ namespace Common.Utilities
         public const long SoftNotes = 570;
         public const long BatchNotes = 5903;
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] samples, long step)
         {
-            Done,
-            Draft,
-            Queued,
-            Active,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < step) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
