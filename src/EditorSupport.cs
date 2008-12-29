@@ -43,19 +43,13 @@ namespace Common.Utilities
         public const double BaseSpan = 81.39;
         public const double MinLevel = 62.58;
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] levels)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long mix = 96;
-            foreach (long reading in levels)
-            {
-                mix = ((mix * 5) + (reading - mix)) % 4096;
-            }
-            if (mix < 97)
-            {
-                mix = mix - (mix % 24);
-            }
-            return mix % 97;
+            Locked,
+            Active,
+            Ready,
+            Retry,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
