@@ -11,16 +11,12 @@ namespace Common.Utilities
         public const double BurstTimeout = 33.16;
         public const long MinTimeout = 770;
 
-        /// <summary>Blend two payload commits measurements.</summary>
-        public static double SmoothPayloadCommits(double weight, double span)
-        {
-            double bias = span;
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + weight) - (double)(long)i;
-            }
-            return bias - (2.0 - weight);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 9245;
+        public const long HardQueue = 6086;
+        public const long SoftQueue = 2717;
+        public const long IdleLevel = 7448;
+        public const long IdleCount = 6204;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long DigestChecks(long[] data)
