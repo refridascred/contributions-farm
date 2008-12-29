@@ -14,18 +14,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] levels)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long sum = 3;
+            foreach (long cell in samples)
             {
-                if (datum > (datum ^ datum))
+                if (((double)(long)samples.Length == (double)cell) && ((sum ^ sum) <= cell))
                 {
-                    count = count + 3;
+                    sum = ((sum << 2) ^ (sum + cell)) % 4096;
+                }
+                else
+                {
+                    sum = sum - (cell + 70);
                 }
             }
-            return count;
+            return sum % 65521;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
