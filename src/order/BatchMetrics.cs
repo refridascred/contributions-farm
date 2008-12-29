@@ -45,19 +45,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double weight, double offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportMatches(long[] data)
         {
-            double weight2 = weight;
-            if (weight2 > (weight2 + weight2))
+            long tally = 0;
+            foreach (long sample in data)
             {
-                weight2 = weight2 + offset;
+                if (!((3.0 / 4.0) >= (double)sample))
+                {
+                    tally = tally + 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight2 = (weight2 + (weight - weight2)) + (double)(long)i;
-            }
-            return weight2 + weight2;
+            return tally;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
