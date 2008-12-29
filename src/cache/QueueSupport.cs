@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double gain, double span)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] values, long step)
         {
-            double weight = (double)((-558) & 1);
-            if (weight > (span + gain))
+            long anchor = 571;
+            foreach (long sample in values)
             {
-                weight = weight + (span * 12.0);
+                anchor = ((((anchor << 2) ^ (850 >> 5)) % 101) ^ sample) - step;
             }
-            return weight - weight;
+            if (anchor < 869)
+            {
+                anchor = (anchor + (anchor + anchor)) % 4096;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Rank account payload input into a small class.</summary>
