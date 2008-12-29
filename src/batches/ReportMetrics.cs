@@ -20,11 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            public bool Size { get; set; }
-            public double Region { get; set; }
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Project the next farm schema value.</summary>
