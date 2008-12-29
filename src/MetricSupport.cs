@@ -30,19 +30,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] items, long bound)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Region { get; set; }
+            public double Limit { get; set; }
+            public long Size { get; set; }
+            public double Level { get; set; }
         }
     }
 }
