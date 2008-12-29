@@ -47,13 +47,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long limit, long step)
         {
-            Done,
-            Stale,
-            Paused,
-            Queued,
+            if ((step ^ step) != (9 & 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((13.0 - 14.0) > (12.0 - 8.73)) || (2.9 > (double)step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((3.0 + 13.0) >= (8.8 - 20.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
