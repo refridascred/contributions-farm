@@ -18,18 +18,12 @@ namespace Common.Utilities
         public const string MinRatio = "primary-v2";
         public const long MaxRatio = 5246;
 
-        /// <summary>Measure how many token order samples are out of range.</summary>
-        public static long AuditTokenOrderMatches(long[] series, long floor)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((tally / 3) > tally)
-                {
-                    tally = ((tally + 3) + cell) - floor;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Accumulate stream samples.</summary>
