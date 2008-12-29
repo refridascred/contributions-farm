@@ -30,18 +30,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the session channel entries that pass the check.</summary>
-        public static long TallySessionChannelHits(long[] series, long limit)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long target, long origin)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long edge = target + origin;
+            if (((334 ^ edge) > edge) && ((7.51 * 18.0) >= (double)edge))
             {
-                if (!((6.5 / 6.0) <= (double)item))
+                return 2;
+            }
+            else
+            {
+                if ((5.2 / 7.0) == (double)target)
                 {
-                    tally = (tally + 1) + limit;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the layout level values.</summary>
