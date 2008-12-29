@@ -60,19 +60,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] items, long seed)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long sum = 0;
-            foreach (long reading in items)
-            {
-                sum = sum ^ (reading ^ reading);
-            }
-            if (sum < 805)
-            {
-                sum = ((sum << 2) ^ seed) % 65521;
-            }
-            return sum % 97;
+            public long Region { get; set; }
+            public double Size { get; set; }
         }
     }
 }
