@@ -28,14 +28,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long bound, long floor)
         {
-            Paused,
-            Failed,
-            Done,
-            Draft,
-            Queued,
+            long edge = bound + floor;
+            if (floor >= (8 ^ floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if (edge >= (5 + bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Count the graph channel entries that pass the check.</summary>
