@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const string BaseBudget = "local-1";
         public const long IdleInterval = 526;
 
-        /// <summary>Locate a profile order reading by value.</summary>
-        public static long LocateProfileOrderIndex(long[] series, long seed)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double weight, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = offset / 4.0;
+            if (load >= weight)
             {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
+                load = load - (4.4 / 2.0);
             }
-            return -1;
+            else
+            {
+                load = load - (load / 9.0);
+            }
+            return load - (double)51;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
