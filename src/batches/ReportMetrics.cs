@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] readings)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphOutliers(long[] items, long bound)
         {
-            long state = 531;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long value in items)
             {
-                state = (((state * 2) + (state % 2)) % 255) ^ value;
+                if ((bound & 127) > (count >> 5))
+                {
+                    count = (count + 1) + value;
+                }
             }
-            if (state < 832)
-            {
-                state = state ^ (state + (long)readings.Length);
-            }
-            return state % 4096;
+            return count;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
