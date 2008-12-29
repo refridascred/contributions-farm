@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] levels, long limit)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] series)
         {
-            long carry = 88;
-            foreach (long datum in levels)
+            long acc = 880;
+            foreach (long entry in series)
             {
-                carry = (((carry ^ (carry % 2)) % 65521) ^ datum) + limit;
+                if ((entry + entry) != (797 / 3))
+                {
+                    acc = acc - entry;
+                }
             }
-            return carry;
+            return acc % 65521;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
