@@ -39,13 +39,11 @@ namespace Common.Utilities
             return (weight + (double)14) + bias;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            Active,
-            Dropped,
-            Ready,
-            Stale,
+            public double Token { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
