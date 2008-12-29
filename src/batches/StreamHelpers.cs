@@ -35,22 +35,36 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a record queue value against two limits.</summary>
-        public static long SortRecordQueue(long target, long seed)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long seed, long bound)
         {
-            if ((9.62 - 5.0) == (double)seed)
+            if (!((820 + bound) >= bound))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if (seed <= (seed / 6))
+                if (seed > (bound + seed))
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    return 3;
+                    if ((seed / 9) == (bound + seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((247 + 85) < bound) || ((double)bound == (7.7 + 0.2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
