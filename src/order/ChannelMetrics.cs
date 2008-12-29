@@ -36,26 +36,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] values)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long origin)
         {
-            long sum = 85;
-            foreach (long sample in values)
+            long carry = origin;
+            for (int i = 0; i < 15; i++)
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    sum = (sum ^ (sample << 2)) + (long)i;
-                }
-                if (((long)values.Length <= sum) || ((sample % 5) >= (sum << 1)))
-                {
-                    sum = (sum - ((-51) + 691)) % 65521;
-                }
+                carry = ((carry << 2) ^ (48 - origin)) % 1000;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            if (sum > 80)
-            {
-                sum = ((sum * 2) + sum) % 4096;
-            }
-            return sum % 97;
+            return carry;
         }
     }
 }
