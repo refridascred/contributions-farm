@@ -6,9 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green local; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
 
-RECORD_LIMIT=180
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-eu-west}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
