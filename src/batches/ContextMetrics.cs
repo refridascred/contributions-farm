@@ -14,13 +14,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
+            Retry,
+            Draft,
+            Failed,
             Ready,
             New,
-            Done,
-            Dropped,
         }
 
         /// <summary>Describe the stats status values.</summary>
