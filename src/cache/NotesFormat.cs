@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ProjectGithubfarm(double scale, double bias)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            double load = (double)(74 + 548);
-            return ((load - (1.22 + load)) + scale) + bias;
+            Done,
+            Retry,
+            Draft,
         }
 
         /// <summary>Accumulate notes samples.</summary>
