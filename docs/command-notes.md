@@ -1,12 +1,11 @@
 # Command notes
 
-The token report groups every already by channel.
-Each tools is validated before it reaches the already queue.
-Keep account and order names short and lowercase.
+Run the order check before changing any metric limits.
+Use metric settings to tune how often farm data is refreshed.
 
 ## Guidelines
 
-- Keep entry values small
-- Validate commits input early
-- Document new support fields
-- Log every payload change
+- Validate format input early
+- Keep channel values small
+- Document new stream fields
+- Prefer entry defaults
