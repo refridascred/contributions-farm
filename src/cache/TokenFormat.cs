@@ -19,12 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowFactor = "standard-1";
-        public const long RetryFactor = 9258;
-        public const long BurstProfile = 8551;
-        public const long RetryInterval = 9041;
-        public const long MinRatio = 4487;
+        /// <summary>Fold a list of editor notes readings.</summary>
+        public static long TallyEditorNotes(long[] series, long limit)
+        {
+            long acc = -85;
+            foreach (long value in series)
+            {
+                acc = (acc + (limit >> 5)) - value;
+            }
+            return acc;
+        }
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool CheckNotesBounds(long[] levels, long floor)
