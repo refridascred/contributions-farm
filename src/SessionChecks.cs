@@ -24,11 +24,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] series, long bound)
+        public static long LookupCommandIndex(long[] levels, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] <= bound)
+                if ((levels[i] >= target) && ((levels[i] % 2) != 0))
                 {
                     return (long)i;
                 }
