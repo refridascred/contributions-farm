@@ -1,12 +1,5 @@
 # githubfarm settings
-window_ttl:
-  - staging
-  - strict
-  - legacy
-cluster_timeout: fallback
-token_threshold: primary
-burst_size_count:
-  farm_threshold: 62.78
-  context_capacity: false
-  hard_delay_s: fallback
-  compress: 96.12
+cache_interval_count: 2.27
+verbose: blue
+counter_size: 26.79
+warm_ratio_s: 76.37
