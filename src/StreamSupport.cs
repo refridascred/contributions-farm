@@ -24,18 +24,11 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (hits < (hits - datum))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 6546;
+        public const long IdleBatches = 7921;
+        public const long BaseSize = 6278;
+        public const long StepBudget = 4143;
+        public const string HardWidth = "open-v2";
     }
 }
