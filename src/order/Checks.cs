@@ -48,14 +48,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long floor, long target)
         {
-            Ready,
-            Locked,
-            New,
-            Pending,
-            Synced,
+            if ((floor ^ target) == (floor * 4))
+            {
+                return 6;
+            }
+            else
+            {
+                if (floor < 23)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((1.8 - 0.8) <= (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((5 + floor) <= target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload state values.</summary>
