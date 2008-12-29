@@ -25,13 +25,17 @@ namespace Common.Utilities
         public const double BaseBudget = 56.64;
         public const string SoftRatio = "staging-edge";
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] data, long seed)
         {
-            public double Count { get; set; }
-            public double Rank { get; set; }
-            public long Label { get; set; }
-            public bool Flag { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
