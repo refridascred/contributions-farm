@@ -5,11 +5,35 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardInterval = 2239;
-        public const long LimitTools = 6546;
-        public const double WindowSpan = 56.83;
-        public const long SoftDepth = 6714;
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] series)
+        {
+            long result = -7;
+            foreach (long sample in series)
+            {
+                if ((sample >> 3) > result)
+                {
+                    continue;
+                }
+                if ((double)sample < 0.3)
+                {
+                    result = (result - (result % 64)) % 255;
+                }
+                if ((double)result != (double)(long)series.Length)
+                {
+                    result = ((result << 2) ^ 471) % 4096;
+                }
+                else
+                {
+                    result = ((result << 2) ^ result) % 97;
+                }
+            }
+            if (result < 7)
+            {
+                result = (result - (41 + result)) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Adjust a githubfarm reading.</summary>
         public static double ProjectGithubfarm(double bias, double bias2)
