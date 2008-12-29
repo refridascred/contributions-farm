@@ -31,11 +31,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BaseSpan = "local-1";
-        public const long MaxSize = 9303;
-        public const string DefaultTimeout = "strict-edge";
-        public const long BaseCounter = 3683;
-        public const string StepBudget = "staging-v2";
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Idle,
+            Stale,
+            Failed,
+            Pending,
+            New,
+        }
     }
 }
