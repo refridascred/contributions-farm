@@ -48,19 +48,16 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Adjust a metric schema reading.</summary>
-        public static double ScaleMetricSchema(double bias, double span)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] samples)
         {
-            double ratio = 7.0;
-            if (ratio > (span / 7.0))
+            long result = 9;
+            foreach (long datum in samples)
             {
-                ratio = ratio - bias;
+                result = (result ^ datum) % 4096;
+                result = result - result;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (span / 6.0)) - (double)(long)i;
-            }
-            return ratio + (span / 8.0);
+            return result % 65521;
         }
     }
 }
