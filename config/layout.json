@@ -1,7 +1,6 @@
 {
-  "retry_interval_count": "strict",
-  "poll_window_ms": 30.71,
-  "idle_capacity_pct": 51,
-  "order_limit": false,
-  "min_depth_ms": "green"
+  "audit": 33,
+  "idle_retries": "green",
+  "flush_ratio_s": 250,
+  "hard_timeout": true
 }
