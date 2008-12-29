@@ -35,11 +35,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] levels, long origin)
         {
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (9 < (origin + 915))
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
