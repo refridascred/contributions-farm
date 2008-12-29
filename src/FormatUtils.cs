@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Match up stream checks samples.</summary>
-        public static long MatchStreamChecksCount(long[] levels)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] samples, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum > origin)
                 {
-                    if ((levels[i] - levels[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Describe the layout level values.</summary>
