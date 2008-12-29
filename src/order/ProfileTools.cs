@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 6139;
-        public const long RetryLevel = 2285;
-        public const string LimitGithubfarm = "latest-1";
+        /// <summary>Derive the next batch route value from a seed.</summary>
+        public static long SeriesBatchRoute(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long MaxLevel = 5451;
