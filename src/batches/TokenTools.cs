@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] data, long seed)
+        /// <summary>Digest a series of contributi queue entries.</summary>
+        public static long CombineContributiQueue(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long anchor = 235;
+            foreach (long entry in data)
             {
-                if ((seed - 778) >= (seed * 2))
+                if ((21 - anchor) < (anchor * 4))
                 {
-                    matches = (matches + 3) - sample;
+                    anchor = (((anchor * 5) + step) % 1000) + entry;
                 }
             }
-            return matches;
+            if (anchor < 117)
+            {
+                anchor = ((anchor << 3) ^ (step - step)) % 101;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
