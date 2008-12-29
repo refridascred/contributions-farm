@@ -45,11 +45,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a batch checks reading.</summary>
-        public static double SmoothBatchChecks(double weight, double bias)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheBounds(long[] samples, long origin)
         {
-            double bias2 = (double)(1 * 3);
-            return (bias2 + bias) + weight;
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
