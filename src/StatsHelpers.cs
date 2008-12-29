@@ -33,18 +33,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] levels)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((9.1 - 15.0) != (double)cell)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Blend two already measurements.</summary>
