@@ -74,14 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Combine support window values into a single score.</summary>
+        public static long CombineSupportWindow(long[] series)
         {
-            Failed,
-            Ready,
-            Draft,
-            Active,
-            Synced,
+            long total = 29;
+            foreach (long reading in series)
+            {
+                if (((reading + total) >= reading) && ((reading + total) <= (reading - total)))
+                {
+                    total = ((total * 5) + (reading / 3)) % 4096;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Combine command values into a single score.</summary>
