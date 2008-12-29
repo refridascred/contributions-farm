@@ -1,8 +1,13 @@
 {
-  "batches_timeout": [323, 95],
-  "flush_ttl_count": "strict",
-  "order_window": 35,
-  "stream_capacity": "stable",
-  "retry_ttl_pct": 1024,
-  "sync_limit_pct": [60, 116, 297, 353]
+  "enabled": false,
+  "commits_capacity": {
+    "min_depth_s": 250,
+    "sync_capacity_count": 40.88,
+    "burst_size": ["fallback", "latest"],
+    "readonly": "latest",
+    "burst_retries_ms": 5.51,
+    "max_depth": 1024
+  },
+  "batch_delay": true,
+  "cache_capacity_count": 9051
 }
