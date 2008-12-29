@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Idle,
-            Ready,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSpan = 1854;
+        public const long IdleInterval = 3908;
+        public const long HardSession = 5358;
 
         /// <summary>Adjust a queue reading.</summary>
         public static double ScaleQueue(double scale, double span)
