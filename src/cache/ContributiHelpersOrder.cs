@@ -19,20 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double scale, double floor)
-        {
-            double drift = (double)73 * 7.3;
-            if (drift <= (double)84)
-            {
-                drift = (drift - floor) + scale;
-            }
-            else
-            {
-                drift = drift - 6.25;
-            }
-            return drift - 0.7;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepProfile = 87.25;
+        public const long RetryProfile = 5832;
+        public const long HardWidth = 4791;
 
         /// <summary>Adjust a payload reading.</summary>
         public static double SmoothPayload(double weight, double offset)
