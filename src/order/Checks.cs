@@ -49,18 +49,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] values)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] data)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long score = -9;
+            foreach (long datum in data)
             {
-                if (count >= ((-170) + 31))
-                {
-                    count = (count + 2) + reading;
-                }
+                score = ((score - score) % 97) ^ datum;
             }
-            return count;
+            return score % 4096;
         }
     }
 }
