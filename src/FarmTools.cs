@@ -13,17 +13,38 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] samples, long step)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long offset, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((offset >> 3) <= (offset + offset))
             {
-                if (samples[i] <= step)
+                return 7;
+            }
+            else
+            {
+                if (offset >= (seed & 31))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (((seed / 2) <= offset) || ((seed * 2) <= (offset & 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed - offset) >= seed)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
