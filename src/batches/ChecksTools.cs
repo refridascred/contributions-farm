@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double gain, double offset)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            double bias = (double)(99 + 986);
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + (double)(long)i) + offset;
-            }
-            return bias - (7.0 - gain);
+            Paused,
+            New,
+            Locked,
+            Ready,
         }
 
         /// <summary>Accumulate already order samples.</summary>
