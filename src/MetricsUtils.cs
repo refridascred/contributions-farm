@@ -20,10 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 4521;
-        public const string SoftWindow = "stable-v2";
-        public const string CacheWindow = "cached";
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
+        {
+            public long Count { get; set; }
+            public double Level { get; set; }
+            public double Limit { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long MeasureChecksOutliers(long[] levels, long origin)
