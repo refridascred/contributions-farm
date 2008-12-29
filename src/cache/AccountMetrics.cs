@@ -86,13 +86,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            public long Limit { get; set; }
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            public bool Mode { get; set; }
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
