@@ -1,14 +1,11 @@
 # Command notes
 
-The batches module keeps stream values in sync with the window cache.
-A metrics that stays idle for too long is moved to the batches list.
-
-The order module keeps token values in sync with the farm cache.
-Run the queue check before changing any order limits.
-When a stats fails, the farm handler retries a few times before giving up.
+The context report groups every commits by layout.
+The support module keeps channel values in sync with the support cache.
 
 ## Guidelines
 
-- Validate queue input early
-- Prefer session defaults
-- Keep githubfarm values small
+- Review tools limits each release
+- Log every metrics change
+- Keep format values small
+- Document new commits fields
