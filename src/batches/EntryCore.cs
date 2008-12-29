@@ -69,18 +69,19 @@ namespace Common.Utilities
             return ((mean + 6.08) + weight) + span;
         }
 
-        /// <summary>Audit githubfarm route readings against a rule.</summary>
-        public static long MeasureGithubfarmRouteMatches(long[] levels)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorLimits(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if ((count & 255) > sample)
+                if (datum <= limit)
                 {
-                    count = count + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
