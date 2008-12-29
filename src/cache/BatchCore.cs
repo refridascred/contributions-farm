@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum == (18.0 - 7.5))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxSize = "local";
+        public const double CacheCounter = 51.17;
+        public const long MaxCounter = 8768;
+        public const long DefaultLevel = 343;
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long SeekCommitsIndex(long[] data, long target)
