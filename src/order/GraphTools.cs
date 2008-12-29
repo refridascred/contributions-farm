@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long RetryRatio = 9497;
         public const long MinDepth = 705;
 
-        /// <summary>Count the githubfarm filter entries that pass the check.</summary>
-        public static long CountGithubfarmFilterGaps(long[] samples, long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((double)item <= (double)seed)
+                if (entry <= (3 >> 5))
                 {
-                    count = count + 3;
+                    matches = (matches + 1) + bound;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the cache kind values.</summary>
