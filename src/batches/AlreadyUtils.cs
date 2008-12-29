@@ -21,12 +21,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxWidth = 48.15;
-        public const long MinProfile = 6503;
-        public const double BaseProfile = 47.02;
-        public const string BurstProfile = "standard";
-        public const long WindowBudget = 1883;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string StepTools = "stable-v2";
+        public const long MinTools = 1873;
+        public const double BaseTools = 17.44;
+        public const string CacheLevel = "open-v2";
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long AuditAlreadyHits(long[] data, long floor)
