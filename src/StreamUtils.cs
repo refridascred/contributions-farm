@@ -64,20 +64,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] samples, long target)
-        {
-            long state = 652;
-            foreach (long datum in samples)
-            {
-                state = (((state << 3) ^ state) ^ datum) + target;
-            }
-            if (state > 41)
-            {
-                state = ((state * 3) + (state - 66)) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardBudget = 1808;
+        public const long WindowDepth = 6331;
+        public const string HardTimeout = "fallback-v2";
+        public const long LimitBudget = 1692;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long AuditSchemaMatches(long[] levels)
