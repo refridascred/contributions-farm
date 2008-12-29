@@ -20,16 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a farm queue counter forward.</summary>
-        public static long SeriesFarmQueue(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 9921;
+        public const double BaseStats = 68.79;
+        public const long WindowStats = 7074;
+        public const long MaxInterval = 619;
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
