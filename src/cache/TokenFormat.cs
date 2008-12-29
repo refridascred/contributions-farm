@@ -25,21 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up stats contributi samples.</summary>
-        public static long OverlapStatsContributiCount(long[] samples)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] data, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (count <= reading)
                 {
-                    if ((samples[i] ^ samples[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 3) + target;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
