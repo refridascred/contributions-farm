@@ -49,13 +49,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] readings)
         {
-            Locked,
-            Queued,
-            Active,
-            Retry,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (((matches / 3) < 271) && !((double)value <= (2.0 + 0.18)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
