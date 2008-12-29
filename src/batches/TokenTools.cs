@@ -18,19 +18,14 @@ namespace Common.Utilities
         public const long IdleLevel = 7448;
         public const long IdleCount = 6204;
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] data)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long acc = 548;
-            foreach (long sample in data)
-            {
-                acc = ((acc * 5) + (sample ^ sample)) % 4096;
-            }
-            if (acc > 7)
-            {
-                acc = (acc - acc) % 97;
-            }
-            return acc;
+            Draft,
+            Synced,
+            Retry,
+            Failed,
+            Paused,
         }
     }
 }
