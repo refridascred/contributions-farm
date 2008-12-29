@@ -20,24 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long floor, long bound)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            if ((double)floor > (8.0 * 19.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((bound % 100) < floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Fold a list of metric readings.</summary>
