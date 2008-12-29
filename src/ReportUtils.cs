@@ -36,18 +36,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] values)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] readings, long limit)
         {
-            long state = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (6.66 >= (double)cell)
+                if (readings[i] <= limit)
                 {
-                    state = ((state << 3) ^ cell) % 4096;
+                    return (long)i;
                 }
             }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
