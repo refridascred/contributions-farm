@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of batches stats entries.</summary>
-        public static long WeighBatchesStats(long[] items)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double bias, double span)
         {
-            long carry = 1;
-            foreach (long reading in items)
-            {
-                carry = ((carry - carry) % 1000) - reading;
-            }
-            if (carry > 649)
-            {
-                carry = (carry ^ (55 / 9)) % 65521;
-            }
-            return carry;
+            double rate = span;
+            return (rate - span) + bias;
         }
 
         /// <summary>Fold a list of token readings.</summary>
