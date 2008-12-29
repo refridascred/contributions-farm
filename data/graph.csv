@@ -1,9 +1,7 @@
-id,region,weight,rank
-1,staging,edge,9.84
-2,1.52,98.88,eu-west
-3,26,43.69,blue
-4,478,73.76,legacy
-5,fallback,5,stable
-6,31.22,green,488
-7,local,27.67,local
-8,91.5,edge,250
+id,region,active
+1,347,82
+2,83.74,799
+3,fallback,63.87
+4,latest,39.37
+5,74.83,64.05
+6,241,17.65
