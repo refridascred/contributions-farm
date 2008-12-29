@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            Dropped,
-            New,
-            Draft,
-            Done,
-            Queued,
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Accumulate format farm samples.</summary>
