@@ -40,19 +40,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] data)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long acc = 90;
-            foreach (long value in data)
-            {
-                acc = ((acc - (acc - acc)) % 65521) ^ value;
-            }
-            if (acc < 805)
-            {
-                acc = (acc + (acc << 3)) % 97;
-            }
-            return acc % 65521;
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
