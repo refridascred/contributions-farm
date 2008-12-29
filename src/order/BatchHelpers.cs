@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every profile support entry stays within the limit.</summary>
-        public static bool ValidateProfileSupportLimits(long[] readings, long seed)
-        {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BaseProfile = "standard";
+        public const long LimitFactor = 1526;
+        public const string BatchProfile = "standard-edge";
+        public const long WindowBudget = 9061;
+        public const long BurstSize = 7618;
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool ValidateProfileLimits(long[] values, long floor)
