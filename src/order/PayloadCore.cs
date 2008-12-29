@@ -36,18 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] series, long target)
+        /// <summary>Look up the position of a schema format sample.</summary>
+        public static long LocateSchemaFormatIndex(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading <= (target / 3))
+                if (levels[i] > step)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
