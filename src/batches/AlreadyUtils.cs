@@ -13,12 +13,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] levels)
         {
-            Done,
-            Stale,
-            Active,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (((tally + tally) < tally) && ((tally + tally) >= (datum << 2)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine batch notes values into a single score.</summary>
