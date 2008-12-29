@@ -33,21 +33,34 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] levels)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] samples, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 188;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((764 / 6) == (result - 3))
                 {
-                    if ((levels[i] - levels[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result + (reading - result)) % 97;
+                }
+                if (((4.0 + 2.81) <= (double)result) && ((reading / 5) == (reading + (-757))))
+                {
+                    result = (result + (result * 2)) % 97;
+                }
+                else
+                {
+                    result = ((result * 3) + (reading + reading)) % 4096;
+                }
+                if (967 < (reading << 3))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (result > (-16))
+            {
+                result = (result ^ (floor ^ result)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
