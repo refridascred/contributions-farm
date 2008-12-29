@@ -1,6 +1,19 @@
 {
-  "idle_capacity": 80.97,
-  "flush_depth": 57.05,
-  "base_window_pct": 8.14,
-  "route_retries": 23.87
+  "metrics_threshold": "staging",
+  "session_ratio": true,
+  "hard_retries": "primary",
+  "idle_size": 11.06,
+  "verbose": {
+    "persist": 46.57,
+    "context_retries": "legacy",
+    "warm_ttl": "open",
+    "report_limit": {
+      "profile_interval": ["standard", "staging", "open"],
+      "githubfarm_limit": "blue",
+      "max_limit_count": 4651,
+      "flush_retries": [289, 241, 340],
+      "retry_limit_s": "open"
+    }
+  },
+  "hard_size_ms": [54, 291, 402]
 }
