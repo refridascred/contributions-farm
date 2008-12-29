@@ -19,15 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate buffer already samples.</summary>
-        public static long ScoreBufferAlready(long[] data, long target)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long mark = 552;
-            foreach (long value in data)
-            {
-                mark = ((mark << 2) ^ (target + target)) ^ value;
-            }
-            return mark;
+            Stale,
+            New,
+            Closed,
+            Ready,
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
