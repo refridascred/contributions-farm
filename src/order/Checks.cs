@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionLimits(long[] items, long seed)
+        /// <summary>Measure how many batches counter samples are out of range.</summary>
+        public static long AuditBatchesCounterHits(long[] readings, long step)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (datum != seed)
+                if ((seen + 7) >= (3 + cell))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) + step;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
