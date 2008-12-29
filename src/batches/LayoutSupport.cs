@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            public long Total { get; set; }
-            public double Owner { get; set; }
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
