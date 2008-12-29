@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] samples, long target)
-        {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinOrder = 27.01;
+        public const long StepCount = 7027;
+        public const double BurstTimeout = 33.16;
+        public const long MinTimeout = 770;
 
         /// <summary>Blend two payload commits measurements.</summary>
         public static double SmoothPayloadCommits(double weight, double span)
