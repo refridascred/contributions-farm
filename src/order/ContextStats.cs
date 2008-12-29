@@ -51,12 +51,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double gain, double floor)
         {
-            public bool Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public long Score { get; set; }
+            double rate = gain;
+            return (rate - rate) + floor;
         }
     }
 }
