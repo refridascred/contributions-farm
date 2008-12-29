@@ -63,11 +63,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            public string Level { get; set; } = "";
-            public string Weight { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Count { get; set; }
+            public long Owner { get; set; }
+            public double Token { get; set; }
         }
     }
 }
