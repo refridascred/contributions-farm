@@ -19,12 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 3393;
-        public const long IdleCount = 6885;
-        public const string BatchCount = "latest-edge";
-        public const long StepEditor = 9207;
-        public const double MaxEditor = 17.38;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] data)
+        {
+            long score = 386;
+            foreach (long datum in data)
+            {
+                score = (score ^ (datum & 31)) % 255;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Match up stats contributi samples.</summary>
         public static long OverlapStatsContributiCount(long[] samples)
