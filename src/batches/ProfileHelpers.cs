@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string DefaultLevel = "latest-1";
-        public const long DefaultQueue = 2417;
-        public const double HardDepth = 20.38;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowInterval = 9947;
+        public const long WindowTimeout = 2765;
+        public const long BatchSize = 9912;
+        public const string DefaultOrder = "cached-v2";
+        public const string BatchOrder = "latest-1";
 
         /// <summary>Hold a buffer record.</summary>
         public sealed class BufferRecord
