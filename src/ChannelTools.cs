@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] items)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 338;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((carry - 53) <= (carry - carry))
                 {
-                    if ((items[i] ^ items[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    carry = ((carry - (carry << 3)) % 101) - datum;
                 }
+                carry = (carry * 3) + (carry >> 2);
             }
-            return count;
+            return carry % 4096;
         }
 
         /// <summary>Hold a batch header.</summary>
