@@ -33,17 +33,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] levels, long target)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
+                result = result + (step - step);
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
