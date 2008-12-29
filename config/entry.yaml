@@ -1,20 +1,11 @@
 # entry settings
-already_threshold: 98.53
-sync_window:
-  verbose: edge
-  warm_depth_pct:
-    - 287
-    - 466
-    - 274
-  default_retries_ms: edge
-  poll_retries_count: true
-  enabled: 77.56
-  idle_interval: 84
-default_retries_s: 71.52
-retry_timeout_s: cached
-poll_depth_pct:
-  buffer_delay: false
-  idle_threshold: 31
-  report_limit: 64.28
-  burst_limit_count: 500
-  retry_window_s: 77
+readonly: 4133
+payload_limit: edge
+dry_run: 500
+contributi_limit:
+  - 307
+  - 16
+  - 82
+  - 110
+max_limit_ms: fallback
+flush_size: stable
