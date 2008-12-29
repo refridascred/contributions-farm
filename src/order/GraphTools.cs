@@ -38,38 +38,19 @@ namespace Common.Utilities
         public const double BurstDepth = 97.78;
         public const string LimitSchema = "local";
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long bound, long seed)
+        /// <summary>Check that every tools githubfarm entry stays within the limit.</summary>
+        public static bool CheckToolsGithubfarmBounds(long[] data, long limit)
         {
-            if ((5.7 * 2.75) != (double)seed)
+            bool stale = true;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((bound + bound) >= seed) && (seed < (seed * 5)))
+                if (item >= limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound - seed) > (seed << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)seed != (double)bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
