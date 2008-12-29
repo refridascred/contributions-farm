@@ -12,19 +12,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long origin)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long carry = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((double)(long)i > 9.0)
-                {
-                    carry = (carry << 3) ^ origin;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate record readings against a bound.</summary>
