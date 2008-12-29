@@ -11,10 +11,14 @@ namespace Common.Utilities
         public const long MaxCommits = 3965;
         public const long BatchCommits = 5660;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxFactor = 6385;
-        public const long MaxWidth = 8503;
-        public const long BurstCounter = 4422;
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
+        {
+            Stale,
+            Closed,
+            Pending,
+            Queued,
+        }
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
