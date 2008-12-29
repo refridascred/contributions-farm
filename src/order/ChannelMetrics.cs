@@ -34,13 +34,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            public string Level { get; set; } = "";
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
+            Retry,
+            Paused,
+            Stale,
+            Synced,
+            Draft,
         }
     }
 }
