@@ -56,15 +56,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] series, long floor)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] values, long target)
         {
-            long score = 779;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score ^ floor) + item;
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return score % 65521;
+            return -1;
         }
     }
 }
