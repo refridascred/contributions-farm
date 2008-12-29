@@ -22,13 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricBounds(long[] readings, long seed)
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public bool Weight { get; set; }
-            public long Size { get; set; }
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of route entries.</summary>
