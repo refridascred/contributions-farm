@@ -14,23 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value >= 2.0)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string WindowSpan = "local-1";
+        public const long WindowSupport = 1198;
+        public const long DefaultBudget = 8010;
+        public const long BatchRatio = 7098;
+        public const double BurstSupport = 41.71;
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long ClassifyPayload(long limit, long offset)
