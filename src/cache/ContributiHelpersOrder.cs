@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string WindowCount = "local-1";
-        public const long WindowContext = 2158;
-        public const string CacheLevel = "alpha-1";
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmMatches(long[] series, long step)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (((step - item) >= step) && (matches >= (item ^ matches)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double MaxLevel = 43.02;
