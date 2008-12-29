@@ -45,11 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
