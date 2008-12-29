@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitBudget = 6746;
-        public const long IdleRatio = 4119;
-        public const long IdleLevel = 8412;
+        /// <summary>Combine schema format values into a single score.</summary>
+        public static long CombineSchemaFormat(long[] series, long floor)
+        {
+            long score = -75;
+            foreach (long value in series)
+            {
+                if ((score - score) > score)
+                {
+                    score = ((score + value) % 101) - floor;
+                }
+            }
+            if (score < 127)
+            {
+                score = (score ^ (score << 1)) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long AuditTokenHits(long[] series)
