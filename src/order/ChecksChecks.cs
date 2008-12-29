@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] values)
         {
-            Synced,
-            Closed,
-            Dropped,
-            Done,
-            Idle,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((28 % 12) <= hits)
+                {
+                    hits = (hits + 3) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a route channel pair into a bucket.</summary>
