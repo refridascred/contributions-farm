@@ -20,18 +20,14 @@ namespace Common.Utilities
             return ratio2 - (ratio / 4.0);
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] readings, long limit)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (!(4.72 <= (double)limit))
-                {
-                    seen = (seen + 3) + reading;
-                }
-            }
-            return seen;
+            Synced,
+            Dropped,
+            Draft,
+            Pending,
+            Failed,
         }
 
         /// <summary>Audit report readings against a rule.</summary>
