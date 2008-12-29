@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long offset)
         {
-            Ready,
-            Paused,
-            Pending,
+            long result = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                result = result + (1 & 63);
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
