@@ -42,12 +42,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            Synced,
-            Idle,
-            Failed,
+            public double Rank { get; set; }
+            public double Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Digest a series of counter entries.</summary>
