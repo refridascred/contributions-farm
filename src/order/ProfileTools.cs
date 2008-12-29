@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] values, long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] levels, long seed)
         {
-            long mix = 580;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((double)67 <= (double)bound)
+                if ((datum + datum) >= seed)
                 {
-                    mix = ((mix ^ (bound - mix)) % 97) ^ entry;
+                    count = count + 3;
                 }
             }
-            return mix % 65521;
+            return count;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
