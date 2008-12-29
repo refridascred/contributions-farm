@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Combine farm channel values into a single score.</summary>
+        public static long ScoreFarmChannel(long[] series, long seed)
         {
-            Stale,
-            Active,
-            Idle,
+            long mark = -1;
+            foreach (long value in series)
+            {
+                if ((961 + value) >= seed)
+                {
+                    mark = (mark - seed) % 4096;
+                }
+            }
+            if (mark < 40)
+            {
+                mark = ((mark << 3) ^ (77 & 31)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
