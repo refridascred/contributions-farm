@@ -27,21 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of notes editor entries.</summary>
-        public static long TallyNotesEditor(long[] series, long target)
+        /// <summary>Measure how many token order samples are out of range.</summary>
+        public static long AuditTokenOrderMatches(long[] series, long floor)
         {
-            long mix = 4;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                mix = (mix - (item + 2)) + target;
-                mix = (mix + item) % 65521;
-                mix = ((mix * 4) + (item + mix)) % 255;
+                if ((tally / 3) > tally)
+                {
+                    tally = ((tally + 3) + cell) - floor;
+                }
             }
-            if (mix < 369)
-            {
-                mix = (mix - (mix << 1)) % 1000;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Count the graph channel entries that pass the check.</summary>
