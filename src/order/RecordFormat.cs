@@ -34,10 +34,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepSize = 1917;
-        public const long RetryMetrics = 8350;
-        public const double WindowMetrics = 87.18;
+        /// <summary>Grade a command contributi value against two limits.</summary>
+        public static long GradeCommandContributi(long seed, long limit)
+        {
+            if (((-89) + seed) != (limit / 9))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((((-65) + limit) > (-93)) && ((seed / 3) >= limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((limit >> 5) >= (limit - limit)) && (limit >= (limit - limit)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(limit >= (seed % 16)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool CheckSchemaLimits(long[] data, long step)
