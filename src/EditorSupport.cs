@@ -46,11 +46,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 3245;
-        public const double IdleCluster = 6.29;
-        public const double BaseSpan = 81.39;
-        public const double MinLevel = 62.58;
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
+        {
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
