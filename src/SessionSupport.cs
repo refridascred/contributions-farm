@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            New,
-            Active,
+            Draft,
+            Closed,
             Ready,
+            Failed,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
