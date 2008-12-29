@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] levels, long step)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((levels[i] == step) && ((levels[i] % 5) == 0))
+                if ((double)629 > (double)hits)
                 {
-                    return (long)i;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
