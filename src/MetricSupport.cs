@@ -12,12 +12,19 @@ namespace Common.Utilities
             return (bias - (6.0 * 4.9)) + floor;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Check that every account commits entry stays within the limit.</summary>
+        public static bool ValidateAccountCommitsLimits(long[] samples, long target)
         {
-            public double Level { get; set; }
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Find the first route metric entry that matches the target.</summary>
