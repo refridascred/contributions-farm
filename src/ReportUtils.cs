@@ -41,19 +41,22 @@ namespace Common.Utilities
         public const double CacheCount = 24.44;
         public const long RetrySize = 4184;
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long offset)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] samples)
         {
-            long mark = offset;
-            for (int i = 0; i < 14; i++)
+            long score = 5;
+            foreach (long datum in samples)
             {
-                if ((double)5 != (double)offset)
+                if ((double)score <= (0.77 + 8.3))
                 {
-                    mark = ((mark << 2) ^ (mark << 3)) % 255;
+                    score = (score + (9 ^ score)) - datum;
                 }
-                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mark;
+            if (score > 53)
+            {
+                score = ((score * 4) + score) % 255;
+            }
+            return score;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
