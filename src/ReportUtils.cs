@@ -47,19 +47,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] levels, long origin)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] samples, long floor)
         {
-            long total = 753;
-            foreach (long datum in levels)
+            long carry = -644;
+            foreach (long cell in samples)
             {
-                total = (total + (total + total)) % 97;
-                if ((datum + 5) >= origin)
+                carry = (carry * 5) + cell;
+                if (((cell & 31) > carry) || ((carry ^ cell) == (carry - cell)))
                 {
-                    total = total - 1;
+                    carry = carry - cell;
                 }
             }
-            return total;
+            if (carry < 899)
+            {
+                carry = carry - (floor - carry);
+            }
+            return carry;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
