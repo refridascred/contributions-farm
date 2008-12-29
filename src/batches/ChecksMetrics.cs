@@ -44,25 +44,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long seed, long origin)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsRange(long[] values, long step)
         {
-            long diff = seed + origin;
-            if (((double)diff > (5.0 / 9.0)) && ((seed & 7) == (diff % 3)))
+            bool stale = true;
+            foreach (long cell in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin != (7.77 * 7.35))
+                if (cell <= step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
