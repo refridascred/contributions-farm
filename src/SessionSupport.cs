@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 5161;
-        public const long WindowSpan = 6779;
-        public const long StepBuffer = 6087;
-        public const string MinBuffer = "local-edge";
-        public const long RetrySpan = 634;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((tally * 4) == (6 ^ tally))
+                {
+                    tally = (tally + 2) ^ datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next buffer support value.</summary>
         public static double ProjectBufferSupport(double bias, double span)
