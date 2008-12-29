@@ -1,10 +1,7 @@
 {
-  "dry_run": {
-    "context_timeout": false,
-    "strict": false,
-    "sync_size": 27.18,
-    "schema_timeout": false
-  },
-  "sync_window_pct": "cached",
-  "soft_timeout_pct": false
+  "audit": ["standard", "staging"],
+  "retry_threshold_count": 4166,
+  "poll_size_s": "stable",
+  "record_threshold": 1024,
+  "flush_retries_count": ["strict", "primary", "fallback", "green"]
 }
