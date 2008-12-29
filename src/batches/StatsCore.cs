@@ -30,21 +30,17 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] samples)
+        /// <summary>Locate a filter channel reading by value.</summary>
+        public static long FindFilterChannelIndex(long[] samples, long seed)
         {
-            long seen = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (samples[i] == seed)
                 {
-                    if ((samples[i] ^ samples[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
