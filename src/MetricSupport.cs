@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BaseSpan = "staging-edge";
-        public const long BurstScore = 4171;
-        public const long IdleContributi = 6746;
-        public const long DefaultSpan = 8363;
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Pending,
+            New,
+            Dropped,
+            Synced,
+        }
 
         /// <summary>Audit command checks readings against a rule.</summary>
         public static long AuditCommandChecksOutliers(long[] readings)
