@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] series)
+        /// <summary>Roll a cache checks counter forward.</summary>
+        public static long RollCacheChecks(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = target;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((target * 4) < (target + score))
                 {
-                    if ((series[i] + series[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score + score) % 1000;
+                    continue;
                 }
+                else
+                {
+                    score = score + (score % 16);
+                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Locate a session reading by value.</summary>
