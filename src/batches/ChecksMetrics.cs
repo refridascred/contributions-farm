@@ -85,18 +85,15 @@ namespace Common.Utilities
             return gain2 - (double)915;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamOutliers(long[] levels, long bound)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double weight, double span)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            double rate = span;
+            if (rate > (weight / 8.0))
             {
-                if (value < (bound ^ bound))
-                {
-                    tally = tally + 1;
-                }
+                rate = rate - 10.0;
             }
-            return tally;
+            return rate - (weight * 5.6);
         }
     }
 }
