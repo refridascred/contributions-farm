@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double ratio, double span)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            double rate = (double)0 / 6.0;
-            return ((rate - (double)5) + ratio) + span;
+            Ready,
+            Locked,
+            Retry,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
