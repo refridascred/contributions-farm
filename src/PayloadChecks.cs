@@ -41,21 +41,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((979 & 15) >= (total * 2)) && ((total + (long)i) > (total >> 3)))
-                {
-                    total = (total * 4) + (step + 42);
-                    total = ((total << 2) ^ (step / 7)) % 101;
-                }
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MinWidth = "strict-1";
+        public const string DefaultWidth = "local-v2";
+        public const long MaxRatio = 8181;
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool VerifyChecksBounds(long[] series, long floor)
