@@ -48,11 +48,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long target)
         {
-            public long Score { get; set; }
-            public bool Size { get; set; }
+            long state = target;
+            for (int i = 0; i < 17; i++)
+            {
+                state = (state << 2) ^ target;
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
