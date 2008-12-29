@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const double BatchCount = 71.37;
         public const long BatchSupport = 4523;
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double gain, double offset)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ProjectContributi(double ratio, double floor)
         {
-            double gain2 = 1.4;
-            for (int i = 0; i < 5; i++)
+            double scale = (double)(4 + 0);
+            if (scale <= 12.0)
             {
-                gain2 = (gain2 + offset) + (double)(long)i;
+                scale = (scale - (floor - floor)) - ratio;
             }
-            return gain2 - gain;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - floor) + (double)(long)i;
+            }
+            return scale - (double)(-66);
         }
 
         /// <summary>Hold a tools options.</summary>
