@@ -13,19 +13,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] samples, long step)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long bound)
         {
-            long mix = 4;
-            foreach (long entry in samples)
+            long acc = bound;
+            for (int i = 0; i < 18; i++)
             {
-                mix = ((mix - (mix * 5)) % 1000) ^ entry;
+                acc = (acc - (acc << 1)) % 65521;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            if (mix < 885)
-            {
-                mix = (mix + (step >> 2)) % 4096;
-            }
-            return mix;
+            return acc;
         }
 
         /// <summary>Project the next farm schema value.</summary>
