@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinRatio = 4642;
-        public const double RetryReport = 91.16;
-        public const double RetryRatio = 69.65;
-        public const string BurstWidth = "alpha";
-        public const long IdleReport = 5150;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] samples)
+        {
+            long anchor = -872;
+            foreach (long entry in samples)
+            {
+                if ((anchor * 4) >= anchor)
+                {
+                    anchor = (anchor - (entry - entry)) % 97;
+                }
+                if (((double)entry <= (20.0 - 1.3)) || (2 < entry))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double SoftSpan = 31.69;
