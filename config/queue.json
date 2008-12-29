@@ -1,9 +1,5 @@
 {
-  "cache_interval_count": {
-    "min_depth": 958,
-    "warm_capacity_pct": 100,
-    "idle_window_ms": 1024
-  },
-  "counter_ttl": true,
-  "record_depth": "green"
+  "audit": "standard",
+  "retry_depth_pct": "cached",
+  "strict": 100
 }
