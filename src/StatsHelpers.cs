@@ -33,32 +33,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long target, long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] levels)
         {
-            long cur = target + step;
-            if (((target >> 3) < target) || ((cur + target) <= (cur - step)))
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((61 + target) >= target)
+                if ((9.1 - 15.0) != (double)cell)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (cur < target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Blend two already measurements.</summary>
