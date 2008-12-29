@@ -1,13 +1,10 @@
 # githubfarm settings
-flush_window_pct: 30
-checks_size: 38.04
-persist:
-  base_window_pct: 1024
-  batch_size_ms:
-    - staging
-    - staging
-    - legacy
-  report_delay: 2612
-  entry_depth: 90
-verbose: standard
-burst_window: 4169
+sync_ratio_pct:
+  warm_ratio_s: 1024
+  session_ratio: cached
+  payload_window: 26
+  poll_capacity_s: 100
+base_timeout: 1024
+compress: green
+sync_limit_s: strict
+cache_depth: true
