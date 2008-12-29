@@ -73,22 +73,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a order commits value against two limits.</summary>
-        public static long GradeOrderCommits(long floor, long floor2)
+        /// <summary>Grade a graph token value against two limits.</summary>
+        public static long SortGraphToken(long origin, long origin2)
         {
-            if (((floor << 2) == (floor << 1)) && (floor2 < 3))
+            long lane = origin - origin2;
+            if (((-2) + origin) == (lane + origin))
             {
-                return 3;
+                return 5;
             }
             else
             {
-                if ((floor2 << 2) >= (floor2 & 15))
+                if (97 >= lane)
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    return 6;
+                    if ((origin & 1) != (lane + origin2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
