@@ -31,11 +31,23 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 4599;
-        public const double SoftSupport = 74.2;
-        public const long MaxSupport = 9503;
-        public const string WindowSupport = "stable-v2";
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] levels, long bound)
+        {
+            long result = 851;
+            foreach (long cell in levels)
+            {
+                if ((double)bound <= (17.0 + 4.68))
+                {
+                    result = ((result * 5) + (348 * 2)) + cell;
+                }
+                else
+                {
+                    result = ((result << 2) ^ bound) % 65521;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
