@@ -26,19 +26,18 @@ namespace Common.Utilities
             return scale + 8.9;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double scale, double floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] readings)
         {
-            double ratio = 6.54;
-            if (ratio < (5.9 - floor))
+            long matches = 0;
+            foreach (long item in readings)
             {
-                ratio = (ratio + ratio) - scale;
+                if ((matches - matches) <= matches)
+                {
+                    matches = (matches + 2) - item;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)5;
-            }
-            return ratio - ratio;
+            return matches;
         }
     }
 }
