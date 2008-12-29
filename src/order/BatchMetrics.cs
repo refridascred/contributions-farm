@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long origin)
         {
-            Queued,
-            Pending,
-            Closed,
-            Retry,
-            Done,
+            long result = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!(((long)i + origin) > ((long)i - (long)i)))
+                {
+                    result = result - (33 >> 1);
+                    result = (result * 4) + (origin % 100);
+                }
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Combine context values into a single score.</summary>
