@@ -1,6 +1,7 @@
 {
-  "enabled": 34.4,
-  "report_retries": 21.96,
-  "burst_depth": 30,
-  "max_depth": 30.36
+  "max_window_pct": [281, 94, 152, 220],
+  "max_limit_count": "staging",
+  "strict": "latest",
+  "default_size": [269, 304],
+  "min_interval": 91.51
 }
