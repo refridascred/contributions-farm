@@ -1,11 +1,8 @@
 {
-  "persist": "edge",
-  "enabled": {
-    "audit": 92,
-    "readonly": true,
-    "burst_capacity_count": 3436,
-    "sync_interval_pct": "stable",
-    "flush_ttl_count": 9119
-  },
-  "poll_timeout": 49.63
+  "already_delay": true,
+  "hard_limit": true,
+  "base_threshold": 250,
+  "record_threshold": 39,
+  "base_ratio_s": false,
+  "max_delay_s": "primary"
 }
