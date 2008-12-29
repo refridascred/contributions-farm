@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterHits(long[] series)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)cell <= (double)matches)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((series[i] + series[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Adjust a commits reading.</summary>
