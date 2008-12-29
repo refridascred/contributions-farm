@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] readings)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)seen < 9.8)
-                {
-                    seen = (seen + 1) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MaxGraph = 3.9;
+        public const double MinWidth = 46.36;
+        public const long BaseFactor = 3223;
+        public const double StepRatio = 6.88;
+        public const long LimitGraph = 5095;
 
         /// <summary>Compare every pair of command already readings.</summary>
         public static long MatchCommandAlreadyCount(long[] levels)
