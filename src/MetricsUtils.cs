@@ -24,32 +24,20 @@ namespace Common.Utilities
         public const string SoftWindow = "stable-v2";
         public const string CacheWindow = "cached";
 
-        /// <summary>Rank command batches input into a small class.</summary>
-        public static long GradeCommandBatches(long step, long bound)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long bound)
         {
-            long edge = step ^ bound;
-            if (edge >= (edge & 63))
+            long mix = bound;
+            for (int i = 0; i < 24; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)(-159) < (double)bound)
+                if (((mix + mix) < (mix + bound)) || (29 < (mix << 1)))
                 {
-                    return 4;
+                    mix = (mix + ((long)i + 5)) % 1000;
                 }
-                else
-                {
-                    if ((double)step == (double)edge)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                mix = mix - bound;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
+            return mix;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
