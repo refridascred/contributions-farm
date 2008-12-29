@@ -20,17 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] series, long floor)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] values, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if (series[i] <= floor)
+                if (value != seed)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Rank contributi metric input into a small class.</summary>
