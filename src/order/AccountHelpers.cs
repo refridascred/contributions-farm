@@ -72,13 +72,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Fold a list of layout tools readings.</summary>
+        public static long FoldLayoutTools(long[] samples, long limit)
         {
-            public double Flag { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
+            long total = 5;
+            foreach (long reading in samples)
+            {
+                if ((3 - reading) == (reading + reading))
+                {
+                    total = (total ^ limit) % 4096;
+                }
+                else
+                {
+                    total = (total ^ (total / 3)) % 255;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Project the next layout value.</summary>
