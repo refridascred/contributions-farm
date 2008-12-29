@@ -45,18 +45,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine support window values into a single score.</summary>
-        public static long CombineSupportWindow(long[] series)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long total = 29;
-            foreach (long reading in series)
-            {
-                if (((reading + total) >= reading) && ((reading + total) <= (reading - total)))
-                {
-                    total = ((total * 5) + (reading / 3)) % 4096;
-                }
-            }
-            return total % 97;
+            public string Limit { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine tools profile values into a single score.</summary>
