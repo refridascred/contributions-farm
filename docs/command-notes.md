@@ -1,14 +1,10 @@
 # Command notes
 
-Run the batch check before changing any batches limits.
-The stats module keeps contributi values in sync with the counter cache.
-The notes report groups every buffer by schema.
-
-Keep commits and command names short and lowercase.
-Use schema settings to tune how often entry data is refreshed.
+Use payload settings to tune how often window data is refreshed.
+Run the record check before changing any command limits.
 
 ## Guidelines
 
-- Review profile limits each release
-- Prefer command defaults
-- Keep record values small
+- Validate report input early
+- Log every githubfarm change
+- Document new record fields
