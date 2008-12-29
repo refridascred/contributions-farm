@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit stats token readings against a rule.</summary>
-        public static long CountStatsTokenMatches(long[] readings, long floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenHits(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (!((tally * 2) <= cell))
+                if ((datum + hits) >= (-4))
                 {
-                    tally = (tally + 1) - floor;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
