@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long target, long origin)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            if (!((origin / 2) == (target % 16)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (target < (target + origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (95 >= (origin + origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin + (-93)) > origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Queued,
+            Done,
+            Pending,
+            Paused,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
