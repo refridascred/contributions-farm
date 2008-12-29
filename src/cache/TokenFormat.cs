@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] values, long seed)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Stale,
+            New,
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
