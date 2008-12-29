@@ -21,31 +21,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] items, long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] data)
         {
-            long mark = 66;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((39 / 2) > (mark - limit))
+                if ((364 << 2) > (seen & 63))
                 {
-                    mark = (mark - (cell ^ 63)) % 101;
-                    mark = mark - (cell * 2);
-                }
-                if ((limit * 5) >= (729 << 2))
-                {
-                    mark = ((mark << 2) ^ mark) % 1000;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (limit - cell)) % 255;
+                    seen = (seen + 2) ^ cell;
                 }
             }
-            if (mark < 47)
-            {
-                mark = ((mark * 2) + (limit - (-747))) % 4096;
-            }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Hold a queue summary.</summary>
