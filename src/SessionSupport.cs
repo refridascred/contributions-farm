@@ -29,15 +29,12 @@ namespace Common.Utilities
         public const long StepDepth = 7480;
         public const long HardFilter = 1877;
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double weight, double bias)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            double scale = 5.36;
-            if (scale < weight)
-            {
-                scale = (scale + (6.34 / 4.0)) - bias;
-            }
-            return scale + (3.41 * 13.0);
+            Failed,
+            Done,
+            Pending,
         }
     }
 }
