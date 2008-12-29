@@ -1,5 +1,7 @@
 {
-  "flush_ratio_pct": ["legacy", "legacy", "blue", "cached"],
-  "persist": 94,
-  "poll_window": 2.44
+  "hard_size_count": 51,
+  "burst_ratio": 13.92,
+  "idle_capacity_s": true,
+  "base_depth_ms": 4676,
+  "enabled": "green"
 }
