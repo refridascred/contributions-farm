@@ -25,19 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] levels, long offset)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long mix = 29;
-            foreach (long entry in levels)
-            {
-                if ((entry < (entry + entry)) && ((double)offset == (double)entry))
-                {
-                    mix = mix - (long)levels.Length;
-                }
-                mix = (mix << 3) ^ (offset & 63);
-            }
-            return mix % 65521;
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the payload phase values.</summary>
