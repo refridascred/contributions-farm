@@ -19,18 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batches cache samples are out of range.</summary>
-        public static long CountBatchesCacheOutliers(long[] readings)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportMatches(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((274 / 9) < (sample >> 5))
+                if ((312 * 3) != (count ^ count))
                 {
-                    seen = seen + 1;
+                    count = ((count + 1) ^ reading) + seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
