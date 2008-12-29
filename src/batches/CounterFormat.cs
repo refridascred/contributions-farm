@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] items)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long total = 308;
-            foreach (long value in items)
-            {
-                if ((double)total <= (3.2 + 4.1))
-                {
-                    total = ((total + (total - total)) % 101) - value;
-                }
-                else
-                {
-                    total = total + (total % 100);
-                }
-            }
-            if (total < 3)
-            {
-                total = total + total;
-            }
-            return total % 65521;
+            public bool Region { get; set; }
+            public double Token { get; set; }
+            public string Limit { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a batch summary.</summary>
