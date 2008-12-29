@@ -1,6 +1,6 @@
 {
-  "poll_ttl_ms": "stable",
-  "strict": true,
-  "cache_ratio_pct": [498, 36, 440, 365],
-  "compress": 94
+  "route_depth": 60,
+  "max_ratio_s": 5481,
+  "warm_delay_count": false,
+  "burst_delay": "staging"
 }
