@@ -69,17 +69,18 @@ namespace Common.Utilities
             return ((mean + 6.08) + weight) + span;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] values, long offset)
+        /// <summary>Audit githubfarm route readings against a rule.</summary>
+        public static long MeasureGithubfarmRouteMatches(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((values[i] < offset) && ((values[i] % 2) == 0))
+                if ((count & 255) > sample)
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
