@@ -1,8 +1,14 @@
 # entry settings
-githubfarm_ttl:
-  - 39
-  - 333
-  - 29
-  - 65
-cache_interval_pct: 22.83
-flush_depth_s: 100
+batch_interval_pct: 1917
+persist:
+  - standard
+  - strict
+  - eu-west
+retry_ratio_count: 5940
+base_window:
+  - staging
+  - green
+  - edge
+  - primary
+payload_delay: fallback
+context_size: standard
