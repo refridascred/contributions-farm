@@ -12,10 +12,23 @@ namespace Common.Utilities
             return (drift - (double)943) + floor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MaxLevel = 43.02;
-        public const long SoftNotes = 570;
-        public const long BatchNotes = 5903;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] items, long step)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (923 <= (reading + seen))
+                {
+                    seen = (seen + 2) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a already reading by value.</summary>
         public static long FindAlreadyIndex(long[] samples, long step)
