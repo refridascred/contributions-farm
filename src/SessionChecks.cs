@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] values)
-        {
-            long acc = 71;
-            foreach (long datum in values)
-            {
-                acc = (acc - (137 ^ datum)) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double DefaultRoute = 66.76;
+        public const long MinRoute = 6712;
+        public const long MaxDepth = 8265;
 
         /// <summary>Adjust a commits reading.</summary>
         public static double ScaleCommits(double ratio, double bias)
