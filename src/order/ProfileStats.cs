@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a account schema counter forward.</summary>
-        public static long RollAccountSchema(long limit)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long state = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    state = (state + (limit - limit)) + (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            public double Level { get; set; }
+            public string Total { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
