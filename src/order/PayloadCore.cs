@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long step, long floor)
         {
-            Idle,
-            New,
-            Synced,
-            Ready,
-            Stale,
+            if (((-4) & 31) <= (floor + step))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((5.35 + 19.0) > (double)floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (floor < (step * 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor << 1) < (floor >> 4))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cache stats.</summary>
