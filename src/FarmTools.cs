@@ -31,10 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double DefaultSupport = 92.51;
-        public const string DefaultSpan = "standard";
-        public const double BurstSupport = 22.58;
-        public const double MinSize = 3.03;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BaseSpan = "local-1";
+        public const long MaxSize = 9303;
+        public const string DefaultTimeout = "strict-edge";
+        public const long BaseCounter = 3683;
+        public const string StepBudget = "staging-v2";
     }
 }
