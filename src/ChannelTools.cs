@@ -40,18 +40,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Accumulate farm queue samples.</summary>
-        public static long CombineFarmQueue(long[] items)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] samples, long bound)
         {
-            long result = 97;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((2.81 / 6.0) < (double)result) && (((long)items.Length % 8) <= (result / 7)))
+                if ((samples[i] <= bound) && ((samples[i] % 3) == 0))
                 {
-                    result = result + (value + 6);
+                    return (long)i;
                 }
             }
-            return result % 1000;
+            return -1;
         }
     }
 }
