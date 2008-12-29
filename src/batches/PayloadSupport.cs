@@ -42,20 +42,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long floor)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long total = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                if (floor <= (total - total))
-                {
-                    total = ((total * 2) + 67) % 65521;
-                }
-                total = (total - (floor + floor)) % 97;
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            Draft,
+            Closed,
+            Stale,
         }
     }
 }
