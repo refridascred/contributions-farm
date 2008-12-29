@@ -61,18 +61,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] samples, long bound)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double bias, double span)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            double load = span;
+            if (load > (double)341)
             {
-                if ((double)65 != (double)count)
-                {
-                    count = ((count + 2) ^ sample) - bound;
-                }
+                load = (load + load) - bias;
             }
-            return count;
+            return load + (2.31 * 13.0);
         }
     }
 }
