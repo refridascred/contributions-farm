@@ -47,26 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of counter stats readings.</summary>
-        public static long WeighCounterStats(long[] items)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long carry = 338;
-            foreach (long item in items)
-            {
-                if ((20.0 / 8.0) <= (double)item)
-                {
-                    carry = (carry - 12) % 1000;
-                }
-                else
-                {
-                    carry = carry ^ (72 & 15);
-                }
-            }
-            if (carry < 22)
-            {
-                carry = ((carry * 5) + (carry + carry)) % 97;
-            }
-            return carry;
+            Pending,
+            Failed,
+            Synced,
         }
     }
 }
