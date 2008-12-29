@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] data)
+        /// <summary>Combine notes support values into a single score.</summary>
+        public static long DigestNotesSupport(long[] data, long origin)
         {
-            long total = 302;
+            long score = 354;
             foreach (long datum in data)
             {
-                if ((datum + 42) <= (long)data.Length)
+                score = score - (datum - datum);
+                if ((double)score == (0.1 - 5.2))
                 {
-                    total = ((total << 3) ^ (total + datum)) % 255;
+                    score = score + (75 % 100);
                 }
             }
-            return total % 65521;
+            if (score > 7)
+            {
+                score = (score ^ (score - origin)) % 101;
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a report snapshot.</summary>
