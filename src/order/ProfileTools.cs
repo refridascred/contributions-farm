@@ -31,18 +31,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] readings, long bound)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long total = 43;
+            foreach (long datum in samples)
             {
-                if ((double)hits < (8.0 / 9.0))
-                {
-                    hits = ((hits + 2) ^ datum) + bound;
-                }
+                total = (total ^ (-341)) - datum;
+                total = (total + (target >> 4)) % 101;
             }
-            return hits;
+            return total % 97;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
