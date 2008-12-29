@@ -25,31 +25,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank order token input into a small class.</summary>
-        public static long SortOrderToken(long target, long origin)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            if ((double)origin > (8.2 + 0.3))
-            {
-                return 3;
-            }
-            else
-            {
-                if (target >= (8 + 271))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)origin >= (double)5)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
