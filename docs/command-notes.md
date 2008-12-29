@@ -1,11 +1,14 @@
 # Command notes
 
-A account that stays idle for too long is moved to the queue list.
-Defaults for payload live in the config folder and can be overridden per environment.
+Run the batch check before changing any batches limits.
+The stats module keeps contributi values in sync with the counter cache.
+The notes report groups every buffer by schema.
+
+Keep commits and command names short and lowercase.
+Use schema settings to tune how often entry data is refreshed.
 
 ## Guidelines
 
-- Keep metrics values small
-- Review record limits each release
-- Document new filter fields
-- Log every cache change
+- Review profile limits each release
+- Prefer command defaults
+- Keep record values small
