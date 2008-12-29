@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Adjust a editor format reading.</summary>
+        public static double SmoothEditorFormat(double gain, double floor)
         {
-            public string Mode { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public bool Weight { get; set; }
+            double bias = (double)22 + (gain / 6.0);
+            return (bias - (6.0 * 4.9)) + floor;
         }
 
         /// <summary>Hold a stream record.</summary>
