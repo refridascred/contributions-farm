@@ -51,10 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepCount = "local-edge";
-        public const double SoftSession = 66.27;
-        public const double StepWidth = 58.68;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (!((count / 3) != (sample << 3)) && (sample <= count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double RetrySchema = 28.86;
