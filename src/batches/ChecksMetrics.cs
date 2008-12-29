@@ -65,11 +65,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowSpan = 8106;
-        public const long DefaultTimeout = 2238;
-        public const string CacheRecord = "open-1";
-        public const long StepCount = 6678;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutRange(long[] samples, long limit)
+        {
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Rank report input into a small class.</summary>
         public static long BucketReport(long bound, long floor)
