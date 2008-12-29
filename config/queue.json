@@ -1,5 +1,10 @@
 {
-  "compress": 73,
-  "warm_threshold": 51,
-  "notes_ttl": true
+  "cache_interval": 59.7,
+  "idle_limit": 250,
+  "cache_delay_pct": {
+    "notes_retries": true,
+    "sync_capacity_ms": 48.83,
+    "flush_interval": 99
+  },
+  "audit": "legacy"
 }
