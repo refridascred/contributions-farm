@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] values, long seed)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double gain, double offset)
         {
-            bool valid = true;
-            foreach (long value in values)
+            double ratio = gain;
+            if (ratio > gain)
             {
-                if (value != seed)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = (ratio + ratio) - offset;
             }
-            return valid;
+            return ratio + (double)528;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
