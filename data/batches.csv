@@ -1,10 +1,7 @@
-id,ratio,level
-1,25.0,open
-2,881,primary
-3,primary,119
-4,689,cached
-5,689,8.42
-6,416,482
-7,643,132
-8,233,local
-9,open,standard
+id,score,active,ratio,label
+1,35.09,84.05,strict,primary
+2,98,720,54.47,628
+3,staging,55.77,304,435
+4,525,799,1.8,930
+5,standard,683,58.71,71.86
+6,685,strict,74.99,strict
