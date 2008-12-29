@@ -12,22 +12,12 @@ namespace Common.Utilities
             return (drift - (double)943) + floor;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] items, long step)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (923 <= (reading + seen))
-                {
-                    seen = (seen + 2) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Locate a already reading by value.</summary>
