@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count account order pairs that satisfy a relation.</summary>
-        public static long CompareAccountOrderCount(long[] series)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 302;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((datum + 42) <= (long)data.Length)
                 {
-                    if ((series[i] ^ series[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total << 3) ^ (total + datum)) % 255;
                 }
             }
-            return tally;
+            return total % 65521;
         }
 
         /// <summary>Hold a report snapshot.</summary>
