@@ -13,11 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterGaps(long[] samples)
         {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((82 & 127) >= (cell % 24))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
