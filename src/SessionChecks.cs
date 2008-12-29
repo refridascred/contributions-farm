@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double bias, double bias2)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] samples, long seed)
         {
-            double mean = (bias2 * 4.88) / 8.0;
-            if (mean < bias2)
+            long mark = 6;
+            foreach (long datum in samples)
             {
-                mean = (mean + 3.9) - bias;
+                if ((mark + datum) > datum)
+                {
+                    mark = ((mark * 5) + (datum >> 4)) - seed;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + 7.8) + (double)(long)i;
-            }
-            return mean - (double)(-473);
+            return mark;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
