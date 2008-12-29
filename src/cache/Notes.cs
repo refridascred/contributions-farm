@@ -29,32 +29,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long seed, long offset)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderLimits(long[] series, long seed)
         {
-            long cur = seed ^ offset;
-            if ((double)seed < (double)139)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (((offset & 31) <= seed) || (759 >= (offset >> 5)))
+                if (datum <= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed < (4 << 3)) || ((96 + cur) >= (cur % 64)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Accumulate batch batches samples.</summary>
