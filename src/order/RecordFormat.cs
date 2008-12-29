@@ -45,13 +45,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Grade a queue command value against two limits.</summary>
+        public static long SortQueueCommand(long bound, long limit)
         {
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            if (((double)limit == (2.43 + 3.0)) && ((bound - bound) < limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((723 > (bound << 1)) && (bound >= (10 + limit)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
