@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionBounds(long[] values, long offset)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Queued,
+            Paused,
+            Draft,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
