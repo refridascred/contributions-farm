@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine farm channel values into a single score.</summary>
-        public static long ScoreFarmChannel(long[] series, long seed)
-        {
-            long mark = -1;
-            foreach (long value in series)
-            {
-                if ((961 + value) >= seed)
-                {
-                    mark = (mark - seed) % 4096;
-                }
-            }
-            if (mark < 40)
-            {
-                mark = ((mark << 3) ^ (77 & 31)) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string LimitFarm = "fallback-edge";
+        public const string WindowFactor = "fallback-1";
+        public const long MinFactor = 2856;
+        public const string LimitFactor = "local-edge";
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool GuardGraphLimits(long[] samples, long step)
