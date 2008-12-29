@@ -1,6 +1,5 @@
 {
-  "readonly": 4642,
-  "min_capacity_count": [225, 44, 40, 317],
-  "max_retries": 46.29,
-  "max_window": "open"
+  "persist": 96.58,
+  "notes_retries": 7786,
+  "soft_threshold": ["edge", "cached", "local", "standard"]
 }
