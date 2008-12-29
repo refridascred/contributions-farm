@@ -35,11 +35,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BurstStream = 70.11;
-        public const string LimitRatio = "standard-1";
-        public const long BaseCount = 8219;
-        public const double IdleStream = 22.19;
-        public const long BaseStream = 1535;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 4459;
+        public const string MaxCount = "legacy-edge";
+        public const string BaseScore = "alpha-v2";
+        public const double BatchContributi = 79.6;
+        public const long HardContributi = 5133;
     }
 }
