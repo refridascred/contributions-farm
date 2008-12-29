@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
+mode="${1:-staging}"
 case "${mode}" in
-    blue)
+    edge)
         log "fast path"
         ;;
     *)
@@ -17,7 +17,11 @@ case "${mode}" in
 esac
 
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 4))
+for i in $(seq 1 9); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
+
+for item in eu-west local primary legacy; do
+    log "checking ${item}"
+done
