@@ -20,24 +20,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long limit, long bound)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] data, long limit)
         {
-            if (!((limit + bound) == (limit * 5)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound << 1) <= (bound * 2))
+                if (data[i] < limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
