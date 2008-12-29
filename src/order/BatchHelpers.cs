@@ -27,19 +27,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long bound)
+        /// <summary>Count the profile report entries that pass the check.</summary>
+        public static long TallyProfileReportOutliers(long[] items, long offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((double)(long)i < 3.0)
+                if (((double)hits < (4.75 - 7.6)) || !(offset > (offset - offset)))
                 {
-                    acc = (acc - (bound % 10)) % 101;
+                    hits = (hits + 2) - sample;
                 }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return hits;
         }
     }
 }
