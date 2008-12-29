@@ -29,23 +29,18 @@ namespace Common.Utilities
             return bias2 + 6.6;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double rate, double bias)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] values, long offset)
         {
-            double ratio = (double)4 - (6.0 * 7.47);
-            if (ratio <= (rate + bias))
+            long hits = 0;
+            foreach (long cell in values)
             {
-                ratio = ratio + 2.0;
+                if ((double)offset <= (8.8 - 1.65))
+                {
+                    hits = (hits + 2) ^ cell;
+                }
             }
-            else
-            {
-                ratio = ratio + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (double)(-8)) + (double)(long)i;
-            }
-            return ratio - (double)536;
+            return hits;
         }
     }
 }
