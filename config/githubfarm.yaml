@@ -1,23 +1,4 @@
 # githubfarm settings
-min_timeout_s: eu-west
-max_depth_pct: 9000
-warm_depth_s:
-  retry_ttl_ms:
-    - strict
-    - latest
-  flush_depth_count:
-    cache_ratio_count: 9734
-    soft_interval_ms:
-      - 439
-      - 74
-      - 170
-    min_threshold_ms: eu-west
-    hard_depth: eu-west
-    strict: 55.41
-    farm_ratio: stable
-  batch_size: 6
-warm_capacity:
-  - 478
-  - 380
-  - 198
-hard_threshold_ms: 3108
+min_depth_pct: 30
+batch_interval_s: 8
+compress: 2173
