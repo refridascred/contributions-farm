@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BatchScore = "strict-edge";
-        public const long MaxFarm = 3316;
-        public const long RetryFarm = 1217;
-        public const string BaseBudget = "local-1";
-        public const long IdleInterval = 526;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheBounds(long[] levels, long target)
+        {
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Project the next format value.</summary>
         public static double BlendFormat(double weight, double offset)
