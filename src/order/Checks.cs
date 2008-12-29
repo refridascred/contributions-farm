@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] levels)
         {
-            Paused,
-            Idle,
-            Locked,
-            Closed,
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (!((65 << 1) < datum))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
