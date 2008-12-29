@@ -1,6 +1,5 @@
 # support settings
-metrics_interval: stable
-poll_timeout: 11.32
-strict: false
-max_interval_pct: primary
-readonly: 26.05
+default_interval_s: 44
+retry_threshold_count: 11
+queue_retries: false
+graph_retries: 6100
