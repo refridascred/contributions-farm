@@ -1,12 +1,18 @@
 # githubfarm settings
-cache_capacity:
-  - latest
-  - standard
-  - primary
-layout_ratio: 1024
-poll_timeout_ms: 71.51
-base_threshold: staging
-batch_ttl: 5721
-audit:
-  - 286
-  - 104
+enabled: 70
+burst_interval_ms:
+  dry_run: latest
+  readonly: true
+  metric_limit: legacy
+  compress: 67.44
+  burst_timeout_s:
+    - 435
+    - 236
+    - 285
+sync_ttl_ms:
+  min_interval: true
+  retry_threshold_count: false
+  warm_window_pct: 10.64
+  warm_depth:
+    - stable
+    - strict
