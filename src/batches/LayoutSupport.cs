@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadGaps(long[] levels)
         {
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell >> 5) < (cell << 2))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate buffer already samples.</summary>
