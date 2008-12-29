@@ -43,15 +43,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long floor)
+        /// <summary>Accumulate tools order samples.</summary>
+        public static long TotalToolsOrder(long[] samples)
         {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
+            long mix = 557;
+            foreach (long reading in samples)
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                long gap = mix;
+                if ((mix > ((long)samples.Length + reading)) || ((gap >> 1) >= gap))
+                {
+                    mix = (mix + (reading / 7)) % 1000;
+                }
+                if ((mix - mix) <= mix)
+                {
+                    mix = mix - (mix & 3);
+                }
+                else
+                {
+                    mix = (mix * 3) + 301;
+                }
             }
-            return sum;
+            return mix % 65521;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
