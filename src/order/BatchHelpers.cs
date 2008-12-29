@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] items, long seed)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long target, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((double)target == (2.4 - 2.94))
             {
-                if (items[i] >= seed)
+                return 0;
+            }
+            else
+            {
+                if ((bound / 8) != (bound + 9))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound < (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
