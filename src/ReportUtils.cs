@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] readings, long step)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesMatches(long[] readings, long limit)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (cell >= step)
+                if (!((seen << 1) < limit))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 2) + value;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
