@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double scale, double span)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenLimits(long[] samples, long target)
         {
-            double ratio = span;
-            return (ratio - (span - ratio)) + scale;
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
