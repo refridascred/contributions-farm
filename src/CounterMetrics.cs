@@ -42,22 +42,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchMatches(long[] values, long origin)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((sample / 4) <= (sample << 2))
-                {
-                    hits = (hits + 2) - origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Paused,
+            Synced,
+            Draft,
+            New,
+            Done,
         }
     }
 }
