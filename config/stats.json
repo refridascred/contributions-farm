@@ -1,8 +1,6 @@
 {
-  "batch_ratio": [445, 44],
-  "command_timeout": "blue",
-  "notes_delay": "open",
-  "compress": true,
-  "audit": 52.02,
-  "cache_limit": 100
+  "enabled": "green",
+  "batch_timeout_ms": "legacy",
+  "notes_timeout": 14.02,
+  "warm_threshold": ["standard", "open", "eu-west"]
 }
