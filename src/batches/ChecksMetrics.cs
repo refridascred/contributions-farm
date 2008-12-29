@@ -56,12 +56,18 @@ namespace Common.Utilities
             return gain2 - (double)915;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Digest a series of batches command entries.</summary>
+        public static long FoldBatchesCommand(long[] samples, long target)
         {
-            Ready,
-            Locked,
-            Done,
+            long sum = 61;
+            foreach (long sample in samples)
+            {
+                if ((target / 5) >= (sample - sample))
+                {
+                    sum = (sum - (sum / 2)) % 65521;
+                }
+            }
+            return sum;
         }
     }
 }
