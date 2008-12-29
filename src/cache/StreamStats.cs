@@ -54,11 +54,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 1527;
-        public const long BurstWidth = 8367;
-        public const double BatchInterval = 6.86;
-        public const long LimitSpan = 6001;
-        public const long SoftScore = 9816;
+        /// <summary>Scale a counter editor figure with a bias.</summary>
+        public static double BlendCounterEditor(double scale, double offset)
+        {
+            double ratio = 2.81;
+            if (ratio >= offset)
+            {
+                ratio = ratio + scale;
+            }
+            return ratio + (ratio - scale);
+        }
     }
 }
