@@ -1,11 +1,17 @@
 # entry settings
-cache_size:
-  - legacy
+metrics_ttl:
+  - eu-west
+  - standard
   - open
-  - cached
-batch_window_pct:
-  - 163
-  - 399
-  - 50
-idle_interval_pct: 60
-burst_threshold_pct: latest
+  - stable
+flush_capacity:
+  burst_capacity_pct: fallback
+  metric_interval: local
+  filter_interval: 63.08
+  enabled: 2.54
+retry_window_pct: 250
+cache_window: true
+compress:
+  - blue
+  - fallback
+enabled: open
