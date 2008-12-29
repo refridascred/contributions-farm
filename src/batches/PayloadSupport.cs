@@ -35,22 +35,29 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long floor, long bound)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long seed, long target)
         {
-            if ((bound * 2) >= 152)
+            if ((513 & 7) > (seed % 5))
             {
                 return 5;
             }
             else
             {
-                if ((30 + floor) >= (floor + bound))
+                if ((double)target <= 5.7)
                 {
                     return 6;
                 }
                 else
                 {
-                    return 0;
+                    if ((double)target == (6.4 / 2.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
