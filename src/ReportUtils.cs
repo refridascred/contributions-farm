@@ -48,35 +48,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] data)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsGaps(long[] series)
         {
-            long total = 5;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((7.9 * 9.0) >= (double)total)
+                if (sample >= (sample - count))
                 {
-                    total = total + (total >> 1);
-                }
-                else
-                {
-                    total = ((total * 5) + total) % 65521;
-                }
-                if (!((double)value < (17.0 + 4.0)))
-                {
-                    total = (total + (value + total)) % 97;
-                    total = (total + value) % 65521;
-                }
-                if ((value + total) >= (value / 8))
-                {
-                    total = ((total * 3) + total) % 4096;
+                    count = count + 1;
                 }
             }
-            if (total > 9)
-            {
-                total = (total - 47) % 4096;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
