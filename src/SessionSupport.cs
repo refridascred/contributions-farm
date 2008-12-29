@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] items, long floor)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] readings)
         {
-            long result = 256;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result ^ (floor ^ result)) % 4096) + reading;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (result > 10)
-            {
-                result = result - (floor / 4);
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
