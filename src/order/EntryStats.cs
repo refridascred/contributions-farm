@@ -62,12 +62,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstChannel = 58.33;
-        public const double DefaultChannel = 89.03;
-        public const double MinSpan = 41.72;
-        public const long RetryChannel = 8281;
-        public const long LimitChannel = 202;
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Locked,
+            Paused,
+            Idle,
+            New,
+            Draft,
+        }
 
         /// <summary>Accumulate support metrics samples.</summary>
         public static long CombineSupportMetrics(long[] data, long target)
