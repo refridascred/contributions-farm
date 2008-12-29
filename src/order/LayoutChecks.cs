@@ -78,19 +78,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] items)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] data)
         {
-            long total = 119;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total + (total - total)) % 65521) - datum;
-                if ((5.0 + 6.62) > (double)total)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = ((total << 2) ^ (2 & 3)) % 65521;
+                    if ((data[i] + data[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Accumulate cache window samples.</summary>
