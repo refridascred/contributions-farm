@@ -50,15 +50,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] items)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long state = 51;
-            foreach (long cell in items)
-            {
-                state = (state - (state + (long)items.Length)) ^ cell;
-            }
-            return state;
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Check that every profile editor entry stays within the limit.</summary>
