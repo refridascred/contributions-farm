@@ -1,6 +1,21 @@
 # entry settings
-soft_retries: primary
-readonly: cached
-sync_capacity_pct:
-  - 469
-  - 366
+githubfarm_ratio:
+  - 296
+  - 271
+flush_threshold_pct:
+  default_timeout_s: 70
+  poll_capacity_count: 71.46
+  idle_ttl_pct: false
+soft_window_ms:
+  - 410
+  - 197
+  - 118
+  - 20
+burst_ttl_count:
+  audit: 1314
+  hard_delay_pct: 5853
+  flush_retries: true
+  soft_ratio: 30.99
+  cache_interval_pct: strict
+readonly: 30
+retry_capacity_count: 68
