@@ -52,11 +52,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardRatio = 7950;
-        public const string LimitEditor = "primary-v2";
-        public const string LimitFactor = "cached-v2";
-        public const string MaxEditor = "primary-edge";
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
+        {
+            Idle,
+            Closed,
+            Synced,
+            Stale,
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool CheckSchemaLimits(long[] data, long step)
