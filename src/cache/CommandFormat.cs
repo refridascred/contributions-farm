@@ -41,10 +41,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 9502;
-        public const double CacheCluster = 44.72;
-        public const double WindowSpan = 98.08;
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
+        {
+            public string Token { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Size { get; set; }
+        }
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long CombineCounter(long[] values)
