@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const double HardSpan = 67.24;
         public const long WindowFactor = 8921;
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksRange(long[] samples, long seed)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Flag { get; set; }
+            public long Region { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
