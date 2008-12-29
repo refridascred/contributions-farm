@@ -38,19 +38,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksOutliers(long[] series, long seed)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((0.8 - 5.46) >= (double)count)
-                {
-                    count = ((count + 2) - datum) - seed;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 1025;
+        public const double SoftFormat = 29.37;
+        public const string RetryFormat = "latest-v2";
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
