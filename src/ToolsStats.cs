@@ -75,19 +75,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesBounds(long[] items, long target)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Active,
+            Done,
+            Draft,
+            Pending,
         }
     }
 }
