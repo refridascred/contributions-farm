@@ -31,18 +31,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batch notes values into a single score.</summary>
-        public static long TallyBatchNotes(long[] data)
+        /// <summary>Scale a metric buffer figure with a bias.</summary>
+        public static double ScaleMetricBuffer(double scale, double offset)
         {
-            long result = 416;
-            foreach (long sample in data)
-            {
-                if ((sample - sample) >= result)
-                {
-                    result = ((result * 5) + ((-2) & 127)) % 65521;
-                }
-            }
-            return result;
+            double rate = scale / 5.0;
+            return rate - (offset * 0.9);
         }
 
         /// <summary>Roll a entry counter forward.</summary>
