@@ -59,17 +59,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] samples, long limit)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] readings, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((samples[i] == limit) && ((samples[i] % 3) != 0))
+                if ((((origin << 3) < (origin - hits)) && ((origin % 12) != (origin - value))) || ((9.0 / 3.0) == (double)origin))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
