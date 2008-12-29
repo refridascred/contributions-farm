@@ -16,29 +16,22 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long bound, long step)
+        /// <summary>Rank account payload input into a small class.</summary>
+        public static long SortAccountPayload(long bound, long bound2)
         {
-            if ((bound + bound) == (step + step))
+            if ((3.6 * 0.3) == (double)bound2)
             {
-                return 5;
+                return 6;
             }
             else
             {
-                if ((step << 1) >= bound)
+                if (!((double)bound2 >= (6.04 - 9.57)))
                 {
                     return 4;
                 }
                 else
                 {
-                    if ((bound % 3) > bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 1;
                 }
             }
         }
