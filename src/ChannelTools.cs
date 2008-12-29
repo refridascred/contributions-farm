@@ -13,10 +13,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSize = 3350;
-        public const double RetryScore = 87.49;
-        public const long CacheSupport = 4361;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultWidth = 1860;
+        public const string RetryToken = "latest-v2";
+        public const long MinLevel = 8964;
+        public const long MaxLevel = 2366;
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
