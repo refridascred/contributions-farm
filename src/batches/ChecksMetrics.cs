@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Compare every pair of already entry readings.</summary>
-        public static long MatchAlreadyEntryCount(long[] series)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
