@@ -1,5 +1,8 @@
 # support settings
-default_interval_s: 44
-retry_threshold_count: 11
-queue_retries: false
-graph_retries: 6100
+readonly:
+  - latest
+  - legacy
+  - eu-west
+  - primary
+command_window: 74
+max_size: 6
