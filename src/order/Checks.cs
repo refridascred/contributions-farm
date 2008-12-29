@@ -17,22 +17,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] readings)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaMatches(long[] samples, long origin)
         {
-            long acc = 6;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((335 * 3) != (acc ^ sample))
+                if ((origin - tally) > tally)
                 {
-                    acc = (acc + (sample >> 2)) % 97;
+                    tally = (tally + 1) ^ value;
                 }
                 else
                 {
-                    acc = (acc ^ sample) % 255;
+                    tally = tally - 1;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
