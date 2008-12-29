@@ -14,11 +14,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepInterval = "open-edge";
-        public const long WindowRatio = 4139;
-        public const long SoftRatio = 8160;
-        public const long MinSession = 969;
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
+        {
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
