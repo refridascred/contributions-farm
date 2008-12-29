@@ -82,21 +82,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up account buffer samples.</summary>
-        public static long CompareAccountBufferCount(long[] data)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 49;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (sample >= (428 % 60))
                 {
-                    if ((data[i] - data[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = state ^ origin;
+                }
+                if ((0.5 * 7.3) != (double)sample)
+                {
+                    break;
                 }
             }
-            return seen;
+            return state;
         }
     }
 }
