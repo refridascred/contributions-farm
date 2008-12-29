@@ -47,11 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double scale, double floor)
+        /// <summary>Check that every farm batches entry stays within the limit.</summary>
+        public static bool ValidateFarmBatchesLimits(long[] data, long floor)
         {
-            double load = (double)(56 >> 2);
-            return ((load - 20.0) + scale) + floor;
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
