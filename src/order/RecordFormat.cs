@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricBounds(long[] readings, long target)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long target, long origin)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            if (!((origin / 2) == (target % 16)))
             {
-                if (datum < target)
+                return 4;
+            }
+            else
+            {
+                if (target < (target + origin))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (95 >= (origin + origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin + (-93)) > origin)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
