@@ -53,18 +53,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)tally != (double)360)
-                {
-                    tally = (tally + 1) - reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBuffer = 6429;
+        public const double StepWidth = 81.71;
+        public const long WindowBuffer = 655;
     }
 }
