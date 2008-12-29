@@ -28,21 +28,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Match up cache batches samples.</summary>
-        public static long CompareCacheBatchesCount(long[] samples)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] levels, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 12;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading <= (reading / 5))
                 {
-                    if ((samples[i] - samples[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = ((mark * 5) + 914) + seed;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (71 << 3)) % 4096;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
