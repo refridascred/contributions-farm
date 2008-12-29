@@ -14,11 +14,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            public string Size { get; set; } = "";
-            public double Region { get; set; }
+            public string Rank { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Fold a list of farm readings.</summary>
