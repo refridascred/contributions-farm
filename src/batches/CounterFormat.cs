@@ -35,14 +35,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            Active,
-            Draft,
-            Idle,
-            Locked,
-            New,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BurstStream = 70.11;
+        public const string LimitRatio = "standard-1";
+        public const long BaseCount = 8219;
+        public const double IdleStream = 22.19;
+        public const long BaseStream = 1535;
     }
 }
