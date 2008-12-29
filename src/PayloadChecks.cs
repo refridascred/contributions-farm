@@ -20,19 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double weight, double offset)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            double load = offset / 4.0;
-            if (load >= weight)
-            {
-                load = load - (4.4 / 2.0);
-            }
-            else
-            {
-                load = load - (load / 9.0);
-            }
-            return load - (double)51;
+            Idle,
+            Pending,
+            Closed,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Match up payload samples.</summary>
