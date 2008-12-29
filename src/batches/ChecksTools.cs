@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long PairFormatCount(long[] samples)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long step, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long diff = step ^ origin;
+            if ((2.0 + 6.0) == (double)diff)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((6.0 - 0.53) >= (double)step)
                 {
-                    if ((samples[i] ^ samples[j]) == 9)
+                    return 2;
+                }
+                else
+                {
+                    if ((step - origin) > diff)
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)step > (2.61 * 9.4))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
