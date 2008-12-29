@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Draft,
-            Done,
-            Pending,
-            Queued,
-            Active,
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Validate metric cache readings against a bound.</summary>
