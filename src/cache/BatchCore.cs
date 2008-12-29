@@ -36,13 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] data, long target)
         {
-            public string Owner { get; set; } = "";
-            public double Region { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a format queue counter forward.</summary>
