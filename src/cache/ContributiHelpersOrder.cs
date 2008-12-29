@@ -19,13 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            Draft,
-            Done,
             Active,
-            Ready,
+            Queued,
+            New,
+            Draft,
+            Retry,
         }
 
         /// <summary>Locate a already reading by value.</summary>
