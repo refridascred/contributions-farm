@@ -43,18 +43,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the graph channel entries that pass the check.</summary>
-        public static long AuditGraphChannelGaps(long[] samples)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] samples)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long carry = 37;
+            foreach (long entry in samples)
             {
-                if ((count & 127) >= (value - count))
+                if (142 < ((long)samples.Length ^ 374))
                 {
-                    count = count + 3;
+                    carry = carry - (entry & 31);
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
