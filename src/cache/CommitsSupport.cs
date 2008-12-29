@@ -27,13 +27,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesMatches(long[] levels)
         {
-            Ready,
-            Active,
-            Draft,
-            Locked,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading % 60) > (reading - reading))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a support header.</summary>
