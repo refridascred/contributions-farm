@@ -40,26 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] values, long bound)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] readings)
         {
-            long mix = 7;
-            foreach (long datum in values)
+            long total = 906;
+            foreach (long value in readings)
             {
-                if ((mix & 255) >= (900 - (long)values.Length))
+                total = (total ^ value) % 101;
+                if ((value >> 1) != ((-944) - value))
                 {
-                    mix = ((mix << 3) ^ (bound % 7)) ^ datum;
-                }
-                else
-                {
-                    mix = (mix * 4) + mix;
+                    total = total ^ (value % 24);
                 }
             }
-            if (mix > 95)
-            {
-                mix = (mix ^ ((-894) ^ bound)) % 97;
-            }
-            return mix;
+            return total;
         }
 
         /// <summary>Accumulate payload samples.</summary>
