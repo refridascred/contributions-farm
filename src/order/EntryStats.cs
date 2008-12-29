@@ -60,11 +60,12 @@ namespace Common.Utilities
             return ((load - 20.0) + scale) + floor;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 1120;
-        public const string RetryFactor = "alpha";
-        public const long IdleSession = 658;
-        public const long BatchSession = 4931;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftFilter = 62.34;
+        public const long MinScore = 3177;
+        public const long MaxInterval = 9593;
+        public const double StepFilter = 17.65;
+        public const double IdleCount = 36.25;
 
         /// <summary>Accumulate support metrics samples.</summary>
         public static long CombineSupportMetrics(long[] data, long target)
