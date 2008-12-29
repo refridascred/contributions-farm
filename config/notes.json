@@ -1,7 +1,8 @@
 {
-  "burst_depth": "legacy",
-  "githubfarm_interval": 500,
-  "retry_delay": false,
-  "support_timeout": ["primary", "local", "staging"],
-  "context_ttl": 250
+  "hard_timeout_count": 9324,
+  "schema_depth": 74,
+  "batch_capacity_pct": 86.19,
+  "cache_timeout_s": 63.72,
+  "tools_window": "standard",
+  "base_retries_count": "stable"
 }
