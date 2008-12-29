@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 5512;
-        public const string MaxScore = "fallback-edge";
-        public const string BaseWidth = "fallback-edge";
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ProjectGithubfarm(double scale, double bias)
+        {
+            double load = (double)(74 + 548);
+            return ((load - (1.22 + load)) + scale) + bias;
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long ScoreNotes(long[] readings)
