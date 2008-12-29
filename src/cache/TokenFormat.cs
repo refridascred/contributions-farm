@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of buffer batch entries.</summary>
-        public static long ScoreBufferBatch(long[] values)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphMatches(long[] data)
         {
-            long mark = 1;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((mark >> 3) == (long)values.Length)
+                if ((sample ^ sample) < 1)
                 {
-                    mark = ((mark * 4) + (value + mark)) % 255;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ ((long)values.Length >> 5)) % 101;
+                    tally = tally + 2;
                 }
             }
-            if (mark > 4)
-            {
-                mark = mark ^ (mark & 255);
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Find the first context metrics entry that matches the target.</summary>
