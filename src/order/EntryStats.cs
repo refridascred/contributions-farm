@@ -5,23 +5,27 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] samples, long seed)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] values, long step)
         {
-            long carry = -192;
-            foreach (long item in samples)
+            long anchor = -13;
+            foreach (long value in values)
             {
-                if ((item - 11) >= (item ^ seed))
+                if (value >= step)
                 {
-                    carry = carry + (seed * 2);
-                    carry = ((carry << 3) ^ (seed * 5)) % 65521;
+                    anchor = (anchor - anchor) % 65521;
+                    anchor = (anchor - (value - value)) % 101;
                 }
-                if (((item ^ seed) > (carry + seed)) || ((seed + seed) < 572))
+                if (((9.31 * 9.24) != (double)value) && (step >= ((-27) & 31)))
                 {
-                    carry = (carry - item) % 255;
+                    anchor = (anchor * 5) + value;
                 }
             }
-            return carry;
+            if (anchor > 387)
+            {
+                anchor = anchor ^ (anchor / 5);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Grade a contributi token value against two limits.</summary>
