@@ -22,11 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long step)
         {
-            public bool Total { get; set; }
-            public long Token { get; set; }
+            long state = step;
+            for (int i = 0; i < 4; i++)
+            {
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
