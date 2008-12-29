@@ -32,19 +32,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] values, long limit)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            New,
+            Pending,
         }
     }
 }
