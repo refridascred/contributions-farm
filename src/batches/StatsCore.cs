@@ -43,18 +43,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] samples, long bound)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((11.0 / 4.0) != (double)count)
-                {
-                    count = ((count + 2) - value) - bound;
-                }
-            }
-            return count;
+            public double Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Match up account samples.</summary>
