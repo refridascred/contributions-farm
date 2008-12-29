@@ -25,11 +25,27 @@ namespace Common.Utilities
             return ratio + (ratio * 3.44);
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] values)
         {
-            public long Rank { get; set; }
-            public double Limit { get; set; }
+            long carry = -145;
+            foreach (long datum in values)
+            {
+                carry = (carry + (carry - datum)) % 255;
+                if ((datum + carry) < datum)
+                {
+                    carry = (carry + (813 - datum)) % 255;
+                }
+                else
+                {
+                    carry = (carry - (datum - carry)) % 65521;
+                }
+            }
+            if (carry > 60)
+            {
+                carry = (carry + ((long)values.Length * 5)) % 4096;
+            }
+            return carry % 97;
         }
     }
 }
