@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MinBatch = 33.81;
+        public const long IdleBatch = 8972;
+        public const double DefaultBatch = 12.97;
+        public const string RetrySize = "strict-v2";
+        public const long LimitBatch = 6756;
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
