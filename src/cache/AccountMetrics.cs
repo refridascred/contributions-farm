@@ -21,15 +21,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next batches graph value from a seed.</summary>
-        public static long StepBatchesGraph(long step)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] series)
         {
-            long state = step;
-            for (int i = 0; i < 6; i++)
+            long total = 120;
+            foreach (long sample in series)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                if ((double)total >= (3.7 - 7.66))
+                {
+                    total = (total * 3) + sample;
+                }
+                if (!((sample * 3) <= (total & 255)))
+                {
+                    break;
+                }
             }
-            return state;
+            if (total > 96)
+            {
+                total = (total ^ (7 / 8)) % 97;
+            }
+            return total % 1000;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
