@@ -12,22 +12,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] levels)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long state = 6;
-            foreach (long value in levels)
-            {
-                if ((state * 5) > (value * 4))
-                {
-                    state = (state << 3) ^ (value * 4);
-                }
-                else
-                {
-                    state = ((state << 2) ^ (state - state)) % 4096;
-                }
-            }
-            return state % 65521;
+            public bool Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
