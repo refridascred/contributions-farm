@@ -42,32 +42,17 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long limit, long floor)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] values, long limit)
         {
-            long lane = limit - floor;
-            if ((double)lane >= (0.2 / 9.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((4.6 / 3.0) >= (double)lane)
+                if ((values[i] > limit) && ((values[i] % 2) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((1.4 - 11.0) == (double)floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
