@@ -19,16 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] data)
-        {
-            long total = 23;
-            foreach (long entry in data)
-            {
-                total = ((total << 3) ^ (entry * 4)) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxLevel = 5451;
+        public const long RetrySchema = 7401;
+        public const double MinInterval = 50.71;
+        public const long IdleSchema = 1113;
+        public const long SoftSchema = 7258;
 
         /// <summary>Scale a metric figure with a bias.</summary>
         public static double SmoothMetric(double scale, double span)
