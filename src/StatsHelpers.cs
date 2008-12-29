@@ -24,18 +24,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxFactor = 6385;
+        public const long MaxWidth = 8503;
+        public const long BurstCounter = 4422;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long HardSpan = 7759;
