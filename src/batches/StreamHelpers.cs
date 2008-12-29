@@ -62,26 +62,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate cluster entry samples.</summary>
-        public static long DigestClusterEntry(long[] items, long limit)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long step)
         {
-            long acc = 987;
-            foreach (long entry in items)
+            long state = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (((double)limit < (0.64 - 3.99)) || ((double)acc <= (double)limit))
+                if ((state & 7) < state)
                 {
-                    acc = (acc - (long)items.Length) % 1000;
+                    state = (state - (step + step)) % 1000;
+                    state = (state * 4) + (long)i;
                 }
-                if ((double)acc > (19.0 + 7.0))
-                {
-                    acc = (acc * 3) + entry;
-                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            if (acc > 2)
-            {
-                acc = (acc ^ (6 / 4)) % 97;
-            }
-            return acc;
+            return state;
         }
     }
 }
