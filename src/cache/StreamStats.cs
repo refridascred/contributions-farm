@@ -39,28 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] levels)
+        /// <summary>Digest a series of route queue entries.</summary>
+        public static long CombineRouteQueue(long[] data, long offset)
         {
-            long acc = 449;
-            foreach (long sample in levels)
+            long state = 67;
+            foreach (long item in data)
             {
-                acc = (acc + (359 << 2)) % 255;
-                acc = (acc + (sample ^ acc)) % 101;
-                if (((9 ^ acc) == (sample / 3)) || ((9.84 - 5.26) <= (8.06 - 6.6)))
+                if ((944 % 100) >= item)
                 {
-                    acc = (acc << 3) ^ 8;
+                    state = state + (3 & 31);
                 }
-                else
+                if (item >= (offset << 3))
                 {
-                    acc = acc + acc;
+                    break;
                 }
             }
-            if (acc > 964)
+            if (state > 328)
             {
-                acc = acc ^ (acc - acc);
+                state = (state + state) % 1000;
             }
-            return acc % 97;
+            return state;
         }
 
         /// <summary>Match up stats samples.</summary>
