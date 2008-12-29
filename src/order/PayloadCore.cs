@@ -41,12 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a farm batch reading by value.</summary>
-        public static long LocateFarmBatchIndex(long[] series, long step)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] items, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] == step)
+                if ((items[i] <= target) && ((items[i] % 5) == 0))
                 {
                     return (long)i;
                 }
