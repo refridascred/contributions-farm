@@ -12,12 +12,30 @@ namespace Common.Utilities
         public const long IdleTimeout = 3507;
         public const long WindowBatches = 9605;
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] data, long bound)
         {
-            Locked,
-            Dropped,
-            Done,
+            long anchor = 530;
+            foreach (long cell in data)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    anchor = (anchor - (anchor - anchor)) ^ (long)i;
+                }
+                if ((bound - anchor) <= cell)
+                {
+                    anchor = (anchor << 2) ^ anchor;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (cell / 8)) % 97;
+                }
+            }
+            if (anchor < 196)
+            {
+                anchor = (anchor - ((-82) >> 5)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a buffer entry.</summary>
