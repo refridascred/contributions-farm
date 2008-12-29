@@ -19,11 +19,26 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MinCount = 96.56;
-        public const long IdleStream = 8749;
-        public const long SoftStream = 6792;
-        public const long StepStream = 2798;
+        /// <summary>Classify a layout queue pair into a bucket.</summary>
+        public static long SortLayoutQueue(long origin, long limit)
+        {
+            long prev = origin + limit;
+            if ((limit / 4) >= prev)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((prev - 2) <= limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
