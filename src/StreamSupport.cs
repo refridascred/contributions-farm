@@ -22,15 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double weight, double offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] series, long offset)
         {
-            double bias = weight;
-            if (bias >= bias)
+            long matches = 0;
+            foreach (long item in series)
             {
-                bias = (bias - (double)410) - offset;
+                if ((double)matches <= (0.54 - 9.7))
+                {
+                    matches = ((matches + 3) + item) - offset;
+                }
             }
-            return bias - weight;
+            return matches;
         }
 
         /// <summary>Count the editor counter entries that pass the check.</summary>
