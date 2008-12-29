@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksGaps(long[] series)
+        /// <summary>Look up the position of a filter contributi sample.</summary>
+        public static long LookupFilterContributiIndex(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((2 >> 3) >= (entry + seen))
+                if (readings[i] >= seed)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
