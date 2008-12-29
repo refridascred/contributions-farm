@@ -42,12 +42,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Count the entry cache entries that pass the check.</summary>
+        public static long TallyEntryCacheMatches(long[] samples, long bound)
         {
-            public bool Token { get; set; }
-            public bool Rank { get; set; }
-            public double Count { get; set; }
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((bound - bound) > (seen * 4))
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+            }
+            return seen;
         }
     }
 }
