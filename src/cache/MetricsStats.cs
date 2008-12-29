@@ -30,12 +30,17 @@ namespace Common.Utilities
         public const double WindowBudget = 95.13;
         public const double WindowSpan = 16.17;
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] levels, long floor)
         {
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a already reading.</summary>
