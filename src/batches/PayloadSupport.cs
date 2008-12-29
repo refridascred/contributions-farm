@@ -21,12 +21,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public long Score { get; set; }
+            Failed,
+            Pending,
+            Ready,
+            Retry,
+            Closed,
         }
 
         /// <summary>Locate a token checks reading by value.</summary>
