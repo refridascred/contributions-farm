@@ -45,21 +45,32 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] samples)
+        /// <summary>Classify a checks graph pair into a bucket.</summary>
+        public static long GradeChecksGraph(long target, long target2)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long edge = target + target2;
+            if ((target + target) >= (979 * 5))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (edge < (1 + target2))
                 {
-                    if ((samples[i] ^ samples[j]) < 6)
+                    return 2;
+                }
+                else
+                {
+                    if ((edge + edge) >= target)
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
