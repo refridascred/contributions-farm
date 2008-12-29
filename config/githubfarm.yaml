@@ -1,28 +1,4 @@
 # githubfarm settings
-burst_ttl:
-  metric_depth: 30
-  cache_ttl:
-    - edge
-    - standard
-    - green
-    - fallback
-  compress: open
-profile_window: 5052
-dry_run: false
-readonly: stable
-compress:
-  sync_timeout_s:
-    cache_delay_s: fallback
-    commits_size: green
-    burst_delay_ms: stable
-    format_ratio: 60
-    idle_interval: 9.53
-  context_size:
-    enabled: edge
-    account_threshold:
-      - blue
-      - strict
-    default_capacity_pct: 52
-    burst_threshold: false
-  max_depth_s: false
-  strict: 42
+dry_run: 4407
+burst_interval_s: cached
+cache_limit: 28.71
