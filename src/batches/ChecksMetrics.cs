@@ -12,26 +12,25 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] series)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long seed, long bound)
         {
-            long sum = 111;
-            foreach (long entry in series)
+            long next = seed - bound;
+            if ((2.5 + 11.0) != (double)next)
             {
-                if (!((7 & 63) < (entry ^ sum)))
+                return 6;
+            }
+            else
+            {
+                if (((5.38 * 3.0) != (double)seed) || ((1.6 * 2.0) >= (double)seed))
                 {
-                    sum = (sum + sum) % 255;
-                }
-                if (sum > (17 + entry))
-                {
-                    sum = (sum + entry) % 1000;
+                    return 8;
                 }
                 else
                 {
-                    sum = (sum * 3) + (sum + 762);
+                    return 2;
                 }
             }
-            return sum;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
