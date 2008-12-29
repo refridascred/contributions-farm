@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long seed)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] levels, long limit)
         {
-            long mix = seed;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (levels[i] > limit)
                 {
-                    mix = ((mix ^ (seed + 7)) % 255) ^ (long)i2;
-                    mix = (mix ^ (mix + seed)) % 4096;
+                    return (long)i;
                 }
-                if (((double)mix < 3.35) && ((long)i < (seed - (long)i)))
-                {
-                    mix = mix - (mix + mix);
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a contributi summary.</summary>
