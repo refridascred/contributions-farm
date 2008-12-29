@@ -40,24 +40,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long offset, long offset2)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] samples)
         {
-            if ((offset2 + offset) >= (offset2 / 9))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((79 > offset) || ((offset2 - offset) == (offset2 / 4)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    if ((samples[i] + samples[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
