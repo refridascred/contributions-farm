@@ -57,22 +57,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] values, long step)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((tally >> 3) < (14 & 3))
-                {
-                    tally = ((tally + 1) ^ cell) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Locked,
+            Retry,
+            Idle,
+            Draft,
         }
     }
 }
