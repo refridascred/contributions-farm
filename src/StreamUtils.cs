@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmRange(long[] items, long floor)
         {
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every profile support entry stays within the limit.</summary>
