@@ -1,28 +1,9 @@
 # support settings
-retry_depth_count: green
-cache_depth:
-  soft_depth: cached
-  batch_capacity_pct: local
-  burst_ttl: stable
-  window_timeout: false
-  verbose: 58.84
-  idle_interval_s: 11.63
-order_size: stable
-verbose:
-  cluster_ttl: 1313
-  default_ttl_pct: 81
-  strict:
-    flush_interval_count: primary
-    retry_depth: 37.84
-    metrics_ratio: eu-west
-    compress:
-      - 236
-      - 432
-      - 140
-      - 313
-    editor_window: 1024
-    readonly: 6754
-  retry_threshold_ms:
-    - 414
-    - 386
-audit: false
+hard_limit_count: true
+verbose: 60
+notes_capacity:
+  - 16
+  - 477
+  - 219
+retry_interval_ms: 250
+poll_retries_ms: 10.3
