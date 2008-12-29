@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine schema format values into a single score.</summary>
-        public static long CombineSchemaFormat(long[] series, long floor)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double weight, double bias)
         {
-            long score = -75;
-            foreach (long value in series)
+            double load = (double)9 - (bias + weight);
+            for (int i = 0; i < 5; i++)
             {
-                if ((score - score) > score)
-                {
-                    score = ((score + value) % 101) - floor;
-                }
+                load = (load + 4.09) + (double)(long)i;
             }
-            if (score < 127)
-            {
-                score = (score ^ (score << 1)) % 65521;
-            }
-            return score;
+            return load + (double)530;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
