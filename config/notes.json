@@ -1,11 +1,6 @@
 {
-  "readonly": true,
-  "default_retries_count": "stable",
-  "batches_retries": 33,
-  "filter_ratio": 52.53,
-  "soft_delay": {
-    "layout_capacity": 92.19,
-    "cache_timeout": 0.11,
-    "session_retries": [422, 341]
-  }
+  "session_interval": "eu-west",
+  "command_ttl": ["primary", "fallback", "strict", "fallback"],
+  "readonly": ["primary", "staging"],
+  "dry_run": ["strict", "legacy"]
 }
