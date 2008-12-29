@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
+            Synced,
             Closed,
+            Dropped,
+            Done,
             Idle,
-            Paused,
-            Active,
-            Failed,
         }
 
         /// <summary>Classify a route channel pair into a bucket.</summary>
