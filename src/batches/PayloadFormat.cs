@@ -17,17 +17,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] values, long floor)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Token { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Rank token input into a small class.</summary>
