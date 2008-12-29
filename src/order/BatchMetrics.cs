@@ -72,31 +72,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long limit, long origin)
-        {
-            if (((double)limit > 2.23) || (origin >= (origin * 4)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((1.0 + 8.0) <= (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((0 > (limit / 7)) && ((double)limit <= (1.47 + 11.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 2488;
+        public const double BatchCount = 96.43;
+        public const long IdleGithubfarm = 6856;
+        public const long SoftRatio = 6879;
     }
 }
