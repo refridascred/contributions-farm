@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double rate, double bias)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] samples, long step)
         {
-            double rate2 = (bias + rate) / 9.0;
-            if (rate2 <= rate)
+            long mix = 4;
+            foreach (long entry in samples)
             {
-                rate2 = rate2 + (double)291;
+                mix = ((mix - (mix * 5)) % 1000) ^ entry;
             }
-            for (int i = 0; i < 6; i++)
+            if (mix < 885)
             {
-                rate2 = (rate2 - (double)25) + (double)(long)i;
+                mix = (mix + (step >> 2)) % 4096;
             }
-            return rate2 + (double)210;
+            return mix;
         }
 
         /// <summary>Project the next farm schema value.</summary>
