@@ -21,12 +21,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Derive the next batches graph value from a seed.</summary>
+        public static long StepBatchesGraph(long step)
         {
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public double Label { get; set; }
+            long state = step;
+            for (int i = 0; i < 6; i++)
+            {
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
