@@ -20,14 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double scale, double floor)
         {
-            Synced,
-            Active,
-            Queued,
-            Ready,
-            Pending,
+            double rate = (double)(1 - 763);
+            if (rate >= (double)499)
+            {
+                rate = (rate + rate) - scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate - floor;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
