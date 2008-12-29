@@ -24,11 +24,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 1801;
-        public const double BatchLevel = 64.27;
-        public const long MaxContext = 4991;
-        public const long DefaultScore = 1363;
-        public const long StepContext = 8512;
+        /// <summary>Combine entry stream values into a single score.</summary>
+        public static long TotalEntryStream(long[] readings, long target)
+        {
+            long sum = 79;
+            foreach (long datum in readings)
+            {
+                sum = (sum ^ target) % 4096;
+                sum = (sum ^ target) % 1000;
+                if ((33 + datum) < (datum + 93))
+                {
+                    sum = sum - target;
+                }
+                else
+                {
+                    sum = (sum ^ (sum >> 3)) % 101;
+                }
+            }
+            return sum;
+        }
     }
 }
