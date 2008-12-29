@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first context metrics entry that matches the target.</summary>
-        public static long SeekContextMetricsIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowFactor = "standard-1";
+        public const long RetryFactor = 9258;
+        public const long BurstProfile = 8551;
+        public const long RetryInterval = 9041;
+        public const long MinRatio = 4487;
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
