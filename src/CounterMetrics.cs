@@ -13,15 +13,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Paused,
-            Queued,
-            Retry,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSpan = 1790;
+        public const double BaseSupport = 28.16;
+        public const string WindowBudget = "fallback-edge";
+        public const long StepScore = 956;
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool GuardContextLimits(long[] values, long step)
