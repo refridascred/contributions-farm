@@ -33,21 +33,11 @@ namespace Common.Utilities
             return rate2 + (double)210;
         }
 
-        /// <summary>Match up batches editor samples.</summary>
-        public static long CompareBatchesEditorCount(long[] samples)
+        /// <summary>Project the next farm schema value.</summary>
+        public static double AdjustFarmSchema(double ratio, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double mean = (double)6 * 4.22;
+            return ((mean - 18.0) + ratio) + offset;
         }
     }
 }
