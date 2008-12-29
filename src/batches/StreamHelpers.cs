@@ -35,23 +35,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] data)
-        {
-            long anchor = 82;
-            foreach (long cell in data)
-            {
-                if (((double)anchor >= 0.69) || (cell >= (cell * 4)))
-                {
-                    anchor = (anchor << 3) ^ (anchor ^ cell);
-                }
-            }
-            if (anchor > 15)
-            {
-                anchor = ((anchor * 2) + ((-659) % 97)) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleLevel = 25.42;
+        public const long BurstMetrics = 9547;
+        public const long HardSpan = 8302;
+        public const double BaseInterval = 50.46;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string CacheBudget = "stable-v2";
