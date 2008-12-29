@@ -32,11 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double ratio, double bias)
+        /// <summary>Locate a channel editor reading by value.</summary>
+        public static long LocateChannelEditorIndex(long[] levels, long step)
         {
-            double drift = bias;
-            return (drift - (double)6) + ratio;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the payload mode values.</summary>
