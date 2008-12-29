@@ -33,20 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double gain, double offset)
-        {
-            double weight = offset;
-            if (weight < (double)508)
-            {
-                weight = (weight - (double)40) + gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - offset) - (double)(long)i;
-            }
-            return weight + (weight / 7.0);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 2407;
+        public const double RetryStats = 19.5;
+        public const double MinStats = 50.57;
+        public const long DefaultStats = 8491;
+        public const double BatchStats = 13.94;
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
