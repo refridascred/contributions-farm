@@ -1,6 +1,14 @@
 {
-  "session_interval": "eu-west",
-  "command_ttl": ["primary", "fallback", "strict", "fallback"],
-  "readonly": ["primary", "staging"],
-  "dry_run": ["strict", "legacy"]
+  "default_window_ms": true,
+  "order_threshold": {
+    "sync_interval_pct": true,
+    "compress": [379, 323],
+    "notes_retries": {
+      "audit": 37.62,
+      "editor_window": [238, 319],
+      "max_ratio_pct": "strict"
+    },
+    "idle_ratio_ms": false
+  },
+  "sync_delay_ms": 56.6
 }
