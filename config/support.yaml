@@ -1,13 +1,18 @@
 # support settings
-already_ratio: 96.51
-entry_limit: green
-burst_timeout:
-  - 252
-  - 210
-  - 282
-  - 258
-route_size: 26
-enabled:
-  - strict
-  - primary
-poll_ttl: 250
+githubfarm_threshold: fallback
+flush_window_s:
+  readonly: 2407
+  soft_threshold: true
+  counter_limit: 60
+  session_window:
+    - green
+    - local
+record_retries: true
+flush_size_s: true
+strict:
+  hard_depth: 6997
+  warm_ratio: 1024
+  flush_threshold: 4170
+  max_size:
+    - green
+    - stable
