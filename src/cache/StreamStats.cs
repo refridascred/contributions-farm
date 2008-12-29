@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] levels)
         {
-            public double Offset { get; set; }
-            public long Flag { get; set; }
-            public double Mode { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((0 - 91) != (22 ^ hits))
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
