@@ -53,13 +53,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long limit, long seed)
         {
-            Active,
-            Draft,
-            Stale,
-            New,
+            if (((limit ^ seed) >= seed) && ((15.0 + 2.08) != (double)seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit & 63) > limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((9 + limit) > seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a already counter forward.</summary>
