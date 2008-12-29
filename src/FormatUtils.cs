@@ -66,17 +66,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first graph command entry that matches the target.</summary>
-        public static long LookupGraphCommandIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinSpan = 8950;
+        public const long SoftCommits = 7398;
+        public const double MaxLevel = 98.08;
+        public const long HardInterval = 7414;
+        public const double StepDepth = 16.67;
     }
 }
