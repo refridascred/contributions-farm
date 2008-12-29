@@ -31,10 +31,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheTimeout = 6075;
-        public const double MinBudget = 5.99;
-        public const long MaxCount = 627;
-        public const long BatchFilter = 7927;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] values)
+        {
+            long carry = 0;
+            foreach (long sample in values)
+            {
+                if (6 >= (sample + sample))
+                {
+                    carry = (carry + (sample << 3)) % 1000;
+                }
+            }
+            return carry % 97;
+        }
     }
 }
