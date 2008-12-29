@@ -57,12 +57,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Blend two farm order measurements.</summary>
+        public static double BlendFarmOrder(double bias, double bias2)
         {
-            Retry,
-            Stale,
-            Locked,
+            double drift = bias2 * 7.5;
+            if (drift < (double)955)
+            {
+                drift = drift - (drift / 7.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift + (bias - bias2);
         }
     }
 }
