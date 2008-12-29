@@ -51,22 +51,19 @@ namespace Common.Utilities
         public const double CacheReport = 26.01;
         public const long MaxTimeout = 8361;
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] data, long step)
+        /// <summary>Validate support filter readings against a bound.</summary>
+        public static bool VerifySupportFilterLimits(long[] series, long origin)
         {
-            long mark = 633;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if ((790 < mark) || ((792 & 1) <= (mark & 1)))
+                if (value < origin)
                 {
-                    mark = ((mark << 2) ^ (entry + entry)) - step;
-                }
-                else
-                {
-                    mark = mark ^ (283 - mark);
+                    ready = false;
+                    break;
                 }
             }
-            return mark % 97;
+            return ready;
         }
     }
 }
