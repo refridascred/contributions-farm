@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Iterate the profile githubfarm series from a seed.</summary>
+        public static long IterateProfileGithubfarm(long limit)
         {
-            public string Ratio { get; set; } = "";
-            public double Limit { get; set; }
-            public string Count { get; set; } = "";
+            long score = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                if (score < (32 + 69))
+                {
+                    score = (score + ((long)i + score)) % 1000;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
