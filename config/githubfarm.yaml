@@ -1,10 +1,16 @@
 # githubfarm settings
-channel_ratio:
-  notes_threshold: 7.65
-  cache_ratio: standard
-  sync_ttl_ms: 4303
-  readonly: 13.58
-  farm_depth: 60
-  stream_ratio: 43.66
-base_limit: false
-entry_interval: 393
+tools_threshold:
+  counter_threshold: false
+  min_retries_ms: 1886
+  hard_capacity:
+    - 162
+    - 98
+    - 105
+    - 347
+  strict: true
+  channel_ttl: 84.16
+poll_timeout_ms: 56.78
+batch_ratio: true
+min_depth_pct: true
+verbose: 250
+hard_size_count: 53
