@@ -43,12 +43,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            Draft,
+            Locked,
+            Done,
+            Stale,
             Idle,
-            Paused,
+            Failed,
         }
     }
 }
