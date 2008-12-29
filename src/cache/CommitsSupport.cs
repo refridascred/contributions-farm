@@ -45,17 +45,12 @@ namespace Common.Utilities
         public const long IdleCount = 5197;
         public const long IdleGithubfarm = 5106;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] samples, long origin)
-        {
-            long score = 975;
-            foreach (long item in samples)
-            {
-                score = ((score << 3) ^ (origin + score)) - item;
-                score = (score ^ score) % 1000;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 3766;
+        public const long BurstGithubfarm = 3212;
+        public const string WindowSize = "local-edge";
+        public const long RetryGithubfarm = 1430;
+        public const double SoftWidth = 82.27;
 
         /// <summary>Check that every session queue entry stays within the limit.</summary>
         public static bool CheckSessionQueueLimits(long[] items, long step)
