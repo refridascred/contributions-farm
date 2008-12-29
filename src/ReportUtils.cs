@@ -62,13 +62,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
-        {
-            public double Label { get; set; }
-            public double Token { get; set; }
-            public string Rank { get; set; } = "";
-            public double Region { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string CacheMetrics = "local";
+        public const string StepMetrics = "alpha-v2";
+        public const long WindowScore = 4030;
     }
 }
