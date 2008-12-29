@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
-        {
-            Failed,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 7268;
+        public const long CacheQueue = 879;
+        public const double StepQueue = 30.88;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long StepChecks(long bound)
