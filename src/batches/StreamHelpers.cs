@@ -33,14 +33,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiOutliers(long[] readings, long offset)
         {
-            Queued,
-            Stale,
-            Active,
-            Idle,
-            Paused,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((offset > (offset + seen)) || ((seen & 15) <= offset))
+                {
+                    seen = (seen + 1) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
