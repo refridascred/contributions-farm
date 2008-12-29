@@ -45,13 +45,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] readings, long bound)
         {
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)hits < (8.0 / 9.0))
+                {
+                    hits = ((hits + 2) ^ datum) + bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
