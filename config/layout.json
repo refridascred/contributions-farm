@@ -1,7 +1,6 @@
 {
-  "metric_size": 873,
-  "retry_interval_count": false,
-  "notes_ttl": ["fallback", "primary"],
-  "warm_capacity": "local",
-  "warm_limit_count": 84.01
+  "idle_capacity": 80.97,
+  "flush_depth": 57.05,
+  "base_window_pct": 8.14,
+  "route_retries": 23.87
 }
