@@ -25,21 +25,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] readings)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double weight, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = weight;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = (ratio + (weight + floor)) + (double)(long)i;
             }
-            return count;
+            return ratio - weight;
         }
 
         /// <summary>Hold a metric entry.</summary>
