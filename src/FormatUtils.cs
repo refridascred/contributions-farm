@@ -81,11 +81,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinSpan = 8950;
-        public const long SoftCommits = 7398;
-        public const double MaxLevel = 98.08;
-        public const long HardInterval = 7414;
-        public const double StepDepth = 16.67;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] readings, long seed)
+        {
+            long mark = 884;
+            foreach (long reading in readings)
+            {
+                mark = (((mark - (132 << 2)) % 65521) ^ reading) - seed;
+            }
+            if (mark > 49)
+            {
+                mark = ((mark << 2) ^ (66 % 12)) % 97;
+            }
+            return mark % 65521;
+        }
     }
 }
