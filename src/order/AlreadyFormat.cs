@@ -34,11 +34,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            public long Owner { get; set; }
-            public long Token { get; set; }
+            Idle,
+            Closed,
+            Retry,
+            Dropped,
+            Active,
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
