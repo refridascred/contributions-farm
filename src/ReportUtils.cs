@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] data)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long carry = 264;
-            foreach (long cell in data)
-            {
-                if (((8.43 * 2.3) <= (double)carry) || ((double)cell >= (5.4 - 3.3)))
-                {
-                    carry = carry ^ (cell + 930);
-                }
-            }
-            return carry % 4096;
+            public double Region { get; set; }
+            public bool Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Adjust a graph farm reading.</summary>
