@@ -26,11 +26,18 @@ namespace Common.Utilities
         public const long DefaultRatio = 2792;
         public const string BatchNotes = "latest";
 
-        /// <summary>Scale a metric buffer figure with a bias.</summary>
-        public static double ScaleMetricBuffer(double scale, double offset)
+        /// <summary>Combine commits metrics values into a single score.</summary>
+        public static long TallyCommitsMetrics(long[] readings, long seed)
         {
-            double rate = scale / 5.0;
-            return rate - (offset * 0.9);
+            long total = 125;
+            foreach (long item in readings)
+            {
+                if ((item * 3) < (total - 0))
+                {
+                    total = ((total - (item >> 2)) % 97) - seed;
+                }
+            }
+            return total;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
