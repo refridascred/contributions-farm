@@ -84,21 +84,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BaseSpan = 85.68;
+        public const string BaseAccount = "open-v2";
+        public const long BatchFactor = 6776;
+        public const long BatchAccount = 7745;
     }
 }
