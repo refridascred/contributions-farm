@@ -54,15 +54,13 @@ namespace Common.Utilities
             return mean + (offset - offset);
         }
 
-        /// <summary>Blend two editor tools measurements.</summary>
-        public static double SmoothEditorTools(double rate, double bias)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            double drift = bias;
-            if (drift > bias)
-            {
-                drift = drift - rate;
-            }
-            return drift + (drift / 8.0);
+            public double Label { get; set; }
+            public double Token { get; set; }
+            public string Rank { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
