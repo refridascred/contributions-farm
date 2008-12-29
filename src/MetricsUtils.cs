@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmBounds(long[] data, long floor)
         {
-            Failed,
-            Closed,
-            Synced,
-            Done,
-            Retry,
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define window limits and defaults.</summary>
