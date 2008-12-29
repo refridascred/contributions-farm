@@ -64,12 +64,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            public bool Mode { get; set; }
-            public double Owner { get; set; }
-            public long Level { get; set; }
+            public double Stamp { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
