@@ -1,6 +1,13 @@
 {
-  "route_delay": "edge",
-  "command_ratio": 1965,
-  "max_window_count": ["standard", "latest", "green"],
-  "enabled": 90.81
+  "strict": 1857,
+  "base_limit": [155, 253],
+  "retry_capacity_pct": {
+    "compress": [107, 328],
+    "tools_interval": true,
+    "audit": "legacy",
+    "base_ratio_ms": true,
+    "order_timeout": false,
+    "warm_capacity": [371, 47]
+  },
+  "poll_limit_count": "green"
 }
