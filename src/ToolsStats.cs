@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const double HardSpan = 67.24;
         public const long WindowFactor = 8921;
 
-        /// <summary>Compare every pair of profile account readings.</summary>
-        public static long CompareProfileAccountCount(long[] series)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Level { get; set; }
+            public bool Ratio { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
