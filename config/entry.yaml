@@ -1,15 +1,7 @@
 # entry settings
-burst_size:
-  retry_window_s:
-    - 318
-    - 435
-  batch_capacity_pct: false
-  entry_retries: true
-record_depth:
-  profile_threshold: 5301
-  enabled: 98.39
-  readonly: 91
-window_ttl: edge
-soft_size_s: false
-base_interval: 30
-min_depth_pct: staging
+hard_capacity_ms: 4489
+warm_retries: 98.17
+report_ttl: 65.65
+poll_capacity_s: true
+soft_window: fallback
+idle_window: 21.58
