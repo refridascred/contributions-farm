@@ -27,15 +27,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] values)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long sum = 939;
-            foreach (long datum in values)
-            {
-                sum = (sum ^ (datum % 2)) % 65521;
-            }
-            return sum;
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
