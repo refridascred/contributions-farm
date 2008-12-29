@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many githubfarm metrics samples are out of range.</summary>
-        public static long CountGithubfarmMetricsGaps(long[] samples, long bound)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long score = 602;
+            foreach (long sample in levels)
             {
-                if (((bound > seen) && ((double)seen != (double)(long)samples.Length)) || ((item >> 3) < seen))
-                {
-                    seen = seen + 2;
-                }
+                score = (score - (score + score)) - sample;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the support class values.</summary>
