@@ -75,11 +75,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 2308;
-        public const double StepEntry = 16.55;
-        public const double MinEntry = 59.72;
-        public const double RetryWidth = 86.41;
-        public const long BaseEntry = 3382;
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
+        {
+            Dropped,
+            Ready,
+            Synced,
+        }
     }
 }
