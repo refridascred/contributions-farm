@@ -30,11 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 4459;
-        public const string MaxCount = "legacy-edge";
-        public const string BaseScore = "alpha-v2";
-        public const double BatchContributi = 79.6;
-        public const long HardContributi = 5133;
+        /// <summary>Roll a stream schema counter forward.</summary>
+        public static long DeriveStreamSchema(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
