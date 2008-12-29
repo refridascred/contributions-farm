@@ -68,19 +68,26 @@ namespace Common.Utilities
         public const long BatchEntry = 5759;
         public const long BaseEntry = 4485;
 
-        /// <summary>Check that every profile editor entry stays within the limit.</summary>
-        public static bool VerifyProfileEditorRange(long[] data, long offset)
+        /// <summary>Accumulate cluster entry samples.</summary>
+        public static long DigestClusterEntry(long[] items, long limit)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long acc = 987;
+            foreach (long entry in items)
             {
-                if (reading >= offset)
+                if (((double)limit < (0.64 - 3.99)) || ((double)acc <= (double)limit))
                 {
-                    ready = false;
-                    break;
+                    acc = (acc - (long)items.Length) % 1000;
+                }
+                if ((double)acc > (19.0 + 7.0))
+                {
+                    acc = (acc * 3) + entry;
                 }
             }
-            return ready;
+            if (acc > 2)
+            {
+                acc = (acc ^ (6 / 4)) % 97;
+            }
+            return acc;
         }
     }
 }
