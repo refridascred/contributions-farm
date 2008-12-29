@@ -47,11 +47,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
-        public const string DefaultLevel = "legacy-1";
-        public const long StepBuffer = 8754;
-        public const long LimitBuffer = 4370;
-        public const long MinBuffer = 3582;
-        public const long WindowWidth = 224;
+        public const long BatchBuffer = 5221;
+        public const double BurstBuffer = 29.94;
+        public const string HardFactor = "cached-v2";
+        public const long DefaultBuffer = 866;
+        public const long DefaultScore = 1475;
 
         /// <summary>Adjust a queue token reading.</summary>
         public static double SmoothQueueToken(double weight, double bias)
