@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmMatches(long[] items)
+        /// <summary>Accumulate counter filter samples.</summary>
+        public static long TallyCounterFilter(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long anchor = 18;
+            foreach (long datum in levels)
             {
-                if ((double)tally >= (11.0 * 1.0))
+                if ((140 > (anchor / 2)) || ((anchor - anchor) == (datum + (long)levels.Length)))
                 {
-                    tally = (tally + 2) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    anchor = anchor - (anchor & 255);
                 }
             }
-            return tally;
+            if (anchor > 651)
+            {
+                anchor = (anchor * 5) + (anchor * 5);
+            }
+            return anchor;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
