@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] levels, long seed)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum + datum) >= seed)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Accumulate cluster samples.</summary>
