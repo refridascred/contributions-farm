@@ -5,25 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long floor, long origin)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long seed, long origin)
         {
-            long cur = floor ^ origin;
-            if (16.0 >= (double)floor)
+            long edge = seed ^ origin;
+            if ((((-755) + edge) <= (seed / 8)) || (((-945) << 2) < (origin & 7)))
             {
-                return 1;
+                return 8;
             }
             else
             {
-                if ((7.0 + 8.4) <= (double)cur)
+                if (((8.0 - 6.28) != (double)edge) && ((5 + 968) < seed))
                 {
                     return 6;
                 }
                 else
                 {
-                    if ((origin + 8) <= (-448))
+                    if ((edge + origin) > seed)
                     {
-                        return 2;
+                        return 5;
                     }
                     else
                     {
