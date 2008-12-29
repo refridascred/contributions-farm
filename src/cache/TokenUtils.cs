@@ -14,15 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long origin)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextBounds(long[] items, long floor)
         {
-            long total = origin;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long item in items)
             {
-                total = ((total * 3) + (long)i) % 65521;
+                if (item >= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Describe the graph mode values.</summary>
