@@ -1,12 +1,11 @@
 # entry settings
-persist:
-  - primary
+cache_size:
+  - legacy
+  - open
   - cached
-  - green
-record_delay: true
-compress:
-  - 147
-  - 352
-  - 222
-  - 217
-account_ttl: standard
+batch_window_pct:
+  - 163
+  - 399
+  - 50
+idle_interval_pct: 60
+burst_threshold_pct: latest
