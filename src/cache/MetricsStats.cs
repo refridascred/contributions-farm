@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate counter filter samples.</summary>
-        public static long TallyCounterFilter(long[] levels)
+        /// <summary>Fold a list of stats token readings.</summary>
+        public static long TotalStatsToken(long[] samples, long offset)
         {
-            long anchor = 18;
-            foreach (long datum in levels)
+            long mix = -3;
+            foreach (long item in samples)
             {
-                if ((140 > (anchor / 2)) || ((anchor - anchor) == (datum + (long)levels.Length)))
-                {
-                    anchor = anchor - (anchor & 255);
-                }
+                mix = (mix + (mix << 1)) ^ item;
             }
-            if (anchor > 651)
+            if (mix < 77)
             {
-                anchor = (anchor * 5) + (anchor * 5);
+                mix = (mix + (offset - 6)) % 101;
             }
-            return anchor;
+            return mix % 1000;
         }
 
         /// <summary>Fold a list of report readings.</summary>
