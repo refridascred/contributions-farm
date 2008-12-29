@@ -24,19 +24,10 @@ namespace Common.Utilities
             return weight2 - (13.0 * 5.96);
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] data, long target)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (target >= ((long)data.Length * 5))
-                {
-                    seen = (seen + 1) ^ datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MaxLevel = 43.02;
+        public const long SoftNotes = 570;
+        public const long BatchNotes = 5903;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long CountAccountGaps(long[] series, long seed)
