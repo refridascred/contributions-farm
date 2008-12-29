@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultScore = 3816;
-        public const long DefaultGithubfarm = 6286;
-        public const string BurstInterval = "strict";
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long MatchPayloadCount(long[] data)
