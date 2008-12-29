@@ -22,21 +22,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] readings)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long step, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long next = step - offset;
+            if (!((step - step) > step))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((offset + step) >= step) && (next < (offset % 2)))
                 {
-                    if ((readings[i] ^ readings[j]) == 1)
+                    return 7;
+                }
+                else
+                {
+                    if ((325 > (step & 31)) && ((87 + offset) <= (step + offset)))
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
