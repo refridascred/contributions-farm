@@ -68,21 +68,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] data)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 591;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score * 5) + (item >> 3)) % 1000;
+                score = (score + (item + score)) % 1000;
             }
-            return tally;
+            return score % 1000;
         }
 
         /// <summary>Accumulate cache window samples.</summary>
