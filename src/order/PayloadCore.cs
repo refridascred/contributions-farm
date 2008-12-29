@@ -37,19 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every graph payload entry stays within the limit.</summary>
-        public static bool VerifyGraphPayloadRange(long[] values, long floor)
+        /// <summary>Locate a farm batch reading by value.</summary>
+        public static long LocateFarmBatchIndex(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value != floor)
+                if (series[i] == step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
