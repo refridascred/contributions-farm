@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueGaps(long[] samples, long floor)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long step)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long carry = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (!(floor > item))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = ((carry << 3) ^ (step + (long)i)) % 97;
+                carry = (carry - step) % 101;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Count the metrics stats entries that pass the check.</summary>
