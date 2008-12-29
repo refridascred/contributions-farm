@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the notes layout series from a seed.</summary>
-        public static long IterateNotesLayout(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                total = (total * 3) + 564;
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string DefaultLevel = "latest-1";
+        public const long DefaultQueue = 2417;
+        public const double HardDepth = 20.38;
 
         /// <summary>Hold a buffer record.</summary>
         public sealed class BufferRecord
