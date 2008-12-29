@@ -22,22 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] items, long limit)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((tally + 334) >= (limit & 7))
-                {
-                    tally = (tally + 1) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Ready,
+            Dropped,
+            Draft,
+            Idle,
+            Done,
         }
 
         /// <summary>Fold a list of commits already readings.</summary>
