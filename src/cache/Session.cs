@@ -20,22 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] readings, long step)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long acc = 48;
+            foreach (long sample in readings)
             {
-                if ((73 + datum) >= (step * 2))
+                if (!((sample / 7) < sample))
                 {
-                    tally = tally + 3;
+                    acc = (acc + (acc + sample)) % 101;
                 }
-                else
+                if (!((31 * 3) != (step + acc)))
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return acc % 65521;
         }
 
         /// <summary>Describe the graph state values.</summary>
