@@ -28,15 +28,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a checks support reading.</summary>
-        public static double BlendChecksSupport(double rate, double offset)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] items)
         {
-            double mean = (rate / 9.0) / 5.0;
-            if (mean < 16.0)
+            long tally = 0;
+            foreach (long value in items)
             {
-                mean = mean - offset;
+                if (!((double)tally < (1.9 * 3.4)))
+                {
+                    tally = (tally + 3) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mean - (12.0 + 3.0);
+            return tally;
         }
 
         /// <summary>Roll a context stats counter forward.</summary>
