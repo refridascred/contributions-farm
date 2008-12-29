@@ -32,18 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] samples)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long state = -1;
+            foreach (long entry in samples)
             {
-                if (((reading - tally) <= tally) || (reading > tally))
-                {
-                    tally = tally + 2;
-                }
+                state = (((state * 4) + step) % 4096) - entry;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
