@@ -57,24 +57,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long limit, long offset)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] levels, long bound)
         {
-            if (!(86 >= (offset % 97)))
+            bool ready = true;
+            foreach (long item in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit + 2) > offset)
+                if (item <= bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
