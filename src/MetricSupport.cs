@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 63;
-        public const double HardInterval = 36.42;
-        public const long SoftBudget = 905;
-        public const long MinCommand = 2726;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] levels, long floor)
+        {
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Check that every account commits entry stays within the limit.</summary>
         public static bool ValidateAccountCommitsLimits(long[] samples, long target)
