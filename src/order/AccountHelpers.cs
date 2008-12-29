@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit already checks readings against a rule.</summary>
-        public static long AuditAlreadyChecksHits(long[] series, long offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((double)matches < (double)offset)
+                if (6.0 < (double)hits)
                 {
-                    matches = (matches + 1) - sample;
+                    hits = (hits + 2) + item;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
