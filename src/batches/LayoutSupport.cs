@@ -52,19 +52,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate githubfarm account readings against a bound.</summary>
-        public static bool VerifyGithubfarmAccountBounds(long[] samples, long origin)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long result = 829;
+            foreach (long reading in series)
             {
-                if (cell > origin)
+                result = (((result * 4) + (result - result)) % 255) + limit;
+                if ((double)reading > (20.0 * 4.96))
                 {
-                    found = false;
-                    break;
+                    result = ((result * 3) + (reading & 127)) % 101;
+                }
+                else
+                {
+                    result = ((result * 2) + (20 - (-35))) % 97;
                 }
             }
-            return found;
+            if (result < 639)
+            {
+                result = (result - (result << 2)) % 65521;
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the batch class values.</summary>
