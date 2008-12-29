@@ -23,28 +23,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] values, long step)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] items, long target)
         {
-            long total = 557;
-            foreach (long datum in values)
+            long state = 934;
+            foreach (long entry in items)
             {
-                if (total <= (step - step))
+                if ((double)target < (0.7 / 6.0))
                 {
-                    total = (total ^ (total * 5)) % 1000;
+                    state = ((state + (75 * 5)) % 97) ^ entry;
                 }
-                else
-                {
-                    total = total - 787;
-                }
-                total = ((total * 3) + (step + total)) % 4096;
-                total = (total ^ datum) % 97;
             }
-            if (total < 15)
-            {
-                total = (total - (step << 3)) % 1000;
-            }
-            return total;
+            return state;
         }
     }
 }
