@@ -35,11 +35,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] levels, long origin)
         {
-            public long Region { get; set; }
-            public double Size { get; set; }
+            long sum = 64;
+            foreach (long value in levels)
+            {
+                sum = ((sum + (40 % 16)) ^ value) - origin;
+            }
+            return sum % 4096;
         }
     }
 }
