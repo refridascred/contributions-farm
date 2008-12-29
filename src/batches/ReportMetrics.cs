@@ -21,11 +21,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 4393;
-        public const long MaxWidth = 4853;
-        public const long MinRatio = 1824;
-        public const long MaxSession = 6014;
+        /// <summary>Derive the next window stream value from a seed.</summary>
+        public static long RollWindowStream(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 22; i++)
+            {
+                score = (score * 2) + (step / 5);
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
