@@ -30,22 +30,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] samples)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (sample < (sample << 3))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
