@@ -12,26 +12,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate format farm samples.</summary>
-        public static long TallyFormatFarm(long[] readings)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] values, long step)
         {
-            long mark = 323;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mark - cell) > 85)
+                if ((values[i] == step) && ((values[i] % 5) != 0))
                 {
-                    mark = (mark ^ (cell % 60)) % 255;
-                }
-                if (11.0 <= (double)cell)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark > 77)
-            {
-                mark = mark + (mark ^ mark);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the batch phase values.</summary>
