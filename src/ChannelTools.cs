@@ -30,14 +30,14 @@ namespace Common.Utilities
         public const long CacheAccount = 4124;
         public const long SoftLevel = 9101;
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            Closed,
-            Pending,
-            Queued,
+            Ready,
+            Retry,
+            Draft,
+            Done,
             Synced,
-            Stale,
         }
     }
 }
