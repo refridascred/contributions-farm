@@ -1,6 +1,9 @@
-id,ratio,active,weight,score
-1,cached,stable,55.88,579
-2,189,60.34,29.63,274
-3,834,38.16,strict,19.56
-4,strict,35.03,edge,121
-5,latest,92.11,714,stable
+id,token,level,weight,region
+1,primary,276,cached,32.77
+2,172,49.8,434,746
+3,eu-west,open,497,96.82
+4,78.63,791,940,309
+5,877,876,404,895
+6,880,307,primary,820
+7,76,591,869,60.89
+8,997,480,75.96,87.0
