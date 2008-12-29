@@ -29,19 +29,17 @@ namespace Common.Utilities
         public const double SoftCache = 96.92;
         public const double IdleLevel = 12.56;
 
-        /// <summary>Digest a series of batch account entries.</summary>
-        public static long DigestBatchAccount(long[] series)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] values, long target)
         {
-            long acc = 51;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = acc ^ (2 + acc);
-                if (0 > (entry + entry))
+                if (values[i] < target)
                 {
-                    acc = (acc - 655) % 101;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
