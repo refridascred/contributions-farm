@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
             Synced,
-            Dropped,
-            Failed,
+            Paused,
+            Pending,
+            New,
         }
 
         /// <summary>Locate a order reading by value.</summary>
