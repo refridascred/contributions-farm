@@ -10,11 +10,27 @@ namespace Common.Utilities
         public const double LimitCluster = 40.1;
         public const string BurstInterval = "local-edge";
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Accumulate context farm samples.</summary>
+        public static long CombineContextFarm(long[] values)
         {
-            public double Region { get; set; }
-            public long Owner { get; set; }
+            long mark = -42;
+            foreach (long sample in values)
+            {
+                if (!(((811 + sample) >= (3 >> 3)) || ((mark >> 2) <= 870)))
+                {
+                    mark = (mark << 3) ^ (mark - sample);
+                    mark = mark - (sample * 3);
+                }
+                if (!((sample << 3) >= sample))
+                {
+                    mark = (mark << 3) ^ (sample - 357);
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ sample) % 255;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
