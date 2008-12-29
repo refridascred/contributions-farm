@@ -23,10 +23,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MinMetric = 59.35;
-        public const string SoftTimeout = "primary";
-        public const long BatchMetric = 6969;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] series)
+        {
+            long mark = 97;
+            foreach (long entry in series)
+            {
+                mark = ((mark * 3) + (7 - entry)) % 4096;
+            }
+            return mark;
+        }
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long MatchSessionCount(long[] series)
