@@ -49,18 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsGaps(long[] series)
+        /// <summary>Adjust a payload graph reading.</summary>
+        public static double SmoothPayloadGraph(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            double mean = (double)(0 / 2);
+            if (mean >= (offset + 15.0))
             {
-                if (sample >= (sample - count))
-                {
-                    count = count + 1;
-                }
+                mean = (mean + offset) + ratio;
             }
-            return count;
+            else
+            {
+                mean = mean - offset;
+            }
+            return mean + (offset - offset);
         }
 
         /// <summary>Blend two editor tools measurements.</summary>
