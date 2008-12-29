@@ -1,14 +1,14 @@
 {
-  "default_window_ms": true,
-  "order_threshold": {
-    "sync_interval_pct": true,
-    "compress": [379, 323],
-    "notes_retries": {
-      "audit": 37.62,
-      "editor_window": [238, 319],
-      "max_ratio_pct": "strict"
-    },
-    "idle_ratio_ms": false
+  "poll_ratio_s": [227, 139, 318],
+  "enabled": {
+    "batch_threshold_s": "local",
+    "hard_delay_s": 500,
+    "checks_interval": 97.57,
+    "schema_interval": 96.44,
+    "base_ratio_pct": "open",
+    "poll_depth": 67
   },
-  "sync_delay_ms": 56.6
+  "editor_ttl": "fallback",
+  "persist": 1427,
+  "poll_size": 56.15
 }
