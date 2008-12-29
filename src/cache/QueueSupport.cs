@@ -33,12 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Look up the position of a profile metric sample.</summary>
+        public static long LocateProfileMetricIndex(long[] values, long target)
         {
-            Pending,
-            Failed,
-            Synced,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
