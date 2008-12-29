@@ -44,16 +44,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next stream window value from a seed.</summary>
-        public static long SeriesStreamWindow(long limit)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsRange(long[] items, long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long entry in items)
             {
-                carry = (carry * 3) + carry;
-                carry = ((carry * 3) + (long)i) % 4093;
+                if (entry >= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
     }
 }
