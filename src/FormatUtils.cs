@@ -46,11 +46,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] readings, long origin)
         {
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= origin) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
