@@ -32,38 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stream profile pair into a bucket.</summary>
-        public static long RankStreamProfile(long bound, long origin)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] data)
         {
-            if ((double)bound != (double)origin)
+            long acc = 548;
+            foreach (long sample in data)
             {
-                return 1;
+                acc = ((acc * 5) + (sample ^ sample)) % 4096;
             }
-            else
+            if (acc > 7)
             {
-                if (((bound - origin) < origin) && ((bound + (-167)) <= bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((3.0 / 7.0) <= (double)origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)origin > (7.1 - 9.6)) || ((double)bound > (13.0 / 3.0)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                acc = (acc - acc) % 97;
             }
+            return acc;
         }
     }
 }
