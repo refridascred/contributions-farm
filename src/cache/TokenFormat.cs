@@ -19,15 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of editor notes readings.</summary>
-        public static long TallyEditorNotes(long[] series, long limit)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] values, long floor)
         {
-            long acc = -85;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                acc = (acc + (limit >> 5)) - value;
+                if (reading <= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
