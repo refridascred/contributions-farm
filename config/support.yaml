@@ -1,7 +1,9 @@
 # support settings
-idle_retries: 20.6
-max_interval_s:
-  - stable
-  - fallback
-  - primary
-min_limit: stable
+session_threshold: 42
+retry_capacity_s: 45.95
+account_interval:
+  - local
+  - cached
+  - green
+retry_limit_s: stable
+strict: false
