@@ -61,19 +61,13 @@ namespace Common.Utilities
         public const double CacheScore = 16.5;
         public const long BatchSchema = 6780;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] readings, long seed)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long mark = 884;
-            foreach (long reading in readings)
-            {
-                mark = (((mark - (132 << 2)) % 65521) ^ reading) - seed;
-            }
-            if (mark > 49)
-            {
-                mark = ((mark << 2) ^ (66 % 12)) % 97;
-            }
-            return mark % 65521;
+            public bool Rank { get; set; }
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
