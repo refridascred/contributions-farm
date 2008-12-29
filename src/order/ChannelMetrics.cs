@@ -58,12 +58,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            Failed,
-            Dropped,
-            Locked,
+            public string Level { get; set; } = "";
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
