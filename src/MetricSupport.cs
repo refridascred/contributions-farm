@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextGaps(long[] data, long step)
         {
-            public long Flag { get; set; }
-            public string Size { get; set; } = "";
-            public double Count { get; set; }
-            public double Region { get; set; }
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((hits ^ sample) >= (step >> 5))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
