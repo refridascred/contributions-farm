@@ -33,14 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
-        {
-            New,
-            Active,
-            Dropped,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MaxRatio = 63.34;
+        public const string SoftWidth = "standard-edge";
+        public const long RetryGraph = 4659;
+        public const long BurstCount = 9298;
+        public const long HardSpan = 8392;
     }
 }
