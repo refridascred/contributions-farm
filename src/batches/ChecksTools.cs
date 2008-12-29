@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next token counter value from a seed.</summary>
-        public static long IterateTokenCounter(long seed)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiHits(long[] samples)
         {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                total = ((total * 4) + (long)i) % 101;
+                if ((tally % 100) != (sample % 7))
+                {
+                    tally = tally + 3;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
