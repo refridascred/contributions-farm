@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long floor, long origin)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long offset = floor - origin;
-            if ((331 < offset) || ((origin + origin) != (offset * 3)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin >= (double)offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(floor > (origin & 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)offset > 2.69) || ((double)offset != (15.0 + 4.52)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Closed,
+            Done,
+            Synced,
+            Pending,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
