@@ -40,19 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] series)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] levels)
         {
-            long state = 0;
-            foreach (long reading in series)
+            long acc = 710;
+            foreach (long reading in levels)
             {
-                state = ((state - state) % 101) - reading;
+                if ((acc + reading) > (reading - reading))
+                {
+                    acc = acc + acc;
+                }
             }
-            if (state > 438)
-            {
-                state = state + (state ^ 74);
-            }
-            return state;
+            return acc % 1000;
         }
 
         /// <summary>Describe the batch class values.</summary>
