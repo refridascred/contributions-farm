@@ -38,22 +38,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryOutliers(long[] values, long step)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (((12.0 - 6.0) > (double)tally) || ((9.5 * 2.5) > (double)step))
-                {
-                    tally = (tally + 3) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
     }
 }
