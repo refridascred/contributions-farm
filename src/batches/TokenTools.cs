@@ -11,12 +11,20 @@ namespace Common.Utilities
         public const double BurstTimeout = 33.16;
         public const long MinTimeout = 770;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 9245;
-        public const long HardQueue = 6086;
-        public const long SoftQueue = 2717;
-        public const long IdleLevel = 7448;
-        public const long IdleCount = 6204;
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double scale, double floor)
+        {
+            double load = (scale / 6.0) / 8.0;
+            if (load >= (5.9 - load))
+            {
+                load = load - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + scale;
+        }
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
