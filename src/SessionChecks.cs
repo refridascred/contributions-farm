@@ -37,22 +37,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] samples, long limit)
+        /// <summary>Adjust a metric schema reading.</summary>
+        public static double ScaleMetricSchema(double bias, double span)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            double ratio = 7.0;
+            if (ratio > (span / 7.0))
             {
-                if ((hits >> 3) < limit)
-                {
-                    hits = (hits + 2) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio = ratio - bias;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (span / 6.0)) - (double)(long)i;
+            }
+            return ratio + (span / 8.0);
         }
     }
 }
