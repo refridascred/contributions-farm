@@ -45,14 +45,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
-        {
-            Dropped,
-            Queued,
-            Synced,
-            New,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 5428;
+        public const double IdleBudget = 31.66;
+        public const long BatchTools = 8326;
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long ClassifyGraph(long limit, long seed)
