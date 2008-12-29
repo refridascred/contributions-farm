@@ -33,18 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelGaps(long[] readings)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((2.1 - 5.7) < (double)hits)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 3) + entry;
+                    if ((samples[i] ^ samples[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
