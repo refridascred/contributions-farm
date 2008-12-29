@@ -11,20 +11,11 @@ namespace Common.Utilities
         public const double BurstTimeout = 33.16;
         public const long MinTimeout = 770;
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double scale, double floor)
-        {
-            double load = (scale / 6.0) / 8.0;
-            if (load >= (5.9 - load))
-            {
-                load = load - floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + scale;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 3352;
+        public const long CacheBatches = 5047;
+        public const long IdleBatches = 5664;
+        public const double BaseBatches = 1.88;
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
