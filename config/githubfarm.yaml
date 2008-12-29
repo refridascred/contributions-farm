@@ -1,16 +1,6 @@
 # githubfarm settings
-min_interval_ms:
-  - staging
-  - latest
-readonly:
-  - legacy
-  - green
-  - green
-  - standard
-soft_ratio: blue
-warm_ttl:
-  - 220
-  - 84
-  - 338
-enabled: green
-max_retries_s: true
+base_delay_s: fallback
+flush_window_ms: 100
+retry_retries_s: true
+soft_limit_count: 65
+metric_retries: 49.59
