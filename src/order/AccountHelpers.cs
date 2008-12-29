@@ -77,15 +77,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double scale, double bias)
+        /// <summary>Audit contributi counter readings against a rule.</summary>
+        public static long MeasureContributiCounterMatches(long[] samples)
         {
-            double weight = (bias + scale) + (double)395;
-            if (weight < (bias + weight))
+            long tally = 0;
+            foreach (long value in samples)
             {
-                weight = weight + (weight + bias);
+                if ((((tally % 2) < (498 >> 5)) && ((12.0 + 6.0) > (double)tally)) || ((tally ^ tally) < (3 / 2)))
+                {
+                    tally = (tally + 2) - value;
+                }
             }
-            return weight + (double)32;
+            return tally;
         }
     }
 }
