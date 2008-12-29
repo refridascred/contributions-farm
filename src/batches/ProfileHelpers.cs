@@ -46,13 +46,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            public double Total { get; set; }
-            public bool Ratio { get; set; }
-            public bool Weight { get; set; }
-            public double Rank { get; set; }
+            public double Region { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
