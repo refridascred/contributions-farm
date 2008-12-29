@@ -31,11 +31,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Measure how many profile format samples are out of range.</summary>
+        public static long MeasureProfileFormatGaps(long[] readings, long floor)
         {
-            public double Weight { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((floor + cell) == (cell * 5))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
