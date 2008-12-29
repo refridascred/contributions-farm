@@ -19,13 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long target)
         {
-            public long Total { get; set; }
-            public bool Offset { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
+            long total = target;
+            for (int i = 0; i < 16; i++)
+            {
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a notes entry.</summary>
