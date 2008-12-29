@@ -21,22 +21,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] samples)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((389 & 1) == ((long)samples.Length - 225))
-                {
-                    seen = (seen + 1) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Queued,
+            Done,
+            Closed,
+            Failed,
+            Synced,
         }
     }
 }
