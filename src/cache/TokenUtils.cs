@@ -27,9 +27,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowBudget = 8483;
-        public const long DefaultWidth = 9621;
-        public const long MaxTools = 719;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] levels, long limit)
+        {
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
