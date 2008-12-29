@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] levels, long limit)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] series, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 83;
+            foreach (long reading in series)
             {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
+                anchor = ((((anchor << 2) ^ (5 + 49)) % 1000) + reading) + seed;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Combine session values into a single score.</summary>
