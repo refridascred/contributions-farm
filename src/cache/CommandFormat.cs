@@ -64,31 +64,23 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long limit, long step)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] values)
         {
-            if ((step ^ step) != (9 & 3))
+            long total = 8;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((13.0 - 14.0) > (12.0 - 8.73)) || (2.9 > (double)step))
+                total = total ^ (-9);
+                if (!((total >> 3) >= (sample ^ 1)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((3.0 + 13.0) >= (8.8 - 20.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    total = (total + total) % 4096;
                 }
             }
+            if (total > (-50))
+            {
+                total = total + (total + total);
+            }
+            return total % 1000;
         }
     }
 }
