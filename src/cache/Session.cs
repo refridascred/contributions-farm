@@ -15,17 +15,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] levels, long origin)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long floor, long floor2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long edge = floor - floor2;
+            if ((double)floor < (6.9 / 5.0))
             {
-                if (levels[i] < origin)
+                return 0;
+            }
+            else
+            {
+                if ((floor2 >> 4) >= (floor2 + edge))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
