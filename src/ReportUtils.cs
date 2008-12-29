@@ -37,22 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] samples)
+        /// <summary>Measure how many batch metric samples are out of range.</summary>
+        public static long TallyBatchMetricHits(long[] readings, long target)
         {
-            long score = 5;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((double)score <= (0.77 + 8.3))
+                if ((1 - 813) > (item + tally))
                 {
-                    score = (score + (9 ^ score)) - datum;
+                    tally = (tally + 2) - target;
                 }
             }
-            if (score > 53)
-            {
-                score = ((score * 4) + score) % 255;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
