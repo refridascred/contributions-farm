@@ -19,19 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] items, long floor)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Active,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Describe the graph mode values.</summary>
