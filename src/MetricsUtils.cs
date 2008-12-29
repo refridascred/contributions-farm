@@ -68,21 +68,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] samples)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] levels, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 521;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = (((carry << 2) ^ (54 ^ carry)) ^ entry) - seed;
             }
-            return count;
+            return carry;
         }
     }
 }
