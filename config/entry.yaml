@@ -1,6 +1,16 @@
 # entry settings
-command_delay: 81
-idle_depth_s: false
-command_threshold: true
-burst_capacity: false
-dry_run: 1024
+stats_size:
+  soft_threshold: 5
+  channel_delay: 7061
+  sync_ttl:
+    - 342
+    - 294
+    - 386
+  profile_ratio: standard
+  flush_interval: false
+warm_capacity: staging
+retry_ttl: false
+default_ratio: strict
+retry_capacity_ms:
+  - strict
+  - strict
