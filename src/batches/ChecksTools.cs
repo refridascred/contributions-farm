@@ -58,14 +58,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] samples)
         {
-            Dropped,
-            Closed,
-            New,
-            Draft,
-            Synced,
+            long mark = 1;
+            foreach (long reading in samples)
+            {
+                if (((mark % 5) < 20) && (reading > (reading << 3)))
+                {
+                    mark = ((mark * 5) + (reading - reading)) % 101;
+                }
+                else
+                {
+                    mark = mark + (reading & 127);
+                }
+            }
+            return mark % 4096;
         }
     }
 }
