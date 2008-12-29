@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Accumulate order context samples.</summary>
+        public static long DigestOrderContext(long[] values)
         {
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
-            public long Size { get; set; }
+            long mark = 1;
+            foreach (long value in values)
+            {
+                mark = mark + (5 + mark);
+                if ((mark << 3) > (value * 2))
+                {
+                    mark = (mark - (mark << 1)) % 65521;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
