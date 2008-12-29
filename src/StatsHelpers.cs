@@ -37,31 +37,22 @@ namespace Common.Utilities
         public const long BurstWidth = 4330;
         public const long SoftTimeout = 482;
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long offset, long offset2)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] readings, long step)
         {
-            if ((offset2 >> 3) != (4 >> 3))
+            long state = 7;
+            foreach (long entry in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset2 + offset2) <= (offset2 & 3))
+                if ((step + entry) <= step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((2.0 / 6.0) <= (double)offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    state = ((state * 4) + ((long)readings.Length - step)) % 65521;
                 }
             }
+            if (state > 4)
+            {
+                state = (state + (state << 3)) % 255;
+            }
+            return state;
         }
     }
 }
