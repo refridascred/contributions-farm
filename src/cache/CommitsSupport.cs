@@ -77,38 +77,23 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long limit, long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] data)
         {
-            if ((3.0 - 8.0) == (double)limit)
+            long score = 635;
+            foreach (long value in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit < (limit >> 3)) || ((0 / 4) > (step / 4)))
+                score = ((score * 4) + (score ^ score)) % 65521;
+                if (score >= (value / 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit + limit) < (limit * 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((0.4 / 5.0) >= (double)limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    break;
                 }
             }
+            if (score > 33)
+            {
+                score = (score + score) % 255;
+            }
+            return score % 65521;
         }
     }
 }
