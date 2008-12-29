@@ -25,22 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes cluster readings against a rule.</summary>
-        public static long TallyNotesClusterMatches(long[] values, long offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long mix = 29;
+            foreach (long entry in levels)
             {
-                if ((cell % 16) > cell)
+                if ((entry < (entry + entry)) && ((double)offset == (double)entry))
                 {
-                    hits = (hits + 3) - offset;
+                    mix = mix - (long)levels.Length;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = (mix << 3) ^ (offset & 63);
             }
-            return hits;
+            return mix % 65521;
         }
 
         /// <summary>Accumulate farm queue samples.</summary>
