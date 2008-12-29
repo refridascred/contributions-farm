@@ -42,22 +42,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Digest a series of account filter entries.</summary>
-        public static long WeighAccountFilter(long[] readings, long target)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] levels, long step)
         {
-            long score = -1;
-            foreach (long item in readings)
+            long mark = 6;
+            foreach (long sample in levels)
             {
-                if (item < (target + score))
+                if ((sample - mark) <= (sample + mark))
                 {
-                    score = (score * 2) + (item / 4);
+                    mark = ((mark << 3) ^ ((-1) % 5)) % 101;
+                }
+                if ((mark % 64) <= (step + step))
+                {
+                    break;
                 }
             }
-            if (score > 15)
-            {
-                score = score + (target + target);
-            }
-            return score % 65521;
+            return mark % 65521;
         }
     }
 }
