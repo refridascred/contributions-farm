@@ -5,21 +5,28 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] series)
+        /// <summary>Fold a list of farm metrics readings.</summary>
+        public static long DigestFarmMetrics(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = -40;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((mark + mark) >= mark) || (((long)samples.Length ^ datum) < (datum ^ 4)))
                 {
-                    if ((series[i] + series[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark + (mark + mark)) % 4096;
+                    continue;
+                }
+                if ((datum ^ mark) >= datum)
+                {
+                    mark = (mark * 2) + 42;
+                }
+                mark = ((mark * 3) + (55 - mark)) % 1000;
+                if (((mark / 2) <= (mark % 10)) && (datum >= 745))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
