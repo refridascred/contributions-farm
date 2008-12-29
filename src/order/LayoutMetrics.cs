@@ -38,18 +38,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] series, long bound)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] values, long step)
         {
-            long count = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)bound != (double)count) || ((count * 3) < (count ^ count)))
+                if ((values[i] >= step) && ((values[i] % 2) == 0))
                 {
-                    count = (count + 3) ^ entry;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
