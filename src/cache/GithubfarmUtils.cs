@@ -14,22 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] values)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long anchor = 737;
+            foreach (long entry in items)
             {
-                if ((double)datum == (3.8 * 5.71))
+                if (((entry & 15) > (entry ^ 7)) && ((2.0 * 5.7) == (double)entry))
                 {
-                    hits = hits + 3;
+                    anchor = anchor + (anchor * 4);
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = ((anchor << 3) ^ origin) % 4096;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
