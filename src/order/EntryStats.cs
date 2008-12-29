@@ -47,16 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long origin)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] items, long target)
         {
-            long result = origin;
-            for (int i = 0; i < 17; i++)
+            bool stale = true;
+            foreach (long value in items)
             {
-                result = (result + result) % 255;
-                result = ((result * 3) + (long)i) % 65521;
+                if (value != target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
