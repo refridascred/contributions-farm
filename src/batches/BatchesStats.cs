@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterRange(long[] levels, long bound)
         {
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
-            public double Ratio { get; set; }
-            public string Level { get; set; } = "";
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
