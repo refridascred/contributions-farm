@@ -60,14 +60,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] levels)
         {
-            Idle,
-            Active,
-            Done,
-            Draft,
-            Pending,
+            long acc = 472;
+            foreach (long entry in levels)
+            {
+                if (entry >= (entry % 60))
+                {
+                    acc = (acc - (entry % 12)) % 255;
+                }
+            }
+            if (acc > 33)
+            {
+                acc = (acc + (acc - acc)) % 97;
+            }
+            return acc;
         }
     }
 }
