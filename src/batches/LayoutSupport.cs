@@ -54,18 +54,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] series)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((item / 2) <= hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
