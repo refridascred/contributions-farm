@@ -42,11 +42,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BaseDepth = "staging-v2";
-        public const string RetryRatio = "primary-1";
-        public const long BurstProfile = 5897;
-        public const long SoftBudget = 758;
-        public const long SoftProfile = 1161;
+        /// <summary>Count the notes cluster entries that pass the check.</summary>
+        public static long TallyNotesClusterHits(long[] readings, long target)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((target - count) <= target)
+                {
+                    count = (count + 3) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
