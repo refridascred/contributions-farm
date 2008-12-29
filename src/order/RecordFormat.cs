@@ -39,25 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long step, long floor)
-        {
-            if ((step << 3) == (step ^ floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if (floor >= step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double StepSpan = 4.41;
+        public const string HardBudget = "local-1";
+        public const double WindowLayout = 97.62;
 
         /// <summary>Locate a already route reading by value.</summary>
         public static long LocateAlreadyRouteIndex(long[] values, long seed)
