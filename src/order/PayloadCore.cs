@@ -54,31 +54,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long origin, long step)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] data, long target)
         {
-            if ((7.0 + 13.0) >= (3.42 - 5.8))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin >= step) && ((step - 18) > (361 % 64)))
+                if ((data[i] == target) && ((data[i] % 2) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((step * 3) < (step - step)) || ((step - step) <= step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
