@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            Dropped,
-            Done,
-            New,
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a counter snapshot.</summary>
