@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command checks readings against a rule.</summary>
-        public static long AuditCommandChecksOutliers(long[] readings)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if (((count & 31) > entry) && ((36 + entry) < (count * 3)))
+                if (sample != floor)
                 {
-                    count = count + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
