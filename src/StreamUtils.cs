@@ -19,19 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every profile support entry stays within the limit.</summary>
-        public static bool CheckProfileSupportBounds(long[] readings, long seed)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell <= seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] ^ data[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Hold a profile info.</summary>
