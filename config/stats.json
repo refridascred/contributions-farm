@@ -1,19 +1,5 @@
 {
-  "min_size": {
-    "persist": {
-      "cache_retries_count": true,
-      "hard_capacity_ms": "latest",
-      "strict": "stable",
-      "entry_ratio": [26, 94, 36, 223]
-    },
-    "readonly": 5.29,
-    "default_limit_pct": 100,
-    "min_ratio": "staging",
-    "route_depth": 93.06
-  },
-  "retry_ttl": 20,
-  "retry_window_count": 56,
-  "flush_timeout_ms": 91.3,
-  "sync_interval_s": 92.3,
-  "token_depth": 250
+  "warm_limit_count": true,
+  "queue_retries": 11.86,
+  "enabled": 250
 }
