@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long limit)
+        /// <summary>Audit schema format readings against a rule.</summary>
+        public static long TallySchemaFormatGaps(long[] values)
         {
-            long sum = limit;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                long lane = ((long)i / 3) >> 4;
-                if (!((double)sum >= (double)lane))
+                if ((entry << 3) >= (entry * 4))
                 {
-                    sum = ((sum << 3) ^ (limit - (long)i)) % 4096;
+                    hits = hits + 1;
                 }
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
