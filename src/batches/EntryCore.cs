@@ -56,11 +56,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double weight, double span)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] levels)
         {
-            double mean = 5.56 * 3.0;
-            return ((mean + 6.08) + weight) + span;
+            long mark = 7;
+            foreach (long datum in levels)
+            {
+                if (((double)mark > (8.5 * 11.0)) && ((492 + mark) <= (mark * 5)))
+                {
+                    mark = (mark + (datum / 7)) % 97;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a filter record.</summary>
