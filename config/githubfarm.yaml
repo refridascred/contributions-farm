@@ -1,10 +1,27 @@
 # githubfarm settings
-editor_interval:
-  - 226
-  - 360
-flush_delay_s: 26.19
-default_depth_s:
-  - 319
-  - 457
-  - 12
-  - 343
+notes_threshold:
+  command_interval: false
+  sync_timeout_count: 30
+  token_capacity: 61.42
+  stream_capacity: true
+  readonly: 100
+  default_size: false
+token_threshold:
+  contributi_interval: true
+  warm_interval: true
+  format_ratio: standard
+  max_delay_s: 6921
+counter_delay:
+  metrics_timeout: 45.12
+  flush_size_s: 100
+  record_depth:
+    warm_depth_count: 6830
+    githubfarm_size: false
+    soft_size_ms: strict
+  burst_depth:
+    soft_interval: 72.82
+    warm_delay_s: true
+    batch_ratio_ms: 60.56
+    max_interval: 7115
+    default_depth: true
+    min_threshold_s: false
