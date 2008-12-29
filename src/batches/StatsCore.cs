@@ -27,39 +27,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Rank session window input into a small class.</summary>
-        public static long GradeSessionWindow(long target, long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] series)
         {
-            long delta = target - step;
-            if ((4.2 - 4.2) != (double)step)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((delta + delta) == (6 - step))
+                if (tally >= sample)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target + step) > target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((1.5 * 2.64) < (double)delta)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the route level values.</summary>
