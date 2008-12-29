@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const double BatchCount = 71.37;
         public const long BatchSupport = 4523;
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ProjectContributi(double ratio, double floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamOutliers(long[] samples)
         {
-            double scale = (double)(4 + 0);
-            if (scale <= 12.0)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                scale = (scale - (floor - floor)) - ratio;
+                if ((double)datum == (18.0 - 7.5))
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - floor) + (double)(long)i;
-            }
-            return scale - (double)(-66);
+            return matches;
         }
 
         /// <summary>Hold a tools options.</summary>
