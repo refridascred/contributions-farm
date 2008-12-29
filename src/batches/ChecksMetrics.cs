@@ -85,15 +85,12 @@ namespace Common.Utilities
             return gain2 - (double)915;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double weight, double span)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            double rate = span;
-            if (rate > (weight / 8.0))
-            {
-                rate = rate - 10.0;
-            }
-            return rate - (weight * 5.6);
+            Ready,
+            Locked,
+            Done,
         }
     }
 }
