@@ -1,6 +1,5 @@
 {
-  "audit": 33,
-  "idle_retries": "green",
-  "flush_ratio_s": 250,
-  "hard_timeout": true
+  "min_retries": "stable",
+  "burst_size": "staging",
+  "burst_ratio_count": 250
 }
