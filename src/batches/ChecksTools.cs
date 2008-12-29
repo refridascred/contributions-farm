@@ -29,20 +29,15 @@ namespace Common.Utilities
         public const long RetryPayload = 4760;
         public const string BatchSpan = "cached";
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] data, long limit)
+        /// <summary>Roll a notes profile counter forward.</summary>
+        public static long SeriesNotesProfile(long offset)
         {
-            long carry = 2;
-            foreach (long item in data)
+            long acc = offset;
+            for (int i = 0; i < 20; i++)
             {
-                carry = ((carry ^ (693 / 6)) % 255) ^ item;
-                carry = (carry << 2) ^ (limit + 35);
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            if (carry > 405)
-            {
-                carry = (carry * 5) + (carry & 31);
-            }
-            return carry;
+            return acc;
         }
 
         /// <summary>Fold a list of window readings.</summary>
