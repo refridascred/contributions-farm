@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank channel already input into a small class.</summary>
-        public static long RankChannelAlready(long bound, long limit)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            if (((bound ^ bound) > (70 - 51)) && ((double)bound >= (8.9 * 7.92)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((72 & 255) >= (bound << 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (bound <= limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Done,
+            Retry,
+            Ready,
         }
 
         /// <summary>Digest a series of stream entries.</summary>
