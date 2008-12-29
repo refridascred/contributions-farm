@@ -20,23 +20,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Blend two session cluster measurements.</summary>
-        public static double AdjustSessionCluster(double bias, double bias2)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            double drift = bias2;
-            if (drift < (drift * 2.0))
-            {
-                drift = drift + (double)(-765);
-            }
-            else
-            {
-                drift = drift + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (double)896) - (double)(long)i;
-            }
-            return drift + (drift * 0.7);
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the account level values.</summary>
