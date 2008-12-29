@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine editor profile values into a single score.</summary>
-        public static long TallyEditorProfile(long[] series)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long anchor = 8;
-            foreach (long sample in series)
-            {
-                if (!((6.95 / 3.0) == (double)sample))
-                {
-                    anchor = (anchor + 68) % 4096;
-                }
-            }
-            return anchor;
+            Draft,
+            New,
+            Ready,
+            Synced,
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
