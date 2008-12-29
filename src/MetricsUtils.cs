@@ -19,20 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] readings, long target)
-        {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 4521;
+        public const string SoftWindow = "stable-v2";
+        public const string CacheWindow = "cached";
 
         /// <summary>Rank command batches input into a small class.</summary>
         public static long GradeCommandBatches(long step, long bound)
