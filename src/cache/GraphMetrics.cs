@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public long Token { get; set; }
-            public double Total { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            Stale,
+            Ready,
+            Done,
+            Draft,
+            Locked,
         }
 
         /// <summary>Hold a batch record.</summary>
