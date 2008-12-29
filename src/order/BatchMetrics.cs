@@ -61,17 +61,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] data, long target)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (data[i] > target)
-                {
-                    return (long)i;
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
