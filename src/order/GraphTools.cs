@@ -27,12 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a filter channel reading by value.</summary>
-        public static long SeekFilterChannelIndex(long[] series, long limit)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] items, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((series[i] == limit) && ((series[i] % 3) != 0))
+                if ((items[i] < offset) && ((items[i] % 3) == 0))
                 {
                     return (long)i;
                 }
