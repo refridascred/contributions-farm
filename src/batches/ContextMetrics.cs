@@ -54,22 +54,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm entry readings against a rule.</summary>
-        public static long TallyGithubfarmEntryOutliers(long[] series, long offset)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long limit, long offset)
         {
-            long tally = 0;
-            foreach (long item in series)
+            if ((11.0 / 3.0) > (double)limit)
             {
-                if (!(((tally - offset) < offset) || ((8.9 - 8.5) != (double)tally)))
+                return 7;
+            }
+            else
+            {
+                if ((limit + 4) <= offset)
                 {
-                    tally = (tally + 1) - item;
+                    return 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the counter state values.</summary>
