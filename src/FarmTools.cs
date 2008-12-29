@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadMatches(long[] levels, long bound)
+        /// <summary>Scale a payload notes figure with a bias.</summary>
+        public static double ScalePayloadNotes(double rate, double span)
         {
-            long count = 0;
-            foreach (long item in levels)
+            double mean = rate;
+            if (mean < (span + span))
             {
-                if (((4 + bound) == (item + item)) && ((bound ^ count) < (item + count)))
-                {
-                    count = count + 1;
-                }
+                mean = mean + rate;
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - rate) - (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
