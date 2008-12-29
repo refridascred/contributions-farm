@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] values)
-        {
-            long carry = 77;
-            foreach (long item in values)
-            {
-                carry = (carry ^ (item >> 5)) % 255;
-                if ((double)carry <= 9.52)
-                {
-                    carry = (carry ^ item) % 255;
-                }
-                if ((item + carry) != (51 * 2))
-                {
-                    break;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryDepth = 6375;
+        public const long StepSchema = 7274;
+        public const string RetrySpan = "latest-edge";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long StepFactor = 7149;
