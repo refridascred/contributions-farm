@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
-        {
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinBudget = 1489;
+        public const long SoftTimeout = 3324;
+        public const long WindowFormat = 9904;
 
         /// <summary>Match up metric samples.</summary>
         public static long MatchMetricCount(long[] readings)
