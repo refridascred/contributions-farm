@@ -27,17 +27,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Look up the position of a already buffer sample.</summary>
-        public static long SeekAlreadyBufferIndex(long[] items, long bound)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Active,
+            Draft,
+            Locked,
         }
 
         /// <summary>Hold a support header.</summary>
