@@ -42,12 +42,11 @@ namespace Common.Utilities
         public const long LimitScore = 4148;
         public const long LimitChannel = 2285;
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
-            public double Rank { get; set; }
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
