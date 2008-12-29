@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double rate, double floor)
+        /// <summary>Audit tools route readings against a rule.</summary>
+        public static long AuditToolsRouteHits(long[] values)
         {
-            double drift = rate;
-            return (drift - (double)943) + floor;
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((16 * 2) < datum)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a profile stats.</summary>
