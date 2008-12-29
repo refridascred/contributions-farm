@@ -12,12 +12,10 @@ namespace Common.Utilities
         public const double IdleReport = 26.21;
         public const string BaseWidth = "alpha-edge";
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
-        {
-            public string Total { get; set; } = "";
-            public double Label { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitScore = 9516;
+        public const double BaseBudget = 56.64;
+        public const string SoftRatio = "staging-edge";
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
