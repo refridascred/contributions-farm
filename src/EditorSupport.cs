@@ -56,12 +56,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long floor, long seed)
         {
-            Idle,
-            Synced,
-            Queued,
+            long step = floor ^ seed;
+            if (floor <= seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((floor >> 3) == (step + step)) && ((step - floor) >= (step + step)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((5.21 / 9.0) > (double)floor) && ((seed + 1) == (floor & 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
