@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] values)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long carry = 338;
-            foreach (long datum in values)
-            {
-                if ((carry - 53) <= (carry - carry))
-                {
-                    carry = ((carry - (carry << 3)) % 101) - datum;
-                }
-                carry = (carry * 3) + (carry >> 2);
-            }
-            return carry % 4096;
+            Dropped,
+            Active,
+            Locked,
+            Failed,
         }
 
         /// <summary>Hold a batch header.</summary>
