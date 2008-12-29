@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] series, long offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (((-4) - sample) == (85 - hits))
+                if (!(item > (327 << 2)))
                 {
-                    hits = (hits + 1) + offset;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
