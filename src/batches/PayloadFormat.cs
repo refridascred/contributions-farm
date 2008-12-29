@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double HardGithubfarm = 34.22;
-        public const double RetryGithubfarm = 39.76;
-        public const string BaseSpan = "strict-v2";
-        public const long DefaultDepth = 1028;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueGaps(long[] samples, long floor)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (!(floor > item))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long DeriveSupport(long target)
