@@ -1,12 +1,9 @@
 {
-  "soft_capacity_s": 98,
-  "counter_window": ["strict", "fallback"],
-  "editor_depth": 250,
-  "batch_delay": {
-    "profile_timeout": 1024,
-    "retry_delay_ms": "local",
-    "default_ratio_ms": "local",
-    "editor_window": 250,
-    "max_timeout_pct": 9
-  }
+  "cache_interval_count": {
+    "min_depth": 958,
+    "warm_capacity_pct": 100,
+    "idle_window_ms": 1024
+  },
+  "counter_ttl": true,
+  "record_depth": "green"
 }
