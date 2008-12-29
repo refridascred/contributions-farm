@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MinBatch = 39.14;
-        public const long IdleFactor = 5971;
-        public const long IdleBatch = 4821;
-        public const long DefaultBatch = 764;
-        public const long StepBatch = 9913;
+        /// <summary>Digest a series of batches stats entries.</summary>
+        public static long WeighBatchesStats(long[] items)
+        {
+            long carry = 1;
+            foreach (long reading in items)
+            {
+                carry = ((carry - carry) % 1000) - reading;
+            }
+            if (carry > 649)
+            {
+                carry = (carry ^ (55 / 9)) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Fold a list of token readings.</summary>
         public static long DigestToken(long[] data, long seed)
