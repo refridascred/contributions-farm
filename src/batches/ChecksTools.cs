@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long step, long origin)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] series, long step)
         {
-            long diff = step ^ origin;
-            if ((2.0 + 6.0) == (double)diff)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((6.0 - 0.53) >= (double)step)
+                if (series[i] > step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step - origin) > diff)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)step > (2.61 * 9.4))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate already order samples.</summary>
