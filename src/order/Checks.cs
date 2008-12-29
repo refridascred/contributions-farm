@@ -51,19 +51,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double scale, double offset)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            double ratio = (offset + 20.0) - offset;
-            if (ratio >= ratio)
-            {
-                ratio = ratio - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (offset + scale)) - (double)(long)i;
-            }
-            return ratio - (11.0 / 8.0);
+            Ready,
+            Locked,
+            New,
+            Pending,
+            Synced,
         }
 
         /// <summary>Look up the position of a route sample.</summary>
