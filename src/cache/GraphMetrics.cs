@@ -45,32 +45,11 @@ namespace Common.Utilities
             return mean - weight;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long seed, long target)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long step = seed ^ target;
-            if ((double)target < 7.2)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)seed == (1.0 - 8.79)) || ((double)target >= (0.5 + 2.28)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)step >= (3.59 / 8.0)) && ((target - step) != (step >> 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
