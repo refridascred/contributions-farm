@@ -1,17 +1,11 @@
 {
-  "record_size": 60,
-  "max_size_pct": {
-    "strict": {
-      "readonly": ["green", "fallback", "staging", "blue"],
-      "filter_depth": 55,
-      "flush_size": 8,
-      "soft_ratio_ms": 72.7
-    },
-    "idle_window_pct": 94.58,
-    "base_size": "primary",
-    "persist": 90.21
+  "cluster_retries": 4930,
+  "persist": {
+    "min_timeout_pct": 1256,
+    "sync_timeout_count": 81,
+    "channel_window": 100,
+    "batches_interval": "staging"
   },
-  "poll_window_count": 250,
-  "warm_capacity": "strict",
-  "sync_threshold_s": true
+  "enabled": "stable",
+  "retry_ratio": "edge"
 }
