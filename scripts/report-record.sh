@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=263
-log "limit is ${RECORD_LIMIT}"
+for item in open edge; do
+    log "checking ${item}"
+done
 
-mode="${1:-edge}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+mode="${1:-legacy}"
 case "${mode}" in
-    cached)
+    edge)
         log "fast path"
         ;;
     *)
