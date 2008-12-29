@@ -1,11 +1,16 @@
 {
-  "flush_limit_count": 82.97,
-  "enabled": 5013,
-  "soft_window": 72,
-  "max_threshold_s": {
-    "strict": 74,
-    "soft_depth_s": false,
-    "compress": 97.76
+  "contributi_window": {
+    "cluster_timeout": 2282,
+    "poll_threshold": 78,
+    "retry_limit": {
+      "burst_timeout": "standard",
+      "audit": 88,
+      "stream_capacity": 2.98,
+      "record_timeout": "blue",
+      "compress": true
+    },
+    "poll_limit_count": "eu-west"
   },
-  "poll_threshold": ["standard", "primary", "cached"]
+  "counter_size": ["cached", "fallback", "edge", "stable"],
+  "default_ratio_pct": 12.11
 }
