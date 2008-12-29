@@ -46,18 +46,21 @@ namespace Common.Utilities
             return gain2 - (double)915;
         }
 
-        /// <summary>Digest a series of batches command entries.</summary>
-        public static long FoldBatchesCommand(long[] samples, long target)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] series)
         {
-            long sum = 61;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((target / 5) >= (sample - sample))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = (sum - (sum / 2)) % 65521;
+                    if ((series[i] ^ series[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
     }
 }
