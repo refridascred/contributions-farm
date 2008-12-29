@@ -44,23 +44,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double gain, double bias)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] series)
         {
-            double scale = (double)(0 >> 1);
-            if (scale > bias)
+            long anchor = 890;
+            foreach (long reading in series)
             {
-                scale = scale - gain;
+                if ((1.23 * 8.9) >= (double)reading)
+                {
+                    anchor = anchor - (reading + anchor);
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + anchor) % 101;
+                }
             }
-            else
-            {
-                scale = scale - (double)(-3);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (3.5 - 3.0)) + (double)(long)i;
-            }
-            return scale + gain;
+            return anchor % 1000;
         }
 
         /// <summary>Describe the counter mode values.</summary>
