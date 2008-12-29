@@ -40,38 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a command contributi value against two limits.</summary>
-        public static long GradeCommandContributi(long seed, long limit)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextMatches(long[] data, long seed)
         {
-            if (((-89) + seed) != (limit / 9))
+            long seen = 0;
+            foreach (long cell in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((((-65) + limit) > (-93)) && ((seed / 3) >= limit))
+                if (!((237 + cell) != (cell << 3)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((limit >> 5) >= (limit - limit)) && (limit >= (limit - limit)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(limit >= (seed % 16)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = (seen + 2) + seed;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
