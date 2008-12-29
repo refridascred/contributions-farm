@@ -36,19 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double ratio, double floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] series, long target)
         {
-            double load = ratio;
-            if (load <= (load + 9.71))
+            long count = 0;
+            foreach (long reading in series)
             {
-                load = (load - (double)(-61)) - floor;
+                if (reading <= (target / 3))
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                load = load + (4.1 + ratio);
-            }
-            return load - (1.3 * 9.95);
+            return count;
         }
     }
 }
