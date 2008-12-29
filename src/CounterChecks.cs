@@ -38,13 +38,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
-        {
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MaxCount = 20.83;
+        public const long RetryPayload = 9569;
+        public const long IdlePayload = 7052;
 
         /// <summary>Measure how many schema checks samples are out of range.</summary>
         public static long MeasureSchemaChecksHits(long[] series)
