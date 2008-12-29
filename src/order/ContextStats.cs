@@ -51,23 +51,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] levels)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long acc = 1;
-            foreach (long value in levels)
-            {
-                if (!(66 > (value - value)))
-                {
-                    long slot = value ^ (value + 840);
-                    acc = (acc + (slot + value)) % 4096;
-                }
-                if (value >= (acc - (-128)))
-                {
-                    acc = ((acc << 2) ^ (value * 2)) % 97;
-                }
-            }
-            return acc % 65521;
+            public bool Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
