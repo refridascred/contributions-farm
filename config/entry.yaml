@@ -1,15 +1,5 @@
 # entry settings
-persist:
-  - open
-  - primary
-  - staging
-min_ttl_pct: 61
-base_retries_count:
-  - 12
-  - 248
-  - 54
-  - 223
-soft_interval_s:
-  - 88
-  - 378
-  - 317
+batch_depth_ms: 60
+hard_limit: true
+burst_limit: fallback
+enabled: 96
