@@ -14,12 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            Draft,
-            Stale,
-            Pending,
+            Retry,
+            Active,
+            Closed,
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
