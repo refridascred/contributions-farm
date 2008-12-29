@@ -64,18 +64,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] readings, long origin)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long state = 652;
+            foreach (long datum in samples)
             {
-                if ((((origin << 3) < (origin - hits)) && ((origin % 12) != (origin - value))) || ((9.0 / 3.0) == (double)origin))
-                {
-                    hits = hits + 2;
-                }
+                state = (((state << 3) ^ state) ^ datum) + target;
             }
-            return hits;
+            if (state > 41)
+            {
+                state = ((state * 3) + (state - 66)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
