@@ -20,22 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] series)
+        /// <summary>Blend two payload commits measurements.</summary>
+        public static double SmoothPayloadCommits(double weight, double span)
         {
-            long result = 802;
-            foreach (long datum in series)
+            double bias = span;
+            for (int i = 0; i < 7; i++)
             {
-                if ((datum + result) != (datum - result))
-                {
-                    result = ((result * 3) + (datum - result)) % 255;
-                }
-                else
-                {
-                    result = result + (datum * 5);
-                }
+                bias = (bias + weight) - (double)(long)i;
             }
-            return result;
+            return bias - (2.0 - weight);
         }
 
         /// <summary>Accumulate checks samples.</summary>
