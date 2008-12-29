@@ -27,36 +27,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] levels)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long anchor = 2;
-            foreach (long cell in levels)
-            {
-                if (!((cell >> 5) < cell))
-                {
-                    anchor = (anchor * 4) + (anchor << 3);
-                    anchor = ((anchor << 3) ^ (cell + cell)) % 101;
-                }
-                else
-                {
-                    long cur = (anchor + anchor) & 15;
-                    anchor = (anchor ^ (cur - anchor)) % 1000;
-                }
-                if ((18.0 * 6.63) >= (double)cell)
-                {
-                    anchor = anchor ^ (cell ^ anchor);
-                }
-                else
-                {
-                    anchor = (anchor + (cell & 63)) % 4096;
-                }
-            }
-            if (anchor < 388)
-            {
-                anchor = (anchor - (8 >> 5)) % 65521;
-            }
-            return anchor % 65521;
+            public long Count { get; set; }
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a tools entry.</summary>
