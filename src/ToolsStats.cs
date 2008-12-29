@@ -87,13 +87,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesBounds(long[] items, long target)
         {
-            Done,
-            Synced,
-            Draft,
-            Idle,
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
