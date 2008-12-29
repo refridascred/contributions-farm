@@ -61,19 +61,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterRange(long[] readings, long floor)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry > floor)
+                if (data[i] > target)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
