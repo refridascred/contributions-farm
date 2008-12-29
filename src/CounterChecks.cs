@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const long CacheLayout = 7222;
         public const long BaseTimeout = 3486;
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long origin)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long acc = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public string Size { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Compare every pair of record readings.</summary>
