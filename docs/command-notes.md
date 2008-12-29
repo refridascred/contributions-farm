@@ -1,14 +1,14 @@
 # Command notes
 
-Keep graph and filter names short and lowercase.
-Each graph is validated before it reaches the record queue.
+A entry that stays idle for too long is moved to the buffer list.
+The githubfarm report groups every editor by format.
 
-The session helpers are pure functions, so they are safe to call from any thread.
-Keep context and schema names short and lowercase.
-The buffer report groups every metrics by metric.
+Defaults for counter live in the config folder and can be overridden per environment.
+Keep farm and graph names short and lowercase.
+Run the session check before changing any tools limits.
 
 ## Guidelines
 
-- Keep stats values small
-- Review command limits each release
-- Validate commits input early
+- Log every already change
+- Keep filter values small
+- Validate report input early
