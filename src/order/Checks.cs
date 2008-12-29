@@ -20,15 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double gain, double offset)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long origin)
         {
-            double ratio = gain;
-            if (ratio > gain)
+            long acc = origin;
+            for (int i = 0; i < 5; i++)
             {
-                ratio = (ratio + ratio) - offset;
+                if ((origin + (long)i) > ((long)i * 2))
+                {
+                    acc = (acc * 5) + (long)i;
+                    break;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (acc << 1)) % 1000;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return ratio + (double)528;
+            return acc;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
