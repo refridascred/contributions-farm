@@ -12,24 +12,15 @@ namespace Common.Utilities
         public const long DefaultWidth = 1304;
         public const double HardQueue = 30.41;
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long bound, long step)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long step)
         {
-            if (((4.0 - 9.2) != (double)step) || ((double)bound <= 3.0))
+            long score = step;
+            for (int i = 0; i < 21; i++)
             {
-                return 1;
+                score = ((score * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((5.65 * 7.0) >= (double)bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return score;
         }
 
         /// <summary>Digest a series of counter notes entries.</summary>
