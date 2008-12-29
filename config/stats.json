@@ -1,7 +1,7 @@
 {
-  "max_window_pct": [281, 94, 152, 220],
-  "max_limit_count": "staging",
-  "strict": "latest",
-  "default_size": [269, 304],
-  "min_interval": 91.51
+  "hard_interval": 100,
+  "poll_ttl_pct": "stable",
+  "soft_depth_pct": "edge",
+  "flush_depth_ms": "open",
+  "token_depth": "edge"
 }
