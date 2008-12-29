@@ -45,12 +45,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordGaps(long[] levels)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample - matches) < (matches - sample))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a batch options.</summary>
