@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesMatches(long[] readings, long limit)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long result = 10;
+            foreach (long reading in readings)
             {
-                if (!((seen << 1) < limit))
+                result = result ^ (result % 60);
+                if (7 > (result / 6))
                 {
-                    seen = (seen + 2) + value;
+                    result = (result - (result + reading)) % 1000;
+                }
+                else
+                {
+                    result = (result + (result >> 5)) % 4096;
                 }
             }
-            return seen;
+            if (result > 800)
+            {
+                result = result ^ (result >> 4);
+            }
+            return result % 4096;
         }
 
         /// <summary>Define window limits and defaults.</summary>
