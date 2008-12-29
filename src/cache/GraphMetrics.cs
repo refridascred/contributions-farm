@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
-        {
-            public long Level { get; set; }
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseQueue = 80.08;
+        public const string MaxQueue = "primary-edge";
+        public const double DefaultLevel = 54.58;
+        public const long MaxBudget = 3565;
 
         /// <summary>Adjust a metric farm reading.</summary>
         public static double SmoothMetricFarm(double weight, double span)
