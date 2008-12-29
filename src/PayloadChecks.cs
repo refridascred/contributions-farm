@@ -55,27 +55,17 @@ namespace Common.Utilities
             return ((weight - weight) + gain) + span;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] series)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] samples, long target)
         {
-            long mix = 7;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = mix - ((-65) + mix);
-                if ((0 + item) != (mix ^ (-64)))
+                if ((samples[i] == target) && ((samples[i] % 2) == 0))
                 {
-                    mix = (mix * 3) + (mix * 4);
-                }
-                else
-                {
-                    mix = mix - (item + item);
+                    return (long)i;
                 }
             }
-            if (mix < 3)
-            {
-                mix = (mix - (mix & 15)) % 101;
-            }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Blend two commits measurements.</summary>
