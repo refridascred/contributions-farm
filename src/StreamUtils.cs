@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a order queue value against two limits.</summary>
-        public static long RankOrderQueue(long origin, long target)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryHits(long[] levels)
         {
-            if (target <= origin)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (5 <= target)
+                if ((2.5 * 8.28) > (double)(long)levels.Length)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    seen = (seen + 1) + entry;
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every profile support entry stays within the limit.</summary>
