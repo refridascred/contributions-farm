@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long limit)
         {
-            public double Offset { get; set; }
-            public double Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                long lane = ((long)i / 3) >> 4;
+                if (!((double)sum >= (double)lane))
+                {
+                    sum = ((sum << 3) ^ (limit - (long)i)) % 4096;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of account entries.</summary>
