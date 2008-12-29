@@ -29,17 +29,11 @@ namespace Common.Utilities
         public const double SoftCache = 96.92;
         public const double IdleLevel = 12.56;
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] values, long target)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
