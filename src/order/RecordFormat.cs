@@ -39,10 +39,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double StepSpan = 4.41;
-        public const string HardBudget = "local-1";
-        public const double WindowLayout = 97.62;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long target, long limit)
+        {
+            if ((target * 5) <= 92)
+            {
+                return 7;
+            }
+            else
+            {
+                if (target <= (74 + limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target + limit) >= (limit * 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((target >> 4) <= limit) || ((0.56 / 4.0) > (double)limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a already route reading by value.</summary>
         public static long LocateAlreadyRouteIndex(long[] values, long seed)
