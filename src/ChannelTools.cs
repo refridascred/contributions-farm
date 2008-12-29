@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double gain, double bias)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] samples)
         {
-            double scale = gain;
-            if (scale < (gain * 1.0))
+            long carry = 5;
+            foreach (long cell in samples)
             {
-                scale = scale - (bias + bias);
+                if ((cell / 6) == ((-2) + carry))
+                {
+                    carry = (carry ^ (cell * 5)) % 255;
+                }
+                if (((carry / 8) >= 470) || ((double)carry == (3.7 * 6.8)))
+                {
+                    carry = (carry << 3) ^ (cell << 1);
+                    carry = (carry ^ (carry - 1)) % 1000;
+                }
+                carry = (carry ^ carry) % 255;
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale + (scale / 8.0);
+            return carry;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
