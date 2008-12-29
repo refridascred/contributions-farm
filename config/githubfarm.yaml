@@ -1,16 +1,28 @@
 # githubfarm settings
-schema_interval:
-  metrics_window: 81.03
-  base_timeout_count:
-    cache_retries: 41.87
-    batch_depth_count: 500
-    poll_limit: 2348
-    order_interval: staging
-  idle_ttl: cached
-soft_ratio_pct: 93
-min_limit:
-  - 79
-  - 146
-  - 431
-  - 260
-default_depth_pct: fallback
+burst_ttl:
+  metric_depth: 30
+  cache_ttl:
+    - edge
+    - standard
+    - green
+    - fallback
+  compress: open
+profile_window: 5052
+dry_run: false
+readonly: stable
+compress:
+  sync_timeout_s:
+    cache_delay_s: fallback
+    commits_size: green
+    burst_delay_ms: stable
+    format_ratio: 60
+    idle_interval: 9.53
+  context_size:
+    enabled: edge
+    account_threshold:
+      - blue
+      - strict
+    default_capacity_pct: 52
+    burst_threshold: false
+  max_depth_s: false
+  strict: 42
