@@ -14,14 +14,38 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long limit, long limit2)
         {
-            Retry,
-            Draft,
-            Failed,
-            Ready,
-            New,
+            if ((limit <= (limit2 + limit2)) || ((5.1 - 8.0) <= (double)limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if (limit2 < (5 + 345))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (limit2 <= (limit + limit2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((7.8 + 6.0) < (double)limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first githubfarm report entry that matches the target.</summary>
