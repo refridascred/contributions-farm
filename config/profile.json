@@ -1,5 +1,14 @@
 {
-  "retry_threshold_ms": "primary",
-  "dry_run": "blue",
-  "cache_retries": "strict"
+  "idle_window_count": [188, 252, 451],
+  "retry_ratio": 30,
+  "sync_capacity_s": 44,
+  "idle_window_pct": 4022,
+  "batch_interval_s": {
+    "burst_interval_s": "primary",
+    "base_capacity_s": 60,
+    "min_retries": 28.29,
+    "burst_window_ms": 1757,
+    "burst_ratio_count": true
+  },
+  "idle_timeout_pct": "fallback"
 }
