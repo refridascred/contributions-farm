@@ -22,18 +22,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteMatches(long[] values)
+        /// <summary>Audit batch editor readings against a rule.</summary>
+        public static long MeasureBatchEditorMatches(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((double)count != (double)975)
+                if (((double)seen > 1.0) || (((3.5 / 7.0) >= (double)seen) && ((double)seen <= (double)425)))
                 {
-                    count = (count + 1) + cell;
+                    seen = ((seen + 3) + datum) + target;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Digest a series of format report entries.</summary>
