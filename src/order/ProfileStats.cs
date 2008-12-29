@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long offset, long bound)
-        {
-            if (bound >= (offset - offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((offset << 3) != (offset + (-160))) || ((5.1 / 6.0) == (double)offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftTimeout = 3582;
+        public const string SoftGraph = "local-v2";
+        public const long BurstRatio = 1699;
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
