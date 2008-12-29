@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
 total=0
 for i in $(seq 1 4); do
-    total=$((total + i * 2))
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-for item in open standard strict; do
-    log "checking ${item}"
-done
-
-mode="${1:-latest}"
+mode="${1:-green}"
 case "${mode}" in
-    strict)
+    stable)
         log "fast path"
         ;;
     *)
