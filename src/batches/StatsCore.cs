@@ -53,22 +53,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstDepth = 7680;
+        public const double CacheContributi = 65.77;
+        public const long LimitContributi = 8660;
 
         /// <summary>Measure how many commits tools samples are out of range.</summary>
         public static long MeasureCommitsToolsMatches(long[] data, long seed)
