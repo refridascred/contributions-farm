@@ -22,18 +22,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit batch editor readings against a rule.</summary>
-        public static long MeasureBatchEditorMatches(long[] readings, long target)
+        /// <summary>Validate metric cache readings against a bound.</summary>
+        public static bool VerifyMetricCacheLimits(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (((double)seen > 1.0) || (((3.5 / 7.0) >= (double)seen) && ((double)seen <= (double)425)))
+                if (item > offset)
                 {
-                    seen = ((seen + 3) + datum) + target;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Hold a stats record.</summary>
