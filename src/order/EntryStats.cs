@@ -45,12 +45,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 7828;
-        public const long BaseAccount = 7421;
-        public const double RetryAccount = 7.53;
-        public const long StepDepth = 1574;
-        public const double MaxCount = 96.05;
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= target) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultEntry = 2308;
