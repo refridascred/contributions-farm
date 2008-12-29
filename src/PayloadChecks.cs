@@ -27,19 +27,21 @@ namespace Common.Utilities
             return load - (double)51;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] data, long floor)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] items)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item != floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] ^ items[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
