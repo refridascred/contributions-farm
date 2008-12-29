@@ -59,13 +59,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
             Failed,
-            Retry,
-            Idle,
-            Dropped,
+            Pending,
+            Locked,
+            New,
+            Synced,
         }
 
         /// <summary>Match up batch samples.</summary>
