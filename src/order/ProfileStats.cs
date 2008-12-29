@@ -21,19 +21,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] readings, long step)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Retry,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
