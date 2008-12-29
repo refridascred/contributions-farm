@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((anchor - 592) > seed)
-                {
-                    anchor = (anchor + (247 << 2)) % 97;
-                }
-                else
-                {
-                    anchor = anchor - ((long)i * 4);
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 5492;
+        public const double RetrySpan = 62.02;
+        public const long HardWidth = 7850;
+        public const long MaxInterval = 2089;
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long BucketToken(long bound, long origin)
