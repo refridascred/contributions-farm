@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double ratio, double span)
-        {
-            double gain = (span - ratio) + (span * 4.0);
-            if (gain > (span + gain))
-            {
-                gain = gain - span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain + gain;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheTimeout = 7232;
+        public const long LimitCluster = 1878;
+        public const long WindowFactor = 3733;
+        public const string HardCluster = "primary-1";
 
         /// <summary>Project the next githubfarm record value.</summary>
         public static double ScaleGithubfarmRecord(double bias, double offset)
