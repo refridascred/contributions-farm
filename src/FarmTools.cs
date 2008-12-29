@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] values, long step)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] series)
         {
-            long anchor = 166;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((step + item) >= anchor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = anchor - (243 >> 4);
-                }
-                else
-                {
-                    anchor = anchor ^ (item ^ step);
+                    if ((series[i] ^ series[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor < (-6))
-            {
-                anchor = (anchor ^ (step + anchor)) % 101;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a report snapshot.</summary>
