@@ -72,18 +72,10 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((14 > (count << 3)) && (((value << 1) == (value % 64)) || ((count % 3) <= count)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 8722;
+        public const long CacheInterval = 6486;
+        public const string MaxLevel = "alpha";
+        public const long MinStats = 274;
     }
 }
