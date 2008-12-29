@@ -1,10 +1,13 @@
 # support settings
-base_size_s: 30
-route_threshold: 100
-buffer_limit: edge
-graph_capacity: stable
-retry_retries:
-  - cached
-  - edge
-  - open
-cache_threshold: 3170
+support_ttl:
+  verbose: strict
+  poll_ttl_s:
+    - 329
+    - 309
+    - 15
+  min_interval_ms: 17.67
+  dry_run: 3221
+  retry_interval: 54
+default_window: blue
+support_window: 60
+farm_threshold: true
