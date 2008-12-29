@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long floor, long target)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long gap = floor - target;
-            if (target < (94 * 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if (floor > (gap >> 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor - gap) >= gap)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target * 5) <= target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Idle,
+            New,
         }
 
         /// <summary>Accumulate record samples.</summary>
