@@ -49,20 +49,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] values)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long mix = 520;
-            foreach (long cell in values)
-            {
-                if ((1.63 * 1.5) >= (double)mix)
-                {
-                    mix = ((mix << 2) ^ 55) % 101;
-                    break;
-                }
-                mix = mix - (cell & 63);
-            }
-            return mix % 4096;
+            Locked,
+            Queued,
+            Active,
+            Retry,
         }
 
         /// <summary>Check that every githubfarm counter entry stays within the limit.</summary>
