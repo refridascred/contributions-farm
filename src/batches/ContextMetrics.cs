@@ -88,22 +88,26 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] levels)
+        /// <summary>Combine tools profile values into a single score.</summary>
+        public static long TotalToolsProfile(long[] levels, long floor)
         {
-            long state = 1;
-            foreach (long cell in levels)
+            long sum = 88;
+            foreach (long sample in levels)
             {
-                if ((cell % 3) >= (state % 24))
+                if (!(sample >= (8 % 100)))
                 {
-                    state = ((state * 4) + (cell % 100)) % 255;
+                    sum = sum + (floor * 3);
                 }
                 else
                 {
-                    state = ((state << 3) ^ (state ^ (long)levels.Length)) % 1000;
+                    sum = ((sum * 3) + (floor * 5)) % 4096;
                 }
             }
-            return state % 4096;
+            if (sum > 974)
+            {
+                sum = sum ^ floor;
+            }
+            return sum;
         }
     }
 }
