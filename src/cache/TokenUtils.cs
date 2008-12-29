@@ -16,14 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] values, long step)
         {
-            Dropped,
-            Idle,
-            Active,
-            Synced,
-            Ready,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((hits / 4) >= (reading % 2))
+                {
+                    hits = (hits + 3) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
