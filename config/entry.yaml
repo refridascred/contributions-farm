@@ -1,21 +1,15 @@
 # entry settings
-githubfarm_ratio:
-  - 296
-  - 271
-flush_threshold_pct:
-  default_timeout_s: 70
-  poll_capacity_count: 71.46
-  idle_ttl_pct: false
-soft_window_ms:
-  - 410
-  - 197
-  - 118
-  - 20
-burst_ttl_count:
-  audit: 1314
-  hard_delay_pct: 5853
-  flush_retries: true
-  soft_ratio: 30.99
-  cache_interval_pct: strict
-readonly: 30
-retry_capacity_count: 68
+burst_size:
+  retry_window_s:
+    - 318
+    - 435
+  batch_capacity_pct: false
+  entry_retries: true
+record_depth:
+  profile_threshold: 5301
+  enabled: 98.39
+  readonly: 91
+window_ttl: edge
+soft_size_s: false
+base_interval: 30
+min_depth_pct: staging
