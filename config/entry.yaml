@@ -1,7 +1,18 @@
 # entry settings
-commits_ttl:
-  - legacy
-  - open
-  - latest
-batch_ttl_s: 41.3
-session_size: 23
+soft_timeout: true
+hard_retries_count:
+  - 424
+  - 459
+  - 479
+  - 367
+account_timeout: 18
+base_delay:
+  payload_limit: edge
+  cache_ttl_s: 79.89
+  audit:
+    - blue
+    - edge
+    - fallback
+  compress: false
+  hard_threshold_count: true
+hard_ratio_ms: 78
