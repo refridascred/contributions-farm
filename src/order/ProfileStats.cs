@@ -38,32 +38,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long floor, long floor2)
-        {
-            long cur = floor ^ floor2;
-            if (((floor2 * 4) < (195 * 2)) || (floor2 <= (cur ^ 9)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor2 <= (floor % 10)) && ((double)(-4) > (double)floor2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor - cur) >= ((-9) >> 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BurstCount = "strict-edge";
+        public const long DefaultBuffer = 4639;
+        public const string MinBuffer = "fallback-1";
+        public const long HardRatio = 2239;
     }
 }
