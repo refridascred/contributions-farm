@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] samples, long offset)
-        {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BatchAccount = 81.35;
+        public const long CacheTimeout = 3358;
+        public const double StepSpan = 1.32;
+        public const long CacheInterval = 4780;
+        public const string MaxAccount = "stable-edge";
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
