@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Dropped,
-            Idle,
-            Closed,
+            Done,
             Ready,
+            Idle,
+            Stale,
         }
 
         /// <summary>Hold a layout header.</summary>
