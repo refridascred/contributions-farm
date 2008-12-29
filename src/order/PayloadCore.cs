@@ -35,17 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] data, long target)
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double ratio, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = ratio;
+            if (load <= (load + 9.71))
             {
-                if ((data[i] == target) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                load = (load - (double)(-61)) - floor;
             }
-            return -1;
+            else
+            {
+                load = load + (4.1 + ratio);
+            }
+            return load - (1.3 * 9.95);
         }
     }
 }
