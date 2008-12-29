@@ -13,11 +13,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double CacheBudget = 90.15;
-        public const long RetrySize = 8149;
-        public const string SoftInterval = "staging-v2";
-        public const long LimitFactor = 9221;
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public string Count { get; set; } = "";
+            public double Stamp { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long CompareRecordCount(long[] samples)
