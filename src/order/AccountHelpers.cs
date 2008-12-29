@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesMatches(long[] items, long target)
+        /// <summary>Audit already checks readings against a rule.</summary>
+        public static long AuditAlreadyChecksHits(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((cell - 480) >= count)
+                if ((double)matches < (double)offset)
                 {
-                    count = (count + 3) + target;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 1) - sample;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
