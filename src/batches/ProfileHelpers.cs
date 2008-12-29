@@ -67,13 +67,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            public long Weight { get; set; }
-            public bool Count { get; set; }
-            public long Owner { get; set; }
-            public double Token { get; set; }
+            Draft,
+            Queued,
+            Pending,
         }
     }
 }
