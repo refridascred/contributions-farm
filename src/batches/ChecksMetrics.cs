@@ -87,12 +87,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] readings, long target)
+        /// <summary>Look up the position of a cluster stats sample.</summary>
+        public static long LocateClusterStatsIndex(long[] series, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] < target)
+                if (series[i] < offset)
                 {
                     return (long)i;
                 }
