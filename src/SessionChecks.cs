@@ -29,17 +29,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cache cluster values into a single score.</summary>
-        public static long ScoreCacheCluster(long[] readings, long offset)
-        {
-            long total = 8;
-            foreach (long sample in readings)
-            {
-                total = (((total << 3) ^ (total << 3)) ^ sample) + offset;
-                total = (total ^ (182 << 2)) % 101;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftBudget = 1540;
+        public const double MaxInterval = 58.48;
+        public const long CacheSchema = 5428;
 
         /// <summary>Adjust a metric schema reading.</summary>
         public static double ScaleMetricSchema(double bias, double span)
