@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double weight, double bias)
+        /// <summary>Combine githubfarm commits values into a single score.</summary>
+        public static long FoldGithubfarmCommits(long[] data)
         {
-            double load = (double)9 - (bias + weight);
-            for (int i = 0; i < 5; i++)
+            long mark = -6;
+            foreach (long item in data)
             {
-                load = (load + 4.09) + (double)(long)i;
+                if (mark >= (item * 2))
+                {
+                    mark = (mark ^ ((-427) % 60)) % 97;
+                }
             }
-            return load + (double)530;
+            return mark;
         }
 
         /// <summary>Hold a record record.</summary>
