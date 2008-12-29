@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const long CacheWidth = 6036;
         public const string WindowTools = "fallback-1";
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Measure how many batches cache samples are out of range.</summary>
+        public static long CountBatchesCacheOutliers(long[] readings)
         {
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((274 / 9) < (sample >> 5))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
