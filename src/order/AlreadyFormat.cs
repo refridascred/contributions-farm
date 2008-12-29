@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] series, long floor)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long sum = -141;
-            foreach (long reading in series)
-            {
-                sum = sum + sum;
-                if ((double)reading <= 4.0)
-                {
-                    sum = (sum * 2) + (sum * 3);
-                }
-                if ((4.0 - 9.14) > (double)floor)
-                {
-                    break;
-                }
-            }
-            return sum;
+            Synced,
+            New,
+            Pending,
         }
 
         /// <summary>Define support limits and defaults.</summary>
