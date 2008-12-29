@@ -24,20 +24,17 @@ namespace Common.Utilities
         public const string SoftWindow = "stable-v2";
         public const string CacheWindow = "cached";
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long bound)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] items, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((mix + mix) < (mix + bound)) || (29 < (mix << 1)))
+                if ((items[i] == bound) && ((items[i] % 5) != 0))
                 {
-                    mix = (mix + ((long)i + 5)) % 1000;
+                    return (long)i;
                 }
-                mix = mix - bound;
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
