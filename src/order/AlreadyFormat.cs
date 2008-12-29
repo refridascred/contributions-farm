@@ -14,18 +14,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the batches counter entries that pass the check.</summary>
-        public static long CountBatchesCounterMatches(long[] readings, long limit)
+        /// <summary>Locate a queue support reading by value.</summary>
+        public static long FindQueueSupportIndex(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((limit + limit) <= limit)
+                if (readings[i] == step)
                 {
-                    matches = (matches + 1) + datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Digest a series of notes editor entries.</summary>
