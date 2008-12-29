@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const string MinBuffer = "local-edge";
         public const long RetrySpan = 634;
 
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] series)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] series)
         {
             long seen = 0;
             for (int i = 0; i < series.Length; i++)
             {
                 for (int j = 0; j < series.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) > 1)
+                    if ((series[i] + series[j]) != 16)
                     {
                         seen = seen + 1;
                     }
