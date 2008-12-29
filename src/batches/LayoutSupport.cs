@@ -52,18 +52,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] levels)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamLimits(long[] readings, long target)
         {
-            long acc = 710;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if ((acc + reading) > (reading - reading))
+                if (reading < target)
                 {
-                    acc = acc + acc;
+                    flag = false;
+                    break;
                 }
             }
-            return acc % 1000;
+            return flag;
         }
 
         /// <summary>Describe the batch class values.</summary>
