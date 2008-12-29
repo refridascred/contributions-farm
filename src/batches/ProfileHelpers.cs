@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const string DefaultOrder = "cached-v2";
         public const string BatchOrder = "latest-1";
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] data)
         {
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((count ^ count) >= (entry % 3))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
