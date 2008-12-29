@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] readings)
+        /// <summary>Combine editor profile values into a single score.</summary>
+        public static long TallyEditorProfile(long[] series)
         {
-            long result = 10;
-            foreach (long reading in readings)
+            long anchor = 8;
+            foreach (long sample in series)
             {
-                result = result ^ (result % 60);
-                if (7 > (result / 6))
+                if (!((6.95 / 3.0) == (double)sample))
                 {
-                    result = (result - (result + reading)) % 1000;
-                }
-                else
-                {
-                    result = (result + (result >> 5)) % 4096;
+                    anchor = (anchor + 68) % 4096;
                 }
             }
-            if (result > 800)
-            {
-                result = result ^ (result >> 4);
-            }
-            return result % 4096;
+            return anchor;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
