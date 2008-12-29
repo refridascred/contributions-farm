@@ -1,6 +1,10 @@
-id,state,weight,region,rank
-1,30.26,local,735,66.79
-2,eu-west,blue,34.16,306
-3,75.74,564,legacy,56.66
-4,408,fallback,blue,143
-5,592,20.2,eu-west,232
+id,score,label,count
+1,724,515,717
+2,87.76,86.92,fallback
+3,primary,97.93,strict
+4,69.79,standard,green
+5,legacy,strict,green
+6,45.91,78,802
+7,0.27,948,89.08
+8,380,52.72,legacy
+9,72.58,62.5,856
