@@ -14,13 +14,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Audit notes cluster readings against a rule.</summary>
+        public static long TallyNotesClusterMatches(long[] values, long offset)
         {
-            public double Label { get; set; }
-            public bool Limit { get; set; }
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((cell % 16) > cell)
+                {
+                    hits = (hits + 3) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count checks entry pairs that satisfy a relation.</summary>
