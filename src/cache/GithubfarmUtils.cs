@@ -49,11 +49,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryInterval = 20;
-        public const long SoftCount = 3672;
-        public const double IdleRatio = 39.08;
-        public const long BatchToken = 5898;
-        public const double SoftWidth = 34.13;
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
