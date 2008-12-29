@@ -1,9 +1,13 @@
 {
-  "sync_timeout": ["edge", "open"],
-  "default_delay_count": {
-    "poll_delay_s": ["legacy", "primary", "standard", "green"],
-    "burst_window_pct": ["edge", "standard", "stable"],
-    "default_capacity": "fallback"
-  },
-  "hard_retries_count": "open"
+  "profile_ttl": ["fallback", "blue", "edge", "blue"],
+  "readonly": ["blue", "local"],
+  "token_retries": 99,
+  "batches_ttl": {
+    "compress": 74.71,
+    "cache_ratio": 6379,
+    "sync_window_ms": "cached",
+    "cache_capacity_count": "latest",
+    "idle_delay_count": [25, 144],
+    "idle_depth_count": 51
+  }
 }
