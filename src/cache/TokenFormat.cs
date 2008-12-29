@@ -30,22 +30,37 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long origin, long limit)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long seed, long target)
         {
-            if ((0.5 + 2.5) != (double)origin)
+            long bound = seed - target;
+            if ((seed % 8) < (bound * 4))
             {
-                return 5;
+                return 1;
             }
             else
             {
-                if (!((double)limit >= (16.0 / 5.0)))
+                if ((target + (-5)) <= (4 % 60))
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    return 7;
+                    if (((seed / 6) > (target - target)) && (seed < (bound + bound)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((seed + seed) == (target - seed)) || ((double)bound < (3.95 - 6.5)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
