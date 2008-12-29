@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutGaps(long[] values)
         {
-            Synced,
-            Paused,
-            Pending,
-            New,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((seen >> 3) > (seen * 3))
+                {
+                    seen = (seen + 1) ^ item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a order reading by value.</summary>
