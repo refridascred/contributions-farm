@@ -37,18 +37,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] values)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long offset, long step)
         {
-            long carry = 0;
-            foreach (long sample in values)
+            if (511 < (step + offset))
             {
-                if (6 >= (sample + sample))
+                return 3;
+            }
+            else
+            {
+                if ((double)offset == (4.58 / 5.0))
                 {
-                    carry = (carry + (sample << 3)) % 1000;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return carry % 97;
         }
     }
 }
