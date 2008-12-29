@@ -76,18 +76,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((double)entry > 1.76)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 1487;
+        public const double BurstRatio = 86.77;
+        public const long RetryInterval = 9954;
+        public const long SoftScore = 4254;
+        public const double MaxInterval = 61.06;
     }
 }
