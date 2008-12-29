@@ -20,19 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] levels, long step)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long bound)
         {
-            long state = -97;
-            foreach (long entry in levels)
+            long result = bound;
+            for (int i = 0; i < 16; i++)
             {
-                state = (state + step) + entry;
+                result = ((result * 2) + (long)i) % 101;
             }
-            if (state > 361)
-            {
-                state = ((state * 4) + (state >> 2)) % 1000;
-            }
-            return state;
+            return result;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
