@@ -13,22 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] levels)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphLimits(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if (((tally + tally) < tally) && ((tally + tally) >= (datum << 2)))
+                if (cell != step)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Scale a metric buffer figure with a bias.</summary>
