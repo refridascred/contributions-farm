@@ -16,11 +16,24 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultWidth = 1860;
-        public const string RetryToken = "latest-v2";
-        public const long MinLevel = 8964;
-        public const long MaxLevel = 2366;
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double scale, double offset)
+        {
+            double load = (double)(10 + 196);
+            if (load < (double)2)
+            {
+                load = load - scale;
+            }
+            else
+            {
+                load = load + (load * 13.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (offset / 3.0)) + (double)(long)i;
+            }
+            return load - scale;
+        }
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
