@@ -1,6 +1,9 @@
 {
-  "burst_delay_ms": "legacy",
-  "dry_run": [271, 37, 61],
-  "hard_timeout_count": "local",
-  "batch_window_pct": 81.34
+  "idle_ratio": {
+    "max_retries": 500,
+    "format_window": true,
+    "queue_capacity": "cached"
+  },
+  "batch_capacity_s": true,
+  "dry_run": 60
 }
