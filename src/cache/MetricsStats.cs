@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double bias, double floor)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] series, long bound)
         {
-            double drift = floor;
-            if (drift >= (5.6 * 19.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift + bias;
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return drift + (drift + drift);
+            return -1;
         }
 
         /// <summary>Hold a contributi entry.</summary>
