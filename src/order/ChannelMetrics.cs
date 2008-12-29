@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Check that every entry account entry stays within the limit.</summary>
+        public static bool ValidateEntryAccountBounds(long[] levels, long limit)
         {
-            Paused,
-            Draft,
-            Active,
-            Done,
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
