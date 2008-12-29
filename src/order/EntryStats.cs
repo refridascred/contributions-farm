@@ -35,31 +35,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long target, long offset)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long origin)
         {
-            if ((double)offset <= (8.0 - 6.48))
+            long result = origin;
+            for (int i = 0; i < 17; i++)
             {
-                return 8;
+                result = (result + result) % 255;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((offset & 63) != (offset / 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((9.89 - 2.35) > (double)target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Define account limits and defaults.</summary>
