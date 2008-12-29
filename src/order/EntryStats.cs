@@ -54,22 +54,12 @@ namespace Common.Utilities
             return ((load - 20.0) + scale) + floor;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BurstChannel = 58.33;
+        public const double DefaultChannel = 89.03;
+        public const double MinSpan = 41.72;
+        public const long RetryChannel = 8281;
+        public const long LimitChannel = 202;
 
         /// <summary>Accumulate support metrics samples.</summary>
         public static long CombineSupportMetrics(long[] data, long target)
