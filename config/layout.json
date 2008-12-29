@@ -1,5 +1,7 @@
 {
-  "commits_delay": 6,
-  "base_timeout": 30,
-  "min_delay": false
+  "burst_retries_s": ["open", "cached", "open", "primary"],
+  "soft_threshold_s": 9024,
+  "schema_retries": false,
+  "poll_threshold_pct": "edge",
+  "audit": [9, 203]
 }
