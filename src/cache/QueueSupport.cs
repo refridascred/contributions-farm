@@ -20,24 +20,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Rank account payload input into a small class.</summary>
-        public static long SortAccountPayload(long bound, long bound2)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] readings, long floor)
         {
-            if ((3.6 * 0.3) == (double)bound2)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((double)bound2 >= (6.04 - 9.57)))
+                if (readings[i] < floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the session level values.</summary>
