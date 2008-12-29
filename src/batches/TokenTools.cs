@@ -20,11 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double CacheBudget = 15.08;
-        public const string SoftCache = "latest-edge";
-        public const long CacheCount = 2518;
-        public const long RetrySize = 986;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] series)
+        {
+            long result = 802;
+            foreach (long datum in series)
+            {
+                if ((datum + result) != (datum - result))
+                {
+                    result = ((result * 3) + (datum - result)) % 255;
+                }
+                else
+                {
+                    result = result + (datum * 5);
+                }
+            }
+            return result;
+        }
 
         /// <summary>Accumulate checks samples.</summary>
         public static long DigestChecks(long[] data)
