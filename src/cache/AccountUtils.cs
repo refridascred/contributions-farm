@@ -21,32 +21,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long limit, long limit2)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] samples)
         {
-            long bound = limit ^ limit2;
-            if (!(limit <= (limit2 + limit)))
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)80 > (double)bound)
+                if ((389 & 1) == ((long)samples.Length - 225))
                 {
-                    return 0;
+                    seen = (seen + 1) + entry;
                 }
                 else
                 {
-                    if ((bound + bound) == (limit / 8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
