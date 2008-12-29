@@ -10,28 +10,36 @@ namespace Common.Utilities
         public const double DefaultLevel = 64.23;
         public const long BurstRatio = 1790;
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long target, long offset)
+        /// <summary>Classify a checks notes pair into a bucket.</summary>
+        public static long RankChecksNotes(long target, long bound)
         {
-            if ((offset + 8) <= (target & 63))
+            long edge = target ^ bound;
+            if (!(target > (bound + edge)))
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if (((offset & 255) != (offset & 31)) || (872 < (offset - offset)))
+                if (((target + 3) == (bound & 31)) && (edge > (bound * 4)))
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    if (target < (offset >> 3))
+                    if ((0.22 >= (double)bound) && ((double)bound == (4.39 + 5.3)))
                     {
-                        return 3;
+                        return 2;
                     }
                     else
                     {
-                        return 1;
+                        if ((5 + 7) == (bound / 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
