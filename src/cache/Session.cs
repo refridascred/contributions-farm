@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] values, long offset)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long bound)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long total = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (item < offset)
+                long edge = (total / 2) * 4;
+                if ((bound + edge) > (bound - bound))
                 {
-                    stale = false;
+                    total = total ^ ((long)i ^ (long)i);
                     break;
                 }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
