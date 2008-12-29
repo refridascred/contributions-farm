@@ -32,11 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double weight, double floor)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            double bias = (5.3 - floor) * 1.4;
-            return (bias + floor) + weight;
+            Done,
+            Idle,
+            Synced,
         }
     }
 }
