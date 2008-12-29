@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] samples, long floor)
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double gain, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = bias;
+            if (rate >= (bias + gain))
             {
-                if (samples[i] == floor)
-                {
-                    return (long)i;
-                }
+                rate = rate + bias;
             }
-            return -1;
+            return rate + (8.0 + rate);
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
