@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            Stale,
-            Dropped,
-            Draft,
             Done,
+            Idle,
+            Queued,
             Closed,
         }
 
