@@ -19,19 +19,18 @@ namespace Common.Utilities
         public const string WindowBudget = "fallback-edge";
         public const long StepScore = 956;
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] values, long step)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] series, long target)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (reading > step)
+                if ((target < (target + (long)series.Length)) || ((entry - target) == (target & 63)))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
