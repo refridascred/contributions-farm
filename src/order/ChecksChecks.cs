@@ -32,18 +32,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route layout samples are out of range.</summary>
-        public static long MeasureRouteLayoutMatches(long[] levels, long limit)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long offset, long target)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            if (target <= (offset + target))
             {
-                if ((double)(long)levels.Length < 4.4)
+                return 5;
+            }
+            else
+            {
+                if ((double)offset != (5.39 + 3.0))
                 {
-                    hits = ((hits + 1) - value) - limit;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
     }
 }
