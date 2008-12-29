@@ -36,24 +36,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a already record value against two limits.</summary>
-        public static long RankAlreadyRecord(long step, long step2)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] data, long limit)
         {
-            if (!((step2 - step2) >= (step2 / 6)))
+            long carry = 2;
+            foreach (long item in data)
             {
-                return 0;
+                carry = ((carry ^ (693 / 6)) % 255) ^ item;
+                carry = (carry << 2) ^ (limit + 35);
             }
-            else
+            if (carry > 405)
             {
-                if (16.0 <= (double)step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
+                carry = (carry * 5) + (carry & 31);
             }
+            return carry;
         }
 
         /// <summary>Fold a list of window readings.</summary>
