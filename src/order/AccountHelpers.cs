@@ -19,12 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 5105;
-        public const string BatchChecks = "local-v2";
-        public const long BurstSize = 6240;
-        public const string BurstChecks = "alpha-v2";
-        public const long LimitDepth = 3075;
+        /// <summary>Count the batch report entries that pass the check.</summary>
+        public static long MeasureBatchReportMatches(long[] series, long step)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((cell + cell) > (738 - tally))
+                {
+                    tally = (tally + 1) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long CombineGraph(long[] levels, long target)
