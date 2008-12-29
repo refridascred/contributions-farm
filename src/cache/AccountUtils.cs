@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long LimitChannel = 277;
         public const long WindowChannel = 5729;
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] items, long target)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] values)
         {
-            long carry = 4;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long cell in values)
             {
-                carry = ((((carry * 2) + 4) % 1000) - cell) - target;
+                if (((0.53 + 1.3) != (double)cell) && (cell >= (64 * 5)))
+                {
+                    count = count + 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the farm mode values.</summary>
